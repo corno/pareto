@@ -1,6 +1,6 @@
 {
   "name": "steroid-promise",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "javascript/typescript promises with typesafe error handling in a functional style",
   "main": "dist/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "prepublish": "tsc",
   "repository": {
     "type": "git",
-    "url": "https://github.com/corno/steroid-project-starterpack.sgit"
+    "url": "https://github.com/corno/steroid-promise.sgit"
   },
   "files": [
     "dist/*"
