@@ -19,7 +19,6 @@
     "dist/*"
   ],
   "dependencies": {
-    "steroid-promise": "0.0.4",
     "steroid-promise-core": "0.0.4"
   }
 }
