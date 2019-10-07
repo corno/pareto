@@ -18,7 +18,7 @@
             true,
             "never"
         ],
-        "import-sources-order": [
+        "import-source-order": [
             true,
             "any"
         ],

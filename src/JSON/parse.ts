@@ -1,6 +1,6 @@
-import { UnsafePromise, wrapUnsafeFunction } from "steroid-promise"
+import { UnsafePromise, wrapUnsafeFunction } from "steroid-promise-core"
 
-export function parseJSON(data: string, ): UnsafePromise<any, SyntaxError> {
+export function parse(data: string, ): UnsafePromise<any, SyntaxError> {
     return wrapUnsafeFunction(
         (onError, onSucces) => {
             try {

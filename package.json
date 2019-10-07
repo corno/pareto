@@ -1,6 +1,6 @@
 {
   "name": "steroid-promise",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "javascript/typescript promises with typesafe error handling in a functional style",
   "main": "dist/index.js",
   "scripts": {
@@ -20,5 +20,8 @@
   ],
   "dependencies": {
     "steroid-promise-core": "0.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.11"
   }
 }
