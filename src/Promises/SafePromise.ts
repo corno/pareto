@@ -1,7 +1,7 @@
 import * as core from "steroid-promise-core"
+import { SafePromiseBuilder, safePromiseBuilder } from "./SafePromiseBuilder"
 import { UnsafeCallerFunction, UnsafePromise, wrapUnsafeFunction } from "./UnsafePromise"
 import { unsafePromiseBuilder, UnsafePromiseBuilder } from "./UnsafePromiseBuilder"
-import { SafePromiseBuilder, safePromiseBuilder } from "./SafePromiseBuilder"
 
 export type SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => void
 
