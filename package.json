@@ -19,9 +19,8 @@
     "dist/*"
   ],
   "dependencies": {
+    "@types/node": "^12.7.11",
     "steroid-promise-core": "^0.2.2"
   },
-  "devDependencies": {
-    "@types/node": "^12.7.11"
-  }
+  "devDependencies": {}
 }
