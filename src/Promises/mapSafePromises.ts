@@ -1,4 +1,5 @@
 
+import { ISafePromise } from "steroid-promise-core"
 import { SafePromise, wrapSafeFunction } from "./SafePromise"
 
 export enum SafeMapExecutionType {
@@ -6,7 +7,7 @@ export enum SafeMapExecutionType {
     serial,
 }
 
-export function mapSafePromises<ResultType>(execution: SafeMapExecutionType, promises: Array<SafePromise<ResultType>>): SafePromise<ResultType[]> {
+export function mapSafePromises<ResultType>(execution: SafeMapExecutionType, promises: Array<ISafePromise<ResultType>>): SafePromise<ResultType[]> {
     let isExecuted = false
     function execute(onResult: (results: ResultType[]) => void) {
         if (isExecuted === true) {

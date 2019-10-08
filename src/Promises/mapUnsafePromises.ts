@@ -1,3 +1,4 @@
+import { IUnsafePromise } from "steroid-promise-core"
 import { UnsafePromise, wrapUnsafeFunction } from "./UnsafePromise"
 
 export enum UnsafeMapExecutionType {
@@ -5,7 +6,7 @@ export enum UnsafeMapExecutionType {
     serial,
 }
 
-export function mapUnsafePromises<ResultType, ErrorType>(execution: UnsafeMapExecutionType, promises: Array<UnsafePromise<ResultType, ErrorType>>): UnsafePromise<ResultType[], ErrorType[]> {
+export function mapUnsafePromises<ResultType, ErrorType>(execution: UnsafeMapExecutionType, promises: Array<IUnsafePromise<ResultType, ErrorType>>): UnsafePromise<ResultType[], ErrorType[]> {
     let isExecuted = false
     function execute(onErrors: (errors: ErrorType[]) => void, onSuccess: (results: ResultType[]) => void) {
         if (isExecuted === true) {
