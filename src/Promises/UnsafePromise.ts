@@ -1,7 +1,6 @@
 import * as core from "steroid-promise-core"
 import {
     SafeCallerFunction,
-    SafePromise,
     wrapSafeFunction,
 } from "./SafePromise"
 import {
