@@ -1,5 +1,5 @@
 import { access as rawAccess, PathLike } from "fs"
-import { UnsafePromise, wrapUnsafeFunction } from "steroid-promise-core"
+import { UnsafePromise, wrapUnsafeFunction } from "../Promises/UnsafePromise"
 
 export function access(path: PathLike, mode: number): UnsafePromise<null, NodeJS.ErrnoException> {
     return wrapUnsafeFunction(
