@@ -29,7 +29,7 @@ export class UnsafePromise<ResultType, ErrorType = DefaultError> implements core
     public rework<NewResultType, NewErrorType = DefaultError>(
         onError: (error: ErrorType, pBuilder: UnsafePromiseBuilder) => core.IUnsafePromise<NewResultType, NewErrorType>,
         onSuccess: (result: ResultType, pBuilder: UnsafePromiseBuilder) => core.IUnsafePromise<NewResultType, NewErrorType>
-    ): UnsafePromise<NewResultType, NewErrorType> {
+    ): core.IUnsafePromise<NewResultType, NewErrorType> {
         if (this.isCalled) { throw new Error("already called") }
         this.isCalled = true
         const newFunc: UnsafeCallerFunction<NewResultType, NewErrorType> = (newOnError, newOnSuccess) => {
@@ -48,7 +48,7 @@ export class UnsafePromise<ResultType, ErrorType = DefaultError> implements core
     public catch<NewResultType>(
         onError: (error: ErrorType, pBuilder: SafePromiseBuilder) => core.ISafePromise<NewResultType>,
         onSuccess: (result: ResultType, pBuilder: SafePromiseBuilder) => core.ISafePromise<NewResultType>
-    ): SafePromise<NewResultType> {
+    ): core.ISafePromise<NewResultType> {
         if (this.isCalled) { throw new Error("already called") }
         this.isCalled = true
         const newFunc: SafeCallerFunction<NewResultType> = onResult => {
@@ -64,7 +64,7 @@ export class UnsafePromise<ResultType, ErrorType = DefaultError> implements core
         }
         return wrapSafeFunction(newFunc)
     }
-    public map<NewResultType>(onSuccess: (result: ResultType, pBuilder: UnsafePromiseBuilder) => core.IUnsafePromise<NewResultType, ErrorType>): UnsafePromise<NewResultType, ErrorType> {
+    public map<NewResultType>(onSuccess: (result: ResultType, pBuilder: UnsafePromiseBuilder) => core.IUnsafePromise<NewResultType, ErrorType>): core.IUnsafePromise<NewResultType, ErrorType> {
         if (this.isCalled) { throw new Error("already called") }
         this.isCalled = true
         const newFunc: UnsafeCallerFunction<NewResultType, ErrorType> = (newOnError, newOnSuccess) => {
