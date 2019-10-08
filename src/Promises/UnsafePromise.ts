@@ -27,8 +27,8 @@ export class UnsafePromise<ResultType, ErrorType = DefaultError> implements core
         this.callerFunction = callerFunction
     }
     public rework<NewResultType, NewErrorType = DefaultError>(
-        onError: (error: ErrorType, pBuilder: UnsafePromiseBuilder) => UnsafePromise<NewResultType, NewErrorType>,
-        onSuccess: (result: ResultType, pBuilder: UnsafePromiseBuilder) => UnsafePromise<NewResultType, NewErrorType>
+        onError: (error: ErrorType, pBuilder: UnsafePromiseBuilder) => core.IUnsafePromise<NewResultType, NewErrorType>,
+        onSuccess: (result: ResultType, pBuilder: UnsafePromiseBuilder) => core.IUnsafePromise<NewResultType, NewErrorType>
     ): UnsafePromise<NewResultType, NewErrorType> {
         if (this.isCalled) { throw new Error("already called") }
         this.isCalled = true
@@ -46,8 +46,8 @@ export class UnsafePromise<ResultType, ErrorType = DefaultError> implements core
         return wrapUnsafeFunction(newFunc)
     }
     public catch<NewResultType>(
-        onError: (error: ErrorType, pBuilder: SafePromiseBuilder) => SafePromise<NewResultType>,
-        onSuccess: (result: ResultType, pBuilder: SafePromiseBuilder) => SafePromise<NewResultType>
+        onError: (error: ErrorType, pBuilder: SafePromiseBuilder) => core.ISafePromise<NewResultType>,
+        onSuccess: (result: ResultType, pBuilder: SafePromiseBuilder) => core.ISafePromise<NewResultType>
     ): SafePromise<NewResultType> {
         if (this.isCalled) { throw new Error("already called") }
         this.isCalled = true
@@ -64,7 +64,7 @@ export class UnsafePromise<ResultType, ErrorType = DefaultError> implements core
         }
         return wrapSafeFunction(newFunc)
     }
-    public map<NewResultType>(onSuccess: (result: ResultType, pBuilder: UnsafePromiseBuilder) => UnsafePromise<NewResultType, ErrorType>): UnsafePromise<NewResultType, ErrorType> {
+    public map<NewResultType>(onSuccess: (result: ResultType, pBuilder: UnsafePromiseBuilder) => core.IUnsafePromise<NewResultType, ErrorType>): UnsafePromise<NewResultType, ErrorType> {
         if (this.isCalled) { throw new Error("already called") }
         this.isCalled = true
         const newFunc: UnsafeCallerFunction<NewResultType, ErrorType> = (newOnError, newOnSuccess) => {
