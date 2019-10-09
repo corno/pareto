@@ -1,7 +1,6 @@
+import * as SL from "steroid-language-extensions"
 import * as core from "steroid-promise-core"
-import { SafePromiseBuilder, safePromiseBuilder } from "./SafePromiseBuilder"
-import { UnsafeCallerFunction, UnsafePromise, wrapUnsafeFunction } from "./UnsafePromise"
-import { unsafePromiseBuilder, UnsafePromiseBuilder } from "./UnsafePromiseBuilder"
+import { UnsafeCallerFunction, wrapUnsafeFunction } from "./UnsafePromise"
 
 export type SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => void
 
@@ -16,27 +15,45 @@ export class SafePromise<ResultType> implements core.ISafePromise<ResultType> {
         this.isCalled = true
         this.callerFunction(onResult)
     }
-    public map<NewResultType>(onResult: (result: ResultType, pBuilder: SafePromiseBuilder) => core.ISafePromise<NewResultType>): core.ISafePromise<NewResultType> {
+    public map<NewResultType>(onResult: (result: ResultType) => core.SafeWrappedOrUnwrapped<NewResultType>): core.ISafePromise<NewResultType> {
         if (this.isCalled) { throw new Error("already called") }
         this.isCalled = true
         const newFunc: SafeCallerFunction<NewResultType> = newOnResult => {
             this.callerFunction(
                 res => {
-                    onResult(res, safePromiseBuilder).handle(newOnResult)
+                    const returnType = onResult(res)
+                    if (returnType instanceof Array) {
+                        newOnResult(returnType[0])
+                    } else {
+                        returnType.handle(newOnResult)
+                    }
                 }
             )
         }
         return wrapSafeFunction(newFunc)
     }
     public try<NewResultType, ErrorType>(
-        onResult: (result: ResultType, pBuilder: UnsafePromiseBuilder) => core.IUnsafePromise<NewResultType, ErrorType>
+        onResult: (result: ResultType) => core.UnsafeWrappedOrUnwrapped<NewResultType, ErrorType>
     ): core.IUnsafePromise<NewResultType, ErrorType> {
         if (this.isCalled) { throw new Error("already called") }
         this.isCalled = true
         const newFunc: UnsafeCallerFunction<NewResultType, ErrorType> = (onError, onSuccess) => {
             this.callerFunction(
                 res => {
-                    onResult(res, unsafePromiseBuilder).handle(onError, onSuccess)
+                    const returnType = onResult(res)
+                    if (returnType instanceof Array) {
+                        switch (returnType[0]) {
+                            case "error":
+                                onError(returnType[1])
+                                break
+                            case "success":
+                                onSuccess(returnType[1])
+                                break
+                            default: SL.assertUnreachable(returnType[0])
+                        }
+                    } else {
+                        returnType.handle(onError, onSuccess)
+                    }
                 }
             )
         }

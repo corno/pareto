@@ -1,17 +1,9 @@
+import * as SL from "steroid-language-extensions"
 import * as core from "steroid-promise-core"
 import {
     SafeCallerFunction,
-    SafePromise,
     wrapSafeFunction,
 } from "./SafePromise"
-import {
-    SafePromiseBuilder,
-    safePromiseBuilder
-} from "./SafePromiseBuilder"
-import {
-    UnsafePromiseBuilder,
-    unsafePromiseBuilder
-} from "./UnsafePromiseBuilder"
 
 export type DefaultError = {
     "message": string
@@ -27,44 +19,78 @@ export class UnsafePromise<ResultType, ErrorType = DefaultError> implements core
         this.callerFunction = callerFunction
     }
     public rework<NewResultType, NewErrorType = DefaultError>(
-        onError: (error: ErrorType, pBuilder: UnsafePromiseBuilder) => core.IUnsafePromise<NewResultType, NewErrorType>,
-        onSuccess: (result: ResultType, pBuilder: UnsafePromiseBuilder) => core.IUnsafePromise<NewResultType, NewErrorType>
+        onError: (error: ErrorType) => core.UnsafeWrappedOrUnwrapped<NewResultType, NewErrorType>,
+        onSuccess: (result: ResultType) => core.UnsafeWrappedOrUnwrapped<NewResultType, NewErrorType>
     ): core.IUnsafePromise<NewResultType, NewErrorType> {
         if (this.isCalled) { throw new Error("already called") }
         this.isCalled = true
         const newFunc: UnsafeCallerFunction<NewResultType, NewErrorType> = (newOnError, newOnSuccess) => {
             this.callerFunction(
                 err => {
-                    onError(err, unsafePromiseBuilder).handle(newOnError, newOnSuccess)
+                    const returnType = onError(err)
+                    if (returnType instanceof Array) {
+                        switch (returnType[0]) {
+                            case "error":
+                                newOnError(returnType[1])
+                                break
+                            case "success":
+                                newOnSuccess(returnType[1])
+                                break
+                            default: SL.assertUnreachable(returnType[0])
+                        }
+                    } else {
+                        returnType.handle(newOnError, newOnSuccess)
+                    }
                 },
                 res => {
-                    onSuccess(res, unsafePromiseBuilder).handle(newOnError, newOnSuccess)
-
+                    const returnType = onSuccess(res)
+                    if (returnType instanceof Array) {
+                        switch (returnType[0]) {
+                            case "error":
+                                newOnError(returnType[1])
+                                break
+                            case "success":
+                                newOnSuccess(returnType[1])
+                                break
+                            default: SL.assertUnreachable(returnType[0])
+                        }
+                    } else {
+                        returnType.handle(newOnError, newOnSuccess)
+                    }
                 }
             )
         }
         return wrapUnsafeFunction(newFunc)
     }
     public catch<NewResultType>(
-        onError: (error: ErrorType, pBuilder: SafePromiseBuilder) => core.ISafePromise<NewResultType>,
-        onSuccess: (result: ResultType, pBuilder: SafePromiseBuilder) => core.ISafePromise<NewResultType>
+        onError: (error: ErrorType) => core.SafeWrappedOrUnwrapped<NewResultType>,
+        onSuccess: (result: ResultType) => core.SafeWrappedOrUnwrapped<NewResultType>
     ): core.ISafePromise<NewResultType> {
         if (this.isCalled) { throw new Error("already called") }
         this.isCalled = true
         const newFunc: SafeCallerFunction<NewResultType> = onResult => {
             this.callerFunction(
                 err => {
-                    onError(err, safePromiseBuilder).handle(onResult)
+                    const returnType = onError(err)
+                    if (returnType instanceof Array) {
+                        onResult(returnType[0])
+                    } else {
+                        returnType.handle(onResult)
+                    }
                 },
                 res => {
-                    onSuccess(res, safePromiseBuilder).handle(onResult)
-
+                    const returnType = onSuccess(res)
+                    if (returnType instanceof Array) {
+                        onResult(returnType[0])
+                    } else {
+                        returnType.handle(onResult)
+                    }
                 }
             )
         }
         return wrapSafeFunction(newFunc)
     }
-    public map<NewResultType>(onSuccess: (result: ResultType, pBuilder: UnsafePromiseBuilder) => core.IUnsafePromise<NewResultType, ErrorType>): core.IUnsafePromise<NewResultType, ErrorType> {
+    public map<NewResultType>(onSuccess: (result: ResultType) => core.UnsafeWrappedOrUnwrapped<NewResultType, ErrorType>): core.IUnsafePromise<NewResultType, ErrorType> {
         if (this.isCalled) { throw new Error("already called") }
         this.isCalled = true
         const newFunc: UnsafeCallerFunction<NewResultType, ErrorType> = (newOnError, newOnSuccess) => {
@@ -73,8 +99,20 @@ export class UnsafePromise<ResultType, ErrorType = DefaultError> implements core
                     newOnError(err)
                 },
                 res => {
-                    onSuccess(res, unsafePromiseBuilder).handle(newOnError, newOnSuccess)
-
+                    const returnType = onSuccess(res)
+                    if (returnType instanceof Array) {
+                        switch (returnType[0]) {
+                            case "error":
+                                newOnError(returnType[1])
+                                break
+                            case "success":
+                                newOnSuccess(returnType[1])
+                                break
+                            default: SL.assertUnreachable(returnType[0])
+                        }
+                    } else {
+                        returnType.handle(newOnError, newOnSuccess)
+                    }
                 }
             )
         }

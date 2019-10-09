@@ -1,8 +1,7 @@
 
-import * as core from "steroid-promise-core"
 import { UnsafeCallerFunction, UnsafePromise, wrapUnsafeFunction } from "./UnsafePromise"
 
-export class UnsafePromiseBuilder implements core.IUnsafePromiseBuilder {
+export class UnsafePromiseBuilder {
     public success<ResultType, ErrorType>(result: ResultType): UnsafePromise<ResultType, ErrorType> {
         const handler: UnsafeCallerFunction<ResultType, ErrorType> = (_onError: (error: ErrorType) => void, onSuccess: (result: ResultType) => void) => {
             onSuccess(result)
