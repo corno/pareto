@@ -16,8 +16,7 @@ export function mapSafePromises<ResultType>(execution: ExecutionType, promises: 
         function wrapup() {
 
             if (resolvedCount > promises.length) {
-                const err = new Error("promises are called back more than once")
-                throw err
+                throw new Error("promises are called back more than once")
             }
             if (resolvedCount === promises.length) {
                 onResult(results)
