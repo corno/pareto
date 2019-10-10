@@ -33,10 +33,10 @@ export function readFile(path: fs.PathLike | number): core.IUnsafePromise<Buffer
     )
 }
 
-export function readdir(path: fs.PathLike, options: { encoding: string | null; withFileTypes: true }): core.IUnsafePromise<fs.Dirent[], NodeJS.ErrnoException> {
+export function readdir(path: fs.PathLike, encoding: string | null): core.IUnsafePromise<fs.Dirent[], NodeJS.ErrnoException> {
     return wrapUnsafeFunction(
         (onError, onSuccess) => {
-            fs.readdir(path, options, (err, data) => {
+            fs.readdir(path, { encoding: encoding, withFileTypes: true}, (err, data) => {
                 if (err !== null) {
                     onError(err)
                 } else {
