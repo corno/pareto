@@ -3,9 +3,9 @@ import * as USP from "./Promises/UnsafePromise"
 
 export function assertIsEmpty<ElementType>(array: ElementType[]): SP.IUnsafePromise<null, ElementType[]> {
     if (array.length === 0) {
-        return USP.unsafePromiseBuilder.error(array)
-    } else {
         return USP.unsafePromiseBuilder.success(null)
+    } else {
+        return USP.unsafePromiseBuilder.error(array)
     }
 }
 
