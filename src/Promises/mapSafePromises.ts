@@ -1,7 +1,7 @@
 
 import { ISafePromise } from "steroid-promise-core"
-import { SafePromise, wrapSafeFunction } from "./SafePromise"
 import { ExecutionType } from "./ExecutionType"
+import { SafePromise, wrapSafeFunction } from "./SafePromise"
 
 export function mapSafePromises<ResultType>(execution: ExecutionType, promises: Array<ISafePromise<ResultType>>): SafePromise<ResultType[]> {
     let isExecuted = false
