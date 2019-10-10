@@ -17,7 +17,7 @@ export const fs = {
 
 import * as IJSON from "./JSON"
 export const JSON = {
-    parse: IJSON,
+    parse: IJSON.parse,
 }
 
 import * as  IObject from "./Object"
