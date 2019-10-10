@@ -1,4 +1,4 @@
-import { UnsafePromise, wrapUnsafeFunction } from "../Promises/UnsafePromise"
+import { UnsafePromise, wrapUnsafeFunction } from "./Promises/UnsafePromise"
 
 export function parse(data: string, ): UnsafePromise<any, SyntaxError> {
     return wrapUnsafeFunction(

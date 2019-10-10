@@ -1,13 +1,9 @@
 
 import { ISafePromise } from "steroid-promise-core"
 import { SafePromise, wrapSafeFunction } from "./SafePromise"
+import { ExecutionType } from "./ExecutionType"
 
-export enum SafeMapExecutionType {
-    parallel,
-    serial,
-}
-
-export function mapSafePromises<ResultType>(execution: SafeMapExecutionType, promises: Array<ISafePromise<ResultType>>): SafePromise<ResultType[]> {
+export function mapSafePromises<ResultType>(execution: ExecutionType, promises: Array<ISafePromise<ResultType>>): SafePromise<ResultType[]> {
     let isExecuted = false
     function execute(onResult: (results: ResultType[]) => void) {
         if (isExecuted === true) {
@@ -31,7 +27,7 @@ export function mapSafePromises<ResultType>(execution: SafeMapExecutionType, pro
             wrapup()
         } else {
             switch (execution) {
-                case SafeMapExecutionType.parallel: {
+                case ExecutionType.parallel: {
                     promises.forEach((promise, index) => {
                         (() => {
                             promise.handle(
@@ -45,7 +41,7 @@ export function mapSafePromises<ResultType>(execution: SafeMapExecutionType, pro
                     })
                     break
                 }
-                case SafeMapExecutionType.serial: {
+                case ExecutionType.serial: {
                     function processNext() {
                         if (resolvedCount < promises.length) {
                             promises[resolvedCount].handle(

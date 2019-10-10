@@ -23,7 +23,7 @@ export class SafePromise<ResultType> implements core.ISafePromise<ResultType> {
                 res => {
                     const returnType = onResult(res)
                     if (returnType instanceof Array) {
-                        newOnResult(returnType[0])
+                        newOnResult(returnType[1])
                     } else {
                         returnType.handle(newOnResult)
                     }

@@ -73,7 +73,7 @@ export class UnsafePromise<ResultType, ErrorType = DefaultError> implements core
                 err => {
                     const returnType = onError(err)
                     if (returnType instanceof Array) {
-                        onResult(returnType[0])
+                        onResult(returnType[1])
                     } else {
                         returnType.handle(onResult)
                     }
@@ -81,7 +81,7 @@ export class UnsafePromise<ResultType, ErrorType = DefaultError> implements core
                 res => {
                     const returnType = onSuccess(res)
                     if (returnType instanceof Array) {
-                        onResult(returnType[0])
+                        onResult(returnType[1])
                     } else {
                         returnType.handle(onResult)
                     }
