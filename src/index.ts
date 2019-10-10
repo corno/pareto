@@ -11,6 +11,8 @@ import * as IFS from "./fs"
 export const fs = {
     access: IFS.access,
     constants: IFS.constants,
+    readdir: IFS.readdir,
+    readFile: IFS.readFile
 }
 
 import * as IJSON from "./JSON"
