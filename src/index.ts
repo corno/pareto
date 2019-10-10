@@ -4,9 +4,7 @@ export * from "./Promises/mapSafePromises"
 export * from "./Promises/mapUnsafePromises"
 export * from "./Promises/mapUnsafePromisesObject"
 export * from "./Promises/SafePromise"
-export * from "./Promises/SafePromiseBuilder"
 export * from "./Promises/UnsafePromise"
-export * from "./Promises/UnsafePromiseBuilder"
 
 
 import * as IFS from "./fs"

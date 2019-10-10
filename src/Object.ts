@@ -1,5 +1,5 @@
 import * as SP from "steroid-promise-core"
-import * as USP from "./Promises/UnsafePromiseBuilder"
+import * as USP from "./Promises/UnsafePromise"
 
 export function getProperty<PropertyType>(context: { [key: string]: PropertyType }, propertyName: string): SP.IUnsafePromise<PropertyType, null> {
     const property = context[propertyName]

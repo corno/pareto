@@ -1,9 +1,9 @@
 
 import { ISafePromise } from "steroid-promise-core"
 import { ExecutionType } from "./ExecutionType"
-import { SafePromise, wrapSafeFunction } from "./SafePromise"
+import { wrapSafeFunction } from "./SafePromise"
 
-export function mapSafePromises<ResultType>(execution: ExecutionType, promises: Array<ISafePromise<ResultType>>): SafePromise<ResultType[]> {
+export function mapSafePromises<ResultType>(execution: ExecutionType, promises: Array<ISafePromise<ResultType>>): ISafePromise<ResultType[]> {
     let isExecuted = false
     function execute(onResult: (results: ResultType[]) => void) {
         if (isExecuted === true) {

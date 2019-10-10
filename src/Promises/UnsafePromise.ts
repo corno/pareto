@@ -5,13 +5,8 @@ import {
     wrapSafeFunction,
 } from "./SafePromise"
 
-export type DefaultError = {
-    "message": string
-}
-
-export type UnsafeCallerFunction<ResultType, ErrorType = DefaultError> = (onError: (error: ErrorType) => void, onResult: (result: ResultType) => void) => void
-
-export class UnsafePromise<ResultType, ErrorType = DefaultError> implements core.IUnsafePromise<ResultType, ErrorType> {
+//don't export this class, it should not be used as a type. there is core.ISafePromise for that
+class UnsafePromise<ResultType, ErrorType = DefaultError> implements core.IUnsafePromise<ResultType, ErrorType> {
     private isCalled: boolean
     private readonly callerFunction: UnsafeCallerFunction<ResultType, ErrorType>
     constructor(callerFunction: UnsafeCallerFunction<ResultType, ErrorType>) {
@@ -125,8 +120,33 @@ export class UnsafePromise<ResultType, ErrorType = DefaultError> implements core
     }
 }
 
+
+export type DefaultError = {
+    "message": string
+}
+
+export type UnsafeCallerFunction<ResultType, ErrorType = DefaultError> = (onError: (error: ErrorType) => void, onResult: (result: ResultType) => void) => void
+
+
 export function wrapUnsafeFunction<ResultType, ErrorType = DefaultError>(
     callerFunction: (onError: (error: ErrorType) => void, onResult: (result: ResultType) => void) => void
 ): UnsafePromise<ResultType, ErrorType> {
     return new UnsafePromise(callerFunction)
 }
+
+export class UnsafePromiseBuilder {
+    public success<ResultType, ErrorType>(result: ResultType): UnsafePromise<ResultType, ErrorType> {
+        const handler: UnsafeCallerFunction<ResultType, ErrorType> = (_onError: (error: ErrorType) => void, onSuccess: (result: ResultType) => void) => {
+            onSuccess(result)
+        }
+        return wrapUnsafeFunction<ResultType, ErrorType>(handler)
+    }
+    public error<ResultType, ErrorType>(error: ErrorType): UnsafePromise<ResultType, ErrorType> {
+        const handler: UnsafeCallerFunction<ResultType, ErrorType> = (onError: (error: ErrorType) => void, _onSuccess: (result: ResultType) => void) => {
+            onError(error)
+        }
+        return wrapUnsafeFunction<ResultType, ErrorType>(handler)
+    }
+}
+
+export const unsafePromiseBuilder = new UnsafePromiseBuilder()

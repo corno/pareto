@@ -1,5 +1,5 @@
 import * as SP from "steroid-promise-core"
-import * as USP from "./Promises/UnsafePromiseBuilder"
+import * as USP from "./Promises/UnsafePromise"
 
 export function assertIsEmpty<ElementType>(array: ElementType[]): SP.IUnsafePromise<null, null> {
     if (array.length === 0) {

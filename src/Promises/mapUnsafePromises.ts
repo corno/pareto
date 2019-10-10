@@ -1,8 +1,8 @@
 import { IUnsafePromise } from "steroid-promise-core"
-import { UnsafePromise, wrapUnsafeFunction } from "./UnsafePromise"
 import { ExecutionType } from "./ExecutionType"
+import { wrapUnsafeFunction } from "./UnsafePromise"
 
-export function mapUnsafePromises<ResultType, ErrorType>(execution: ExecutionType, promises: Array<IUnsafePromise<ResultType, ErrorType>>): UnsafePromise<ResultType[], ErrorType[]> {
+export function mapUnsafePromises<ResultType, ErrorType>(execution: ExecutionType, promises: Array<IUnsafePromise<ResultType, ErrorType>>): IUnsafePromise<ResultType[], ErrorType[]> {
     let isExecuted = false
     function execute(onErrors: (errors: ErrorType[]) => void, onSuccess: (results: ResultType[]) => void) {
         if (isExecuted === true) {

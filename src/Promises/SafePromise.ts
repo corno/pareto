@@ -2,9 +2,8 @@ import * as SL from "steroid-language-extensions"
 import * as core from "steroid-promise-core"
 import { UnsafeCallerFunction, wrapUnsafeFunction } from "./UnsafePromise"
 
-export type SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => void
-
-export class SafePromise<ResultType> implements core.ISafePromise<ResultType> {
+//don't export this class, it should not be used as a type. there is core.ISafePromise for that
+class SafePromise<ResultType> implements core.ISafePromise<ResultType> {
     private isCalled = false
     private readonly callerFunction: SafeCallerFunction<ResultType>
     constructor(callerFunction: SafeCallerFunction<ResultType>) {
@@ -64,3 +63,16 @@ export class SafePromise<ResultType> implements core.ISafePromise<ResultType> {
 export function wrapSafeFunction<ResultType>(callerFunction: SafeCallerFunction<ResultType>): SafePromise<ResultType> {
     return new SafePromise(callerFunction)
 }
+
+export type SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => void
+
+export class SafePromiseBuilder {
+    public result<ResultType>(result: ResultType): SafePromise<ResultType> {
+        const handler: SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => {
+            onResult(result)
+        }
+        return wrapSafeFunction<ResultType>(handler)
+    }
+}
+
+export const safePromiseBuilder = new SafePromiseBuilder()
