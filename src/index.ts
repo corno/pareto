@@ -21,12 +21,15 @@ export const JSON = {
 }
 
 import * as  IObject from "./Object"
+// tslint:disable-next-line: variable-name
 export const Object = {
     assertPropertyDoesNotExist: IObject.assertPropertyDoesNotExist,
     getProperty: IObject.getProperty,
 }
 
 import * as  IArray from "./Array"
+// tslint:disable-next-line: variable-name
 export const Array = {
-    assertIsEmpty: IArray.assertIsEmpty
+    assertIsEmpty: IArray.assertIsEmpty,
+    getElement: IArray.getElement,
 }

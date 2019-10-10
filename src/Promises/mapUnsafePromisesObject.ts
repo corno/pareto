@@ -6,16 +6,16 @@ import { wrapUnsafeFunction } from "./UnsafePromise"
 export function mapUnsafePromisesObject<ResultType, ErrorType>(
     execution: ExecutionType,
     promises: { [key: string]: SP.IUnsafePromise<ResultType, ErrorType> }
-): SP.IUnsafePromise<{ [key: string]: ResultType }, ErrorType[]> {
+): SP.IUnsafePromise<{ [key: string]: ResultType }, { [key: string]: ErrorType }> {
     let isExecuted = false
-    function execute(onErrors: (errors: ErrorType[]) => void, onSuccess: (results: { [key: string]: ResultType }) => void) {
+    function execute(onErrors: (errors: { [key: string]: ErrorType }) => void, onSuccess: (results: { [key: string]: ResultType }) => void) {
         if (isExecuted === true) {
             throw new Error("all promise is already executed")
         }
         isExecuted = true
         let resolvedCount = 0
         const results: { [key: string]: ResultType } = {}
-        const errors: ErrorType[] = []
+        const errors: { [key: string]: ErrorType } = {}
         const keys = Object.keys(promises)
 
         function wrapup() {
@@ -25,7 +25,7 @@ export function mapUnsafePromisesObject<ResultType, ErrorType>(
                 throw err
             }
             if (resolvedCount === keys.length) {
-                if (errors.length > 0) {
+                if (Object.keys(errors).length > 0) {
                     onErrors(errors)
                 } else {
                     onSuccess(results)
@@ -42,7 +42,7 @@ export function mapUnsafePromisesObject<ResultType, ErrorType>(
                             const promise = promises[promiseName]
                             promise.handle(
                                 error => {
-                                    errors.push(error)
+                                    errors[promiseName] = error
                                     resolvedCount += 1
                                     wrapup()
                                 },
@@ -63,7 +63,7 @@ export function mapUnsafePromisesObject<ResultType, ErrorType>(
                             const promise = promises[promiseName]
                             promise.handle(
                                 error => {
-                                    errors.push(error)
+                                    errors[promiseName] = error
                                     resolvedCount += 1
                                     wrapup()
                                     processNext()

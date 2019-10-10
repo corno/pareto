@@ -1,9 +1,31 @@
 import * as SL from "steroid-language-extensions"
 import * as core from "steroid-promise-core"
 import {
+    parseSafeWrappedOrUnwrapped,
     SafeCallerFunction,
     wrapSafeFunction,
 } from "./SafePromise"
+
+export function parseUnsafeWrappedOrUnwrapped<ResultType, ErrorType>(
+    data: core.UnsafeWrappedOrUnwrapped<ResultType, ErrorType>,
+    onError: (error: ErrorType) => void,
+    onSuccess: (result: ResultType) => void
+) {
+    if (data instanceof Array) {
+        switch (data[0]) {
+            case "error":
+                onError(data[1])
+                break
+            case "success":
+                onSuccess(data[1])
+                break
+            default: SL.assertUnreachable(data[0])
+        }
+    } else {
+        data.handle(onError, onSuccess)
+    }
+}
+
 
 //don't export this class, it should not be used as a type. there is core.ISafePromise for that
 class UnsafePromise<ResultType, ErrorType = DefaultError> implements core.IUnsafePromise<ResultType, ErrorType> {
@@ -22,36 +44,10 @@ class UnsafePromise<ResultType, ErrorType = DefaultError> implements core.IUnsaf
         const newFunc: UnsafeCallerFunction<NewResultType, NewErrorType> = (newOnError, newOnSuccess) => {
             this.callerFunction(
                 err => {
-                    const returnType = onError(err)
-                    if (returnType instanceof Array) {
-                        switch (returnType[0]) {
-                            case "error":
-                                newOnError(returnType[1])
-                                break
-                            case "success":
-                                newOnSuccess(returnType[1])
-                                break
-                            default: SL.assertUnreachable(returnType[0])
-                        }
-                    } else {
-                        returnType.handle(newOnError, newOnSuccess)
-                    }
+                    parseUnsafeWrappedOrUnwrapped(onError(err), newOnError, newOnSuccess)
                 },
-                res => {
-                    const returnType = onSuccess(res)
-                    if (returnType instanceof Array) {
-                        switch (returnType[0]) {
-                            case "error":
-                                newOnError(returnType[1])
-                                break
-                            case "success":
-                                newOnSuccess(returnType[1])
-                                break
-                            default: SL.assertUnreachable(returnType[0])
-                        }
-                    } else {
-                        returnType.handle(newOnError, newOnSuccess)
-                    }
+                result => {
+                    parseUnsafeWrappedOrUnwrapped(onSuccess(result), newOnError, newOnSuccess)
                 }
             )
         }
@@ -66,20 +62,10 @@ class UnsafePromise<ResultType, ErrorType = DefaultError> implements core.IUnsaf
         const newFunc: SafeCallerFunction<NewResultType> = onResult => {
             this.callerFunction(
                 err => {
-                    const returnType = onError(err)
-                    if (returnType instanceof Array) {
-                        onResult(returnType[1])
-                    } else {
-                        returnType.handle(onResult)
-                    }
+                    parseSafeWrappedOrUnwrapped(onError(err), onResult)
                 },
                 res => {
-                    const returnType = onSuccess(res)
-                    if (returnType instanceof Array) {
-                        onResult(returnType[1])
-                    } else {
-                        returnType.handle(onResult)
-                    }
+                    parseSafeWrappedOrUnwrapped(onSuccess(res), onResult)
                 }
             )
         }
@@ -93,21 +79,8 @@ class UnsafePromise<ResultType, ErrorType = DefaultError> implements core.IUnsaf
                 err => {
                     newOnError(err)
                 },
-                res => {
-                    const returnType = onSuccess(res)
-                    if (returnType instanceof Array) {
-                        switch (returnType[0]) {
-                            case "error":
-                                newOnError(returnType[1])
-                                break
-                            case "success":
-                                newOnSuccess(returnType[1])
-                                break
-                            default: SL.assertUnreachable(returnType[0])
-                        }
-                    } else {
-                        returnType.handle(newOnError, newOnSuccess)
-                    }
+                result => {
+                    parseUnsafeWrappedOrUnwrapped(onSuccess(result), newOnError, newOnSuccess)
                 }
             )
         }
@@ -130,23 +103,34 @@ export type UnsafeCallerFunction<ResultType, ErrorType = DefaultError> = (onErro
 
 export function wrapUnsafeFunction<ResultType, ErrorType = DefaultError>(
     callerFunction: (onError: (error: ErrorType) => void, onResult: (result: ResultType) => void) => void
-): UnsafePromise<ResultType, ErrorType> {
+): core.IUnsafePromise<ResultType, ErrorType> {
     return new UnsafePromise(callerFunction)
 }
 
+// tslint:disable-next-line: max-classes-per-file
 export class UnsafePromiseBuilder {
-    public success<ResultType, ErrorType>(result: ResultType): UnsafePromise<ResultType, ErrorType> {
+    public success<ResultType, ErrorType>(result: ResultType): core.IUnsafePromise<ResultType, ErrorType> {
         const handler: UnsafeCallerFunction<ResultType, ErrorType> = (_onError: (error: ErrorType) => void, onSuccess: (result: ResultType) => void) => {
             onSuccess(result)
         }
         return wrapUnsafeFunction<ResultType, ErrorType>(handler)
     }
-    public error<ResultType, ErrorType>(error: ErrorType): UnsafePromise<ResultType, ErrorType> {
+    public error<ResultType, ErrorType>(error: ErrorType): core.IUnsafePromise<ResultType, ErrorType> {
         const handler: UnsafeCallerFunction<ResultType, ErrorType> = (onError: (error: ErrorType) => void, _onSuccess: (result: ResultType) => void) => {
             onError(error)
         }
         return wrapUnsafeFunction<ResultType, ErrorType>(handler)
     }
+}
+
+
+export function cleanup<ResultType, ErrorType>(unsafePromise: core.IUnsafePromise<ResultType, ErrorType>, onError: (error: ErrorType) => void): core.ISafePromise<ResultType> {
+    return wrapSafeFunction(onResult => {
+        unsafePromise.handle(
+            error => onError(error),
+            result => onResult(result)
+        )
+    })
 }
 
 export const unsafePromiseBuilder = new UnsafePromiseBuilder()

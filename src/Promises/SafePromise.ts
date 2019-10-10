@@ -1,6 +1,6 @@
 import * as SL from "steroid-language-extensions"
 import * as core from "steroid-promise-core"
-import { UnsafeCallerFunction, wrapUnsafeFunction } from "./UnsafePromise"
+import { parseUnsafeWrappedOrUnwrapped, UnsafeCallerFunction, wrapUnsafeFunction } from "./UnsafePromise"
 
 //don't export this class, it should not be used as a type. there is core.ISafePromise for that
 class SafePromise<ResultType> implements core.ISafePromise<ResultType> {
@@ -19,13 +19,8 @@ class SafePromise<ResultType> implements core.ISafePromise<ResultType> {
         this.isCalled = true
         const newFunc: SafeCallerFunction<NewResultType> = newOnResult => {
             this.callerFunction(
-                res => {
-                    const returnType = onResult(res)
-                    if (returnType instanceof Array) {
-                        newOnResult(returnType[1])
-                    } else {
-                        returnType.handle(newOnResult)
-                    }
+                result => {
+                    parseSafeWrappedOrUnwrapped(onResult(result), newOnResult)
                 }
             )
         }
@@ -38,21 +33,8 @@ class SafePromise<ResultType> implements core.ISafePromise<ResultType> {
         this.isCalled = true
         const newFunc: UnsafeCallerFunction<NewResultType, ErrorType> = (onError, onSuccess) => {
             this.callerFunction(
-                res => {
-                    const returnType = onResult(res)
-                    if (returnType instanceof Array) {
-                        switch (returnType[0]) {
-                            case "error":
-                                onError(returnType[1])
-                                break
-                            case "success":
-                                onSuccess(returnType[1])
-                                break
-                            default: SL.assertUnreachable(returnType[0])
-                        }
-                    } else {
-                        returnType.handle(onError, onSuccess)
-                    }
+                result => {
+                    parseUnsafeWrappedOrUnwrapped(onResult(result), onError, onSuccess)
                 }
             )
         }
@@ -60,14 +42,31 @@ class SafePromise<ResultType> implements core.ISafePromise<ResultType> {
     }
 }
 
-export function wrapSafeFunction<ResultType>(callerFunction: SafeCallerFunction<ResultType>): SafePromise<ResultType> {
+export function parseSafeWrappedOrUnwrapped<ResultType>(
+    data: core.SafeWrappedOrUnwrapped<ResultType>,
+    onResult: (result: ResultType) => void
+) {
+    if (data instanceof Array) {
+        switch (data[0]) {
+            case "result":
+                onResult(data[1])
+                break
+            default: SL.assertUnreachable(data[0])
+        }
+    } else {
+        data.handle(onResult)
+    }
+}
+
+export function wrapSafeFunction<ResultType>(callerFunction: SafeCallerFunction<ResultType>): core.ISafePromise<ResultType> {
     return new SafePromise(callerFunction)
 }
 
 export type SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => void
 
+// tslint:disable-next-line: max-classes-per-file
 export class SafePromiseBuilder {
-    public result<ResultType>(result: ResultType): SafePromise<ResultType> {
+    public result<ResultType>(result: ResultType): core.ISafePromise<ResultType> {
         const handler: SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => {
             onResult(result)
         }
