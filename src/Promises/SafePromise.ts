@@ -1,4 +1,4 @@
-import * as SL from "steroid-language-extensions"
+import * as SL from "steroid-language-utils"
 import * as core from "steroid-promise-api"
 import { parseUnsafeWrappedOrUnwrapped, UnsafeCallerFunction, wrapUnsafeFunction } from "./UnsafePromise"
 
