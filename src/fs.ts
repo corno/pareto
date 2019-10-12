@@ -1,5 +1,5 @@
 import * as fs from "fs"
-import * as core from "steroid-promise-core"
+import * as core from "steroid-promise-api"
 import { wrapUnsafeFunction } from "./Promises/UnsafePromise"
 
 export const constants = fs.constants

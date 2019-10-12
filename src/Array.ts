@@ -1,4 +1,4 @@
-import * as SP from "steroid-promise-core"
+import * as SP from "steroid-promise-api"
 import * as USP from "./Promises/UnsafePromise"
 
 export function assertIsEmpty<ElementType>(array: ElementType[]): SP.IUnsafePromise<null, ElementType[]> {

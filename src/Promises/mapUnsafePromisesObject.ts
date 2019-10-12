@@ -1,5 +1,5 @@
 
-import * as SP from "steroid-promise-core"
+import * as SP from "steroid-promise-api"
 import { ExecutionType } from "./ExecutionType"
 import { wrapUnsafeFunction } from "./UnsafePromise"
 

@@ -1,5 +1,5 @@
 import * as SL from "steroid-language-extensions"
-import * as core from "steroid-promise-core"
+import * as core from "steroid-promise-api"
 import { parseUnsafeWrappedOrUnwrapped, UnsafeCallerFunction, wrapUnsafeFunction } from "./UnsafePromise"
 
 //don't export this class, it should not be used as a type. there is core.ISafePromise for that

@@ -1,5 +1,5 @@
 import * as SL from "steroid-language-extensions"
-import * as core from "steroid-promise-core"
+import * as core from "steroid-promise-api"
 import {
     parseSafeWrappedOrUnwrapped,
     SafeCallerFunction,

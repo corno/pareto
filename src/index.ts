@@ -1,4 +1,4 @@
-export * from "steroid-promise-core"
+export * from "steroid-promise-api"
 export * from "./Promises/ExecutionType"
 export * from "./Promises/mapSafePromises"
 export * from "./Promises/mapUnsafePromises"

@@ -1,4 +1,4 @@
-import { IUnsafePromise } from "steroid-promise-core"
+import { IUnsafePromise } from "steroid-promise-api"
 import { ExecutionType } from "./ExecutionType"
 import { wrapUnsafeFunction } from "./UnsafePromise"
 

@@ -1,5 +1,5 @@
 
-import { ISafePromise } from "steroid-promise-core"
+import { ISafePromise } from "steroid-promise-api"
 import { ExecutionType } from "./ExecutionType"
 import { wrapSafeFunction } from "./SafePromise"
 
