@@ -1,6 +1,6 @@
 {
   "name": "steroid-promise-utils",
-  "version": "0.12.1",
+  "version": "0.12.2",
   "description": "javascript/typescript promises with typesafe error handling in a functional style",
   "main": "dist/index.js",
   "scripts": {
