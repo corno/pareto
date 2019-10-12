@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "@types/node": "^12.7.11",
-    "steroid-language-extensions": "^0.3.0",
+    "steroid-language-utils": "^0.4.1",
     "steroid-promise-api": "^0.1.0"
   },
   "devDependencies": {}
