@@ -19,11 +19,10 @@
     "dist/*"
   ],
   "dependencies": {
-    "@types/node": "^12.11.1",
-    "pareto-api": "^0.6.0",
-    "steroid-language-utils": "^0.4.3"
+    "pareto-api": "^0.6.0"
   },
   "devDependencies": {
+    "@types/node": "^12.11.1",
     "steroid-template-utils": "^0.1.4"
   }
 }

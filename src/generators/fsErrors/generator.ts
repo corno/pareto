@@ -1,4 +1,3 @@
-//import * as SL from "steroid-language-utils"
 import { IWriter } from "steroid-template-utils"
 
 type FSError =
