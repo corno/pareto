@@ -5,18 +5,18 @@ import { UnsafePromise} from "../Unsafe/wrap"
 
 export type SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => void
 
-class SafePromiseInterface<ResultType> implements ISafePromise<ResultType> {
-    private isCalled = false
-    private readonly callerFunction: SafeCallerFunction<ResultType>
-    constructor(callerFunction: SafeCallerFunction<ResultType>) {
-        this.callerFunction = callerFunction
-    }
-    public handle(onResult: (result: ResultType) => void) {
-        if (this.isCalled) { throw new Error("already called") }
-        this.isCalled = true
-        this.callerFunction(onResult)
-    }
-}
+// class SafePromiseInterface<ResultType> implements ISafePromise<ResultType> {
+//     private isCalled = false
+//     private readonly callerFunction: SafeCallerFunction<ResultType>
+//     constructor(callerFunction: SafeCallerFunction<ResultType>) {
+//         this.callerFunction = callerFunction
+//     }
+//     public handle(onResult: (result: ResultType) => void) {
+//         if (this.isCalled) { throw new Error("already called") }
+//         this.isCalled = true
+//         this.callerFunction(onResult)
+//     }
+// }
 
 // class ConvertibleSafePromise<ResultType> {
 //     constructor()
@@ -86,7 +86,7 @@ export function mapSafePromisesObject<ResultType>(
             }
         }
     }
-    return new SafePromiseInterface(execute)
+    return new SafePromise(execute)
 }
 
 
@@ -146,7 +146,7 @@ export function aggregateSafePromisesArray<ResultType>(execution: ExecutionType,
             }
         }
     }
-    return new SafePromiseInterface(execute)
+    return new SafePromise(execute)
 }
 
 // tslint:disable-next-line: max-classes-per-file
