@@ -1,0 +1,18 @@
+import { IStream } from "pareto-api"
+
+export const createArray = {
+    from: {
+        Stream: <DataType, ElementType>(stream: IStream<DataType>, preparer: (element: DataType) => ElementType, endHandler: () => void) => {
+            const array: ElementType[] = []
+            stream.process(data => array.push(preparer(data)), () => endHandler())
+            return array
+        },
+        ArrayOfArrays: <ElementType>(array: ElementType[][]) => {
+            const result: ElementType[] = []
+            array.forEach(elementSet => {
+                result.concat(elementSet)
+            })
+            return result
+        },
+    },
+}
