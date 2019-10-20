@@ -7,12 +7,14 @@ export const createArray = {
             stream.process(data => array.push(preparer(data)), () => endHandler())
             return array
         },
-        ArrayOfArrays: <ElementType>(array: ElementType[][]) => {
-            const result: ElementType[] = []
-            array.forEach(elementSet => {
-                result.concat(elementSet)
-            })
-            return result
+        Array: {
+            flatten: <ElementType>(array: ElementType[][]) => {
+                const result: ElementType[] = []
+                array.forEach(elementSet => {
+                    result.concat(elementSet)
+                })
+                return result
+            },
         },
     },
 }

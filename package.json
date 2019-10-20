@@ -5,8 +5,9 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "updateToLatest": "ncu -u --packageFile package.json && npm install",
-    "publishAsMinor": "npm version minor && npm publish && git push"
+    "u2l": "ncu -u --packageFile package.json && npm install",
+    "pubMin": "npm run build && npm version minor && npm publish && git push",
+    "build": "rm -rf ./dist && tsc"
   },
   "keywords": [],
   "author": "corno",

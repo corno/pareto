@@ -79,17 +79,15 @@ export const createUnsafePromise = {
                 },
             }
         },
-        Value: <ResultType>(value: ResultType) => {
-            return {
-                isNotNull: () => {
-                    if (value === null) { return createUnsafePromise.error<ResultType, null>(null) }
-                    return createUnsafePromise.success<ResultType, null>(value)
-                },
-                isNull: () => {
-                    if (value === null) { return createUnsafePromise.success<null, ResultType>(null) }
-                    return createUnsafePromise.error<null, ResultType>(value)
-                },
-            }
+        Value: {
+            isNotNull: <ResultType>(value: ResultType) => {
+                if (value === null) { return createUnsafePromise.error<ResultType, null>(null) }
+                return createUnsafePromise.success<ResultType, null>(value)
+            },
+            isNull: <ResultType>(value: ResultType) => {
+                if (value === null) { return createUnsafePromise.success<null, ResultType>(null) }
+                return createUnsafePromise.error<null, ResultType>(value)
+            },
         },
         SafePromise: <SourceType>(
             source: ISafePromise<SourceType>,
