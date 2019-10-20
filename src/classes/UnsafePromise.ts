@@ -1,0 +1,104 @@
+import { IUnsafePromise } from "pareto-api"
+
+export class UnsafePromise<ResultType, ErrorType> {
+    private isCalled: boolean
+    private readonly callerFunction: UnsafeCallerFunction<ResultType, ErrorType>
+    constructor(callerFunction: UnsafeCallerFunction<ResultType, ErrorType>) {
+        this.isCalled = false
+        this.callerFunction = callerFunction
+    }
+    public handle(onError: (error: ErrorType) => void, onSuccess: (result: ResultType) => void): void {
+        if (this.isCalled) { throw new Error("already called") }
+        this.isCalled = true
+        this.callerFunction(onError, onSuccess)
+    }
+    public mapResult<NewResultType>(
+        onSuccess: (result: ResultType) => NewResultType
+    ) {
+        return new UnsafePromise<NewResultType, ErrorType>((newOnError, newOnSuccess) => {
+            this.handle(
+                err => {
+                    newOnError(err)
+                },
+                result => {
+                    newOnSuccess(onSuccess(result))
+                }
+            )
+        })
+    }
+    public mapError<NewErrorType>(
+        onError: (error: ErrorType) => NewErrorType,
+    ) {
+        return new UnsafePromise<ResultType, NewErrorType>((newOnError, newOnSuccess) => {
+            this.handle(
+                err => {
+                    newOnError(onError(err))
+                },
+                result => {
+                    newOnSuccess(result)
+                }
+            )
+        })
+    }
+    public try<NewResultType>(
+        onSuccess: (result: ResultType) => IUnsafePromise<NewResultType, ErrorType>
+    ) {
+        return new UnsafePromise<NewResultType, ErrorType>((newOnError, newOnSuccess) => {
+            this.handle(
+                err => {
+                    newOnError(err)
+                },
+                result => {
+                    onSuccess(result).handle(newOnError, newOnSuccess)
+                }
+            )
+        })
+    }
+    public tryToCatch<NewErrorType>(
+        onError: (error: ErrorType) => IUnsafePromise<ResultType, NewErrorType>,
+    ) {
+        return new UnsafePromise<ResultType, NewErrorType>((newOnError, newOnSuccess) => {
+            this.handle(
+                err => {
+                    onError(err).handle(newOnError, newOnSuccess)
+                },
+                result => {
+                    newOnSuccess(result)
+                }
+            )
+        })
+    }
+    public invert() {
+        return new UnsafePromise<ErrorType, ResultType>((newOnError, newOnSuccess) => {
+            this.handle(
+                err => {
+                    newOnSuccess(err)
+                },
+                result => {
+                    newOnError(result)
+                }
+            )
+        })
+    }
+    public rework<NewResultType, NewErrorType>(
+        onError: (error: ErrorType) => IUnsafePromise<NewResultType, NewErrorType>,
+        onSuccess: (result: ResultType) => IUnsafePromise<NewResultType, NewErrorType>
+    ) {
+        return new UnsafePromise<NewResultType, NewErrorType>((newOnError, newOnSuccess) => {
+            this.handle(
+                err => {
+                    onError(err).handle(newOnError, newOnSuccess)
+                },
+                result => {
+                    onSuccess(result).handle(newOnError, newOnSuccess)
+                }
+            )
+        })
+    }
+}
+
+export type UnsafeCallerFunction<ResultType, ErrorType> = (onError: (error: ErrorType) => void, onResult: (result: ResultType) => void) => void
+
+export type DefaultError = {
+    "message": string
+}

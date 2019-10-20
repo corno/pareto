@@ -1,11 +1,9 @@
 import { IUnsafePromise } from "pareto-api"
-import { ExecutionType } from "../../../ExecutionType"
 import {
     UnsafePromise,
-} from "./wrap"
+} from "../../../classes/UnsafePromise"
 
 export function mapUnsafePromisesArray<SourceType, ResultType, ErrorType>(
-    execution: ExecutionType,
     array: SourceType[],
     promisify: (entry: SourceType, index: number) => IUnsafePromise<ResultType, ErrorType>
 ): UnsafePromise<ResultType[], ErrorType[]> {
@@ -36,49 +34,22 @@ export function mapUnsafePromisesArray<SourceType, ResultType, ErrorType>(
         if (array.length === 0) {
             wrapup()
         } else {
-            switch (execution) {
-                case ExecutionType.parallel: {
-                    array.forEach((element, index) => {
-                        (() => {
-                            promisify(element, index).handle(
-                                error => {
-                                    errors.push(error)
-                                    resolvedCount += 1
-                                    wrapup()
-                                },
-                                result => {
-                                    results[index] = result
-                                    resolvedCount += 1
-                                    wrapup()
-                                }
-                            )
-                        })()
-                    })
-                    break
-                }
-                case ExecutionType.serial: {
-                    function processNext() {
-                        if (resolvedCount < array.length) {
-                            promisify(array[resolvedCount], resolvedCount).handle(
-                                error => {
-                                    errors.push(error)
-                                    resolvedCount += 1
-                                    wrapup()
-                                    processNext()
-                                },
-                                output => {
-                                    results.push(output)
-                                    resolvedCount += 1
-                                    wrapup()
-                                    processNext()
-                                }
-                            )
+            array.forEach((element, index) => {
+                (() => {
+                    promisify(element, index).handle(
+                        error => {
+                            errors.push(error)
+                            resolvedCount += 1
+                            wrapup()
+                        },
+                        result => {
+                            results[index] = result
+                            resolvedCount += 1
+                            wrapup()
                         }
-                    }
-                    processNext()
-                    break
-                }
-            }
+                    )
+                })()
+            })
         }
     }
     return new UnsafePromise(execute)

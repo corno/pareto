@@ -4,7 +4,9 @@
   "description": "javascript/typescript promises with typesafe error handling in a functional style",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "updateToLatest": "ncu -u --packageFile package.json && npm install",
+    "publishAsMinor": "npm version minor && npm publish && git push"
   },
   "keywords": [],
   "author": "corno",
@@ -23,6 +25,6 @@
   },
   "devDependencies": {
     "@types/node": "^12.11.1",
-    "steroid-template-utils": "^0.1.4"
+    "steroid-template-utils": "^0.1.5"
   }
 }

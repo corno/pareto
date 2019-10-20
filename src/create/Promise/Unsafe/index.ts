@@ -1,11 +1,10 @@
-import { IUnsafePromise } from "pareto-api"
-import { ExecutionType } from "../../../ExecutionType"
-import { mapUnsafePromisesArray } from "./mapUnsafePromisesArray"
-import { mapUnsafePromisesDictionary } from "./mapUnsafePromisesDictionary"
+import { ISafePromise, IUnsafeOnOpenResource, IUnsafePromise } from "pareto-api"
 import {
     UnsafeCallerFunction,
     UnsafePromise,
-} from "./wrap"
+} from "../../../classes/UnsafePromise"
+import { mapUnsafePromisesArray } from "./mapUnsafePromisesArray"
+import { mapUnsafePromisesDictionary } from "./mapUnsafePromisesDictionary"
 
 export const createUnsafePromise = {
     success: <ResultType, ErrorType>(result: ResultType): UnsafePromise<ResultType, ErrorType> => {
@@ -20,6 +19,11 @@ export const createUnsafePromise = {
         }
         return new UnsafePromise<ResultType, ErrorType>(handler)
     },
+    wrap: <SourceResultType, SourceErrorType>(promise: IUnsafePromise<SourceResultType, SourceErrorType>) => {
+        return new UnsafePromise<SourceResultType, SourceErrorType>((onError, onSucces) => {
+            promise.handle(onError, onSucces)
+        })
+    },
     from: {
         Array: <ElementType>(array: ElementType[]) => {
             return {
@@ -31,8 +35,8 @@ export const createUnsafePromise = {
                     }
                     return createUnsafePromise.success<ElementType, null>(value)
                 },
-                tryAll: <Type, ErrorType>(execution: ExecutionType, promisify: (element: ElementType) => UnsafePromise<Type, ErrorType>) => {
-                    return mapUnsafePromisesArray(execution, array, (element, _id) => promisify(element))
+                tryAll: <Type, ErrorType>(promisify: (element: ElementType) => UnsafePromise<Type, ErrorType>) => {
+                    return mapUnsafePromisesArray(array, (element, _id) => promisify(element))
                 },
             }
         },
@@ -54,11 +58,11 @@ export const createUnsafePromise = {
                     }
                     return createUnsafePromise.error<null, EntryType>(value)
                 },
-                tryAll: <Type, ErrorType>(execution: ExecutionType, promisify: (entry: EntryType, entryName: string) => IUnsafePromise<Type, ErrorType>) => {
-                    return mapUnsafePromisesDictionary(execution, obj, promisify)
+                tryAll: <Type, ErrorType>(promisify: (entry: EntryType, entryName: string) => IUnsafePromise<Type, ErrorType>) => {
+                    return mapUnsafePromisesDictionary(obj, promisify)
                 },
                 merge: <SupportType>(supportDictionary: { [key: string]: SupportType }) => {
-                    return mapUnsafePromisesDictionary(ExecutionType.parallel, obj, (entry, entryName) => {
+                    return mapUnsafePromisesDictionary(obj, (entry, entryName) => {
                         const handler: UnsafeCallerFunction<{ main: EntryType, support: SupportType }, EntryType> = (
                             onError: (error: EntryType) => void,
                             onSuccess: (result: { main: EntryType, support: SupportType }) => void
@@ -75,21 +79,54 @@ export const createUnsafePromise = {
                 },
             }
         },
-        Function: <ResultType, ErrorType>(func: UnsafeCallerFunction<ResultType, ErrorType>) => {
-            return new UnsafePromise(func)
+        Value: <ResultType>(value: ResultType) => {
+            return {
+                isNotNull: () => {
+                    if (value === null) { return createUnsafePromise.error<ResultType, null>(null) }
+                    return createUnsafePromise.success<ResultType, null>(value)
+                },
+                isNull: () => {
+                    if (value === null) { return createUnsafePromise.success<null, ResultType>(null) }
+                    return createUnsafePromise.error<null, ResultType>(value)
+                },
+            }
         },
-        NonNullValue: <ResultType>(value: null | ResultType) => {
-            if (value === null) { return createUnsafePromise.error<ResultType, null>(null) }
-            return createUnsafePromise.success<ResultType, null>(value)
+        SafePromise: <SourceType>(
+            source: ISafePromise<SourceType>,
+        ) => {
+            return {
+                try: <ResultType, ErrorType>(
+                    onResult: (result: SourceType) => UnsafePromise<ResultType, ErrorType>
+                ): UnsafePromise<ResultType, ErrorType> => {
+                    return new UnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
+                        source.handle(res => {
+                            onResult(res).handle(onError, onSuccess)
+                        })
+
+                    })
+                },
+            }
         },
-        NullValue: <ResultType>(value: null | ResultType) => {
-            if (value === null) { return createUnsafePromise.success<null, ResultType>(null) }
-            return createUnsafePromise.error<null, ResultType>(value)
-        },
-        UnsafePromiseInterface: <SourceResultType, SourceErrorType>(promise: IUnsafePromise<SourceResultType, SourceErrorType>) => {
-            return new UnsafePromise<SourceResultType, SourceErrorType>((onError, onSucces) => {
-                promise.handle(onError, onSucces)
-            })
+        UnsafeOnOpenResource: <ResourceType, OpenErrorType>(resource: IUnsafeOnOpenResource<ResourceType, OpenErrorType>) => {
+            return {
+                with: <ResultType, PromiseErrorType>(
+                    onOpenError: (error: OpenErrorType) => UnsafePromise<ResultType, PromiseErrorType>,
+                    onOpenSuccess: (openReource: ResourceType) => UnsafePromise<ResultType, PromiseErrorType>
+                ) => {
+                    const newFunc: UnsafeCallerFunction<ResultType, PromiseErrorType> = (newOnError, newOnSuccess) => {
+                        resource.open(
+                            err => {
+                                onOpenError(err).handle(newOnError, newOnSuccess)
+                            },
+                            result => {
+                                onOpenSuccess(result.resource).handle(newOnError, newOnSuccess)
+                                result.close()
+                            }
+                        )
+                    }
+                    return new UnsafePromise<ResultType, PromiseErrorType>(newFunc)
+                },
+            }
         },
     },
 }

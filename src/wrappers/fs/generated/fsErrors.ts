@@ -1,7 +1,7 @@
 // tslint:disable: variable-name
 import * as fs from "fs"
 import * as util from "util"
-import { UnsafePromise } from "../create/Promise/Unsafe/wrap"
+import { UnsafePromise } from "../../../classes/UnsafePromise"
 type ErrorFunction<ErrorType> = (error: NodeJS.ErrnoException) => ErrorType
 
 type lookup_access<NewError> = {
