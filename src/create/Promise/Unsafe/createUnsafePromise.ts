@@ -80,11 +80,11 @@ export const createUnsafePromise = {
             }
         },
         Value: {
-            isNotNull: <ResultType>(value: ResultType) => {
+            isNotNull: <ResultType>(value: null | ResultType) => {
                 if (value === null) { return createUnsafePromise.error<ResultType, null>(null) }
                 return createUnsafePromise.success<ResultType, null>(value)
             },
-            isNull: <ResultType>(value: ResultType) => {
+            isNull: <ResultType>(value: null | ResultType) => {
                 if (value === null) { return createUnsafePromise.success<null, ResultType>(null) }
                 return createUnsafePromise.error<null, ResultType>(value)
             },

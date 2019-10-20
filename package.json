@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "u2l": "ncu -u --packageFile package.json && npm install",
-    "pubMin": "npm run build && npm version minor && npm publish && git push",
-    "build": "rm -rf ./dist && tsc"
+    "pubMin": "rm -rf ./dist && tsc && npm version minor && npm publish && git push"
   },
   "keywords": [],
   "author": "corno",
