@@ -12,8 +12,8 @@ import { createArray } from "./create/Array"
 import { createDictionary } from "./create/Dictionary"
 import { createSafePromise } from "./create/Promise/Safe/createSafePromise"
 import { createUnsafePromise } from "./create/Promise/Unsafe/createUnsafePromise"
-import { createUnsafeResource } from "./create/Resource/Unsafe"
-import { createUnsafeOnOpenResource } from "./create/Resource/UnsafeOnOpen"
+import { createUnsafeResource } from "./create/Resource/Unsafe/createUnsafeResource"
+import { createUnsafeOnOpenResource } from "./create/Resource/UnsafeOnOpen/createUnsafeOnOpenResource"
 import { createStream } from "./create/Stream"
 
 export const create = {

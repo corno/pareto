@@ -3,9 +3,8 @@ import {
     UnsafePromise,
 } from "../../../classes/UnsafePromise"
 
-export function mapUnsafePromisesArray<SourceType, ResultType, ErrorType>(
-    array: SourceType[],
-    promisify: (entry: SourceType, index: number) => IUnsafePromise<ResultType, ErrorType>
+export function mergeArrayOfUnsafePromises<ResultType, ErrorType>(
+    array: IUnsafePromise<ResultType, ErrorType>[]
 ): UnsafePromise<ResultType[], ErrorType[]> {
     let isExecuted = false
     function execute(onErrors: (errors: ErrorType[]) => void, onSuccess: (results: ResultType[]) => void) {
@@ -36,7 +35,7 @@ export function mapUnsafePromisesArray<SourceType, ResultType, ErrorType>(
         } else {
             array.forEach((element, index) => {
                 (() => {
-                    promisify(element, index).handle(
+                    element.handle(
                         error => {
                             errors.push(error)
                             resolvedCount += 1

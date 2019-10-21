@@ -2,7 +2,7 @@ import { IUnsafePromise } from "pareto-api"
 import {
     UnsafePromise
 } from "../../../classes/UnsafePromise"
-import { mapUnsafePromisesArray } from "./mapUnsafePromisesArray"
+import { mergeArrayOfUnsafePromises } from "./mergeArrayOfUnsafePromises"
 
 function arrayToDictionary<Type>(array: Type[], keys: string[]) {
     const dictionary: { [key: string]: Type } = {}
@@ -10,18 +10,12 @@ function arrayToDictionary<Type>(array: Type[], keys: string[]) {
     return dictionary
 }
 
-export function mapUnsafePromisesDictionary<SourceType, ResultType, ErrorType>(
-    dictionary: { [key: string]: SourceType },
-    promisify: (entry: SourceType, entryName: string) => IUnsafePromise<ResultType, ErrorType>
+export function mergeDictionaryOfUnsafePromises<ResultType, ErrorType>(
+    dictionary: { [key: string]: IUnsafePromise<ResultType, ErrorType> }
 ): UnsafePromise<{ [key: string]: ResultType }, { [key: string]: ErrorType }> {
     const keys = Object.keys(dictionary)
-    const array = keys.map(key => ({
-        key: key,
-        value: dictionary[key],
-    }))
-    return mapUnsafePromisesArray(array, element => {
-        return promisify(element.value, element.key)
-    }).mapError(errors =>
+    const array = keys.map(key => dictionary[key])
+    return mergeArrayOfUnsafePromises(array).mapError(errors =>
         arrayToDictionary(errors, keys)
     ).mapResult(results =>
         arrayToDictionary(results, keys)

@@ -2,11 +2,6 @@ import { IStream } from "pareto-api"
 
 export const createArray = {
     from: {
-        Stream: <DataType, ElementType>(stream: IStream<DataType>, preparer: (element: DataType) => ElementType, endHandler: () => void) => {
-            const array: ElementType[] = []
-            stream.process(data => array.push(preparer(data)), () => endHandler())
-            return array
-        },
         Array: {
             flatten: <ElementType>(array: ElementType[][]) => {
                 const result: ElementType[] = []
@@ -15,6 +10,11 @@ export const createArray = {
                 })
                 return result
             },
+        },
+        Stream: <DataType, ElementType>(stream: IStream<DataType>, preparer: (element: DataType) => ElementType, endHandler: () => void) => {
+            const array: ElementType[] = []
+            stream.process(data => array.push(preparer(data)), () => endHandler())
+            return array
         },
     },
 }

@@ -1,4 +1,5 @@
 
+import { IStream } from "pareto-api"
 import { Stream } from "../classes/Stream"
 
 export const createStream = {
@@ -11,5 +12,10 @@ export const createStream = {
                 }
             )
         },
+    },
+    wrap: <DataType>(stream: IStream<DataType>) => {
+        return new Stream<DataType>((onData, onEnd) => {
+            stream.process(onData, onEnd)
+        })
     },
 }
