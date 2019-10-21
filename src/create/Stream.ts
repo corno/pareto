@@ -4,13 +4,15 @@ import { Stream } from "../classes/Stream"
 
 export const createStream = {
     from: {
-        Array: <RawElementType, ElementType>(array: RawElementType[], preparer: (element: RawElementType, index: number) => ElementType) => {
-            return new Stream<ElementType>(
-                (onData, onEnd) => {
-                    array.forEach((element, index) => onData(preparer(element, index)))
-                    onEnd()
-                }
-            )
+        Array: {
+            stream: <RawElementType, ElementType>(array: RawElementType[], preparer: (element: RawElementType, index: number) => ElementType) => {
+                return new Stream<ElementType>(
+                    (onData, onEnd) => {
+                        array.forEach((element, index) => onData(preparer(element, index)))
+                        onEnd()
+                    }
+                )
+            },
         },
     },
     wrap: <DataType>(stream: IStream<DataType>) => {

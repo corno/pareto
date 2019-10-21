@@ -10,7 +10,7 @@ export const createUnsafeResource = {
                 buildOpenError: (name: string) => OpenErrorType,
                 initResource: (entry: EntryType) => ResourceType
             ) => {
-                return new UnsafeResource((onOpenError, onSuccess) => {
+                return new UnsafeResource<ResourceType, OpenErrorType, null>((onOpenError, onSuccess) => {
                     const value = obj[name]
                     if (value === undefined) {
                         onOpenError(buildOpenError(name))

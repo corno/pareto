@@ -3,6 +3,28 @@ import { UnsafeOnOpenResource } from "../../../classes/UnsafeOnOpenResource"
 
 export const createUnsafeOnOpenResource = {
     from: {
+        Dictionary: {
+            getEntry: <EntryType, ResourceType, OpenErrorType>(
+                obj: { [key: string]: EntryType },
+                name: string,
+                buildOpenError: (name: string) => OpenErrorType,
+                initResource: (entry: EntryType) => ResourceType
+            ) => {
+                return new UnsafeOnOpenResource<ResourceType, OpenErrorType>((onOpenError, onSuccess) => {
+                    const value = obj[name]
+                    if (value === undefined) {
+                        onOpenError(buildOpenError(name))
+                    } else {
+                        onSuccess(
+                            initResource(value),
+                            () => {
+                                //nothing to do
+                            }
+                        )
+                    }
+                })
+            },
+        },
         UnsafeOnOpenResource: {
             combine: <MainSourceType, MainOnOpenError, SupportType, SupportOnOpenError, TargetType, TargetError>(
                 mainSource: IUnsafeOnOpenResource<MainSourceType, MainOnOpenError>,
@@ -31,28 +53,6 @@ export const createUnsafeOnOpenResource = {
                             )
                         }
                     )
-                })
-            },
-        },
-        Dictionary: {
-            getEntry: <EntryType, ResourceType, OpenErrorType>(
-                obj: { [key: string]: EntryType },
-                name: string,
-                buildOpenError: (name: string) => OpenErrorType,
-                initResource: (entry: EntryType) => ResourceType
-            ) => {
-                return new UnsafeOnOpenResource<ResourceType, OpenErrorType>((onOpenError, onSuccess) => {
-                    const value = obj[name]
-                    if (value === undefined) {
-                        onOpenError(buildOpenError(name))
-                    } else {
-                        onSuccess(
-                            initResource(value),
-                            () => {
-                                //nothing to do
-                            }
-                        )
-                    }
                 })
             },
         },

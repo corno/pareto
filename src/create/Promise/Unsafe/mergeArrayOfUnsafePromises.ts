@@ -5,7 +5,7 @@ import {
 
 export function mergeArrayOfUnsafePromises<ResultType, ErrorType>(
     array: IUnsafePromise<ResultType, ErrorType>[]
-): UnsafePromise<ResultType[], ErrorType[]> {
+) {
     let isExecuted = false
     function execute(onErrors: (errors: ErrorType[]) => void, onSuccess: (results: ResultType[]) => void) {
         if (isExecuted === true) {
@@ -51,5 +51,5 @@ export function mergeArrayOfUnsafePromises<ResultType, ErrorType>(
             })
         }
     }
-    return new UnsafePromise(execute)
+    return new UnsafePromise<ResultType[], ErrorType[]>(execute)
 }

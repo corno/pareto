@@ -16,7 +16,7 @@ export function generate(functions: FSFunctions, writer: IWriter) {
         `// tslint:disable: variable-name`,
         `import * as fs from "fs"`,
         `import * as util from "util"`,
-        `import { new UnsafePromise } from "../create/Promise/Unsafe/wrap"`,
+        `import { UnsafePromise } from "../classes/UnsafePromise"`,
         `type ErrorFunction<ErrorType> = (error: NodeJS.ErrnoException) => ErrorType`,
         ``,
     )

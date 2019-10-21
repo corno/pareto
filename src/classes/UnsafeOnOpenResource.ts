@@ -22,7 +22,7 @@ export class UnsafeOnOpenResource<ResourceType, OpenError> implements IUnsafeOnO
         this.openFunction(
             onError,
             (resource: ResourceType, closer: () => void) => {
-                onOpened(new SafeOpenedResource(resource, closer))
+                onOpened(new SafeOpenedResource<ResourceType>(resource, closer))
             }
         )
     }

@@ -4,7 +4,7 @@ import { SafePromise } from "../../../classes/SafePromise"
 
 export function mergeArrayOfSafePromises<ResultType>(
     array: ISafePromise<ResultType>[],
-): SafePromise<ResultType[]> {
+) {
     let isExecuted = false
     function execute(onResult: (results: ResultType[]) => void) {
         if (isExecuted === true) {
@@ -39,5 +39,5 @@ export function mergeArrayOfSafePromises<ResultType>(
             })
         }
     }
-    return new SafePromise(execute)
+    return new SafePromise<ResultType[]>(execute)
 }

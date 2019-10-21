@@ -61,7 +61,7 @@ export const createUnsafePromise = {
                         }
                     }
                 })
-                return new UnsafePromise((onError, onSuccess) => {
+                return new UnsafePromise<{ [key: string]: { main: MainType, support: SupportType } }, { [key: string]: MainType }>((onError, onSuccess) => {
                     if (hasErrors) {
                         onError(errorDictionary)
                     } else {

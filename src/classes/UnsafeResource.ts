@@ -22,7 +22,7 @@ export class UnsafeResource<ResourceType, OpenError, CloseError> implements IUns
         this.openFunction(
             onError,
             (resource: ResourceType, closer: (onCloseError: (closeError: CloseError) => void) => void) => {
-                onOpened(new UnsafeOpenedResource(resource, closer))
+                onOpened(new UnsafeOpenedResource<ResourceType, CloseError>(resource, closer))
             }
         )
     }
