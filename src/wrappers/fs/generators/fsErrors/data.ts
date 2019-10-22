@@ -22,7 +22,7 @@ const data: generator.FSFunctions = {
         errors: ["ENOENT"],
     },
     writeFile: {
-        errors: ["ENOENT"],
+        errors: ["EXIST"],
     },
 }
 
@@ -31,4 +31,4 @@ import * as fs from "fs"
 const out: string[] = []
 generator.generate(data, Writer.createWriter("    ", true, string => out.push(string)))
 
-fs.writeFileSync("./src/generated/fsErrors.ts", out.join("\n"))
+fs.writeFileSync("./src/wrappers/fs/generated/fsErrors.ts", out.join("\n"))

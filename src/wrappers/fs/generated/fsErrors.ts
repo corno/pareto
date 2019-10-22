@@ -161,14 +161,14 @@ export const api_unlink = {
 type lookup_writeFile<NewError> = {
     unknown: ErrorFunction<NewError>
     known: {
-        "ENOENT": ErrorFunction<NewError>
+        "EXIST": ErrorFunction<NewError>
     }
 }
 
 export function handleError_writeFile<NewError>(error: NodeJS.ErrnoException, lookup: lookup_writeFile<NewError>) {
     if (error.code === undefined) { return lookup.unknown(error) }
     switch (error.code) {
-        case "ENOENT" : return lookup.known.ENOENT(error)
+        case "EXIST" : return lookup.known.EXIST(error)
     }
     return lookup.unknown(error)
 }
@@ -183,7 +183,11 @@ export const api_writeFile = {
     },
 }
 
+export type Dirent = fs.Dirent
+
 export const functions = {
+    Dirent : fs.Dirent,
+    constants : fs.constants,
     access : api_access,
     copyFile : api_copyFile,
     readdir : api_readdir,

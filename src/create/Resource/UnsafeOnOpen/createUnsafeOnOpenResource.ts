@@ -71,6 +71,21 @@ export const createUnsafeOnOpenResource = {
                 })
             },
         },
+        Value: {
+            get: <ValueType, ResourceType>(
+                value: ValueType,
+                initResource: (entry: ValueType) => ResourceType
+            ) => {
+                return new UnsafeOnOpenResource<ResourceType, null>((_onOpenError, onSuccess) => {
+                    onSuccess(
+                        initResource(value),
+                        () => {
+                            //nothing to do
+                        }
+                    )
+                })
+            },
+        },
     },
     wrap: <T, OpenError>(unsafeOnOpenResource: IUnsafeOnOpenResource<T, OpenError>) => {
         return new UnsafeOnOpenResource<T, OpenError>((onError, onOpened) => {

@@ -1,4 +1,4 @@
-import { ISafePromise, IUnsafeOnOpenResource, IUnsafePromise } from "pareto-api"
+import { ISafePromise, IStream, IUnsafeOnOpenResource, IUnsafePromise } from "pareto-api"
 import {
     UnsafeCallerFunction,
     UnsafePromise,
@@ -6,6 +6,9 @@ import {
 import { arrayToDictionary } from "../../../utils"
 import { mergeArrayOfUnsafePromises } from "./mergeArrayOfUnsafePromises"
 import { mergeDictionaryOfUnsafePromises } from "./mergeDictionaryOfUnsafePromises"
+import {processStreamOfUnsafePromises } from "./processStreamOfUnsafePromises"
+
+const maxErrorCount = 100
 
 export const createUnsafePromise = {
     from: {
@@ -18,8 +21,8 @@ export const createUnsafePromise = {
                 }
                 return createUnsafePromise.success<ElementType, null>(value)
             },
-            merge: <Type, ErrorType>(array: UnsafePromise<Type, ErrorType>[]) => {
-                return mergeArrayOfUnsafePromises(array)
+            merge: <SourceType, TargetType, ErrorType>(array: SourceType[], promisify: (entry: SourceType, index: number) => IUnsafePromise<TargetType, ErrorType>) => {
+                return mergeArrayOfUnsafePromises(array.map((element, index) => promisify(element, index)))
             },
         },
         Dictionary: {
@@ -70,16 +73,6 @@ export const createUnsafePromise = {
                 })
             },
         },
-        Value: {
-            isNotNull: <ResultType>(value: null | ResultType) => {
-                if (value === null) { return createUnsafePromise.error<ResultType, null>(null) }
-                return createUnsafePromise.success<ResultType, null>(value)
-            },
-            isNull: <ResultType>(value: null | ResultType) => {
-                if (value === null) { return createUnsafePromise.success<null, ResultType>(null) }
-                return createUnsafePromise.error<null, ResultType>(value)
-            },
-        },
         SafePromise: {
             try: <SourceType, ResultType, ErrorType>(
                 source: ISafePromise<SourceType>,
@@ -91,6 +84,11 @@ export const createUnsafePromise = {
                     })
 
                 })
+            },
+        },
+        Stream: {
+            process: <DataType>(stream: IStream<DataType>, promisify: (entry: DataType) => IUnsafePromise<null, null>) => {
+                return processStreamOfUnsafePromises(stream, promisify, maxErrorCount)
             },
         },
         UnsafeOnOpenResource: {
@@ -111,6 +109,16 @@ export const createUnsafePromise = {
                     )
                 }
                 return new UnsafePromise<ResultType, PromiseErrorType>(newFunc)
+            },
+        },
+        Value: {
+            isNotNull: <ResultType>(value: null | ResultType) => {
+                if (value === null) { return createUnsafePromise.error<ResultType, null>(null) }
+                return createUnsafePromise.success<ResultType, null>(value)
+            },
+            isNull: <ResultType>(value: null | ResultType) => {
+                if (value === null) { return createUnsafePromise.success<null, ResultType>(null) }
+                return createUnsafePromise.error<null, ResultType>(value)
             },
         },
     },

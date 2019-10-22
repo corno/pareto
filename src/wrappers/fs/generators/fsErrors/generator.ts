@@ -16,7 +16,7 @@ export function generate(functions: FSFunctions, writer: IWriter) {
         `// tslint:disable: variable-name`,
         `import * as fs from "fs"`,
         `import * as util from "util"`,
-        `import { UnsafePromise } from "../classes/UnsafePromise"`,
+        `import { UnsafePromise } from "../../../classes/UnsafePromise"`,
         `type ErrorFunction<ErrorType> = (error: NodeJS.ErrnoException) => ErrorType`,
         ``,
     )
@@ -80,6 +80,9 @@ export function generate(functions: FSFunctions, writer: IWriter) {
     })
     writer.write(
         `export const functions = {`, () => {
+            writer.write(
+                `constants : fs.constants,`
+            )
             Object.keys(functions).forEach(fName => {
                 //const func = functions[fName]
                 writer.write(

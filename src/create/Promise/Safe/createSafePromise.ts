@@ -2,6 +2,7 @@ import { ISafePromise, IStream, IUnsafeOnOpenResource, IUnsafePromise } from "pa
 import { SafeCallerFunction, SafePromise } from "../../../classes/SafePromise"
 import { arrayToDictionary } from "../../../utils"
 import { mergeArrayOfSafePromises } from "./mergeArrayOfSafePromises"
+import { processStreamOfSafePromises } from "./processStreamOfSafePromises"
 
 
 
@@ -18,10 +19,13 @@ export function mapSafePromisesDictionary<ResultType>(
 export const createSafePromise = {
     from: {
         Stream: {
-            aggregate: <DataType>(stream: IStream<DataType>, onData: (data: DataType) => void) => {
+            aggregateX: <DataType>(stream: IStream<DataType>, onData: (data: DataType) => void) => {
                 return new SafePromise<null>(onResult => {
                     stream.process(data => onData(data), () => onResult(null))
                 })
+            },
+            process: <DataType>(stream: IStream<DataType>, promisify: (entry: DataType) => ISafePromise<null>) => {
+                return processStreamOfSafePromises(stream, promisify)
             },
         },
         UnsafeOnOpenResource: {

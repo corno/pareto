@@ -1,6 +1,6 @@
 
 import { IStream } from "pareto-api"
-import { Stream } from "../classes/Stream"
+import { Stream } from "../../classes/Stream"
 
 export const createStream = {
     from: {
@@ -9,6 +9,16 @@ export const createStream = {
                 return new Stream<ElementType>(
                     (onData, onEnd) => {
                         array.forEach((element, index) => onData(preparer(element, index)))
+                        onEnd()
+                    }
+                )
+            },
+        },
+        Dictionary: {
+            stream: <RawElementType, ElementType>(dictionary: { [key: string]: RawElementType}, preparer: (entry: RawElementType, entryName: string) => ElementType) => {
+                return new Stream<ElementType>(
+                    (onData, onEnd) => {
+                        Object.keys(dictionary).forEach(entryName => onData(preparer(dictionary[entryName], entryName)))
                         onEnd()
                     }
                 )
