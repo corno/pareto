@@ -37,6 +37,3 @@ export const create = {
     },
     Stream: createStream,
 }
-
-//json wrappers
-export { functions as json } from "./wrappers/JSON"
