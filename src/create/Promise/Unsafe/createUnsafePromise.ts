@@ -1,14 +1,15 @@
-import { ISafePromise, IStream, IUnsafeOnOpenResource, IUnsafePromise } from "pareto-api"
+import { ISafeLookup, ISafePromise, IStream, IUnsafeOnOpenResource, IUnsafePromise, StreamLimiter } from "pareto-api"
+import { Dictionary} from "../../../classes/Dictionary"
 import {
     UnsafeCallerFunction,
     UnsafePromise,
 } from "../../../classes/UnsafePromise"
 import { arrayToDictionary } from "../../../utils"
+import { convertStreamIntoDictionary } from "./convertStreamIntoDictionary"
 import { mergeArrayOfUnsafePromises } from "./mergeArrayOfUnsafePromises"
 import { mergeDictionaryOfUnsafePromises } from "./mergeDictionaryOfUnsafePromises"
-import {processStreamOfUnsafePromises } from "./processStreamOfUnsafePromises"
-
-const maxErrorCount = 100
+import { mergeStreamOfUnsafePromises } from "./mergeStreamOfUnsafePromises"
+import { processStreamOfUnsafePromises } from "./processStreamOfUnsafePromises"
 
 export const createUnsafePromise = {
     from: {
@@ -26,15 +27,7 @@ export const createUnsafePromise = {
             },
         },
         Dictionary: {
-            getEntry: <EntryType>(obj: { [key: string]: EntryType }, name: string) => {
-                const value = obj[name]
-                if (value === undefined) {
-                    return createUnsafePromise.error<EntryType, null>(null)
-
-                }
-                return createUnsafePromise.success<EntryType, null>(value)
-            },
-            assertEntryDoesNotExist: <EntryType>(obj: { [key: string]: EntryType }, name: string) => {
+            assertEntryDoesNotExistX: <EntryType>(obj: { [key: string]: EntryType }, name: string) => {
                 const value = obj[name]
                 if (value === undefined) {
                     return createUnsafePromise.success<null, EntryType>(null)
@@ -42,42 +35,84 @@ export const createUnsafePromise = {
                 }
                 return createUnsafePromise.error<null, EntryType>(value)
             },
-            merge: <SourceType, TargetType, ErrorType>(obj: { [key: string]: SourceType }, promisify: (entry: SourceType, entryName: string) => IUnsafePromise<TargetType, ErrorType>) => {
-                const keys = Object.keys(obj)
-                const array = keys.map(key => promisify(obj[key], key))
-                return mergeDictionaryOfUnsafePromises(arrayToDictionary(array, keys))
+            assign: <EntryType, ErrorType>(
+                obj: { [key: string]: EntryType },
+                name: string,
+                createError: () => ErrorType,
+                assigner: () => IUnsafePromise<EntryType, ErrorType>
+            ) => {
+                const value = obj[name]
+                if (value === undefined) {
+                    return new UnsafePromise((onError, onSuccess) => {
+                        assigner().handle(onError, onSuccess)
+                    })
+                }
+                return createUnsafePromise.error<EntryType, ErrorType>(createError())
             },
-            match: <MainType, SupportType>(mainDictionary: { [key: string]: MainType }, supportDictionary: { [key: string]: SupportType }) => {
-                const keys = Object.keys(mainDictionary)
-                const resultDictionary: { [key: string]: { main: MainType, support: SupportType } } = {}
-                const errorDictionary: { [key: string]: MainType } = {}
-                let hasErrors = false
-                keys.forEach(key => {
-                    const supportEntry = supportDictionary[key]
-                    if (supportEntry === undefined) {
-                        hasErrors = true
-                        errorDictionary[key] = mainDictionary[key]
-                    } else {
-                        resultDictionary[key] = {
-                            main: mainDictionary[key],
-                            support: supportEntry,
-                        }
-                    }
-                })
-                return new UnsafePromise<{ [key: string]: { main: MainType, support: SupportType } }, { [key: string]: MainType }>((onError, onSuccess) => {
+            rename: <EntryType, ErrorType>(
+                obj: { [key: string]: EntryType },
+                oldName: string,
+                newName: string,
+                createExistsError: () => ErrorType,
+                createDoesNotExistError: () => ErrorType
+            ) => {
+                const value = obj[oldName]
+                if (value === undefined) {
+                    return createDoesNotExistError()
+                }
+                if (obj[newName] !== undefined) {
+                    return createExistsError()
+                }
+                return createUnsafePromise.success<null, ErrorType>(null)
+            },
+            merge: <SourceType, TargetType, ErrorType>(dictionary: Dictionary<SourceType>, promisify: (entry: SourceType, entryName: string) => IUnsafePromise<TargetType, ErrorType>) => {
+                const keys = Object.keys(dictionary.raw)
+                const array = keys.map(key => promisify(dictionary.raw[key], key))
+                return mergeDictionaryOfUnsafePromises(arrayToDictionary(array, keys).raw)
+            },
+            match: <MainType, SupportType>(mainDictionary: { [key: string]: MainType }, lookup: ISafeLookup<SupportType>) => {
+
+                return new UnsafePromise<Dictionary<{ main: MainType, support: SupportType }>, Dictionary<MainType>>((onError, onSuccess) => {
+                    const keys = Object.keys(mainDictionary)
+                    const resultDictionary: { [key: string]: { main: MainType, support: SupportType } } = {}
+                    const errorDictionary: { [key: string]: MainType } = {}
+                    let hasErrors = false
+                    //FIX make this work asynchronously
+                    keys.forEach(key => {
+                        lookup.getEntry(key).handle(
+                            _err => {
+                                hasErrors = true,
+                                    errorDictionary[key] = mainDictionary[key]
+                            },
+                            supportEntry => {
+                                resultDictionary[key] = {
+                                    main: mainDictionary[key],
+                                    support: supportEntry,
+                                }
+                            }
+                        )
+                    })
                     if (hasErrors) {
-                        onError(errorDictionary)
+                        onError(new Dictionary(errorDictionary))
                     } else {
-                        onSuccess(resultDictionary)
+                        onSuccess(new Dictionary(resultDictionary))
                     }
                 })
+            },
+        },
+        KeyValueStream: {
+            createDictionary: convertStreamIntoDictionary,
+        },
+        SafeLookup: {
+            getEntry: <EntryType>(lookup: ISafeLookup<EntryType>, entryName: string) => {
+                return createUnsafePromise.wrap( lookup.getEntry(entryName))
             },
         },
         SafePromise: {
             try: <SourceType, ResultType, ErrorType>(
                 source: ISafePromise<SourceType>,
                 onResult: (result: SourceType) => UnsafePromise<ResultType, ErrorType>
-            ): UnsafePromise<ResultType, ErrorType> => {
+            ) => {
                 return new UnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
                     source.handle(res => {
                         onResult(res).handle(onError, onSuccess)
@@ -87,9 +122,10 @@ export const createUnsafePromise = {
             },
         },
         Stream: {
-            process: <DataType>(stream: IStream<DataType>, promisify: (entry: DataType) => IUnsafePromise<null, null>) => {
-                return processStreamOfUnsafePromises(stream, promisify, maxErrorCount)
+            processX: <DataType>(stream: IStream<DataType>, limiter: StreamLimiter, promisify: (entry: DataType) => IUnsafePromise<null, null>) => {
+                return processStreamOfUnsafePromises(stream, limiter, promisify)
             },
+            merge: mergeStreamOfUnsafePromises,
         },
         UnsafeOnOpenResource: {
             with: <ResourceType, OpenErrorType, ResultType, PromiseErrorType>(

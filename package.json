@@ -1,7 +1,7 @@
 {
   "name": "pareto",
   "version": "0.19.0",
-  "description": "javascript/typescript promises with typesafe error handling in a functional style",
+  "description": "A library that supports the Pareto programming style: 80% of the code is straightforward and only needs 20% (or less) of all language features",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,11 @@
     "lint": "tslint --project tsconfig.json ./src/*",
     "build": "tsc"
   },
-  "keywords": [],
+  "keywords": [
+    "80/20 rule",
+    "functional programming",
+    "system development"
+  ],
   "author": "corno",
   "license": "ISC",
   "types": "dist/index.d.ts",
@@ -23,10 +27,9 @@
     "dist/*"
   ],
   "dependencies": {
-    "pareto-api": "^0.6.0"
+    "pareto-api": "^0.9.0"
   },
   "devDependencies": {
-    "@types/node": "^12.11.2",
     "steroid-template-utils": "^0.2.0"
   }
 }

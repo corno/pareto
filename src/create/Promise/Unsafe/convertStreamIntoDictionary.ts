@@ -1,0 +1,48 @@
+import { IKeyValueStream, StreamLimiter } from "pareto-api"
+import { Dictionary } from "../../../classes/Dictionary"
+import {
+    UnsafePromise,
+} from "../../../classes/UnsafePromise"
+
+export function convertStreamIntoDictionary<DataType, ErrorType>(
+    stream: IKeyValueStream<DataType>,
+    limiter: StreamLimiter,
+    errorCreator: (aborted: boolean, errors: Dictionary<DataType[]>) => ErrorType
+) {
+    let isExecuted = false
+
+    return new UnsafePromise<Dictionary<DataType>, ErrorType>((onErrors, onSuccess) => {
+        if (isExecuted === true) {
+            throw new Error("all promise is already executed")
+        }
+        isExecuted = true
+
+        const result: { [key: string]: DataType } = {}
+        const errors: { [key: string]: DataType[] } = {}
+        let hasKeyConflicts = false
+        stream.process(
+            limiter,
+            kvPair => {
+                const key = kvPair.key
+                if (result[key] === undefined) {
+                    result[key] = kvPair.value
+                } else {
+                    //key conflict
+                    hasKeyConflicts = true
+                    if (errors[key] === undefined) {
+                        //first time this key clashes, copy the value from the result dictionary into the error dictionary
+                        errors[key] = [result[key]]
+                    }
+                    errors[key].push(kvPair.value)
+                }
+            },
+            aborted => {
+                if (hasKeyConflicts) {
+                    onErrors(errorCreator(aborted, new Dictionary(errors)))
+                } else {
+                    onSuccess(new Dictionary(result))
+                }
+            }
+        )
+    })
+}

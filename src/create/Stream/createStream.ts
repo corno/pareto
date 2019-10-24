@@ -1,33 +1,27 @@
 
 import { IStream } from "pareto-api"
 import { Stream } from "../../classes/Stream"
+import { streamifyArray} from "./streamifyArray"
 
 export const createStream = {
+    empty: <DataType>() => {
+        return new Stream<DataType>((_limiter, _onData, onEnd) => {
+            onEnd(false)
+        })
+    },
     from: {
         Array: {
-            stream: <RawElementType, ElementType>(array: RawElementType[], preparer: (element: RawElementType, index: number) => ElementType) => {
-                return new Stream<ElementType>(
-                    (onData, onEnd) => {
-                        array.forEach((element, index) => onData(preparer(element, index)))
-                        onEnd()
-                    }
-                )
-            },
+            stream: streamifyArray,
         },
         Dictionary: {
-            stream: <RawElementType, ElementType>(dictionary: { [key: string]: RawElementType}, preparer: (entry: RawElementType, entryName: string) => ElementType) => {
-                return new Stream<ElementType>(
-                    (onData, onEnd) => {
-                        Object.keys(dictionary).forEach(entryName => onData(preparer(dictionary[entryName], entryName)))
-                        onEnd()
-                    }
-                )
+            stream: <RawElementType, ElementType>(dictionary: { [key: string]: RawElementType }, preparer: (entry: RawElementType, entryName: string) => ElementType) => {
+                return streamifyArray(Object.keys(dictionary), entryName => preparer(dictionary[entryName], entryName))
             },
         },
     },
     wrap: <DataType>(stream: IStream<DataType>) => {
-        return new Stream<DataType>((onData, onEnd) => {
-            stream.process(onData, onEnd)
+        return new Stream<DataType>((limiter, onData, onEnd) => {
+            stream.process(limiter, onData, onEnd)
         })
     },
 }

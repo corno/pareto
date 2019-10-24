@@ -1,10 +1,11 @@
-import { ISafePromise, IStream } from "pareto-api"
+import { ISafePromise, IStream, StreamLimiter } from "pareto-api"
 import {
     SafePromise,
 } from "../../../classes/SafePromise"
 
 export function processStreamOfSafePromises<DataType>(
     stream: IStream<DataType>,
+    limiter: StreamLimiter,
     promisify: (entry: DataType) => ISafePromise<null>
 ) {
     let isExecuted = false
@@ -15,6 +16,7 @@ export function processStreamOfSafePromises<DataType>(
         }
         isExecuted = true
         stream.process(
+            limiter,
             data => {
                 promisify(data).handle(
                     _success => {}

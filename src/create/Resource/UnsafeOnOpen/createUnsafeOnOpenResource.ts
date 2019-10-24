@@ -72,13 +72,10 @@ export const createUnsafeOnOpenResource = {
             },
         },
         Value: {
-            get: <ValueType, ResourceType>(
-                value: ValueType,
-                initResource: (entry: ValueType) => ResourceType
-            ) => {
-                return new UnsafeOnOpenResource<ResourceType, null>((_onOpenError, onSuccess) => {
+            get: <ResourceType, OpenErrorType>(value: ResourceType ) => {
+                return new UnsafeOnOpenResource<ResourceType, OpenErrorType>((_onOpenError, onSuccess) => {
                     onSuccess(
-                        initResource(value),
+                        value,
                         () => {
                             //nothing to do
                         }

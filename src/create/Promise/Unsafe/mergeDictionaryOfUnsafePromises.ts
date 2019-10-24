@@ -1,18 +1,14 @@
 import { IUnsafePromise } from "pareto-api"
+import { Dictionary } from "../../../classes/Dictionary"
 import {
     UnsafePromise
 } from "../../../classes/UnsafePromise"
+import { arrayToDictionary} from "../../../utils"
 import { mergeArrayOfUnsafePromises } from "./mergeArrayOfUnsafePromises"
-
-function arrayToDictionary<Type>(array: Type[], keys: string[]) {
-    const dictionary: { [key: string]: Type } = {}
-    array.forEach((element, index) => dictionary[keys[index]] = element)
-    return dictionary
-}
 
 export function mergeDictionaryOfUnsafePromises<ResultType, ErrorType>(
     dictionary: { [key: string]: IUnsafePromise<ResultType, ErrorType> }
-): UnsafePromise<{ [key: string]: ResultType }, { [key: string]: ErrorType }> {
+): UnsafePromise<Dictionary<ResultType>, Dictionary<ErrorType>> {
     const keys = Object.keys(dictionary)
     const array = keys.map(key => dictionary[key])
     return mergeArrayOfUnsafePromises(array).mapError(errors =>

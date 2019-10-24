@@ -1,4 +1,4 @@
-import { ISafePromise, IStream, IUnsafeOnOpenResource, IUnsafePromise } from "pareto-api"
+import { ISafePromise, IStream, IUnsafeOnOpenResource, IUnsafePromise, StreamLimiter } from "pareto-api"
 import { SafeCallerFunction, SafePromise } from "../../../classes/SafePromise"
 import { arrayToDictionary } from "../../../utils"
 import { mergeArrayOfSafePromises } from "./mergeArrayOfSafePromises"
@@ -12,20 +12,20 @@ export function mapSafePromisesDictionary<ResultType>(
     const keys = Object.keys(dictionary)
     const array = keys.map(key => dictionary[key])
     return mergeArrayOfSafePromises(array).mapRaw(results =>
-        arrayToDictionary(results, keys)
+        arrayToDictionary(results, keys).raw
     )
 }
 
 export const createSafePromise = {
     from: {
         Stream: {
-            aggregateX: <DataType>(stream: IStream<DataType>, onData: (data: DataType) => void) => {
+            aggregateX: <DataType>(limiter: StreamLimiter, stream: IStream<DataType>, onData: (data: DataType) => void) => {
                 return new SafePromise<null>(onResult => {
-                    stream.process(data => onData(data), () => onResult(null))
+                    stream.process(limiter, data => onData(data), () => onResult(null))
                 })
             },
-            process: <DataType>(stream: IStream<DataType>, promisify: (entry: DataType) => ISafePromise<null>) => {
-                return processStreamOfSafePromises(stream, promisify)
+            process: <DataType>(stream: IStream<DataType>, limiter: StreamLimiter, promisify: (entry: DataType) => ISafePromise<null>) => {
+                return processStreamOfSafePromises(stream, limiter, promisify)
             },
         },
         UnsafeOnOpenResource: {

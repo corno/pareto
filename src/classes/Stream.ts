@@ -1,34 +1,36 @@
-import { IStream } from "pareto-api"
+import { IStream, StreamLimiter } from "pareto-api"
 
-type StreamGetter<DataType> = (onData: (data: DataType) => void, onEnd: () => void) => void
+type OnData<DataType> = (data: DataType, abort: () => void) => void
 
 export class Stream<DataType> implements IStream<DataType> {
-    public readonly process: StreamGetter<DataType>
+    public readonly process: (limiter: StreamLimiter, onData: OnData<DataType>, onEnd: (aborted: boolean) => void) => void
     constructor(
-        streamGetter: StreamGetter<DataType>,
+        streamGetter: (limiter: StreamLimiter, onData: OnData<DataType>, onEnd: (aborted: boolean) => void) => void,
     ) {
         this.process = streamGetter
     }
     public mapData<NewDataType>(onData: (data: DataType) => NewDataType): Stream<NewDataType> {
-        return new Stream<NewDataType>((newOnData, newOnEnd) => {
+        return new Stream<NewDataType>((newLimiter, newOnData, newOnEnd) => {
             this.process(
-                data => newOnData(onData(data)),
-                () => newOnEnd()
+                newLimiter,
+                (data, abort) => newOnData(onData(data), abort),
+                aborted => newOnEnd(aborted)
             )
         })
     }
     public filter<NewDataType>(
         onData: (data: DataType) => [false] | [true, NewDataType],
     ): Stream<NewDataType> {
-        return new Stream<NewDataType>((newOnData, newOnEnd) => {
+        return new Stream<NewDataType>((newLimiter, newOnData, newOnEnd) => {
             this.process(
-                data => {
-                    const newData = onData(data)
-                    if (newData[0]) {
-                        newOnData(newData[1])
+                newLimiter,
+                (data, abort) => {
+                    const filterResult = onData(data)
+                    if (filterResult[0]) {
+                        newOnData(filterResult[1], abort)
                     }
                 },
-                () => newOnEnd()
+                aborted => newOnEnd(aborted)
             )
         })
     }
