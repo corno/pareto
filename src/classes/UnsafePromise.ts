@@ -8,7 +8,15 @@ export class UnsafePromise<ResultType, ErrorType> {
         this.callerFunction = callerFunction
     }
     public handle(onError: (error: ErrorType) => void, onSuccess: (result: ResultType) => void): void {
-        if (this.isCalled) { throw new Error("already called") }
+        if (this.isCalled) {
+            // console.log("callerFunction")
+            // console.log(this.callerFunction)
+            // console.log("onError")
+            // console.log(onError.toString())
+            // console.log("onSuccess")
+            // console.log(onSuccess.toString())
+            throw new Error("already called")
+        }
         this.isCalled = true
         this.callerFunction(onError, onSuccess)
     }

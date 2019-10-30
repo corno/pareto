@@ -10,7 +10,13 @@ export class SafePromise<T> implements ISafePromise<T> {
         this.callerFunction = callerFunction
     }
     public handle(onResult: (result: T) => void): void {
-        if (this.isCalled) { throw new Error("already called") }
+        if (this.isCalled) {
+            // console.log("callerFunction")
+            // console.log(this.callerFunction.toString())
+            // console.log("onResult")
+            // console.log(onResult.toString())
+            throw new Error("already called")
+        }
         this.isCalled = true
         this.callerFunction(onResult)
     }
