@@ -37,3 +37,5 @@ export const create = {
     },
     Stream: createStream,
 }
+
+   throw new Error("Didn't expect to get here")
