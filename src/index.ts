@@ -38,4 +38,6 @@ export const create = {
     Stream: createStream,
 }
 
+export function assertUnreachable(_never: never) {
    throw new Error("Didn't expect to get here")
+}
