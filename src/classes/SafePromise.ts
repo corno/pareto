@@ -21,8 +21,6 @@ export class SafePromise<T> implements ISafePromise<T> {
         this.callerFunction(onResult)
     }
     public mapRaw<NewType>(onResult: (result: T) => NewType): SafePromise<NewType> {
-        if (this.isCalled) { throw new Error("already called") }
-        this.isCalled = true
         return new SafePromise<NewType>(newOnResult => {
             this.handle(res => {
                 newOnResult(onResult(res))
@@ -31,8 +29,6 @@ export class SafePromise<T> implements ISafePromise<T> {
         })
     }
     public mapPromise<NewType>(onResult: (result: T) => SafePromise<NewType>): SafePromise<NewType> {
-        if (this.isCalled) { throw new Error("already called") }
-        this.isCalled = true
         return new SafePromise<NewType>(newOnResult => {
             this.handle(res => {
                 onResult(res).handle(newOnResult)
@@ -41,8 +37,6 @@ export class SafePromise<T> implements ISafePromise<T> {
         })
     }
     public try<ResultType, ErrorType>(callback: (result: T) => UnsafePromise<ResultType, ErrorType>): UnsafePromise<ResultType, ErrorType> {
-        if (this.isCalled) { throw new Error("already called") }
-        this.isCalled = true
         return new UnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
             this.handle(res => {
                 callback(res).handle(onError, onSuccess)
