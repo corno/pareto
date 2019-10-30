@@ -17,6 +17,7 @@ export { UnsafeInMemoryDictionary, SafeInMemoryDictionary } from "./dictionaryIm
 import { createArray } from "./create/Array/createArray"
 import { createDictionary } from "./create/Dictionary/createDictionary"
 import { createKeyValueStream } from "./create/KeyValueStream/createKeyValueStream"
+import { createSafeLookup } from "./create/Lookup/Safe/createSafeLookup"
 import { createSafePromise } from "./create/Promise/Safe/createSafePromise"
 import { createUnsafePromise } from "./create/Promise/Unsafe/createUnsafePromise"
 import { createUnsafeResource } from "./create/Resource/Unsafe/createUnsafeResource"
@@ -27,6 +28,9 @@ export const create = {
     Array: createArray,
     Dictionary: createDictionary,
     KeyValueStream: createKeyValueStream,
+    Lookup: {
+        safe: createSafeLookup,
+    },
     Promise: {
         safe: createSafePromise,
         unsafe: createUnsafePromise,
