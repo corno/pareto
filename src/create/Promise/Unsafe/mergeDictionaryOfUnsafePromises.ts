@@ -7,10 +7,10 @@ import { arrayToDictionary} from "../../../utils"
 import { mergeArrayOfUnsafePromises } from "./mergeArrayOfUnsafePromises"
 
 export function mergeDictionaryOfUnsafePromises<ResultType, ErrorType>(
-    dictionary: { [key: string]: IUnsafePromise<ResultType, ErrorType> }
+    dictionary: Dictionary<IUnsafePromise<ResultType, ErrorType>>
 ): UnsafePromise<Dictionary<ResultType>, Dictionary<ErrorType>> {
-    const keys = Object.keys(dictionary)
-    const array = keys.map(key => dictionary[key])
+    const keys = Object.keys(dictionary.raw)
+    const array = keys.map(key => dictionary.raw[key])
     return mergeArrayOfUnsafePromises(array).mapError(errors =>
         arrayToDictionary(errors, keys)
     ).mapResult(results =>

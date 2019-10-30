@@ -7,7 +7,7 @@ import {
 export function convertStreamIntoDictionary<DataType, ErrorType>(
     stream: IKeyValueStream<DataType>,
     limiter: StreamLimiter,
-    errorCreator: (aborted: boolean, errors: Dictionary<DataType[]>) => ErrorType
+    keyConflictErrorCreator: (aborted: boolean, errors: Dictionary<DataType[]>) => ErrorType
 ) {
     let isExecuted = false
 
@@ -38,7 +38,7 @@ export function convertStreamIntoDictionary<DataType, ErrorType>(
             },
             aborted => {
                 if (hasKeyConflicts) {
-                    onErrors(errorCreator(aborted, new Dictionary(errors)))
+                    onErrors(keyConflictErrorCreator(aborted, new Dictionary(errors)))
                 } else {
                     onSuccess(new Dictionary(result))
                 }

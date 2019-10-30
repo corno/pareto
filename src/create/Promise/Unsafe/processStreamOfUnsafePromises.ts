@@ -6,11 +6,12 @@ import {
 export function processStreamOfUnsafePromises<DataType, ErrorType>(
     stream: IStream<DataType>,
     limiter: StreamLimiter,
-    promisify: (entry: DataType) => IUnsafePromise<null, ErrorType>
+    promisify: (entry: DataType) => IUnsafePromise<null, ErrorType>,
+    errorCreator: (aborted: boolean, errors: ErrorType[]) => ErrorType
 ) {
     let isExecuted = false
 
-    return new UnsafePromise<null, { aborted: boolean, errors: ErrorType[] }>((onErrors, onSuccess) => {
+    return new UnsafePromise<null, ErrorType>((onErrors, onSuccess) => {
         if (isExecuted === true) {
             throw new Error("all promise is already executed")
         }
@@ -30,10 +31,7 @@ export function processStreamOfUnsafePromises<DataType, ErrorType>(
                 if (!errors) {
                     onSuccess(null)
                 } else {
-                    onErrors({
-                        aborted: aborted,
-                        errors: errors,
-                    })
+                    onErrors(errorCreator(aborted, errors))
                 }
             }
         )

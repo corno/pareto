@@ -1,7 +1,7 @@
 
 import { IStream } from "pareto-api"
 import { Stream } from "../../classes/Stream"
-import { streamifyArray} from "./streamifyArray"
+import { streamifyArray } from "./streamifyArray"
 
 export const createStream = {
     empty: <DataType>() => {
@@ -10,13 +10,12 @@ export const createStream = {
         })
     },
     from: {
-        Array: {
-            stream: streamifyArray,
-        },
-        Dictionary: {
-            stream: <RawElementType, ElementType>(dictionary: { [key: string]: RawElementType }, preparer: (entry: RawElementType, entryName: string) => ElementType) => {
-                return streamifyArray(Object.keys(dictionary), entryName => preparer(dictionary[entryName], entryName))
-            },
+        Array: <ElementType> (array: ElementType[]) => {
+            return {
+                stream: <DataType>(preparer: (element: ElementType, index: number) => DataType) => {
+                    return streamifyArray(array, preparer)
+                },
+            }
         },
     },
     wrap: <DataType>(stream: IStream<DataType>) => {
