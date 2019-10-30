@@ -1,4 +1,5 @@
 import { ISafePromise } from "pareto-api"
+import { UnsafePromise } from "./UnsafePromise"
 
 export type SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => void
 
@@ -29,6 +30,16 @@ export class SafePromise<T> implements ISafePromise<T> {
         return new SafePromise<NewType>(newOnResult => {
             this.handle(res => {
                 onResult(res).handle(newOnResult)
+            })
+
+        })
+    }
+    public try<ResultType, ErrorType>(callback: (result: T) => UnsafePromise<ResultType, ErrorType>): UnsafePromise<ResultType, ErrorType> {
+        if (this.isCalled) { throw new Error("already called") }
+        this.isCalled = true
+        return new UnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
+            this.handle(res => {
+                callback(res).handle(onError, onSuccess)
             })
 
         })
