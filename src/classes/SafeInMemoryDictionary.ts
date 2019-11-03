@@ -71,7 +71,7 @@ export class SafeInMemoryDictionary<StoredData, CreateData, OpenData> extends In
             return createUnsafePromise.error(null)
         }
         return createUnsafePromise.wrap(this.creator(createData, entryName)
-        ).mapResult(data => {
+        ).mapResultRaw(data => {
             this.implementation[entryName] = data
             return null
         })

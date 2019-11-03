@@ -66,9 +66,9 @@ export class UnsafeInMemoryDictionary<StoredData, CreateData, OpenData, CustomEr
             return createUnsafePromise.error(["entry already exists"])
         }
         return createUnsafePromise.wrap(this.creator(createData, entryName)
-        ).mapError<UnsafeEntryAlreadyExistsError<CustomErrorType>>(error =>
+        ).mapErrorRaw<UnsafeEntryAlreadyExistsError<CustomErrorType>>(error =>
             ["custom", error]
-        ).mapResult(data => {
+        ).mapResultRaw(data => {
             this.implementation[entryName] = data
             return null
         })

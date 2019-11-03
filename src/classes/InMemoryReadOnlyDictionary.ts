@@ -112,9 +112,9 @@ export class InMemoryReadOnlyDictionary<StoredData, OpenData> {
     public mergeUnsafePromises_x<TargetType, NewErrorType>(promisify: (entry: OpenData, entryName: string) => IUnsafePromise<TargetType, NewErrorType>) {
         const keys = Object.keys(this.implementation)
         const array = keys.map(key => promisify(this.opener(this.implementation[key], key), key))
-        return mergeArrayOfUnsafePromises(array).mapError(errors =>
+        return mergeArrayOfUnsafePromises(array).mapErrorRaw(errors =>
             arrayToDictionary(errors, keys)
-        ).mapResult(results =>
+        ).mapResultRaw(results =>
             arrayToDictionary(results, keys)
         )
     }

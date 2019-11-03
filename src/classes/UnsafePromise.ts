@@ -20,7 +20,7 @@ export class UnsafePromise<ResultType, ErrorType> {
         this.isCalled = true
         this.callerFunction(onError, onSuccess)
     }
-    public mapResult<NewResultType>(
+    public mapResultRaw<NewResultType>(
         onSuccess: (result: ResultType) => NewResultType
     ) {
         return new UnsafePromise<NewResultType, ErrorType>((newOnError, newOnSuccess) => {
@@ -34,7 +34,7 @@ export class UnsafePromise<ResultType, ErrorType> {
             )
         })
     }
-    public mapResultToPromise<NewResultType>(
+    public mapResult<NewResultType>(
         onSuccess: (result: ResultType) => ISafePromise<NewResultType>
     ) {
         return new UnsafePromise<NewResultType, ErrorType>((newOnError, newOnSuccess) => {
@@ -50,7 +50,7 @@ export class UnsafePromise<ResultType, ErrorType> {
             )
         })
     }
-    public mapError<NewErrorType>(
+    public mapErrorRaw<NewErrorType>(
         onError: (error: ErrorType) => NewErrorType,
     ) {
         return new UnsafePromise<ResultType, NewErrorType>((newOnError, newOnSuccess) => {
