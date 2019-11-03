@@ -4,12 +4,12 @@
   "description": "A library that supports the Pareto programming style: 80% of the code is straightforward and only needs 20% (or less) of all language features",
   "main": "dist/index.js",
   "scripts": {
-    "test": "tsc && node ./dist/test",
-    "u2l": "ncu -u --packageFile package.json && npm install",
-    "pubMin": "rd /s /q .\\dist && tsc && npm run lint && npm version minor && git push && npm publish",
-    "pubPatch": "rd /s /q .\\dist && tsc && npm run lint && npm version patch && git push && npm publish",
+    "build": "tsc",
     "lint": "tslint --project tsconfig.json ./src/*",
-    "build": "tsc"
+    "pubMin": "rd /s /q .\\dist && git diff --exit-code && npm run u2l && tsc && npm run lint && npm run test && npm version minor && git push && npm publish",
+    "pubPatch": "rd /s /q .\\dist && git diff --exit-code && npm run u2l && tsc && npm run lint && npm run test && npm version patch && git push && npm publish",
+    "test": "tsc && node ./dist/test",
+    "u2l": "ncu -u --packageFile package.json && npm install"
   },
   "keywords": [
     "80/20 rule",
