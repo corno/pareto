@@ -20,7 +20,7 @@ export class SafePromise<T> implements ISafePromise<T> {
         this.isCalled = true
         this.callerFunction(onResult)
     }
-    public mapRaw<NewType>(onResult: (result: T) => NewType): SafePromise<NewType> {
+    public mapResultRaw<NewType>(onResult: (result: T) => NewType): SafePromise<NewType> {
         return new SafePromise<NewType>(newOnResult => {
             this.handle(res => {
                 newOnResult(onResult(res))
@@ -28,7 +28,7 @@ export class SafePromise<T> implements ISafePromise<T> {
 
         })
     }
-    public mapPromise<NewType>(onResult: (result: T) => SafePromise<NewType>): SafePromise<NewType> {
+    public mapResult<NewType>(onResult: (result: T) => SafePromise<NewType>): SafePromise<NewType> {
         return new SafePromise<NewType>(newOnResult => {
             this.handle(res => {
                 onResult(res).handle(newOnResult)

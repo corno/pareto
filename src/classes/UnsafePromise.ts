@@ -1,4 +1,4 @@
-import { IUnsafePromise } from "pareto-api"
+import { ISafePromise, IUnsafePromise } from "pareto-api"
 
 export class UnsafePromise<ResultType, ErrorType> {
     private isCalled: boolean
@@ -30,6 +30,22 @@ export class UnsafePromise<ResultType, ErrorType> {
                 },
                 result => {
                     newOnSuccess(onSuccess(result))
+                }
+            )
+        })
+    }
+    public mapResultToPromise<NewResultType>(
+        onSuccess: (result: ResultType) => ISafePromise<NewResultType>
+    ) {
+        return new UnsafePromise<NewResultType, ErrorType>((newOnError, newOnSuccess) => {
+            this.handle(
+                err => {
+                    newOnError(err)
+                },
+                result => {
+                    onSuccess(result).handle(newResult => {
+                        newOnSuccess(newResult)
+                    })
                 }
             )
         })
