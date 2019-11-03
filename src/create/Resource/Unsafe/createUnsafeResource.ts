@@ -3,7 +3,7 @@ import { UnsafeResource } from "../../../classes/UnsafeResource"
 
 export const createUnsafeResource = {
     from: {
-        Dictionary: {
+        Dictionary_x: {
             getEntry: <EntryType, ResourceType, OpenErrorType>(
                 obj: { [key: string]: EntryType },
                 name: string,

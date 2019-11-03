@@ -7,7 +7,8 @@ import {
     IUnsafePromise,
     StreamLimiter
 } from "pareto-api"
-import { Dictionary } from "../../../classes/Dictionary"
+import { InMemoryReadOnlyDictionary } from "../../../classes/InMemoryReadOnlyDictionary"
+import { ReadOnlyDictionary } from "../../../classes/ReadOnlyDictionary"
 import { Stream } from "../../../classes/Stream"
 import {
     UnsafeCallerFunction,
@@ -16,9 +17,7 @@ import {
 //import { arrayToDictionary } from "../../../utils"
 import { convertStreamIntoDictionary } from "./convertStreamIntoDictionary"
 import { mergeArrayOfUnsafePromises } from "./mergeArrayOfUnsafePromises"
-import { mergeDictionaryOfUnsafePromises } from "./mergeDictionaryOfUnsafePromises"
 import { mergeStreamOfUnsafePromises } from "./mergeStreamOfUnsafePromises"
-import { processStreamOfUnsafePromises } from "./processStreamOfUnsafePromises"
 
 export const createUnsafePromise = {
     from: {
@@ -39,7 +38,7 @@ export const createUnsafePromise = {
                 },
             }
         },
-        Dictionary: <EntryType>(dictionary: Dictionary<EntryType>) => {
+        Dictionary: <StoredData, OpenData>(dictionary: InMemoryReadOnlyDictionary<StoredData, OpenData>) => {
             return {
                 // assertEntryDoesNotExistX: (name: string) => {
                 //     const value = dictionary[name]
@@ -77,39 +76,36 @@ export const createUnsafePromise = {
                 //     }
                 //     return createUnsafePromise.success<null, ErrorType>(null)
                 // },
-                merge: <TargetType, ErrorType>(promisify: (entry: EntryType, entryName: string) => IUnsafePromise<TargetType, ErrorType>) => {
-                    return mergeDictionaryOfUnsafePromises(dictionary.map((entry, entryName) => {
-                        return promisify(entry, entryName)
-                    }))
+                merge: <TargetType, NewErrorType>(promisify: (entry: OpenData, entryName: string) => IUnsafePromise<TargetType, NewErrorType>) => {
+                    return dictionary.mergeUnsafePromises_x(promisify)
                 },
-                match: <SupportType, ErrorType>(
+                match: <SupportType, NewErrorType>(
                     lookup: ISafeLookup<SupportType>,
-                    missingEntriesErrorCreator: (errors: Dictionary<EntryType>) => ErrorType
+                    missingEntriesErrorCreator: (errors: ReadOnlyDictionary<OpenData>) => NewErrorType
                 ) => {
-                    return new UnsafePromise<Dictionary<{ main: EntryType, support: SupportType }>, ErrorType>((onError, onSuccess) => {
-                        const keys = Object.keys(dictionary)
-                        const resultDictionary: { [key: string]: { main: EntryType, support: SupportType } } = {}
-                        const errorDictionary: { [key: string]: EntryType } = {}
+                    return new UnsafePromise<ReadOnlyDictionary<{ main: OpenData, support: SupportType }>, NewErrorType>((onError, onSuccess) => {
+                        const resultDictionary: { [key: string]: { main: OpenData, support: SupportType } } = {}
+                        const errorDictionary: { [key: string]: OpenData } = {}
                         let hasErrors = false
                         //FIX make this work asynchronously
-                        keys.forEach(key => {
+                        dictionary.forEach((entry, key) => {
                             lookup.getEntry(key).handle(
                                 _err => {
-                                    hasErrors = true,
-                                        errorDictionary[key] = dictionary.raw[key]
+                                    hasErrors = true
+                                    errorDictionary[key] = entry
                                 },
                                 supportEntry => {
                                     resultDictionary[key] = {
-                                        main: dictionary.raw[key],
+                                        main: entry,
                                         support: supportEntry,
                                     }
                                 }
                             )
                         })
                         if (hasErrors) {
-                            onError(missingEntriesErrorCreator(new Dictionary(errorDictionary)))
+                            onError(missingEntriesErrorCreator(new ReadOnlyDictionary(errorDictionary)))
                         } else {
-                            onSuccess(new Dictionary(resultDictionary))
+                            onSuccess(new ReadOnlyDictionary(resultDictionary))
                         }
                     })
                 },
@@ -117,18 +113,18 @@ export const createUnsafePromise = {
         },
         KeyValueStream: <DataType>(stream: IKeyValueStream<DataType>) => {
             return {
-                createDictionary: <ErrorType>(
+                assertNoDuplicates: <ErrorType>(
                     limiter: StreamLimiter,
-                    keyConflictErrorCreator: (aborted: boolean, errors: Dictionary<DataType[]>) => ErrorType
+                    keyConflictErrorCreator: (aborted: boolean, errors: ReadOnlyDictionary<DataType[]>) => ErrorType
                 ) => {
                     return convertStreamIntoDictionary(stream, limiter, keyConflictErrorCreator)
                 },
                 match: <SupportType, ErrorType>(
                     limiter: StreamLimiter,
                     lookup: ISafeLookup<SupportType>,
-                    missingEntriesErrorCreator: (errors: Dictionary<DataType>) => ErrorType
+                    missingEntriesErrorCreator: (errors: ReadOnlyDictionary<DataType>) => ErrorType
                 ) => {
-                    return new UnsafePromise<Dictionary<{ main: DataType, support: SupportType }>, ErrorType>((onError, onSuccess) => {
+                    return new UnsafePromise<ReadOnlyDictionary<{ main: DataType, support: SupportType }>, ErrorType>((onError, onSuccess) => {
                         //const keys = Object.keys(dictionary)
                         const resultDictionary: { [key: string]: { main: DataType, support: SupportType } } = {}
                         const errorDictionary: { [key: string]: DataType } = {}
@@ -152,9 +148,9 @@ export const createUnsafePromise = {
                             },
                             _aborted => {
                                 if (hasErrors) {
-                                    onError(missingEntriesErrorCreator(new Dictionary(errorDictionary)))
+                                    onError(missingEntriesErrorCreator(new ReadOnlyDictionary(errorDictionary)))
                                 } else {
-                                    onSuccess(new Dictionary(resultDictionary))
+                                    onSuccess(new ReadOnlyDictionary(resultDictionary))
                                 }
                             }
                         )
@@ -189,9 +185,6 @@ export const createUnsafePromise = {
         },
         Stream: <DataType>(stream: IStream<DataType>, ) => {
             return {
-                processX: <ErrorType>(limiter: StreamLimiter, promisify: (entry: DataType) => IUnsafePromise<null, ErrorType>, errorCreator: (aborted: boolean, errors: ErrorType[]) => ErrorType) => {
-                    return processStreamOfUnsafePromises(stream, limiter, promisify, errorCreator)
-                },
                 merge: <TargetType, IntermediateErrorType, ErrorType>(
                     limiter: StreamLimiter,
                     promisify: (entry: DataType) => IUnsafePromise<TargetType, IntermediateErrorType>,

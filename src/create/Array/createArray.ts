@@ -15,9 +15,14 @@ export const createArray = {
         },
         Stream: <DataType>(stream: IStream<DataType>) => {
             return {
-                convert: <ElementType>(limiter: StreamLimiter, preparer: (element: DataType) => ElementType, endHandler: () => void) => {
+                convert: <ElementType>(limiter: StreamLimiter, preparer: (element: DataType) => ElementType, abortHandler: () => void) => {
                     const array: ElementType[] = []
-                    stream.process(limiter, data => array.push(preparer(data)), () => endHandler())
+                    stream.process(limiter, data => array.push(preparer(data)), abortHandler)
+                    return array
+                },
+                convertAll: () => {
+                    const array: DataType[] = []
+                    stream.process(null, data => array.push(data), () => {})
                     return array
                 },
             }

@@ -1,20 +1,6 @@
 import { ISafePromise, IStream, IUnsafeOnOpenResource, IUnsafePromise, StreamLimiter } from "pareto-api"
 import { SafeCallerFunction, SafePromise } from "../../../classes/SafePromise"
-import { arrayToDictionary } from "../../../utils"
-import { mergeArrayOfSafePromises } from "./mergeArrayOfSafePromises"
 import { processStreamOfSafePromises } from "./processStreamOfSafePromises"
-
-
-
-export function mapSafePromisesDictionary<ResultType>(
-    dictionary: { [key: string]: ISafePromise<ResultType> }
-): SafePromise<{ [key: string]: ResultType }> {
-    const keys = Object.keys(dictionary)
-    const array = keys.map(key => dictionary[key])
-    return mergeArrayOfSafePromises(array).mapRaw(results =>
-        arrayToDictionary(results, keys).raw
-    )
-}
 
 export const createSafePromise = {
     from: {
@@ -53,7 +39,21 @@ export const createSafePromise = {
         },
         UnsafePromise: <ResultType, ErrorType>(unsafePromise: IUnsafePromise<ResultType, ErrorType>) => {
             return {
-                catch: <NewResultType>(
+                catch: (
+                    onError: (error: ErrorType) => ResultType,
+                ) => {
+                    return new SafePromise<ResultType>(onResult => {
+                        unsafePromise.handle(
+                            error => {
+                                onResult(onError(error))
+                            },
+                            success => {
+                                onResult(success)
+                            },
+                        )
+                    })
+                },
+                rework: <NewResultType>(
                     onError: (error: ErrorType) => ISafePromise<NewResultType>,
                     onSuccess: (result: ResultType) => ISafePromise<NewResultType>
                 ) => {

@@ -1,0 +1,100 @@
+import {
+    IUnsafePromise,
+    KeyValuePair,
+    StreamLimiter,
+} from "pareto-api"
+import { mergeArrayOfUnsafePromises } from "../create/Promise/Unsafe/mergeArrayOfUnsafePromises"
+import { KeyValueStream } from "./KeyValueStream"
+import { Lookup } from "./Lookup"
+import { ReadOnlyDictionary } from "./ReadOnlyDictionary"
+import { Stream } from "./Stream"
+
+function arrayToLookup<Type>(array: Type[], keys: string[]) {
+    const dictionary: { [key: string]: Type } = {}
+    array.forEach((element, index) => dictionary[keys[index]] = element)
+    return new Lookup<Type>(dictionary)
+}
+
+function arrayToDictionary<Type>(array: Type[], keys: string[]) {
+    const dictionary: { [key: string]: Type } = {}
+    array.forEach((element, index) => dictionary[keys[index]] = element)
+    return new ReadOnlyDictionary<Type>(dictionary)
+}
+
+export function createDictionaryStreamifier<RawElementType, ElementType>(dictionary: { [key: string]: RawElementType }, preparer: (element: RawElementType, key: string) => ElementType) {
+    const keys = Object.keys(dictionary)
+    return (limiter: StreamLimiter, onData: (data: KeyValuePair<ElementType>, abort: () => void) => void, onEnd: (aborted: boolean) => void) => {
+        function pushData(theArray: string[], limited: boolean) {
+            let abort = false
+            theArray.forEach(key => {
+                if (!abort) {
+                    onData(
+                        { key: key, value: preparer(dictionary[key], key) },
+                        () => {
+                            abort = true
+                        }
+                    )
+                }
+            })
+            onEnd(limited || abort)
+        }
+        if (limiter !== null && limiter.maximum < keys.length) {
+            if (limiter.abortEarly) {
+                onEnd(true)
+            } else {
+                pushData(keys.slice(0, limiter.maximum), true)
+            }
+        } else {
+            pushData(keys, false)
+        }
+    }
+}
+
+export class InMemoryReadOnlyDictionary<StoredData, OpenData> {
+    protected readonly implementation: { [key: string]: StoredData }
+    protected readonly opener: (storedData: StoredData, entryName: string) => OpenData
+    constructor(
+        dictionary: { [key: string]: StoredData },
+        opener: (storedData: StoredData, entryName: string) => OpenData,
+    ) {
+        this.implementation = dictionary
+        this.opener = opener
+    }
+    public toStream() {
+        return new KeyValueStream<OpenData>(
+            createDictionaryStreamifier(this.implementation, (entry, entryName) => this.opener(entry, entryName))
+        )
+    }
+    public toKeysStream() {
+        return new Stream<string>((_limiter, onData, onEnd) => {
+            //FIX implement limiter and abort
+            Object.keys(this.implementation).forEach(key => onData(key, () => { }))
+            onEnd(false)
+        })
+    }
+    public forEach(callback: (entry: OpenData, entryName: string) => void) {
+        Object.keys(this.implementation).forEach(entryName => callback(this.opener(this.implementation[entryName], entryName), entryName))
+    }
+    public reduce<ResultType>(callback: (previousValue: ResultType, entry: OpenData, entryName: string) => ResultType, initialValue: ResultType) {
+        return Object.keys(this.implementation).reduce((previousValue, entryName) => callback(previousValue, this.opener(this.implementation[entryName], entryName), entryName), initialValue)
+    }
+    public map_x<NewType>(callback: (entry: OpenData, entryName: string) => NewType) {
+        const keys = Object.keys(this.implementation)
+        const entriesArray = keys.map(entryName => callback(this.opener(this.implementation[entryName], entryName), entryName))
+        return arrayToDictionary(entriesArray, keys)
+    }
+    public toLookup<NewType>(callback: (entry: OpenData, entryName: string) => NewType) {
+        const keys = Object.keys(this.implementation)
+        const entriesArray = keys.map(entryName => callback(this.opener(this.implementation[entryName], entryName), entryName))
+        return arrayToLookup(entriesArray, keys)
+    }
+    public mergeUnsafePromises_x<TargetType, NewErrorType>(promisify: (entry: OpenData, entryName: string) => IUnsafePromise<TargetType, NewErrorType>) {
+        const keys = Object.keys(this.implementation)
+        const array = keys.map(key => promisify(this.opener(this.implementation[key], key), key))
+        return mergeArrayOfUnsafePromises(array).mapError(errors =>
+            arrayToDictionary(errors, keys)
+        ).mapResult(results =>
+            arrayToDictionary(results, keys)
+        )
+    }
+}

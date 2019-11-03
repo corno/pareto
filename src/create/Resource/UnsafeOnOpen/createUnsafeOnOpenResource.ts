@@ -3,7 +3,7 @@ import { UnsafeOnOpenResource } from "../../../classes/UnsafeOnOpenResource"
 
 export const createUnsafeOnOpenResource = {
     from: {
-        Dictionary: {
+        Dictionary_x: {
             getEntry: <EntryType, ResourceType, OpenErrorType>(
                 obj: { [key: string]: EntryType },
                 name: string,
@@ -71,17 +71,18 @@ export const createUnsafeOnOpenResource = {
                 })
             },
         },
-        Value: {
-            get: <ResourceType, OpenErrorType>(value: ResourceType ) => {
-                return new UnsafeOnOpenResource<ResourceType, OpenErrorType>((_onOpenError, onSuccess) => {
-                    onSuccess(
-                        value,
-                        () => {
-                            //nothing to do
-                        }
-                    )
-                })
-            },
+
+    },
+    value: {
+        get: <ResourceType, OpenErrorType>(value: ResourceType) => {
+            return new UnsafeOnOpenResource<ResourceType, OpenErrorType>((_onOpenError, onSuccess) => {
+                onSuccess(
+                    value,
+                    () => {
+                        //nothing to do
+                    }
+                )
+            })
         },
     },
     wrap: <T, OpenError>(unsafeOnOpenResource: IUnsafeOnOpenResource<T, OpenError>) => {

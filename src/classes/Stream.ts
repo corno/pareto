@@ -2,10 +2,12 @@ import { IStream, StreamLimiter } from "pareto-api"
 
 type OnData<DataType> = (data: DataType, abort: () => void) => void
 
+export type StreamGetter<DataType> = (limiter: StreamLimiter, onData: OnData<DataType>, onEnd: (aborted: boolean) => void) => void
+
 export class Stream<DataType> implements IStream<DataType> {
     public readonly process: (limiter: StreamLimiter, onData: OnData<DataType>, onEnd: (aborted: boolean) => void) => void
     constructor(
-        streamGetter: (limiter: StreamLimiter, onData: OnData<DataType>, onEnd: (aborted: boolean) => void) => void,
+        streamGetter: StreamGetter<DataType>,
     ) {
         this.process = streamGetter
     }
@@ -33,5 +35,10 @@ export class Stream<DataType> implements IStream<DataType> {
                 aborted => newOnEnd(aborted)
             )
         })
+    }
+    public toArray(limiter: StreamLimiter, onAborted: (() => void) | null) {
+        const array: DataType[] = []
+        this.process(limiter, data => array.push(data), aborted => { if (aborted && onAborted !== null) { onAborted() } })
+        return array
     }
 }

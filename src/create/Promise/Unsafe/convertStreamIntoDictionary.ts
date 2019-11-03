@@ -1,5 +1,5 @@
 import { IKeyValueStream, StreamLimiter } from "pareto-api"
-import { Dictionary } from "../../../classes/Dictionary"
+import { ReadOnlyDictionary } from "../../../classes/ReadOnlyDictionary"
 import {
     UnsafePromise,
 } from "../../../classes/UnsafePromise"
@@ -7,11 +7,11 @@ import {
 export function convertStreamIntoDictionary<DataType, ErrorType>(
     stream: IKeyValueStream<DataType>,
     limiter: StreamLimiter,
-    keyConflictErrorCreator: (aborted: boolean, errors: Dictionary<DataType[]>) => ErrorType
+    keyConflictErrorCreator: (aborted: boolean, errors: ReadOnlyDictionary<DataType[]>) => ErrorType
 ) {
     let isExecuted = false
 
-    return new UnsafePromise<Dictionary<DataType>, ErrorType>((onErrors, onSuccess) => {
+    return new UnsafePromise<ReadOnlyDictionary<DataType>, ErrorType>((onErrors, onSuccess) => {
         if (isExecuted === true) {
             throw new Error("all promise is already executed")
         }
@@ -38,9 +38,9 @@ export function convertStreamIntoDictionary<DataType, ErrorType>(
             },
             aborted => {
                 if (hasKeyConflicts) {
-                    onErrors(keyConflictErrorCreator(aborted, new Dictionary(errors)))
+                    onErrors(keyConflictErrorCreator(aborted, new ReadOnlyDictionary(errors)))
                 } else {
-                    onSuccess(new Dictionary(result))
+                    onSuccess(new ReadOnlyDictionary(result))
                 }
             }
         )

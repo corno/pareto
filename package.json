@@ -28,7 +28,7 @@
     "dist/*"
   ],
   "dependencies": {
-    "pareto-api": "^0.9.0"
+    "pareto-api": "^0.11.0"
   },
   "devDependencies": {
     "steroid-template-utils": "^0.2.0"
