@@ -1,5 +1,5 @@
 import { IStream, IUnsafePromise, StreamLimiter } from "pareto-api"
-import { BuildableStream } from "../../../classes/BuildableStream"
+import { BuildableStream } from "../../../builders/BuildableStream"
 import { Stream } from "../../../classes/Stream"
 import { UnsafePromise } from "../../../classes/UnsafePromise"
 

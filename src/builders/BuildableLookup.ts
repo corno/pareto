@@ -1,7 +1,7 @@
 
 import { ISafeLookup } from "pareto-api"
+import { UnsafePromise} from "../classes/UnsafePromise"
 import { error, success } from "../index"
-import { UnsafePromise} from "./UnsafePromise"
 
 
 // tslint:disable-next-line: max-classes-per-file

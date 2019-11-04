@@ -1,5 +1,5 @@
+import { Stream } from "../classes/Stream"
 import { createArrayStreamifier } from "../create/Stream/streamifyArray"
-import { Stream } from "./Stream"
 
 export class BuildableStream<DataType> extends Stream<DataType> {
     private readonly array: Array<DataType>

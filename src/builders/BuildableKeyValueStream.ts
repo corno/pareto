@@ -1,5 +1,5 @@
-import { createDictionaryStreamifier } from "./InMemoryReadOnlyDictionary"
-import { KeyValueStream } from "./KeyValueStream"
+import { createDictionaryStreamifier } from "../classes/InMemoryReadOnlyDictionary"
+import { KeyValueStream } from "../classes/KeyValueStream"
 
 export class BuildableKeyValueStream<DataType> extends KeyValueStream<DataType> {
     private readonly dictionary: { [key: string]: DataType }

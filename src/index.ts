@@ -10,13 +10,16 @@ export { KeyValueStream } from "./classes/KeyValueStream"
 export { Lookup } from "./classes/Lookup"
 export { SafePromise } from "./classes/SafePromise"
 export { FilterResult, Stream } from "./classes/Stream"
-export { BuildableKeyValueStream } from "./classes/BuildableKeyValueStream"
-export { BuildableStream } from "./classes/BuildableStream"
 export { UnsafeOnOpenResource } from "./classes/UnsafeOnOpenResource"
 export { UnsafePromise } from "./classes/UnsafePromise"
 export { UnsafeResource } from "./classes/UnsafeResource"
 export { WrappedLookup } from "./classes/WrappedLookup"
-export { BuildableLookup } from "./classes/BuildableLookup"
+
+//the builders
+export { BuildableKeyValueStream } from "./builders/BuildableKeyValueStream"
+export { BuildableLookup } from "./builders/BuildableLookup"
+export { BuildableStream } from "./builders/BuildableStream"
+export { EmptyStream } from "./builders/EmptyStream"
 
 //the create object
 import { createArray } from "./create/Array/createArray"

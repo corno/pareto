@@ -58,7 +58,7 @@ export class Stream<DataType> implements IStream<DataType> {
             )
         })
     }
-    public reduce<ResultType>(onData: (previousValue: ResultType, data: DataType) => ResultType, initialValue: ResultType) {
+    public reduce<ResultType>(initialValue: ResultType, onData: (previousValue: ResultType, data: DataType) => ResultType) {
         return new SafePromise<ResultType>(onResult => {
             let currentValue = initialValue
             this.process(
