@@ -1,4 +1,5 @@
 import { IKeyValueStream, KeyValuePair, StreamLimiter } from "pareto-api"
+import { Stream } from "./Stream"
 
 type OnData<DataType> = (data: KeyValuePair<DataType>, abort: () => void) => void
 
@@ -35,6 +36,11 @@ export class KeyValueStream<DataType> implements IKeyValueStream<DataType> {
                 },
                 aborted => newOnEnd(aborted)
             )
+        })
+    }
+    public toKeysStream() {
+        return new Stream((limiter, onData, onEnd) => {
+            this.process(limiter, (data, abort) => onData(data.key, abort), onEnd)
         })
     }
 }
