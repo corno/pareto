@@ -1,7 +1,7 @@
 
 import { IInSafeLookup } from "pareto-api"
 import { error, success } from "../../index"
-import { IOutUnsafePromise} from "../volatile/UnsafePromise"
+import { IUnsafePromise} from "../volatile/UnsafePromise"
 
 
 // tslint:disable-next-line: max-classes-per-file
@@ -18,7 +18,7 @@ export class BuildableLookup<DataType> implements IInSafeLookup<DataType> {
         }
         return entry
     }
-    public getEntry(key: string): IOutUnsafePromise<DataType, null> {
+    public getEntry(key: string): IUnsafePromise<DataType, null> {
         const entry = this.dictionary[key]
         if (entry === undefined) {
             return error(null)

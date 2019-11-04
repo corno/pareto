@@ -2,9 +2,9 @@ import { IInKeyValueStream, IInSafePromise, IInStream, IInUnsafeOnOpenResource, 
 import { UnsafeOnOpenResource } from "./classes/UnsafeOnOpenResource"
 import { UnsafeResource } from "./classes/UnsafeResource"
 import { KeyValueStream } from "./classes/volatile/KeyValueStream"
-import { IOutSafePromise } from "./classes/volatile/SafePromise"
+import { SafePromise } from "./classes/volatile/SafePromise"
 import { Stream } from "./classes/volatile/Stream"
-import { IOutUnsafePromise } from "./classes/volatile/UnsafePromise"
+import { IUnsafePromise } from "./classes/volatile/UnsafePromise"
 
 export const wrap = {
     KeyValueStream: <DataType>(stream: IInKeyValueStream<DataType>) => {
@@ -13,12 +13,12 @@ export const wrap = {
         })
     },
     SafePromise: <SourceResultType>(promise: IInSafePromise<SourceResultType>) => {
-        return new IOutSafePromise<SourceResultType>(onResult => {
+        return new SafePromise<SourceResultType>(onResult => {
             promise.handle(onResult)
         })
     },
     UnsafePromise: <SourceResultType, SourceErrorType>(promise: IInUnsafePromise<SourceResultType, SourceErrorType>) => {
-        return new IOutUnsafePromise<SourceResultType, SourceErrorType>((onError, onSucces) => {
+        return new IUnsafePromise<SourceResultType, SourceErrorType>((onError, onSucces) => {
             promise.handle(onError, onSucces)
         })
     },

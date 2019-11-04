@@ -1,6 +1,6 @@
 
 import { IInSafePromise } from "pareto-api"
-import { IOutSafePromise } from "../../../classes/volatile/SafePromise"
+import { SafePromise } from "../../../classes/volatile/SafePromise"
 
 export function mergeArrayOfSafePromises<ResultType>(
     array: IInSafePromise<ResultType>[],
@@ -39,5 +39,5 @@ export function mergeArrayOfSafePromises<ResultType>(
             })
         }
     }
-    return new IOutSafePromise<ResultType[]>(execute)
+    return new SafePromise<ResultType[]>(execute)
 }

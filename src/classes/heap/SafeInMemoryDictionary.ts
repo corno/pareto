@@ -10,9 +10,9 @@ import { createSafePromise } from "../../create/Promise/Safe/createSafePromise"
 import { createUnsafePromise } from "../../create/Promise/Unsafe/createUnsafePromise"
 import { streamifyArray } from "../../create/Stream/streamifyArray"
 import { InMemoryReadOnlyDictionary} from "../volatile/InMemoryReadOnlyDictionary"
-import { IOutSafePromise } from "../volatile/SafePromise"
+import { SafePromise } from "../volatile/SafePromise"
 import { Stream } from "../volatile/Stream"
-import { IOutUnsafePromise } from "../volatile/UnsafePromise"
+import { IUnsafePromise } from "../volatile/UnsafePromise"
 
 export class SafeInMemoryDictionary<StoredData, CreateData, OpenData> implements
     IInSafeStrictDictionary<CreateData, OpenData>,
@@ -38,7 +38,7 @@ export class SafeInMemoryDictionary<StoredData, CreateData, OpenData> implements
     public toReadOnlyDictionary() {
         return new InMemoryReadOnlyDictionary(this.implementation, this.opener)
     }
-    public copyEntry(sourceName: string, targetName: string): IOutUnsafePromise<null, SafeTwoWayError> {
+    public copyEntry(sourceName: string, targetName: string): IUnsafePromise<null, SafeTwoWayError> {
         const source = this.implementation[sourceName]
         const doesNotExist = source === undefined
         const alreadyExists = this.implementation[targetName] !== undefined
@@ -48,7 +48,7 @@ export class SafeInMemoryDictionary<StoredData, CreateData, OpenData> implements
         this.implementation[targetName] = this.copier(source)
         return createUnsafePromise.success(null)
     }
-    public deleteEntry(entryName: string): IOutUnsafePromise<null, SafeEntryDoesNotExistError> {
+    public deleteEntry(entryName: string): IUnsafePromise<null, SafeEntryDoesNotExistError> {
         const entry = this.implementation[entryName]
         if (entry === undefined) {
             return createUnsafePromise.error(null)
@@ -57,19 +57,19 @@ export class SafeInMemoryDictionary<StoredData, CreateData, OpenData> implements
         this.deleter(entry)
         return createUnsafePromise.success(null)
     }
-    public getKeys(): IOutSafePromise<Stream<string>> {
+    public getKeys(): SafePromise<Stream<string>> {
         return createSafePromise.result(
             streamifyArray(Object.keys(this.implementation), key => key)
         )
     }
-    public getEntry(entryName: string): IOutUnsafePromise<OpenData, SafeEntryDoesNotExistError> {
+    public getEntry(entryName: string): IUnsafePromise<OpenData, SafeEntryDoesNotExistError> {
         const entry = this.implementation[entryName]
         if (entry === undefined) {
             return createUnsafePromise.error(null)
         }
         return createUnsafePromise.success(this.opener(entry, entryName))
     }
-    public createEntry(entryName: string, createData: CreateData): IOutUnsafePromise<null, SafeEntryAlreadyExistsError> {
+    public createEntry(entryName: string, createData: CreateData): IUnsafePromise<null, SafeEntryAlreadyExistsError> {
         if (this.implementation[entryName] !== undefined) {
             return createUnsafePromise.error(null)
         }
@@ -79,7 +79,7 @@ export class SafeInMemoryDictionary<StoredData, CreateData, OpenData> implements
             return null
         })
     }
-    public renameEntry(oldName: string, newName: string): IOutUnsafePromise<null, SafeTwoWayError> {
+    public renameEntry(oldName: string, newName: string): IUnsafePromise<null, SafeTwoWayError> {
         const entry = this.implementation[oldName]
         const doesNotExist = entry === undefined
         const alreadyExists = this.implementation[newName] !== undefined

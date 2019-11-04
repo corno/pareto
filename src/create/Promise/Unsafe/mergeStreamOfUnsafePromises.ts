@@ -1,7 +1,7 @@
 import { IInStream, IInUnsafePromise, StreamLimiter } from "pareto-api"
 import { BuildableStream } from "../../../classes/builders/BuildableStream"
 import { Stream } from "../../../classes/volatile/Stream"
-import { IOutUnsafePromise } from "../../../classes/volatile/UnsafePromise"
+import { IUnsafePromise } from "../../../classes/volatile/UnsafePromise"
 
 export function mergeStreamOfUnsafePromises<DataType, TargetType, IntermediateErrorType, ErrorType>(
     stream: IInStream<DataType>,
@@ -9,7 +9,7 @@ export function mergeStreamOfUnsafePromises<DataType, TargetType, IntermediateEr
     promisify: (entry: DataType) => IInUnsafePromise<TargetType, IntermediateErrorType>,
     createError: (aborted: boolean, errors: Stream<IntermediateErrorType>) => ErrorType
 ) {
-    return new IOutUnsafePromise<Stream<TargetType>, ErrorType>((onError, onSuccess) => {
+    return new IUnsafePromise<Stream<TargetType>, ErrorType>((onError, onSuccess) => {
         let hasErrors = false
         const errors = new BuildableStream<IntermediateErrorType>()
         const results = new BuildableStream<TargetType>()

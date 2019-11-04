@@ -1,6 +1,6 @@
 import { IInSafePromise, IInStream, StreamLimiter } from "pareto-api"
 import {
-    IOutSafePromise,
+    SafePromise,
 } from "../../../classes/volatile/SafePromise"
 
 export function processStreamOfSafePromises<DataType>(
@@ -10,7 +10,7 @@ export function processStreamOfSafePromises<DataType>(
 ) {
     let isExecuted = false
 
-    return new IOutSafePromise<null>(onFinished => {
+    return new SafePromise<null>(onFinished => {
         if (isExecuted === true) {
             throw new Error("all promise is already executed")
         }

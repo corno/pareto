@@ -7,9 +7,9 @@ import {
 import { mergeArrayOfUnsafePromises } from "../../create/Promise/Unsafe/mergeArrayOfUnsafePromises"
 import { KeyValueStream } from "./KeyValueStream"
 import { ReadOnlyDictionary } from "./ReadOnlyDictionary"
-import { IOutSafePromise } from "./SafePromise"
+import { SafePromise } from "./SafePromise"
 import { Stream } from "./Stream"
-import { IOutUnsafePromise } from "./UnsafePromise"
+import { IUnsafePromise } from "./UnsafePromise"
 
 function arrayToDictionary<Type>(array: Type[], keys: string[]) {
     const dictionary: { [key: string]: Type } = {}
@@ -75,7 +75,7 @@ export class InMemoryReadOnlyDictionary<StoredData, OpenData> {
         return Object.keys(this.implementation).reduce((previousValue, entryName) => callback(previousValue, this.opener(this.implementation[entryName], entryName), entryName), initialValue)
     }
     public reduce<ResultType>(initialValue: ResultType, callback: (previousValue: ResultType, entry: OpenData, entryName: string) => IInSafePromise<ResultType>) {
-        return new IOutSafePromise<ResultType>(onResult => {
+        return new SafePromise<ResultType>(onResult => {
             const keys = Object.keys(this.implementation)
             let currentValue = initialValue
             let currentIndex = 0
@@ -98,7 +98,7 @@ export class InMemoryReadOnlyDictionary<StoredData, OpenData> {
     public toLookup<NewType>(callback: (entry: OpenData, entryName: string) => NewType) {
         return {
             getEntry: (entryName: string) => {
-                return new IOutUnsafePromise<NewType, null>((onError, onSuccess) => {
+                return new IUnsafePromise<NewType, null>((onError, onSuccess) => {
                     const entry = this.implementation[entryName]
                     if (entry === undefined) {
                         onError(null)

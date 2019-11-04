@@ -1,5 +1,5 @@
 import { IInSafeLookup} from "pareto-api"
-import { IOutUnsafePromise} from "./volatile/UnsafePromise"
+import { IUnsafePromise} from "./volatile/UnsafePromise"
 
 export class WrappedLookup<NewDataType, OldDataType> implements IInSafeLookup<NewDataType> {
     private readonly lookup: IInSafeLookup<OldDataType>
@@ -9,7 +9,7 @@ export class WrappedLookup<NewDataType, OldDataType> implements IInSafeLookup<Ne
         this.converter = converter
     }
     public getEntry(entryName: string) {
-        return new IOutUnsafePromise<NewDataType, null>((onError, onSuccess) => {
+        return new IUnsafePromise<NewDataType, null>((onError, onSuccess) => {
             this.lookup.getEntry(entryName).handle(
                 () => onError(null),
                 data => onSuccess(this.converter(data))

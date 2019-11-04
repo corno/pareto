@@ -2,15 +2,15 @@
 export * from "pareto-api"
 
 //the classes
-export { SafeInMemoryDictionary as IOutSafeInMemoryDictionary } from "./classes/heap/SafeInMemoryDictionary"
-export { UnsafeInMemoryDictionary as IOutUnsafeInMemoryDictionary } from "./classes/heap/UnsafeInMemoryDictionary"
+export { SafeInMemoryDictionary as ISafeInMemoryDictionary } from "./classes/heap/SafeInMemoryDictionary"
+export { UnsafeInMemoryDictionary as IUnsafeInMemoryDictionary } from "./classes/heap/UnsafeInMemoryDictionary"
 export { InMemoryReadOnlyDictionary as IOutInMemoryReadOnlyDictionary } from "./classes/volatile/InMemoryReadOnlyDictionary"
 export { ReadOnlyDictionary as IOutReadOnlyDictionary } from "./classes/volatile/ReadOnlyDictionary"
 export { KeyValueStream as IOutKeyValueStream } from "./classes/volatile/KeyValueStream"
-export { IOutSafePromise } from "./classes/volatile/SafePromise"
+export { SafePromise as ISafePromise } from "./classes/volatile/SafePromise"
 export { FilterResult, Stream as IOutStream } from "./classes/volatile/Stream"
 export { UnsafeOnOpenResource as IOutUnsafeOnOpenResource } from "./classes/UnsafeOnOpenResource"
-export { IOutUnsafePromise } from "./classes/volatile/UnsafePromise"
+export { IUnsafePromise } from "./classes/volatile/UnsafePromise"
 export { UnsafeResource as IOutUnsafeResource } from "./classes/UnsafeResource"
 export { WrappedLookup } from "./classes/WrappedLookup"
 export { Lookup as IOutLookup } from "./classes/Lookup"
@@ -48,10 +48,14 @@ export const error = create.Promise.unsafe.error
 export const success = create.Promise.unsafe.success
 export const result = create.Promise.safe.result
 
-import { IOutUnsafePromise} from "./classes/volatile/UnsafePromise"
+import { IUnsafePromise} from "./classes/volatile/UnsafePromise"
 
-export function assertNotNull<InputType, ResultType, ErrorType>(value: null | InputType, onNull: () => ErrorType, onNotNull: (value: InputType) => ResultType): IOutUnsafePromise<ResultType, ErrorType> {
-    return new IOutUnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
+export function assertNotNull<InputType, ResultType, ErrorType>(
+    value: null | InputType,
+    onNull: () => ErrorType,
+    onNotNull: (value: InputType
+) => ResultType): IUnsafePromise<ResultType, ErrorType> {
+    return new IUnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
         if (value === null) {
             onError(onNull())
         } else {
@@ -69,8 +73,8 @@ export function onNullableValue<InputType, ResultType>(value: null | InputType, 
 }
 
 
-export function assertTrue<ResultType, ErrorType>(value: boolean, onFalse: () => ErrorType, onTrue: () => ResultType): IOutUnsafePromise<ResultType, ErrorType> {
-    return new IOutUnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
+export function assertTrue<ResultType, ErrorType>(value: boolean, onFalse: () => ErrorType, onTrue: () => ResultType): IUnsafePromise<ResultType, ErrorType> {
+    return new IUnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
         if (value) {
             onSuccess(onTrue())
         } else {

@@ -1,5 +1,5 @@
 import { IInSafeLookup} from "pareto-api"
-import { IOutUnsafePromise} from "./volatile/UnsafePromise"
+import { IUnsafePromise} from "./volatile/UnsafePromise"
 
 /**
  * @deprecated
@@ -10,7 +10,7 @@ export class Lookup<Type> implements IInSafeLookup<Type> {
         this.dict = dict
     }
     public getEntry(entryName: string) {
-        return new IOutUnsafePromise<Type, null>((onError, onSuccess) => {
+        return new IUnsafePromise<Type, null>((onError, onSuccess) => {
             const entry = this.dict[entryName]
             if (entry === undefined) {
                 onError(null)

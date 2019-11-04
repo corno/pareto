@@ -1,5 +1,8 @@
 import { IInSafePromise, IInStream, IInUnsafeOnOpenResource, IInUnsafePromise, StreamLimiter } from "pareto-api"
-import { SafeCallerFunction, IOutSafePromise } from "../../../classes/volatile/SafePromise"
+import {
+    SafeCallerFunction,
+    SafePromise,
+} from "../../../classes/volatile/SafePromise"
 import { processStreamOfSafePromises } from "./processStreamOfSafePromises"
 
 export const createSafePromise = {
@@ -7,7 +10,7 @@ export const createSafePromise = {
         Stream: <DataType>(stream: IInStream<DataType>) => {
             return {
                 aggregateX: (limiter: StreamLimiter, onData: (data: DataType) => void) => {
-                    return new IOutSafePromise<null>(onResult => {
+                    return new SafePromise<null>(onResult => {
                         stream.process(limiter, data => onData(data), () => onResult(null))
                     })
                 },
@@ -19,8 +22,8 @@ export const createSafePromise = {
         UnsafeOnOpenResource: <ResourceType, OpenErrorType>(resource: IInUnsafeOnOpenResource<ResourceType, OpenErrorType>) => {
             return {
                 with: <ResultType>(
-                    onOpenError: (error: OpenErrorType) => IOutSafePromise<ResultType>,
-                    onOpenSuccess: (openReource: ResourceType) => IOutSafePromise<ResultType>
+                    onOpenError: (error: OpenErrorType) => IInSafePromise<ResultType>,
+                    onOpenSuccess: (openReource: ResourceType) => IInSafePromise<ResultType>
                 ) => {
                     const newFunc: SafeCallerFunction<ResultType> = onResult => {
                         resource.open(
@@ -33,7 +36,7 @@ export const createSafePromise = {
                             }
                         )
                     }
-                    return new IOutSafePromise<ResultType>(newFunc)
+                    return new SafePromise<ResultType>(newFunc)
                 },
             }
         },
@@ -42,7 +45,7 @@ export const createSafePromise = {
                 catch: (
                     onError: (error: ErrorType) => ResultType,
                 ) => {
-                    return new IOutSafePromise<ResultType>(onResult => {
+                    return new SafePromise<ResultType>(onResult => {
                         unsafePromise.handle(
                             error => {
                                 onResult(onError(error))
@@ -57,7 +60,7 @@ export const createSafePromise = {
                     onError: (error: ErrorType) => IInSafePromise<NewResultType>,
                     onSuccess: (result: ResultType) => IInSafePromise<NewResultType>
                 ) => {
-                    return new IOutSafePromise<NewResultType>(onResult => {
+                    return new SafePromise<NewResultType>(onResult => {
                         unsafePromise.handle(
                             error => {
                                 onError(error).handle(res => onResult(res))
@@ -72,14 +75,14 @@ export const createSafePromise = {
         },
     },
     //If a Safe Promise is required, but the result is already known
-    result: <ResultType>(result: ResultType): IOutSafePromise<ResultType> => {
+    result: <ResultType>(result: ResultType): SafePromise<ResultType> => {
         const handler: SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => {
             onResult(result)
         }
-        return new IOutSafePromise<ResultType>(handler)
+        return new SafePromise<ResultType>(handler)
     },
     wrap: <SourceResultType>(promise: IInSafePromise<SourceResultType>) => {
-        return new IOutSafePromise<SourceResultType>(onResult => {
+        return new SafePromise<SourceResultType>(onResult => {
             promise.handle(onResult)
         })
     },

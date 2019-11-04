@@ -10,7 +10,7 @@ import { createUnsafePromise } from "../../create/Promise/Unsafe/createUnsafePro
 import { streamifyArray } from "../../create/Stream/streamifyArray"
 import { InMemoryReadOnlyDictionary} from "../volatile/InMemoryReadOnlyDictionary"
 import { Stream } from "../volatile/Stream"
-import { IOutUnsafePromise } from "../volatile/UnsafePromise"
+import { IUnsafePromise } from "../volatile/UnsafePromise"
 
 export class UnsafeInMemoryDictionary<StoredData, CreateData, OpenData, CustomErrorType> extends InMemoryReadOnlyDictionary<StoredData, OpenData> implements
     IInUnsafeLooseDictionary<CreateData, OpenData, CustomErrorType>,
@@ -30,14 +30,14 @@ export class UnsafeInMemoryDictionary<StoredData, CreateData, OpenData, CustomEr
         this.copier = copier
         this.deleter = deleter
     }
-    public getEntry(entryName: string): IOutUnsafePromise<OpenData, UnsafeEntryDoesNotExistError<CustomErrorType>> {
+    public getEntry(entryName: string): IUnsafePromise<OpenData, UnsafeEntryDoesNotExistError<CustomErrorType>> {
         const entry = this.implementation[entryName]
         if (entry === undefined) {
             return createUnsafePromise.error(["entry does not exist"])
         }
         return createUnsafePromise.success(this.opener(entry, entryName))
     }
-    public copyEntry(sourceName: string, targetName: string): IOutUnsafePromise<null, UnsafeTwoWayError<CustomErrorType>> {
+    public copyEntry(sourceName: string, targetName: string): IUnsafePromise<null, UnsafeTwoWayError<CustomErrorType>> {
         const source = this.implementation[sourceName]
         const doesNotExist = source === undefined
         const alreadyExists = this.implementation[targetName] !== undefined
@@ -47,7 +47,7 @@ export class UnsafeInMemoryDictionary<StoredData, CreateData, OpenData, CustomEr
         this.implementation[targetName] = this.copier(source)
         return createUnsafePromise.success(null)
     }
-    public deleteEntry(entryName: string): IOutUnsafePromise<null, UnsafeEntryDoesNotExistError<CustomErrorType>> {
+    public deleteEntry(entryName: string): IUnsafePromise<null, UnsafeEntryDoesNotExistError<CustomErrorType>> {
         const entry = this.implementation[entryName]
         if (entry === undefined) {
             return createUnsafePromise.error(["entry does not exist"])
@@ -56,12 +56,12 @@ export class UnsafeInMemoryDictionary<StoredData, CreateData, OpenData, CustomEr
         this.deleter(entry)
         return createUnsafePromise.success(null)
     }
-    public getKeys(): IOutUnsafePromise<Stream<string>, CustomErrorType> {
+    public getKeys(): IUnsafePromise<Stream<string>, CustomErrorType> {
         return createUnsafePromise.success(
             streamifyArray(Object.keys(this.implementation), key => key)
         )
     }
-    public createEntry(entryName: string, createData: CreateData): IOutUnsafePromise<null, UnsafeEntryAlreadyExistsError<CustomErrorType>> {
+    public createEntry(entryName: string, createData: CreateData): IUnsafePromise<null, UnsafeEntryAlreadyExistsError<CustomErrorType>> {
         if (this.implementation[entryName] !== undefined) {
             return createUnsafePromise.error(["entry already exists"])
         }
@@ -73,7 +73,7 @@ export class UnsafeInMemoryDictionary<StoredData, CreateData, OpenData, CustomEr
             return null
         })
     }
-    public renameEntry(oldName: string, newName: string): IOutUnsafePromise<null, UnsafeTwoWayError<CustomErrorType>> {
+    public renameEntry(oldName: string, newName: string): IUnsafePromise<null, UnsafeTwoWayError<CustomErrorType>> {
         const entry = this.implementation[oldName]
         const doesNotExist = entry === undefined
         const alreadyExists = this.implementation[newName] !== undefined
