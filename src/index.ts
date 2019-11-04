@@ -15,6 +15,8 @@ export { BuildableStream } from "./classes/BuildableStream"
 export { UnsafeOnOpenResource } from "./classes/UnsafeOnOpenResource"
 export { UnsafePromise } from "./classes/UnsafePromise"
 export { UnsafeResource } from "./classes/UnsafeResource"
+export { WrappedLookup } from "./classes/WrappedLookup"
+export { BuildableLookup } from "./classes/BuildableLookup"
 
 //the create object
 import { createArray } from "./create/Array/createArray"
