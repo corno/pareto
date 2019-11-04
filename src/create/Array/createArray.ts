@@ -1,4 +1,4 @@
-import { IStream, StreamLimiter } from "pareto-api"
+import { IInStream, StreamLimiter } from "pareto-api"
 
 export const createArray = {
     from: {
@@ -13,7 +13,7 @@ export const createArray = {
                 },
             }
         },
-        Stream: <DataType>(stream: IStream<DataType>) => {
+        Stream: <DataType>(stream: IInStream<DataType>) => {
             return {
                 convert: <ElementType>(limiter: StreamLimiter, preparer: (element: DataType) => ElementType, abortHandler: () => void) => {
                     const array: ElementType[] = []

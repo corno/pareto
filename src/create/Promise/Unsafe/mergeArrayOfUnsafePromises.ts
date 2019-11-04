@@ -1,10 +1,10 @@
-import { IUnsafePromise } from "pareto-api"
+import { IInUnsafePromise } from "pareto-api"
 import {
-    UnsafePromise,
-} from "../../../classes/UnsafePromise"
+    IOutUnsafePromise,
+} from "../../../classes/volatile/UnsafePromise"
 
 export function mergeArrayOfUnsafePromises<ResultType, ErrorType>(
-    array: IUnsafePromise<ResultType, ErrorType>[]
+    array: IInUnsafePromise<ResultType, ErrorType>[]
 ) {
     let isExecuted = false
     function execute(onErrors: (errors: ErrorType[]) => void, onSuccess: (results: ResultType[]) => void) {
@@ -51,5 +51,5 @@ export function mergeArrayOfUnsafePromises<ResultType, ErrorType>(
             })
         }
     }
-    return new UnsafePromise<ResultType[], ErrorType[]>(execute)
+    return new IOutUnsafePromise<ResultType[], ErrorType[]>(execute)
 }

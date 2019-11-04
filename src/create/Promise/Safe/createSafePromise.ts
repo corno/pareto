@@ -1,26 +1,26 @@
-import { ISafePromise, IStream, IUnsafeOnOpenResource, IUnsafePromise, StreamLimiter } from "pareto-api"
-import { SafeCallerFunction, SafePromise } from "../../../classes/SafePromise"
+import { IInSafePromise, IInStream, IInUnsafeOnOpenResource, IInUnsafePromise, StreamLimiter } from "pareto-api"
+import { SafeCallerFunction, IOutSafePromise } from "../../../classes/volatile/SafePromise"
 import { processStreamOfSafePromises } from "./processStreamOfSafePromises"
 
 export const createSafePromise = {
     from: {
-        Stream: <DataType>(stream: IStream<DataType>) => {
+        Stream: <DataType>(stream: IInStream<DataType>) => {
             return {
                 aggregateX: (limiter: StreamLimiter, onData: (data: DataType) => void) => {
-                    return new SafePromise<null>(onResult => {
+                    return new IOutSafePromise<null>(onResult => {
                         stream.process(limiter, data => onData(data), () => onResult(null))
                     })
                 },
-                process: (limiter: StreamLimiter, promisify: (entry: DataType) => ISafePromise<null>) => {
+                process: (limiter: StreamLimiter, promisify: (entry: DataType) => IInSafePromise<null>) => {
                     return processStreamOfSafePromises(stream, limiter, promisify)
                 },
             }
         },
-        UnsafeOnOpenResource: <ResourceType, OpenErrorType>(resource: IUnsafeOnOpenResource<ResourceType, OpenErrorType>) => {
+        UnsafeOnOpenResource: <ResourceType, OpenErrorType>(resource: IInUnsafeOnOpenResource<ResourceType, OpenErrorType>) => {
             return {
                 with: <ResultType>(
-                    onOpenError: (error: OpenErrorType) => SafePromise<ResultType>,
-                    onOpenSuccess: (openReource: ResourceType) => SafePromise<ResultType>
+                    onOpenError: (error: OpenErrorType) => IOutSafePromise<ResultType>,
+                    onOpenSuccess: (openReource: ResourceType) => IOutSafePromise<ResultType>
                 ) => {
                     const newFunc: SafeCallerFunction<ResultType> = onResult => {
                         resource.open(
@@ -33,16 +33,16 @@ export const createSafePromise = {
                             }
                         )
                     }
-                    return new SafePromise<ResultType>(newFunc)
+                    return new IOutSafePromise<ResultType>(newFunc)
                 },
             }
         },
-        UnsafePromise: <ResultType, ErrorType>(unsafePromise: IUnsafePromise<ResultType, ErrorType>) => {
+        UnsafePromise: <ResultType, ErrorType>(unsafePromise: IInUnsafePromise<ResultType, ErrorType>) => {
             return {
                 catch: (
                     onError: (error: ErrorType) => ResultType,
                 ) => {
-                    return new SafePromise<ResultType>(onResult => {
+                    return new IOutSafePromise<ResultType>(onResult => {
                         unsafePromise.handle(
                             error => {
                                 onResult(onError(error))
@@ -54,10 +54,10 @@ export const createSafePromise = {
                     })
                 },
                 rework: <NewResultType>(
-                    onError: (error: ErrorType) => ISafePromise<NewResultType>,
-                    onSuccess: (result: ResultType) => ISafePromise<NewResultType>
+                    onError: (error: ErrorType) => IInSafePromise<NewResultType>,
+                    onSuccess: (result: ResultType) => IInSafePromise<NewResultType>
                 ) => {
-                    return new SafePromise<NewResultType>(onResult => {
+                    return new IOutSafePromise<NewResultType>(onResult => {
                         unsafePromise.handle(
                             error => {
                                 onError(error).handle(res => onResult(res))
@@ -72,14 +72,14 @@ export const createSafePromise = {
         },
     },
     //If a Safe Promise is required, but the result is already known
-    result: <ResultType>(result: ResultType): SafePromise<ResultType> => {
+    result: <ResultType>(result: ResultType): IOutSafePromise<ResultType> => {
         const handler: SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => {
             onResult(result)
         }
-        return new SafePromise<ResultType>(handler)
+        return new IOutSafePromise<ResultType>(handler)
     },
-    wrap: <SourceResultType>(promise: ISafePromise<SourceResultType>) => {
-        return new SafePromise<SourceResultType>(onResult => {
+    wrap: <SourceResultType>(promise: IInSafePromise<SourceResultType>) => {
+        return new IOutSafePromise<SourceResultType>(onResult => {
             promise.handle(onResult)
         })
     },

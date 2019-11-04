@@ -1,5 +1,5 @@
-import { Stream } from "../classes/Stream"
-import { createArrayStreamifier } from "../create/Stream/streamifyArray"
+import { createArrayStreamifier } from "../../create/Stream/streamifyArray"
+import { Stream } from "../volatile/Stream"
 
 export class EmptyStream<DataType> extends Stream<DataType> {
     constructor() {

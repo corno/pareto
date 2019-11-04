@@ -1,6 +1,6 @@
 // tslint:disable: no-console
 import { create } from ".."
-import { UnsafeInMemoryDictionary } from "../classes/UnsafeInMemoryDictionary"
+import { UnsafeInMemoryDictionary } from "../classes/heap/UnsafeInMemoryDictionary"
 
 const dict = new UnsafeInMemoryDictionary<string, string, string, null>(
     {},

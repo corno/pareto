@@ -1,6 +1,6 @@
 
-import { IStream } from "pareto-api"
-import { Stream } from "../../classes/Stream"
+import { IInStream } from "pareto-api"
+import { Stream } from "../../classes/volatile/Stream"
 import { streamifyArray } from "./streamifyArray"
 
 export const createStream = {
@@ -18,7 +18,7 @@ export const createStream = {
             }
         },
     },
-    wrap: <DataType>(stream: IStream<DataType>) => {
+    wrap: <DataType>(stream: IInStream<DataType>) => {
         return new Stream<DataType>((limiter, onData, onEnd) => {
             stream.process(limiter, onData, onEnd)
         })

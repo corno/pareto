@@ -1,4 +1,4 @@
-import { IKeyValueStream, KeyValuePair, StreamLimiter } from "pareto-api"
+import { IInKeyValueStream, KeyValuePair, StreamLimiter } from "pareto-api"
 import { Stream } from "./Stream"
 
 type OnData<DataType> = (data: KeyValuePair<DataType>, abort: () => void) => void
@@ -6,7 +6,7 @@ type OnData<DataType> = (data: KeyValuePair<DataType>, abort: () => void) => voi
 export type KeyValueStreamGetter<DataType> = (limiter: StreamLimiter, onData: OnData<DataType>, onEnd: (aborted: boolean) => void) => void
 
 // tslint:disable-next-line: max-classes-per-file
-export class KeyValueStream<DataType> implements IKeyValueStream<DataType> {
+export class KeyValueStream<DataType> implements IInKeyValueStream<DataType> {
     public readonly process: (limiter: StreamLimiter, onData: OnData<DataType>, onEnd: (aborted: boolean) => void) => void
     constructor(
         streamGetter: KeyValueStreamGetter<DataType>,
@@ -39,7 +39,7 @@ export class KeyValueStream<DataType> implements IKeyValueStream<DataType> {
         })
     }
     public toKeysStream() {
-        return new Stream((limiter, onData, onEnd) => {
+        return new Stream<string>((limiter, onData, onEnd) => {
             this.process(limiter, (data, abort) => onData(data.key, abort), onEnd)
         })
     }

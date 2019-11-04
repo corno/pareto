@@ -1,15 +1,15 @@
-import { IStream, IUnsafePromise, StreamLimiter } from "pareto-api"
-import { BuildableStream } from "../../../builders/BuildableStream"
-import { Stream } from "../../../classes/Stream"
-import { UnsafePromise } from "../../../classes/UnsafePromise"
+import { IInStream, IInUnsafePromise, StreamLimiter } from "pareto-api"
+import { BuildableStream } from "../../../classes/builders/BuildableStream"
+import { Stream } from "../../../classes/volatile/Stream"
+import { IOutUnsafePromise } from "../../../classes/volatile/UnsafePromise"
 
 export function mergeStreamOfUnsafePromises<DataType, TargetType, IntermediateErrorType, ErrorType>(
-    stream: IStream<DataType>,
+    stream: IInStream<DataType>,
     limiter: StreamLimiter,
-    promisify: (entry: DataType) => IUnsafePromise<TargetType, IntermediateErrorType>,
+    promisify: (entry: DataType) => IInUnsafePromise<TargetType, IntermediateErrorType>,
     createError: (aborted: boolean, errors: Stream<IntermediateErrorType>) => ErrorType
 ) {
-    return new UnsafePromise<Stream<TargetType>, ErrorType>((onError, onSuccess) => {
+    return new IOutUnsafePromise<Stream<TargetType>, ErrorType>((onError, onSuccess) => {
         let hasErrors = false
         const errors = new BuildableStream<IntermediateErrorType>()
         const results = new BuildableStream<TargetType>()

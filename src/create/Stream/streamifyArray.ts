@@ -1,5 +1,5 @@
 
-import { Stream, StreamGetter } from "../../classes/Stream"
+import { Stream, StreamGetter } from "../../classes/volatile/Stream"
 
 export function createArrayStreamifier<RawElementType, ElementType>(array: RawElementType[], preparer: (element: RawElementType, index: number) => ElementType): StreamGetter<ElementType> {
     return (limiter, onData, onEnd) => {

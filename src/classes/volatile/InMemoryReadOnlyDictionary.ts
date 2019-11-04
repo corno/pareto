@@ -1,15 +1,15 @@
 import {
-    ISafePromise,
-    IUnsafePromise,
+    IInSafePromise,
+    IInUnsafePromise,
     KeyValuePair,
     StreamLimiter,
 } from "pareto-api"
-import { mergeArrayOfUnsafePromises } from "../create/Promise/Unsafe/mergeArrayOfUnsafePromises"
+import { mergeArrayOfUnsafePromises } from "../../create/Promise/Unsafe/mergeArrayOfUnsafePromises"
 import { KeyValueStream } from "./KeyValueStream"
 import { ReadOnlyDictionary } from "./ReadOnlyDictionary"
-import { SafePromise } from "./SafePromise"
+import { IOutSafePromise } from "./SafePromise"
 import { Stream } from "./Stream"
-import { UnsafePromise } from "./UnsafePromise"
+import { IOutUnsafePromise } from "./UnsafePromise"
 
 function arrayToDictionary<Type>(array: Type[], keys: string[]) {
     const dictionary: { [key: string]: Type } = {}
@@ -74,8 +74,8 @@ export class InMemoryReadOnlyDictionary<StoredData, OpenData> {
     public reduceRaw<ResultType>(initialValue: ResultType, callback: (previousValue: ResultType, entry: OpenData, entryName: string) => ResultType) {
         return Object.keys(this.implementation).reduce((previousValue, entryName) => callback(previousValue, this.opener(this.implementation[entryName], entryName), entryName), initialValue)
     }
-    public reduce<ResultType>(initialValue: ResultType, callback: (previousValue: ResultType, entry: OpenData, entryName: string) => ISafePromise<ResultType>) {
-        return new SafePromise<ResultType>(onResult => {
+    public reduce<ResultType>(initialValue: ResultType, callback: (previousValue: ResultType, entry: OpenData, entryName: string) => IInSafePromise<ResultType>) {
+        return new IOutSafePromise<ResultType>(onResult => {
             const keys = Object.keys(this.implementation)
             let currentValue = initialValue
             let currentIndex = 0
@@ -98,7 +98,7 @@ export class InMemoryReadOnlyDictionary<StoredData, OpenData> {
     public toLookup<NewType>(callback: (entry: OpenData, entryName: string) => NewType) {
         return {
             getEntry: (entryName: string) => {
-                return new UnsafePromise<NewType, null>((onError, onSuccess) => {
+                return new IOutUnsafePromise<NewType, null>((onError, onSuccess) => {
                     const entry = this.implementation[entryName]
                     if (entry === undefined) {
                         onError(null)
@@ -109,7 +109,7 @@ export class InMemoryReadOnlyDictionary<StoredData, OpenData> {
             },
         }
     }
-    public mergeUnsafePromises_x<TargetType, NewErrorType>(promisify: (entry: OpenData, entryName: string) => IUnsafePromise<TargetType, NewErrorType>) {
+    public mergeUnsafePromises_x<TargetType, NewErrorType>(promisify: (entry: OpenData, entryName: string) => IInUnsafePromise<TargetType, NewErrorType>) {
         const keys = Object.keys(this.implementation)
         const array = keys.map(key => promisify(this.opener(this.implementation[key], key), key))
         return mergeArrayOfUnsafePromises(array).mapErrorRaw(errors =>

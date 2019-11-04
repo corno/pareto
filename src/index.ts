@@ -2,25 +2,26 @@
 export * from "pareto-api"
 
 //the classes
-export { SafeInMemoryDictionary } from "./classes/SafeInMemoryDictionary"
-export { UnsafeInMemoryDictionary } from "./classes/UnsafeInMemoryDictionary"
-export { InMemoryReadOnlyDictionary } from "./classes/InMemoryReadOnlyDictionary"
-export { ReadOnlyDictionary } from "./classes/ReadOnlyDictionary"
-export { KeyValueStream } from "./classes/KeyValueStream"
-export { Lookup } from "./classes/Lookup"
-export { SafePromise } from "./classes/SafePromise"
-export { FilterResult, Stream } from "./classes/Stream"
-export { UnsafeOnOpenResource } from "./classes/UnsafeOnOpenResource"
-export { UnsafePromise } from "./classes/UnsafePromise"
-export { UnsafeResource } from "./classes/UnsafeResource"
+export { SafeInMemoryDictionary as IOutSafeInMemoryDictionary } from "./classes/heap/SafeInMemoryDictionary"
+export { UnsafeInMemoryDictionary as IOutUnsafeInMemoryDictionary } from "./classes/heap/UnsafeInMemoryDictionary"
+export { InMemoryReadOnlyDictionary as IOutInMemoryReadOnlyDictionary } from "./classes/volatile/InMemoryReadOnlyDictionary"
+export { ReadOnlyDictionary as IOutReadOnlyDictionary } from "./classes/volatile/ReadOnlyDictionary"
+export { KeyValueStream as IOutKeyValueStream } from "./classes/volatile/KeyValueStream"
+export { IOutSafePromise } from "./classes/volatile/SafePromise"
+export { FilterResult, Stream as IOutStream } from "./classes/volatile/Stream"
+export { UnsafeOnOpenResource as IOutUnsafeOnOpenResource } from "./classes/UnsafeOnOpenResource"
+export { IOutUnsafePromise } from "./classes/volatile/UnsafePromise"
+export { UnsafeResource as IOutUnsafeResource } from "./classes/UnsafeResource"
 export { WrappedLookup } from "./classes/WrappedLookup"
+export { Lookup as IOutLookup } from "./classes/Lookup"
+
 
 //the builders
-export { BuildableKeyValueStream } from "./builders/BuildableKeyValueStream"
-export { BuildableLookup } from "./builders/BuildableLookup"
-export { BuildableStream } from "./builders/BuildableStream"
-export { EmptyStream } from "./builders/EmptyStream"
-export { StaticStream } from "./builders/StaticStream"
+export { BuildableKeyValueStream } from "./classes/builders/BuildableKeyValueStream"
+export { BuildableLookup } from "./classes/builders/BuildableLookup"
+export { BuildableStream } from "./classes/builders/BuildableStream"
+export { EmptyStream } from "./classes/builders/EmptyStream"
+export { StaticStream } from "./classes/builders/StaticStream"
 
 //the create object
 import { createArray } from "./create/Array/createArray"
@@ -47,10 +48,10 @@ export const error = create.Promise.unsafe.error
 export const success = create.Promise.unsafe.success
 export const result = create.Promise.safe.result
 
-import { UnsafePromise} from "./classes/UnsafePromise"
+import { IOutUnsafePromise} from "./classes/volatile/UnsafePromise"
 
-export function assertNotNull<InputType, ResultType, ErrorType>(value: null | InputType, onNull: () => ErrorType, onNotNull: (value: InputType) => ResultType): UnsafePromise<ResultType, ErrorType> {
-    return new UnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
+export function assertNotNull<InputType, ResultType, ErrorType>(value: null | InputType, onNull: () => ErrorType, onNotNull: (value: InputType) => ResultType): IOutUnsafePromise<ResultType, ErrorType> {
+    return new IOutUnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
         if (value === null) {
             onError(onNull())
         } else {
@@ -68,8 +69,8 @@ export function onNullableValue<InputType, ResultType>(value: null | InputType, 
 }
 
 
-export function assertTrue<ResultType, ErrorType>(value: boolean, onFalse: () => ErrorType, onTrue: () => ResultType): UnsafePromise<ResultType, ErrorType> {
-    return new UnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
+export function assertTrue<ResultType, ErrorType>(value: boolean, onFalse: () => ErrorType, onTrue: () => ResultType): IOutUnsafePromise<ResultType, ErrorType> {
+    return new IOutUnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
         if (value) {
             onSuccess(onTrue())
         } else {

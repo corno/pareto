@@ -1,19 +1,19 @@
 import {
-    IKeyValueStream,
-    ISafeLookup,
-    ISafePromise,
-    IStream,
-    IUnsafeOnOpenResource,
-    IUnsafePromise,
+    IInKeyValueStream,
+    IInSafeLookup,
+    IInSafePromise,
+    IInStream,
+    IInUnsafeOnOpenResource,
+    IInUnsafePromise,
     StreamLimiter
 } from "pareto-api"
-import { InMemoryReadOnlyDictionary } from "../../../classes/InMemoryReadOnlyDictionary"
-import { ReadOnlyDictionary } from "../../../classes/ReadOnlyDictionary"
-import { Stream } from "../../../classes/Stream"
+import { InMemoryReadOnlyDictionary } from "../../../classes/volatile/InMemoryReadOnlyDictionary"
+import { ReadOnlyDictionary } from "../../../classes/volatile/ReadOnlyDictionary"
+import { Stream } from "../../../classes/volatile/Stream"
 import {
     UnsafeCallerFunction,
-    UnsafePromise,
-} from "../../../classes/UnsafePromise"
+    IOutUnsafePromise,
+} from "../../../classes/volatile/UnsafePromise"
 //import { arrayToDictionary } from "../../../utils"
 import { convertStreamIntoDictionary } from "./convertStreamIntoDictionary"
 import { mergeArrayOfUnsafePromises } from "./mergeArrayOfUnsafePromises"
@@ -33,7 +33,7 @@ export const createUnsafePromise = {
                     }
                     return createUnsafePromise.success<ElementType, ErrorType>(value)
                 },
-                merge: <TargetType, ErrorType>(promisify: (entry: ElementType, index: number) => IUnsafePromise<TargetType, ErrorType>) => {
+                merge: <TargetType, ErrorType>(promisify: (entry: ElementType, index: number) => IInUnsafePromise<TargetType, ErrorType>) => {
                     return mergeArrayOfUnsafePromises(array.map((element, index) => promisify(element, index)))
                 },
             }
@@ -51,7 +51,7 @@ export const createUnsafePromise = {
                 // assign: <ErrorType>(
                 //     name: string,
                 //     createError: () => ErrorType,
-                //     assigner: () => IUnsafePromise<EntryType, ErrorType>
+                //     assigner: () => IInUnsafePromise<EntryType, ErrorType>
                 // ) => {
                 //     const value = dictionary[name]
                 //     if (value === undefined) {
@@ -76,14 +76,14 @@ export const createUnsafePromise = {
                 //     }
                 //     return createUnsafePromise.success<null, ErrorType>(null)
                 // },
-                merge: <TargetType, NewErrorType>(promisify: (entry: OpenData, entryName: string) => IUnsafePromise<TargetType, NewErrorType>) => {
+                merge: <TargetType, NewErrorType>(promisify: (entry: OpenData, entryName: string) => IInUnsafePromise<TargetType, NewErrorType>) => {
                     return dictionary.mergeUnsafePromises_x(promisify)
                 },
                 match: <SupportType, NewErrorType>(
-                    lookup: ISafeLookup<SupportType>,
+                    lookup: IInSafeLookup<SupportType>,
                     missingEntriesErrorCreator: (errors: ReadOnlyDictionary<OpenData>) => NewErrorType
                 ) => {
-                    return new UnsafePromise<ReadOnlyDictionary<{ main: OpenData, support: SupportType }>, NewErrorType>((onError, onSuccess) => {
+                    return new IOutUnsafePromise<ReadOnlyDictionary<{ main: OpenData, support: SupportType }>, NewErrorType>((onError, onSuccess) => {
                         const resultDictionary: { [key: string]: { main: OpenData, support: SupportType } } = {}
                         const errorDictionary: { [key: string]: OpenData } = {}
                         let hasErrors = false
@@ -111,7 +111,7 @@ export const createUnsafePromise = {
                 },
             }
         },
-        KeyValueStream: <DataType>(stream: IKeyValueStream<DataType>) => {
+        KeyValueStream: <DataType>(stream: IInKeyValueStream<DataType>) => {
             return {
                 assertNoDuplicates: <ErrorType>(
                     limiter: StreamLimiter,
@@ -121,10 +121,10 @@ export const createUnsafePromise = {
                 },
                 match: <SupportType, ErrorType>(
                     limiter: StreamLimiter,
-                    lookup: ISafeLookup<SupportType>,
+                    lookup: IInSafeLookup<SupportType>,
                     missingEntriesErrorCreator: (errors: ReadOnlyDictionary<DataType>) => ErrorType
                 ) => {
-                    return new UnsafePromise<ReadOnlyDictionary<{ main: DataType, support: SupportType }>, ErrorType>((onError, onSuccess) => {
+                    return new IOutUnsafePromise<ReadOnlyDictionary<{ main: DataType, support: SupportType }>, ErrorType>((onError, onSuccess) => {
                         //const keys = Object.keys(dictionary)
                         const resultDictionary: { [key: string]: { main: DataType, support: SupportType } } = {}
                         const errorDictionary: { [key: string]: DataType } = {}
@@ -158,24 +158,24 @@ export const createUnsafePromise = {
                 },
             }
         },
-        SafeLookup: <EntryType>(lookup: ISafeLookup<EntryType>) => {
+        SafeLookup: <EntryType>(lookup: IInSafeLookup<EntryType>) => {
             return {
                 getEntry: <ErrorType>(
                     entryName: string,
                     doesNotExistEntryCreator: () => ErrorType
                 ) => {
-                    return new UnsafePromise<EntryType, ErrorType>((onError, onSuccess) => {
+                    return new IOutUnsafePromise<EntryType, ErrorType>((onError, onSuccess) => {
                         lookup.getEntry(entryName).handle(_err => onError(doesNotExistEntryCreator()), onSuccess)
                     })
                 },
             }
         },
-        SafePromise: <Type>(source: ISafePromise<Type>) => {
+        SafePromise: <Type>(source: IInSafePromise<Type>) => {
             return {
                 try: <ResultType, ErrorType>(
-                    onResult: (result: Type) => UnsafePromise<ResultType, ErrorType>
+                    onResult: (result: Type) => IOutUnsafePromise<ResultType, ErrorType>
                 ) => {
-                    return new UnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
+                    return new IOutUnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
                         source.handle(res => {
                             onResult(res).handle(onError, onSuccess)
                         })
@@ -183,22 +183,22 @@ export const createUnsafePromise = {
                 },
             }
         },
-        Stream: <DataType>(stream: IStream<DataType>, ) => {
+        Stream: <DataType>(stream: IInStream<DataType>, ) => {
             return {
                 merge: <TargetType, IntermediateErrorType, ErrorType>(
                     limiter: StreamLimiter,
-                    promisify: (entry: DataType) => IUnsafePromise<TargetType, IntermediateErrorType>,
+                    promisify: (entry: DataType) => IInUnsafePromise<TargetType, IntermediateErrorType>,
                     createError: (aborted: boolean, errors: Stream<IntermediateErrorType>) => ErrorType
                 ) => {
                     return mergeStreamOfUnsafePromises(stream, limiter, promisify, createError)
                 },
             }
         },
-        UnsafeOnOpenResource: <ResourceType, OpenErrorType>(resource: IUnsafeOnOpenResource<ResourceType, OpenErrorType>) => {
+        UnsafeOnOpenResource: <ResourceType, OpenErrorType>(resource: IInUnsafeOnOpenResource<ResourceType, OpenErrorType>) => {
             return {
                 with: <ResultType, PromiseErrorType>(
-                    onOpenError: (error: OpenErrorType) => UnsafePromise<ResultType, PromiseErrorType>,
-                    onOpenSuccess: (openReource: ResourceType) => UnsafePromise<ResultType, PromiseErrorType>
+                    onOpenError: (error: OpenErrorType) => IOutUnsafePromise<ResultType, PromiseErrorType>,
+                    onOpenSuccess: (openReource: ResourceType) => IOutUnsafePromise<ResultType, PromiseErrorType>
                 ) => {
                     const newFunc: UnsafeCallerFunction<ResultType, PromiseErrorType> = (newOnError, newOnSuccess) => {
                         resource.open(
@@ -211,25 +211,25 @@ export const createUnsafePromise = {
                             }
                         )
                     }
-                    return new UnsafePromise<ResultType, PromiseErrorType>(newFunc)
+                    return new IOutUnsafePromise<ResultType, PromiseErrorType>(newFunc)
                 },
             }
         },
     },
-    success: <ResultType, ErrorType>(result: ResultType): UnsafePromise<ResultType, ErrorType> => {
+    success: <ResultType, ErrorType>(result: ResultType): IOutUnsafePromise<ResultType, ErrorType> => {
         const handler: UnsafeCallerFunction<ResultType, ErrorType> = (_onError: (error: ErrorType) => void, onSuccess: (result: ResultType) => void) => {
             onSuccess(result)
         }
-        return new UnsafePromise<ResultType, ErrorType>(handler)
+        return new IOutUnsafePromise<ResultType, ErrorType>(handler)
     },
-    error: <ResultType, ErrorType>(error: ErrorType): UnsafePromise<ResultType, ErrorType> => {
+    error: <ResultType, ErrorType>(error: ErrorType): IOutUnsafePromise<ResultType, ErrorType> => {
         const handler: UnsafeCallerFunction<ResultType, ErrorType> = (onError: (error: ErrorType) => void, _onSuccess: (result: ResultType) => void) => {
             onError(error)
         }
-        return new UnsafePromise<ResultType, ErrorType>(handler)
+        return new IOutUnsafePromise<ResultType, ErrorType>(handler)
     },
-    wrap: <SourceResultType, SourceErrorType>(promise: IUnsafePromise<SourceResultType, SourceErrorType>) => {
-        return new UnsafePromise<SourceResultType, SourceErrorType>((onError, onSucces) => {
+    wrap: <SourceResultType, SourceErrorType>(promise: IInUnsafePromise<SourceResultType, SourceErrorType>) => {
+        return new IOutUnsafePromise<SourceResultType, SourceErrorType>((onError, onSucces) => {
             promise.handle(onError, onSucces)
         })
     },

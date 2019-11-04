@@ -1,5 +1,5 @@
-import { ISafePromise, IStream, StreamLimiter } from "pareto-api"
-import { SafePromise } from "./SafePromise"
+import { IInSafePromise, IInStream, StreamLimiter } from "pareto-api"
+import { IOutSafePromise } from "./SafePromise"
 
 type OnData<DataType> = (data: DataType, abort: () => void) => void
 
@@ -7,7 +7,7 @@ export type StreamGetter<DataType> = (limiter: StreamLimiter, onData: OnData<Dat
 
 export type FilterResult<DataType> = [false] | [true, DataType]
 
-export class Stream<DataType> implements IStream<DataType> {
+export class Stream<DataType> implements IInStream<DataType> {
     public readonly process: (limiter: StreamLimiter, onData: OnData<DataType>, onEnd: (aborted: boolean) => void) => void
     constructor(
         streamGetter: StreamGetter<DataType>,
@@ -40,7 +40,7 @@ export class Stream<DataType> implements IStream<DataType> {
         })
     }
     public filter<NewDataType>(
-        onData: (data: DataType) => ISafePromise<FilterResult<NewDataType>>,
+        onData: (data: DataType) => IInSafePromise<FilterResult<NewDataType>>,
     ): Stream<NewDataType> {
         return new Stream<NewDataType>((newLimiter, newOnData, newOnEnd) => {
             this.process(
@@ -59,7 +59,7 @@ export class Stream<DataType> implements IStream<DataType> {
         })
     }
     public reduce<ResultType>(initialValue: ResultType, onData: (previousValue: ResultType, data: DataType) => ResultType) {
-        return new SafePromise<ResultType>(onResult => {
+        return new IOutSafePromise<ResultType>(onResult => {
             let currentValue = initialValue
             this.process(
                 null, //no limiter

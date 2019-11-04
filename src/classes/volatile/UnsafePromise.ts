@@ -1,6 +1,9 @@
-import { ISafePromise, IUnsafePromise } from "pareto-api"
+import { IInSafePromise, IInUnsafePromise } from "pareto-api"
 
-export class UnsafePromise<ResultType, ErrorType> {
+/**
+ * @deprecated
+ */
+export class IOutUnsafePromise<ResultType, ErrorType> {
     private isCalled: boolean
     private readonly callerFunction: UnsafeCallerFunction<ResultType, ErrorType>
     constructor(callerFunction: UnsafeCallerFunction<ResultType, ErrorType>) {
@@ -23,7 +26,7 @@ export class UnsafePromise<ResultType, ErrorType> {
     public mapResultRaw<NewResultType>(
         onSuccess: (result: ResultType) => NewResultType
     ) {
-        return new UnsafePromise<NewResultType, ErrorType>((newOnError, newOnSuccess) => {
+        return new IOutUnsafePromise<NewResultType, ErrorType>((newOnError, newOnSuccess) => {
             this.handle(
                 err => {
                     newOnError(err)
@@ -35,9 +38,9 @@ export class UnsafePromise<ResultType, ErrorType> {
         })
     }
     public mapResult<NewResultType>(
-        onSuccess: (result: ResultType) => ISafePromise<NewResultType>
+        onSuccess: (result: ResultType) => IInSafePromise<NewResultType>
     ) {
-        return new UnsafePromise<NewResultType, ErrorType>((newOnError, newOnSuccess) => {
+        return new IOutUnsafePromise<NewResultType, ErrorType>((newOnError, newOnSuccess) => {
             this.handle(
                 err => {
                     newOnError(err)
@@ -53,7 +56,7 @@ export class UnsafePromise<ResultType, ErrorType> {
     public mapErrorRaw<NewErrorType>(
         onError: (error: ErrorType) => NewErrorType,
     ) {
-        return new UnsafePromise<ResultType, NewErrorType>((newOnError, newOnSuccess) => {
+        return new IOutUnsafePromise<ResultType, NewErrorType>((newOnError, newOnSuccess) => {
             this.handle(
                 err => {
                     newOnError(onError(err))
@@ -65,9 +68,9 @@ export class UnsafePromise<ResultType, ErrorType> {
         })
     }
     public try<NewResultType>(
-        onSuccess: (result: ResultType) => IUnsafePromise<NewResultType, ErrorType>
+        onSuccess: (result: ResultType) => IInUnsafePromise<NewResultType, ErrorType>
     ) {
-        return new UnsafePromise<NewResultType, ErrorType>((newOnError, newOnSuccess) => {
+        return new IOutUnsafePromise<NewResultType, ErrorType>((newOnError, newOnSuccess) => {
             this.handle(
                 err => {
                     newOnError(err)
@@ -79,9 +82,9 @@ export class UnsafePromise<ResultType, ErrorType> {
         })
     }
     public tryToCatch<NewErrorType>(
-        onError: (error: ErrorType) => IUnsafePromise<ResultType, NewErrorType>,
+        onError: (error: ErrorType) => IInUnsafePromise<ResultType, NewErrorType>,
     ) {
-        return new UnsafePromise<ResultType, NewErrorType>((newOnError, newOnSuccess) => {
+        return new IOutUnsafePromise<ResultType, NewErrorType>((newOnError, newOnSuccess) => {
             this.handle(
                 err => {
                     onError(err).handle(newOnError, newOnSuccess)
@@ -93,7 +96,7 @@ export class UnsafePromise<ResultType, ErrorType> {
         })
     }
     public invert() {
-        return new UnsafePromise<ErrorType, ResultType>((newOnError, newOnSuccess) => {
+        return new IOutUnsafePromise<ErrorType, ResultType>((newOnError, newOnSuccess) => {
             this.handle(
                 err => {
                     newOnSuccess(err)
@@ -105,10 +108,10 @@ export class UnsafePromise<ResultType, ErrorType> {
         })
     }
     public rework<NewResultType, NewErrorType>(
-        onError: (error: ErrorType) => IUnsafePromise<NewResultType, NewErrorType>,
-        onSuccess: (result: ResultType) => IUnsafePromise<NewResultType, NewErrorType>
+        onError: (error: ErrorType) => IInUnsafePromise<NewResultType, NewErrorType>,
+        onSuccess: (result: ResultType) => IInUnsafePromise<NewResultType, NewErrorType>
     ) {
-        return new UnsafePromise<NewResultType, NewErrorType>((newOnError, newOnSuccess) => {
+        return new IOutUnsafePromise<NewResultType, NewErrorType>((newOnError, newOnSuccess) => {
             this.handle(
                 err => {
                     onError(err).handle(newOnError, newOnSuccess)
