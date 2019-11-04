@@ -20,6 +20,7 @@ export { BuildableKeyValueStream } from "./builders/BuildableKeyValueStream"
 export { BuildableLookup } from "./builders/BuildableLookup"
 export { BuildableStream } from "./builders/BuildableStream"
 export { EmptyStream } from "./builders/EmptyStream"
+export { StaticStream } from "./builders/StaticStream"
 
 //the create object
 import { createArray } from "./create/Array/createArray"
