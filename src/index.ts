@@ -2,6 +2,12 @@
 export * from "pareto-api"
 
 export {
+    assertUnreachable,
+    assertNotNull,
+    assertTrue,
+
+    buildStream,
+
     error,
 
     EmptyStream,
@@ -16,6 +22,9 @@ export {
     IUnsafeResource,
     IUnsafeOpenedResource,
     ISafeOpenedResource,
+
+    onBoolean,
+    onNullableValue,
 
     result,
 
