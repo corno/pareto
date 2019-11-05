@@ -1,10 +1,8 @@
 import {
-    BaseDictionary,
     error,
     IKeyValueStream,
     KeyValueStream,
     mergeStreamOfUnsafePromises,
-    ReadOnlyDictionary,
     Stream,
     streamifyDictionary,
     success,
@@ -39,79 +37,6 @@ export const createUnsafePromise = {
                 // tryAll: <TargetType, ErrorType>(promisify: (entry: ElementType, index: number) => IInUnsafePromise<TargetType, ErrorType>) => {
                 //     return mergeArrayOfUnsafePromises(array.map((element, index) => promisify(element, index)))
                 // },
-            }
-        },
-        Dictionary: <StoredData, OpenData>(dictionary: BaseDictionary<StoredData, OpenData>) => {
-            return {
-                // assertEntryDoesNotExistX: (name: string) => {
-                //     const value = dictionary[name]
-                //     if (value === undefined) {
-                //         return createUnsafePromise.success<null, EntryType>(null)
-
-                //     }
-                //     return createUnsafePromise.error<null, EntryType>(value)
-                // },
-                // assign: <ErrorType>(
-                //     name: string,
-                //     createError: () => ErrorType,
-                //     assigner: () => IInUnsafePromise<EntryType, ErrorType>
-                // ) => {
-                //     const value = dictionary[name]
-                //     if (value === undefined) {
-                //         return new UnsafePromise((onError, onSuccess) => {
-                //             assigner().handle(onError, onSuccess)
-                //         })
-                //     }
-                //     return createUnsafePromise.error<EntryType, ErrorType>(createError())
-                // },
-                // rename: <ErrorType>(
-                //     oldName: string,
-                //     newName: string,
-                //     createExistsError: () => ErrorType,
-                //     createDoesNotExistError: () => ErrorType
-                // ) => {
-                //     const value = dictionary[oldName]
-                //     if (value === undefined) {
-                //         return createDoesNotExistError()
-                //     }
-                //     if (dictionary[newName] !== undefined) {
-                //         return createExistsError()
-                //     }
-                //     return createUnsafePromise.success<null, ErrorType>(null)
-                // },
-                // tryAll: <TargetType, NewErrorType>(promisify: (entry: OpenData, entryName: string) => IInUnsafePromise<TargetType, NewErrorType>) => {
-                //     return dictionary.mergeUnsafePromises_x(promisify)
-                // },
-                match: <SupportType, NewErrorType>(
-                    lookup: IInSafeLookup<SupportType>,
-                    missingEntriesErrorCreator: (errors: ReadOnlyDictionary<OpenData>) => NewErrorType
-                ) => {
-                    return new UnsafePromise<ReadOnlyDictionary<{ main: OpenData, support: SupportType }>, NewErrorType>((onError, onSuccess) => {
-                        const resultDictionary: { [key: string]: { main: OpenData, support: SupportType } } = {}
-                        const errorDictionary: { [key: string]: OpenData } = {}
-                        let hasErrors = false
-                        //FIX make this work asynchronously
-                        dictionary.forEach((entry, key) => {
-                            lookup.getEntry(key).handle(
-                                _err => {
-                                    hasErrors = true
-                                    errorDictionary[key] = entry
-                                },
-                                supportEntry => {
-                                    resultDictionary[key] = {
-                                        main: entry,
-                                        support: supportEntry,
-                                    }
-                                }
-                            )
-                        })
-                        if (hasErrors) {
-                            onError(missingEntriesErrorCreator(new ReadOnlyDictionary(errorDictionary)))
-                        } else {
-                            onSuccess(new ReadOnlyDictionary(resultDictionary))
-                        }
-                    })
-                },
             }
         },
         KeyValueStream: <DataType>(stream: IInKeyValueStream<DataType>) => {
