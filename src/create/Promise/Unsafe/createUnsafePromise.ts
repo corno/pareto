@@ -1,10 +1,8 @@
 import {
     BaseDictionary,
-    convertStreamIntoDictionary,
     error,
     IKeyValueStream,
     KeyValueStream,
-    mergeArrayOfUnsafePromises,
     mergeStreamOfUnsafePromises,
     ReadOnlyDictionary,
     Stream,
@@ -38,9 +36,9 @@ export const createUnsafePromise = {
                     }
                     return success<ElementType, ErrorType>(value)
                 },
-                tryAll: <TargetType, ErrorType>(promisify: (entry: ElementType, index: number) => IInUnsafePromise<TargetType, ErrorType>) => {
-                    return mergeArrayOfUnsafePromises(array.map((element, index) => promisify(element, index)))
-                },
+                // tryAll: <TargetType, ErrorType>(promisify: (entry: ElementType, index: number) => IInUnsafePromise<TargetType, ErrorType>) => {
+                //     return mergeArrayOfUnsafePromises(array.map((element, index) => promisify(element, index)))
+                // },
             }
         },
         Dictionary: <StoredData, OpenData>(dictionary: BaseDictionary<StoredData, OpenData>) => {
@@ -118,12 +116,12 @@ export const createUnsafePromise = {
         },
         KeyValueStream: <DataType>(stream: IInKeyValueStream<DataType>) => {
             return {
-                assertNoDuplicates: <ErrorType>(
-                    limiter: StreamLimiter,
-                    keyConflictErrorCreator: (aborted: boolean, errors: ReadOnlyDictionary<DataType[]>) => ErrorType
-                ) => {
-                    return convertStreamIntoDictionary(stream, limiter, keyConflictErrorCreator)
-                },
+                // assertNoDuplicates: <ErrorType>(
+                //     limiter: StreamLimiter,
+                //     keyConflictErrorCreator: (aborted: boolean, errors: ReadOnlyDictionary<DataType[]>) => ErrorType
+                // ) => {
+                //     return convertStreamIntoDictionary(stream, limiter, keyConflictErrorCreator)
+                // },
                 match: <SupportType, ErrorType>(
                     limiter: StreamLimiter,
                     lookup: IInSafeLookup<SupportType>,
