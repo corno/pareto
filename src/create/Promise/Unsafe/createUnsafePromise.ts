@@ -7,7 +7,8 @@ import {
     IInUnsafePromise,
     StreamLimiter
 } from "pareto-api"
-import { InMemoryReadOnlyDictionary } from "../../../classes/volatile/InMemoryReadOnlyDictionary"
+import { InMemoryReadOnlyDictionary, createDictionaryStreamifier } from "../../../classes/volatile/InMemoryReadOnlyDictionary"
+import { KeyValueStream } from "../../../classes/volatile/KeyValueStream"
 import { ReadOnlyDictionary } from "../../../classes/volatile/ReadOnlyDictionary"
 import { Stream } from "../../../classes/volatile/Stream"
 import {
@@ -19,6 +20,7 @@ import { IUnsafePromise } from "../../../interfaces/IUnsafePromise"
 import { convertStreamIntoDictionary } from "./convertStreamIntoDictionary"
 import { mergeArrayOfUnsafePromises } from "./mergeArrayOfUnsafePromises"
 import { mergeStreamOfUnsafePromises } from "./mergeStreamOfUnsafePromises"
+import { IKeyValueStream } from "../../../interfaces/IKeyValueStream"
 
 export const createUnsafePromise = {
     from: {
@@ -123,9 +125,9 @@ export const createUnsafePromise = {
                 match: <SupportType, ErrorType>(
                     limiter: StreamLimiter,
                     lookup: IInSafeLookup<SupportType>,
-                    missingEntriesErrorCreator: (errors: ReadOnlyDictionary<DataType>) => ErrorType
+                    missingEntriesErrorCreator: (errors: IKeyValueStream<DataType>) => ErrorType
                 ) => {
-                    return new UnsafePromise<ReadOnlyDictionary<{ main: DataType, support: SupportType }>, ErrorType>((onError, onSuccess) => {
+                    return new UnsafePromise<IKeyValueStream<{ main: DataType, support: SupportType }>, ErrorType>((onError, onSuccess) => {
                         //const keys = Object.keys(dictionary)
                         const resultDictionary: { [key: string]: { main: DataType, support: SupportType } } = {}
                         const errorDictionary: { [key: string]: DataType } = {}
@@ -149,9 +151,9 @@ export const createUnsafePromise = {
                             },
                             _aborted => {
                                 if (hasErrors) {
-                                    onError(missingEntriesErrorCreator(new ReadOnlyDictionary(errorDictionary)))
+                                    onError(missingEntriesErrorCreator(new KeyValueStream(createDictionaryStreamifier(errorDictionary))))
                                 } else {
-                                    onSuccess(new ReadOnlyDictionary(resultDictionary))
+                                    onSuccess(new KeyValueStream(createDictionaryStreamifier(resultDictionary)))
                                 }
                             }
                         )

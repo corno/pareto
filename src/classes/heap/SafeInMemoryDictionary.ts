@@ -10,8 +10,9 @@ import { result } from "../../create/Promise/Safe/createSafePromise"
 import { error, success } from "../../create/Promise/Unsafe/createUnsafePromise"
 import { streamifyArray } from "../../create/Stream/streamifyArray"
 import { IUnsafePromise } from "../../interfaces/IUnsafePromise"
-import { wrap} from "../../wrap"
-import { InMemoryReadOnlyDictionary} from "../volatile/InMemoryReadOnlyDictionary"
+import { wrap } from "../../wrap"
+import { createDictionaryStreamifier, InMemoryReadOnlyDictionary } from "../volatile/InMemoryReadOnlyDictionary"
+import { KeyValueStream } from "../volatile/KeyValueStream"
 import { SafePromise } from "../volatile/SafePromise"
 import { Stream } from "../volatile/Stream"
 
@@ -38,6 +39,11 @@ export class SafeInMemoryDictionary<StoredData, CreateData, OpenData> implements
     }
     public toReadOnlyDictionary() {
         return new InMemoryReadOnlyDictionary(this.implementation, this.opener)
+    }
+    public toStream() {
+        return new KeyValueStream<StoredData>(
+            createDictionaryStreamifier(this.implementation)
+        ).mapDataRaw<OpenData>((entry, entryName) => this.opener(entry, entryName))
     }
     public copyEntry(sourceName: string, targetName: string): IUnsafePromise<null, SafeTwoWayError> {
         const source = this.implementation[sourceName]

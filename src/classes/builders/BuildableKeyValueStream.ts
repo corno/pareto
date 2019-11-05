@@ -6,7 +6,7 @@ export class BuildableKeyValueStream<DataType> extends KeyValueStream<DataType> 
     constructor() {
         const dictionary: { [key: string]: DataType } = {}
 
-        super(createDictionaryStreamifier(dictionary, (x => x)))
+        super(createDictionaryStreamifier(dictionary))
         this.dictionary = dictionary
     }
     public set(key: string, element: DataType) {

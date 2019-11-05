@@ -1,4 +1,7 @@
-import { IInKeyValueStream, KeyValuePair, StreamLimiter } from "pareto-api"
+import { IInSafePromise, KeyValuePair, StreamLimiter } from "pareto-api"
+import { IKeyValueStream } from "../../interfaces/IKeyValueStream"
+import { ISafePromise } from "../../interfaces/ISafePromise"
+import { SafePromise } from "./SafePromise"
 import { Stream } from "./Stream"
 
 type OnData<DataType> = (data: KeyValuePair<DataType>, abort: () => void) => void
@@ -6,14 +9,30 @@ type OnData<DataType> = (data: KeyValuePair<DataType>, abort: () => void) => voi
 export type KeyValueStreamGetter<DataType> = (limiter: StreamLimiter, onData: OnData<DataType>, onEnd: (aborted: boolean) => void) => void
 
 // tslint:disable-next-line: max-classes-per-file
-export class KeyValueStream<DataType> implements IInKeyValueStream<DataType> {
+export class KeyValueStream<DataType> implements IKeyValueStream<DataType> {
     public readonly process: (limiter: StreamLimiter, onData: OnData<DataType>, onEnd: (aborted: boolean) => void) => void
     constructor(
         streamGetter: KeyValueStreamGetter<DataType>,
     ) {
         this.process = streamGetter
     }
-    public mapData<NewDataType>(onData: (data: DataType, key: string) => NewDataType): KeyValueStream<NewDataType> {
+    public reduce<ResultType>(initialValue: ResultType, onData: (previousValue: ResultType, data: DataType, key: string) => IInSafePromise<ResultType>): ISafePromise<ResultType> {
+        return new SafePromise<ResultType>(onResult => {
+            let currentValue = initialValue
+            this.process(
+                null, //no limiter
+                (data, _abort) => {
+                    onData(currentValue, data.value, data.key).handle(result => {
+                        currentValue = result
+                    })
+                },
+                _aborted => {
+                    onResult(currentValue)
+                }
+            )
+        })
+    }
+    public mapDataRaw<NewDataType>(onData: (data: DataType, key: string) => NewDataType): IKeyValueStream<NewDataType> {
         return new KeyValueStream<NewDataType>((newLimiter, newOnData, newOnEnd) => {
             this.process(
                 newLimiter,
@@ -22,7 +41,7 @@ export class KeyValueStream<DataType> implements IInKeyValueStream<DataType> {
             )
         })
     }
-    public filter<NewDataType>(
+    public filterRaw<NewDataType>(
         onData: (data: DataType, key: string) => [false] | [true, NewDataType],
     ): KeyValueStream<NewDataType> {
         return new KeyValueStream<NewDataType>((newLimiter, newOnData, newOnEnd) => {

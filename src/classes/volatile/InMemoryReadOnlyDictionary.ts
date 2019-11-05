@@ -19,7 +19,7 @@ function arrayToDictionary<Type>(array: Type[], keys: string[]) {
     return new ReadOnlyDictionary<Type>(dictionary)
 }
 
-export function createDictionaryStreamifier<RawElementType, ElementType>(dictionary: { [key: string]: RawElementType }, preparer: (element: RawElementType, key: string) => ElementType) {
+export function createDictionaryStreamifier<ElementType>(dictionary: { [key: string]: ElementType }) {
     const keys = Object.keys(dictionary)
     return (limiter: StreamLimiter, onData: (data: KeyValuePair<ElementType>, abort: () => void) => void, onEnd: (aborted: boolean) => void) => {
         function pushData(theArray: string[], limited: boolean) {
@@ -27,7 +27,7 @@ export function createDictionaryStreamifier<RawElementType, ElementType>(diction
             theArray.forEach(key => {
                 if (!abort) {
                     onData(
-                        { key: key, value: preparer(dictionary[key], key) },
+                        { key: key, value: dictionary[key]},
                         () => {
                             abort = true
                         }
@@ -59,9 +59,9 @@ export class InMemoryReadOnlyDictionary<StoredData, OpenData> {
         this.opener = opener
     }
     public toStream() {
-        return new KeyValueStream<OpenData>(
-            createDictionaryStreamifier(this.implementation, (entry, entryName) => this.opener(entry, entryName))
-        )
+        return new KeyValueStream<StoredData>(
+            createDictionaryStreamifier(this.implementation)
+        ).mapDataRaw<OpenData>((entry, entryName) => this.opener(entry, entryName))
     }
     public toKeysStream() {
         return new Stream<string>((_limiter, onData, onEnd) => {
