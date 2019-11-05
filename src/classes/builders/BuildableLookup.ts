@@ -1,11 +1,11 @@
 
-import { IInSafeLookup } from "pareto-api"
 import { error, success } from "../../index"
+import { ILookup } from "../../interfaces/ILookup"
 import { IUnsafePromise} from "../../interfaces/IUnsafePromise"
 
 
 // tslint:disable-next-line: max-classes-per-file
-export class BuildableLookup<DataType> implements IInSafeLookup<DataType> {
+export class BuildableLookup<DataType> implements ILookup<DataType> {
     private readonly dictionary: { [key: string]: DataType } = {}
     public set(key: string, element: DataType) {
         this.dictionary[key] = element
