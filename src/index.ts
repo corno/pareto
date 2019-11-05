@@ -26,6 +26,8 @@ export {
     onBoolean,
     onNullableValue,
 
+    ReadOnlyDictionary,
+
     result,
 
     SafeMutableDictionary,
