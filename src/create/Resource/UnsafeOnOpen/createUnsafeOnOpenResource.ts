@@ -1,5 +1,5 @@
 import { IInUnsafeOnOpenResource, IInUnsafeResource } from "pareto-api"
-import { UnsafeOnOpenResource } from "../../../classes/UnsafeOnOpenResource"
+import { UnsafeOnOpenResource } from "../../../../../pareto-20/src/UnsafeOnOpenResource"
 
 export const createUnsafeOnOpenResource = {
     from: {

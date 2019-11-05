@@ -1,6 +1,6 @@
 import { IInKeyValueStream, IInSafePromise, IInStream, IInUnsafeOnOpenResource, IInUnsafePromise, IInUnsafeResource } from "pareto-api"
-import { UnsafeOnOpenResource } from "./classes/UnsafeOnOpenResource"
-import { UnsafeResource } from "./classes/UnsafeResource"
+import { UnsafeOnOpenResource } from "../../pareto-20/src/UnsafeOnOpenResource"
+import { UnsafeResource } from "../../pareto-20/src/UnsafeResource"
 import { KeyValueStream } from "./classes/volatile/KeyValueStream"
 import { SafePromise } from "./classes/volatile/SafePromise"
 import { Stream } from "./classes/volatile/Stream"
@@ -8,10 +8,10 @@ import { UnsafePromise } from "./classes/volatile/UnsafePromise"
 
 import { IKeyValueStream } from "./interfaces/IKeyValueStream"
 import { ISafePromise } from "./interfaces/ISafePromise"
-import { IUnsafePromise } from "./interfaces/IUnsafePromise"
 import { IStream } from "./interfaces/IStream"
-import { IUnsafeResource } from "./interfaces/IUnsafeResource"
 import { IUnsafeOnOpenResource } from "./interfaces/IUnsafeOnOpenResource"
+import { IUnsafePromise } from "./interfaces/IUnsafePromise"
+import { IUnsafeResource } from "./interfaces/IUnsafeResource"
 
 export const wrap = {
     KeyValueStream: <DataType>(stream: IInKeyValueStream<DataType>): IKeyValueStream<DataType> => {

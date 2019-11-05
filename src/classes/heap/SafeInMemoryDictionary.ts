@@ -60,7 +60,7 @@ export class SafeInMemoryDictionary<StoredData, CreateData, OpenData> implements
     }
     public getKeys(): SafePromise<Stream<string>> {
         return result(
-            streamifyArray(Object.keys(this.implementation), key => key)
+            new Stream<string>(streamifyArray(Object.keys(this.implementation)))
         )
     }
     public getEntry(entryName: string): IUnsafePromise<OpenData, SafeEntryDoesNotExistError> {

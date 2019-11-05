@@ -59,7 +59,7 @@ export class UnsafeInMemoryDictionary<StoredData, CreateData, OpenData, CustomEr
     }
     public getKeys(): IUnsafePromise<Stream<string>, CustomErrorType> {
         return success(
-            streamifyArray(Object.keys(this.implementation), key => key)
+            new Stream<string>(streamifyArray(Object.keys(this.implementation)))
         )
     }
     public createEntry(entryName: string, createData: CreateData): IUnsafePromise<null, UnsafeEntryAlreadyExistsError<CustomErrorType>> {

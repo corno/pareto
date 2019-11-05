@@ -1,15 +1,13 @@
 import { IInSafePromise, IInStream, StreamLimiter } from "pareto-api"
-import { SafePromise } from "./SafePromise"
 import { ISafePromise } from "../../interfaces/ISafePromise"
+import { SafePromise } from "./SafePromise"
 
-type OnData<DataType> = (data: DataType, abort: () => void) => void
-
-export type StreamGetter<DataType> = (limiter: StreamLimiter, onData: OnData<DataType>, onEnd: (aborted: boolean) => void) => void
+export type StreamGetter<DataType> = (limiter: StreamLimiter, onData: (data: DataType, abort: () => void) => void, onEnd: (aborted: boolean) => void) => void
 
 export type FilterResult<DataType> = [false] | [true, DataType]
 
 export class Stream<DataType> implements IInStream<DataType> {
-    public readonly process: (limiter: StreamLimiter, onData: OnData<DataType>, onEnd: (aborted: boolean) => void) => void
+    public readonly process: StreamGetter<DataType>
     constructor(
         streamGetter: StreamGetter<DataType>,
     ) {

@@ -15,27 +15,23 @@ export { ISafeOpenedResource } from "./interfaces/ISafeOpenedResource"
 //the classes
 export { SafeInMemoryDictionary } from "./classes/heap/SafeInMemoryDictionary"
 export { UnsafeInMemoryDictionary } from "./classes/heap/UnsafeInMemoryDictionary"
-export { ReadOnlyDictionary as IOutReadOnlyDictionary } from "./classes/volatile/ReadOnlyDictionary"
-export { WrappedLookup } from "./classes/WrappedLookup"
+//export { ReadOnlyDictionary as IOutReadOnlyDictionary } from "./classes/volatile/ReadOnlyDictionary"
 
 //the builders
-export { BuildableKeyValueStream } from "./classes/builders/BuildableKeyValueStream"
-export { BuildableLookup } from "./classes/builders/BuildableLookup"
-export { BuildableStream } from "./classes/builders/BuildableStream"
+//export { BuildableKeyValueStream } from "./classes/builders/BuildableKeyValueStream"
+//export { BuildableLookup } from "./classes/builders/BuildableLookup"
+//export { BuildableStream } from "./classes/builders/BuildableStream"
 export { EmptyStream } from "./classes/builders/EmptyStream"
 export { StaticLookup } from "./classes/builders/StaticLookup"
 export { StaticStream } from "./classes/builders/StaticStream"
 
 //the create object
-import { createArray } from "./create/Array/createArray"
 import { createSafePromise } from "./create/Promise/Safe/createSafePromise"
 import { createUnsafePromise } from "./create/Promise/Unsafe/createUnsafePromise"
 import { createUnsafeResource } from "./create/Resource/Unsafe/createUnsafeResource"
 import { createUnsafeOnOpenResource } from "./create/Resource/UnsafeOnOpen/createUnsafeOnOpenResource"
-import { createStream } from "./create/Stream/createStream"
 
 export const create = {
-    Array: createArray,
     Promise: {
         safe: createSafePromise,
         unsafe: createUnsafePromise,
@@ -44,7 +40,6 @@ export const create = {
         unsafeOnOpen: createUnsafeOnOpenResource,
         unsafe: createUnsafeResource,
     },
-    Stream: createStream,
 }
 
 export { error } from "./create/Promise/Unsafe/createUnsafePromise"

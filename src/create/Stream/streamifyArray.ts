@@ -1,14 +1,14 @@
 
-import { Stream, StreamGetter } from "../../classes/volatile/Stream"
+import { StreamGetter } from "../../classes/volatile/Stream"
 
-export function createArrayStreamifier<RawElementType, ElementType>(array: RawElementType[], preparer: (element: RawElementType, index: number) => ElementType): StreamGetter<ElementType> {
+export function streamifyArray<ElementType>(array: ElementType[]): StreamGetter<ElementType> {
     return (limiter, onData, onEnd) => {
-        function pushData(theArray: RawElementType[], limited: boolean) {
+        function pushData(theArray: ElementType[], limited: boolean) {
             let abort = false
-            theArray.forEach((element, index) => {
+            theArray.forEach(element => {
                 if (!abort) {
                     onData(
-                        preparer(element, index),
+                        element,
                         () => {
                             abort = true
                         }
@@ -27,8 +27,4 @@ export function createArrayStreamifier<RawElementType, ElementType>(array: RawEl
             pushData(array, false)
         }
     }
-}
-
-export function streamifyArray<RawElementType, ElementType>(array: RawElementType[], preparer: (element: RawElementType, index: number) => ElementType) {
-    return new Stream<ElementType>(createArrayStreamifier(array, preparer))
 }
