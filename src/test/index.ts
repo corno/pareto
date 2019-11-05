@@ -2,7 +2,6 @@
 import { success, UnsafeMutableDictionary } from "pareto-20"
 
 const dict = new UnsafeMutableDictionary<string, string, string, null>(
-    {},
     data => success<string, null>(data),
     data => data,
     data => data,
