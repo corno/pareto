@@ -13,7 +13,7 @@ export class Stream<DataType> implements IInStream<DataType> {
     ) {
         this.process = streamGetter
     }
-    public mapData<NewDataType>(onData: (data: DataType) => NewDataType): Stream<NewDataType> {
+    public mapDataRaw<NewDataType>(onData: (data: DataType) => NewDataType): Stream<NewDataType> {
         return new Stream<NewDataType>((newLimiter, newOnData, newOnEnd) => {
             this.process(
                 newLimiter,
@@ -57,7 +57,7 @@ export class Stream<DataType> implements IInStream<DataType> {
             )
         })
     }
-    public reduce<ResultType>(initialValue: ResultType, onData: (previousValue: ResultType, data: DataType) => ResultType): ISafePromise<ResultType> {
+    public reduceRaw<ResultType>(initialValue: ResultType, onData: (previousValue: ResultType, data: DataType) => ResultType): ISafePromise<ResultType> {
         return new SafePromise<ResultType>(onResult => {
             let currentValue = initialValue
             this.process(

@@ -1,16 +1,25 @@
-import { IInKeyValueStream, IInSafePromise, IInStream, IInUnsafeOnOpenResource, IInUnsafePromise, IInUnsafeResource } from "pareto-api"
-import { UnsafeOnOpenResource } from "../../pareto-20/src/UnsafeOnOpenResource"
-import { UnsafeResource } from "../../pareto-20/src/UnsafeResource"
+import { IInKeyValueStream, IInSafePromise, IInSafeResource, IInStream, IInUnsafeOnCloseResource, IInUnsafeOnOpenResource, IInUnsafePromise, IInUnsafeResource } from "pareto-api"
+
+import { SafeResource } from "./classes/resources/SafeResource"
+import { UnsafeOnCloseResource } from "./classes/resources/UnsafeOnCloseResource"
+import { UnsafeOnOpenResource } from "./classes/resources/UnsafeOnOpenResource"
+import { UnsafeResource } from "./classes/resources/UnsafeResource"
+
 import { KeyValueStream } from "./classes/volatile/KeyValueStream"
-import { SafePromise } from "./classes/volatile/SafePromise"
 import { Stream } from "./classes/volatile/Stream"
+
+import { SafePromise } from "./classes/volatile/SafePromise"
 import { UnsafePromise } from "./classes/volatile/UnsafePromise"
 
-import { IKeyValueStream } from "./interfaces/IKeyValueStream"
 import { ISafePromise } from "./interfaces/ISafePromise"
-import { IStream } from "./interfaces/IStream"
-import { IUnsafeOnOpenResource } from "./interfaces/IUnsafeOnOpenResource"
 import { IUnsafePromise } from "./interfaces/IUnsafePromise"
+
+import { IKeyValueStream } from "./interfaces/IKeyValueStream"
+import { IStream } from "./interfaces/IStream"
+
+import { ISafeResource } from "./interfaces/ISafeResource"
+import { IUnsafeOnCloseResource } from "./interfaces/IUnsafeOnCloseResource"
+import { IUnsafeOnOpenResource } from "./interfaces/IUnsafeOnOpenResource"
 import { IUnsafeResource } from "./interfaces/IUnsafeResource"
 
 export const wrap = {
@@ -29,6 +38,13 @@ export const wrap = {
             promise.handle(onError, onSucces)
         })
     },
+    SafeResource: <T>(safeResource: IInSafeResource<T>): ISafeResource<T> => {
+        return new SafeResource<T>(onOpened => {
+            safeResource.open(openedResource => {
+                onOpened(openedResource.resource, openedResource.close)
+            })
+        })
+    },
     UnsafeResource: <T, OpenError, CloseError>(unsafeResource: IInUnsafeResource<T, OpenError, CloseError>): IUnsafeResource<T, OpenError, CloseError> => {
         return new UnsafeResource<T, OpenError, CloseError>((onError, onOpened) => {
             unsafeResource.open(onError, openedResource => {
@@ -39,6 +55,13 @@ export const wrap = {
     UnsafeOnOpenResource: <T, OpenError>(unsafeOnOpenResource: IInUnsafeOnOpenResource<T, OpenError>): IUnsafeOnOpenResource<T, OpenError> => {
         return new UnsafeOnOpenResource<T, OpenError>((onError, onOpened) => {
             unsafeOnOpenResource.open(onError, openedResource => {
+                onOpened(openedResource.resource, openedResource.close)
+            })
+        })
+    },
+    UnsafeOnCloseResource: <T, CloseError>(unsafeOnCloseResource: IInUnsafeOnCloseResource<T, CloseError>): IUnsafeOnCloseResource<T, CloseError> => {
+        return new UnsafeOnCloseResource<T, CloseError>(onOpened => {
+            unsafeOnCloseResource.open(openedResource => {
                 onOpened(openedResource.resource, openedResource.close)
             })
         })
