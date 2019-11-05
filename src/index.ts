@@ -23,6 +23,7 @@ export { BuildableKeyValueStream } from "./classes/builders/BuildableKeyValueStr
 export { BuildableLookup } from "./classes/builders/BuildableLookup"
 export { BuildableStream } from "./classes/builders/BuildableStream"
 export { EmptyStream } from "./classes/builders/EmptyStream"
+export { StaticLookup } from "./classes/builders/StaticLookup"
 export { StaticStream } from "./classes/builders/StaticStream"
 
 //the create object
