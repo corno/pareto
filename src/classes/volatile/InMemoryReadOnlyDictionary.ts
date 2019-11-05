@@ -5,11 +5,13 @@ import {
     StreamLimiter,
 } from "pareto-api"
 import { mergeArrayOfUnsafePromises } from "../../create/Promise/Unsafe/mergeArrayOfUnsafePromises"
+import { mergeArrayOfSafePromises } from "../../create/Promise/Safe/mergeArrayOfSafePromises"
+import { ILookup } from "../../interfaces/ILookup"
 import { KeyValueStream } from "./KeyValueStream"
 import { ReadOnlyDictionary } from "./ReadOnlyDictionary"
 import { SafePromise } from "./SafePromise"
 import { Stream } from "./Stream"
-import { IUnsafePromise } from "./UnsafePromise"
+import { UnsafePromise } from "./UnsafePromise"
 
 function arrayToDictionary<Type>(array: Type[], keys: string[]) {
     const dictionary: { [key: string]: Type } = {}
@@ -95,10 +97,10 @@ export class InMemoryReadOnlyDictionary<StoredData, OpenData> {
         const entriesArray = keys.map(entryName => callback(this.opener(this.implementation[entryName], entryName), entryName))
         return arrayToDictionary(entriesArray, keys)
     }
-    public toLookup<NewType>(callback: (entry: OpenData, entryName: string) => NewType) {
+    public toLookup<NewType>(callback: (entry: OpenData, entryName: string) => NewType): ILookup<NewType> {
         return {
             getEntry: (entryName: string) => {
-                return new IUnsafePromise<NewType, null>((onError, onSuccess) => {
+                return new UnsafePromise<NewType, null>((onError, onSuccess) => {
                     const entry = this.implementation[entryName]
                     if (entry === undefined) {
                         onError(null)
@@ -115,6 +117,13 @@ export class InMemoryReadOnlyDictionary<StoredData, OpenData> {
         return mergeArrayOfUnsafePromises(array).mapErrorRaw(errors =>
             arrayToDictionary(errors, keys)
         ).mapResultRaw(results =>
+            arrayToDictionary(results, keys)
+        )
+    }
+    public mergeSafePromises_x<TargetType>(promisify: (entry: OpenData, entryName: string) => IInSafePromise<TargetType>) {
+        const keys = Object.keys(this.implementation)
+        const array = keys.map(key => promisify(this.opener(this.implementation[key], key), key))
+        return mergeArrayOfSafePromises(array).mapResultRaw(results =>
             arrayToDictionary(results, keys)
         )
     }

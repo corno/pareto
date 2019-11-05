@@ -1,6 +1,6 @@
 import { IInUnsafePromise } from "pareto-api"
 import {
-    IUnsafePromise,
+    UnsafePromise,
 } from "../../../classes/volatile/UnsafePromise"
 
 export function mergeArrayOfUnsafePromises<ResultType, ErrorType>(
@@ -51,5 +51,5 @@ export function mergeArrayOfUnsafePromises<ResultType, ErrorType>(
             })
         }
     }
-    return new IUnsafePromise<ResultType[], ErrorType[]>(execute)
+    return new UnsafePromise<ResultType[], ErrorType[]>(execute)
 }

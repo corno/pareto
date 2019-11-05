@@ -85,11 +85,4 @@ export const createUnsafeOnOpenResource = {
             })
         },
     },
-    wrap: <T, OpenError>(unsafeOnOpenResource: IInUnsafeOnOpenResource<T, OpenError>) => {
-        return new UnsafeOnOpenResource<T, OpenError>((onError, onOpened) => {
-            unsafeOnOpenResource.open(onError, openedResource => {
-                onOpened(openedResource.resource, openedResource.close)
-            })
-        })
-    },
 }

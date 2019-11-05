@@ -1,5 +1,6 @@
 import { IInSafePromise, IInStream, StreamLimiter } from "pareto-api"
 import { SafePromise } from "./SafePromise"
+import { ISafePromise } from "../../interfaces/ISafePromise"
 
 type OnData<DataType> = (data: DataType, abort: () => void) => void
 
@@ -58,7 +59,7 @@ export class Stream<DataType> implements IInStream<DataType> {
             )
         })
     }
-    public reduce<ResultType>(initialValue: ResultType, onData: (previousValue: ResultType, data: DataType) => ResultType) {
+    public reduce<ResultType>(initialValue: ResultType, onData: (previousValue: ResultType, data: DataType) => ResultType): ISafePromise<ResultType> {
         return new SafePromise<ResultType>(onResult => {
             let currentValue = initialValue
             this.process(

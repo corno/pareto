@@ -1,20 +1,22 @@
 //api interfaces and types
 export * from "pareto-api"
 
-//the classes
-export { SafeInMemoryDictionary as ISafeInMemoryDictionary } from "./classes/heap/SafeInMemoryDictionary"
-export { UnsafeInMemoryDictionary as IUnsafeInMemoryDictionary } from "./classes/heap/UnsafeInMemoryDictionary"
-export { InMemoryReadOnlyDictionary as IOutInMemoryReadOnlyDictionary } from "./classes/volatile/InMemoryReadOnlyDictionary"
-export { ReadOnlyDictionary as IOutReadOnlyDictionary } from "./classes/volatile/ReadOnlyDictionary"
-export { KeyValueStream as IOutKeyValueStream } from "./classes/volatile/KeyValueStream"
-export { SafePromise as ISafePromise } from "./classes/volatile/SafePromise"
-export { FilterResult, Stream as IOutStream } from "./classes/volatile/Stream"
-export { UnsafeOnOpenResource as IOutUnsafeOnOpenResource } from "./classes/UnsafeOnOpenResource"
-export { IUnsafePromise } from "./classes/volatile/UnsafePromise"
-export { UnsafeResource as IOutUnsafeResource } from "./classes/UnsafeResource"
-export { WrappedLookup } from "./classes/WrappedLookup"
-export { Lookup as IOutLookup } from "./classes/Lookup"
+//the interfaces
+export { IKeyValueStream } from "./interfaces/IKeyValueStream"
+export { ISafePromise } from "./interfaces/ISafePromise"
+export { FilterResult, IStream } from "./interfaces/IStream"
+export { IUnsafePromise } from "./interfaces/IUnsafePromise"
+export { ILookup } from "./interfaces/ILookup"
+export { IUnsafeOnOpenResource } from "./interfaces/IUnsafeOnOpenResource"
+export { IUnsafeResource } from "./interfaces/IUnsafeResource"
+export { IUnsafeOpenedResource } from "./interfaces/IUnsafeOpenedResource"
+export { ISafeOpenedResource } from "./interfaces/ISafeOpenedResource"
 
+//the classes
+export { SafeInMemoryDictionary } from "./classes/heap/SafeInMemoryDictionary"
+export { UnsafeInMemoryDictionary } from "./classes/heap/UnsafeInMemoryDictionary"
+export { ReadOnlyDictionary as IOutReadOnlyDictionary } from "./classes/volatile/ReadOnlyDictionary"
+export { WrappedLookup } from "./classes/WrappedLookup"
 
 //the builders
 export { BuildableKeyValueStream } from "./classes/builders/BuildableKeyValueStream"
@@ -48,14 +50,15 @@ export const error = create.Promise.unsafe.error
 export const success = create.Promise.unsafe.success
 export const result = create.Promise.safe.result
 
-import { IUnsafePromise} from "./classes/volatile/UnsafePromise"
+import { UnsafePromise} from "./classes/volatile/UnsafePromise"
+import { IUnsafePromise} from "./interfaces/IUnsafePromise"
 
 export function assertNotNull<InputType, ResultType, ErrorType>(
     value: null | InputType,
     onNull: () => ErrorType,
     onNotNull: (value: InputType
 ) => ResultType): IUnsafePromise<ResultType, ErrorType> {
-    return new IUnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
+    return new UnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
         if (value === null) {
             onError(onNull())
         } else {
@@ -74,7 +77,7 @@ export function onNullableValue<InputType, ResultType>(value: null | InputType, 
 
 
 export function assertTrue<ResultType, ErrorType>(value: boolean, onFalse: () => ErrorType, onTrue: () => ResultType): IUnsafePromise<ResultType, ErrorType> {
-    return new IUnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
+    return new UnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
         if (value) {
             onSuccess(onTrue())
         } else {

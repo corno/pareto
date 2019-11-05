@@ -1,5 +1,6 @@
-import { IInSafePromise } from "pareto-api"
-import { IUnsafePromise } from "./UnsafePromise"
+import { IInSafePromise, IInUnsafePromise } from "pareto-api"
+import { IUnsafePromise } from "../../interfaces/IUnsafePromise"
+import { UnsafePromise } from "./UnsafePromise"
 
 export type SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => void
 
@@ -36,8 +37,8 @@ export class SafePromise<T> implements IInSafePromise<T> {
 
         })
     }
-    public try<ResultType, ErrorType>(callback: (result: T) => IUnsafePromise<ResultType, ErrorType>): IUnsafePromise<ResultType, ErrorType> {
-        return new IUnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
+    public try<ResultType, ErrorType>(callback: (result: T) => IInUnsafePromise<ResultType, ErrorType>): IUnsafePromise<ResultType, ErrorType> {
+        return new UnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
             this.handle(res => {
                 callback(res).handle(onError, onSuccess)
             })

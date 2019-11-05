@@ -9,10 +9,11 @@ import {
 import { createSafePromise } from "../../create/Promise/Safe/createSafePromise"
 import { createUnsafePromise } from "../../create/Promise/Unsafe/createUnsafePromise"
 import { streamifyArray } from "../../create/Stream/streamifyArray"
+import { IUnsafePromise } from "../../interfaces/IUnsafePromise"
+import { wrap} from "../../wrap"
 import { InMemoryReadOnlyDictionary} from "../volatile/InMemoryReadOnlyDictionary"
 import { SafePromise } from "../volatile/SafePromise"
 import { Stream } from "../volatile/Stream"
-import { IUnsafePromise } from "../volatile/UnsafePromise"
 
 export class SafeInMemoryDictionary<StoredData, CreateData, OpenData> implements
     IInSafeStrictDictionary<CreateData, OpenData>,
@@ -73,7 +74,7 @@ export class SafeInMemoryDictionary<StoredData, CreateData, OpenData> implements
         if (this.implementation[entryName] !== undefined) {
             return createUnsafePromise.error(null)
         }
-        return createUnsafePromise.wrap(this.creator(createData, entryName)
+        return wrap.UnsafePromise(this.creator(createData, entryName)
         ).mapResultRaw(data => {
             this.implementation[entryName] = data
             return null

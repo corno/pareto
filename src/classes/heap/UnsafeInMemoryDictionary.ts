@@ -8,9 +8,10 @@ import {
 } from "pareto-api"
 import { createUnsafePromise } from "../../create/Promise/Unsafe/createUnsafePromise"
 import { streamifyArray } from "../../create/Stream/streamifyArray"
-import { InMemoryReadOnlyDictionary} from "../volatile/InMemoryReadOnlyDictionary"
+import { wrap } from "../../wrap"
+import { IUnsafePromise } from "../../interfaces/IUnsafePromise"
+import { InMemoryReadOnlyDictionary } from "../volatile/InMemoryReadOnlyDictionary"
 import { Stream } from "../volatile/Stream"
-import { IUnsafePromise } from "../volatile/UnsafePromise"
 
 export class UnsafeInMemoryDictionary<StoredData, CreateData, OpenData, CustomErrorType> extends InMemoryReadOnlyDictionary<StoredData, OpenData> implements
     IInUnsafeLooseDictionary<CreateData, OpenData, CustomErrorType>,
@@ -65,7 +66,7 @@ export class UnsafeInMemoryDictionary<StoredData, CreateData, OpenData, CustomEr
         if (this.implementation[entryName] !== undefined) {
             return createUnsafePromise.error(["entry already exists"])
         }
-        return createUnsafePromise.wrap(this.creator(createData, entryName)
+        return wrap.UnsafePromise(this.creator(createData, entryName)
         ).mapErrorRaw<UnsafeEntryAlreadyExistsError<CustomErrorType>>(error =>
             ["custom", error]
         ).mapResultRaw(data => {

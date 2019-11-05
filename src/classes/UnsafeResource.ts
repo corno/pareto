@@ -1,6 +1,7 @@
-import { IInUnsafeOpenedResource, IInUnsafeResource } from "pareto-api"
+import { IUnsafeResource } from "../interfaces/IUnsafeResource"
+import { IUnsafeOpenedResource } from "../interfaces/IUnsafeOpenedResource"
 
-export class UnsafeOpenedResource<ResourceType, CloseError> implements IInUnsafeOpenedResource<ResourceType, CloseError> {
+export class UnsafeOpenedResource<ResourceType, CloseError> implements IUnsafeOpenedResource<ResourceType, CloseError> {
     public readonly resource: ResourceType
     private readonly closer: (onCloseError: (error: CloseError) => void) => void
     constructor(resource: ResourceType, closer: (onCloseError: (error: CloseError) => void) => void) {
@@ -13,7 +14,7 @@ export class UnsafeOpenedResource<ResourceType, CloseError> implements IInUnsafe
 }
 
 // tslint:disable-next-line: max-classes-per-file
-export class UnsafeResource<ResourceType, OpenError, CloseError> implements IInUnsafeResource<ResourceType, OpenError, CloseError> {
+export class UnsafeResource<ResourceType, OpenError, CloseError> implements IUnsafeResource<ResourceType, OpenError, CloseError> {
     private readonly openFunction: UnsafeFunction<ResourceType, OpenError, CloseError>
     constructor(openFunction: UnsafeFunction<ResourceType, OpenError, CloseError>) {
         this.openFunction = openFunction

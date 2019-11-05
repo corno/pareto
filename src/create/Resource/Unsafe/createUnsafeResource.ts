@@ -1,4 +1,3 @@
-import { IInUnsafeResource } from "pareto-api"
 import { UnsafeResource } from "../../../classes/UnsafeResource"
 
 export const createUnsafeResource = {
@@ -25,12 +24,5 @@ export const createUnsafeResource = {
                 })
             },
         },
-    },
-    wrap: <T, OpenError, CloseError>(unsafeResource: IInUnsafeResource<T, OpenError, CloseError>) => {
-        return new UnsafeResource<T, OpenError, CloseError>((onError, onOpened) => {
-            unsafeResource.open(onError, openedResource => {
-                onOpened(openedResource.resource, openedResource.close)
-            })
-        })
     },
 }

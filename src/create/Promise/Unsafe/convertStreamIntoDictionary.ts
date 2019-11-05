@@ -1,7 +1,7 @@
 import { IInKeyValueStream, StreamLimiter } from "pareto-api"
 import { ReadOnlyDictionary } from "../../../classes/volatile/ReadOnlyDictionary"
 import {
-    IUnsafePromise,
+    UnsafePromise,
 } from "../../../classes/volatile/UnsafePromise"
 
 export function convertStreamIntoDictionary<DataType, ErrorType>(
@@ -11,7 +11,7 @@ export function convertStreamIntoDictionary<DataType, ErrorType>(
 ) {
     let isExecuted = false
 
-    return new IUnsafePromise<ReadOnlyDictionary<DataType>, ErrorType>((onErrors, onSuccess) => {
+    return new UnsafePromise<ReadOnlyDictionary<DataType>, ErrorType>((onErrors, onSuccess) => {
         if (isExecuted === true) {
             throw new Error("all promise is already executed")
         }

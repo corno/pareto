@@ -3,10 +3,18 @@ import {
     SafeCallerFunction,
     SafePromise,
 } from "../../../classes/volatile/SafePromise"
+import { InMemoryReadOnlyDictionary } from "../../../classes/volatile/InMemoryReadOnlyDictionary"
 import { processStreamOfSafePromises } from "./processStreamOfSafePromises"
 
 export const createSafePromise = {
     from: {
+        Dictionary: <StoredData, OpenData>(dictionary: InMemoryReadOnlyDictionary<StoredData, OpenData>) => {
+            return {
+                merge: <TargetType>(promisify: (entry: OpenData, entryName: string) => IInSafePromise<TargetType>) => {
+                    return dictionary.mergeSafePromises_x(promisify)
+                },
+            }
+        },
         Stream: <DataType>(stream: IInStream<DataType>) => {
             return {
                 aggregateX: (limiter: StreamLimiter, onData: (data: DataType) => void) => {
@@ -80,10 +88,5 @@ export const createSafePromise = {
             onResult(result)
         }
         return new SafePromise<ResultType>(handler)
-    },
-    wrap: <SourceResultType>(promise: IInSafePromise<SourceResultType>) => {
-        return new SafePromise<SourceResultType>(onResult => {
-            promise.handle(onResult)
-        })
     },
 }
