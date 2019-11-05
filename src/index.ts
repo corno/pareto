@@ -47,9 +47,9 @@ export const create = {
     Stream: createStream,
 }
 
-export const error = create.Promise.unsafe.error
-export const success = create.Promise.unsafe.success
-export const result = create.Promise.safe.result
+export { error } from "./create/Promise/Unsafe/createUnsafePromise"
+export { success } from "./create/Promise/Unsafe/createUnsafePromise"
+export { result } from "./create/Promise/Safe/createSafePromise"
 
 import { UnsafePromise} from "./classes/volatile/UnsafePromise"
 import { IUnsafePromise} from "./interfaces/IUnsafePromise"

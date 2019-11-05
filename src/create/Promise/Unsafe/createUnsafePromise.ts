@@ -30,9 +30,9 @@ export const createUnsafePromise = {
                 ) => {
                     const value = array[index]
                     if (value === undefined) {
-                        return createUnsafePromise.error<ElementType, ErrorType>(doesNotExistEntryCreator())
+                        return error<ElementType, ErrorType>(doesNotExistEntryCreator())
                     }
-                    return createUnsafePromise.success<ElementType, ErrorType>(value)
+                    return success<ElementType, ErrorType>(value)
                 },
                 merge: <TargetType, ErrorType>(promisify: (entry: ElementType, index: number) => IInUnsafePromise<TargetType, ErrorType>) => {
                     return mergeArrayOfUnsafePromises(array.map((element, index) => promisify(element, index)))
@@ -217,16 +217,18 @@ export const createUnsafePromise = {
             }
         },
     },
-    success: <ResultType, ErrorType>(result: ResultType): IUnsafePromise<ResultType, ErrorType> => {
-        const handler: UnsafeCallerFunction<ResultType, ErrorType> = (_onError: (error: ErrorType) => void, onSuccess: (result: ResultType) => void) => {
-            onSuccess(result)
-        }
-        return new UnsafePromise<ResultType, ErrorType>(handler)
-    },
-    error: <ResultType, ErrorType>(error: ErrorType): IUnsafePromise<ResultType, ErrorType> => {
-        const handler: UnsafeCallerFunction<ResultType, ErrorType> = (onError: (error: ErrorType) => void, _onSuccess: (result: ResultType) => void) => {
-            onError(error)
-        }
-        return new UnsafePromise<ResultType, ErrorType>(handler)
-    },
+}
+
+
+export const success = <ResultType, ErrorType>(result: ResultType): IUnsafePromise<ResultType, ErrorType> => {
+    const handler: UnsafeCallerFunction<ResultType, ErrorType> = (_onError: (error: ErrorType) => void, onSuccess: (result: ResultType) => void) => {
+        onSuccess(result)
+    }
+    return new UnsafePromise<ResultType, ErrorType>(handler)
+}
+export const error = <ResultType, ErrorType>(err: ErrorType): IUnsafePromise<ResultType, ErrorType> => {
+    const handler: UnsafeCallerFunction<ResultType, ErrorType> = (onError: (error: ErrorType) => void, _onSuccess: (result: ResultType) => void) => {
+        onError(err)
+    }
+    return new UnsafePromise<ResultType, ErrorType>(handler)
 }

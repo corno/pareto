@@ -6,10 +6,10 @@ import {
     UnsafeEntryDoesNotExistError,
     UnsafeTwoWayError,
 } from "pareto-api"
-import { createUnsafePromise } from "../../create/Promise/Unsafe/createUnsafePromise"
+import { error, success } from "../../create/Promise/Unsafe/createUnsafePromise"
 import { streamifyArray } from "../../create/Stream/streamifyArray"
-import { wrap } from "../../wrap"
 import { IUnsafePromise } from "../../interfaces/IUnsafePromise"
+import { wrap } from "../../wrap"
 import { InMemoryReadOnlyDictionary } from "../volatile/InMemoryReadOnlyDictionary"
 import { Stream } from "../volatile/Stream"
 
@@ -34,41 +34,41 @@ export class UnsafeInMemoryDictionary<StoredData, CreateData, OpenData, CustomEr
     public getEntry(entryName: string): IUnsafePromise<OpenData, UnsafeEntryDoesNotExistError<CustomErrorType>> {
         const entry = this.implementation[entryName]
         if (entry === undefined) {
-            return createUnsafePromise.error(["entry does not exist"])
+            return error(["entry does not exist"])
         }
-        return createUnsafePromise.success(this.opener(entry, entryName))
+        return success(this.opener(entry, entryName))
     }
     public copyEntry(sourceName: string, targetName: string): IUnsafePromise<null, UnsafeTwoWayError<CustomErrorType>> {
         const source = this.implementation[sourceName]
         const doesNotExist = source === undefined
         const alreadyExists = this.implementation[targetName] !== undefined
         if (doesNotExist || alreadyExists) {
-            return createUnsafePromise.error(["twoway", { entryDoesNotExist: doesNotExist, entryAlreadyExists: alreadyExists }])
+            return error(["twoway", { entryDoesNotExist: doesNotExist, entryAlreadyExists: alreadyExists }])
         }
         this.implementation[targetName] = this.copier(source)
-        return createUnsafePromise.success(null)
+        return success(null)
     }
     public deleteEntry(entryName: string): IUnsafePromise<null, UnsafeEntryDoesNotExistError<CustomErrorType>> {
         const entry = this.implementation[entryName]
         if (entry === undefined) {
-            return createUnsafePromise.error(["entry does not exist"])
+            return error(["entry does not exist"])
         }
         delete this.implementation[entryName]
         this.deleter(entry)
-        return createUnsafePromise.success(null)
+        return success(null)
     }
     public getKeys(): IUnsafePromise<Stream<string>, CustomErrorType> {
-        return createUnsafePromise.success(
+        return success(
             streamifyArray(Object.keys(this.implementation), key => key)
         )
     }
     public createEntry(entryName: string, createData: CreateData): IUnsafePromise<null, UnsafeEntryAlreadyExistsError<CustomErrorType>> {
         if (this.implementation[entryName] !== undefined) {
-            return createUnsafePromise.error(["entry already exists"])
+            return error(["entry already exists"])
         }
         return wrap.UnsafePromise(this.creator(createData, entryName)
-        ).mapErrorRaw<UnsafeEntryAlreadyExistsError<CustomErrorType>>(error =>
-            ["custom", error]
+        ).mapErrorRaw<UnsafeEntryAlreadyExistsError<CustomErrorType>>(customError =>
+            ["custom", customError]
         ).mapResultRaw(data => {
             this.implementation[entryName] = data
             return null
@@ -79,10 +79,10 @@ export class UnsafeInMemoryDictionary<StoredData, CreateData, OpenData, CustomEr
         const doesNotExist = entry === undefined
         const alreadyExists = this.implementation[newName] !== undefined
         if (doesNotExist || alreadyExists) {
-            return createUnsafePromise.error(["twoway", { entryDoesNotExist: doesNotExist, entryAlreadyExists: alreadyExists }])
+            return error(["twoway", { entryDoesNotExist: doesNotExist, entryAlreadyExists: alreadyExists }])
         }
         this.implementation[newName] = entry
         delete this.implementation[oldName]
-        return createUnsafePromise.success(null)
+        return success(null)
     }
 }

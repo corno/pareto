@@ -6,8 +6,8 @@ import {
     SafeEntryDoesNotExistError,
     SafeTwoWayError,
 } from "pareto-api"
-import { createSafePromise } from "../../create/Promise/Safe/createSafePromise"
-import { createUnsafePromise } from "../../create/Promise/Unsafe/createUnsafePromise"
+import { result } from "../../create/Promise/Safe/createSafePromise"
+import { error, success } from "../../create/Promise/Unsafe/createUnsafePromise"
 import { streamifyArray } from "../../create/Stream/streamifyArray"
 import { IUnsafePromise } from "../../interfaces/IUnsafePromise"
 import { wrap} from "../../wrap"
@@ -44,35 +44,35 @@ export class SafeInMemoryDictionary<StoredData, CreateData, OpenData> implements
         const doesNotExist = source === undefined
         const alreadyExists = this.implementation[targetName] !== undefined
         if (doesNotExist || alreadyExists) {
-            return createUnsafePromise.error({ entryDoesNotExist: doesNotExist, entryAlreadyExists: alreadyExists })
+            return error({ entryDoesNotExist: doesNotExist, entryAlreadyExists: alreadyExists })
         }
         this.implementation[targetName] = this.copier(source)
-        return createUnsafePromise.success(null)
+        return success(null)
     }
     public deleteEntry(entryName: string): IUnsafePromise<null, SafeEntryDoesNotExistError> {
         const entry = this.implementation[entryName]
         if (entry === undefined) {
-            return createUnsafePromise.error(null)
+            return error(null)
         }
         delete this.implementation[entryName]
         this.deleter(entry)
-        return createUnsafePromise.success(null)
+        return success(null)
     }
     public getKeys(): SafePromise<Stream<string>> {
-        return createSafePromise.result(
+        return result(
             streamifyArray(Object.keys(this.implementation), key => key)
         )
     }
     public getEntry(entryName: string): IUnsafePromise<OpenData, SafeEntryDoesNotExistError> {
         const entry = this.implementation[entryName]
         if (entry === undefined) {
-            return createUnsafePromise.error(null)
+            return error(null)
         }
-        return createUnsafePromise.success(this.opener(entry, entryName))
+        return success(this.opener(entry, entryName))
     }
     public createEntry(entryName: string, createData: CreateData): IUnsafePromise<null, SafeEntryAlreadyExistsError> {
         if (this.implementation[entryName] !== undefined) {
-            return createUnsafePromise.error(null)
+            return error(null)
         }
         return wrap.UnsafePromise(this.creator(createData, entryName)
         ).mapResultRaw(data => {
@@ -85,10 +85,10 @@ export class SafeInMemoryDictionary<StoredData, CreateData, OpenData> implements
         const doesNotExist = entry === undefined
         const alreadyExists = this.implementation[newName] !== undefined
         if (doesNotExist || alreadyExists) {
-            return createUnsafePromise.error({ entryDoesNotExist: doesNotExist, entryAlreadyExists: alreadyExists })
+            return error({ entryDoesNotExist: doesNotExist, entryAlreadyExists: alreadyExists })
         }
         this.implementation[newName] = entry
         delete this.implementation[oldName]
-        return createUnsafePromise.success(null)
+        return success(null)
     }
 }

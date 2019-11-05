@@ -1,9 +1,9 @@
 import { IInSafePromise, IInStream, IInUnsafeOnOpenResource, IInUnsafePromise, StreamLimiter } from "pareto-api"
+import { InMemoryReadOnlyDictionary } from "../../../classes/volatile/InMemoryReadOnlyDictionary"
 import {
     SafeCallerFunction,
     SafePromise,
 } from "../../../classes/volatile/SafePromise"
-import { InMemoryReadOnlyDictionary } from "../../../classes/volatile/InMemoryReadOnlyDictionary"
 import { processStreamOfSafePromises } from "./processStreamOfSafePromises"
 
 export const createSafePromise = {
@@ -38,9 +38,9 @@ export const createSafePromise = {
                             err => {
                                 onOpenError(err).handle(onResult)
                             },
-                            result => {
-                                onOpenSuccess(result.resource).handle(onResult)
-                                result.close()
+                            res => {
+                                onOpenSuccess(res.resource).handle(onResult)
+                                res.close()
                             }
                         )
                     }
@@ -82,11 +82,12 @@ export const createSafePromise = {
             }
         },
     },
-    //If a Safe Promise is required, but the result is already known
-    result: <ResultType>(result: ResultType): SafePromise<ResultType> => {
-        const handler: SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => {
-            onResult(result)
-        }
-        return new SafePromise<ResultType>(handler)
-    },
+}
+
+//If a Safe Promise is required, but the result is already known
+export const result = <ResultType>(res: ResultType): SafePromise<ResultType> => {
+    const handler: SafeCallerFunction<ResultType> = (onResult: (result: ResultType) => void) => {
+        onResult(res)
+    }
+    return new SafePromise<ResultType>(handler)
 }

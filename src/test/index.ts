@@ -1,10 +1,10 @@
 // tslint:disable: no-console
-import { create } from ".."
 import { UnsafeInMemoryDictionary } from "../classes/heap/UnsafeInMemoryDictionary"
+import { success } from "../create/Promise/Unsafe/createUnsafePromise"
 
 const dict = new UnsafeInMemoryDictionary<string, string, string, null>(
     {},
-    data => create.Promise.unsafe.success<string, null>(data),
+    data => success<string, null>(data),
     data => data,
     data => data,
     _data => {}
