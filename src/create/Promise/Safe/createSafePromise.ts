@@ -1,5 +1,4 @@
 import {
-    InMemoryReadOnlyDictionary,
     SafeCallerFunction,
     SafePromise,
 } from "pareto-20"
@@ -8,13 +7,6 @@ import { processStreamOfSafePromises } from "./processStreamOfSafePromises"
 
 export const createSafePromise = {
     from: {
-        Dictionary: <StoredData, OpenData>(dictionary: InMemoryReadOnlyDictionary<StoredData, OpenData>) => {
-            return {
-                merge: <TargetType>(promisify: (entry: OpenData, entryName: string) => IInSafePromise<TargetType>) => {
-                    return dictionary.mergeSafePromises_x(promisify)
-                },
-            }
-        },
         Stream: <DataType>(stream: IInStream<DataType>) => {
             return {
                 aggregateX: (limiter: StreamLimiter, onData: (data: DataType) => void) => {

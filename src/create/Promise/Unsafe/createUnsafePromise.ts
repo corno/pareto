@@ -38,7 +38,7 @@ export const createUnsafePromise = {
                     }
                     return success<ElementType, ErrorType>(value)
                 },
-                merge: <TargetType, ErrorType>(promisify: (entry: ElementType, index: number) => IInUnsafePromise<TargetType, ErrorType>) => {
+                tryAll: <TargetType, ErrorType>(promisify: (entry: ElementType, index: number) => IInUnsafePromise<TargetType, ErrorType>) => {
                     return mergeArrayOfUnsafePromises(array.map((element, index) => promisify(element, index)))
                 },
             }
@@ -81,7 +81,7 @@ export const createUnsafePromise = {
                 //     }
                 //     return createUnsafePromise.success<null, ErrorType>(null)
                 // },
-                merge: <TargetType, NewErrorType>(promisify: (entry: OpenData, entryName: string) => IInUnsafePromise<TargetType, NewErrorType>) => {
+                tryAll: <TargetType, NewErrorType>(promisify: (entry: OpenData, entryName: string) => IInUnsafePromise<TargetType, NewErrorType>) => {
                     return dictionary.mergeUnsafePromises_x(promisify)
                 },
                 match: <SupportType, NewErrorType>(
@@ -190,7 +190,7 @@ export const createUnsafePromise = {
         },
         Stream: <DataType>(stream: IInStream<DataType>, ) => {
             return {
-                merge: <TargetType, IntermediateErrorType, ErrorType>(
+                tryAll: <TargetType, IntermediateErrorType, ErrorType>(
                     limiter: StreamLimiter,
                     promisify: (entry: DataType) => IInUnsafePromise<TargetType, IntermediateErrorType>,
                     createError: (aborted: boolean, errors: Stream<IntermediateErrorType>) => ErrorType
