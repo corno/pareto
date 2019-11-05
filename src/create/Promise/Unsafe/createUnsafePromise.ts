@@ -1,4 +1,20 @@
 import {
+    convertStreamIntoDictionary,
+    error,
+    IKeyValueStream,
+    InMemoryReadOnlyDictionary,
+    KeyValueStream,
+    mergeArrayOfUnsafePromises,
+    mergeStreamOfUnsafePromises,
+    ReadOnlyDictionary,
+    Stream,
+    streamifyDictionary,
+    success,
+    UnsafeCallerFunction,
+    UnsafePromise
+} from "pareto-20"
+
+import {
     IInKeyValueStream,
     IInSafeLookup,
     IInSafePromise,
@@ -7,20 +23,6 @@ import {
     IInUnsafePromise,
     StreamLimiter
 } from "pareto-api"
-import { InMemoryReadOnlyDictionary, createDictionaryStreamifier } from "../../../classes/volatile/InMemoryReadOnlyDictionary"
-import { KeyValueStream } from "../../../classes/volatile/KeyValueStream"
-import { ReadOnlyDictionary } from "../../../classes/volatile/ReadOnlyDictionary"
-import { Stream } from "../../../classes/volatile/Stream"
-import {
-    UnsafeCallerFunction,
-    UnsafePromise,
-} from "../../../classes/volatile/UnsafePromise"
-import { IUnsafePromise } from "../../../interfaces/IUnsafePromise"
-//import { arrayToDictionary } from "../../../utils"
-import { convertStreamIntoDictionary } from "./convertStreamIntoDictionary"
-import { mergeArrayOfUnsafePromises } from "./mergeArrayOfUnsafePromises"
-import { mergeStreamOfUnsafePromises } from "./mergeStreamOfUnsafePromises"
-import { IKeyValueStream } from "../../../interfaces/IKeyValueStream"
 
 export const createUnsafePromise = {
     from: {
@@ -151,9 +153,9 @@ export const createUnsafePromise = {
                             },
                             _aborted => {
                                 if (hasErrors) {
-                                    onError(missingEntriesErrorCreator(new KeyValueStream(createDictionaryStreamifier(errorDictionary))))
+                                    onError(missingEntriesErrorCreator(new KeyValueStream(streamifyDictionary(errorDictionary))))
                                 } else {
-                                    onSuccess(new KeyValueStream(createDictionaryStreamifier(resultDictionary)))
+                                    onSuccess(new KeyValueStream(streamifyDictionary(resultDictionary)))
                                 }
                             }
                         )
@@ -221,16 +223,3 @@ export const createUnsafePromise = {
     },
 }
 
-
-export const success = <ResultType, ErrorType>(result: ResultType): IUnsafePromise<ResultType, ErrorType> => {
-    const handler: UnsafeCallerFunction<ResultType, ErrorType> = (_onError: (error: ErrorType) => void, onSuccess: (result: ResultType) => void) => {
-        onSuccess(result)
-    }
-    return new UnsafePromise<ResultType, ErrorType>(handler)
-}
-export const error = <ResultType, ErrorType>(err: ErrorType): IUnsafePromise<ResultType, ErrorType> => {
-    const handler: UnsafeCallerFunction<ResultType, ErrorType> = (onError: (error: ErrorType) => void, _onSuccess: (result: ResultType) => void) => {
-        onError(err)
-    }
-    return new UnsafePromise<ResultType, ErrorType>(handler)
-}

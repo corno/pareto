@@ -1,7 +1,7 @@
 
-import { StreamGetter } from "../../classes/volatile/Stream"
+import { StreamProcessor } from "pareto-api"
 
-export function streamifyArray<ElementType>(array: ElementType[]): StreamGetter<ElementType> {
+export function streamifyArray<ElementType>(array: ElementType[]): StreamProcessor<ElementType> {
     return (limiter, onData, onEnd) => {
         function pushData(theArray: ElementType[], limited: boolean) {
             let abort = false

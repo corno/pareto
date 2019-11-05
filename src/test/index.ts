@@ -1,6 +1,5 @@
 // tslint:disable: no-console
-import { UnsafeInMemoryDictionary } from "../classes/heap/UnsafeInMemoryDictionary"
-import { success } from "../create/Promise/Unsafe/createUnsafePromise"
+import { success, UnsafeInMemoryDictionary } from "pareto-20"
 
 const dict = new UnsafeInMemoryDictionary<string, string, string, null>(
     {},

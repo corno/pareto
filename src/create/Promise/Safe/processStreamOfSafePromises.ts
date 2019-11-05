@@ -1,7 +1,8 @@
-import { IInSafePromise, IInStream, StreamLimiter } from "pareto-api"
 import {
     SafePromise,
-} from "../../../classes/volatile/SafePromise"
+} from "pareto-20"
+import { IInSafePromise, IInStream, StreamLimiter } from "pareto-api"
+
 
 export function processStreamOfSafePromises<DataType>(
     stream: IInStream<DataType>,

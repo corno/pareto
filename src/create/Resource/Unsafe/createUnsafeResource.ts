@@ -1,4 +1,4 @@
-import { UnsafeResource } from "../../../classes/resources/UnsafeResource"
+import { UnsafeResource } from "pareto-20"
 
 export const createUnsafeResource = {
     from: {
