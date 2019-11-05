@@ -1,8 +1,8 @@
 import {
+    BaseDictionary,
     convertStreamIntoDictionary,
     error,
     IKeyValueStream,
-    InMemoryReadOnlyDictionary,
     KeyValueStream,
     mergeArrayOfUnsafePromises,
     mergeStreamOfUnsafePromises,
@@ -11,7 +11,7 @@ import {
     streamifyDictionary,
     success,
     UnsafeCallerFunction,
-    UnsafePromise
+    UnsafePromise,
 } from "pareto-20"
 
 import {
@@ -43,7 +43,7 @@ export const createUnsafePromise = {
                 },
             }
         },
-        Dictionary: <StoredData, OpenData>(dictionary: InMemoryReadOnlyDictionary<StoredData, OpenData>) => {
+        Dictionary: <StoredData, OpenData>(dictionary: BaseDictionary<StoredData, OpenData>) => {
             return {
                 // assertEntryDoesNotExistX: (name: string) => {
                 //     const value = dictionary[name]
@@ -81,9 +81,9 @@ export const createUnsafePromise = {
                 //     }
                 //     return createUnsafePromise.success<null, ErrorType>(null)
                 // },
-                tryAll: <TargetType, NewErrorType>(promisify: (entry: OpenData, entryName: string) => IInUnsafePromise<TargetType, NewErrorType>) => {
-                    return dictionary.mergeUnsafePromises_x(promisify)
-                },
+                // tryAll: <TargetType, NewErrorType>(promisify: (entry: OpenData, entryName: string) => IInUnsafePromise<TargetType, NewErrorType>) => {
+                //     return dictionary.mergeUnsafePromises_x(promisify)
+                // },
                 match: <SupportType, NewErrorType>(
                     lookup: IInSafeLookup<SupportType>,
                     missingEntriesErrorCreator: (errors: ReadOnlyDictionary<OpenData>) => NewErrorType

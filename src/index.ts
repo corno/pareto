@@ -28,14 +28,14 @@ export {
 
     result,
 
-    SafeInMemoryDictionary,
+    SafeMutableDictionary,
 
     StaticLookup,
     StaticStream,
 
     success,
 
-    UnsafeInMemoryDictionary,
+    UnsafeMutableDictionary,
 
     wrap
 } from "pareto-20"

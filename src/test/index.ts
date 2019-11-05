@@ -1,7 +1,7 @@
 // tslint:disable: no-console
-import { success, UnsafeInMemoryDictionary } from "pareto-20"
+import { success, UnsafeMutableDictionary } from "pareto-20"
 
-const dict = new UnsafeInMemoryDictionary<string, string, string, null>(
+const dict = new UnsafeMutableDictionary<string, string, string, null>(
     {},
     data => success<string, null>(data),
     data => data,
