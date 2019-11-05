@@ -1,8 +1,11 @@
-import { IInSafePromise, KeyValuePair, StreamLimiter } from "pareto-api"
+import { IInSafePromise, IInUnsafePromise, KeyValuePair, StreamLimiter } from "pareto-api"
 import { IKeyValueStream } from "../../interfaces/IKeyValueStream"
 import { ISafePromise } from "../../interfaces/ISafePromise"
+import { IUnsafePromise } from "../../interfaces/IUnsafePromise"
+import { createDictionaryStreamifier} from "./InMemoryReadOnlyDictionary"
 import { SafePromise } from "./SafePromise"
 import { Stream } from "./Stream"
+import { UnsafePromise } from "./UnsafePromise"
 
 type OnData<DataType> = (data: KeyValuePair<DataType>, abort: () => void) => void
 
@@ -41,6 +44,42 @@ export class KeyValueStream<DataType> implements IKeyValueStream<DataType> {
             )
         })
     }
+    public merge<TargetType, IntermediateErrorType, TargetErrorType>(
+        limiter: StreamLimiter,
+        promisify: (entry: DataType, entryName: string) => IInUnsafePromise<TargetType, IntermediateErrorType>,
+        errorHandler: (aborted: boolean, errors: IKeyValueStream<IntermediateErrorType>) => IInSafePromise<TargetErrorType>
+    ): IUnsafePromise<IKeyValueStream<TargetType>, TargetErrorType> {
+        return new UnsafePromise<IKeyValueStream<TargetType>, TargetErrorType>((onError, onSuccess) => {
+            const results: { [key: string]: TargetType} = {}
+            const errors: { [key: string]: IntermediateErrorType} = {}
+            let hasErrors = false
+            this.process(
+                limiter,
+                data => {
+                    promisify(data.value, data.key).handle(
+                        error => {
+                            errors[data.key] = error
+                        },
+                        result => {
+                            results[data.key] = result
+                        }
+                    )
+                },
+                aborted => {
+                    if (aborted || hasErrors) {
+                        errorHandler(aborted, new KeyValueStream(createDictionaryStreamifier(errors))).handle(result => {
+                            onError(result)
+                        })
+                    }
+                    else {
+                        onSuccess(new KeyValueStream(createDictionaryStreamifier(results)))
+                    }
+                }
+            )
+        })
+
+    }
+
     public filterRaw<NewDataType>(
         onData: (data: DataType, key: string) => [false] | [true, NewDataType],
     ): KeyValueStream<NewDataType> {
