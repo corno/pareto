@@ -3,43 +3,41 @@ export * from "pareto-api"
 
 export {
     assertUnreachable,
+
     assertNotNull,
+    onNullableValue,
+
     assertTrue,
+    onBoolean,
 
-    buildStream,
+    result,
 
+    success,
     error,
 
-    EmptyStream,
+    wrap,
 
-    IKeyValueStream,
-    ISafePromise,
+    buildStream,
     FilterResult,
+    IKeyValueStream,
     IStream,
+
+
+    ISafePromise,
     IUnsafePromise,
+
     ILookup,
+    ReadOnlyDictionary,
+    SafeMutableDictionary,
+    UnsafeMutableDictionary,
+
+
     IUnsafeOnOpenResource,
     IUnsafeResource,
     IUnsafeOpenedResource,
     ISafeOpenedResource,
 
-    onBoolean,
-    onNullableValue,
 
-    ReadOnlyDictionary,
-
-    result,
-
-    SafeMutableDictionary,
-
-    StaticLookup,
-    StaticStream,
-
-    success,
-
-    UnsafeMutableDictionary,
-
-    wrap
 } from "pareto-20"
 
 //the create object
