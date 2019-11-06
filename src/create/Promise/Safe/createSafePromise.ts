@@ -2,23 +2,10 @@ import {
     SafeCallerFunction,
     SafePromise,
 } from "pareto-20"
-import { IInSafePromise, IInStream, IInUnsafeOnOpenResource, IInUnsafePromise, StreamLimiter } from "pareto-api"
-import { processStreamOfSafePromises } from "./processStreamOfSafePromises"
+import { IInSafePromise, IInUnsafeOnOpenResource, IInUnsafePromise } from "pareto-api"
 
 export const createSafePromise = {
     from: {
-        Stream: <DataType>(stream: IInStream<DataType>) => {
-            return {
-                aggregateX: (limiter: StreamLimiter, onData: (data: DataType) => void) => {
-                    return new SafePromise<null>(onResult => {
-                        stream.process(limiter, data => onData(data), () => onResult(null))
-                    })
-                },
-                process: (limiter: StreamLimiter, promisify: (entry: DataType) => IInSafePromise<null>) => {
-                    return processStreamOfSafePromises(stream, limiter, promisify)
-                },
-            }
-        },
         UnsafeOnOpenResource: <ResourceType, OpenErrorType>(resource: IInUnsafeOnOpenResource<ResourceType, OpenErrorType>) => {
             return {
                 with: <ResultType>(
@@ -26,13 +13,13 @@ export const createSafePromise = {
                     onOpenSuccess: (openReource: ResourceType) => IInSafePromise<ResultType>
                 ) => {
                     const newFunc: SafeCallerFunction<ResultType> = onResult => {
-                        resource.open(
+                        resource.openUnsafeOpenableResource(
                             err => {
-                                onOpenError(err).handle(onResult)
+                                onOpenError(err).handleSafePromise(onResult)
                             },
                             res => {
-                                onOpenSuccess(res.resource).handle(onResult)
-                                res.close()
+                                onOpenSuccess(res.resource).handleSafePromise(onResult)
+                                res.closeSafeOpenedResource()
                             }
                         )
                     }
@@ -46,7 +33,7 @@ export const createSafePromise = {
                     onError: (error: ErrorType) => ResultType,
                 ) => {
                     return new SafePromise<ResultType>(onResult => {
-                        unsafePromise.handle(
+                        unsafePromise.handleUnsafePromise(
                             error => {
                                 onResult(onError(error))
                             },
@@ -61,12 +48,12 @@ export const createSafePromise = {
                     onSuccess: (result: ResultType) => IInSafePromise<NewResultType>
                 ) => {
                     return new SafePromise<NewResultType>(onResult => {
-                        unsafePromise.handle(
+                        unsafePromise.handleUnsafePromise(
                             error => {
-                                onError(error).handle(res => onResult(res))
+                                onError(error).handleSafePromise(res => onResult(res))
                             },
                             success => {
-                                onSuccess(success).handle(res => onResult(res))
+                                onSuccess(success).handleSafePromise(res => onResult(res))
                             },
                         )
                     })
