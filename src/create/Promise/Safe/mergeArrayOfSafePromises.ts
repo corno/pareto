@@ -28,7 +28,7 @@ export function mergeArrayOfSafePromises<ResultType>(
         } else {
             array.forEach((element, index) => {
                 (() => {
-                    element.handle(
+                    element.handleSafePromise(
                         result => {
                             results[index] = result
                             resolvedCount += 1

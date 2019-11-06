@@ -34,20 +34,20 @@ export const createUnsafeOnOpenResource = {
                 onBothOpened: (resource1: MainSourceType, resource2: SupportType) => TargetType
             ) => {
                 return new UnsafeOnOpenResource<TargetType, TargetError>((onOpenError, onOpened) => {
-                    mainSource.open(
+                    mainSource.openUnsafeOpenableResource(
                         openError1 => {
                             onOpenError(onMainOpenError(openError1))
                         },
                         openedResource1 => {
-                            supportSource.open(
+                            supportSource.openUnsafeOpenableResource(
                                 openError2 => {
-                                    openedResource1.close()
+                                    openedResource1.closeSafeOpenedResource()
                                     onOpenError(onSupportOpenError(openError2))
                                 },
                                 openedResource2 => {
                                     onOpened(onBothOpened(openedResource1.resource, openedResource2.resource), () => {
-                                        openedResource1.close()
-                                        openedResource2.close()
+                                        openedResource1.closeSafeOpenedResource()
+                                        openedResource2.closeSafeOpenedResource()
                                     })
                                 }
                             )
@@ -59,12 +59,12 @@ export const createUnsafeOnOpenResource = {
         UnsafeResource: {
             suppressCloseError: <T, OpenError, CloseError>(unsafeResource: IInUnsafeResource<T, OpenError, CloseError>, closeErrorHandler: (error: CloseError) => void) => {
                 return new UnsafeOnOpenResource<T, OpenError>((onOpenError, onSuccess) => {
-                    unsafeResource.open(
+                    unsafeResource.openUnsafeOpenableResource(
                         onOpenError,
                         success => onSuccess(
                             success.resource,
                             () => {
-                                success.close(closeErrorHandler)
+                                success.closeUnsafeOpenedResource(closeErrorHandler)
                             }
                         )
                     )

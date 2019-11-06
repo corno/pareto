@@ -17,10 +17,10 @@ export function mergeStreamOfUnsafePromises<DataType, TargetType, IntermediateEr
         let hasErrors = false
         const errors: IntermediateErrorType[] = []
         const results: TargetType[] = []
-        stream.process(
+        stream.processStream(
             limiter,
             data => {
-                promisify(data).handle(
+                promisify(data).handleUnsafePromise(
                     error => {
                         hasErrors = true
                         errors.push(error)

@@ -36,7 +36,7 @@ export function mergeArrayOfUnsafePromises<ResultType, ErrorType>(
         } else {
             array.forEach((element, index) => {
                 (() => {
-                    element.handle(
+                    element.handleUnsafePromise(
                         error => {
                             errors.push(error)
                             resolvedCount += 1

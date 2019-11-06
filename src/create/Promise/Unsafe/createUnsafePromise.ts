@@ -58,10 +58,10 @@ export const createUnsafePromise = {
                         const errorDictionary: { [key: string]: DataType } = {}
                         let hasErrors = false
                         //FIX make this work asynchronously
-                        stream.process(
+                        stream.processStream(
                             limiter,
                             data => {
-                                lookup.getEntry(data.key).handle(
+                                lookup.getEntry(data.key).handleUnsafePromise(
                                     _err => {
                                         hasErrors = true,
                                             errorDictionary[data.key] = data.value
@@ -93,7 +93,7 @@ export const createUnsafePromise = {
                     doesNotExistEntryCreator: () => ErrorType
                 ) => {
                     return new UnsafePromise<EntryType, ErrorType>((onError, onSuccess) => {
-                        lookup.getEntry(entryName).handle(_err => onError(doesNotExistEntryCreator()), onSuccess)
+                        lookup.getEntry(entryName).handleUnsafePromise(_err => onError(doesNotExistEntryCreator()), onSuccess)
                     })
                 },
             }
@@ -104,8 +104,8 @@ export const createUnsafePromise = {
                     onResult: (result: Type) => IInUnsafePromise<ResultType, ErrorType>
                 ) => {
                     return new UnsafePromise<ResultType, ErrorType>((onError, onSuccess) => {
-                        source.handle(res => {
-                            onResult(res).handle(onError, onSuccess)
+                        source.handleSafePromise(res => {
+                            onResult(res).handleUnsafePromise(onError, onSuccess)
                         })
                     })
                 },
@@ -129,13 +129,13 @@ export const createUnsafePromise = {
                     onOpenSuccess: (openReource: ResourceType) => IInUnsafePromise<ResultType, PromiseErrorType>
                 ) => {
                     const newFunc: UnsafeCallerFunction<ResultType, PromiseErrorType> = (newOnError, newOnSuccess) => {
-                        resource.open(
+                        resource.openUnsafeOpenableResource(
                             err => {
-                                onOpenError(err).handle(newOnError, newOnSuccess)
+                                onOpenError(err).handleUnsafePromise(newOnError, newOnSuccess)
                             },
                             result => {
-                                onOpenSuccess(result.resource).handle(newOnError, newOnSuccess)
-                                result.close()
+                                onOpenSuccess(result.resource).handleUnsafePromise(newOnError, newOnSuccess)
+                                result.closeSafeOpenedResource()
                             }
                         )
                     }
