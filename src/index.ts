@@ -43,7 +43,6 @@ export {
 //the create object
 import { createSafePromise } from "./create/Promise/Safe/createSafePromise"
 import { createUnsafePromise } from "./create/Promise/Unsafe/createUnsafePromise"
-import { createUnsafeResource } from "./create/Resource/Unsafe/createUnsafeResource"
 import { createUnsafeOnOpenResource } from "./create/Resource/UnsafeOnOpen/createUnsafeOnOpenResource"
 
 export const create = {
@@ -53,6 +52,5 @@ export const create = {
     },
     Resource: {
         unsafeOnOpen: createUnsafeOnOpenResource,
-        unsafe: createUnsafeResource,
     },
 }

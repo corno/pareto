@@ -1,6 +1,7 @@
 import {
     error,
     IKeyValueStream,
+    IUnsafeOnOpenResource,
     KeyValueStream,
     mergeStreamOfUnsafePromises,
     Stream,
@@ -15,7 +16,6 @@ import {
     IInSafeLookup,
     IInSafePromise,
     IInStream,
-    IInUnsafeOnOpenResource,
     IInUnsafePromise,
     StreamLimiter
 } from "pareto-api"
@@ -122,7 +122,7 @@ export const createUnsafePromise = {
                 },
             }
         },
-        UnsafeOnOpenResource: <ResourceType, OpenErrorType>(resource: IInUnsafeOnOpenResource<ResourceType, OpenErrorType>) => {
+        UnsafeOnOpenResource: <ResourceType, OpenErrorType>(resource: IUnsafeOnOpenResource<ResourceType, OpenErrorType>) => {
             return {
                 with: <ResultType, PromiseErrorType>(
                     onOpenError: (error: OpenErrorType) => IInUnsafePromise<ResultType, PromiseErrorType>,
