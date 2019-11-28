@@ -22,13 +22,13 @@ export const createUnsafeOnOpenResource = {
                                     onOpenError(onSupportOpenError(openError2))
                                 },
                                 openedResource2 => {
-                                    onOpened({
-                                        resource: onBothOpened(openedResource1.resource, openedResource2.resource),
-                                        closeSafeOpenedResource: () => {
+                                    onOpened(
+                                        onBothOpened(openedResource1.resource, openedResource2.resource),
+                                        () => {
                                             openedResource1.closeSafeOpenedResource()
                                             openedResource2.closeSafeOpenedResource()
                                         },
-                                    })
+                                    )
                                 }
                             )
                         }
@@ -40,14 +40,9 @@ export const createUnsafeOnOpenResource = {
     value: {
         get: <ResourceType, OpenErrorType>(value: ResourceType) => {
             return new UnsafeOnOpenResource<ResourceType, OpenErrorType>((_onOpenError, onSuccess) => {
-                onSuccess(
-                    {
-                        resource: value,
-                        closeSafeOpenedResource: () => {
-                            //nothing to do
-                        },
-                    }
-                )
+                onSuccess(value, () => {
+                    //nothing to do
+                })
             })
         },
     },
