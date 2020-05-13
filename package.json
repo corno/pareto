@@ -2,7 +2,7 @@
   "name": "pareto",
   "version": "0.27.1",
   "description": "A library that supports the Pareto programming style: 80% of the code is straightforward and only needs 20% (or less) of all language features",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "lint": "node ./node_modules/eslint/bin/eslint.js src/**/*.ts",
@@ -20,7 +20,7 @@
   ],
   "author": "corno",
   "license": "ISC",
-  "types": "dist/index.d.ts",
+  "types": "dist/src/index.d.ts",
   "prepublish": "tsc",
   "repository": {
     "type": "git",
