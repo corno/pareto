@@ -17,7 +17,7 @@ import {
     IInSafePromise,
     IInStream,
     IInUnsafePromise,
-    StreamLimiter
+    StreamLimiter,
 } from "pareto-api"
 
 export const createUnsafePromise = {
@@ -52,9 +52,17 @@ export const createUnsafePromise = {
                     lookup: IInSafeLookup<SupportType>,
                     missingEntriesErrorCreator: (errors: IKeyValueStream<DataType>) => ErrorType
                 ) => {
-                    return new UnsafePromise<IKeyValueStream<{ main: DataType, support: SupportType }>, ErrorType>((onError, onSuccess) => {
+                    return new UnsafePromise<IKeyValueStream<{
+                        main: DataType
+                        support: SupportType
+                    }>, ErrorType>((onError, onSuccess) => {
                         //const keys = Object.keys(dictionary)
-                        const resultDictionary: { [key: string]: { main: DataType, support: SupportType } } = {}
+                        const resultDictionary: {
+                            [key: string]: {
+                                main: DataType
+                                support: SupportType
+                            }
+                        } = {}
                         const errorDictionary: { [key: string]: DataType } = {}
                         let hasErrors = false
                         //FIX make this work asynchronously
@@ -63,8 +71,8 @@ export const createUnsafePromise = {
                             data => {
                                 lookup.getEntry(data.key).handleUnsafePromise(
                                     _err => {
-                                        hasErrors = true,
-                                            errorDictionary[data.key] = data.value
+                                        hasErrors = true
+                                        errorDictionary[data.key] = data.value
                                     },
                                     supportEntry => {
                                         resultDictionary[data.key] = {
@@ -111,7 +119,7 @@ export const createUnsafePromise = {
                 },
             }
         },
-        Stream: <DataType>(stream: IInStream<DataType>, ) => {
+        Stream: <DataType>(stream: IInStream<DataType>) => {
             return {
                 tryAll: <TargetType, IntermediateErrorType, ErrorType>(
                     limiter: StreamLimiter,

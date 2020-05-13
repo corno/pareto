@@ -35,9 +35,7 @@ export {
     IUnsafeOnOpenResource,
     IUnsafeResource,
     IUnsafeOpenedResource,
-    ISafeOpenedResource,
-
-
+    ISafeOpenedResource
 } from "pareto-20"
 
 //the create object
