@@ -29,6 +29,10 @@ export {
     SafeMutableDictionary,
     UnsafeMutableDictionary,
 
+    mergeArrayOfSafePromises,
+    mergeStreamOfUnsafePromises,
+    mergeArrayOfUnsafePromises,
+
 
     IUnsafeOnOpenResource,
     IUnsafeResource,
