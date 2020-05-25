@@ -30,7 +30,7 @@
     "dist/*"
   ],
   "dependencies": {
-    "pareto-20": "0.6.0"
+    "pareto-20": "0.7.0"
   },
   "devDependencies": {
     "@types/chai": "^4.2.11",
