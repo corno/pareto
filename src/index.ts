@@ -19,6 +19,7 @@ export {
     FilterResult,
     IKeyValueStream,
     IStream,
+    IStreamConsumer,
 
 
     ISafePromise,
