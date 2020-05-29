@@ -22,17 +22,17 @@ export {
     IStreamConsumer,
 
 
-    ISafePromise,
-    IUnsafePromise,
+    IValue,
+    IUnsafeValue,
 
     ILookup,
     ReadOnlyDictionary,
     SafeMutableDictionary,
     UnsafeMutableDictionary,
 
-    mergeArrayOfSafePromises,
-    mergeStreamOfUnsafePromises,
-    mergeArrayOfUnsafePromises,
+    mergeArrayOfSafeValues,
+    mergeStreamOfUnsafeValues,
+    mergeArrayOfUnsafeValues,
 
 
     IUnsafeOnOpenResource,
