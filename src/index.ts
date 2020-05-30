@@ -30,9 +30,7 @@ export {
     SafeMutableDictionary,
     UnsafeMutableDictionary,
 
-    mergeArrayOfSafeValues,
-    mergeStreamOfUnsafeValues,
-    mergeArrayOfUnsafeValues,
+    IArray,
 
 
     IUnsafeOnOpenResource,
