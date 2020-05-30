@@ -12,8 +12,8 @@
     "pubPatch": "npm run validatePublishReadiness && npm version patch && git push && npm publish",
     "test": "echo nothing to test, testing should be done in pareto-20",
     "update2latest": "ncu -u --packageFile package.json && nsi",
-    "update2latestAndPublishMinor": "npm run update2latest && git commit -am \"u2l\" && npm run pubMin",
-    "update2latestAndPublishPath": "npm run update2latest && git commit -am \"u2l\" && npm run pubPatch"
+    "update2latestAndPublishMinor": "npm run validatePublishReadiness && npm run update2latest && npm run test && git commit -am \"u2l\" && npm run pubMin",
+    "update2latestAndPublishPath": "npm run validatePublishReadiness && npm run update2latest && npm run test && git commit -am \"u2l\" && npm run pubPatch"
   },
   "keywords": [
     "80/20 rule",
