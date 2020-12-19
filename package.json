@@ -1,6 +1,6 @@
 {
   "name": "pareto",
-  "version": "0.45.1",
+  "version": "0.46.0",
   "description": "A library that supports the Pareto programming style: 80% of the code is straightforward and only needs 20% (or less) of all language features",
   "main": "dist/src/index.js",
   "scripts": {
