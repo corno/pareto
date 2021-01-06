@@ -9,6 +9,7 @@ export {
     onBoolean,
 
     result,
+    value,
 
     success,
     error,
