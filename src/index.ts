@@ -20,6 +20,7 @@ export {
     FilterResult,
     IKeyValueStream,
     IStream,
+    IUnsafeStreamConsumer,
     IStreamConsumer,
 
 
