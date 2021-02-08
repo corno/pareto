@@ -8,7 +8,6 @@ export {
     assertTrue,
     onBoolean,
 
-    result,
     value,
 
     success,
