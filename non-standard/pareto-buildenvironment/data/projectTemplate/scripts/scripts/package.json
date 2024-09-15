@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "buildFromScratch": "./buildFromScratch.sh",
+    "updateScripts": "./updateScripts.sh",
+    "updatePrebuild": "./updatePrebuildAndBuild.sh",
+    "updateParetoCompiler": "./updateParetoCompilerAndBuild.sh",
+    "buildAndTest": "./buildAndTest.sh",
+    "updateTypescriptDependencies": "./updateTypescriptDependenciesAndBuild.sh",
+    "publish": "./publish.sh",
+    "validateSingleVersionOfParetoTypes": "node ./validateSingleVersionOfParetoTypesPackage.js ../../typescript/pub"
+  }
+}

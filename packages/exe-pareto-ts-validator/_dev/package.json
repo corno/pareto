@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "lib-generate-typesafe-ast": "^0.1.0",
+    "pareto-core-data": "^0.0.5",
+    "pareto-core-exe": "^0.15.1",
+    "pareto-core-lib": "^0.18.2",
+    "res-pareto-main": "^0.14.0"
+  }
+}
