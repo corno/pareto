@@ -98,9 +98,9 @@ export function ref(typeReference: t.T.DataSpecifier<pd.SourceLocation>): t.T.Ty
 //     }
 // }
 
-export function imp(): t.T.Imports.D<pd.SourceLocation> {
-    return null
-}
+// export function imp(): t.T.Imports.D<pd.SourceLocation> {
+//     return null
+// }
 
 export function externalTypeReference(
     contextX: string,
@@ -218,22 +218,21 @@ export function aInterfaceReference(inf: string, args?: RawDictionary<t.T.DataSp
     }
 }
 
-export function nothing(): ['nothing', null] {
-    return ['nothing', null]
-}
+// export function nothing(): ['nothing', null] {
+//     return ['nothing', null]
+// }
 
-export function data($: t.T.DataSpecifier<pd.SourceLocation>): ['data', t.T.DataSpecifier<pd.SourceLocation>] {
+export function data($: t.T.DataSpecifier<pd.SourceLocation>): t.T.DataOrSynchronousInterface<pd.SourceLocation> {
     return ['data', $]
 }
 
-export function sInf($: t.T.SynchronousInterfaceReference<pd.SourceLocation>): ['interface', t.T.SynchronousInterfaceReference<pd.SourceLocation>] {
+export function sInf($: t.T.SynchronousInterfaceReference<pd.SourceLocation>): t.T.DataOrSynchronousInterface<pd.SourceLocation> {
     return ['interface', $]
 }
 
-
-export function aInf($: t.T.AsynchronousInterfaceReference<pd.SourceLocation>): ['interface', t.T.AsynchronousInterfaceReference<pd.SourceLocation>] {
-    return ['interface', $]
-}
+// export function aInf($: t.T.AsynchronousInterfaceReference<pd.SourceLocation>): ['interface', t.T.AsynchronousInterfaceReference<pd.SourceLocation>] {
+//     return ['interface', $]
+// }
 
 export function aInterface(inf: t.T.AsynchronousInterface<pd.SourceLocation>, params?: RawDictionary<t.T.Parameters.D<pd.SourceLocation>>): t.T.Glossary.asynchronous.interfaces.D<pd.SourceLocation> {
     return {
