@@ -97,7 +97,10 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
      * dependecies are included in the package.json. they can be referenced further down this file
      */
     'dependencies': d({
-        "glo-pareto-common": null //no version specification possible
+        //version specification is not possible, so 'null' suffices
+        "glo-pareto-common": null, //this glossary package contains common types
+        "res-pareto-main": null, //this resource package contains the main function signature, we're going to use it further down
+        //this file
     }),
     /**
      * there are 3 types:
@@ -476,6 +479,10 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
         'bindings': [true, {
             'definition': {
                 'glossary': {
+                    'imports': d({
+                        "main": external("res-pareto-main"),
+
+                    }),
                     'root': {
                         'glossary parameters': d({}),
                         'imports': d({
@@ -486,8 +493,11 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
                             }),
                         },
                         'asynchronous': {
-                            'interfaces': d({}),
+                            'interfaces': d({
+                                "an asynchronous binding interface": aInterface(aInterfaceMethod(null)),
+                            }),
                             'algorithms': d({
+                                "an asynchronous binding": constructor(aExternalInterfaceReference("main", "Main"), {}),
                             }),
                         },
                         'synchronous': {
@@ -495,22 +505,26 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
                             'algorithms': d({}),
                         },
                     },
-                    'imports': d({
-                    }),
                 },
                 'api': {
+                    'imports': d({
+                        "this_glossary": this_()
+                    }),
                     'root': {
                         'algorithms': d({
+                            "animplementedasynchronousbinding": algorithm(pconstructor("this_glossary", { }, "an asynchronous binding")),
                         }),
                     },
-                    'imports': d({
-                    }),
                 },
             },
             'implementation': ['typescript', null]
 
         }],
-        'executables': d({}),
+        'executables': d({
+            "an executable": {
+                'constructor': "animplementedasynchronousbinding"
+            },
+        }),
         'test': {
             'dependencies': d({
                 "res-pareto-build": null,
