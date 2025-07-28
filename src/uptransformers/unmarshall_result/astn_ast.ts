@@ -4,46 +4,55 @@ import * as pdev from 'exupery-core-dev'
 
 import { impure, pure } from "pareto-standard-operations"
 
-import * as x from "../../generated/interface/schemas/schema/resolved"
+import * as definition from "../../generated/interface/schemas/schema/resolved"
 
-import * as astn from "astn"
+import * as _in from "astn"
 
-import * as out from "./post_parse_types"
+import * as _out from "../../temp_unmashall_result_types"
 
 export const Document = (
-    definition: x.Schemas.D.SG.schema,
-    data: astn.d_ast.Document
-): out.Document => {
+    $: _in.d_ast.Document,
+    $p: {
+        definition: definition.Schemas.D.SG.schema,
+    }
+): _out.Document => {
 
     return {
         'content': Node(
-            definition.types.dictionary.__get_entry("Root").transform(
-                ($) => $,
-                () => pa.panic(`boekhouding schema Root type not found`)
-            ).node,
-            data.content
+            $.content,
+            {
+                'definition': $p.definition.types.dictionary.__get_entry("Root").transform(
+                    ($) => $,
+                    () => pa.panic(`boekhouding schema Root type not found`)
+                ).node
+            },
         )
     }
 
 }
 
 export const Optional_Node = (
-    definition: x.Type_Node,
-    data: pt.Optional_Value<astn.d_ast.Value>
-): out.Node => {
-    return data.transform(
-        ($) => Node(definition, $),
+    $: pt.Optional_Value<_in.d_ast.Value>,
+    $p: {
+        definition: definition.Type_Node,
+    }
+): _out.Node => {
+    return $.transform(
+        ($) => Node($, $p),
         () => pdev.implement_me()
     )
 }
 
 export const Node = (
-    definition: x.Type_Node,
-    data: astn.d_ast.Value
-): out.Node => {
-    return pa.cc(definition, ($): out.Node => {
+    $: _in.d_ast.Value,
+    $p: {
+        definition: definition.Type_Node,
+    }
+): _out.Node => {
+    const data = $
+    return pa.cc($p.definition, ($): _out.Node => {
         switch ($[0]) {
-            case 'number': return pa.ss($, ($): out.Node => {
+            case 'number': return pa.ss($, ($): _out.Node => {
                 return ['number', {
                     'definition': $,
                     'status': pa.cc(data.type, ($) => {
@@ -71,14 +80,14 @@ export const Node = (
             case 'nothing': return pa.ss($, ($) => pdev.implement_me())
             case 'reference': return pa.ss($, ($) => pdev.implement_me())
             case 'component': return pa.ss($, ($) => pdev.implement_me())
-            case 'dictionary': return pa.ss($, ($): out.Node => {
+            case 'dictionary': return pa.ss($, ($): _out.Node => {
                 const prop_def = $.node
                 return ['dictionary', {
                     'definition': $,
                     'status': pa.cc(data.type, ($) => {
                         switch ($[0]) {
                             case 'indexed collection': return pa.ss($, ($) => {
-                                const entries = impure.list.group(pa.cc($, ($): astn.d_ast.Key_Value_Pairs => {
+                                const entries = impure.list.group(pa.cc($, ($): _in.d_ast.Key_Value_Pairs => {
                                     switch ($[0]) {
                                         case 'dictionary': return pa.ss($, ($) => $.entries)
                                         case 'verbose group': return pa.ss($, ($) => $.entries)
@@ -90,19 +99,23 @@ export const Node = (
                                         'value': $
                                     }
                                 }))
-                                return ['valid', entries.map<out.Entry>(($) => impure.list['expect exactly one element']($).transform(
-                                    ($): out.Entry => ['unique', Optional_Node(
-                                        prop_def,
+                                return ['valid', entries.map<_out.Entry>(($) => impure.list['expect exactly one element']($).transform(
+                                    ($): _out.Entry => ['unique', Optional_Node(
                                         $.value.map(
                                             ($) => $.value,
-                                        )
+                                        ),
+                                        {
+                                            'definition': prop_def,
+                                        },
                                     )],
-                                    (): out.Entry => ['multiple', $.map(($): out.Duplicate_Entry => ({
+                                    (): _out.Entry => ['multiple', $.map(($): _out.Duplicate_Entry => ({
                                         'node': Optional_Node(
-                                            prop_def,
                                             $.value.map(
                                                 ($) => $.value,
-                                            )
+                                            ),
+                                            {
+                                                'definition': prop_def,
+                                            },
                                         ),
                                         'range': $.key.range
                                     }))]
@@ -113,7 +126,7 @@ export const Node = (
                     })
                 }]
             })
-            case 'group': return pa.ss($, ($): out.Node => {
+            case 'group': return pa.ss($, ($): _out.Node => {
                 const group_def = $
                 // pa.cc(data.type, ($) => {
                 // //     switch ($[0]) {
@@ -155,76 +168,80 @@ export const Node = (
                 return ['group', {
                     'definition': $,
                     'type': pa.cc(data, ($) => {
-                            const value = $
-                            return pa.cc($.type, ($) => {
-                                switch ($[0]) {
-                                    case 'indexed collection': return pa.ss($, ($): out.Group_Type => {
-                                        const entries = impure.list.group(pa.cc($, ($): astn.d_ast.Key_Value_Pairs => {
-                                            switch ($[0]) {
-                                                case 'dictionary': return pa.ss($, ($) => $.entries)
-                                                case 'verbose group': return pa.ss($, ($) => $.entries)
-                                                default: return pa.au($[0])
+                        const value = $
+                        return pa.cc($.type, ($) => {
+                            switch ($[0]) {
+                                case 'indexed collection': return pa.ss($, ($): _out.Group_Type => {
+                                    const entries = impure.list.group(pa.cc($, ($): _in.d_ast.Key_Value_Pairs => {
+                                        switch ($[0]) {
+                                            case 'dictionary': return pa.ss($, ($) => $.entries)
+                                            case 'verbose group': return pa.ss($, ($) => $.entries)
+                                            default: return pa.au($[0])
+                                        }
+                                    }).map(($) => {
+                                        return {
+                                            'key': $.key.value,
+                                            'value': $
+                                        }
+                                    }))
+                                    const range: _in.d_ast.Range = pa.cc($, ($) => {
+                                        switch ($[0]) {
+                                            case 'dictionary': return pa.ss($, ($) => $['{'].range)
+                                            case 'verbose group': return pa.ss($, ($) => $['('].range)
+                                            default: return pa.au($[0])
+                                        }
+                                    })
+                                    return ['indexed', {
+                                        'superfluous entries': pure.dictionary.filter(impure.dictionary.merge(
+                                            entries,
+                                            {
+                                                'supporting dictionary': group_def
                                             }
-                                        }).map(($) => {
-                                            return {
-                                                'key': $.key.value,
-                                                'value': $
+                                        ).map(($) => {
+                                            return $.supporting.transform( //drop all the ones for which there is a definition
+                                                ($) => pa.not_set(),
+                                                () => pa.set($.context)
+                                            )
+                                        })).map(($) => $.map(($) => $.key.range)), //select the locations
+                                        'properties': impure.dictionary.merge(
+                                            group_def,
+                                            {
+                                                'supporting dictionary': entries
                                             }
-                                        }))
-                                        const range: astn.d_ast.Range = pa.cc($, ($) => {
-                                            switch ($[0]) {
-                                                case 'dictionary': return pa.ss($, ($) => $['{'].range)
-                                                case 'verbose group': return pa.ss($, ($) => $['('].range)
-                                                default: return pa.au($[0])
-                                            }
-                                        })
-                                        return ['indexed', {
-                                            'superfluous entries': pure.dictionary.filter(impure.dictionary.merge(
-                                                entries,
-                                                {
-                                                    'supporting dictionary': group_def
-                                                }
-                                            ).map(($) => {
-                                                return $.supporting.transform( //drop all the ones for which there is a definition
-                                                    ($) => pa.not_set(),
-                                                    () => pa.set($.context)
-                                                )
-                                            })).map(($) => $.map(($) => $.key.range)), //select the locations
-                                            'properties': impure.dictionary.merge(
-                                                group_def,
-                                                {
-                                                    'supporting dictionary': entries
-                                                }
-                                            ).map<out.Property>(($) => {
-                                                const prop_def = $.context
-                                                return $.supporting.transform(
-                                                    ($): out.Property => impure.list['expect exactly one element']($).transform(
-                                                        ($): out.Property => ['unique', Optional_Node(
-                                                            prop_def,
+                                        ).map<_out.Property>(($) => {
+                                            const prop_def = $.context
+                                            return $.supporting.transform(
+                                                ($): _out.Property => impure.list['expect exactly one element']($).transform(
+                                                    ($): _out.Property => ['unique', Optional_Node(
+                                                        $.value.map(
+                                                            ($) => $.value,
+                                                        ),
+                                                        {
+                                                            'definition': prop_def,
+                                                        },
+                                                    )],
+                                                    (): _out.Property => ['multiple', $.map(($): _out.Duplicate_Entry => ({
+                                                        'node': Optional_Node(
                                                             $.value.map(
                                                                 ($) => $.value,
-                                                            )
-                                                        )],
-                                                        (): out.Property => ['multiple', $.map(($): out.Duplicate_Entry => ({
-                                                            'node': Optional_Node(
-                                                                prop_def,
-                                                                $.value.map(
-                                                                    ($) => $.value,
-                                                                )
                                                             ),
-                                                            'range': $.key.range
-                                                        }))]
-                                                    ),
-                                                    (): out.Property => ['missing', range]
-                                                )
-                                            })
-                                        }]
-                                    })
-                                    //case 'ordered collection': return pdev.implement_me()
-                                    default: return ['invalid', value.range]
-                                }
-                            })
+                                                            {
+                                                                'definition': prop_def,
+                                                            },
+                                                        ),
+                                                        'range': $.key.range
+                                                    }))]
+                                                ),
+                                                (): _out.Property => ['missing', range]
+                                            )
+                                        })
+                                    }]
+                                })
+                                //case 'ordered collection': return pdev.implement_me()
+                                default: return ['invalid', value.range]
+                            }
                         })
+                    })
                 }]
             })
             case 'identifier value pair': return pa.ss($, ($) => pdev.implement_me())
@@ -232,16 +249,18 @@ export const Node = (
             case 'state group': return pa.ss($, ($) => {
                 const def = $
                 return ['state', {
-                    'status': pa.cc(data.type, ($): out.State_Status => {
+                    'status': pa.cc(data.type, ($): _out.State_Status => {
                         switch ($[0]) {
                             case 'tagged value': return pa.ss($, ($) => {
                                 const state = $.state
                                 const value = $.value
-                                return def.__get_entry($.state.value).transform<out.State_Status>(
+                                return def.__get_entry($.state.value).transform<_out.State_Status>(
                                     ($) => ['valid', {
                                         'node': Node(
-                                            $,
-                                            value
+                                            value,
+                                            {
+                                                'definition': $,
+                                            },
                                         )
                                     }],
                                     () => ['unknown state', {
@@ -252,14 +271,14 @@ export const Node = (
                                 )
                             })
                             case 'ordered collection': return pa.ss($, ($) => {
-                                const elements = pa.cc($, ($): astn.d_ast.Elements => {
+                                const elements = pa.cc($, ($): _in.d_ast.Elements => {
                                     switch ($[0]) {
                                         case 'list': return pa.ss($, ($) => $.elements)
                                         case 'concise group': return pa.ss($, ($) => $.elements)
                                         default: return pa.au($[0])
                                     }
                                 })
-                                const range = pa.cc($, ($): astn.d_ast.Range => {
+                                const range = pa.cc($, ($): _in.d_ast.Range => {
                                     switch ($[0]) {
                                         case 'list': return pa.ss($, ($) => $['['].range)
                                         case 'concise group': return pa.ss($, ($) => $['<'].range)
@@ -270,21 +289,23 @@ export const Node = (
                                     return ['more than 2 elements', range]
                                 }
                                 const first = elements.__get_element_at(0)
-                                return first.transform<out.State_Status>(
+                                return first.transform<_out.State_Status>(
                                     ($) => {
                                         if ($.value.type[0] !== 'string') {
                                             return ['state is not a string', $.value.range]
                                         }
                                         const state_name = $.value.type[1].value
                                         const state_name_range = $.value.type[1].range
-                                        return elements.__get_element_at(1).transform<out.State_Status>(
+                                        return elements.__get_element_at(1).transform<_out.State_Status>(
                                             ($) => {
                                                 const value = $.value
-                                                return def.__get_entry(state_name).transform<out.State_Status>(
+                                                return def.__get_entry(state_name).transform<_out.State_Status>(
                                                     ($) => ['valid', {
                                                         'node': Node(
-                                                            $,
-                                                            value
+                                                            value,
+                                                            {
+                                                                'definition': $,
+                                                            },
                                                         )
                                                     }],
                                                     () => ['unknown state', {

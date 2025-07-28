@@ -2,7 +2,7 @@ import * as pt from 'exupery-core-types'
 
 import * as astn from "astn"
 
-import * as def from "../../generated/interface/schemas/schema/resolved"
+import * as def from "./generated/interface/schemas/schema/resolved"
 
 export type Document = {
     'content': Node

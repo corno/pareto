@@ -3,62 +3,25 @@ import * as pt from 'exupery-core-types'
 import * as pdev from 'exupery-core-dev'
 
 import * as astn from "astn"
-import * as ppt from "./post_parse_types"
-
-export type Errors = pt.Array<Error>
+import * as _in from "../../temp_unmashall_result_types"
+import * as _out from "../../generated/interface/schemas/unmarshall_errors/unconstrained"
 
 import { impure, pure } from "pareto-standard-operations"
 
-export type State_Error =
-    | ['more than 2 elements', null]
-    | ['missing state name', null]
-    | ['state is not a string', null]
-    | ['missing value', null]
-    | ['unknown state', {
-        'found': string
-        'expected': pt.Dictionary<null>
-    }]
-
-export type Error = {
-    'range': astn.d_ast.Range
-    'type':
-    | ['error',
-        | ['invalid value type', {
-            'expected':
-            | ['text', null]
-            | ['group', null]
-            | ['dictionary', null]
-        }]
-        | ['duplicate property', {
-            name: string
-        }]
-        | ['missing property', {
-            name: string
-        }]
-        | ['state', State_Error]
-    ]
-    | ['warning',
-        | ['expected apostrophed string', null]
-        | ['expected quoted string', null]
-        | ['expected backticked string', null]
-        | ['expected undelimited string', null]
-    ]
-}
-
-export const Document = ($: ppt.Document): Errors => {
+export const Document = ($: _in.Document): _out.Errors => {
     return Node($.content)
 }
 
-export const Node = ($: ppt.Node): Errors => {
-    return pa.cc($, ($): Errors => {
+export const Node = ($: _in.Node): _out.Errors => {
+    return pa.cc($, ($): _out.Errors => {
         switch ($[0]) {
-            case 'group': return pa.ss($, ($) => pa.cc($.type, ($): Errors => {
+            case 'group': return pa.ss($, ($) => pa.cc($.type, ($): _out.Errors => {
                 switch ($[0]) {
                     case 'ordered': return pa.ss($, ($) => pdev.implement_me())
-                    case 'indexed': return pa.ss($, ($) => impure.dictionary['dictionary of lists to list']($.properties.map(($, key) => pa.cc($, ($): Errors => {
+                    case 'indexed': return pa.ss($, ($) => impure.dictionary['dictionary of lists to list']($.properties.map(($, key) => pa.cc($, ($): _out.Errors => {
                         switch ($[0]) {
                             case 'multiple': return pa.ss($, ($) => pure.list.flatten($.map(($) => pure.list.flatten(pa.array_literal([
-                                pa.array_literal<Error>([
+                                pa.array_literal<_out.Errors.L>([
                                     {
                                         'range': $.range,
                                         'type': ['error', ['duplicate property', {
@@ -91,11 +54,11 @@ export const Node = ($: ppt.Node): Errors => {
                     default: return pa.au($[0])
                 }
             }))
-            case 'dictionary': return pa.ss($, ($) => pa.cc($.status, ($): Errors => {
+            case 'dictionary': return pa.ss($, ($) => pa.cc($.status, ($): _out.Errors => {
                 switch ($[0]) {
                     case 'valid': return pa.ss($, ($) => {
                         return impure.dictionary['dictionary of lists to list']($.map(($, key) => {
-                            return pa.cc($, ($): Errors => {
+                            return pa.cc($, ($): _out.Errors => {
                                 switch ($[0]) {
                                     case 'unique': return pa.ss($, ($) => Node($))
                                     case 'multiple': return pa.ss($, ($) => pure.list.flatten($.map(($) => pure.list.flatten(pa.array_literal([
@@ -127,9 +90,9 @@ export const Node = ($: ppt.Node): Errors => {
             }))
             case 'number': return pa.ss($, ($) => pa.cc($.status, ($) => {
                 switch ($[0]) {
-                    case 'valid': return pa.ss($, ($): Errors => $['correct string type']
+                    case 'valid': return pa.ss($, ($): _out.Errors => $['correct string type']
                         ? pa.array_literal([])
-                        : pa.array_literal<Error>([{
+                        : pa.array_literal<_out.Errors.L>([{
                             'range': $.range,
                             'type': ['warning', ['expected undelimited string', null]]
                         }]))
@@ -152,7 +115,7 @@ export const Node = ($: ppt.Node): Errors => {
             case 'identifier value pair': return pa.ss($, ($) => pdev.implement_me())
             case 'type parameter': return pa.ss($, ($) => pdev.implement_me())
             case 'optional': return pa.ss($, ($) => pdev.implement_me())
-            case 'state': return pa.ss($, ($) => pa.cc($.status, ($): Errors => {
+            case 'state': return pa.ss($, ($) => pa.cc($.status, ($): _out.Errors => {
                 switch ($[0]) {
                     case 'valid': return pa.ss($, ($) => Node($.node))
                     case 'more than 2 elements': return pa.ss($, ($) => pa.array_literal([{

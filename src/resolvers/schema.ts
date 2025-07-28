@@ -1145,7 +1145,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver<_i_generic.Location_In
                     switch ($[0]) {
                         case 'external': return pa.ss($, ($) => $.type.entry)
                         case 'internal': return pa.ss($, ($) => $.entry)
-                        case 'internal cyclic': return pa.ss($, ($) => $.entry())
+                        case 'internal cyclic': return pa.ss($, ($) => $.entry.compute())
                         default: return pa.au($[0])
                     }
                 })
@@ -1259,8 +1259,8 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver<_i_generic.Location_In
                                                                 case 'component': return pa.ss($, ($) => pa.cc($, ($) => {
                                                                     switch ($[0]) {
                                                                         case 'external': return pa.ss($, ($) => $.type.entry.node)
-                                                                        case 'internal': return pa.ss($, ($) => $.entry.node) //IS THIS SAFE? I Am using a computed value (only available after resolving)
-                                                                        case 'internal cyclic': return pa.ss($, ($) => $.entry().node) //IS THIS SAFE? I Am using a computed value (only available after resolving)
+                                                                        case 'internal': return pa.ss($, ($) => $.entry.node)
+                                                                        case 'internal cyclic': return pa.ss($, ($) => $.entry.compute().node) //IS THIS SAFE? I Am using a computed value (only available after resolving)
                                                                         default: return pa.au($[0])
                                                                     }
                                                                 }))
@@ -1847,7 +1847,7 @@ export const r_Relative_Value_Selection: _i_signatures.Relative_Value_Selection<
                                     switch ($[0]) {
                                         case 'external': return pa.ss($, ($) => $.type.entry.node)
                                         case 'internal': return pa.ss($, ($) => $.entry.node)
-                                        case 'internal cyclic': return pa.ss($, ($) => $.entry().node) //this is safe, the types have been resolved at this stage
+                                        case 'internal cyclic': return pa.ss($, ($) => $.entry.compute().node) //this is safe, the types have been resolved at this stage
                                         default: return pa.au($[0])
                                     }
                                 })
