@@ -431,7 +431,11 @@ export namespace rls {
 
 }
 
+/**
+ * the context for creating lookup arguments
+ */
 export namespace al {
+
 
     export const not_set = (
 
@@ -445,7 +449,9 @@ export namespace al {
         return wrap_state_group(['empty stack', null])
     }
 
-
+    /**
+     * creates a new stack of lookup selections from an existing stack and a new element
+     */
     export const stack = (
         stack: unresolved.Lookup_Selection<pd.Source_Location>,
         element: unresolved.Lookup_Selection<pd.Source_Location>,
@@ -456,6 +462,9 @@ export namespace al {
         }])
     }
 
+    /**
+     * provides a dictionary by selecting a value (that is guaranteed to be a dictionary)
+     */
     export const dictionary = (value_selection: unresolved.Guaranteed_Value_Selection<pd.Source_Location>): unresolved.Node_Resolver.SG.component._arguments.O.lookups.O.D<pd.Source_Location> => {
         return wrap_state_group(['selection', {
             'type': wrap_state_group(['dictionary', {
@@ -466,18 +475,29 @@ export namespace al {
         }])
     }
 
+    /**
+     * selects a lookup parameter of this resolver and passes it to the next resolver
+     */
     export const parameter = (parameter: string): unresolved.Node_Resolver.SG.component._arguments.O.lookups.O.D<pd.Source_Location> => {
         return wrap_state_group(['selection', {
             'type': wrap_state_group(['parameter', wrap_reference(parameter)]),
             'resulting dictionary': null,
         }])
     }
+
+    /**
+     * this one is only usable in the context of an ordered dictionary
+     */
     export const not_circular_dependent_siblings = (): unresolved.Node_Resolver.SG.component._arguments.O.lookups.O.D<pd.Source_Location> => {
         return wrap_state_group(['selection', {
             'type': wrap_state_group(['not circular dependent siblings', null]),
             'resulting dictionary': null,
         }])
     }
+
+    /**
+     * this one is only usable in the context of a dictionary (ordered or not)
+     */
     export const possibly_circular_dependent_siblings = (): unresolved.Node_Resolver.SG.component._arguments.O.lookups.O.D<pd.Source_Location> => {
         return wrap_state_group(['selection', {
             'type': wrap_state_group(['possibly circular dependent siblings', null]),
