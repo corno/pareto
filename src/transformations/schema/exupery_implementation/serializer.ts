@@ -45,7 +45,7 @@ export const Schema = (
         $.types.dictionary.map(($, key) => variable(
             t.component_imported("signatures", `s ${key}`, {}, []),
             i.function_(
-                false,
+                true,
                 Type_Node(
                     $.node,
                     {
@@ -80,7 +80,17 @@ export const Type_Node = (
     return pa.cc($, ($) => {
         switch ($[0]) {
             case 'number': return pa.ss($, ($) => string("FIXME NUMBER", 'backtick')) //FIXME should be 'none'
-            case 'boolean': return pa.ss($, ($) => string("FIXME BOOLEAN", 'backtick')) //FIXME should be 'none'
+            case 'boolean': return pa.ss($, ($) => i.tagged_union(
+                "text",
+                i.group({
+                    "delimiter": i.tagged_union("quote", i.null_()),
+                    "value": i.call(
+                        s.from_parameter("value serializers", ["boolean"]),
+                        i.select_from_context([]),
+                        pa.dictionary_literal({}),
+                    ),
+                })
+            )) //FIXME should be 'none'
             case 'nothing': return pa.ss($, ($) => i.tagged_union("nothing", i.null_()))
             case 'reference': return pa.ss($, ($) => pa.cc($.type, ($) => {
                 switch ($[0]) {
@@ -89,7 +99,13 @@ export const Type_Node = (
                     default: return pa.au($[0])
                 }
             }))
-            case 'text': return pa.ss($, ($) => string("FIXME TEXT", 'quote'))
+            case 'text': return pa.ss($, ($) => i.tagged_union(
+                "text",
+                i.group({
+                    "delimiter": i.tagged_union("quote", i.null_()),
+                    "value": i.select_from_context([]),
+                })
+            ))
             case 'component': return pa.ss($, ($) => i.call(
                 pa.cc($, ($) => {
                     switch ($[0]) {
@@ -200,7 +216,7 @@ export const Type_Node = (
                         "out",
                         "Value",
                         {},
-                        [ sub.state_group("optional")]
+                        [sub.state_group("optional")]
                     ),
                 )))
             case 'state group': return pa.ss($, ($) => i.tagged_union(
@@ -208,7 +224,7 @@ export const Type_Node = (
                 i.switch_(
                     s.from_context([]),
                     $.map(($, key) => i.group({
-                        "state": i.string(key, 'backtick'),
+                        "state": i.string(key, 'quote'),
                         "value": Type_Node(
                             $,
                             {
@@ -226,7 +242,7 @@ export const Type_Node = (
                         "out",
                         "Value",
                         {},
-                        [ sub.state_group("state")]
+                        [sub.state_group("state")]
                     ),
                 )
             ))

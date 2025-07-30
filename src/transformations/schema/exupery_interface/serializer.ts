@@ -47,9 +47,9 @@ export const Schema = (
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
                     "Value Serializers": sh.type({}, sh.t.group({
-                        'default number': sh.t.function_({}, sh.t.integer(), {}, sh.t.string()),
-                        'boolean': sh.t.function_({}, sh.t.boolean(), {}, sh.t.string()),
-                        'custom numbers': sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, _ea.cc($.precision, ($) => {
+                        "default number": sh.t.function_({}, sh.t.integer(), {}, sh.t.string()),
+                        "boolean": sh.t.function_({}, sh.t.boolean(), {}, sh.t.string()),
+                        "custom numbers": sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, _ea.cc($.precision, ($) => {
                             switch ($[0]) {
                                 case 'approximation': return _ea.ss($, ($) => sh.t.float())
                                 case 'exact': return _ea.ss($, ($) => sh.t.integer())
