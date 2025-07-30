@@ -46,14 +46,13 @@ export const Types = (
             t.component_imported("signatures", key, {}, []),
             i.function_(
                 false,
-                i.implement_me()
-                // Type_Node(
-                //     $.node,
-                //     {
-                //         'type': key,
-                //         'subselection': pa.array_literal([])
-                //     }
-                // ),
+                Type_Node(
+                    $.node,
+                    {
+                        'type': key,
+                        'subselection': pa.array_literal([])
+                    }
+                ),
             ),
 
         )),
@@ -67,19 +66,30 @@ export const Type_Node = (
         'subselection': pt.Array<_out_interface.Type.SG.component.sub_selection.L<pd.Source_Location>>
     },
 ): _out.Initialization<pd.Source_Location> => {
+
+    const string = (value: string): _out.Initialization<pd.Source_Location> => {
+        return i.array_literal([
+            i.string("text", 'quote'),
+            i.group({
+                "delimiter": i.string("quote", 'quote'),
+                "value": i.string(value, 'quote'),
+            }),
+        ])
+    }
+
     return pa.cc($, ($) => {
         switch ($[0]) {
-            case 'number': return pa.ss($, ($) => i.select_from_context([]))
-            case 'boolean': return pa.ss($, ($) => i.select_from_context([]))
-            case 'nothing': return pa.ss($, ($) => i.null_())
+            case 'number': return pa.ss($, ($) => string("FIXME NUMBER"))
+            case 'boolean': return pa.ss($, ($) => string("FIXME BOOLEAN"))
+            case 'nothing': return pa.ss($, ($) => string("FIXME NOTHING"))
             case 'reference': return pa.ss($, ($) => pa.cc($.type, ($) => {
                 switch ($[0]) {
-                    case 'derived': return pa.ss($, ($) => i.null_())
-                    case 'selected': return pa.ss($, ($) => i.select_from_context(["key"]))
+                    case 'derived': return pa.ss($, ($) => i.implement_me())
+                    case 'selected': return pa.ss($, ($) => i.implement_me())
                     default: return pa.au($[0])
                 }
             }))
-            case 'text': return pa.ss($, ($) => i.select_from_context([]))
+            case 'text': return pa.ss($, ($) => string("FIXME TEXT"))
             case 'component': return pa.ss($, ($) => i.call(
                 pa.cc($, ($) => {
                     switch ($[0]) {
@@ -92,88 +102,125 @@ export const Type_Node = (
                 i.select_from_context([]),
                 pa.dictionary_literal({}),
             ))
-            case 'dictionary': return pa.ss($, ($) => i.dictionary_map(
-                $.ordered ? s.from_context(["dictionary"]) : s.from_context([]),
-                Type_Node(
-                    $.node,
-                    {
-                        'type': $p.type,
-                        'subselection': op['append element'](
-                            $p.subselection,
-                            {
-                                'element': sub.dictionary(),
-                            },
-                        ),
-                    }
+            case 'dictionary': return pa.ss($, ($) => i.array_literal([
+                i.string("dictionary", 'quote'),
+                i.dictionary_map(
+                    $.ordered ? s.from_context(["dictionary"]) : s.from_context([]),
+                    Type_Node(
+                        $.node,
+                        {
+                            'type': $p.type,
+                            'subselection': op['append element'](
+                                $p.subselection,
+                                {
+                                    'element': sub.dictionary(),
+                                },
+                            ),
+                        }
+                    )
                 )
-            ))
+            ]))
             case 'identifier value pair': return pa.ss($, ($) => pdev.implement_me())
-            case 'group': return pa.ss($, ($) => i.group($.map(($, key) => i.change_context(
-                s.from_context([key]),
-                Type_Node(
-                    $,
-                    {
-                        'type': $p.type,
-                        'subselection': op['append element'](
-                            $p.subselection,
+            // case 'group': return pa.ss($, ($) => i.group($.map(($, key) => i.change_context(
+            //     s.from_context([key]),
+            //     Type_Node(
+            //         $,
+            //         {
+            //             'type': $p.type,
+            //             'subselection': op['append element'](
+            //                 $p.subselection,
+            //                 {
+            //                     'element': sub.group(key),
+            //                 },
+            //             ),
+            //         }
+            //     )
+            // ))))
+            case 'group': return pa.ss($, ($) => i.array_literal([
+                i.string("verbose group", 'quote'),
+                i.group($.map(($, key) => i.change_context(
+                    s.from_context([key]),
+                    Type_Node(
+                        $,
+                        {
+                            'type': $p.type,
+                            'subselection': op['append element'](
+                                $p.subselection,
+                                {
+                                    'element': sub.group(key),
+                                },
+                            ),
+                        }
+                    )
+                )))
+            ]))
+            case 'list': return pa.ss($, ($) => i.array_literal([
+                i.string("list", 'quote'),
+                i.array_map(
+                    s.from_context([]),
+                    Type_Node(
+                        $.node,
+                        {
+                            'type': $p.type,
+                            'subselection': op['append element'](
+                                $p.subselection,
+                                {
+                                    'element': sub.list(),
+                                },
+                            ),
+                        }
+                    )
+                )]))
+            case 'optional': return pa.ss($, ($) => i.array_literal([
+                i.string("optional", 'quote'),
+                i.optional_transform(
+                    s.from_context([]),
+                    i.array_literal([
+                        i.string("set", 'quote'),
+                        Type_Node(
+                            $,
                             {
-                                'element': sub.group(key),
-                            },
+                                'type': $p.type,
+                                'subselection': op['append element'](
+                                    $p.subselection,
+                                    {
+                                        'element': sub.optional(),
+                                    },
+                                ),
+                            }
                         ),
-                    }
+                    ]),
+                    i.array_literal([
+                        i.string("not set", 'quote')
+                    ]),
+                )]))
+            case 'state group': return pa.ss($, ($) => i.array_literal([
+                i.string("state", 'quote'),
+                i.switch_(
+                    s.from_context([]),
+                    $.map(($, key) => i.case_(key, i.group({
+                        "state": string(key),
+                        "value": Type_Node(
+                            $,
+                            {
+                                'type': $p.type,
+                                'subselection': op['append element'](
+                                    $p.subselection,
+                                    {
+                                        'element': sub.state_group(key),
+                                    },
+                                ),
+                            }
+                        )
+                    }))),
+                    t.component_imported(
+                        "out",
+                        $p.type,
+                        {},
+                        $p.subselection.__get_raw_copy(),
+                    ),
                 )
-            ))))
-            case 'list': return pa.ss($, ($) => i.array_map(
-                s.from_context([]),
-                Type_Node(
-                    $.node,
-                    {
-                        'type': $p.type,
-                        'subselection': op['append element'](
-                            $p.subselection,
-                            {
-                                'element': sub.list(),
-                            },
-                        ),
-                    }
-                )
-            ))
-            case 'optional': return pa.ss($, ($) => i.optional_map(
-                s.from_context([]),
-                Type_Node(
-                    $,
-                    {
-                        'type': $p.type,
-                        'subselection': op['append element'](
-                            $p.subselection,
-                            {
-                                'element': sub.optional(),
-                            },
-                        ),
-                    }
-                )
-            ))
-            case 'state group': return pa.ss($, ($) => i.switch_(
-                s.from_context([]),
-                $.map(($, key) => i.case_(key, Type_Node(
-                    $,
-                    {
-                        'type': $p.type,
-                        'subselection': op['append element'](
-                            $p.subselection,
-                            {
-                                'element': sub.state_group(key),
-                            },
-                        ),
-                    }
-                ))),
-                t.component_imported(
-                    "out",
-                    $p.type,
-                    {},
-                    $p.subselection.__get_raw_copy(),
-                ),
-            ))
+            ]))
             case 'type parameter': return pa.ss($, ($) => pdev.implement_me())
             default: return pa.au($[0])
         }

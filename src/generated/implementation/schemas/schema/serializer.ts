@@ -1,0 +1,41 @@
+import * as _pa from 'exupery-core-alg'
+import * as _pd from 'exupery-core-dev'
+
+import * as _i_out from "../../../interface/schemas/schema/unresolved"
+import * as _i_signatures from "../../../interface/schemas/schema/serializer"
+
+
+export const Benchmark: _i_signatures._T_Benchmark = ($) => _pd.implement_me()
+export const Constraint: _i_signatures._T_Constraint = ($) => _pd.implement_me()
+export const Dictionary: _i_signatures._T_Dictionary = ($) => _pd.implement_me()
+export const Globals: _i_signatures._T_Globals = ($) => _pd.implement_me()
+export const Group: _i_signatures._T_Group = ($) => _pd.implement_me()
+export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selection = ($) => _pd.implement_me()
+export const Imports: _i_signatures._T_Imports = ($) => _pd.implement_me()
+export const Lookup_Selection: _i_signatures._T_Lookup_Selection = ($) => _pd.implement_me()
+export const Node_Resolver: _i_signatures._T_Node_Resolver = ($) => _pd.implement_me()
+export const Node_Resolver_Group: _i_signatures._T_Node_Resolver_Group = ($) => _pd.implement_me()
+export const Node_Resolver_List_Result: _i_signatures._T_Node_Resolver_List_Result = ($) => _pd.implement_me()
+export const Number_Type: _i_signatures._T_Number_Type = ($) => _pd.implement_me()
+export const Option_Constraints: _i_signatures._T_Option_Constraints = ($) => _pd.implement_me()
+export const Optional_Value_Initialization: _i_signatures._T_Optional_Value_Initialization = ($) => _pd.implement_me()
+export const Possible_Value_Selection: _i_signatures._T_Possible_Value_Selection = ($) => _pd.implement_me()
+export const Presence: _i_signatures._T_Presence = ($) => _pd.implement_me()
+export const Property_Constraint: _i_signatures._T_Property_Constraint = ($) => _pd.implement_me()
+export const Property_Constraints: _i_signatures._T_Property_Constraints = ($) => _pd.implement_me()
+export const Reference_To_Property_Constraint: _i_signatures._T_Reference_To_Property_Constraint = ($) => _pd.implement_me()
+export const Relative_Value_Selection: _i_signatures._T_Relative_Value_Selection = ($) => _pd.implement_me()
+export const Resolve_Logic: _i_signatures._T_Resolve_Logic = ($) => _pd.implement_me()
+export const Resolvers: _i_signatures._T_Resolvers = ($) => _pd.implement_me()
+export const Schema: _i_signatures._T_Schema = ($) => _pd.implement_me()
+export const Schemas: _i_signatures._T_Schemas = ($) => _pd.implement_me()
+export const Signature: _i_signatures._T_Signature = ($) => _pd.implement_me()
+export const Signature_Parameters: _i_signatures._T_Signature_Parameters = ($) => _pd.implement_me()
+export const Signatures: _i_signatures._T_Signatures = ($) => _pd.implement_me()
+export const Text_Type: _i_signatures._T_Text_Type = ($) => _pd.implement_me()
+export const Type: _i_signatures._T_Type = ($) => _pd.implement_me()
+export const Type_Node: _i_signatures._T_Type_Node = ($) => _pd.implement_me()
+export const Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($) => _pd.implement_me()
+export const Type_Parameters: _i_signatures._T_Type_Parameters = ($) => _pd.implement_me()
+export const Type_Reference: _i_signatures._T_Type_Reference = ($) => _pd.implement_me()
+export const Types: _i_signatures._T_Types = ($) => _pd.implement_me()
