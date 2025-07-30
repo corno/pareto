@@ -68,13 +68,13 @@ export const Type_Node = (
 ): _out.Initialization<pd.Source_Location> => {
 
     const string = (value: string): _out.Initialization<pd.Source_Location> => {
-        return i.array_literal([
-            i.string("text", 'quote'),
+        return i.tagged_union(
+            "string",
             i.group({
                 "delimiter": i.string("quote", 'quote'),
                 "value": i.string(value, 'quote'),
-            }),
-        ])
+            })
+        )
     }
 
     return pa.cc($, ($) => {
@@ -102,8 +102,8 @@ export const Type_Node = (
                 i.select_from_context([]),
                 pa.dictionary_literal({}),
             ))
-            case 'dictionary': return pa.ss($, ($) => i.array_literal([
-                i.string("dictionary", 'quote'),
+            case 'dictionary': return pa.ss($, ($) => i.tagged_union(
+                "dictionary",
                 i.dictionary_map(
                     $.ordered ? s.from_context(["dictionary"]) : s.from_context([]),
                     Type_Node(
@@ -119,7 +119,7 @@ export const Type_Node = (
                         }
                     )
                 )
-            ]))
+            ))
             case 'identifier value pair': return pa.ss($, ($) => pdev.implement_me())
             // case 'group': return pa.ss($, ($) => i.group($.map(($, key) => i.change_context(
             //     s.from_context([key]),
@@ -136,8 +136,8 @@ export const Type_Node = (
             //         }
             //     )
             // ))))
-            case 'group': return pa.ss($, ($) => i.array_literal([
-                i.string("verbose group", 'quote'),
+            case 'group': return pa.ss($, ($) => i.tagged_union(
+                "verbose group",
                 i.group($.map(($, key) => i.change_context(
                     s.from_context([key]),
                     Type_Node(
@@ -153,9 +153,9 @@ export const Type_Node = (
                         }
                     )
                 )))
-            ]))
-            case 'list': return pa.ss($, ($) => i.array_literal([
-                i.string("list", 'quote'),
+            ))
+            case 'list': return pa.ss($, ($) => i.tagged_union(
+                "list",
                 i.array_map(
                     s.from_context([]),
                     Type_Node(
@@ -170,13 +170,13 @@ export const Type_Node = (
                             ),
                         }
                     )
-                )]))
-            case 'optional': return pa.ss($, ($) => i.array_literal([
-                i.string("optional", 'quote'),
+                )))
+            case 'optional': return pa.ss($, ($) => i.tagged_union(
+                "optional",
                 i.optional_transform(
                     s.from_context([]),
-                    i.array_literal([
-                        i.string("set", 'quote'),
+                    i.tagged_union(
+                        "set",
                         Type_Node(
                             $,
                             {
@@ -189,13 +189,14 @@ export const Type_Node = (
                                 ),
                             }
                         ),
-                    ]),
-                    i.array_literal([
-                        i.string("not set", 'quote')
-                    ]),
-                )]))
-            case 'state group': return pa.ss($, ($) => i.array_literal([
-                i.string("state", 'quote'),
+                    ),
+                    i.tagged_union(
+                        "not set",
+                        i.null_()
+                    ),
+                )))
+            case 'state group': return pa.ss($, ($) => i.tagged_union(
+                "state",
                 i.switch_(
                     s.from_context([]),
                     $.map(($, key) => i.case_(key, i.group({
@@ -220,7 +221,7 @@ export const Type_Node = (
                         $p.subselection.__get_raw_copy(),
                     ),
                 )
-            ]))
+            ))
             case 'type parameter': return pa.ss($, ($) => pdev.implement_me())
             default: return pa.au($[0])
         }
