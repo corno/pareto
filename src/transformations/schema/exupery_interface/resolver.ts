@@ -138,7 +138,7 @@ export const Signatures = (
             }, []),
             {
                 "parameters": r_Signature_Parameters($['resolved parameters']),
-                "location 2 string": t.component_imported("core", "Location 2 String", {
+                "location 2 string": t.component_imported("resolve", "Location 2 String", {
                     "Source": t.module_parameter("Source"),
                 }, []),
             },
@@ -146,3 +146,4 @@ export const Signatures = (
         ))),
     )
 }
+./
