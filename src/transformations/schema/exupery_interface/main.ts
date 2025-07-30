@@ -6,9 +6,10 @@ import * as _out from "exupery/dist/generated/interface/schemas/interface/unreso
 
 import { m } from "exupery/dist/shorthands/interface"
 
-import * as _migration_boilerplate from "./migration_boilerplate"
-import * as _resolver from "./resolver"
-import * as _types from "./types"
+import * as t_migration_boilerplate from "./migration_boilerplate"
+import * as t_serializer from "./serializer"
+import * as t_resolver from "./resolver"
+import * as t_types from "./types"
 
 import * as operations from "pareto-standard-operations"
 
@@ -25,24 +26,31 @@ export const Schemas = ($: _in.Schemas): _out.Module_Set.D<pd.Source_Location> =
                 return m.set(_ea.cc($.complexity, ($) => {
                     switch ($[0]) {
                         case 'constrained': return _ea.ss($, ($) => _ea.dictionary_literal({
-                            "resolved.ts": _types.Types(
+                            "resolved.ts": t_types.Types(
                                 types,
                                 {
                                     'what to generate': ['resolved', null],
                                     'imports': imports,
                                 }
                             ),
-                            "unresolved.ts": _types.Types(
+                            "unresolved.ts": t_types.Types(
                                 types,
                                 {
                                     'what to generate': ['unresolved', null],
                                     'imports': imports,
                                 }
                             ),
-                            "resolve.ts": _resolver.Signatures(
+                            "resolve.ts": t_resolver.Signatures(
                                 $.signatures.types
                             ),
-                            "migration boilerplate.ts": _migration_boilerplate.Types(
+                            "migration boilerplate.ts": t_migration_boilerplate.Types(
+                                types,
+                                {
+                                    'imports': imports,
+                                    'constrained': true
+                                }
+                            ),
+                            "serializer.ts": t_migration_boilerplate.Types(
                                 types,
                                 {
                                     'imports': imports,
@@ -51,18 +59,25 @@ export const Schemas = ($: _in.Schemas): _out.Module_Set.D<pd.Source_Location> =
                             ),
                         }))
                         case 'unconstrained': return _ea.ss($, ($) => _ea.dictionary_literal({
-                            "unconstrained.ts": _types.Types(
+                            "unconstrained.ts": t_types.Types(
                                 types,
                                 {
                                     'what to generate': ['unconstrained', null],
                                     'imports': imports,
                                 }
                             ),
-                            "migration boilerplate.ts": _migration_boilerplate.Types(
+                            "migration boilerplate.ts": t_migration_boilerplate.Types(
                                 types,
                                 {
                                     'imports': imports,
                                     'constrained': false,
+                                }
+                            ),
+                            "serializer.ts": t_serializer.Types(
+                                types,
+                                {
+                                    'imports': imports,
+                                    'constrained': false
                                 }
                             ),
                         }))
