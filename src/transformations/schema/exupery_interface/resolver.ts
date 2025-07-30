@@ -103,14 +103,14 @@ export const r_Signature_Parameters = (
             const x = $.referent
             return pa.cc($.type, ($) => {
                 switch ($[0]) {
-                    case 'acyclic': return pa.ss($, ($) => t.component_imported("generic", "Acyclic Lookup", {
+                    case 'acyclic': return pa.ss($, ($) => t.component_imported("resolve", "Acyclic Lookup", {
                         "T": r_Type_Reference(x, { 'component sub part': pa.array_literal([ sub.dictionary()]) }),
                     }, []))
-                    case 'cyclic': return pa.ss($, ($) => t.component_imported("generic", "Cyclic Lookup", {
+                    case 'cyclic': return pa.ss($, ($) => t.component_imported("resolve", "Cyclic Lookup", {
                         "T": r_Type_Reference(x, { 'component sub part': pa.array_literal([ sub.dictionary()]) }),
 
                     }, []))
-                    case 'stack': return pa.ss($, ($) => t.component_imported("generic", "Lookup Stack", {
+                    case 'stack': return pa.ss($, ($) => t.component_imported("resolve", "Lookup Stack", {
                         "T": r_Type_Reference(x, { 'component sub part': pa.array_literal([ sub.dictionary()]) }),
 
                     }, []))
