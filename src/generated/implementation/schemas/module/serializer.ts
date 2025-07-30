@@ -6,44 +6,58 @@ import * as _i_r_schema from "../schema/serializer"
 import * as _i_signatures from "../../../interface/schemas/module/serializer"
 
 
-export const Module: _i_signatures._T_Module = ($) => ['verbose group', _pa.dictionary_literal({
+export const Module: _i_signatures._T_s_Module = ($, $p) => ['verbose group', _pa.dictionary_literal({
     'operations': _pa.cc($['operations'], ($) => Operations(
         $,
-        null
+        {
+            'value serializers': $p['value serializers'],
+        }
     )),
     'schemas': _pa.cc($['schemas'], ($) => _i_r_schema.Schemas(
         $,
-        null
+        {
+            'value serializers': $p['value serializers'],
+        }
     )),
 })]
-export const Operations: _i_signatures._T_Operations = ($) => ['dictionary', $.map(($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+export const Operations: _i_signatures._T_s_Operations = ($, $p) => ['dictionary', $.map(($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'operation': return _pa.ss($, ($) => ({
-            'state': `operation`,
+            'state': "operation",
             'value': ['verbose group', _pa.dictionary_literal({
                 'context': _pa.cc($['context'], ($) => _i_r_schema.Type_Node(
                     $,
-                    null
+                    {
+                        'value serializers': $p['value serializers'],
+                    }
                 )),
                 'parameters': _pa.cc($['parameters'], ($) => ['dictionary', $.map(($) => _i_r_schema.Type_Node(
                     $,
-                    null
+                    {
+                        'value serializers': $p['value serializers'],
+                    }
                 ))]),
                 'result': _pa.cc($['result'], ($) => _i_r_schema.Type_Node(
                     $,
-                    null
+                    {
+                        'value serializers': $p['value serializers'],
+                    }
                 )),
                 'type parameters': _pa.cc($['type parameters'], ($) => _i_r_schema.Type_Parameters(
                     $,
-                    null
+                    {
+                        'value serializers': $p['value serializers'],
+                    }
                 )),
             })],
         }))
         case 'set': return _pa.ss($, ($) => ({
-            'state': `set`,
+            'state': "set",
             'value': Operations(
                 $,
-                null
+                {
+                    'value serializers': $p['value serializers'],
+                }
             ),
         }))
         default: return _pa.au($[0])
