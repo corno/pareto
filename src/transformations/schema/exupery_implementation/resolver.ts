@@ -479,7 +479,7 @@ export const Resolvers = (
         op['flatten dictionary'](
             pa.dictionary_literal({
                 "": pa.dictionary_literal({
-                    "generic": import_.ancestor(3, "generic", ["resolve"], {}),
+                    "generic": import_.ancestor(2, "generic", ["resolve"], {}),
                     "out": import_.ancestor(3, "interface", ["schemas", $p.key, "resolved"], {}),
                     "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "resolve"], {}),
                 }),
