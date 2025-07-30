@@ -1,6 +1,6 @@
 import * as _pt from 'exupery-core-types'
 
-import * as _i_generic from "../../generic/resolve"
+import * as _i_resolve from "../../core/resolve"
 import * as _i_resolved from "./resolved"
 import * as _i_unresolved from "./unresolved"
 
@@ -9,7 +9,7 @@ import * as _i_unresolved from "./unresolved"
 export type _T_Module<G_Source> = (
     $$_: _i_unresolved._T_Module<G_Source>,
     $$_p: {
-        readonly 'location 2 string': _i_generic._T_Location_2_String<G_Source>
+        readonly 'location 2 string': _i_resolve._T_Location_2_String<G_Source>
         readonly 'parameters': {
             readonly 'lookups': null
             readonly 'values': null
@@ -20,7 +20,7 @@ export type _T_Module<G_Source> = (
 export type _T_Operations<G_Source> = (
     $$_: _i_unresolved._T_Operations<G_Source>,
     $$_p: {
-        readonly 'location 2 string': _i_generic._T_Location_2_String<G_Source>
+        readonly 'location 2 string': _i_resolve._T_Location_2_String<G_Source>
         readonly 'parameters': {
             readonly 'lookups': null
             readonly 'values': null
@@ -48,7 +48,7 @@ export namespace _T_Module {
         export namespace location_2_string {
             export type Source<G_Source> = G_Source
         }
-        export type location_2_string<G_Source> = _i_generic._T_Location_2_String<G_Source>
+        export type location_2_string<G_Source> = _i_resolve._T_Location_2_String<G_Source>
         
         export namespace parameters {
             
@@ -83,7 +83,7 @@ export namespace _T_Operations {
         export namespace location_2_string {
             export type Source<G_Source> = G_Source
         }
-        export type location_2_string<G_Source> = _i_generic._T_Location_2_String<G_Source>
+        export type location_2_string<G_Source> = _i_resolve._T_Location_2_String<G_Source>
         
         export namespace parameters {
             
@@ -120,7 +120,7 @@ export namespace Module {
         export namespace location_2_string {
             export type Source<G_Source> = G_Source
         }
-        export type location_2_string<G_Source> = _i_generic._T_Location_2_String<G_Source>
+        export type location_2_string<G_Source> = _i_resolve._T_Location_2_String<G_Source>
         
         export namespace parameters {
             
@@ -155,7 +155,7 @@ export namespace Operations {
         export namespace location_2_string {
             export type Source<G_Source> = G_Source
         }
-        export type location_2_string<G_Source> = _i_generic._T_Location_2_String<G_Source>
+        export type location_2_string<G_Source> = _i_resolve._T_Location_2_String<G_Source>
         
         export namespace parameters {
             
