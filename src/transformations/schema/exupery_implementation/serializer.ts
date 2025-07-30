@@ -67,11 +67,11 @@ export const Type_Node = (
     },
 ): _out.Initialization<pd.Source_Location> => {
 
-    const string = (value: string): _out.Initialization<pd.Source_Location> => {
+    const string = (value: string, delimiter: 'quote' | 'backtick' | 'none'): _out.Initialization<pd.Source_Location> => {
         return i.tagged_union(
             "text",
             i.group({
-                "delimiter": i.tagged_union("quote", i.null_()),
+                "delimiter": i.tagged_union(delimiter, i.null_()),
                 "value": i.string(value, 'quote'),
             })
         )
@@ -79,17 +79,17 @@ export const Type_Node = (
 
     return pa.cc($, ($) => {
         switch ($[0]) {
-            case 'number': return pa.ss($, ($) => string("FIXME NUMBER"))
-            case 'boolean': return pa.ss($, ($) => string("FIXME BOOLEAN"))
+            case 'number': return pa.ss($, ($) => string("FIXME NUMBER", 'backtick')) //FIXME should be 'none'
+            case 'boolean': return pa.ss($, ($) => string("FIXME BOOLEAN", 'backtick')) //FIXME should be 'none'
             case 'nothing': return pa.ss($, ($) => i.tagged_union("nothing", i.null_()))
             case 'reference': return pa.ss($, ($) => pa.cc($.type, ($) => {
                 switch ($[0]) {
                     case 'derived': return pa.ss($, ($) => i.tagged_union("nothing", i.null_()))
-                    case 'selected': return pa.ss($, ($) => string("FIXME REFERENCE"))
+                    case 'selected': return pa.ss($, ($) => string("FIXME REFERENCE", 'backtick'))
                     default: return pa.au($[0])
                 }
             }))
-            case 'text': return pa.ss($, ($) => string("FIXME TEXT"))
+            case 'text': return pa.ss($, ($) => string("FIXME TEXT", 'quote'))
             case 'component': return pa.ss($, ($) => i.call(
                 pa.cc($, ($) => {
                     switch ($[0]) {
@@ -206,7 +206,7 @@ export const Type_Node = (
                 i.switch_(
                     s.from_context([]),
                     $.map(($, key) => i.group({
-                        "state": i.string(key, 'quote'),
+                        "state": i.string(key, 'backtick'),
                         "value": Type_Node(
                             $,
                             {
