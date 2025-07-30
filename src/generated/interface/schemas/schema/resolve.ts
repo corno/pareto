@@ -397,6 +397,19 @@ export type _T_Resolvers<G_Source> = (
     },
 ) => _i_resolved._T_Resolvers
 
+export type _T_Schema<G_Source> = (
+    $$_: _i_unresolved._T_Schema<G_Source>,
+    $$_p: {
+        readonly 'location 2 string': _i_generic._T_Location_2_String<G_Source>
+        readonly 'parameters': {
+            readonly 'lookups': {
+                readonly 'sibling schemas': _i_generic._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            readonly 'values': null
+        }
+    },
+) => _i_resolved._T_Schema
+
 export type _T_Schemas<G_Source> = (
     $$_: _i_unresolved._T_Schemas<G_Source>,
     $$_p: {
@@ -601,6 +614,8 @@ export type Relative_Value_Selection<G_Source> = _T_Relative_Value_Selection<G_S
 export type Resolve_Logic<G_Source> = _T_Resolve_Logic<G_Source>
 
 export type Resolvers<G_Source> = _T_Resolvers<G_Source>
+
+export type Schema<G_Source> = _T_Schema<G_Source>
 
 export type Schemas<G_Source> = _T_Schemas<G_Source>
 
@@ -2476,6 +2491,53 @@ export namespace _T_Resolvers {
     export namespace RESULT {
     }
     export type RESULT<G_Source> = _i_resolved._T_Resolvers
+}
+
+export namespace _T_Schema {
+    
+    export namespace CONTEXT {
+        export type Source<G_Source> = G_Source
+    }
+    export type CONTEXT<G_Source> = _i_unresolved._T_Schema<G_Source>
+    
+    export namespace PARAMS {
+        
+        export namespace location_2_string {
+            export type Source<G_Source> = G_Source
+        }
+        export type location_2_string<G_Source> = _i_generic._T_Location_2_String<G_Source>
+        
+        export namespace parameters {
+            
+            export namespace lookups {
+                
+                export namespace sibling_schemas {
+                    
+                    export namespace T {
+                    }
+                    export type T<G_Source> = _i_resolved._T_Schemas.D
+                }
+                export type sibling_schemas<G_Source> = _i_generic._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            export type lookups<G_Source> = {
+                readonly 'sibling schemas': _i_generic._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            
+            export namespace values {
+            }
+            export type values<G_Source> = null
+        }
+        export type parameters<G_Source> = {
+            readonly 'lookups': {
+                readonly 'sibling schemas': _i_generic._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            readonly 'values': null
+        }
+    }
+    
+    export namespace RESULT {
+    }
+    export type RESULT<G_Source> = _i_resolved._T_Schema
 }
 
 export namespace _T_Schemas {
@@ -4951,6 +5013,53 @@ export namespace Resolvers {
     export namespace RESULT {
     }
     export type RESULT<G_Source> = _i_resolved._T_Resolvers
+}
+
+export namespace Schema {
+    
+    export namespace CONTEXT {
+        export type Source<G_Source> = G_Source
+    }
+    export type CONTEXT<G_Source> = _i_unresolved._T_Schema<G_Source>
+    
+    export namespace PARAMS {
+        
+        export namespace location_2_string {
+            export type Source<G_Source> = G_Source
+        }
+        export type location_2_string<G_Source> = _i_generic._T_Location_2_String<G_Source>
+        
+        export namespace parameters {
+            
+            export namespace lookups {
+                
+                export namespace sibling_schemas {
+                    
+                    export namespace T {
+                    }
+                    export type T<G_Source> = _i_resolved._T_Schemas.D
+                }
+                export type sibling_schemas<G_Source> = _i_generic._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            export type lookups<G_Source> = {
+                readonly 'sibling schemas': _i_generic._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            
+            export namespace values {
+            }
+            export type values<G_Source> = null
+        }
+        export type parameters<G_Source> = {
+            readonly 'lookups': {
+                readonly 'sibling schemas': _i_generic._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            readonly 'values': null
+        }
+    }
+    
+    export namespace RESULT {
+    }
+    export type RESULT<G_Source> = _i_resolved._T_Schema
 }
 
 export namespace Schemas {

@@ -115,6 +115,11 @@ export type _T_Resolvers = (
     $$_p: null,
 ) => _i_out._T_Resolvers<null>
 
+export type _T_Schema = (
+    $$_: _i_in._T_Schema,
+    $$_p: null,
+) => _i_out._T_Schema<null>
+
 export type _T_Schemas = (
     $$_: _i_in._T_Schemas,
     $$_p: null,
@@ -215,6 +220,8 @@ export type Relative_Value_Selection = _T_Relative_Value_Selection
 export type Resolve_Logic = _T_Resolve_Logic
 
 export type Resolvers = _T_Resolvers
+
+export type Schema = _T_Schema
 
 export type Schemas = _T_Schemas
 
@@ -568,6 +575,21 @@ export namespace _T_Resolvers {
         export type annotation = null
     }
     export type RESULT = _i_out._T_Resolvers<null>
+}
+
+export namespace _T_Schema {
+    
+    export namespace CONTEXT {
+    }
+    export type CONTEXT = _i_in._T_Schema
+    
+    export namespace PARAMS {
+    }
+    
+    export namespace RESULT {
+        export type annotation = null
+    }
+    export type RESULT = _i_out._T_Schema<null>
 }
 
 export namespace _T_Schemas {
@@ -1065,6 +1087,21 @@ export namespace Resolvers {
         export type annotation = null
     }
     export type RESULT = _i_out._T_Resolvers<null>
+}
+
+export namespace Schema {
+    
+    export namespace CONTEXT {
+    }
+    export type CONTEXT = _i_in._T_Schema
+    
+    export namespace PARAMS {
+    }
+    
+    export namespace RESULT {
+        export type annotation = null
+    }
+    export type RESULT = _i_out._T_Schema<null>
 }
 
 export namespace Schemas {

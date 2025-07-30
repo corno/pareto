@@ -1109,7 +1109,7 @@ export const import_ = (
 export const constrained = (
     signatures: unresolved.Resolve_Logic.signatures<pd.Source_Location>,
     resolvers: unresolved.Resolvers<pd.Source_Location>,
-): unresolved.Schemas.D.SG.schema.complexity.SG.constrained<pd.Source_Location> => {
+): unresolved.Schema.complexity.SG.constrained<pd.Source_Location> => {
     return {
         'signatures': signatures,
         'resolvers': resolvers,
@@ -1117,14 +1117,14 @@ export const constrained = (
 }
 
 export const unconstrained = (
-): unresolved.Schemas.D.SG.schema.complexity.SG.unconstrained<pd.Source_Location> => {
+): unresolved.Schema.complexity.SG.unconstrained<pd.Source_Location> => {
     return null
 }
 export const schema_ = (
     imports: Raw_Or_Normal_Dictionary<unresolved.Imports.D<pd.Source_Location>>,
     globals: unresolved.Globals<pd.Source_Location>,
     types: unresolved.Types<pd.Source_Location>,
-    resolve: null | unresolved.Schemas.D.SG.schema.complexity.SG.constrained<pd.Source_Location>,
+    resolve: null | unresolved.Schema.complexity.SG.constrained<pd.Source_Location>,
 ): unresolved.Schemas.D<pd.Source_Location> => {
     return wrap_state_group(['schema', {
         'imports': wrap_dictionary(imports),

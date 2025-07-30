@@ -346,7 +346,7 @@ export const r_Schemas: _i_signatures.Schemas<_i_generic.Location_Info> = ($, $p
                                 'values': null,
                             }
                         })
-                        const p_globals: _i_out.Schemas.D.SG.schema.globals = pa.cc($['globals'], ($) => r_Globals(
+                        const p_globals: _i_out.Schema.globals = pa.cc($['globals'], ($) => r_Globals(
                             $,
                             {
                                 'location 2 string': l2s,
@@ -395,7 +395,7 @@ export const r_Schemas: _i_signatures.Schemas<_i_generic.Location_Info> = ($, $p
                                 },
                             }
                         )
-                        const p_complexity: _i_out.Schemas.D.SG.schema.complexity = pa.cc($.complexity['state group'], ($) => {
+                        const p_complexity: _i_out.Schema.complexity = pa.cc($.complexity['state group'], ($) => {
                             switch ($[0]) {
                                 case 'constrained': return pa.ss($, ($) => {
 
@@ -1103,7 +1103,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver<_i_generic.Location_In
                                     'location 2 string': $p['location 2 string']
                                 }
                             )
-                            const pc_constrained: _i_out.Schemas.D.SG.schema.complexity.SG.constrained = pa.cc(p_import.entry.schema.complexity, ($) => {
+                            const pc_constrained: _i_out.Schema.complexity.SG.constrained = pa.cc(p_import.entry.schema.complexity, ($) => {
                                 switch ($[0]) {
                                     case 'constrained': return pa.ss($, ($) => $)
                                     case 'unconstrained': return pa.ss($, ($) => pa.panic(`not constrained @ ${$p['location 2 string'](loc)}`))

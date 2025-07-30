@@ -1595,6 +1595,76 @@ export const r_Resolvers: _i_signatures._T_Resolvers<_i_generic._T_Location_Info
         )
     })
 })
+export const r_Schema: _i_signatures._T_Schema<_i_generic._T_Location_Info> = ($, $p) => _pa.block(() => {
+    const l2s = $p['location 2 string']
+    const params = $p['parameters']
+    return _pa.block(() => {
+        const p_imports: _i_out._T_Schema.imports = _pa.cc($['imports'], ($) => r_Imports(
+            $,
+            {
+                'location 2 string': l2s,
+                'parameters': ({
+                    'lookups': ({
+                        'sibling schemas': params['lookups']['sibling schemas'],
+                    }),
+                    'values': null,
+                }),
+            }
+        ))
+        const p_globals: _i_out._T_Schema.globals = _pa.cc($['globals'], ($) => r_Globals(
+            $,
+            {
+                'location 2 string': l2s,
+                'parameters': ({
+                    'lookups': null,
+                    'values': null,
+                }),
+            }
+        ))
+        const p_types: _i_out._T_Schema.types = _pa.cc($['types'], ($) => r_Types(
+            $,
+            {
+                'location 2 string': l2s,
+                'parameters': ({
+                    'lookups': null,
+                    'values': ({
+                        'globals': _pa.set(p_globals),
+                        'imports': _pa.set(p_imports),
+                    }),
+                }),
+            }
+        ))
+        const p_complexity: _i_out._T_Schema.complexity = _pa.cc($['complexity'], ($) => _pa.cc($['state group'], ($): _i_out._T_Schema.complexity => {
+            switch ($[0]) {
+                case 'constrained': return _pa.ss($, ($) => ['constrained', _pa.block(() => {
+                    return r_Resolve_Logic(
+                        $,
+                        {
+                            'location 2 string': l2s,
+                            'parameters': ({
+                                'lookups': null,
+                                'values': ({
+                                    'imports': p_imports,
+                                    'types': p_types,
+                                }),
+                            }),
+                        }
+                    )
+                })])
+                case 'unconstrained': return _pa.ss($, ($) => ['unconstrained', _pa.block(() => {
+                    return null
+                })])
+                default: return _pa.au($[0])
+            }
+        }))
+        return ({
+            'complexity': p_complexity,
+            'globals': p_globals,
+            'imports': p_imports,
+            'types': p_types,
+        })
+    })
+})
 export const r_Schemas: _i_signatures._T_Schemas<_i_generic._T_Location_Info> = ($, $p) => _pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
@@ -1607,72 +1677,18 @@ export const r_Schemas: _i_signatures._T_Schemas<_i_generic._T_Location_Info> = 
                     return _pa.cc($['value'], ($) => _pa.cc($['state group'], ($): _i_out._T_Schemas.D => {
                         switch ($[0]) {
                             case 'schema': return _pa.ss($, ($) => ['schema', _pa.block(() => {
-                                return _pa.block(() => {
-                                    const p_imports: _i_out._T_Schemas.D.SG.schema.imports = _pa.cc($['imports'], ($) => r_Imports(
-                                        $,
-                                        {
-                                            'location 2 string': l2s,
-                                            'parameters': ({
-                                                'lookups': ({
-                                                    'sibling schemas': _pd.implement_me(),
-                                                }),
-                                                'values': null,
+                                return r_Schema(
+                                    $,
+                                    {
+                                        'location 2 string': l2s,
+                                        'parameters': ({
+                                            'lookups': ({
+                                                'sibling schemas': _pd.implement_me(),
                                             }),
-                                        }
-                                    ))
-                                    const p_globals: _i_out._T_Schemas.D.SG.schema.globals = _pa.cc($['globals'], ($) => r_Globals(
-                                        $,
-                                        {
-                                            'location 2 string': l2s,
-                                            'parameters': ({
-                                                'lookups': null,
-                                                'values': null,
-                                            }),
-                                        }
-                                    ))
-                                    const p_types: _i_out._T_Schemas.D.SG.schema.types = _pa.cc($['types'], ($) => r_Types(
-                                        $,
-                                        {
-                                            'location 2 string': l2s,
-                                            'parameters': ({
-                                                'lookups': null,
-                                                'values': ({
-                                                    'globals': _pa.set(p_globals),
-                                                    'imports': _pa.set(p_imports),
-                                                }),
-                                            }),
-                                        }
-                                    ))
-                                    const p_complexity: _i_out._T_Schemas.D.SG.schema.complexity = _pa.cc($['complexity'], ($) => _pa.cc($['state group'], ($): _i_out._T_Schemas.D.SG.schema.complexity => {
-                                        switch ($[0]) {
-                                            case 'constrained': return _pa.ss($, ($) => ['constrained', _pa.block(() => {
-                                                return r_Resolve_Logic(
-                                                    $,
-                                                    {
-                                                        'location 2 string': l2s,
-                                                        'parameters': ({
-                                                            'lookups': null,
-                                                            'values': ({
-                                                                'imports': p_imports,
-                                                                'types': p_types,
-                                                            }),
-                                                        }),
-                                                    }
-                                                )
-                                            })])
-                                            case 'unconstrained': return _pa.ss($, ($) => ['unconstrained', _pa.block(() => {
-                                                return null
-                                            })])
-                                            default: return _pa.au($[0])
-                                        }
-                                    }))
-                                    return ({
-                                        'complexity': p_complexity,
-                                        'globals': p_globals,
-                                        'imports': p_imports,
-                                        'types': p_types,
-                                    })
-                                })
+                                            'values': null,
+                                        }),
+                                    }
+                                )
                             })])
                             case 'set': return _pa.ss($, ($) => ['set', _pa.block(() => {
                                 return r_Schemas(

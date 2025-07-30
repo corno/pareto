@@ -261,16 +261,18 @@ export type _T_Resolvers = _i_core._T_Ordered_Dictionary<null, {
     readonly 'type resolver': _T_Node_Resolver
 }>
 
+export type _T_Schema = {
+    readonly 'complexity': _i_core._T_State_Group<null, 
+        | readonly ['constrained', _T_Resolve_Logic]
+        | readonly ['unconstrained', null]
+    >
+    readonly 'globals': _T_Globals
+    readonly 'imports': _T_Imports
+    readonly 'types': _T_Types
+}
+
 export type _T_Schemas = _i_core._T_Ordered_Dictionary<null, _i_core._T_State_Group<null, 
-    | readonly ['schema', {
-        readonly 'complexity': _i_core._T_State_Group<null, 
-            | readonly ['constrained', _T_Resolve_Logic]
-            | readonly ['unconstrained', null]
-        >
-        readonly 'globals': _T_Globals
-        readonly 'imports': _T_Imports
-        readonly 'types': _T_Types
-    }]
+    | readonly ['schema', _T_Schema]
     | readonly ['set', _T_Schemas]
 >>
 
@@ -431,6 +433,8 @@ export type Relative_Value_Selection = _T_Relative_Value_Selection
 export type Resolve_Logic = _T_Resolve_Logic
 
 export type Resolvers = _T_Resolvers
+
+export type Schema = _T_Schema
 
 export type Schemas = _T_Schemas
 
@@ -1967,6 +1971,39 @@ export namespace _T_Resolvers {
     }
 }
 
+export namespace _T_Schema {
+    
+    export namespace complexity {
+        
+        export namespace SG {
+            
+            export namespace constrained {
+            }
+            export type constrained = _T_Resolve_Logic
+            export type unconstrained = null
+        }
+        export type SG = 
+            | readonly ['constrained', _T_Resolve_Logic]
+            | readonly ['unconstrained', null]
+    }
+    export type complexity = _i_core._T_State_Group<null, 
+        | readonly ['constrained', _T_Resolve_Logic]
+        | readonly ['unconstrained', null]
+    >
+    
+    export namespace globals {
+    }
+    export type globals = _T_Globals
+    
+    export namespace imports {
+    }
+    export type imports = _T_Imports
+    
+    export namespace types {
+    }
+    export type types = _T_Types
+}
+
 export namespace _T_Schemas {
     
     export namespace D {
@@ -1974,73 +2011,19 @@ export namespace _T_Schemas {
         export namespace SG {
             
             export namespace schema {
-                
-                export namespace complexity {
-                    
-                    export namespace SG {
-                        
-                        export namespace constrained {
-                        }
-                        export type constrained = _T_Resolve_Logic
-                        export type unconstrained = null
-                    }
-                    export type SG = 
-                        | readonly ['constrained', _T_Resolve_Logic]
-                        | readonly ['unconstrained', null]
-                }
-                export type complexity = _i_core._T_State_Group<null, 
-                    | readonly ['constrained', _T_Resolve_Logic]
-                    | readonly ['unconstrained', null]
-                >
-                
-                export namespace globals {
-                }
-                export type globals = _T_Globals
-                
-                export namespace imports {
-                }
-                export type imports = _T_Imports
-                
-                export namespace types {
-                }
-                export type types = _T_Types
             }
-            export type schema = {
-                readonly 'complexity': _i_core._T_State_Group<null, 
-                    | readonly ['constrained', _T_Resolve_Logic]
-                    | readonly ['unconstrained', null]
-                >
-                readonly 'globals': _T_Globals
-                readonly 'imports': _T_Imports
-                readonly 'types': _T_Types
-            }
+            export type schema = _T_Schema
             
             export namespace _set {
             }
             export type _set = _T_Schemas
         }
         export type SG = 
-            | readonly ['schema', {
-                readonly 'complexity': _i_core._T_State_Group<null, 
-                    | readonly ['constrained', _T_Resolve_Logic]
-                    | readonly ['unconstrained', null]
-                >
-                readonly 'globals': _T_Globals
-                readonly 'imports': _T_Imports
-                readonly 'types': _T_Types
-            }]
+            | readonly ['schema', _T_Schema]
             | readonly ['set', _T_Schemas]
     }
     export type D = _i_core._T_State_Group<null, 
-        | readonly ['schema', {
-            readonly 'complexity': _i_core._T_State_Group<null, 
-                | readonly ['constrained', _T_Resolve_Logic]
-                | readonly ['unconstrained', null]
-            >
-            readonly 'globals': _T_Globals
-            readonly 'imports': _T_Imports
-            readonly 'types': _T_Types
-        }]
+        | readonly ['schema', _T_Schema]
         | readonly ['set', _T_Schemas]
     >
 }
@@ -4150,6 +4133,39 @@ export namespace Resolvers {
     }
 }
 
+export namespace Schema {
+    
+    export namespace complexity {
+        
+        export namespace SG {
+            
+            export namespace constrained {
+            }
+            export type constrained = _T_Resolve_Logic
+            export type unconstrained = null
+        }
+        export type SG = 
+            | readonly ['constrained', _T_Resolve_Logic]
+            | readonly ['unconstrained', null]
+    }
+    export type complexity = _i_core._T_State_Group<null, 
+        | readonly ['constrained', _T_Resolve_Logic]
+        | readonly ['unconstrained', null]
+    >
+    
+    export namespace globals {
+    }
+    export type globals = _T_Globals
+    
+    export namespace imports {
+    }
+    export type imports = _T_Imports
+    
+    export namespace types {
+    }
+    export type types = _T_Types
+}
+
 export namespace Schemas {
     
     export namespace D {
@@ -4157,73 +4173,19 @@ export namespace Schemas {
         export namespace SG {
             
             export namespace schema {
-                
-                export namespace complexity {
-                    
-                    export namespace SG {
-                        
-                        export namespace constrained {
-                        }
-                        export type constrained = _T_Resolve_Logic
-                        export type unconstrained = null
-                    }
-                    export type SG = 
-                        | readonly ['constrained', _T_Resolve_Logic]
-                        | readonly ['unconstrained', null]
-                }
-                export type complexity = _i_core._T_State_Group<null, 
-                    | readonly ['constrained', _T_Resolve_Logic]
-                    | readonly ['unconstrained', null]
-                >
-                
-                export namespace globals {
-                }
-                export type globals = _T_Globals
-                
-                export namespace imports {
-                }
-                export type imports = _T_Imports
-                
-                export namespace types {
-                }
-                export type types = _T_Types
             }
-            export type schema = {
-                readonly 'complexity': _i_core._T_State_Group<null, 
-                    | readonly ['constrained', _T_Resolve_Logic]
-                    | readonly ['unconstrained', null]
-                >
-                readonly 'globals': _T_Globals
-                readonly 'imports': _T_Imports
-                readonly 'types': _T_Types
-            }
+            export type schema = _T_Schema
             
             export namespace _set {
             }
             export type _set = _T_Schemas
         }
         export type SG = 
-            | readonly ['schema', {
-                readonly 'complexity': _i_core._T_State_Group<null, 
-                    | readonly ['constrained', _T_Resolve_Logic]
-                    | readonly ['unconstrained', null]
-                >
-                readonly 'globals': _T_Globals
-                readonly 'imports': _T_Imports
-                readonly 'types': _T_Types
-            }]
+            | readonly ['schema', _T_Schema]
             | readonly ['set', _T_Schemas]
     }
     export type D = _i_core._T_State_Group<null, 
-        | readonly ['schema', {
-            readonly 'complexity': _i_core._T_State_Group<null, 
-                | readonly ['constrained', _T_Resolve_Logic]
-                | readonly ['unconstrained', null]
-            >
-            readonly 'globals': _T_Globals
-            readonly 'imports': _T_Imports
-            readonly 'types': _T_Types
-        }]
+        | readonly ['schema', _T_Schema]
         | readonly ['set', _T_Schemas]
     >
 }

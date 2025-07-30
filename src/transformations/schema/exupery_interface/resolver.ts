@@ -126,7 +126,7 @@ export const Signatures = (
 ): _out.Module_Set.D<pd.Source_Location> => {
     return m.module(
         {
-            "generic": import_.ancestor(2, "generic", ["resolve"], {}),
+            "resolve": import_.ancestor(2, "core", ["resolve"], {}),
             "resolved": import_.sibling("resolved", [], {}),
             "unresolved": import_.sibling("unresolved", [], {}),
         },
@@ -138,7 +138,7 @@ export const Signatures = (
             }, []),
             {
                 "parameters": r_Signature_Parameters($['resolved parameters']),
-                "location 2 string": t.component_imported("generic", "Location 2 String", {
+                "location 2 string": t.component_imported("core", "Location 2 String", {
                     "Source": t.module_parameter("Source"),
                 }, []),
             },
