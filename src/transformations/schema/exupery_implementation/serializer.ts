@@ -33,7 +33,14 @@ export const Types = (
             pa.dictionary_literal({
                 "": pa.dictionary_literal({
                     "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "serializer"], {}),
-                    "out": import_.ancestor(3, "interface", ["schemas", $p.key, $p.constrained ? "unresolved" : "unconstrained"], $p.constrained ? { "Source": t.null_() } : {}),
+                    "out": import_.ancestor(
+                        2,
+                        "core",
+                        [
+                            "astn target"
+                        ],
+                        {},
+                    ),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["serializer"], {}))
             }),
@@ -200,7 +207,7 @@ export const Type_Node = (
                 i.switch_(
                     s.from_context([]),
                     $.map(($, key) => i.case_(key, i.group({
-                        "state": string(key),
+                        "state": i.string(key, 'quote'),
                         "value": Type_Node(
                             $,
                             {
@@ -216,9 +223,9 @@ export const Type_Node = (
                     }))),
                     t.component_imported(
                         "out",
-                        $p.type,
+                        "Value",
                         {},
-                        $p.subselection.__get_raw_copy(),
+                        []
                     ),
                 )
             ))
