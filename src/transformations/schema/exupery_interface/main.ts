@@ -50,7 +50,7 @@ export const Schemas = ($: _in.Schemas): _out.Module_Set.D<pd.Source_Location> =
                                     'constrained': true
                                 }
                             ),
-                            "serializer.ts": t_migration_boilerplate.Types(
+                            "serializer.ts": t_serializer.Types(
                                 types,
                                 {
                                     'imports': imports,
