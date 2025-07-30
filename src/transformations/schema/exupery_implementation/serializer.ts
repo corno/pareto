@@ -20,8 +20,8 @@ const op = {
     'pad dictionary identifiers': pure.dictionary['pad identifiers'],
 }
 
-export const Types = (
-    $: _in.Types,
+export const Schema = (
+    $: _in.Schema,
     $p: {
         'key': string,
         'imports': _in.Imports,
@@ -42,8 +42,8 @@ export const Types = (
             }
         ),
         {},
-        $.dictionary.map(($, key) => variable(
-            t.component_imported("signatures", key, {}, []),
+        $.types.dictionary.map(($, key) => variable(
+            t.component_imported("signatures", `s ${key}`, {}, []),
             i.function_(
                 false,
                 Type_Node(
@@ -100,7 +100,9 @@ export const Type_Node = (
                     }
                 }),
                 i.select_from_context([]),
-                pa.dictionary_literal({}),
+                pa.dictionary_literal({
+                    "value serializers": i.select_from_parameter("value serializers", []),
+                }),
             ))
             case 'dictionary': return pa.ss($, ($) => i.tagged_union(
                 "dictionary",

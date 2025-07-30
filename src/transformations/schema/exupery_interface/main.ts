@@ -21,6 +21,7 @@ export const Schemas = ($: _in.Schemas): _out.Module_Set.D<pd.Source_Location> =
     return m.set($.dictionary.map(($) => _ea.cc($, ($) => {
         switch ($[0]) {
             case 'schema': return _ea.ss($, ($) => {
+                const schema = $
                 const types = $.types
                 const imports = $.imports
                 return m.set(_ea.cc($.complexity, ($) => {
@@ -50,8 +51,8 @@ export const Schemas = ($: _in.Schemas): _out.Module_Set.D<pd.Source_Location> =
                                     'constrained': true
                                 }
                             ),
-                            "serializer.ts": t_serializer.Types(
-                                types,
+                            "serializer.ts": t_serializer.Schema(
+                                schema,
                                 {
                                     'imports': imports,
                                     'constrained': true
@@ -73,8 +74,8 @@ export const Schemas = ($: _in.Schemas): _out.Module_Set.D<pd.Source_Location> =
                                     'constrained': false,
                                 }
                             ),
-                            "serializer.ts": t_serializer.Types(
-                                types,
+                            "serializer.ts": t_serializer.Schema(
+                                schema,
                                 {
                                     'imports': imports,
                                     'constrained': false

@@ -6,7 +6,7 @@ import * as pt from 'exupery-core-types'
 import * as _in from "../../../generated/interface/schemas/schema/resolved"
 import * as _out from "exupery/dist/generated/interface/schemas/interface/unresolved"
 
-import { m, t, import_, type, sub } from "exupery/dist/shorthands/interface"
+import * as sh from "exupery/dist/shorthands/interface"
 
 import { pure } from "pareto-standard-operations"
 
@@ -29,16 +29,16 @@ export const r_Type_Reference = (
         $p: {
             'add dictionary tail': boolean
         }
-    
+
     ): pt.Array<_out.Type.SG.component.sub_selection.L<pd.Source_Location>> => {
         const tail: pt.Array<_out.Type.SG.component.sub_selection.L<pd.Source_Location>> = $.tail.map(($) => pa.cc($, ($) => {
             switch ($[0]) {
-                case 'dictionary': return pa.ss($, ($) => sub.dictionary())
-                case 'group': return pa.ss($, ($) => sub.group($.key))
+                case 'dictionary': return pa.ss($, ($) => sh.sub.dictionary())
+                case 'group': return pa.ss($, ($) => sh.sub.group($.key))
                 case 'identifier value pair': return pa.ss($, ($) => pdev.implement_me())
-                case 'list': return pa.ss($, ($) => sub.list())
-                case 'optional': return pa.ss($, ($) => sub.optional())
-                case 'state group': return pa.ss($, ($) => sub.state_group($.key))
+                case 'list': return pa.ss($, ($) => sh.sub.list())
+                case 'optional': return pa.ss($, ($) => sh.sub.optional())
+                case 'state group': return pa.ss($, ($) => sh.sub.state_group($.key))
                 default: return pa.au($[0])
             }
         }))
@@ -46,25 +46,25 @@ export const r_Type_Reference = (
             ? op['append element'](
                 tail,
                 {
-                    'element': sub.dictionary(),
+                    'element': sh.sub.dictionary(),
                 }
             )
             : tail
     }
-    
+
     return pa.cc($['type location'].location, ($) => {
         switch ($[0]) {
-            case 'external': return pa.ss($, ($) => t.component_imported(
+            case 'external': return pa.ss($, ($) => sh.t.component_imported(
                 `imports ${$.import.key}`,
                 $.type.key,
                 {},
-                Component_Sub_Selection(referent, { 'add dictionary tail': $p['add dictionary tail']}).__get_raw_copy(),
+                Component_Sub_Selection(referent, { 'add dictionary tail': $p['add dictionary tail'] }).__get_raw_copy(),
 
             ))
-            case 'internal': return pa.ss($, ($) => t.component_sibling(
+            case 'internal': return pa.ss($, ($) => sh.t.component_sibling(
                 $.key,
                 {},
-                Component_Sub_Selection(referent, { 'add dictionary tail': $p['add dictionary tail']}).__get_raw_copy(),
+                Component_Sub_Selection(referent, { 'add dictionary tail': $p['add dictionary tail'] }).__get_raw_copy(),
             ))
             default: return pa.au($[0])
         }
@@ -77,12 +77,12 @@ export const Number_Type = (
 ): _out.Type<pd.Source_Location> => {
     return pa.cc($.precision, ($) => {
         switch ($[0]) {
-            case 'approximation': return pa.ss($, ($) => t.float())
+            case 'approximation': return pa.ss($, ($) => sh.t.float())
             case 'exact': return pa.ss($, ($) => pa.cc($.type, ($) => {
                 switch ($[0]) {
-                    case 'integer': return pa.ss($, ($) => t.integer('signed'))
-                    case 'natural': return pa.ss($, ($) => t.integer('unsigned'))
-                    case 'positive natural': return pa.ss($, ($) => t.integer('unsigned'))
+                    case 'integer': return pa.ss($, ($) => sh.t.integer('signed'))
+                    case 'natural': return pa.ss($, ($) => sh.t.integer('unsigned'))
+                    case 'positive natural': return pa.ss($, ($) => sh.t.integer('unsigned'))
                     default: return pa.au($[0])
                 }
             }))
@@ -97,7 +97,7 @@ export const Type_Node = (
 ): _out.Type<pd.Source_Location> => {
     return pa.cc($, ($) => {
         switch ($[0]) {
-            case 'boolean': return pa.ss($, ($) => t.boolean())
+            case 'boolean': return pa.ss($, ($) => sh.t.boolean())
             case 'number': return pa.ss($, ($) => pa.cc($, ($) => {
                 switch ($[0]) {
                     case 'global': return pa.ss($, ($) => Number_Type($.entry))
@@ -105,21 +105,21 @@ export const Type_Node = (
                     default: return pa.au($[0])
                 }
             }))
-            case 'text': return pa.ss($, ($) => t.string())
+            case 'text': return pa.ss($, ($) => sh.t.string())
             case 'component': return pa.ss($, ($) => pa.cc($, ($) => {
                 switch ($[0]) {
-                    case 'external': return pa.ss($, ($) => t.component_imported(
+                    case 'external': return pa.ss($, ($) => sh.t.component_imported(
                         `imports ${$.import.key}`,
                         $.type.key,
                         {},
                         []
                     ))
-                    case 'internal': return pa.ss($, ($) => t.component_sibling(
+                    case 'internal': return pa.ss($, ($) => sh.t.component_sibling(
                         $.key,
                         {},
                         []
                     ))
-                    case 'internal cyclic': return pa.ss($, ($) => t.component_sibling( //FIXME: is this correct?
+                    case 'internal cyclic': return pa.ss($, ($) => sh.t.component_sibling( //FIXME: is this correct?
                         $.key,
                         {},
                         []
@@ -127,7 +127,7 @@ export const Type_Node = (
                     default: return pa.au($[0])
                 }
             }))
-            case 'dictionary': return pa.ss($, ($) => t.component_imported(
+            case 'dictionary': return pa.ss($, ($) => sh.t.component_imported(
                 "core",
                 $.ordered ? "Ordered Dictionary" : "Dictionary",
                 {
@@ -135,10 +135,10 @@ export const Type_Node = (
                 },
                 []
             ))
-            case 'group': return pa.ss($, ($) => t.group($.map(($, key) => Type_Node($))))
+            case 'group': return pa.ss($, ($) => sh.t.group($.map(($, key) => Type_Node($))))
             case 'list': return pa.ss($, ($) => {
                 const type = $.node
-                return t.component_imported(
+                return sh.t.component_imported(
                     "core",
                     "List",
                     {
@@ -147,14 +147,14 @@ export const Type_Node = (
                     []
                 )
             })
-            case 'identifier value pair': return pa.ss($, ($) => t.key_value_pair(Type_Node($)))
-            case 'nothing': return pa.ss($, ($) => t.null_())
-            case 'optional': return pa.ss($, ($) => t.optional(Type_Node($)))
+            case 'identifier value pair': return pa.ss($, ($) => sh.t.key_value_pair(Type_Node($)))
+            case 'nothing': return pa.ss($, ($) => sh.t.null_())
+            case 'optional': return pa.ss($, ($) => sh.t.optional(Type_Node($)))
             case 'reference': return pa.ss($, ($) => {
                 const referent = $.referent
                 return pa.cc($.type, ($) => {
                     switch ($[0]) {
-                        case 'derived': return pa.ss($, ($) => t.component_imported(
+                        case 'derived': return pa.ss($, ($) => sh.t.component_imported(
                             "core",
                             "Derived Reference",
                             {
@@ -162,7 +162,7 @@ export const Type_Node = (
                             },
                             []
                         ))
-                        case 'selected': return pa.ss($, ($) => t.component_imported(
+                        case 'selected': return pa.ss($, ($) => sh.t.component_imported(
                             "core",
                             pa.cc($.dependency, ($) => {
                                 switch ($[0]) {
@@ -182,15 +182,15 @@ export const Type_Node = (
                 })
             })
 
-            case 'state group': return pa.ss($, ($) => t.component_imported(
+            case 'state group': return pa.ss($, ($) => sh.t.component_imported(
                 "core",
                 "State Group",
                 {
-                    "SG": t.tagged_union($.map(($, key) => Type_Node($)))
+                    "SG": sh.t.tagged_union($.map(($, key) => Type_Node($)))
                 },
                 []
             ))
-            case 'type parameter': return pa.ss($, ($) => t.type_parameter($.key))
+            case 'type parameter': return pa.ss($, ($) => sh.t.type_parameter($.key))
             default: return pa.au($[0])
         }
     })
@@ -209,11 +209,11 @@ export const Types = (
     }
 ): _out.Module_Set.D<pd.Source_Location> => {
     const context = $
-    return m.module(
+    return sh.m.module(
         op['flatten dictionary'](
             pa.dictionary_literal({
                 "core": pa.dictionary_literal({
-                    "": import_.ancestor(
+                    "": sh.import_.ancestor(
                         2,
                         "core",
                         [
@@ -229,9 +229,9 @@ export const Types = (
                         {
                             "Source": pa.cc($p['what to generate'], ($) => {
                                 switch ($[0]) {
-                                    case 'unconstrained': return pa.ss($, ($) => t.null_())
-                                    case 'resolved': return pa.ss($, ($) => t.null_())
-                                    case 'unresolved': return pa.ss($, ($) => t.module_parameter("Source"))
+                                    case 'unconstrained': return pa.ss($, ($) => sh.t.null_())
+                                    case 'resolved': return pa.ss($, ($) => sh.t.null_())
+                                    case 'unresolved': return pa.ss($, ($) => sh.t.module_parameter("Source"))
                                     default: return pa.au($[0])
                                 }
                             }),
@@ -240,7 +240,7 @@ export const Types = (
                 }),
                 "imports ": pa.block(() => {
                     const types = $p['what to generate']
-                    return $p.imports.map(($) => import_.ancestor(
+                    return $p.imports.map(($) => sh.import_.ancestor(
                         1 + $['schema set child']['up steps'],
                         $['schema set child'].key,
                         [
@@ -255,11 +255,11 @@ export const Types = (
                         ],
                         pa.cc(types, ($) => {
                             switch ($[0]) {
-                                
+
                                 case 'resolved': return pa.ss($, ($) => pa.dictionary_literal({}))
                                 case 'unconstrained': return pa.ss($, ($) => pa.dictionary_literal({}))
                                 case 'unresolved': return pa.ss($, ($) => pa.dictionary_literal({
-                                    "Source": t.module_parameter("Source"),
+                                    "Source": sh.t.module_parameter("Source"),
                                 }))
                                 default: return pa.au($[0])
                             }
@@ -279,12 +279,6 @@ export const Types = (
                 default: return pa.au($[0])
             }
         }),
-        context.dictionary.map(($) => ({
-            'parameters': {
-                'location': pd.get_location_info(1),
-                'dictionary': pa.dictionary_literal({}),
-            },
-            'type': Type_Node($.node),
-        })),
+        context.dictionary.map(($) => sh.type({}, Type_Node($.node))),
     )
 }

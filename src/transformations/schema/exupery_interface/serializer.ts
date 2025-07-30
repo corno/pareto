@@ -1,12 +1,12 @@
 import * as pd from 'exupery-core-data'
 import * as pdev from 'exupery-core-dev'
-import * as pa from 'exupery-core-alg'
+import * as _ea from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 
 import * as _in from "../../../generated/interface/schemas/schema/resolved"
 import * as _out from "exupery/dist/generated/interface/schemas/interface/unresolved"
 
-import { m, t, import_, type, sub } from "exupery/dist/shorthands/interface"
+import * as sh from "exupery/dist/shorthands/interface"
 
 import { pure } from "pareto-standard-operations"
 
@@ -16,18 +16,17 @@ const op = {
 }
 
 
-export const Types = (
-    $: _in.Types,
+export const Schema = (
+    $: _in.Schema,
     $p: {
         'imports': _in.Imports
         'constrained': boolean
     }
 ): _out.Module_Set.D<pd.Source_Location> => {
-    const context = $
-    return m.module(
+    return sh.m.module(
 
         {
-            "out": import_.ancestor(
+            "out": sh.import_.ancestor(
                 2,
                 "core",
                 [
@@ -35,7 +34,7 @@ export const Types = (
                 ],
                 {},
             ),
-            "in": import_.sibling(
+            "in": sh.import_.sibling(
                 $p.constrained ? "resolved" : "unconstrained",
                 [
 
@@ -44,27 +43,45 @@ export const Types = (
             )
         },
         {},
-        context.dictionary.map(($, key) => ({
-            'parameters': {
-                'location': pd.get_location_info(1),
-                'dictionary': pa.dictionary_literal({}),
-            },
-            'type': t.function_(
-                {},
-                t.component_imported(
-                    "in",
-                    key,
-                    {},
-                    []
-                ),
-                {},
-                t.component_imported(
-                    "out",
-                    "Value",
-                    {},
-                    []
-                ),
-            ),
-        })),
+        op['flatten dictionary'](
+            _ea.dictionary_literal({
+                "": _ea.dictionary_literal({
+                    "Value Serializers": sh.type({}, sh.t.group({
+                        'default number': sh.t.function_({}, sh.t.integer(), {}, sh.t.string()),
+                        'boolean': sh.t.function_({}, sh.t.boolean(), {}, sh.t.string()),
+                        'custom numbers': sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, _ea.cc($.precision, ($) => {
+                            switch ($[0]) {
+                                case 'approximation': return _ea.ss($, ($) => sh.t.float())
+                                case 'exact': return _ea.ss($, ($) => sh.t.integer())
+                                default: return _ea.au($[0])
+                            }
+                        }), {}, sh.t.string())))
+                    })),
+                }),
+                "s ":
+                    $.types.dictionary.map(($, key) => sh.type({}, sh.t.function_(
+                        {},
+                        sh.t.component_imported(
+                            "in",
+                            key,
+                            {},
+                            []
+                        ),
+                        {
+                            "value serializers": sh.t.component_sibling("Value Serializers", {}, []),
+                        },
+                        sh.t.component_imported(
+                            "out",
+                            "Value",
+                            {},
+                            []
+                        ),
+                    ),
+                    )),
+            }),
+            {
+                'separator': "",
+            }
+        ),
     )
 }

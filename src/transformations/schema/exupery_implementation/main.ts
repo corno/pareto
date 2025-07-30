@@ -40,7 +40,7 @@ export const Schemas = ($: _in.Schemas): _out.Module_Set.D<pd.Source_Location> =
                                 default: return pa.au($[0])
                             }
                         }),
-                        "serializer.ts": pa.set(t_serializer.Types($.types, {
+                        "serializer.ts": pa.set(t_serializer.Schema($, {
                             'key': key,
                             'imports': $.imports,
                             'constrained': $.complexity[0] === 'constrained'

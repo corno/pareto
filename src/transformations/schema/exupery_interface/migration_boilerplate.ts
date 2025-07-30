@@ -6,7 +6,7 @@ import * as pt from 'exupery-core-types'
 import * as _in from "../../../generated/interface/schemas/schema/resolved"
 import * as _out from "exupery/dist/generated/interface/schemas/interface/unresolved"
 
-import { m, t, import_, type, sub } from "exupery/dist/shorthands/interface"
+import * as sh from "exupery/dist/shorthands/interface"
 
 import { pure } from "pareto-standard-operations"
 
@@ -24,17 +24,17 @@ export const Types = (
     }
 ): _out.Module_Set.D<pd.Source_Location> => {
     const context = $
-    return m.module(
+    return sh.m.module(
 
         {
-            "out": import_.sibling(
+            "out": sh.import_.sibling(
                 $p.constrained ? "unresolved" : "unconstrained",
                 [
 
                 ],
                 {},
             ),
-            "in": import_.sibling(
+            "in": sh.import_.sibling(
                 $p.constrained ? "resolved" : "unconstrained",
                 [
 
@@ -43,29 +43,24 @@ export const Types = (
             )
         },
         {},
-        context.dictionary.map(($, key) => ({
-            'parameters': {
-                'location': pd.get_location_info(1),
-                'dictionary': pa.dictionary_literal({}),
-            },
-            'type': t.function_(
+        context.dictionary.map(($, key) => sh.type({}, sh.t.function_(
+            {},
+            sh.t.component_imported(
+                "in",
+                key,
                 {},
-                t.component_imported(
-                    "in",
-                    key,
-                    {},
-                    []
-                ),
-                {},
-                t.component_imported(
-                    "out",
-                    key,
-                    $p.constrained ? {
-                        "annotation": t.null_()
-                    } : {},
-                    []
-                ),
+                []
             ),
-        })),
+            {},
+            sh.t.component_imported(
+                "out",
+                key,
+                $p.constrained ? {
+                    "annotation": sh.t.null_()
+                } : {},
+                []
+            ),
+        ),
+        )),
     )
 }

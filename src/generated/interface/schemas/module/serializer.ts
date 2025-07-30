@@ -1,19 +1,19 @@
 import * as _pt from 'exupery-core-types'
 
 import * as _i_in from "./resolved"
-import * as _i_out from "./unresolved"
+import * as _i_out from "../../core/astn_target"
 
 // **** TYPES
 
 export type _T_Module = (
     $$_: _i_in._T_Module,
     $$_p: null,
-) => _i_out._T_Module<null>
+) => _i_out._T_Value
 
 export type _T_Operations = (
     $$_: _i_in._T_Operations,
     $$_p: null,
-) => _i_out._T_Operations<null>
+) => _i_out._T_Value
 
 // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
 
@@ -33,9 +33,8 @@ export namespace _T_Module {
     }
     
     export namespace RESULT {
-        export type annotation = null
     }
-    export type RESULT = _i_out._T_Module<null>
+    export type RESULT = _i_out._T_Value
 }
 
 export namespace _T_Operations {
@@ -48,9 +47,8 @@ export namespace _T_Operations {
     }
     
     export namespace RESULT {
-        export type annotation = null
     }
-    export type RESULT = _i_out._T_Operations<null>
+    export type RESULT = _i_out._T_Value
 }
 
 // *** ALIASES FOR NESTED TYPES
@@ -65,9 +63,8 @@ export namespace Module {
     }
     
     export namespace RESULT {
-        export type annotation = null
     }
-    export type RESULT = _i_out._T_Module<null>
+    export type RESULT = _i_out._T_Value
 }
 
 export namespace Operations {
@@ -80,7 +77,6 @@ export namespace Operations {
     }
     
     export namespace RESULT {
-        export type annotation = null
     }
-    export type RESULT = _i_out._T_Operations<null>
+    export type RESULT = _i_out._T_Value
 }
