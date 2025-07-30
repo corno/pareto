@@ -199,7 +199,7 @@ export const Type_Node = (
                 "state",
                 i.switch_(
                     s.from_context([]),
-                    $.map(($, key) => i.case_(key, i.group({
+                    $.map(($, key) => i.group({
                         "state": i.string(key, 'quote'),
                         "value": Type_Node(
                             $,
@@ -213,12 +213,12 @@ export const Type_Node = (
                                 ),
                             }
                         )
-                    }))),
+                    })),
                     t.component_imported(
                         "out",
                         "Value",
                         {},
-                        []
+                        [ sub.state_group("state")]
                     ),
                 )
             ))
