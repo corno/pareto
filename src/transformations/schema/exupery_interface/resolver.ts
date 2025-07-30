@@ -126,7 +126,7 @@ export const Signatures = (
 ): _out.Module_Set.D<pd.Source_Location> => {
     return m.module(
         {
-            "generic": import_.ancestor(3, "generic", ["resolve"], {}),
+            "generic": import_.ancestor(2, "generic", ["resolve"], {}),
             "resolved": import_.sibling("resolved", [], {}),
             "unresolved": import_.sibling("unresolved", [], {}),
         },
