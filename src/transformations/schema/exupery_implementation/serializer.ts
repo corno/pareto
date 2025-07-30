@@ -194,6 +194,12 @@ export const Type_Node = (
                         "not set",
                         i.null_()
                     ),
+                    t.component_imported(
+                        "out",
+                        "Value",
+                        {},
+                        [ sub.state_group("optional")]
+                    ),
                 )))
             case 'state group': return pa.ss($, ($) => i.tagged_union(
                 "state",
