@@ -12,7 +12,7 @@ import {
 
 export const module_ = (
     operations: unresolved.Operations<pd.Source_Location>,
-    schemas:unresolved_schema.Schemas<pd.Source_Location>
+    schemas: unresolved_schema.Schemas<pd.Source_Location>
 ): unresolved.Module<pd.Source_Location> => {
     return {
         'operations': operations,
