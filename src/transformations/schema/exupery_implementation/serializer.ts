@@ -69,9 +69,9 @@ export const Type_Node = (
 
     const string = (value: string): _out.Initialization<pd.Source_Location> => {
         return i.tagged_union(
-            "string",
+            "text",
             i.group({
-                "delimiter": i.string("quote", 'quote'),
+                "delimiter": i.tagged_union("quote", i.null_()),
                 "value": i.string(value, 'quote'),
             })
         )
