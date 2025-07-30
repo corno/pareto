@@ -81,11 +81,11 @@ export const Type_Node = (
         switch ($[0]) {
             case 'number': return pa.ss($, ($) => string("FIXME NUMBER"))
             case 'boolean': return pa.ss($, ($) => string("FIXME BOOLEAN"))
-            case 'nothing': return pa.ss($, ($) => string("FIXME NOTHING"))
+            case 'nothing': return pa.ss($, ($) => i.tagged_union("nothing", i.null_()))
             case 'reference': return pa.ss($, ($) => pa.cc($.type, ($) => {
                 switch ($[0]) {
-                    case 'derived': return pa.ss($, ($) => i.implement_me())
-                    case 'selected': return pa.ss($, ($) => i.implement_me())
+                    case 'derived': return pa.ss($, ($) => i.tagged_union("nothing", i.null_()))
+                    case 'selected': return pa.ss($, ($) => string("FIXME REFERENCE"))
                     default: return pa.au($[0])
                 }
             }))
