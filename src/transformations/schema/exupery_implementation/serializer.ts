@@ -33,14 +33,7 @@ export const Types = (
             pa.dictionary_literal({
                 "": pa.dictionary_literal({
                     "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "serializer"], {}),
-                    "out": import_.ancestor(
-                        2,
-                        "core",
-                        [
-                            "astn target"
-                        ],
-                        {},
-                    ),
+                    "out": import_.ancestor(3, "interface", ["core", "astn target"], {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["serializer"], {}))
             }),
@@ -145,7 +138,7 @@ export const Type_Node = (
             // ))))
             case 'group': return pa.ss($, ($) => i.tagged_union(
                 "verbose group",
-                i.group($.map(($, key) => i.change_context(
+                i.dictionary_literal($.map(($, key) => i.change_context(
                     s.from_context([key]),
                     Type_Node(
                         $,
