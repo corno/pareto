@@ -31,7 +31,7 @@ export const Types = (
                 2,
                 "core",
                 [
-                    "astn_target"
+                    "astn target"
                 ],
                 {},
             ),
@@ -60,7 +60,7 @@ export const Types = (
                 {},
                 t.component_imported(
                     "out",
-                    key,
+                    "Value",
                     {},
                     []
                 ),
