@@ -7,9 +7,9 @@ import * as _out_interface from "exupery/dist/generated/interface/schemas/interf
 
 import { m, } from "exupery/dist/shorthands/implementation"
 
-import * as t_migration_boilerplate from "./migration_boilerplate"
-import * as t_resolver from "./resolver"
-import * as t_serializer from "./serializer"
+import * as t_migration_boilerplate from "./migrate_boilerplate"
+import * as t_resolver from "./resolve"
+import * as t_serializer from "./marshall"
 
 import * as operations from "pareto-standard-operations"
 
@@ -40,7 +40,7 @@ export const Schemas = ($: _in.Schemas): _out.Module_Set.D<pd.Source_Location> =
                                 default: return pa.au($[0])
                             }
                         }),
-                        "serializer.ts": pa.set(t_serializer.Schema($, {
+                        "unmarshall.ts": pa.set(t_serializer.Schema($, {
                             'key': key,
                             'imports': $.imports,
                             'constrained': $.complexity[0] === 'constrained'

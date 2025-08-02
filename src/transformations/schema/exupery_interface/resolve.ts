@@ -8,7 +8,7 @@ import * as _out from "exupery/dist/generated/interface/schemas/interface/unreso
 
 import { m, t, import_, type, sub } from "exupery/dist/shorthands/interface"
 
-import * as _migration_boilerplate_interface from "./migration_boilerplate"
+import * as _migration_boilerplate_interface from "./migrate_boilerplate"
 import * as _types from "./types"
 
 import { pure } from "pareto-standard-operations"

@@ -198,8 +198,8 @@ export const Type_Node = (
 
 
 
-export const Types = (
-    $: _in.Types,
+export const Schema = (
+    $: _in.Schema,
     $p: {
         'imports': _in.Imports
         'what to generate':
@@ -208,7 +208,6 @@ export const Types = (
         | ['unconstrained', null]
     }
 ): _out.Module_Set.D<pd.Source_Location> => {
-    const context = $
     return sh.m.module(
         op['flatten dictionary'](
             pa.dictionary_literal({
@@ -279,6 +278,6 @@ export const Types = (
                 default: return pa.au($[0])
             }
         }),
-        context.dictionary.map(($) => sh.type({}, Type_Node($.node))),
+        $.types.dictionary.map(($) => sh.type({}, Type_Node($.node))),
     )
 }

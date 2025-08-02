@@ -16,16 +16,14 @@ const op = {
 }
 
 
-export const Types = (
-    $: _in.Types,
+export const Schema = (
+    $: _in.Schema,
     $p: {
         'imports': _in.Imports
         'constrained': boolean
     }
 ): _out.Module_Set.D<pd.Source_Location> => {
-    const context = $
     return sh.m.module(
-
         {
             "out": sh.import_.sibling(
                 $p.constrained ? "unresolved" : "unconstrained",
@@ -43,7 +41,7 @@ export const Types = (
             )
         },
         {},
-        context.dictionary.map(($, key) => sh.type({}, sh.t.function_(
+        $.types.dictionary.map(($, key) => sh.type({}, sh.t.function_(
             {},
             sh.t.component_imported(
                 "in",

@@ -6,10 +6,11 @@ import * as _out from "exupery/dist/generated/interface/schemas/interface/unreso
 
 import { m } from "exupery/dist/shorthands/interface"
 
-import * as t_migration_boilerplate from "./migration_boilerplate"
-import * as t_serializer from "./serializer"
-import * as t_resolver from "./resolver"
+import * as t_marshall from "./marshall"
+import * as t_migrate_boilerplate from "./migrate_boilerplate"
+import * as t_resolve from "./resolve"
 import * as t_types from "./types"
+import * as t_unmarshall from "./unmarshall"
 
 import * as operations from "pareto-standard-operations"
 
@@ -22,63 +23,75 @@ export const Schemas = ($: _in.Schemas): _out.Module_Set.D<pd.Source_Location> =
         switch ($[0]) {
             case 'schema': return _ea.ss($, ($) => {
                 const schema = $
-                const types = $.types
-                const imports = $.imports
                 return m.set(_ea.cc($.complexity, ($) => {
                     switch ($[0]) {
                         case 'constrained': return _ea.ss($, ($) => _ea.dictionary_literal({
-                            "resolved.ts": t_types.Types(
-                                types,
+                            "resolved.ts": t_types.Schema(
+                                schema,
                                 {
                                     'what to generate': ['resolved', null],
-                                    'imports': imports,
+                                    'imports': schema.imports,
                                 }
                             ),
-                            "unresolved.ts": t_types.Types(
-                                types,
+                            "unresolved.ts": t_types.Schema(
+                                schema,
                                 {
                                     'what to generate': ['unresolved', null],
-                                    'imports': imports,
+                                    'imports': schema.imports,
                                 }
                             ),
-                            "resolve.ts": t_resolver.Signatures(
+                            "resolve.ts": t_resolve.Signatures(
                                 $.signatures.types
                             ),
-                            "migration boilerplate.ts": t_migration_boilerplate.Types(
-                                types,
+                            "migrate boilerplate.ts": t_migrate_boilerplate.Schema(
+                                schema,
                                 {
-                                    'imports': imports,
+                                    'imports': schema.imports,
                                     'constrained': true
                                 }
                             ),
-                            "serializer.ts": t_serializer.Schema(
+                            "unmarshall.ts": t_unmarshall.Schema(
                                 schema,
                                 {
-                                    'imports': imports,
+                                    'imports': schema.imports,
+                                    'constrained': true
+                                }
+                            ),
+                            "marshall.ts": t_marshall.Schema(
+                                schema,
+                                {
+                                    'imports': schema.imports,
                                     'constrained': true
                                 }
                             ),
                         }))
                         case 'unconstrained': return _ea.ss($, ($) => _ea.dictionary_literal({
-                            "unconstrained.ts": t_types.Types(
-                                types,
+                            "unconstrained.ts": t_types.Schema(
+                                schema,
                                 {
                                     'what to generate': ['unconstrained', null],
-                                    'imports': imports,
+                                    'imports': schema.imports,
                                 }
                             ),
-                            "migration boilerplate.ts": t_migration_boilerplate.Types(
-                                types,
+                            "migrate boilerplate.ts": t_migrate_boilerplate.Schema(
+                                schema,
                                 {
-                                    'imports': imports,
+                                    'imports': schema.imports,
                                     'constrained': false,
                                 }
                             ),
-                            "serializer.ts": t_serializer.Schema(
+                            "marshall.ts": t_marshall.Schema(
                                 schema,
                                 {
-                                    'imports': imports,
+                                    'imports': schema.imports,
                                     'constrained': false
+                                }
+                            ),
+                            "unmarshall.ts": t_unmarshall.Schema(
+                                schema,
+                                {
+                                    'imports': schema.imports,
+                                    'constrained': false,
                                 }
                             ),
                         }))
