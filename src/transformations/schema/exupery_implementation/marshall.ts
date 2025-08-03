@@ -32,10 +32,10 @@ export const Schema = (
         op['flatten dictionary'](
             pa.dictionary_literal({
                 "": pa.dictionary_literal({
-                    "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "serializer"], {}),
+                    "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "marshall"], {}),
                     "out": import_.ancestor(3, "interface", ["core", "astn target"], {}),
                 }),
-                "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["serializer"], {}))
+                "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["marshall"], {}))
             }),
             {
                 'separator': "",

@@ -1,6 +1,6 @@
 import * as _pt from 'exupery-core-types'
 
-import * as _i_in from "./unconstrained"
+import * as _i_in from "../../core/astn_source"
 import * as _i_out from "./unconstrained"
 
 // **** TYPES

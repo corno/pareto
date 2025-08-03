@@ -57,6 +57,7 @@ export const generate_source_code: (
             }
         )
         _er.temp_resources.fs['write file sync']($p.path + "/" + key + "/implementation/generic/resolve.ts", _er.temp_resources.fs['read file sync']("./src/generated/implementation/generic/resolve.ts", true), true)
+        _er.temp_resources.fs['write file sync']($p.path + "/" + key + "/implementation/generic/unmarshall.ts", _er.temp_resources.fs['read file sync']("./src/generated/implementation/generic/unmarshall.ts", true), true)
         _er.temp_resources.fs['write file sync']($p.path + "/" + key + "/interface/core/resolve.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/resolve.ts", true), true)
         _er.temp_resources.fs['write file sync']($p.path + "/" + key + "/interface/core/astn_target.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/astn_target.ts", true), true)
         _er.temp_resources.fs['write file sync']($p.path + "/" + key + "/interface/core/astn_source.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/astn_source.ts", true), true)

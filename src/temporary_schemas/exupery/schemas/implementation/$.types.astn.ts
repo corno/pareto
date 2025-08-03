@@ -65,7 +65,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                         "transform": t.group({
                             "if not set": t.component_cyclic("Initialization"),
                             "if set": t.component_cyclic("Initialization"),
-                            "resulting node": t.optional(t.component_external("interface", "Type")),
+                            "temp resulting node": t.optional(t.component_external("interface", "Type")),
                         }),
                     }),
                     // "parameter": t.nothing(),
@@ -74,7 +74,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                     // }),
                     "tagged union": t.state_group({
                         "switch": t.group({
-                            "resulting node": t.optional(t.component_external("interface", "Type")),
+                            "temp resulting node": t.optional(t.component_external("interface", "Type")),
                             "type": t.state_group({
                                 "partial": t.group({
                                     "cases": t.dictionary(t.component_cyclic("Initialization")),
@@ -99,6 +99,7 @@ export const $: g_.Types<pd.Source_Location> = types(
             "function": t.group({
                 "initialization": t.component_cyclic("Initialization"),
                 "temp has parameters": t.boolean(),
+                "temp resulting node": t.optional(t.component_external("interface", "Type")),
             }),
             "group": t.dictionary(t.component_cyclic("Initialization")),
             "null": t.nothing(),

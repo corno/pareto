@@ -32,20 +32,21 @@ export const Schema = (
                 ],
                 {},
             ),
-            "in": sh.import_.sibling(
-                $p.constrained ? "resolved" : "unconstrained",
+            "in": sh.import_.ancestor(
+                2,
+                "core",
                 [
-
+                    "astn source"
                 ],
                 {},
-            )
+            ),
         },
         {},
         $.types.dictionary.map(($, key) => sh.type({}, sh.t.function_(
             {},
             sh.t.component_imported(
                 "in",
-                key,
+                "Value",
                 {},
                 []
             ),

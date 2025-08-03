@@ -50,12 +50,12 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                         "transform": state(r.group({
                             "if not set": r.component("Initialization", {}, {}),
                             "if set": r.component("Initialization", {}, {}),
-                            "resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
+                            "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
                         })),
                     })),
                     "tagged union": state(r.state_group({
                         "switch": state(r.group({
-                            "resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
+                            "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
                             "type": r.state_group({
                                 "partial": state(r.group({
                                     "cases": r.dictionary(r.component("Initialization", {}, {})),
@@ -80,6 +80,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
             "function": state(r.group({
                 "initialization": r.component("Initialization", {}, {}),
                 "temp has parameters": r.boolean(),
+                "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
             })),
             "group": state(r.dictionary(r.component("Initialization", {}, {}))),
             "null": state(r.nothing()),

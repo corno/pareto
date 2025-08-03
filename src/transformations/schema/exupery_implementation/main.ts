@@ -10,6 +10,7 @@ import { m, } from "exupery/dist/shorthands/implementation"
 import * as t_migration_boilerplate from "./migrate_boilerplate"
 import * as t_resolver from "./resolve"
 import * as t_marshall from "./marshall"
+import * as t_unmarshall from "./unmarshall"
 
 import * as operations from "pareto-standard-operations"
 
@@ -40,11 +41,16 @@ export const Schemas = ($: _in.Schemas): _out.Module_Set.D<pd.Source_Location> =
                                 default: return pa.au($[0])
                             }
                         }),
-                        // "unmarshall.ts": pa.set(t_marshall.Schema($, {
-                        //     'key': key,
-                        //     'imports': $.imports,
-                        //     'constrained': $.complexity[0] === 'constrained'
-                        // })),
+                        "marshall.ts": pa.set(t_marshall.Schema($, {
+                            'key': key,
+                            'imports': $.imports,
+                            'constrained': $.complexity[0] === 'constrained'
+                        })),
+                        "unmarshall.ts": pa.set(t_unmarshall.Schema($, {
+                            'key': key,
+                            'imports': $.imports,
+                            'constrained': $.complexity[0] === 'constrained'
+                        })),
                     }))
                 )
             })

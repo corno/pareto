@@ -1,17 +1,17 @@
 import * as _pt from 'exupery-core-types'
 
-import * as _i_in from "./resolved"
+import * as _i_in from "../../core/astn_source"
 import * as _i_out from "./unresolved"
 
 // **** TYPES
 
 export type _T_Module = (
-    $$_: _i_in._T_Module,
+    $$_: _i_in._T_Value,
     $$_p: null,
 ) => _i_out._T_Module<null>
 
 export type _T_Operations = (
-    $$_: _i_in._T_Operations,
+    $$_: _i_in._T_Value,
     $$_p: null,
 ) => _i_out._T_Operations<null>
 
@@ -27,7 +27,7 @@ export namespace _T_Module {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Module
+    export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
     }
@@ -42,7 +42,7 @@ export namespace _T_Operations {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Operations
+    export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
     }
@@ -59,7 +59,7 @@ export namespace Module {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Module
+    export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
     }
@@ -74,7 +74,7 @@ export namespace Operations {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Operations
+    export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
     }

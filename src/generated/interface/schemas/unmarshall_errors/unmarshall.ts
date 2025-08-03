@@ -1,27 +1,27 @@
 import * as _pt from 'exupery-core-types'
 
-import * as _i_in from "./unconstrained"
+import * as _i_in from "../../core/astn_source"
 import * as _i_out from "./unconstrained"
 
 // **** TYPES
 
 export type _T_Errors = (
-    $$_: _i_in._T_Errors,
+    $$_: _i_in._T_Value,
     $$_p: null,
 ) => _i_out._T_Errors
 
 export type _T_Location = (
-    $$_: _i_in._T_Location,
+    $$_: _i_in._T_Value,
     $$_p: null,
 ) => _i_out._T_Location
 
 export type _T_Range = (
-    $$_: _i_in._T_Range,
+    $$_: _i_in._T_Value,
     $$_p: null,
 ) => _i_out._T_Range
 
 export type _T_Relative_Location = (
-    $$_: _i_in._T_Relative_Location,
+    $$_: _i_in._T_Value,
     $$_p: null,
 ) => _i_out._T_Relative_Location
 
@@ -41,7 +41,7 @@ export namespace _T_Errors {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Errors
+    export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
     }
@@ -55,7 +55,7 @@ export namespace _T_Location {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Location
+    export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
     }
@@ -69,7 +69,7 @@ export namespace _T_Range {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Range
+    export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
     }
@@ -83,7 +83,7 @@ export namespace _T_Relative_Location {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Relative_Location
+    export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
     }
@@ -99,7 +99,7 @@ export namespace Errors {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Errors
+    export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
     }
@@ -113,7 +113,7 @@ export namespace Location {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Location
+    export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
     }
@@ -127,7 +127,7 @@ export namespace Range {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Range
+    export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
     }
@@ -141,7 +141,7 @@ export namespace Relative_Location {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Relative_Location
+    export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
     }

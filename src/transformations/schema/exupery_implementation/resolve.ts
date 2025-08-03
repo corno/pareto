@@ -21,6 +21,67 @@ const op = {
     'pad dictionary identifiers': pure.dictionary['pad identifiers'],
 }
 
+export const Resolvers = (
+    $: _in.Resolvers,
+    $p: {
+        'key': string,
+        'imports': _in.Imports
+    }
+): _out.Module_Set.D<pd.Source_Location> => {
+    return m.module(
+        op['flatten dictionary'](
+            pa.dictionary_literal({
+                "": pa.dictionary_literal({
+                    "generic": import_.ancestor(2, "generic", ["resolve"], {}),
+                    "out": import_.ancestor(3, "interface", ["schemas", $p.key, "resolved"], {}),
+                    "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "resolve"], {}),
+                }),
+                "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["resolve"], {}))
+            }),
+            {
+                'separator': "",
+            }
+        ),
+        {},
+        op['pad dictionary identifiers'](
+            $.dictionary.map(($, key) => variable(
+                t.component_imported("signatures", key, {
+                    "Source": t.component_imported("generic", "Location Info", {}, []),
+                }, []),
+                i.function_(
+                    true,
+                    i.block(
+                        [],
+                        {
+                            "l2s": variable(
+                                null,
+                                i.select_from_parameter("location 2 string", [])
+                            ),
+                            "params": variable(
+                                null,
+                                i.select_from_parameter("parameters", [])
+                            )
+                        },
+                        Node_Resolver(
+                            $['type resolver'],
+                            {
+                                'temp type': key,
+                                'temp subselection': pa.array_literal([])
+                            }
+                        )
+                    ),
+                ),
+
+            )),
+            {
+                'prefix': "r ",
+                'suffix': "",
+            }
+        )
+    )
+}
+
+
 
 export const Possible_Value_Selection = (
     $: _in.Possible_Value_Selection,
@@ -209,8 +270,8 @@ export const Option_Constraints = (
 export const Node_Resolver = (
     $: _in.Node_Resolver,
     $p: {
-        'type': string
-        'subselection': pt.Array<_out_interface.Type.SG.component.sub_selection.L<pd.Source_Location>>
+        'temp type': string
+        'temp subselection': pt.Array<_out_interface.Type.SG.component.sub_selection.L<pd.Source_Location>> //can be removed when exupery has type inference
     },
 ): _out.Initialization<pd.Source_Location> => {
     return pa.cc($, ($) => {
@@ -341,9 +402,9 @@ export const Node_Resolver = (
                                 Node_Resolver(
                                     $.resolver,
                                     {
-                                        'type': $p.type,
-                                        'subselection': op['append element'](
-                                            $p.subselection,
+                                        'temp type': $p['temp type'],
+                                        'temp subselection': op['append element'](
+                                            $p['temp subselection'],
                                             {
                                                 'element': sub.dictionary(),
                                             },
@@ -368,10 +429,10 @@ export const Node_Resolver = (
                     `p ${$.key}`,
                     t.component_imported(
                         "out",
-                        $p.type,
+                        $p['temp type'],
                         {},
                         op['append element']<_out_interface.Type.SG.component.sub_selection.L<pd.Source_Location>>(
-                            $p.subselection,
+                            $p['temp subselection'],
                             {
                                 'element': sub.group($.key),
                             },
@@ -382,9 +443,9 @@ export const Node_Resolver = (
                         Node_Resolver(
                             $.value.resolver,
                             {
-                                'type': $p.type,
-                                'subselection': op['append element'](
-                                    $p.subselection,
+                                'temp type': $p['temp type'],
+                                'temp subselection': op['append element'](
+                                    $p['temp subselection'],
                                     {
                                         'element': sub.group($.key),
                                     },
@@ -404,9 +465,9 @@ export const Node_Resolver = (
                         Node_Resolver(
                             $.resolver,
                             {
-                                'type': $p.type,
-                                'subselection': op['append element'](
-                                    $p.subselection,
+                                'temp type': $p['temp type'],
+                                'temp subselection': op['append element'](
+                                    $p['temp subselection'],
                                     {
                                         'element': sub.list(),
                                     },
@@ -424,9 +485,9 @@ export const Node_Resolver = (
                         'sub': () => Node_Resolver(
                             $['resolver'],
                             {
-                                'type': $p.type,
-                                'subselection': op['append element'](
-                                    $p.subselection,
+                                'temp type': $p['temp type'],
+                                'temp subselection': op['append element'](
+                                    $p['temp subselection'],
                                     {
                                         'element': sub.optional(),
                                     },
@@ -444,9 +505,9 @@ export const Node_Resolver = (
                         'sub': () => Node_Resolver(
                             $['resolver'],
                             {
-                                'type': $p.type,
-                                'subselection': op['append element'](
-                                    $p.subselection,
+                                'temp type': $p['temp type'],
+                                'temp subselection': op['append element'](
+                                    $p['temp subselection'],
                                     {
                                         'element': sub.state_group(key),
                                     },
@@ -457,73 +518,13 @@ export const Node_Resolver = (
                 ))),
                 t.component_imported(
                     "out",
-                    $p.type,
+                    $p['temp type'],
                     {},
-                    $p.subselection.__get_raw_copy(),
+                    $p['temp subselection'].__get_raw_copy(),
                 ),
             ))
             case 'type parameter': return pa.ss($, ($) => pdev.implement_me()) // a lot of work: the resolvers need to be passed to this resolve function
             default: return pa.au($[0])
         }
     })
-}
-
-export const Resolvers = (
-    $: _in.Resolvers,
-    $p: {
-        'key': string,
-        'imports': _in.Imports
-    }
-): _out.Module_Set.D<pd.Source_Location> => {
-    return m.module(
-        op['flatten dictionary'](
-            pa.dictionary_literal({
-                "": pa.dictionary_literal({
-                    "generic": import_.ancestor(2, "generic", ["resolve"], {}),
-                    "out": import_.ancestor(3, "interface", ["schemas", $p.key, "resolved"], {}),
-                    "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "resolve"], {}),
-                }),
-                "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["resolve"], {}))
-            }),
-            {
-                'separator': "",
-            }
-        ),
-        {},
-        op['pad dictionary identifiers'](
-            $.dictionary.map(($, key) => variable(
-                t.component_imported("signatures", key, {
-                    "Source": t.component_imported("generic", "Location Info", {}, []),
-                }, []),
-                i.function_(
-                    true,
-                    i.block(
-                        [],
-                        {
-                            "l2s": variable(
-                                null,
-                                i.select_from_parameter("location 2 string", [])
-                            ),
-                            "params": variable(
-                                null,
-                                i.select_from_parameter("parameters", [])
-                            )
-                        },
-                        Node_Resolver(
-                            $['type resolver'],
-                            {
-                                'type': key,
-                                'subselection': pa.array_literal([])
-                            }
-                        )
-                    ),
-                ),
-
-            )),
-            {
-                'prefix': "r ",
-                'suffix': "",
-            }
-        )
-    )
 }
