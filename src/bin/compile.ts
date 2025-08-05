@@ -6,3 +6,12 @@ compiler.generate_source_code(
         'path': "./out/source_code/src/generated"
     }
 )
+
+import * as serializer from "../other/serialize_schemas"
+
+serializer.serialize_schemas(
+    null,
+    {
+        'path': "./out/serialized"
+    }
+)

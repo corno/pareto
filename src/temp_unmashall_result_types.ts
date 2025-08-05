@@ -1,15 +1,15 @@
 import * as pt from 'exupery-core-types'
 
-import * as astn from "astn"
+import * as d_astn_token from "astn/dist/generated/interface/schemas/token/unconstrained"
 
-import * as def from "./generated/interface/schemas/schema/resolved"
+import * as d_schema from "./generated/interface/schemas/schema/resolved"
 
 export type Document = {
     'content': Node
 }
 
 export type Duplicate_Entry = {
-    'range': astn.d_ast.Range
+    'range': d_astn_token.Range
     'node': Node
 }
 
@@ -18,7 +18,7 @@ export type Duplicate_Entry = {
 // }
 
 export type Property =
-    | ['missing', astn.d_ast.Range]
+    | ['missing', d_astn_token.Range]
     | ['unique', Node]
     | ['multiple', pt.Array<Duplicate_Entry>]
 
@@ -46,64 +46,64 @@ export type State_Status =
         'node': Node,
 
     }]
-    | ['more than 2 elements', astn.d_ast.Range]
-    | ['missing state name', astn.d_ast.Range]
-    | ['state is not a string', astn.d_ast.Range]
-    | ['missing value', astn.d_ast.Range]
+    | ['more than 2 elements', d_astn_token.Range]
+    | ['missing state name', d_astn_token.Range]
+    | ['state is not a string', d_astn_token.Range]
+    | ['missing value', d_astn_token.Range]
     | ['unknown state', {
-        'range': astn.d_ast.Range
+        'range': d_astn_token.Range
         'found': string
         'expected': pt.Dictionary<null>
     }]
 
 export type Identifier_Value_Pair = {
-  'definition': def.Type_Node.SG.identifier_value_pair
+  'definition': d_schema.Type_Node.SG.identifier_value_pair
 }
 
 export type Optional = {
-    'definition': def.Type_Node.SG.optional
+    'definition': d_schema.Type_Node.SG.optional
 }
 export type List = {
-    'definition': def.Type_Node.SG.list
+    'definition': d_schema.Type_Node.SG.list
 }
 
 export type Reference = {
-    'definition': def.Type_Node.SG.reference
+    'definition': d_schema.Type_Node.SG.reference
 }
 
 export type Component = {
-    'definition': def.Type_Node.SG.component
+    'definition': d_schema.Type_Node.SG.component
 }
 
 export type Boolean = {
-    'definition': def.Type_Node.SG._boolean
+    'definition': d_schema.Type_Node.SG._boolean
 }
 export type Nothing = {
-    'definition': def.Type_Node.SG.nothing
+    'definition': d_schema.Type_Node.SG.nothing
 }
 
 export type Text = {
-    'definition': def.Type_Node.SG.text
+    'definition': d_schema.Type_Node.SG.text
     'status':
     | ['valid', null]
-    | ['invalid value type', astn.d_ast.Range]
+    | ['invalid value type', d_astn_token.Range]
 }
 
 export type Number = {
-    'definition': def.Type_Node.SG._number
+    'definition': d_schema.Type_Node.SG._number
     'status':
     | ['valid', {
-        'range': astn.d_ast.Range
+        'range': d_astn_token.Range
         'correct string type': boolean
     }]
-    | ['invalid', astn.d_ast.Range]
+    | ['invalid', d_astn_token.Range]
 }
 
 export type Dictionary = {
-    'definition': def.Type_Node.SG.dictionary
+    'definition': d_schema.Type_Node.SG.dictionary
     'status':
     | ['valid', pt.Dictionary<Entry>]
-    | ['invalid', astn.d_ast.Range]
+    | ['invalid', d_astn_token.Range]
 }
 
 export type Entry =
@@ -111,16 +111,16 @@ export type Entry =
     | ['multiple', pt.Array<Duplicate_Entry>]
 
 export type Group = {
-    'definition': def.Type_Node.SG.group
+    'definition': d_schema.Type_Node.SG.group
     'type': Group_Type
 }
 
 export type Group_Type =
     | ['indexed', Indexed_Group]
     | ['ordered', {}]
-    | ['invalid', astn.d_ast.Range]
+    | ['invalid', d_astn_token.Range]
 
 export type Indexed_Group = {
     'properties': pt.Dictionary<Property>
-    'superfluous entries': pt.Dictionary<pt.Array<astn.d_ast.Range>>
+    'superfluous entries': pt.Dictionary<pt.Array<d_astn_token.Range>>
 }

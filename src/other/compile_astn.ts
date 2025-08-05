@@ -1,45 +1,18 @@
 //core
-import * as pd from 'exupery-core-data'
-import * as pdev from 'exupery-core-dev'
 import * as _ea from 'exupery-core-alg'
 import * as _er from 'exupery-core-resources'
-
-
-import * as sh from "pareto-fountain-pen/dist/shorthands/lines"
-
-//shorthands
+import * as _ed from 'exupery-core-data'
 
 //data
 import { $ as poormans_modules } from "../temporary_schemas/all"
 
-//resolvers
-import * as r_module from "../resolvers/module"
+import * as d_module from "../generated/interface/schemas/module/unresolved"
 
-//orchestration
-import * as write_to_disk from "pareto-fountain-pen/dist/other/write_to_disk"
+import * as r_pareto_module from "../resolvers/module"
 
-//transformations
-import * as generate_and_write_to_disk from "./generate_and_write_to_disk"
+import * as t_pareto_module_to_fountain_pen_block from "../transformations/module/temp_typescript"
 
-export const get_module = ($: string) => {
-
-    pdev.log_debug_message("resolving -start-")
-    const astn_module = r_module.r_Module(
-        poormans_modules.__get_entry($).transform(
-            ($) => $,
-            () => _ea.panic("Module not found: " + $),
-        ),
-        {
-            'parameters': {
-                'lookups': null,
-                'values': null,
-            },
-            'location 2 string': pd.location_to_string
-        }
-    )
-    pdev.log_debug_message("resolving -end-")
-    return astn_module
-}
+import * as wtd from "pareto-fountain-pen/dist/other/write_to_disk"
 
 export const generate_source_code: (
     $: null,
@@ -49,40 +22,32 @@ export const generate_source_code: (
 ) => void = ($, $p) => {
 
     poormans_modules.map(($, key) => {
-        generate_and_write_to_disk.$$(
-            $,
+        const module_path = `${$p.path}/${key}`
+        wtd.Directory(
+            t_pareto_module_to_fountain_pen_block.Module(
+                r_pareto_module.r_Module(
+                    $,
+                    {
+                        'parameters': {
+                            'lookups': null,
+                            'values': null,
+                        },
+                        'location 2 string': _ed.location_to_string
+                    }
+                ),
+            ),
             {
-                'path': $p.path + "/" + key,
-                'target': ['typescript', null]
+                'path': module_path,
+                'indentation': "    ",
+                'newline': "\n"
             }
         )
-        _er.temp_resources.fs['write file sync']($p.path + "/" + key + "/implementation/generic/resolve.ts", _er.temp_resources.fs['read file sync']("./src/generated/implementation/generic/resolve.ts", true), true)
-        _er.temp_resources.fs['write file sync']($p.path + "/" + key + "/implementation/generic/unmarshall.ts", _er.temp_resources.fs['read file sync']("./src/generated/implementation/generic/unmarshall.ts", true), true)
-        _er.temp_resources.fs['write file sync']($p.path + "/" + key + "/interface/core/resolve.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/resolve.ts", true), true)
-        _er.temp_resources.fs['write file sync']($p.path + "/" + key + "/interface/core/astn_target.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/astn_target.ts", true), true)
-        _er.temp_resources.fs['write file sync']($p.path + "/" + key + "/interface/core/astn_source.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/astn_source.ts", true), true)
+        _er.temp_resources.fs['write file sync'](module_path + "/implementation/generic/resolve.ts", _er.temp_resources.fs['read file sync']("./src/generated/implementation/generic/resolve.ts", true), true)
+        _er.temp_resources.fs['write file sync'](module_path + "/implementation/generic/unmarshall.ts", _er.temp_resources.fs['read file sync']("./src/generated/implementation/generic/unmarshall.ts", true), true)
+        _er.temp_resources.fs['write file sync'](module_path + "/interface/core/resolve.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/resolve.ts", true), true)
+        _er.temp_resources.fs['write file sync'](module_path + "/interface/core/astn_target.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/astn_target.ts", true), true)
+        _er.temp_resources.fs['write file sync'](module_path + "/interface/core/astn_source.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/astn_source.ts", true), true)
     })
-
-
-}
-
-export const generate_rest: (
-    $: null,
-    $p: {
-        'path': string,
-    }
-) => void = ($, $p) => {
-    pdev.log_debug_message("FIX THE REST")
-    // write_to_disk.Directory(
-    //     poormans_modules.map(($, key) => {
-    //         return sh.d.directory(t_astn_module_to_astn_out.Module_REST(
-    //             get_module(key),
-    //         ))
-    //     }),
-    //     {
-    //         'path': $p.path,
-    //     }
-    // )
 
 
 }

@@ -67,45 +67,33 @@ export const Type_Node = (
     },
 ): _out.Initialization<pd.Source_Location> => {
 
-    const string = (value: string, delimiter: 'quote' | 'backtick' | 'none'): _out.Initialization<pd.Source_Location> => {
+    const string = (value: _out.Initialization<pd.Source_Location>, delimiter: 'quote' | 'backtick' | 'none'): _out.Initialization<pd.Source_Location> => {
         return i.tagged_union(
             "text",
             i.group({
                 "delimiter": i.tagged_union(delimiter, i.null_()),
-                "value": i.string(value, 'quote'),
+                "value": value,
             })
         )
     }
 
     return pa.cc($, ($) => {
         switch ($[0]) {
-            case 'number': return pa.ss($, ($) => string("FIXME NUMBER", 'backtick')) //FIXME should be 'none'
-            case 'boolean': return pa.ss($, ($) => i.tagged_union(
-                "text",
-                i.group({
-                    "delimiter": i.tagged_union("quote", i.null_()),
-                    "value": i.call(
-                        s.from_parameter("value serializers", ["boolean"]),
-                        i.select_from_context([]),
-                        pa.dictionary_literal({}),
-                    ),
-                })
-            )) //FIXME should be 'none'
+            case 'number': return pa.ss($, ($) => string(i.string("FIXME NUMBER", 'quote'), 'backtick')) //FIXME should be 'none'
+            case 'boolean': return pa.ss($, ($) => string(i.call(
+                s.from_parameter("value serializers", ["boolean"]),
+                i.select_from_context([]),
+                pa.dictionary_literal({}),
+            ), 'backtick')) //FIXME should be 'none'
             case 'nothing': return pa.ss($, ($) => i.tagged_union("nothing", i.null_()))
             case 'reference': return pa.ss($, ($) => pa.cc($.type, ($) => {
                 switch ($[0]) {
                     case 'derived': return pa.ss($, ($) => i.tagged_union("nothing", i.null_()))
-                    case 'selected': return pa.ss($, ($) => string("FIXME REFERENCE", 'backtick'))
+                    case 'selected': return pa.ss($, ($) => string(i.select_from_context(["key"]), 'backtick'))
                     default: return pa.au($[0])
                 }
             }))
-            case 'text': return pa.ss($, ($) => i.tagged_union(
-                "text",
-                i.group({
-                    "delimiter": i.tagged_union("quote", i.null_()),
-                    "value": i.select_from_context([]),
-                })
-            ))
+            case 'text': return pa.ss($, ($) => string(i.select_from_context([]), 'quote'))
             case 'component': return pa.ss($, ($) => i.call(
                 pa.cc($, ($) => {
                     switch ($[0]) {

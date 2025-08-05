@@ -6,12 +6,13 @@ import { impure, pure } from "pareto-standard-operations"
 
 import * as definition from "../../generated/interface/schemas/schema/resolved"
 
-import * as _in from "astn"
+import * as _in from "astn/dist/generated/interface/schemas/ast/unconstrained"
+import * as _in_token from "astn/dist/generated/interface/schemas/token/unconstrained"
 
 import * as _out from "../../temp_unmashall_result_types"
 
 export const Document = (
-    $: _in.d_ast.Document,
+    $: _in.Document,
     $p: {
         definition: definition.Schemas.D.SG.schema,
     }
@@ -32,7 +33,7 @@ export const Document = (
 }
 
 export const Optional_Node = (
-    $: pt.Optional_Value<_in.d_ast.Value>,
+    $: pt.Optional_Value<_in.Value>,
     $p: {
         definition: definition.Type_Node,
     }
@@ -44,7 +45,7 @@ export const Optional_Node = (
 }
 
 export const Node = (
-    $: _in.d_ast.Value,
+    $: _in.Value,
     $p: {
         definition: definition.Type_Node,
     }
@@ -87,7 +88,7 @@ export const Node = (
                     'status': pa.cc(data.type, ($) => {
                         switch ($[0]) {
                             case 'indexed collection': return pa.ss($, ($) => {
-                                const entries = impure.list.group(pa.cc($, ($): _in.d_ast.Key_Value_Pairs => {
+                                const entries = impure.list.group(pa.cc($, ($): _in.Key_Value_Pairs => {
                                     switch ($[0]) {
                                         case 'dictionary': return pa.ss($, ($) => $.entries)
                                         case 'verbose group': return pa.ss($, ($) => $.entries)
@@ -172,7 +173,7 @@ export const Node = (
                         return pa.cc($.type, ($) => {
                             switch ($[0]) {
                                 case 'indexed collection': return pa.ss($, ($): _out.Group_Type => {
-                                    const entries = impure.list.group(pa.cc($, ($): _in.d_ast.Key_Value_Pairs => {
+                                    const entries = impure.list.group(pa.cc($, ($): _in.Key_Value_Pairs => {
                                         switch ($[0]) {
                                             case 'dictionary': return pa.ss($, ($) => $.entries)
                                             case 'verbose group': return pa.ss($, ($) => $.entries)
@@ -184,7 +185,7 @@ export const Node = (
                                             'value': $
                                         }
                                     }))
-                                    const range: _in.d_ast.Range = pa.cc($, ($) => {
+                                    const range: _in_token.Range = pa.cc($, ($) => {
                                         switch ($[0]) {
                                             case 'dictionary': return pa.ss($, ($) => $['{'].range)
                                             case 'verbose group': return pa.ss($, ($) => $['('].range)
@@ -271,14 +272,14 @@ export const Node = (
                                 )
                             })
                             case 'ordered collection': return pa.ss($, ($) => {
-                                const elements = pa.cc($, ($): _in.d_ast.Elements => {
+                                const elements = pa.cc($, ($): _in.Elements => {
                                     switch ($[0]) {
                                         case 'list': return pa.ss($, ($) => $.elements)
                                         case 'concise group': return pa.ss($, ($) => $.elements)
                                         default: return pa.au($[0])
                                     }
                                 })
-                                const range = pa.cc($, ($): _in.d_ast.Range => {
+                                const range = pa.cc($, ($): _in_token.Range => {
                                     switch ($[0]) {
                                         case 'list': return pa.ss($, ($) => $['['].range)
                                         case 'concise group': return pa.ss($, ($) => $['<'].range)

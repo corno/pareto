@@ -30,11 +30,6 @@ export const $: g_.Types<pd.Source_Location>  = types(
             "nothing": t.nothing(),
         })),
 
-        "Lines": type(t.list(t.group({
-            "indentation": t.number_local(n.natural()),
-            "text": t.text_global("Output"),
-        }))),
-
         "Directory": type(t.dictionary(
             t.state_group({
                 "file": t.component("Block"),

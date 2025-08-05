@@ -7,7 +7,7 @@ import * as _i_signatures from "../../../interface/schemas/schema/marshall"
 
 export const Benchmark: _i_signatures._T_s_Benchmark = ($, $p) => ['verbose group', _pa.dictionary_literal({
     'dense': _pa.cc($['dense'], ($) => ['text', ({
-        'delimiter': ['quote', null],
+        'delimiter': ['backtick', null],
         'value': $p['value serializers']['boolean'](
             $,
             null
@@ -42,7 +42,7 @@ export const Constraint: _i_signatures._T_s_Constraint = ($, $p) => ['verbose gr
                     'selected state group': _pa.cc($['selected state group'], ($) => ['nothing', null]),
                     'state': _pa.cc($['state'], ($) => ['text', ({
                         'delimiter': ['backtick', null],
-                        'value': "FIXME REFERENCE",
+                        'value': $['key'],
                     })]),
                 })],
             }))
@@ -58,7 +58,7 @@ export const Dictionary: _i_signatures._T_s_Dictionary = ($, $p) => ['verbose gr
         }
     )),
     'ordered': _pa.cc($['ordered'], ($) => ['text', ({
-        'delimiter': ['quote', null],
+        'delimiter': ['backtick', null],
         'value': $p['value serializers']['boolean'](
             $,
             null
@@ -111,11 +111,11 @@ export const Guaranteed_Value_Selection: _i_signatures._T_s_Guaranteed_Value_Sel
                             'value': ['verbose group', _pa.dictionary_literal({
                                 'constraint': _pa.cc($['constraint'], ($) => ['text', ({
                                     'delimiter': ['backtick', null],
-                                    'value': "FIXME REFERENCE",
+                                    'value': $['key'],
                                 })]),
                                 'property': _pa.cc($['property'], ($) => ['text', ({
                                     'delimiter': ['backtick', null],
-                                    'value': "FIXME REFERENCE",
+                                    'value': $['key'],
                                 })]),
                             })],
                         }))
@@ -124,11 +124,11 @@ export const Guaranteed_Value_Selection: _i_signatures._T_s_Guaranteed_Value_Sel
                             'value': ['verbose group', _pa.dictionary_literal({
                                 'constraint': _pa.cc($['constraint'], ($) => ['text', ({
                                     'delimiter': ['backtick', null],
-                                    'value': "FIXME REFERENCE",
+                                    'value': $['key'],
                                 })]),
                                 'property': _pa.cc($['property'], ($) => ['text', ({
                                     'delimiter': ['backtick', null],
-                                    'value': "FIXME REFERENCE",
+                                    'value': $['key'],
                                 })]),
                             })],
                         }))
@@ -148,21 +148,21 @@ export const Guaranteed_Value_Selection: _i_signatures._T_s_Guaranteed_Value_Sel
                 'state': "option constraint",
                 'value': ['text', ({
                     'delimiter': ['backtick', null],
-                    'value': "FIXME REFERENCE",
+                    'value': $['key'],
                 })],
             }))
             case 'parameter': return _pa.ss($, ($) => ({
                 'state': "parameter",
                 'value': ['text', ({
                     'delimiter': ['backtick', null],
-                    'value': "FIXME REFERENCE",
+                    'value': $['key'],
                 })],
             }))
             case 'parent sibling': return _pa.ss($, ($) => ({
                 'state': "parent sibling",
                 'value': ['text', ({
                     'delimiter': ['backtick', null],
-                    'value': "FIXME REFERENCE",
+                    'value': $['key'],
                 })],
             }))
             case 'result': return _pa.ss($, ($) => ({
@@ -175,7 +175,7 @@ export const Guaranteed_Value_Selection: _i_signatures._T_s_Guaranteed_Value_Sel
                                 'list result': _pa.cc($['list result'], ($) => ['nothing', null]),
                                 'property': _pa.cc($['property'], ($) => ['text', ({
                                     'delimiter': ['backtick', null],
-                                    'value': "FIXME REFERENCE",
+                                    'value': $['key'],
                                 })]),
                             })],
                         }))
@@ -185,7 +185,7 @@ export const Guaranteed_Value_Selection: _i_signatures._T_s_Guaranteed_Value_Sel
                                 'optional value': _pa.cc($['optional value'], ($) => ['nothing', null]),
                                 'property': _pa.cc($['property'], ($) => ['text', ({
                                     'delimiter': ['backtick', null],
-                                    'value': "FIXME REFERENCE",
+                                    'value': $['key'],
                                 })]),
                                 'result': _pa.cc($['result'], ($) => Type_Reference(
                                     $,
@@ -200,7 +200,7 @@ export const Guaranteed_Value_Selection: _i_signatures._T_s_Guaranteed_Value_Sel
                             'value': ['verbose group', _pa.dictionary_literal({
                                 'property': _pa.cc($['property'], ($) => ['text', ({
                                     'delimiter': ['backtick', null],
-                                    'value': "FIXME REFERENCE",
+                                    'value': $['key'],
                                 })]),
                                 'result': _pa.cc($['result'], ($) => Type_Reference(
                                     $,
@@ -219,7 +219,7 @@ export const Guaranteed_Value_Selection: _i_signatures._T_s_Guaranteed_Value_Sel
                 'state': "sibling",
                 'value': ['text', ({
                     'delimiter': ['backtick', null],
-                    'value': "FIXME REFERENCE",
+                    'value': $['key'],
                 })],
             }))
             default: return _pa.au($[0])
@@ -236,7 +236,7 @@ export const Imports: _i_signatures._T_s_Imports = ($, $p) => ['dictionary', $.m
     'schema': _pa.cc($['schema'], ($) => ['nothing', null]),
     'schema set child': _pa.cc($['schema set child'], ($) => ['text', ({
         'delimiter': ['backtick', null],
-        'value': "FIXME REFERENCE",
+        'value': $['key'],
     })]),
 })])]
 export const Lookup_Selection: _i_signatures._T_s_Lookup_Selection = ($, $p) => ['verbose group', _pa.dictionary_literal({
@@ -263,7 +263,7 @@ export const Lookup_Selection: _i_signatures._T_s_Lookup_Selection = ($, $p) => 
                 'state': "parameter",
                 'value': ['text', ({
                     'delimiter': ['backtick', null],
-                    'value': "FIXME REFERENCE",
+                    'value': $['key'],
                 })],
             }))
             case 'possibly circular dependent siblings': return _pa.ss($, ($) => ({
@@ -343,7 +343,7 @@ export const Node_Resolver: _i_signatures._T_s_Node_Resolver = ($, $p) => ['stat
                                         'state': "parameter",
                                         'value': ['text', ({
                                             'delimiter': ['backtick', null],
-                                            'value': "FIXME REFERENCE",
+                                            'value': $['key'],
                                         })],
                                     }))
                                     case 'required': return _pa.ss($, ($) => ({
@@ -376,11 +376,11 @@ export const Node_Resolver: _i_signatures._T_s_Node_Resolver = ($, $p) => ['stat
                             'value': ['verbose group', _pa.dictionary_literal({
                                 'import': _pa.cc($['import'], ($) => ['text', ({
                                     'delimiter': ['backtick', null],
-                                    'value': "FIXME REFERENCE",
+                                    'value': $['key'],
                                 })]),
                                 'type': _pa.cc($['type'], ($) => ['text', ({
                                     'delimiter': ['backtick', null],
-                                    'value': "FIXME REFERENCE",
+                                    'value': $['key'],
                                 })]),
                             })],
                         }))
@@ -388,7 +388,7 @@ export const Node_Resolver: _i_signatures._T_s_Node_Resolver = ($, $p) => ['stat
                             'state': "internal",
                             'value': ['text', ({
                                 'delimiter': ['backtick', null],
-                                'value': "FIXME REFERENCE",
+                                'value': $['key'],
                             })],
                         }))
                         default: return _pa.au($[0])
@@ -636,7 +636,7 @@ export const Option_Constraints: _i_signatures._T_s_Option_Constraints = ($, $p)
                 )),
                 'state': _pa.cc($['state'], ($) => ['text', ({
                     'delimiter': ['backtick', null],
-                    'value': "FIXME REFERENCE",
+                    'value': $['key'],
                 })]),
             })],
         }))
@@ -676,7 +676,7 @@ export const Possible_Value_Selection: _i_signatures._T_s_Possible_Value_Selecti
             'state': "parameter",
             'value': ['text', ({
                 'delimiter': ['backtick', null],
-                'value': "FIXME REFERENCE",
+                'value': $['key'],
             })],
         }))
         case 'result': return _pa.ss($, ($) => ({
@@ -689,7 +689,7 @@ export const Possible_Value_Selection: _i_signatures._T_s_Possible_Value_Selecti
                             'optional value': _pa.cc($['optional value'], ($) => ['nothing', null]),
                             'property': _pa.cc($['property'], ($) => ['text', ({
                                 'delimiter': ['backtick', null],
-                                'value': "FIXME REFERENCE",
+                                'value': $['key'],
                             })]),
                             'result': _pa.cc($['result'], ($) => Type_Reference(
                                 $,
@@ -704,7 +704,7 @@ export const Possible_Value_Selection: _i_signatures._T_s_Possible_Value_Selecti
                         'value': ['verbose group', _pa.dictionary_literal({
                             'property': _pa.cc($['property'], ($) => ['text', ({
                                 'delimiter': ['backtick', null],
-                                'value': "FIXME REFERENCE",
+                                'value': $['key'],
                             })]),
                             'result': _pa.cc($['result'], ($) => Type_Reference(
                                 $,
@@ -769,7 +769,7 @@ export const Property_Constraints: _i_signatures._T_s_Property_Constraints = ($,
 ))]
 export const Reference_To_Property_Constraint: _i_signatures._T_s_Reference_To_Property_Constraint = ($, $p) => ['text', ({
     'delimiter': ['backtick', null],
-    'value': "FIXME REFERENCE",
+    'value': $['key'],
 })]
 export const Relative_Value_Selection: _i_signatures._T_s_Relative_Value_Selection = ($, $p) => ['verbose group', _pa.dictionary_literal({
     'path': _pa.cc($['path'], ($) => ['list', $.map(($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
@@ -782,7 +782,7 @@ export const Relative_Value_Selection: _i_signatures._T_s_Relative_Value_Selecti
                 'state': "group",
                 'value': ['text', ({
                     'delimiter': ['backtick', null],
-                    'value': "FIXME REFERENCE",
+                    'value': $['key'],
                 })],
             }))
             case 'reference': return _pa.ss($, ($) => ({
@@ -898,7 +898,7 @@ export const Signature: _i_signatures._T_s_Signature = ($, $p) => ['verbose grou
                 'state': "same as",
                 'value': ['text', ({
                     'delimiter': ['backtick', null],
-                    'value': "FIXME REFERENCE",
+                    'value': $['key'],
                 })],
             }))
             default: return _pa.au($[0])
@@ -1005,11 +1005,11 @@ export const Type_Node: _i_signatures._T_s_Type_Node = ($, $p) => ['state', _pa.
                         'value': ['verbose group', _pa.dictionary_literal({
                             'import': _pa.cc($['import'], ($) => ['text', ({
                                 'delimiter': ['backtick', null],
-                                'value': "FIXME REFERENCE",
+                                'value': $['key'],
                             })]),
                             'type': _pa.cc($['type'], ($) => ['text', ({
                                 'delimiter': ['backtick', null],
-                                'value': "FIXME REFERENCE",
+                                'value': $['key'],
                             })]),
                         })],
                     }))
@@ -1017,14 +1017,14 @@ export const Type_Node: _i_signatures._T_s_Type_Node = ($, $p) => ['state', _pa.
                         'state': "internal",
                         'value': ['text', ({
                             'delimiter': ['backtick', null],
-                            'value': "FIXME REFERENCE",
+                            'value': $['key'],
                         })],
                     }))
                     case 'internal cyclic': return _pa.ss($, ($) => ({
                         'state': "internal cyclic",
                         'value': ['text', ({
                             'delimiter': ['backtick', null],
-                            'value': "FIXME REFERENCE",
+                            'value': $['key'],
                         })],
                     }))
                     default: return _pa.au($[0])
@@ -1081,7 +1081,7 @@ export const Type_Node: _i_signatures._T_s_Type_Node = ($, $p) => ['state', _pa.
                         'state': "global",
                         'value': ['text', ({
                             'delimiter': ['backtick', null],
-                            'value': "FIXME REFERENCE",
+                            'value': $['key'],
                         })],
                     }))
                     case 'local': return _pa.ss($, ($) => ({
@@ -1166,7 +1166,7 @@ export const Type_Node: _i_signatures._T_s_Type_Node = ($, $p) => ['state', _pa.
                         'state': "global",
                         'value': ['text', ({
                             'delimiter': ['backtick', null],
-                            'value': "FIXME REFERENCE",
+                            'value': $['key'],
                         })],
                     }))
                     case 'local': return _pa.ss($, ($) => ({
@@ -1186,7 +1186,7 @@ export const Type_Node: _i_signatures._T_s_Type_Node = ($, $p) => ['state', _pa.
             'state': "type parameter",
             'value': ['text', ({
                 'delimiter': ['backtick', null],
-                'value': "FIXME REFERENCE",
+                'value': $['key'],
             })],
         }))
         default: return _pa.au($[0])
@@ -1204,7 +1204,7 @@ export const Type_Node_Reference: _i_signatures._T_s_Type_Node_Reference = ($, $
                 'state': "group",
                 'value': ['text', ({
                     'delimiter': ['backtick', null],
-                    'value': "FIXME REFERENCE",
+                    'value': $['key'],
                 })],
             }))
             case 'identifier value pair': return _pa.ss($, ($) => ({
@@ -1223,7 +1223,7 @@ export const Type_Node_Reference: _i_signatures._T_s_Type_Node_Reference = ($, $
                 'state': "state group",
                 'value': ['text', ({
                     'delimiter': ['backtick', null],
-                    'value': "FIXME REFERENCE",
+                    'value': $['key'],
                 })],
             }))
             default: return _pa.au($[0])
@@ -1245,11 +1245,11 @@ export const Type_Reference: _i_signatures._T_s_Type_Reference = ($, $p) => ['ve
                 'value': ['verbose group', _pa.dictionary_literal({
                     'import': _pa.cc($['import'], ($) => ['text', ({
                         'delimiter': ['backtick', null],
-                        'value': "FIXME REFERENCE",
+                        'value': $['key'],
                     })]),
                     'type': _pa.cc($['type'], ($) => ['text', ({
                         'delimiter': ['backtick', null],
-                        'value': "FIXME REFERENCE",
+                        'value': $['key'],
                     })]),
                 })],
             }))
@@ -1257,7 +1257,7 @@ export const Type_Reference: _i_signatures._T_s_Type_Reference = ($, $p) => ['ve
                 'state': "internal",
                 'value': ['text', ({
                     'delimiter': ['backtick', null],
-                    'value': "FIXME REFERENCE",
+                    'value': $['key'],
                 })],
             }))
             default: return _pa.au($[0])
