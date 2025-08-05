@@ -12,28 +12,10 @@ import * as g_ from "../../../../generated/interface/schemas/schema/unresolved"
 
 export const $: g_.Types<pd.Source_Location> = types(
     {
-        "Token Type": type(t.state_group({
-            "{": t.nothing(),
-            "}": t.nothing(),
-            "[": t.nothing(),
-            "]": t.nothing(),
-            "(": t.nothing(),
-            ")": t.nothing(),
-            "<": t.nothing(),
-            ">": t.nothing(),
 
-            "!": t.nothing(),
-            "@": t.nothing(),
-            "~": t.nothing(),
-            "*": t.nothing(),
-            ",": t.nothing(),
-            ":": t.nothing(),
-            "|": t.nothing(),
-
-            "string": t.group({
-                "value": t.text_local(text('single line')),
-                "type": t.component_external("ast", "String Type"),
-            }),
+        "Parse Result": type(t.state_group({
+            "failure": t.component("Parse Error"),
+            "success": t.component_external("ast", "Document"),
         })),
 
         "Parse Error": type(t.group({
@@ -67,30 +49,12 @@ export const $: g_.Types<pd.Source_Location> = types(
                     "cause": t.state_group({
                         "missing token": t.nothing(),
                         "unexpected token": t.group({
-                            "found": t.component("Token Type"),
+                            "found": t.component_external("token", "Token Type"),
                         }),
                     }),
                 }),
             }),
-            "range": t.component_external("ast", "Range"),
-        })),
-
-        "Parse Result": type(t.state_group({
-            "failure": t.component("Parse Error"),
-            "success": t.component_external("ast", "Document"),
-        })),
-
-        "Annotated Token": type(t.group({
-            "start": t.component_external("ast", "Location"),
-            "type": t.component("Token Type"),
-            "end": t.component_external("ast", "Location"),
-            "trailing trivia": t.component_external("ast", "Trivia"),
-        })),
-
-        "Tokenizer Result": type(t.group({
-            "leading trivia": t.component_external("ast", "Trivia"),
-            "tokens": t.list(t.component("Annotated Token")),
-            "end": t.component_external("ast", "Location"),
+            "range": t.component_external("token", "Range"),
         })),
     }
 )

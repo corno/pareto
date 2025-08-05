@@ -15,25 +15,8 @@ import * as _et from 'exupery-core-types'
 
 export const $: g_.Types<pd.Source_Location> = types(
     {
-        "Location": type(t.group({
-            "relative": t.component("Relative Location"),
-            "absolute": t.number_local(n.natural()),
-        })),
 
-        "Relative Location": type(t.group({
-            "line": t.number_local(n.natural()),
-            "column": t.number_local(n.natural()), //this value takes the width of a tab into account, if you don't want that, configure the tab width to be 1
-        })),
 
-        "Range": type(t.group({
-            "start": t.component("Location"),
-            "end": t.component("Location"),
-        })),
-
-        "Relative Range": type(t.group({
-            "start": t.component("Relative Location"),
-            "end": t.component("Relative Location"),
-        })),
 
         "Document": type(t.group({
             "header": t.optional(t.group({
@@ -44,7 +27,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Value": type(t.group({
-            "range": t.component("Range"), //can be derived
+            "range": t.component_external("token", "Range"), //can be derived
             "type": t.state_group({
                 "string": t.component("String"),
                 "indexed collection": t.state_group({
@@ -91,17 +74,10 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "String": type(t.group({
-            "trailing trivia": t.component("Trivia"),
-            "range": t.component("Range"),
+            "trailing trivia": t.component_external("token", "Trivia"),
+            "range": t.component_external("token", "Range"),
             "value": t.text_local(text('single line')),
-            "type": t.component("String Type"),
-        })),
-
-        "String Type": type(t.state_group({
-            "quoted": t.nothing(),
-            "apostrophed": t.nothing(),
-            "undelimited": t.nothing(),
-            "backticked": t.nothing(),
+            "type": t.component_external("token", "String Type"),
         })),
 
         "Key Value Pairs": type(t.list(t.group({
@@ -119,26 +95,8 @@ export const $: g_.Types<pd.Source_Location> = types(
         }))),
 
         "Structural Token": type(t.group({
-            "trailing trivia": t.component("Trivia"),
-            "range": t.component("Range"),
-        })),
-
-        "Whitespace": type(t.group({
-            "range": t.component("Range"),
-            "value": t.text_local(text('single line')),
-        })),
-        
-        "Trivia": type(t.group({
-            "leading whitespace": t.component("Whitespace"),
-            "comments": t.list(t.group({
-                "type": t.state_group({
-                    "line": t.nothing(),
-                    "block": t.nothing(),
-                }),
-                "content": t.text_local(text('single line')),
-                "range": t.component("Range"),
-                "trailing whitespace": t.component("Whitespace"),
-            })),
+            "trailing trivia": t.component_external("token", "Trivia"),
+            "range": t.component_external("token", "Range"),
         })),
     },
 )

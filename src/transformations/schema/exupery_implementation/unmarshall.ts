@@ -1,6 +1,6 @@
 import * as pd from 'exupery-core-data'
 import * as pt from 'exupery-core-types'
-import * as pa from 'exupery-core-alg'
+import * as _ea from 'exupery-core-alg'
 import * as pdev from 'exupery-core-dev'
 
 import * as _in from "../../../generated/interface/schemas/schema/resolved"
@@ -30,8 +30,8 @@ export const Schema = (
 ): _out.Module_Set.D<pd.Source_Location> => {
     return m.module(
         op['flatten dictionary'](
-            pa.dictionary_literal({
-                "": pa.dictionary_literal({
+            _ea.dictionary_literal({
+                "": _ea.dictionary_literal({
                     "generic": import_.ancestor(2, "generic", ["unmarshall"], {}),
                     "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "unmarshall"], {}),
                     "out": import_.ancestor(3, "interface", ["schemas", $p.key, $p.constrained ? "unresolved" : "unconstrained"], $p.constrained ? { "Source": t.null_() } : {}),
@@ -51,7 +51,7 @@ export const Schema = (
                     $.node,
                     {
                         'temp type': key,
-                        'temp subselection': pa.array_literal([]),
+                        'temp subselection': _ea.array_literal([]),
                         'constrained': $p.constrained
                     }
                 ),
@@ -69,65 +69,72 @@ export const Type_Node = (
         'constrained': boolean
     },
 ): _out.Initialization<pd.Source_Location> => {
-    return pa.cc($, ($) => {
+    return _ea.cc($, ($) => {
         switch ($[0]) {
-            case 'number': return pa.ss($, ($) => i.call(
+            case 'number': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process number", []),
                 i.select_from_context([]),
-                pa.dictionary_literal({
+                _ea.dictionary_literal({
                 })
             ))
-            case 'boolean': return pa.ss($, ($) => i.call(
+            case 'boolean': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process boolean", []),
                 i.select_from_context([]),
-                pa.dictionary_literal({
+                _ea.dictionary_literal({
                 })
             ))
-            case 'nothing': return pa.ss($, ($) => i.call(
+            case 'nothing': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process nothing", []),
                 i.select_from_context([]),
-                pa.dictionary_literal({
+                _ea.dictionary_literal({
                 })
             ))
-            case 'reference': return pa.ss($, ($) => pa.cc($.type, ($) => {
+            case 'reference': return _ea.ss($, ($) => _ea.cc($.type, ($) => {
                 switch ($[0]) {
-                    case 'derived': return pa.ss($, ($) => i.call(
+                    case 'derived': return _ea.ss($, ($) => i.call(
                         s.from_variable_import(" i generic", "process derived reference", []),
                         i.select_from_context([]),
-                        pa.dictionary_literal({
+                        _ea.dictionary_literal({
                         })
                     ))
-                    case 'selected': return pa.ss($, ($) => i.call(
-                        s.from_variable_import(" i generic", "process selected reference", []),
+                    case 'selected': return _ea.ss($, ($) => i.call(
+                        s.from_variable_import(" i generic", _ea.cc($.dependency, ($) => {
+                            switch ($[0]) {
+                                case 'acyclic': return "process selected reference"
+                                case 'cyclic': return "process selected reference"
+                                case 'stack': return "process stack reference"
+                                default: return _ea.au($[0])
+                            }
+                        }), []),
                         i.select_from_context([]),
-                        pa.dictionary_literal({
+                        _ea.dictionary_literal({
                         })
                     ))
-                    default: return pa.au($[0])
+                    default: return _ea.au($[0])
                 }
             }))
-            case 'text': return pa.ss($, ($) => i.call(
+            case 'text': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process text", []),
                 i.select_from_context([]),
-                pa.dictionary_literal({
+                _ea.dictionary_literal({
                 })
             ))
-            case 'component': return pa.ss($, ($) => i.call(
-                pa.cc($, ($) => {
+            case 'component': return _ea.ss($, ($) => i.call(
+                _ea.cc($, ($) => {
                     switch ($[0]) {
-                        case 'external': return pa.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
-                        case 'internal': return pa.ss($, ($) => s.from_variable($.key, []))
-                        case 'internal cyclic': return pa.ss($, ($) => s.from_variable($.key, []))
-                        default: return pa.au($[0])
+                        case 'external': return _ea.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
+                        case 'internal': return _ea.ss($, ($) => s.from_variable($.key, []))
+                        case 'internal cyclic': return _ea.ss($, ($) => s.from_variable($.key, []))
+                        default: return _ea.au($[0])
                     }
                 }),
                 i.select_from_context([]),
-                pa.dictionary_literal({}),
+                _ea.dictionary_literal({}),
             ))
-            case 'dictionary': return pa.ss($, ($) => i.call(
+            case 'dictionary': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", $p.constrained ? "process unresolved dictionary" : "process unconstrained dictionary", []),
                 i.select_from_context([]),
-                pa.dictionary_literal({
+                _ea.dictionary_literal({
                     "value": i.function_(
                         false,
                         Type_Node(
@@ -146,23 +153,23 @@ export const Type_Node = (
                     ),
                 })
             ))
-            case 'identifier value pair': return pa.ss($, ($) => i.call(
+            case 'identifier value pair': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process identifier value pair", []),
                 i.select_from_context([]),
-                pa.dictionary_literal({
+                _ea.dictionary_literal({
                 })
             ))
-            case 'group': return pa.ss($, ($) => i.call(
+            case 'group': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process group", []),
                 i.select_from_context([]),
-                pa.dictionary_literal({
+                _ea.dictionary_literal({
                     "properties": i.function_(
                         false,
                         i.group($.map(($, key) => i.change_context(
                             s.call(
                                 s.from_variable_import(" i generic", "get entry", []),
                                 s.from_context([]),
-                                pa.dictionary_literal({
+                                _ea.dictionary_literal({
                                     "key": i.string(key, 'quote'),
                                 }),
                                 [],
@@ -184,10 +191,10 @@ export const Type_Node = (
                     ),
                 })
             ))
-            case 'list': return pa.ss($, ($) => i.call(
+            case 'list': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", $p.constrained ? "process unresolved list" : "process unconstrained list", []),
                 i.select_from_context([]),
-                pa.dictionary_literal({
+                _ea.dictionary_literal({
                     "value": i.function_(
                         false,
                         Type_Node(
@@ -206,10 +213,10 @@ export const Type_Node = (
                     ),
                 })
             ))
-            case 'optional': return pa.ss($, ($) => i.call(
+            case 'optional': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process optional", []),
                 i.select_from_context([]),
-                pa.dictionary_literal({
+                _ea.dictionary_literal({
                     "value": i.function_(
                         false,
                         Type_Node(
@@ -228,10 +235,10 @@ export const Type_Node = (
                     ),
                 })
             ))
-            case 'state group': return pa.ss($, ($) => i.call(
+            case 'state group': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process state group", []),
                 i.select_from_context([]),
-                pa.dictionary_literal({
+                _ea.dictionary_literal({
                     "states": i.dictionary_literal($.map(($, key) => i.function_(
                         false,
                         i.call(
@@ -252,20 +259,20 @@ export const Type_Node = (
                                     }
                                 )
                             ),
-                            pa.dictionary_literal({
+                            _ea.dictionary_literal({
                             })
                         ),
                         t.component_imported("out", $p['temp type'], {}, $p['temp subselection'].__get_raw_copy())
                     )))
                 })
             ))
-            case 'type parameter': return pa.ss($, ($) => i.call(
+            case 'type parameter': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process type parameter", []),
                 i.select_from_context([]),
-                pa.dictionary_literal({
+                _ea.dictionary_literal({
                 })
             ))
-            default: return pa.au($[0])
+            default: return _ea.au($[0])
         }
     })
 }

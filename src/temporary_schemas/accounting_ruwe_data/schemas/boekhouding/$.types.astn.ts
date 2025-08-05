@@ -341,7 +341,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "Bedrag": t.number_global("Bedrag"),
                 "Datum": t.number_global("Datum"),
                 "Omschrijving": t.text_global("Omschrijving"),
-                "Grootboekrekening": t.reference("Grootboekrekeningen", [tr.g("Balans")]),
+                "Grootboekrekening": t.reference("Grootboekrekeningen", [tr.g("Resultaat")]),
             }))),
         })),
 

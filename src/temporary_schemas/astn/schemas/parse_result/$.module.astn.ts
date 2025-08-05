@@ -10,7 +10,8 @@ import { $ as globals } from "./$.globals.astn"
 
 export const $: g_.Schemas.D<pd.Source_Location> = schema_(
     {
-        "ast": import_(0, "ast")
+        "ast": import_(0, "ast"),
+        "token": import_(0, "token"),
     },
     globals,
     schema,

@@ -16,17 +16,22 @@ export const $: g_.Types<pd.Source_Location> = types(
     {
         "Text Edits": type(t.list(t.state_group({
             "insert": t.group({
-                "location": t.component_external("ast", "Relative Location"),
+                "location": t.component_external("token", "Relative Location"),
                 "text": t.text_local(text('single line')),
             }),
             "replace": t.group({
-                "range": t.component_external("ast", "Relative Range"),
+                "range": t.component("Relative Range"),
                 "text": t.text_local(text('single line')),
             }),
             "delete": t.group({
-                "range": t.component_external("ast", "Relative Range"),
+                "range": t.component("Relative Range"),
             }),
         }))),
+
+        "Relative Range": type(t.group({
+            "start": t.component_external("token", "Relative Location"),
+            "end": t.component_external("token", "Relative Location"),
+        })),
 
         "Key Value Pairs To Be Sorted": type(t.dictionary(t.text_local(text('single line')))),
     },
