@@ -46,7 +46,7 @@ export const Schema = (
         $.types.dictionary.map(($, key) => variable(
             t.component_imported("signatures", key, {}, []),
             i.function_(
-                false,
+                true,
                 Type_Node(
                     $.node,
                     {
@@ -75,12 +75,20 @@ export const Type_Node = (
                 s.from_variable_import(" i generic", "process number", []),
                 i.select_from_context([]),
                 _ea.dictionary_literal({
+                    "deserializer": i.select_from_parameter("value deserializers", _ea.cc($, ($) => {
+                        switch ($[0]) {
+                            case 'global':return _ea.ss($, ($) => [ "custom numbers", $.key])
+                            case 'local': return _ea.ss($, ($) => [ "default number" ])
+                            default: return _ea.au($[0])
+                        }
+                    })),
                 })
             ))
             case 'boolean': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process boolean", []),
                 i.select_from_context([]),
                 _ea.dictionary_literal({
+                    "deserializer": i.select_from_parameter("value deserializers", ["boolean"]),
                 })
             ))
             case 'nothing': return _ea.ss($, ($) => i.call(
@@ -129,7 +137,9 @@ export const Type_Node = (
                     }
                 }),
                 i.select_from_context([]),
-                _ea.dictionary_literal({}),
+                _ea.dictionary_literal({
+                    "value deserializers": i.select_from_parameter("value deserializers", []),
+                }),
             ))
             case 'dictionary': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", $p.constrained ? "process unresolved dictionary" : "process unconstrained dictionary", []),

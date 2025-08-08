@@ -7,7 +7,7 @@ import * as _i_r_schema from "../schema/unmarshall"
 import * as _i_signatures from "../../../interface/schemas/module/unmarshall"
 
 
-export const Module: _i_signatures._T_Module = ($) => _i_generic.process_group(
+export const Module: _i_signatures._T_Module = ($, $p) => _i_generic.process_group(
     $,
     {
         'properties': ($) => ({
@@ -18,7 +18,9 @@ export const Module: _i_signatures._T_Module = ($) => _i_generic.process_group(
                 }
             ), ($) => Operations(
                 $,
-                null
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
             )),
             'schemas': _pa.cc(_i_generic.get_entry(
                 $,
@@ -27,12 +29,14 @@ export const Module: _i_signatures._T_Module = ($) => _i_generic.process_group(
                 }
             ), ($) => _i_r_schema.Schemas(
                 $,
-                null
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
             )),
         }),
     }
 )
-export const Operations: _i_signatures._T_Operations = ($) => _i_generic.process_unresolved_dictionary(
+export const Operations: _i_signatures._T_Operations = ($, $p) => _i_generic.process_unresolved_dictionary(
     $,
     {
         'value': ($) => _i_generic.process_state_group(
@@ -51,7 +55,9 @@ export const Operations: _i_signatures._T_Operations = ($) => _i_generic.process
                                         }
                                     ), ($) => _i_r_schema.Type_Node(
                                         $,
-                                        null
+                                        {
+                                            'value deserializers': $p['value deserializers'],
+                                        }
                                     )),
                                     'parameters': _pa.cc(_i_generic.get_entry(
                                         $,
@@ -63,7 +69,9 @@ export const Operations: _i_signatures._T_Operations = ($) => _i_generic.process
                                         {
                                             'value': ($) => _i_r_schema.Type_Node(
                                                 $,
-                                                null
+                                                {
+                                                    'value deserializers': $p['value deserializers'],
+                                                }
                                             ),
                                         }
                                     )),
@@ -74,7 +82,9 @@ export const Operations: _i_signatures._T_Operations = ($) => _i_generic.process
                                         }
                                     ), ($) => _i_r_schema.Type_Node(
                                         $,
-                                        null
+                                        {
+                                            'value deserializers': $p['value deserializers'],
+                                        }
                                     )),
                                     'type parameters': _pa.cc(_i_generic.get_entry(
                                         $,
@@ -83,7 +93,9 @@ export const Operations: _i_signatures._T_Operations = ($) => _i_generic.process
                                         }
                                     ), ($) => _i_r_schema.Type_Parameters(
                                         $,
-                                        null
+                                        {
+                                            'value deserializers': $p['value deserializers'],
+                                        }
                                     )),
                                 }),
                             }
@@ -93,7 +105,9 @@ export const Operations: _i_signatures._T_Operations = ($) => _i_generic.process
                     'set': ($): _i_out._T_Operations.D<null> => _i_generic.wrap_unresolved_state_group(
                         ['set', Operations(
                             $,
-                            null
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
                         )],
                         null
                     ),

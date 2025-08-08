@@ -40,6 +40,12 @@ export const Schema = (
                 ],
                 {},
             ),
+            "vd": sh.import_.sibling(
+                "value deserializers",
+                [
+                ],
+                {},
+            ),
         },
         {},
         $.types.dictionary.map(($, key) => sh.type({}, sh.t.function_(
@@ -50,7 +56,9 @@ export const Schema = (
                 {},
                 []
             ),
-            {},
+            {
+                "value deserializers": sh.t.component_imported("vd", "Value Deserializers", {}, []),
+            },
             sh.t.component_imported(
                 "out",
                 key,

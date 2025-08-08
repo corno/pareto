@@ -2,177 +2,246 @@ import * as _pt from 'exupery-core-types'
 
 import * as _i_in from "../../core/astn_source"
 import * as _i_out from "./data_types/unresolved"
+import * as _i_vd from "./value_deserializers"
 
 // **** TYPES
 
 export type _T_Benchmark = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Benchmark<null>
 
 export type _T_Constraint = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Constraint<null>
 
 export type _T_Dictionary = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Dictionary<null>
 
 export type _T_Globals = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Globals<null>
 
 export type _T_Group = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Group<null>
 
 export type _T_Guaranteed_Value_Selection = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Guaranteed_Value_Selection<null>
 
 export type _T_Imports = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Imports<null>
 
 export type _T_Lookup_Selection = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Lookup_Selection<null>
 
 export type _T_Node_Resolver = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Node_Resolver<null>
 
 export type _T_Node_Resolver_Group = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Node_Resolver_Group<null>
 
 export type _T_Node_Resolver_List_Result = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Node_Resolver_List_Result<null>
 
 export type _T_Number_Type = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Number_Type<null>
 
 export type _T_Option_Constraints = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Option_Constraints<null>
 
 export type _T_Optional_Value_Initialization = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Optional_Value_Initialization<null>
 
 export type _T_Possible_Value_Selection = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Possible_Value_Selection<null>
 
 export type _T_Presence = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Presence<null>
 
 export type _T_Property_Constraint = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Property_Constraint<null>
 
 export type _T_Property_Constraints = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Property_Constraints<null>
 
 export type _T_Reference_To_Property_Constraint = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Reference_To_Property_Constraint<null>
 
 export type _T_Relative_Value_Selection = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Relative_Value_Selection<null>
 
 export type _T_Resolve_Logic = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Resolve_Logic<null>
 
 export type _T_Resolvers = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Resolvers<null>
 
 export type _T_Schema = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Schema<null>
 
 export type _T_Schemas = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Schemas<null>
 
 export type _T_Signature = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Signature<null>
 
 export type _T_Signature_Parameters = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Signature_Parameters<null>
 
 export type _T_Signatures = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Signatures<null>
 
 export type _T_Text_Type = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Text_Type<null>
 
 export type _T_Type = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Type<null>
 
 export type _T_Type_Node = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Type_Node<null>
 
 export type _T_Type_Node_Reference = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Type_Node_Reference<null>
 
 export type _T_Type_Parameters = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Type_Parameters<null>
 
 export type _T_Type_Reference = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Type_Reference<null>
 
 export type _T_Types = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Types<null>
 
 // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
@@ -254,6 +323,10 @@ export namespace _T_Benchmark {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -269,6 +342,10 @@ export namespace _T_Constraint {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -284,6 +361,10 @@ export namespace _T_Dictionary {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -299,6 +380,10 @@ export namespace _T_Globals {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -314,6 +399,10 @@ export namespace _T_Group {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -329,6 +418,10 @@ export namespace _T_Guaranteed_Value_Selection {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -344,6 +437,10 @@ export namespace _T_Imports {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -359,6 +456,10 @@ export namespace _T_Lookup_Selection {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -374,6 +475,10 @@ export namespace _T_Node_Resolver {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -389,6 +494,10 @@ export namespace _T_Node_Resolver_Group {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -404,6 +513,10 @@ export namespace _T_Node_Resolver_List_Result {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -419,6 +532,10 @@ export namespace _T_Number_Type {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -434,6 +551,10 @@ export namespace _T_Option_Constraints {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -449,6 +570,10 @@ export namespace _T_Optional_Value_Initialization {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -464,6 +589,10 @@ export namespace _T_Possible_Value_Selection {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -479,6 +608,10 @@ export namespace _T_Presence {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -494,6 +627,10 @@ export namespace _T_Property_Constraint {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -509,6 +646,10 @@ export namespace _T_Property_Constraints {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -524,6 +665,10 @@ export namespace _T_Reference_To_Property_Constraint {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -539,6 +684,10 @@ export namespace _T_Relative_Value_Selection {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -554,6 +703,10 @@ export namespace _T_Resolve_Logic {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -569,6 +722,10 @@ export namespace _T_Resolvers {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -584,6 +741,10 @@ export namespace _T_Schema {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -599,6 +760,10 @@ export namespace _T_Schemas {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -614,6 +779,10 @@ export namespace _T_Signature {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -629,6 +798,10 @@ export namespace _T_Signature_Parameters {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -644,6 +817,10 @@ export namespace _T_Signatures {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -659,6 +836,10 @@ export namespace _T_Text_Type {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -674,6 +855,10 @@ export namespace _T_Type {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -689,6 +874,10 @@ export namespace _T_Type_Node {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -704,6 +893,10 @@ export namespace _T_Type_Node_Reference {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -719,6 +912,10 @@ export namespace _T_Type_Parameters {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -734,6 +931,10 @@ export namespace _T_Type_Reference {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -749,6 +950,10 @@ export namespace _T_Types {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -766,6 +971,10 @@ export namespace Benchmark {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -781,6 +990,10 @@ export namespace Constraint {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -796,6 +1009,10 @@ export namespace Dictionary {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -811,6 +1028,10 @@ export namespace Globals {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -826,6 +1047,10 @@ export namespace Group {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -841,6 +1066,10 @@ export namespace Guaranteed_Value_Selection {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -856,6 +1085,10 @@ export namespace Imports {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -871,6 +1104,10 @@ export namespace Lookup_Selection {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -886,6 +1123,10 @@ export namespace Node_Resolver {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -901,6 +1142,10 @@ export namespace Node_Resolver_Group {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -916,6 +1161,10 @@ export namespace Node_Resolver_List_Result {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -931,6 +1180,10 @@ export namespace Number_Type {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -946,6 +1199,10 @@ export namespace Option_Constraints {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -961,6 +1218,10 @@ export namespace Optional_Value_Initialization {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -976,6 +1237,10 @@ export namespace Possible_Value_Selection {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -991,6 +1256,10 @@ export namespace Presence {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1006,6 +1275,10 @@ export namespace Property_Constraint {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1021,6 +1294,10 @@ export namespace Property_Constraints {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1036,6 +1313,10 @@ export namespace Reference_To_Property_Constraint {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1051,6 +1332,10 @@ export namespace Relative_Value_Selection {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1066,6 +1351,10 @@ export namespace Resolve_Logic {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1081,6 +1370,10 @@ export namespace Resolvers {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1096,6 +1389,10 @@ export namespace Schema {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1111,6 +1408,10 @@ export namespace Schemas {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1126,6 +1427,10 @@ export namespace Signature {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1141,6 +1446,10 @@ export namespace Signature_Parameters {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1156,6 +1465,10 @@ export namespace Signatures {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1171,6 +1484,10 @@ export namespace Text_Type {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1186,6 +1503,10 @@ export namespace Type {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1201,6 +1522,10 @@ export namespace Type_Node {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1216,6 +1541,10 @@ export namespace Type_Node_Reference {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1231,6 +1560,10 @@ export namespace Type_Parameters {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1246,6 +1579,10 @@ export namespace Type_Reference {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -1261,6 +1598,10 @@ export namespace Types {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {

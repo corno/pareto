@@ -40,32 +40,21 @@ export const Schema = (
                     $p.constrained ? "resolved" : "unconstrained",
                 ],
                 {},
-            ),
-            "vs": sh.import_.sibling(
-                "value serializers",
-                [
-                ],
-                {},
-            ),
+            )
         },
         {},
-        $.types.dictionary.map(($, key) => sh.type({}, sh.t.function_(
-            {},
-            sh.t.component_imported(
-                "in",
-                key,
-                {},
-                []
-            ),
-            {
-                "value serializers": sh.t.component_imported("vs", "Value Serializers", {}, []),
-            },
-            sh.t.component_imported(
-                "out",
-                "Value",
-                {},
-                []
-            ),
-        ))),
+        {
+            "Value Deserializers": sh.type({}, sh.t.group({
+                "default number": sh.t.function_({}, sh.t.string(), {}, sh.t.integer()),
+                "boolean": sh.t.function_({}, sh.t.string(), {}, sh.t.boolean()),
+                "custom numbers": sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, sh.t.string(), {}, _ea.cc($.precision, ($) => {
+                    switch ($[0]) {
+                        case 'approximation': return _ea.ss($, ($) => sh.t.float())
+                        case 'exact': return _ea.ss($, ($) => sh.t.integer())
+                        default: return _ea.au($[0])
+                    }
+                }))))
+            })),
+        }
     )
 }

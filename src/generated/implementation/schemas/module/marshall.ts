@@ -6,7 +6,7 @@ import * as _i_r_schema from "../schema/marshall"
 import * as _i_signatures from "../../../interface/schemas/module/marshall"
 
 
-export const Module: _i_signatures._T_s_Module = ($, $p) => ['verbose group', _pa.dictionary_literal({
+export const Module: _i_signatures._T_Module = ($, $p) => ['verbose group', _pa.dictionary_literal({
     'operations': _pa.cc($['operations'], ($) => Operations(
         $,
         {
@@ -20,7 +20,7 @@ export const Module: _i_signatures._T_s_Module = ($, $p) => ['verbose group', _p
         }
     )),
 })]
-export const Operations: _i_signatures._T_s_Operations = ($, $p) => ['dictionary', $.map(($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+export const Operations: _i_signatures._T_Operations = ($, $p) => ['dictionary', $.map(($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'operation': return _pa.ss($, ($) => ({
             'state': "operation",

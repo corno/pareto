@@ -6,7 +6,7 @@ import * as _i_out from "../../../interface/schemas/unmarshall_errors/data_types
 import * as _i_signatures from "../../../interface/schemas/unmarshall_errors/unmarshall"
 
 
-export const Errors: _i_signatures._T_Errors = ($) => _i_generic.process_unconstrained_list(
+export const Errors: _i_signatures._T_Errors = ($, $p) => _i_generic.process_unconstrained_list(
     $,
     {
         'value': ($) => _i_generic.process_group(
@@ -20,7 +20,9 @@ export const Errors: _i_signatures._T_Errors = ($) => _i_generic.process_unconst
                         }
                     ), ($) => Range(
                         $,
-                        null
+                        {
+                            'value deserializers': $p['value deserializers'],
+                        }
                     )),
                     'type': _pa.cc(_i_generic.get_entry(
                         $,
@@ -239,7 +241,7 @@ export const Errors: _i_signatures._T_Errors = ($) => _i_generic.process_unconst
         ),
     }
 )
-export const Location: _i_signatures._T_Location = ($) => _i_generic.process_group(
+export const Location: _i_signatures._T_Location = ($, $p) => _i_generic.process_group(
     $,
     {
         'properties': ($) => ({
@@ -250,7 +252,9 @@ export const Location: _i_signatures._T_Location = ($) => _i_generic.process_gro
                 }
             ), ($) => _i_generic.process_number(
                 $,
-                null
+                {
+                    'deserializer': $p['value deserializers']['default number'],
+                }
             )),
             'relative': _pa.cc(_i_generic.get_entry(
                 $,
@@ -259,12 +263,14 @@ export const Location: _i_signatures._T_Location = ($) => _i_generic.process_gro
                 }
             ), ($) => Relative_Location(
                 $,
-                null
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
             )),
         }),
     }
 )
-export const Range: _i_signatures._T_Range = ($) => _i_generic.process_group(
+export const Range: _i_signatures._T_Range = ($, $p) => _i_generic.process_group(
     $,
     {
         'properties': ($) => ({
@@ -275,7 +281,9 @@ export const Range: _i_signatures._T_Range = ($) => _i_generic.process_group(
                 }
             ), ($) => Location(
                 $,
-                null
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
             )),
             'start': _pa.cc(_i_generic.get_entry(
                 $,
@@ -284,12 +292,14 @@ export const Range: _i_signatures._T_Range = ($) => _i_generic.process_group(
                 }
             ), ($) => Location(
                 $,
-                null
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
             )),
         }),
     }
 )
-export const Relative_Location: _i_signatures._T_Relative_Location = ($) => _i_generic.process_group(
+export const Relative_Location: _i_signatures._T_Relative_Location = ($, $p) => _i_generic.process_group(
     $,
     {
         'properties': ($) => ({
@@ -300,7 +310,9 @@ export const Relative_Location: _i_signatures._T_Relative_Location = ($) => _i_g
                 }
             ), ($) => _i_generic.process_number(
                 $,
-                null
+                {
+                    'deserializer': $p['value deserializers']['default number'],
+                }
             )),
             'line': _pa.cc(_i_generic.get_entry(
                 $,
@@ -309,7 +321,9 @@ export const Relative_Location: _i_signatures._T_Relative_Location = ($) => _i_g
                 }
             ), ($) => _i_generic.process_number(
                 $,
-                null
+                {
+                    'deserializer': $p['value deserializers']['default number'],
+                }
             )),
         }),
     }

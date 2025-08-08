@@ -11,6 +11,8 @@ import * as t_migrate_boilerplate from "./migrate_boilerplate"
 import * as t_resolve from "./resolve"
 import * as t_types from "./types"
 import * as t_unmarshall from "./unmarshall"
+import * as t_value_deserializers from "./value_deserializers"
+import * as t_value_serializers from "./value_serializers"
 
 // import * as operations from "pareto-standard-operations"
 
@@ -82,7 +84,14 @@ export const Schema = ($: _in.Schema): _out.Module_Set.D<pd.Source_Location> => 
                 'constrained': constrained
             }
         ),
-        "value serializers.ts": t_marshall.Schema(
+        "value serializers.ts": t_value_serializers.Schema(
+            schema,
+            {
+                'imports': schema.imports,
+                'constrained': constrained
+            }
+        ),
+        "value deserializers.ts": t_value_deserializers.Schema(
             schema,
             {
                 'imports': schema.imports,

@@ -5,7 +5,7 @@ import * as _i_out from "../../../interface/core/astn_target"
 import * as _i_signatures from "../../../interface/schemas/unmarshall_errors/marshall"
 
 
-export const Errors: _i_signatures._T_s_Errors = ($, $p) => ['list', $.map(($) => ['verbose group', _pa.dictionary_literal({
+export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => ['verbose group', _pa.dictionary_literal({
     'range': _pa.cc($['range'], ($) => Range(
         $,
         {
@@ -124,7 +124,7 @@ export const Errors: _i_signatures._T_s_Errors = ($, $p) => ['list', $.map(($) =
         }
     })]),
 })])]
-export const Location: _i_signatures._T_s_Location = ($, $p) => ['verbose group', _pa.dictionary_literal({
+export const Location: _i_signatures._T_Location = ($, $p) => ['verbose group', _pa.dictionary_literal({
     'absolute': _pa.cc($['absolute'], ($) => ['text', ({
         'delimiter': ['backtick', null],
         'value': _pd.implement_me(),
@@ -136,7 +136,7 @@ export const Location: _i_signatures._T_s_Location = ($, $p) => ['verbose group'
         }
     )),
 })]
-export const Range: _i_signatures._T_s_Range = ($, $p) => ['verbose group', _pa.dictionary_literal({
+export const Range: _i_signatures._T_Range = ($, $p) => ['verbose group', _pa.dictionary_literal({
     'end': _pa.cc($['end'], ($) => Location(
         $,
         {
@@ -150,7 +150,7 @@ export const Range: _i_signatures._T_s_Range = ($, $p) => ['verbose group', _pa.
         }
     )),
 })]
-export const Relative_Location: _i_signatures._T_s_Relative_Location = ($, $p) => ['verbose group', _pa.dictionary_literal({
+export const Relative_Location: _i_signatures._T_Relative_Location = ($, $p) => ['verbose group', _pa.dictionary_literal({
     'column': _pa.cc($['column'], ($) => ['text', ({
         'delimiter': ['backtick', null],
         'value': _pd.implement_me(),

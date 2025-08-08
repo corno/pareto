@@ -43,7 +43,7 @@ export const Schema = (
         ),
         {},
         $.types.dictionary.map(($, key) => variable(
-            t.component_imported("signatures", `s ${key}`, {}, []),
+            t.component_imported("signatures", key, {}, []),
             i.function_(
                 true,
                 Type_Node(

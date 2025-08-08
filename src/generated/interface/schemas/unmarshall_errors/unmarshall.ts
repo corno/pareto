@@ -2,27 +2,36 @@ import * as _pt from 'exupery-core-types'
 
 import * as _i_in from "../../core/astn_source"
 import * as _i_out from "./data_types/unconstrained"
+import * as _i_vd from "./value_deserializers"
 
 // **** TYPES
 
 export type _T_Errors = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Errors
 
 export type _T_Location = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Location
 
 export type _T_Range = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Range
 
 export type _T_Relative_Location = (
     $$_: _i_in._T_Value,
-    $$_p: null,
+    $$_p: {
+        readonly 'value deserializers': _i_vd._T_Value_Deserializers
+    },
 ) => _i_out._T_Relative_Location
 
 // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
@@ -44,6 +53,10 @@ export namespace _T_Errors {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -58,6 +71,10 @@ export namespace _T_Location {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -72,6 +89,10 @@ export namespace _T_Range {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -86,6 +107,10 @@ export namespace _T_Relative_Location {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -102,6 +127,10 @@ export namespace Errors {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -116,6 +145,10 @@ export namespace Location {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -130,6 +163,10 @@ export namespace Range {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
@@ -144,6 +181,10 @@ export namespace Relative_Location {
     export type CONTEXT = _i_in._T_Value
     
     export namespace PARAMS {
+        
+        export namespace value_deserializers {
+        }
+        export type value_deserializers = _i_vd._T_Value_Deserializers
     }
     
     export namespace RESULT {
