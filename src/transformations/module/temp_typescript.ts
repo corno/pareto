@@ -3,8 +3,8 @@ import * as _ea from 'exupery-core-alg'
 
 //FIXME, this one should be moved to pareto-targets
 
-import * as _in_s from "../../generated/interface/schemas/schema/resolved"
-import * as _in from "../../generated/interface/schemas/module/resolved"
+import * as _in_s from "../../generated/interface/schemas/schema/data_types/resolved"
+import * as _in from "../../generated/interface/schemas/module/data_types/resolved"
 import * as _out from "pareto-fountain-pen/dist/generated/interface/schemas/block/unconstrained"
 
 //transformations

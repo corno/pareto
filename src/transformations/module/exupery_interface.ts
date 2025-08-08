@@ -3,7 +3,7 @@ import * as pa from 'exupery-core-alg'
 
 import { wrap_dictionary } from 'exupery-core-data/dist/shorthands/unresolved'
 
-import * as _in from "../../generated/interface/schemas/module/resolved"
+import * as _in from "../../generated/interface/schemas/module/data_types/resolved"
 import * as _out from "exupery/dist/generated/interface/schemas/interface/unresolved" //FIXME... should be 'unresolved'
 
 import { m, t, type, import_ } from "exupery/dist/shorthands/interface"

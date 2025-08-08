@@ -3,7 +3,7 @@ import * as pdev from 'exupery-core-dev'
 import * as pa from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 
-import * as _in from "../../../generated/interface/schemas/schema/resolved"
+import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
 import * as _out from "exupery/dist/generated/interface/schemas/interface/unresolved"
 
 import * as sh from "exupery/dist/shorthands/interface"
@@ -15,6 +15,92 @@ const op = {
     'flatten dictionary': pure.dictionary.flatten,
     'append element': pure.list['append element'],
 }
+
+export const Schema = (
+    $: _in.Schema,
+    $p: {
+        'imports': _in.Imports
+        'what to generate':
+        | ['unresolved', null]
+        | ['resolved', null]
+        | ['unconstrained', null]
+    }
+): _out.Module_Set.D<pd.Source_Location> => {
+    return sh.m.module(
+        op['flatten dictionary'](
+            pa.dictionary_literal({
+                "core": pa.dictionary_literal({
+                    "": sh.import_.ancestor(
+                        3,
+                        "core",
+                        [
+                            pa.cc($p['what to generate'], ($) => {
+                                switch ($[0]) {
+                                    case 'unconstrained': return pa.ss($, ($) => "unconstrained")
+                                    case 'resolved': return pa.ss($, ($) => "resolved")
+                                    case 'unresolved': return pa.ss($, ($) => "unresolved")
+                                    default: return pa.au($[0])
+                                }
+                            }),
+                        ],
+                        {
+                            "Source": pa.cc($p['what to generate'], ($) => {
+                                switch ($[0]) {
+                                    case 'unconstrained': return pa.ss($, ($) => sh.t.null_())
+                                    case 'resolved': return pa.ss($, ($) => sh.t.null_())
+                                    case 'unresolved': return pa.ss($, ($) => sh.t.module_parameter("Source"))
+                                    default: return pa.au($[0])
+                                }
+                            }),
+                        },
+                    )
+                }),
+                "imports ": pa.block(() => {
+                    const types = $p['what to generate']
+                    return $p.imports.map(($) => sh.import_.ancestor(
+                        2 + $['schema set child']['up steps'],
+                        $['schema set child'].key,
+                        [
+                            "data types",
+                            pa.cc(types, ($) => {
+                                switch ($[0]) {
+                                    case 'unresolved': return pa.ss($, ($) => "unresolved")
+                                    case 'resolved': return pa.ss($, ($) => "resolved")
+                                    case 'unconstrained': return pa.ss($, ($) => "unconstrained")
+                                    default: return pa.au($[0])
+                                }
+                            })
+                        ],
+                        pa.cc(types, ($) => {
+                            switch ($[0]) {
+
+                                case 'resolved': return pa.ss($, ($) => pa.dictionary_literal({}))
+                                case 'unconstrained': return pa.ss($, ($) => pa.dictionary_literal({}))
+                                case 'unresolved': return pa.ss($, ($) => pa.dictionary_literal({
+                                    "Source": sh.t.module_parameter("Source"),
+                                }))
+                                default: return pa.au($[0])
+                            }
+                        }),
+                    ))
+                }),
+            }),
+            {
+                'separator': "",
+            }
+        ),
+        pa.cc($p['what to generate'], ($) => {
+            switch ($[0]) {
+                case 'resolved': return pa.ss($, ($) => ({}))
+                case 'unconstrained': return pa.ss($, ($) => ({}))
+                case 'unresolved': return pa.ss($, ($) => ({ "Source": null }))
+                default: return pa.au($[0])
+            }
+        }),
+        $.types.dictionary.map(($) => sh.type({}, Type_Node($.node))),
+    )
+}
+
 
 export const r_Type_Reference = (
     $: _in.Type_Node_Reference,
@@ -194,90 +280,4 @@ export const Type_Node = (
             default: return pa.au($[0])
         }
     })
-}
-
-
-
-export const Schema = (
-    $: _in.Schema,
-    $p: {
-        'imports': _in.Imports
-        'what to generate':
-        | ['unresolved', null]
-        | ['resolved', null]
-        | ['unconstrained', null]
-    }
-): _out.Module_Set.D<pd.Source_Location> => {
-    return sh.m.module(
-        op['flatten dictionary'](
-            pa.dictionary_literal({
-                "core": pa.dictionary_literal({
-                    "": sh.import_.ancestor(
-                        2,
-                        "core",
-                        [
-                            pa.cc($p['what to generate'], ($) => {
-                                switch ($[0]) {
-                                    case 'unconstrained': return pa.ss($, ($) => "unconstrained")
-                                    case 'resolved': return pa.ss($, ($) => "resolved")
-                                    case 'unresolved': return pa.ss($, ($) => "unresolved")
-                                    default: return pa.au($[0])
-                                }
-                            }),
-                        ],
-                        {
-                            "Source": pa.cc($p['what to generate'], ($) => {
-                                switch ($[0]) {
-                                    case 'unconstrained': return pa.ss($, ($) => sh.t.null_())
-                                    case 'resolved': return pa.ss($, ($) => sh.t.null_())
-                                    case 'unresolved': return pa.ss($, ($) => sh.t.module_parameter("Source"))
-                                    default: return pa.au($[0])
-                                }
-                            }),
-                        },
-                    )
-                }),
-                "imports ": pa.block(() => {
-                    const types = $p['what to generate']
-                    return $p.imports.map(($) => sh.import_.ancestor(
-                        1 + $['schema set child']['up steps'],
-                        $['schema set child'].key,
-                        [
-                            pa.cc(types, ($) => {
-                                switch ($[0]) {
-                                    case 'unresolved': return pa.ss($, ($) => "unresolved")
-                                    case 'resolved': return pa.ss($, ($) => "resolved")
-                                    case 'unconstrained': return pa.ss($, ($) => "unconstrained")
-                                    default: return pa.au($[0])
-                                }
-                            })
-                        ],
-                        pa.cc(types, ($) => {
-                            switch ($[0]) {
-
-                                case 'resolved': return pa.ss($, ($) => pa.dictionary_literal({}))
-                                case 'unconstrained': return pa.ss($, ($) => pa.dictionary_literal({}))
-                                case 'unresolved': return pa.ss($, ($) => pa.dictionary_literal({
-                                    "Source": sh.t.module_parameter("Source"),
-                                }))
-                                default: return pa.au($[0])
-                            }
-                        }),
-                    ))
-                }),
-            }),
-            {
-                'separator': "",
-            }
-        ),
-        pa.cc($p['what to generate'], ($) => {
-            switch ($[0]) {
-                case 'resolved': return pa.ss($, ($) => ({}))
-                case 'unconstrained': return pa.ss($, ($) => ({}))
-                case 'unresolved': return pa.ss($, ($) => ({ "Source": null }))
-                default: return pa.au($[0])
-            }
-        }),
-        $.types.dictionary.map(($) => sh.type({}, Type_Node($.node))),
-    )
 }

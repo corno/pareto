@@ -3,7 +3,7 @@ import * as pt from 'exupery-core-types'
 import * as _ea from 'exupery-core-alg'
 import * as pdev from 'exupery-core-dev'
 
-import * as _in from "../../../generated/interface/schemas/schema/resolved"
+import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
 import * as _out from "exupery/dist/generated/interface/schemas/implementation/unresolved" //FIXME... should be 'unresolved'
 import * as _out_interface from "exupery/dist/generated/interface/schemas/interface/unresolved" //FIXME... should be 'unresolved'
 
@@ -34,7 +34,7 @@ export const Schema = (
                 "": _ea.dictionary_literal({
                     "generic": import_.ancestor(2, "generic", ["unmarshall"], {}),
                     "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "unmarshall"], {}),
-                    "out": import_.ancestor(3, "interface", ["schemas", $p.key, $p.constrained ? "unresolved" : "unconstrained"], $p.constrained ? { "Source": t.null_() } : {}),
+                    "out": import_.ancestor(3, "interface", ["schemas", $p.key, "data types", $p.constrained ? "unresolved" : "unconstrained"], $p.constrained ? { "Source": t.null_() } : {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))
             }),

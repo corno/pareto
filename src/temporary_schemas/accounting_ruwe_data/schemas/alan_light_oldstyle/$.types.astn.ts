@@ -9,7 +9,7 @@ import {
     type,
 
 } from "../../../../shorthands/schema"
-import * as g_ from "../../../../generated/interface/schemas/schema/unresolved"
+import * as g_ from "../../../../generated/interface/schemas/schema/data_types/unresolved"
 
 /**
  * dit schema gebruik ik voor het parsen van de oude boekhoudingen.

@@ -3,7 +3,7 @@ import * as pdev from 'exupery-core-dev'
 import * as pa from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 
-import * as _in from "../../../generated/interface/schemas/schema/resolved"
+import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
 import * as _out from "exupery/dist/generated/interface/schemas/interface/unresolved"
 
 import * as sh from "exupery/dist/shorthands/interface"
@@ -26,9 +26,9 @@ export const Schema = (
     return sh.m.module(
         {
             "out": sh.import_.sibling(
-                $p.constrained ? "unresolved" : "unconstrained",
+                "data types",
                 [
-
+                    $p.constrained ? "unresolved" : "unconstrained",
                 ],
                 {},
             ),

@@ -6,7 +6,7 @@ import * as _ed from 'exupery-core-data'
 //data
 import { $ as poormans_modules } from "../temporary_schemas/all"
 
-import * as d_module from "../generated/interface/schemas/module/unresolved"
+import * as d_module from "../generated/interface/schemas/module/data_types/unresolved"
 
 import * as r_pareto_module from "../resolvers/module"
 

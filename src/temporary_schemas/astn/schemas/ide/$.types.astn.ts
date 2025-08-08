@@ -8,7 +8,7 @@ import {
     tr,
     type,
 } from "../../../../shorthands/schema"
-import * as g_ from "../../../../generated/interface/schemas/schema/unresolved"
+import * as g_ from "../../../../generated/interface/schemas/schema/data_types/unresolved"
 
 import * as _et from 'exupery-core-types'
 

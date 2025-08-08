@@ -1,6 +1,6 @@
 import * as _edata from 'exupery-core-data'
 
-import * as g_ from "../generated/interface/schemas/module/unresolved"
+import * as g_ from "../generated/interface/schemas/module/data_types/unresolved"
 
 import { $ as m_astn } from "./astn/module.astn"
 import { $ as m_exupery } from "./exupery/module.astn"

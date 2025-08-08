@@ -6,7 +6,7 @@ import {
     type,
     n,
 } from "../../../../../shorthands/schema"
-import * as g_ from "../../../../../generated/interface/schemas/schema/unresolved"
+import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/unresolved"
 
 export const $: g_.Types<pd.Source_Location> = types(
     {

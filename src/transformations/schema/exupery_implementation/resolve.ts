@@ -3,7 +3,7 @@ import * as pt from 'exupery-core-types'
 import * as pa from 'exupery-core-alg'
 import * as pdev from 'exupery-core-dev'
 
-import * as _in from "../../../generated/interface/schemas/schema/resolved"
+import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
 import * as _out from "exupery/dist/generated/interface/schemas/implementation/unresolved" //FIXME... should be 'unresolved'
 import * as _out_interface from "exupery/dist/generated/interface/schemas/interface/unresolved" //FIXME... should be 'unresolved'
 
@@ -33,8 +33,8 @@ export const Resolvers = (
             pa.dictionary_literal({
                 "": pa.dictionary_literal({
                     "generic": import_.ancestor(2, "generic", ["resolve"], {}),
-                    "out": import_.ancestor(3, "interface", ["schemas", $p.key, "resolved"], {}),
-                    "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "resolve"], {}),
+                    "out": import_.ancestor(3, "interface", ["schemas", $p.key, "data types", "resolved"], {}),
+                    "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "data types", "resolve"], {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["resolve"], {}))
             }),

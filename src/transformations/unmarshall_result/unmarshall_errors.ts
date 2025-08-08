@@ -4,7 +4,7 @@ import * as pdev from 'exupery-core-dev'
 
 import * as astn from "astn"
 import * as _in from "../../temp_unmashall_result_types"
-import * as _out from "../../generated/interface/schemas/unmarshall_errors/unconstrained"
+import * as _out from "../../generated/interface/schemas/unmarshall_errors/data_types/unconstrained"
 
 import { impure, pure } from "pareto-standard-operations"
 

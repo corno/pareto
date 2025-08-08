@@ -1,6 +1,6 @@
 import * as _pt from 'exupery-core-types'
 
-import * as _i_resolve from "../../core/resolve"
+import * as _i_resolve from "../../../core/resolve"
 import * as _i_resolved from "./resolved"
 import * as _i_unresolved from "./unresolved"
 

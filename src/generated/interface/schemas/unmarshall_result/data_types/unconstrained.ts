@@ -1,7 +1,7 @@
 import * as _pt from 'exupery-core-types'
 
-import * as _i_core from "../../core/unconstrained"
-import * as _i_imports_schema from "../schema/resolved"
+import * as _i_core from "../../../core/unconstrained"
+import * as _i_imports_schema from "../../schema/data_types/resolved"
 
 // **** TYPES
 

@@ -3,7 +3,7 @@ import * as pt from 'exupery-core-types'
 import * as pa from 'exupery-core-alg'
 import * as pdev from 'exupery-core-dev'
 
-import * as _in from "../../../generated/interface/schemas/schema/resolved"
+import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
 import * as _out from "exupery/dist/generated/interface/schemas/implementation/unresolved" //FIXME... should be 'unresolved'
 import * as _out_interface from "exupery/dist/generated/interface/schemas/interface/unresolved" //FIXME... should be 'unresolved'
 

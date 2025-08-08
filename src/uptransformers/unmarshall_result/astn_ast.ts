@@ -4,7 +4,7 @@ import * as pdev from 'exupery-core-dev'
 
 import { impure, pure } from "pareto-standard-operations"
 
-import * as definition from "../../generated/interface/schemas/schema/resolved"
+import * as definition from "../../generated/interface/schemas/schema/data_types/resolved"
 
 import * as _in from "astn/dist/generated/interface/schemas/ast/unconstrained"
 import * as _in_token from "astn/dist/generated/interface/schemas/token/unconstrained"
