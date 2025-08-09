@@ -576,7 +576,10 @@ export const Number_Type: _i_signatures._T_Number_Type = ($, $p) => ['verbose gr
                 'value': ['verbose group', _pa.dictionary_literal({
                     'significant digits': _pa.cc($['significant digits'], ($) => ['text', ({
                         'delimiter': ['backtick', null],
-                        'value': _pd.implement_me(),
+                        'value': $p['value serializers']['default number'](
+                            $,
+                            null
+                        ),
                     })]),
                 })],
             }))
@@ -586,7 +589,10 @@ export const Number_Type: _i_signatures._T_Number_Type = ($, $p) => ['verbose gr
                     'decimal separator offset': _pa.cc($['decimal separator offset'], ($) => ['optional', $.transform(
                         ($): _i_out._T_Value.SG.optional => ['set', ['text', ({
                             'delimiter': ['backtick', null],
-                            'value': _pd.implement_me(),
+                            'value': $p['value serializers']['default number'](
+                                $,
+                                null
+                            ),
                         })]],
                         () => ['not set', null]
                     )]),

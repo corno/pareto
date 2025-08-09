@@ -1,6 +1,6 @@
 import * as pd from 'exupery-core-data'
 import * as pt from 'exupery-core-types'
-import * as pa from 'exupery-core-alg'
+import * as _ea from 'exupery-core-alg'
 import * as pdev from 'exupery-core-dev'
 
 import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
@@ -30,8 +30,8 @@ export const Schema = (
 ): _out.Module_Set.D<pd.Source_Location> => {
     return m.module(
         op['flatten dictionary'](
-            pa.dictionary_literal({
-                "": pa.dictionary_literal({
+            _ea.dictionary_literal({
+                "": _ea.dictionary_literal({
                     "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "marshall"], {}),
                     "out": import_.ancestor(3, "interface", ["core", "astn target"], {}),
                 }),
@@ -50,7 +50,7 @@ export const Schema = (
                     $.node,
                     {
                         'type': key,
-                        'subselection': pa.array_literal([])
+                        'subselection': _ea.array_literal([])
                     }
                 ),
             ),
@@ -77,38 +77,48 @@ export const Type_Node = (
         )
     }
 
-    return pa.cc($, ($) => {
+    return _ea.cc($, ($) => {
         switch ($[0]) {
-            case 'number': return pa.ss($, ($) => string(i.implement_me(), 'backtick')) //FIXME should be 'none'
-            case 'boolean': return pa.ss($, ($) => string(i.call(
+            case 'number': return _ea.ss($, ($) => string(i.call(
+                s.from_parameter("value serializers", _ea.cc($, ($) => {
+                    switch ($[0]) {
+                        case 'global': return _ea.ss($, ($) => ["custom numbers", $.key])
+                        case 'local': return _ea.ss($, ($) => ["default number"])
+                        default: return _ea.au($[0])
+                    }
+                })),
+                i.select_from_context([]),
+                _ea.dictionary_literal({}),
+            ), 'backtick')) //FIXME should be 'none'
+            case 'boolean': return _ea.ss($, ($) => string(i.call(
                 s.from_parameter("value serializers", ["boolean"]),
                 i.select_from_context([]),
-                pa.dictionary_literal({}),
+                _ea.dictionary_literal({}),
             ), 'backtick')) //FIXME should be 'none'
-            case 'nothing': return pa.ss($, ($) => i.tagged_union("nothing", i.null_()))
-            case 'reference': return pa.ss($, ($) => pa.cc($.type, ($) => {
+            case 'nothing': return _ea.ss($, ($) => i.tagged_union("nothing", i.null_()))
+            case 'reference': return _ea.ss($, ($) => _ea.cc($.type, ($) => {
                 switch ($[0]) {
-                    case 'derived': return pa.ss($, ($) => i.tagged_union("nothing", i.null_()))
-                    case 'selected': return pa.ss($, ($) => string(i.select_from_context(["key"]), 'backtick'))
-                    default: return pa.au($[0])
+                    case 'derived': return _ea.ss($, ($) => i.tagged_union("nothing", i.null_()))
+                    case 'selected': return _ea.ss($, ($) => string(i.select_from_context(["key"]), 'backtick'))
+                    default: return _ea.au($[0])
                 }
             }))
-            case 'text': return pa.ss($, ($) => string(i.select_from_context([]), 'quote'))
-            case 'component': return pa.ss($, ($) => i.call(
-                pa.cc($, ($) => {
+            case 'text': return _ea.ss($, ($) => string(i.select_from_context([]), 'quote'))
+            case 'component': return _ea.ss($, ($) => i.call(
+                _ea.cc($, ($) => {
                     switch ($[0]) {
-                        case 'external': return pa.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
-                        case 'internal': return pa.ss($, ($) => s.from_variable($.key, []))
-                        case 'internal cyclic': return pa.ss($, ($) => s.from_variable($.key, []))
-                        default: return pa.au($[0])
+                        case 'external': return _ea.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
+                        case 'internal': return _ea.ss($, ($) => s.from_variable($.key, []))
+                        case 'internal cyclic': return _ea.ss($, ($) => s.from_variable($.key, []))
+                        default: return _ea.au($[0])
                     }
                 }),
                 i.select_from_context([]),
-                pa.dictionary_literal({
+                _ea.dictionary_literal({
                     "value serializers": i.select_from_parameter("value serializers", []),
                 }),
             ))
-            case 'dictionary': return pa.ss($, ($) => i.tagged_union(
+            case 'dictionary': return _ea.ss($, ($) => i.tagged_union(
                 "dictionary",
                 i.dictionary_map(
                     $.ordered ? s.from_context(["dictionary"]) : s.from_context([]),
@@ -126,7 +136,7 @@ export const Type_Node = (
                     )
                 )
             ))
-            case 'identifier value pair': return pa.ss($, ($) => pdev.implement_me())
+            case 'identifier value pair': return _ea.ss($, ($) => pdev.implement_me())
             // case 'group': return pa.ss($, ($) => i.group($.map(($, key) => i.change_context(
             //     s.from_context([key]),
             //     Type_Node(
@@ -142,7 +152,7 @@ export const Type_Node = (
             //         }
             //     )
             // ))))
-            case 'group': return pa.ss($, ($) => i.tagged_union(
+            case 'group': return _ea.ss($, ($) => i.tagged_union(
                 "verbose group",
                 i.dictionary_literal($.map(($, key) => i.change_context(
                     s.from_context([key]),
@@ -160,7 +170,7 @@ export const Type_Node = (
                     )
                 )))
             ))
-            case 'list': return pa.ss($, ($) => i.tagged_union(
+            case 'list': return _ea.ss($, ($) => i.tagged_union(
                 "list",
                 i.array_map(
                     s.from_context([]),
@@ -177,7 +187,7 @@ export const Type_Node = (
                         }
                     )
                 )))
-            case 'optional': return pa.ss($, ($) => i.tagged_union(
+            case 'optional': return _ea.ss($, ($) => i.tagged_union(
                 "optional",
                 i.optional_transform(
                     s.from_context([]),
@@ -207,7 +217,7 @@ export const Type_Node = (
                         [sub.state_group("optional")]
                     ),
                 )))
-            case 'state group': return pa.ss($, ($) => i.tagged_union(
+            case 'state group': return _ea.ss($, ($) => i.tagged_union(
                 "state",
                 i.switch_(
                     s.from_context([]),
@@ -234,8 +244,8 @@ export const Type_Node = (
                     ),
                 )
             ))
-            case 'type parameter': return pa.ss($, ($) => pdev.implement_me())
-            default: return pa.au($[0])
+            case 'type parameter': return _ea.ss($, ($) => pdev.implement_me())
+            default: return _ea.au($[0])
         }
     })
 }

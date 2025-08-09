@@ -127,7 +127,10 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
 export const Location: _i_signatures._T_Location = ($, $p) => ['verbose group', _pa.dictionary_literal({
     'absolute': _pa.cc($['absolute'], ($) => ['text', ({
         'delimiter': ['backtick', null],
-        'value': _pd.implement_me(),
+        'value': $p['value serializers']['default number'](
+            $,
+            null
+        ),
     })]),
     'relative': _pa.cc($['relative'], ($) => Relative_Location(
         $,
@@ -153,10 +156,16 @@ export const Range: _i_signatures._T_Range = ($, $p) => ['verbose group', _pa.di
 export const Relative_Location: _i_signatures._T_Relative_Location = ($, $p) => ['verbose group', _pa.dictionary_literal({
     'column': _pa.cc($['column'], ($) => ['text', ({
         'delimiter': ['backtick', null],
-        'value': _pd.implement_me(),
+        'value': $p['value serializers']['default number'](
+            $,
+            null
+        ),
     })]),
     'line': _pa.cc($['line'], ($) => ['text', ({
         'delimiter': ['backtick', null],
-        'value': _pd.implement_me(),
+        'value': $p['value serializers']['default number'](
+            $,
+            null
+        ),
     })]),
 })]
