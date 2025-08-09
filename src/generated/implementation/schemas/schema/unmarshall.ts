@@ -2,6 +2,7 @@ import * as _pa from 'exupery-core-alg'
 import * as _pd from 'exupery-core-dev'
 
 import * as _i_generic from "../../generic/unmarshall"
+import * as _i_in from "../../../interface/core/astn_source"
 import * as _i_out from "../../../interface/schemas/schema/data_types/unresolved"
 import * as _i_signatures from "../../../interface/schemas/schema/unmarshall"
 
@@ -68,7 +69,7 @@ export const Constraint: _i_signatures._T_Constraint = ($, $p) => _i_generic.pro
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'optional value': ($): _i_out._T_Constraint._type<null> => _i_generic.wrap_unresolved_state_group(
+                        'optional value': ($): _i_out._T_Constraint._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['optional value', _i_generic.process_group(
                                 $,
                                 {
@@ -87,7 +88,7 @@ export const Constraint: _i_signatures._T_Constraint = ($, $p) => _i_generic.pro
                             )],
                             null
                         ),
-                        'state': ($): _i_out._T_Constraint._type<null> => _i_generic.wrap_unresolved_state_group(
+                        'state': ($): _i_out._T_Constraint._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['state', _i_generic.process_group(
                                 $,
                                 {
@@ -163,14 +164,14 @@ export const Globals: _i_signatures._T_Globals = ($, $p) => _i_generic.process_g
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'constrained': ($): _i_out._T_Globals.complexity<null> => _i_generic.wrap_unresolved_state_group(
+                        'constrained': ($): _i_out._T_Globals.complexity<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['constrained', _i_generic.process_nothing(
                                 $,
                                 null
                             )],
                             null
                         ),
-                        'unconstrained': ($): _i_out._T_Globals.complexity<null> => _i_generic.wrap_unresolved_state_group(
+                        'unconstrained': ($): _i_out._T_Globals.complexity<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['unconstrained', _i_generic.process_nothing(
                                 $,
                                 null
@@ -248,12 +249,12 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'constraint': ($): _i_out._T_Guaranteed_Value_Selection.start<null> => _i_generic.wrap_unresolved_state_group(
+                        'constraint': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['constraint', _i_generic.process_state_group(
                                 $,
                                 {
                                     'states': _pa.dictionary_literal({
-                                        'component': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint<null> => _i_generic.wrap_unresolved_state_group(
+                                        'component': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                             ['component', _i_generic.process_group(
                                                 $,
                                                 {
@@ -281,7 +282,7 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                                             )],
                                             null
                                         ),
-                                        'reference': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint<null> => _i_generic.wrap_unresolved_state_group(
+                                        'reference': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                             ['reference', _i_generic.process_group(
                                                 $,
                                                 {
@@ -314,47 +315,47 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                             )],
                             null
                         ),
-                        'linked entry': ($): _i_out._T_Guaranteed_Value_Selection.start<null> => _i_generic.wrap_unresolved_state_group(
+                        'linked entry': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['linked entry', _i_generic.process_nothing(
                                 $,
                                 null
                             )],
                             null
                         ),
-                        'list cursor': ($): _i_out._T_Guaranteed_Value_Selection.start<null> => _i_generic.wrap_unresolved_state_group(
+                        'list cursor': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['list cursor', _i_generic.process_nothing(
                                 $,
                                 null
                             )],
                             null
                         ),
-                        'option constraint': ($): _i_out._T_Guaranteed_Value_Selection.start<null> => _i_generic.wrap_unresolved_state_group(
+                        'option constraint': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['option constraint', _i_generic.process_selected_reference(
                                 $,
                                 null
                             )],
                             null
                         ),
-                        'parameter': ($): _i_out._T_Guaranteed_Value_Selection.start<null> => _i_generic.wrap_unresolved_state_group(
+                        'parameter': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['parameter', _i_generic.process_selected_reference(
                                 $,
                                 null
                             )],
                             null
                         ),
-                        'parent sibling': ($): _i_out._T_Guaranteed_Value_Selection.start<null> => _i_generic.wrap_unresolved_state_group(
+                        'parent sibling': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['parent sibling', _i_generic.process_selected_reference(
                                 $,
                                 null
                             )],
                             null
                         ),
-                        'result': ($): _i_out._T_Guaranteed_Value_Selection.start<null> => _i_generic.wrap_unresolved_state_group(
+                        'result': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['result', _i_generic.process_state_group(
                                 $,
                                 {
                                     'states': _pa.dictionary_literal({
-                                        'list': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result<null> => _i_generic.wrap_unresolved_state_group(
+                                        'list': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                             ['list', _i_generic.process_group(
                                                 $,
                                                 {
@@ -382,7 +383,7 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                                             )],
                                             null
                                         ),
-                                        'optional value': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result<null> => _i_generic.wrap_unresolved_state_group(
+                                        'optional value': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                             ['optional value', _i_generic.process_group(
                                                 $,
                                                 {
@@ -421,7 +422,7 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                                             )],
                                             null
                                         ),
-                                        'state group': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result<null> => _i_generic.wrap_unresolved_state_group(
+                                        'state group': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                             ['state group', _i_generic.process_group(
                                                 $,
                                                 {
@@ -465,7 +466,7 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                             )],
                             null
                         ),
-                        'sibling': ($): _i_out._T_Guaranteed_Value_Selection.start<null> => _i_generic.wrap_unresolved_state_group(
+                        'sibling': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['sibling', _i_generic.process_selected_reference(
                                 $,
                                 null
@@ -541,7 +542,7 @@ export const Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => _i
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'dictionary': ($): _i_out._T_Lookup_Selection._type<null> => _i_generic.wrap_unresolved_state_group(
+                        'dictionary': ($): _i_out._T_Lookup_Selection._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['dictionary', _i_generic.process_group(
                                 $,
                                 {
@@ -571,21 +572,21 @@ export const Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => _i
                             )],
                             null
                         ),
-                        'not circular dependent siblings': ($): _i_out._T_Lookup_Selection._type<null> => _i_generic.wrap_unresolved_state_group(
+                        'not circular dependent siblings': ($): _i_out._T_Lookup_Selection._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['not circular dependent siblings', _i_generic.process_derived_reference(
                                 $,
                                 null
                             )],
                             null
                         ),
-                        'parameter': ($): _i_out._T_Lookup_Selection._type<null> => _i_generic.wrap_unresolved_state_group(
+                        'parameter': ($): _i_out._T_Lookup_Selection._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['parameter', _i_generic.process_selected_reference(
                                 $,
                                 null
                             )],
                             null
                         ),
-                        'possibly circular dependent siblings': ($): _i_out._T_Lookup_Selection._type<null> => _i_generic.wrap_unresolved_state_group(
+                        'possibly circular dependent siblings': ($): _i_out._T_Lookup_Selection._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['possibly circular dependent siblings', _i_generic.process_derived_reference(
                                 $,
                                 null
@@ -602,14 +603,14 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
     $,
     {
         'states': _pa.dictionary_literal({
-            'boolean': ($): _i_out._T_Node_Resolver<null> => _i_generic.wrap_unresolved_state_group(
+            'boolean': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['boolean', _i_generic.process_nothing(
                     $,
                     null
                 )],
                 null
             ),
-            'component': ($): _i_out._T_Node_Resolver<null> => _i_generic.wrap_unresolved_state_group(
+            'component': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['component', _i_generic.process_group(
                     $,
                     {
@@ -641,21 +642,21 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                                                     $,
                                                                     {
                                                                         'states': _pa.dictionary_literal({
-                                                                            'empty stack': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D<null> => _i_generic.wrap_unresolved_state_group(
+                                                                            'empty stack': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                                                 ['empty stack', _i_generic.process_nothing(
                                                                                     $,
                                                                                     null
                                                                                 )],
                                                                                 null
                                                                             ),
-                                                                            'not set': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D<null> => _i_generic.wrap_unresolved_state_group(
+                                                                            'not set': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                                                 ['not set', _i_generic.process_nothing(
                                                                                     $,
                                                                                     null
                                                                                 )],
                                                                                 null
                                                                             ),
-                                                                            'selection': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D<null> => _i_generic.wrap_unresolved_state_group(
+                                                                            'selection': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                                                 ['selection', Lookup_Selection(
                                                                                     $,
                                                                                     {
@@ -664,7 +665,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                                                                 )],
                                                                                 null
                                                                             ),
-                                                                            'stack': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D<null> => _i_generic.wrap_unresolved_state_group(
+                                                                            'stack': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                                                 ['stack', _i_generic.process_group(
                                                                                     $,
                                                                                     {
@@ -718,7 +719,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                                                     $,
                                                                     {
                                                                         'states': _pa.dictionary_literal({
-                                                                            'optional': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D<null> => _i_generic.wrap_unresolved_state_group(
+                                                                            'optional': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                                                 ['optional', Optional_Value_Initialization(
                                                                                     $,
                                                                                     {
@@ -727,14 +728,14 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                                                                 )],
                                                                                 null
                                                                             ),
-                                                                            'parameter': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D<null> => _i_generic.wrap_unresolved_state_group(
+                                                                            'parameter': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                                                 ['parameter', _i_generic.process_selected_reference(
                                                                                     $,
                                                                                     null
                                                                                 )],
                                                                                 null
                                                                             ),
-                                                                            'required': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D<null> => _i_generic.wrap_unresolved_state_group(
+                                                                            'required': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                                                 ['required', Guaranteed_Value_Selection(
                                                                                     $,
                                                                                     {
@@ -775,7 +776,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                 $,
                                 {
                                     'states': _pa.dictionary_literal({
-                                        'external': ($): _i_out._T_Node_Resolver.SG.component.location<null> => _i_generic.wrap_unresolved_state_group(
+                                        'external': ($): _i_out._T_Node_Resolver.SG.component.location<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                             ['external', _i_generic.process_group(
                                                 $,
                                                 {
@@ -803,7 +804,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                             )],
                                             null
                                         ),
-                                        'internal': ($): _i_out._T_Node_Resolver.SG.component.location<null> => _i_generic.wrap_unresolved_state_group(
+                                        'internal': ($): _i_out._T_Node_Resolver.SG.component.location<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                             ['internal', _i_generic.process_selected_reference(
                                                 $,
                                                 null
@@ -827,7 +828,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                 )],
                 null
             ),
-            'dictionary': ($): _i_out._T_Node_Resolver<null> => _i_generic.wrap_unresolved_state_group(
+            'dictionary': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['dictionary', _i_generic.process_group(
                     $,
                     {
@@ -873,7 +874,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                 )],
                 null
             ),
-            'group': ($): _i_out._T_Node_Resolver<null> => _i_generic.wrap_unresolved_state_group(
+            'group': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['group', Node_Resolver_Group(
                     $,
                     {
@@ -882,7 +883,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                 )],
                 null
             ),
-            'identifier value pair': ($): _i_out._T_Node_Resolver<null> => _i_generic.wrap_unresolved_state_group(
+            'identifier value pair': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['identifier value pair', Node_Resolver(
                     $,
                     {
@@ -891,7 +892,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                 )],
                 null
             ),
-            'list': ($): _i_out._T_Node_Resolver<null> => _i_generic.wrap_unresolved_state_group(
+            'list': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['list', _i_generic.process_group(
                     $,
                     {
@@ -937,21 +938,21 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                 )],
                 null
             ),
-            'nothing': ($): _i_out._T_Node_Resolver<null> => _i_generic.wrap_unresolved_state_group(
+            'nothing': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['nothing', _i_generic.process_nothing(
                     $,
                     null
                 )],
                 null
             ),
-            'number': ($): _i_out._T_Node_Resolver<null> => _i_generic.wrap_unresolved_state_group(
+            'number': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['number', _i_generic.process_nothing(
                     $,
                     null
                 )],
                 null
             ),
-            'optional': ($): _i_out._T_Node_Resolver<null> => _i_generic.wrap_unresolved_state_group(
+            'optional': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['optional', _i_generic.process_group(
                     $,
                     {
@@ -983,7 +984,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                 )],
                 null
             ),
-            'reference': ($): _i_out._T_Node_Resolver<null> => _i_generic.wrap_unresolved_state_group(
+            'reference': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['reference', _i_generic.process_group(
                     $,
                     {
@@ -1006,7 +1007,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                 $,
                                 {
                                     'states': _pa.dictionary_literal({
-                                        'derived': ($): _i_out._T_Node_Resolver.SG.reference._type<null> => _i_generic.wrap_unresolved_state_group(
+                                        'derived': ($): _i_out._T_Node_Resolver.SG.reference._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                             ['derived', _i_generic.process_group(
                                                 $,
                                                 {
@@ -1027,7 +1028,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                             )],
                                             null
                                         ),
-                                        'selected': ($): _i_out._T_Node_Resolver.SG.reference._type<null> => _i_generic.wrap_unresolved_state_group(
+                                        'selected': ($): _i_out._T_Node_Resolver.SG.reference._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                             ['selected', _i_generic.process_group(
                                                 $,
                                                 {
@@ -1076,7 +1077,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                 )],
                 null
             ),
-            'state group': ($): _i_out._T_Node_Resolver<null> => _i_generic.wrap_unresolved_state_group(
+            'state group': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['state group', _i_generic.process_group(
                     $,
                     {
@@ -1134,14 +1135,14 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                 )],
                 null
             ),
-            'text': ($): _i_out._T_Node_Resolver<null> => _i_generic.wrap_unresolved_state_group(
+            'text': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['text', _i_generic.process_nothing(
                     $,
                     null
                 )],
                 null
             ),
-            'type parameter': ($): _i_out._T_Node_Resolver<null> => _i_generic.wrap_unresolved_state_group(
+            'type parameter': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['type parameter', _i_generic.process_nothing(
                     $,
                     null
@@ -1202,7 +1203,7 @@ export const Number_Type: _i_signatures._T_Number_Type = ($, $p) => _i_generic.p
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'approximation': ($): _i_out._T_Number_Type.precision<null> => _i_generic.wrap_unresolved_state_group(
+                        'approximation': ($): _i_out._T_Number_Type.precision<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['approximation', _i_generic.process_group(
                                 $,
                                 {
@@ -1223,7 +1224,7 @@ export const Number_Type: _i_signatures._T_Number_Type = ($, $p) => _i_generic.p
                             )],
                             null
                         ),
-                        'exact': ($): _i_out._T_Number_Type.precision<null> => _i_generic.wrap_unresolved_state_group(
+                        'exact': ($): _i_out._T_Number_Type.precision<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['exact', _i_generic.process_group(
                                 $,
                                 {
@@ -1253,21 +1254,21 @@ export const Number_Type: _i_signatures._T_Number_Type = ($, $p) => _i_generic.p
                                             $,
                                             {
                                                 'states': _pa.dictionary_literal({
-                                                    'integer': ($): _i_out._T_Number_Type.precision.SG.exact._type<null> => _i_generic.wrap_unresolved_state_group(
+                                                    'integer': ($): _i_out._T_Number_Type.precision.SG.exact._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                         ['integer', _i_generic.process_nothing(
                                                             $,
                                                             null
                                                         )],
                                                         null
                                                     ),
-                                                    'natural': ($): _i_out._T_Number_Type.precision.SG.exact._type<null> => _i_generic.wrap_unresolved_state_group(
+                                                    'natural': ($): _i_out._T_Number_Type.precision.SG.exact._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                         ['natural', _i_generic.process_nothing(
                                                             $,
                                                             null
                                                         )],
                                                         null
                                                     ),
-                                                    'positive natural': ($): _i_out._T_Number_Type.precision.SG.exact._type<null> => _i_generic.wrap_unresolved_state_group(
+                                                    'positive natural': ($): _i_out._T_Number_Type.precision.SG.exact._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                         ['positive natural', _i_generic.process_nothing(
                                                             $,
                                                             null
@@ -1295,7 +1296,7 @@ export const Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p) =
             $,
             {
                 'states': _pa.dictionary_literal({
-                    'assert is set': ($): _i_out._T_Option_Constraints.D<null> => _i_generic.wrap_unresolved_state_group(
+                    'assert is set': ($): _i_out._T_Option_Constraints.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                         ['assert is set', Possible_Value_Selection(
                             $,
                             {
@@ -1304,7 +1305,7 @@ export const Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p) =
                         )],
                         null
                     ),
-                    'state': ($): _i_out._T_Option_Constraints.D<null> => _i_generic.wrap_unresolved_state_group(
+                    'state': ($): _i_out._T_Option_Constraints.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                         ['state', _i_generic.process_group(
                             $,
                             {
@@ -1352,14 +1353,14 @@ export const Optional_Value_Initialization: _i_signatures._T_Optional_Value_Init
     $,
     {
         'states': _pa.dictionary_literal({
-            'not set': ($): _i_out._T_Optional_Value_Initialization<null> => _i_generic.wrap_unresolved_state_group(
+            'not set': ($): _i_out._T_Optional_Value_Initialization<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['not set', _i_generic.process_nothing(
                     $,
                     null
                 )],
                 null
             ),
-            'selection': ($): _i_out._T_Optional_Value_Initialization<null> => _i_generic.wrap_unresolved_state_group(
+            'selection': ($): _i_out._T_Optional_Value_Initialization<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['selection', Possible_Value_Selection(
                     $,
                     {
@@ -1368,7 +1369,7 @@ export const Optional_Value_Initialization: _i_signatures._T_Optional_Value_Init
                 )],
                 null
             ),
-            'set': ($): _i_out._T_Optional_Value_Initialization<null> => _i_generic.wrap_unresolved_state_group(
+            'set': ($): _i_out._T_Optional_Value_Initialization<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['set', Guaranteed_Value_Selection(
                     $,
                     {
@@ -1384,19 +1385,19 @@ export const Possible_Value_Selection: _i_signatures._T_Possible_Value_Selection
     $,
     {
         'states': _pa.dictionary_literal({
-            'parameter': ($): _i_out._T_Possible_Value_Selection<null> => _i_generic.wrap_unresolved_state_group(
+            'parameter': ($): _i_out._T_Possible_Value_Selection<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['parameter', _i_generic.process_selected_reference(
                     $,
                     null
                 )],
                 null
             ),
-            'result': ($): _i_out._T_Possible_Value_Selection<null> => _i_generic.wrap_unresolved_state_group(
+            'result': ($): _i_out._T_Possible_Value_Selection<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['result', _i_generic.process_state_group(
                     $,
                     {
                         'states': _pa.dictionary_literal({
-                            'optional value': ($): _i_out._T_Possible_Value_Selection.SG.result<null> => _i_generic.wrap_unresolved_state_group(
+                            'optional value': ($): _i_out._T_Possible_Value_Selection.SG.result<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                 ['optional value', _i_generic.process_group(
                                     $,
                                     {
@@ -1435,7 +1436,7 @@ export const Possible_Value_Selection: _i_signatures._T_Possible_Value_Selection
                                 )],
                                 null
                             ),
-                            'state group': ($): _i_out._T_Possible_Value_Selection.SG.result<null> => _i_generic.wrap_unresolved_state_group(
+                            'state group': ($): _i_out._T_Possible_Value_Selection.SG.result<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                 ['state group', _i_generic.process_group(
                                     $,
                                     {
@@ -1486,14 +1487,14 @@ export const Presence: _i_signatures._T_Presence = ($, $p) => _i_generic.process
     $,
     {
         'states': _pa.dictionary_literal({
-            'optional': ($): _i_out._T_Presence<null> => _i_generic.wrap_unresolved_state_group(
+            'optional': ($): _i_out._T_Presence<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['optional', _i_generic.process_nothing(
                     $,
                     null
                 )],
                 null
             ),
-            'required': ($): _i_out._T_Presence<null> => _i_generic.wrap_unresolved_state_group(
+            'required': ($): _i_out._T_Presence<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['required', _i_generic.process_nothing(
                     $,
                     null
@@ -1527,14 +1528,14 @@ export const Property_Constraint: _i_signatures._T_Property_Constraint = ($, $p)
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'property': ($): _i_out._T_Property_Constraint.start<null> => _i_generic.wrap_unresolved_state_group(
+                        'property': ($): _i_out._T_Property_Constraint.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['property', _i_generic.process_nothing(
                                 $,
                                 null
                             )],
                             null
                         ),
-                        'sibling': ($): _i_out._T_Property_Constraint.start<null> => _i_generic.wrap_unresolved_state_group(
+                        'sibling': ($): _i_out._T_Property_Constraint.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['sibling', Reference_To_Property_Constraint(
                                 $,
                                 {
@@ -1580,21 +1581,21 @@ export const Relative_Value_Selection: _i_signatures._T_Relative_Value_Selection
                         $,
                         {
                             'states': _pa.dictionary_literal({
-                                'component': ($): _i_out._T_Relative_Value_Selection.path.L<null> => _i_generic.wrap_unresolved_state_group(
+                                'component': ($): _i_out._T_Relative_Value_Selection.path.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                     ['component', _i_generic.process_nothing(
                                         $,
                                         null
                                     )],
                                     null
                                 ),
-                                'group': ($): _i_out._T_Relative_Value_Selection.path.L<null> => _i_generic.wrap_unresolved_state_group(
+                                'group': ($): _i_out._T_Relative_Value_Selection.path.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                     ['group', _i_generic.process_selected_reference(
                                         $,
                                         null
                                     )],
                                     null
                                 ),
-                                'reference': ($): _i_out._T_Relative_Value_Selection.path.L<null> => _i_generic.wrap_unresolved_state_group(
+                                'reference': ($): _i_out._T_Relative_Value_Selection.path.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                     ['reference', _i_generic.process_group(
                                         $,
                                         {
@@ -1716,7 +1717,7 @@ export const Schema: _i_signatures._T_Schema = ($, $p) => _i_generic.process_gro
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'constrained': ($): _i_out._T_Schema.complexity<null> => _i_generic.wrap_unresolved_state_group(
+                        'constrained': ($): _i_out._T_Schema.complexity<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['constrained', Resolve_Logic(
                                 $,
                                 {
@@ -1725,7 +1726,7 @@ export const Schema: _i_signatures._T_Schema = ($, $p) => _i_generic.process_gro
                             )],
                             null
                         ),
-                        'unconstrained': ($): _i_out._T_Schema.complexity<null> => _i_generic.wrap_unresolved_state_group(
+                        'unconstrained': ($): _i_out._T_Schema.complexity<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['unconstrained', _i_generic.process_nothing(
                                 $,
                                 null
@@ -1778,7 +1779,7 @@ export const Schemas: _i_signatures._T_Schemas = ($, $p) => _i_generic.process_u
             $,
             {
                 'states': _pa.dictionary_literal({
-                    'schema': ($): _i_out._T_Schemas.D<null> => _i_generic.wrap_unresolved_state_group(
+                    'schema': ($): _i_out._T_Schemas.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                         ['schema', Schema(
                             $,
                             {
@@ -1787,7 +1788,7 @@ export const Schemas: _i_signatures._T_Schemas = ($, $p) => _i_generic.process_u
                         )],
                         null
                     ),
-                    'set': ($): _i_out._T_Schemas.D<null> => _i_generic.wrap_unresolved_state_group(
+                    'set': ($): _i_out._T_Schemas.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                         ['set', Schemas(
                             $,
                             {
@@ -1814,7 +1815,7 @@ export const Signature: _i_signatures._T_Signature = ($, $p) => _i_generic.proce
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'local': ($): _i_out._T_Signature.parameters<null> => _i_generic.wrap_unresolved_state_group(
+                        'local': ($): _i_out._T_Signature.parameters<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['local', Signature_Parameters(
                                 $,
                                 {
@@ -1823,7 +1824,7 @@ export const Signature: _i_signatures._T_Signature = ($, $p) => _i_generic.proce
                             )],
                             null
                         ),
-                        'same as': ($): _i_out._T_Signature.parameters<null> => _i_generic.wrap_unresolved_state_group(
+                        'same as': ($): _i_out._T_Signature.parameters<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['same as', _i_generic.process_selected_reference(
                                 $,
                                 null
@@ -1910,21 +1911,21 @@ export const Signature_Parameters: _i_signatures._T_Signature_Parameters = ($, $
                                     $,
                                     {
                                         'states': _pa.dictionary_literal({
-                                            'acyclic': ($): _i_out._T_Signature_Parameters.lookups.D._type<null> => _i_generic.wrap_unresolved_state_group(
+                                            'acyclic': ($): _i_out._T_Signature_Parameters.lookups.D._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                 ['acyclic', _i_generic.process_nothing(
                                                     $,
                                                     null
                                                 )],
                                                 null
                                             ),
-                                            'cyclic': ($): _i_out._T_Signature_Parameters.lookups.D._type<null> => _i_generic.wrap_unresolved_state_group(
+                                            'cyclic': ($): _i_out._T_Signature_Parameters.lookups.D._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                 ['cyclic', _i_generic.process_nothing(
                                                     $,
                                                     null
                                                 )],
                                                 null
                                             ),
-                                            'stack': ($): _i_out._T_Signature_Parameters.lookups.D._type<null> => _i_generic.wrap_unresolved_state_group(
+                                            'stack': ($): _i_out._T_Signature_Parameters.lookups.D._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                 ['stack', _i_generic.process_nothing(
                                                     $,
                                                     null
@@ -2005,14 +2006,14 @@ export const Text_Type: _i_signatures._T_Text_Type = ($, $p) => _i_generic.proce
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'multi line': ($): _i_out._T_Text_Type._type<null> => _i_generic.wrap_unresolved_state_group(
+                        'multi line': ($): _i_out._T_Text_Type._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['multi line', _i_generic.process_nothing(
                                 $,
                                 null
                             )],
                             null
                         ),
-                        'single line': ($): _i_out._T_Text_Type._type<null> => _i_generic.wrap_unresolved_state_group(
+                        'single line': ($): _i_out._T_Text_Type._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['single line', _i_generic.process_nothing(
                                 $,
                                 null
@@ -2058,19 +2059,19 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
     $,
     {
         'states': _pa.dictionary_literal({
-            'boolean': ($): _i_out._T_Type_Node<null> => _i_generic.wrap_unresolved_state_group(
+            'boolean': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['boolean', _i_generic.process_nothing(
                     $,
                     null
                 )],
                 null
             ),
-            'component': ($): _i_out._T_Type_Node<null> => _i_generic.wrap_unresolved_state_group(
+            'component': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['component', _i_generic.process_state_group(
                     $,
                     {
                         'states': _pa.dictionary_literal({
-                            'external': ($): _i_out._T_Type_Node.SG.component<null> => _i_generic.wrap_unresolved_state_group(
+                            'external': ($): _i_out._T_Type_Node.SG.component<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                 ['external', _i_generic.process_group(
                                     $,
                                     {
@@ -2098,14 +2099,14 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                                 )],
                                 null
                             ),
-                            'internal': ($): _i_out._T_Type_Node.SG.component<null> => _i_generic.wrap_unresolved_state_group(
+                            'internal': ($): _i_out._T_Type_Node.SG.component<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                 ['internal', _i_generic.process_selected_reference(
                                     $,
                                     null
                                 )],
                                 null
                             ),
-                            'internal cyclic': ($): _i_out._T_Type_Node.SG.component<null> => _i_generic.wrap_unresolved_state_group(
+                            'internal cyclic': ($): _i_out._T_Type_Node.SG.component<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                 ['internal cyclic', _i_generic.process_selected_reference(
                                     $,
                                     null
@@ -2117,7 +2118,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                 )],
                 null
             ),
-            'dictionary': ($): _i_out._T_Type_Node<null> => _i_generic.wrap_unresolved_state_group(
+            'dictionary': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['dictionary', Dictionary(
                     $,
                     {
@@ -2126,7 +2127,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                 )],
                 null
             ),
-            'group': ($): _i_out._T_Type_Node<null> => _i_generic.wrap_unresolved_state_group(
+            'group': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['group', Group(
                     $,
                     {
@@ -2135,7 +2136,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                 )],
                 null
             ),
-            'identifier value pair': ($): _i_out._T_Type_Node<null> => _i_generic.wrap_unresolved_state_group(
+            'identifier value pair': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['identifier value pair', Type_Node(
                     $,
                     {
@@ -2144,7 +2145,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                 )],
                 null
             ),
-            'list': ($): _i_out._T_Type_Node<null> => _i_generic.wrap_unresolved_state_group(
+            'list': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['list', _i_generic.process_group(
                     $,
                     {
@@ -2165,26 +2166,26 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                 )],
                 null
             ),
-            'nothing': ($): _i_out._T_Type_Node<null> => _i_generic.wrap_unresolved_state_group(
+            'nothing': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['nothing', _i_generic.process_nothing(
                     $,
                     null
                 )],
                 null
             ),
-            'number': ($): _i_out._T_Type_Node<null> => _i_generic.wrap_unresolved_state_group(
+            'number': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['number', _i_generic.process_state_group(
                     $,
                     {
                         'states': _pa.dictionary_literal({
-                            'global': ($): _i_out._T_Type_Node.SG._number<null> => _i_generic.wrap_unresolved_state_group(
+                            'global': ($): _i_out._T_Type_Node.SG._number<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                 ['global', _i_generic.process_selected_reference(
                                     $,
                                     null
                                 )],
                                 null
                             ),
-                            'local': ($): _i_out._T_Type_Node.SG._number<null> => _i_generic.wrap_unresolved_state_group(
+                            'local': ($): _i_out._T_Type_Node.SG._number<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                 ['local', Number_Type(
                                     $,
                                     {
@@ -2198,7 +2199,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                 )],
                 null
             ),
-            'optional': ($): _i_out._T_Type_Node<null> => _i_generic.wrap_unresolved_state_group(
+            'optional': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['optional', Type_Node(
                     $,
                     {
@@ -2207,7 +2208,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                 )],
                 null
             ),
-            'reference': ($): _i_out._T_Type_Node<null> => _i_generic.wrap_unresolved_state_group(
+            'reference': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['reference', _i_generic.process_group(
                     $,
                     {
@@ -2232,14 +2233,14 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                                 $,
                                 {
                                     'states': _pa.dictionary_literal({
-                                        'derived': ($): _i_out._T_Type_Node.SG.reference._type<null> => _i_generic.wrap_unresolved_state_group(
+                                        'derived': ($): _i_out._T_Type_Node.SG.reference._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                             ['derived', _i_generic.process_nothing(
                                                 $,
                                                 null
                                             )],
                                             null
                                         ),
-                                        'selected': ($): _i_out._T_Type_Node.SG.reference._type<null> => _i_generic.wrap_unresolved_state_group(
+                                        'selected': ($): _i_out._T_Type_Node.SG.reference._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                             ['selected', _i_generic.process_group(
                                                 $,
                                                 {
@@ -2253,21 +2254,21 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                                                             $,
                                                             {
                                                                 'states': _pa.dictionary_literal({
-                                                                    'acyclic': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency<null> => _i_generic.wrap_unresolved_state_group(
+                                                                    'acyclic': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                                         ['acyclic', _i_generic.process_nothing(
                                                                             $,
                                                                             null
                                                                         )],
                                                                         null
                                                                     ),
-                                                                    'cyclic': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency<null> => _i_generic.wrap_unresolved_state_group(
+                                                                    'cyclic': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                                         ['cyclic', _i_generic.process_nothing(
                                                                             $,
                                                                             null
                                                                         )],
                                                                         null
                                                                     ),
-                                                                    'stack': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency<null> => _i_generic.wrap_unresolved_state_group(
+                                                                    'stack': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                                                         ['stack', _i_generic.process_nothing(
                                                                             $,
                                                                             null
@@ -2299,7 +2300,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                 )],
                 null
             ),
-            'state group': ($): _i_out._T_Type_Node<null> => _i_generic.wrap_unresolved_state_group(
+            'state group': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['state group', _i_generic.process_unresolved_dictionary(
                     $,
                     {
@@ -2313,19 +2314,19 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                 )],
                 null
             ),
-            'text': ($): _i_out._T_Type_Node<null> => _i_generic.wrap_unresolved_state_group(
+            'text': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['text', _i_generic.process_state_group(
                     $,
                     {
                         'states': _pa.dictionary_literal({
-                            'global': ($): _i_out._T_Type_Node.SG.text<null> => _i_generic.wrap_unresolved_state_group(
+                            'global': ($): _i_out._T_Type_Node.SG.text<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                 ['global', _i_generic.process_selected_reference(
                                     $,
                                     null
                                 )],
                                 null
                             ),
-                            'local': ($): _i_out._T_Type_Node.SG.text<null> => _i_generic.wrap_unresolved_state_group(
+                            'local': ($): _i_out._T_Type_Node.SG.text<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                 ['local', Text_Type(
                                     $,
                                     {
@@ -2339,7 +2340,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                 )],
                 null
             ),
-            'type parameter': ($): _i_out._T_Type_Node<null> => _i_generic.wrap_unresolved_state_group(
+            'type parameter': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                 ['type parameter', _i_generic.process_selected_reference(
                     $,
                     null
@@ -2374,42 +2375,42 @@ export const Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $p)
                         $,
                         {
                             'states': _pa.dictionary_literal({
-                                'dictionary': ($): _i_out._T_Type_Node_Reference.tail.L<null> => _i_generic.wrap_unresolved_state_group(
+                                'dictionary': ($): _i_out._T_Type_Node_Reference.tail.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                     ['dictionary', _i_generic.process_nothing(
                                         $,
                                         null
                                     )],
                                     null
                                 ),
-                                'group': ($): _i_out._T_Type_Node_Reference.tail.L<null> => _i_generic.wrap_unresolved_state_group(
+                                'group': ($): _i_out._T_Type_Node_Reference.tail.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                     ['group', _i_generic.process_selected_reference(
                                         $,
                                         null
                                     )],
                                     null
                                 ),
-                                'identifier value pair': ($): _i_out._T_Type_Node_Reference.tail.L<null> => _i_generic.wrap_unresolved_state_group(
+                                'identifier value pair': ($): _i_out._T_Type_Node_Reference.tail.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                     ['identifier value pair', _i_generic.process_nothing(
                                         $,
                                         null
                                     )],
                                     null
                                 ),
-                                'list': ($): _i_out._T_Type_Node_Reference.tail.L<null> => _i_generic.wrap_unresolved_state_group(
+                                'list': ($): _i_out._T_Type_Node_Reference.tail.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                     ['list', _i_generic.process_nothing(
                                         $,
                                         null
                                     )],
                                     null
                                 ),
-                                'optional': ($): _i_out._T_Type_Node_Reference.tail.L<null> => _i_generic.wrap_unresolved_state_group(
+                                'optional': ($): _i_out._T_Type_Node_Reference.tail.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                     ['optional', _i_generic.process_nothing(
                                         $,
                                         null
                                     )],
                                     null
                                 ),
-                                'state group': ($): _i_out._T_Type_Node_Reference.tail.L<null> => _i_generic.wrap_unresolved_state_group(
+                                'state group': ($): _i_out._T_Type_Node_Reference.tail.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                                     ['state group', _i_generic.process_selected_reference(
                                         $,
                                         null
@@ -2457,7 +2458,7 @@ export const Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _i_gen
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'external': ($): _i_out._T_Type_Reference.location<null> => _i_generic.wrap_unresolved_state_group(
+                        'external': ($): _i_out._T_Type_Reference.location<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['external', _i_generic.process_group(
                                 $,
                                 {
@@ -2485,7 +2486,7 @@ export const Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _i_gen
                             )],
                             null
                         ),
-                        'internal': ($): _i_out._T_Type_Reference.location<null> => _i_generic.wrap_unresolved_state_group(
+                        'internal': ($): _i_out._T_Type_Reference.location<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                             ['internal', _i_generic.process_selected_reference(
                                 $,
                                 null

@@ -11,14 +11,14 @@ export type _T_Module = (
     $$_p: {
         readonly 'value deserializers': _i_vd._T_Value_Deserializers
     },
-) => _i_out._T_Module<null>
+) => _i_out._T_Module<_i_in._T_Range>
 
 export type _T_Operations = (
     $$_: _i_in._T_Value,
     $$_p: {
         readonly 'value deserializers': _i_vd._T_Value_Deserializers
     },
-) => _i_out._T_Operations<null>
+) => _i_out._T_Operations<_i_in._T_Range>
 
 // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
 
@@ -42,9 +42,12 @@ export namespace _T_Module {
     }
     
     export namespace RESULT {
-        export type annotation = null
+        
+        export namespace annotation {
+        }
+        export type annotation = _i_in._T_Range
     }
-    export type RESULT = _i_out._T_Module<null>
+    export type RESULT = _i_out._T_Module<_i_in._T_Range>
 }
 
 export namespace _T_Operations {
@@ -61,9 +64,12 @@ export namespace _T_Operations {
     }
     
     export namespace RESULT {
-        export type annotation = null
+        
+        export namespace annotation {
+        }
+        export type annotation = _i_in._T_Range
     }
-    export type RESULT = _i_out._T_Operations<null>
+    export type RESULT = _i_out._T_Operations<_i_in._T_Range>
 }
 
 // *** ALIASES FOR NESTED TYPES
@@ -82,9 +88,12 @@ export namespace Module {
     }
     
     export namespace RESULT {
-        export type annotation = null
+        
+        export namespace annotation {
+        }
+        export type annotation = _i_in._T_Range
     }
-    export type RESULT = _i_out._T_Module<null>
+    export type RESULT = _i_out._T_Module<_i_in._T_Range>
 }
 
 export namespace Operations {
@@ -101,7 +110,10 @@ export namespace Operations {
     }
     
     export namespace RESULT {
-        export type annotation = null
+        
+        export namespace annotation {
+        }
+        export type annotation = _i_in._T_Range
     }
-    export type RESULT = _i_out._T_Operations<null>
+    export type RESULT = _i_out._T_Operations<_i_in._T_Range>
 }

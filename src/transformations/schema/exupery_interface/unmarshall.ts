@@ -63,7 +63,7 @@ export const Schema = (
                 "out",
                 key,
                 $p.constrained ? {
-                    "annotation": sh.t.null_()
+                    "annotation": sh.t.component_imported("in", "Range", {}, []),
                 } : {},
                 []
             ),

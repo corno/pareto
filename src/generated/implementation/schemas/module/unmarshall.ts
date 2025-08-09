@@ -2,6 +2,7 @@ import * as _pa from 'exupery-core-alg'
 import * as _pd from 'exupery-core-dev'
 
 import * as _i_generic from "../../generic/unmarshall"
+import * as _i_in from "../../../interface/core/astn_source"
 import * as _i_out from "../../../interface/schemas/module/data_types/unresolved"
 import * as _i_r_schema from "../schema/unmarshall"
 import * as _i_signatures from "../../../interface/schemas/module/unmarshall"
@@ -43,7 +44,7 @@ export const Operations: _i_signatures._T_Operations = ($, $p) => _i_generic.pro
             $,
             {
                 'states': _pa.dictionary_literal({
-                    'operation': ($): _i_out._T_Operations.D<null> => _i_generic.wrap_unresolved_state_group(
+                    'operation': ($): _i_out._T_Operations.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                         ['operation', _i_generic.process_group(
                             $,
                             {
@@ -102,7 +103,7 @@ export const Operations: _i_signatures._T_Operations = ($, $p) => _i_generic.pro
                         )],
                         null
                     ),
-                    'set': ($): _i_out._T_Operations.D<null> => _i_generic.wrap_unresolved_state_group(
+                    'set': ($): _i_out._T_Operations.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
                         ['set', Operations(
                             $,
                             {

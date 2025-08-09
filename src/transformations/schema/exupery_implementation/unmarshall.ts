@@ -34,7 +34,8 @@ export const Schema = (
                 "": _ea.dictionary_literal({
                     "generic": import_.ancestor(2, "generic", ["unmarshall"], {}),
                     "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "unmarshall"], {}),
-                    "out": import_.ancestor(3, "interface", ["schemas", $p.key, "data types", $p.constrained ? "unresolved" : "unconstrained"], $p.constrained ? { "Source": t.null_() } : {}),
+                    "in": import_.ancestor(3, "interface", ["core", "astn source"], {}),
+                    "out": import_.ancestor(3, "interface", ["schemas", $p.key, "data types", $p.constrained ? "unresolved" : "unconstrained"], $p.constrained ? { "Source": t.component_imported("in", "Range", {}, []) } : {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))
             }),
