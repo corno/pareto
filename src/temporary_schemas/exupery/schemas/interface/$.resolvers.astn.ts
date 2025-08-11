@@ -40,6 +40,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
             "location": r.state_group({
                 "module": state(r.nothing()),
                 "type": state(r.nothing()),
+                "function": state(r.nothing()),
             }),
             "parameter": r.text(),
         })),

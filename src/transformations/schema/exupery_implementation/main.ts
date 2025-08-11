@@ -2,8 +2,8 @@ import * as pd from 'exupery-core-data'
 import * as pa from 'exupery-core-alg'
 
 import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
-import * as _out from "exupery/dist/generated/interface/schemas/implementation/unresolved"
-import * as _out_interface from "exupery/dist/generated/interface/schemas/interface/unresolved" //FIXME... should be 'unresolved'
+import * as _out from "exupery/dist/generated/interface/schemas/implementation/data_types/unresolved"
+import * as _out_interface from "exupery/dist/generated/interface/schemas/interface/data_types/unresolved"
 
 import { m, } from "exupery/dist/shorthands/implementation"
 

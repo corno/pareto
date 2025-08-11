@@ -2,7 +2,6 @@ import * as pa from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 import * as pdev from 'exupery-core-dev'
 
-import * as astn from "astn"
 import * as _in from "../../temp_unmashall_result_types"
 import * as _out from "../../generated/interface/schemas/unmarshall_errors/data_types/unconstrained"
 

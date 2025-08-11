@@ -10,7 +10,7 @@ import * as _i_out_schema from "../generated/interface/schemas/schema/data_types
 import * as _i_r_schema from "./schema"
 
 
-export const r_Module: _i_signatures._T_Module<_i_generic._T_Location_Info> = ($, $p) => pa.block(() => {
+export const r_Module: _i_signatures._T_Module = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return pa.block(() => {
@@ -40,7 +40,7 @@ export const r_Module: _i_signatures._T_Module<_i_generic._T_Location_Info> = ($
         })
     })
 })
-export const r_Operations: _i_signatures._T_Operations<_i_generic._T_Location_Info> = ($, $p) => pa.block(() => {
+export const r_Operations: _i_signatures._T_Operations = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return _i_generic.resolve_dictionary(

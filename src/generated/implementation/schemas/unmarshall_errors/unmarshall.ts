@@ -30,210 +30,156 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => _i_generic.process_unc
                         {
                             'key': "type",
                         }
-                    ), ($) => _i_generic.process_state_group(
+                    ), ($) => _i_generic.process_unconstrained_state_group(
                         $,
                         {
                             'states': _pa.dictionary_literal({
-                                'error': ($): _i_out._T_Errors.L._type => _i_generic.wrap_unconstrained_state_group(
-                                    ['error', _i_generic.process_state_group(
-                                        $,
-                                        {
-                                            'states': _pa.dictionary_literal({
-                                                'duplicate property': ($): _i_out._T_Errors.L._type.SG.error => _i_generic.wrap_unconstrained_state_group(
-                                                    ['duplicate property', _i_generic.process_group(
-                                                        $,
-                                                        {
-                                                            'properties': ($) => ({
-                                                                'name': _pa.cc(_i_generic.get_entry(
-                                                                    $,
-                                                                    {
-                                                                        'key': "name",
-                                                                    }
-                                                                ), ($) => _i_generic.process_text(
-                                                                    $,
-                                                                    null
-                                                                )),
-                                                            }),
-                                                        }
-                                                    )],
-                                                    null
-                                                ),
-                                                'invalid value type': ($): _i_out._T_Errors.L._type.SG.error => _i_generic.wrap_unconstrained_state_group(
-                                                    ['invalid value type', _i_generic.process_group(
-                                                        $,
-                                                        {
-                                                            'properties': ($) => ({
-                                                                'expected': _pa.cc(_i_generic.get_entry(
-                                                                    $,
-                                                                    {
-                                                                        'key': "expected",
-                                                                    }
-                                                                ), ($) => _i_generic.process_state_group(
-                                                                    $,
-                                                                    {
-                                                                        'states': _pa.dictionary_literal({
-                                                                            'dictionary': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected => _i_generic.wrap_unconstrained_state_group(
-                                                                                ['dictionary', _i_generic.process_nothing(
-                                                                                    $,
-                                                                                    null
-                                                                                )],
-                                                                                null
-                                                                            ),
-                                                                            'group': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected => _i_generic.wrap_unconstrained_state_group(
-                                                                                ['group', _i_generic.process_nothing(
-                                                                                    $,
-                                                                                    null
-                                                                                )],
-                                                                                null
-                                                                            ),
-                                                                            'text': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected => _i_generic.wrap_unconstrained_state_group(
-                                                                                ['text', _i_generic.process_nothing(
-                                                                                    $,
-                                                                                    null
-                                                                                )],
-                                                                                null
-                                                                            ),
-                                                                        }),
-                                                                    }
-                                                                )),
-                                                            }),
-                                                        }
-                                                    )],
-                                                    null
-                                                ),
-                                                'missing property': ($): _i_out._T_Errors.L._type.SG.error => _i_generic.wrap_unconstrained_state_group(
-                                                    ['missing property', _i_generic.process_group(
-                                                        $,
-                                                        {
-                                                            'properties': ($) => ({
-                                                                'name': _pa.cc(_i_generic.get_entry(
-                                                                    $,
-                                                                    {
-                                                                        'key': "name",
-                                                                    }
-                                                                ), ($) => _i_generic.process_text(
-                                                                    $,
-                                                                    null
-                                                                )),
-                                                            }),
-                                                        }
-                                                    )],
-                                                    null
-                                                ),
-                                                'state': ($): _i_out._T_Errors.L._type.SG.error => _i_generic.wrap_unconstrained_state_group(
-                                                    ['state', _i_generic.process_state_group(
-                                                        $,
-                                                        {
-                                                            'states': _pa.dictionary_literal({
-                                                                'missing state name': ($): _i_out._T_Errors.L._type.SG.error.SG.state => _i_generic.wrap_unconstrained_state_group(
-                                                                    ['missing state name', _i_generic.process_nothing(
+                                'error': ($): _i_out._T_Errors.L._type.SG => ['error', _i_generic.process_unconstrained_state_group(
+                                    $,
+                                    {
+                                        'states': _pa.dictionary_literal({
+                                            'duplicate property': ($): _i_out._T_Errors.L._type.SG.error.SG => ['duplicate property', _i_generic.process_group(
+                                                $,
+                                                {
+                                                    'properties': ($) => ({
+                                                        'name': _pa.cc(_i_generic.get_entry(
+                                                            $,
+                                                            {
+                                                                'key': "name",
+                                                            }
+                                                        ), ($) => _i_generic.process_text(
+                                                            $,
+                                                            null
+                                                        )),
+                                                    }),
+                                                }
+                                            )],
+                                            'invalid value type': ($): _i_out._T_Errors.L._type.SG.error.SG => ['invalid value type', _i_generic.process_group(
+                                                $,
+                                                {
+                                                    'properties': ($) => ({
+                                                        'expected': _pa.cc(_i_generic.get_entry(
+                                                            $,
+                                                            {
+                                                                'key': "expected",
+                                                            }
+                                                        ), ($) => _i_generic.process_unconstrained_state_group(
+                                                            $,
+                                                            {
+                                                                'states': _pa.dictionary_literal({
+                                                                    'dictionary': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.SG => ['dictionary', _i_generic.process_nothing(
                                                                         $,
                                                                         null
                                                                     )],
-                                                                    null
-                                                                ),
-                                                                'missing value': ($): _i_out._T_Errors.L._type.SG.error.SG.state => _i_generic.wrap_unconstrained_state_group(
-                                                                    ['missing value', _i_generic.process_nothing(
+                                                                    'group': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.SG => ['group', _i_generic.process_nothing(
                                                                         $,
                                                                         null
                                                                     )],
-                                                                    null
-                                                                ),
-                                                                'more than 2 elements': ($): _i_out._T_Errors.L._type.SG.error.SG.state => _i_generic.wrap_unconstrained_state_group(
-                                                                    ['more than 2 elements', _i_generic.process_nothing(
+                                                                    'text': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.SG => ['text', _i_generic.process_nothing(
                                                                         $,
                                                                         null
                                                                     )],
-                                                                    null
-                                                                ),
-                                                                'state is not a string': ($): _i_out._T_Errors.L._type.SG.error.SG.state => _i_generic.wrap_unconstrained_state_group(
-                                                                    ['state is not a string', _i_generic.process_nothing(
-                                                                        $,
-                                                                        null
-                                                                    )],
-                                                                    null
-                                                                ),
-                                                                'unknown state': ($): _i_out._T_Errors.L._type.SG.error.SG.state => _i_generic.wrap_unconstrained_state_group(
-                                                                    ['unknown state', _i_generic.process_group(
+                                                                }),
+                                                            }
+                                                        )),
+                                                    }),
+                                                }
+                                            )],
+                                            'missing property': ($): _i_out._T_Errors.L._type.SG.error.SG => ['missing property', _i_generic.process_group(
+                                                $,
+                                                {
+                                                    'properties': ($) => ({
+                                                        'name': _pa.cc(_i_generic.get_entry(
+                                                            $,
+                                                            {
+                                                                'key': "name",
+                                                            }
+                                                        ), ($) => _i_generic.process_text(
+                                                            $,
+                                                            null
+                                                        )),
+                                                    }),
+                                                }
+                                            )],
+                                            'state': ($): _i_out._T_Errors.L._type.SG.error.SG => ['state', _i_generic.process_unconstrained_state_group(
+                                                $,
+                                                {
+                                                    'states': _pa.dictionary_literal({
+                                                        'missing state name': ($): _i_out._T_Errors.L._type.SG.error.SG.state.SG => ['missing state name', _i_generic.process_nothing(
+                                                            $,
+                                                            null
+                                                        )],
+                                                        'missing value': ($): _i_out._T_Errors.L._type.SG.error.SG.state.SG => ['missing value', _i_generic.process_nothing(
+                                                            $,
+                                                            null
+                                                        )],
+                                                        'more than 2 elements': ($): _i_out._T_Errors.L._type.SG.error.SG.state.SG => ['more than 2 elements', _i_generic.process_nothing(
+                                                            $,
+                                                            null
+                                                        )],
+                                                        'state is not a string': ($): _i_out._T_Errors.L._type.SG.error.SG.state.SG => ['state is not a string', _i_generic.process_nothing(
+                                                            $,
+                                                            null
+                                                        )],
+                                                        'unknown state': ($): _i_out._T_Errors.L._type.SG.error.SG.state.SG => ['unknown state', _i_generic.process_group(
+                                                            $,
+                                                            {
+                                                                'properties': ($) => ({
+                                                                    'expected': _pa.cc(_i_generic.get_entry(
                                                                         $,
                                                                         {
-                                                                            'properties': ($) => ({
-                                                                                'expected': _pa.cc(_i_generic.get_entry(
-                                                                                    $,
-                                                                                    {
-                                                                                        'key': "expected",
-                                                                                    }
-                                                                                ), ($) => _i_generic.process_unconstrained_dictionary(
-                                                                                    $,
-                                                                                    {
-                                                                                        'value': ($) => _i_generic.process_nothing(
-                                                                                            $,
-                                                                                            null
-                                                                                        ),
-                                                                                    }
-                                                                                )),
-                                                                                'found': _pa.cc(_i_generic.get_entry(
-                                                                                    $,
-                                                                                    {
-                                                                                        'key': "found",
-                                                                                    }
-                                                                                ), ($) => _i_generic.process_text(
-                                                                                    $,
-                                                                                    null
-                                                                                )),
-                                                                            }),
+                                                                            'key': "expected",
                                                                         }
-                                                                    )],
-                                                                    null
-                                                                ),
-                                                            }),
-                                                        }
-                                                    )],
-                                                    null
-                                                ),
-                                            }),
-                                        }
-                                    )],
-                                    null
-                                ),
-                                'warning': ($): _i_out._T_Errors.L._type => _i_generic.wrap_unconstrained_state_group(
-                                    ['warning', _i_generic.process_state_group(
-                                        $,
-                                        {
-                                            'states': _pa.dictionary_literal({
-                                                'expected apostrophed string': ($): _i_out._T_Errors.L._type.SG.warning => _i_generic.wrap_unconstrained_state_group(
-                                                    ['expected apostrophed string', _i_generic.process_nothing(
-                                                        $,
-                                                        null
-                                                    )],
-                                                    null
-                                                ),
-                                                'expected backticked string': ($): _i_out._T_Errors.L._type.SG.warning => _i_generic.wrap_unconstrained_state_group(
-                                                    ['expected backticked string', _i_generic.process_nothing(
-                                                        $,
-                                                        null
-                                                    )],
-                                                    null
-                                                ),
-                                                'expected quoted string': ($): _i_out._T_Errors.L._type.SG.warning => _i_generic.wrap_unconstrained_state_group(
-                                                    ['expected quoted string', _i_generic.process_nothing(
-                                                        $,
-                                                        null
-                                                    )],
-                                                    null
-                                                ),
-                                                'expected undelimited string': ($): _i_out._T_Errors.L._type.SG.warning => _i_generic.wrap_unconstrained_state_group(
-                                                    ['expected undelimited string', _i_generic.process_nothing(
-                                                        $,
-                                                        null
-                                                    )],
-                                                    null
-                                                ),
-                                            }),
-                                        }
-                                    )],
-                                    null
-                                ),
+                                                                    ), ($) => _i_generic.process_unconstrained_dictionary(
+                                                                        $,
+                                                                        {
+                                                                            'value': ($) => _i_generic.process_nothing(
+                                                                                $,
+                                                                                null
+                                                                            ),
+                                                                        }
+                                                                    )),
+                                                                    'found': _pa.cc(_i_generic.get_entry(
+                                                                        $,
+                                                                        {
+                                                                            'key': "found",
+                                                                        }
+                                                                    ), ($) => _i_generic.process_text(
+                                                                        $,
+                                                                        null
+                                                                    )),
+                                                                }),
+                                                            }
+                                                        )],
+                                                    }),
+                                                }
+                                            )],
+                                        }),
+                                    }
+                                )],
+                                'warning': ($): _i_out._T_Errors.L._type.SG => ['warning', _i_generic.process_unconstrained_state_group(
+                                    $,
+                                    {
+                                        'states': _pa.dictionary_literal({
+                                            'expected apostrophed string': ($): _i_out._T_Errors.L._type.SG.warning.SG => ['expected apostrophed string', _i_generic.process_nothing(
+                                                $,
+                                                null
+                                            )],
+                                            'expected backticked string': ($): _i_out._T_Errors.L._type.SG.warning.SG => ['expected backticked string', _i_generic.process_nothing(
+                                                $,
+                                                null
+                                            )],
+                                            'expected quoted string': ($): _i_out._T_Errors.L._type.SG.warning.SG => ['expected quoted string', _i_generic.process_nothing(
+                                                $,
+                                                null
+                                            )],
+                                            'expected undelimited string': ($): _i_out._T_Errors.L._type.SG.warning.SG => ['expected undelimited string', _i_generic.process_nothing(
+                                                $,
+                                                null
+                                            )],
+                                        }),
+                                    }
+                                )],
                             }),
                         }
                     )),

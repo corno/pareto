@@ -4,8 +4,8 @@ import * as pa from 'exupery-core-alg'
 import * as pdev from 'exupery-core-dev'
 
 import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
-import * as _out from "exupery/dist/generated/interface/schemas/implementation/unresolved" //FIXME... should be 'unresolved'
-import * as _out_interface from "exupery/dist/generated/interface/schemas/interface/unresolved" //FIXME... should be 'unresolved'
+import * as _out from "exupery/dist/generated/interface/schemas/implementation/data_types/unresolved"
+import * as _out_interface from "exupery/dist/generated/interface/schemas/interface/data_types/unresolved"
 
 import { m, variable, i, s, temp_ordered_variable } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub as sub } from "exupery/dist/shorthands/interface"
@@ -46,7 +46,7 @@ export const Resolvers = (
         op['pad dictionary identifiers'](
             $.dictionary.map(($, key) => variable(
                 t.component_imported("signatures", key, {
-                    "Source": t.component_imported("generic", "Location Info", {}, []),
+                    // "Source": t.component_imported("generic", "Location Info", {}, []),
                 }, []),
                 i.function_(
                     true,

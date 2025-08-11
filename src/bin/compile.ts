@@ -1,6 +1,6 @@
 import * as compiler from "../other/compile_astn"
 
-compiler.generate_source_code(
+compiler.$(
     null,
     {
         'path': "./out/source_code/src/generated"
@@ -9,7 +9,7 @@ compiler.generate_source_code(
 
 import * as serializer from "../other/serialize_schemas"
 
-serializer.serialize_schemas(
+serializer.$(
     null,
     {
         'path': "./out/serialized"

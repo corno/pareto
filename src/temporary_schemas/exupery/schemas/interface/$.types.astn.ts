@@ -48,6 +48,7 @@ export const $: g_.Types<pd.Source_Location>  = types(
             "location": t.state_group({
                 "module": t.nothing(),
                 "type": t.nothing(),
+                "function": t.nothing(),
             }),
             "parameter": t.text_global("TBD"),
         })),

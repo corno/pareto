@@ -14,7 +14,7 @@ import * as t_pareto_module_to_fountain_pen_block from "../transformations/modul
 
 import * as wtd from "pareto-fountain-pen/dist/other/write_to_disk"
 
-export const generate_source_code: (
+export const $: (
     $: null,
     $p: {
         'path': string,
@@ -48,6 +48,4 @@ export const generate_source_code: (
         _er.temp_resources.fs['write file sync'](module_path + "/interface/core/astn_target.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/astn_target.ts", true), true)
         _er.temp_resources.fs['write file sync'](module_path + "/interface/core/astn_source.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/astn_source.ts", true), true)
     })
-
-
 }

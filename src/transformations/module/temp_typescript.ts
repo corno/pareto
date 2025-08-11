@@ -8,7 +8,7 @@ import * as _in from "../../generated/interface/schemas/module/data_types/resolv
 import * as _out from "pareto-fountain-pen/dist/generated/interface/schemas/block/unconstrained"
 
 //transformations
-import * as t_exupery_library_to_typescript_temp from "exupery/dist/transformations/library/typescript_temp"
+import * as t_exupery_library_to_typescript_temp from "exupery/dist/transformations/library/typescript_light"
 import * as t_pareto_to_exupery_interface from "../../transformations/module/exupery_interface"
 import * as t_pareto_to_exupery_implementation from "../../transformations/module/exupery_implementation"
 

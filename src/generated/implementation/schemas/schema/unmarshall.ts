@@ -65,57 +65,51 @@ export const Constraint: _i_signatures._T_Constraint = ($, $p) => _i_generic.pro
                 {
                     'key': "type",
                 }
-            ), ($) => _i_generic.process_state_group(
+            ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'optional value': ($): _i_out._T_Constraint._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['optional value', _i_generic.process_group(
-                                $,
-                                {
-                                    'properties': ($) => ({
-                                        'selected optional value': _pa.cc(_i_generic.get_entry(
-                                            $,
-                                            {
-                                                'key': "selected optional value",
-                                            }
-                                        ), ($) => _i_generic.process_derived_reference(
-                                            $,
-                                            null
-                                        )),
-                                    }),
-                                }
-                            )],
-                            null
-                        ),
-                        'state': ($): _i_out._T_Constraint._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['state', _i_generic.process_group(
-                                $,
-                                {
-                                    'properties': ($) => ({
-                                        'selected state group': _pa.cc(_i_generic.get_entry(
-                                            $,
-                                            {
-                                                'key': "selected state group",
-                                            }
-                                        ), ($) => _i_generic.process_derived_reference(
-                                            $,
-                                            null
-                                        )),
-                                        'state': _pa.cc(_i_generic.get_entry(
-                                            $,
-                                            {
-                                                'key': "state",
-                                            }
-                                        ), ($) => _i_generic.process_selected_reference(
-                                            $,
-                                            null
-                                        )),
-                                    }),
-                                }
-                            )],
-                            null
-                        ),
+                        'optional value': ($): _i_out._T_Constraint._type.SG<_i_in._T_Range> => ['optional value', _i_generic.process_group(
+                            $,
+                            {
+                                'properties': ($) => ({
+                                    'selected optional value': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "selected optional value",
+                                        }
+                                    ), ($) => _i_generic.process_derived_reference(
+                                        $,
+                                        null
+                                    )),
+                                }),
+                            }
+                        )],
+                        'state': ($): _i_out._T_Constraint._type.SG<_i_in._T_Range> => ['state', _i_generic.process_group(
+                            $,
+                            {
+                                'properties': ($) => ({
+                                    'selected state group': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "selected state group",
+                                        }
+                                    ), ($) => _i_generic.process_derived_reference(
+                                        $,
+                                        null
+                                    )),
+                                    'state': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "state",
+                                        }
+                                    ), ($) => _i_generic.process_selected_reference(
+                                        $,
+                                        null
+                                    )),
+                                }),
+                            }
+                        )],
                     }),
                 }
             )),
@@ -160,24 +154,18 @@ export const Globals: _i_signatures._T_Globals = ($, $p) => _i_generic.process_g
                 {
                     'key': "complexity",
                 }
-            ), ($) => _i_generic.process_state_group(
+            ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'constrained': ($): _i_out._T_Globals.complexity<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['constrained', _i_generic.process_nothing(
-                                $,
-                                null
-                            )],
+                        'constrained': ($): _i_out._T_Globals.complexity.SG<_i_in._T_Range> => ['constrained', _i_generic.process_nothing(
+                            $,
                             null
-                        ),
-                        'unconstrained': ($): _i_out._T_Globals.complexity<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['unconstrained', _i_generic.process_nothing(
-                                $,
-                                null
-                            )],
+                        )],
+                        'unconstrained': ($): _i_out._T_Globals.complexity.SG<_i_in._T_Range> => ['unconstrained', _i_generic.process_nothing(
+                            $,
                             null
-                        ),
+                        )],
                     }),
                 }
             )),
@@ -245,234 +233,195 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                 {
                     'key': "start",
                 }
-            ), ($) => _i_generic.process_state_group(
+            ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'constraint': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['constraint', _i_generic.process_state_group(
-                                $,
-                                {
-                                    'states': _pa.dictionary_literal({
-                                        'component': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                            ['component', _i_generic.process_group(
-                                                $,
-                                                {
-                                                    'properties': ($) => ({
-                                                        'constraint': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "constraint",
-                                                            }
-                                                        ), ($) => _i_generic.process_selected_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                        'property': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "property",
-                                                            }
-                                                        ), ($) => _i_generic.process_selected_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                    }),
-                                                }
-                                            )],
-                                            null
-                                        ),
-                                        'reference': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                            ['reference', _i_generic.process_group(
-                                                $,
-                                                {
-                                                    'properties': ($) => ({
-                                                        'constraint': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "constraint",
-                                                            }
-                                                        ), ($) => _i_generic.process_selected_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                        'property': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "property",
-                                                            }
-                                                        ), ($) => _i_generic.process_selected_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                    }),
-                                                }
-                                            )],
-                                            null
-                                        ),
-                                    }),
-                                }
-                            )],
+                        'constraint': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['constraint', _i_generic.process_unresolved_state_group(
+                            $,
+                            {
+                                'states': _pa.dictionary_literal({
+                                    'component': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG<_i_in._T_Range> => ['component', _i_generic.process_group(
+                                        $,
+                                        {
+                                            'properties': ($) => ({
+                                                'constraint': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "constraint",
+                                                    }
+                                                ), ($) => _i_generic.process_selected_reference(
+                                                    $,
+                                                    null
+                                                )),
+                                                'property': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "property",
+                                                    }
+                                                ), ($) => _i_generic.process_selected_reference(
+                                                    $,
+                                                    null
+                                                )),
+                                            }),
+                                        }
+                                    )],
+                                    'reference': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG<_i_in._T_Range> => ['reference', _i_generic.process_group(
+                                        $,
+                                        {
+                                            'properties': ($) => ({
+                                                'constraint': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "constraint",
+                                                    }
+                                                ), ($) => _i_generic.process_selected_reference(
+                                                    $,
+                                                    null
+                                                )),
+                                                'property': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "property",
+                                                    }
+                                                ), ($) => _i_generic.process_selected_reference(
+                                                    $,
+                                                    null
+                                                )),
+                                            }),
+                                        }
+                                    )],
+                                }),
+                            }
+                        )],
+                        'linked entry': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['linked entry', _i_generic.process_nothing(
+                            $,
                             null
-                        ),
-                        'linked entry': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['linked entry', _i_generic.process_nothing(
-                                $,
-                                null
-                            )],
+                        )],
+                        'list cursor': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['list cursor', _i_generic.process_nothing(
+                            $,
                             null
-                        ),
-                        'list cursor': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['list cursor', _i_generic.process_nothing(
-                                $,
-                                null
-                            )],
+                        )],
+                        'option constraint': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['option constraint', _i_generic.process_selected_reference(
+                            $,
                             null
-                        ),
-                        'option constraint': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['option constraint', _i_generic.process_selected_reference(
-                                $,
-                                null
-                            )],
+                        )],
+                        'parameter': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['parameter', _i_generic.process_selected_reference(
+                            $,
                             null
-                        ),
-                        'parameter': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['parameter', _i_generic.process_selected_reference(
-                                $,
-                                null
-                            )],
+                        )],
+                        'parent sibling': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['parent sibling', _i_generic.process_selected_reference(
+                            $,
                             null
-                        ),
-                        'parent sibling': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['parent sibling', _i_generic.process_selected_reference(
-                                $,
-                                null
-                            )],
+                        )],
+                        'result': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['result', _i_generic.process_unresolved_state_group(
+                            $,
+                            {
+                                'states': _pa.dictionary_literal({
+                                    'list': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG<_i_in._T_Range> => ['list', _i_generic.process_group(
+                                        $,
+                                        {
+                                            'properties': ($) => ({
+                                                'list result': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "list result",
+                                                    }
+                                                ), ($) => _i_generic.process_derived_reference(
+                                                    $,
+                                                    null
+                                                )),
+                                                'property': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "property",
+                                                    }
+                                                ), ($) => _i_generic.process_selected_reference(
+                                                    $,
+                                                    null
+                                                )),
+                                            }),
+                                        }
+                                    )],
+                                    'optional value': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG<_i_in._T_Range> => ['optional value', _i_generic.process_group(
+                                        $,
+                                        {
+                                            'properties': ($) => ({
+                                                'optional value': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "optional value",
+                                                    }
+                                                ), ($) => _i_generic.process_derived_reference(
+                                                    $,
+                                                    null
+                                                )),
+                                                'property': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "property",
+                                                    }
+                                                ), ($) => _i_generic.process_selected_reference(
+                                                    $,
+                                                    null
+                                                )),
+                                                'result': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "result",
+                                                    }
+                                                ), ($) => Type_Reference(
+                                                    $,
+                                                    {
+                                                        'value deserializers': $p['value deserializers'],
+                                                    }
+                                                )),
+                                            }),
+                                        }
+                                    )],
+                                    'state group': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG<_i_in._T_Range> => ['state group', _i_generic.process_group(
+                                        $,
+                                        {
+                                            'properties': ($) => ({
+                                                'property': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "property",
+                                                    }
+                                                ), ($) => _i_generic.process_selected_reference(
+                                                    $,
+                                                    null
+                                                )),
+                                                'result': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "result",
+                                                    }
+                                                ), ($) => Type_Reference(
+                                                    $,
+                                                    {
+                                                        'value deserializers': $p['value deserializers'],
+                                                    }
+                                                )),
+                                                'state group': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "state group",
+                                                    }
+                                                ), ($) => _i_generic.process_derived_reference(
+                                                    $,
+                                                    null
+                                                )),
+                                            }),
+                                        }
+                                    )],
+                                }),
+                            }
+                        )],
+                        'sibling': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['sibling', _i_generic.process_selected_reference(
+                            $,
                             null
-                        ),
-                        'result': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['result', _i_generic.process_state_group(
-                                $,
-                                {
-                                    'states': _pa.dictionary_literal({
-                                        'list': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                            ['list', _i_generic.process_group(
-                                                $,
-                                                {
-                                                    'properties': ($) => ({
-                                                        'list result': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "list result",
-                                                            }
-                                                        ), ($) => _i_generic.process_derived_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                        'property': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "property",
-                                                            }
-                                                        ), ($) => _i_generic.process_selected_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                    }),
-                                                }
-                                            )],
-                                            null
-                                        ),
-                                        'optional value': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                            ['optional value', _i_generic.process_group(
-                                                $,
-                                                {
-                                                    'properties': ($) => ({
-                                                        'optional value': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "optional value",
-                                                            }
-                                                        ), ($) => _i_generic.process_derived_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                        'property': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "property",
-                                                            }
-                                                        ), ($) => _i_generic.process_selected_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                        'result': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "result",
-                                                            }
-                                                        ), ($) => Type_Reference(
-                                                            $,
-                                                            {
-                                                                'value deserializers': $p['value deserializers'],
-                                                            }
-                                                        )),
-                                                    }),
-                                                }
-                                            )],
-                                            null
-                                        ),
-                                        'state group': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                            ['state group', _i_generic.process_group(
-                                                $,
-                                                {
-                                                    'properties': ($) => ({
-                                                        'property': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "property",
-                                                            }
-                                                        ), ($) => _i_generic.process_selected_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                        'result': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "result",
-                                                            }
-                                                        ), ($) => Type_Reference(
-                                                            $,
-                                                            {
-                                                                'value deserializers': $p['value deserializers'],
-                                                            }
-                                                        )),
-                                                        'state group': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "state group",
-                                                            }
-                                                        ), ($) => _i_generic.process_derived_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                    }),
-                                                }
-                                            )],
-                                            null
-                                        ),
-                                    }),
-                                }
-                            )],
-                            null
-                        ),
-                        'sibling': ($): _i_out._T_Guaranteed_Value_Selection.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['sibling', _i_generic.process_selected_reference(
-                                $,
-                                null
-                            )],
-                            null
-                        ),
+                        )],
                     }),
                 }
             )),
@@ -538,568 +487,427 @@ export const Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => _i
                 {
                     'key': "type",
                 }
-            ), ($) => _i_generic.process_state_group(
+            ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'dictionary': ($): _i_out._T_Lookup_Selection._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['dictionary', _i_generic.process_group(
-                                $,
-                                {
-                                    'properties': ($) => ({
-                                        'selected dictionary': _pa.cc(_i_generic.get_entry(
-                                            $,
-                                            {
-                                                'key': "selected dictionary",
-                                            }
-                                        ), ($) => _i_generic.process_derived_reference(
-                                            $,
-                                            null
-                                        )),
-                                        'selection': _pa.cc(_i_generic.get_entry(
-                                            $,
-                                            {
-                                                'key': "selection",
-                                            }
-                                        ), ($) => Guaranteed_Value_Selection(
-                                            $,
-                                            {
-                                                'value deserializers': $p['value deserializers'],
-                                            }
-                                        )),
-                                    }),
-                                }
-                            )],
+                        'dictionary': ($): _i_out._T_Lookup_Selection._type.SG<_i_in._T_Range> => ['dictionary', _i_generic.process_group(
+                            $,
+                            {
+                                'properties': ($) => ({
+                                    'selected dictionary': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "selected dictionary",
+                                        }
+                                    ), ($) => _i_generic.process_derived_reference(
+                                        $,
+                                        null
+                                    )),
+                                    'selection': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "selection",
+                                        }
+                                    ), ($) => Guaranteed_Value_Selection(
+                                        $,
+                                        {
+                                            'value deserializers': $p['value deserializers'],
+                                        }
+                                    )),
+                                }),
+                            }
+                        )],
+                        'not circular dependent siblings': ($): _i_out._T_Lookup_Selection._type.SG<_i_in._T_Range> => ['not circular dependent siblings', _i_generic.process_derived_reference(
+                            $,
                             null
-                        ),
-                        'not circular dependent siblings': ($): _i_out._T_Lookup_Selection._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['not circular dependent siblings', _i_generic.process_derived_reference(
-                                $,
-                                null
-                            )],
+                        )],
+                        'parameter': ($): _i_out._T_Lookup_Selection._type.SG<_i_in._T_Range> => ['parameter', _i_generic.process_selected_reference(
+                            $,
                             null
-                        ),
-                        'parameter': ($): _i_out._T_Lookup_Selection._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['parameter', _i_generic.process_selected_reference(
-                                $,
-                                null
-                            )],
+                        )],
+                        'possibly circular dependent siblings': ($): _i_out._T_Lookup_Selection._type.SG<_i_in._T_Range> => ['possibly circular dependent siblings', _i_generic.process_derived_reference(
+                            $,
                             null
-                        ),
-                        'possibly circular dependent siblings': ($): _i_out._T_Lookup_Selection._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['possibly circular dependent siblings', _i_generic.process_derived_reference(
-                                $,
-                                null
-                            )],
-                            null
-                        ),
+                        )],
                     }),
                 }
             )),
         }),
     }
 )
-export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_generic.process_state_group(
+export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_generic.process_unresolved_state_group(
     $,
     {
         'states': _pa.dictionary_literal({
-            'boolean': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['boolean', _i_generic.process_nothing(
-                    $,
-                    null
-                )],
+            'boolean': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['boolean', _i_generic.process_nothing(
+                $,
                 null
-            ),
-            'component': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['component', _i_generic.process_group(
-                    $,
-                    {
-                        'properties': ($) => ({
-                            'arguments': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "arguments",
-                                }
-                            ), ($) => _i_generic.process_optional(
-                                $,
-                                {
-                                    'value': ($) => _i_generic.process_group(
+            )],
+            'component': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['component', _i_generic.process_group(
+                $,
+                {
+                    'properties': ($) => ({
+                        'arguments': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "arguments",
+                            }
+                        ), ($) => _i_generic.process_optional(
+                            $,
+                            {
+                                'value': ($) => _i_generic.process_group(
+                                    $,
+                                    {
+                                        'properties': ($) => ({
+                                            'lookups': _pa.cc(_i_generic.get_entry(
+                                                $,
+                                                {
+                                                    'key': "lookups",
+                                                }
+                                            ), ($) => _i_generic.process_optional(
+                                                $,
+                                                {
+                                                    'value': ($) => _i_generic.process_unresolved_dictionary(
+                                                        $,
+                                                        {
+                                                            'value': ($) => _i_generic.process_unresolved_state_group(
+                                                                $,
+                                                                {
+                                                                    'states': _pa.dictionary_literal({
+                                                                        'empty stack': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG<_i_in._T_Range> => ['empty stack', _i_generic.process_nothing(
+                                                                            $,
+                                                                            null
+                                                                        )],
+                                                                        'not set': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG<_i_in._T_Range> => ['not set', _i_generic.process_nothing(
+                                                                            $,
+                                                                            null
+                                                                        )],
+                                                                        'selection': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG<_i_in._T_Range> => ['selection', Lookup_Selection(
+                                                                            $,
+                                                                            {
+                                                                                'value deserializers': $p['value deserializers'],
+                                                                            }
+                                                                        )],
+                                                                        'stack': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG<_i_in._T_Range> => ['stack', _i_generic.process_group(
+                                                                            $,
+                                                                            {
+                                                                                'properties': ($) => ({
+                                                                                    'element': _pa.cc(_i_generic.get_entry(
+                                                                                        $,
+                                                                                        {
+                                                                                            'key': "element",
+                                                                                        }
+                                                                                    ), ($) => Lookup_Selection(
+                                                                                        $,
+                                                                                        {
+                                                                                            'value deserializers': $p['value deserializers'],
+                                                                                        }
+                                                                                    )),
+                                                                                    'stack': _pa.cc(_i_generic.get_entry(
+                                                                                        $,
+                                                                                        {
+                                                                                            'key': "stack",
+                                                                                        }
+                                                                                    ), ($) => Lookup_Selection(
+                                                                                        $,
+                                                                                        {
+                                                                                            'value deserializers': $p['value deserializers'],
+                                                                                        }
+                                                                                    )),
+                                                                                }),
+                                                                            }
+                                                                        )],
+                                                                    }),
+                                                                }
+                                                            ),
+                                                        }
+                                                    ),
+                                                }
+                                            )),
+                                            'values': _pa.cc(_i_generic.get_entry(
+                                                $,
+                                                {
+                                                    'key': "values",
+                                                }
+                                            ), ($) => _i_generic.process_optional(
+                                                $,
+                                                {
+                                                    'value': ($) => _i_generic.process_unresolved_dictionary(
+                                                        $,
+                                                        {
+                                                            'value': ($) => _i_generic.process_unresolved_state_group(
+                                                                $,
+                                                                {
+                                                                    'states': _pa.dictionary_literal({
+                                                                        'optional': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D.SG<_i_in._T_Range> => ['optional', Optional_Value_Initialization(
+                                                                            $,
+                                                                            {
+                                                                                'value deserializers': $p['value deserializers'],
+                                                                            }
+                                                                        )],
+                                                                        'parameter': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D.SG<_i_in._T_Range> => ['parameter', _i_generic.process_selected_reference(
+                                                                            $,
+                                                                            null
+                                                                        )],
+                                                                        'required': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D.SG<_i_in._T_Range> => ['required', Guaranteed_Value_Selection(
+                                                                            $,
+                                                                            {
+                                                                                'value deserializers': $p['value deserializers'],
+                                                                            }
+                                                                        )],
+                                                                    }),
+                                                                }
+                                                            ),
+                                                        }
+                                                    ),
+                                                }
+                                            )),
+                                        }),
+                                    }
+                                ),
+                            }
+                        )),
+                        'constraints': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "constraints",
+                            }
+                        ), ($) => Property_Constraints(
+                            $,
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
+                        )),
+                        'location': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "location",
+                            }
+                        ), ($) => _i_generic.process_unresolved_state_group(
+                            $,
+                            {
+                                'states': _pa.dictionary_literal({
+                                    'external': ($): _i_out._T_Node_Resolver.SG.component.location.SG<_i_in._T_Range> => ['external', _i_generic.process_group(
                                         $,
                                         {
                                             'properties': ($) => ({
-                                                'lookups': _pa.cc(_i_generic.get_entry(
+                                                'import': _pa.cc(_i_generic.get_entry(
                                                     $,
                                                     {
-                                                        'key': "lookups",
+                                                        'key': "import",
                                                     }
-                                                ), ($) => _i_generic.process_optional(
+                                                ), ($) => _i_generic.process_selected_reference(
                                                     $,
-                                                    {
-                                                        'value': ($) => _i_generic.process_unresolved_dictionary(
-                                                            $,
-                                                            {
-                                                                'value': ($) => _i_generic.process_state_group(
-                                                                    $,
-                                                                    {
-                                                                        'states': _pa.dictionary_literal({
-                                                                            'empty stack': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                                                ['empty stack', _i_generic.process_nothing(
-                                                                                    $,
-                                                                                    null
-                                                                                )],
-                                                                                null
-                                                                            ),
-                                                                            'not set': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                                                ['not set', _i_generic.process_nothing(
-                                                                                    $,
-                                                                                    null
-                                                                                )],
-                                                                                null
-                                                                            ),
-                                                                            'selection': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                                                ['selection', Lookup_Selection(
-                                                                                    $,
-                                                                                    {
-                                                                                        'value deserializers': $p['value deserializers'],
-                                                                                    }
-                                                                                )],
-                                                                                null
-                                                                            ),
-                                                                            'stack': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                                                ['stack', _i_generic.process_group(
-                                                                                    $,
-                                                                                    {
-                                                                                        'properties': ($) => ({
-                                                                                            'element': _pa.cc(_i_generic.get_entry(
-                                                                                                $,
-                                                                                                {
-                                                                                                    'key': "element",
-                                                                                                }
-                                                                                            ), ($) => Lookup_Selection(
-                                                                                                $,
-                                                                                                {
-                                                                                                    'value deserializers': $p['value deserializers'],
-                                                                                                }
-                                                                                            )),
-                                                                                            'stack': _pa.cc(_i_generic.get_entry(
-                                                                                                $,
-                                                                                                {
-                                                                                                    'key': "stack",
-                                                                                                }
-                                                                                            ), ($) => Lookup_Selection(
-                                                                                                $,
-                                                                                                {
-                                                                                                    'value deserializers': $p['value deserializers'],
-                                                                                                }
-                                                                                            )),
-                                                                                        }),
-                                                                                    }
-                                                                                )],
-                                                                                null
-                                                                            ),
-                                                                        }),
-                                                                    }
-                                                                ),
-                                                            }
-                                                        ),
-                                                    }
+                                                    null
                                                 )),
-                                                'values': _pa.cc(_i_generic.get_entry(
+                                                'type': _pa.cc(_i_generic.get_entry(
                                                     $,
                                                     {
-                                                        'key': "values",
+                                                        'key': "type",
                                                     }
-                                                ), ($) => _i_generic.process_optional(
+                                                ), ($) => _i_generic.process_selected_reference(
+                                                    $,
+                                                    null
+                                                )),
+                                            }),
+                                        }
+                                    )],
+                                    'internal': ($): _i_out._T_Node_Resolver.SG.component.location.SG<_i_in._T_Range> => ['internal', _i_generic.process_selected_reference(
+                                        $,
+                                        null
+                                    )],
+                                }),
+                            }
+                        )),
+                        'signature': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "signature",
+                            }
+                        ), ($) => _i_generic.process_derived_reference(
+                            $,
+                            null
+                        )),
+                    }),
+                }
+            )],
+            'dictionary': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['dictionary', _i_generic.process_group(
+                $,
+                {
+                    'properties': ($) => ({
+                        'benchmark': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "benchmark",
+                            }
+                        ), ($) => _i_generic.process_optional(
+                            $,
+                            {
+                                'value': ($) => Benchmark(
+                                    $,
+                                    {
+                                        'value deserializers': $p['value deserializers'],
+                                    }
+                                ),
+                            }
+                        )),
+                        'definition': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "definition",
+                            }
+                        ), ($) => _i_generic.process_derived_reference(
+                            $,
+                            null
+                        )),
+                        'resolver': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "resolver",
+                            }
+                        ), ($) => Node_Resolver(
+                            $,
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
+                        )),
+                    }),
+                }
+            )],
+            'group': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['group', Node_Resolver_Group(
+                $,
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
+            )],
+            'identifier value pair': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['identifier value pair', Node_Resolver(
+                $,
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
+            )],
+            'list': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['list', _i_generic.process_group(
+                $,
+                {
+                    'properties': ($) => ({
+                        'definition': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "definition",
+                            }
+                        ), ($) => _i_generic.process_derived_reference(
+                            $,
+                            null
+                        )),
+                        'resolver': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "resolver",
+                            }
+                        ), ($) => Node_Resolver(
+                            $,
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
+                        )),
+                        'result': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "result",
+                            }
+                        ), ($) => _i_generic.process_optional(
+                            $,
+                            {
+                                'value': ($) => Node_Resolver_List_Result(
+                                    $,
+                                    {
+                                        'value deserializers': $p['value deserializers'],
+                                    }
+                                ),
+                            }
+                        )),
+                    }),
+                }
+            )],
+            'nothing': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['nothing', _i_generic.process_nothing(
+                $,
+                null
+            )],
+            'number': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['number', _i_generic.process_nothing(
+                $,
+                null
+            )],
+            'optional': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['optional', _i_generic.process_group(
+                $,
+                {
+                    'properties': ($) => ({
+                        'constraints': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "constraints",
+                            }
+                        ), ($) => Option_Constraints(
+                            $,
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
+                        )),
+                        'resolver': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "resolver",
+                            }
+                        ), ($) => Node_Resolver(
+                            $,
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
+                        )),
+                    }),
+                }
+            )],
+            'reference': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['reference', _i_generic.process_group(
+                $,
+                {
+                    'properties': ($) => ({
+                        'definition': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "definition",
+                            }
+                        ), ($) => _i_generic.process_derived_reference(
+                            $,
+                            null
+                        )),
+                        'type': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "type",
+                            }
+                        ), ($) => _i_generic.process_unresolved_state_group(
+                            $,
+                            {
+                                'states': _pa.dictionary_literal({
+                                    'derived': ($): _i_out._T_Node_Resolver.SG.reference._type.SG<_i_in._T_Range> => ['derived', _i_generic.process_group(
+                                        $,
+                                        {
+                                            'properties': ($) => ({
+                                                'value': _pa.cc(_i_generic.get_entry(
                                                     $,
                                                     {
-                                                        'value': ($) => _i_generic.process_unresolved_dictionary(
-                                                            $,
-                                                            {
-                                                                'value': ($) => _i_generic.process_state_group(
-                                                                    $,
-                                                                    {
-                                                                        'states': _pa.dictionary_literal({
-                                                                            'optional': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                                                ['optional', Optional_Value_Initialization(
-                                                                                    $,
-                                                                                    {
-                                                                                        'value deserializers': $p['value deserializers'],
-                                                                                    }
-                                                                                )],
-                                                                                null
-                                                                            ),
-                                                                            'parameter': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                                                ['parameter', _i_generic.process_selected_reference(
-                                                                                    $,
-                                                                                    null
-                                                                                )],
-                                                                                null
-                                                                            ),
-                                                                            'required': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                                                ['required', Guaranteed_Value_Selection(
-                                                                                    $,
-                                                                                    {
-                                                                                        'value deserializers': $p['value deserializers'],
-                                                                                    }
-                                                                                )],
-                                                                                null
-                                                                            ),
-                                                                        }),
-                                                                    }
-                                                                ),
-                                                            }
-                                                        ),
+                                                        'key': "value",
+                                                    }
+                                                ), ($) => Guaranteed_Value_Selection(
+                                                    $,
+                                                    {
+                                                        'value deserializers': $p['value deserializers'],
                                                     }
                                                 )),
                                             }),
                                         }
-                                    ),
-                                }
-                            )),
-                            'constraints': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "constraints",
-                                }
-                            ), ($) => Property_Constraints(
-                                $,
-                                {
-                                    'value deserializers': $p['value deserializers'],
-                                }
-                            )),
-                            'location': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "location",
-                                }
-                            ), ($) => _i_generic.process_state_group(
-                                $,
-                                {
-                                    'states': _pa.dictionary_literal({
-                                        'external': ($): _i_out._T_Node_Resolver.SG.component.location<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                            ['external', _i_generic.process_group(
-                                                $,
-                                                {
-                                                    'properties': ($) => ({
-                                                        'import': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "import",
-                                                            }
-                                                        ), ($) => _i_generic.process_selected_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                        'type': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "type",
-                                                            }
-                                                        ), ($) => _i_generic.process_selected_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                    }),
-                                                }
-                                            )],
-                                            null
-                                        ),
-                                        'internal': ($): _i_out._T_Node_Resolver.SG.component.location<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                            ['internal', _i_generic.process_selected_reference(
-                                                $,
-                                                null
-                                            )],
-                                            null
-                                        ),
-                                    }),
-                                }
-                            )),
-                            'signature': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "signature",
-                                }
-                            ), ($) => _i_generic.process_derived_reference(
-                                $,
-                                null
-                            )),
-                        }),
-                    }
-                )],
-                null
-            ),
-            'dictionary': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['dictionary', _i_generic.process_group(
-                    $,
-                    {
-                        'properties': ($) => ({
-                            'benchmark': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "benchmark",
-                                }
-                            ), ($) => _i_generic.process_optional(
-                                $,
-                                {
-                                    'value': ($) => Benchmark(
-                                        $,
-                                        {
-                                            'value deserializers': $p['value deserializers'],
-                                        }
-                                    ),
-                                }
-                            )),
-                            'definition': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "definition",
-                                }
-                            ), ($) => _i_generic.process_derived_reference(
-                                $,
-                                null
-                            )),
-                            'resolver': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "resolver",
-                                }
-                            ), ($) => Node_Resolver(
-                                $,
-                                {
-                                    'value deserializers': $p['value deserializers'],
-                                }
-                            )),
-                        }),
-                    }
-                )],
-                null
-            ),
-            'group': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['group', Node_Resolver_Group(
-                    $,
-                    {
-                        'value deserializers': $p['value deserializers'],
-                    }
-                )],
-                null
-            ),
-            'identifier value pair': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['identifier value pair', Node_Resolver(
-                    $,
-                    {
-                        'value deserializers': $p['value deserializers'],
-                    }
-                )],
-                null
-            ),
-            'list': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['list', _i_generic.process_group(
-                    $,
-                    {
-                        'properties': ($) => ({
-                            'definition': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "definition",
-                                }
-                            ), ($) => _i_generic.process_derived_reference(
-                                $,
-                                null
-                            )),
-                            'resolver': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "resolver",
-                                }
-                            ), ($) => Node_Resolver(
-                                $,
-                                {
-                                    'value deserializers': $p['value deserializers'],
-                                }
-                            )),
-                            'result': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "result",
-                                }
-                            ), ($) => _i_generic.process_optional(
-                                $,
-                                {
-                                    'value': ($) => Node_Resolver_List_Result(
-                                        $,
-                                        {
-                                            'value deserializers': $p['value deserializers'],
-                                        }
-                                    ),
-                                }
-                            )),
-                        }),
-                    }
-                )],
-                null
-            ),
-            'nothing': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['nothing', _i_generic.process_nothing(
-                    $,
-                    null
-                )],
-                null
-            ),
-            'number': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['number', _i_generic.process_nothing(
-                    $,
-                    null
-                )],
-                null
-            ),
-            'optional': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['optional', _i_generic.process_group(
-                    $,
-                    {
-                        'properties': ($) => ({
-                            'constraints': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "constraints",
-                                }
-                            ), ($) => Option_Constraints(
-                                $,
-                                {
-                                    'value deserializers': $p['value deserializers'],
-                                }
-                            )),
-                            'resolver': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "resolver",
-                                }
-                            ), ($) => Node_Resolver(
-                                $,
-                                {
-                                    'value deserializers': $p['value deserializers'],
-                                }
-                            )),
-                        }),
-                    }
-                )],
-                null
-            ),
-            'reference': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['reference', _i_generic.process_group(
-                    $,
-                    {
-                        'properties': ($) => ({
-                            'definition': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "definition",
-                                }
-                            ), ($) => _i_generic.process_derived_reference(
-                                $,
-                                null
-                            )),
-                            'type': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "type",
-                                }
-                            ), ($) => _i_generic.process_state_group(
-                                $,
-                                {
-                                    'states': _pa.dictionary_literal({
-                                        'derived': ($): _i_out._T_Node_Resolver.SG.reference._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                            ['derived', _i_generic.process_group(
-                                                $,
-                                                {
-                                                    'properties': ($) => ({
-                                                        'value': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "value",
-                                                            }
-                                                        ), ($) => Guaranteed_Value_Selection(
-                                                            $,
-                                                            {
-                                                                'value deserializers': $p['value deserializers'],
-                                                            }
-                                                        )),
-                                                    }),
-                                                }
-                                            )],
-                                            null
-                                        ),
-                                        'selected': ($): _i_out._T_Node_Resolver.SG.reference._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                            ['selected', _i_generic.process_group(
-                                                $,
-                                                {
-                                                    'properties': ($) => ({
-                                                        'constraints': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "constraints",
-                                                            }
-                                                        ), ($) => Property_Constraints(
-                                                            $,
-                                                            {
-                                                                'value deserializers': $p['value deserializers'],
-                                                            }
-                                                        )),
-                                                        'definition': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "definition",
-                                                            }
-                                                        ), ($) => _i_generic.process_derived_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                        'lookup': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "lookup",
-                                                            }
-                                                        ), ($) => Lookup_Selection(
-                                                            $,
-                                                            {
-                                                                'value deserializers': $p['value deserializers'],
-                                                            }
-                                                        )),
-                                                    }),
-                                                }
-                                            )],
-                                            null
-                                        ),
-                                    }),
-                                }
-                            )),
-                        }),
-                    }
-                )],
-                null
-            ),
-            'state group': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['state group', _i_generic.process_group(
-                    $,
-                    {
-                        'properties': ($) => ({
-                            'definition': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "definition",
-                                }
-                            ), ($) => _i_generic.process_derived_reference(
-                                $,
-                                null
-                            )),
-                            'states': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "states",
-                                }
-                            ), ($) => _i_generic.process_unresolved_dictionary(
-                                $,
-                                {
-                                    'value': ($) => _i_generic.process_group(
+                                    )],
+                                    'selected': ($): _i_out._T_Node_Resolver.SG.reference._type.SG<_i_in._T_Range> => ['selected', _i_generic.process_group(
                                         $,
                                         {
                                             'properties': ($) => ({
@@ -1108,18 +916,27 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                                     {
                                                         'key': "constraints",
                                                     }
-                                                ), ($) => Option_Constraints(
+                                                ), ($) => Property_Constraints(
                                                     $,
                                                     {
                                                         'value deserializers': $p['value deserializers'],
                                                     }
                                                 )),
-                                                'resolver': _pa.cc(_i_generic.get_entry(
+                                                'definition': _pa.cc(_i_generic.get_entry(
                                                     $,
                                                     {
-                                                        'key': "resolver",
+                                                        'key': "definition",
                                                     }
-                                                ), ($) => Node_Resolver(
+                                                ), ($) => _i_generic.process_derived_reference(
+                                                    $,
+                                                    null
+                                                )),
+                                                'lookup': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "lookup",
+                                                    }
+                                                ), ($) => Lookup_Selection(
                                                     $,
                                                     {
                                                         'value deserializers': $p['value deserializers'],
@@ -1127,28 +944,76 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                                 )),
                                             }),
                                         }
-                                    ),
-                                }
-                            )),
-                        }),
-                    }
-                )],
+                                    )],
+                                }),
+                            }
+                        )),
+                    }),
+                }
+            )],
+            'state group': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['state group', _i_generic.process_group(
+                $,
+                {
+                    'properties': ($) => ({
+                        'definition': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "definition",
+                            }
+                        ), ($) => _i_generic.process_derived_reference(
+                            $,
+                            null
+                        )),
+                        'states': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "states",
+                            }
+                        ), ($) => _i_generic.process_unresolved_dictionary(
+                            $,
+                            {
+                                'value': ($) => _i_generic.process_group(
+                                    $,
+                                    {
+                                        'properties': ($) => ({
+                                            'constraints': _pa.cc(_i_generic.get_entry(
+                                                $,
+                                                {
+                                                    'key': "constraints",
+                                                }
+                                            ), ($) => Option_Constraints(
+                                                $,
+                                                {
+                                                    'value deserializers': $p['value deserializers'],
+                                                }
+                                            )),
+                                            'resolver': _pa.cc(_i_generic.get_entry(
+                                                $,
+                                                {
+                                                    'key': "resolver",
+                                                }
+                                            ), ($) => Node_Resolver(
+                                                $,
+                                                {
+                                                    'value deserializers': $p['value deserializers'],
+                                                }
+                                            )),
+                                        }),
+                                    }
+                                ),
+                            }
+                        )),
+                    }),
+                }
+            )],
+            'text': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['text', _i_generic.process_nothing(
+                $,
                 null
-            ),
-            'text': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['text', _i_generic.process_nothing(
-                    $,
-                    null
-                )],
+            )],
+            'type parameter': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['type parameter', _i_generic.process_nothing(
+                $,
                 null
-            ),
-            'type parameter': ($): _i_out._T_Node_Resolver<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['type parameter', _i_generic.process_nothing(
-                    $,
-                    null
-                )],
-                null
-            ),
+            )],
         }),
     }
 )
@@ -1199,90 +1064,75 @@ export const Number_Type: _i_signatures._T_Number_Type = ($, $p) => _i_generic.p
                 {
                     'key': "precision",
                 }
-            ), ($) => _i_generic.process_state_group(
+            ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'approximation': ($): _i_out._T_Number_Type.precision<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['approximation', _i_generic.process_group(
-                                $,
-                                {
-                                    'properties': ($) => ({
-                                        'significant digits': _pa.cc(_i_generic.get_entry(
-                                            $,
-                                            {
-                                                'key': "significant digits",
-                                            }
-                                        ), ($) => _i_generic.process_number(
-                                            $,
-                                            {
-                                                'deserializer': $p['value deserializers']['default number'],
-                                            }
-                                        )),
-                                    }),
-                                }
-                            )],
-                            null
-                        ),
-                        'exact': ($): _i_out._T_Number_Type.precision<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['exact', _i_generic.process_group(
-                                $,
-                                {
-                                    'properties': ($) => ({
-                                        'decimal separator offset': _pa.cc(_i_generic.get_entry(
-                                            $,
-                                            {
-                                                'key': "decimal separator offset",
-                                            }
-                                        ), ($) => _i_generic.process_optional(
-                                            $,
-                                            {
-                                                'value': ($) => _i_generic.process_number(
+                        'approximation': ($): _i_out._T_Number_Type.precision.SG<_i_in._T_Range> => ['approximation', _i_generic.process_group(
+                            $,
+                            {
+                                'properties': ($) => ({
+                                    'significant digits': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "significant digits",
+                                        }
+                                    ), ($) => _i_generic.process_number(
+                                        $,
+                                        {
+                                            'deserializer': $p['value deserializers']['default number'],
+                                        }
+                                    )),
+                                }),
+                            }
+                        )],
+                        'exact': ($): _i_out._T_Number_Type.precision.SG<_i_in._T_Range> => ['exact', _i_generic.process_group(
+                            $,
+                            {
+                                'properties': ($) => ({
+                                    'decimal separator offset': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "decimal separator offset",
+                                        }
+                                    ), ($) => _i_generic.process_optional(
+                                        $,
+                                        {
+                                            'value': ($) => _i_generic.process_number(
+                                                $,
+                                                {
+                                                    'deserializer': $p['value deserializers']['default number'],
+                                                }
+                                            ),
+                                        }
+                                    )),
+                                    'type': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "type",
+                                        }
+                                    ), ($) => _i_generic.process_unresolved_state_group(
+                                        $,
+                                        {
+                                            'states': _pa.dictionary_literal({
+                                                'integer': ($): _i_out._T_Number_Type.precision.SG.exact._type.SG<_i_in._T_Range> => ['integer', _i_generic.process_nothing(
                                                     $,
-                                                    {
-                                                        'deserializer': $p['value deserializers']['default number'],
-                                                    }
-                                                ),
-                                            }
-                                        )),
-                                        'type': _pa.cc(_i_generic.get_entry(
-                                            $,
-                                            {
-                                                'key': "type",
-                                            }
-                                        ), ($) => _i_generic.process_state_group(
-                                            $,
-                                            {
-                                                'states': _pa.dictionary_literal({
-                                                    'integer': ($): _i_out._T_Number_Type.precision.SG.exact._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                        ['integer', _i_generic.process_nothing(
-                                                            $,
-                                                            null
-                                                        )],
-                                                        null
-                                                    ),
-                                                    'natural': ($): _i_out._T_Number_Type.precision.SG.exact._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                        ['natural', _i_generic.process_nothing(
-                                                            $,
-                                                            null
-                                                        )],
-                                                        null
-                                                    ),
-                                                    'positive natural': ($): _i_out._T_Number_Type.precision.SG.exact._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                        ['positive natural', _i_generic.process_nothing(
-                                                            $,
-                                                            null
-                                                        )],
-                                                        null
-                                                    ),
-                                                }),
-                                            }
-                                        )),
-                                    }),
-                                }
-                            )],
-                            null
-                        ),
+                                                    null
+                                                )],
+                                                'natural': ($): _i_out._T_Number_Type.precision.SG.exact._type.SG<_i_in._T_Range> => ['natural', _i_generic.process_nothing(
+                                                    $,
+                                                    null
+                                                )],
+                                                'positive natural': ($): _i_out._T_Number_Type.precision.SG.exact._type.SG<_i_in._T_Range> => ['positive natural', _i_generic.process_nothing(
+                                                    $,
+                                                    null
+                                                )],
+                                            }),
+                                        }
+                                    )),
+                                }),
+                            }
+                        )],
                     }),
                 }
             )),
@@ -1292,215 +1142,182 @@ export const Number_Type: _i_signatures._T_Number_Type = ($, $p) => _i_generic.p
 export const Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p) => _i_generic.process_unresolved_dictionary(
     $,
     {
-        'value': ($) => _i_generic.process_state_group(
+        'value': ($) => _i_generic.process_unresolved_state_group(
             $,
             {
                 'states': _pa.dictionary_literal({
-                    'assert is set': ($): _i_out._T_Option_Constraints.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                        ['assert is set', Possible_Value_Selection(
-                            $,
-                            {
-                                'value deserializers': $p['value deserializers'],
-                            }
-                        )],
-                        null
-                    ),
-                    'state': ($): _i_out._T_Option_Constraints.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                        ['state', _i_generic.process_group(
+                    'assert is set': ($): _i_out._T_Option_Constraints.D.SG<_i_in._T_Range> => ['assert is set', Possible_Value_Selection(
+                        $,
+                        {
+                            'value deserializers': $p['value deserializers'],
+                        }
+                    )],
+                    'state': ($): _i_out._T_Option_Constraints.D.SG<_i_in._T_Range> => ['state', _i_generic.process_group(
+                        $,
+                        {
+                            'properties': ($) => ({
+                                'selected state group': _pa.cc(_i_generic.get_entry(
+                                    $,
+                                    {
+                                        'key': "selected state group",
+                                    }
+                                ), ($) => _i_generic.process_derived_reference(
+                                    $,
+                                    null
+                                )),
+                                'selection': _pa.cc(_i_generic.get_entry(
+                                    $,
+                                    {
+                                        'key': "selection",
+                                    }
+                                ), ($) => Guaranteed_Value_Selection(
+                                    $,
+                                    {
+                                        'value deserializers': $p['value deserializers'],
+                                    }
+                                )),
+                                'state': _pa.cc(_i_generic.get_entry(
+                                    $,
+                                    {
+                                        'key': "state",
+                                    }
+                                ), ($) => _i_generic.process_selected_reference(
+                                    $,
+                                    null
+                                )),
+                            }),
+                        }
+                    )],
+                }),
+            }
+        ),
+    }
+)
+export const Optional_Value_Initialization: _i_signatures._T_Optional_Value_Initialization = ($, $p) => _i_generic.process_unresolved_state_group(
+    $,
+    {
+        'states': _pa.dictionary_literal({
+            'not set': ($): _i_out._T_Optional_Value_Initialization.SG<_i_in._T_Range> => ['not set', _i_generic.process_nothing(
+                $,
+                null
+            )],
+            'selection': ($): _i_out._T_Optional_Value_Initialization.SG<_i_in._T_Range> => ['selection', Possible_Value_Selection(
+                $,
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
+            )],
+            'set': ($): _i_out._T_Optional_Value_Initialization.SG<_i_in._T_Range> => ['set', Guaranteed_Value_Selection(
+                $,
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
+            )],
+        }),
+    }
+)
+export const Possible_Value_Selection: _i_signatures._T_Possible_Value_Selection = ($, $p) => _i_generic.process_unresolved_state_group(
+    $,
+    {
+        'states': _pa.dictionary_literal({
+            'parameter': ($): _i_out._T_Possible_Value_Selection.SG<_i_in._T_Range> => ['parameter', _i_generic.process_selected_reference(
+                $,
+                null
+            )],
+            'result': ($): _i_out._T_Possible_Value_Selection.SG<_i_in._T_Range> => ['result', _i_generic.process_unresolved_state_group(
+                $,
+                {
+                    'states': _pa.dictionary_literal({
+                        'optional value': ($): _i_out._T_Possible_Value_Selection.SG.result.SG<_i_in._T_Range> => ['optional value', _i_generic.process_group(
                             $,
                             {
                                 'properties': ($) => ({
-                                    'selected state group': _pa.cc(_i_generic.get_entry(
+                                    'optional value': _pa.cc(_i_generic.get_entry(
                                         $,
                                         {
-                                            'key': "selected state group",
+                                            'key': "optional value",
                                         }
                                     ), ($) => _i_generic.process_derived_reference(
                                         $,
                                         null
                                     )),
-                                    'selection': _pa.cc(_i_generic.get_entry(
+                                    'property': _pa.cc(_i_generic.get_entry(
                                         $,
                                         {
-                                            'key': "selection",
+                                            'key': "property",
                                         }
-                                    ), ($) => Guaranteed_Value_Selection(
+                                    ), ($) => _i_generic.process_selected_reference(
+                                        $,
+                                        null
+                                    )),
+                                    'result': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "result",
+                                        }
+                                    ), ($) => Type_Reference(
                                         $,
                                         {
                                             'value deserializers': $p['value deserializers'],
                                         }
                                     )),
-                                    'state': _pa.cc(_i_generic.get_entry(
+                                }),
+                            }
+                        )],
+                        'state group': ($): _i_out._T_Possible_Value_Selection.SG.result.SG<_i_in._T_Range> => ['state group', _i_generic.process_group(
+                            $,
+                            {
+                                'properties': ($) => ({
+                                    'property': _pa.cc(_i_generic.get_entry(
                                         $,
                                         {
-                                            'key': "state",
+                                            'key': "property",
                                         }
                                     ), ($) => _i_generic.process_selected_reference(
+                                        $,
+                                        null
+                                    )),
+                                    'result': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "result",
+                                        }
+                                    ), ($) => Type_Reference(
+                                        $,
+                                        {
+                                            'value deserializers': $p['value deserializers'],
+                                        }
+                                    )),
+                                    'state group': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "state group",
+                                        }
+                                    ), ($) => _i_generic.process_derived_reference(
                                         $,
                                         null
                                     )),
                                 }),
                             }
                         )],
-                        null
-                    ),
-                }),
-            }
-        ),
-    }
-)
-export const Optional_Value_Initialization: _i_signatures._T_Optional_Value_Initialization = ($, $p) => _i_generic.process_state_group(
-    $,
-    {
-        'states': _pa.dictionary_literal({
-            'not set': ($): _i_out._T_Optional_Value_Initialization<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['not set', _i_generic.process_nothing(
-                    $,
-                    null
-                )],
-                null
-            ),
-            'selection': ($): _i_out._T_Optional_Value_Initialization<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['selection', Possible_Value_Selection(
-                    $,
-                    {
-                        'value deserializers': $p['value deserializers'],
-                    }
-                )],
-                null
-            ),
-            'set': ($): _i_out._T_Optional_Value_Initialization<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['set', Guaranteed_Value_Selection(
-                    $,
-                    {
-                        'value deserializers': $p['value deserializers'],
-                    }
-                )],
-                null
-            ),
+                    }),
+                }
+            )],
         }),
     }
 )
-export const Possible_Value_Selection: _i_signatures._T_Possible_Value_Selection = ($, $p) => _i_generic.process_state_group(
+export const Presence: _i_signatures._T_Presence = ($, $p) => _i_generic.process_unresolved_state_group(
     $,
     {
         'states': _pa.dictionary_literal({
-            'parameter': ($): _i_out._T_Possible_Value_Selection<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['parameter', _i_generic.process_selected_reference(
-                    $,
-                    null
-                )],
+            'optional': ($): _i_out._T_Presence.SG<_i_in._T_Range> => ['optional', _i_generic.process_nothing(
+                $,
                 null
-            ),
-            'result': ($): _i_out._T_Possible_Value_Selection<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['result', _i_generic.process_state_group(
-                    $,
-                    {
-                        'states': _pa.dictionary_literal({
-                            'optional value': ($): _i_out._T_Possible_Value_Selection.SG.result<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                ['optional value', _i_generic.process_group(
-                                    $,
-                                    {
-                                        'properties': ($) => ({
-                                            'optional value': _pa.cc(_i_generic.get_entry(
-                                                $,
-                                                {
-                                                    'key': "optional value",
-                                                }
-                                            ), ($) => _i_generic.process_derived_reference(
-                                                $,
-                                                null
-                                            )),
-                                            'property': _pa.cc(_i_generic.get_entry(
-                                                $,
-                                                {
-                                                    'key': "property",
-                                                }
-                                            ), ($) => _i_generic.process_selected_reference(
-                                                $,
-                                                null
-                                            )),
-                                            'result': _pa.cc(_i_generic.get_entry(
-                                                $,
-                                                {
-                                                    'key': "result",
-                                                }
-                                            ), ($) => Type_Reference(
-                                                $,
-                                                {
-                                                    'value deserializers': $p['value deserializers'],
-                                                }
-                                            )),
-                                        }),
-                                    }
-                                )],
-                                null
-                            ),
-                            'state group': ($): _i_out._T_Possible_Value_Selection.SG.result<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                ['state group', _i_generic.process_group(
-                                    $,
-                                    {
-                                        'properties': ($) => ({
-                                            'property': _pa.cc(_i_generic.get_entry(
-                                                $,
-                                                {
-                                                    'key': "property",
-                                                }
-                                            ), ($) => _i_generic.process_selected_reference(
-                                                $,
-                                                null
-                                            )),
-                                            'result': _pa.cc(_i_generic.get_entry(
-                                                $,
-                                                {
-                                                    'key': "result",
-                                                }
-                                            ), ($) => Type_Reference(
-                                                $,
-                                                {
-                                                    'value deserializers': $p['value deserializers'],
-                                                }
-                                            )),
-                                            'state group': _pa.cc(_i_generic.get_entry(
-                                                $,
-                                                {
-                                                    'key': "state group",
-                                                }
-                                            ), ($) => _i_generic.process_derived_reference(
-                                                $,
-                                                null
-                                            )),
-                                        }),
-                                    }
-                                )],
-                                null
-                            ),
-                        }),
-                    }
-                )],
+            )],
+            'required': ($): _i_out._T_Presence.SG<_i_in._T_Range> => ['required', _i_generic.process_nothing(
+                $,
                 null
-            ),
-        }),
-    }
-)
-export const Presence: _i_signatures._T_Presence = ($, $p) => _i_generic.process_state_group(
-    $,
-    {
-        'states': _pa.dictionary_literal({
-            'optional': ($): _i_out._T_Presence<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['optional', _i_generic.process_nothing(
-                    $,
-                    null
-                )],
-                null
-            ),
-            'required': ($): _i_out._T_Presence<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['required', _i_generic.process_nothing(
-                    $,
-                    null
-                )],
-                null
-            ),
+            )],
         }),
     }
 )
@@ -1524,26 +1341,20 @@ export const Property_Constraint: _i_signatures._T_Property_Constraint = ($, $p)
                 {
                     'key': "start",
                 }
-            ), ($) => _i_generic.process_state_group(
+            ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'property': ($): _i_out._T_Property_Constraint.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['property', _i_generic.process_nothing(
-                                $,
-                                null
-                            )],
+                        'property': ($): _i_out._T_Property_Constraint.start.SG<_i_in._T_Range> => ['property', _i_generic.process_nothing(
+                            $,
                             null
-                        ),
-                        'sibling': ($): _i_out._T_Property_Constraint.start<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['sibling', Reference_To_Property_Constraint(
-                                $,
-                                {
-                                    'value deserializers': $p['value deserializers'],
-                                }
-                            )],
-                            null
-                        ),
+                        )],
+                        'sibling': ($): _i_out._T_Property_Constraint.start.SG<_i_in._T_Range> => ['sibling', Reference_To_Property_Constraint(
+                            $,
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
+                        )],
                     }),
                 }
             )),
@@ -1577,43 +1388,34 @@ export const Relative_Value_Selection: _i_signatures._T_Relative_Value_Selection
             ), ($) => _i_generic.process_unresolved_list(
                 $,
                 {
-                    'value': ($) => _i_generic.process_state_group(
+                    'value': ($) => _i_generic.process_unresolved_state_group(
                         $,
                         {
                             'states': _pa.dictionary_literal({
-                                'component': ($): _i_out._T_Relative_Value_Selection.path.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                    ['component', _i_generic.process_nothing(
-                                        $,
-                                        null
-                                    )],
+                                'component': ($): _i_out._T_Relative_Value_Selection.path.L.SG<_i_in._T_Range> => ['component', _i_generic.process_nothing(
+                                    $,
                                     null
-                                ),
-                                'group': ($): _i_out._T_Relative_Value_Selection.path.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                    ['group', _i_generic.process_selected_reference(
-                                        $,
-                                        null
-                                    )],
+                                )],
+                                'group': ($): _i_out._T_Relative_Value_Selection.path.L.SG<_i_in._T_Range> => ['group', _i_generic.process_selected_reference(
+                                    $,
                                     null
-                                ),
-                                'reference': ($): _i_out._T_Relative_Value_Selection.path.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                    ['reference', _i_generic.process_group(
-                                        $,
-                                        {
-                                            'properties': ($) => ({
-                                                'definition': _pa.cc(_i_generic.get_entry(
-                                                    $,
-                                                    {
-                                                        'key': "definition",
-                                                    }
-                                                ), ($) => _i_generic.process_derived_reference(
-                                                    $,
-                                                    null
-                                                )),
-                                            }),
-                                        }
-                                    )],
-                                    null
-                                ),
+                                )],
+                                'reference': ($): _i_out._T_Relative_Value_Selection.path.L.SG<_i_in._T_Range> => ['reference', _i_generic.process_group(
+                                    $,
+                                    {
+                                        'properties': ($) => ({
+                                            'definition': _pa.cc(_i_generic.get_entry(
+                                                $,
+                                                {
+                                                    'key': "definition",
+                                                }
+                                            ), ($) => _i_generic.process_derived_reference(
+                                                $,
+                                                null
+                                            )),
+                                        }),
+                                    }
+                                )],
                             }),
                         }
                     ),
@@ -1713,26 +1515,20 @@ export const Schema: _i_signatures._T_Schema = ($, $p) => _i_generic.process_gro
                 {
                     'key': "complexity",
                 }
-            ), ($) => _i_generic.process_state_group(
+            ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'constrained': ($): _i_out._T_Schema.complexity<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['constrained', Resolve_Logic(
-                                $,
-                                {
-                                    'value deserializers': $p['value deserializers'],
-                                }
-                            )],
+                        'constrained': ($): _i_out._T_Schema.complexity.SG<_i_in._T_Range> => ['constrained', Resolve_Logic(
+                            $,
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
+                        )],
+                        'unconstrained': ($): _i_out._T_Schema.complexity.SG<_i_in._T_Range> => ['unconstrained', _i_generic.process_nothing(
+                            $,
                             null
-                        ),
-                        'unconstrained': ($): _i_out._T_Schema.complexity<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['unconstrained', _i_generic.process_nothing(
-                                $,
-                                null
-                            )],
-                            null
-                        ),
+                        )],
                     }),
                 }
             )),
@@ -1775,28 +1571,22 @@ export const Schema: _i_signatures._T_Schema = ($, $p) => _i_generic.process_gro
 export const Schemas: _i_signatures._T_Schemas = ($, $p) => _i_generic.process_unresolved_dictionary(
     $,
     {
-        'value': ($) => _i_generic.process_state_group(
+        'value': ($) => _i_generic.process_unresolved_state_group(
             $,
             {
                 'states': _pa.dictionary_literal({
-                    'schema': ($): _i_out._T_Schemas.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                        ['schema', Schema(
-                            $,
-                            {
-                                'value deserializers': $p['value deserializers'],
-                            }
-                        )],
-                        null
-                    ),
-                    'set': ($): _i_out._T_Schemas.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                        ['set', Schemas(
-                            $,
-                            {
-                                'value deserializers': $p['value deserializers'],
-                            }
-                        )],
-                        null
-                    ),
+                    'schema': ($): _i_out._T_Schemas.D.SG<_i_in._T_Range> => ['schema', Schema(
+                        $,
+                        {
+                            'value deserializers': $p['value deserializers'],
+                        }
+                    )],
+                    'set': ($): _i_out._T_Schemas.D.SG<_i_in._T_Range> => ['set', Schemas(
+                        $,
+                        {
+                            'value deserializers': $p['value deserializers'],
+                        }
+                    )],
                 }),
             }
         ),
@@ -1811,26 +1601,20 @@ export const Signature: _i_signatures._T_Signature = ($, $p) => _i_generic.proce
                 {
                     'key': "parameters",
                 }
-            ), ($) => _i_generic.process_state_group(
+            ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'local': ($): _i_out._T_Signature.parameters<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['local', Signature_Parameters(
-                                $,
-                                {
-                                    'value deserializers': $p['value deserializers'],
-                                }
-                            )],
+                        'local': ($): _i_out._T_Signature.parameters.SG<_i_in._T_Range> => ['local', Signature_Parameters(
+                            $,
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
+                        )],
+                        'same as': ($): _i_out._T_Signature.parameters.SG<_i_in._T_Range> => ['same as', _i_generic.process_selected_reference(
+                            $,
                             null
-                        ),
-                        'same as': ($): _i_out._T_Signature.parameters<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['same as', _i_generic.process_selected_reference(
-                                $,
-                                null
-                            )],
-                            null
-                        ),
+                        )],
                     }),
                 }
             )),
@@ -1907,31 +1691,22 @@ export const Signature_Parameters: _i_signatures._T_Signature_Parameters = ($, $
                                     {
                                         'key': "type",
                                     }
-                                ), ($) => _i_generic.process_state_group(
+                                ), ($) => _i_generic.process_unresolved_state_group(
                                     $,
                                     {
                                         'states': _pa.dictionary_literal({
-                                            'acyclic': ($): _i_out._T_Signature_Parameters.lookups.D._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                ['acyclic', _i_generic.process_nothing(
-                                                    $,
-                                                    null
-                                                )],
+                                            'acyclic': ($): _i_out._T_Signature_Parameters.lookups.D._type.SG<_i_in._T_Range> => ['acyclic', _i_generic.process_nothing(
+                                                $,
                                                 null
-                                            ),
-                                            'cyclic': ($): _i_out._T_Signature_Parameters.lookups.D._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                ['cyclic', _i_generic.process_nothing(
-                                                    $,
-                                                    null
-                                                )],
+                                            )],
+                                            'cyclic': ($): _i_out._T_Signature_Parameters.lookups.D._type.SG<_i_in._T_Range> => ['cyclic', _i_generic.process_nothing(
+                                                $,
                                                 null
-                                            ),
-                                            'stack': ($): _i_out._T_Signature_Parameters.lookups.D._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                ['stack', _i_generic.process_nothing(
-                                                    $,
-                                                    null
-                                                )],
+                                            )],
+                                            'stack': ($): _i_out._T_Signature_Parameters.lookups.D._type.SG<_i_in._T_Range> => ['stack', _i_generic.process_nothing(
+                                                $,
                                                 null
-                                            ),
+                                            )],
                                         }),
                                     }
                                 )),
@@ -2002,24 +1777,18 @@ export const Text_Type: _i_signatures._T_Text_Type = ($, $p) => _i_generic.proce
                 {
                     'key': "type",
                 }
-            ), ($) => _i_generic.process_state_group(
+            ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'multi line': ($): _i_out._T_Text_Type._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['multi line', _i_generic.process_nothing(
-                                $,
-                                null
-                            )],
+                        'multi line': ($): _i_out._T_Text_Type._type.SG<_i_in._T_Range> => ['multi line', _i_generic.process_nothing(
+                            $,
                             null
-                        ),
-                        'single line': ($): _i_out._T_Text_Type._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['single line', _i_generic.process_nothing(
-                                $,
-                                null
-                            )],
+                        )],
+                        'single line': ($): _i_out._T_Text_Type._type.SG<_i_in._T_Range> => ['single line', _i_generic.process_nothing(
+                            $,
                             null
-                        ),
+                        )],
                     }),
                 }
             )),
@@ -2055,298 +1824,223 @@ export const Type: _i_signatures._T_Type = ($, $p) => _i_generic.process_group(
         }),
     }
 )
-export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.process_state_group(
+export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.process_unresolved_state_group(
     $,
     {
         'states': _pa.dictionary_literal({
-            'boolean': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['boolean', _i_generic.process_nothing(
-                    $,
-                    null
-                )],
+            'boolean': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['boolean', _i_generic.process_nothing(
+                $,
                 null
-            ),
-            'component': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['component', _i_generic.process_state_group(
-                    $,
-                    {
-                        'states': _pa.dictionary_literal({
-                            'external': ($): _i_out._T_Type_Node.SG.component<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                ['external', _i_generic.process_group(
-                                    $,
-                                    {
-                                        'properties': ($) => ({
-                                            'import': _pa.cc(_i_generic.get_entry(
-                                                $,
-                                                {
-                                                    'key': "import",
-                                                }
-                                            ), ($) => _i_generic.process_selected_reference(
-                                                $,
-                                                null
-                                            )),
-                                            'type': _pa.cc(_i_generic.get_entry(
-                                                $,
-                                                {
-                                                    'key': "type",
-                                                }
-                                            ), ($) => _i_generic.process_selected_reference(
-                                                $,
-                                                null
-                                            )),
-                                        }),
-                                    }
-                                )],
-                                null
-                            ),
-                            'internal': ($): _i_out._T_Type_Node.SG.component<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                ['internal', _i_generic.process_selected_reference(
-                                    $,
-                                    null
-                                )],
-                                null
-                            ),
-                            'internal cyclic': ($): _i_out._T_Type_Node.SG.component<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                ['internal cyclic', _i_generic.process_selected_reference(
-                                    $,
-                                    null
-                                )],
-                                null
-                            ),
-                        }),
-                    }
-                )],
-                null
-            ),
-            'dictionary': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['dictionary', Dictionary(
-                    $,
-                    {
-                        'value deserializers': $p['value deserializers'],
-                    }
-                )],
-                null
-            ),
-            'group': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['group', Group(
-                    $,
-                    {
-                        'value deserializers': $p['value deserializers'],
-                    }
-                )],
-                null
-            ),
-            'identifier value pair': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['identifier value pair', Type_Node(
-                    $,
-                    {
-                        'value deserializers': $p['value deserializers'],
-                    }
-                )],
-                null
-            ),
-            'list': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['list', _i_generic.process_group(
-                    $,
-                    {
-                        'properties': ($) => ({
-                            'node': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "node",
-                                }
-                            ), ($) => Type_Node(
-                                $,
-                                {
-                                    'value deserializers': $p['value deserializers'],
-                                }
-                            )),
-                        }),
-                    }
-                )],
-                null
-            ),
-            'nothing': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['nothing', _i_generic.process_nothing(
-                    $,
-                    null
-                )],
-                null
-            ),
-            'number': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['number', _i_generic.process_state_group(
-                    $,
-                    {
-                        'states': _pa.dictionary_literal({
-                            'global': ($): _i_out._T_Type_Node.SG._number<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                ['global', _i_generic.process_selected_reference(
-                                    $,
-                                    null
-                                )],
-                                null
-                            ),
-                            'local': ($): _i_out._T_Type_Node.SG._number<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                ['local', Number_Type(
-                                    $,
-                                    {
-                                        'value deserializers': $p['value deserializers'],
-                                    }
-                                )],
-                                null
-                            ),
-                        }),
-                    }
-                )],
-                null
-            ),
-            'optional': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['optional', Type_Node(
-                    $,
-                    {
-                        'value deserializers': $p['value deserializers'],
-                    }
-                )],
-                null
-            ),
-            'reference': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['reference', _i_generic.process_group(
-                    $,
-                    {
-                        'properties': ($) => ({
-                            'referent': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "referent",
-                                }
-                            ), ($) => Type_Node_Reference(
-                                $,
-                                {
-                                    'value deserializers': $p['value deserializers'],
-                                }
-                            )),
-                            'type': _pa.cc(_i_generic.get_entry(
-                                $,
-                                {
-                                    'key': "type",
-                                }
-                            ), ($) => _i_generic.process_state_group(
-                                $,
-                                {
-                                    'states': _pa.dictionary_literal({
-                                        'derived': ($): _i_out._T_Type_Node.SG.reference._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                            ['derived', _i_generic.process_nothing(
-                                                $,
-                                                null
-                                            )],
-                                            null
-                                        ),
-                                        'selected': ($): _i_out._T_Type_Node.SG.reference._type<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                            ['selected', _i_generic.process_group(
-                                                $,
-                                                {
-                                                    'properties': ($) => ({
-                                                        'dependency': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "dependency",
-                                                            }
-                                                        ), ($) => _i_generic.process_state_group(
-                                                            $,
-                                                            {
-                                                                'states': _pa.dictionary_literal({
-                                                                    'acyclic': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                                        ['acyclic', _i_generic.process_nothing(
-                                                                            $,
-                                                                            null
-                                                                        )],
-                                                                        null
-                                                                    ),
-                                                                    'cyclic': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                                        ['cyclic', _i_generic.process_nothing(
-                                                                            $,
-                                                                            null
-                                                                        )],
-                                                                        null
-                                                                    ),
-                                                                    'stack': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                                                        ['stack', _i_generic.process_nothing(
-                                                                            $,
-                                                                            null
-                                                                        )],
-                                                                        null
-                                                                    ),
-                                                                }),
-                                                            }
-                                                        )),
-                                                        'dictionary': _pa.cc(_i_generic.get_entry(
-                                                            $,
-                                                            {
-                                                                'key': "dictionary",
-                                                            }
-                                                        ), ($) => _i_generic.process_derived_reference(
-                                                            $,
-                                                            null
-                                                        )),
-                                                    }),
-                                                }
-                                            )],
-                                            null
-                                        ),
-                                    }),
-                                }
-                            )),
-                        }),
-                    }
-                )],
-                null
-            ),
-            'state group': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['state group', _i_generic.process_unresolved_dictionary(
-                    $,
-                    {
-                        'value': ($) => Type_Node(
+            )],
+            'component': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['component', _i_generic.process_unresolved_state_group(
+                $,
+                {
+                    'states': _pa.dictionary_literal({
+                        'external': ($): _i_out._T_Type_Node.SG.component.SG<_i_in._T_Range> => ['external', _i_generic.process_group(
+                            $,
+                            {
+                                'properties': ($) => ({
+                                    'import': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "import",
+                                        }
+                                    ), ($) => _i_generic.process_selected_reference(
+                                        $,
+                                        null
+                                    )),
+                                    'type': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "type",
+                                        }
+                                    ), ($) => _i_generic.process_selected_reference(
+                                        $,
+                                        null
+                                    )),
+                                }),
+                            }
+                        )],
+                        'internal': ($): _i_out._T_Type_Node.SG.component.SG<_i_in._T_Range> => ['internal', _i_generic.process_selected_reference(
+                            $,
+                            null
+                        )],
+                        'internal cyclic': ($): _i_out._T_Type_Node.SG.component.SG<_i_in._T_Range> => ['internal cyclic', _i_generic.process_selected_reference(
+                            $,
+                            null
+                        )],
+                    }),
+                }
+            )],
+            'dictionary': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['dictionary', Dictionary(
+                $,
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
+            )],
+            'group': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['group', Group(
+                $,
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
+            )],
+            'identifier value pair': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['identifier value pair', Type_Node(
+                $,
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
+            )],
+            'list': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['list', _i_generic.process_group(
+                $,
+                {
+                    'properties': ($) => ({
+                        'node': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "node",
+                            }
+                        ), ($) => Type_Node(
                             $,
                             {
                                 'value deserializers': $p['value deserializers'],
                             }
-                        ),
-                    }
-                )],
+                        )),
+                    }),
+                }
+            )],
+            'nothing': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['nothing', _i_generic.process_nothing(
+                $,
                 null
-            ),
-            'text': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['text', _i_generic.process_state_group(
-                    $,
-                    {
-                        'states': _pa.dictionary_literal({
-                            'global': ($): _i_out._T_Type_Node.SG.text<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                ['global', _i_generic.process_selected_reference(
-                                    $,
-                                    null
-                                )],
-                                null
-                            ),
-                            'local': ($): _i_out._T_Type_Node.SG.text<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                ['local', Text_Type(
-                                    $,
-                                    {
-                                        'value deserializers': $p['value deserializers'],
-                                    }
-                                )],
-                                null
-                            ),
-                        }),
-                    }
-                )],
+            )],
+            'number': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['number', _i_generic.process_unresolved_state_group(
+                $,
+                {
+                    'states': _pa.dictionary_literal({
+                        'global': ($): _i_out._T_Type_Node.SG._number.SG<_i_in._T_Range> => ['global', _i_generic.process_selected_reference(
+                            $,
+                            null
+                        )],
+                        'local': ($): _i_out._T_Type_Node.SG._number.SG<_i_in._T_Range> => ['local', Number_Type(
+                            $,
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
+                        )],
+                    }),
+                }
+            )],
+            'optional': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['optional', Type_Node(
+                $,
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
+            )],
+            'reference': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['reference', _i_generic.process_group(
+                $,
+                {
+                    'properties': ($) => ({
+                        'referent': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "referent",
+                            }
+                        ), ($) => Type_Node_Reference(
+                            $,
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
+                        )),
+                        'type': _pa.cc(_i_generic.get_entry(
+                            $,
+                            {
+                                'key': "type",
+                            }
+                        ), ($) => _i_generic.process_unresolved_state_group(
+                            $,
+                            {
+                                'states': _pa.dictionary_literal({
+                                    'derived': ($): _i_out._T_Type_Node.SG.reference._type.SG<_i_in._T_Range> => ['derived', _i_generic.process_nothing(
+                                        $,
+                                        null
+                                    )],
+                                    'selected': ($): _i_out._T_Type_Node.SG.reference._type.SG<_i_in._T_Range> => ['selected', _i_generic.process_group(
+                                        $,
+                                        {
+                                            'properties': ($) => ({
+                                                'dependency': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "dependency",
+                                                    }
+                                                ), ($) => _i_generic.process_unresolved_state_group(
+                                                    $,
+                                                    {
+                                                        'states': _pa.dictionary_literal({
+                                                            'acyclic': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency.SG<_i_in._T_Range> => ['acyclic', _i_generic.process_nothing(
+                                                                $,
+                                                                null
+                                                            )],
+                                                            'cyclic': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency.SG<_i_in._T_Range> => ['cyclic', _i_generic.process_nothing(
+                                                                $,
+                                                                null
+                                                            )],
+                                                            'stack': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency.SG<_i_in._T_Range> => ['stack', _i_generic.process_nothing(
+                                                                $,
+                                                                null
+                                                            )],
+                                                        }),
+                                                    }
+                                                )),
+                                                'dictionary': _pa.cc(_i_generic.get_entry(
+                                                    $,
+                                                    {
+                                                        'key': "dictionary",
+                                                    }
+                                                ), ($) => _i_generic.process_derived_reference(
+                                                    $,
+                                                    null
+                                                )),
+                                            }),
+                                        }
+                                    )],
+                                }),
+                            }
+                        )),
+                    }),
+                }
+            )],
+            'state group': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['state group', _i_generic.process_unresolved_dictionary(
+                $,
+                {
+                    'value': ($) => Type_Node(
+                        $,
+                        {
+                            'value deserializers': $p['value deserializers'],
+                        }
+                    ),
+                }
+            )],
+            'text': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['text', _i_generic.process_unresolved_state_group(
+                $,
+                {
+                    'states': _pa.dictionary_literal({
+                        'global': ($): _i_out._T_Type_Node.SG.text.SG<_i_in._T_Range> => ['global', _i_generic.process_selected_reference(
+                            $,
+                            null
+                        )],
+                        'local': ($): _i_out._T_Type_Node.SG.text.SG<_i_in._T_Range> => ['local', Text_Type(
+                            $,
+                            {
+                                'value deserializers': $p['value deserializers'],
+                            }
+                        )],
+                    }),
+                }
+            )],
+            'type parameter': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['type parameter', _i_generic.process_selected_reference(
+                $,
                 null
-            ),
-            'type parameter': ($): _i_out._T_Type_Node<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                ['type parameter', _i_generic.process_selected_reference(
-                    $,
-                    null
-                )],
-                null
-            ),
+            )],
         }),
     }
 )
@@ -2371,52 +2065,34 @@ export const Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $p)
             ), ($) => _i_generic.process_unresolved_list(
                 $,
                 {
-                    'value': ($) => _i_generic.process_state_group(
+                    'value': ($) => _i_generic.process_unresolved_state_group(
                         $,
                         {
                             'states': _pa.dictionary_literal({
-                                'dictionary': ($): _i_out._T_Type_Node_Reference.tail.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                    ['dictionary', _i_generic.process_nothing(
-                                        $,
-                                        null
-                                    )],
+                                'dictionary': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in._T_Range> => ['dictionary', _i_generic.process_nothing(
+                                    $,
                                     null
-                                ),
-                                'group': ($): _i_out._T_Type_Node_Reference.tail.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                    ['group', _i_generic.process_selected_reference(
-                                        $,
-                                        null
-                                    )],
+                                )],
+                                'group': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in._T_Range> => ['group', _i_generic.process_selected_reference(
+                                    $,
                                     null
-                                ),
-                                'identifier value pair': ($): _i_out._T_Type_Node_Reference.tail.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                    ['identifier value pair', _i_generic.process_nothing(
-                                        $,
-                                        null
-                                    )],
+                                )],
+                                'identifier value pair': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in._T_Range> => ['identifier value pair', _i_generic.process_nothing(
+                                    $,
                                     null
-                                ),
-                                'list': ($): _i_out._T_Type_Node_Reference.tail.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                    ['list', _i_generic.process_nothing(
-                                        $,
-                                        null
-                                    )],
+                                )],
+                                'list': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in._T_Range> => ['list', _i_generic.process_nothing(
+                                    $,
                                     null
-                                ),
-                                'optional': ($): _i_out._T_Type_Node_Reference.tail.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                    ['optional', _i_generic.process_nothing(
-                                        $,
-                                        null
-                                    )],
+                                )],
+                                'optional': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in._T_Range> => ['optional', _i_generic.process_nothing(
+                                    $,
                                     null
-                                ),
-                                'state group': ($): _i_out._T_Type_Node_Reference.tail.L<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                                    ['state group', _i_generic.process_selected_reference(
-                                        $,
-                                        null
-                                    )],
+                                )],
+                                'state group': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in._T_Range> => ['state group', _i_generic.process_selected_reference(
+                                    $,
                                     null
-                                ),
+                                )],
                             }),
                         }
                     ),
@@ -2454,45 +2130,39 @@ export const Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _i_gen
                 {
                     'key': "location",
                 }
-            ), ($) => _i_generic.process_state_group(
+            ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'external': ($): _i_out._T_Type_Reference.location<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['external', _i_generic.process_group(
-                                $,
-                                {
-                                    'properties': ($) => ({
-                                        'import': _pa.cc(_i_generic.get_entry(
-                                            $,
-                                            {
-                                                'key': "import",
-                                            }
-                                        ), ($) => _i_generic.process_selected_reference(
-                                            $,
-                                            null
-                                        )),
-                                        'type': _pa.cc(_i_generic.get_entry(
-                                            $,
-                                            {
-                                                'key': "type",
-                                            }
-                                        ), ($) => _i_generic.process_selected_reference(
-                                            $,
-                                            null
-                                        )),
-                                    }),
-                                }
-                            )],
+                        'external': ($): _i_out._T_Type_Reference.location.SG<_i_in._T_Range> => ['external', _i_generic.process_group(
+                            $,
+                            {
+                                'properties': ($) => ({
+                                    'import': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "import",
+                                        }
+                                    ), ($) => _i_generic.process_selected_reference(
+                                        $,
+                                        null
+                                    )),
+                                    'type': _pa.cc(_i_generic.get_entry(
+                                        $,
+                                        {
+                                            'key': "type",
+                                        }
+                                    ), ($) => _i_generic.process_selected_reference(
+                                        $,
+                                        null
+                                    )),
+                                }),
+                            }
+                        )],
+                        'internal': ($): _i_out._T_Type_Reference.location.SG<_i_in._T_Range> => ['internal', _i_generic.process_selected_reference(
+                            $,
                             null
-                        ),
-                        'internal': ($): _i_out._T_Type_Reference.location<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                            ['internal', _i_generic.process_selected_reference(
-                                $,
-                                null
-                            )],
-                            null
-                        ),
+                        )],
                     }),
                 }
             )),

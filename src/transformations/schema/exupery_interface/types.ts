@@ -4,7 +4,7 @@ import * as pa from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 
 import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
-import * as _out from "exupery/dist/generated/interface/schemas/interface/unresolved"
+import * as _out from "exupery/dist/generated/interface/schemas/interface/data_types/unresolved"
 
 import * as sh from "exupery/dist/shorthands/interface"
 
@@ -48,7 +48,7 @@ export const Schema = (
                                 switch ($[0]) {
                                     case 'unconstrained': return pa.ss($, ($) => sh.t.null_())
                                     case 'resolved': return pa.ss($, ($) => sh.t.null_())
-                                    case 'unresolved': return pa.ss($, ($) => sh.t.module_parameter("Source"))
+                                    case 'unresolved': return pa.ss($, ($) => sh.t.parameter_module("Source"))
                                     default: return pa.au($[0])
                                 }
                             }),
@@ -77,7 +77,7 @@ export const Schema = (
                                 case 'resolved': return pa.ss($, ($) => pa.dictionary_literal({}))
                                 case 'unconstrained': return pa.ss($, ($) => pa.dictionary_literal({}))
                                 case 'unresolved': return pa.ss($, ($) => pa.dictionary_literal({
-                                    "Source": sh.t.module_parameter("Source"),
+                                    "Source": sh.t.parameter_module("Source"),
                                 }))
                                 default: return pa.au($[0])
                             }
@@ -276,7 +276,7 @@ export const Type_Node = (
                 },
                 []
             ))
-            case 'type parameter': return pa.ss($, ($) => sh.t.type_parameter($.key))
+            case 'type parameter': return pa.ss($, ($) => sh.t.parameter_type($.key))
             default: return pa.au($[0])
         }
     })

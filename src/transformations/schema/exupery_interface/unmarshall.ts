@@ -4,7 +4,7 @@ import * as pa from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 
 import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
-import * as _out from "exupery/dist/generated/interface/schemas/interface/unresolved"
+import * as _out from "exupery/dist/generated/interface/schemas/interface/data_types/unresolved"
 
 import * as sh from "exupery/dist/shorthands/interface"
 

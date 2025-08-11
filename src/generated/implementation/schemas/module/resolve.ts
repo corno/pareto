@@ -7,7 +7,7 @@ import * as _i_r_schema from "../schema/resolve"
 import * as _i_signatures from "../../../interface/schemas/module/data_types/resolve"
 
 
-export const r_Module: _i_signatures._T_Module<_i_generic._T_Location_Info> = ($, $p) => _pa.block(() => {
+export const r_Module: _i_signatures._T_Module = ($, $p) => _pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return _pa.block(() => {
@@ -40,7 +40,7 @@ export const r_Module: _i_signatures._T_Module<_i_generic._T_Location_Info> = ($
         })
     })
 })
-export const r_Operations: _i_signatures._T_Operations<_i_generic._T_Location_Info> = ($, $p) => _pa.block(() => {
+export const r_Operations: _i_signatures._T_Operations = ($, $p) => _pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return _pa.block(() => {

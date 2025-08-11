@@ -4,7 +4,7 @@ import * as pa from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 
 import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
-import * as _out from "exupery/dist/generated/interface/schemas/interface/unresolved" //FIXME... should be 'unresolved'
+import * as _out from "exupery/dist/generated/interface/schemas/interface/data_types/unresolved"
 
 import { m, t, import_, type, sub } from "exupery/dist/shorthands/interface"
 
@@ -26,16 +26,16 @@ export const Signatures = (
             "resolved": import_.sibling("resolved", [], {}),
             "unresolved": import_.sibling("unresolved", [], {}),
         },
-        { "Source": null },
+        {},
         $.dictionary.map(($, key) => type({}, t.function_(
-            {},
+            { "Source": null },
             t.component_imported("unresolved", key, {
-                "Source": t.module_parameter("Source"),
+                "Source": t.parameter_function("Source"),
             }, []),
             {
                 "parameters": r_Signature_Parameters($['resolved parameters']),
                 "location 2 string": t.component_imported("resolve", "Location 2 String", {
-                    "Source": t.module_parameter("Source"),
+                    "Source": t.parameter_function("Source"),
                 }, []),
             },
             t.component_imported("resolved", key, {}, []),
@@ -130,14 +130,14 @@ export const r_Signature_Parameters = (
             return pa.cc($.type, ($) => {
                 switch ($[0]) {
                     case 'acyclic': return pa.ss($, ($) => t.component_imported("resolve", "Acyclic Lookup", {
-                        "T": r_Type_Reference(x, { 'component sub part': pa.array_literal([ sub.dictionary()]) }),
+                        "T": r_Type_Reference(x, { 'component sub part': pa.array_literal([sub.dictionary()]) }),
                     }, []))
                     case 'cyclic': return pa.ss($, ($) => t.component_imported("resolve", "Cyclic Lookup", {
-                        "T": r_Type_Reference(x, { 'component sub part': pa.array_literal([ sub.dictionary()]) }),
+                        "T": r_Type_Reference(x, { 'component sub part': pa.array_literal([sub.dictionary()]) }),
 
                     }, []))
                     case 'stack': return pa.ss($, ($) => t.component_imported("resolve", "Lookup Stack", {
-                        "T": r_Type_Reference(x, { 'component sub part': pa.array_literal([ sub.dictionary()]) }),
+                        "T": r_Type_Reference(x, { 'component sub part': pa.array_literal([sub.dictionary()]) }),
 
                     }, []))
                     default: return pa.au($[0])

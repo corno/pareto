@@ -8,7 +8,7 @@ import * as _i_out from "../generated/interface/schemas/schema/data_types/resolv
 
 import * as _r from "../generated/interface/core/resolved"
 
-export const r_Imports: _i_signatures.Imports<_i_generic.Location_Info> = ($, $p) => pa.block(() => {
+export const r_Imports: _i_signatures.Imports = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return pa.cc($, ($) => _i_generic.resolve_dictionary(
@@ -39,7 +39,7 @@ export const r_Imports: _i_signatures.Imports<_i_generic.Location_Info> = ($, $p
     ))
 })
 
-export const r_Lookup_Selection: _i_signatures.Lookup_Selection<_i_generic.Location_Info> = ($, $p) => pa.block(() => {
+export const r_Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return pa.block(() => {
@@ -98,7 +98,7 @@ export const r_Lookup_Selection: _i_signatures.Lookup_Selection<_i_generic.Locat
     })
 })
 
-export const r_Number_Type: _i_signatures.Number_Type<_i_generic.Location_Info> = ($, $p) => {
+export const r_Number_Type: _i_signatures.Number_Type = ($, $p) => {
     return {
         'precision': pa.cc($.precision['state group'], ($): _i_out.Number_Type.precision => {
             switch ($[0]) {
@@ -126,7 +126,7 @@ export const r_Number_Type: _i_signatures.Number_Type<_i_generic.Location_Info> 
     }
 }
 
-export const r_Signature_Parameters: _i_signatures.Signature_Parameters<_i_generic.Location_Info> = ($, $p) => {
+export const r_Signature_Parameters: _i_signatures.Signature_Parameters = ($, $p) => {
 
     const p_parameters_values: _i_out.Signature_Parameters.values = _i_generic.resolve_dictionary(
         $.values,
@@ -209,7 +209,7 @@ export const r_Signature_Parameters: _i_signatures.Signature_Parameters<_i_gener
         'values': p_parameters_values,
     }
 }
-export const r_Globals: _i_signatures.Globals<_i_generic.Location_Info> = ($, $p) => {
+export const r_Globals: _i_signatures.Globals = ($, $p) => {
     const p_number_types: _i_out.Globals.number_types = _i_generic.resolve_dictionary(
         $['number types'],
         {
@@ -249,7 +249,7 @@ export const r_Globals: _i_signatures.Globals<_i_generic.Location_Info> = ($, $p
     }
 }
 
-export const r_Signature: _i_signatures.Signature<_i_generic.Location_Info> = ($, $p) => {
+export const r_Signature: _i_signatures.Signature = ($, $p) => {
     const p_parameters: _i_out.Signature.parameters = pa.cc($.parameters['state group'], ($) => {
         switch ($[0]) {
             case 'local': return pa.ss($, ($) => ['local', r_Signature_Parameters($, {
@@ -288,7 +288,7 @@ export const r_Signature: _i_signatures.Signature<_i_generic.Location_Info> = ($
     }
 }
 
-export const r_Signatures: _i_signatures.Signatures<_i_generic.Location_Info> = ($, $p) => {
+export const r_Signatures: _i_signatures.Signatures = ($, $p) => {
     return _i_generic.resolve_dense_ordered_dictionary(
         $,
         {
@@ -324,7 +324,7 @@ export const r_Signatures: _i_signatures.Signatures<_i_generic.Location_Info> = 
     )
 }
 
-export const r_Schemas: _i_signatures.Schemas<_i_generic.Location_Info> = ($, $p) => pa.block(() => {
+export const r_Schemas: _i_signatures.Schemas = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return _i_generic.resolve_ordered_dictionary(
@@ -512,7 +512,7 @@ export const r_Schemas: _i_signatures.Schemas<_i_generic.Location_Info> = ($, $p
     )
 })
 
-export const r_Text_Type: _i_signatures.Text_Type<_i_generic.Location_Info> = ($, $p) => {
+export const r_Text_Type: _i_signatures.Text_Type = ($, $p) => {
     return {
         'type': pa.cc($.type['state group'], ($): _i_out.Text_Type._type => {
             switch ($[0]) {
@@ -524,7 +524,7 @@ export const r_Text_Type: _i_signatures.Text_Type<_i_generic.Location_Info> = ($
     }
 }
 
-export const r_Type_Node: _i_signatures.Type_Node<_i_generic.Location_Info> = ($, $p) => {
+export const r_Type_Node: _i_signatures.Type_Node = ($, $p) => {
     const loc = $.location
     return pa.cc($['state group'], ($) => {
         switch ($[0]) {
@@ -760,7 +760,7 @@ export const r_Type_Node: _i_signatures.Type_Node<_i_generic.Location_Info> = ($
     })
 }
 
-export const r_Type_Parameters: _i_signatures.Type_Parameters<_i_generic.Location_Info> = ($, $p) => _i_generic.resolve_dictionary(
+export const r_Type_Parameters: _i_signatures.Type_Parameters = ($, $p) => _i_generic.resolve_dictionary(
     $,
     {
         'location 2 string': $p['location 2 string'],
@@ -770,7 +770,7 @@ export const r_Type_Parameters: _i_signatures.Type_Parameters<_i_generic.Locatio
     }
 )
 
-export const r_Type_Reference: _i_signatures.Type_Reference<_i_generic.Location_Info> = ($, $p) => {
+export const r_Type_Reference: _i_signatures.Type_Reference = ($, $p) => {
     const x: _i_out.Type_Reference.location = pa.cc($.location['state group'], ($) => {
         switch ($[0]) {
             case 'external': return pa.ss($, ($): _i_out.Type_Reference.location => {
@@ -819,7 +819,7 @@ export const r_Type_Reference: _i_signatures.Type_Reference<_i_generic.Location_
 }
 
 
-export const r_Type_Part_Reference: _i_signatures.Type_Node_Reference<_i_generic.Location_Info> = ($, $p) => {
+export const r_Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) => {
     const p_type_location = r_Type_Reference($['type location'], $p)
     const p_tail_x: _i_generic.Path<_i_generic.Location_Info, _i_out.Type_Node_Reference.tail.L, _i_out.Type_Node> = _i_generic.resolve_path(
         $.tail,
@@ -928,7 +928,7 @@ export const r_Type_Part_Reference: _i_signatures.Type_Node_Reference<_i_generic
     }
 }
 
-export const r_Option_Constraints: _i_signatures.Option_Constraints<_i_generic.Location_Info> = ($, $p) => {
+export const r_Option_Constraints: _i_signatures.Option_Constraints = ($, $p) => {
     return pa.cc($, ($) => _i_generic.resolve_dictionary(
         $,
         {
@@ -974,7 +974,7 @@ export const r_Option_Constraints: _i_signatures.Option_Constraints<_i_generic.L
     ))
 }
 
-export const r_Constraint: _i_signatures.Constraint<_i_generic.Location_Info> = ($, $p) => {
+export const r_Constraint: _i_signatures.Constraint = ($, $p) => {
     const p_selection: _i_out.Constraint.selection = pa.cc($['selection'], ($) => r_Relative_Value_Selection(
         $,
         {
@@ -1023,7 +1023,7 @@ export const r_Constraint: _i_signatures.Constraint<_i_generic.Location_Info> = 
     }
 }
 
-export const r_Property_Constraints: _i_signatures.Property_Constraints<_i_generic.Location_Info> = ($, $p) => {
+export const r_Property_Constraints: _i_signatures.Property_Constraints = ($, $p) => {
     return pa.cc($, ($) => _i_generic.resolve_ordered_dictionary(
         $,
         {
@@ -1075,7 +1075,7 @@ export const r_Property_Constraints: _i_signatures.Property_Constraints<_i_gener
     ))
 }
 
-export const r_Node_Resolver: _i_signatures.Node_Resolver<_i_generic.Location_Info> = ($, $p) => {
+export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
     const loc = $.location
     const p_type = pa.cc($['state group'], ($): _i_out.Node_Resolver => {
         switch ($[0]) {
@@ -1820,7 +1820,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver<_i_generic.Location_In
     return p_type
 }
 
-export const r_Relative_Value_Selection: _i_signatures.Relative_Value_Selection<_i_generic.Location_Info> = ($, $p) => pa.block(() => {
+export const r_Relative_Value_Selection: _i_signatures.Relative_Value_Selection = ($, $p) => pa.block(() => {
 
     const l2s = $p['location 2 string']
     const params = $p['parameters']
@@ -1912,7 +1912,7 @@ export const r_Relative_Value_Selection: _i_signatures.Relative_Value_Selection<
     }
 })
 
-export const r_Possible_Value_Selection: _i_signatures.Optional_Value_Initialization<_i_generic.Location_Info> = ($, $p) => pa.block(() => {
+export const r_Possible_Value_Selection: _i_signatures.Optional_Value_Initialization = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return pa.cc($['state group'], ($) => {
@@ -1927,7 +1927,7 @@ export const r_Possible_Value_Selection: _i_signatures.Optional_Value_Initializa
     })
 })
 
-export const r_Possibly_Optional: _i_signatures.Possible_Value_Selection<_i_generic.Location_Info> = ($, $p) => pa.block(() => {
+export const r_Possibly_Optional: _i_signatures.Possible_Value_Selection = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return pa.cc($['state group'], ($) => {
@@ -2008,7 +2008,7 @@ export const r_Possibly_Optional: _i_signatures.Possible_Value_Selection<_i_gene
     })
 })
 
-export const r_Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selection<_i_generic.Location_Info> = ($, $p) => pa.block(() => {
+export const r_Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selection = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return pa.block(() => {

@@ -4,8 +4,8 @@ import * as _ea from 'exupery-core-alg'
 import * as pdev from 'exupery-core-dev'
 
 import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
-import * as _out from "exupery/dist/generated/interface/schemas/implementation/unresolved" //FIXME... should be 'unresolved'
-import * as _out_interface from "exupery/dist/generated/interface/schemas/interface/unresolved" //FIXME... should be 'unresolved'
+import * as _out from "exupery/dist/generated/interface/schemas/implementation/data_types/unresolved"
+import * as _out_interface from "exupery/dist/generated/interface/schemas/interface/data_types/unresolved"
 
 import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"
@@ -78,8 +78,8 @@ export const Type_Node = (
                 _ea.dictionary_literal({
                     "deserializer": i.select_from_parameter("value deserializers", _ea.cc($, ($) => {
                         switch ($[0]) {
-                            case 'global':return _ea.ss($, ($) => [ "custom numbers", $.key])
-                            case 'local': return _ea.ss($, ($) => [ "default number" ])
+                            case 'global': return _ea.ss($, ($) => ["custom numbers", $.key])
+                            case 'local': return _ea.ss($, ($) => ["default number"])
                             default: return _ea.au($[0])
                         }
                     })),
@@ -247,33 +247,28 @@ export const Type_Node = (
                 })
             ))
             case 'state group': return _ea.ss($, ($) => i.call(
-                s.from_variable_import(" i generic", "process state group", []),
+                s.from_variable_import(" i generic", $p.constrained ? "process unresolved state group" : "process unconstrained state group", []),
                 i.select_from_context([]),
                 _ea.dictionary_literal({
                     "states": i.dictionary_literal($.map(($, key) => i.function_(
                         false,
-                        i.call(
-                            s.from_variable_import(" i generic", $p.constrained ? "wrap unresolved state group" : "wrap unconstrained state group", []),
-                            i.case_(
-                                key,
-                                Type_Node(
-                                    $,
-                                    {
-                                        'temp type': $p['temp type'],
-                                        'temp subselection': op['append element'](
-                                            $p['temp subselection'],
-                                            {
-                                                'element': sub.state_group(key),
-                                            },
-                                        ),
-                                        'constrained': $p.constrained
-                                    }
-                                )
-                            ),
-                            _ea.dictionary_literal({
-                            })
+                        i.case_(
+                            key,
+                            Type_Node(
+                                $,
+                                {
+                                    'temp type': $p['temp type'],
+                                    'temp subselection': op['append element'](
+                                        $p['temp subselection'],
+                                        {
+                                            'element': sub.state_group(key),
+                                        },
+                                    ),
+                                    'constrained': $p.constrained
+                                }
+                            )
                         ),
-                        t.component_imported("out", $p['temp type'], {}, $p['temp subselection'].__get_raw_copy())
+                        t.component_imported("out", $p['temp type'], {}, op['append element']($p['temp subselection'], {'element': sub.group("SG")}).__get_raw_copy())
                     )))
                 })
             ))

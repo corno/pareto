@@ -40,78 +40,72 @@ export const Module: _i_signatures._T_Module = ($, $p) => _i_generic.process_gro
 export const Operations: _i_signatures._T_Operations = ($, $p) => _i_generic.process_unresolved_dictionary(
     $,
     {
-        'value': ($) => _i_generic.process_state_group(
+        'value': ($) => _i_generic.process_unresolved_state_group(
             $,
             {
                 'states': _pa.dictionary_literal({
-                    'operation': ($): _i_out._T_Operations.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                        ['operation', _i_generic.process_group(
-                            $,
-                            {
-                                'properties': ($) => ({
-                                    'context': _pa.cc(_i_generic.get_entry(
-                                        $,
-                                        {
-                                            'key': "context",
-                                        }
-                                    ), ($) => _i_r_schema.Type_Node(
-                                        $,
-                                        {
-                                            'value deserializers': $p['value deserializers'],
-                                        }
-                                    )),
-                                    'parameters': _pa.cc(_i_generic.get_entry(
-                                        $,
-                                        {
-                                            'key': "parameters",
-                                        }
-                                    ), ($) => _i_generic.process_unresolved_dictionary(
-                                        $,
-                                        {
-                                            'value': ($) => _i_r_schema.Type_Node(
-                                                $,
-                                                {
-                                                    'value deserializers': $p['value deserializers'],
-                                                }
-                                            ),
-                                        }
-                                    )),
-                                    'result': _pa.cc(_i_generic.get_entry(
-                                        $,
-                                        {
-                                            'key': "result",
-                                        }
-                                    ), ($) => _i_r_schema.Type_Node(
-                                        $,
-                                        {
-                                            'value deserializers': $p['value deserializers'],
-                                        }
-                                    )),
-                                    'type parameters': _pa.cc(_i_generic.get_entry(
-                                        $,
-                                        {
-                                            'key': "type parameters",
-                                        }
-                                    ), ($) => _i_r_schema.Type_Parameters(
-                                        $,
-                                        {
-                                            'value deserializers': $p['value deserializers'],
-                                        }
-                                    )),
-                                }),
-                            }
-                        )],
-                        null
-                    ),
-                    'set': ($): _i_out._T_Operations.D<_i_in._T_Range> => _i_generic.wrap_unresolved_state_group(
-                        ['set', Operations(
-                            $,
-                            {
-                                'value deserializers': $p['value deserializers'],
-                            }
-                        )],
-                        null
-                    ),
+                    'operation': ($): _i_out._T_Operations.D.SG<_i_in._T_Range> => ['operation', _i_generic.process_group(
+                        $,
+                        {
+                            'properties': ($) => ({
+                                'context': _pa.cc(_i_generic.get_entry(
+                                    $,
+                                    {
+                                        'key': "context",
+                                    }
+                                ), ($) => _i_r_schema.Type_Node(
+                                    $,
+                                    {
+                                        'value deserializers': $p['value deserializers'],
+                                    }
+                                )),
+                                'parameters': _pa.cc(_i_generic.get_entry(
+                                    $,
+                                    {
+                                        'key': "parameters",
+                                    }
+                                ), ($) => _i_generic.process_unresolved_dictionary(
+                                    $,
+                                    {
+                                        'value': ($) => _i_r_schema.Type_Node(
+                                            $,
+                                            {
+                                                'value deserializers': $p['value deserializers'],
+                                            }
+                                        ),
+                                    }
+                                )),
+                                'result': _pa.cc(_i_generic.get_entry(
+                                    $,
+                                    {
+                                        'key': "result",
+                                    }
+                                ), ($) => _i_r_schema.Type_Node(
+                                    $,
+                                    {
+                                        'value deserializers': $p['value deserializers'],
+                                    }
+                                )),
+                                'type parameters': _pa.cc(_i_generic.get_entry(
+                                    $,
+                                    {
+                                        'key': "type parameters",
+                                    }
+                                ), ($) => _i_r_schema.Type_Parameters(
+                                    $,
+                                    {
+                                        'value deserializers': $p['value deserializers'],
+                                    }
+                                )),
+                            }),
+                        }
+                    )],
+                    'set': ($): _i_out._T_Operations.D.SG<_i_in._T_Range> => ['set', Operations(
+                        $,
+                        {
+                            'value deserializers': $p['value deserializers'],
+                        }
+                    )],
                 }),
             }
         ),
