@@ -12,7 +12,7 @@ import { $ as resolver } from "./$.resolvers.astn"
 
 export const $: g_.Schemas.D<pd.Source_Location> = schema_(
     {
-        "schema": import_(0, "schema")
+        "schema": import_("schema")
     },
     globals,
     schema,

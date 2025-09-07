@@ -4,17 +4,18 @@ import * as pdev from 'exupery-core-dev'
 
 import { impure, pure } from "pareto-standard-operations"
 
-import * as definition from "../../generated/interface/schemas/schema/data_types/resolved"
+import * as definition from "../generated/interface/schemas/schema/data_types/resolved"
 
 import * as _in from "astn/dist/generated/interface/schemas/ast/unconstrained"
 import * as _in_token from "astn/dist/generated/interface/schemas/token/unconstrained"
 
-import * as _out from "../../temp_unmashall_result_types"
+import * as _out from "../temp_unmashall_result_types"
 
 export const Document = (
     $: _in.Document,
     $p: {
-        definition: definition.Schemas.D.SG.schema,
+        'root type': string
+        'definition': definition.Schemas.D.SG.schema,
     }
 ): _out.Document => {
 
@@ -22,9 +23,9 @@ export const Document = (
         'content': Node(
             $.content,
             {
-                'definition': $p.definition.types.dictionary.__get_entry("Root").transform(
+                'definition': $p.definition.types.dictionary.__get_entry($p['root type']).transform(
                     ($) => $,
-                    () => pa.panic(`boekhouding schema Root type not found`)
+                    () => pa.panic(`root type ${$p['root type']} not found`)
                 ).node
             },
         )

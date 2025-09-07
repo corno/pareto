@@ -1097,11 +1097,10 @@ export const schemas = (
 }
 
 export const import_ = (
-    up: number,
     name: string,
 ): unresolved.Imports.D<pd.Source_Location> => {
     return {
-        'schema set child': wrap_stack_reference(up, name),
+        'schema set child': wrap_stack_reference(name),
         'schema': null,
     }
 }
