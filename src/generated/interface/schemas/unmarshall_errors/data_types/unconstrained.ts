@@ -4,8 +4,13 @@ import * as _i_core from "../../../core/unconstrained"
 
 // **** TYPES
 
-export type _T_Errors = _i_core._T_List<null, {
+export type _T_Document_Range = {
+    readonly 'document': string
     readonly 'range': _T_Range
+}
+
+export type _T_Errors = _i_core._T_List<null, {
+    readonly 'range': _T_Document_Range
     readonly 'type': _i_core._T_State_Group<null, 
         | readonly ['error', _i_core._T_State_Group<null, 
             | readonly ['duplicate property', {
@@ -15,6 +20,9 @@ export type _T_Errors = _i_core._T_List<null, {
                 readonly 'expected': _i_core._T_State_Group<null, 
                     | readonly ['dictionary', null]
                     | readonly ['group', null]
+                    | readonly ['list', null]
+                    | readonly ['not set', null]
+                    | readonly ['set or not set', null]
                     | readonly ['text', null]
                 >
             }]
@@ -58,6 +66,8 @@ export type _T_Relative_Location = {
 
 // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
 
+export type Document_Range = _T_Document_Range
+
 export type Errors = _T_Errors
 
 export type Location = _T_Location
@@ -68,13 +78,21 @@ export type Relative_Location = _T_Relative_Location
 
 // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
 
+export namespace _T_Document_Range {
+    export type document = string
+    
+    export namespace range {
+    }
+    export type range = _T_Range
+}
+
 export namespace _T_Errors {
     
     export namespace L {
         
         export namespace range {
         }
-        export type range = _T_Range
+        export type range = _T_Document_Range
         
         export namespace _type {
             
@@ -98,16 +116,25 @@ export namespace _T_Errors {
                                 export namespace SG {
                                     export type dictionary = null
                                     export type group = null
+                                    export type list = null
+                                    export type not_set = null
+                                    export type set_or_not_set = null
                                     export type text = null
                                 }
                                 export type SG = 
                                     | readonly ['dictionary', null]
                                     | readonly ['group', null]
+                                    | readonly ['list', null]
+                                    | readonly ['not set', null]
+                                    | readonly ['set or not set', null]
                                     | readonly ['text', null]
                             }
                             export type expected = _i_core._T_State_Group<null, 
                                 | readonly ['dictionary', null]
                                 | readonly ['group', null]
+                                | readonly ['list', null]
+                                | readonly ['not set', null]
+                                | readonly ['set or not set', null]
                                 | readonly ['text', null]
                             >
                         }
@@ -115,6 +142,9 @@ export namespace _T_Errors {
                             readonly 'expected': _i_core._T_State_Group<null, 
                                 | readonly ['dictionary', null]
                                 | readonly ['group', null]
+                                | readonly ['list', null]
+                                | readonly ['not set', null]
+                                | readonly ['set or not set', null]
                                 | readonly ['text', null]
                             >
                         }
@@ -176,6 +206,9 @@ export namespace _T_Errors {
                             readonly 'expected': _i_core._T_State_Group<null, 
                                 | readonly ['dictionary', null]
                                 | readonly ['group', null]
+                                | readonly ['list', null]
+                                | readonly ['not set', null]
+                                | readonly ['set or not set', null]
                                 | readonly ['text', null]
                             >
                         }]
@@ -201,6 +234,9 @@ export namespace _T_Errors {
                         readonly 'expected': _i_core._T_State_Group<null, 
                             | readonly ['dictionary', null]
                             | readonly ['group', null]
+                            | readonly ['list', null]
+                            | readonly ['not set', null]
+                            | readonly ['set or not set', null]
                             | readonly ['text', null]
                         >
                     }]
@@ -249,6 +285,9 @@ export namespace _T_Errors {
                         readonly 'expected': _i_core._T_State_Group<null, 
                             | readonly ['dictionary', null]
                             | readonly ['group', null]
+                            | readonly ['list', null]
+                            | readonly ['not set', null]
+                            | readonly ['set or not set', null]
                             | readonly ['text', null]
                         >
                     }]
@@ -282,6 +321,9 @@ export namespace _T_Errors {
                     readonly 'expected': _i_core._T_State_Group<null, 
                         | readonly ['dictionary', null]
                         | readonly ['group', null]
+                        | readonly ['list', null]
+                        | readonly ['not set', null]
+                        | readonly ['set or not set', null]
                         | readonly ['text', null]
                     >
                 }]
@@ -308,7 +350,7 @@ export namespace _T_Errors {
         >
     }
     export type L = {
-        readonly 'range': _T_Range
+        readonly 'range': _T_Document_Range
         readonly 'type': _i_core._T_State_Group<null, 
             | readonly ['error', _i_core._T_State_Group<null, 
                 | readonly ['duplicate property', {
@@ -318,6 +360,9 @@ export namespace _T_Errors {
                     readonly 'expected': _i_core._T_State_Group<null, 
                         | readonly ['dictionary', null]
                         | readonly ['group', null]
+                        | readonly ['list', null]
+                        | readonly ['not set', null]
+                        | readonly ['set or not set', null]
                         | readonly ['text', null]
                     >
                 }]
@@ -371,13 +416,21 @@ export namespace _T_Relative_Location {
 
 // *** ALIASES FOR NESTED TYPES
 
+export namespace Document_Range {
+    export type document = string
+    
+    export namespace range {
+    }
+    export type range = _T_Range
+}
+
 export namespace Errors {
     
     export namespace L {
         
         export namespace range {
         }
-        export type range = _T_Range
+        export type range = _T_Document_Range
         
         export namespace _type {
             
@@ -401,16 +454,25 @@ export namespace Errors {
                                 export namespace SG {
                                     export type dictionary = null
                                     export type group = null
+                                    export type list = null
+                                    export type not_set = null
+                                    export type set_or_not_set = null
                                     export type text = null
                                 }
                                 export type SG = 
                                     | readonly ['dictionary', null]
                                     | readonly ['group', null]
+                                    | readonly ['list', null]
+                                    | readonly ['not set', null]
+                                    | readonly ['set or not set', null]
                                     | readonly ['text', null]
                             }
                             export type expected = _i_core._T_State_Group<null, 
                                 | readonly ['dictionary', null]
                                 | readonly ['group', null]
+                                | readonly ['list', null]
+                                | readonly ['not set', null]
+                                | readonly ['set or not set', null]
                                 | readonly ['text', null]
                             >
                         }
@@ -418,6 +480,9 @@ export namespace Errors {
                             readonly 'expected': _i_core._T_State_Group<null, 
                                 | readonly ['dictionary', null]
                                 | readonly ['group', null]
+                                | readonly ['list', null]
+                                | readonly ['not set', null]
+                                | readonly ['set or not set', null]
                                 | readonly ['text', null]
                             >
                         }
@@ -479,6 +544,9 @@ export namespace Errors {
                             readonly 'expected': _i_core._T_State_Group<null, 
                                 | readonly ['dictionary', null]
                                 | readonly ['group', null]
+                                | readonly ['list', null]
+                                | readonly ['not set', null]
+                                | readonly ['set or not set', null]
                                 | readonly ['text', null]
                             >
                         }]
@@ -504,6 +572,9 @@ export namespace Errors {
                         readonly 'expected': _i_core._T_State_Group<null, 
                             | readonly ['dictionary', null]
                             | readonly ['group', null]
+                            | readonly ['list', null]
+                            | readonly ['not set', null]
+                            | readonly ['set or not set', null]
                             | readonly ['text', null]
                         >
                     }]
@@ -552,6 +623,9 @@ export namespace Errors {
                         readonly 'expected': _i_core._T_State_Group<null, 
                             | readonly ['dictionary', null]
                             | readonly ['group', null]
+                            | readonly ['list', null]
+                            | readonly ['not set', null]
+                            | readonly ['set or not set', null]
                             | readonly ['text', null]
                         >
                     }]
@@ -585,6 +659,9 @@ export namespace Errors {
                     readonly 'expected': _i_core._T_State_Group<null, 
                         | readonly ['dictionary', null]
                         | readonly ['group', null]
+                        | readonly ['list', null]
+                        | readonly ['not set', null]
+                        | readonly ['set or not set', null]
                         | readonly ['text', null]
                     >
                 }]
@@ -611,7 +688,7 @@ export namespace Errors {
         >
     }
     export type L = {
-        readonly 'range': _T_Range
+        readonly 'range': _T_Document_Range
         readonly 'type': _i_core._T_State_Group<null, 
             | readonly ['error', _i_core._T_State_Group<null, 
                 | readonly ['duplicate property', {
@@ -621,6 +698,9 @@ export namespace Errors {
                     readonly 'expected': _i_core._T_State_Group<null, 
                         | readonly ['dictionary', null]
                         | readonly ['group', null]
+                        | readonly ['list', null]
+                        | readonly ['not set', null]
+                        | readonly ['set or not set', null]
                         | readonly ['text', null]
                     >
                 }]

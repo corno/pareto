@@ -1,7 +1,8 @@
 //core
 import * as _ea from 'exupery-core-alg'
 import * as _er from 'exupery-core-resources'
-import * as _ed from 'exupery-core-data'
+import * as _edata from 'exupery-core-data'
+import * as _ed from 'exupery-core-dev'
 
 //data
 import { $ as poormans_modules } from "../temporary_schemas/all"
@@ -32,7 +33,7 @@ export const $: (
 ) => void = ($, $p) => {
 
 
-    const do_it = (
+    const validate_instance_against_schema = (
         schema_path: string,
         schema_name: string,
         root_type: string,
@@ -97,23 +98,35 @@ export const $: (
                                             $,
                                             {
                                                 'definition': definition,
-                                                'root type': root_type
+                                                'root type': root_type,
+                                                'document path': instance_path,
                                             }
                                         )
-                                       write_to_console.Block(
-                                         t_ue_fp.Errors(t_ur_ue.Document(du_result)),
-                                         {
-                                            'indentation': '  ',
-                                            'channel': 'error'
-                                         }
-                                       )
+                                        write_to_console.Block(
+                                            t_ue_fp.Errors(
+                                                t_ur_ue.Document(du_result),
+                                                {
+                                                    'line offset': 1,
+                                                    'column offset': 1,
+                                                }
+                                            ),
+                                            {
+                                                'indentation': '  ',
+                                                'channel': 'error'
+                                            }
+                                        )
                                     })
                                     default: return _ea.au($[0])
                                 }
                             })
 
                         },
-                        () => _ea.panic("No schema found")
+                        () => {
+                            resolved_schema_schema.schemas.dictionary.map(($, key) => {
+                                _ed.log_debug_message(`Available schema: ${key}`)
+                            })
+                            _ea.panic(`schema not found: ${schema_name}`)
+                        }
                     )
                 })
                 default: return _ea.au($[0])
@@ -128,10 +141,10 @@ export const $: (
         )
     }
 
-    do_it(
+    validate_instance_against_schema(
         "./out/serialized/pareto.astn",
-        "Schema",
-        "Schema",
+        "module",
+        "Module",
         "./out/serialized/pareto-json.astn",
     )
 

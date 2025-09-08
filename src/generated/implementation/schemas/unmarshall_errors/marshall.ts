@@ -5,8 +5,24 @@ import * as _i_out from "../../../interface/core/astn_target"
 import * as _i_signatures from "../../../interface/schemas/unmarshall_errors/marshall"
 
 
-export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => ['verbose group', _pa.dictionary_literal({
+export const Document_Range: _i_signatures._T_Document_Range = ($, $p) => ['verbose group', _pa.dictionary_literal({
+    'document': _pa.cc($['document'], ($) => ['text', ({
+        'delimiter': ['quote', null],
+        'value': $,
+    })]),
     'range': _pa.cc($['range'], ($) => Range(
+        $,
+        {
+            'value serializers': $p['value serializers'],
+        }
+    )),
+})]
+export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => ['verbose group', _pa.dictionary_literal({
+    'file': _pa.cc($.range.document, ($) => ['text', ({
+        'delimiter': ['quote', null],
+        'value': $,
+    })]),
+    'range': _pa.cc($['range'], ($) => Document_Range(
         $,
         {
             'value serializers': $p['value serializers'],
@@ -38,6 +54,18 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                                         }))
                                         case 'group': return _pa.ss($, ($) => ({
                                             'state': "group",
+                                            'value': ['nothing', null],
+                                        }))
+                                        case 'list': return _pa.ss($, ($) => ({
+                                            'state': "list",
+                                            'value': ['nothing', null],
+                                        }))
+                                        case 'not set': return _pa.ss($, ($) => ({
+                                            'state': "not set",
+                                            'value': ['nothing', null],
+                                        }))
+                                        case 'set or not set': return _pa.ss($, ($) => ({
+                                            'state': "set or not set",
                                             'value': ['nothing', null],
                                         }))
                                         case 'text': return _pa.ss($, ($) => ({

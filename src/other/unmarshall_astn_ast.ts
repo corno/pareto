@@ -1,4 +1,4 @@
-import * as pa from 'exupery-core-alg'
+import * as _ea from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 import * as pdev from 'exupery-core-dev'
 
@@ -16,6 +16,7 @@ export const Document = (
     $p: {
         'root type': string
         'definition': definition.Schemas.D.SG.schema,
+        'document path': string,
     }
 ): _out.Document => {
 
@@ -25,8 +26,14 @@ export const Document = (
             {
                 'definition': $p.definition.types.dictionary.__get_entry($p['root type']).transform(
                     ($) => $,
-                    () => pa.panic(`root type ${$p['root type']} not found`)
-                ).node
+                    () => {
+                        $p.definition.types.dictionary.map(($, key) => {
+                            pdev.log_debug_message(`available type: ${key}`)
+                        })
+                        _ea.panic(`root type ${$p['root type']} not found`)
+                    }
+                ).node,
+                'document path': $p['document path'],
             },
         )
     }
@@ -36,7 +43,8 @@ export const Document = (
 export const Optional_Node = (
     $: pt.Optional_Value<_in.Value>,
     $p: {
-        definition: definition.Type_Node,
+        'definition': definition.Type_Node,
+        'document path': string,
     }
 ): _out.Node => {
     return $.transform(
@@ -48,26 +56,30 @@ export const Optional_Node = (
 export const Node = (
     $: _in.Value,
     $p: {
-        definition: definition.Type_Node,
+        'definition': definition.Type_Node,
+        'document path': string,
     }
 ): _out.Node => {
     const data = $
-    return pa.cc($p.definition, ($): _out.Node => {
+    return _ea.cc($p.definition, ($): _out.Node => {
         switch ($[0]) {
-            case 'number': return pa.ss($, ($): _out.Node => {
+            case 'number': return _ea.ss($, ($): _out.Node => {
                 return ['number', {
                     'definition': $,
-                    'status': pa.cc(data.type, ($) => {
+                    'status': _ea.cc(data.type, ($) => {
                         switch ($[0]) {
-                            case 'string': return pa.ss($, ($) => ['valid', {
-                                'range': $.range,
-                                'correct string type': pa.cc($.type, ($) => {
+                            case 'string': return _ea.ss($, ($) => ['valid', {
+                                'range': {
+                                    'document': $p['document path'],
+                                    'range': $.range,
+                                },
+                                'correct string type': _ea.cc($.type, ($) => {
                                     switch ($[0]) {
                                         case 'quoted': return true
                                         case 'apostrophed': return false
                                         case 'undelimited': return true
                                         case 'backticked': return false
-                                        default: return pa.au($[0])
+                                        default: return _ea.au($[0])
                                     }
                                 })
                             }])
@@ -77,23 +89,91 @@ export const Node = (
                     })
                 }]
             })
-            case 'boolean': return pa.ss($, ($) => pdev.implement_me())
-            case 'list': return pa.ss($, ($) => pdev.implement_me())
-            case 'nothing': return pa.ss($, ($) => pdev.implement_me())
-            case 'reference': return pa.ss($, ($) => pdev.implement_me())
-            case 'component': return pa.ss($, ($) => pdev.implement_me())
-            case 'dictionary': return pa.ss($, ($): _out.Node => {
+            case 'boolean': return _ea.ss($, ($): _out.Node => {
+                return ['boolean', {
+                    'definition': $,
+                    'status': _ea.cc(data.type, ($) => {
+                        switch ($[0]) {
+                            case 'string': return _ea.ss($, ($) => ['valid', {
+                                'range': {
+                                    'document': $p['document path'],
+                                    'range': $.range,
+                                },
+                                'correct string type': _ea.cc($.type, ($) => {
+                                    switch ($[0]) {
+                                        case 'quoted': return false
+                                        case 'apostrophed': return false
+                                        case 'undelimited': return true
+                                        case 'backticked': return false
+                                        default: return _ea.au($[0])
+                                    }
+                                })
+                            }])
+                            // case 'not set': return pa.ss($, () => ['invalid', data.location])
+                            default: return pdev.implement_me()
+                        }
+                    })
+                }]
+            })
+            case 'list': return _ea.ss($, ($) => pdev.implement_me())
+            case 'nothing': return _ea.ss($, ($): _out.Node => {
+                return ['nothing', {
+                    'definition': $,
+                    'status': _ea.cc(data.type, ($) => {
+                        switch ($[0]) {
+                            case 'not set': return _ea.ss($, ($) => ['valid', null])
+                            default: return ['invalid value type', {
+                                'document': $p['document path'],
+                                'range': data.range,
+                            }]
+                        }
+                    })
+                }]
+            })
+            case 'reference': return _ea.ss($, ($): _out.Node => {
+                return ['reference', {
+                    'definition': $,
+                    'status': _ea.cc(data.type, ($) => {
+                        switch ($[0]) {
+                            case 'string': return _ea.ss($, ($) => ['valid', null])
+                            // case 'not set': return pa.ss($, () => ['invalid', data.location])
+                            default: return pdev.implement_me()
+                        }
+                    })
+                }]
+            })
+            case 'component': return _ea.ss($, ($): _out.Node => {
+                return ['component', {
+                    'definition': $,
+                    'node': Node(
+                        data,
+                        {
+                            'definition': _ea.cc($, ($) => {
+                                switch ($[0]) {
+                                    case 'external': return _ea.ss($, ($) => $.type.entry.node)
+                                    case 'internal': return _ea.ss($, ($) => $.entry.node)
+                                    case 'internal cyclic': return _ea.ss($, ($) => $.entry.compute().node)
+                                    default: return _ea.au($[0])
+                                }
+                            }),
+                            'document path': $p['document path'],
+                        }
+                    )
+                }]
+                // return pdev.implement_me()
+            })
+            case 'dictionary': return _ea.ss($, ($): _out.Node => {
                 const prop_def = $.node
                 return ['dictionary', {
                     'definition': $,
-                    'status': pa.cc(data.type, ($) => {
+                    'status': _ea.cc(data.type, ($) => {
                         switch ($[0]) {
-                            case 'indexed collection': return pa.ss($, ($) => {
-                                const entries = impure.list.group(pa.cc($, ($): _in.Key_Value_Pairs => {
+                            case 'indexed collection': return _ea.ss($, ($) => {
+                                const entries = impure.list.group(_ea.cc($, ($): _in.Key_Value_Pairs => {
                                     switch ($[0]) {
-                                        case 'dictionary': return pa.ss($, ($) => $.entries)
-                                        case 'verbose group': return pa.ss($, ($) => $.entries)
-                                        default: return pa.au($[0])
+                                        case 'dictionary': return _ea.ss($, ($) => $.entries)
+                                        case 'verbose group': return _ea.ss($, ($) => $.entries)
+                                        default: return _ea.au($[0])
                                     }
                                 }).map(($) => {
                                     return {
@@ -108,6 +188,7 @@ export const Node = (
                                         ),
                                         {
                                             'definition': prop_def,
+                                            'document path': $p['document path'],
                                         },
                                     )],
                                     (): _out.Entry => ['multiple', $.map(($): _out.Duplicate_Entry => ({
@@ -117,18 +198,25 @@ export const Node = (
                                             ),
                                             {
                                                 'definition': prop_def,
+                                                'document path': $p['document path'],
                                             },
                                         ),
-                                        'range': $.key.range
+                                        'range': {
+                                            'document': $p['document path'],
+                                            'range': $.key.range
+                                        }
                                     }))]
                                 ))]
                             })
-                            default: return ['invalid', data.range]
+                            default: return ['invalid', {
+                                'document': $p['document path'],
+                                'range': data.range,
+                            }]
                         }
                     })
                 }]
             })
-            case 'group': return pa.ss($, ($): _out.Node => {
+            case 'group': return _ea.ss($, ($): _out.Node => {
                 const group_def = $
                 // pa.cc(data.type, ($) => {
                 // //     switch ($[0]) {
@@ -169,16 +257,16 @@ export const Node = (
                 // // })
                 return ['group', {
                     'definition': $,
-                    'type': pa.cc(data, ($) => {
+                    'type': _ea.cc(data, ($) => {
                         const value = $
-                        return pa.cc($.type, ($) => {
+                        return _ea.cc($.type, ($) => {
                             switch ($[0]) {
-                                case 'indexed collection': return pa.ss($, ($): _out.Group_Type => {
-                                    const entries = impure.list.group(pa.cc($, ($): _in.Key_Value_Pairs => {
+                                case 'indexed collection': return _ea.ss($, ($): _out.Group_Type => {
+                                    const entries = impure.list.group(_ea.cc($, ($): _in.Key_Value_Pairs => {
                                         switch ($[0]) {
-                                            case 'dictionary': return pa.ss($, ($) => $.entries)
-                                            case 'verbose group': return pa.ss($, ($) => $.entries)
-                                            default: return pa.au($[0])
+                                            case 'dictionary': return _ea.ss($, ($) => $.entries)
+                                            case 'verbose group': return _ea.ss($, ($) => $.entries)
+                                            default: return _ea.au($[0])
                                         }
                                     }).map(($) => {
                                         return {
@@ -186,11 +274,11 @@ export const Node = (
                                             'value': $
                                         }
                                     }))
-                                    const range: _in_token.Range = pa.cc($, ($) => {
+                                    const range: _in_token.Range = _ea.cc($, ($) => {
                                         switch ($[0]) {
-                                            case 'dictionary': return pa.ss($, ($) => $['{'].range)
-                                            case 'verbose group': return pa.ss($, ($) => $['('].range)
-                                            default: return pa.au($[0])
+                                            case 'dictionary': return _ea.ss($, ($) => $['{'].range)
+                                            case 'verbose group': return _ea.ss($, ($) => $['('].range)
+                                            default: return _ea.au($[0])
                                         }
                                     })
                                     return ['indexed', {
@@ -201,10 +289,13 @@ export const Node = (
                                             }
                                         ).map(($) => {
                                             return $.supporting.transform( //drop all the ones for which there is a definition
-                                                ($) => pa.not_set(),
-                                                () => pa.set($.context)
+                                                ($) => _ea.not_set(),
+                                                () => _ea.set($.context)
                                             )
-                                        })).map(($) => $.map(($) => $.key.range)), //select the locations
+                                        })).map(($) => $.map(($) => ({
+                                            'document': $p['document path'],
+                                            'range': $.key.range,
+                                        }))), //select the locations
                                         'properties': impure.dictionary.merge(
                                             group_def,
                                             {
@@ -220,6 +311,7 @@ export const Node = (
                                                         ),
                                                         {
                                                             'definition': prop_def,
+                                                            'document path': $p['document path'],
                                                         },
                                                     )],
                                                     (): _out.Property => ['multiple', $.map(($): _out.Duplicate_Entry => ({
@@ -229,31 +321,62 @@ export const Node = (
                                                             ),
                                                             {
                                                                 'definition': prop_def,
+                                                                'document path': $p['document path'],
                                                             },
                                                         ),
-                                                        'range': $.key.range
+                                                        'range': {
+                                                            'document': $p['document path'],
+                                                            'range': $.key.range,
+                                                        }
                                                     }))]
                                                 ),
-                                                (): _out.Property => ['missing', range]
+                                                (): _out.Property => ['missing', {
+                                                    'document': $p['document path'],
+                                                    'range': range,
+                                                }]
                                             )
                                         })
                                     }]
                                 })
                                 //case 'ordered collection': return pdev.implement_me()
-                                default: return ['invalid', value.range]
+                                default: return ['invalid', {
+                                    'document': $p['document path'],
+                                    'range': value.range,
+                                }]
                             }
                         })
                     })
                 }]
             })
-            case 'identifier value pair': return pa.ss($, ($) => pdev.implement_me())
-            case 'optional': return pa.ss($, ($) => pdev.implement_me())
-            case 'state group': return pa.ss($, ($) => {
+            case 'identifier value pair': return _ea.ss($, ($) => pdev.implement_me())
+            case 'optional': return _ea.ss($, ($): _out.Node => {
+                const def = $
+                return ['optional', {
+                    'definition': $,
+                    'status': _ea.cc(data.type, ($) => {
+                        switch ($[0]) {
+                            case 'not set': return _ea.ss($, ($) => ['valid', ['not set', null]])
+                            case 'set optional value': return _ea.ss($, ($) => ['valid', ['set', Node(
+                                $.value,
+                                {
+                                    'definition': def,
+                                    'document path': $p['document path'],
+                                }
+                            )]])
+                            default: return ['invalid value type', {
+                                'document': $p['document path'],
+                                'range': data.range,
+                            }]
+                        }
+                    })
+                }]
+            })
+            case 'state group': return _ea.ss($, ($) => {
                 const def = $
                 return ['state', {
-                    'status': pa.cc(data.type, ($): _out.State_Status => {
+                    'status': _ea.cc(data.type, ($): _out.State_Status => {
                         switch ($[0]) {
-                            case 'tagged value': return pa.ss($, ($) => {
+                            case 'tagged value': return _ea.ss($, ($) => {
                                 const state = $.state
                                 const value = $.value
                                 return def.__get_entry($.state.value).transform<_out.State_Status>(
@@ -262,39 +385,49 @@ export const Node = (
                                             value,
                                             {
                                                 'definition': $,
+                                                'document path': $p['document path'],
                                             },
                                         )
                                     }],
                                     () => ['unknown state', {
-                                        'range': $.state.range,
+                                        'range': {
+                                            'document': $p['document path'],
+                                            'range': state.range,
+                                        },
                                         'found': $.state.value,
                                         'expected': def.map(($) => null)
                                     }]
                                 )
                             })
-                            case 'ordered collection': return pa.ss($, ($) => {
-                                const elements = pa.cc($, ($): _in.Elements => {
+                            case 'ordered collection': return _ea.ss($, ($) => {
+                                const elements = _ea.cc($, ($): _in.Elements => {
                                     switch ($[0]) {
-                                        case 'list': return pa.ss($, ($) => $.elements)
-                                        case 'concise group': return pa.ss($, ($) => $.elements)
-                                        default: return pa.au($[0])
+                                        case 'list': return _ea.ss($, ($) => $.elements)
+                                        case 'concise group': return _ea.ss($, ($) => $.elements)
+                                        default: return _ea.au($[0])
                                     }
                                 })
-                                const range = pa.cc($, ($): _in_token.Range => {
+                                const range = _ea.cc($, ($): _in_token.Range => {
                                     switch ($[0]) {
-                                        case 'list': return pa.ss($, ($) => $['['].range)
-                                        case 'concise group': return pa.ss($, ($) => $['<'].range)
-                                        default: return pa.au($[0])
+                                        case 'list': return _ea.ss($, ($) => $['['].range)
+                                        case 'concise group': return _ea.ss($, ($) => $['<'].range)
+                                        default: return _ea.au($[0])
                                     }
                                 })
                                 if (elements.__get_length() > 2) {
-                                    return ['more than 2 elements', range]
+                                    return ['more than 2 elements', {
+                                        'document': $p['document path'],
+                                        'range': range,
+                                    }]
                                 }
                                 const first = elements.__get_element_at(0)
                                 return first.transform<_out.State_Status>(
                                     ($) => {
                                         if ($.value.type[0] !== 'string') {
-                                            return ['state is not a string', $.value.range]
+                                            return ['state is not a string', {
+                                                'document': $p['document path'],
+                                                'range': $.value.range,
+                                            }]
                                         }
                                         const state_name = $.value.type[1].value
                                         const state_name_range = $.value.type[1].range
@@ -307,20 +440,30 @@ export const Node = (
                                                             value,
                                                             {
                                                                 'definition': $,
+                                                                'document path': $p['document path'],
                                                             },
                                                         )
                                                     }],
                                                     () => ['unknown state', {
-                                                        'range': state_name_range,
+                                                        'range': {
+                                                            'document': $p['document path'],
+                                                            'range': state_name_range,
+                                                        },
                                                         'found': state_name,
                                                         'expected': def.map(($) => null)
                                                     }]
                                                 )
                                             },
-                                            () => ['missing value', $.value.range]
+                                            () => ['missing value', {
+                                                'document': $p['document path'],
+                                                'range': $.value.range
+                                            }]
                                         )
                                     },
-                                    () => ['missing state name', range]
+                                    () => ['missing state name', {
+                                        'document': $p['document path'],
+                                        'range': range
+                                    }]
                                 )
 
                             })
@@ -330,20 +473,23 @@ export const Node = (
                     })
                 }]
             })
-            case 'text': return pa.ss($, ($) => {
+            case 'text': return _ea.ss($, ($) => {
                 return ['text', {
                     'definition': $,
-                    'status': pa.cc(data.type, ($) => {
+                    'status': _ea.cc(data.type, ($) => {
                         switch ($[0]) {
-                            case 'string': return pa.ss($, ($) => ['valid', null])
+                            case 'string': return _ea.ss($, ($) => ['valid', null])
                             // case 'not set': return pa.ss($, () => ['invalid', data.location])
-                            default: return ['invalid value type', data.range]
+                            default: return ['invalid value type', {
+                                'document': $p['document path'],
+                                'range': data.range,
+                            }]
                         }
                     })
                 }]
             })
-            case 'type parameter': return pa.ss($, ($) => pdev.implement_me())
-            default: return pa.au($[0])
+            case 'type parameter': return _ea.ss($, ($) => pdev.implement_me())
+            default: return _ea.au($[0])
         }
     })
 }

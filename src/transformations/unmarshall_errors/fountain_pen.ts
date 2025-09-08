@@ -13,10 +13,16 @@ const op = {
     'dictionary to list': impure.dictionary['to list, sorted by code point']
 }
 
-export const Errors = ($: _in.Errors): _out.Block => {
+export const Errors = (
+    $: _in.Errors,
+    $p: {
+        'line offset': number
+        'column offset': number
+    }
+): _out.Block => {
     return sh.block([sh.b.sub_decorated($.map(($) => {
         return sh.b.nested_line([
-            sh.l.snippet(`${$.range.start.relative.line}:${$.range.start.relative.column} - ${$.range.end.relative.line}:${$.range.end.relative.column}: `),
+            sh.l.snippet(`${$.range.document}:${$.range.range.start.relative.line + $p['line offset']}:${$.range.range.start.relative.column + $p['column offset']}: `),
             _ea.cc($.type, ($) => {
                 switch ($[0]) {
                     case 'error': return _ea.ss($, ($) => sh.l.sub([
