@@ -79,7 +79,7 @@ export type _T_Guaranteed_Value_Selection = {
 }
 
 export type _T_Imports = _i_core._T_Dictionary<null, {
-    readonly 'schema': _i_core._T_Derived_Reference<null, _T_Schemas.D.SG.schema>
+    readonly 'schema': _i_core._T_Derived_Reference<null, _T_Schema>
     readonly 'schema set child': _i_core._T_Reference_To_Stacked_Dictionary_Entry<null, _T_Schemas.D>
 }>
 
@@ -271,10 +271,12 @@ export type _T_Schema = {
     readonly 'types': _T_Types
 }
 
-export type _T_Schemas = _i_core._T_Ordered_Dictionary<null, _i_core._T_State_Group<null, 
+export type _T_Schema_Tree = _i_core._T_State_Group<null, 
     | readonly ['schema', _T_Schema]
     | readonly ['set', _T_Schemas]
->>
+>
+
+export type _T_Schemas = _i_core._T_Ordered_Dictionary<null, _T_Schema_Tree>
 
 export type _T_Signature = {
     readonly 'parameters': _i_core._T_State_Group<null, 
@@ -386,6 +388,12 @@ export type _T_Type_Reference = {
     readonly 'resulting node': _i_core._T_Derived_Reference<null, _T_Type_Node>
 }
 
+export type _T_Type_Specification = {
+    readonly 'schema': _T_Schema_Tree
+    readonly 'schema path': _i_core._T_List<null, string>
+    readonly 'type': string
+}
+
 export type _T_Types = _i_core._T_Ordered_Dictionary<null, _T_Type>
 
 // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
@@ -436,6 +444,8 @@ export type Resolvers = _T_Resolvers
 
 export type Schema = _T_Schema
 
+export type Schema_Tree = _T_Schema_Tree
+
 export type Schemas = _T_Schemas
 
 export type Signature = _T_Signature
@@ -455,6 +465,8 @@ export type Type_Node_Reference = _T_Type_Node_Reference
 export type Type_Parameters = _T_Type_Parameters
 
 export type Type_Reference = _T_Type_Reference
+
+export type Type_Specification = _T_Type_Specification
 
 export type Types = _T_Types
 
@@ -909,9 +921,9 @@ export namespace _T_Imports {
             
             export namespace Type {
             }
-            export type Type = _T_Schemas.D.SG.schema
+            export type Type = _T_Schema
         }
-        export type schema = _i_core._T_Derived_Reference<null, _T_Schemas.D.SG.schema>
+        export type schema = _i_core._T_Derived_Reference<null, _T_Schema>
         
         export namespace schema_set_child {
             
@@ -922,7 +934,7 @@ export namespace _T_Imports {
         export type schema_set_child = _i_core._T_Reference_To_Stacked_Dictionary_Entry<null, _T_Schemas.D>
     }
     export type D = {
-        readonly 'schema': _i_core._T_Derived_Reference<null, _T_Schemas.D.SG.schema>
+        readonly 'schema': _i_core._T_Derived_Reference<null, _T_Schema>
         readonly 'schema set child': _i_core._T_Reference_To_Stacked_Dictionary_Entry<null, _T_Schemas.D>
     }
 }
@@ -2004,28 +2016,28 @@ export namespace _T_Schema {
     export type types = _T_Types
 }
 
+export namespace _T_Schema_Tree {
+    
+    export namespace SG {
+        
+        export namespace schema {
+        }
+        export type schema = _T_Schema
+        
+        export namespace _set {
+        }
+        export type _set = _T_Schemas
+    }
+    export type SG = 
+        | readonly ['schema', _T_Schema]
+        | readonly ['set', _T_Schemas]
+}
+
 export namespace _T_Schemas {
     
     export namespace D {
-        
-        export namespace SG {
-            
-            export namespace schema {
-            }
-            export type schema = _T_Schema
-            
-            export namespace _set {
-            }
-            export type _set = _T_Schemas
-        }
-        export type SG = 
-            | readonly ['schema', _T_Schema]
-            | readonly ['set', _T_Schemas]
     }
-    export type D = _i_core._T_State_Group<null, 
-        | readonly ['schema', _T_Schema]
-        | readonly ['set', _T_Schemas]
-    >
+    export type D = _T_Schema_Tree
 }
 
 export namespace _T_Signature {
@@ -2613,6 +2625,19 @@ export namespace _T_Type_Reference {
     export type resulting_node = _i_core._T_Derived_Reference<null, _T_Type_Node>
 }
 
+export namespace _T_Type_Specification {
+    
+    export namespace schema {
+    }
+    export type schema = _T_Schema_Tree
+    
+    export namespace schema_path {
+        export type L = string
+    }
+    export type schema_path = _i_core._T_List<null, string>
+    export type _type = string
+}
+
 export namespace _T_Types {
     
     export namespace D {
@@ -3071,9 +3096,9 @@ export namespace Imports {
             
             export namespace Type {
             }
-            export type Type = _T_Schemas.D.SG.schema
+            export type Type = _T_Schema
         }
-        export type schema = _i_core._T_Derived_Reference<null, _T_Schemas.D.SG.schema>
+        export type schema = _i_core._T_Derived_Reference<null, _T_Schema>
         
         export namespace schema_set_child {
             
@@ -3084,7 +3109,7 @@ export namespace Imports {
         export type schema_set_child = _i_core._T_Reference_To_Stacked_Dictionary_Entry<null, _T_Schemas.D>
     }
     export type D = {
-        readonly 'schema': _i_core._T_Derived_Reference<null, _T_Schemas.D.SG.schema>
+        readonly 'schema': _i_core._T_Derived_Reference<null, _T_Schema>
         readonly 'schema set child': _i_core._T_Reference_To_Stacked_Dictionary_Entry<null, _T_Schemas.D>
     }
 }
@@ -4166,28 +4191,28 @@ export namespace Schema {
     export type types = _T_Types
 }
 
+export namespace Schema_Tree {
+    
+    export namespace SG {
+        
+        export namespace schema {
+        }
+        export type schema = _T_Schema
+        
+        export namespace _set {
+        }
+        export type _set = _T_Schemas
+    }
+    export type SG = 
+        | readonly ['schema', _T_Schema]
+        | readonly ['set', _T_Schemas]
+}
+
 export namespace Schemas {
     
     export namespace D {
-        
-        export namespace SG {
-            
-            export namespace schema {
-            }
-            export type schema = _T_Schema
-            
-            export namespace _set {
-            }
-            export type _set = _T_Schemas
-        }
-        export type SG = 
-            | readonly ['schema', _T_Schema]
-            | readonly ['set', _T_Schemas]
     }
-    export type D = _i_core._T_State_Group<null, 
-        | readonly ['schema', _T_Schema]
-        | readonly ['set', _T_Schemas]
-    >
+    export type D = _T_Schema_Tree
 }
 
 export namespace Signature {
@@ -4773,6 +4798,19 @@ export namespace Type_Reference {
         export type Type = _T_Type_Node
     }
     export type resulting_node = _i_core._T_Derived_Reference<null, _T_Type_Node>
+}
+
+export namespace Type_Specification {
+    
+    export namespace schema {
+    }
+    export type schema = _T_Schema_Tree
+    
+    export namespace schema_path {
+        export type L = string
+    }
+    export type schema_path = _i_core._T_List<null, string>
+    export type _type = string
 }
 
 export namespace Types {

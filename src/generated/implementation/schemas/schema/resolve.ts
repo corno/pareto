@@ -1665,6 +1665,43 @@ export const r_Schema: _i_signatures._T_Schema = ($, $p) => _pa.block(() => {
         })
     })
 })
+export const r_Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => _pa.block(() => {
+    const l2s = $p['location 2 string']
+    const params = $p['parameters']
+    return _pa.cc($['state group'], ($): _i_out._T_Schema_Tree => {
+        switch ($[0]) {
+            case 'schema': return _pa.ss($, ($) => ['schema', _pa.block(() => {
+                return r_Schema(
+                    $,
+                    {
+                        'location 2 string': l2s,
+                        'parameters': ({
+                            'lookups': ({
+                                'sibling schemas': params['lookups']['sibling schemas'],
+                            }),
+                            'values': null,
+                        }),
+                    }
+                )
+            })])
+            case 'set': return _pa.ss($, ($) => ['set', _pa.block(() => {
+                return r_Schemas(
+                    $,
+                    {
+                        'location 2 string': l2s,
+                        'parameters': ({
+                            'lookups': ({
+                                'sibling schemas': params['lookups']['sibling schemas'],
+                            }),
+                            'values': null,
+                        }),
+                    }
+                )
+            })])
+            default: return _pa.au($[0])
+        }
+    })
+})
 export const r_Schemas: _i_signatures._T_Schemas = ($, $p) => _pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
@@ -1674,37 +1711,18 @@ export const r_Schemas: _i_signatures._T_Schemas = ($, $p) => _pa.block(() => {
             {
                 'location 2 string': l2s,
                 'map': ($, $p) => _pa.block(() => {
-                    return _pa.cc($['value'], ($) => _pa.cc($['state group'], ($): _i_out._T_Schemas.D => {
-                        switch ($[0]) {
-                            case 'schema': return _pa.ss($, ($) => ['schema', _pa.block(() => {
-                                return r_Schema(
-                                    $,
-                                    {
-                                        'location 2 string': l2s,
-                                        'parameters': ({
-                                            'lookups': ({
-                                                'sibling schemas': _pd.implement_me(),
-                                            }),
-                                            'values': null,
-                                        }),
-                                    }
-                                )
-                            })])
-                            case 'set': return _pa.ss($, ($) => ['set', _pa.block(() => {
-                                return r_Schemas(
-                                    $,
-                                    {
-                                        'location 2 string': l2s,
-                                        'parameters': ({
-                                            'lookups': params['lookups'],
-                                            'values': params['values'],
-                                        }),
-                                    }
-                                )
-                            })])
-                            default: return _pa.au($[0])
+                    return _pa.cc($['value'], ($) => r_Schema_Tree(
+                        $,
+                        {
+                            'location 2 string': l2s,
+                            'parameters': ({
+                                'lookups': ({
+                                    'sibling schemas': _pd.implement_me(),
+                                }),
+                                'values': null,
+                            }),
                         }
-                    }))
+                    ))
                 }),
             }
         )
@@ -2401,6 +2419,32 @@ export const r_Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _pa.
         return ({
             'location': p_location,
             'resulting node': p_resulting_node,
+        })
+    })
+})
+export const r_Type_Specification: _i_signatures._T_Type_Specification = ($, $p) => _pa.block(() => {
+    const l2s = $p['location 2 string']
+    const params = $p['parameters']
+    return _pa.block(() => {
+        const p_schema: _i_out._T_Type_Specification.schema = _pa.cc($['schema'], ($) => r_Schema_Tree(
+            $,
+            {
+                'location 2 string': l2s,
+                'parameters': ({
+                    'lookups': ({
+                        'sibling schemas': _pa.array_literal([
+                        ]),
+                    }),
+                    'values': null,
+                }),
+            }
+        ))
+        const p_schema_path: _i_out._T_Type_Specification.schema_path = _pa.cc($['schema path'], ($) => $['list'].map(($) => _pa.cc($['element'], ($) => $)))
+        const p_type: _i_out._T_Type_Specification._type = _pa.cc($['type'], ($) => $)
+        return ({
+            'schema': p_schema,
+            'schema path': p_schema_path,
+            'type': p_type,
         })
     })
 })

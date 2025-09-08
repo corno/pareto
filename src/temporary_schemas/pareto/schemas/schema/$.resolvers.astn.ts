@@ -1,7 +1,7 @@
 import * as pd from 'exupery-core-data'
 
 import {
-    resolvers, r, resolver, al, rls, av, gvs, ovi, vst, state, state_constrained, oc, pc, pvs, reference,
+    resolvers, r, resolver, al, ls, av, gvs, ovi, vst, state, state_constrained, oc, pc, pvs, reference,
 } from "../../../../shorthands/schema"
 
 import * as g_ from "../../../../generated/interface/schemas/schema/data_types/unresolved"
@@ -64,10 +64,10 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
         "Type Reference": resolver(r.group({
             "location": r.state_group(
                 {
-                    "internal": state(r.reference(rls.parameter("types"))),
+                    "internal": state(r.reference(ls.parameter("types"))),
                     "external": state_constrained({ "import": oc.assert_set(pvs.parameter("imports")) }, r.group({
-                        "import": r.reference(rls.dictionary(gvs.option_constraint("import", []))),
-                        "type": r.reference(rls.dictionary(gvs.sibling("import", [vst.reference(), vst.group("schema"), vst.reference(), vst.component(), vst.group("types"), vst.component()]))),
+                        "import": r.reference(gvs.dictionary(gvs.option_constraint("import", []))),
+                        "type": r.reference(gvs.dictionary(gvs.sibling("import", [vst.reference(), vst.group("schema"), vst.reference(), vst.group("types"), vst.component()]))),
                     })),
                 }
             ),
@@ -79,11 +79,11 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
             "tail": r.list_with_result(
                 r.state_group({
                     "dictionary": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "dictionary") }, r.nothing()),
-                    "group": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "group") }, r.reference(rls.dictionary(gvs.option_constraint("definition", [vst.component()])))),
+                    "group": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "group") }, r.reference(gvs.dictionary(gvs.option_constraint("definition", [vst.component()])))),
                     "identifier value pair": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "identifier value pair") }, r.nothing()),
                     "list": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "list") }, r.nothing()),
                     "optional": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "optional") }, r.nothing()),
-                    "state group": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "state group") }, r.reference(rls.dictionary(gvs.option_constraint("definition", [])))),
+                    "state group": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "state group") }, r.reference(gvs.dictionary(gvs.option_constraint("definition", [])))),
                 }),
                 reference("Type Node"),
             ),
@@ -121,11 +121,11 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
             "boolean": state(r.nothing()),
             "component": state(r.state_group({
                 "external": state_constrained({ "import": oc.assert_set(pvs.parameter("imports")) }, r.group({
-                    "import": r.reference(rls.dictionary(gvs.option_constraint("import", []))),
-                    "type": r.reference(rls.dictionary(gvs.sibling("import", [vst.reference(), vst.group("schema"), vst.reference(), vst.component(), vst.group("types"), vst.component()]))),
+                    "import": r.reference(gvs.dictionary(gvs.option_constraint("import", []))),
+                    "type": r.reference(gvs.dictionary(gvs.sibling("import", [vst.reference(), vst.group("schema"), vst.reference(), vst.group("types"), vst.component()]))),
                 })),
-                "internal": state(r.reference(rls.parameter("noncircular sibling types"))),
-                "internal cyclic": state(r.reference(rls.parameter("possibly circular dependent sibling types"))),
+                "internal": state(r.reference(ls.parameter("noncircular sibling types"))),
+                "internal cyclic": state(r.reference(ls.parameter("possibly circular dependent sibling types"))),
             })),
             "dictionary": state(r.component("Dictionary",
                 {
@@ -155,7 +155,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
             })),
             "nothing": state(r.nothing()),
             "number": state(r.state_group({
-                "global": state_constrained({ "globals": oc.assert_set(pvs.parameter("globals")) }, r.reference(rls.dictionary(gvs.option_constraint("globals", [vst.group("number types")])))),
+                "global": state_constrained({ "globals": oc.assert_set(pvs.parameter("globals")) }, r.reference(gvs.dictionary(gvs.option_constraint("globals", [vst.group("number types")])))),
                 "local": state(r.component("Number Type", {}, {})),
             })),
             "optional": state(r.component("Type Node", null, null)),
@@ -179,10 +179,10 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
             })),
             "state group": state(r.dictionary(r.component("Type Node", null, null))),
             "text": state(r.state_group({
-                "global": state_constrained({ "globals": oc.assert_set(pvs.parameter("globals")) }, r.reference(rls.dictionary(gvs.option_constraint("globals", [vst.group("text types")])))),
+                "global": state_constrained({ "globals": oc.assert_set(pvs.parameter("globals")) }, r.reference(gvs.dictionary(gvs.option_constraint("globals", [vst.group("text types")])))),
                 "local": state(r.component("Text Type", {}, {})),
             })),
-            "type parameter": state(r.reference(rls.dictionary(gvs.parameter("type parameters", [])))),
+            "type parameter": state(r.reference(gvs.dictionary(gvs.parameter("type parameters", [])))),
         })),
 
         "Type Parameters": resolver(r.dictionary(r.nothing())),
@@ -191,7 +191,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
             "path": r.list_with_result(
                 r.state_group({
                     "component": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "component") }, r.nothing()),
-                    "group": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "group") }, r.reference(rls.dictionary(gvs.option_constraint("definition", [vst.component()])))),
+                    "group": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "group") }, r.reference(gvs.dictionary(gvs.option_constraint("definition", [vst.component()])))),
                     "reference": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "reference") }, r.group({
                         "definition": r.reference_derived(gvs.option_constraint("definition", [])),
                     })),
@@ -223,7 +223,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                 }, {
                     "dictionary": pc.property([vst.group("resulting node"), vst.reference()], "dictionary"),
                 }),
-                "dictionary": r.reference_derived(gvs.constraint.component("referent", "dictionary", [])),
+                "dictionary": r.reference_derived(gvs.component("referent", "dictionary", [])),
                 "type": r.state_group({
                     "cyclic": state(r.nothing()),
                     "acyclic": state(r.nothing()),
@@ -241,7 +241,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                         "types": av.parameter("types"),
                         "imports": av.parameter("imports"),
                     }, {})),
-                    "same as": state(r.reference(rls.parameter("sibling signatures"))),
+                    "same as": state(r.reference(ls.parameter("sibling signatures"))),
                 }
             ),
             "resolved parameters": r.reference_derived(gvs.state_group("parameters",
@@ -267,13 +267,13 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
         })),
 
         "Possible Value Selection": resolver(r.state_group({
-            "parameter": state(r.reference(rls.dictionary(gvs.parameter("signature", [vst.group("resolved parameters"), vst.reference(), vst.group("values")])))),
+            "parameter": state(r.reference(gvs.dictionary(gvs.parameter("signature", [vst.group("resolved parameters"), vst.reference(), vst.group("values")])))),
             "result": state(r.state_group({
                 "state group": state(r.group({
-                    "property": r.reference(rls.parameter("sibling property resolvers"), {
+                    "property": r.reference(ls.parameter("sibling property resolvers"), {
                         "state group": pc.property([vst.group("resolver"), vst.component()], "state group"),
                     }),
-                    "state group": r.reference_derived(gvs.constraint.reference("property", "state group", [])),
+                    "state group": r.reference_derived(gvs.reference("property", "state group", [])),
                     "result": r.component("Type Reference", {
                         "imports": av.parameter("imports"),
                     }, {
@@ -281,10 +281,10 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                     }),
                 })),
                 "optional value": state(r.group({
-                    "property": r.reference(rls.parameter("sibling property resolvers"), {
+                    "property": r.reference(ls.parameter("sibling property resolvers"), {
                         "optional": pc.property([vst.group("resolver"), vst.component()], "optional"),
                     }),
-                    "optional value": r.reference_derived(gvs.constraint.reference("property", "optional", [])),
+                    "optional value": r.reference_derived(gvs.reference("property", "optional", [])),
                     "result": r.component("Type Reference", {
                         "imports": av.parameter("imports"),
                     }, {
@@ -302,41 +302,41 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                     "list cursor": state(r.nothing()),
                     "linked entry": state(r.nothing()),
 
-                    "sibling": state(r.reference(rls.parameter("sibling property resolvers"))),
-                    "parent sibling": state(r.reference(rls.parameter("parent sibling property resolvers"))),
-                    "option constraint": state_constrained({ "oc": oc.assert_set(pvs.parameter("option constraints")) }, r.reference_stack(rls.dictionary(gvs.option_constraint("oc", [])))),
+                    "sibling": state(r.reference(ls.parameter("sibling property resolvers"))),
+                    "parent sibling": state(r.reference(ls.parameter("parent sibling property resolvers"))),
+                    "option constraint": state_constrained({ "oc": oc.assert_set(pvs.parameter("option constraints")) }, r.reference_stack(gvs.dictionary(gvs.option_constraint("oc", [])))),
 
                     //siblings
                     "constraint": state(r.state_group({
                         "component": state(r.group({
-                            "property": r.reference(rls.parameter("sibling property resolvers"), {
+                            "property": r.reference(ls.parameter("sibling property resolvers"), {
                                 "component": pc.property([vst.group("resolver"), vst.component()], "component"),
                             }),
-                            "constraint": r.reference(rls.dictionary(gvs.constraint.reference("property", "component", [vst.group("constraints"), vst.component()]))),
+                            "constraint": r.reference(gvs.dictionary(gvs.reference("property", "component", [vst.group("constraints"), vst.component()]))),
                         })),
                         "reference": state(r.group({
-                            "property": r.reference(rls.parameter("sibling property resolvers"), {
+                            "property": r.reference(ls.parameter("sibling property resolvers"), {
                                 "reference": pc.property([vst.group("resolver"), vst.component()], "reference"),
                                 "selected": pc.constraint("reference", [vst.group("type")], "selected"),
                             }),
-                            "constraint": r.reference(rls.dictionary(gvs.constraint.reference("property", "selected", [vst.group("constraints"), vst.component()]))),
+                            "constraint": r.reference(gvs.dictionary(gvs.reference("property", "selected", [vst.group("constraints"), vst.component()]))),
                         })),
 
                     })),
-                    "parameter": state(r.reference(rls.dictionary(gvs.parameter("signature", [vst.group("resolved parameters"), vst.reference(), vst.group("values")])))),
+                    "parameter": state(r.reference(gvs.dictionary(gvs.parameter("signature", [vst.group("resolved parameters"), vst.reference(), vst.group("values")])))),
                     "result": state(r.state_group({
                         "list": state(r.group({
-                            "property": r.reference(rls.parameter("sibling property resolvers"), {
+                            "property": r.reference(ls.parameter("sibling property resolvers"), {
                                 "list": pc.property([vst.group("resolver"), vst.component()], "list"),
                                 "result": pc.constraint("list", [vst.group("result")]),
                             }),
-                            "list result": r.reference_derived(gvs.constraint.reference("property", "result", [])),
+                            "list result": r.reference_derived(gvs.reference("property", "result", [])),
                         })),
                         "state group": state(r.group({
-                            "property": r.reference(rls.parameter("sibling property resolvers"), {
+                            "property": r.reference(ls.parameter("sibling property resolvers"), {
                                 "state group": pc.property([vst.group("resolver"), vst.component()], "state group"),
                             }),
-                            "state group": r.reference_derived(gvs.constraint.reference("property", "state group", [])),
+                            "state group": r.reference_derived(gvs.reference("property", "state group", [])),
                             "result": r.component("Type Reference", {
                                 "imports": av.parameter("imports"),
                             }, {
@@ -344,10 +344,10 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                             }),
                         })),
                         "optional value": state(r.group({
-                            "property": r.reference(rls.parameter("sibling property resolvers"), {
+                            "property": r.reference(ls.parameter("sibling property resolvers"), {
                                 "optional": pc.property([vst.group("resolver"), vst.component()], "optional"),
                             }),
-                            "optional value": r.reference_derived(gvs.constraint.reference("property", "optional", [])),
+                            "optional value": r.reference_derived(gvs.reference("property", "optional", [])),
                             "result": r.component("Type Reference", {
                                 "imports": av.parameter("imports"),
                             }, {
@@ -373,9 +373,9 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                         "selection": r.component("Guaranteed Value Selection", null, null, {
                             "dictionary": pc.property([vst.group("resulting node"), vst.reference()], "dictionary"),
                         }),
-                        "selected dictionary": r.reference_derived(gvs.constraint.component("selection", "dictionary", []))
+                        "selected dictionary": r.reference_derived(gvs.component("selection", "dictionary", []))
                     })),
-                    "parameter": state(r.reference(rls.dictionary(gvs.parameter("signature", [vst.group("resolved parameters"), vst.reference(), vst.group("lookups")])))),
+                    "parameter": state(r.reference(gvs.dictionary(gvs.parameter("signature", [vst.group("resolved parameters"), vst.reference(), vst.group("lookups")])))),
                     "not circular dependent siblings": state_constrained(
                         { "cd": oc.assert_set(pvs.parameter("current ordered dictionary")) },
                         r.reference_derived(gvs.option_constraint("cd", []))
@@ -424,7 +424,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
             "type": r.state_group({
                 "state": state_constrained({ "state group": oc.state(gvs.sibling("selection", [vst.component(), vst.group("resulting node"), vst.reference()]), "state group") }, r.group({
                     "selected state group": r.reference_derived(gvs.option_constraint("state group", [])),
-                    "state": r.reference(rls.dictionary(gvs.sibling("selected state group", [vst.reference()]))),
+                    "state": r.reference(gvs.dictionary(gvs.sibling("selected state group", [vst.reference()]))),
                 })),
                 "optional value": state_constrained({ "optional": oc.state(gvs.sibling("selection", [vst.component(), vst.group("resulting node"), vst.reference()]), "state group") }, r.group({
                     "selected optional value": r.reference_derived(gvs.option_constraint("optional", [])),
@@ -437,8 +437,8 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                 "selection": r.component("Guaranteed Value Selection", null, null, {
                     "state group": pc.property([vst.group("resulting node"), vst.reference()], "state group")
                 }),
-                "selected state group": r.reference_derived(gvs.constraint.component("selection", "state group", [])),
-                "state": r.reference(rls.dictionary(gvs.sibling("selected state group", [vst.reference()]))),
+                "selected state group": r.reference_derived(gvs.component("selection", "state group", [])),
+                "state": r.reference(gvs.dictionary(gvs.sibling("selected state group", [vst.reference()]))),
             })),
             "assert is set": state(r.component("Possible Value Selection", null, null)),
         }))),
@@ -463,7 +463,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
             "property constraints": al.not_circular_dependent_siblings(),
         }))),
 
-        "Reference To Property Constraint": resolver(r.reference(rls.parameter("property constraints"))), //FIXME: inline
+        "Reference To Property Constraint": resolver(r.reference(ls.parameter("property constraints"))), //FIXME: inline
 
         "Node Resolver Group": resolver(r.dictionary_linked(
             'dense',
@@ -502,7 +502,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
             "selection": r.component("Guaranteed Value Selection", null, null, {
                 "dictionary": pc.property([vst.group("resulting node"), vst.reference()], "dictionary"),
             }),
-            "resulting dictionary": r.reference_derived(gvs.constraint.component("selection", "dictionary", [])),
+            "resulting dictionary": r.reference_derived(gvs.component("selection", "dictionary", [])),
             "dense": r.boolean(),
         })),
 
@@ -516,13 +516,13 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                                 "import": oc.assert_set(pvs.parameter("imports")),
                             },
                             r.group({
-                                "import": r.reference(rls.dictionary(gvs.option_constraint("import", [])), {
-                                    "constrained": pc.property([vst.group("schema"), vst.reference(), vst.component(), vst.group("complexity")], "constrained"),
+                                "import": r.reference(gvs.dictionary(gvs.option_constraint("import", [])), {
+                                    "constrained": pc.property([vst.group("schema"), vst.reference(), vst.group("complexity")], "constrained"),
                                 }),
-                                "type": r.reference(rls.dictionary(gvs.constraint.reference("import", "constrained", [vst.component(), vst.group("signatures"), vst.group("types"), vst.component()]))),
+                                "type": r.reference(gvs.dictionary(gvs.reference("import", "constrained", [vst.component(), vst.group("signatures"), vst.group("types"), vst.component()]))),
                             })
                         ),
-                        "internal": state(r.reference(rls.dictionary(gvs.parameter("signatures", [])))),
+                        "internal": state(r.reference(gvs.dictionary(gvs.parameter("signatures", [])))),
                     },
                 ),
                 "signature": r.reference_derived(gvs.state_group("location",
@@ -534,7 +534,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                         r.state_group({
                             "optional": state(r.component("Optional Value Initialization", null, null)),
                             "required": state(r.component("Guaranteed Value Selection", null, null)),
-                            "parameter": state(r.reference(rls.dictionary(gvs.parameter("signature", [vst.group("resolved parameters"), vst.reference(), vst.group("values")])))),
+                            "parameter": state(r.reference(gvs.dictionary(gvs.parameter("signature", [vst.group("resolved parameters"), vst.reference(), vst.group("values")])))),
                         }))
                     ),
                     "lookups": r.optional(r.dictionary_linked(
@@ -728,15 +728,30 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
             })
         })),
 
-        "Schemas": resolver(r.dictionary(r.state_group({
-            "schema": state(r.component("Schema", {}, {
-                "sibling schemas": al.stack(
-                    rls.parameter("sibling schemas"),
-                    rls.not_circular_dependent_siblings()
-                ),
-            })),
-            "set": state(r.component("Schemas", null, null))
+        "Schemas": resolver(r.dictionary(r.component("Schema Tree", {}, {
+            "sibling schemas": al.stack(
+                ls.parameter("sibling schemas"),
+                ls.not_circular_dependent_siblings()
+            ),
         }))),
+
+        "Type Specification": resolver(r.group({
+            "schema": r.component("Schema Tree", {}, {
+                "sibling schemas": al.empty_stack(),
+            }),
+            "schema path": r.list(r.text()),
+            "type": r.text(),
+        })),
+
+
+        "Schema Tree": resolver(r.state_group({
+            "schema": state(r.component("Schema", {}, {
+                "sibling schemas": al.parameter("sibling schemas"),
+            })),
+            "set": state(r.component("Schemas", {}, {
+                "sibling schemas": al.parameter("sibling schemas"),
+            }))
+        })),
 
         "Schema": resolver(r.group({
             "imports": r.component("Imports", {}, {
@@ -759,10 +774,10 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
         })),
 
         "Imports": resolver(r.dictionary(r.group({
-            "schema set child": r.reference_stack(rls.parameter("sibling schemas"), {
-                "schema": pc.property([], "schema"),
+            "schema set child": r.reference_stack(ls.parameter("sibling schemas"), {
+                "schema": pc.property([vst.component()], "schema"),
             }),
-            "schema": r.reference_derived(gvs.constraint.reference("schema set child", "schema", [])),
+            "schema": r.reference_derived(gvs.reference("schema set child", "schema", [])),
         }))),
     }
 )

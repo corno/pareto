@@ -23,12 +23,12 @@ export const Module: _i_signatures._T_Module = ($, $p) => _i_generic.process_gro
                     'value deserializers': $p['value deserializers'],
                 }
             )),
-            'schemas': _pa.cc(_i_generic.get_entry(
+            'schema tree': _pa.cc(_i_generic.get_entry(
                 $,
                 {
-                    'key': "schemas",
+                    'key': "schema tree",
                 }
-            ), ($) => _i_r_schema.Schemas(
+            ), ($) => _i_r_schema.Schema_Tree(
                 $,
                 {
                     'value deserializers': $p['value deserializers'],

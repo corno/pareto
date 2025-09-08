@@ -11,7 +11,7 @@ export const r_Module: _i_signatures._T_Module = ($, $p) => _pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return _pa.block(() => {
-        const p_schemas: _i_out._T_Module.schemas = _pa.cc($['schemas'], ($) => _i_r_schema.r_Schemas(
+        const p_schema_tree: _i_out._T_Module.schema_tree = _pa.cc($['schema tree'], ($) => _i_r_schema.r_Schema_Tree(
             $,
             {
                 'location 2 string': l2s,
@@ -36,7 +36,7 @@ export const r_Module: _i_signatures._T_Module = ($, $p) => _pa.block(() => {
         ))
         return ({
             'operations': p_operations,
-            'schemas': p_schemas,
+            'schema tree': p_schema_tree,
         })
     })
 })

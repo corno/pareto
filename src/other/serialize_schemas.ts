@@ -35,7 +35,7 @@ export const $: (
             wtd.File(
                 temp_astn_to_fp.Document(
                     m_module.Module(
-                        r_module.r_Module(
+                        r_module.Module(
                             $,
                             {
                                 'parameters': {

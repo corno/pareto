@@ -14,8 +14,7 @@ import * as _out from "../temp_unmashall_result_types"
 export const Document = (
     $: _in.Document,
     $p: {
-        'root type': string
-        'definition': definition.Schemas.D.SG.schema,
+        'definition': definition.Type,
         'document path': string,
     }
 ): _out.Document => {
@@ -24,15 +23,7 @@ export const Document = (
         'content': Node(
             $.content,
             {
-                'definition': $p.definition.types.dictionary.__get_entry($p['root type']).transform(
-                    ($) => $,
-                    () => {
-                        $p.definition.types.dictionary.map(($, key) => {
-                            pdev.log_debug_message(`available type: ${key}`)
-                        })
-                        _ea.panic(`root type ${$p['root type']} not found`)
-                    }
-                ).node,
+                'definition': $p.definition.node,
                 'document path': $p['document path'],
             },
         )

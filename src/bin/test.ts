@@ -1,6 +1,6 @@
-import * as test from "../other/test"
+import * as $$ from "../other/test"
 
-test.$(
+$$.$(
     null,
     {
     }

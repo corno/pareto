@@ -1,6 +1,6 @@
-import * as compiler from "../other/compile_astn"
+import * as $$ from "../other/compile_astn"
 
-compiler.$(
+$$.$(
     null,
     {
         'path': "./out/source_code/src/generated"

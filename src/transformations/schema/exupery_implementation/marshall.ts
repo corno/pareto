@@ -1,7 +1,7 @@
-import * as pd from 'exupery-core-data'
-import * as pt from 'exupery-core-types'
+import * as _edata from 'exupery-core-data'
+import * as _et from 'exupery-core-types'
 import * as _ea from 'exupery-core-alg'
-import * as pdev from 'exupery-core-dev'
+import * as _edev from 'exupery-core-dev'
 
 import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
 import * as _out from "exupery/dist/generated/interface/schemas/implementation/data_types/unresolved"
@@ -23,16 +23,20 @@ const op = {
 export const Schema = (
     $: _in.Schema,
     $p: {
-        'key': string,
+        'path': _et.Array<string>,
         'imports': _in.Imports,
         'constrained': boolean
     }
-): _out.Module_Set.D<pd.Source_Location> => {
+): _out.Module_Set.D<_edata.Source_Location> => {
     return m.module(
         op['flatten dictionary'](
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
-                    "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "marshall"], {}),
+                    "signatures": import_.ancestor(3, "interface", op['flatten list'](_ea.array_literal([
+                        _ea.array_literal(["schemas"]),
+                        $p.path,
+                        _ea.array_literal(["marshall"])
+                    ])).__get_raw_copy(), {}),
                     "out": import_.ancestor(3, "interface", ["core", "astn target"], {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["marshall"], {}))
@@ -63,11 +67,11 @@ export const Type_Node = (
     $: _in.Type_Node,
     $p: {
         'type': string
-        'subselection': pt.Array<_out_interface.Type.SG.component.sub_selection.L<pd.Source_Location>>
+        'subselection': _et.Array<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>>
     },
-): _out.Initialization<pd.Source_Location> => {
+): _out.Initialization<_edata.Source_Location> => {
 
-    const string = (value: _out.Initialization<pd.Source_Location>, delimiter: 'quote' | 'backtick' | 'none'): _out.Initialization<pd.Source_Location> => {
+    const string = (value: _out.Initialization<_edata.Source_Location>, delimiter: 'quote' | 'backtick' | 'none'): _out.Initialization<_edata.Source_Location> => {
         return i.tagged_union(
             "text",
             i.group({
@@ -136,7 +140,7 @@ export const Type_Node = (
                     )
                 )
             ))
-            case 'identifier value pair': return _ea.ss($, ($) => pdev.implement_me())
+            case 'identifier value pair': return _ea.ss($, ($) => _edev.implement_me())
             // case 'group': return pa.ss($, ($) => i.group($.map(($, key) => i.change_context(
             //     s.from_context([key]),
             //     Type_Node(
@@ -244,7 +248,7 @@ export const Type_Node = (
                     ),
                 )
             ))
-            case 'type parameter': return _ea.ss($, ($) => pdev.implement_me())
+            case 'type parameter': return _ea.ss($, ($) => _edev.implement_me())
             default: return _ea.au($[0])
         }
     })

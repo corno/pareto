@@ -120,6 +120,11 @@ export type _T_Schema = (
     $$_p: null,
 ) => _i_out._T_Schema<null>
 
+export type _T_Schema_Tree = (
+    $$_: _i_in._T_Schema_Tree,
+    $$_p: null,
+) => _i_out._T_Schema_Tree<null>
+
 export type _T_Schemas = (
     $$_: _i_in._T_Schemas,
     $$_p: null,
@@ -169,6 +174,11 @@ export type _T_Type_Reference = (
     $$_: _i_in._T_Type_Reference,
     $$_p: null,
 ) => _i_out._T_Type_Reference<null>
+
+export type _T_Type_Specification = (
+    $$_: _i_in._T_Type_Specification,
+    $$_p: null,
+) => _i_out._T_Type_Specification<null>
 
 export type _T_Types = (
     $$_: _i_in._T_Types,
@@ -223,6 +233,8 @@ export type Resolvers = _T_Resolvers
 
 export type Schema = _T_Schema
 
+export type Schema_Tree = _T_Schema_Tree
+
 export type Schemas = _T_Schemas
 
 export type Signature = _T_Signature
@@ -242,6 +254,8 @@ export type Type_Node_Reference = _T_Type_Node_Reference
 export type Type_Parameters = _T_Type_Parameters
 
 export type Type_Reference = _T_Type_Reference
+
+export type Type_Specification = _T_Type_Specification
 
 export type Types = _T_Types
 
@@ -592,6 +606,21 @@ export namespace _T_Schema {
     export type RESULT = _i_out._T_Schema<null>
 }
 
+export namespace _T_Schema_Tree {
+    
+    export namespace CONTEXT {
+    }
+    export type CONTEXT = _i_in._T_Schema_Tree
+    
+    export namespace PARAMS {
+    }
+    
+    export namespace RESULT {
+        export type annotation = null
+    }
+    export type RESULT = _i_out._T_Schema_Tree<null>
+}
+
 export namespace _T_Schemas {
     
     export namespace CONTEXT {
@@ -740,6 +769,21 @@ export namespace _T_Type_Reference {
         export type annotation = null
     }
     export type RESULT = _i_out._T_Type_Reference<null>
+}
+
+export namespace _T_Type_Specification {
+    
+    export namespace CONTEXT {
+    }
+    export type CONTEXT = _i_in._T_Type_Specification
+    
+    export namespace PARAMS {
+    }
+    
+    export namespace RESULT {
+        export type annotation = null
+    }
+    export type RESULT = _i_out._T_Type_Specification<null>
 }
 
 export namespace _T_Types {
@@ -1104,6 +1148,21 @@ export namespace Schema {
     export type RESULT = _i_out._T_Schema<null>
 }
 
+export namespace Schema_Tree {
+    
+    export namespace CONTEXT {
+    }
+    export type CONTEXT = _i_in._T_Schema_Tree
+    
+    export namespace PARAMS {
+    }
+    
+    export namespace RESULT {
+        export type annotation = null
+    }
+    export type RESULT = _i_out._T_Schema_Tree<null>
+}
+
 export namespace Schemas {
     
     export namespace CONTEXT {
@@ -1252,6 +1311,21 @@ export namespace Type_Reference {
         export type annotation = null
     }
     export type RESULT = _i_out._T_Type_Reference<null>
+}
+
+export namespace Type_Specification {
+    
+    export namespace CONTEXT {
+    }
+    export type CONTEXT = _i_in._T_Type_Specification
+    
+    export namespace PARAMS {
+    }
+    
+    export namespace RESULT {
+        export type annotation = null
+    }
+    export type RESULT = _i_out._T_Type_Specification<null>
 }
 
 export namespace Types {

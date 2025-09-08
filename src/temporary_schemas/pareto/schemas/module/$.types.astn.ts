@@ -21,7 +21,7 @@ export const $: g_.Types<pd.Source_Location> = types(
             "set": t.component_cyclic("Operations")
         }))),
         "Module": type(t.group({
-            "schemas": t.component_external("schema", "Schemas"),
+            "schema tree": t.component_external("schema", "Schema Tree"),
             "operations": t.component("Operations"),
         })),
     }

@@ -6,6 +6,7 @@ import {
     t,
     tr,
     type,
+    text,
 } from "../../../../shorthands/schema"
 import * as g_ from "../../../../generated/interface/schemas/schema/data_types/unresolved"
 
@@ -235,10 +236,18 @@ export const $: g_.Types<pd.Source_Location> = types(
             "dense": t.boolean(),
         })),
 
-        "Schemas": type(t.dictionary(t.state_group({
+        "Schemas": type(t.dictionary(t.component("Schema Tree"), 'ordered')),
+
+        "Type Specification": type(t.group({
+            "schema": t.component("Schema Tree"),
+            "schema path": t.list(t.text_local(text('single line'))),
+            "type": t.text_local(text('single line')),
+        })),
+
+        "Schema Tree": type(t.state_group({
             "schema": t.component("Schema"),
             "set": t.component_cyclic("Schemas")
-        }), 'ordered')),
+        })),
 
         "Schema": type(t.group({
             "imports": t.component_cyclic("Imports"),
@@ -252,7 +261,7 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Imports": type(t.dictionary(t.group({
             "schema set child": t.reference_stack("Schemas", []),
-            "schema": t.reference_derived("Schemas", [tr.d(), tr.s("schema")]),
+            "schema": t.reference_derived("Schema", []),
         }))),
 
         "Type Node": type(t.state_group({

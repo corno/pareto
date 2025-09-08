@@ -177,6 +177,19 @@ export const $: g_.Resolve_Logic.signatures<pd.Source_Location> = signatures(
                 "sibling schemas": lookup_parameter("Schemas", 'stack'),
             }
         ),
+
+        "Type Specification": sig.local(
+            {},
+            {
+            }
+        ),
+
+        "Schema Tree": sig.local(
+            {},
+            {
+                "sibling schemas": lookup_parameter("Schemas", 'stack'),
+            }
+        ),
         "Schema": sig.same_as("Schemas"),
         "Imports": sig.same_as("Schemas"),
 

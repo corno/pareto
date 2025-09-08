@@ -18,10 +18,6 @@ export const Document_Range: _i_signatures._T_Document_Range = ($, $p) => ['verb
     )),
 })]
 export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => ['verbose group', _pa.dictionary_literal({
-    'file': _pa.cc($.range.document, ($) => ['text', ({
-        'delimiter': ['quote', null],
-        'value': $,
-    })]),
     'range': _pa.cc($['range'], ($) => Document_Range(
         $,
         {

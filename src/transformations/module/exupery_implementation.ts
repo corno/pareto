@@ -1,20 +1,25 @@
-import * as pd from 'exupery-core-data'
-import * as pt from 'exupery-core-types'
-import * as pa from 'exupery-core-alg'
+import * as _edata from 'exupery-core-data'
+import * as _ea from 'exupery-core-alg'
 
 import * as _out$ from "../../generated/interface/core/unresolved"
 
 import * as _in from "../../generated/interface/schemas/module/data_types/resolved"
 import * as _out from "exupery/dist/generated/interface/schemas/implementation/data_types/unresolved"
 
-import { Schemas } from "../schema/exupery_implementation/main"
-export const Module = ($: _in.Module): _out.Module_Set<pd.Source_Location> => {
+import * as t_exupery_implementation_main from "../schema/exupery_implementation/main"
+
+export const Module = ($: _in.Module): _out.Module_Set<_edata.Source_Location> => {
     return {
-        'location': pd.get_location_info(1),
-        'dictionary': pa.dictionary_literal<_out.Module_Set.D<pd.Source_Location>>({
-            "schemas": Schemas($.schemas)
+        'location': _edata.get_location_info(1),
+        'dictionary': _ea.dictionary_literal<_out.Module_Set.D<_edata.Source_Location>>({
+            'schemas': t_exupery_implementation_main.Schema_Tree(
+                $['schema tree'],
+                {
+                    'path': _ea.array_literal([]),
+                }
+            )
         }).map(($) => ({
-            'location': pd.get_location_info(1),
+            'location': _edata.get_location_info(1),
             'entry': $
         }))
     }

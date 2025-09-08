@@ -8,7 +8,7 @@ import * as _i_out from "../generated/interface/schemas/schema/data_types/resolv
 
 import * as _r from "../generated/interface/core/resolved"
 
-export const r_Imports: _i_signatures.Imports = ($, $p) => pa.block(() => {
+export const Imports: _i_signatures.Imports = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return pa.cc($, ($) => _i_generic.resolve_dictionary(
@@ -39,7 +39,7 @@ export const r_Imports: _i_signatures.Imports = ($, $p) => pa.block(() => {
     ))
 })
 
-export const r_Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => pa.block(() => {
+export const Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return pa.block(() => {
@@ -47,7 +47,7 @@ export const r_Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => pa.
         const p_type: _i_out.Lookup_Selection._type = pa.cc($['type'], ($) => pa.cc($['state group'], ($): _i_out.Lookup_Selection._type => {
             switch ($[0]) {
                 case 'dictionary': return pa.ss($, ($) => {
-                    const p_selection = r_Guaranteed_Value_Selection(
+                    const p_selection = Guaranteed_Value_Selection(
                         $.selection,
                         {
                             'location 2 string': l2s,
@@ -98,7 +98,7 @@ export const r_Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => pa.
     })
 })
 
-export const r_Number_Type: _i_signatures.Number_Type = ($, $p) => {
+export const Number_Type: _i_signatures.Number_Type = ($, $p) => {
     return {
         'precision': pa.cc($.precision['state group'], ($): _i_out.Number_Type.precision => {
             switch ($[0]) {
@@ -126,7 +126,7 @@ export const r_Number_Type: _i_signatures.Number_Type = ($, $p) => {
     }
 }
 
-export const r_Signature_Parameters: _i_signatures.Signature_Parameters = ($, $p) => {
+export const Signature_Parameters: _i_signatures.Signature_Parameters = ($, $p) => {
 
     const p_parameters_values: _i_out.Signature_Parameters.values = _i_generic.resolve_dictionary(
         $.values,
@@ -134,7 +134,7 @@ export const r_Signature_Parameters: _i_signatures.Signature_Parameters = ($, $p
             'location 2 string': $p['location 2 string'],
             'map': ($, $l) => {
 
-                const p_schema_type = r_Type_Reference(
+                const p_schema_type = Type_Reference(
                     $.value['data type'],
                     {
                         'location 2 string': $p['location 2 string'],
@@ -165,7 +165,7 @@ export const r_Signature_Parameters: _i_signatures.Signature_Parameters = ($, $p
             'location 2 string': $p['location 2 string'],
             'map': ($, $l) => {
 
-                const p_referent = r_Type_Reference(
+                const p_referent = Type_Reference(
                     $.value.referent,
                     {
                         'location 2 string': $p['location 2 string'],
@@ -209,12 +209,12 @@ export const r_Signature_Parameters: _i_signatures.Signature_Parameters = ($, $p
         'values': p_parameters_values,
     }
 }
-export const r_Globals: _i_signatures.Globals = ($, $p) => {
+export const Globals: _i_signatures.Globals = ($, $p) => {
     const p_number_types: _i_out.Globals.number_types = _i_generic.resolve_dictionary(
         $['number types'],
         {
             'location 2 string': $p['location 2 string'],
-            'map': ($, $l) => r_Number_Type(
+            'map': ($, $l) => Number_Type(
                 $.value,
                 {
                     'location 2 string': $p['location 2 string'],
@@ -230,7 +230,7 @@ export const r_Globals: _i_signatures.Globals = ($, $p) => {
         $['text types'],
         {
             'location 2 string': $p['location 2 string'],
-            'map': ($, $l) => r_Text_Type(
+            'map': ($, $l) => Text_Type(
                 $.value,
                 {
                     'location 2 string': $p['location 2 string'],
@@ -249,10 +249,10 @@ export const r_Globals: _i_signatures.Globals = ($, $p) => {
     }
 }
 
-export const r_Signature: _i_signatures.Signature = ($, $p) => {
+export const Signature: _i_signatures.Signature = ($, $p) => {
     const p_parameters: _i_out.Signature.parameters = pa.cc($.parameters['state group'], ($) => {
         switch ($[0]) {
-            case 'local': return pa.ss($, ($) => ['local', r_Signature_Parameters($, {
+            case 'local': return pa.ss($, ($) => ['local', Signature_Parameters($, {
                 'location 2 string': $p['location 2 string'],
                 'parameters': {
                     'lookups': null,
@@ -288,7 +288,7 @@ export const r_Signature: _i_signatures.Signature = ($, $p) => {
     }
 }
 
-export const r_Signatures: _i_signatures.Signatures = ($, $p) => {
+export const Signatures: _i_signatures.Signatures = ($, $p) => {
     return _i_generic.resolve_dense_ordered_dictionary(
         $,
         {
@@ -305,7 +305,7 @@ export const r_Signatures: _i_signatures.Signatures = ($, $p) => {
                     }
                 )
 
-                return r_Signature($.value, {
+                return Signature($.value, {
                     'location 2 string': $p['location 2 string'],
                     'parameters': {
                         'lookups': {
@@ -324,195 +324,212 @@ export const r_Signatures: _i_signatures.Signatures = ($, $p) => {
     )
 }
 
-export const r_Schemas: _i_signatures.Schemas = ($, $p) => pa.block(() => {
+export const Schema_Tree: _i_signatures.Schema_Tree = ($, $p) => pa.block(() => {
+    const l2s = $p['location 2 string']
+    const params = $p['parameters']
+    return pa.cc($['state group'], ($): _i_out.Schemas.D => {
+        switch ($[0]) {
+            case 'schema': return pa.ss($, ($) => ['schema', pa.block(() => {
+                const p_imports = Imports($.imports, {
+                    'location 2 string': l2s,
+                    'parameters': {
+                        'lookups': {
+                            'sibling schemas': params.lookups['sibling schemas'],
+
+                        },
+                        'values': null,
+                    }
+                })
+                const p_globals: _i_out.Schema.globals = pa.cc($['globals'], ($) => Globals(
+                    $,
+                    {
+                        'location 2 string': l2s,
+                        'parameters': {
+                            'lookups': null,
+                            'values': null,
+                        }
+                    }
+                ))
+                const p_types: _i_out.Types = _i_generic.resolve_ordered_dictionary(
+                    $.types,
+                    {
+                        'location 2 string': l2s,
+                        'map': ($, $l) => {
+                            const p_type_parameters: _i_out.Type.type_parameters = _i_generic.resolve_dictionary(
+                                $.value['type parameters'],
+                                {
+                                    'location 2 string': l2s,
+                                    'map': ($, $l) => {
+                                        return $.value
+                                    },
+                                }
+                            )
+                            const p_type = Type_Node(
+                                $.value.node,
+                                {
+                                    'parameters': {
+                                        'lookups': {
+                                            'noncircular sibling types': $l['not circular dependent siblings'],
+                                            'possibly circular dependent sibling types': $l['possibly circular dependent siblings'],
+                                        },
+                                        'values': {
+                                            'imports': pa.set(p_imports),
+                                            'globals': pa.set(p_globals),
+                                            'type parameters': p_type_parameters,
+                                        },
+                                    },
+                                    'location 2 string': l2s,
+                                },
+                            )
+                            return {
+                                'type parameters': p_type_parameters,
+                                'node': p_type,
+
+                            }
+                        },
+                    }
+                )
+                const p_complexity: _i_out.Schema.complexity = pa.cc($.complexity['state group'], ($) => {
+                    switch ($[0]) {
+                        case 'constrained': return pa.ss($, ($) => {
+
+                            const p_signatures: _i_out.Resolve_Logic.signatures = pa.cc($.signatures, ($) => {
+                                const p_types_2: _i_out.Resolve_Logic.signatures.types = pa.cc($, ($) => Signatures(
+                                    $.types,
+                                    {
+                                        'location 2 string': l2s,
+                                        'parameters': {
+                                            'lookups': null,
+                                            'values': {
+                                                'imports': p_imports,
+                                                'types': p_types,
+                                            },
+                                        }
+                                    }
+                                ))
+                                return {
+                                    'types': p_types_2,
+                                }
+                            })
+                            const p_resolvers: _i_out.Resolve_Logic.resolvers = _i_generic.resolve_dense_ordered_dictionary(
+                                $.resolvers,
+                                {
+                                    'location 2 string': l2s,
+                                    'map': ($, $l) => {
+
+                                        const key = $.key
+
+                                        const p_linked_entry = _i_generic.get_entry(
+                                            _i_generic.dictionary_to_lookup(p_types.dictionary, null),
+                                            {
+                                                'reference': {
+                                                    'key': key,
+                                                    'location': $.location
+                                                },
+                                                'location 2 string': l2s,
+                                            }
+                                        )
+                                        const p_signature = _i_generic.get_entry(
+                                            _i_generic.dictionary_to_lookup(p_signatures.types.dictionary, null),
+                                            {
+                                                'reference': {
+                                                    'key': key,
+                                                    'location': $.location
+                                                },
+                                                'location 2 string': l2s,
+                                            }
+                                        )
+
+                                        const p_type_resolver = Node_Resolver(
+                                            $.value['type resolver'],
+                                            {
+                                                'parameters': {
+                                                    'lookups': {
+                                                        'sibling property resolvers': pa.not_set(),
+                                                        'parent sibling property resolvers': pa.not_set(),
+
+                                                    },
+                                                    'values': {
+                                                        'list cursor': pa.not_set(),
+                                                        'linked entry': pa.not_set(),
+                                                        'current dictionary': pa.not_set(),
+                                                        'current ordered dictionary': pa.not_set(),
+                                                        'option constraints': pa.not_set(),
+
+                                                        'definition': p_linked_entry.entry.node,
+                                                        'signature': p_signature.entry,
+
+                                                        'types': p_types,
+                                                        'imports': pa.set(p_imports),
+                                                        'signatures': p_signatures.types
+                                                    },
+                                                },
+                                                'location 2 string': l2s,
+                                            },
+                                        )
+                                        return {
+                                            'signature': p_signature.entry,
+                                            'type resolver': p_type_resolver,
+                                        }
+                                    },
+                                    'denseness benchmark': p_signatures.types.dictionary,
+                                }
+                            )
+                            return ['constrained', {
+                                'signatures': p_signatures,
+                                'resolvers': p_resolvers,
+                            }]
+                        })
+                        case 'unconstrained': return pa.ss($, ($) => ['unconstrained', null])
+                        default: return pa.au($[0])
+                    }
+                })
+                return ({
+                    'imports': p_imports,
+                    'globals': p_globals,
+                    'types': p_types,
+                    'complexity': p_complexity,
+                })
+            })])
+            case 'set':
+            case 'set': return pa.ss($, ($) => ['set', Schemas(
+                $,
+                {
+                    'location 2 string': l2s,
+                    'parameters': params,
+                }
+            )])
+            default: return pa.au($[0])
+        }
+    })
+})
+
+export const Schemas: _i_signatures.Schemas = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return _i_generic.resolve_ordered_dictionary(
         $,
         {
             'location 2 string': l2s,
-            'map': ($, $p) => pa.cc($['value'], ($) => pa.cc($['state group'], ($): _i_out.Schemas.D => {
-                switch ($[0]) {
-                    case 'schema': return pa.ss($, ($) => ['schema', pa.block(() => {
-                        const p_imports = r_Imports($.imports, {
-                            'location 2 string': l2s,
-                            'parameters': {
-                                'lookups': {
-                                    'sibling schemas': _i_generic.push_stack(params.lookups['sibling schemas'], {
-                                        'element': $p['not circular dependent siblings']
-                                    })
-
-                                },
-                                'values': null,
-                            }
-                        })
-                        const p_globals: _i_out.Schema.globals = pa.cc($['globals'], ($) => r_Globals(
-                            $,
-                            {
-                                'location 2 string': l2s,
-                                'parameters': {
-                                    'lookups': null,
-                                    'values': null,
-                                }
-                            }
-                        ))
-                        const p_types: _i_out.Types = _i_generic.resolve_ordered_dictionary(
-                            $.types,
-                            {
-                                'location 2 string': l2s,
-                                'map': ($, $l) => {
-                                    const p_type_parameters: _i_out.Type.type_parameters = _i_generic.resolve_dictionary(
-                                        $.value['type parameters'],
-                                        {
-                                            'location 2 string': l2s,
-                                            'map': ($, $l) => {
-                                                return $.value
-                                            },
-                                        }
-                                    )
-                                    const p_type = r_Type_Node(
-                                        $.value.node,
-                                        {
-                                            'parameters': {
-                                                'lookups': {
-                                                    'noncircular sibling types': $l['not circular dependent siblings'],
-                                                    'possibly circular dependent sibling types': $l['possibly circular dependent siblings'],
-                                                },
-                                                'values': {
-                                                    'imports': pa.set(p_imports),
-                                                    'globals': pa.set(p_globals),
-                                                    'type parameters': p_type_parameters,
-                                                },
-                                            },
-                                            'location 2 string': l2s,
-                                        },
-                                    )
-                                    return {
-                                        'type parameters': p_type_parameters,
-                                        'node': p_type,
-
-                                    }
-                                },
-                            }
-                        )
-                        const p_complexity: _i_out.Schema.complexity = pa.cc($.complexity['state group'], ($) => {
-                            switch ($[0]) {
-                                case 'constrained': return pa.ss($, ($) => {
-
-                                    const p_signatures: _i_out.Resolve_Logic.signatures = pa.cc($.signatures, ($) => {
-                                        const p_types_2: _i_out.Resolve_Logic.signatures.types = pa.cc($, ($) => r_Signatures(
-                                            $.types,
-                                            {
-                                                'location 2 string': l2s,
-                                                'parameters': {
-                                                    'lookups': null,
-                                                    'values': {
-                                                        'imports': p_imports,
-                                                        'types': p_types,
-                                                    },
-                                                }
-                                            }
-                                        ))
-                                        return {
-                                            'types': p_types_2,
-                                        }
-                                    })
-                                    const p_resolvers: _i_out.Resolve_Logic.resolvers = _i_generic.resolve_dense_ordered_dictionary(
-                                        $.resolvers,
-                                        {
-                                            'location 2 string': l2s,
-                                            'map': ($, $l) => {
-
-                                                const key = $.key
-
-                                                const p_linked_entry = _i_generic.get_entry(
-                                                    _i_generic.dictionary_to_lookup(p_types.dictionary, null),
-                                                    {
-                                                        'reference': {
-                                                            'key': key,
-                                                            'location': $.location
-                                                        },
-                                                        'location 2 string': l2s,
-                                                    }
-                                                )
-                                                const p_signature = _i_generic.get_entry(
-                                                    _i_generic.dictionary_to_lookup(p_signatures.types.dictionary, null),
-                                                    {
-                                                        'reference': {
-                                                            'key': key,
-                                                            'location': $.location
-                                                        },
-                                                        'location 2 string': l2s,
-                                                    }
-                                                )
-
-                                                const p_type_resolver = r_Node_Resolver(
-                                                    $.value['type resolver'],
-                                                    {
-                                                        'parameters': {
-                                                            'lookups': {
-                                                                'sibling property resolvers': pa.not_set(),
-                                                                'parent sibling property resolvers': pa.not_set(),
-
-                                                            },
-                                                            'values': {
-                                                                'list cursor': pa.not_set(),
-                                                                'linked entry': pa.not_set(),
-                                                                'current dictionary': pa.not_set(),
-                                                                'current ordered dictionary': pa.not_set(),
-                                                                'option constraints': pa.not_set(),
-
-                                                                'definition': p_linked_entry.entry.node,
-                                                                'signature': p_signature.entry,
-
-                                                                'types': p_types,
-                                                                'imports': pa.set(p_imports),
-                                                                'signatures': p_signatures.types
-                                                            },
-                                                        },
-                                                        'location 2 string': l2s,
-                                                    },
-                                                )
-                                                return {
-                                                    'signature': p_signature.entry,
-                                                    'type resolver': p_type_resolver,
-                                                }
-                                            },
-                                            'denseness benchmark': p_signatures.types.dictionary,
-                                        }
-                                    )
-                                    return ['constrained', {
-                                        'signatures': p_signatures,
-                                        'resolvers': p_resolvers,
-                                    }]
-                                })
-                                case 'unconstrained': return pa.ss($, ($) => ['unconstrained', null])
-                                default: return pa.au($[0])
-                            }
-                        })
-                        return ({
-                            'imports': p_imports,
-                            'globals': p_globals,
-                            'types': p_types,
-                            'complexity': p_complexity,
-                        })
-                    })])
-                    case 'set':
-                    case 'set': return pa.ss($, ($) => ['set', r_Schemas(
-                        $,
-                        {
-                            'location 2 string': l2s,
-                            'parameters': params,
-                        }
-                    )])
-                    default: return pa.au($[0])
+            'map': ($, $l) => pa.cc($['value'], ($) => Schema_Tree(
+                $,
+                {
+                    'location 2 string': l2s,
+                    'parameters': {
+                        'lookups': {
+                            'sibling schemas': _i_generic.push_stack(params.lookups['sibling schemas'], {
+                                'element': $l['not circular dependent siblings']
+                            })
+                        },
+                        'values': null,
+                    },
                 }
-            })),
+            )),
         }
     )
 })
 
-export const r_Text_Type: _i_signatures.Text_Type = ($, $p) => {
+export const Text_Type: _i_signatures.Text_Type = ($, $p) => {
     return {
         'type': pa.cc($.type['state group'], ($): _i_out.Text_Type._type => {
             switch ($[0]) {
@@ -524,7 +541,7 @@ export const r_Text_Type: _i_signatures.Text_Type = ($, $p) => {
     }
 }
 
-export const r_Type_Node: _i_signatures.Type_Node = ($, $p) => {
+export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
     const loc = $.location
     return pa.cc($['state group'], ($) => {
         switch ($[0]) {
@@ -543,7 +560,7 @@ export const r_Type_Node: _i_signatures.Type_Node = ($, $p) => {
                             'location 2 string': $p['location 2 string']
                         }
                     )])
-                    case 'local': return pa.ss($, ($) => ['local', r_Number_Type(
+                    case 'local': return pa.ss($, ($) => ['local', Number_Type(
                         $,
                         {
                             'location 2 string': $p['location 2 string'],
@@ -570,7 +587,7 @@ export const r_Type_Node: _i_signatures.Type_Node = ($, $p) => {
                             'location 2 string': $p['location 2 string']
                         }
                     )])
-                    case 'local': return pa.ss($, ($) => ['local', r_Text_Type(
+                    case 'local': return pa.ss($, ($) => ['local', Text_Type(
                         $,
                         {
                             'location 2 string': $p['location 2 string'],
@@ -626,7 +643,7 @@ export const r_Type_Node: _i_signatures.Type_Node = ($, $p) => {
                 }
             })])
             case 'dictionary': return pa.ss($, ($) => {
-                const p_type = r_Type_Node(
+                const p_type = Type_Node(
                     $.node,
                     $p,
                 )
@@ -637,17 +654,17 @@ export const r_Type_Node: _i_signatures.Type_Node = ($, $p) => {
             })
             case 'group': return pa.ss($, ($) => ['group', _i_generic.resolve_dictionary($, {
                 'location 2 string': $p['location 2 string'],
-                'map': ($, $l) => r_Type_Node(
+                'map': ($, $l) => Type_Node(
                     $.value,
                     $p,
                 ),
             })])
-            case 'identifier value pair': return pa.ss($, ($) => ['identifier value pair', r_Type_Node(
+            case 'identifier value pair': return pa.ss($, ($) => ['identifier value pair', Type_Node(
                 $,
                 $p,
             )])
             case 'list': return pa.ss($, ($) => {
-                const p_type = r_Type_Node(
+                const p_type = Type_Node(
                     $.node,
                     $p,
                 )
@@ -656,7 +673,7 @@ export const r_Type_Node: _i_signatures.Type_Node = ($, $p) => {
                 }]
             })
             case 'nothing': return pa.ss($, ($) => ['nothing', null])
-            case 'optional': return pa.ss($, ($) => ['optional', r_Type_Node(
+            case 'optional': return pa.ss($, ($) => ['optional', Type_Node(
                 $,
                 $p,
             )])
@@ -673,7 +690,7 @@ export const r_Type_Node: _i_signatures.Type_Node = ($, $p) => {
                         pa.panic(`schema doesn't have settings, so no references are allowed @ ${$p['location 2 string'](loc)}`)
                     }
                 )
-                const p_referent = r_Type_Part_Reference(
+                const p_referent = Type_Part_Reference(
                     $.referent,
                     {
                         'location 2 string': $p['location 2 string'],
@@ -740,7 +757,7 @@ export const r_Type_Node: _i_signatures.Type_Node = ($, $p) => {
             })
             case 'state group': return pa.ss($, ($) => ['state group', _i_generic.resolve_dictionary($, {
                 'location 2 string': $p['location 2 string'],
-                'map': ($, $l) => r_Type_Node(
+                'map': ($, $l) => Type_Node(
                     $.value,
                     $p,
                 ),
@@ -760,7 +777,7 @@ export const r_Type_Node: _i_signatures.Type_Node = ($, $p) => {
     })
 }
 
-export const r_Type_Parameters: _i_signatures.Type_Parameters = ($, $p) => _i_generic.resolve_dictionary(
+export const Type_Parameters: _i_signatures.Type_Parameters = ($, $p) => _i_generic.resolve_dictionary(
     $,
     {
         'location 2 string': $p['location 2 string'],
@@ -770,7 +787,7 @@ export const r_Type_Parameters: _i_signatures.Type_Parameters = ($, $p) => _i_ge
     }
 )
 
-export const r_Type_Reference: _i_signatures.Type_Reference = ($, $p) => {
+export const Type_Reference: _i_signatures.Type_Reference = ($, $p) => {
     const x: _i_out.Type_Reference.location = pa.cc($.location['state group'], ($) => {
         switch ($[0]) {
             case 'external': return pa.ss($, ($): _i_out.Type_Reference.location => {
@@ -819,8 +836,8 @@ export const r_Type_Reference: _i_signatures.Type_Reference = ($, $p) => {
 }
 
 
-export const r_Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) => {
-    const p_type_location = r_Type_Reference($['type location'], $p)
+export const Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) => {
+    const p_type_location = Type_Reference($['type location'], $p)
     const p_tail_x: _i_generic.Path<_i_generic.Location_Info, _i_out.Type_Node_Reference.tail.L, _i_out.Type_Node> = _i_generic.resolve_path(
         $.tail,
         {
@@ -832,7 +849,7 @@ export const r_Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) 
                         case 'dictionary': return pa.ss($, ($) => {
                             const sc_definition: _i_out.Type_Node.SG.dictionary = pa.cc(current, ($) => {
                                 if ($[0] !== 'dictionary') {
-                                    return pa.panic(`not a 'dictionary' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return pa.panic(`not a 'dictionary' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -863,7 +880,7 @@ export const r_Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) 
                         case 'identifier value pair': return pa.ss($, ($) => {
                             const sc_definition: _i_out.Type_Node.SG.identifier_value_pair = pa.cc(current, ($) => {
                                 if ($[0] !== 'identifier value pair') {
-                                    return pa.panic(`not a 'identifier value pair' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return pa.panic(`not a 'identifier value pair' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -875,7 +892,7 @@ export const r_Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) 
                         case 'list': return pa.ss($, ($) => {
                             const sc_definition: _i_out.Type_Node.SG.list = pa.cc(current, ($) => {
                                 if ($[0] !== 'list') {
-                                    return pa.panic(`not a 'list' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return pa.panic(`not a 'list' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -887,7 +904,7 @@ export const r_Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) 
                         case 'optional': return pa.ss($, ($) => {
                             const sc_definition: _i_out.Type_Node.SG.optional = pa.cc(current, ($) => {
                                 if ($[0] !== 'optional') {
-                                    return pa.panic(`not a 'optional' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return pa.panic(`not a 'optional' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -899,7 +916,7 @@ export const r_Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) 
                         case 'state group': return pa.ss($, ($) => {
                             const p_state_group: _i_out.Type_Node.SG.state_group = pa.cc(current, ($) => {
                                 if ($[0] !== 'state group') {
-                                    return pa.panic(`not a 'state group' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return pa.panic(`not a 'state group' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -928,7 +945,7 @@ export const r_Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) 
     }
 }
 
-export const r_Option_Constraints: _i_signatures.Option_Constraints = ($, $p) => {
+export const Option_Constraints: _i_signatures.Option_Constraints = ($, $p) => {
     return pa.cc($, ($) => _i_generic.resolve_dictionary(
         $,
         {
@@ -937,7 +954,7 @@ export const r_Option_Constraints: _i_signatures.Option_Constraints = ($, $p) =>
                 switch ($[0]) {
                     case 'state': return pa.ss($, ($) => ['state', pa.block(() => {
                         const loc = $.selection.start.location
-                        const p_selection: _i_out.Option_Constraints.D.SG.state.selection = pa.cc($['selection'], ($) => r_Guaranteed_Value_Selection(
+                        const p_selection: _i_out.Option_Constraints.D.SG.state.selection = pa.cc($['selection'], ($) => Guaranteed_Value_Selection(
                             $,
                             {
                                 'location 2 string': $p['location 2 string'],
@@ -960,7 +977,7 @@ export const r_Option_Constraints: _i_signatures.Option_Constraints = ($, $p) =>
                             'state': p_state,
                         })
                     })])
-                    case 'assert is set': return pa.ss($, ($) => ['assert is set', r_Possibly_Optional(
+                    case 'assert is set': return pa.ss($, ($) => ['assert is set', Possibly_Optional(
                         $,
                         {
                             'location 2 string': $p['location 2 string'],
@@ -974,8 +991,8 @@ export const r_Option_Constraints: _i_signatures.Option_Constraints = ($, $p) =>
     ))
 }
 
-export const r_Constraint: _i_signatures.Constraint = ($, $p) => {
-    const p_selection: _i_out.Constraint.selection = pa.cc($['selection'], ($) => r_Relative_Value_Selection(
+export const Constraint: _i_signatures.Constraint = ($, $p) => {
+    const p_selection: _i_out.Constraint.selection = pa.cc($['selection'], ($) => Relative_Value_Selection(
         $,
         {
             'location 2 string': $p['location 2 string'],
@@ -1023,7 +1040,7 @@ export const r_Constraint: _i_signatures.Constraint = ($, $p) => {
     }
 }
 
-export const r_Property_Constraints: _i_signatures.Property_Constraints = ($, $p) => {
+export const Property_Constraints: _i_signatures.Property_Constraints = ($, $p) => {
     return pa.cc($, ($) => _i_generic.resolve_ordered_dictionary(
         $,
         {
@@ -1042,7 +1059,7 @@ export const r_Property_Constraints: _i_signatures.Property_Constraints = ($, $p
                         default: return pa.au($[0])
                     }
                 })
-                const p_constraint: _i_out.Property_Constraint.constraint = r_Constraint(
+                const p_constraint: _i_out.Property_Constraint.constraint = Constraint(
                     $.constraint,
                     {
                         'location 2 string': $p['location 2 string'],
@@ -1075,7 +1092,7 @@ export const r_Property_Constraints: _i_signatures.Property_Constraints = ($, $p
     ))
 }
 
-export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
+export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
     const loc = $.location
     const p_type = pa.cc($['state group'], ($): _i_out.Node_Resolver => {
         switch ($[0]) {
@@ -1166,7 +1183,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                                 switch ($[0]) {
                                                     case 'empty stack': return pa.ss($, ($) => ['empty stack', null])
                                                     case 'not set': return pa.ss($, ($) => ['not set', null])
-                                                    case 'selection': return pa.ss($, ($) => ['selection', r_Lookup_Selection(
+                                                    case 'selection': return pa.ss($, ($) => ['selection', Lookup_Selection(
                                                         $,
                                                         {
                                                             'location 2 string': $p['location 2 string'],
@@ -1174,11 +1191,11 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                                         }
                                                     )])
                                                     case 'stack': return pa.ss($, ($) => {
-                                                        const p_stack = r_Lookup_Selection($.stack, {
+                                                        const p_stack = Lookup_Selection($.stack, {
                                                             'location 2 string': $p['location 2 string'],
                                                             'parameters': $p.parameters
                                                         })
-                                                        const p_element = r_Lookup_Selection($.element, {
+                                                        const p_element = Lookup_Selection($.element, {
                                                             'location 2 string': $p['location 2 string'],
                                                             'parameters': $p.parameters
                                                         })
@@ -1223,7 +1240,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                                 )
                                                 const out = pa.cc($.value['state group'], ($): _i_out.Node_Resolver.SG.component._arguments.O.values.O.D => {
                                                     switch ($[0]) {
-                                                        case 'optional': return pa.ss($, ($) => ['optional', r_Possible_Value_Selection(
+                                                        case 'optional': return pa.ss($, ($) => ['optional', Possible_Value_Selection(
                                                             $,
                                                             {
                                                                 'location 2 string': $p['location 2 string'],
@@ -1237,7 +1254,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                                                 'location 2 string': $p['location 2 string']
                                                             }
                                                         )])
-                                                        case 'required': return pa.ss($, ($) => ['required', r_Guaranteed_Value_Selection(
+                                                        case 'required': return pa.ss($, ($) => ['required', Guaranteed_Value_Selection(
                                                             $,
                                                             {
                                                                 'location 2 string': $p['location 2 string'],
@@ -1358,7 +1375,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                         return pa.not_set()
                     }
                 )
-                const p_constraints = r_Property_Constraints(
+                const p_constraints = Property_Constraints(
                     $.constraints,
                     {
                         'location 2 string': $p['location 2 string'],
@@ -1389,7 +1406,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     : $p.parameters.values.definition[1]
 
                 const p_benchmark = $.benchmark.map(($) => {
-                    const p_selection = r_Guaranteed_Value_Selection($.selection, {
+                    const p_selection = Guaranteed_Value_Selection($.selection, {
                         'location 2 string': $p['location 2 string'],
                         'parameters': $p.parameters,
                     })
@@ -1406,7 +1423,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                 return ['dictionary', {
                     'definition': p_definition,
                     'benchmark': p_benchmark,
-                    'resolver': r_Node_Resolver(
+                    'resolver': Node_Resolver(
                         $.resolver,
                         {
                             'parameters': {
@@ -1454,7 +1471,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                     'location 2 string': $p['location 2 string']
                                 }
                             )
-                            const p_resolver = r_Node_Resolver(
+                            const p_resolver = Node_Resolver(
                                 $.value.resolver,
                                 {
                                     'parameters': {
@@ -1496,7 +1513,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                 const x = $p.parameters.values.definition[0] !== 'identifier value pair'
                     ? pa.panic("not a 'identifier value pair' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
-                return ['identifier value pair', r_Node_Resolver(
+                return ['identifier value pair', Node_Resolver(
                     $,
                     {
                         'parameters': {
@@ -1523,7 +1540,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                 const p_definition = $p.parameters.values.definition[0] !== 'list'
                     ? pa.panic("not a 'list' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
-                const p_result = $.result.map(($) => r_Type_Reference($, {
+                const p_result = $.result.map(($) => Type_Reference($, {
                     'location 2 string': $p['location 2 string'],
                     'parameters': {
                         'lookups': {
@@ -1534,7 +1551,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                         },
                     }
                 }))
-                const p_resolver = r_Node_Resolver(
+                const p_resolver = Node_Resolver(
                     $.resolver,
                     {
                         'parameters': {
@@ -1582,11 +1599,11 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     ? pa.panic("not a 'optional' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
 
-                const p_constraints: _i_out.Node_Resolver.SG.state_group.states.D.constraints = r_Option_Constraints($.constraints, {
+                const p_constraints: _i_out.Node_Resolver.SG.state_group.states.D.constraints = Option_Constraints($.constraints, {
                     'location 2 string': $p['location 2 string'],
                     'parameters': $p.parameters,
                 })
-                const p_resolver = r_Node_Resolver(
+                const p_resolver = Node_Resolver(
                     $.resolver,
                     {
                         'parameters': {
@@ -1629,7 +1646,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                     ? pa.panic("not a 'derived' but a '", p_definition.type[0], "' @ ", $p['location 2 string'](loc))
                                     : p_definition.type[1]
                                 return ['derived', {
-                                    'value': r_Guaranteed_Value_Selection(
+                                    'value': Guaranteed_Value_Selection(
                                         $.value,
                                         {
                                             'location 2 string': $p['location 2 string'],
@@ -1642,14 +1659,14 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                 const p_definition_2 = p_definition.type[0] !== 'selected'
                                     ? pa.panic("not a 'selected' but a '", p_definition.type[0], "' @ ", $p['location 2 string'](loc))
                                     : p_definition.type[1]
-                                const p_lookup = r_Lookup_Selection(
+                                const p_lookup = Lookup_Selection(
                                     $.lookup,
                                     {
                                         'location 2 string': $p['location 2 string'],
                                         'parameters': $p.parameters,
                                     }
                                 )
-                                const p_constraints = r_Property_Constraints(
+                                const p_constraints = Property_Constraints(
                                     $.constraints,
                                     {
                                         'location 2 string': $p['location 2 string'],
@@ -1693,11 +1710,11 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                     'location 2 string': $p['location 2 string']
                                 }
                             )
-                            const p_constraints: _i_out.Node_Resolver.SG.state_group.states.D.constraints = r_Option_Constraints($.value.constraints, {
+                            const p_constraints: _i_out.Node_Resolver.SG.state_group.states.D.constraints = Option_Constraints($.value.constraints, {
                                 'location 2 string': $p['location 2 string'],
                                 'parameters': $p.parameters,
                             })
-                            const vr = r_Node_Resolver(
+                            const vr = Node_Resolver(
                                 $.value['resolver'],
                                 {
                                     'parameters': {
@@ -1742,7 +1759,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                 //             }
                 //             return $[1]
                 //         })
-                //         const p_type: _i_out.Relative_Value_Selection.tail.L.SG.state_group._type = pa.cc($['type'], ($) => r_Type_Reference(
+                //         const p_type: _i_out.Relative_Value_Selection.tail.L.SG.state_group._type = pa.cc($['type'], ($) => Type_Reference(
                 //             $,
                 //             {
                 //                 'location 2 string': l2s,
@@ -1770,7 +1787,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                 //                             },
                 //                         }
                 //                     )
-                //                     return $.value.map(($) => r_Value_Selection_Tail(
+                //                     return $.value.map(($) => Value_Selection_Tail(
                 //                         $,
                 //                         {
                 //                             'location 2 string': l2s,
@@ -1820,7 +1837,7 @@ export const r_Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
     return p_type
 }
 
-export const r_Relative_Value_Selection: _i_signatures.Relative_Value_Selection = ($, $p) => pa.block(() => {
+export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = ($, $p) => pa.block(() => {
 
     const l2s = $p['location 2 string']
     const params = $p['parameters']
@@ -1912,22 +1929,22 @@ export const r_Relative_Value_Selection: _i_signatures.Relative_Value_Selection 
     }
 })
 
-export const r_Possible_Value_Selection: _i_signatures.Optional_Value_Initialization = ($, $p) => pa.block(() => {
+export const Possible_Value_Selection: _i_signatures.Optional_Value_Initialization = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return pa.cc($['state group'], ($) => {
         switch ($[0]) {
             case 'not set': return pa.ss($, ($) => ['not set', null])
-            case 'set': return pa.ss($, ($) => ['set', r_Guaranteed_Value_Selection($, $p)])
+            case 'set': return pa.ss($, ($) => ['set', Guaranteed_Value_Selection($, $p)])
             case 'selection': return pa.ss($, ($): _i_out.Optional_Value_Initialization => {
-                return ['selection', r_Possibly_Optional($, $p)]
+                return ['selection', Possibly_Optional($, $p)]
             })
             default: return pa.au($[0])
         }
     })
 })
 
-export const r_Possibly_Optional: _i_signatures.Possible_Value_Selection = ($, $p) => pa.block(() => {
+export const Possibly_Optional: _i_signatures.Possible_Value_Selection = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return pa.cc($['state group'], ($) => {
@@ -1954,7 +1971,7 @@ export const r_Possibly_Optional: _i_signatures.Possible_Value_Selection = ($, $
                             ? pa.panic("not a 'state group' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                             : p_sibling.entry.resolver[1])
 
-                        const p_result = r_Type_Reference($.result, {
+                        const p_result = Type_Reference($.result, {
                             'location 2 string': $p['location 2 string'],
                             'parameters': {
                                 'lookups': {
@@ -1983,7 +2000,7 @@ export const r_Possibly_Optional: _i_signatures.Possible_Value_Selection = ($, $
                         const p_optional_value = pa.cc($['optional value'], ($) => p_sibling.entry.resolver[0] !== 'optional'
                             ? pa.panic("not a 'optional' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                             : p_sibling.entry.resolver[1])
-                        const p_result = r_Type_Reference($.result, {
+                        const p_result = Type_Reference($.result, {
                             'location 2 string': $p['location 2 string'],
                             'parameters': {
                                 'lookups': {
@@ -2008,7 +2025,7 @@ export const r_Possibly_Optional: _i_signatures.Possible_Value_Selection = ($, $
     })
 })
 
-export const r_Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selection = ($, $p) => pa.block(() => {
+export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selection = ($, $p) => pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return pa.block(() => {
@@ -2138,7 +2155,7 @@ export const r_Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Select
                             return ['state group', {
                                 'property': p_sibling,
                                 'state group': p_state_group,
-                                'result': r_Type_Reference($.result, {
+                                'result': Type_Reference($.result, {
                                     'location 2 string': $p['location 2 string'],
                                     'parameters': {
                                         'lookups': {
@@ -2166,7 +2183,7 @@ export const r_Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Select
                             return ['optional value', {
                                 'property': p_sibling,
                                 'optional value': p_optional_value,
-                                'result': r_Type_Reference($.result, {
+                                'result': Type_Reference($.result, {
                                     'location 2 string': $p['location 2 string'],
                                     'parameters': {
                                         'lookups': {
@@ -2199,7 +2216,7 @@ export const r_Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Select
                 default: return pa.au($[0])
             }
         })
-        const p_tail = r_Relative_Value_Selection(
+        const p_tail = Relative_Value_Selection(
             $.tail,
             {
                 'location 2 string': l2s,

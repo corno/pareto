@@ -41,15 +41,6 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => _i_generic.process_unc
             $,
             {
                 'properties': ($) => ({
-                    'file': _pa.cc(_i_generic.get_entry(
-                        $,
-                        {
-                            'key': "file",
-                        }
-                    ), ($) => _i_generic.process_text(
-                        $,
-                        null
-                    )),
                     'range': _pa.cc(_i_generic.get_entry(
                         $,
                         {

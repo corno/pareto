@@ -1,7 +1,7 @@
-import * as pd from 'exupery-core-data'
-import * as pt from 'exupery-core-types'
+import * as _edata from 'exupery-core-data'
+import * as _et from 'exupery-core-types'
 import * as _ea from 'exupery-core-alg'
-import * as pdev from 'exupery-core-dev'
+import * as _edev from 'exupery-core-dev'
 
 import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
 import * as _out from "exupery/dist/generated/interface/schemas/implementation/data_types/unresolved"
@@ -23,19 +23,27 @@ const op = {
 export const Schema = (
     $: _in.Schema,
     $p: {
-        'key': string,
+        'path': _et.Array<string>,
         'imports': _in.Imports,
         'constrained': boolean
     }
-): _out.Module_Set.D<pd.Source_Location> => {
+): _out.Module_Set.D<_edata.Source_Location> => {
     return m.module(
         op['flatten dictionary'](
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
                     "generic": import_.ancestor(2, "generic", ["unmarshall"], {}),
-                    "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "unmarshall"], {}),
+                    "signatures": import_.ancestor(3, "interface", op['flatten list'](_ea.array_literal([
+                        _ea.array_literal(["schemas"]),
+                        $p.path,
+                        _ea.array_literal(["unmarshall"]),
+                    ])).__get_raw_copy(), {}),
                     "in": import_.ancestor(3, "interface", ["core", "astn source"], {}),
-                    "out": import_.ancestor(3, "interface", ["schemas", $p.key, "data types", $p.constrained ? "unresolved" : "unconstrained"], $p.constrained ? { "Source": t.component_imported("in", "Range", {}, []) } : {}),
+                    "out": import_.ancestor(3, "interface", op['flatten list'](_ea.array_literal([
+                        _ea.array_literal(["schemas"]),
+                        $p.path,
+                        _ea.array_literal(["data types", $p.constrained ? "unresolved" : "unconstrained"]),
+                    ])).__get_raw_copy(), $p.constrained ? { "Source": t.component_imported("in", "Range", {}, []) } : {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))
             }),
@@ -66,10 +74,10 @@ export const Type_Node = (
     $: _in.Type_Node,
     $p: {
         'temp type': string
-        'temp subselection': pt.Array<_out_interface.Type.SG.component.sub_selection.L<pd.Source_Location>> //can be removed when exupery has type inference
+        'temp subselection': _et.Array<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>> //can be removed when exupery has type inference
         'constrained': boolean
     },
-): _out.Initialization<pd.Source_Location> => {
+): _out.Initialization<_edata.Source_Location> => {
     return _ea.cc($, ($) => {
         switch ($[0]) {
             case 'number': return _ea.ss($, ($) => i.call(
@@ -268,7 +276,7 @@ export const Type_Node = (
                                 }
                             )
                         ),
-                        t.component_imported("out", $p['temp type'], {}, op['append element']($p['temp subselection'], {'element': sub.group("SG")}).__get_raw_copy())
+                        t.component_imported("out", $p['temp type'], {}, op['append element']($p['temp subselection'], { 'element': sub.group("SG") }).__get_raw_copy())
                     )))
                 })
             ))

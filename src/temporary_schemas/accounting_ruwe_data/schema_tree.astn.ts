@@ -1,6 +1,6 @@
 import * as pd from 'exupery-core-data'
 
-import { schemas } from "../../shorthands/schema"
+import { st } from "../../shorthands/schema"
 import * as g_ from "../../generated/interface/schemas/schema/data_types/unresolved"
 
 
@@ -20,7 +20,7 @@ import { $ as x_semantic_versioning } from "./schemas/semantic_versioning/$.modu
 import { $ as x_xml_simple } from "./schemas/xml/simple/$.module.astn"
 import { $ as x_xml_parse_result } from "./schemas/xml/parse_result/$.module.astn"
 
-export const $: g_.Schemas<pd.Source_Location> = schemas({
+export const $: g_.Schema_Tree<pd.Source_Location> = st.set({
     "alan light oldstyle": x_alan_light_oldstyle,
     "boekhouding": x_boekhouding,
     "boekhouding oude model": x_boekhouding_oude_model,

@@ -865,7 +865,7 @@ export const Schema: _i_signatures._T_Schema = ($, $p) => ['verbose group', _pa.
         }
     )),
 })]
-export const Schemas: _i_signatures._T_Schemas = ($, $p) => ['dictionary', $['dictionary'].map(($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+export const Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'schema': return _pa.ss($, ($) => ({
             'state': "schema",
@@ -887,7 +887,13 @@ export const Schemas: _i_signatures._T_Schemas = ($, $p) => ['dictionary', $['di
         }))
         default: return _pa.au($[0])
     }
-})])]
+})]
+export const Schemas: _i_signatures._T_Schemas = ($, $p) => ['dictionary', $['dictionary'].map(($) => Schema_Tree(
+    $,
+    {
+        'value serializers': $p['value serializers'],
+    }
+))]
 export const Signature: _i_signatures._T_Signature = ($, $p) => ['verbose group', _pa.dictionary_literal({
     'parameters': _pa.cc($['parameters'], ($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
         switch ($[0]) {
@@ -1270,6 +1276,22 @@ export const Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => ['verb
         }
     })]),
     'resulting node': _pa.cc($['resulting node'], ($) => ['nothing', null]),
+})]
+export const Type_Specification: _i_signatures._T_Type_Specification = ($, $p) => ['verbose group', _pa.dictionary_literal({
+    'schema': _pa.cc($['schema'], ($) => Schema_Tree(
+        $,
+        {
+            'value serializers': $p['value serializers'],
+        }
+    )),
+    'schema path': _pa.cc($['schema path'], ($) => ['list', $.map(($) => ['text', ({
+        'delimiter': ['quote', null],
+        'value': $,
+    })])]),
+    'type': _pa.cc($['type'], ($) => ['text', ({
+        'delimiter': ['quote', null],
+        'value': $,
+    })]),
 })]
 export const Types: _i_signatures._T_Types = ($, $p) => ['dictionary', $['dictionary'].map(($) => Type(
     $,

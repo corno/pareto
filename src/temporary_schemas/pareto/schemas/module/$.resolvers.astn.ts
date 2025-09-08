@@ -38,7 +38,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
         }))),
 
         "Module": resolver(r.group({
-            "schemas": r.component_external("schema", "Schemas", {}, {
+            "schema tree": r.component_external("schema", "Schema Tree", {}, {
                 "sibling schemas": al.empty_stack(),
             }),
             "operations": r.component("Operations", {

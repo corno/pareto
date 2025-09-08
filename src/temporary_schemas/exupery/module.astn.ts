@@ -5,9 +5,9 @@ import * as g_ from "../../generated/interface/schemas/module/data_types/unresol
 import { module_ } from "../../shorthands/module"
 
 import { $ as operations } from "./operations.astn"
-import { $ as schemas } from "./schemas.astn"
+import { $ as schema_tree } from "./schema_tree.astn"
 
 export const $: g_.Module<pd.Source_Location> = module_(
     operations,
-    schemas,
+    schema_tree,
 )

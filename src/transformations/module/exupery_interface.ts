@@ -7,17 +7,17 @@ import * as _in from "../../generated/interface/schemas/module/data_types/resolv
 import * as _out from "exupery/dist/generated/interface/schemas/interface/data_types/unresolved"
 
 import { m, t, type, import_ } from "exupery/dist/shorthands/interface"
-import { Schemas } from "../schema/exupery_interface/main"
-import * as t_pareto_interface_types from "../schema/exupery_interface/types"
+import * as t_exupery_interface_main from "../schema/exupery_interface/main"
+import * as t_exupery_interface_types from "../schema/exupery_interface/types"
 
 export const Operations = ($: _in.Operations): _out.Type<pd.Source_Location> => {
     return t.group($.map(($) => pa.cc($, ($) => {
         switch ($[0]) {
             case 'operation': return pa.ss($, ($) => t.function_(
                 $['type parameters'].map(($) => null),
-                t_pareto_interface_types.Type_Node($.context),
-                $.parameters.map(($) => pa.cc($, ($) => t_pareto_interface_types.Type_Node($))),
-                t_pareto_interface_types.Type_Node($.result),
+                t_exupery_interface_types.Type_Node($.context),
+                $.parameters.map(($) => pa.cc($, ($) => t_exupery_interface_types.Type_Node($))),
+                t_exupery_interface_types.Type_Node($.result),
             ))
             case 'set': return pa.ss($, ($) => Operations($))
             default: return pa.au($[0])
@@ -26,7 +26,7 @@ export const Operations = ($: _in.Operations): _out.Type<pd.Source_Location> => 
 }
 
 export const Module = ($: _in.Module): _out.Module_Set<pd.Source_Location> => {
-    return wrap_dictionary({
+    return wrap_dictionary(0, {
         "core": m.set({
             "unresolved.ts": m.module(
                 {},
@@ -165,6 +165,6 @@ export const Module = ($: _in.Module): _out.Module_Set<pd.Source_Location> => {
         //         "operations": type({}, Operations($.operations))
         //     },
         // ),
-        "schemas": Schemas($.schemas),
+        "schemas": t_exupery_interface_main.Schema_Tree($['schema tree']),
     })
 }

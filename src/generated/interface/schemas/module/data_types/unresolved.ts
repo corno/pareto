@@ -7,7 +7,7 @@ import * as _i_imports_schema from "../../schema/data_types/unresolved"
 
 export type _T_Module<M_Source> = {
     readonly 'operations': _T_Operations<M_Source>
-    readonly 'schemas': _i_imports_schema._T_Schemas<M_Source>
+    readonly 'schema tree': _i_imports_schema._T_Schema_Tree<M_Source>
 }
 
 export type _T_Operations<M_Source> = _i_core._T_Dictionary<M_Source, _i_core._T_State_Group<M_Source, 
@@ -34,9 +34,9 @@ export namespace _T_Module {
     }
     export type operations<M_Source> = _T_Operations<M_Source>
     
-    export namespace schemas {
+    export namespace schema_tree {
     }
-    export type schemas<M_Source> = _i_imports_schema._T_Schemas<M_Source>
+    export type schema_tree<M_Source> = _i_imports_schema._T_Schema_Tree<M_Source>
 }
 
 export namespace _T_Operations {
@@ -106,9 +106,9 @@ export namespace Module {
     }
     export type operations<M_Source> = _T_Operations<M_Source>
     
-    export namespace schemas {
+    export namespace schema_tree {
     }
-    export type schemas<M_Source> = _i_imports_schema._T_Schemas<M_Source>
+    export type schema_tree<M_Source> = _i_imports_schema._T_Schema_Tree<M_Source>
 }
 
 export namespace Operations {

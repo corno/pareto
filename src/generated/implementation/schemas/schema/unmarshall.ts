@@ -1568,26 +1568,32 @@ export const Schema: _i_signatures._T_Schema = ($, $p) => _i_generic.process_gro
         }),
     }
 )
+export const Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => _i_generic.process_unresolved_state_group(
+    $,
+    {
+        'states': _pa.dictionary_literal({
+            'schema': ($): _i_out._T_Schema_Tree.SG<_i_in._T_Range> => ['schema', Schema(
+                $,
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
+            )],
+            'set': ($): _i_out._T_Schema_Tree.SG<_i_in._T_Range> => ['set', Schemas(
+                $,
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
+            )],
+        }),
+    }
+)
 export const Schemas: _i_signatures._T_Schemas = ($, $p) => _i_generic.process_unresolved_dictionary(
     $,
     {
-        'value': ($) => _i_generic.process_unresolved_state_group(
+        'value': ($) => Schema_Tree(
             $,
             {
-                'states': _pa.dictionary_literal({
-                    'schema': ($): _i_out._T_Schemas.D.SG<_i_in._T_Range> => ['schema', Schema(
-                        $,
-                        {
-                            'value deserializers': $p['value deserializers'],
-                        }
-                    )],
-                    'set': ($): _i_out._T_Schemas.D.SG<_i_in._T_Range> => ['set', Schemas(
-                        $,
-                        {
-                            'value deserializers': $p['value deserializers'],
-                        }
-                    )],
-                }),
+                'value deserializers': $p['value deserializers'],
             }
         ),
     }
@@ -2172,6 +2178,47 @@ export const Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _i_gen
                     'key': "resulting node",
                 }
             ), ($) => _i_generic.process_derived_reference(
+                $,
+                null
+            )),
+        }),
+    }
+)
+export const Type_Specification: _i_signatures._T_Type_Specification = ($, $p) => _i_generic.process_group(
+    $,
+    {
+        'properties': ($) => ({
+            'schema': _pa.cc(_i_generic.get_entry(
+                $,
+                {
+                    'key': "schema",
+                }
+            ), ($) => Schema_Tree(
+                $,
+                {
+                    'value deserializers': $p['value deserializers'],
+                }
+            )),
+            'schema path': _pa.cc(_i_generic.get_entry(
+                $,
+                {
+                    'key': "schema path",
+                }
+            ), ($) => _i_generic.process_unresolved_list(
+                $,
+                {
+                    'value': ($) => _i_generic.process_text(
+                        $,
+                        null
+                    ),
+                }
+            )),
+            'type': _pa.cc(_i_generic.get_entry(
+                $,
+                {
+                    'key': "type",
+                }
+            ), ($) => _i_generic.process_text(
                 $,
                 null
             )),

@@ -13,7 +13,7 @@ export const Module: _i_signatures._T_Module = ($, $p) => ['verbose group', _pa.
             'value serializers': $p['value serializers'],
         }
     )),
-    'schemas': _pa.cc($['schemas'], ($) => _i_r_schema.Schemas(
+    'schema tree': _pa.cc($['schema tree'], ($) => _i_r_schema.Schema_Tree(
         $,
         {
             'value serializers': $p['value serializers'],

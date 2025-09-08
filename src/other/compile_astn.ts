@@ -25,7 +25,7 @@ export const $: (
         const module_path = `${$p.path}/${key}`
         wtd.Directory(
             t_pareto_module_to_fountain_pen_block.Module(
-                r_pareto_module.r_Module(
+                r_pareto_module.Module(
                     $,
                     {
                         'parameters': {

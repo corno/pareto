@@ -410,6 +410,19 @@ export type _T_Schema = <F_Source>(
     },
 ) => _i_resolved._T_Schema
 
+export type _T_Schema_Tree = <F_Source>(
+    $$_: _i_unresolved._T_Schema_Tree<F_Source>,
+    $$_p: {
+        readonly 'location 2 string': _i_resolve._T_Location_2_String<F_Source>
+        readonly 'parameters': {
+            readonly 'lookups': {
+                readonly 'sibling schemas': _i_resolve._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            readonly 'values': null
+        }
+    },
+) => _i_resolved._T_Schema_Tree
+
 export type _T_Schemas = <F_Source>(
     $$_: _i_unresolved._T_Schemas<F_Source>,
     $$_p: {
@@ -555,6 +568,17 @@ export type _T_Type_Reference = <F_Source>(
     },
 ) => _i_resolved._T_Type_Reference
 
+export type _T_Type_Specification = <F_Source>(
+    $$_: _i_unresolved._T_Type_Specification<F_Source>,
+    $$_p: {
+        readonly 'location 2 string': _i_resolve._T_Location_2_String<F_Source>
+        readonly 'parameters': {
+            readonly 'lookups': null
+            readonly 'values': null
+        }
+    },
+) => _i_resolved._T_Type_Specification
+
 export type _T_Types = <F_Source>(
     $$_: _i_unresolved._T_Types<F_Source>,
     $$_p: {
@@ -617,6 +641,8 @@ export type Resolvers = _T_Resolvers
 
 export type Schema = _T_Schema
 
+export type Schema_Tree = _T_Schema_Tree
+
 export type Schemas = _T_Schemas
 
 export type Signature = _T_Signature
@@ -636,6 +662,8 @@ export type Type_Node_Reference = _T_Type_Node_Reference
 export type Type_Parameters = _T_Type_Parameters
 
 export type Type_Reference = _T_Type_Reference
+
+export type Type_Specification = _T_Type_Specification
 
 export type Types = _T_Types
 
@@ -2540,6 +2568,53 @@ export namespace _T_Schema {
     export type RESULT<F_Source> = _i_resolved._T_Schema
 }
 
+export namespace _T_Schema_Tree {
+    
+    export namespace CONTEXT {
+        export type Source<F_Source> = F_Source
+    }
+    export type CONTEXT<F_Source> = _i_unresolved._T_Schema_Tree<F_Source>
+    
+    export namespace PARAMS {
+        
+        export namespace location_2_string {
+            export type Source<F_Source> = F_Source
+        }
+        export type location_2_string<F_Source> = _i_resolve._T_Location_2_String<F_Source>
+        
+        export namespace parameters {
+            
+            export namespace lookups {
+                
+                export namespace sibling_schemas {
+                    
+                    export namespace T {
+                    }
+                    export type T<F_Source> = _i_resolved._T_Schemas.D
+                }
+                export type sibling_schemas<F_Source> = _i_resolve._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            export type lookups<F_Source> = {
+                readonly 'sibling schemas': _i_resolve._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            
+            export namespace values {
+            }
+            export type values<F_Source> = null
+        }
+        export type parameters<F_Source> = {
+            readonly 'lookups': {
+                readonly 'sibling schemas': _i_resolve._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            readonly 'values': null
+        }
+    }
+    
+    export namespace RESULT {
+    }
+    export type RESULT<F_Source> = _i_resolved._T_Schema_Tree
+}
+
 export namespace _T_Schemas {
     
     export namespace CONTEXT {
@@ -3102,6 +3177,41 @@ export namespace _T_Type_Reference {
     export namespace RESULT {
     }
     export type RESULT<F_Source> = _i_resolved._T_Type_Reference
+}
+
+export namespace _T_Type_Specification {
+    
+    export namespace CONTEXT {
+        export type Source<F_Source> = F_Source
+    }
+    export type CONTEXT<F_Source> = _i_unresolved._T_Type_Specification<F_Source>
+    
+    export namespace PARAMS {
+        
+        export namespace location_2_string {
+            export type Source<F_Source> = F_Source
+        }
+        export type location_2_string<F_Source> = _i_resolve._T_Location_2_String<F_Source>
+        
+        export namespace parameters {
+            
+            export namespace lookups {
+            }
+            export type lookups<F_Source> = null
+            
+            export namespace values {
+            }
+            export type values<F_Source> = null
+        }
+        export type parameters<F_Source> = {
+            readonly 'lookups': null
+            readonly 'values': null
+        }
+    }
+    
+    export namespace RESULT {
+    }
+    export type RESULT<F_Source> = _i_resolved._T_Type_Specification
 }
 
 export namespace _T_Types {
@@ -5062,6 +5172,53 @@ export namespace Schema {
     export type RESULT<F_Source> = _i_resolved._T_Schema
 }
 
+export namespace Schema_Tree {
+    
+    export namespace CONTEXT {
+        export type Source<F_Source> = F_Source
+    }
+    export type CONTEXT<F_Source> = _i_unresolved._T_Schema_Tree<F_Source>
+    
+    export namespace PARAMS {
+        
+        export namespace location_2_string {
+            export type Source<F_Source> = F_Source
+        }
+        export type location_2_string<F_Source> = _i_resolve._T_Location_2_String<F_Source>
+        
+        export namespace parameters {
+            
+            export namespace lookups {
+                
+                export namespace sibling_schemas {
+                    
+                    export namespace T {
+                    }
+                    export type T<F_Source> = _i_resolved._T_Schemas.D
+                }
+                export type sibling_schemas<F_Source> = _i_resolve._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            export type lookups<F_Source> = {
+                readonly 'sibling schemas': _i_resolve._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            
+            export namespace values {
+            }
+            export type values<F_Source> = null
+        }
+        export type parameters<F_Source> = {
+            readonly 'lookups': {
+                readonly 'sibling schemas': _i_resolve._T_Lookup_Stack<_i_resolved._T_Schemas.D>
+            }
+            readonly 'values': null
+        }
+    }
+    
+    export namespace RESULT {
+    }
+    export type RESULT<F_Source> = _i_resolved._T_Schema_Tree
+}
+
 export namespace Schemas {
     
     export namespace CONTEXT {
@@ -5624,6 +5781,41 @@ export namespace Type_Reference {
     export namespace RESULT {
     }
     export type RESULT<F_Source> = _i_resolved._T_Type_Reference
+}
+
+export namespace Type_Specification {
+    
+    export namespace CONTEXT {
+        export type Source<F_Source> = F_Source
+    }
+    export type CONTEXT<F_Source> = _i_unresolved._T_Type_Specification<F_Source>
+    
+    export namespace PARAMS {
+        
+        export namespace location_2_string {
+            export type Source<F_Source> = F_Source
+        }
+        export type location_2_string<F_Source> = _i_resolve._T_Location_2_String<F_Source>
+        
+        export namespace parameters {
+            
+            export namespace lookups {
+            }
+            export type lookups<F_Source> = null
+            
+            export namespace values {
+            }
+            export type values<F_Source> = null
+        }
+        export type parameters<F_Source> = {
+            readonly 'lookups': null
+            readonly 'values': null
+        }
+    }
+    
+    export namespace RESULT {
+    }
+    export type RESULT<F_Source> = _i_resolved._T_Type_Specification
 }
 
 export namespace Types {

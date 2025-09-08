@@ -102,6 +102,17 @@ export const Schema = ($: _in.Schema): _out.Module_Set.D<pd.Source_Location> => 
     })
 }
 
+export const Schema_Tree = ($: _in.Schema_Tree): _out.Module_Set.D<pd.Source_Location> => {
+    return _ea.cc($, ($) => {
+        switch ($[0]) {
+            case 'schema': return _ea.ss($, ($) => Schema($))
+            case 'set': return _ea.ss($, ($) => Schemas($))
+            default: return _ea.au($[0])
+        }
+    })
+}
+
+
 export const Schemas = ($: _in.Schemas): _out.Module_Set.D<pd.Source_Location> => {
     return m.set($.dictionary.map(($) => _ea.cc($, ($) => {
         switch ($[0]) {
