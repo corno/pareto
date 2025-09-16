@@ -27,28 +27,39 @@ import { get_directory_path } from "./path"
 
 import { $ as load_schema } from "./load_schema"
 
-export type Parse_Success = 
+export type Parse_Success =
     | ['no schema file', null]
     | ['schema error', {
         // 'message': string,
         'file location': string
     }]
     | ['unmarshalled', _out.Node]
-    // | ['invalid', _et.Array<string>]
+// | ['invalid', _et.Array<string>]
 
 export type Validation_Result =
     | ['parse error', d_parse_result.Parse_Error]
     | ['parse success', Parse_Success]
 
-export const $ = (
-    schema_path: string, //the file path
-    instance_path: string,
-    instance_data: string,
-): Validation_Result => {
 
+export const $ = (
+    $: string,
+    $p: {
+        'file path': string,
+    }
+): Validation_Result => {
+    const instance_path = $p['file path']
+    const schema_path = pso.impure.text['join list of texts with separator'](
+        get_directory_path($p['file path']).transform(
+            ($) => $,
+            () => _ea.panic("could not get directory path"),
+        ),
+        {
+            'separator': "/",
+        }
+    ) + "/astn-schema"
     return _ea.cc(
         parse.parse(
-            instance_data,
+            $,
             {
                 'tab size': 4,
             }
@@ -108,24 +119,5 @@ export const $ = (
                 default: return _ea.au($[0])
             }
         }
-    )
-}
-
-export const validate_instance_against_directory_schema = (
-    instance_path: string,
-    instance_data: string
-): Validation_Result => {
-    return $(
-        pso.impure.text['join list of texts with separator'](
-            get_directory_path(instance_path).transform(
-                ($) => $,
-                () => _ea.panic("could not get directory path"),
-            ),
-            {
-                'separator': "/",
-            }
-        ) + "/astn-schema",
-        instance_path,
-        instance_data,
     )
 }
