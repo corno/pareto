@@ -121,12 +121,15 @@ const do_schema = (
     )
 }
 
-type Validation_Result =
-    | ['parse error', d_parse_result.Parse_Error]
+export type Parse_Success = 
+    | ['no schema file', null]
+    | ['schema error', string]
     | ['unmarshalled', _out.Node]
     // | ['invalid', _et.Array<string>]
-    | ['schema error', string]
-    | ['no schema file', null]
+
+export type Validation_Result =
+    | ['parse error', d_parse_result.Parse_Error]
+    | ['parse success', Parse_Success]
 
 export const validate_instance_against_schema = (
     schema_path: string, //the file path
@@ -154,9 +157,9 @@ export const validate_instance_against_schema = (
                     //now first, get the schema
 
 
-                    return _ea.cc(
+                    return ['parse success', _ea.cc(
                         _er.temp_resources.fs['read file sync'](schema_path, true),
-                        ($) => {
+                        ($): Parse_Success => {
                             switch ($[0]) {
                                 case 'success': return _ea.ss($, ($) => _ea.cc(
                                     do_schema(
@@ -166,7 +169,7 @@ export const validate_instance_against_schema = (
                                         switch ($[0]) {
                                             case 'parse error': return _ea.ss($, ($) => _ed.implement_me())
                                             case 'file not found': return _ea.ss($, ($) => ['no schema file', null])
-                                            case 'success': return _ea.ss($, ($): Validation_Result => {
+                                            case 'success': return _ea.ss($, ($): Parse_Success => {
                                                 //the schema was loaded successfully
 
                                                 const type = $
@@ -186,7 +189,8 @@ export const validate_instance_against_schema = (
                                 case 'error': return _ea.ss($, ($) => ['no schema file', null])
                                 default: return _ea.au($[0])
                             }
-                        })
+                        }
+                    )]
 
                 })
                 default: return _ea.au($[0])

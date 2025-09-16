@@ -46,30 +46,36 @@ export const $: (
                         ),
                         ($) => {
                             switch ($[0]) {
-                                case 'unmarshalled': return _ea.ss($, ($) => {
+                                case 'parse success': return _ea.ss($, ($) => _ea.cc($, ($) => {
+                                    switch ($[0]) {
+                                        case 'no schema file': return _ea.ss($, ($) => {
+                                            _ed.log_debug_message(`No schema file found: ${$}`)
+                                        })
+                                        case 'schema error': return _ea.ss($, ($) => {
+                                            _ed.log_debug_message(`Schema error: ${$}`)
+                                        })
+                                        case 'unmarshalled': return _ea.ss($, ($) => {
 
-                                    write_to_console.Block(
-                                        t_ue_fp.Errors(
-                                            t_ur_ue.Node($),
-                                            {
-                                                'line offset': 1,
-                                                'column offset': 1,
-                                            }
-                                        ),
-                                        {
-                                            'indentation': '  ',
-                                            'channel': 'error'
-                                        }
-                                    )
-                                })
+                                            write_to_console.Block(
+                                                t_ue_fp.Errors(
+                                                    t_ur_ue.Node($),
+                                                    {
+                                                        'line offset': 1,
+                                                        'column offset': 1,
+                                                    }
+                                                ),
+                                                {
+                                                    'indentation': '  ',
+                                                    'channel': 'error'
+                                                }
+                                            )
+                                        })
+
+                                        default: return _ea.au($[0])
+                                    }
+                                }))
                                 case 'parse error': return _ea.ss($, ($) => {
                                     _ed.log_debug_message(`Instance parse error: ${$.type[0]}`)
-                                })
-                                case 'schema error': return _ea.ss($, ($) => {
-                                    _ed.log_debug_message(`Schema error: ${$}`)
-                                })
-                                case 'no schema file': return _ea.ss($, ($) => {
-                                    _ed.log_debug_message(`No schema file found: ${$}`)
                                 })
                                 default: return _ea.au($[0])
                             }
