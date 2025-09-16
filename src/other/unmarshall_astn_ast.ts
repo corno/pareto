@@ -11,25 +11,25 @@ import * as _in_token from "astn/dist/generated/interface/schemas/token/unconstr
 
 import * as _out from "../temp_unmashall_result_types"
 
-export const Document = (
-    $: _in.Document,
-    $p: {
-        'definition': definition.Type,
-        'document path': string,
-    }
-): _out.Document => {
+// export const Document = (
+//     $: _in.Document,
+//     $p: {
+//         'definition': definition.Type,
+//         'document path': string,
+//     }
+// ): _out.Document => {
 
-    return {
-        'content': Node(
-            $.content,
-            {
-                'definition': $p.definition.node,
-                'document path': $p['document path'],
-            },
-        )
-    }
+//     return {
+//         'content': Node(
+//             $.content,
+//             {
+//                 'definition': $p.definition.node,
+//                 'document path': $p['document path'],
+//             },
+//         )
+//     }
 
-}
+// }
 
 export const Optional_Node = (
     $: pt.Optional_Value<_in.Value>,

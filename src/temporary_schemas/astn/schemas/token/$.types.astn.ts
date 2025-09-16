@@ -20,22 +20,23 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Token Type": type(t.state_group({
-            "{": t.nothing(),
-            "}": t.nothing(),
-            "[": t.nothing(),
-            "]": t.nothing(),
-            "(": t.nothing(),
-            ")": t.nothing(),
-            "<": t.nothing(),
-            ">": t.nothing(),
+            "{": t.nothing(), //open dictionary
+            "}": t.nothing(), //close dictionary
+            "[": t.nothing(), //open list
+            "]": t.nothing(), //close list
+            "(": t.nothing(), //open verbose group
+            ")": t.nothing(), //close verbose group
+            "<": t.nothing(), //open terse group
+            ">": t.nothing(), //close terse group
 
-            "!": t.nothing(),
-            "@": t.nothing(),
-            "~": t.nothing(),
-            "*": t.nothing(),
-            ",": t.nothing(),
-            ":": t.nothing(),
-            "|": t.nothing(),
+            "!": t.nothing(), //header
+            "@": t.nothing(), //include
+            "~": t.nothing(), //nothing / not set
+            "*": t.nothing(), //set
+            ",": t.nothing(), //comma
+            ":": t.nothing(), //colon
+            "|": t.nothing(), //state
+            "#": t.nothing(), //missing data
 
             "string": t.group({
                 "value": t.component("Delimited String"),

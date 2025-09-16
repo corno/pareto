@@ -6,10 +6,6 @@ import * as _out from "../../generated/interface/schemas/unmarshall_errors/data_
 
 import { impure, pure } from "pareto-standard-operations"
 
-export const Document = ($: _in.Document): _out.Errors => {
-    return Node($.content)
-}
-
 export const Node = ($: _in.Node): _out.Errors => {
     return _ea.cc($, ($): _out.Errors => {
         switch ($[0]) {

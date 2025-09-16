@@ -1,0 +1,71 @@
+(
+    'operations': {
+    }
+    'schema tree': | 'set' {
+        `json`: | 'schema' (
+            'complexity': | 'unconstrained' ~
+            'globals': (
+                'complexity': | 'unconstrained' ~
+                'number types': {
+                    `Position`: (
+                        'precision': | 'exact' (
+                            'decimal separator offset': ~
+                            'type': | 'natural' ~
+                        )
+                    )
+                }
+                'text types': {
+                    `Text Value`: (
+                        'type': | 'single line' ~
+                    )
+                }
+            )
+            'imports': {
+            }
+            'types': {
+                `Document`: (
+                    'node': | 'component' | 'internal' `Value`
+                    'type parameters': {
+                    }
+                )
+                `Value`: (
+                    'node': | 'state group' {
+                        `array`: | 'list' (
+                            'node': | 'component' | 'internal cyclic' `Value`
+                        )
+                        `boolean`: | 'boolean' ~
+                        `null`: | 'nothing' ~
+                        `number`: | 'state group' {
+                            `float`: | 'number' | 'local' (
+                                'precision': | 'approximation' (
+                                    'significant digits': `FIXME NUMBER`
+                                )
+                            )
+                            `integer`: | 'number' | 'local' (
+                                'precision': | 'exact' (
+                                    'decimal separator offset': ~
+                                    'type': | 'integer' ~
+                                )
+                            )
+                        }
+                        `object`: | 'state group' {
+                            `dictionary`: | 'dictionary' (
+                                'node': | 'component' | 'internal cyclic' `Value`
+                                'ordered': `false`
+                            )
+                            `key value array`: | 'list' (
+                                'node': | 'group' {
+                                    `key`: | 'text' | 'global' `Text Value`
+                                    `value`: | 'component' | 'internal cyclic' `Value`
+                                }
+                            )
+                        }
+                        `string`: | 'text' | 'global' `Text Value`
+                    }
+                    'type parameters': {
+                    }
+                )
+            }
+        )
+    }
+)

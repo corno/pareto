@@ -6,8 +6,6 @@ import * as _ed from 'exupery-core-data'
 //data
 import { $ as poormans_modules } from "../temporary_schemas/all"
 
-import * as d_module from "../generated/interface/schemas/module/data_types/unresolved"
-
 import * as r_pareto_module from "../resolvers/module"
 
 import * as t_pareto_module_to_fountain_pen_block from "../transformations/module/temp_typescript"
@@ -42,10 +40,21 @@ export const $: (
                 'newline': "\n"
             }
         )
-        _er.temp_resources.fs['write file sync'](module_path + "/implementation/generic/resolve.ts", _er.temp_resources.fs['read file sync']("./src/generated/implementation/generic/resolve.ts", true), true)
-        _er.temp_resources.fs['write file sync'](module_path + "/implementation/generic/unmarshall.ts", _er.temp_resources.fs['read file sync']("./src/generated/implementation/generic/unmarshall.ts", true), true)
-        _er.temp_resources.fs['write file sync'](module_path + "/interface/core/resolve.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/resolve.ts", true), true)
-        _er.temp_resources.fs['write file sync'](module_path + "/interface/core/astn_target.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/astn_target.ts", true), true)
-        _er.temp_resources.fs['write file sync'](module_path + "/interface/core/astn_source.ts", _er.temp_resources.fs['read file sync']("./src/generated/interface/core/astn_source.ts", true), true)
+
+        const read_file_sync = (path: string): string => {
+            return _ea.cc( _er.temp_resources.fs['read file sync']( path, true), ($) => {
+                switch ($[0]) {
+                    case 'success': return _ea.ss($, ($) => $)
+                    case 'error': return _ea.ss($, ($) => _ea.panic(`could not read file: ${path}`))
+                    default: return _ea.au($[0])
+                }
+            })
+        } 
+
+        _er.temp_resources.fs['write file sync'](module_path + "/implementation/generic/resolve.ts", read_file_sync("./src/generated/implementation/generic/resolve.ts"), true)
+        _er.temp_resources.fs['write file sync'](module_path + "/implementation/generic/unmarshall.ts", read_file_sync("./src/generated/implementation/generic/unmarshall.ts"), true)
+        _er.temp_resources.fs['write file sync'](module_path + "/interface/core/resolve.ts", read_file_sync("./src/generated/interface/core/resolve.ts"), true)
+        _er.temp_resources.fs['write file sync'](module_path + "/interface/core/astn_target.ts", read_file_sync("./src/generated/interface/core/astn_target.ts"), true)
+        _er.temp_resources.fs['write file sync'](module_path + "/interface/core/astn_source.ts", read_file_sync("./src/generated/interface/core/astn_source.ts"), true)
     })
 }

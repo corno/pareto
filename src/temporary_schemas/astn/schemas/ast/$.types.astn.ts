@@ -70,6 +70,9 @@ export const $: g_.Types<pd.Source_Location> = types(
                     "*": t.component("Structural Token"),
                     "value": t.component_cyclic("Value"),
                 }),
+                "missing data": t.group({
+                    "#": t.component("Structural Token"),
+                }),
             }),
         })),
 
