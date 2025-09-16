@@ -14,7 +14,7 @@ import * as write_to_console from "./fp_write_to_console"
 import * as _out from "../temp_unmashall_result_types"
 
 import { impure } from "pareto-standard-operations"
-import { validate_instance_against_directory_schema } from './validate_instance_against_directory_schema'
+import { validate_instance_against_directory_schema } from './load_astn_document'
 
 const op = {
     'remove first element': impure.list['remove first element'],
