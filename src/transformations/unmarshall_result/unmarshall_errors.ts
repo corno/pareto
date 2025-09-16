@@ -7,7 +7,7 @@ import * as _out from "../../generated/interface/schemas/unmarshall_errors/data_
 import { impure, pure } from "pareto-standard-operations"
 
 export const Node = ($: _in.Node): _out.Errors => {
-    return _ea.cc($, ($): _out.Errors => {
+    return _ea.cc($.type, ($): _out.Errors => {
         switch ($[0]) {
             case 'group': return _ea.ss($, ($) => _ea.cc($.type, ($): _out.Errors => {
                 switch ($[0]) {

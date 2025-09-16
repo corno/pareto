@@ -1,6 +1,7 @@
 import * as pt from 'exupery-core-types'
 
 import * as d_astn_token from "astn/dist/generated/interface/schemas/token/unconstrained"
+import * as d_astn_ast from "astn/dist/generated/interface/schemas/ast/unconstrained"
 
 import * as d_schema from "./generated/interface/schemas/schema/data_types/resolved"
 
@@ -28,7 +29,12 @@ export type Property =
     | ['unique', Node]
     | ['multiple', pt.Array<Duplicate_Entry>]
 
-export type Node =
+export type Node = {
+    'value': d_astn_ast.Value
+    'type': Node_Type //the type is determined by the definition
+}
+
+export type Node_Type =
     | ['number', Number]
     | ['boolean', Boolean]
     | ['list', List]
