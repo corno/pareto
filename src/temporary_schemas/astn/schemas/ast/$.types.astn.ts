@@ -27,7 +27,6 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Value": type(t.group({
-            "range": t.component_external("token", "Range"), //can be derived
             "type": t.state_group({
                 "string": t.component("String"),
                 "indexed collection": t.state_group({
