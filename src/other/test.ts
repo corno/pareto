@@ -56,8 +56,9 @@ export const $: (
 
                                             write_to_console.Block(
                                                 t_ue_fp.Errors(
-                                                    t_ur_ue.Node($, { 'document path': instance_path }),
+                                                    t_ur_ue.Node($, null),
                                                     {
+                                                        'document path': instance_path,
                                                         'line offset': 1,
                                                         'column offset': 1,
                                                     }

@@ -14,7 +14,7 @@ import * as g_ from "../../../../generated/interface/schemas/schema/data_types/u
 export const $: g_.Types<pd.Source_Location> = types(
     {
         "Errors": type(t.list(t.group({
-            "range": t.component("Document Range"),
+            "range": t.component("Range"),
             "type": t.state_group({
                 "error": t.state_group({
                     "invalid value type": t.group({
@@ -63,10 +63,10 @@ export const $: g_.Types<pd.Source_Location> = types(
             "column": t.number_local(n.natural()), //this value takes the width of a tab into account, if you don't want that, configure the tab width to be 1
         })),
 
-        "Document Range": type(t.group({
-            "document": t.text_local(text('single line')),
-            "range": t.component("Range"),
-        })),
+        // "Document Range": type(t.group({
+        //     "document": t.text_local(text('single line')),
+        //     "range": t.component("Range"),
+        // })),
 
         "Range": type(t.group({
             "start": t.component("Location"),

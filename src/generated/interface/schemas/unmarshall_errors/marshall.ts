@@ -6,13 +6,6 @@ import * as _i_vs from "./value_serializers"
 
 // **** TYPES
 
-export type _T_Document_Range = (
-    $$_: _i_in._T_Document_Range,
-    $$_p: {
-        readonly 'value serializers': _i_vs._T_Value_Serializers
-    },
-) => _i_out._T_Value
-
 export type _T_Errors = (
     $$_: _i_in._T_Errors,
     $$_p: {
@@ -43,8 +36,6 @@ export type _T_Relative_Location = (
 
 // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
 
-export type Document_Range = _T_Document_Range
-
 export type Errors = _T_Errors
 
 export type Location = _T_Location
@@ -54,24 +45,6 @@ export type Range = _T_Range
 export type Relative_Location = _T_Relative_Location
 
 // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
-
-export namespace _T_Document_Range {
-    
-    export namespace CONTEXT {
-    }
-    export type CONTEXT = _i_in._T_Document_Range
-    
-    export namespace PARAMS {
-        
-        export namespace value_serializers {
-        }
-        export type value_serializers = _i_vs._T_Value_Serializers
-    }
-    
-    export namespace RESULT {
-    }
-    export type RESULT = _i_out._T_Value
-}
 
 export namespace _T_Errors {
     
@@ -146,24 +119,6 @@ export namespace _T_Relative_Location {
 }
 
 // *** ALIASES FOR NESTED TYPES
-
-export namespace Document_Range {
-    
-    export namespace CONTEXT {
-    }
-    export type CONTEXT = _i_in._T_Document_Range
-    
-    export namespace PARAMS {
-        
-        export namespace value_serializers {
-        }
-        export type value_serializers = _i_vs._T_Value_Serializers
-    }
-    
-    export namespace RESULT {
-    }
-    export type RESULT = _i_out._T_Value
-}
 
 export namespace Errors {
     

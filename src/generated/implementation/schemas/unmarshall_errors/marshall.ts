@@ -5,20 +5,8 @@ import * as _i_out from "../../../interface/core/astn_target"
 import * as _i_signatures from "../../../interface/schemas/unmarshall_errors/marshall"
 
 
-export const Document_Range: _i_signatures._T_Document_Range = ($, $p) => ['verbose group', _pa.dictionary_literal({
-    'document': _pa.cc($['document'], ($) => ['text', ({
-        'delimiter': ['quote', null],
-        'value': $,
-    })]),
-    'range': _pa.cc($['range'], ($) => Range(
-        $,
-        {
-            'value serializers': $p['value serializers'],
-        }
-    )),
-})]
 export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => ['verbose group', _pa.dictionary_literal({
-    'range': _pa.cc($['range'], ($) => Document_Range(
+    'range': _pa.cc($['range'], ($) => Range(
         $,
         {
             'value serializers': $p['value serializers'],

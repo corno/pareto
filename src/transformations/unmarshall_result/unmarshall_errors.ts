@@ -9,18 +9,8 @@ import { impure, pure } from "pareto-standard-operations"
 
 export const Node = (
     $: _in.Node,
-    $p: {
-        'document path': string,
-    }
+    $p: null
 ): _out.Errors => {
-    const make_range = (
-        range: _out.Range,
-    ): _out.Document_Range => {
-        return {
-            'document': $p['document path'],
-            'range': range
-        }
-    }
     return _ea.cc($.type, ($): _out.Errors => {
         switch ($[0]) {
             case 'group': return _ea.ss($, ($) => _ea.cc($['found value type'], ($): _out.Errors => {
@@ -35,7 +25,7 @@ export const Node = (
                                         case 'multiple': return _ea.ss($, ($) => pure.list.flatten($.map(($) => pure.list.flatten(_ea.array_literal([
                                             _ea.array_literal<_out.Errors.L>([
                                                 {
-                                                    'range': make_range($.key.range),
+                                                    'range': $.key.range,
                                                     'type': ['error', ['duplicate property', {
                                                         name: key
                                                     }]]
@@ -45,13 +35,13 @@ export const Node = (
                                         ])))))
                                         case 'missing': return _ea.ss($, ($) => _ea.array_literal([
                                             {
-                                                'range': make_range(_ea.cc(foo.value, ($) => {
+                                                'range': _ea.cc(foo.value, ($) => {
                                                     switch ($[0]) {
                                                         case 'dictionary': return _ea.ss($, ($) => $['{'].range) //curlies are not correct for groups, but we handle it
                                                         case 'verbose group': return _ea.ss($, ($) => $['('].range)
                                                         default: return _ea.au($[0])
                                                     }
-                                                })),
+                                                }),
                                                 'type': ['error', ['missing property', {
                                                     name: key
                                                 }]]
@@ -68,7 +58,7 @@ export const Node = (
                     }))
                     case 'invalid': return _ea.ss($, ($) => _ea.array_literal([
                         {
-                            'range': make_range($),
+                            'range': $,
                             'type': ['error', ['invalid value type', {
                                 'expected': ['group', null],
                             }]]
@@ -87,7 +77,7 @@ export const Node = (
                                     case 'multiple': return _ea.ss($, ($) => pure.list.flatten($.map(($) => pure.list.flatten(_ea.array_literal([
                                         _ea.array_literal([
                                             {
-                                                'range': make_range($.key.range),
+                                                'range': $.key.range,
                                                 'type': ['error', ['duplicate property', {
                                                     name: key
                                                 }]]
@@ -102,7 +92,7 @@ export const Node = (
                     })
                     case 'invalid': return _ea.ss($, ($) => _ea.array_literal([
                         {
-                            'range': make_range($),
+                            'range': $,
                             'type': ['error', ['invalid value type', {
                                 'expected': ['dictionary', null],
                             }]]
@@ -116,12 +106,12 @@ export const Node = (
                     case 'valid': return _ea.ss($, ($): _out.Errors => $['correct string type']
                         ? _ea.array_literal([])
                         : _ea.array_literal<_out.Errors.L>([{
-                            'range': make_range($.range),
+                            'range': $.range,
                             'type': ['warning', ['expected undelimited string', null]]
                         }]))
                     case 'invalid': return _ea.ss($, ($) => _ea.array_literal([
                         {
-                            'range': make_range($),
+                            'range': $,
                             'type': ['error', ['invalid value type', {
                                 'expected': ['text', null],
                             }]]
@@ -135,12 +125,12 @@ export const Node = (
                     case 'valid': return _ea.ss($, ($): _out.Errors => $['correct string type']
                         ? _ea.array_literal([])
                         : _ea.array_literal<_out.Errors.L>([{
-                            'range': make_range($.range),
+                            'range': $.range,
                             'type': ['warning', ['expected undelimited string', null]]
                         }]))
                     case 'invalid': return _ea.ss($, ($) => _ea.array_literal([
                         {
-                            'range': make_range($),
+                            'range': $,
                             'type': ['error', ['invalid value type', {
                                 'expected': ['text', null],
                             }]]
@@ -155,7 +145,7 @@ export const Node = (
                     case 'valid': return _ea.ss($, ($): _out.Errors => _ea.array_literal([]))
                     case 'invalid': return _ea.ss($, ($) => _ea.array_literal([
                         {
-                            'range': make_range($),
+                            'range': $,
                             'type': ['error', ['invalid value type', {
                                 'expected': ['text', null],//FIXME -> ['nothing', null]
                             }]]
@@ -169,7 +159,7 @@ export const Node = (
                     case 'valid': return _ea.ss($, ($): _out.Errors => _ea.array_literal([]))
                     case 'invalid': return _ea.ss($, ($) => _ea.array_literal([
                         {
-                            'range': make_range($),
+                            'range': $,
                             'type': ['error', ['invalid value type', {
                                 'expected': ['text', null],
                             }]]
@@ -194,7 +184,7 @@ export const Node = (
                     }))
                     case 'invalid': return _ea.ss($, ($) => _ea.array_literal([
                         {
-                            'range': make_range($),
+                            'range': $,
                             'type': ['error', ['invalid value type', {
                                 'expected': ['text', null],//FIXME -> ['set or not set', null]
                             }]]
@@ -207,23 +197,23 @@ export const Node = (
                 switch ($[0]) {
                     case 'valid': return _ea.ss($, ($) => Node($.node, $p))
                     case 'more than 2 elements': return _ea.ss($, ($) => _ea.array_literal([{
-                        'range': make_range($),
+                        'range': $,
                         'type': ['error', ['state', ['more than 2 elements', null]]]
                     }]))
                     case 'missing state name': return _ea.ss($, ($) => _ea.array_literal([{
-                        'range': make_range($),
+                        'range': $,
                         'type': ['error', ['state', ['missing state name', null]]]
                     }]))
                     case 'state is not a string': return _ea.ss($, ($) => _ea.array_literal([{
-                        'range': make_range($),
+                        'range': $,
                         'type': ['error', ['state', ['state is not a string', null]]]
                     }]))
                     case 'missing value': return _ea.ss($, ($) => _ea.array_literal([{
-                        'range': make_range($),
+                        'range': $,
                         'type': ['error', ['state', ['missing value', null]]]
                     }]))
                     case 'unknown state': return _ea.ss($, ($) => _ea.array_literal([{
-                        'range': make_range($.range),
+                        'range': $.range,
                         'type': ['error', ['state', ['unknown state', {
                             'found': $.found,
                             'expected': $.expected
@@ -237,7 +227,7 @@ export const Node = (
                     case 'valid': return _ea.array_literal([])
                     case 'invalid': return _ea.ss($, ($) => _ea.array_literal([
                         {
-                            'range': make_range($),
+                            'range': $,
                             'type': ['error', ['invalid value type', {
                                 'expected': ['text', null],
                             }]]

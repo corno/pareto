@@ -7,33 +7,6 @@ import * as _i_out from "../../../interface/schemas/unmarshall_errors/data_types
 import * as _i_signatures from "../../../interface/schemas/unmarshall_errors/unmarshall"
 
 
-export const Document_Range: _i_signatures._T_Document_Range = ($, $p) => _i_generic.process_group(
-    $,
-    {
-        'properties': ($) => ({
-            'document': _pa.cc(_i_generic.get_entry(
-                $,
-                {
-                    'key': "document",
-                }
-            ), ($) => _i_generic.process_text(
-                $,
-                null
-            )),
-            'range': _pa.cc(_i_generic.get_entry(
-                $,
-                {
-                    'key': "range",
-                }
-            ), ($) => Range(
-                $,
-                {
-                    'value deserializers': $p['value deserializers'],
-                }
-            )),
-        }),
-    }
-)
 export const Errors: _i_signatures._T_Errors = ($, $p) => _i_generic.process_unconstrained_list(
     $,
     {
@@ -46,7 +19,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => _i_generic.process_unc
                         {
                             'key': "range",
                         }
-                    ), ($) => Document_Range(
+                    ), ($) => Range(
                         $,
                         {
                             'value deserializers': $p['value deserializers'],
