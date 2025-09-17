@@ -46,18 +46,21 @@ export type Node_Type =
     | ['type parameter', string]
 
 export type State = {
+    'definition': d_schema.Type_Node.SG.state_group
     'found value type': State_Found_Value_Type
+}
+
+export type State_Definition_Found = {
+    'definition': d_schema.Type_Node.SG.state_group.D
+    'node': Node
 }
 
 export type State_Found_Value_Type_Valid = {
     'value type':
     | ['state', {
         'value': d_astn_ast.Value._type.SG.tagged_value
+        'found state definition': _et.Optional_Value<State_Definition_Found>
     }]
-    'state definition': _et.Optional_Value<{
-        'definition': d_schema.Type_Node.SG.state_group.D
-        'node': Node
-    }>
     // | ['polyfill', { -> [ "state_name", ... ]
     //     'xx': {
     //         'node': Node,
@@ -104,6 +107,7 @@ export type List = {
     'found value type':
     | ['valid', {
         'value': d_astn_ast.Value._type.SG.ordered_collection
+        'elements': _et.Array<Node>
     }]
     | ['invalid', d_astn_token.Range]
 }
@@ -184,16 +188,22 @@ export type Group_Found_Value_Type =
     | ['valid', Group_Type]
     | ['invalid', d_astn_token.Range]
 
-export type Group_Type =
+export type Group_Type = 
     | ['indexed', Indexed_Group]
-    | ['ordered', {
-        'value': d_astn_ast.Value._type.SG.ordered_collection.SG.concise_group
+    | ['ordered', Ordered_Group]
 
-    }]
+export type Ordered_Group = {
+    'value': d_astn_ast.Value._type.SG.ordered_collection
+    'content': Group_Content
+}
 
 export type Indexed_Group = {
     'value': d_astn_ast.Value._type.SG.indexed_collection
+    'content': Group_Content
+}
 
+export type Group_Content = {
     'properties': _et.Dictionary<Property>
     'superfluous entries': _et.Dictionary<_et.Array<d_astn_token.Range>>
+
 }

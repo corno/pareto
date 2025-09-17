@@ -18,14 +18,16 @@ export const $: g_.Types<pd.Source_Location> = types(
             "type": t.state_group({
                 "error": t.state_group({
                     "invalid value type": t.group({
-                        "expected": t.state_group({
+                        "expected": t.list(t.state_group({
                             "text": t.nothing(),
-                            "group": t.nothing(),
+                            "verbose group": t.nothing(),
+                            "concise group": t.nothing(),
                             "dictionary": t.nothing(),
                             "not set": t.nothing(),
-                            "set or not set": t.nothing(),
+                            "set": t.nothing(),
                             "list": t.nothing(),
-                        }),
+                            "state": t.nothing(),
+                        })),
                     }),
                     "duplicate property": t.group({
                         "name": t.text_local(text('single line')),

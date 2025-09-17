@@ -283,52 +283,54 @@ export const Node = (
                                         })
                                         return ['valid', ['indexed', {
                                             'value': $,
-                                            'superfluous entries': pure.dictionary.filter(impure.dictionary.merge(
-                                                entries,
-                                                {
-                                                    'supporting dictionary': group_def
-                                                }
-                                            ).map(($) => {
-                                                return $.supporting.transform( //drop all the ones for which there is a definition
-                                                    ($) => _ea.not_set(),
-                                                    () => _ea.set($.context)
-                                                )
-                                            })).map(($) => $.map(($) => $.key.range)), //select the locations
-                                            'properties': impure.dictionary.merge(
-                                                group_def,
-                                                {
-                                                    'supporting dictionary': entries
-                                                }
-                                            ).map<_out.Property>(($) => {
-                                                const prop_def = $.context
-                                                return $.supporting.transform(
-                                                    ($): _out.Property => impure.list['expect exactly one element']($).transform(
-                                                        ($): _out.Property => ['unique', {
-                                                            'node': Optional_Node(
-                                                                $.value.map(
-                                                                    ($) => $.value,
+                                            'content': {
+                                                'superfluous entries': pure.dictionary.filter(impure.dictionary.merge(
+                                                    entries,
+                                                    {
+                                                        'supporting dictionary': group_def
+                                                    }
+                                                ).map(($) => {
+                                                    return $.supporting.transform( //drop all the ones for which there is a definition
+                                                        ($) => _ea.not_set(),
+                                                        () => _ea.set($.context)
+                                                    )
+                                                })).map(($) => $.map(($) => $.key.range)), //select the locations
+                                                'properties': impure.dictionary.merge(
+                                                    group_def,
+                                                    {
+                                                        'supporting dictionary': entries
+                                                    }
+                                                ).map<_out.Property>(($) => {
+                                                    const prop_def = $.context
+                                                    return $.supporting.transform(
+                                                        ($): _out.Property => impure.list['expect exactly one element']($).transform(
+                                                            ($): _out.Property => ['unique', {
+                                                                'node': Optional_Node(
+                                                                    $.value.map(
+                                                                        ($) => $.value,
+                                                                    ),
+                                                                    {
+                                                                        'definition': prop_def,
+                                                                    },
                                                                 ),
-                                                                {
-                                                                    'definition': prop_def,
-                                                                },
-                                                            ),
-                                                            'key': $.key
-                                                        }],
-                                                        (): _out.Property => ['multiple', $.map(($): _out.Entry_Data => ({
-                                                            'node': Optional_Node(
-                                                                $.value.map(
-                                                                    ($) => $.value,
+                                                                'key': $.key
+                                                            }],
+                                                            (): _out.Property => ['multiple', $.map(($): _out.Entry_Data => ({
+                                                                'node': Optional_Node(
+                                                                    $.value.map(
+                                                                        ($) => $.value,
+                                                                    ),
+                                                                    {
+                                                                        'definition': prop_def,
+                                                                    },
                                                                 ),
-                                                                {
-                                                                    'definition': prop_def,
-                                                                },
-                                                            ),
-                                                            'key': $.key,
-                                                        }))]
-                                                    ),
-                                                    (): _out.Property => ['missing', range]
-                                                )
-                                            })
+                                                                'key': $.key,
+                                                            }))]
+                                                        ),
+                                                        (): _out.Property => ['missing', range]
+                                                    )
+                                                })
+                                            }
                                         }]]
                                     })
                                     //case 'ordered collection': return pdev.implement_me()
@@ -365,6 +367,7 @@ export const Node = (
                 case 'state group': return _ea.ss($, ($): _out.Node_Type => {
                     const def = $
                     return ['state', {
+                        'definition': $,
                         'found value type': _ea.cc(data.type, ($): _out.State_Found_Value_Type => {
                             switch ($[0]) {
                                 case 'tagged value': return _ea.ss($, ($) => {
@@ -374,18 +377,18 @@ export const Node = (
                                     return ['valid', {
                                         'value type': ['state', {
                                             'value': tv,
+                                            'found state definition': def.__get_entry($.state.value).map(
+                                                ($) => ({
+                                                    'definition': $,
+                                                    'node': Node(
+                                                        value,
+                                                        {
+                                                            'definition': $,
+                                                        }
+                                                    )
+                                                })
+                                            ),
                                         }],
-                                        'state definition': def.__get_entry($.state.value).map(
-                                            ($) => ({
-                                                'definition': $,
-                                                'node': Node(
-                                                    value,
-                                                    {
-                                                        'definition': $,
-                                                    }
-                                                )
-                                            })
-                                        ),
                                     }]
                                 })
                                 // case 'ordered collection': return _ea.ss($, ($) => {

@@ -85,10 +85,10 @@ export const $ = (
                                 return _ea.cc(st, ($) => {
                                     switch ($[0]) {
 
-                                        case 'schema': return _ea.ss($, ($) => _ea.panic(`the selected tree is a schema, not a set, can't do this step: ${split.element} `))
+                                        case 'schema': return _ea.ss($, ($) => _ea.panic(`(FIXME: make this a reference) the selected tree is a schema, not a set, can't do this step: ${split.element} `))
                                         case 'set': return _ea.ss($, ($) => $.dictionary.__get_entry(split.element).transform(
                                             ($) => temp_find_schema($, split.array),
-                                            () => _ea.panic(`schema not found: ${split.element}`)
+                                            () => _ea.panic(`(FIXME: make this a reference) schema not found: ${split.element}`)
                                         ))
                                         default: return _ea.au($[0])
                                     }
@@ -97,7 +97,7 @@ export const $ = (
                             () => _ea.cc($, ($) => {
                                 switch ($[0]) {
                                     case 'schema': return _ea.ss($, ($) => $)
-                                    case 'set': return _ea.ss($, ($) => _ea.panic("the selected tree is a set, not a schema"))
+                                    case 'set': return _ea.ss($, ($) => _ea.panic(`(FIXME: make this a reference) the selected tree is a set, not a schema`))
                                     default: return _ea.au($[0])
                                 }
                             })
@@ -111,7 +111,7 @@ export const $ = (
                             schema.types.dictionary.map(($, key) => {
                                 _ed.log_debug_message(`available type: ${key}`)
                             })
-                            _ea.panic(`root type ${resolved_schema_schema.type} not found`)
+                            _ea.panic(`(FIXME: make this a reference) root type ${resolved_schema_schema.type} not found`)
                         }
                     )
                     return ['success', type]
