@@ -61,13 +61,11 @@ export const Node = (
                 case 'number': return _ea.ss($, ($): _out.Node_Type => {
                     return ['number', {
                         'definition': $,
-                        'status': _ea.cc(data.type, ($) => {
+                        'found value type': _ea.cc(data.type, ($) => {
                             switch ($[0]) {
                                 case 'string': return _ea.ss($, ($) => ['valid', {
-                                    'range': {
-                                        'document': $p['document path'],
-                                        'range': $.range,
-                                    },
+                                    'value': $,
+                                    'range': $.range,
                                     'correct string type': _ea.cc($.type, ($) => {
                                         switch ($[0]) {
                                             case 'quoted': return true
@@ -87,13 +85,11 @@ export const Node = (
                 case 'boolean': return _ea.ss($, ($): _out.Node_Type => {
                     return ['boolean', {
                         'definition': $,
-                        'status': _ea.cc(data.type, ($) => {
+                        'found value type': _ea.cc(data.type, ($) => {
                             switch ($[0]) {
                                 case 'string': return _ea.ss($, ($) => ['valid', {
-                                    'range': {
-                                        'document': $p['document path'],
-                                        'range': $.range,
-                                    },
+                                    'value': $,
+                                    'range': $.range,
                                     'correct string type': _ea.cc($.type, ($) => {
                                         switch ($[0]) {
                                             case 'quoted': return false
@@ -114,13 +110,12 @@ export const Node = (
                 case 'nothing': return _ea.ss($, ($): _out.Node_Type => {
                     return ['nothing', {
                         'definition': $,
-                        'status': _ea.cc(data.type, ($) => {
+                        'found value type': _ea.cc(data.type, ($) => {
                             switch ($[0]) {
-                                case 'not set': return _ea.ss($, ($) => ['valid', null])
-                                default: return ['invalid value type', {
-                                    'document': $p['document path'],
-                                    'range': t_ast_to_range.Value(data),
-                                }]
+                                case 'not set': return _ea.ss($, ($) => ['valid', {
+                                    'value': $,
+                                }])
+                                default: return ['invalid', t_ast_to_range.Value(data)]
                             }
                         })
                     }]
@@ -128,9 +123,11 @@ export const Node = (
                 case 'reference': return _ea.ss($, ($): _out.Node_Type => {
                     return ['reference', {
                         'definition': $,
-                        'status': _ea.cc(data.type, ($) => {
+                        'found value type': _ea.cc(data.type, ($) => {
                             switch ($[0]) {
-                                case 'string': return _ea.ss($, ($) => ['valid', null])
+                                case 'string': return _ea.ss($, ($) => ['valid', {
+                                    'value': $,
+                                }])
                                 // case 'not set': return pa.ss($, () => ['invalid', data.location])
                                 default: return pdev.implement_me()
                             }
@@ -161,7 +158,7 @@ export const Node = (
                     const prop_def = $.node
                     return ['dictionary', {
                         'definition': $,
-                        'status': _ea.cc(data.type, ($) => {
+                        'found value type': _ea.cc(data.type, ($) => {
                             switch ($[0]) {
                                 case 'indexed collection': return _ea.ss($, ($) => {
                                     const entries = impure.list.group(_ea.cc($, ($): _in.Key_Value_Pairs => {
@@ -176,18 +173,10 @@ export const Node = (
                                             'value': $
                                         }
                                     }))
-                                    return ['valid', entries.map<_out.Entry>(($) => impure.list['expect exactly one element']($).transform(
-                                        ($): _out.Entry => ['unique', Optional_Node(
-                                            $.value.map(
-                                                ($) => $.value,
-                                            ),
-                                            {
-                                                'definition': prop_def,
-                                                'document path': $p['document path'],
-                                            },
-                                        )],
-                                        (): _out.Entry => ['multiple', $.map(($): _out.Duplicate_Entry => ({
-                                            'node': Optional_Node(
+                                    return ['valid', {
+                                        'value': $,
+                                        'entries': entries.map<_out.Entry>(($) => impure.list['expect exactly one element']($).transform(
+                                            ($): _out.Entry => ['unique', Optional_Node(
                                                 $.value.map(
                                                     ($) => $.value,
                                                 ),
@@ -195,18 +184,23 @@ export const Node = (
                                                     'definition': prop_def,
                                                     'document path': $p['document path'],
                                                 },
-                                            ),
-                                            'range': {
-                                                'document': $p['document path'],
-                                                'range': $.key.range
-                                            }
-                                        }))]
-                                    ))]
+                                            )],
+                                            (): _out.Entry => ['multiple', $.map(($): _out.Entry_Data => ({
+                                                'node': Optional_Node(
+                                                    $.value.map(
+                                                        ($) => $.value,
+                                                    ),
+                                                    {
+                                                        'definition': prop_def,
+                                                        'document path': $p['document path'],
+                                                    },
+                                                ),
+                                                'key': $.key
+                                            }))]
+                                        ))
+                                    }]
                                 })
-                                default: return ['invalid', {
-                                    'document': $p['document path'],
-                                    'range': t_ast_to_range.Value(data),
-                                }]
+                                default: return ['invalid', t_ast_to_range.Value(data)]
                             }
                         })
                     }]
@@ -252,11 +246,11 @@ export const Node = (
                     // // })
                     return ['group', {
                         'definition': $,
-                        'type': _ea.cc(data, ($) => {
+                        'found value type': _ea.cc(data, ($) => {
                             const value = $
                             return _ea.cc($.type, ($) => {
                                 switch ($[0]) {
-                                    case 'indexed collection': return _ea.ss($, ($): _out.Group_Type => {
+                                    case 'indexed collection': return _ea.ss($, ($): _out.Group_Found_Value_Type => {
                                         const entries = impure.list.group(_ea.cc($, ($): _in.Key_Value_Pairs => {
                                             switch ($[0]) {
                                                 case 'dictionary': return _ea.ss($, ($) => $.entries)
@@ -276,7 +270,8 @@ export const Node = (
                                                 default: return _ea.au($[0])
                                             }
                                         })
-                                        return ['indexed', {
+                                        return ['valid', ['indexed', {
+                                            'value': $,
                                             'superfluous entries': pure.dictionary.filter(impure.dictionary.merge(
                                                 entries,
                                                 {
@@ -287,10 +282,7 @@ export const Node = (
                                                     ($) => _ea.not_set(),
                                                     () => _ea.set($.context)
                                                 )
-                                            })).map(($) => $.map(($) => ({
-                                                'document': $p['document path'],
-                                                'range': $.key.range,
-                                            }))), //select the locations
+                                            })).map(($) => $.map(($) => $.key.range)), //select the locations
                                             'properties': impure.dictionary.merge(
                                                 group_def,
                                                 {
@@ -300,16 +292,7 @@ export const Node = (
                                                 const prop_def = $.context
                                                 return $.supporting.transform(
                                                     ($): _out.Property => impure.list['expect exactly one element']($).transform(
-                                                        ($): _out.Property => ['unique', Optional_Node(
-                                                            $.value.map(
-                                                                ($) => $.value,
-                                                            ),
-                                                            {
-                                                                'definition': prop_def,
-                                                                'document path': $p['document path'],
-                                                            },
-                                                        )],
-                                                        (): _out.Property => ['multiple', $.map(($): _out.Duplicate_Entry => ({
+                                                        ($): _out.Property => ['unique', {
                                                             'node': Optional_Node(
                                                                 $.value.map(
                                                                     ($) => $.value,
@@ -319,25 +302,28 @@ export const Node = (
                                                                     'document path': $p['document path'],
                                                                 },
                                                             ),
-                                                            'range': {
-                                                                'document': $p['document path'],
-                                                                'range': $.key.range,
-                                                            }
+                                                            'key': $.key
+                                                        }],
+                                                        (): _out.Property => ['multiple', $.map(($): _out.Entry_Data => ({
+                                                            'node': Optional_Node(
+                                                                $.value.map(
+                                                                    ($) => $.value,
+                                                                ),
+                                                                {
+                                                                    'definition': prop_def,
+                                                                    'document path': $p['document path'],
+                                                                },
+                                                            ),
+                                                            'key': $.key,
                                                         }))]
                                                     ),
-                                                    (): _out.Property => ['missing', {
-                                                        'document': $p['document path'],
-                                                        'range': range,
-                                                    }]
+                                                    (): _out.Property => ['missing', range]
                                                 )
                                             })
-                                        }]
+                                        }]]
                                     })
                                     //case 'ordered collection': return pdev.implement_me()
-                                    default: return ['invalid', {
-                                        'document': $p['document path'],
-                                        'range': t_ast_to_range.Value(data),
-                                    }]
+                                    default: return ['invalid', t_ast_to_range.Value(data)]
                                 }
                             })
                         })
@@ -348,20 +334,22 @@ export const Node = (
                     const def = $
                     return ['optional', {
                         'definition': $,
-                        'status': _ea.cc(data.type, ($) => {
+                        'found value type': _ea.cc(data.type, ($) => {
                             switch ($[0]) {
-                                case 'not set': return _ea.ss($, ($) => ['valid', ['not set', null]])
-                                case 'set optional value': return _ea.ss($, ($) => ['valid', ['set', Node(
-                                    $.value,
-                                    {
-                                        'definition': def,
-                                        'document path': $p['document path'],
-                                    }
-                                )]])
-                                default: return ['invalid value type', {
-                                    'document': $p['document path'],
-                                    'range': t_ast_to_range.Value(data),
-                                }]
+                                case 'not set': return _ea.ss($, ($) => ['valid', ['not set', {
+                                    'value': $,
+                                }]])
+                                case 'set optional value': return _ea.ss($, ($) => ['valid', ['set', {
+                                    'value': $,
+                                    'child node': Node(
+                                        $.value,
+                                        {
+                                            'definition': def,
+                                            'document path': $p['document path'],
+                                        }
+                                    )
+                                }]])
+                                default: return ['invalid', t_ast_to_range.Value(data)]
                             }
                         })
                     }]
@@ -385,10 +373,7 @@ export const Node = (
                                             )
                                         }],
                                         () => ['unknown state', {
-                                            'range': {
-                                                'document': $p['document path'],
-                                                'range': state.range,
-                                            },
+                                            'range': state.range,
                                             'found': $.state.value,
                                             'expected': def.map(($) => null)
                                         }]
@@ -410,19 +395,13 @@ export const Node = (
                                         }
                                     })
                                     if (elements.__get_length() > 2) {
-                                        return ['more than 2 elements', {
-                                            'document': $p['document path'],
-                                            'range': range,
-                                        }]
+                                        return ['more than 2 elements', range]
                                     }
                                     const first = elements.__get_element_at(0)
                                     return first.transform<_out.State_Status>(
                                         ($) => {
                                             if ($.value.type[0] !== 'string') {
-                                                return ['state is not a string', {
-                                                    'document': $p['document path'],
-                                                    'range': t_ast_to_range.Value(data),
-                                                }]
+                                                return ['state is not a string', t_ast_to_range.Value(data)]
                                             }
                                             const state_name = $.value.type[1].value
                                             const state_name_range = $.value.type[1].range
@@ -440,25 +419,16 @@ export const Node = (
                                                             )
                                                         }],
                                                         () => ['unknown state', {
-                                                            'range': {
-                                                                'document': $p['document path'],
-                                                                'range': state_name_range,
-                                                            },
+                                                            'range': state_name_range,
                                                             'found': state_name,
                                                             'expected': def.map(($) => null)
                                                         }]
                                                     )
                                                 },
-                                                () => ['missing value', {
-                                                    'document': $p['document path'],
-                                                    'range': t_ast_to_range.Value(data),
-                                                }]
+                                                () => ['missing value', t_ast_to_range.Value(data)]
                                             )
                                         },
-                                        () => ['missing state name', {
-                                            'document': $p['document path'],
-                                            'range': range
-                                        }]
+                                        () => ['missing state name', range]
                                     )
 
                                 })
@@ -471,14 +441,13 @@ export const Node = (
                 case 'text': return _ea.ss($, ($) => {
                     return ['text', {
                         'definition': $,
-                        'status': _ea.cc(data.type, ($) => {
+                        'found value type': _ea.cc(data.type, ($) => {
                             switch ($[0]) {
-                                case 'string': return _ea.ss($, ($) => ['valid', null])
+                                case 'string': return _ea.ss($, ($) => ['valid', {
+                                    'value': $,
+                                }])
                                 // case 'not set': return pa.ss($, () => ['invalid', data.location])
-                                default: return ['invalid value type', {
-                                    'document': $p['document path'],
-                                    'range': t_ast_to_range.Value(data),
-                                }]
+                                default: return ['invalid', t_ast_to_range.Value(data)]
                             }
                         })
                     }]

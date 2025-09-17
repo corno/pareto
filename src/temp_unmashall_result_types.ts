@@ -9,14 +9,8 @@ export type Document = {
     'content': Node
 }
 
-export type Document_Range = {
-    'document': string,
-    'range': d_astn_token.Range
-
-}
-
-export type Duplicate_Entry = {
-    'range': Document_Range
+export type Entry_Data = {
+    'key': d_astn_ast.String
     'node': Node
 }
 
@@ -25,9 +19,9 @@ export type Duplicate_Entry = {
 // }
 
 export type Property =
-    | ['missing', Document_Range]
-    | ['unique', Node]
-    | ['multiple', pt.Array<Duplicate_Entry>]
+    | ['missing', d_astn_token.Range]
+    | ['unique', Entry_Data]
+    | ['multiple', pt.Array<Entry_Data>]
 
 export type Node = {
     'value': d_astn_ast.Value
@@ -58,28 +52,33 @@ export type State_Status =
         'node': Node,
 
     }]
-    | ['more than 2 elements', Document_Range]
-    | ['missing state name', Document_Range]
-    | ['state is not a string', Document_Range]
-    | ['missing value', Document_Range]
+    | ['more than 2 elements', d_astn_token.Range]
+    | ['missing state name', d_astn_token.Range]
+    | ['state is not a string', d_astn_token.Range]
+    | ['missing value', d_astn_token.Range]
     | ['unknown state', {
-        'range': Document_Range
+        'range': d_astn_token.Range
         'found': string
         'expected': pt.Dictionary<null>
     }]
 
 export type Identifier_Value_Pair = {
-  'definition': d_schema.Type_Node.SG.identifier_value_pair
+    'definition': d_schema.Type_Node.SG.identifier_value_pair
 }
 
 export type Optional = {
     'definition': d_schema.Type_Node.SG.optional
-    'status':
-    | ['valid', 
-        | ['set', Node]
-        | ['not set', null]
+    'found value type':
+    | ['valid',
+        | ['set', {
+            'value': d_astn_ast.Value._type.SG.set_optional_value
+            'child node': Node
+        }]
+        | ['not set', {
+            'value': d_astn_ast.Value._type.SG.not_set
+        }]
     ]
-    | ['invalid value type', Document_Range]
+    | ['invalid', d_astn_token.Range]
 }
 export type List = {
     'definition': d_schema.Type_Node.SG.list
@@ -87,9 +86,11 @@ export type List = {
 
 export type Reference = {
     'definition': d_schema.Type_Node.SG.reference
-    'status':
-    | ['valid', null] //FIXME
-    | ['invalid', Document_Range]
+    'found value type':
+    | ['valid', {
+        'value': d_astn_ast.Value._type.SG._string
+    }] //FIXME
+    | ['invalid', d_astn_token.Range]
 }
 
 export type Component = {
@@ -99,59 +100,76 @@ export type Component = {
 
 export type Boolean = {
     'definition': d_schema.Type_Node.SG._boolean
-    'status':
+    'found value type':
     | ['valid', {
-        'range': Document_Range
+        'value': d_astn_ast.Value._type.SG._string
+        'range': d_astn_token.Range
         'correct string type': boolean
     }]
-    | ['invalid', Document_Range]
+    | ['invalid', d_astn_token.Range]
 }
 export type Nothing = {
     'definition': d_schema.Type_Node.SG.nothing
-    'status':
-    | ['valid', null]
-    | ['invalid value type', Document_Range]
+    'found value type':
+    | ['valid', {
+        'value': d_astn_ast.Value._type.SG.not_set
+    }]
+    | ['invalid', d_astn_token.Range]
 }
 
 export type Text = {
     'definition': d_schema.Type_Node.SG.text
-    'status':
-    | ['valid', null]
-    | ['invalid value type', Document_Range]
+    'found value type':
+    | ['valid', {
+        'value': d_astn_ast.Value._type.SG._string
+    }]
+    | ['invalid', d_astn_token.Range]
 }
 
 export type Number = {
     'definition': d_schema.Type_Node.SG._number
-    'status':
+    'found value type':
     | ['valid', {
-        'range': Document_Range
+        'value': d_astn_ast.Value._type.SG._string
+        'range': d_astn_token.Range
         'correct string type': boolean
     }]
-    | ['invalid', Document_Range]
+    | ['invalid', d_astn_token.Range]
 }
 
 export type Dictionary = {
     'definition': d_schema.Type_Node.SG.dictionary
-    'status':
-    | ['valid', pt.Dictionary<Entry>]
-    | ['invalid', Document_Range]
+    'found value type':
+    | ['valid', {
+        'value': d_astn_ast.Value._type.SG.indexed_collection
+        'entries': pt.Dictionary<Entry>
+    }]
+    | ['invalid', d_astn_token.Range]
 }
 
 export type Entry =
     | ['unique', Node]
-    | ['multiple', pt.Array<Duplicate_Entry>]
+    | ['multiple', pt.Array<Entry_Data>]
 
 export type Group = {
     'definition': d_schema.Type_Node.SG.group
-    'type': Group_Type
+    'found value type': Group_Found_Value_Type
 }
+
+export type Group_Found_Value_Type =
+    | ['valid', Group_Type]
+    | ['invalid', d_astn_token.Range]
 
 export type Group_Type =
     | ['indexed', Indexed_Group]
-    | ['ordered', {}]
-    | ['invalid', Document_Range]
+    | ['ordered', {
+        'value': d_astn_ast.Value._type.SG.ordered_collection.SG.concise_group
+
+    }]
 
 export type Indexed_Group = {
+    'value': d_astn_ast.Value._type.SG.indexed_collection
+
     'properties': pt.Dictionary<Property>
-    'superfluous entries': pt.Dictionary<pt.Array<Document_Range>>
+    'superfluous entries': pt.Dictionary<pt.Array<d_astn_token.Range>>
 }
