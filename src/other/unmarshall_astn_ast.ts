@@ -284,17 +284,19 @@ export const Node = (
                                         return ['valid', ['indexed', {
                                             'value': $,
                                             'content': {
-                                                'superfluous entries': pure.dictionary.filter(impure.dictionary.merge(
-                                                    entries,
-                                                    {
-                                                        'supporting dictionary': group_def
-                                                    }
-                                                ).map(($) => {
-                                                    return $.supporting.transform( //drop all the ones for which there is a definition
-                                                        ($) => _ea.not_set(),
-                                                        () => _ea.set($.context)
-                                                    )
-                                                })).map(($) => $.map(($) => $.key.range)), //select the locations
+                                                'superfluous entries': pure.dictionary.filter(
+                                                    impure.dictionary.merge(
+                                                        entries,
+                                                        {
+                                                            'supporting dictionary': group_def
+                                                        }
+                                                    ).map(($) => {
+                                                        return $.supporting.transform( //drop all the ones for which there is a definition
+                                                            ($) => _ea.not_set(),
+                                                            () => _ea.set($.context)
+                                                        )
+                                                    })
+                                                ).map(($) => $.map(($) => $.key.range)), //select the locations
                                                 'properties': impure.dictionary.merge(
                                                     group_def,
                                                     {
