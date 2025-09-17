@@ -35,6 +35,9 @@ export const $: g_.Types<pd.Source_Location> = types(
                     "missing property": t.group({
                         "name": t.text_local(text('single line')),
                     }),
+                    "superfluous property": t.group({
+                        "name": t.text_local(text('single line')),
+                    }),
                     "state": t.state_group({
                         "more than 2 elements": t.nothing(),
                         "missing state name": t.nothing(),

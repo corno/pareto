@@ -27,31 +27,41 @@ export const Group_Content = (
         'group range': _in_token.Range
     }
 ): _out.Errors => {
-    return impure.dictionary['dictionary of lists to list']($.properties.map(($, key) => _ea.cc($, ($): _out.Errors => {
-        switch ($[0]) {
-            case 'multiple': return _ea.ss($, ($) => pure.list.flatten($.map(($) => pure.list.flatten(_ea.array_literal([
-                _ea.array_literal<_out.Errors.L>([
+    return op.flatten(_ea.array_literal([
+        impure.dictionary['dictionary of lists to list']($.properties.map(($, key) => _ea.cc($, ($): _out.Errors => {
+            switch ($[0]) {
+                case 'multiple': return _ea.ss($, ($) => pure.list.flatten($.map(($) => pure.list.flatten(_ea.array_literal([
+                    _ea.array_literal<_out.Errors.L>([
+                        {
+                            'range': $.key.range,
+                            'type': ['error', ['duplicate property', {
+                                name: key
+                            }]]
+                        }
+                    ]),
+                    Optional_Node($.node, null)
+                ])))))
+                case 'missing': return _ea.ss($, ($) => _ea.array_literal([
                     {
-                        'range': $.key.range,
-                        'type': ['error', ['duplicate property', {
+                        'range': $p['group range'],
+                        'type': ['error', ['missing property', {
                             name: key
                         }]]
                     }
-                ]),
-                Optional_Node($.node, null)
-            ])))))
-            case 'missing': return _ea.ss($, ($) => _ea.array_literal([
-                {
-                    'range': $p['group range'],
-                    'type': ['error', ['missing property', {
-                        name: key
-                    }]]
-                }
-            ]))
-            case 'unique': return _ea.ss($, ($) => Optional_Node($.node, null))
-            default: return _ea.au($[0])
-        }
-    })))
+                ]))
+                case 'unique': return _ea.ss($, ($) => Optional_Node($.node, null))
+                default: return _ea.au($[0])
+            }
+        }))),
+        impure.dictionary['dictionary of lists to list']($['superfluous entries'].map(($): _out.Errors => _ea.array_literal([
+            // {
+            //     'range': $p['group range'],
+            //     'type': ['error', ['superfluous property', {
+            //         name: key
+            //     }]]
+            // }
+        ])))
+    ]))
 }
 
 export const Node = (
@@ -94,7 +104,7 @@ export const Node = (
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': ['group', null],
+                                'expected': _ea.array_literal([['verbose group', null]]),
                             }]]
                         }
                     ]))
@@ -128,7 +138,7 @@ export const Node = (
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': ['dictionary', null],
+                                'expected': _ea.array_literal([['dictionary', null]]),
                             }]]
                         }
                     ]))
@@ -147,7 +157,7 @@ export const Node = (
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': ['text', null],
+                                'expected': _ea.array_literal([['text', null]]),
                             }]]
                         }
                     ]))
@@ -166,7 +176,7 @@ export const Node = (
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': ['text', null],
+                                'expected': _ea.array_literal([['text', null]]),
                             }]]
                         }
                     ]))
@@ -180,7 +190,7 @@ export const Node = (
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': ['list', null],
+                                'expected': _ea.array_literal([['list', null]]),
                             }]]
                         }
                     ]))
@@ -194,7 +204,7 @@ export const Node = (
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': ['text', null],//FIXME -> ['nothing', null]
+                                'expected': _ea.array_literal([['not set', null]]),
                             }]]
                         }
                     ]))
@@ -208,7 +218,7 @@ export const Node = (
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': ['text', null],
+                                'expected': _ea.array_literal([['text', null]]),
                             }]]
                         }
                     ]))
@@ -233,7 +243,7 @@ export const Node = (
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': ['text', null],//FIXME -> ['set or not set', null]
+                                'expected': _ea.array_literal([['set', null], ['not set', null]]),
                             }]]
                         }
                     ]))
@@ -270,7 +280,7 @@ export const Node = (
                             {
                                 'range': $,
                                 'type': ['error', ['invalid value type', {
-                                    'expected': ['text', null],//FIXME -> ['state', null]
+                                    'expected': _ea.array_literal([['state', null]]),
                                 }]]
                             }
                         ]))
@@ -308,7 +318,7 @@ export const Node = (
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': ['text', null],
+                                'expected': _ea.array_literal([['text', null]]),
                             }]]
                         }
                     ]))

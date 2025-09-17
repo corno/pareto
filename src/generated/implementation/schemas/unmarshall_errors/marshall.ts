@@ -30,14 +30,14 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                         case 'invalid value type': return _pa.ss($, ($) => ({
                             'state': "invalid value type",
                             'value': ['verbose group', _pa.dictionary_literal({
-                                'expected': _pa.cc($['expected'], ($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+                                'expected': _pa.cc($['expected'], ($) => ['list', $.map(($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
                                     switch ($[0]) {
-                                        case 'dictionary': return _pa.ss($, ($) => ({
-                                            'state': "dictionary",
+                                        case 'concise group': return _pa.ss($, ($) => ({
+                                            'state': "concise group",
                                             'value': ['nothing', null],
                                         }))
-                                        case 'group': return _pa.ss($, ($) => ({
-                                            'state': "group",
+                                        case 'dictionary': return _pa.ss($, ($) => ({
+                                            'state': "dictionary",
                                             'value': ['nothing', null],
                                         }))
                                         case 'list': return _pa.ss($, ($) => ({
@@ -48,17 +48,25 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                                             'state': "not set",
                                             'value': ['nothing', null],
                                         }))
-                                        case 'set or not set': return _pa.ss($, ($) => ({
-                                            'state': "set or not set",
+                                        case 'set': return _pa.ss($, ($) => ({
+                                            'state': "set",
+                                            'value': ['nothing', null],
+                                        }))
+                                        case 'state': return _pa.ss($, ($) => ({
+                                            'state': "state",
                                             'value': ['nothing', null],
                                         }))
                                         case 'text': return _pa.ss($, ($) => ({
                                             'state': "text",
                                             'value': ['nothing', null],
                                         }))
+                                        case 'verbose group': return _pa.ss($, ($) => ({
+                                            'state': "verbose group",
+                                            'value': ['nothing', null],
+                                        }))
                                         default: return _pa.au($[0])
                                     }
-                                })]),
+                                })])]),
                             })],
                         }))
                         case 'missing property': return _pa.ss($, ($) => ({
@@ -102,6 +110,15 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                                     }))
                                     default: return _pa.au($[0])
                                 }
+                            })],
+                        }))
+                        case 'superfluous property': return _pa.ss($, ($) => ({
+                            'state': "superfluous property",
+                            'value': ['verbose group', _pa.dictionary_literal({
+                                'name': _pa.cc($['name'], ($) => ['text', ({
+                                    'delimiter': ['quote', null],
+                                    'value': $,
+                                })]),
                             })],
                         }))
                         default: return _pa.au($[0])

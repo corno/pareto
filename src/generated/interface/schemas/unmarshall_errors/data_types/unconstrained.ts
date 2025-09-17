@@ -12,14 +12,16 @@ export type _T_Errors = _i_core._T_List<null, {
                 readonly 'name': string
             }]
             | readonly ['invalid value type', {
-                readonly 'expected': _i_core._T_State_Group<null, 
+                readonly 'expected': _i_core._T_List<null, _i_core._T_State_Group<null, 
+                    | readonly ['concise group', null]
                     | readonly ['dictionary', null]
-                    | readonly ['group', null]
                     | readonly ['list', null]
                     | readonly ['not set', null]
-                    | readonly ['set or not set', null]
+                    | readonly ['set', null]
+                    | readonly ['state', null]
                     | readonly ['text', null]
-                >
+                    | readonly ['verbose group', null]
+                >>
             }]
             | readonly ['missing property', {
                 readonly 'name': string
@@ -34,6 +36,9 @@ export type _T_Errors = _i_core._T_List<null, {
                     readonly 'found': string
                 }]
             >]
+            | readonly ['superfluous property', {
+                readonly 'name': string
+            }]
         >]
         | readonly ['warning', _i_core._T_State_Group<null, 
             | readonly ['expected apostrophed string', null]
@@ -98,40 +103,61 @@ export namespace _T_Errors {
                             
                             export namespace expected {
                                 
-                                export namespace SG {
-                                    export type dictionary = null
-                                    export type group = null
-                                    export type list = null
-                                    export type not_set = null
-                                    export type set_or_not_set = null
-                                    export type text = null
+                                export namespace L {
+                                    
+                                    export namespace SG {
+                                        export type concise_group = null
+                                        export type dictionary = null
+                                        export type list = null
+                                        export type not_set = null
+                                        export type _set = null
+                                        export type state = null
+                                        export type text = null
+                                        export type verbose_group = null
+                                    }
+                                    export type SG = 
+                                        | readonly ['concise group', null]
+                                        | readonly ['dictionary', null]
+                                        | readonly ['list', null]
+                                        | readonly ['not set', null]
+                                        | readonly ['set', null]
+                                        | readonly ['state', null]
+                                        | readonly ['text', null]
+                                        | readonly ['verbose group', null]
                                 }
-                                export type SG = 
+                                export type L = _i_core._T_State_Group<null, 
+                                    | readonly ['concise group', null]
                                     | readonly ['dictionary', null]
-                                    | readonly ['group', null]
                                     | readonly ['list', null]
                                     | readonly ['not set', null]
-                                    | readonly ['set or not set', null]
+                                    | readonly ['set', null]
+                                    | readonly ['state', null]
                                     | readonly ['text', null]
+                                    | readonly ['verbose group', null]
+                                >
                             }
-                            export type expected = _i_core._T_State_Group<null, 
+                            export type expected = _i_core._T_List<null, _i_core._T_State_Group<null, 
+                                | readonly ['concise group', null]
                                 | readonly ['dictionary', null]
-                                | readonly ['group', null]
                                 | readonly ['list', null]
                                 | readonly ['not set', null]
-                                | readonly ['set or not set', null]
+                                | readonly ['set', null]
+                                | readonly ['state', null]
                                 | readonly ['text', null]
-                            >
+                                | readonly ['verbose group', null]
+                            >>
                         }
                         export type invalid_value_type = {
-                            readonly 'expected': _i_core._T_State_Group<null, 
+                            readonly 'expected': _i_core._T_List<null, _i_core._T_State_Group<null, 
+                                | readonly ['concise group', null]
                                 | readonly ['dictionary', null]
-                                | readonly ['group', null]
                                 | readonly ['list', null]
                                 | readonly ['not set', null]
-                                | readonly ['set or not set', null]
+                                | readonly ['set', null]
+                                | readonly ['state', null]
                                 | readonly ['text', null]
-                            >
+                                | readonly ['verbose group', null]
+                            >>
                         }
                         
                         export namespace missing_property {
@@ -182,20 +208,29 @@ export namespace _T_Errors {
                                 readonly 'found': string
                             }]
                         >
+                        
+                        export namespace superfluous_property {
+                            export type name = string
+                        }
+                        export type superfluous_property = {
+                            readonly 'name': string
+                        }
                     }
                     export type SG = 
                         | readonly ['duplicate property', {
                             readonly 'name': string
                         }]
                         | readonly ['invalid value type', {
-                            readonly 'expected': _i_core._T_State_Group<null, 
+                            readonly 'expected': _i_core._T_List<null, _i_core._T_State_Group<null, 
+                                | readonly ['concise group', null]
                                 | readonly ['dictionary', null]
-                                | readonly ['group', null]
                                 | readonly ['list', null]
                                 | readonly ['not set', null]
-                                | readonly ['set or not set', null]
+                                | readonly ['set', null]
+                                | readonly ['state', null]
                                 | readonly ['text', null]
-                            >
+                                | readonly ['verbose group', null]
+                            >>
                         }]
                         | readonly ['missing property', {
                             readonly 'name': string
@@ -210,20 +245,25 @@ export namespace _T_Errors {
                                 readonly 'found': string
                             }]
                         >]
+                        | readonly ['superfluous property', {
+                            readonly 'name': string
+                        }]
                 }
                 export type error = _i_core._T_State_Group<null, 
                     | readonly ['duplicate property', {
                         readonly 'name': string
                     }]
                     | readonly ['invalid value type', {
-                        readonly 'expected': _i_core._T_State_Group<null, 
+                        readonly 'expected': _i_core._T_List<null, _i_core._T_State_Group<null, 
+                            | readonly ['concise group', null]
                             | readonly ['dictionary', null]
-                            | readonly ['group', null]
                             | readonly ['list', null]
                             | readonly ['not set', null]
-                            | readonly ['set or not set', null]
+                            | readonly ['set', null]
+                            | readonly ['state', null]
                             | readonly ['text', null]
-                        >
+                            | readonly ['verbose group', null]
+                        >>
                     }]
                     | readonly ['missing property', {
                         readonly 'name': string
@@ -238,6 +278,9 @@ export namespace _T_Errors {
                             readonly 'found': string
                         }]
                     >]
+                    | readonly ['superfluous property', {
+                        readonly 'name': string
+                    }]
                 >
                 
                 export namespace warning {
@@ -267,14 +310,16 @@ export namespace _T_Errors {
                         readonly 'name': string
                     }]
                     | readonly ['invalid value type', {
-                        readonly 'expected': _i_core._T_State_Group<null, 
+                        readonly 'expected': _i_core._T_List<null, _i_core._T_State_Group<null, 
+                            | readonly ['concise group', null]
                             | readonly ['dictionary', null]
-                            | readonly ['group', null]
                             | readonly ['list', null]
                             | readonly ['not set', null]
-                            | readonly ['set or not set', null]
+                            | readonly ['set', null]
+                            | readonly ['state', null]
                             | readonly ['text', null]
-                        >
+                            | readonly ['verbose group', null]
+                        >>
                     }]
                     | readonly ['missing property', {
                         readonly 'name': string
@@ -289,6 +334,9 @@ export namespace _T_Errors {
                             readonly 'found': string
                         }]
                     >]
+                    | readonly ['superfluous property', {
+                        readonly 'name': string
+                    }]
                 >]
                 | readonly ['warning', _i_core._T_State_Group<null, 
                     | readonly ['expected apostrophed string', null]
@@ -303,14 +351,16 @@ export namespace _T_Errors {
                     readonly 'name': string
                 }]
                 | readonly ['invalid value type', {
-                    readonly 'expected': _i_core._T_State_Group<null, 
+                    readonly 'expected': _i_core._T_List<null, _i_core._T_State_Group<null, 
+                        | readonly ['concise group', null]
                         | readonly ['dictionary', null]
-                        | readonly ['group', null]
                         | readonly ['list', null]
                         | readonly ['not set', null]
-                        | readonly ['set or not set', null]
+                        | readonly ['set', null]
+                        | readonly ['state', null]
                         | readonly ['text', null]
-                    >
+                        | readonly ['verbose group', null]
+                    >>
                 }]
                 | readonly ['missing property', {
                     readonly 'name': string
@@ -325,6 +375,9 @@ export namespace _T_Errors {
                         readonly 'found': string
                     }]
                 >]
+                | readonly ['superfluous property', {
+                    readonly 'name': string
+                }]
             >]
             | readonly ['warning', _i_core._T_State_Group<null, 
                 | readonly ['expected apostrophed string', null]
@@ -342,14 +395,16 @@ export namespace _T_Errors {
                     readonly 'name': string
                 }]
                 | readonly ['invalid value type', {
-                    readonly 'expected': _i_core._T_State_Group<null, 
+                    readonly 'expected': _i_core._T_List<null, _i_core._T_State_Group<null, 
+                        | readonly ['concise group', null]
                         | readonly ['dictionary', null]
-                        | readonly ['group', null]
                         | readonly ['list', null]
                         | readonly ['not set', null]
-                        | readonly ['set or not set', null]
+                        | readonly ['set', null]
+                        | readonly ['state', null]
                         | readonly ['text', null]
-                    >
+                        | readonly ['verbose group', null]
+                    >>
                 }]
                 | readonly ['missing property', {
                     readonly 'name': string
@@ -364,6 +419,9 @@ export namespace _T_Errors {
                         readonly 'found': string
                     }]
                 >]
+                | readonly ['superfluous property', {
+                    readonly 'name': string
+                }]
             >]
             | readonly ['warning', _i_core._T_State_Group<null, 
                 | readonly ['expected apostrophed string', null]
@@ -428,40 +486,61 @@ export namespace Errors {
                             
                             export namespace expected {
                                 
-                                export namespace SG {
-                                    export type dictionary = null
-                                    export type group = null
-                                    export type list = null
-                                    export type not_set = null
-                                    export type set_or_not_set = null
-                                    export type text = null
+                                export namespace L {
+                                    
+                                    export namespace SG {
+                                        export type concise_group = null
+                                        export type dictionary = null
+                                        export type list = null
+                                        export type not_set = null
+                                        export type _set = null
+                                        export type state = null
+                                        export type text = null
+                                        export type verbose_group = null
+                                    }
+                                    export type SG = 
+                                        | readonly ['concise group', null]
+                                        | readonly ['dictionary', null]
+                                        | readonly ['list', null]
+                                        | readonly ['not set', null]
+                                        | readonly ['set', null]
+                                        | readonly ['state', null]
+                                        | readonly ['text', null]
+                                        | readonly ['verbose group', null]
                                 }
-                                export type SG = 
+                                export type L = _i_core._T_State_Group<null, 
+                                    | readonly ['concise group', null]
                                     | readonly ['dictionary', null]
-                                    | readonly ['group', null]
                                     | readonly ['list', null]
                                     | readonly ['not set', null]
-                                    | readonly ['set or not set', null]
+                                    | readonly ['set', null]
+                                    | readonly ['state', null]
                                     | readonly ['text', null]
+                                    | readonly ['verbose group', null]
+                                >
                             }
-                            export type expected = _i_core._T_State_Group<null, 
+                            export type expected = _i_core._T_List<null, _i_core._T_State_Group<null, 
+                                | readonly ['concise group', null]
                                 | readonly ['dictionary', null]
-                                | readonly ['group', null]
                                 | readonly ['list', null]
                                 | readonly ['not set', null]
-                                | readonly ['set or not set', null]
+                                | readonly ['set', null]
+                                | readonly ['state', null]
                                 | readonly ['text', null]
-                            >
+                                | readonly ['verbose group', null]
+                            >>
                         }
                         export type invalid_value_type = {
-                            readonly 'expected': _i_core._T_State_Group<null, 
+                            readonly 'expected': _i_core._T_List<null, _i_core._T_State_Group<null, 
+                                | readonly ['concise group', null]
                                 | readonly ['dictionary', null]
-                                | readonly ['group', null]
                                 | readonly ['list', null]
                                 | readonly ['not set', null]
-                                | readonly ['set or not set', null]
+                                | readonly ['set', null]
+                                | readonly ['state', null]
                                 | readonly ['text', null]
-                            >
+                                | readonly ['verbose group', null]
+                            >>
                         }
                         
                         export namespace missing_property {
@@ -512,20 +591,29 @@ export namespace Errors {
                                 readonly 'found': string
                             }]
                         >
+                        
+                        export namespace superfluous_property {
+                            export type name = string
+                        }
+                        export type superfluous_property = {
+                            readonly 'name': string
+                        }
                     }
                     export type SG = 
                         | readonly ['duplicate property', {
                             readonly 'name': string
                         }]
                         | readonly ['invalid value type', {
-                            readonly 'expected': _i_core._T_State_Group<null, 
+                            readonly 'expected': _i_core._T_List<null, _i_core._T_State_Group<null, 
+                                | readonly ['concise group', null]
                                 | readonly ['dictionary', null]
-                                | readonly ['group', null]
                                 | readonly ['list', null]
                                 | readonly ['not set', null]
-                                | readonly ['set or not set', null]
+                                | readonly ['set', null]
+                                | readonly ['state', null]
                                 | readonly ['text', null]
-                            >
+                                | readonly ['verbose group', null]
+                            >>
                         }]
                         | readonly ['missing property', {
                             readonly 'name': string
@@ -540,20 +628,25 @@ export namespace Errors {
                                 readonly 'found': string
                             }]
                         >]
+                        | readonly ['superfluous property', {
+                            readonly 'name': string
+                        }]
                 }
                 export type error = _i_core._T_State_Group<null, 
                     | readonly ['duplicate property', {
                         readonly 'name': string
                     }]
                     | readonly ['invalid value type', {
-                        readonly 'expected': _i_core._T_State_Group<null, 
+                        readonly 'expected': _i_core._T_List<null, _i_core._T_State_Group<null, 
+                            | readonly ['concise group', null]
                             | readonly ['dictionary', null]
-                            | readonly ['group', null]
                             | readonly ['list', null]
                             | readonly ['not set', null]
-                            | readonly ['set or not set', null]
+                            | readonly ['set', null]
+                            | readonly ['state', null]
                             | readonly ['text', null]
-                        >
+                            | readonly ['verbose group', null]
+                        >>
                     }]
                     | readonly ['missing property', {
                         readonly 'name': string
@@ -568,6 +661,9 @@ export namespace Errors {
                             readonly 'found': string
                         }]
                     >]
+                    | readonly ['superfluous property', {
+                        readonly 'name': string
+                    }]
                 >
                 
                 export namespace warning {
@@ -597,14 +693,16 @@ export namespace Errors {
                         readonly 'name': string
                     }]
                     | readonly ['invalid value type', {
-                        readonly 'expected': _i_core._T_State_Group<null, 
+                        readonly 'expected': _i_core._T_List<null, _i_core._T_State_Group<null, 
+                            | readonly ['concise group', null]
                             | readonly ['dictionary', null]
-                            | readonly ['group', null]
                             | readonly ['list', null]
                             | readonly ['not set', null]
-                            | readonly ['set or not set', null]
+                            | readonly ['set', null]
+                            | readonly ['state', null]
                             | readonly ['text', null]
-                        >
+                            | readonly ['verbose group', null]
+                        >>
                     }]
                     | readonly ['missing property', {
                         readonly 'name': string
@@ -619,6 +717,9 @@ export namespace Errors {
                             readonly 'found': string
                         }]
                     >]
+                    | readonly ['superfluous property', {
+                        readonly 'name': string
+                    }]
                 >]
                 | readonly ['warning', _i_core._T_State_Group<null, 
                     | readonly ['expected apostrophed string', null]
@@ -633,14 +734,16 @@ export namespace Errors {
                     readonly 'name': string
                 }]
                 | readonly ['invalid value type', {
-                    readonly 'expected': _i_core._T_State_Group<null, 
+                    readonly 'expected': _i_core._T_List<null, _i_core._T_State_Group<null, 
+                        | readonly ['concise group', null]
                         | readonly ['dictionary', null]
-                        | readonly ['group', null]
                         | readonly ['list', null]
                         | readonly ['not set', null]
-                        | readonly ['set or not set', null]
+                        | readonly ['set', null]
+                        | readonly ['state', null]
                         | readonly ['text', null]
-                    >
+                        | readonly ['verbose group', null]
+                    >>
                 }]
                 | readonly ['missing property', {
                     readonly 'name': string
@@ -655,6 +758,9 @@ export namespace Errors {
                         readonly 'found': string
                     }]
                 >]
+                | readonly ['superfluous property', {
+                    readonly 'name': string
+                }]
             >]
             | readonly ['warning', _i_core._T_State_Group<null, 
                 | readonly ['expected apostrophed string', null]
@@ -672,14 +778,16 @@ export namespace Errors {
                     readonly 'name': string
                 }]
                 | readonly ['invalid value type', {
-                    readonly 'expected': _i_core._T_State_Group<null, 
+                    readonly 'expected': _i_core._T_List<null, _i_core._T_State_Group<null, 
+                        | readonly ['concise group', null]
                         | readonly ['dictionary', null]
-                        | readonly ['group', null]
                         | readonly ['list', null]
                         | readonly ['not set', null]
-                        | readonly ['set or not set', null]
+                        | readonly ['set', null]
+                        | readonly ['state', null]
                         | readonly ['text', null]
-                    >
+                        | readonly ['verbose group', null]
+                    >>
                 }]
                 | readonly ['missing property', {
                     readonly 'name': string
@@ -694,6 +802,9 @@ export namespace Errors {
                         readonly 'found': string
                     }]
                 >]
+                | readonly ['superfluous property', {
+                    readonly 'name': string
+                }]
             >]
             | readonly ['warning', _i_core._T_State_Group<null, 
                 | readonly ['expected apostrophed string', null]

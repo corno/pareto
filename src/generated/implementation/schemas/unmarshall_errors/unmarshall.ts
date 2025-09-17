@@ -63,35 +63,48 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => _i_generic.process_unc
                                                             {
                                                                 'key': "expected",
                                                             }
-                                                        ), ($) => _i_generic.process_unconstrained_state_group(
+                                                        ), ($) => _i_generic.process_unconstrained_list(
                                                             $,
                                                             {
-                                                                'states': _pa.dictionary_literal({
-                                                                    'dictionary': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.SG => ['dictionary', _i_generic.process_nothing(
-                                                                        $,
-                                                                        null
-                                                                    )],
-                                                                    'group': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.SG => ['group', _i_generic.process_nothing(
-                                                                        $,
-                                                                        null
-                                                                    )],
-                                                                    'list': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.SG => ['list', _i_generic.process_nothing(
-                                                                        $,
-                                                                        null
-                                                                    )],
-                                                                    'not set': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.SG => ['not set', _i_generic.process_nothing(
-                                                                        $,
-                                                                        null
-                                                                    )],
-                                                                    'set or not set': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.SG => ['set or not set', _i_generic.process_nothing(
-                                                                        $,
-                                                                        null
-                                                                    )],
-                                                                    'text': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.SG => ['text', _i_generic.process_nothing(
-                                                                        $,
-                                                                        null
-                                                                    )],
-                                                                }),
+                                                                'value': ($) => _i_generic.process_unconstrained_state_group(
+                                                                    $,
+                                                                    {
+                                                                        'states': _pa.dictionary_literal({
+                                                                            'concise group': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.L.SG => ['concise group', _i_generic.process_nothing(
+                                                                                $,
+                                                                                null
+                                                                            )],
+                                                                            'dictionary': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.L.SG => ['dictionary', _i_generic.process_nothing(
+                                                                                $,
+                                                                                null
+                                                                            )],
+                                                                            'list': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.L.SG => ['list', _i_generic.process_nothing(
+                                                                                $,
+                                                                                null
+                                                                            )],
+                                                                            'not set': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.L.SG => ['not set', _i_generic.process_nothing(
+                                                                                $,
+                                                                                null
+                                                                            )],
+                                                                            'set': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.L.SG => ['set', _i_generic.process_nothing(
+                                                                                $,
+                                                                                null
+                                                                            )],
+                                                                            'state': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.L.SG => ['state', _i_generic.process_nothing(
+                                                                                $,
+                                                                                null
+                                                                            )],
+                                                                            'text': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.L.SG => ['text', _i_generic.process_nothing(
+                                                                                $,
+                                                                                null
+                                                                            )],
+                                                                            'verbose group': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.L.SG => ['verbose group', _i_generic.process_nothing(
+                                                                                $,
+                                                                                null
+                                                                            )],
+                                                                        }),
+                                                                    }
+                                                                ),
                                                             }
                                                         )),
                                                     }),
@@ -163,6 +176,22 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => _i_generic.process_unc
                                                                 }),
                                                             }
                                                         )],
+                                                    }),
+                                                }
+                                            )],
+                                            'superfluous property': ($): _i_out._T_Errors.L._type.SG.error.SG => ['superfluous property', _i_generic.process_group(
+                                                $,
+                                                {
+                                                    'properties': ($) => ({
+                                                        'name': _pa.cc(_i_generic.get_entry(
+                                                            $,
+                                                            {
+                                                                'key': "name",
+                                                            }
+                                                        ), ($) => _i_generic.process_text(
+                                                            $,
+                                                            null
+                                                        )),
                                                     }),
                                                 }
                                             )],

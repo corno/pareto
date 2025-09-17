@@ -10,7 +10,8 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 import { impure, pure } from "pareto-standard-operations"
 
 const op = {
-    'dictionary to list': impure.dictionary['to list, sorted by code point']
+    'dictionary to list': impure.dictionary['to list, sorted by code point'],
+    'join': impure.text['join list of texts with separator']
 }
 
 export const Errors = (
@@ -46,8 +47,9 @@ export const Error_Type_Error = (
 ): _out.Line_Part => _ea.cc($, ($) => {
     switch ($[0]) {
         case 'duplicate property': return _ea.ss($, ($) => sh.l.snippet(`Duplicate property "${$.name}"`))
-        case 'invalid value type': return _ea.ss($, ($) => sh.l.snippet(`Invalid value type, expected '${$.expected[0]}'`))
+        case 'invalid value type': return _ea.ss($, ($) => sh.l.snippet(`Invalid value type, expected ${op.join($.expected.map(($) => `'${$[0]}'`), { 'separator': ` or ` })}.`))
         case 'missing property': return _ea.ss($, ($) => sh.l.snippet(`Missing property '${$.name}'`))
+        case 'superfluous property': return _ea.ss($, ($) => sh.l.snippet(`Superfluous property '${$.name}'`))
         case 'state': return _ea.ss($, ($) => _ea.cc($, ($) => {
             switch ($[0]) {
                 case 'missing state name': return _ea.ss($, ($) => sh.l.snippet(`Missing state name`))
