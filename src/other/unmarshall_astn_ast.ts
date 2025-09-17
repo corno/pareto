@@ -6,8 +6,10 @@ import { impure, pure } from "pareto-standard-operations"
 
 import * as definition from "../generated/interface/schemas/schema/data_types/resolved"
 
-import * as _in from "astn/dist/generated/interface/schemas/ast/unconstrained"
-import * as _in_token from "astn/dist/generated/interface/schemas/token/unconstrained"
+import * as _in from "astn/dist/generated/interface/schemas/ast/data_types/unconstrained"
+import * as _in_token from "astn/dist/generated/interface/schemas/token/data_types/unconstrained"
+
+import * as t_ast_to_range from "astn/dist/transformations/ast/temp_value_range"
 
 import * as _out from "../temp_unmashall_result_types"
 
@@ -117,7 +119,7 @@ export const Node = (
                                 case 'not set': return _ea.ss($, ($) => ['valid', null])
                                 default: return ['invalid value type', {
                                     'document': $p['document path'],
-                                    'range': data.range,
+                                    'range': t_ast_to_range.Value(data),
                                 }]
                             }
                         })
@@ -203,7 +205,7 @@ export const Node = (
                                 })
                                 default: return ['invalid', {
                                     'document': $p['document path'],
-                                    'range': data.range,
+                                    'range': t_ast_to_range.Value(data),
                                 }]
                             }
                         })
@@ -334,7 +336,7 @@ export const Node = (
                                     //case 'ordered collection': return pdev.implement_me()
                                     default: return ['invalid', {
                                         'document': $p['document path'],
-                                        'range': value.range,
+                                        'range': t_ast_to_range.Value(data),
                                     }]
                                 }
                             })
@@ -358,7 +360,7 @@ export const Node = (
                                 )]])
                                 default: return ['invalid value type', {
                                     'document': $p['document path'],
-                                    'range': data.range,
+                                    'range': t_ast_to_range.Value(data),
                                 }]
                             }
                         })
@@ -419,7 +421,7 @@ export const Node = (
                                             if ($.value.type[0] !== 'string') {
                                                 return ['state is not a string', {
                                                     'document': $p['document path'],
-                                                    'range': $.value.range,
+                                                    'range': t_ast_to_range.Value(data),
                                                 }]
                                             }
                                             const state_name = $.value.type[1].value
@@ -449,7 +451,7 @@ export const Node = (
                                                 },
                                                 () => ['missing value', {
                                                     'document': $p['document path'],
-                                                    'range': $.value.range
+                                                    'range': t_ast_to_range.Value(data),
                                                 }]
                                             )
                                         },
@@ -475,7 +477,7 @@ export const Node = (
                                 // case 'not set': return pa.ss($, () => ['invalid', data.location])
                                 default: return ['invalid value type', {
                                     'document': $p['document path'],
-                                    'range': data.range,
+                                    'range': t_ast_to_range.Value(data),
                                 }]
                             }
                         })
