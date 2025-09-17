@@ -101,7 +101,6 @@ export const $ = (
                                                     content,
                                                     {
                                                         'definition': type.node,
-                                                        'document path': instance_path,
                                                     }
                                                 )]
                                             })

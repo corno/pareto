@@ -7,6 +7,16 @@ import * as _out from "../../generated/interface/schemas/unmarshall_errors/data_
 import { impure, pure } from "pareto-standard-operations"
 
 
+export const Optional_Node = (
+    $: _in.Optional_Node,
+    $p: null
+): _out.Errors => {
+    return $.transform(
+        ($) => Node($, $p),
+        () => _ea.array_literal([]), //FIXME! optional node not set is often an error
+    )
+}
+
 export const Node = (
     $: _in.Node,
     $p: null
@@ -31,7 +41,7 @@ export const Node = (
                                                     }]]
                                                 }
                                             ]),
-                                            Node($.node, $p)
+                                            Optional_Node($.node, $p)
                                         ])))))
                                         case 'missing': return _ea.ss($, ($) => _ea.array_literal([
                                             {
@@ -47,7 +57,7 @@ export const Node = (
                                                 }]]
                                             }
                                         ]))
-                                        case 'unique': return _ea.ss($, ($) => Node($.node, $p))
+                                        case 'unique': return _ea.ss($, ($) => Optional_Node($.node, $p))
                                         default: return _ea.au($[0])
                                     }
                                 })))
@@ -73,7 +83,7 @@ export const Node = (
                         return impure.dictionary['dictionary of lists to list']($.entries.map(($, key) => {
                             return _ea.cc($, ($): _out.Errors => {
                                 switch ($[0]) {
-                                    case 'unique': return _ea.ss($, ($) => Node($, $p))
+                                    case 'unique': return _ea.ss($, ($) => Optional_Node($, $p))
                                     case 'multiple': return _ea.ss($, ($) => pure.list.flatten($.map(($) => pure.list.flatten(_ea.array_literal([
                                         _ea.array_literal([
                                             {
@@ -83,7 +93,7 @@ export const Node = (
                                                 }]]
                                             }
                                         ]),
-                                        Node($.node, $p)
+                                        Optional_Node($.node, $p)
                                     ])))))
                                     default: return _ea.au($[0])
                                 }
@@ -193,32 +203,54 @@ export const Node = (
                     default: return _ea.au($[0])
                 }
             }))
-            case 'state': return _ea.ss($, ($) => _ea.cc($.status, ($): _out.Errors => {
+            case 'state': return _ea.ss($, ($) => _ea.cc($['found value type'], ($): _out.Errors => {
                 switch ($[0]) {
-                    case 'valid': return _ea.ss($, ($) => Node($.node, $p))
-                    case 'more than 2 elements': return _ea.ss($, ($) => _ea.array_literal([{
-                        'range': $,
-                        'type': ['error', ['state', ['more than 2 elements', null]]]
-                    }]))
-                    case 'missing state name': return _ea.ss($, ($) => _ea.array_literal([{
-                        'range': $,
-                        'type': ['error', ['state', ['missing state name', null]]]
-                    }]))
-                    case 'state is not a string': return _ea.ss($, ($) => _ea.array_literal([{
-                        'range': $,
-                        'type': ['error', ['state', ['state is not a string', null]]]
-                    }]))
-                    case 'missing value': return _ea.ss($, ($) => _ea.array_literal([{
-                        'range': $,
-                        'type': ['error', ['state', ['missing value', null]]]
-                    }]))
-                    case 'unknown state': return _ea.ss($, ($) => _ea.array_literal([{
-                        'range': $.range,
-                        'type': ['error', ['state', ['unknown state', {
-                            'found': $.found,
-                            'expected': $.expected
-                        }]]]
-                    }]))
+                    case 'valid': return _ea.ss($, ($) => {
+                        return $['state definition'].transform(
+                            ($) => Node($.node, $p),
+                            (): _out.Errors => _ea.array_literal([
+                                // {
+                                //     'range': $.range,
+                                //     'type': ['error', ['state', ['unknown state', {
+                                //         'found': $.found,
+                                //         'expected': $.expected
+                                //     }]]]
+                                // }
+                                _edev.implement_me()
+                            ])
+                        )
+                    })
+                    case 'invalid': return _ea.ss($, ($) => _ea.array_literal([
+                        {
+                            'range': $,
+                            'type': ['error', ['invalid value type', {
+                                'expected': ['text', null],//FIXME -> ['state', null]
+                            }]]
+                        }
+                    ]))
+                    // case 'more than 2 elements': return _ea.ss($, ($) => _ea.array_literal([{
+                    //     'range': $,
+                    //     'type': ['error', ['state', ['more than 2 elements', null]]]
+                    // }]))
+                    // case 'missing state name': return _ea.ss($, ($) => _ea.array_literal([{
+                    //     'range': $,
+                    //     'type': ['error', ['state', ['missing state name', null]]]
+                    // }]))
+                    // case 'state is not a string': return _ea.ss($, ($) => _ea.array_literal([{
+                    //     'range': $,
+                    //     'type': ['error', ['state', ['state is not a string', null]]]
+                    // }]))
+                    // case 'missing value': return _ea.ss($, ($) => _ea.array_literal([{
+                    //     'range': $,
+                    //     'type': ['error', ['state', ['missing value', null]]]
+                    // }]))
+                    // case 'unknown state': return _ea.ss($, ($) => _ea.array_literal([{
+                    //     'range': $.range,
+                    //     'type': ['error', ['state', ['unknown state', {
+                    //         'found': $.found,
+                    //         'expected': $.expected
+                    //     }]]]
+                    // }]))
                     default: return _ea.au($[0])
                 }
             }))

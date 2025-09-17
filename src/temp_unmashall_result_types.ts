@@ -1,4 +1,4 @@
-import * as pt from 'exupery-core-types'
+import * as _et from 'exupery-core-types'
 
 import * as d_astn_token from "astn/dist/generated/interface/schemas/token/data_types/unconstrained"
 import * as d_astn_ast from "astn/dist/generated/interface/schemas/ast/data_types/unconstrained"
@@ -11,8 +11,10 @@ export type Document = {
 
 export type Entry_Data = {
     'key': d_astn_ast.String
-    'node': Node
+    'node': Optional_Node
 }
+
+export type Optional_Node = _et.Optional_Value<Node>
 
 // export type Key_Value_Pair = {
 //     'node': Node
@@ -21,7 +23,7 @@ export type Entry_Data = {
 export type Property =
     | ['missing', d_astn_token.Range]
     | ['unique', Entry_Data]
-    | ['multiple', pt.Array<Entry_Data>]
+    | ['multiple', _et.Array<Entry_Data>]
 
 export type Node = {
     'value': d_astn_ast.Value
@@ -44,23 +46,40 @@ export type Node_Type =
     | ['type parameter', string]
 
 export type State = {
-    'status': State_Status
+    'found value type': State_Found_Value_Type
 }
 
-export type State_Status =
-    | ['valid', {
-        'node': Node,
+export type State_Found_Value_Type_Valid = {
+    'value type':
+    | ['state', {
+        'value': d_astn_ast.Value._type.SG.tagged_value
+    }]
+    'state definition': _et.Optional_Value<{
+        'definition': d_schema.Type_Node.SG.state_group.D
+        'node': Node
+    }>
+    // | ['polyfill', { -> [ "state_name", ... ]
+    //     'xx': {
+    //         'node': Node,
 
-    }]
-    | ['more than 2 elements', d_astn_token.Range]
-    | ['missing state name', d_astn_token.Range]
-    | ['state is not a string', d_astn_token.Range]
-    | ['missing value', d_astn_token.Range]
-    | ['unknown state', {
-        'range': d_astn_token.Range
-        'found': string
-        'expected': pt.Dictionary<null>
-    }]
+    //     }
+    // }]
+}
+
+export type State_Found_Value_Type =
+    | ['valid', State_Found_Value_Type_Valid]
+    | ['invalid', d_astn_token.Range]
+
+// export type State_Error =
+//     | ['more than 2 elements', d_astn_token.Range]
+//     | ['missing state name', d_astn_token.Range]
+//     | ['state is not a string', d_astn_token.Range]
+//     | ['missing value', d_astn_token.Range]
+//     | ['unknown state', {
+//         'range': d_astn_token.Range
+//         'found': string
+//         'expected': pt.Dictionary<null>
+//     }]
 
 export type Identifier_Value_Pair = {
     'definition': d_schema.Type_Node.SG.identifier_value_pair
@@ -82,6 +101,11 @@ export type Optional = {
 }
 export type List = {
     'definition': d_schema.Type_Node.SG.list
+    'found value type':
+    | ['valid', {
+        'value': d_astn_ast.Value._type.SG.ordered_collection
+    }]
+    | ['invalid', d_astn_token.Range]
 }
 
 export type Reference = {
@@ -142,14 +166,14 @@ export type Dictionary = {
     'found value type':
     | ['valid', {
         'value': d_astn_ast.Value._type.SG.indexed_collection
-        'entries': pt.Dictionary<Entry>
+        'entries': _et.Dictionary<Entry>
     }]
     | ['invalid', d_astn_token.Range]
 }
 
 export type Entry =
-    | ['unique', Node]
-    | ['multiple', pt.Array<Entry_Data>]
+    | ['unique', Optional_Node]
+    | ['multiple', _et.Array<Entry_Data>]
 
 export type Group = {
     'definition': d_schema.Type_Node.SG.group
@@ -170,6 +194,6 @@ export type Group_Type =
 export type Indexed_Group = {
     'value': d_astn_ast.Value._type.SG.indexed_collection
 
-    'properties': pt.Dictionary<Property>
-    'superfluous entries': pt.Dictionary<pt.Array<d_astn_token.Range>>
+    'properties': _et.Dictionary<Property>
+    'superfluous entries': _et.Dictionary<_et.Array<d_astn_token.Range>>
 }

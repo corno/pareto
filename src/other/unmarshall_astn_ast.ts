@@ -1,6 +1,6 @@
 import * as _ea from 'exupery-core-alg'
-import * as pt from 'exupery-core-types'
-import * as pdev from 'exupery-core-dev'
+import * as _et from 'exupery-core-types'
+import * as _edev from 'exupery-core-dev'
 
 import { impure, pure } from "pareto-standard-operations"
 
@@ -34,15 +34,13 @@ import * as _out from "../temp_unmashall_result_types"
 // }
 
 export const Optional_Node = (
-    $: pt.Optional_Value<_in.Value>,
+    $: _et.Optional_Value<_in.Value>,
     $p: {
         'definition': definition.Type_Node,
-        'document path': string,
     }
-): _out.Node => {
-    return $.transform(
+): _out.Optional_Node => {
+    return $.map(
         ($) => Node($, $p),
-        () => pdev.implement_me()
     )
 }
 
@@ -50,7 +48,6 @@ export const Node = (
     $: _in.Value,
     $p: {
         'definition': definition.Type_Node,
-        'document path': string,
     }
 ): _out.Node => {
     const data = $
@@ -77,7 +74,7 @@ export const Node = (
                                     })
                                 }])
                                 // case 'not set': return pa.ss($, () => ['invalid', data.location])
-                                default: return pdev.implement_me()
+                                default: return ['invalid', t_ast_to_range.Value(data)]
                             }
                         })
                     }]
@@ -101,12 +98,29 @@ export const Node = (
                                     })
                                 }])
                                 // case 'not set': return pa.ss($, () => ['invalid', data.location])
-                                default: return pdev.implement_me()
+                                default: return ['invalid', t_ast_to_range.Value(data)]
                             }
                         })
                     }]
                 })
-                case 'list': return _ea.ss($, ($) => pdev.implement_me())
+                case 'list': return _ea.ss($, ($) => {
+                    const prop_def = $.node
+                    return ['list', {
+                        'definition': $,
+                        'found value type': _ea.cc(data.type, ($) => {
+                            switch ($[0]) {
+                                case 'ordered collection': return _ea.ss($, ($) => {
+                                    return ['valid', {
+                                        'value': $,
+                                        'elements': _edev.implement_me()
+                                    }]
+                                })
+                                default: return ['invalid', t_ast_to_range.Value(data)]
+
+                            }
+                        })
+                    }]
+                })
                 case 'nothing': return _ea.ss($, ($): _out.Node_Type => {
                     return ['nothing', {
                         'definition': $,
@@ -129,7 +143,7 @@ export const Node = (
                                     'value': $,
                                 }])
                                 // case 'not set': return pa.ss($, () => ['invalid', data.location])
-                                default: return pdev.implement_me()
+                                default: return ['invalid', t_ast_to_range.Value(data)]
                             }
                         })
                     }]
@@ -148,7 +162,6 @@ export const Node = (
                                         default: return _ea.au($[0])
                                     }
                                 }),
-                                'document path': $p['document path'],
                             }
                         )
                     }]
@@ -182,7 +195,6 @@ export const Node = (
                                                 ),
                                                 {
                                                     'definition': prop_def,
-                                                    'document path': $p['document path'],
                                                 },
                                             )],
                                             (): _out.Entry => ['multiple', $.map(($): _out.Entry_Data => ({
@@ -192,7 +204,6 @@ export const Node = (
                                                     ),
                                                     {
                                                         'definition': prop_def,
-                                                        'document path': $p['document path'],
                                                     },
                                                 ),
                                                 'key': $.key
@@ -299,7 +310,6 @@ export const Node = (
                                                                 ),
                                                                 {
                                                                     'definition': prop_def,
-                                                                    'document path': $p['document path'],
                                                                 },
                                                             ),
                                                             'key': $.key
@@ -311,7 +321,6 @@ export const Node = (
                                                                 ),
                                                                 {
                                                                     'definition': prop_def,
-                                                                    'document path': $p['document path'],
                                                                 },
                                                             ),
                                                             'key': $.key,
@@ -329,7 +338,7 @@ export const Node = (
                         })
                     }]
                 })
-                case 'identifier value pair': return _ea.ss($, ($) => pdev.implement_me())
+                case 'identifier value pair': return _ea.ss($, ($) => _edev.implement_me())
                 case 'optional': return _ea.ss($, ($): _out.Node_Type => {
                     const def = $
                     return ['optional', {
@@ -345,7 +354,6 @@ export const Node = (
                                         $.value,
                                         {
                                             'definition': def,
-                                            'document path': $p['document path'],
                                         }
                                     )
                                 }]])
@@ -354,86 +362,86 @@ export const Node = (
                         })
                     }]
                 })
-                case 'state group': return _ea.ss($, ($) => {
+                case 'state group': return _ea.ss($, ($): _out.Node_Type => {
                     const def = $
                     return ['state', {
-                        'status': _ea.cc(data.type, ($): _out.State_Status => {
+                        'found value type': _ea.cc(data.type, ($): _out.State_Found_Value_Type => {
                             switch ($[0]) {
                                 case 'tagged value': return _ea.ss($, ($) => {
+                                    const tv = $
                                     const state = $.state
                                     const value = $.value
-                                    return def.__get_entry($.state.value).transform<_out.State_Status>(
-                                        ($) => ['valid', {
-                                            'node': Node(
-                                                value,
-                                                {
-                                                    'definition': $,
-                                                    'document path': $p['document path'],
-                                                },
-                                            )
+                                    return ['valid', {
+                                        'value type': ['state', {
+                                            'value': tv,
                                         }],
-                                        () => ['unknown state', {
-                                            'range': state.range,
-                                            'found': $.state.value,
-                                            'expected': def.map(($) => null)
-                                        }]
-                                    )
+                                        'state definition': def.__get_entry($.state.value).map(
+                                            ($) => ({
+                                                'definition': $,
+                                                'node': Node(
+                                                    value,
+                                                    {
+                                                        'definition': $,
+                                                    }
+                                                )
+                                            })
+                                        ),
+                                    }]
                                 })
-                                case 'ordered collection': return _ea.ss($, ($) => {
-                                    const elements = _ea.cc($, ($): _in.Elements => {
-                                        switch ($[0]) {
-                                            case 'list': return _ea.ss($, ($) => $.elements)
-                                            case 'concise group': return _ea.ss($, ($) => $.elements)
-                                            default: return _ea.au($[0])
-                                        }
-                                    })
-                                    const range = _ea.cc($, ($): _in_token.Range => {
-                                        switch ($[0]) {
-                                            case 'list': return _ea.ss($, ($) => $['['].range)
-                                            case 'concise group': return _ea.ss($, ($) => $['<'].range)
-                                            default: return _ea.au($[0])
-                                        }
-                                    })
-                                    if (elements.__get_length() > 2) {
-                                        return ['more than 2 elements', range]
-                                    }
-                                    const first = elements.__get_element_at(0)
-                                    return first.transform<_out.State_Status>(
-                                        ($) => {
-                                            if ($.value.type[0] !== 'string') {
-                                                return ['state is not a string', t_ast_to_range.Value(data)]
-                                            }
-                                            const state_name = $.value.type[1].value
-                                            const state_name_range = $.value.type[1].range
-                                            return elements.__get_element_at(1).transform<_out.State_Status>(
-                                                ($) => {
-                                                    const value = $.value
-                                                    return def.__get_entry(state_name).transform<_out.State_Status>(
-                                                        ($) => ['valid', {
-                                                            'node': Node(
-                                                                value,
-                                                                {
-                                                                    'definition': $,
-                                                                    'document path': $p['document path'],
-                                                                },
-                                                            )
-                                                        }],
-                                                        () => ['unknown state', {
-                                                            'range': state_name_range,
-                                                            'found': state_name,
-                                                            'expected': def.map(($) => null)
-                                                        }]
-                                                    )
-                                                },
-                                                () => ['missing value', t_ast_to_range.Value(data)]
-                                            )
-                                        },
-                                        () => ['missing state name', range]
-                                    )
+                                // case 'ordered collection': return _ea.ss($, ($) => {
+                                //     const elements = _ea.cc($, ($): _in.Elements => {
+                                //         switch ($[0]) {
+                                //             case 'list': return _ea.ss($, ($) => $.elements)
+                                //             case 'concise group': return _ea.ss($, ($) => $.elements)
+                                //             default: return _ea.au($[0])
+                                //         }
+                                //     })
+                                //     const range = _ea.cc($, ($): _in_token.Range => {
+                                //         switch ($[0]) {
+                                //             case 'list': return _ea.ss($, ($) => $['['].range)
+                                //             case 'concise group': return _ea.ss($, ($) => $['<'].range)
+                                //             default: return _ea.au($[0])
+                                //         }
+                                //     })
+                                //     if (elements.__get_length() > 2) {
+                                //         return ['more than 2 elements', range]
+                                //     }
+                                //     const first = elements.__get_element_at(0)
+                                //     return first.transform<_out.State_Status>(
+                                //         ($) => {
+                                //             if ($.value.type[0] !== 'string') {
+                                //                 return ['state is not a string', t_ast_to_range.Value(data)]
+                                //             }
+                                //             const state_name = $.value.type[1].value
+                                //             const state_name_range = $.value.type[1].range
+                                //             return elements.__get_element_at(1).transform<_out.State_Status>(
+                                //                 ($) => {
+                                //                     const value = $.value
+                                //                     return def.__get_entry(state_name).transform<_out.State_Status>(
+                                //                         ($) => ['valid', {
+                                //                             'node': Node(
+                                //                                 value,
+                                //                                 {
+                                //                                     'definition': $,
+                                //                                 },
+                                //                             )
+                                //                         }],
+                                //                         () => ['invalid', ['unknown state', {
+                                //                             'range': state_name_range,
+                                //                             'found': state_name,
+                                //                             'expected': def.map(($) => null)
+                                //                         }]]
+                                //                     )
+                                //                 },
+                                //                 () => ['invalid', ['missing value', t_ast_to_range.Value(data)]]
+                                //             )
+                                //         },
+                                //         () => ['invalid', ['missing state name', range]]
+                                //     )
 
-                                })
+                                // })
                                 // case 'not set': return pa.ss($, () => ['invalid', data.location])
-                                default: return pdev.implement_me()
+                                default: return ['invalid', t_ast_to_range.Value(data)]
                             }
                         })
                     }]
@@ -452,7 +460,7 @@ export const Node = (
                         })
                     }]
                 })
-                case 'type parameter': return _ea.ss($, ($) => pdev.implement_me())
+                case 'type parameter': return _ea.ss($, ($) => _edev.implement_me())
                 default: return _ea.au($[0])
             }
         })
