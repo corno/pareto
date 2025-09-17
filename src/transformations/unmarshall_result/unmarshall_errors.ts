@@ -53,14 +53,14 @@ export const Group_Content = (
                 default: return _ea.au($[0])
             }
         }))),
-        impure.dictionary['dictionary of lists to list']($['superfluous entries'].map(($, key): _out.Errors => _ea.array_literal([
+        impure.dictionary['dictionary of lists to list']($['superfluous entries'].map(($, key): _out.Errors => op.flatten($.map(($) => _ea.array_literal([
             {
-                'range': $p['group range'],
+                'range': $,
                 'type': ['error', ['superfluous property', {
                     name: key
                 }]]
             }
-        ])))
+        ])))))
     ]))
 }
 
