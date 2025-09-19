@@ -1,7 +1,7 @@
 import * as pd from 'exupery-core-data'
 import * as pa from 'exupery-core-alg'
 
-import { wrap_dictionary } from 'exupery-core-data/dist/shorthands/unresolved'
+import { wrap_dictionary } from 'exupery-core-data/dist/shorthands/unresolved_transformation'
 
 import * as _in from "../../generated/interface/schemas/module/data_types/resolved"
 import * as _out from "exupery/dist/generated/interface/schemas/interface/data_types/unresolved"
@@ -26,7 +26,7 @@ export const Operations = ($: _in.Operations): _out.Type<pd.Source_Location> => 
 }
 
 export const Module = ($: _in.Module): _out.Module_Set<pd.Source_Location> => {
-    return wrap_dictionary(0, {
+    return wrap_dictionary({
         "core": m.set({
             "unresolved.ts": m.module(
                 {},

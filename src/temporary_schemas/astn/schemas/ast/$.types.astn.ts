@@ -26,51 +26,55 @@ export const $: g_.Types<pd.Source_Location> = types(
             "content": t.component("Value"),
         })),
 
+        "Concrete Value": type(t.state_group({
+            "string": t.component("String"),
+            "indexed collection": t.state_group({
+                "dictionary": t.group({
+                    "{": t.component("Structural Token"),
+                    "entries": t.component("Key Value Pairs"),
+                    "}": t.component("Structural Token"),
+                }),
+                "verbose group": t.group({
+                    "(": t.component("Structural Token"),
+                    "entries": t.component("Key Value Pairs"),
+                    ")": t.component("Structural Token"),
+                }),
+            }),
+            "ordered collection": t.state_group({
+                "list": t.group({
+                    "[": t.component("Structural Token"),
+                    "elements": t.component("Elements"),
+                    "]": t.component("Structural Token"),
+                }),
+                "concise group": t.group({
+                    "<": t.component("Structural Token"),
+                    "elements": t.component("Elements"),
+                    ">": t.component("Structural Token"),
+                }),
+            }),
+            "tagged value": t.group({
+                "|": t.component("Structural Token"),
+                "state": t.component("String"),
+                "value": t.component_cyclic("Value"),
+            }),
+            "not set": t.group({
+                "~": t.component("Structural Token"),
+            }),
+            "set optional value": t.group({
+                "*": t.component("Structural Token"),
+                "value": t.component_cyclic("Value"),
+            }),
+            "missing data": t.group({
+                "#": t.component("Structural Token"),
+            }),
+        })),
+
         "Value": type(t.group({
             "type": t.state_group({
-                "string": t.component("String"),
-                "indexed collection": t.state_group({
-                    "dictionary": t.group({
-                        "{": t.component("Structural Token"),
-                        "entries": t.component("Key Value Pairs"),
-                        "}": t.component("Structural Token"),
-                    }),
-                    "verbose group": t.group({
-                        "(": t.component("Structural Token"),
-                        "entries": t.component("Key Value Pairs"),
-                        ")": t.component("Structural Token"),
-                    }),
-                }),
-                "ordered collection": t.state_group({
-                    "list": t.group({
-                        "[": t.component("Structural Token"),
-                        "elements": t.component("Elements"),
-                        "]": t.component("Structural Token"),
-                    }),
-                    "concise group": t.group({
-                        "<": t.component("Structural Token"),
-                        "elements": t.component("Elements"),
-                        ">": t.component("Structural Token"),
-                    }),
-                }),
+                "concrete": t.component("Concrete Value"),
                 "include": t.group({
                     "@": t.component("Structural Token"),
                     "path": t.component("String"),
-                }),
-                "tagged value": t.group({
-                    "|": t.component("Structural Token"),
-                    "state": t.component("String"),
-                    "value": t.component_cyclic("Value"),
-                }),
-                "not set": t.group({
-                    "~": t.component("Structural Token"),
-                }),
-                "set optional value": t.group({
-                    "*": t.component("Structural Token"),
-                    "value": t.component_cyclic("Value"),
-                }),
-                "missing data": t.group({
-                    "#": t.component("Structural Token"),
                 }),
             }),
         })),
@@ -93,7 +97,6 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Elements": type(t.list(t.group({
             "value": t.component_cyclic("Value"),
-            ",": t.optional(t.component("Structural Token")),
         }))),
 
         "Structural Token": type(t.group({

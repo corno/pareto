@@ -33,7 +33,6 @@ export const $: g_.Types<pd.Source_Location> = types(
             "@": t.nothing(), //include
             "~": t.nothing(), //nothing / not set
             "*": t.nothing(), //set
-            ",": t.nothing(), //comma
             ":": t.nothing(), //colon
             "|": t.nothing(), //state
             "#": t.nothing(), //missing data
