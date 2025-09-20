@@ -5,7 +5,7 @@ import * as _ea from 'exupery-core-alg'
 
 import * as _in_s from "../../generated/interface/schemas/schema/data_types/resolved"
 import * as _in from "../../generated/interface/schemas/module/data_types/resolved"
-import * as _out from "pareto-fountain-pen/dist/generated/interface/schemas/block/unconstrained"
+import * as _out from "pareto-fountain-pen/dist/generated/interface/schemas/block/data_types/unconstrained"
 
 //transformations
 import * as t_exupery_library_to_typescript_temp from "exupery/dist/transformations/library/typescript_light"

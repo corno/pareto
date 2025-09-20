@@ -37,7 +37,8 @@ export const $: (
             {
                 'path': module_path,
                 'indentation': "    ",
-                'newline': "\n"
+                'newline': "\n",
+                'remove before creating': true,
             }
         )
 

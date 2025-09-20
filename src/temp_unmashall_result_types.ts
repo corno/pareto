@@ -58,7 +58,7 @@ export type State_Definition_Found = {
 export type State_Found_Value_Type_Valid = {
     'value type':
     | ['state', {
-        'value': d_astn_ast.Value._type.SG.tagged_value
+        'value': d_astn_ast.Concrete_Value.SG.tagged_value
         'found state definition': _et.Optional_Value<State_Definition_Found>
     }]
     // | ['polyfill', { -> [ "state_name", ... ]
@@ -93,11 +93,11 @@ export type Optional = {
     'found value type':
     | ['valid',
         | ['set', {
-            'value': d_astn_ast.Value._type.SG.set_optional_value
+            'value': d_astn_ast.Concrete_Value.SG.set_optional_value
             'child node': Node
         }]
         | ['not set', {
-            'value': d_astn_ast.Value._type.SG.not_set
+            'value': d_astn_ast.Concrete_Value.SG.not_set
         }]
     ]
     | ['invalid', d_astn_token.Range]
@@ -106,7 +106,7 @@ export type List = {
     'definition': d_schema.Type_Node.SG.list
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Value._type.SG.ordered_collection
+        'value': d_astn_ast.Concrete_Value.SG.ordered_collection
         'elements': _et.Array<Node>
     }]
     | ['invalid', d_astn_token.Range]
@@ -116,7 +116,7 @@ export type Reference = {
     'definition': d_schema.Type_Node.SG.reference
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Value._type.SG._string
+        'value': d_astn_ast.Concrete_Value.SG._string
     }] //FIXME
     | ['invalid', d_astn_token.Range]
 }
@@ -130,7 +130,7 @@ export type Boolean = {
     'definition': d_schema.Type_Node.SG._boolean
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Value._type.SG._string
+        'value': d_astn_ast.Concrete_Value.SG._string
         'range': d_astn_token.Range
         'correct string type': boolean
     }]
@@ -140,7 +140,7 @@ export type Nothing = {
     'definition': d_schema.Type_Node.SG.nothing
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Value._type.SG.not_set
+        'value': d_astn_ast.Concrete_Value.SG.not_set
     }]
     | ['invalid', d_astn_token.Range]
 }
@@ -149,7 +149,7 @@ export type Text = {
     'definition': d_schema.Type_Node.SG.text
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Value._type.SG._string
+        'value': d_astn_ast.Concrete_Value.SG._string
     }]
     | ['invalid', d_astn_token.Range]
 }
@@ -158,7 +158,7 @@ export type Number = {
     'definition': d_schema.Type_Node.SG._number
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Value._type.SG._string
+        'value': d_astn_ast.Concrete_Value.SG._string
         'range': d_astn_token.Range
         'correct string type': boolean
     }]
@@ -169,7 +169,7 @@ export type Dictionary = {
     'definition': d_schema.Type_Node.SG.dictionary
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Value._type.SG.indexed_collection
+        'value': d_astn_ast.Concrete_Value.SG.indexed_collection
         'entries': _et.Dictionary<Entry>
     }]
     | ['invalid', d_astn_token.Range]
@@ -193,12 +193,12 @@ export type Group_Type =
     | ['ordered', Ordered_Group]
 
 export type Ordered_Group = {
-    'value': d_astn_ast.Value._type.SG.ordered_collection
+    'value': d_astn_ast.Concrete_Value.SG.ordered_collection
     'content': Group_Content
 }
 
 export type Indexed_Group = {
-    'value': d_astn_ast.Value._type.SG.indexed_collection
+    'value': d_astn_ast.Concrete_Value.SG.indexed_collection
     'content': Group_Content
 }
 

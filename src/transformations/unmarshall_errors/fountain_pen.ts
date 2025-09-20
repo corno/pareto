@@ -3,7 +3,7 @@ import * as pt from 'exupery-core-types'
 import * as pdev from 'exupery-core-dev'
 
 import * as _in from "../../generated/interface/schemas/unmarshall_errors/data_types/unconstrained"
-import * as _out from "pareto-fountain-pen/dist/generated/interface/schemas/block/unconstrained"
+import * as _out from "pareto-fountain-pen/dist/generated/interface/schemas/block/data_types/unconstrained"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 

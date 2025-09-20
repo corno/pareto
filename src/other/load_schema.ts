@@ -57,7 +57,7 @@ export const $ = (
 
                     const resolved_schema_schema = r_pareto_schema.Type_Specification(
                         u_pareto_schema.Type_Specification(
-                            $.content,
+                            $.content, //if this goes wrong, the ast schema for astn and in 'generated' differ. Copy the astn one to generated
                             {
                                 'value deserializers': {
                                     'boolean': ($) => $ === "true",
