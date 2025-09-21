@@ -2,8 +2,8 @@ import * as _ea from 'exupery-core-alg'
 import * as _edev from 'exupery-core-dev'
 
 import * as _in from "../../temp/temp_unmashall_result_types"
-import * as _in_token from "astn/dist/generated/interface/schemas/token/data_types/unconstrained"
-import * as _out from "../../generated/interface/schemas/unmarshall_errors/data_types/unconstrained"
+import * as _in_token from "astn/dist/generated/interface/schemas/token/data_types/target"
+import * as _out from "../../generated/interface/schemas/unmarshall_errors/data_types/target"
 
 import { impure, pure } from "pareto-standard-operations"
 

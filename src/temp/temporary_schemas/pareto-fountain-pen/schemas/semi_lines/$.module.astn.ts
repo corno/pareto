@@ -1,6 +1,6 @@
 import * as pd from 'exupery-core-data'
 
-import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/unresolved"
+import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
 import { schema_, constrained } from "../../../../../shorthands/schema"
 

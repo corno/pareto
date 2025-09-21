@@ -1,7 +1,7 @@
 import * as pd from 'exupery-core-data'
 
 import { st } from "../../../shorthands/schema"
-import * as g_ from "../../../generated/interface/schemas/schema/data_types/unresolved"
+import * as g_ from "../../../generated/interface/schemas/schema/data_types/target"
 
 
 import { $ as x_interface } from "./schemas/interface/$.module.astn"

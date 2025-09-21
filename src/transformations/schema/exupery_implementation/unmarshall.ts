@@ -3,9 +3,9 @@ import * as _et from 'exupery-core-types'
 import * as _ea from 'exupery-core-alg'
 import * as _edev from 'exupery-core-dev'
 
-import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
-import * as _out from "exupery/dist/generated/interface/schemas/implementation/data_types/unresolved"
-import * as _out_interface from "exupery/dist/generated/interface/schemas/interface/data_types/unresolved"
+import * as _in from "../../../generated/interface/schemas/schema/data_types/source"
+import * as _out from "exupery/dist/generated/interface/schemas/implementation/data_types/target"
+import * as _out_interface from "exupery/dist/generated/interface/schemas/interface/data_types/target"
 
 import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"
@@ -42,7 +42,7 @@ export const Schema = (
                     "out": import_.ancestor(3, "interface", op['flatten list'](_ea.array_literal([
                         _ea.array_literal(["schemas"]),
                         $p.path,
-                        _ea.array_literal(["data types", $p.constrained ? "unresolved" : "unconstrained"]),
+                        _ea.array_literal(["data types", "target"]),
                     ])).__get_raw_copy(), $p.constrained ? { "Source": t.component_imported("in", "Range", {}, []) } : {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))

@@ -3,9 +3,9 @@ import * as _ea from 'exupery-core-alg'
 
 //FIXME, this one should be moved to pareto-targets
 
-import * as _in_s from "../../generated/interface/schemas/schema/data_types/resolved"
-import * as _in from "../../generated/interface/schemas/module/data_types/resolved"
-import * as _out from "pareto-fountain-pen/dist/generated/interface/schemas/block/data_types/unconstrained"
+import * as _in_s from "../../generated/interface/schemas/schema/data_types/source"
+import * as _in from "../../generated/interface/schemas/module/data_types/source"
+import * as _out from "pareto-fountain-pen/dist/generated/interface/schemas/block/data_types/target"
 
 //transformations
 import * as t_exupery_library_to_typescript_temp from "exupery/dist/transformations/library/typescript_light"

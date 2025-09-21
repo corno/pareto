@@ -1,6 +1,6 @@
 import * as _er from "exupery-core-resources"
 
-import * as _in from "pareto-fountain-pen/dist/generated/interface/schemas/block/data_types/unconstrained"
+import * as _in from "pareto-fountain-pen/dist/generated/interface/schemas/block/data_types/target"
 
 import * as t_block_to_lines from "pareto-fountain-pen/dist/transformations/block/lines"
 

@@ -3,8 +3,8 @@ import * as pdev from 'exupery-core-dev'
 import * as _ea from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 
-import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
-import * as _out from "exupery/dist/generated/interface/schemas/interface/data_types/unresolved"
+import * as _in from "../../../generated/interface/schemas/schema/data_types/source"
+import * as _out from "exupery/dist/generated/interface/schemas/interface/data_types/target"
 
 import * as sh from "exupery/dist/shorthands/interface"
 
@@ -20,7 +20,6 @@ export const Schema = (
     $: _in.Schema,
     $p: {
         'imports': _in.Imports
-        'constrained': boolean
     }
 ): _out.Module_Set.D<pd.Source_Location> => {
     return sh.m.module(
@@ -37,7 +36,7 @@ export const Schema = (
             "in": sh.import_.sibling(
                 "data types",
                 [
-                    $p.constrained ? "resolved" : "unconstrained",
+                    "source",
                 ],
                 {},
             )

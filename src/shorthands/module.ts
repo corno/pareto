@@ -6,9 +6,9 @@ import {
     wrap_state_group,
 } from 'exupery-core-data/dist/shorthands/unresolved_data'
 
-import * as unresolved from "../generated/interface/schemas/module/data_types/unresolved"
+import * as unresolved from "../generated/interface/schemas/module/data_types/target"
 
-import * as unresolved_schema from "../generated/interface/schemas/schema/data_types/unresolved"
+import * as unresolved_schema from "../generated/interface/schemas/schema/data_types/target"
 
 export const module_ = (
     operations: unresolved.Operations<pd.Source_Location>,

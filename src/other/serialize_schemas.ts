@@ -10,7 +10,7 @@ import * as temp_astn_to_fp from "astn/dist/transformations/target/fountain_pen_
 import { $ as poormans_modules } from "../temp/temporary_schemas/all"
 
 //data types
-import * as d_module from "../generated/interface/schemas/module/data_types/unresolved"
+import * as d_module from "../generated/interface/schemas/module/data_types/target"
 
 //resolvers
 import * as r_module from "../resolvers/module"

@@ -3,8 +3,8 @@ import * as _ea from 'exupery-core-alg'
 
 import * as _out$ from "../../generated/interface/core/unresolved"
 
-import * as _in from "../../generated/interface/schemas/module/data_types/resolved"
-import * as _out from "exupery/dist/generated/interface/schemas/implementation/data_types/unresolved"
+import * as _in from "../../generated/interface/schemas/module/data_types/source"
+import * as _out from "exupery/dist/generated/interface/schemas/implementation/data_types/target"
 
 import * as t_exupery_implementation_main from "../schema/exupery_implementation/main"
 

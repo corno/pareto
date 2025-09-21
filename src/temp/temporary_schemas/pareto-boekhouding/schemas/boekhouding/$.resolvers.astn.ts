@@ -3,7 +3,7 @@ import * as pd from 'exupery-core-data'
 import {
     resolvers, r, resolver, state, state_constrained, al, ls, av, gvs, vst, oc,
 } from "../../../../../shorthands/schema"
-import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/unresolved"
+import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
 export const $: g_.Resolvers<pd.Source_Location> = resolvers(
     {

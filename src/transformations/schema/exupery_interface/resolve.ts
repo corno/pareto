@@ -3,8 +3,8 @@ import * as pdev from 'exupery-core-dev'
 import * as pa from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 
-import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
-import * as _out from "exupery/dist/generated/interface/schemas/interface/data_types/unresolved"
+import * as _in from "../../../generated/interface/schemas/schema/data_types/source"
+import * as _out from "exupery/dist/generated/interface/schemas/interface/data_types/target"
 
 import { m, t, import_, type, sub } from "exupery/dist/shorthands/interface"
 
@@ -23,8 +23,8 @@ export const Signatures = (
     return m.module(
         {
             "resolve": import_.ancestor(3, "core", ["resolve"], {}),
-            "resolved": import_.sibling("resolved", [], {}),
-            "unresolved": import_.sibling("unresolved", [], {}),
+            "resolved": import_.sibling("source", [], {}),
+            "unresolved": import_.sibling("target", [], {}),
         },
         {},
         $.dictionary.map(($, key) => type({}, t.function_(

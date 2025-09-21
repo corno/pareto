@@ -4,10 +4,10 @@ import * as _edev from 'exupery-core-dev'
 
 import { impure, pure } from "pareto-standard-operations"
 
-import * as definition from "../generated/interface/schemas/schema/data_types/resolved"
+import * as definition from "../generated/interface/schemas/schema/data_types/source"
 
-import * as _in from "astn/dist/generated/interface/schemas/ast/data_types/unconstrained"
-import * as _in_token from "astn/dist/generated/interface/schemas/token/data_types/unconstrained"
+import * as _in from "astn/dist/generated/interface/schemas/ast/data_types/target"
+import * as _in_token from "astn/dist/generated/interface/schemas/token/data_types/target"
 
 import * as t_ast_to_range from "astn/dist/transformations/ast/temp_value_range"
 

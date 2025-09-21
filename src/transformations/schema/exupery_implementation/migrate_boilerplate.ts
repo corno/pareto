@@ -3,9 +3,9 @@ import * as pt from 'exupery-core-types'
 import * as pa from 'exupery-core-alg'
 import * as pdev from 'exupery-core-dev'
 
-import * as _in from "../../../generated/interface/schemas/schema/data_types/resolved"
-import * as _out from "exupery/dist/generated/interface/schemas/implementation/data_types/unresolved"
-import * as _out_interface from "exupery/dist/generated/interface/schemas/interface/data_types/unresolved"
+import * as _in from "../../../generated/interface/schemas/schema/data_types/source"
+import * as _out from "exupery/dist/generated/interface/schemas/implementation/data_types/target"
+import * as _out_interface from "exupery/dist/generated/interface/schemas/interface/data_types/target"
 
 import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"

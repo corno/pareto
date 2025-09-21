@@ -3,8 +3,8 @@ import * as _ea from 'exupery-core-alg'
 import * as _i_generic from "../generated/implementation/generic/resolve"
 import * as _i_signatures from "../generated/interface/schemas/schema/data_types/resolve"
 
-import * as _i_in from "../generated/interface/schemas/schema/data_types/unresolved"
-import * as _i_out from "../generated/interface/schemas/schema/data_types/resolved"
+import * as _i_in from "../generated/interface/schemas/schema/data_types/target"
+import * as _i_out from "../generated/interface/schemas/schema/data_types/source"
 
 import * as _r from "../generated/interface/core/resolved"
 

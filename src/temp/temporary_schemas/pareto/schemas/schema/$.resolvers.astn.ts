@@ -4,7 +4,7 @@ import {
     resolvers, r, resolver, al, ls, av, gvs, ovi, vst, state, state_constrained, oc, pc, pvs, reference,
 } from "../../../../../shorthands/schema"
 
-import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/unresolved"
+import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
 
 export const $: g_.Resolvers<pd.Source_Location> = resolvers(

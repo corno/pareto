@@ -3,8 +3,8 @@ import * as pa from 'exupery-core-alg'
 
 import { wrap_dictionary } from 'exupery-core-data/dist/shorthands/unresolved_transformation'
 
-import * as _in from "../../generated/interface/schemas/module/data_types/resolved"
-import * as _out from "exupery/dist/generated/interface/schemas/interface/data_types/unresolved"
+import * as _in from "../../generated/interface/schemas/module/data_types/source"
+import * as _out from "exupery/dist/generated/interface/schemas/interface/data_types/target"
 
 import { m, t, type, import_ } from "exupery/dist/shorthands/interface"
 import * as t_exupery_interface_main from "../schema/exupery_interface/main"

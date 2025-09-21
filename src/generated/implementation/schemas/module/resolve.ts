@@ -2,7 +2,7 @@ import * as _pa from 'exupery-core-alg'
 import * as _pd from 'exupery-core-dev'
 
 import * as _i_generic from "../../generic/resolve"
-import * as _i_out from "../../../interface/schemas/module/data_types/resolved"
+import * as _i_out from "../../../interface/schemas/module/data_types/source"
 import * as _i_r_schema from "../schema/resolve"
 import * as _i_signatures from "../../../interface/schemas/module/data_types/resolve"
 

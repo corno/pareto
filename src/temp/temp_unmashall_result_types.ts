@@ -1,9 +1,9 @@
 import * as _et from 'exupery-core-types'
 
-import * as d_astn_token from "astn/dist/generated/interface/schemas/token/data_types/unconstrained"
-import * as d_astn_ast from "astn/dist/generated/interface/schemas/ast/data_types/unconstrained"
+import * as d_astn_token from "astn/dist/generated/interface/schemas/token/data_types/target"
+import * as d_astn_ast from "astn/dist/generated/interface/schemas/ast/data_types/target"
 
-import * as d_schema from "../generated/interface/schemas/schema/data_types/resolved"
+import * as d_schema from "../generated/interface/schemas/schema/data_types/source"
 
 export type Document = {
     'content': Node

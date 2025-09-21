@@ -9,8 +9,8 @@ import * as pso from "pareto-standard-operations"
 
 //data
 
-import * as d_schema from "../generated/interface/schemas/schema/data_types/resolved"
-import * as d_parse_result from "astn/dist/generated/interface/schemas/parse_result/data_types/unconstrained"
+import * as d_schema from "../generated/interface/schemas/schema/data_types/source"
+import * as d_parse_result from "astn/dist/generated/interface/schemas/parse_result/data_types/target"
 
 import * as r_pareto_schema from "../resolvers/schema"
 

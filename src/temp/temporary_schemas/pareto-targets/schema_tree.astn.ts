@@ -1,7 +1,7 @@
 import * as pd from 'exupery-core-data'
 
 import { st } from "../../../shorthands/schema"
-import * as g_ from "../../../generated/interface/schemas/schema/data_types/unresolved"
+import * as g_ from "../../../generated/interface/schemas/schema/data_types/target"
 
 import { $ as x_alan_light } from "./schemas/alan_light/$.module.astn"
 import { $ as x_pareto_documentation } from "./schemas/pareto_documentation/$.module.astn"

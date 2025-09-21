@@ -1,7 +1,7 @@
 import * as pd from 'exupery-core-data'
 
 import { signatures, sig, value_parameter, lookup_parameter, sig_params } from "../../../../../shorthands/schema"
-import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/unresolved"
+import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
 export const $: g_.Resolve_Logic.signatures<pd.Source_Location> = signatures(
     {
