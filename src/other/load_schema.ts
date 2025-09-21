@@ -20,7 +20,7 @@ import * as tu_dynamic_unmarshall from "./unmarshall_astn_ast"
 
 import * as parse from "astn/dist/parse/parse"
 
-import * as _out from "../temp_unmashall_result_types"
+import * as _out from "../temp/temp_unmashall_result_types"
 
 
 import { impure, pure } from "pareto-standard-operations"

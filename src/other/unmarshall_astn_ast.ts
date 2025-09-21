@@ -11,7 +11,7 @@ import * as _in_token from "astn/dist/generated/interface/schemas/token/data_typ
 
 import * as t_ast_to_range from "astn/dist/transformations/ast/temp_value_range"
 
-import * as _out from "../temp_unmashall_result_types"
+import * as _out from "../temp/temp_unmashall_result_types"
 
 // export const Document = (
 //     $: _in.Document,

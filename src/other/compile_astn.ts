@@ -4,7 +4,7 @@ import * as _er from 'exupery-core-resources'
 import * as _ed from 'exupery-core-data'
 
 //data
-import { $ as poormans_modules } from "../temporary_schemas/all"
+import { $ as poormans_modules } from "../temp/temporary_schemas/all"
 
 import * as r_pareto_module from "../resolvers/module"
 

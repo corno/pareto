@@ -7,7 +7,7 @@ import * as wtd from "pareto-fountain-pen/dist/other/write_to_disk"
 import * as temp_astn_to_fp from "astn/dist/transformations/target/fountain_pen_block"
 
 //data
-import { $ as poormans_modules } from "../temporary_schemas/all"
+import { $ as poormans_modules } from "../temp/temporary_schemas/all"
 
 //data types
 import * as d_module from "../generated/interface/schemas/module/data_types/unresolved"
