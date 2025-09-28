@@ -1,7 +1,6 @@
 //core
 import * as _ea from 'exupery-core-alg'
 import * as _et from 'exupery-core-types'
-import * as _er from 'exupery-core-resources'
 import * as _edata from 'exupery-core-data'
 import * as _ed from 'exupery-core-dev'
 
@@ -16,30 +15,29 @@ import * as r_pareto_schema from "../resolvers/schema"
 
 import * as u_pareto_schema from "../generated/implementation/schemas/schema/unmarshall"
 
-import * as tu_dynamic_unmarshall from "./unmarshall_astn_ast"
+import * as tu_dynamic_unmarshall from "../transformations/unmarshall_astn_ast"
 
 import * as parse from "astn/dist/parse/parse"
 
 import * as _out from "../temp/temp_unmashall_result_types"
 
 
-import { impure, pure } from "pareto-standard-operations"
-import { get_directory_path } from './path'
+import { get_directory_path } from '../operations/path'
 
-const op = {
-    'remove first element': impure.list['remove first element'],
-    'remove last element': impure.list['remove last element'],
-}
+import { $$ as op_remove_first_element } from "pareto-standard-operations/dist/impure/list/remove_first_element"
+import { $$ as op_remove_last_element } from "pareto-standard-operations/dist/impure/list/remove_last_element"
 
-type Do_Schema_Result =
-    | ['success', d_schema.Type]
-    | ['file not found', null]
+type Error =
     | ['parse error', d_parse_result.Parse_Error]
     // ['resolve error', FIXME resolve errors will now panic!
 
+type Unsafe_Transformation_Result<T, E> =
+    | ['success', T]
+    | ['error', E]
+
 export const $ = (
     $: string,
-): Do_Schema_Result => {
+): Unsafe_Transformation_Result<d_schema.Type, Error> => {
 
     return _ea.cc(
         parse.parse(
@@ -48,12 +46,12 @@ export const $ = (
                 'tab size': 4,
             }
         ),
-        ($): Do_Schema_Result => {
+        ($) => {
             switch ($[0]) {
                 case 'failure': return _ea.ss($, ($) => {
-                    return ['parse error', $]
+                    return ['error', ['parse error', $]]
                 })
-                case 'success': return _ea.ss($, ($): Do_Schema_Result => {
+                case 'success': return _ea.ss($, ($) => {
 
                     const resolved_schema_schema = r_pareto_schema.Type_Specification(
                         u_pareto_schema.Type_Specification(
@@ -79,7 +77,7 @@ export const $ = (
                         schema_path: _et.Array<string>,
                     ): d_schema.Schema => {
                         const st = $
-                        return op['remove first element'](schema_path).transform(
+                        return op_remove_first_element(schema_path).transform(
                             ($) => {
                                 const split = $
                                 return _ea.cc(st, ($) => {

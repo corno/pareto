@@ -10,15 +10,10 @@ import * as _out_interface from "exupery/dist/generated/interface/schemas/interf
 import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"
 
-import { pure } from "pareto-standard-operations"
 
-const op = {
-    'append element': pure.list['append element'],
-    'flatten dictionary': pure.dictionary.flatten,
-    'filter list': pure.list.filter,
-    'flatten list': pure.list.flatten,
-    'pad dictionary identifiers': pure.dictionary['pad identifiers'],
-}
+import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/pure/dictionary/flatten"
+import { $$ as op_flatten_list } from "pareto-standard-operations/dist/pure/list/flatten"
+import { $$ as op_append_element } from "pareto-standard-operations/dist/pure/list/append_element"
 
 export const Schema = (
     $: _in.Schema,
@@ -29,21 +24,21 @@ export const Schema = (
     }
 ): _out.Module_Set.D<_edata.Source_Location> => {
     return m.module(
-        op['flatten dictionary'](
+        op_flatten_dictionary(
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
                     "generic": import_.ancestor(2, "generic", ["unmarshall"], {}),
-                    "signatures": import_.ancestor(3, "interface", op['flatten list'](_ea.array_literal([
+                    "signatures": import_.ancestor(3, "interface", op_flatten_list(_ea.array_literal([
                         _ea.array_literal(["schemas"]),
                         $p.path,
                         _ea.array_literal(["unmarshall"]),
-                    ])).__get_raw_copy(), {}),
+                    ])), {}),
                     "in": import_.ancestor(3, "interface", ["core", "astn source"], {}),
-                    "out": import_.ancestor(3, "interface", op['flatten list'](_ea.array_literal([
+                    "out": import_.ancestor(3, "interface", op_flatten_list(_ea.array_literal([
                         _ea.array_literal(["schemas"]),
                         $p.path,
                         _ea.array_literal(["data types", "target"]),
-                    ])).__get_raw_copy(), $p.constrained ? { "Source": t.component_imported("in", "Range", {}, []) } : {}),
+                    ])), $p.constrained ? { "Source": t.component_imported("in", "Range", {}, []) } : {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))
             }),
@@ -160,7 +155,7 @@ export const Type_Node = (
                             $.node,
                             {
                                 'temp type': $p['temp type'],
-                                'temp subselection': op['append element'](
+                                'temp subselection': op_append_element(
                                     $p['temp subselection'],
                                     {
                                         'element': sub.dictionary(),
@@ -197,7 +192,7 @@ export const Type_Node = (
                                 $,
                                 {
                                     'temp type': $p['temp type'],
-                                    'temp subselection': op['append element'](
+                                    'temp subselection': op_append_element(
                                         $p['temp subselection'],
                                         {
                                             'element': sub.group(key),
@@ -220,7 +215,7 @@ export const Type_Node = (
                             $.node,
                             {
                                 'temp type': $p['temp type'],
-                                'temp subselection': op['append element'](
+                                'temp subselection': op_append_element(
                                     $p['temp subselection'],
                                     {
                                         'element': sub.list(),
@@ -242,7 +237,7 @@ export const Type_Node = (
                             $,
                             {
                                 'temp type': $p['temp type'],
-                                'temp subselection': op['append element'](
+                                'temp subselection': op_append_element(
                                     $p['temp subselection'],
                                     {
                                         'element': sub.optional(),
@@ -266,7 +261,7 @@ export const Type_Node = (
                                 $,
                                 {
                                     'temp type': $p['temp type'],
-                                    'temp subselection': op['append element'](
+                                    'temp subselection': op_append_element(
                                         $p['temp subselection'],
                                         {
                                             'element': sub.state_group(key),
@@ -276,7 +271,7 @@ export const Type_Node = (
                                 }
                             )
                         ),
-                        t.component_imported("out", $p['temp type'], {}, op['append element']($p['temp subselection'], { 'element': sub.group("SG") }).__get_raw_copy())
+                        t.component_imported("out", $p['temp type'], {}, op_append_element($p['temp subselection'], { 'element': sub.group("SG") }))
                     )))
                 })
             ))

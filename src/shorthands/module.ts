@@ -1,4 +1,4 @@
-import * as pd from 'exupery-core-data'
+import * as _edata from 'exupery-core-data'
 
 import {
     Raw_Or_Normal_Dictionary,
@@ -11,9 +11,9 @@ import * as unresolved from "../generated/interface/schemas/module/data_types/ta
 import * as unresolved_schema from "../generated/interface/schemas/schema/data_types/target"
 
 export const module_ = (
-    operations: unresolved.Operations<pd.Source_Location>,
-    schema_tree: unresolved_schema.Schema_Tree<pd.Source_Location>
-): unresolved.Module<pd.Source_Location> => {
+    operations: unresolved.Operations<_edata.Source_Location>,
+    schema_tree: unresolved_schema.Schema_Tree<_edata.Source_Location>
+): unresolved.Module<_edata.Source_Location> => {
     return {
         'operations': operations,
         'schema tree': schema_tree,
@@ -21,17 +21,17 @@ export const module_ = (
 }
 
 export const operations = (
-    operations: Raw_Or_Normal_Dictionary<unresolved.Operations.D<pd.Source_Location>>,
-): unresolved.Operations<pd.Source_Location> => {
+    operations: Raw_Or_Normal_Dictionary<unresolved.Operations.D<_edata.Source_Location>>,
+): unresolved.Operations<_edata.Source_Location> => {
     return wrap_dictionary(operations)
 }
 
 export const operation = (
-    type_parameters: Raw_Or_Normal_Dictionary<unresolved_schema.Type_Parameters.D<pd.Source_Location>>,
-    context: unresolved.Operations.D.SG.operation.context<pd.Source_Location>,
-    parameters: Raw_Or_Normal_Dictionary<unresolved.Operations.D.SG.operation.parameters.D<pd.Source_Location>>,
-    result: unresolved.Operations.D.SG.operation.result<pd.Source_Location>
-): unresolved.Operations.D<pd.Source_Location> => {
+    type_parameters: Raw_Or_Normal_Dictionary<unresolved_schema.Type_Parameters.D<_edata.Source_Location>>,
+    context: unresolved.Operations.D.SG.operation.context<_edata.Source_Location>,
+    parameters: Raw_Or_Normal_Dictionary<unresolved.Operations.D.SG.operation.parameters.D<_edata.Source_Location>>,
+    result: unresolved.Operations.D.SG.operation.result<_edata.Source_Location>
+): unresolved.Operations.D<_edata.Source_Location> => {
     return wrap_state_group(['operation', {
         'type parameters': wrap_dictionary(type_parameters),
         'context': context,
@@ -41,7 +41,7 @@ export const operation = (
 }
 
 export const set = (
-    operations: Raw_Or_Normal_Dictionary<unresolved.Operations.D<pd.Source_Location>>
-): unresolved.Operations.D<pd.Source_Location> => {
+    operations: Raw_Or_Normal_Dictionary<unresolved.Operations.D<_edata.Source_Location>>
+): unresolved.Operations.D<_edata.Source_Location> => {
     return wrap_state_group(['set', wrap_dictionary(operations)])
 }

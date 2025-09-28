@@ -1,4 +1,4 @@
-import * as pd from 'exupery-core-data'
+import * as _edata from 'exupery-core-data'
 
 import {
     types,
@@ -11,7 +11,7 @@ import {
 
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
-export const $: g_.Types<pd.Source_Location>  = types(
+export const $: g_.Types<_edata.Source_Location>  = types(
     {
         "Configuration": type(t.group({
             //the tasks that can be executed

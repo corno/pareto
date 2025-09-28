@@ -1,7 +1,7 @@
-import * as $$ from "../other/test"
+// import * as $$ from "../main/test"
 
-$$.$(
-    null,
-    {
-    }
-)
+// $$.$(
+//     null,
+//     {
+//     }
+// )

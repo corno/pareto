@@ -1,5 +1,5 @@
 import * as pd from 'exupery-core-data'
-import * as pdev from 'exupery-core-dev'
+import * as _edev from 'exupery-core-dev'
 import * as pa from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 
@@ -10,12 +10,6 @@ import { m, t, import_, type, sub } from "exupery/dist/shorthands/interface"
 
 import * as _migration_boilerplate_interface from "./migrate_boilerplate"
 import * as _types from "./types"
-
-import { pure } from "pareto-standard-operations"
-
-const op = {
-    'append element': pure.list['append element'],
-}
 
 export const Signatures = (
 ): _out.Module_Set.D<pd.Source_Location> => {

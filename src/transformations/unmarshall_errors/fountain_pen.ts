@@ -1,18 +1,14 @@
 import * as _ea from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
-import * as pdev from 'exupery-core-dev'
+import * as _edev from 'exupery-core-dev'
 
 import * as _in from "../../generated/interface/schemas/unmarshall_errors/data_types/target"
 import * as _out from "pareto-fountain-pen/dist/generated/interface/schemas/block/data_types/target"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
-import { impure, pure } from "pareto-standard-operations"
-
-const op = {
-    'dictionary to list': impure.dictionary['to list, sorted by code point'],
-    'join': impure.text['join list of texts with separator']
-}
+import { $$ as op_join } from "pareto-standard-operations/dist/impure/text/join_list_of_texts_with_separator"
+import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/impure/dictionary/to_list_sorted_by_code_point"
 
 export const Errors = (
     $: _in.Errors,
@@ -47,7 +43,7 @@ export const Error_Type_Error = (
 ): _out.Line_Part => _ea.cc($, ($) => {
     switch ($[0]) {
         case 'duplicate property': return _ea.ss($, ($) => sh.l.snippet(`Duplicate property "${$.name}"`))
-        case 'invalid value type': return _ea.ss($, ($) => sh.l.snippet(`Invalid value type, expected ${op.join($.expected.map(($) => `'${$[0]}'`), { 'separator': ` or ` })}.`))
+        case 'invalid value type': return _ea.ss($, ($) => sh.l.snippet(`Invalid value type, expected ${op_join($.expected.map(($) => `'${$[0]}'`), { 'separator': ` or ` })}.`))
         case 'missing property': return _ea.ss($, ($) => sh.l.snippet(`Missing property '${$.name}'`))
         case 'superfluous property': return _ea.ss($, ($) => sh.l.snippet(`Superfluous property '${$.name}'`))
         case 'state': return _ea.ss($, ($) => _ea.cc($, ($) => {
@@ -58,7 +54,7 @@ export const Error_Type_Error = (
                 case 'state is not a string': return _ea.ss($, ($) => sh.l.snippet(`State is not a string`))
                 case 'unknown state': return _ea.ss($, ($) => sh.l.sub([
                     sh.l.snippet(`Unknown state: ${$.found}, expected one of `),
-                    sh.l.sub_decorated(op['dictionary to list']($.expected).map(($) => sh.l.snippet(`'${$.key}'`)))
+                    sh.l.sub_decorated(op_dictionary_to_list($.expected).map(($) => sh.l.snippet(`'${$.key}'`)))
                 ]))
                 default: return _ea.au($[0])
             }

@@ -1,5 +1,5 @@
 import * as pd from 'exupery-core-data'
-import * as pdev from 'exupery-core-dev'
+import * as _edev from 'exupery-core-dev'
 import * as pa from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 
@@ -11,11 +11,7 @@ import { m, t, import_, type, sub } from "exupery/dist/shorthands/interface"
 import * as _migration_boilerplate_interface from "./migrate_boilerplate"
 import * as _types from "./types"
 
-import { pure } from "pareto-standard-operations"
-
-const op = {
-    'append element': pure.list['append element'],
-}
+import { $$ as op_append_element } from "pareto-standard-operations/dist/pure/list/append_element"
 
 export const Signatures = (
     $: _in.Signatures,
@@ -56,14 +52,14 @@ export const r_Type_Reference = (
                 `imports ${$.import.key}`,
                 $.type.key,
                 {},
-                $p['component sub part'].__get_raw_copy(),
+                $p['component sub part'],
 
             ))
             case 'internal': return pa.ss($, ($) => t.component_imported(
                 "resolved",
                 $.key,
                 {},
-                $p['component sub part'].__get_raw_copy(),
+                $p['component sub part'],
             ))
             default: return pa.au($[0])
         }
@@ -85,7 +81,7 @@ export const r_Type_Part_Reference = (
             switch ($[0]) {
                 case 'dictionary': return pa.ss($, ($) => sub.dictionary())
                 case 'group': return pa.ss($, ($) => sub.group($.key))
-                case 'identifier value pair': return pa.ss($, ($) => pdev.implement_me())
+                case 'identifier value pair': return pa.ss($, ($) => _edev.implement_me())
                 case 'list': return pa.ss($, ($) => sub.list())
                 case 'optional': return pa.ss($, ($) => sub.optional())
                 case 'state group': return pa.ss($, ($) => sub.state_group($.key))
@@ -93,7 +89,7 @@ export const r_Type_Part_Reference = (
             }
         }))
         return $p['add dictionary tail']
-            ? op['append element'](
+            ? op_append_element(
                 tail,
                 {
                     'element': sub.dictionary(),

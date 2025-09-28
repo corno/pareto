@@ -1,7 +1,7 @@
 import * as pd from 'exupery-core-data'
 import * as pt from 'exupery-core-types'
 import * as pa from 'exupery-core-alg'
-import * as pdev from 'exupery-core-dev'
+import * as _edev from 'exupery-core-dev'
 
 import * as _in from "../../../generated/interface/schemas/schema/data_types/source"
 import * as _out from "exupery/dist/generated/interface/schemas/implementation/data_types/target"
@@ -10,15 +10,9 @@ import * as _out_interface from "exupery/dist/generated/interface/schemas/interf
 import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"
 
-import { pure } from "pareto-standard-operations"
+import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/pure/dictionary/flatten"
+import { $$ as op_append_element } from "pareto-standard-operations/dist/pure/list/append_element"
 
-const op = {
-    'append element': pure.list['append element'],
-    'flatten dictionary': pure.dictionary.flatten,
-    'filter list': pure.list.filter,
-    'flatten list': pure.list.flatten,
-    'pad dictionary identifiers': pure.dictionary['pad identifiers'],
-}
 
 export const Types = (
     $: _in.Types,
@@ -29,7 +23,7 @@ export const Types = (
     }
 ): _out.Module_Set.D<pd.Source_Location> => {
     return m.module(
-        op['flatten dictionary'](
+        op_flatten_dictionary(
             pa.dictionary_literal({
                 "": pa.dictionary_literal({
                     "signatures": import_.ancestor(3, "interface", ["schemas", $p.key, "migration boilerplate"], {}),
@@ -97,7 +91,7 @@ export const Type_Node = (
                     $.node,
                     {
                         'type': $p.type,
-                        'subselection': op['append element'](
+                        'subselection': op_append_element(
                             $p.subselection,
                             {
                                 'element': sub.dictionary(),
@@ -106,14 +100,14 @@ export const Type_Node = (
                     }
                 )
             ))
-            case 'identifier value pair': return pa.ss($, ($) => pdev.implement_me())
+            case 'identifier value pair': return pa.ss($, ($) => _edev.implement_me())
             case 'group': return pa.ss($, ($) => i.group($.map(($, key) => i.change_context(
                 s.from_context([key]),
                 Type_Node(
                     $,
                     {
                         'type': $p.type,
-                        'subselection': op['append element'](
+                        'subselection': op_append_element(
                             $p.subselection,
                             {
                                 'element': sub.group(key),
@@ -128,7 +122,7 @@ export const Type_Node = (
                     $.node,
                     {
                         'type': $p.type,
-                        'subselection': op['append element'](
+                        'subselection': op_append_element(
                             $p.subselection,
                             {
                                 'element': sub.list(),
@@ -143,7 +137,7 @@ export const Type_Node = (
                     $,
                     {
                         'type': $p.type,
-                        'subselection': op['append element'](
+                        'subselection': op_append_element(
                             $p.subselection,
                             {
                                 'element': sub.optional(),
@@ -158,7 +152,7 @@ export const Type_Node = (
                     $,
                     {
                         'type': $p.type,
-                        'subselection': op['append element'](
+                        'subselection': op_append_element(
                             $p.subselection,
                             {
                                 'element': sub.state_group(key),
@@ -170,10 +164,10 @@ export const Type_Node = (
                     "out",
                     $p.type,
                     {},
-                    $p.subselection.__get_raw_copy(),
+                    $p.subselection,
                 ),
             ))
-            case 'type parameter': return pa.ss($, ($) => pdev.implement_me())
+            case 'type parameter': return pa.ss($, ($) => _edev.implement_me())
             default: return pa.au($[0])
         }
     })

@@ -11,158 +11,163 @@ import {
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
 
-// export type Document = {
-//     'content': Node
-// }
-
-// export type Duplicate_Entry = {
-//     'range': astn.d_ast.Range
-//     'node': Node
-// }
-
-// // export type Key_Value_Pair = {
-// //     'node': Node
-// // }
-
-// export type Property =
-//     | ['missing', astn.d_ast.Range]
-//     | ['unique', Node]
-//     | ['multiple', pt.Array<Duplicate_Entry>]
-
-// export type Node =
-//     | ['number', Number]
-//     | ['boolean', Boolean]
-//     | ['list', List]
-//     | ['nothing', Nothing]
-//     | ['reference', Reference]
-//     | ['component', Component]
-//     | ['dictionary', Dictionary]
-//     | ['group', Group]
-//     | ['identifier value pair', Identifier_Value_Pair]
-//     | ['optional', Optional]
-//     | ['state', State]
-//     | ['text', Text]
-//     | ['type parameter', string]
-
-// export type State = {
-//     'status': State_Status
-// }
-
-// export type State_Status =
-//     | ['valid', {
-//         'node': Node,
-
-//     }]
-//     | ['more than 2 elements', astn.d_ast.Range]
-//     | ['missing state name', astn.d_ast.Range]
-//     | ['state is not a string', astn.d_ast.Range]
-//     | ['missing value', astn.d_ast.Range]
-//     | ['unknown state', {
-//         'range': astn.d_ast.Range
-//         'found': string
-//         'expected': pt.Dictionary<null>
-//     }]
-
-// export type Identifier_Value_Pair = {
-//   'definition': def.Type_Node.SG.identifier_value_pair
-// }
-
-// export type Optional = {
-//     'definition': def.Type_Node.SG.optional
-// }
-// export type List = {
-//     'definition': def.Type_Node.SG.list
-// }
-
-// export type Reference = {
-//     'definition': def.Type_Node.SG.reference
-// }
-
-// export type Component = {
-//     'definition': def.Type_Node.SG.component
-// }
-
-// export type Boolean = {
-//     'definition': def.Type_Node.SG._boolean
-// }
-// export type Nothing = {
-//     'definition': def.Type_Node.SG.nothing
-// }
-
-// export type Text = {
-//     'definition': def.Type_Node.SG.text
-//     'status':
-//     | ['valid', null]
-//     | ['invalid value type', astn.d_ast.Range]
-// }
-
-// export type Number = {
-//     'definition': def.Type_Node.SG._number
-//     'status':
-//     | ['valid', {
-//         'range': astn.d_ast.Range
-//         'correct string type': boolean
-//     }]
-//     | ['invalid', astn.d_ast.Range]
-// }
-
-// export type Dictionary = {
-//     'definition': def.Type_Node.SG.dictionary
-//     'status':
-//     | ['valid', pt.Dictionary<Entry>]
-//     | ['invalid', astn.d_ast.Range]
-// }
-
-// export type Entry =
-//     | ['unique', Node]
-//     | ['multiple', pt.Array<Duplicate_Entry>]
-
-// export type Group = {
-//     'definition': def.Type_Node.SG.group
-//     'type': Group_Type
-// }
-
-// export type Group_Type =
-//     | ['indexed', Indexed_Group]
-//     | ['ordered', {}]
-//     | ['invalid', astn.d_ast.Range]
-
-// export type Indexed_Group = {
-//     'properties': pt.Dictionary<Property>
-//     'superfluous entries': pt.Dictionary<pt.Array<astn.d_ast.Range>>
-// }
-
 export const $: g_.Types<pd.Source_Location> = types(
     {
         // "Document": type(t.group({
         //     "content": t.component("Node"),
         // })),
 
-        // "Node": type(t.state_group({
-        //     "number": t.component("Number"),
-        //     "boolean": t.component("Boolean"),
-        //     "list": t.component("List"),
-        //     "nothing": t.component("Nothing"),
-        //     "reference": t.component("Reference"),
-        //     "component": t.component("Component"),
-        //     "dictionary": t.component("Dictionary"),
-        //     "group": t.component("Group"),  
-        //     "identifier value pair": t.component("Identifier_Value_Pair"),
-        //     "optional": t.component("Optional"),
-        //     "state": t.component("State"),
-        //     "text": t.component("Text"),
+        // "Node": type(t.group({
+        //     "value": t.reference_derived_external("ast", "Value", []),
+        //     "type": t.component("Node Type"),
+        // })),
+
+        // "Node Type": type(t.state_group({
+        //     "boolean": t.group({
+        //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("boolean")]),
+        //         "found value type": t.state_group({
+        //             "valid": t.group({
+        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("string")]),
+        //                 "range": t.reference_derived_external("token", "Range", []),
+        //                 "correct string type": t.boolean(),
+        //             }),
+        //             "invalid": t.reference_derived_external("token", "Range", []),
+        //         }),
+        //     }),
+        //     "component": t.group({
+        //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("component")]),
+        //         "node": t.component_cyclic("Node"),
+        //     }),
+
+        //     "dictionary": t.group({
+        //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("dictionary")]),
+        //         "found value type": t.state_group({
+        //             "valid": t.group({
+        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("indexed collection")]),
+        //                 "entries": t.dictionary(t.state_group({
+        //                     "unique": t.component("Entry Data"),
+        //                     "multiple": t.list(t.component("Entry Data")),
+        //                 })),
+        //             }),
+        //             "invalid": t.reference_derived_external("token", "Range", []),
+        //         }),
+        //     }),
+        //     "group": t.group({
+        //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("group")]),
+        //         "found value type": t.state_group({
+        //             "valid": t.state_group({
+        //                 "indexed": t.group({
+        //                     "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("indexed collection")]),
+        //                     "content": t.component("Group Content"),
+        //                 }),
+        //                 "ordered": t.group({
+        //                     "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("ordered collection")]),
+        //                     "content": t.component("Group Content"),
+        //                 }),
+        //             }),
+        //             "invalid": t.reference_derived_external("token", "Range", []),
+        //         }),
+        //     }),
+        //     "identifier value pair": t.group({
+        //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("identifier value pair")]),
+        //     }),
+        //     "list": t.group({
+        //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("list")]),
+        //         "found value type": t.state_group({
+        //             "valid": t.group({
+        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("ordered collection")]),
+        //                 "elements": t.list(t.component_cyclic("Node")),
+        //             }),
+        //             "invalid": t.reference_derived_external("token", "Range", []),
+        //         }),
+        //     }),
+        //     "nothing": t.group({
+        //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("nothing")]),
+        //         "found value type": t.state_group({
+        //             "valid": t.group({
+        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("not set")]),
+        //             }),
+        //             "invalid": t.reference_derived_external("token", "Range", []),
+        //         }),
+        //     }),
+        //     "number": t.group({
+        //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("number")]),
+        //         "found value type": t.state_group({
+        //             "valid": t.group({
+        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("string")]),
+        //                 "range": t.reference_derived_external("token", "Range", []),
+        //                 "correct string type": t.boolean(),
+        //             }),
+        //             "invalid": t.reference_derived_external("token", "Range", []),
+        //         }),
+        //     }),
+        //     "optional": t.group({
+        //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("optional")]),
+        //         "found value type": t.state_group({
+        //             "valid": t.state_group({
+        //                 "set": t.group({
+        //                     "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("set optional value")]),
+        //                     "child node": t.component_cyclic("Node"),
+        //                 }),
+        //                 "not set": t.group({
+        //                     "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("not set")]),
+        //                 }),
+        //             }),
+        //             "invalid": t.reference_derived_external("token", "Range", []),
+        //         }),
+        //     }),
+        //     "reference": t.group({
+        //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("reference")]),
+        //         "found value type": t.state_group({
+        //             "valid": t.group({
+        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("string")]),
+        //             }),
+        //             "invalid": t.reference_derived_external("token", "Range", []),
+        //         }),
+        //     }),
+        //     "state": t.group({
+        //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("state group")]),
+        //         "found value type": t.state_group({
+        //             "valid": t.state_group({
+        //                 "value type": t.state_group({
+        //                     "state": t.group({
+        //                         "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("tagged value")]),
+        //                         "found state definition": t.optional(t.group({
+        //                             "definition": t.reference_derived_external("schema", "Type Node", [tr.s("state group")]),
+        //                             "node": t.component_cyclic("Node"),
+        //                         })),
+        //                     }),
+        //                 }),
+        //             }),
+        //             "invalid": t.reference_derived_external("token", "Range", []),
+        //         }),
+        //     }),
+        //     "text": t.group({
+        //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("text")]),
+        //         "found value type": t.state_group({
+        //             "valid": t.group({
+        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("string")]),
+        //             }),
+        //             "invalid": t.reference_derived_external("token", "Range", []),
+        //         }),
+        //     }),
         //     "type parameter": t.text_local(text('single line')),
         // })),
 
-        // "NUmber": type(t.group({
-        //     "definition": t.component("Type Node SG _number"),
-        //     "status": t.state_group({
-        //         "valid": t.group({
-        //             "range": t.component("astn.d_ast Range"),
-        //             "correct string type": t.boolean(),
-        //         }),
-        //         "invalid": t.component("astn.d_ast Range"),
-        //     }),
+        // "Group Content": type(t.group({
+        //     "properties": t.dictionary(t.state_group({
+        //         "missing": t.reference_derived_external("token", "Range", []),
+        //         "unique": t.component("Entry Data"),
+        //         "multiple": t.list(t.component("Entry Data")),
+        //     })),
+        //     "superfluous entries": t.dictionary(t.list(t.reference_derived_external("token", "Range", []))),
         // })),
+
+        // "Entry Data": type(t.group({
+        //     "key": t.reference_derived_external("ast", "String", []),
+        //     "node": t.component("Optional Node"),
+        // })),
+
+        // "Optional Node": type(t.optional(t.component_cyclic("Node"))),
     }
 )

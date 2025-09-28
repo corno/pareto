@@ -1,17 +1,26 @@
-import * as $$ from "../other/compile_astn"
+#!/usr/bin/env node
 
-$$.$(
-    null,
-    {
-        'path': "./out/source_code/src/generated"
-    }
-)
+import * as _ea from 'exupery-core-alg'
+import * as _eb from 'exupery-core-bin'
+import * as _easync from 'exupery-core-async'
 
-import * as serializer from "../other/serialize_schemas"
+_eb.run_program(() => _ea.panic("not implemented yet"))
 
-serializer.$(
-    null,
-    {
-        'path': "./out/serialized"
-    }
-)
+
+// _eb.run_program($$)
+
+// $$.$(
+//     null,
+//     {
+//         'path': "./out/source_code/src/generated"
+//     }
+// )
+
+// import * as serializer from "../main/serialize_schemas"
+
+// serializer.$(
+//     null,
+//     {
+//         'path': "./out/serialized"
+//     }
+// )

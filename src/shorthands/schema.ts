@@ -272,22 +272,21 @@ export namespace t {
     }
 
     export const reference_external = (
-        imp: string,
+        schema: string,
 
         type: string,
         tail: unresolved.Type_Node_Reference.tail.L<pd.Source_Location>[],
-        dependency?: "cyclic" | "acyclic",
     ): unresolved.Type_Node<pd.Source_Location> => {
 
         const p_type: unresolved.Type_Node.SG.reference._type<pd.Source_Location> = wrap_state_group(['selected', {
             'dictionary': null,
-            'dependency': dependency === "cyclic" ? wrap_state_group(['cyclic', null]) : wrap_state_group(['acyclic', null])
+            'dependency': wrap_state_group(['acyclic', null]) // <-- external references cannot be cyclic, but this should not have to be specified here
         }])
         return wrap_state_group(['reference', {
             'referent': {
                 'type location': {
                     'location': wrap_state_group(['external', {
-                        'import': wrap_reference(imp),
+                        'import': wrap_reference(schema),
                         'type': wrap_reference(type),
                     }]),
                     'resulting node': null

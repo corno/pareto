@@ -10,16 +10,11 @@ import * as _out_interface from "exupery/dist/generated/interface/schemas/interf
 import { m, variable, i, s, temp_ordered_variable } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub as sub } from "exupery/dist/shorthands/interface"
 
-import { pure } from "pareto-standard-operations"
+import { $$ as op_flatten_list } from "pareto-standard-operations/dist/pure/list/flatten"
+import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/pure/dictionary/flatten"
 
-const op = {
-    // 'append element': pure.list['extend with element'],
-    'append element': pure.list['append element'],
-    'flatten dictionary': pure.dictionary.flatten,
-    'filter list': pure.list.filter,
-    'flatten list': pure.list.flatten,
-    'pad dictionary identifiers': pure.dictionary['pad identifiers'],
-}
+import { $$ as op_pad_dictionary_identifiers } from "pareto-standard-operations/dist/pure/dictionary/pad_identifiers"
+import { $$ as op_append_element } from "pareto-standard-operations/dist/pure/list/append_element"
 
 export const Resolvers = (
     $: _in.Resolvers,
@@ -29,20 +24,20 @@ export const Resolvers = (
     }
 ): _out.Module_Set.D<_edata.Source_Location> => {
     return m.module(
-        op['flatten dictionary'](
+        op_flatten_dictionary(
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
                     "generic": import_.ancestor(2, "generic", ["resolve"], {}),
-                    "out": import_.ancestor(3, "interface", op['flatten list'](_ea.array_literal([
+                    "out": import_.ancestor(3, "interface", op_flatten_list(_ea.array_literal([
                         _ea.array_literal(["schemas"]),
                         $p.path,
                         _ea.array_literal(["data types", "source"]),
-                    ])).__get_raw_copy(), {}),
-                    "signatures": import_.ancestor(3, "interface", op['flatten list'](_ea.array_literal([
+                    ])), {}),
+                    "signatures": import_.ancestor(3, "interface", op_flatten_list(_ea.array_literal([
                         _ea.array_literal(["schemas"]),
                         $p.path,
                         _ea.array_literal(["data types", "resolve"]),
-                    ])).__get_raw_copy(), {}),
+                    ])), {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["resolve"], {}))
             }),
@@ -51,7 +46,7 @@ export const Resolvers = (
             }
         ),
         {},
-        op['pad dictionary identifiers'](
+        op_pad_dictionary_identifiers(
             $.dictionary.map(($, key) => variable(
                 t.component_imported("signatures", key, {
                     // "Source": t.component_imported("generic", "Location Info", {}, []),
@@ -101,10 +96,10 @@ export const Possible_Value_Selection = (
         switch ($[0]) {
             case 'parameter': return _ea.ss($, ($) => s.from_variable(
                 "params",
-                op['flatten list'](_ea.array_literal([
+                op_flatten_list(_ea.array_literal([
                     _ea.array_literal(["values", $.key]),
                     $p.tail(),
-                ])).__get_raw_copy(),
+                ])),
             ))
             case 'result': return _ea.ss($, ($) => _ea.cc($, ($) => {
                 switch ($[0]) {
@@ -142,8 +137,8 @@ export const Guaranteed_Value_Selection = (
     },
 ): _out.Selection<_edata.Source_Location> => {
     const tail = (): _et.Array<_out.Selection.tail.L<_edata.Source_Location>> => {
-        return op['flatten list'](_ea.array_literal([
-            op['flatten list']($.tail.path.map(($) => {
+        return op_flatten_list(_ea.array_literal([
+            op_flatten_list($.tail.path.map(($) => {
                 return _ea.cc($, ($) => {
                     switch ($[0]) {
                         case 'component': return _ea.ss($, ($) => _ea.array_literal([]))
@@ -174,10 +169,10 @@ export const Guaranteed_Value_Selection = (
             }))
             case 'parameter': return _ea.ss($, ($) => s.from_variable(
                 "params",
-                op['flatten list'](_ea.array_literal([
+                op_flatten_list(_ea.array_literal([
                     _ea.array_literal(["values", $.key]),
                     tail(),
-                ])).__get_raw_copy(),
+                ])),
             ))
             case 'result': return _ea.ss($, ($) => _ea.cc($, ($) => {
                 switch ($[0]) {
@@ -190,23 +185,23 @@ export const Guaranteed_Value_Selection = (
             }))
             case 'list cursor': return _ea.ss($, ($) => s.from_variable(
                 "list cursor",
-                tail().__get_raw_copy(),
+                tail(),
             ))
             case 'linked entry': return _ea.ss($, ($) => s.from_variable(
                 "linked entry",
-                tail().__get_raw_copy(),
+                tail(),
             ))
             case 'option constraint': return _ea.ss($, ($) => s.from_variable(
                 `c ${$.key}`,//FIXME: do the upsteps
-                tail().__get_raw_copy(),
+                tail(),
             ))
             case 'sibling': return _ea.ss($, ($) => s.from_variable(
                 `p ${$.key}`,
-                tail().__get_raw_copy(),
+                tail(),
             ))
             case 'parent sibling': return _ea.ss($, ($) => s.from_variable(
                 `p ${$.key}`,//FIXME: do the upstep
-                tail().__get_raw_copy(),
+                tail(),
             ))
             default: return _ea.au($[0])
         }
@@ -259,7 +254,7 @@ export const Option_Constraints = (
 ): _out.Initialization<_edata.Source_Location> => {
     return i.block(
         [],
-        op['pad dictionary identifiers']($, { 'prefix': "c ", 'suffix': "" }).map(($) => variable(null, i.select(_ea.cc($, ($) => {
+        op_pad_dictionary_identifiers($, { 'prefix': "c ", 'suffix': "" }).map(($) => variable(null, i.select(_ea.cc($, ($) => {
             switch ($[0]) {
                 case 'state': return _ea.ss($, ($) => s.implement_me()) // medium work
                 case 'assert is set': return _ea.ss($, ($) => s.optional_transform(
@@ -411,7 +406,7 @@ export const Node_Resolver = (
                                     $.resolver,
                                     {
                                         'temp type': $p['temp type'],
-                                        'temp subselection': op['append element'](
+                                        'temp subselection': op_append_element(
                                             $p['temp subselection'],
                                             {
                                                 'element': sub.dictionary(),
@@ -439,12 +434,12 @@ export const Node_Resolver = (
                         "out",
                         $p['temp type'],
                         {},
-                        op['append element']<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>>(
+                        op_append_element<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>>(
                             $p['temp subselection'],
                             {
                                 'element': sub.group($.key),
                             },
-                        ).__get_raw_copy(),
+                        ),
                     ),
                     i.change_context(
                         s.from_context([$.key]),
@@ -452,7 +447,7 @@ export const Node_Resolver = (
                             $.value.resolver,
                             {
                                 'temp type': $p['temp type'],
-                                'temp subselection': op['append element'](
+                                'temp subselection': op_append_element(
                                     $p['temp subselection'],
                                     {
                                         'element': sub.group($.key),
@@ -461,7 +456,7 @@ export const Node_Resolver = (
                             }
                         )
                     )
-                )).__get_raw_copy(),
+                )),
                 {},
                 i.group($.dictionary.map(($, key) => i.select_from_variable(`p ${key}`, [])))
             ))
@@ -474,7 +469,7 @@ export const Node_Resolver = (
                             $.resolver,
                             {
                                 'temp type': $p['temp type'],
-                                'temp subselection': op['append element'](
+                                'temp subselection': op_append_element(
                                     $p['temp subselection'],
                                     {
                                         'element': sub.list(),
@@ -494,7 +489,7 @@ export const Node_Resolver = (
                             $['resolver'],
                             {
                                 'temp type': $p['temp type'],
-                                'temp subselection': op['append element'](
+                                'temp subselection': op_append_element(
                                     $p['temp subselection'],
                                     {
                                         'element': sub.optional(),
@@ -514,7 +509,7 @@ export const Node_Resolver = (
                             $['resolver'],
                             {
                                 'temp type': $p['temp type'],
-                                'temp subselection': op['append element'](
+                                'temp subselection': op_append_element(
                                     $p['temp subselection'],
                                     {
                                         'element': sub.state_group(key),
@@ -528,7 +523,7 @@ export const Node_Resolver = (
                     "out",
                     $p['temp type'],
                     {},
-                    $p['temp subselection'].__get_raw_copy(),
+                    $p['temp subselection'],
                 ),
             ))
             case 'type parameter': return _ea.ss($, ($) => _edev.implement_me()) // a lot of work: the resolvers need to be passed to this resolve function

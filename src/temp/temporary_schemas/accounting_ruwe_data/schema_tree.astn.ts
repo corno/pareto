@@ -5,7 +5,6 @@ import * as g_ from "../../../generated/interface/schemas/schema/data_types/targ
 
 
 import { $ as x_alan_light_oldstyle } from "./schemas/alan_light_oldstyle/$.module.astn"
-import { $ as x_boekhouding_oude_model } from "./schemas/boekhouding_oude_model/$.module.astn"
 import { $ as x_builder_configuration } from "./schemas/builder_configuration/$.module.astn"
 import { $ as x_csv } from "./schemas/csv/$.module.astn"
 import { $ as x_html } from "./schemas/html/$.module.astn"
@@ -19,7 +18,6 @@ import { $ as x_xml_parse_result } from "./schemas/xml/parse_result/$.module.ast
 
 export const $: g_.Schema_Tree<pd.Source_Location> = st.set({
     "alan light oldstyle": x_alan_light_oldstyle,
-    "boekhouding oude model": x_boekhouding_oude_model,
     //"builder configuration": x_builder_configuration,
     "csv": x_csv,
     "json schema": x_json_schema,

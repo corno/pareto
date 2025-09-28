@@ -1,5 +1,5 @@
 import * as pd from 'exupery-core-data'
-import * as pdev from 'exupery-core-dev'
+import * as _edev from 'exupery-core-dev'
 import * as pa from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 
@@ -8,13 +8,8 @@ import * as _out from "exupery/dist/generated/interface/schemas/interface/data_t
 
 import * as sh from "exupery/dist/shorthands/interface"
 
-import { pure } from "pareto-standard-operations"
-
-const op = {
-    'flatten list': pure.list.flatten,
-    'flatten dictionary': pure.dictionary.flatten,
-    'append element': pure.list['append element'],
-}
+import { $$ as op_flatten } from "pareto-standard-operations/dist/pure/dictionary/flatten"
+import { $$ as op_append_element } from "pareto-standard-operations/dist/pure/list/append_element"
 
 export const Schema = (
     $: _in.Schema,
@@ -26,7 +21,7 @@ export const Schema = (
     }
 ): _out.Module_Set.D<pd.Source_Location> => {
     return sh.m.module(
-        op['flatten dictionary'](
+        op_flatten(
             pa.dictionary_literal({
                 "core": pa.dictionary_literal({
                     "": sh.import_.ancestor(
@@ -115,7 +110,7 @@ export const r_Type_Reference = (
             switch ($[0]) {
                 case 'dictionary': return pa.ss($, ($) => sh.sub.dictionary())
                 case 'group': return pa.ss($, ($) => sh.sub.group($.key))
-                case 'identifier value pair': return pa.ss($, ($) => pdev.implement_me())
+                case 'identifier value pair': return pa.ss($, ($) => _edev.implement_me())
                 case 'list': return pa.ss($, ($) => sh.sub.list())
                 case 'optional': return pa.ss($, ($) => sh.sub.optional())
                 case 'state group': return pa.ss($, ($) => sh.sub.state_group($.key))
@@ -123,7 +118,7 @@ export const r_Type_Reference = (
             }
         }))
         return $p['add dictionary tail']
-            ? op['append element'](
+            ? op_append_element(
                 tail,
                 {
                     'element': sh.sub.dictionary(),
@@ -138,13 +133,13 @@ export const r_Type_Reference = (
                 `imports ${$.import.key}`,
                 $.type.key,
                 {},
-                Component_Sub_Selection(referent, { 'add dictionary tail': $p['add dictionary tail'] }).__get_raw_copy(),
+                Component_Sub_Selection(referent, { 'add dictionary tail': $p['add dictionary tail'] }),
 
             ))
             case 'internal': return pa.ss($, ($) => sh.t.component_sibling(
                 $.key,
                 {},
-                Component_Sub_Selection(referent, { 'add dictionary tail': $p['add dictionary tail'] }).__get_raw_copy(),
+                Component_Sub_Selection(referent, { 'add dictionary tail': $p['add dictionary tail'] }),
             ))
             default: return pa.au($[0])
         }

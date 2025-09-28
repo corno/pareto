@@ -64,9 +64,6 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "*": t.component("Structural Token"),
                 "value": t.component_cyclic("Value"),
             }),
-            "missing data": t.group({
-                "#": t.component("Structural Token"),
-            }),
         })),
 
         "Value": type(t.group({
@@ -75,6 +72,9 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "include": t.group({
                     "@": t.component("Structural Token"),
                     "path": t.component("String"),
+                }),
+                "missing data": t.group({
+                    "#": t.component("Structural Token"),
                 }),
             }),
         })),

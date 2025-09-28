@@ -10,15 +10,9 @@ import * as _out_interface from "exupery/dist/generated/interface/schemas/interf
 import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"
 
-import { pure } from "pareto-standard-operations"
-
-const op = {
-    'append element': pure.list['append element'],
-    'flatten dictionary': pure.dictionary.flatten,
-    'filter list': pure.list.filter,
-    'flatten list': pure.list.flatten,
-    'pad dictionary identifiers': pure.dictionary['pad identifiers'],
-}
+import {$$ as op_append_element} from "pareto-standard-operations/dist/pure/list/append_element"
+import {$$ as op_flatten_dictionary} from "pareto-standard-operations/dist/pure/dictionary/flatten"
+import {$$ as op_flatten_list} from "pareto-standard-operations/dist/pure/list/flatten"
 
 export const Schema = (
     $: _in.Schema,
@@ -29,14 +23,14 @@ export const Schema = (
     }
 ): _out.Module_Set.D<_edata.Source_Location> => {
     return m.module(
-        op['flatten dictionary'](
+        op_flatten_dictionary(
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
-                    "signatures": import_.ancestor(3, "interface", op['flatten list'](_ea.array_literal([
+                    "signatures": import_.ancestor(3, "interface", op_flatten_list(_ea.array_literal([
                         _ea.array_literal(["schemas"]),
                         $p.path,
                         _ea.array_literal(["marshall"])
-                    ])).__get_raw_copy(), {}),
+                    ])), {}),
                     "out": import_.ancestor(3, "interface", ["core", "astn target"], {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["marshall"], {}))
@@ -130,7 +124,7 @@ export const Type_Node = (
                         $.node,
                         {
                             'type': $p.type,
-                            'subselection': op['append element'](
+                            'subselection': op_append_element(
                                 $p.subselection,
                                 {
                                     'element': sub.dictionary(),
@@ -164,7 +158,7 @@ export const Type_Node = (
                         $,
                         {
                             'type': $p.type,
-                            'subselection': op['append element'](
+                            'subselection': op_append_element(
                                 $p.subselection,
                                 {
                                     'element': sub.group(key),
@@ -182,7 +176,7 @@ export const Type_Node = (
                         $.node,
                         {
                             'type': $p.type,
-                            'subselection': op['append element'](
+                            'subselection': op_append_element(
                                 $p.subselection,
                                 {
                                     'element': sub.list(),
@@ -201,7 +195,7 @@ export const Type_Node = (
                             $,
                             {
                                 'type': $p.type,
-                                'subselection': op['append element'](
+                                'subselection': op_append_element(
                                     $p.subselection,
                                     {
                                         'element': sub.optional(),
@@ -231,7 +225,7 @@ export const Type_Node = (
                             $,
                             {
                                 'type': $p.type,
-                                'subselection': op['append element'](
+                                'subselection': op_append_element(
                                     $p.subselection,
                                     {
                                         'element': sub.state_group(key),

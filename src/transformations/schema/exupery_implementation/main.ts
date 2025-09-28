@@ -13,12 +13,8 @@ import * as t_resolver from "./resolve"
 import * as t_marshall from "./marshall"
 import * as t_unmarshall from "./unmarshall"
 
-import * as operations from "pareto-standard-operations"
-
-const op = {
-    'filter dictionary': operations.pure.dictionary.filter,
-    'append': operations.pure.list['append element'],
-}
+import { $$ as op_append_element } from "pareto-standard-operations/dist/pure/list/append_element"
+import { $$ as op_filter_dictionary } from "pareto-standard-operations/dist/pure/dictionary/filter"
 
 export const Schema_Tree = (
     $: _in.Schema_Tree,
@@ -30,7 +26,7 @@ export const Schema_Tree = (
         switch ($[0]) {
             case 'schema': return _ea.ss($, ($) => {
                 const imports = $.imports
-                return m.set(op['filter dictionary']<_out.Module_Set.D<_edata.Source_Location>>(
+                return m.set(op_filter_dictionary<_out.Module_Set.D<_edata.Source_Location>>(
                     _ea.dictionary_literal({
                         // "migration boilerplate.ts": pa.set(_migration_boilerplate.Types($.types, {
                         //     'key': key,
@@ -79,6 +75,6 @@ export const Schemas = (
     }
 ): _out.Module_Set.D<_edata.Source_Location> => {
     return m.set($.dictionary.map(($, key) => Schema_Tree($, {
-        'path': op.append($p.path, { 'element': key })
+        'path': op_append_element($p.path, { 'element': key })
     })))
 }

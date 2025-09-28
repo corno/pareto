@@ -1,5 +1,5 @@
 import * as pd from 'exupery-core-data'
-import * as pdev from 'exupery-core-dev'
+import * as _edev from 'exupery-core-dev'
 import * as pa from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
 
@@ -7,14 +7,6 @@ import * as _in from "../../../generated/interface/schemas/schema/data_types/sou
 import * as _out from "exupery/dist/generated/interface/schemas/interface/data_types/target"
 
 import * as sh from "exupery/dist/shorthands/interface"
-
-import { pure } from "pareto-standard-operations"
-
-const op = {
-    'flatten list': pure.list.flatten,
-    'flatten dictionary': pure.dictionary.flatten,
-}
-
 
 export const Schema = (
     $: _in.Schema,

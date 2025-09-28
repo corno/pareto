@@ -2,8 +2,6 @@ import * as _ea from 'exupery-core-alg'
 import * as _et from 'exupery-core-types'
 import * as _edev from 'exupery-core-dev'
 
-import { impure, pure } from "pareto-standard-operations"
-
 import * as definition from "../generated/interface/schemas/schema/data_types/source"
 
 import * as _in from "astn/dist/generated/interface/schemas/ast/data_types/target"
@@ -12,6 +10,12 @@ import * as _in_token from "astn/dist/generated/interface/schemas/token/data_typ
 import * as t_ast_to_range from "astn/dist/transformations/ast/temp_value_range"
 
 import * as _out from "../temp/temp_unmashall_result_types"
+
+import { $$ as op_group } from "pareto-standard-operations/dist/impure/list/group"
+import { $$ as op_expect_exactly_one_element } from "pareto-standard-operations/dist/impure/list/expect_exactly_one_element"
+import { $$ as op_dictionary_filter } from "pareto-standard-operations/dist/pure/dictionary/filter"
+import { $$ as op_dictionary_merge } from "pareto-standard-operations/dist/impure/dictionary/merge"
+
 
 // export const Document = (
 //     $: _in.Document,
@@ -165,7 +169,7 @@ export const Node_Type = (
                         }
                     )
                 }]
-                // return pdev.implement_me()
+                // return _edev.implement_me()
             })
             case 'dictionary': return _ea.ss($, ($): _out.Node_Type => {
                 const prop_def = $.node
@@ -174,7 +178,7 @@ export const Node_Type = (
                     'found value type': _ea.cc(data, ($) => {
                         switch ($[0]) {
                             case 'indexed collection': return _ea.ss($, ($) => {
-                                const entries = impure.list.group(_ea.cc($, ($): _in.Key_Value_Pairs => {
+                                const entries = op_group(_ea.cc($, ($): _in.Key_Value_Pairs => {
                                     switch ($[0]) {
                                         case 'dictionary': return _ea.ss($, ($) => $.entries)
                                         case 'verbose group': return _ea.ss($, ($) => $.entries)
@@ -188,7 +192,7 @@ export const Node_Type = (
                                 }))
                                 return ['valid', {
                                     'value': $,
-                                    'entries': entries.map<_out.Entry>(($) => impure.list['expect exactly one element']($).transform(
+                                    'entries': entries.map<_out.Entry>(($) => op_expect_exactly_one_element($).transform(
                                         ($): _out.Entry => ['unique', Optional_Node(
                                             $.value.map(
                                                 ($) => $.value,
@@ -227,7 +231,7 @@ export const Node_Type = (
                 // //                     'value': $
                 // //                 }
                 // //             })).map(($, key) => {
-                // //                 pdev.log_debug_message(`clashing key: ${key}`)
+                // //                 _edev.log_debug_message(`clashing key: ${key}`)
                 // //             })
                 // //             const properties = impure.list['to dictionary, overwrite clashing keys']($.entries.map(($) => {
                 // //                 return {
@@ -238,21 +242,21 @@ export const Node_Type = (
                 // //             group_def.map(($, key) => {
                 // //                 properties.__get_entry(key).transform(
                 // //                     ($) => {
-                // //                         pdev.log_debug_message(`property ${key} found in data`)
+                // //                         _edev.log_debug_message(`property ${key} found in data`)
                 // //                         // do_node(
                 // //                         //     $.type,
                 // //                         //     $.value
                 // //                         // )
                 // //                     },
                 // //                     () => {
-                // //                         pdev.log_debug_message(`property ${key} not found in data`)
+                // //                         _edev.log_debug_message(`property ${key} not found in data`)
                 // //                     }
                 // //                 )
 
                 // //             })
 
                 // //         })
-                // //         default: return pdev.implement_me()
+                // //         default: return _edev.implement_me()
                 // //     }
                 // // })
                 return ['group', {
@@ -262,7 +266,7 @@ export const Node_Type = (
                         return _ea.cc($, ($) => {
                             switch ($[0]) {
                                 case 'indexed collection': return _ea.ss($, ($): _out.Group_Found_Value_Type => {
-                                    const entries = impure.list.group(_ea.cc($, ($): _in.Key_Value_Pairs => {
+                                    const entries = op_group(_ea.cc($, ($): _in.Key_Value_Pairs => {
                                         switch ($[0]) {
                                             case 'dictionary': return _ea.ss($, ($) => $.entries)
                                             case 'verbose group': return _ea.ss($, ($) => $.entries)
@@ -284,8 +288,8 @@ export const Node_Type = (
                                     return ['valid', ['indexed', {
                                         'value': $,
                                         'content': {
-                                            'superfluous entries': pure.dictionary.filter(
-                                                impure.dictionary.merge(
+                                            'superfluous entries': op_dictionary_filter(
+                                                op_dictionary_merge(
                                                     entries,
                                                     {
                                                         'supporting dictionary': group_def
@@ -297,7 +301,7 @@ export const Node_Type = (
                                                     )
                                                 })
                                             ).map(($) => $.map(($) => $.key.range)), //select the locations
-                                            'properties': impure.dictionary.merge(
+                                            'properties': op_dictionary_merge(
                                                 group_def,
                                                 {
                                                     'supporting dictionary': entries
@@ -305,7 +309,7 @@ export const Node_Type = (
                                             ).map<_out.Property>(($) => {
                                                 const prop_def = $.context
                                                 return $.supporting.transform(
-                                                    ($): _out.Property => impure.list['expect exactly one element']($).transform(
+                                                    ($): _out.Property => op_expect_exactly_one_element($).transform(
                                                         ($): _out.Property => ['unique', {
                                                             'node': Optional_Node(
                                                                 $.value.map(
@@ -335,7 +339,7 @@ export const Node_Type = (
                                         }
                                     }]]
                                 })
-                                //case 'ordered collection': return pdev.implement_me()
+                                //case 'ordered collection': return _edev.implement_me()
                                 default: return ['invalid', $p.range]
                             }
                         })
@@ -491,6 +495,7 @@ export const Node = (
                     })
                 })
                 case 'include': return _ea.ss($, ($) => _edev.implement_me())
+                case 'missing data': return _ea.ss($, ($) => _edev.implement_me())
                 default: return _ea.au($[0])
             }
         })
