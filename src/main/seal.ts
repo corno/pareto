@@ -1,10 +1,22 @@
 // //core
-// import * as _ea from 'exupery-core-alg'
+import * as _ea from 'exupery-core-alg'
 // import * as _et from 'exupery-core-types'
 // import * as _er from 'exupery-core-resources'
 // import * as _edata from 'exupery-core-data'
 // import * as _ed from 'exupery-core-dev'
 // import * as _eb from 'exupery-core-bin'
+import * as _easync from 'exupery-core-async'
+
+import  { $$ as cmd_log_error } from "exupery-resources/dist/commands/log_error"
+
+export const $$ = (
+): _easync.Unsafe_Command_Result<number> => {
+    return cmd_log_error(
+        _ea.array_literal([
+            "The 'seal' command needs to be implemented"
+        ]),
+    ).throw_exception(1)
+}
 
 
 // import * as _out from "../temp/temp_unmashall_result_types"

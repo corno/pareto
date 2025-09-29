@@ -22,58 +22,40 @@ import * as m_module from "../generated/implementation/schemas/module/marshall"
 export const $$: _eb.Unsafe_Program_Main = ($) => {
     const path = "./out/serialized"
 
-    return _easync.command.unsafe['create result']<number>(
-
-    ).do_dictionary(
-        poormans_modules.map(($, key) => {
-            const generate_and_write_to_disk = (
-                $: d_module.Module<_ed.Source_Location>,
-                $p: {
-                    'path': string,
-                    'key': string,
-                }
-            ) => wtfs.File(
-                temp_astn_to_fp.Document(
-                    m_module.Module(
-                        r_module.Module(
-                            $,
-                            {
-                                'parameters': {
-                                    'lookups': null,
-                                    'values': null,
-                                },
-                                'location 2 string': _ed.location_to_string
-                            }
-                        ),
+    return _easync.command.unsafe['do nothing']<number>(
+    ).then_dictionary(
+        poormans_modules.map(($, key) => wtfs.File(
+            temp_astn_to_fp.Document(
+                m_module.Module(
+                    r_module.Module(
+                        $,
                         {
-                            'value serializers': {
-                                'boolean': ($) => $ ? "true" : "false",
-                                'default number': () => "FIXME NUMBER",
-                                'custom numbers': null
-                            }
+                            'parameters': {
+                                'lookups': null,
+                                'values': null,
+                            },
+                            'location 2 string': _ed.location_to_string
                         }
                     ),
                     {
-                        'style': ['verbose', null]
+                        'value serializers': {
+                            'boolean': ($) => $ ? "true" : "false",
+                            'default number': () => "FIXME NUMBER",
+                            'custom numbers': null
+                        }
                     }
                 ),
                 {
-                    'directory path': $p.path,
-                    'filename': `${$p.key}.astn`,
-                    'indentation': "    ",
-                    'newline': "\n"
+                    'style': ['verbose', null]
                 }
-            )
-
-
-            return generate_and_write_to_disk(
-                $,
-                {
-                    'path': path,
-                    'key': key,
-                }
-            )
-        }),
+            ),
+            {
+                'directory path': path,
+                'filename': `${key}.astn`,
+                'indentation': "    ",
+                'newline': "\n"
+            }
+        )),
         ($) => 1
     )
 

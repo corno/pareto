@@ -37,7 +37,6 @@ export type Error =
     | ['document', Document_Error]
 
 export const $$ = (
-    $: string,
     $p: {
         'file path': string,
     }

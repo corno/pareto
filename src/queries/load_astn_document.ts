@@ -66,7 +66,7 @@ export const $$ = (
         ($) => {
             switch ($[0]) {
                 case 'failure': return _ea.ss($, ($) => {
-                    return _easync.query.unsafe['create exception'](['parse error', $])
+                    return _easync.query.unsafe['raise exception'](['parse error', $])
                 })
                 case 'success': return _ea.ss($, ($): _easync.Unsafe_Query_Result<_out.Node, Error> => {
                     //the instance was parsed successfully
@@ -90,7 +90,7 @@ export const $$ = (
                                 switch ($[0]) {
                                     case 'error': return _ea.ss($, ($) => _ea.cc($, ($) => {
                                         switch ($[0]) {
-                                            case 'parse error': return _ea.ss($, ($) => _easync.query.unsafe['create exception'](['schema error', {
+                                            case 'parse error': return _ea.ss($, ($) => _easync.query.unsafe['raise exception'](['schema error', {
                                                 // 'message': $.,
                                                 'file location': schema_path,
                                             }]))
