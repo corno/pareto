@@ -107,7 +107,7 @@ export const $ = (
                         ($) => $,
                         () => {
                             schema.types.dictionary.map(($, key) => {
-                                _ed.log_debug_message(`available type: ${key}`)
+                                _ed.log_debug_message(`available type: ${key}`, () => {})
                             })
                             _ea.panic(`(FIXME: make this a reference) root type ${resolved_schema_schema.type} not found`)
                         }

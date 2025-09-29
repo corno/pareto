@@ -11,8 +11,10 @@ import * as r_pareto_module from "../resolvers/module"
 import * as t_pareto_module_to_fountain_pen_block from "../transformations/module/temp_typescript"
 
 import { Directory as cmd_fs_write_directory_to_filesystem } from "pareto-fountain-pen/dist/commands/write_to_file_system"
+import { $$ as cmd_log } from "exupery-resources/dist/commands/log"
 import { $$ as cmd_log_error } from "exupery-resources/dist/commands/log_error"
 import { $$ as cmd_copy_file } from "exupery-resources/dist/commands/copy"
+import { $$ as cmd_remove_node } from "exupery-resources/dist/commands/remove"
 
 const copy = (source: string, target: string,) => {
     return cmd_copy_file(
@@ -35,8 +37,35 @@ export const $$ = (
         const path = "./out/source_code/src/generated"
 
         const module_path = `${path}/${key}`
-        return _easync.command.unsafe['do nothing']<null>().then_multiple(
+        return _easync.command.unsafe['do nothing']<null>(
+        ).then_multiple(
             _ea.array_literal([
+                cmd_log(_ea.array_literal([`cleaning: ${key}`])).cast_to_unsafe(),
+                cmd_remove_node(
+                    `${module_path}/implementation`,
+                    true,
+                    {}
+                ).process_exception(
+                    ($) => {
+                        return cmd_log_error(_ea.array_literal([`Could not remove old generated implementation files`]))
+                    },
+                    ($) => null
+                ),
+                cmd_remove_node(
+                    `${module_path}/interface`,
+                    true,
+                    {}
+                ).process_exception(
+                    ($) => {
+                        return cmd_log_error(_ea.array_literal([`Could not remove old generated interface files`]))
+                    },
+                    ($) => null
+                )
+            ]),
+            () => null,
+        ).then_multiple(
+            _ea.array_literal([
+                cmd_log(_ea.array_literal([`generating: ${key}`])).cast_to_unsafe(),
                 copy("./src/generated/implementation/generic/resolve.ts", module_path + "/implementation/generic/resolve.ts"),
                 copy("./src/generated/implementation/generic/unmarshall.ts", module_path + "/implementation/generic/unmarshall.ts"),
                 copy("./src/generated/interface/core/resolve.ts", module_path + "/interface/core/resolve.ts"),
