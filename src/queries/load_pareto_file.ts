@@ -22,15 +22,15 @@ import * as parse from "astn/dist/parse/parse"
 
 import * as _out from "../temp/temp_unmashall_result_types"
 
-import  { $$ as op_join_with_separator } from "pareto-standard-operations/dist/impure/text/join_list_of_texts_with_separator"
+import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/impure/text/join_list_of_texts_with_separator"
 
-import  { $$ as q_read_file } from "exupery-resources/dist/queries/read_file"
+import { $$ as q_read_file } from "exupery-resources/dist/queries/read_file"
 
 import { get_directory_path } from "../operations/path"
 
 import { $ as load_schema } from "../deserializers/load_schema"
 
-import { $$ as q_load_astn_document, Error as Document_Error } from "./load_astn_document"
+import { $$ as q_load_astn_document, Error as Document_Error } from "./load_pareto_document"
 
 export type Error =
     | ['no file', null]

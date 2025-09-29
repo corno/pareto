@@ -16,7 +16,7 @@ import { $$ as cmd_console_log } from "exupery-resources/dist/commands/log"
 
 import * as _out from "../temp/temp_unmashall_result_types"
 
-import { $$ as load_astn_file } from "../queries/load_astn_file"
+import { $$ as load_astn_file } from "../queries/load_pareto_file"
 
 import { $$ as op_remove_first_element } from "pareto-standard-operations/dist/impure/list/remove_first_element"
 import { $$ as op_remove_last_element } from "pareto-standard-operations/dist/impure/list/remove_last_element"
