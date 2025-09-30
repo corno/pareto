@@ -11,10 +11,10 @@ import * as r_pareto_module from "../resolvers/module"
 
 import * as t_pareto_module_to_fountain_pen_block from "../transformations/module/temp_typescript"
 
-import { Directory as cmd_fs_write_directory_to_filesystem } from "pareto-fountain-pen/dist/commands/write_to_file_system"
-import { $$ as cmd_log } from "exupery-resources/dist/commands/log"
-import { $$ as cmd_log_error } from "exupery-resources/dist/commands/log_error"
-import { $$ as cmd_remove_node } from "exupery-resources/dist/commands/remove"
+import { Directory as cmd_fs_write_directory_to_filesystem } from "pareto-fountain-pen/dist/actions/write_to_file_system"
+import { $$ as cmd_log } from "exupery-resources/dist/actions/log"
+import { $$ as cmd_log_error } from "exupery-resources/dist/actions/log_error"
+import { $$ as cmd_remove_node } from "exupery-resources/dist/actions/remove"
 
 export const $$: _eb.Run_Unsafe_Program_Main = (
     $

@@ -2,6 +2,6 @@
 
 import * as _eb from 'exupery-core-bin'
 
-import { $$ } from "../commands/seal"
+import { $$ } from "../procedures/seal"
 
 _eb.run_unsafe_program($$)

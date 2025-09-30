@@ -2,6 +2,6 @@
 
 import * as _eb from 'exupery-core-bin'
 
-import { $$ } from "../commands/serialize_schemas"
+import { $$ } from "../procedures/serialize_schemas"
 
 _eb.run_unsafe_program($$)

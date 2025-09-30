@@ -2,6 +2,6 @@
 
 import * as _eb from 'exupery-core-bin'
 
-import { $$ } from "../commands/compile"
+import { $$ } from "../procedures/compile"
 
 _eb.run_unsafe_program($$)

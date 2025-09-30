@@ -4,7 +4,7 @@ import * as _eb from 'exupery-core-bin'
 import * as _ed from 'exupery-core-data'
 import * as _easync from 'exupery-core-async'
 
-import * as wtfs from "pareto-fountain-pen/dist/commands/write_to_file_system"
+import * as wtfs from "pareto-fountain-pen/dist/actions/write_to_file_system"
 import * as temp_astn_to_fp from "astn/dist/transformations/target/fountain_pen_block"
 
 //data

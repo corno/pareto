@@ -12,8 +12,8 @@ import { $$ as read_file } from "exupery-resources/dist/queries/read_file"
 import * as t_ur_ue from "../transformations/unmarshall_result/unmarshall_errors"
 import * as t_ue_fp from "../transformations/unmarshall_errors/fountain_pen"
 
-import { Block as cmd_fp_to_error_log } from "pareto-fountain-pen/dist/commands/console_error"
-import { $$ as cmd_console_log } from "exupery-resources/dist/commands/log"
+import { Block as cmd_fp_to_error_log } from "pareto-fountain-pen/dist/actions/console_error"
+import { $$ as cmd_console_log } from "exupery-resources/dist/actions/log"
 
 import * as _out from "../temp/temp_unmashall_result_types"
 
@@ -69,7 +69,7 @@ export const $$: _eb.Run_Unsafe_Program_Main = (
     // ).map_exception(($) => 1
     // ).execute_unsafe_command($ => _ea.cc(
     //     ,
-    //     ($): _easync.Unsafe_Command_Result<number> => {
+    //     ($): _easync.Unsafe_Procedure_Context<number> => {
     //         switch ($[0]) {
     //             case 'error': return _ea.ss($, ($) => _ea.cc($, ($) => {
     //                 switch ($[0]) {

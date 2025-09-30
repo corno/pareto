@@ -7,10 +7,10 @@ import * as _ea from 'exupery-core-alg'
 import * as _eb from 'exupery-core-bin'
 import * as _easync from 'exupery-core-async'
 
-import { $$ as cmd_log_error } from "exupery-resources/dist/commands/log_error"
+import { $$ as cmd_log_error } from "exupery-resources/dist/actions/log_error"
 
 export const $$ = (
-): _easync.Unsafe_Command_Result<_eb.Error> => {
+): _easync.Unsafe_Procedure_Context<_eb.Error> => {
     return _easync.command.unsafe.initialize(
 
     ).execute(() => cmd_log_error(
