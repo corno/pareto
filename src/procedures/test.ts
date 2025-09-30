@@ -23,7 +23,7 @@ import { $$ as op_remove_first_element } from "pareto-standard-operations/dist/i
 import { $$ as op_remove_last_element } from "pareto-standard-operations/dist/impure/list/remove_last_element"
 
 
-export const $$: _eb.Run_Unsafe_Program_Main = (
+export const $$: _eb.Run_Unguaranteed_Procedure_Main = (
 ) => {
     const instance_path = "./data/test/pareto_modules/pareto-json.astn"
 
@@ -67,9 +67,9 @@ export const $$: _eb.Run_Unsafe_Program_Main = (
     // q_read_file(
     //     instance_path, true
     // ).map_exception(($) => 1
-    // ).execute_unsafe_command($ => _ea.cc(
+    // ).execute_unguaranteed_command($ => _ea.cc(
     //     ,
-    //     ($): _easync.Unsafe_Procedure_Context<number> => {
+    //     ($): _easync.Unguaranteed_Procedure_Context<number> => {
     //         switch ($[0]) {
     //             case 'error': return _ea.ss($, ($) => _ea.cc($, ($) => {
     //                 switch ($[0]) {

@@ -16,21 +16,21 @@ import { $$ as cmd_log } from "exupery-resources/dist/actions/log"
 import { $$ as cmd_log_error } from "exupery-resources/dist/actions/log_error"
 import { $$ as cmd_remove_node } from "exupery-resources/dist/actions/remove"
 
-export const $$: _eb.Run_Unsafe_Program_Main = (
+export const $$: _eb.Run_Unguaranteed_Procedure_Main = (
     $
-) => _easync.command.unsafe.initialize<_eb.Error>(
+) => _easync.command.unguaranteed.initialize<_eb.Error>(
 
-).execute_dictionary_unsafe(
+).execute_dictionary_unguaranteed(
     poormans_modules.map(($, key) => {
         const path = "./out/source_code/src/generated"
 
         const module_path = `${path}/${key}`
-        return _easync.command.unsafe.initialize<null>(
-        ).execute_multiple_unsafe(
+        return _easync.command.unguaranteed.initialize<null>(
+        ).execute_multiple_unguaranteed(
             _ea.array_literal([
             ]),
             () => null,
-        ).execute_multiple_unsafe(
+        ).execute_multiple_unguaranteed(
             _ea.array_literal([
             ]),
             () => null,

@@ -38,7 +38,7 @@ export const $$ = (
     $p: {
         'file path': string,
     }
-): _easync.Unsafe_Query_Result<_out.Node, Error> => {
+): _easync.Unguaranteed_Query_Result<_out.Node, Error> => {
     const instance_path = $p['file path']
     const schema_path = op_join_with_separator(
         get_directory_path($p['file path']).transform(

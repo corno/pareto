@@ -6,4 +6,4 @@ import * as _easync from 'exupery-core-async'
 
 import { $$ } from "../procedures/validate"
 
-_eb.run_unsafe_program($$)
+_eb.run_unguaranteed_procedure($$)

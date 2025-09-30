@@ -43,7 +43,7 @@ export const $$ = (
         'content': string,
         'file path': string,
     }
-): _easync.Unsafe_Query_Result<_out.Node, Error> => {
+): _easync.Unguaranteed_Query_Result<_out.Node, Error> => {
     const instance_path = $p['file path']
     const schema_path = op_join_with_separator(
         get_directory_path($p['file path']).transform(
@@ -64,9 +64,9 @@ export const $$ = (
         ($) => {
             switch ($[0]) {
                 case 'failure': return _ea.ss($, ($) => {
-                    return _easync.query.unsafe['raise exception'](['parse error', $])
+                    return _easync.query.unguaranteed['raise exception'](['parse error', $])
                 })
-                case 'success': return _ea.ss($, ($): _easync.Unsafe_Query_Result<_out.Node, Error> => {
+                case 'success': return _ea.ss($, ($): _easync.Unguaranteed_Query_Result<_out.Node, Error> => {
                     //the instance was parsed successfully
 
                     const content = $.content
@@ -84,11 +84,11 @@ export const $$ = (
                             load_schema(
                                 $,
                             ),
-                            ($): _easync.Unsafe_Query_Result<_out.Node, Error> => {
+                            ($): _easync.Unguaranteed_Query_Result<_out.Node, Error> => {
                                 switch ($[0]) {
                                     case 'error': return _ea.ss($, ($) => _ea.cc($, ($) => {
                                         switch ($[0]) {
-                                            case 'parse error': return _ea.ss($, ($) => _easync.query.unsafe['raise exception'](['schema error', {
+                                            case 'parse error': return _ea.ss($, ($) => _easync.query.unguaranteed['raise exception'](['schema error', {
                                                 // 'message': $.,
                                                 'file location': schema_path,
                                             }]))
@@ -100,7 +100,7 @@ export const $$ = (
 
                                         const type = $
 
-                                        return _easync.query.unsafe['create result'](tu_dynamic_unmarshall.Node(
+                                        return _easync.query.unguaranteed['create result'](tu_dynamic_unmarshall.Node(
                                             content,
                                             {
                                                 'definition': type.node,

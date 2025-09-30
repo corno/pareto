@@ -10,8 +10,8 @@ import * as _easync from 'exupery-core-async'
 import { $$ as cmd_log_error } from "exupery-resources/dist/actions/log_error"
 
 export const $$ = (
-): _easync.Unsafe_Procedure_Context<_eb.Error> => {
-    return _easync.command.unsafe.initialize(
+): _easync.Unguaranteed_Procedure_Context<_eb.Error> => {
+    return _easync.command.unguaranteed.initialize(
 
     ).execute(() => cmd_log_error(
         _ea.array_literal([

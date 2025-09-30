@@ -24,30 +24,30 @@ const copy = (source: string, target: string,) => {
         true,
         {
         }
-    ).process_exception(
+    ).process_exception_deprecated(
         ($) => cmd_log_error(_ea.array_literal([`Could not copy static file: ${source}`])),
         ($) => null
     )
 }
 
-export const $$: _eb.Run_Unsafe_Program_Main = (
-) => _easync.command.unsafe.initialize<_eb.Error>(
-).execute_dictionary_unsafe(
+export const $$: _eb.Run_Unguaranteed_Procedure_Main = (
+) => _easync.command.unguaranteed.initialize<_eb.Error>(
+).execute_dictionary_unguaranteed(
     poormans_modules.map(($, key) => {
         const path = "./out/source_code/src/generated"
 
         const module_path = `${path}/${key}`
-        return _easync.command.unsafe.initialize<null>(
-        ).execute_multiple_unsafe(
+        return _easync.command.unguaranteed.initialize<null>(
+        ).execute_multiple_unguaranteed(
             _ea.array_literal([
-                _easync.command.unsafe.initialize<null>().execute(() => {
+                _easync.command.unguaranteed.initialize<null>().execute(() => {
                     return cmd_log(_ea.array_literal([`cleaning: ${key}`]))
                 }),
                 cmd_remove_node(
                     `${module_path}/implementation`,
                     true,
                     {}
-                ).process_exception(
+                ).process_exception_deprecated(
                     ($) => {
                         return cmd_log_error(_ea.array_literal([`Could not remove old generated implementation files`]))
                     },
@@ -57,7 +57,7 @@ export const $$: _eb.Run_Unsafe_Program_Main = (
                     `${module_path}/interface`,
                     true,
                     {}
-                ).process_exception(
+                ).process_exception_deprecated(
                     ($) => {
                         return cmd_log_error(_ea.array_literal([`Could not remove old generated interface files`]))
                     },
@@ -65,9 +65,9 @@ export const $$: _eb.Run_Unsafe_Program_Main = (
                 )
             ]),
             () => null,
-        ).execute_multiple_unsafe(
+        ).execute_multiple_unguaranteed(
             _ea.array_literal([
-                _easync.command.unsafe.initialize<null>().execute(() => {
+                _easync.command.unguaranteed.initialize<null>().execute(() => {
                     return cmd_log(_ea.array_literal([`generating: ${key}`]))
                 }),
                 copy("./src/generated/implementation/generic/resolve.ts", module_path + "/implementation/generic/resolve.ts"),
@@ -94,7 +94,7 @@ export const $$: _eb.Run_Unsafe_Program_Main = (
                         'newline': "\n",
                         'remove before creating': true,
                     }
-                ).process_exception(
+                ).process_exception_deprecated(
                     ($) => cmd_log_error(_ea.array_literal([`Could not write generated files`])),
                     ($) => ({
                         'exit code': 1

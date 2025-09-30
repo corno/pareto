@@ -19,11 +19,11 @@ import * as r_module from "../resolvers/module"
 //marshall
 import * as m_module from "../generated/implementation/schemas/module/marshall"
 
-export const $$: _eb.Run_Unsafe_Program_Main = ($) => {
+export const $$: _eb.Run_Unguaranteed_Procedure_Main = ($) => {
     const path = "./out/serialized"
 
-    return _easync.command.unsafe.initialize<_eb.Error>(
-    ).execute_dictionary_unsafe(
+    return _easync.command.unguaranteed.initialize<_eb.Error>(
+    ).execute_dictionary_unguaranteed(
         poormans_modules.map(($, key) => wtfs.File(
             temp_astn_to_fp.Document(
                 m_module.Module(
