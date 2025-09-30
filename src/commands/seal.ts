@@ -11,11 +11,13 @@ import { $$ as cmd_log_error } from "exupery-resources/dist/commands/log_error"
 
 export const $$ = (
 ): _easync.Unsafe_Command_Result<_eb.Error> => {
-    return cmd_log_error(
+    return _easync.command.unsafe.initialize(
+
+    ).then_safe(() => cmd_log_error(
         _ea.array_literal([
             "The 'seal' command needs to be implemented"
         ]),
-    ).throw_exception({
+    )).throw_exception({
         'exit code': 1,
     })
 }

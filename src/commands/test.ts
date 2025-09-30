@@ -42,19 +42,21 @@ export const $$: _eb.Run_Unsafe_Program_Main = (
         ($) => ({
             'exit code': 1,
         }),
-        ($) => cmd_fp_to_error_log(
-            t_ue_fp.Errors(
-                t_ur_ue.Node($, null),
+        ($, init) => init.then_safe(() => {
+            return cmd_fp_to_error_log(
+                t_ue_fp.Errors(
+                    t_ur_ue.Node($, null),
+                    {
+                        'document path': instance_path,
+                        'line offset': 1,
+                        'column offset': 1,
+                    }
+                ),
                 {
-                    'document path': instance_path,
-                    'line offset': 1,
-                    'column offset': 1,
+                    'indentation': '  ',
                 }
-            ),
-            {
-                'indentation': '  ',
-            }
-        ).cast_to_unsafe()
+            )
+        }),
     )
 
 

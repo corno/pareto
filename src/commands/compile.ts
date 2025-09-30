@@ -40,7 +40,9 @@ export const $$ = (
         return _easync.command.unsafe.initialize<null>(
         ).then_multiple(
             _ea.array_literal([
-                cmd_log(_ea.array_literal([`cleaning: ${key}`])).cast_to_unsafe(),
+                _easync.command.unsafe.initialize<null>().then_safe(() => {
+                    return cmd_log(_ea.array_literal([`cleaning: ${key}`]))
+                }),
                 cmd_remove_node(
                     `${module_path}/implementation`,
                     true,
@@ -65,7 +67,9 @@ export const $$ = (
             () => null,
         ).then_multiple(
             _ea.array_literal([
-                cmd_log(_ea.array_literal([`generating: ${key}`])).cast_to_unsafe(),
+                _easync.command.unsafe.initialize<null>().then_safe(() => {
+                    return cmd_log(_ea.array_literal([`generating: ${key}`]))
+                }),
                 copy("./src/generated/implementation/generic/resolve.ts", module_path + "/implementation/generic/resolve.ts"),
                 copy("./src/generated/implementation/generic/unmarshall.ts", module_path + "/implementation/generic/unmarshall.ts"),
                 copy("./src/generated/interface/core/resolve.ts", module_path + "/interface/core/resolve.ts"),
