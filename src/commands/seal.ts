@@ -13,7 +13,7 @@ export const $$ = (
 ): _easync.Unsafe_Command_Result<_eb.Error> => {
     return _easync.command.unsafe.initialize(
 
-    ).then_safe(() => cmd_log_error(
+    ).execute(() => cmd_log_error(
         _ea.array_literal([
             "The 'seal' command needs to be implemented"
         ]),

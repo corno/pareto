@@ -42,7 +42,7 @@ export const $$: _eb.Run_Unsafe_Program_Main = (
         ($) => ({
             'exit code': 1,
         }),
-        ($i, $) => $i.then_safe(() => {
+        ($i, $) => $i.execute(() => {
             return cmd_fp_to_error_log(
                 t_ue_fp.Errors(
                     t_ur_ue.Node($, null),

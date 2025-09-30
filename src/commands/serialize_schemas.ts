@@ -23,7 +23,7 @@ export const $$: _eb.Run_Unsafe_Program_Main = ($) => {
     const path = "./out/serialized"
 
     return _easync.command.unsafe.initialize<_eb.Error>(
-    ).then_dictionary(
+    ).execute_dictionary_unsafe(
         poormans_modules.map(($, key) => wtfs.File(
             temp_astn_to_fp.Document(
                 m_module.Module(

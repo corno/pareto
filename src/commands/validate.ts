@@ -20,17 +20,17 @@ export const $$: _eb.Run_Unsafe_Program_Main = (
     $
 ) => _easync.command.unsafe.initialize<_eb.Error>(
 
-).then_dictionary(
+).execute_dictionary_unsafe(
     poormans_modules.map(($, key) => {
         const path = "./out/source_code/src/generated"
 
         const module_path = `${path}/${key}`
         return _easync.command.unsafe.initialize<null>(
-        ).then_multiple(
+        ).execute_multiple_unsafe(
             _ea.array_literal([
             ]),
             () => null,
-        ).then_multiple(
+        ).execute_multiple_unsafe(
             _ea.array_literal([
             ]),
             () => null,
