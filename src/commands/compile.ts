@@ -30,7 +30,7 @@ const copy = (source: string, target: string,) => {
     )
 }
 
-export const $$ = (
+export const $$: _eb.Run_Unsafe_Program_Main = (
 ) => _easync.command.unsafe.initialize<_eb.Error>(
 ).then_dictionary(
     poormans_modules.map(($, key) => {

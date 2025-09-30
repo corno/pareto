@@ -32,7 +32,7 @@ export const $$: _eb.Run_Unsafe_Program_Main = (
             'file path': instance_path,
         }
     ).process(
-        ($) => _ea.cc($, ($) => {
+        ($i, $) => _ea.cc($, ($) => {
             switch ($[0]) {
                 case 'no file': return _ea.ss($, ($) => cmd_console_log(_ea.array_literal(["SDFSFD"])))
                 case 'document': return _ea.ss($, ($) => cmd_console_log(_ea.array_literal(["SDFSFD"])))
@@ -42,7 +42,7 @@ export const $$: _eb.Run_Unsafe_Program_Main = (
         ($) => ({
             'exit code': 1,
         }),
-        ($, init) => init.then_safe(() => {
+        ($i, $) => $i.then_safe(() => {
             return cmd_fp_to_error_log(
                 t_ue_fp.Errors(
                     t_ur_ue.Node($, null),
