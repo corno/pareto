@@ -4,8 +4,6 @@ import * as _et from 'exupery-core-types'
 import * as _edata from 'exupery-core-data'
 import * as _ed from 'exupery-core-dev'
 
-import * as pso from "pareto-standard-operations"
-
 //data
 
 import * as d_schema from "../generated/interface/schemas/schema/data_types/source"

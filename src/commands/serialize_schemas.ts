@@ -19,10 +19,10 @@ import * as r_module from "../resolvers/module"
 //marshall
 import * as m_module from "../generated/implementation/schemas/module/marshall"
 
-export const $$: _eb.Unsafe_Program_Main = ($) => {
+export const $$: _eb.Run_Unsafe_Program_Main = ($) => {
     const path = "./out/serialized"
 
-    return _easync.command.unsafe['do nothing']<number>(
+    return _easync.command.unsafe.initialize<_eb.Error>(
     ).then_dictionary(
         poormans_modules.map(($, key) => wtfs.File(
             temp_astn_to_fp.Document(
@@ -56,7 +56,9 @@ export const $$: _eb.Unsafe_Program_Main = ($) => {
                 'newline': "\n"
             }
         )),
-        ($) => 1
+        ($) => ({
+            'exit code': 1
+        })
     )
 
 

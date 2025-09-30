@@ -4,6 +4,7 @@ import * as _et from 'exupery-core-types'
 import * as _edata from 'exupery-core-data'
 import * as _ed from 'exupery-core-dev'
 import * as _easync from 'exupery-core-async'
+import * as _eb from 'exupery-core-bin'
 
 import { $$ as read_file } from "exupery-resources/dist/queries/read_file"
 
@@ -22,9 +23,8 @@ import { $$ as op_remove_first_element } from "pareto-standard-operations/dist/i
 import { $$ as op_remove_last_element } from "pareto-standard-operations/dist/impure/list/remove_last_element"
 
 
-export const $$ = (
-): _easync.Unsafe_Command_Result<number> => {
-
+export const $$: _eb.Run_Unsafe_Program_Main = (
+) => {
     const instance_path = "./data/test/pareto_modules/pareto-json.astn"
 
     return load_astn_file(
@@ -39,7 +39,9 @@ export const $$ = (
                 default: return _ea.au($[0])
             }
         }),
-        ($) => 1,
+        ($) => ({
+            'exit code': 1,
+        }),
         ($) => cmd_fp_to_error_log(
             t_ue_fp.Errors(
                 t_ur_ue.Node($, null),

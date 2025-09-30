@@ -2,6 +2,7 @@
 import * as _ea from 'exupery-core-alg'
 import * as _ed from 'exupery-core-data'
 import * as _easync from 'exupery-core-async'
+import * as _eb from 'exupery-core-bin'
 
 //data
 import { $ as poormans_modules } from "../temp/temporary_schemas/all"
@@ -30,14 +31,13 @@ const copy = (source: string, target: string,) => {
 }
 
 export const $$ = (
-) => _easync.command.unsafe['do nothing']<number>(
-
+) => _easync.command.unsafe.initialize<_eb.Error>(
 ).then_dictionary(
     poormans_modules.map(($, key) => {
         const path = "./out/source_code/src/generated"
 
         const module_path = `${path}/${key}`
-        return _easync.command.unsafe['do nothing']<null>(
+        return _easync.command.unsafe.initialize<null>(
         ).then_multiple(
             _ea.array_literal([
                 cmd_log(_ea.array_literal([`cleaning: ${key}`])).cast_to_unsafe(),
@@ -92,12 +92,16 @@ export const $$ = (
                     }
                 ).process_exception(
                     ($) => cmd_log_error(_ea.array_literal([`Could not write generated files`])),
-                    ($) => 1
+                    ($) => ({
+                        'exit code': 1
+                    })
                 )
             ]),
             () => null,
         )
 
     }),
-    ($) => 1
+    ($) => ({
+        'exit code': 1
+    })
 )
