@@ -52,7 +52,7 @@ export const $$ = (
     return q_read_file(
         instance_path, true
     ).map_exception(($): Error => ['no file', null])
-    .then(($) => q_load_astn_document({
+    .then_unguaranteed(($) => q_load_astn_document({
         'content': $,
         'file path': instance_path,
     }).map_exception(($) => ['document', $]))

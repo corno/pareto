@@ -72,7 +72,7 @@ export const $$ = (
                 true,
             ).map_exception<Error>(
                 () => ['no schema file', null] as Error
-            ).then(($) => {
+            ).then_unguaranteed(($) => {
                 //the schema file was read successfully
                 return _ea.cc(
                     load_schema(
