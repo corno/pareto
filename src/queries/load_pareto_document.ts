@@ -27,7 +27,7 @@ import { $$ as q_read_file } from "exupery-resources/dist/queries/read_file"
 
 import { get_directory_path } from "../operations/path"
 
-import { $ as load_schema } from "../deserializers/load_schema"
+import { $, $ as load_schema } from "../deserializers/load_schema"
 
 export type Error =
     | ['parse error', d_parse_result.Parse_Error]
@@ -54,69 +54,61 @@ export const $$ = (
             'separator': "/",
         }
     ) + "/astn-schema"
-    return _ea.cc(
-        parse.parse(
-            $p.content,
-            {
-                'tab size': 4,
-            }
-        ),
+    return parse.parse(
+        $p.content,
+        {
+            'tab size': 4,
+        }
+    ).transform(
         ($) => {
-            switch ($[0]) {
-                case 'failure': return _ea.ss($, ($) => {
-                    return _easync.query.unguaranteed['raise exception'](['parse error', $])
-                })
-                case 'success': return _ea.ss($, ($): _easync.Unguaranteed_Query_Result<_out.Node, Error> => {
-                    //the instance was parsed successfully
+            //the instance was parsed successfully
 
-                    const content = $.content
+            const content = $.content
 
-                    //now first, get the schema
+            //now first, get the schema
 
-                    return q_read_file(
-                        schema_path,
-                        true,
-                    ).map_exception<Error>(
-                        () => ['no schema file', null] as Error
-                    ).then(($) => {
-                        //the schema file was read successfully
-                        return _ea.cc(
-                            load_schema(
-                                $,
-                            ),
-                            ($): _easync.Unguaranteed_Query_Result<_out.Node, Error> => {
+            return q_read_file(
+                schema_path,
+                true,
+            ).map_exception<Error>(
+                () => ['no schema file', null] as Error
+            ).then(($) => {
+                //the schema file was read successfully
+                return _ea.cc(
+                    load_schema(
+                        $,
+                    ),
+                    ($): _easync.Unguaranteed_Query_Result<_out.Node, Error> => {
+                        switch ($[0]) {
+                            case 'error': return _ea.ss($, ($) => _ea.cc($, ($) => {
                                 switch ($[0]) {
-                                    case 'error': return _ea.ss($, ($) => _ea.cc($, ($) => {
-                                        switch ($[0]) {
-                                            case 'parse error': return _ea.ss($, ($) => _easync.query.unguaranteed['raise exception'](['schema error', {
-                                                // 'message': $.,
-                                                'file location': schema_path,
-                                            }]))
-                                            default: return _ea.au($[0])
-                                        }
-                                    }))
-                                    case 'success': return _ea.ss($, ($) => {
-                                        //the schema was loaded successfully
-
-                                        const type = $
-
-                                        return _easync.query.unguaranteed['create result'](tu_dynamic_unmarshall.Node(
-                                            content,
-                                            {
-                                                'definition': type.node,
-                                            }
-                                        ))
-                                    })
+                                    case 'parse error': return _ea.ss($, ($) => _easync.query.unguaranteed['raise exception'](['schema error', {
+                                        // 'message': $.,
+                                        'file location': schema_path,
+                                    }]))
                                     default: return _ea.au($[0])
                                 }
-                            }
-                        )
-                    })
+                            }))
+                            case 'success': return _ea.ss($, ($) => {
+                                //the schema was loaded successfully
+
+                                const type = $
+
+                                return _easync.query.unguaranteed['create result'](tu_dynamic_unmarshall.Node(
+                                    content,
+                                    {
+                                        'definition': type.node,
+                                    }
+                                ))
+                            })
+                            default: return _ea.au($[0])
+                        }
+                    }
+                )
+            })
 
 
-                })
-                default: return _ea.au($[0])
-            }
-        }
+        },
+        ($) => _easync.query.unguaranteed['raise exception'](['parse error', $])
     )
 }
