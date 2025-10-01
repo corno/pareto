@@ -16,7 +16,7 @@ import { $$ as cmd_log } from "exupery-resources/dist/actions/log"
 import { $$ as cmd_log_error } from "exupery-resources/dist/actions/log_error"
 import { $$ as cmd_remove_node } from "exupery-resources/dist/actions/remove"
 
-export const $$: _eb.Run_Unguaranteed_Procedure_Main = (
+export const $$: _eb.Unguaranteed_Main = (
     $
 ) => _easync.command.unguaranteed.initialize<_eb.Error>(
 

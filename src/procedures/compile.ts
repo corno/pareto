@@ -30,7 +30,7 @@ const copy = (source: string, target: string,) => {
     )
 }
 
-export const $$: _eb.Run_Unguaranteed_Procedure_Main = (
+export const $$: _eb.Unguaranteed_Main = (
 ) => _easync.command.unguaranteed.initialize<_eb.Error>(
 ).execute_dictionary_unguaranteed(
     poormans_modules.map(($, key) => {

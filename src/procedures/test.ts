@@ -23,7 +23,7 @@ import { $$ as op_remove_first_element } from "pareto-standard-operations/dist/i
 import { $$ as op_remove_last_element } from "pareto-standard-operations/dist/impure/list/remove_last_element"
 
 
-export const $$: _eb.Run_Unguaranteed_Procedure_Main = (
+export const $$: _eb.Unguaranteed_Main = (
 ) => {
     const instance_path = "./data/test/pareto_modules/pareto-json.astn"
 

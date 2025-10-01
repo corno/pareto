@@ -19,7 +19,7 @@ import * as r_module from "../resolvers/module"
 //marshall
 import * as m_module from "../generated/implementation/schemas/module/marshall"
 
-export const $$: _eb.Run_Unguaranteed_Procedure_Main = ($) => {
+export const $$: _eb.Unguaranteed_Main = ($) => {
     const path = "./out/serialized"
 
     return _easync.command.unguaranteed.initialize<_eb.Error>(
