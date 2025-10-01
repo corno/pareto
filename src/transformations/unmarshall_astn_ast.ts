@@ -483,6 +483,7 @@ export const Node = (
 ): _out.Node => {
     const datax = $
     return {
+        'definition': $p.definition,
         'value': datax,
         'type': _ea.cc(datax.type, ($) => {
             switch ($[0]) {

@@ -26,6 +26,7 @@ export type Property =
     | ['multiple', _et.Array<Entry_Data>]
 
 export type Node = {
+    'definition': d_schema.Type_Node
     'value': d_astn_ast.Value
     'type': Node_Type //the type is determined by the definition
 }
