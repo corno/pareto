@@ -70,7 +70,7 @@ export const $$ = (
             return q_read_file(
                 schema_path,
                 true,
-            ).map_exception<Error>(
+            ).map_exception_<Error>(
                 () => ['no schema file', null] as Error
             ).then_unguaranteed(($) => {
                 //the schema file was read successfully

@@ -31,9 +31,12 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "not set": t.nothing(),
                 "set": t.component_cyclic("Value"),
             }),
-            "state": t.group({
-                "state": t.text_global("Text Value"),
-                "value": t.component_cyclic("Value")
+            "state": t.state_group({
+                "missing data": t.nothing(),
+                "set": t.group({
+                    "state": t.text_global("Text Value"),
+                    "value": t.component_cyclic("Value")
+                })
             })
         })),
     }

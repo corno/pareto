@@ -24,14 +24,16 @@ import { $$ as op_remove_last_element } from "pareto-standard-operations/dist/im
 
 
 export const $$: _eb.Unguaranteed_Main = (
+    $i, $
 ) => {
     const instance_path = "./data/test/pareto_modules/pareto-json.astn"
 
-    return load_astn_file(
-        {
-            'file path': instance_path,
-        }
-    ).process(
+    return $i.process_unguaranteed_data(
+        () => load_astn_file(
+            {
+                'file path': instance_path,
+            },
+        ),
         ($i, $) => _ea.cc($, ($) => {
             switch ($[0]) {
                 case 'no file': return _ea.ss($, ($) => cmd_console_log(_ea.array_literal(["SDFSFD"])))
@@ -58,7 +60,6 @@ export const $$: _eb.Unguaranteed_Main = (
             )
         }),
     )
-
 
 
 

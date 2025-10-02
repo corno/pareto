@@ -5,7 +5,7 @@ import * as _ed from 'exupery-core-data'
 import * as _easync from 'exupery-core-async'
 
 import * as wtfs from "pareto-fountain-pen/dist/actions/write_to_file_system"
-import * as temp_astn_to_fp from "astn/dist/transformations/target/fountain_pen_block"
+import * as temp_astn_to_fp from "../temp_serialize_target_ast"
 
 //data
 import { $ as poormans_modules } from "../temp/temporary_schemas/all"

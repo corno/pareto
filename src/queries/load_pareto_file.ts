@@ -51,9 +51,9 @@ export const $$ = (
     ) + "/astn-schema"
     return q_read_file(
         instance_path, true
-    ).map_exception(($): Error => ['no file', null])
+    ).map_exception_(($): Error => ['no file', null])
     .then_unguaranteed(($) => q_load_astn_document({
         'content': $,
         'file path': instance_path,
-    }).map_exception(($) => ['document', $]))
+    }).map_exception_(($) => ['document', $]))
 }
