@@ -12,9 +12,9 @@ import {
     b, l, block,
 } from "pareto-fountain-pen/dist/shorthands/block"
 
-import { $$ as op_serialize_with_apostrophe_delimiter } from "pareto-standard-operations/dist/impure/text/serialize_with_apostrophe_delimiter"
-import { $$ as op_serialize_with_quote_delimiter } from "pareto-standard-operations/dist/impure/text/serialize_with_quote_delimiter"
-import { $$ as op_serialize_with_grave_delimiter } from "pareto-standard-operations/dist/impure/text/serialize_with_grave_delimiter"
+import { $$ as op_serialize_with_apostrophe_delimiter } from "pareto-standard-operations/dist/impure/text/serialize_apostrophed_string"
+import { $$ as op_serialize_with_quote_delimiter } from "pareto-standard-operations/dist/impure/text/serialize_quoted_string"
+import { $$ as op_serialize_with_grave_delimiter } from "pareto-standard-operations/dist/impure/text/serialize_backticked_string"
 import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/impure/dictionary/to_list_sorted_by_code_point"
 
 export const Value = (
@@ -27,7 +27,10 @@ export const Value = (
                     l.snippet("{"),
                     l.indent([
                         b.sub_decorated(op_dictionary_to_list($).map(($) => b.nested_line([
-                            l.snippet(op_serialize_with_grave_delimiter($.key)),
+                            l.snippet(op_serialize_with_grave_delimiter({
+                                'value': $.key,
+                                'add delimiters': true
+                            })),
                             l.snippet(": "),
                             Value($.value),
                         ]))),
@@ -41,7 +44,10 @@ export const Value = (
                             l.snippet("("),
                             l.indent([
                                 b.sub_decorated(op_dictionary_to_list(entries).map(($) => b.nested_line([
-                                    l.snippet(op_serialize_with_apostrophe_delimiter($.key)),
+                                    l.snippet(op_serialize_with_apostrophe_delimiter({
+                                'value': $.key,
+                                'add delimiters': true
+                            })),
                                     l.snippet(": "),
                                     Value($.value),
                                 ]))),
@@ -60,7 +66,10 @@ export const Value = (
                 ]))
                 case 'state': return _ea.ss($, ($) => l.sub([
                     l.snippet("| "),
-                    l.snippet(op_serialize_with_apostrophe_delimiter($.state)),
+                    l.snippet(op_serialize_with_apostrophe_delimiter({
+                                'value': $.state,
+                                'add delimiters': true
+                            })),
                     l.snippet(" "),
                     Value($.value),
                 ]))
@@ -80,8 +89,14 @@ export const Value = (
                     const value = $.value
                     return _ea.cc($.delimiter, ($) => {
                         switch ($[0]) {
-                            case 'backtick': return _ea.ss($, ($) => l.snippet(op_serialize_with_grave_delimiter(value)))
-                            case 'quote': return _ea.ss($, ($) => l.snippet(op_serialize_with_quote_delimiter(value)))
+                            case 'backtick': return _ea.ss($, ($) => l.snippet(op_serialize_with_grave_delimiter({
+                                'value': value,
+                                'add delimiters': true
+                            })))
+                            case 'quote': return _ea.ss($, ($) => l.snippet(op_serialize_with_quote_delimiter({
+                                'value': value,
+                                'add delimiters': true
+                            })))
                             case 'none': return _ea.ss($, ($) => l.snippet(value))
                             default: return _ea.au($[0])
                         }
