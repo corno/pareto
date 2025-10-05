@@ -34,11 +34,13 @@ export type Error =
     | ['no file', null]
     | ['document', Document_Error]
 
-export const $$ = (
-    $p: {
-        'file path': string,
-    }
-): _easync.Unguaranteed_Query_Result<_out.Node, Error> => {
+export type Parameters = {
+    'file path': string,
+}
+
+export const $$: _easync.Unguaranteed_Query_Initializer<Parameters, _out.Node, Error> = (
+    $p,
+) => {
     const instance_path = $p['file path']
     const schema_path = op_join_with_separator(
         get_directory_path($p['file path']).transform(
@@ -49,11 +51,13 @@ export const $$ = (
             'separator': "/",
         }
     ) + "/astn-schema"
-    return q_read_file(
-        instance_path, true
+    return q_read_file({
+        'path': instance_path,
+        'escape spaces in path': true,
+    }
     ).map_exception_(($): Error => ['no file', null])
-    .then_unguaranteed(($) => q_load_astn_document({
-        'content': $,
-        'file path': instance_path,
-    }).map_exception_(($) => ['document', $]))
+        .then_unguaranteed(($) => q_load_astn_document({
+            'content': $,
+            'file path': instance_path,
+        }).map_exception_(($) => ['document', $]))
 }

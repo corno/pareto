@@ -7,105 +7,171 @@ import * as _eb from 'exupery-core-bin'
 //data
 import { $ as poormans_modules } from "../temp/temporary_schemas/all"
 
+import * as D_resources from "exupery-resources/dist/types"
+
 import * as r_pareto_module from "../resolvers/module"
 
 import * as t_pareto_module_to_fountain_pen_block from "../transformations/module/temp_typescript"
 
-import { Directory as cmd_fs_write_directory_to_filesystem } from "pareto-fountain-pen/dist/actions/write_to_file_system"
-import { $$ as cmd_log } from "exupery-resources/dist/actions/log"
-import { $$ as cmd_log_error } from "exupery-resources/dist/actions/log_error"
-import { $$ as cmd_copy_file } from "exupery-resources/dist/actions/copy"
-import { $$ as cmd_remove_node } from "exupery-resources/dist/actions/remove"
 
-const copy = (source: string, target: string,) => {
-    return cmd_copy_file(
-        source,
-        target,
-        true,
-        {
-        }
-    ).process_exception_deprecated(
-        ($) => cmd_log_error(_ea.array_literal([`Could not copy static file: ${source}`])),
-        ($) => null
-    )
+
+import { $$ as p_fp_write_to_directory } from "pareto-fountain-pen/dist/procedures/write_to_directory"
+import { $$ as p_log } from "exupery-resources/dist/procedures/log"
+import { $$ as p_log_error } from "exupery-resources/dist/procedures/log_error"
+import { $$ as p_copy_file } from "exupery-resources/dist/procedures/copy"
+import { $$ as p_remove_node } from "exupery-resources/dist/procedures/remove"
+
+type Copy_Parameters = {
+    'file': string,
+    'module path': string,
 }
 
-export const $$: _eb.Unguaranteed_Main = (
-) => _easync.command.unguaranteed.initialize<_eb.Error>(
-).execute_dictionary_unguaranteed(
-    poormans_modules.map(($, key) => {
-        const path = "./out/source_code/src/generated"
+const p_copy_and_log_error: _easync.Unguaranteed_Procedure_Initializer<Copy_Parameters, null> = ($p) => _easync.upi.u(
+    p_copy_file,
+    () => null,
+    _easync.eh(
+        p_log_error,
+        ($) => ({
+            'lines': _ea.array_literal([`Could not copy static file: ${$p.file}`])
+        })
+    )
+)({
+    'source': {
+        'path': "./src/generated/" + $p.file,
+        'escape spaces in path': true,
+    },
+    'target': {
+        'path': $p['module path'] + $p.file,
+        'escape spaces in path': true,
+    },
+    'options': {
+    }
+})
 
-        const module_path = `${path}/${key}`
-        return _easync.command.unguaranteed.initialize<null>(
-        ).execute_multiple_unguaranteed(
-            _ea.array_literal([
-                _easync.command.unguaranteed.initialize<null>().execute(() => {
-                    return cmd_log(_ea.array_literal([`cleaning: ${key}`]))
-                }),
-                cmd_remove_node(
-                    `${module_path}/implementation`,
-                    true,
-                    {}
-                ).process_exception_deprecated(
-                    ($) => {
-                        return cmd_log_error(_ea.array_literal([`Could not remove old generated implementation files`]))
-                    },
-                    ($) => null
-                ),
-                cmd_remove_node(
-                    `${module_path}/interface`,
-                    true,
-                    {}
-                ).process_exception_deprecated(
-                    ($) => {
-                        return cmd_log_error(_ea.array_literal([`Could not remove old generated interface files`]))
-                    },
-                    ($) => null
-                )
-            ]),
-            () => null,
-        ).execute_multiple_unguaranteed(
-            _ea.array_literal([
-                _easync.command.unguaranteed.initialize<null>().execute(() => {
-                    return cmd_log(_ea.array_literal([`generating: ${key}`]))
-                }),
-                copy("./src/generated/implementation/generic/resolve.ts", module_path + "/implementation/generic/resolve.ts"),
-                copy("./src/generated/implementation/generic/unmarshall.ts", module_path + "/implementation/generic/unmarshall.ts"),
-                copy("./src/generated/interface/core/resolve.ts", module_path + "/interface/core/resolve.ts"),
-                copy("./src/generated/interface/core/astn_target.ts", module_path + "/interface/core/astn_target.ts"),
-                copy("./src/generated/interface/core/astn_source.ts", module_path + "/interface/core/astn_source.ts"),
-                cmd_fs_write_directory_to_filesystem(
-                    t_pareto_module_to_fountain_pen_block.Module(
-                        r_pareto_module.Module(
-                            $,
-                            {
-                                'parameters': {
-                                    'lookups': null,
-                                    'values': null,
+export const $$: _eb.Unguaranteed_Main_Initializer = () => {
+    return _easync.up.sequence([
+
+        _easync.upi.g<D_resources.Log_Parameters, _eb.Error>(
+            p_log,
+        )({
+            'lines': _ea.array_literal([`generating...`])
+        }),
+
+        _easync.up.dictionary<_eb.Error, null>(
+            poormans_modules.map(($, key) => {
+                const path = "./out/source_code/src/generated"
+
+                const module_path = `${path}/${key}`
+
+                return _easync.up.sequence<null>([
+
+                    _easync.upi.g<D_resources.Log_Parameters, null>(
+                        p_log,
+                    )({
+                        'lines': _ea.array_literal([`generating: ${key}`])
+                    }),
+
+                    //FIX do this in parallel
+                    _easync.up.sequence([
+
+                        _easync.upi.u(
+                            p_remove_node,
+                            ($) => null,
+                            _easync.eh(
+                                p_log_error,
+                                ($) => {
+                                    return ({
+                                        'lines': _ea.array_literal([`Could not remove old generated implementation files, ${$[0]}`])
+                                    })
                                 },
-                                'location 2 string': _ed.location_to_string
-                            }
-                        ),
-                    ),
-                    {
-                        'path': module_path,
-                        'indentation': "    ",
-                        'newline': "\n",
-                        'remove before creating': true,
-                    }
-                ).process_exception_deprecated(
-                    ($) => cmd_log_error(_ea.array_literal([`Could not write generated files`])),
-                    ($) => ({
-                        'exit code': 1
-                    })
-                )
-            ]),
-            () => null,
+                            )
+                        )({
+                            'path': {
+                                'path': `${module_path}/implementation`,
+                                'escape spaces in path': true,
+                            },
+                            'error if not exists': false,
+                        }),
+
+                        _easync.upi.u(
+                            p_remove_node,
+                            ($) => null,
+                            _easync.eh(
+                                p_log_error,
+                                ($) => {
+                                    return ({
+                                        'lines': _ea.array_literal([`Could not remove old generated ihterface files`])
+                                    })
+                                },
+                            )
+                        )({
+                            'path': {
+                                'path': `${module_path}/interface`,
+                                'escape spaces in path': true,
+                            },
+                            'error if not exists': false,
+                        }),
+
+                    ]),
+
+                    //FIX do this in parallel!
+                    _easync.up.sequence([
+                        //WARNING! first write the generated source files,
+                        //then copy the static files, 
+                        //otherwise the static files will be deleted again!
+
+                        _easync.upi.u(
+                            p_fp_write_to_directory,
+                            ($) => null,
+                        )({
+                            'directory': t_pareto_module_to_fountain_pen_block.Module(
+                                r_pareto_module.Module(
+                                    $,
+                                    {
+                                        'parameters': {
+                                            'lookups': null,
+                                            'values': null,
+                                        },
+                                        'location 2 string': _ed.location_to_string
+                                    }
+                                ),
+                            ),
+                            'path': module_path,
+                            'indentation': "    ",
+                            'newline': "\n",
+                            'remove before creating': true,
+                        }),
+
+
+                        p_copy_and_log_error({
+                            'module path': module_path,
+                            'file': "/implementation/generic/resolve.ts"
+                        }),
+                        p_copy_and_log_error({
+                            'module path': module_path,
+                            'file': "/implementation/generic/unmarshall.ts"
+                        }),
+                        p_copy_and_log_error({
+                            'module path': module_path,
+                            'file': "/interface/core/resolve.ts"
+                        }),
+                        p_copy_and_log_error({
+                            'module path': module_path,
+                            'file': "/interface/core/astn_target.ts"
+                        }),
+                        p_copy_and_log_error({
+                            'module path': module_path,
+                            'file': "/interface/core/astn_source.ts"
+                        }),
+                    ]),
+
+
+                ])
+            }),
+            ($) => ({
+                'exit code': 1
+            })
         )
 
-    }),
-    ($) => ({
-        'exit code': 1
-    })
-)
+    ])
+}

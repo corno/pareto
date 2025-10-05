@@ -37,13 +37,14 @@ export type Error =
         'file location': string
     }]
 
+export type Parameters = {
+    'content': string,
+    'file path': string,
+}
 
-export const $$ = (
-    $p: {
-        'content': string,
-        'file path': string,
-    }
-): _easync.Unguaranteed_Query_Result<_out.Node, Error> => {
+export const $$: _easync.Unguaranteed_Query_Initializer<Parameters, _out.Node, Error> = (
+    $p,
+) => {
     const instance_path = $p['file path']
     const schema_path = op_join_with_separator(
         get_directory_path($p['file path']).transform(
@@ -67,10 +68,10 @@ export const $$ = (
 
             //now first, get the schema
 
-            return q_read_file(
-                schema_path,
-                true,
-            ).map_exception_<Error>(
+            return q_read_file({
+                'path': schema_path,
+                'escape spaces in path': true,
+            }).map_exception_<Error>(
                 () => ['no schema file', null] as Error
             ).then_unguaranteed(($) => {
                 //the schema file was read successfully
@@ -78,7 +79,7 @@ export const $$ = (
                     load_schema(
                         $,
                     ),
-                    ($): _easync.Unguaranteed_Query_Result<_out.Node, Error> => {
+                    ($): _easync._Unguaranteed_Query<_out.Node, Error> => {
                         switch ($[0]) {
                             case 'error': return _ea.ss($, ($) => _ea.cc($, ($) => {
                                 switch ($[0]) {
