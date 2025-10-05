@@ -12,9 +12,9 @@ import {
     b, l, block,
 } from "pareto-fountain-pen/dist/shorthands/block"
 
-import { $$ as op_serialize_with_apostrophe_delimiter } from "pareto-standard-operations/dist/impure/text/serialize_apostrophed_string"
-import { $$ as op_serialize_with_quote_delimiter } from "pareto-standard-operations/dist/impure/text/serialize_quoted_string"
-import { $$ as op_serialize_with_grave_delimiter } from "pareto-standard-operations/dist/impure/text/serialize_backticked_string"
+import { $$ as op_serialize_with_apostrophe_delimiter } from "astn/dist/operations/impure/serialize_apostrophed_string"
+import { $$ as op_serialize_with_quote_delimiter } from "astn/dist/operations/impure/serialize_quoted_string"
+import { $$ as op_serialize_with_grave_delimiter } from "astn/dist/operations/impure/serialize_backticked_string"
 import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/impure/dictionary/to_list_sorted_by_code_point"
 
 export const Value = (
