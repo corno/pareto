@@ -28,6 +28,7 @@ export const $: g_.Types<pd.Source_Location>  = types(
             "nested line": t.component("Line"),
             "line": t.text_global("Output"),
             "sub block": t.component_cyclic("Block"),
+            "optional": t.optional(t.component_cyclic("Block Part")),
             "nothing": t.nothing(),
         })),
 
@@ -37,6 +38,7 @@ export const $: g_.Types<pd.Source_Location>  = types(
             "snippet": t.text_global("Output"),
             "indent": t.component_cyclic("Block"),
             "sub line": t.component_cyclic("Line"),
+            "optional": t.optional(t.component_cyclic("Line Part")),
             "nothing": t.nothing(),
         })),
     }

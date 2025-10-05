@@ -18,7 +18,7 @@ export const Errors = (
         'document path': string
     }
 ): _out.Block => {
-    return sh.block([sh.b.sub_decorated($.map(($) => {
+    return sh.block([sh.b.sub($.map(($) => {
         return sh.b.nested_line([
             sh.l.snippet(`${$p['document path']}:${$.range.start.relative.line + $p['line offset']}:${$.range.start.relative.column + $p['column offset']}: `),
             _ea.cc($.type, ($) => {
@@ -54,7 +54,7 @@ export const Error_Type_Error = (
                 case 'state is not a string': return _ea.ss($, ($) => sh.l.snippet(`State is not a string`))
                 case 'unknown state': return _ea.ss($, ($) => sh.l.sub([
                     sh.l.snippet(`Unknown state: ${$.found}, expected one of `),
-                    sh.l.sub_decorated(op_dictionary_to_list($.expected).map(($) => sh.l.snippet(`'${$.key}'`)))
+                    sh.l.sub(op_dictionary_to_list($.expected).map(($) => sh.l.snippet(`'${$.key}'`)))
                 ]))
                 default: return _ea.au($[0])
             }

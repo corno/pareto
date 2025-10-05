@@ -26,7 +26,7 @@ export const Value = (
                 case 'dictionary': return _ea.ss($, ($) => l.sub([
                     l.snippet("{"),
                     l.indent([
-                        b.sub_decorated(op_dictionary_to_list($).map(($) => b.nested_line([
+                        b.sub(op_dictionary_to_list($).map(($) => b.nested_line([
                             l.snippet(op_serialize_with_grave_delimiter({
                                 'value': $.key,
                                 'add delimiters': true
@@ -43,7 +43,7 @@ export const Value = (
                         return l.sub([
                             l.snippet("("),
                             l.indent([
-                                b.sub_decorated(op_dictionary_to_list(entries).map(($) => b.nested_line([
+                                b.sub(op_dictionary_to_list(entries).map(($) => b.nested_line([
                                     l.snippet(op_serialize_with_apostrophe_delimiter({
                                 'value': $.key,
                                 'add delimiters': true
@@ -58,7 +58,7 @@ export const Value = (
                 ]))
                 case 'list': return _ea.ss($, ($) => l.sub([
                     l.snippet("["),
-                    l.sub_decorated($.map(($) => l.sub([
+                    l.sub($.map(($) => l.sub([
                         l.snippet(" "),
                         Value($),
                     ]))),

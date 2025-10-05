@@ -8,8 +8,8 @@
     "dist"
   ],
   "dependencies": {
-    "astn": "^0.111.4",
-    "exupery": "^0.1.21",
+    "astn": "^0.111.6",
+    "exupery": "^0.1.22",
     "exupery-core-alg": "^0.1.12",
     "exupery-core-bin": "^0.1.18",
     "exupery-core-data": "^0.1.10",
