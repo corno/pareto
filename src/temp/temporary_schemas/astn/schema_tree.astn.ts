@@ -7,12 +7,15 @@ import { $ as x_ast } from "./schemas/ast/$.module.astn"
 import { $ as x_ide } from "./schemas/ide/$.module.astn"
 import { $ as x_parse_result } from "./schemas/parse_result/$.module.astn"
 import { $ as x_token } from "./schemas/token/$.module.astn"
-import { $ as x_target } from "./schemas/target/$.module.astn"
+import { $ as x_authoring_target } from "./schemas/authoring_target/$.module.astn"
+import { $ as x_sealed_target } from "./schemas/sealed_target/$.module.astn"
+
 
 export const $: g_.Schema_Tree<pd.Source_Location> = st.set({
     "ast": x_ast,
     "ide": x_ide,
     "parse result": x_parse_result,
     "token": x_token,
-    "target": x_target,
+    "authoring target": x_authoring_target,
+    "sealed target": x_sealed_target,
 })

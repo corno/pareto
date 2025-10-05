@@ -5,8 +5,8 @@ import * as _ea from 'exupery-core-alg'
  * and there should be no dependencies on pareto-standard-operations
  */
 
-import * as s_in from "./generated/interface/core/astn_target"
-import * as s_out from "pareto-fountain-pen/dist/generated/interface/schemas/block/data_types/target"
+import * as d_in from "./generated/interface/core/astn_target"
+import * as d_out from "pareto-fountain-pen/dist/generated/interface/schemas/block/data_types/target"
 
 import {
     b, l, block,
@@ -18,8 +18,8 @@ import { $$ as op_serialize_with_grave_delimiter } from "pareto-standard-operati
 import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/impure/dictionary/to_list_sorted_by_code_point"
 
 export const Value = (
-    $: s_in.Value,
-): s_out.Line_Part => {
+    $: d_in.Value,
+): d_out.Line_Part => {
     return l.sub([
         _ea.cc($, ($) => {
             switch ($[0]) {
@@ -94,10 +94,10 @@ export const Value = (
 }
 
 export const Document = (
-    $: s_in.Document,
+    $: d_in.Document,
     $p: {
     }
 
-): s_out.Block => block([b.nested_line([
+): d_out.Block => block([b.nested_line([
     Value($),
 ])])
