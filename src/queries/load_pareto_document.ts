@@ -83,10 +83,13 @@ export const $$: _easync.Unguaranteed_Query_Initializer<Parameters, _out.Node, E
                         switch ($[0]) {
                             case 'error': return _ea.ss($, ($) => _ea.cc($, ($) => {
                                 switch ($[0]) {
-                                    case 'parse error': return _ea.ss($, ($) => _easync.query.unguaranteed['raise exception'](['schema error', {
+                                    case 'parse error': return _ea.ss($, ($) => {
+                                        
+                                        return _easync.query.unguaranteed['raise exception'](['schema error', {
                                         // 'message': $.,
                                         'file location': schema_path,
-                                    }]))
+                                    }])
+                                    })
                                     default: return _ea.au($[0])
                                 }
                             }))
