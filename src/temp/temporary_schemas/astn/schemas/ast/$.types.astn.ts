@@ -54,8 +54,15 @@ export const $: g_.Types<pd.Source_Location> = types(
             }),
             "tagged value": t.group({
                 "|": t.component("Structural Token"),
-                "state": t.component("String"),
-                "value": t.component_cyclic("Value"),
+                "status": t.state_group({
+                    "missing data": t.group({
+                        "#": t.component("Structural Token"),
+                    }),
+                    "set": t.group({
+                        "state": t.component("String"),
+                        "value": t.component_cyclic("Value"),
+                    })
+                }),
             }),
             "not set": t.group({
                 "~": t.component("Structural Token"),

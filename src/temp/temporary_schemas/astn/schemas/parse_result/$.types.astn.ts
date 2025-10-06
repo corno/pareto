@@ -45,6 +45,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                         ":": t.nothing(),
                         ")": t.nothing(),
                         "]": t.nothing(),
+                        "#": t.nothing(),
                     })),
                     "cause": t.state_group({
                         "missing token": t.nothing(),
