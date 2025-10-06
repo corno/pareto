@@ -4,7 +4,7 @@ import * as _edev from 'exupery-core-dev'
 
 import * as definition from "../generated/interface/schemas/schema/data_types/source"
 
-import * as _in from "astn/dist/generated/interface/schemas/ast/data_types/target"
+import * as _in from "astn/dist/generated/interface/schemas/authoring_ast/data_types/target"
 import * as _in_token from "astn/dist/generated/interface/schemas/token/data_types/target"
 
 import * as t_ast_to_range from "astn/dist/transformations/ast/temp_value_range"
@@ -372,27 +372,37 @@ export const Node_Type = (
                 const def = $
                 return ['state', {
                     'definition': $,
-                    'found value type': _ea.cc(data, ($): _out.State_Found_Value_Type => {
+                    'found value type': _ea.cc(data, ($): _out.Node_Type_SG_State_found_value_type => {
                         switch ($[0]) {
-                            case 'tagged value': return _ea.ss($, ($) => {
+                            case 'tagged value': return _ea.ss($, ($): _out.Node_Type_SG_State_found_value_type => {
                                 const tv = $
-                                const state = $.state
-                                const value = $.value
                                 return ['valid', {
-                                    'value type': ['state', {
-                                        'value': tv,
-                                        'found state definition': def.__get_entry($.state.value).map(
-                                            ($) => ({
-                                                'definition': $,
-                                                'node': Node(
-                                                    value,
-                                                    {
-                                                        'definition': $,
-                                                    }
-                                                )
+                                    'value type': ['state', _ea.cc($.status, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state => {
+                                        switch ($[0]) {
+                                            case 'missing data': return _ea.ss($, ($) => _edev.implement_me())
+                                            case 'set': return _ea.ss($, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state => {
+                                                const state = $.state
+                                                const value = $.value
+                                                return {
+                                                    'value substatus': ['set', {
+                                                        'value': $,
+                                                        'found state definition': def.__get_entry($.state.value).map(
+                                                            ($) => ({
+                                                                'definition': $,
+                                                                'node': Node(
+                                                                    value,
+                                                                    {
+                                                                        'definition': $,
+                                                                    }
+                                                                )
+                                                            })
+                                                        ),
+                                                    }]
+                                                }
                                             })
-                                        ),
-                                    }],
+                                            default: return _ea.au($[0])
+                                        }
+                                    })]
                                 }]
                             })
                             // case 'ordered collection': return _ea.ss($, ($) => {

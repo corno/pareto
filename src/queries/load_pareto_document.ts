@@ -8,7 +8,7 @@ import * as _easync from 'exupery-core-async'
 //data
 
 import * as d_schema from "../generated/interface/schemas/schema/data_types/source"
-import * as d_parse_result from "astn/dist/generated/interface/schemas/parse_result/data_types/target"
+import * as d_parse_result from "astn/dist/generated/interface/schemas/authoring_parse_result/data_types/target"
 
 import * as r_pareto_schema from "../resolvers/schema"
 
@@ -16,7 +16,7 @@ import * as u_pareto_schema from "../generated/implementation/schemas/schema/unm
 
 import * as tu_dynamic_unmarshall from "../transformations/unmarshall_astn_ast"
 
-import * as parse from "astn/dist/parse/parse"
+import * as parse from "astn/dist/authoring_parse/parse"
 
 import * as _out from "../temp/temp_unmashall_result_types"
 

@@ -254,21 +254,29 @@ export const Node = (
                         case 'valid': return _ea.ss($, ($) => {
                             return _ea.cc($['value type'], ($) => {
                                 switch ($[0]) {
-                                    case 'state': return _ea.ss($, ($) => {
-                                        const xx = $.value
-                                        return $['found state definition'].transform(
-                                            ($) => Node($.node, $p),
-                                            (): _out.Errors => _ea.array_literal([
+                                    case 'state': return _ea.ss($, ($) => _ea.cc($['value substatus'], ($) => {
+                                        switch ($[0]) {
+                                            case 'missing data': return _ea.ss($, ($) => _edev.implement_me())
+                                            case 'set': return _ea.ss($, ($) => {
                                                 {
-                                                    'range': xx.state.range,
-                                                    'type': ['error', ['state', ['unknown state', {
-                                                        'found': xx.state.value,
-                                                        'expected': sg_def.map(($) => null)
-                                                    }]]]
+                                                    const xx = $.value
+                                                    return $['found state definition'].transform(
+                                                        ($) => Node($.node, $p),
+                                                        (): _out.Errors => _ea.array_literal([
+                                                            {
+                                                                'range': xx.state.range,
+                                                                'type': ['error', ['state', ['unknown state', {
+                                                                    'found': xx.state.value,
+                                                                    'expected': sg_def.map(($) => null)
+                                                                }]]]
+                                                            }
+                                                        ])
+                                                    )
                                                 }
-                                            ])
-                                        )
-                                    })
+                                            })
+                                            default: return _ea.au($[0])
+                                        }
+                                    }))
                                     default: return _ea.au($[0])
                                 }
                             })

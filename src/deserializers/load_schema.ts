@@ -7,7 +7,7 @@ import * as _ed from 'exupery-core-dev'
 //data
 
 import * as d_schema from "../generated/interface/schemas/schema/data_types/source"
-import * as d_parse_result from "astn/dist/generated/interface/schemas/parse_result/data_types/target"
+import * as d_parse_result from "astn/dist/generated/interface/schemas/sealed_parse_result/data_types/target"
 
 import * as r_pareto_schema from "../resolvers/schema"
 
@@ -15,7 +15,7 @@ import * as u_pareto_schema from "../generated/implementation/schemas/schema/unm
 
 import * as tu_dynamic_unmarshall from "../transformations/unmarshall_astn_ast"
 
-import * as parse from "astn/dist/parse/parse"
+import * as parse from "astn/dist/sealed_parse/parse"
 
 import * as _out from "../temp/temp_unmashall_result_types"
 
@@ -47,7 +47,7 @@ export const $ = (
 
             const resolved_schema_schema = r_pareto_schema.Type_Specification(
                 u_pareto_schema.Type_Specification(
-                    $.content, //if this goes wrong, the ast schema for astn and in 'generated' differ. Copy the astn one to generated
+                    _ed.implement_me(), //$.content, //if this goes wrong, the ast schema for astn and in 'generated' differ. Copy the astn one to generated
                     {
                         'value deserializers': {
                             'boolean': ($) => $ === "true",

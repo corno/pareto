@@ -10,7 +10,7 @@ import {
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
-export const $: g_.Types<pd.Source_Location>  = types(
+export const $: g_.Types<pd.Source_Location> = types(
     {
 
 
@@ -125,6 +125,7 @@ export const $: g_.Types<pd.Source_Location>  = types(
             "nested line": t.component("Line"),
             "line": t.text_global("Output"),
             "sub block": t.component("Block"),
+            "optional": t.optional(t.component_cyclic("Block Part")),
             "nothing": t.nothing(),
         })),
 
@@ -134,6 +135,7 @@ export const $: g_.Types<pd.Source_Location>  = types(
             "snippet": t.text_global("Output"),
             "indent": t.component("Block"),
             "sub line": t.component("Line"),
+            "optional": t.optional(t.component_cyclic("Line Part")),
             "nothing": t.nothing(),
         })),
 

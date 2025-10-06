@@ -7,7 +7,7 @@ import { $ as x_module } from "./schemas/module/$.module.astn"
 import { $ as x_schema } from "./schemas/schema/$.module.astn"
 import { $ as x_unmarshall_errors } from "./schemas/unmarshall_errors/$.module.astn"
 import { $ as x_unmarshall_result } from "./schemas/unmarshall_result/$.module.astn"
-import { $ as x_astn_ast } from "../astn/schemas/ast/$.module.astn"
+import { $ as x_astn_ast } from "../astn/schemas/authoring_ast/$.module.astn"
 import { $ as x_astn_token } from "../astn/schemas/token/$.module.astn"
 
 

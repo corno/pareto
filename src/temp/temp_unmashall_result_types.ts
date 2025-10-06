@@ -1,7 +1,7 @@
 import * as _et from 'exupery-core-types'
 
 import * as d_astn_token from "astn/dist/generated/interface/schemas/token/data_types/target"
-import * as d_astn_ast from "astn/dist/generated/interface/schemas/ast/data_types/target"
+import * as d_astn_ast from "astn/dist/generated/interface/schemas/authoring_ast/data_types/target"
 
 import * as d_schema from "../generated/interface/schemas/schema/data_types/source"
 
@@ -42,13 +42,13 @@ export type Node_Type =
     | ['group', Group]
     | ['identifier value pair', Identifier_Value_Pair]
     | ['optional', Optional]
-    | ['state', State]
+    | ['state', Node_Type_SG_State]
     | ['text', Text]
     | ['type parameter', string]
 
-export type State = {
+export type Node_Type_SG_State = {
     'definition': d_schema.Type_Node.SG.state_group
-    'found value type': State_Found_Value_Type
+    'found value type': Node_Type_SG_State_found_value_type
 }
 
 export type State_Definition_Found = {
@@ -56,12 +56,20 @@ export type State_Definition_Found = {
     'node': Node
 }
 
-export type State_Found_Value_Type_Valid = {
+export type Node_Type_SG_State_found_value_type_valid_value_type_SG_state = {
+    'value substatus':
+    | ['missing data', null]
+    | ['set', Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus_SG_set]
+}
+
+export type Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus_SG_set = {
+    'value': d_astn_ast.Concrete_Value.SG.tagged_value.status.SG._set
+    'found state definition': _et.Optional_Value<State_Definition_Found>
+}
+
+export type Node_Type_SG_State_found_value_type_valid = {
     'value type':
-    | ['state', {
-        'value': d_astn_ast.Concrete_Value.SG.tagged_value
-        'found state definition': _et.Optional_Value<State_Definition_Found>
-    }]
+    | ['state', Node_Type_SG_State_found_value_type_valid_value_type_SG_state]
     // | ['polyfill', { -> [ "state_name", ... ]
     //     'xx': {
     //         'node': Node,
@@ -70,8 +78,8 @@ export type State_Found_Value_Type_Valid = {
     // }]
 }
 
-export type State_Found_Value_Type =
-    | ['valid', State_Found_Value_Type_Valid]
+export type Node_Type_SG_State_found_value_type =
+    | ['valid', Node_Type_SG_State_found_value_type_valid]
     | ['invalid', d_astn_token.Range]
 
 // export type State_Error =
@@ -189,7 +197,7 @@ export type Group_Found_Value_Type =
     | ['valid', Group_Type]
     | ['invalid', d_astn_token.Range]
 
-export type Group_Type = 
+export type Group_Type =
     | ['indexed', Indexed_Group]
     | ['ordered', Ordered_Group]
 
