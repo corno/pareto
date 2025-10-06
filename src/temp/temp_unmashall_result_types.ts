@@ -57,10 +57,12 @@ export type State_Definition_Found = {
 }
 
 export type Node_Type_SG_State_found_value_type_valid_value_type_SG_state = {
-    'value substatus':
-    | ['missing data', null]
-    | ['set', Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus_SG_set]
+    'value substatus': Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus
 }
+
+export type Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus =
+    | ['missing data', d_astn_ast.Structural_Token]
+    | ['set', Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus_SG_set]
 
 export type Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus_SG_set = {
     'value': d_astn_ast.Concrete_Value.SG.tagged_value.status.SG._set

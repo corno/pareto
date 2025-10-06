@@ -47,6 +47,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                             "found": t.text_local(text('single line')),
                             "expected": t.dictionary(t.nothing()),
                         }),
+                        "missing data marker": t.nothing(),
                     }),
                 }),
                 "warning": t.state_group({

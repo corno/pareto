@@ -256,7 +256,12 @@ export const Node = (
                                 switch ($[0]) {
                                     case 'state': return _ea.ss($, ($) => _ea.cc($['value substatus'], ($) => {
                                         switch ($[0]) {
-                                            case 'missing data': return _ea.ss($, ($) => _edev.implement_me())
+                                            case 'missing data': return _ea.ss($, ($) => _ea.array_literal([
+                                                {
+                                                    'range': $.range,
+                                                    'type': ['error', ['state', ['state is not a string', null]]] //FIXME wrong error
+                                                }
+                                            ]))
                                             case 'set': return _ea.ss($, ($) => {
                                                 {
                                                     const xx = $.value

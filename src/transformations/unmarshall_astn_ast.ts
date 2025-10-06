@@ -377,14 +377,14 @@ export const Node_Type = (
                             case 'tagged value': return _ea.ss($, ($): _out.Node_Type_SG_State_found_value_type => {
                                 const tv = $
                                 return ['valid', {
-                                    'value type': ['state', _ea.cc($.status, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state => {
+                                    'value type': ['state', {
+                                        'value substatus': _ea.cc($.status, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
                                         switch ($[0]) {
-                                            case 'missing data': return _ea.ss($, ($) => _edev.implement_me())
-                                            case 'set': return _ea.ss($, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state => {
+                                            case 'missing data': return _ea.ss($, ($) => ['missing data', $['#']])
+                                            case 'set': return _ea.ss($, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
                                                 const state = $.state
                                                 const value = $.value
-                                                return {
-                                                    'value substatus': ['set', {
+                                                return ['set', {
                                                         'value': $,
                                                         'found state definition': def.__get_entry($.state.value).map(
                                                             ($) => ({
@@ -398,11 +398,11 @@ export const Node_Type = (
                                                             })
                                                         ),
                                                     }]
-                                                }
                                             })
                                             default: return _ea.au($[0])
                                         }
-                                    })]
+                                    })
+                                    }]
                                 }]
                             })
                             // case 'ordered collection': return _ea.ss($, ($) => {
