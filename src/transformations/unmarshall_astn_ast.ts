@@ -169,7 +169,6 @@ export const Node_Type = (
                         }
                     )
                 }]
-                // return _edev.implement_me()
             })
             case 'dictionary': return _ea.ss($, ($): _out.Node_Type => {
                 const prop_def = $.node
@@ -339,7 +338,6 @@ export const Node_Type = (
                                         }
                                     }]]
                                 })
-                                //case 'ordered collection': return _edev.implement_me()
                                 default: return ['invalid', $p.range]
                             }
                         })
