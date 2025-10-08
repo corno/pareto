@@ -77,6 +77,10 @@ export const $: g_.Types<pd.Source_Location> = types(
             "content": t.text_local(text('multi line')),
         })),
 
+        "Seal Parameters": type(t.group({
+            "content": t.text_local(text('multi line')),
+        })),
+
         "On Completion Parameters": type(t.group({
             "content": t.text_local(text('multi line')),
             "file path": t.text_local(text('single line')),
