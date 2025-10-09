@@ -95,7 +95,10 @@ export const Module = ($: _in.Module): _out.Module_Set<pd.Source_Location> => {
 
                     "Ordered Dictionary": type({ "D": null }, t.group({
                         "dictionary": t.dictionary(t.parameter_type("D")),
-                        "ordered list": t.array(t.key_value_pair(t.parameter_type("D"))),
+                        "ordered list": t.array(t.group({
+                            "key": t.string(),
+                            "value": t.parameter_type("D")
+                        })),
                     })),
 
                     "List": type({ "L": null }, t.array(t.parameter_type("L"))),
