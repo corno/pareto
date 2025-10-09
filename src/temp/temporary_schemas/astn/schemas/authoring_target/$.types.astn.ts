@@ -20,6 +20,9 @@ export const $: g_.Types<pd.Source_Location> = types(
                     "key": t.text_global("Text Value"),
                     "value": t.component_cyclic("Value"),
                 })),
+                /**
+                 * verbose groups are always ordered
+                 */
                 "verbose group": t.list(t.group({
                     "key": t.text_global("Text Value"),
                     "value": t.component_cyclic("Value"),

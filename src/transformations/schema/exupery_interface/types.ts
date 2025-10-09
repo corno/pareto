@@ -209,7 +209,7 @@ export const Type_Node = (
                 },
                 []
             ))
-            case 'group': return pa.ss($, ($) => sh.t.group($.map(($, key) => Type_Node($))))
+            case 'group': return pa.ss($, ($) => sh.t.group($.dictionary.map(($, key) => Type_Node($))))
             case 'list': return pa.ss($, ($) => {
                 const type = $.node
                 return sh.t.component_imported(

@@ -100,7 +100,7 @@ export const Type_Node = (
                     }
                 )
             ))
-            case 'group': return pa.ss($, ($) => i.group($.map(($, key) => i.change_context(
+            case 'group': return pa.ss($, ($) => i.group($.dictionary.map(($, key) => i.change_context(
                 s.from_context([key]),
                 Type_Node(
                     $,

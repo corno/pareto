@@ -2,35 +2,18 @@
     'operations': {
     }
     'schema tree': | 'schema' (
-        'complexity': | 'constrained' (
-            'resolvers': {
-            }
-            'signatures': (
-                'types': {
-                }
-            )
-        )
+        'complexity': | 'unconstrained' ~
         'globals': (
-            'complexity': | 'constrained' ~
+            'complexity': | 'unconstrained' ~
             'number types': {
             }
             'text types': {
-                `a`: (
-                    'type': | 'multi line' ~
-                )
             }
         )
         'imports': {
-            `foo'`: (
-                'schema': `...`
-                'schema set child': `...`
-            )
-            `bar`: (
-                'schema': `...`
-                'schema set child': `...`
-            )
         }
         'types': {
+            `MY TYPE`: ()
         }
     )
 )

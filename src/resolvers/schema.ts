@@ -652,7 +652,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                     'ordered': $.ordered,
                 }]
             })
-            case 'group': return _ea.ss($, ($) => ['group', _i_generic.resolve_dictionary($, {
+            case 'group': return _ea.ss($, ($) => ['group', _i_generic.resolve_ordered_dictionary($, {
                 'location 2 string': $p['location 2 string'],
                 'map': ($, $l) => Type_Node(
                     $.value,
@@ -862,7 +862,7 @@ export const Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                                 return $[1]
                             })
                             const p_child: _i_generic.Acyclic_Entry_Reference<_i_out.Type_Node> = _i_generic.get_entry(
-                                _i_generic.dictionary_to_lookup(sc_definition, null),
+                                _i_generic.dictionary_to_lookup(sc_definition.dictionary, null),
                                 {
                                     'reference': $,
                                     'location 2 string': $p['location 2 string']
@@ -1446,7 +1446,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                         'map': ($, $l) => {
 
                             const p_definition = _i_generic.get_entry(
-                                _i_generic.dictionary_to_lookup(x, null),
+                                _i_generic.dictionary_to_lookup(x.dictionary, null),
                                 {
                                     'reference': {
                                         'key': $.key,
@@ -1488,7 +1488,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                 'resolver': p_resolver,
                             }
                         },
-                        'denseness benchmark': x,
+                        'denseness benchmark': x.dictionary,
                     }
                 )
                 return ['group', p_properties]
@@ -1835,7 +1835,7 @@ export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = 
                                 return $[1]
                             })
                             const p_child: _i_generic.Acyclic_Entry_Reference<_i_out.Type_Node> = _i_generic.get_entry(
-                                _i_generic.dictionary_to_lookup(sc_definition, null),
+                                _i_generic.dictionary_to_lookup(sc_definition.dictionary, null),
                                 {
                                     'reference': $,
                                     'location 2 string': $p['location 2 string']

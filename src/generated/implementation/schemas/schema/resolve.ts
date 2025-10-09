@@ -177,7 +177,7 @@ export const r_Group: _i_signatures._T_Group = ($, $p) => _pa.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return _pa.block(() => {
-        return _i_generic.resolve_dictionary(
+        return _i_generic.resolve_ordered_dictionary(
             $,
             {
                 'location 2 string': l2s,
@@ -1450,7 +1450,7 @@ export const r_Relative_Value_Selection: _i_signatures._T_Relative_Value_Selecti
                     const c_definition = _pd.implement_me()
                     return _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup(
-                            c_definition,
+                            c_definition['dictionary'],
                             null
                         ),
                         {
@@ -2253,7 +2253,7 @@ export const r_Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $
                     const c_definition = _pd.implement_me()
                     return _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup(
-                            c_definition,
+                            c_definition['dictionary'],
                             null
                         ),
                         {

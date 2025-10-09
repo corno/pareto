@@ -173,7 +173,7 @@ export const Type_Node = (
                 _ea.dictionary_literal({
                     "properties": i.function_(
                         false,
-                        i.group($.map(($, key) => i.change_context(
+                        i.group($.dictionary.map(($, key) => i.change_context(
                             s.call(
                                 s.from_variable_import(" i generic", "get entry", []),
                                 s.from_context([]),

@@ -92,7 +92,7 @@ export const Globals: _i_signatures._T_Globals = ($, $p) => ['verbose group', _p
         }
     ))]),
 })]
-export const Group: _i_signatures._T_Group = ($, $p) => ['dictionary', $.map(($) => Type_Node(
+export const Group: _i_signatures._T_Group = ($, $p) => ['dictionary', $['dictionary'].map(($) => Type_Node(
     $,
     {
         'value serializers': $p['value serializers'],

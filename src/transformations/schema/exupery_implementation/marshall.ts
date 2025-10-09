@@ -151,7 +151,7 @@ export const Type_Node = (
             // ))))
             case 'group': return _ea.ss($, ($) => i.tagged_union(
                 "verbose group",
-                i.dictionary_literal($.map(($, key) => i.change_context(
+                i.dictionary_literal($.dictionary.map(($, key) => i.change_context(
                     s.from_context([key]),
                     Type_Node(
                         $,

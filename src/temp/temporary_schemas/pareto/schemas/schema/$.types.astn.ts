@@ -103,7 +103,10 @@ export const $: g_.Types<pd.Source_Location> = types(
             "resolvers": t.component_cyclic("Resolvers"),
         })),
 
-        "Group": type(t.dictionary(t.component_cyclic("Type Node"))),
+        /**
+         * the properties in a group are ordered. This way there is a canonical concise representation
+         */
+        "Group": type(t.dictionary(t.component_cyclic("Type Node"), 'ordered')),
 
         "Type Node Reference": type(t.group({ //FIXME: inline
             "type location": t.component("Type Reference"),

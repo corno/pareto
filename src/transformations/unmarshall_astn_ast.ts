@@ -7,7 +7,7 @@ import * as definition from "../generated/interface/schemas/schema/data_types/so
 import * as _in from "astn/dist/generated/interface/schemas/authoring_ast/data_types/target"
 import * as _in_token from "astn/dist/generated/interface/schemas/token/data_types/target"
 
-import * as t_ast_to_range from "astn/dist/transformations/ast/temp_value_range"
+import * as t_ast_to_range from "astn/dist/transformations/authoring_ast/temp_value_range"
 
 import * as _out from "../temp/temp_unmashall_result_types"
 
@@ -291,7 +291,7 @@ export const Node_Type = (
                                                 op_dictionary_merge(
                                                     entries,
                                                     {
-                                                        'supporting dictionary': group_def
+                                                        'supporting dictionary': group_def.dictionary
                                                     }
                                                 ).map(($) => {
                                                     return $.supporting.transform( //drop all the ones for which there is a definition
@@ -301,7 +301,7 @@ export const Node_Type = (
                                                 })
                                             ).map(($) => $.map(($) => $.key.range)), //select the locations
                                             'properties': op_dictionary_merge(
-                                                group_def,
+                                                group_def.dictionary,
                                                 {
                                                     'supporting dictionary': entries
                                                 }

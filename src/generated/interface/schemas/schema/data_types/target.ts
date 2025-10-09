@@ -37,7 +37,7 @@ export type _T_Globals<M_Source> = {
     readonly 'text types': _i_core._T_Dictionary<M_Source, _T_Text_Type<M_Source>>
 }
 
-export type _T_Group<M_Source> = _i_core._T_Dictionary<M_Source, _T_Type_Node<M_Source>>
+export type _T_Group<M_Source> = _i_core._T_Ordered_Dictionary<M_Source, _T_Type_Node<M_Source>>
 
 export type _T_Guaranteed_Value_Selection<M_Source> = {
     readonly 'resulting node': _i_core._T_Derived_Reference<M_Source, _T_Type_Node<M_Source>>
