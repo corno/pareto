@@ -110,7 +110,6 @@ export const r_Type_Reference = (
             switch ($[0]) {
                 case 'dictionary': return pa.ss($, ($) => sh.sub.dictionary())
                 case 'group': return pa.ss($, ($) => sh.sub.group($.key))
-                case 'identifier value pair': return pa.ss($, ($) => _edev.implement_me())
                 case 'list': return pa.ss($, ($) => sh.sub.list())
                 case 'optional': return pa.ss($, ($) => sh.sub.optional())
                 case 'state group': return pa.ss($, ($) => sh.sub.state_group($.key))
@@ -222,7 +221,6 @@ export const Type_Node = (
                     []
                 )
             })
-            case 'identifier value pair': return pa.ss($, ($) => sh.t.key_value_pair(Type_Node($)))
             case 'nothing': return pa.ss($, ($) => sh.t.null_())
             case 'optional': return pa.ss($, ($) => sh.t.optional(Type_Node($)))
             case 'reference': return pa.ss($, ($) => {
@@ -265,7 +263,7 @@ export const Type_Node = (
                 },
                 []
             ))
-            case 'type parameter': return pa.ss($, ($) => sh.t.parameter_type($.key))
+            // case 'type parameter': return pa.ss($, ($) => sh.t.parameter_type($.key))
             default: return pa.au($[0])
         }
     })

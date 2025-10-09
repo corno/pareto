@@ -426,7 +426,6 @@ export const Node_Resolver = (
                     }
                 )
             ))
-            case 'identifier value pair': return _ea.ss($, ($) => _edev.implement_me()) // quite simple
             case 'group': return _ea.ss($, ($) => i.block(
                 $['ordered list'].map(($) => temp_ordered_variable(
                     `p ${$.key}`,
@@ -526,7 +525,7 @@ export const Node_Resolver = (
                     $p['temp subselection'],
                 ),
             ))
-            case 'type parameter': return _ea.ss($, ($) => _edev.implement_me()) // a lot of work: the resolvers need to be passed to this resolve function
+            // case 'type parameter': return _ea.ss($, ($) => _edev.implement_me()) // a lot of work: the resolvers need to be passed to this resolve function
             default: return _ea.au($[0])
         }
     })

@@ -344,7 +344,6 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'identifier value pair': return _ea.ss($, ($) => _edev.implement_me())
             case 'optional': return _ea.ss($, ($): _out.Node_Type => {
                 const def = $
                 return ['optional', {
@@ -477,7 +476,7 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'type parameter': return _ea.ss($, ($) => _edev.implement_me())
+            // case 'type parameter': return _ea.ss($, ($) => _edev.implement_me())
             default: return _ea.au($[0])
         }
     })

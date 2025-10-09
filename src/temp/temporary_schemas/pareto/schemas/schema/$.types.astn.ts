@@ -111,7 +111,6 @@ export const $: g_.Types<pd.Source_Location> = types(
                 t.state_group({
                     "dictionary": t.nothing(),
                     "group": t.reference("Group", []),
-                    "identifier value pair": t.nothing(),
                     "list": t.nothing(),
                     "optional": t.nothing(),
                     "state group": t.reference("Type Node", [tr.s("state group")])
@@ -276,7 +275,6 @@ export const $: g_.Types<pd.Source_Location> = types(
             }),
             "dictionary": t.component("Dictionary"),
             "group": t.component("Group"),
-            "identifier value pair": t.component_cyclic("Type Node"),
             "list": t.group({
                 "node": t.component_cyclic("Type Node"),
             }),
@@ -305,7 +303,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "global": t.reference("Globals", [tr.g("text types")]),
                 "local": t.component("Text Type"),
             }),
-            "type parameter": t.reference("Type Parameters", []),
+            //"type parameter": t.reference("Type Parameters", []),
         })),
 
         "Node Resolver": type(t.state_group({
@@ -343,7 +341,6 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "benchmark": t.optional(t.component("Benchmark"))
             }),
             "group": t.component("Node Resolver Group"),
-            "identifier value pair": t.component_cyclic("Node Resolver"),
             "list": t.group({
                 "definition": t.reference_derived("Type Node", [tr.s("list")]),
                 "resolver": t.component_cyclic("Node Resolver"),
@@ -376,7 +373,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                 })),
             }),
             "text": t.nothing(),
-            "type parameter": t.nothing(),
+            // "type parameter": t.nothing(),
         })),
 
         "Guaranteed Value Selection": type(t.group({

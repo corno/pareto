@@ -659,10 +659,6 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                     $p,
                 ),
             })])
-            case 'identifier value pair': return _ea.ss($, ($) => ['identifier value pair', Type_Node(
-                $,
-                $p,
-            )])
             case 'list': return _ea.ss($, ($) => {
                 const p_type = Type_Node(
                     $.node,
@@ -762,16 +758,16 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                     $p,
                 ),
             })])
-            case 'type parameter': return _ea.ss($, ($) => ['type parameter', _i_generic.get_entry(
-                _i_generic.dictionary_to_lookup(
-                    $p.parameters.values['type parameters'],
-                    null,
-                ),
-                {
-                    'reference': $,
-                    'location 2 string': $p['location 2 string']
-                }
-            )])
+            // case 'type parameter': return _ea.ss($, ($) => ['type parameter', _i_generic.get_entry(
+            //     _i_generic.dictionary_to_lookup(
+            //         $p.parameters.values['type parameters'],
+            //         null,
+            //     ),
+            //     {
+            //         'reference': $,
+            //         'location 2 string': $p['location 2 string']
+            //     }
+            // )])
             default: return _ea.au($[0])
         }
     })
@@ -875,18 +871,6 @@ export const Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                             return {
                                 'element': ['group', p_child],
                                 'result': p_child.entry
-                            }
-                        })
-                        case 'identifier value pair': return _ea.ss($, ($) => {
-                            const sc_definition: _i_out.Type_Node.SG.identifier_value_pair = _ea.cc(current, ($) => {
-                                if ($[0] !== 'identifier value pair') {
-                                    return _ea.panic(`not a 'identifier value pair' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
-                                }
-                                return $[1]
-                            })
-                            return {
-                                'element': ['identifier value pair', null],
-                                'result': sc_definition
                             }
                         })
                         case 'list': return _ea.ss($, ($) => {
@@ -1509,33 +1493,6 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                 )
                 return ['group', p_properties]
             })
-            case 'identifier value pair': return _ea.ss($, ($) => {
-                const x = $p.parameters.values.definition[0] !== 'identifier value pair'
-                    ? _ea.panic("not a 'identifier value pair' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
-                    : $p.parameters.values.definition[1]
-                return ['identifier value pair', Node_Resolver(
-                    $,
-                    {
-                        'parameters': {
-                            'lookups': $p.parameters.lookups,
-                            'values': {
-                                'definition': x,
-
-                                'types': $p.parameters.values.types,
-                                'imports': $p.parameters.values.imports,
-                                'signature': $p.parameters.values.signature,
-                                'signatures': $p.parameters.values.signatures,
-                                'list cursor': $p.parameters.values['list cursor'],
-                                'linked entry': $p.parameters.values['linked entry'],
-                                'current dictionary': $p.parameters.values['current dictionary'],
-                                'option constraints': $p.parameters.values['option constraints'],
-                                'current ordered dictionary': $p.parameters.values['current ordered dictionary'],
-                            },
-                        },
-                        'location 2 string': $p['location 2 string'],
-                    },
-                )]
-            })
             case 'list': return _ea.ss($, ($) => {
                 const p_definition = $p.parameters.values.definition[0] !== 'list'
                     ? _ea.panic("not a 'list' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
@@ -1824,13 +1781,13 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     : $p.parameters.values.definition[1]
                 return ['text', null]
             })
-            case 'type parameter': return _ea.ss($, ($) => {
+            // case 'type parameter': return _ea.ss($, ($) => {
 
-                const x = $p.parameters.values.definition[0] !== 'type parameter'
-                    ? _ea.panic("not a 'type parameter' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
-                    : $p.parameters.values.definition[1]
-                return ['type parameter', null]
-            })
+            //     const x = $p.parameters.values.definition[0] !== 'type parameter'
+            //         ? _ea.panic("not a 'type parameter' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+            //         : $p.parameters.values.definition[1]
+            //     return ['type parameter', null]
+            // })
             default: return _ea.au($[0])
         }
     })

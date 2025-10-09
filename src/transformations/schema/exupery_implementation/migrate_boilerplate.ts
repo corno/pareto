@@ -100,7 +100,6 @@ export const Type_Node = (
                     }
                 )
             ))
-            case 'identifier value pair': return pa.ss($, ($) => _edev.implement_me())
             case 'group': return pa.ss($, ($) => i.group($.map(($, key) => i.change_context(
                 s.from_context([key]),
                 Type_Node(
@@ -167,7 +166,7 @@ export const Type_Node = (
                     $p.subselection,
                 ),
             ))
-            case 'type parameter': return pa.ss($, ($) => _edev.implement_me())
+            // case 'type parameter': return pa.ss($, ($) => _edev.implement_me())
             default: return pa.au($[0])
         }
     })

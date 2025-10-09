@@ -156,9 +156,6 @@ export namespace t {
     export const group = (properties: Raw_Or_Normal_Dictionary<unresolved.Type_Node<pd.Source_Location>>): unresolved.Type_Node<pd.Source_Location> => {
         return wrap_state_group(['group', wrap_dictionary(properties)])
     }
-    export const identifier_value_pair = (type: unresolved.Type_Node<pd.Source_Location>): unresolved.Type_Node<pd.Source_Location> => {
-        return wrap_state_group(['identifier value pair', type])
-    }
     export const list = (type: unresolved.Type_Node<pd.Source_Location>): unresolved.Type_Node<pd.Source_Location> => {
         return wrap_state_group(['list', {
             'node': type,
@@ -306,9 +303,9 @@ export namespace t {
     export const text_local = (bt: unresolved.Text_Type<pd.Source_Location>): unresolved.Type_Node<pd.Source_Location> => {
         return wrap_state_group(['text', wrap_state_group(['local', bt])])
     }
-    export const type_parameter = (name: string): unresolved.Type_Node<pd.Source_Location> => {
-        return wrap_state_group(['type parameter', wrap_reference(name)])
-    }
+    // export const type_parameter = (name: string): unresolved.Type_Node<pd.Source_Location> => {
+    //     return wrap_state_group(['type parameter', wrap_reference(name)])
+    // }
 }
 
 /**

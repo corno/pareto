@@ -74,7 +74,6 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
             })),
             "group": state(r.dictionary(r.component("Type", {}, {}))),
             "array": state(r.component("Type", {}, {})),
-            "key value pair": state(r.component("Type", {}, {})),
             "null": state(r.nothing()),
 
             "number": state(r.state_group({

@@ -225,7 +225,6 @@ export const Node = (
             case 'component': return _ea.ss($, ($) => {
                 return Node($.node, $p)
             })
-            case 'identifier value pair': return _ea.ss($, ($) => _edev.implement_me())
             case 'type parameter': return _ea.ss($, ($) => _edev.implement_me())
             case 'optional': return _ea.ss($, ($) => _ea.cc($['found value type'], ($) => {
                 switch ($[0]) {

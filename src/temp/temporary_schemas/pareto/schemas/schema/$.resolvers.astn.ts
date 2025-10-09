@@ -80,7 +80,6 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                 r.state_group({
                     "dictionary": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "dictionary") }, r.nothing()),
                     "group": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "group") }, r.reference(gvs.dictionary(gvs.option_constraint("definition", [vst.component()])))),
-                    "identifier value pair": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "identifier value pair") }, r.nothing()),
                     "list": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "list") }, r.nothing()),
                     "optional": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "optional") }, r.nothing()),
                     "state group": state_constrained({ "definition": oc.state(gvs.list_cursor([]), "state group") }, r.reference(gvs.dictionary(gvs.option_constraint("definition", [])))),
@@ -149,7 +148,6 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                     "possibly circular dependent sibling types": al.parameter("possibly circular dependent sibling types"),
                 }
             )),
-            "identifier value pair": state(r.component("Type Node", null, null)),
             "list": state(r.group({
                 "node": r.component("Type Node", null, null),
             })),
@@ -182,7 +180,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                 "global": state_constrained({ "globals": oc.assert_set(pvs.parameter("globals")) }, r.reference(gvs.dictionary(gvs.option_constraint("globals", [vst.group("text types")])))),
                 "local": state(r.component("Text Type", {}, {})),
             })),
-            "type parameter": state(r.reference(gvs.dictionary(gvs.parameter("type parameters", [])))),
+            // "type parameter": state(r.reference(gvs.dictionary(gvs.parameter("type parameters", [])))),
         })),
 
         "Type Parameters": resolver(r.dictionary(r.nothing())),
@@ -603,22 +601,6 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                 },
 
             )),
-            "identifier value pair": state_constrained({ "definition": oc.state(gvs.parameter("definition", []), "identifier value pair") }, r.component("Node Resolver",
-                {
-                    "definition": av.required(gvs.option_constraint("definition", [vst.component()])),
-
-                    "types": av.parameter("types"),
-                    "imports": av.parameter("imports"),
-                    "signature": av.parameter("signature"),
-                    "signatures": av.parameter("signatures"),
-                    "list cursor": av.parameter("list cursor"),
-                    "linked entry": av.parameter("linked entry"),
-                    "current dictionary": av.parameter("current dictionary"),
-                    "option constraints": av.parameter("option constraints"),
-                    "current ordered dictionary": av.parameter("current ordered dictionary"),
-                },
-                null,
-            )),
             "list": state_constrained({ "definition": oc.state(gvs.parameter("definition", []), "list") }, r.group({
                 "definition": r.reference_derived(gvs.option_constraint("definition", [])),
                 "result": r.optional(
@@ -709,7 +691,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                 ),
             })),
             "text": state_constrained({ "definition": oc.state(gvs.parameter("definition", []), "text") }, r.nothing()),
-            "type parameter": state_constrained({ "definition": oc.state(gvs.parameter("definition", []), "type parameter") }, r.nothing()),
+            // "type parameter": state_constrained({ "definition": oc.state(gvs.parameter("definition", []), "type parameter") }, r.nothing()),
         })),
 
         "Resolve Logic": resolver(r.group({

@@ -82,7 +82,6 @@ export const $: g_.Types<pd.Source_Location>  = types(
             }),
             "group": t.dictionary(t.component_cyclic("Type")),
             "array": t.component_cyclic("Type"),
-            "key value pair": t.component_cyclic("Type"),
             "null": t.nothing(),
             "number": t.state_group({
                 "integer": t.group({

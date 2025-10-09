@@ -167,12 +167,6 @@ export const Type_Node = (
                     ),
                 })
             ))
-            case 'identifier value pair': return _ea.ss($, ($) => i.call(
-                s.from_variable_import(" i generic", "process identifier value pair", []),
-                i.select_from_context([]),
-                _ea.dictionary_literal({
-                })
-            ))
             case 'group': return _ea.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process group", []),
                 i.select_from_context([]),
@@ -275,12 +269,12 @@ export const Type_Node = (
                     )))
                 })
             ))
-            case 'type parameter': return _ea.ss($, ($) => i.call(
-                s.from_variable_import(" i generic", "process type parameter", []),
-                i.select_from_context([]),
-                _ea.dictionary_literal({
-                })
-            ))
+            // case 'type parameter': return _ea.ss($, ($) => i.call(
+            //     s.from_variable_import(" i generic", "process type parameter", []),
+            //     i.select_from_context([]),
+            //     _ea.dictionary_literal({
+            //     })
+            // ))
             default: return _ea.au($[0])
         }
     })

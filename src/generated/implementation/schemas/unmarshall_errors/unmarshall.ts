@@ -130,6 +130,10 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => _i_generic.process_unc
                                                 $,
                                                 {
                                                     'states': _pa.dictionary_literal({
+                                                        'missing data marker': ($): _i_out._T_Errors.L._type.SG.error.SG.state.SG => ['missing data marker', _i_generic.process_nothing(
+                                                            $,
+                                                            null
+                                                        )],
                                                         'missing state name': ($): _i_out._T_Errors.L._type.SG.error.SG.state.SG => ['missing state name', _i_generic.process_nothing(
                                                             $,
                                                             null

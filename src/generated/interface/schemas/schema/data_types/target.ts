@@ -131,7 +131,6 @@ export type _T_Node_Resolver<M_Source> = _i_core._T_State_Group<M_Source,
         readonly 'resolver': _T_Node_Resolver<M_Source>
     }]
     | readonly ['group', _T_Node_Resolver_Group<M_Source>]
-    | readonly ['identifier value pair', _T_Node_Resolver<M_Source>]
     | readonly ['list', {
         readonly 'definition': _i_core._T_Derived_Reference<M_Source, _T_Type_Node.SG.list<M_Source>>
         readonly 'resolver': _T_Node_Resolver<M_Source>
@@ -164,7 +163,6 @@ export type _T_Node_Resolver<M_Source> = _i_core._T_State_Group<M_Source,
         }>
     }]
     | readonly ['text', null]
-    | readonly ['type parameter', null]
 >
 
 export type _T_Node_Resolver_Group<M_Source> = _i_core._T_Ordered_Dictionary<M_Source, {
@@ -330,7 +328,6 @@ export type _T_Type_Node<M_Source> = _i_core._T_State_Group<M_Source,
     >]
     | readonly ['dictionary', _T_Dictionary<M_Source>]
     | readonly ['group', _T_Group<M_Source>]
-    | readonly ['identifier value pair', _T_Type_Node<M_Source>]
     | readonly ['list', {
         readonly 'node': _T_Type_Node<M_Source>
     }]
@@ -359,7 +356,6 @@ export type _T_Type_Node<M_Source> = _i_core._T_State_Group<M_Source,
         | readonly ['global', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Globals.text_types.D<M_Source>>]
         | readonly ['local', _T_Text_Type<M_Source>]
     >]
-    | readonly ['type parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Type_Parameters.D<M_Source>>]
 >
 
 export type _T_Type_Node_Reference<M_Source> = {
@@ -367,7 +363,6 @@ export type _T_Type_Node_Reference<M_Source> = {
     readonly 'tail': _i_core._T_List<M_Source, _i_core._T_State_Group<M_Source, 
         | readonly ['dictionary', null]
         | readonly ['group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Group.D<M_Source>>]
-        | readonly ['identifier value pair', null]
         | readonly ['list', null]
         | readonly ['optional', null]
         | readonly ['state group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Type_Node.SG.state_group.D<M_Source>>]
@@ -1298,10 +1293,6 @@ export namespace _T_Node_Resolver {
         }
         export type group<M_Source> = _T_Node_Resolver_Group<M_Source>
         
-        export namespace identifier_value_pair {
-        }
-        export type identifier_value_pair<M_Source> = _T_Node_Resolver<M_Source>
-        
         export namespace list {
             
             export namespace definition {
@@ -1470,7 +1461,6 @@ export namespace _T_Node_Resolver {
             }>
         }
         export type text<M_Source> = null
-        export type type_parameter<M_Source> = null
     }
     export type SG<M_Source> = 
         | readonly ['boolean', null]
@@ -1507,7 +1497,6 @@ export namespace _T_Node_Resolver {
             readonly 'resolver': _T_Node_Resolver<M_Source>
         }]
         | readonly ['group', _T_Node_Resolver_Group<M_Source>]
-        | readonly ['identifier value pair', _T_Node_Resolver<M_Source>]
         | readonly ['list', {
             readonly 'definition': _i_core._T_Derived_Reference<M_Source, _T_Type_Node.SG.list<M_Source>>
             readonly 'resolver': _T_Node_Resolver<M_Source>
@@ -1540,7 +1529,6 @@ export namespace _T_Node_Resolver {
             }>
         }]
         | readonly ['text', null]
-        | readonly ['type parameter', null]
 }
 
 export namespace _T_Node_Resolver_Group {
@@ -2278,10 +2266,6 @@ export namespace _T_Type_Node {
         }
         export type group<M_Source> = _T_Group<M_Source>
         
-        export namespace identifier_value_pair {
-        }
-        export type identifier_value_pair<M_Source> = _T_Type_Node<M_Source>
-        
         export namespace list {
             
             export namespace node {
@@ -2440,14 +2424,6 @@ export namespace _T_Type_Node {
             | readonly ['global', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Globals.text_types.D<M_Source>>]
             | readonly ['local', _T_Text_Type<M_Source>]
         >
-        
-        export namespace type_parameter {
-            
-            export namespace Dictionary_Entry {
-            }
-            export type Dictionary_Entry<M_Source> = _T_Type_Parameters.D<M_Source>
-        }
-        export type type_parameter<M_Source> = _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Type_Parameters.D<M_Source>>
     }
     export type SG<M_Source> = 
         | readonly ['boolean', null]
@@ -2461,7 +2437,6 @@ export namespace _T_Type_Node {
         >]
         | readonly ['dictionary', _T_Dictionary<M_Source>]
         | readonly ['group', _T_Group<M_Source>]
-        | readonly ['identifier value pair', _T_Type_Node<M_Source>]
         | readonly ['list', {
             readonly 'node': _T_Type_Node<M_Source>
         }]
@@ -2490,7 +2465,6 @@ export namespace _T_Type_Node {
             | readonly ['global', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Globals.text_types.D<M_Source>>]
             | readonly ['local', _T_Text_Type<M_Source>]
         >]
-        | readonly ['type parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Type_Parameters.D<M_Source>>]
 }
 
 export namespace _T_Type_Node_Reference {
@@ -2517,7 +2491,6 @@ export namespace _T_Type_Node_Reference {
                     export type Dictionary_Entry<M_Source> = _T_Group.D<M_Source>
                 }
                 export type group<M_Source> = _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Group.D<M_Source>>
-                export type identifier_value_pair<M_Source> = null
                 export type list<M_Source> = null
                 export type optional<M_Source> = null
                 
@@ -2532,7 +2505,6 @@ export namespace _T_Type_Node_Reference {
             export type SG<M_Source> = 
                 | readonly ['dictionary', null]
                 | readonly ['group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Group.D<M_Source>>]
-                | readonly ['identifier value pair', null]
                 | readonly ['list', null]
                 | readonly ['optional', null]
                 | readonly ['state group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Type_Node.SG.state_group.D<M_Source>>]
@@ -2540,7 +2512,6 @@ export namespace _T_Type_Node_Reference {
         export type L<M_Source> = _i_core._T_State_Group<M_Source, 
             | readonly ['dictionary', null]
             | readonly ['group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Group.D<M_Source>>]
-            | readonly ['identifier value pair', null]
             | readonly ['list', null]
             | readonly ['optional', null]
             | readonly ['state group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Type_Node.SG.state_group.D<M_Source>>]
@@ -2549,7 +2520,6 @@ export namespace _T_Type_Node_Reference {
     export type tail<M_Source> = _i_core._T_List<M_Source, _i_core._T_State_Group<M_Source, 
         | readonly ['dictionary', null]
         | readonly ['group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Group.D<M_Source>>]
-        | readonly ['identifier value pair', null]
         | readonly ['list', null]
         | readonly ['optional', null]
         | readonly ['state group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Type_Node.SG.state_group.D<M_Source>>]
@@ -3473,10 +3443,6 @@ export namespace Node_Resolver {
         }
         export type group<M_Source> = _T_Node_Resolver_Group<M_Source>
         
-        export namespace identifier_value_pair {
-        }
-        export type identifier_value_pair<M_Source> = _T_Node_Resolver<M_Source>
-        
         export namespace list {
             
             export namespace definition {
@@ -3645,7 +3611,6 @@ export namespace Node_Resolver {
             }>
         }
         export type text<M_Source> = null
-        export type type_parameter<M_Source> = null
     }
     export type SG<M_Source> = 
         | readonly ['boolean', null]
@@ -3682,7 +3647,6 @@ export namespace Node_Resolver {
             readonly 'resolver': _T_Node_Resolver<M_Source>
         }]
         | readonly ['group', _T_Node_Resolver_Group<M_Source>]
-        | readonly ['identifier value pair', _T_Node_Resolver<M_Source>]
         | readonly ['list', {
             readonly 'definition': _i_core._T_Derived_Reference<M_Source, _T_Type_Node.SG.list<M_Source>>
             readonly 'resolver': _T_Node_Resolver<M_Source>
@@ -3715,7 +3679,6 @@ export namespace Node_Resolver {
             }>
         }]
         | readonly ['text', null]
-        | readonly ['type parameter', null]
 }
 
 export namespace Node_Resolver_Group {
@@ -4453,10 +4416,6 @@ export namespace Type_Node {
         }
         export type group<M_Source> = _T_Group<M_Source>
         
-        export namespace identifier_value_pair {
-        }
-        export type identifier_value_pair<M_Source> = _T_Type_Node<M_Source>
-        
         export namespace list {
             
             export namespace node {
@@ -4615,14 +4574,6 @@ export namespace Type_Node {
             | readonly ['global', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Globals.text_types.D<M_Source>>]
             | readonly ['local', _T_Text_Type<M_Source>]
         >
-        
-        export namespace type_parameter {
-            
-            export namespace Dictionary_Entry {
-            }
-            export type Dictionary_Entry<M_Source> = _T_Type_Parameters.D<M_Source>
-        }
-        export type type_parameter<M_Source> = _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Type_Parameters.D<M_Source>>
     }
     export type SG<M_Source> = 
         | readonly ['boolean', null]
@@ -4636,7 +4587,6 @@ export namespace Type_Node {
         >]
         | readonly ['dictionary', _T_Dictionary<M_Source>]
         | readonly ['group', _T_Group<M_Source>]
-        | readonly ['identifier value pair', _T_Type_Node<M_Source>]
         | readonly ['list', {
             readonly 'node': _T_Type_Node<M_Source>
         }]
@@ -4665,7 +4615,6 @@ export namespace Type_Node {
             | readonly ['global', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Globals.text_types.D<M_Source>>]
             | readonly ['local', _T_Text_Type<M_Source>]
         >]
-        | readonly ['type parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Type_Parameters.D<M_Source>>]
 }
 
 export namespace Type_Node_Reference {
@@ -4692,7 +4641,6 @@ export namespace Type_Node_Reference {
                     export type Dictionary_Entry<M_Source> = _T_Group.D<M_Source>
                 }
                 export type group<M_Source> = _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Group.D<M_Source>>
-                export type identifier_value_pair<M_Source> = null
                 export type list<M_Source> = null
                 export type optional<M_Source> = null
                 
@@ -4707,7 +4655,6 @@ export namespace Type_Node_Reference {
             export type SG<M_Source> = 
                 | readonly ['dictionary', null]
                 | readonly ['group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Group.D<M_Source>>]
-                | readonly ['identifier value pair', null]
                 | readonly ['list', null]
                 | readonly ['optional', null]
                 | readonly ['state group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Type_Node.SG.state_group.D<M_Source>>]
@@ -4715,7 +4662,6 @@ export namespace Type_Node_Reference {
         export type L<M_Source> = _i_core._T_State_Group<M_Source, 
             | readonly ['dictionary', null]
             | readonly ['group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Group.D<M_Source>>]
-            | readonly ['identifier value pair', null]
             | readonly ['list', null]
             | readonly ['optional', null]
             | readonly ['state group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Type_Node.SG.state_group.D<M_Source>>]
@@ -4724,7 +4670,6 @@ export namespace Type_Node_Reference {
     export type tail<M_Source> = _i_core._T_List<M_Source, _i_core._T_State_Group<M_Source, 
         | readonly ['dictionary', null]
         | readonly ['group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Group.D<M_Source>>]
-        | readonly ['identifier value pair', null]
         | readonly ['list', null]
         | readonly ['optional', null]
         | readonly ['state group', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Type_Node.SG.state_group.D<M_Source>>]

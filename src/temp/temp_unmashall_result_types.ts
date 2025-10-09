@@ -40,7 +40,6 @@ export type Node_Type =
     | ['component', Component]
     | ['dictionary', Dictionary]
     | ['group', Group]
-    | ['identifier value pair', Identifier_Value_Pair]
     | ['optional', Optional]
     | ['state', Node_Type_SG_State]
     | ['text', Text]
@@ -94,10 +93,6 @@ export type Node_Type_SG_State_found_value_type =
 //         'found': string
 //         'expected': pt.Dictionary<null>
 //     }]
-
-export type Identifier_Value_Pair = {
-    'definition': d_schema.Type_Node.SG.identifier_value_pair
-}
 
 export type Optional = {
     'definition': d_schema.Type_Node.SG.optional

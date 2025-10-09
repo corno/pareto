@@ -27,6 +27,7 @@ export type _T_Errors = _i_core._T_List<null, {
                 readonly 'name': string
             }]
             | readonly ['state', _i_core._T_State_Group<null, 
+                | readonly ['missing data marker', null]
                 | readonly ['missing state name', null]
                 | readonly ['missing value', null]
                 | readonly ['more than 2 elements', null]
@@ -170,6 +171,7 @@ export namespace _T_Errors {
                         export namespace state {
                             
                             export namespace SG {
+                                export type missing_data_marker = null
                                 export type missing_state_name = null
                                 export type missing_value = null
                                 export type more_than_2_elements = null
@@ -189,6 +191,7 @@ export namespace _T_Errors {
                                 }
                             }
                             export type SG = 
+                                | readonly ['missing data marker', null]
                                 | readonly ['missing state name', null]
                                 | readonly ['missing value', null]
                                 | readonly ['more than 2 elements', null]
@@ -199,6 +202,7 @@ export namespace _T_Errors {
                                 }]
                         }
                         export type state = _i_core._T_State_Group<null, 
+                            | readonly ['missing data marker', null]
                             | readonly ['missing state name', null]
                             | readonly ['missing value', null]
                             | readonly ['more than 2 elements', null]
@@ -236,6 +240,7 @@ export namespace _T_Errors {
                             readonly 'name': string
                         }]
                         | readonly ['state', _i_core._T_State_Group<null, 
+                            | readonly ['missing data marker', null]
                             | readonly ['missing state name', null]
                             | readonly ['missing value', null]
                             | readonly ['more than 2 elements', null]
@@ -269,6 +274,7 @@ export namespace _T_Errors {
                         readonly 'name': string
                     }]
                     | readonly ['state', _i_core._T_State_Group<null, 
+                        | readonly ['missing data marker', null]
                         | readonly ['missing state name', null]
                         | readonly ['missing value', null]
                         | readonly ['more than 2 elements', null]
@@ -325,6 +331,7 @@ export namespace _T_Errors {
                         readonly 'name': string
                     }]
                     | readonly ['state', _i_core._T_State_Group<null, 
+                        | readonly ['missing data marker', null]
                         | readonly ['missing state name', null]
                         | readonly ['missing value', null]
                         | readonly ['more than 2 elements', null]
@@ -366,6 +373,7 @@ export namespace _T_Errors {
                     readonly 'name': string
                 }]
                 | readonly ['state', _i_core._T_State_Group<null, 
+                    | readonly ['missing data marker', null]
                     | readonly ['missing state name', null]
                     | readonly ['missing value', null]
                     | readonly ['more than 2 elements', null]
@@ -410,6 +418,7 @@ export namespace _T_Errors {
                     readonly 'name': string
                 }]
                 | readonly ['state', _i_core._T_State_Group<null, 
+                    | readonly ['missing data marker', null]
                     | readonly ['missing state name', null]
                     | readonly ['missing value', null]
                     | readonly ['more than 2 elements', null]
@@ -553,6 +562,7 @@ export namespace Errors {
                         export namespace state {
                             
                             export namespace SG {
+                                export type missing_data_marker = null
                                 export type missing_state_name = null
                                 export type missing_value = null
                                 export type more_than_2_elements = null
@@ -572,6 +582,7 @@ export namespace Errors {
                                 }
                             }
                             export type SG = 
+                                | readonly ['missing data marker', null]
                                 | readonly ['missing state name', null]
                                 | readonly ['missing value', null]
                                 | readonly ['more than 2 elements', null]
@@ -582,6 +593,7 @@ export namespace Errors {
                                 }]
                         }
                         export type state = _i_core._T_State_Group<null, 
+                            | readonly ['missing data marker', null]
                             | readonly ['missing state name', null]
                             | readonly ['missing value', null]
                             | readonly ['more than 2 elements', null]
@@ -619,6 +631,7 @@ export namespace Errors {
                             readonly 'name': string
                         }]
                         | readonly ['state', _i_core._T_State_Group<null, 
+                            | readonly ['missing data marker', null]
                             | readonly ['missing state name', null]
                             | readonly ['missing value', null]
                             | readonly ['more than 2 elements', null]
@@ -652,6 +665,7 @@ export namespace Errors {
                         readonly 'name': string
                     }]
                     | readonly ['state', _i_core._T_State_Group<null, 
+                        | readonly ['missing data marker', null]
                         | readonly ['missing state name', null]
                         | readonly ['missing value', null]
                         | readonly ['more than 2 elements', null]
@@ -708,6 +722,7 @@ export namespace Errors {
                         readonly 'name': string
                     }]
                     | readonly ['state', _i_core._T_State_Group<null, 
+                        | readonly ['missing data marker', null]
                         | readonly ['missing state name', null]
                         | readonly ['missing value', null]
                         | readonly ['more than 2 elements', null]
@@ -749,6 +764,7 @@ export namespace Errors {
                     readonly 'name': string
                 }]
                 | readonly ['state', _i_core._T_State_Group<null, 
+                    | readonly ['missing data marker', null]
                     | readonly ['missing state name', null]
                     | readonly ['missing value', null]
                     | readonly ['more than 2 elements', null]
@@ -793,6 +809,7 @@ export namespace Errors {
                     readonly 'name': string
                 }]
                 | readonly ['state', _i_core._T_State_Group<null, 
+                    | readonly ['missing data marker', null]
                     | readonly ['missing state name', null]
                     | readonly ['missing value', null]
                     | readonly ['more than 2 elements', null]

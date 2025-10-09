@@ -81,7 +81,6 @@ export const r_Type_Part_Reference = (
             switch ($[0]) {
                 case 'dictionary': return pa.ss($, ($) => sub.dictionary())
                 case 'group': return pa.ss($, ($) => sub.group($.key))
-                case 'identifier value pair': return pa.ss($, ($) => _edev.implement_me())
                 case 'list': return pa.ss($, ($) => sub.list())
                 case 'optional': return pa.ss($, ($) => sub.optional())
                 case 'state group': return pa.ss($, ($) => sub.state_group($.key))

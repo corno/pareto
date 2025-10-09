@@ -781,12 +781,6 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                     'value deserializers': $p['value deserializers'],
                 }
             )],
-            'identifier value pair': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['identifier value pair', Node_Resolver(
-                $,
-                {
-                    'value deserializers': $p['value deserializers'],
-                }
-            )],
             'list': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['list', _i_generic.process_group(
                 $,
                 {
@@ -1007,10 +1001,6 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                 }
             )],
             'text': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['text', _i_generic.process_nothing(
-                $,
-                null
-            )],
-            'type parameter': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['type parameter', _i_generic.process_nothing(
                 $,
                 null
             )],
@@ -1890,12 +1880,6 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                     'value deserializers': $p['value deserializers'],
                 }
             )],
-            'identifier value pair': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['identifier value pair', Type_Node(
-                $,
-                {
-                    'value deserializers': $p['value deserializers'],
-                }
-            )],
             'list': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['list', _i_generic.process_group(
                 $,
                 {
@@ -2043,10 +2027,6 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                     }),
                 }
             )],
-            'type parameter': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['type parameter', _i_generic.process_selected_reference(
-                $,
-                null
-            )],
         }),
     }
 )
@@ -2080,10 +2060,6 @@ export const Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $p)
                                     null
                                 )],
                                 'group': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in._T_Range> => ['group', _i_generic.process_selected_reference(
-                                    $,
-                                    null
-                                )],
-                                'identifier value pair': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in._T_Range> => ['identifier value pair', _i_generic.process_nothing(
                                     $,
                                     null
                                 )],

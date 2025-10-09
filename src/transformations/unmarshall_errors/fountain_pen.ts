@@ -49,6 +49,7 @@ export const Error_Type_Error = (
         case 'state': return _ea.ss($, ($) => _ea.cc($, ($) => {
             switch ($[0]) {
                 case 'missing state name': return _ea.ss($, ($) => sh.l.snippet(`Missing state name`))
+                case 'missing data marker': return _ea.ss($, ($) => sh.l.snippet(`Missing data marker`))
                 case 'missing value': return _ea.ss($, ($) => sh.l.snippet(`Missing value`))
                 case 'more than 2 elements': return _ea.ss($, ($) => sh.l.snippet(`More than 2 elements`))
                 case 'state is not a string': return _ea.ss($, ($) => sh.l.snippet(`State is not a string`))

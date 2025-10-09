@@ -803,30 +803,6 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                     }
                 )
             })])
-            case 'identifier value pair': return _pa.ss($, ($) => ['identifier value pair', _pa.block(() => {
-                const c_definition = _pd.implement_me()
-                return r_Node_Resolver(
-                    $,
-                    {
-                        'location 2 string': l2s,
-                        'parameters': ({
-                            'lookups': params['lookups'],
-                            'values': ({
-                                'current dictionary': params['values']['current dictionary'],
-                                'current ordered dictionary': params['values']['current ordered dictionary'],
-                                'definition': c_definition,
-                                'imports': params['values']['imports'],
-                                'linked entry': params['values']['linked entry'],
-                                'list cursor': params['values']['list cursor'],
-                                'option constraints': params['values']['option constraints'],
-                                'signature': params['values']['signature'],
-                                'signatures': params['values']['signatures'],
-                                'types': params['values']['types'],
-                            }),
-                        }),
-                    }
-                )
-            })])
             case 'list': return _pa.ss($, ($) => ['list', _pa.block(() => {
                 const c_definition = _pd.implement_me()
                 return _pa.block(() => {
@@ -1052,10 +1028,6 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                 })
             })])
             case 'text': return _pa.ss($, ($) => ['text', _pa.block(() => {
-                const c_definition = _pd.implement_me()
-                return null
-            })])
-            case 'type parameter': return _pa.ss($, ($) => ['type parameter', _pa.block(() => {
                 const c_definition = _pd.implement_me()
                 return null
             })])
@@ -2075,18 +2047,6 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                     }
                 )
             })])
-            case 'identifier value pair': return _pa.ss($, ($) => ['identifier value pair', _pa.block(() => {
-                return r_Type_Node(
-                    $,
-                    {
-                        'location 2 string': l2s,
-                        'parameters': ({
-                            'lookups': params['lookups'],
-                            'values': params['values'],
-                        }),
-                    }
-                )
-            })])
             case 'list': return _pa.ss($, ($) => ['list', _pa.block(() => {
                 return _pa.block(() => {
                     const p_node: _i_out._T_Type_Node.SG.list.node = _pa.cc($['node'], ($) => r_Type_Node(
@@ -2265,18 +2225,6 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                     }
                 })
             })])
-            case 'type parameter': return _pa.ss($, ($) => ['type parameter', _pa.block(() => {
-                return _i_generic.get_entry(
-                    _i_generic.dictionary_to_lookup(
-                        params['values']['type parameters'],
-                        null
-                    ),
-                    {
-                        'location 2 string': l2s,
-                        'reference': $,
-                    }
-                )
-            })])
             default: return _pa.au($[0])
         }
     })
@@ -2313,10 +2261,6 @@ export const r_Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $
                             'reference': $,
                         }
                     )
-                })])
-                case 'identifier value pair': return _pa.ss($, ($) => ['identifier value pair', _pa.block(() => {
-                    const c_definition = _pd.implement_me()
-                    return null
                 })])
                 case 'list': return _pa.ss($, ($) => ['list', _pa.block(() => {
                     const c_definition = _pd.implement_me()

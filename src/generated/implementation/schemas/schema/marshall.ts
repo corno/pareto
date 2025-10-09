@@ -427,15 +427,6 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => ['state'
                 }
             ),
         }))
-        case 'identifier value pair': return _pa.ss($, ($) => ({
-            'state': "identifier value pair",
-            'value': Node_Resolver(
-                $,
-                {
-                    'value serializers': $p['value serializers'],
-                }
-            ),
-        }))
         case 'list': return _pa.ss($, ($) => ({
             'state': "list",
             'value': ['verbose group', _pa.dictionary_literal({
@@ -544,10 +535,6 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => ['state'
         }))
         case 'text': return _pa.ss($, ($) => ({
             'state': "text",
-            'value': ['nothing', null],
-        }))
-        case 'type parameter': return _pa.ss($, ($) => ({
-            'state': "type parameter",
             'value': ['nothing', null],
         }))
         default: return _pa.au($[0])
@@ -1061,15 +1048,6 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => ['state', _pa.cc
                 }
             ),
         }))
-        case 'identifier value pair': return _pa.ss($, ($) => ({
-            'state': "identifier value pair",
-            'value': Type_Node(
-                $,
-                {
-                    'value serializers': $p['value serializers'],
-                }
-            ),
-        }))
         case 'list': return _pa.ss($, ($) => ({
             'state': "list",
             'value': ['verbose group', _pa.dictionary_literal({
@@ -1194,13 +1172,6 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => ['state', _pa.cc
                 }
             })],
         }))
-        case 'type parameter': return _pa.ss($, ($) => ({
-            'state': "type parameter",
-            'value': ['text', ({
-                'delimiter': ['backtick', null],
-                'value': $['key'],
-            })],
-        }))
         default: return _pa.au($[0])
     }
 })]
@@ -1218,10 +1189,6 @@ export const Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $p)
                     'delimiter': ['backtick', null],
                     'value': $['key'],
                 })],
-            }))
-            case 'identifier value pair': return _pa.ss($, ($) => ({
-                'state': "identifier value pair",
-                'value': ['nothing', null],
             }))
             case 'list': return _pa.ss($, ($) => ({
                 'state': "list",

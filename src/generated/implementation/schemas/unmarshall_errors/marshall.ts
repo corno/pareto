@@ -82,6 +82,10 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                             'state': "state",
                             'value': ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
                                 switch ($[0]) {
+                                    case 'missing data marker': return _pa.ss($, ($) => ({
+                                        'state': "missing data marker",
+                                        'value': ['nothing', null],
+                                    }))
                                     case 'missing state name': return _pa.ss($, ($) => ({
                                         'state': "missing state name",
                                         'value': ['nothing', null],

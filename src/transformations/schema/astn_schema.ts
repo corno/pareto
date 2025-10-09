@@ -110,7 +110,6 @@ export const Type_Node: _ea.Guaranteed_Transformation_Without_Parameters<_in.Typ
                 'node': Type_Node($.node)
             }])
             case 'group': return _ea.ss($, ($) => ['group', wrap_dictionary($.map(($) => Type_Node($)))])
-            case 'identifier value pair': return _ea.ss($, ($) => _edev.implement_me())
             case 'optional': return _ea.ss($, ($) => ['optional', Type_Node($)])
             case 'state group': return _ea.ss($, ($) => ['state group', wrap_dictionary($.map(($) => Type_Node($)))])
             case 'text': return _ea.ss($, ($) => ['text', wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG.text.SG<pd.Source_Location> => {
@@ -120,7 +119,7 @@ export const Type_Node: _ea.Guaranteed_Transformation_Without_Parameters<_in.Typ
                     default: return _ea.au($[0])
                 }
             }))])
-            case 'type parameter': return _ea.ss($, ($) => _edev.implement_me())
+            // case 'type parameter': return _ea.ss($, ($) => _edev.implement_me())
             default: return _ea.au($[0])
         }
     }))
