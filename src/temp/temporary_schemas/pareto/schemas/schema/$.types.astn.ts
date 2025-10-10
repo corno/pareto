@@ -10,6 +10,7 @@ import {
     prop,
     tstate,
     propd,
+    tstated,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -256,8 +257,8 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Schema Tree": type(t.state_group({
-            "schema": tstate(t.component("Schema")),
-            "set": tstate(t.component_cyclic("Schemas")),
+            "schema": tstated("a single schema", t.component("Schema")),
+            "set": tstated("a hierarchy of schemas", t.component_cyclic("Schemas")),
         })),
 
         "Schema": type(t.group({
