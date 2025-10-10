@@ -8,6 +8,7 @@ import {
     type,
     text,
     prop,
+    propd,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -245,9 +246,9 @@ export const $: g_.Types<pd.Source_Location> = types(
         "Schemas": type(t.dictionary(t.component("Schema Tree"), 'ordered')),
 
         "Type Specification": type(t.group({
-            "schema": prop(t.component("Schema Tree")),
-            "schema path": prop(t.list(t.text_local(text('single line')))),
-            "type": prop(t.text_local(text('single line'))),
+            "schema": propd("select 'schema' if you want to have 1 schema, if you have or need multple, select 'set'", t.component("Schema Tree")),
+            "schema path": propd("selects the schema in which the root type is specified", t.list(t.text_local(text('single line')))),
+            "type": propd("the type that is the root of the document", t.text_local(text('single line'))),
         })),
 
         "Schema Tree": type(t.state_group({

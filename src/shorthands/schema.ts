@@ -72,6 +72,16 @@ export const prop = (
     }
 }
 
+export const propd = (
+    description: string,
+    node: unresolved.Type_Node<_ed.Source_Location>,
+): unresolved.Group.D<_ed.Source_Location> => {
+    return {
+        'description': _ed.set(description),
+        'node': node,
+    }
+}
+
 /**
  * number type
  */
