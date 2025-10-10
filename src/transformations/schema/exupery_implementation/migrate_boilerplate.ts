@@ -148,7 +148,7 @@ export const Type_Node = (
             case 'state group': return pa.ss($, ($) => i.switch_(
                 s.from_context([]),
                 $.map(($, key) => i.case_(key, Type_Node(
-                    $,
+                    $.node,
                     {
                         'type': $p.type,
                         'subselection': op_append_element(

@@ -252,7 +252,7 @@ export const Type_Node = (
                         i.case_(
                             key,
                             Type_Node(
-                                $,
+                                $.node,
                                 {
                                     'temp type': $p['temp type'],
                                     'temp subselection': op_append_element(

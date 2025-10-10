@@ -75,7 +75,10 @@ export const prop = (
 export const tstate = (
     node: unresolved.Type_Node<_ed.Source_Location>,
 ): unresolved.Type_Node.SG.state_group.D<_ed.Source_Location> => {
-    return node
+    return {
+        'description': _ed.not_set(),
+        'node': node,
+    }
 }
 
 export const propd = (
@@ -319,7 +322,7 @@ export namespace t {
             'type': p_type,
         }])
     }
-    export const state_group = (states: Raw_Or_Normal_Dictionary<unresolved.Type_Node<_ed.Source_Location>>): unresolved.Type_Node<_ed.Source_Location> => {
+    export const state_group = (states: Raw_Or_Normal_Dictionary<unresolved.Type_Node.SG.state_group.D<_ed.Source_Location>>): unresolved.Type_Node<_ed.Source_Location> => {
         return wrap_state_group(['state group', wrap_dictionary(states)])
     }
     export const text_global = (name: string): unresolved.Type_Node<_ed.Source_Location> => {

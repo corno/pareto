@@ -30,9 +30,9 @@ export const $: g_.Types<pd.Source_Location> = types(
             "special": tstate(t.group({
                 "preceding item": prop(t.component("Item")),
                 "character": prop(t.state_group({
-                    "minus": t.nothing(), //matches any string that matches the preceding item, but does not the succeeding item
-                    "double star": t.nothing(), //shorthand: 'A ** B' becomes '(A ( B A )* )?'
-                    "double plus": t.nothing(), //shorthand: 'A ++ B' becomes 'A ( B A )*'
+                    "minus": tstate(t.nothing()), //matches any string that matches the preceding item, but does not the succeeding item
+                    "double star": tstate(t.nothing()), //shorthand: 'A ** B' becomes '(A ( B A )* )?'
+                    "double plus": tstate(t.nothing()), //shorthand: 'A ++ B' becomes 'A ( B A )*'
                 })),
                 "succeeding item": prop(t.component("Item")),
             })),

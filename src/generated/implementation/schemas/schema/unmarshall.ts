@@ -2028,10 +2028,36 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
             'state group': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['state group', _i_generic.process_unresolved_dictionary(
                 $,
                 {
-                    'value': ($) => Type_Node(
+                    'value': ($) => _i_generic.process_group(
                         $,
                         {
-                            'value deserializers': $p['value deserializers'],
+                            'properties': ($) => ({
+                                'description': _pa.cc(_i_generic.get_entry(
+                                    $,
+                                    {
+                                        'key': "description",
+                                    }
+                                ), ($) => _i_generic.process_optional(
+                                    $,
+                                    {
+                                        'value': ($) => _i_generic.process_text(
+                                            $,
+                                            null
+                                        ),
+                                    }
+                                )),
+                                'node': _pa.cc(_i_generic.get_entry(
+                                    $,
+                                    {
+                                        'key': "node",
+                                    }
+                                ), ($) => Type_Node(
+                                    $,
+                                    {
+                                        'value deserializers': $p['value deserializers'],
+                                    }
+                                )),
+                            }),
                         }
                     ),
                 }

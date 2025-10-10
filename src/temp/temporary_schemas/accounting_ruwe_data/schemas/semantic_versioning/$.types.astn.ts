@@ -21,7 +21,7 @@ export const $: g_.Types<pd.Source_Location>  = types(
             "build identifiers": prop(t.list(t.text_global("Text Value"))),
         })),
         "Number or Text": type(t.state_group({
-            "numeric": t.text_global("Text Value"), //is this correct?
+            "numeric": tstate(t.text_global("Text Value")), //is this correct?
             "alphanumeric": tstate(t.text_global("Text Value")),
         })),
     }

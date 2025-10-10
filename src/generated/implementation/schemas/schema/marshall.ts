@@ -1150,12 +1150,21 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => ['state', _pa.cc
         }))
         case 'state group': return _pa.ss($, ($) => ({
             'state': "state group",
-            'value': ['dictionary', $.map(($) => Type_Node(
-                $,
-                {
-                    'value serializers': $p['value serializers'],
-                }
-            ))],
+            'value': ['dictionary', $.map(($) => ['verbose group', _pa.dictionary_literal({
+                'description': _pa.cc($['description'], ($) => ['optional', $.transform(
+                    ($): _i_out._T_Value.SG.optional => ['set', ['text', ({
+                        'delimiter': ['quote', null],
+                        'value': $,
+                    })]],
+                    () => ['not set', null]
+                )]),
+                'node': _pa.cc($['node'], ($) => Type_Node(
+                    $,
+                    {
+                        'value serializers': $p['value serializers'],
+                    }
+                )),
+            })])],
         }))
         case 'text': return _pa.ss($, ($) => ({
             'state': "text",

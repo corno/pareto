@@ -22,22 +22,22 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Token Type": type(t.state_group({
-            "{": t.nothing(), //open dictionary
-            "}": t.nothing(), //close dictionary
-            "[": t.nothing(), //open list
-            "]": t.nothing(), //close list
-            "(": t.nothing(), //open verbose group
-            ")": t.nothing(), //close verbose group
-            "<": t.nothing(), //open terse group
-            ">": t.nothing(), //close terse group
+            "{": tstate(t.nothing()), //open dictionary
+            "}": tstate(t.nothing()), //close dictionary
+            "[": tstate(t.nothing()), //open list
+            "]": tstate(t.nothing()), //close list
+            "(": tstate(t.nothing()), //open verbose group
+            ")": tstate(t.nothing()), //close verbose group
+            "<": tstate(t.nothing()), //open terse group
+            ">": tstate(t.nothing()), //close terse group
 
-            "!": t.nothing(), //header
-            "@": t.nothing(), //include
-            "~": t.nothing(), //nothing / not set
-            "*": t.nothing(), //set
-            ":": t.nothing(), //colon
-            "|": t.nothing(), //state
-            "#": t.nothing(), //missing data
+            "!": tstate(t.nothing()), //header
+            "@": tstate(t.nothing()), //include
+            "~": tstate(t.nothing()), //nothing / not set
+            "*": tstate(t.nothing()), //set
+            ":": tstate(t.nothing()), //colon
+            "|": tstate(t.nothing()), //state
+            "#": tstate(t.nothing()), //missing data
 
             "string": tstate(t.group({
                 "value": prop(t.component("Delimited String")),

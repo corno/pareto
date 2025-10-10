@@ -178,7 +178,10 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                     })),
                 }),
             })),
-            "state group": state(r.dictionary(r.component("Type Node", null, null))),
+            "state group": state(r.dictionary(r.group({
+                "node": r.component("Type Node", null, null),
+                "description": r.optional(r.text()),
+            }))),
             "text": state(r.state_group({
                 "global": state_constrained({ "globals": oc.assert_set(pvs.parameter("globals")) }, r.reference(gvs.dictionary(gvs.option_constraint("globals", [vst.group("text types")])))),
                 "local": state(r.component("Text Type", {}, {})),
@@ -676,7 +679,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                         "constraints": r.component("Option Constraints", null, null),
                         "resolver": r.component("Node Resolver",
                             {
-                                "definition": av.required(gvs.linked_entry([])),
+                                "definition": av.required(gvs.linked_entry([ vst.group("node")])),
 
                                 "types": av.parameter("types"),
                                 "imports": av.parameter("imports"),

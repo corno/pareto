@@ -566,7 +566,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "dir": prop(t.text_global("TBD")),
                 "content": prop(t.component("Phrasing content")),
             })),
-            "br": t.group({}), //line break
+            "br": tstate(t.group({})), //line break
             "cite": tstate(t.component("Phrasing content")),
             "code": tstate(t.component("Phrasing content")),
             "data": tstate(t.group({
@@ -657,7 +657,7 @@ export const $: g_.Types<pd.Source_Location> = types(
             })),
             "u": tstate(t.component("Phrasing content")),
             "var": tstate(t.component("Phrasing content")),
-            "wbr": t.group({}), //line break opportunity
+            "wbr": tstate(t.group({})), //line break opportunity
             "embedded": tstate(t.component("Embedded")),
         })),
     }

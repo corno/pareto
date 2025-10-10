@@ -259,7 +259,7 @@ export const Type_Node = (
                 "core",
                 "State Group",
                 {
-                    "SG": sh.t.tagged_union($.map(($, key) => Type_Node($)))
+                    "SG": sh.t.tagged_union($.map(($, key) => Type_Node($.node)))
                 },
                 []
             ))

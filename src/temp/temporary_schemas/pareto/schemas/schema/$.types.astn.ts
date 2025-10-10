@@ -310,7 +310,10 @@ export const $: g_.Types<pd.Source_Location> = types(
                     })),
                 })),
             })),
-            "state group": tstate(t.dictionary(t.component_cyclic("Type Node"))),
+            "state group": tstate(t.dictionary(t.group({
+                "description": prop(t.optional(t.text_local(text('multi line')))),
+                "node": prop(t.component_cyclic("Type Node")),
+            }))),
             "text": tstate(t.state_group({
                 "global": tstate(t.reference("Globals", [tr.g("text types")])),
                 "local": tstate(t.component("Text Type")),
@@ -409,7 +412,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                     })),
 
                 })),
-                "parameter": t.reference("Signature Parameters", [tr.g("values")]), //FIXME: validate that presence is 'required'
+                "parameter": tstate(t.reference("Signature Parameters", [tr.g("values")])), //FIXME: validate that presence is 'required'
                 "result": tstate(t.state_group({
                     "list": tstate(t.group({
                         "property": prop(t.reference("Node Resolver Group", [])),
@@ -432,7 +435,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Possible Value Selection": type(t.state_group({
-            "parameter": t.reference("Signature Parameters", [tr.g("values")]), //FIXME: validate that presence is 'optional'
+            "parameter": tstate(t.reference("Signature Parameters", [tr.g("values")])), //FIXME: validate that presence is 'optional'
             "result": tstate(t.state_group({
                 "state group": tstate(t.group({
                     "property": prop(t.reference("Node Resolver Group", [])),

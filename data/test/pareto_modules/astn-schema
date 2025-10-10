@@ -18,110 +18,146 @@
             'types': {
                 `Concrete Value`: (
                     'node': | 'state group' {
-                        `indexed collection`: | 'state group' {
-                            `dictionary`: | 'group' {
-                                `entries`: (
+                        `indexed collection`: (
+                            'description': ~
+                            'node': | 'state group' {
+                                `dictionary`: (
                                     'description': ~
-                                    'node': | 'component' | 'internal' `Key Value Pairs`
-                                )
-                                `{`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal' `Structural Token`
-                                )
-                                `}`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal' `Structural Token`
-                                )
-                            }
-                            `verbose group`: | 'group' {
-                                `(`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal' `Structural Token`
-                                )
-                                `)`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal' `Structural Token`
-                                )
-                                `entries`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal' `Key Value Pairs`
-                                )
-                            }
-                        }
-                        `not set`: | 'group' {
-                            `~`: (
-                                'description': ~
-                                'node': | 'component' | 'internal' `Structural Token`
-                            )
-                        }
-                        `ordered collection`: | 'state group' {
-                            `concise group`: | 'group' {
-                                `<`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal' `Structural Token`
-                                )
-                                `>`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal' `Structural Token`
-                                )
-                                `elements`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal' `Elements`
-                                )
-                            }
-                            `list`: | 'group' {
-                                `[`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal' `Structural Token`
-                                )
-                                `]`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal' `Structural Token`
-                                )
-                                `elements`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal' `Elements`
-                                )
-                            }
-                        }
-                        `set optional value`: | 'group' {
-                            `*`: (
-                                'description': ~
-                                'node': | 'component' | 'internal' `Structural Token`
-                            )
-                            `value`: (
-                                'description': ~
-                                'node': | 'component' | 'internal cyclic' `Value`
-                            )
-                        }
-                        `string`: | 'component' | 'internal' `String`
-                        `tagged value`: | 'group' {
-                            `status`: (
-                                'description': ~
-                                'node': | 'state group' {
-                                    `missing data`: | 'group' {
-                                        `#`: (
+                                    'node': | 'group' {
+                                        `entries`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `Key Value Pairs`
+                                        )
+                                        `{`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `Structural Token`
+                                        )
+                                        `}`: (
                                             'description': ~
                                             'node': | 'component' | 'internal' `Structural Token`
                                         )
                                     }
-                                    `set`: | 'group' {
-                                        `state`: (
+                                )
+                                `verbose group`: (
+                                    'description': ~
+                                    'node': | 'group' {
+                                        `(`: (
                                             'description': ~
-                                            'node': | 'component' | 'internal' `String`
+                                            'node': | 'component' | 'internal' `Structural Token`
                                         )
-                                        `value`: (
+                                        `)`: (
                                             'description': ~
-                                            'node': | 'component' | 'internal cyclic' `Value`
+                                            'node': | 'component' | 'internal' `Structural Token`
+                                        )
+                                        `entries`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `Key Value Pairs`
                                         )
                                     }
-                                }
-                            )
-                            `|`: (
-                                'description': ~
-                                'node': | 'component' | 'internal' `Structural Token`
-                            )
-                        }
+                                )
+                            }
+                        )
+                        `not set`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `~`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `Structural Token`
+                                )
+                            }
+                        )
+                        `ordered collection`: (
+                            'description': ~
+                            'node': | 'state group' {
+                                `concise group`: (
+                                    'description': ~
+                                    'node': | 'group' {
+                                        `<`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `Structural Token`
+                                        )
+                                        `>`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `Structural Token`
+                                        )
+                                        `elements`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `Elements`
+                                        )
+                                    }
+                                )
+                                `list`: (
+                                    'description': ~
+                                    'node': | 'group' {
+                                        `[`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `Structural Token`
+                                        )
+                                        `]`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `Structural Token`
+                                        )
+                                        `elements`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `Elements`
+                                        )
+                                    }
+                                )
+                            }
+                        )
+                        `set optional value`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `*`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `Structural Token`
+                                )
+                                `value`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal cyclic' `Value`
+                                )
+                            }
+                        )
+                        `string`: (
+                            'description': ~
+                            'node': | 'component' | 'internal' `String`
+                        )
+                        `tagged value`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `status`: (
+                                    'description': ~
+                                    'node': | 'state group' {
+                                        `missing data`: (
+                                            'description': ~
+                                            'node': | 'group' {
+                                                `#`: (
+                                                    'description': ~
+                                                    'node': | 'component' | 'internal' `Structural Token`
+                                                )
+                                            }
+                                        )
+                                        `set`: (
+                                            'description': ~
+                                            'node': | 'group' {
+                                                `state`: (
+                                                    'description': ~
+                                                    'node': | 'component' | 'internal' `String`
+                                                )
+                                                `value`: (
+                                                    'description': ~
+                                                    'node': | 'component' | 'internal cyclic' `Value`
+                                                )
+                                            }
+                                        )
+                                    }
+                                )
+                                `|`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `Structural Token`
+                                )
+                            }
+                        )
                     }
                     'type parameters': {
                     }
@@ -248,23 +284,32 @@
                         `type`: (
                             'description': ~
                             'node': | 'state group' {
-                                `concrete`: | 'component' | 'internal' `Concrete Value`
-                                `include`: | 'group' {
-                                    `@`: (
-                                        'description': ~
-                                        'node': | 'component' | 'internal' `Structural Token`
-                                    )
-                                    `path`: (
-                                        'description': ~
-                                        'node': | 'component' | 'internal' `String`
-                                    )
-                                }
-                                `missing data`: | 'group' {
-                                    `#`: (
-                                        'description': ~
-                                        'node': | 'component' | 'internal' `Structural Token`
-                                    )
-                                }
+                                `concrete`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `Concrete Value`
+                                )
+                                `include`: (
+                                    'description': ~
+                                    'node': | 'group' {
+                                        `@`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `Structural Token`
+                                        )
+                                        `path`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `String`
+                                        )
+                                    }
+                                )
+                                `missing data`: (
+                                    'description': ~
+                                    'node': | 'group' {
+                                        `#`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `Structural Token`
+                                        )
+                                    }
+                                )
                             }
                         )
                     }
@@ -1313,8 +1358,14 @@
                 )
                 `Schema Tree`: (
                     'node': | 'state group' {
-                        `schema`: | 'component' | 'internal' `Schema`
-                        `set`: | 'component' | 'internal' `Schemas`
+                        `schema`: (
+                            'description': ~
+                            'node': | 'component' | 'internal' `Schema`
+                        )
+                        `set`: (
+                            'description': ~
+                            'node': | 'component' | 'internal' `Schemas`
+                        )
                     }
                     'type parameters': {
                     }
@@ -1332,8 +1383,14 @@
                         `type`: (
                             'description': ~
                             'node': | 'state group' {
-                                `multi line`: | 'nothing' ~
-                                `single line`: | 'nothing' ~
+                                `multi line`: (
+                                    'description': ~
+                                    'node': | 'nothing' ~
+                                )
+                                `single line`: (
+                                    'description': ~
+                                    'node': | 'nothing' ~
+                                )
                             }
                         )
                     }
@@ -1352,26 +1409,49 @@
                 )
                 `Type Node`: (
                     'node': | 'state group' {
-                        `component`: | 'state group' {
-                            `external`: | 'group' {
-                                `import`: (
+                        `component`: (
+                            'description': ~
+                            'node': | 'state group' {
+                                `external`: (
                                     'description': ~
-                                    'node': | 'reference' (
-                                        'referent': (
-                                            'resulting node': ~
-                                            'tail': [ ]
-                                            'type location': (
-                                                'location': | 'internal' `Imports`
-                                                'resulting node': ~
+                                    'node': | 'group' {
+                                        `import`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
+                                                    'resulting node': ~
+                                                    'tail': [ ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Imports`
+                                                        'resulting node': ~
+                                                    )
+                                                )
+                                                'type': | 'selected' (
+                                                    'dependency': | 'acyclic' ~
+                                                    'dictionary': ~
+                                                )
                                             )
                                         )
-                                        'type': | 'selected' (
-                                            'dependency': | 'acyclic' ~
-                                            'dictionary': ~
+                                        `type`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
+                                                    'resulting node': ~
+                                                    'tail': [ ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Types`
+                                                        'resulting node': ~
+                                                    )
+                                                )
+                                                'type': | 'selected' (
+                                                    'dependency': | 'acyclic' ~
+                                                    'dictionary': ~
+                                                )
+                                            )
                                         )
-                                    )
+                                    }
                                 )
-                                `type`: (
+                                `internal`: (
                                     'description': ~
                                     'node': | 'reference' (
                                         'referent': (
@@ -1388,76 +1468,101 @@
                                         )
                                     )
                                 )
+                                `internal cyclic`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
+                                            'resulting node': ~
+                                            'tail': [ ]
+                                            'type location': (
+                                                'location': | 'internal' `Types`
+                                                'resulting node': ~
+                                            )
+                                        )
+                                        'type': | 'selected' (
+                                            'dependency': | 'cyclic' ~
+                                            'dictionary': ~
+                                        )
+                                    )
+                                )
                             }
-                            `internal`: | 'reference' (
-                                'referent': (
-                                    'resulting node': ~
-                                    'tail': [ ]
-                                    'type location': (
-                                        'location': | 'internal' `Types`
-                                        'resulting node': ~
-                                    )
-                                )
-                                'type': | 'selected' (
-                                    'dependency': | 'acyclic' ~
-                                    'dictionary': ~
-                                )
-                            )
-                            `internal cyclic`: | 'reference' (
-                                'referent': (
-                                    'resulting node': ~
-                                    'tail': [ ]
-                                    'type location': (
-                                        'location': | 'internal' `Types`
-                                        'resulting node': ~
-                                    )
-                                )
-                                'type': | 'selected' (
-                                    'dependency': | 'cyclic' ~
-                                    'dictionary': ~
-                                )
-                            )
-                        }
-                        `dictionary`: | 'component' | 'internal' `Dictionary`
-                        `group`: | 'component' | 'internal' `Group`
-                        `list`: | 'group' {
-                            `node`: (
-                                'description': ~
-                                'node': | 'component' | 'internal cyclic' `Type Node`
-                            )
-                        }
-                        `nothing`: | 'nothing' ~
-                        `optional`: | 'component' | 'internal cyclic' `Type Node`
-                        `reference`: | 'group' {
-                            `type`: (
-                                'description': ~
-                                'node': | 'state group' {
-                                    `derived`: | 'nothing' ~
-                                    `selected`: | 'nothing' ~
-                                }
-                            )
-                        }
-                        `state group`: | 'dictionary' (
-                            'node': | 'component' | 'internal cyclic' `Type Node`
-                            'ordered': `false`
                         )
-                        `text`: | 'state group' {
-                            `global`: | 'reference' (
-                                'referent': (
-                                    'resulting node': ~
-                                    'tail': [ | 'group' `text types` ]
-                                    'type location': (
-                                        'location': | 'internal' `Globals`
-                                        'resulting node': ~
+                        `dictionary`: (
+                            'description': ~
+                            'node': | 'component' | 'internal' `Dictionary`
+                        )
+                        `group`: (
+                            'description': ~
+                            'node': | 'component' | 'internal' `Group`
+                        )
+                        `list`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `node`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal cyclic' `Type Node`
+                                )
+                            }
+                        )
+                        `nothing`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `optional`: (
+                            'description': ~
+                            'node': | 'component' | 'internal cyclic' `Type Node`
+                        )
+                        `reference`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `type`: (
+                                    'description': ~
+                                    'node': | 'state group' {
+                                        `derived`: (
+                                            'description': ~
+                                            'node': | 'nothing' ~
+                                        )
+                                        `selected`: (
+                                            'description': ~
+                                            'node': | 'nothing' ~
+                                        )
+                                    }
+                                )
+                            }
+                        )
+                        `state group`: (
+                            'description': ~
+                            'node': | 'dictionary' (
+                                'node': | 'component' | 'internal cyclic' `Type Node`
+                                'ordered': `false`
+                            )
+                        )
+                        `text`: (
+                            'description': ~
+                            'node': | 'state group' {
+                                `global`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
+                                            'resulting node': ~
+                                            'tail': [ | 'group' `text types` ]
+                                            'type location': (
+                                                'location': | 'internal' `Globals`
+                                                'resulting node': ~
+                                            )
+                                        )
+                                        'type': | 'selected' (
+                                            'dependency': | 'acyclic' ~
+                                            'dictionary': ~
+                                        )
                                     )
                                 )
-                                'type': | 'selected' (
-                                    'dependency': | 'acyclic' ~
-                                    'dictionary': ~
+                                `local`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `Text Type`
                                 )
-                            )
-                            `local`: | 'component' | 'internal' `Text Type`
-                        }
+                            }
+                        )
                     }
                     'type parameters': {
                     }
@@ -1718,40 +1823,46 @@
                 `Operations`: (
                     'node': | 'dictionary' (
                         'node': | 'state group' {
-                            `operation`: | 'group' {
-                                `context`: (
-                                    'description': ~
-                                    'node': | 'component' | 'external' (
-                                        'import': `schema`
-                                        'type': `Type Node`
-                                    )
-                                )
-                                `parameters`: (
-                                    'description': ~
-                                    'node': | 'dictionary' (
+                            `operation`: (
+                                'description': ~
+                                'node': | 'group' {
+                                    `context`: (
+                                        'description': ~
                                         'node': | 'component' | 'external' (
                                             'import': `schema`
                                             'type': `Type Node`
                                         )
-                                        'ordered': `false`
                                     )
-                                )
-                                `result`: (
-                                    'description': ~
-                                    'node': | 'component' | 'external' (
-                                        'import': `schema`
-                                        'type': `Type Node`
+                                    `parameters`: (
+                                        'description': ~
+                                        'node': | 'dictionary' (
+                                            'node': | 'component' | 'external' (
+                                                'import': `schema`
+                                                'type': `Type Node`
+                                            )
+                                            'ordered': `false`
+                                        )
                                     )
-                                )
-                                `type parameters`: (
-                                    'description': ~
-                                    'node': | 'component' | 'external' (
-                                        'import': `schema`
-                                        'type': `Type Parameters`
+                                    `result`: (
+                                        'description': ~
+                                        'node': | 'component' | 'external' (
+                                            'import': `schema`
+                                            'type': `Type Node`
+                                        )
                                     )
-                                )
-                            }
-                            `set`: | 'component' | 'internal cyclic' `Operations`
+                                    `type parameters`: (
+                                        'description': ~
+                                        'node': | 'component' | 'external' (
+                                            'import': `schema`
+                                            'type': `Type Parameters`
+                                        )
+                                    )
+                                }
+                            )
+                            `set`: (
+                                'description': ~
+                                'node': | 'component' | 'internal cyclic' `Operations`
+                            )
                         }
                         'ordered': `false`
                     )
@@ -3808,7 +3919,7 @@
                                                                         'resulting node': ~
                                                                         'start': | 'linked entry' ~
                                                                         'tail': (
-                                                                            'path': [ ]
+                                                                            'path': [ | 'group' `node` ]
                                                                             'resulting node': ~
                                                                         )
                                                                     )
@@ -5700,16 +5811,29 @@
                                     'resolver': | 'dictionary' (
                                         'benchmark': ~
                                         'definition': ~
-                                        'resolver': | 'component' (
-                                            'arguments': * (
-                                                'lookups': ~
-                                                'values': ~
+                                        'resolver': | 'group' {
+                                            `description`: (
+                                                'definition': ~
+                                                'resolver': | 'optional' (
+                                                    'constraints': {
+                                                    }
+                                                    'resolver': | 'text' ~
+                                                )
                                             )
-                                            'constraints': {
-                                            }
-                                            'location': | 'internal' `Type Node`
-                                            'signature': ~
-                                        )
+                                            `node`: (
+                                                'definition': ~
+                                                'resolver': | 'component' (
+                                                    'arguments': * (
+                                                        'lookups': ~
+                                                        'values': ~
+                                                    )
+                                                    'constraints': {
+                                                    }
+                                                    'location': | 'internal' `Type Node`
+                                                    'signature': ~
+                                                )
+                                            )
+                                        }
                                     )
                                 )
                                 `text`: (
@@ -6954,55 +7078,61 @@
                         `type`: (
                             'description': ~
                             'node': | 'state group' {
-                                `optional value`: | 'group' {
-                                    `selected optional value`: (
-                                        'description': ~
-                                        'node': | 'reference' (
-                                            'referent': (
-                                                'resulting node': ~
-                                                'tail': [ | 'state group' `optional` ]
-                                                'type location': (
-                                                    'location': | 'internal' `Type Node`
+                                `optional value`: (
+                                    'description': ~
+                                    'node': | 'group' {
+                                        `selected optional value`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
                                                     'resulting node': ~
+                                                    'tail': [ | 'state group' `optional` ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Type Node`
+                                                        'resulting node': ~
+                                                    )
                                                 )
-                                            )
-                                            'type': | 'derived' ~
-                                        )
-                                    )
-                                }
-                                `state`: | 'group' {
-                                    `selected state group`: (
-                                        'description': ~
-                                        'node': | 'reference' (
-                                            'referent': (
-                                                'resulting node': ~
-                                                'tail': [ | 'state group' `state group` ]
-                                                'type location': (
-                                                    'location': | 'internal' `Type Node`
-                                                    'resulting node': ~
-                                                )
-                                            )
-                                            'type': | 'derived' ~
-                                        )
-                                    )
-                                    `state`: (
-                                        'description': ~
-                                        'node': | 'reference' (
-                                            'referent': (
-                                                'resulting node': ~
-                                                'tail': [ | 'state group' `state group` ]
-                                                'type location': (
-                                                    'location': | 'internal' `Type Node`
-                                                    'resulting node': ~
-                                                )
-                                            )
-                                            'type': | 'selected' (
-                                                'dependency': | 'acyclic' ~
-                                                'dictionary': ~
+                                                'type': | 'derived' ~
                                             )
                                         )
-                                    )
-                                }
+                                    }
+                                )
+                                `state`: (
+                                    'description': ~
+                                    'node': | 'group' {
+                                        `selected state group`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
+                                                    'resulting node': ~
+                                                    'tail': [ | 'state group' `state group` ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Type Node`
+                                                        'resulting node': ~
+                                                    )
+                                                )
+                                                'type': | 'derived' ~
+                                            )
+                                        )
+                                        `state`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
+                                                    'resulting node': ~
+                                                    'tail': [ | 'state group' `state group` ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Type Node`
+                                                        'resulting node': ~
+                                                    )
+                                                )
+                                                'type': | 'selected' (
+                                                    'dependency': | 'acyclic' ~
+                                                    'dictionary': ~
+                                                )
+                                            )
+                                        )
+                                    }
+                                )
                             }
                         )
                     }
@@ -7028,8 +7158,14 @@
                         `complexity`: (
                             'description': ~
                             'node': | 'state group' {
-                                `constrained`: | 'nothing' ~
-                                `unconstrained`: | 'nothing' ~
+                                `constrained`: (
+                                    'description': ~
+                                    'node': | 'nothing' ~
+                                )
+                                `unconstrained`: (
+                                    'description': ~
+                                    'node': | 'nothing' ~
+                                )
                             }
                         )
                         `number types`: (
@@ -7088,245 +7224,284 @@
                         `start`: (
                             'description': ~
                             'node': | 'state group' {
-                                `constraint`: | 'state group' {
-                                    `component`: | 'group' {
-                                        `constraint`: (
+                                `constraint`: (
+                                    'description': ~
+                                    'node': | 'state group' {
+                                        `component`: (
                                             'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Property Constraints`
-                                                        'resulting node': ~
+                                            'node': | 'group' {
+                                                `constraint`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Property Constraints`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'selected' (
+                                                            'dependency': | 'acyclic' ~
+                                                            'dictionary': ~
+                                                        )
                                                     )
                                                 )
-                                                'type': | 'selected' (
-                                                    'dependency': | 'acyclic' ~
-                                                    'dictionary': ~
+                                                `property`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Node Resolver Group`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'selected' (
+                                                            'dependency': | 'acyclic' ~
+                                                            'dictionary': ~
+                                                        )
+                                                    )
                                                 )
-                                            )
+                                            }
                                         )
-                                        `property`: (
+                                        `reference`: (
                                             'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Node Resolver Group`
-                                                        'resulting node': ~
+                                            'node': | 'group' {
+                                                `constraint`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Property Constraints`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'selected' (
+                                                            'dependency': | 'acyclic' ~
+                                                            'dictionary': ~
+                                                        )
                                                     )
                                                 )
-                                                'type': | 'selected' (
-                                                    'dependency': | 'acyclic' ~
-                                                    'dictionary': ~
+                                                `property`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Node Resolver Group`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'selected' (
+                                                            'dependency': | 'acyclic' ~
+                                                            'dictionary': ~
+                                                        )
+                                                    )
                                                 )
-                                            )
+                                            }
                                         )
                                     }
-                                    `reference`: | 'group' {
-                                        `constraint`: (
-                                            'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Property Constraints`
-                                                        'resulting node': ~
-                                                    )
-                                                )
-                                                'type': | 'selected' (
-                                                    'dependency': | 'acyclic' ~
-                                                    'dictionary': ~
-                                                )
-                                            )
-                                        )
-                                        `property`: (
-                                            'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Node Resolver Group`
-                                                        'resulting node': ~
-                                                    )
-                                                )
-                                                'type': | 'selected' (
-                                                    'dependency': | 'acyclic' ~
-                                                    'dictionary': ~
-                                                )
-                                            )
-                                        )
-                                    }
-                                }
-                                `linked entry`: | 'nothing' ~
-                                `list cursor`: | 'nothing' ~
-                                `option constraint`: | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ ]
-                                        'type location': (
-                                            'location': | 'internal' `Option Constraints`
+                                )
+                                `linked entry`: (
+                                    'description': ~
+                                    'node': | 'nothing' ~
+                                )
+                                `list cursor`: (
+                                    'description': ~
+                                    'node': | 'nothing' ~
+                                )
+                                `option constraint`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
                                             'resulting node': ~
+                                            'tail': [ ]
+                                            'type location': (
+                                                'location': | 'internal' `Option Constraints`
+                                                'resulting node': ~
+                                            )
                                         )
-                                    )
-                                    'type': | 'selected' (
-                                        'dependency': | 'acyclic' ~
-                                        'dictionary': ~
+                                        'type': | 'selected' (
+                                            'dependency': | 'acyclic' ~
+                                            'dictionary': ~
+                                        )
                                     )
                                 )
-                                `parameter`: | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ | 'group' `values` ]
-                                        'type location': (
-                                            'location': | 'internal' `Signature Parameters`
+                                `parameter`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
                                             'resulting node': ~
-                                        )
-                                    )
-                                    'type': | 'selected' (
-                                        'dependency': | 'acyclic' ~
-                                        'dictionary': ~
-                                    )
-                                )
-                                `parent sibling`: | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ ]
-                                        'type location': (
-                                            'location': | 'internal' `Node Resolver Group`
-                                            'resulting node': ~
-                                        )
-                                    )
-                                    'type': | 'selected' (
-                                        'dependency': | 'acyclic' ~
-                                        'dictionary': ~
-                                    )
-                                )
-                                `result`: | 'state group' {
-                                    `list`: | 'group' {
-                                        `list result`: (
-                                            'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ | 'state group' `list` | 'group' `result` | 'optional' ~ ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Node Resolver`
-                                                        'resulting node': ~
-                                                    )
-                                                )
-                                                'type': | 'derived' ~
+                                            'tail': [ | 'group' `values` ]
+                                            'type location': (
+                                                'location': | 'internal' `Signature Parameters`
+                                                'resulting node': ~
                                             )
                                         )
-                                        `property`: (
-                                            'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Node Resolver Group`
-                                                        'resulting node': ~
-                                                    )
-                                                )
-                                                'type': | 'selected' (
-                                                    'dependency': | 'acyclic' ~
-                                                    'dictionary': ~
-                                                )
+                                        'type': | 'selected' (
+                                            'dependency': | 'acyclic' ~
+                                            'dictionary': ~
+                                        )
+                                    )
+                                )
+                                `parent sibling`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
+                                            'resulting node': ~
+                                            'tail': [ ]
+                                            'type location': (
+                                                'location': | 'internal' `Node Resolver Group`
+                                                'resulting node': ~
                                             )
                                         )
-                                    }
-                                    `optional value`: | 'group' {
+                                        'type': | 'selected' (
+                                            'dependency': | 'acyclic' ~
+                                            'dictionary': ~
+                                        )
+                                    )
+                                )
+                                `result`: (
+                                    'description': ~
+                                    'node': | 'state group' {
+                                        `list`: (
+                                            'description': ~
+                                            'node': | 'group' {
+                                                `list result`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ | 'state group' `list` | 'group' `result` | 'optional' ~ ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Node Resolver`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'derived' ~
+                                                    )
+                                                )
+                                                `property`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Node Resolver Group`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'selected' (
+                                                            'dependency': | 'acyclic' ~
+                                                            'dictionary': ~
+                                                        )
+                                                    )
+                                                )
+                                            }
+                                        )
                                         `optional value`: (
                                             'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ | 'state group' `optional` ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Node Resolver`
-                                                        'resulting node': ~
+                                            'node': | 'group' {
+                                                `optional value`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ | 'state group' `optional` ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Node Resolver`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'derived' ~
                                                     )
                                                 )
-                                                'type': | 'derived' ~
-                                            )
-                                        )
-                                        `property`: (
-                                            'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Node Resolver Group`
-                                                        'resulting node': ~
+                                                `property`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Node Resolver Group`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'selected' (
+                                                            'dependency': | 'acyclic' ~
+                                                            'dictionary': ~
+                                                        )
                                                     )
                                                 )
-                                                'type': | 'selected' (
-                                                    'dependency': | 'acyclic' ~
-                                                    'dictionary': ~
+                                                `result`: (
+                                                    'description': ~
+                                                    'node': | 'component' | 'internal' `Type Reference`
                                                 )
-                                            )
-                                        )
-                                        `result`: (
-                                            'description': ~
-                                            'node': | 'component' | 'internal' `Type Reference`
-                                        )
-                                    }
-                                    `state group`: | 'group' {
-                                        `property`: (
-                                            'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Node Resolver Group`
-                                                        'resulting node': ~
-                                                    )
-                                                )
-                                                'type': | 'selected' (
-                                                    'dependency': | 'acyclic' ~
-                                                    'dictionary': ~
-                                                )
-                                            )
-                                        )
-                                        `result`: (
-                                            'description': ~
-                                            'node': | 'component' | 'internal' `Type Reference`
+                                            }
                                         )
                                         `state group`: (
                                             'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ | 'state group' `state group` ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Node Resolver`
-                                                        'resulting node': ~
+                                            'node': | 'group' {
+                                                `property`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Node Resolver Group`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'selected' (
+                                                            'dependency': | 'acyclic' ~
+                                                            'dictionary': ~
+                                                        )
                                                     )
                                                 )
-                                                'type': | 'derived' ~
-                                            )
+                                                `result`: (
+                                                    'description': ~
+                                                    'node': | 'component' | 'internal' `Type Reference`
+                                                )
+                                                `state group`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ | 'state group' `state group` ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Node Resolver`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'derived' ~
+                                                    )
+                                                )
+                                            }
                                         )
                                     }
-                                }
-                                `sibling`: | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ ]
-                                        'type location': (
-                                            'location': | 'internal' `Node Resolver Group`
+                                )
+                                `sibling`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
                                             'resulting node': ~
+                                            'tail': [ ]
+                                            'type location': (
+                                                'location': | 'internal' `Node Resolver Group`
+                                                'resulting node': ~
+                                            )
                                         )
-                                    )
-                                    'type': | 'selected' (
-                                        'dependency': | 'acyclic' ~
-                                        'dictionary': ~
+                                        'type': | 'selected' (
+                                            'dependency': | 'acyclic' ~
+                                            'dictionary': ~
+                                        )
                                     )
                                 )
                             }
@@ -7398,61 +7573,73 @@
                         `type`: (
                             'description': ~
                             'node': | 'state group' {
-                                `dictionary`: | 'group' {
-                                    `selected dictionary`: (
-                                        'description': ~
-                                        'node': | 'reference' (
-                                            'referent': (
-                                                'resulting node': ~
-                                                'tail': [ ]
-                                                'type location': (
-                                                    'location': | 'internal' `Dictionary`
+                                `dictionary`: (
+                                    'description': ~
+                                    'node': | 'group' {
+                                        `selected dictionary`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
                                                     'resulting node': ~
+                                                    'tail': [ ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Dictionary`
+                                                        'resulting node': ~
+                                                    )
                                                 )
+                                                'type': | 'derived' ~
                                             )
-                                            'type': | 'derived' ~
                                         )
-                                    )
-                                    `selection`: (
-                                        'description': ~
-                                        'node': | 'component' | 'internal cyclic' `Guaranteed Value Selection`
-                                    )
-                                }
-                                `not circular dependent siblings`: | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ ]
-                                        'type location': (
-                                            'location': | 'internal' `Dictionary`
-                                            'resulting node': ~
+                                        `selection`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal cyclic' `Guaranteed Value Selection`
                                         )
-                                    )
-                                    'type': | 'derived' ~
+                                    }
                                 )
-                                `parameter`: | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ | 'group' `lookups` ]
-                                        'type location': (
-                                            'location': | 'internal' `Signature Parameters`
+                                `not circular dependent siblings`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
                                             'resulting node': ~
+                                            'tail': [ ]
+                                            'type location': (
+                                                'location': | 'internal' `Dictionary`
+                                                'resulting node': ~
+                                            )
                                         )
-                                    )
-                                    'type': | 'selected' (
-                                        'dependency': | 'acyclic' ~
-                                        'dictionary': ~
+                                        'type': | 'derived' ~
                                     )
                                 )
-                                `possibly circular dependent siblings`: | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ ]
-                                        'type location': (
-                                            'location': | 'internal' `Dictionary`
+                                `parameter`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
                                             'resulting node': ~
+                                            'tail': [ | 'group' `lookups` ]
+                                            'type location': (
+                                                'location': | 'internal' `Signature Parameters`
+                                                'resulting node': ~
+                                            )
+                                        )
+                                        'type': | 'selected' (
+                                            'dependency': | 'acyclic' ~
+                                            'dictionary': ~
                                         )
                                     )
-                                    'type': | 'derived' ~
+                                )
+                                `possibly circular dependent siblings`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
+                                            'resulting node': ~
+                                            'tail': [ ]
+                                            'type location': (
+                                                'location': | 'internal' `Dictionary`
+                                                'resulting node': ~
+                                            )
+                                        )
+                                        'type': | 'derived' ~
+                                    )
                                 )
                             }
                         )
@@ -7462,84 +7649,131 @@
                 )
                 `Node Resolver`: (
                     'node': | 'state group' {
-                        `boolean`: | 'nothing' ~
-                        `component`: | 'group' {
-                            `arguments`: (
-                                'description': ~
-                                'node': | 'optional' | 'group' {
-                                    `lookups`: (
-                                        'description': ~
-                                        'node': | 'optional' | 'dictionary' (
-                                            'node': | 'state group' {
-                                                `empty stack`: | 'nothing' ~
-                                                `not set`: | 'nothing' ~
-                                                `selection`: | 'component' | 'internal' `Lookup Selection`
-                                                `stack`: | 'group' {
-                                                    `element`: (
+                        `boolean`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `component`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `arguments`: (
+                                    'description': ~
+                                    'node': | 'optional' | 'group' {
+                                        `lookups`: (
+                                            'description': ~
+                                            'node': | 'optional' | 'dictionary' (
+                                                'node': | 'state group' {
+                                                    `empty stack`: (
+                                                        'description': ~
+                                                        'node': | 'nothing' ~
+                                                    )
+                                                    `not set`: (
+                                                        'description': ~
+                                                        'node': | 'nothing' ~
+                                                    )
+                                                    `selection`: (
                                                         'description': ~
                                                         'node': | 'component' | 'internal' `Lookup Selection`
                                                     )
                                                     `stack`: (
                                                         'description': ~
-                                                        'node': | 'component' | 'internal' `Lookup Selection`
+                                                        'node': | 'group' {
+                                                            `element`: (
+                                                                'description': ~
+                                                                'node': | 'component' | 'internal' `Lookup Selection`
+                                                            )
+                                                            `stack`: (
+                                                                'description': ~
+                                                                'node': | 'component' | 'internal' `Lookup Selection`
+                                                            )
+                                                        }
                                                     )
                                                 }
-                                            }
-                                            'ordered': `false`
-                                        )
-                                    )
-                                    `values`: (
-                                        'description': ~
-                                        'node': | 'optional' | 'dictionary' (
-                                            'node': | 'state group' {
-                                                `optional`: | 'component' | 'internal' `Optional Value Initialization`
-                                                `parameter`: | 'reference' (
-                                                    'referent': (
-                                                        'resulting node': ~
-                                                        'tail': [ | 'group' `values` ]
-                                                        'type location': (
-                                                            'location': | 'internal' `Signature Parameters`
-                                                            'resulting node': ~
-                                                        )
-                                                    )
-                                                    'type': | 'selected' (
-                                                        'dependency': | 'acyclic' ~
-                                                        'dictionary': ~
-                                                    )
-                                                )
-                                                `required`: | 'component' | 'internal cyclic' `Guaranteed Value Selection`
-                                            }
-                                            'ordered': `false`
-                                        )
-                                    )
-                                }
-                            )
-                            `constraints`: (
-                                'description': ~
-                                'node': | 'component' | 'internal' `Property Constraints`
-                            )
-                            `location`: (
-                                'description': ~
-                                'node': | 'state group' {
-                                    `external`: | 'group' {
-                                        `import`: (
-                                            'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Imports`
-                                                        'resulting node': ~
-                                                    )
-                                                )
-                                                'type': | 'selected' (
-                                                    'dependency': | 'acyclic' ~
-                                                    'dictionary': ~
-                                                )
+                                                'ordered': `false`
                                             )
                                         )
-                                        `type`: (
+                                        `values`: (
+                                            'description': ~
+                                            'node': | 'optional' | 'dictionary' (
+                                                'node': | 'state group' {
+                                                    `optional`: (
+                                                        'description': ~
+                                                        'node': | 'component' | 'internal' `Optional Value Initialization`
+                                                    )
+                                                    `parameter`: (
+                                                        'description': ~
+                                                        'node': | 'reference' (
+                                                            'referent': (
+                                                                'resulting node': ~
+                                                                'tail': [ | 'group' `values` ]
+                                                                'type location': (
+                                                                    'location': | 'internal' `Signature Parameters`
+                                                                    'resulting node': ~
+                                                                )
+                                                            )
+                                                            'type': | 'selected' (
+                                                                'dependency': | 'acyclic' ~
+                                                                'dictionary': ~
+                                                            )
+                                                        )
+                                                    )
+                                                    `required`: (
+                                                        'description': ~
+                                                        'node': | 'component' | 'internal cyclic' `Guaranteed Value Selection`
+                                                    )
+                                                }
+                                                'ordered': `false`
+                                            )
+                                        )
+                                    }
+                                )
+                                `constraints`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `Property Constraints`
+                                )
+                                `location`: (
+                                    'description': ~
+                                    'node': | 'state group' {
+                                        `external`: (
+                                            'description': ~
+                                            'node': | 'group' {
+                                                `import`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Imports`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'selected' (
+                                                            'dependency': | 'acyclic' ~
+                                                            'dictionary': ~
+                                                        )
+                                                    )
+                                                )
+                                                `type`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Signatures`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'selected' (
+                                                            'dependency': | 'acyclic' ~
+                                                            'dictionary': ~
+                                                        )
+                                                    )
+                                                )
+                                            }
+                                        )
+                                        `internal`: (
                                             'description': ~
                                             'node': | 'reference' (
                                                 'referent': (
@@ -7557,182 +7791,201 @@
                                             )
                                         )
                                     }
-                                    `internal`: | 'reference' (
+                                )
+                                `signature`: (
+                                    'description': ~
+                                    'node': | 'reference' (
                                         'referent': (
                                             'resulting node': ~
-                                            'tail': [ ]
+                                            'tail': [ | 'dictionary' ~ ]
                                             'type location': (
                                                 'location': | 'internal' `Signatures`
                                                 'resulting node': ~
                                             )
                                         )
-                                        'type': | 'selected' (
-                                            'dependency': | 'acyclic' ~
-                                            'dictionary': ~
-                                        )
+                                        'type': | 'derived' ~
                                     )
-                                }
-                            )
-                            `signature`: (
-                                'description': ~
-                                'node': | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ | 'dictionary' ~ ]
-                                        'type location': (
-                                            'location': | 'internal' `Signatures`
-                                            'resulting node': ~
-                                        )
-                                    )
-                                    'type': | 'derived' ~
                                 )
-                            )
-                        }
-                        `dictionary`: | 'group' {
-                            `benchmark`: (
-                                'description': ~
-                                'node': | 'optional' | 'component' | 'internal' `Benchmark`
-                            )
-                            `definition`: (
-                                'description': ~
-                                'node': | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ ]
-                                        'type location': (
-                                            'location': | 'internal' `Dictionary`
-                                            'resulting node': ~
-                                        )
-                                    )
-                                    'type': | 'derived' ~
+                            }
+                        )
+                        `dictionary`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `benchmark`: (
+                                    'description': ~
+                                    'node': | 'optional' | 'component' | 'internal' `Benchmark`
                                 )
-                            )
-                            `resolver`: (
-                                'description': ~
-                                'node': | 'component' | 'internal cyclic' `Node Resolver`
-                            )
-                        }
-                        `group`: | 'component' | 'internal' `Node Resolver Group`
-                        `list`: | 'group' {
-                            `definition`: (
-                                'description': ~
-                                'node': | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ | 'state group' `list` ]
-                                        'type location': (
-                                            'location': | 'internal' `Type Node`
+                                `definition`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
                                             'resulting node': ~
-                                        )
-                                    )
-                                    'type': | 'derived' ~
-                                )
-                            )
-                            `resolver`: (
-                                'description': ~
-                                'node': | 'component' | 'internal cyclic' `Node Resolver`
-                            )
-                            `result`: (
-                                'description': ~
-                                'node': | 'optional' | 'component' | 'internal' `Node Resolver List Result`
-                            )
-                        }
-                        `nothing`: | 'nothing' ~
-                        `number`: | 'nothing' ~
-                        `optional`: | 'group' {
-                            `constraints`: (
-                                'description': ~
-                                'node': | 'component' | 'internal' `Option Constraints`
-                            )
-                            `resolver`: (
-                                'description': ~
-                                'node': | 'component' | 'internal cyclic' `Node Resolver`
-                            )
-                        }
-                        `reference`: | 'group' {
-                            `definition`: (
-                                'description': ~
-                                'node': | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ | 'state group' `reference` ]
-                                        'type location': (
-                                            'location': | 'internal' `Type Node`
-                                            'resulting node': ~
-                                        )
-                                    )
-                                    'type': | 'derived' ~
-                                )
-                            )
-                            `type`: (
-                                'description': ~
-                                'node': | 'state group' {
-                                    `derived`: | 'group' {
-                                        `value`: (
-                                            'description': ~
-                                            'node': | 'component' | 'internal cyclic' `Guaranteed Value Selection`
-                                        )
-                                    }
-                                    `selected`: | 'group' {
-                                        `constraints`: (
-                                            'description': ~
-                                            'node': | 'component' | 'internal' `Property Constraints`
-                                        )
-                                        `definition`: (
-                                            'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ | 'state group' `reference` | 'group' `type` | 'state group' `selected` ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Type Node`
-                                                        'resulting node': ~
-                                                    )
-                                                )
-                                                'type': | 'derived' ~
+                                            'tail': [ ]
+                                            'type location': (
+                                                'location': | 'internal' `Dictionary`
+                                                'resulting node': ~
                                             )
                                         )
-                                        `lookup`: (
-                                            'description': ~
-                                            'node': | 'component' | 'internal' `Lookup Selection`
-                                        )
-                                    }
-                                }
-                            )
-                        }
-                        `state group`: | 'group' {
-                            `definition`: (
-                                'description': ~
-                                'node': | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ | 'state group' `state group` ]
-                                        'type location': (
-                                            'location': | 'internal' `Type Node`
-                                            'resulting node': ~
-                                        )
+                                        'type': | 'derived' ~
                                     )
-                                    'type': | 'derived' ~
                                 )
-                            )
-                            `states`: (
-                                'description': ~
-                                'node': | 'dictionary' (
-                                    'node': | 'group' {
-                                        `constraints`: (
-                                            'description': ~
-                                            'node': | 'component' | 'internal' `Option Constraints`
+                                `resolver`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal cyclic' `Node Resolver`
+                                )
+                            }
+                        )
+                        `group`: (
+                            'description': ~
+                            'node': | 'component' | 'internal' `Node Resolver Group`
+                        )
+                        `list`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `definition`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
+                                            'resulting node': ~
+                                            'tail': [ | 'state group' `list` ]
+                                            'type location': (
+                                                'location': | 'internal' `Type Node`
+                                                'resulting node': ~
+                                            )
                                         )
-                                        `resolver`: (
+                                        'type': | 'derived' ~
+                                    )
+                                )
+                                `resolver`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal cyclic' `Node Resolver`
+                                )
+                                `result`: (
+                                    'description': ~
+                                    'node': | 'optional' | 'component' | 'internal' `Node Resolver List Result`
+                                )
+                            }
+                        )
+                        `nothing`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `number`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `optional`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `constraints`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `Option Constraints`
+                                )
+                                `resolver`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal cyclic' `Node Resolver`
+                                )
+                            }
+                        )
+                        `reference`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `definition`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
+                                            'resulting node': ~
+                                            'tail': [ | 'state group' `reference` ]
+                                            'type location': (
+                                                'location': | 'internal' `Type Node`
+                                                'resulting node': ~
+                                            )
+                                        )
+                                        'type': | 'derived' ~
+                                    )
+                                )
+                                `type`: (
+                                    'description': ~
+                                    'node': | 'state group' {
+                                        `derived`: (
                                             'description': ~
-                                            'node': | 'component' | 'internal cyclic' `Node Resolver`
+                                            'node': | 'group' {
+                                                `value`: (
+                                                    'description': ~
+                                                    'node': | 'component' | 'internal cyclic' `Guaranteed Value Selection`
+                                                )
+                                            }
+                                        )
+                                        `selected`: (
+                                            'description': ~
+                                            'node': | 'group' {
+                                                `constraints`: (
+                                                    'description': ~
+                                                    'node': | 'component' | 'internal' `Property Constraints`
+                                                )
+                                                `definition`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ | 'state group' `reference` | 'group' `type` | 'state group' `selected` ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Type Node`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'derived' ~
+                                                    )
+                                                )
+                                                `lookup`: (
+                                                    'description': ~
+                                                    'node': | 'component' | 'internal' `Lookup Selection`
+                                                )
+                                            }
                                         )
                                     }
-                                    'ordered': `false`
                                 )
-                            )
-                        }
-                        `text`: | 'nothing' ~
+                            }
+                        )
+                        `state group`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `definition`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
+                                            'resulting node': ~
+                                            'tail': [ | 'state group' `state group` ]
+                                            'type location': (
+                                                'location': | 'internal' `Type Node`
+                                                'resulting node': ~
+                                            )
+                                        )
+                                        'type': | 'derived' ~
+                                    )
+                                )
+                                `states`: (
+                                    'description': ~
+                                    'node': | 'dictionary' (
+                                        'node': | 'group' {
+                                            `constraints`: (
+                                                'description': ~
+                                                'node': | 'component' | 'internal' `Option Constraints`
+                                            )
+                                            `resolver`: (
+                                                'description': ~
+                                                'node': | 'component' | 'internal cyclic' `Node Resolver`
+                                            )
+                                        }
+                                        'ordered': `false`
+                                    )
+                                )
+                            }
+                        )
+                        `text`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
                     }
                     'type parameters': {
                     }
@@ -7774,36 +8027,51 @@
                         `precision`: (
                             'description': ~
                             'node': | 'state group' {
-                                `approximation`: | 'group' {
-                                    `significant digits`: (
-                                        'description': ~
-                                        'node': | 'number' | 'local' (
-                                            'precision': | 'exact' (
-                                                'decimal separator offset': ~
-                                                'type': | 'natural' ~
+                                `approximation`: (
+                                    'description': ~
+                                    'node': | 'group' {
+                                        `significant digits`: (
+                                            'description': ~
+                                            'node': | 'number' | 'local' (
+                                                'precision': | 'exact' (
+                                                    'decimal separator offset': ~
+                                                    'type': | 'natural' ~
+                                                )
                                             )
                                         )
-                                    )
-                                }
-                                `exact`: | 'group' {
-                                    `decimal separator offset`: (
-                                        'description': ~
-                                        'node': | 'optional' | 'number' | 'local' (
-                                            'precision': | 'exact' (
-                                                'decimal separator offset': ~
-                                                'type': | 'natural' ~
+                                    }
+                                )
+                                `exact`: (
+                                    'description': ~
+                                    'node': | 'group' {
+                                        `decimal separator offset`: (
+                                            'description': ~
+                                            'node': | 'optional' | 'number' | 'local' (
+                                                'precision': | 'exact' (
+                                                    'decimal separator offset': ~
+                                                    'type': | 'natural' ~
+                                                )
                                             )
                                         )
-                                    )
-                                    `type`: (
-                                        'description': ~
-                                        'node': | 'state group' {
-                                            `integer`: | 'nothing' ~
-                                            `natural`: | 'nothing' ~
-                                            `positive natural`: | 'nothing' ~
-                                        }
-                                    )
-                                }
+                                        `type`: (
+                                            'description': ~
+                                            'node': | 'state group' {
+                                                `integer`: (
+                                                    'description': ~
+                                                    'node': | 'nothing' ~
+                                                )
+                                                `natural`: (
+                                                    'description': ~
+                                                    'node': | 'nothing' ~
+                                                )
+                                                `positive natural`: (
+                                                    'description': ~
+                                                    'node': | 'nothing' ~
+                                                )
+                                            }
+                                        )
+                                    }
+                                )
                             }
                         )
                     }
@@ -7813,44 +8081,50 @@
                 `Option Constraints`: (
                     'node': | 'dictionary' (
                         'node': | 'state group' {
-                            `assert is set`: | 'component' | 'internal cyclic' `Possible Value Selection`
-                            `state`: | 'group' {
-                                `selected state group`: (
-                                    'description': ~
-                                    'node': | 'reference' (
-                                        'referent': (
-                                            'resulting node': ~
-                                            'tail': [ | 'state group' `state group` ]
-                                            'type location': (
-                                                'location': | 'internal' `Type Node`
+                            `assert is set`: (
+                                'description': ~
+                                'node': | 'component' | 'internal cyclic' `Possible Value Selection`
+                            )
+                            `state`: (
+                                'description': ~
+                                'node': | 'group' {
+                                    `selected state group`: (
+                                        'description': ~
+                                        'node': | 'reference' (
+                                            'referent': (
                                                 'resulting node': ~
+                                                'tail': [ | 'state group' `state group` ]
+                                                'type location': (
+                                                    'location': | 'internal' `Type Node`
+                                                    'resulting node': ~
+                                                )
                                             )
-                                        )
-                                        'type': | 'derived' ~
-                                    )
-                                )
-                                `selection`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal cyclic' `Guaranteed Value Selection`
-                                )
-                                `state`: (
-                                    'description': ~
-                                    'node': | 'reference' (
-                                        'referent': (
-                                            'resulting node': ~
-                                            'tail': [ | 'state group' `state group` ]
-                                            'type location': (
-                                                'location': | 'internal' `Type Node`
-                                                'resulting node': ~
-                                            )
-                                        )
-                                        'type': | 'selected' (
-                                            'dependency': | 'acyclic' ~
-                                            'dictionary': ~
+                                            'type': | 'derived' ~
                                         )
                                     )
-                                )
-                            }
+                                    `selection`: (
+                                        'description': ~
+                                        'node': | 'component' | 'internal cyclic' `Guaranteed Value Selection`
+                                    )
+                                    `state`: (
+                                        'description': ~
+                                        'node': | 'reference' (
+                                            'referent': (
+                                                'resulting node': ~
+                                                'tail': [ | 'state group' `state group` ]
+                                                'type location': (
+                                                    'location': | 'internal' `Type Node`
+                                                    'resulting node': ~
+                                                )
+                                            )
+                                            'type': | 'selected' (
+                                                'dependency': | 'acyclic' ~
+                                                'dictionary': ~
+                                            )
+                                        )
+                                    )
+                                }
+                            )
                         }
                         'ordered': `false`
                     )
@@ -7859,113 +8133,140 @@
                 )
                 `Optional Value Initialization`: (
                     'node': | 'state group' {
-                        `not set`: | 'nothing' ~
-                        `selection`: | 'component' | 'internal cyclic' `Possible Value Selection`
-                        `set`: | 'component' | 'internal cyclic' `Guaranteed Value Selection`
+                        `not set`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `selection`: (
+                            'description': ~
+                            'node': | 'component' | 'internal cyclic' `Possible Value Selection`
+                        )
+                        `set`: (
+                            'description': ~
+                            'node': | 'component' | 'internal cyclic' `Guaranteed Value Selection`
+                        )
                     }
                     'type parameters': {
                     }
                 )
                 `Possible Value Selection`: (
                     'node': | 'state group' {
-                        `parameter`: | 'reference' (
-                            'referent': (
-                                'resulting node': ~
-                                'tail': [ | 'group' `values` ]
-                                'type location': (
-                                    'location': | 'internal' `Signature Parameters`
+                        `parameter`: (
+                            'description': ~
+                            'node': | 'reference' (
+                                'referent': (
                                     'resulting node': ~
+                                    'tail': [ | 'group' `values` ]
+                                    'type location': (
+                                        'location': | 'internal' `Signature Parameters`
+                                        'resulting node': ~
+                                    )
                                 )
-                            )
-                            'type': | 'selected' (
-                                'dependency': | 'acyclic' ~
-                                'dictionary': ~
+                                'type': | 'selected' (
+                                    'dependency': | 'acyclic' ~
+                                    'dictionary': ~
+                                )
                             )
                         )
-                        `result`: | 'state group' {
-                            `optional value`: | 'group' {
+                        `result`: (
+                            'description': ~
+                            'node': | 'state group' {
                                 `optional value`: (
                                     'description': ~
-                                    'node': | 'reference' (
-                                        'referent': (
-                                            'resulting node': ~
-                                            'tail': [ | 'state group' `optional` ]
-                                            'type location': (
-                                                'location': | 'internal' `Node Resolver`
-                                                'resulting node': ~
+                                    'node': | 'group' {
+                                        `optional value`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
+                                                    'resulting node': ~
+                                                    'tail': [ | 'state group' `optional` ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Node Resolver`
+                                                        'resulting node': ~
+                                                    )
+                                                )
+                                                'type': | 'derived' ~
                                             )
                                         )
-                                        'type': | 'derived' ~
-                                    )
-                                )
-                                `property`: (
-                                    'description': ~
-                                    'node': | 'reference' (
-                                        'referent': (
-                                            'resulting node': ~
-                                            'tail': [ ]
-                                            'type location': (
-                                                'location': | 'internal' `Node Resolver Group`
-                                                'resulting node': ~
+                                        `property`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
+                                                    'resulting node': ~
+                                                    'tail': [ ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Node Resolver Group`
+                                                        'resulting node': ~
+                                                    )
+                                                )
+                                                'type': | 'selected' (
+                                                    'dependency': | 'acyclic' ~
+                                                    'dictionary': ~
+                                                )
                                             )
                                         )
-                                        'type': | 'selected' (
-                                            'dependency': | 'acyclic' ~
-                                            'dictionary': ~
+                                        `result`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `Type Reference`
                                         )
-                                    )
-                                )
-                                `result`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal' `Type Reference`
-                                )
-                            }
-                            `state group`: | 'group' {
-                                `property`: (
-                                    'description': ~
-                                    'node': | 'reference' (
-                                        'referent': (
-                                            'resulting node': ~
-                                            'tail': [ ]
-                                            'type location': (
-                                                'location': | 'internal' `Node Resolver Group`
-                                                'resulting node': ~
-                                            )
-                                        )
-                                        'type': | 'selected' (
-                                            'dependency': | 'acyclic' ~
-                                            'dictionary': ~
-                                        )
-                                    )
-                                )
-                                `result`: (
-                                    'description': ~
-                                    'node': | 'component' | 'internal' `Type Reference`
+                                    }
                                 )
                                 `state group`: (
                                     'description': ~
-                                    'node': | 'reference' (
-                                        'referent': (
-                                            'resulting node': ~
-                                            'tail': [ | 'state group' `state group` ]
-                                            'type location': (
-                                                'location': | 'internal' `Node Resolver`
-                                                'resulting node': ~
+                                    'node': | 'group' {
+                                        `property`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
+                                                    'resulting node': ~
+                                                    'tail': [ ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Node Resolver Group`
+                                                        'resulting node': ~
+                                                    )
+                                                )
+                                                'type': | 'selected' (
+                                                    'dependency': | 'acyclic' ~
+                                                    'dictionary': ~
+                                                )
                                             )
                                         )
-                                        'type': | 'derived' ~
-                                    )
+                                        `result`: (
+                                            'description': ~
+                                            'node': | 'component' | 'internal' `Type Reference`
+                                        )
+                                        `state group`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
+                                                    'resulting node': ~
+                                                    'tail': [ | 'state group' `state group` ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Node Resolver`
+                                                        'resulting node': ~
+                                                    )
+                                                )
+                                                'type': | 'derived' ~
+                                            )
+                                        )
+                                    }
                                 )
                             }
-                        }
+                        )
                     }
                     'type parameters': {
                     }
                 )
                 `Presence`: (
                     'node': | 'state group' {
-                        `optional`: | 'nothing' ~
-                        `required`: | 'nothing' ~
+                        `optional`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `required`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
                     }
                     'type parameters': {
                     }
@@ -7979,8 +8280,14 @@
                         `start`: (
                             'description': ~
                             'node': | 'state group' {
-                                `property`: | 'nothing' ~
-                                `sibling`: | 'component' | 'internal' `Reference To Property Constraint`
+                                `property`: (
+                                    'description': ~
+                                    'node': | 'nothing' ~
+                                )
+                                `sibling`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `Reference To Property Constraint`
+                                )
                             }
                         )
                     }
@@ -8019,37 +8326,46 @@
                             'description': ~
                             'node': | 'list' (
                                 'node': | 'state group' {
-                                    `component`: | 'nothing' ~
-                                    `group`: | 'reference' (
-                                        'referent': (
-                                            'resulting node': ~
-                                            'tail': [ ]
-                                            'type location': (
-                                                'location': | 'internal' `Group`
+                                    `component`: (
+                                        'description': ~
+                                        'node': | 'nothing' ~
+                                    )
+                                    `group`: (
+                                        'description': ~
+                                        'node': | 'reference' (
+                                            'referent': (
                                                 'resulting node': ~
+                                                'tail': [ ]
+                                                'type location': (
+                                                    'location': | 'internal' `Group`
+                                                    'resulting node': ~
+                                                )
                                             )
-                                        )
-                                        'type': | 'selected' (
-                                            'dependency': | 'acyclic' ~
-                                            'dictionary': ~
+                                            'type': | 'selected' (
+                                                'dependency': | 'acyclic' ~
+                                                'dictionary': ~
+                                            )
                                         )
                                     )
-                                    `reference`: | 'group' {
-                                        `definition`: (
-                                            'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ | 'state group' `reference` ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Type Node`
+                                    `reference`: (
+                                        'description': ~
+                                        'node': | 'group' {
+                                            `definition`: (
+                                                'description': ~
+                                                'node': | 'reference' (
+                                                    'referent': (
                                                         'resulting node': ~
+                                                        'tail': [ | 'state group' `reference` ]
+                                                        'type location': (
+                                                            'location': | 'internal' `Type Node`
+                                                            'resulting node': ~
+                                                        )
                                                     )
+                                                    'type': | 'derived' ~
                                                 )
-                                                'type': | 'derived' ~
                                             )
-                                        )
-                                    }
+                                        }
+                                    )
                                 }
                             )
                         )
@@ -8122,8 +8438,14 @@
                         `complexity`: (
                             'description': ~
                             'node': | 'state group' {
-                                `constrained`: | 'component' | 'internal' `Resolve Logic`
-                                `unconstrained`: | 'nothing' ~
+                                `constrained`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `Resolve Logic`
+                                )
+                                `unconstrained`: (
+                                    'description': ~
+                                    'node': | 'nothing' ~
+                                )
                             }
                         )
                         `globals`: (
@@ -8144,8 +8466,14 @@
                 )
                 `Schema Tree`: (
                     'node': | 'state group' {
-                        `schema`: | 'component' | 'internal' `Schema`
-                        `set`: | 'component' | 'internal cyclic' `Schemas`
+                        `schema`: (
+                            'description': ~
+                            'node': | 'component' | 'internal' `Schema`
+                        )
+                        `set`: (
+                            'description': ~
+                            'node': | 'component' | 'internal cyclic' `Schemas`
+                        )
                     }
                     'type parameters': {
                     }
@@ -8163,19 +8491,25 @@
                         `parameters`: (
                             'description': ~
                             'node': | 'state group' {
-                                `local`: | 'component' | 'internal' `Signature Parameters`
-                                `same as`: | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ ]
-                                        'type location': (
-                                            'location': | 'internal' `Signatures`
+                                `local`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `Signature Parameters`
+                                )
+                                `same as`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
                                             'resulting node': ~
+                                            'tail': [ ]
+                                            'type location': (
+                                                'location': | 'internal' `Signatures`
+                                                'resulting node': ~
+                                            )
                                         )
-                                    )
-                                    'type': | 'selected' (
-                                        'dependency': | 'acyclic' ~
-                                        'dictionary': ~
+                                        'type': | 'selected' (
+                                            'dependency': | 'acyclic' ~
+                                            'dictionary': ~
+                                        )
                                     )
                                 )
                             }
@@ -8243,9 +8577,18 @@
                                     `type`: (
                                         'description': ~
                                         'node': | 'state group' {
-                                            `acyclic`: | 'nothing' ~
-                                            `cyclic`: | 'nothing' ~
-                                            `stack`: | 'nothing' ~
+                                            `acyclic`: (
+                                                'description': ~
+                                                'node': | 'nothing' ~
+                                            )
+                                            `cyclic`: (
+                                                'description': ~
+                                                'node': | 'nothing' ~
+                                            )
+                                            `stack`: (
+                                                'description': ~
+                                                'node': | 'nothing' ~
+                                            )
                                         }
                                     )
                                 }
@@ -8285,8 +8628,14 @@
                         `type`: (
                             'description': ~
                             'node': | 'state group' {
-                                `multi line`: | 'nothing' ~
-                                `single line`: | 'nothing' ~
+                                `multi line`: (
+                                    'description': ~
+                                    'node': | 'nothing' ~
+                                )
+                                `single line`: (
+                                    'description': ~
+                                    'node': | 'nothing' ~
+                                )
                             }
                         )
                     }
@@ -8309,27 +8658,53 @@
                 )
                 `Type Node`: (
                     'node': | 'state group' {
-                        `boolean`: | 'nothing' ~
-                        `component`: | 'state group' {
-                            `external`: | 'group' {
-                                `import`: (
+                        `boolean`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `component`: (
+                            'description': ~
+                            'node': | 'state group' {
+                                `external`: (
                                     'description': ~
-                                    'node': | 'reference' (
-                                        'referent': (
-                                            'resulting node': ~
-                                            'tail': [ ]
-                                            'type location': (
-                                                'location': | 'internal' `Imports`
-                                                'resulting node': ~
+                                    'node': | 'group' {
+                                        `import`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
+                                                    'resulting node': ~
+                                                    'tail': [ ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Imports`
+                                                        'resulting node': ~
+                                                    )
+                                                )
+                                                'type': | 'selected' (
+                                                    'dependency': | 'acyclic' ~
+                                                    'dictionary': ~
+                                                )
                                             )
                                         )
-                                        'type': | 'selected' (
-                                            'dependency': | 'acyclic' ~
-                                            'dictionary': ~
+                                        `type`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
+                                                    'resulting node': ~
+                                                    'tail': [ ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Types`
+                                                        'resulting node': ~
+                                                    )
+                                                )
+                                                'type': | 'selected' (
+                                                    'dependency': | 'acyclic' ~
+                                                    'dictionary': ~
+                                                )
+                                            )
                                         )
-                                    )
+                                    }
                                 )
-                                `type`: (
+                                `internal`: (
                                     'description': ~
                                     'node': | 'reference' (
                                         'referent': (
@@ -8346,120 +8721,174 @@
                                         )
                                     )
                                 )
-                            }
-                            `internal`: | 'reference' (
-                                'referent': (
-                                    'resulting node': ~
-                                    'tail': [ ]
-                                    'type location': (
-                                        'location': | 'internal' `Types`
-                                        'resulting node': ~
-                                    )
-                                )
-                                'type': | 'selected' (
-                                    'dependency': | 'acyclic' ~
-                                    'dictionary': ~
-                                )
-                            )
-                            `internal cyclic`: | 'reference' (
-                                'referent': (
-                                    'resulting node': ~
-                                    'tail': [ ]
-                                    'type location': (
-                                        'location': | 'internal' `Types`
-                                        'resulting node': ~
-                                    )
-                                )
-                                'type': | 'selected' (
-                                    'dependency': | 'cyclic' ~
-                                    'dictionary': ~
-                                )
-                            )
-                        }
-                        `dictionary`: | 'component' | 'internal' `Dictionary`
-                        `group`: | 'component' | 'internal' `Group`
-                        `list`: | 'group' {
-                            `node`: (
-                                'description': ~
-                                'node': | 'component' | 'internal cyclic' `Type Node`
-                            )
-                        }
-                        `nothing`: | 'nothing' ~
-                        `number`: | 'state group' {
-                            `global`: | 'reference' (
-                                'referent': (
-                                    'resulting node': ~
-                                    'tail': [ | 'group' `number types` ]
-                                    'type location': (
-                                        'location': | 'internal' `Globals`
-                                        'resulting node': ~
-                                    )
-                                )
-                                'type': | 'selected' (
-                                    'dependency': | 'acyclic' ~
-                                    'dictionary': ~
-                                )
-                            )
-                            `local`: | 'component' | 'internal' `Number Type`
-                        }
-                        `optional`: | 'component' | 'internal cyclic' `Type Node`
-                        `reference`: | 'group' {
-                            `referent`: (
-                                'description': ~
-                                'node': | 'component' | 'internal cyclic' `Type Node Reference`
-                            )
-                            `type`: (
-                                'description': ~
-                                'node': | 'state group' {
-                                    `derived`: | 'nothing' ~
-                                    `selected`: | 'group' {
-                                        `dependency`: (
-                                            'description': ~
-                                            'node': | 'state group' {
-                                                `acyclic`: | 'nothing' ~
-                                                `cyclic`: | 'nothing' ~
-                                                `stack`: | 'nothing' ~
-                                            }
-                                        )
-                                        `dictionary`: (
-                                            'description': ~
-                                            'node': | 'reference' (
-                                                'referent': (
-                                                    'resulting node': ~
-                                                    'tail': [ ]
-                                                    'type location': (
-                                                        'location': | 'internal' `Dictionary`
-                                                        'resulting node': ~
-                                                    )
-                                                )
-                                                'type': | 'derived' ~
+                                `internal cyclic`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
+                                            'resulting node': ~
+                                            'tail': [ ]
+                                            'type location': (
+                                                'location': | 'internal' `Types`
+                                                'resulting node': ~
                                             )
                                         )
-                                    }
-                                }
-                            )
-                        }
-                        `state group`: | 'dictionary' (
-                            'node': | 'component' | 'internal cyclic' `Type Node`
-                            'ordered': `false`
-                        )
-                        `text`: | 'state group' {
-                            `global`: | 'reference' (
-                                'referent': (
-                                    'resulting node': ~
-                                    'tail': [ | 'group' `text types` ]
-                                    'type location': (
-                                        'location': | 'internal' `Globals`
-                                        'resulting node': ~
+                                        'type': | 'selected' (
+                                            'dependency': | 'cyclic' ~
+                                            'dictionary': ~
+                                        )
                                     )
                                 )
-                                'type': | 'selected' (
-                                    'dependency': | 'acyclic' ~
-                                    'dictionary': ~
+                            }
+                        )
+                        `dictionary`: (
+                            'description': ~
+                            'node': | 'component' | 'internal' `Dictionary`
+                        )
+                        `group`: (
+                            'description': ~
+                            'node': | 'component' | 'internal' `Group`
+                        )
+                        `list`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `node`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal cyclic' `Type Node`
                                 )
+                            }
+                        )
+                        `nothing`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `number`: (
+                            'description': ~
+                            'node': | 'state group' {
+                                `global`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
+                                            'resulting node': ~
+                                            'tail': [ | 'group' `number types` ]
+                                            'type location': (
+                                                'location': | 'internal' `Globals`
+                                                'resulting node': ~
+                                            )
+                                        )
+                                        'type': | 'selected' (
+                                            'dependency': | 'acyclic' ~
+                                            'dictionary': ~
+                                        )
+                                    )
+                                )
+                                `local`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `Number Type`
+                                )
+                            }
+                        )
+                        `optional`: (
+                            'description': ~
+                            'node': | 'component' | 'internal cyclic' `Type Node`
+                        )
+                        `reference`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `referent`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal cyclic' `Type Node Reference`
+                                )
+                                `type`: (
+                                    'description': ~
+                                    'node': | 'state group' {
+                                        `derived`: (
+                                            'description': ~
+                                            'node': | 'nothing' ~
+                                        )
+                                        `selected`: (
+                                            'description': ~
+                                            'node': | 'group' {
+                                                `dependency`: (
+                                                    'description': ~
+                                                    'node': | 'state group' {
+                                                        `acyclic`: (
+                                                            'description': ~
+                                                            'node': | 'nothing' ~
+                                                        )
+                                                        `cyclic`: (
+                                                            'description': ~
+                                                            'node': | 'nothing' ~
+                                                        )
+                                                        `stack`: (
+                                                            'description': ~
+                                                            'node': | 'nothing' ~
+                                                        )
+                                                    }
+                                                )
+                                                `dictionary`: (
+                                                    'description': ~
+                                                    'node': | 'reference' (
+                                                        'referent': (
+                                                            'resulting node': ~
+                                                            'tail': [ ]
+                                                            'type location': (
+                                                                'location': | 'internal' `Dictionary`
+                                                                'resulting node': ~
+                                                            )
+                                                        )
+                                                        'type': | 'derived' ~
+                                                    )
+                                                )
+                                            }
+                                        )
+                                    }
+                                )
+                            }
+                        )
+                        `state group`: (
+                            'description': ~
+                            'node': | 'dictionary' (
+                                'node': | 'group' {
+                                    `description`: (
+                                        'description': ~
+                                        'node': | 'optional' | 'text' | 'local' (
+                                            'type': | 'multi line' ~
+                                        )
+                                    )
+                                    `node`: (
+                                        'description': ~
+                                        'node': | 'component' | 'internal cyclic' `Type Node`
+                                    )
+                                }
+                                'ordered': `false`
                             )
-                            `local`: | 'component' | 'internal' `Text Type`
-                        }
+                        )
+                        `text`: (
+                            'description': ~
+                            'node': | 'state group' {
+                                `global`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
+                                            'resulting node': ~
+                                            'tail': [ | 'group' `text types` ]
+                                            'type location': (
+                                                'location': | 'internal' `Globals`
+                                                'resulting node': ~
+                                            )
+                                        )
+                                        'type': | 'selected' (
+                                            'dependency': | 'acyclic' ~
+                                            'dictionary': ~
+                                        )
+                                    )
+                                )
+                                `local`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `Text Type`
+                                )
+                            }
+                        )
                     }
                     'type parameters': {
                     }
@@ -8484,35 +8913,50 @@
                             'description': ~
                             'node': | 'list' (
                                 'node': | 'state group' {
-                                    `dictionary`: | 'nothing' ~
-                                    `group`: | 'reference' (
-                                        'referent': (
-                                            'resulting node': ~
-                                            'tail': [ ]
-                                            'type location': (
-                                                'location': | 'internal' `Group`
+                                    `dictionary`: (
+                                        'description': ~
+                                        'node': | 'nothing' ~
+                                    )
+                                    `group`: (
+                                        'description': ~
+                                        'node': | 'reference' (
+                                            'referent': (
                                                 'resulting node': ~
+                                                'tail': [ ]
+                                                'type location': (
+                                                    'location': | 'internal' `Group`
+                                                    'resulting node': ~
+                                                )
                                             )
-                                        )
-                                        'type': | 'selected' (
-                                            'dependency': | 'acyclic' ~
-                                            'dictionary': ~
+                                            'type': | 'selected' (
+                                                'dependency': | 'acyclic' ~
+                                                'dictionary': ~
+                                            )
                                         )
                                     )
-                                    `list`: | 'nothing' ~
-                                    `optional`: | 'nothing' ~
-                                    `state group`: | 'reference' (
-                                        'referent': (
-                                            'resulting node': ~
-                                            'tail': [ | 'state group' `state group` ]
-                                            'type location': (
-                                                'location': | 'internal' `Type Node`
+                                    `list`: (
+                                        'description': ~
+                                        'node': | 'nothing' ~
+                                    )
+                                    `optional`: (
+                                        'description': ~
+                                        'node': | 'nothing' ~
+                                    )
+                                    `state group`: (
+                                        'description': ~
+                                        'node': | 'reference' (
+                                            'referent': (
                                                 'resulting node': ~
+                                                'tail': [ | 'state group' `state group` ]
+                                                'type location': (
+                                                    'location': | 'internal' `Type Node`
+                                                    'resulting node': ~
+                                                )
                                             )
-                                        )
-                                        'type': | 'selected' (
-                                            'dependency': | 'acyclic' ~
-                                            'dictionary': ~
+                                            'type': | 'selected' (
+                                                'dependency': | 'acyclic' ~
+                                                'dictionary': ~
+                                            )
                                         )
                                     )
                                 }
@@ -8539,54 +8983,60 @@
                         `location`: (
                             'description': ~
                             'node': | 'state group' {
-                                `external`: | 'group' {
-                                    `import`: (
-                                        'description': ~
-                                        'node': | 'reference' (
-                                            'referent': (
-                                                'resulting node': ~
-                                                'tail': [ ]
-                                                'type location': (
-                                                    'location': | 'internal' `Imports`
+                                `external`: (
+                                    'description': ~
+                                    'node': | 'group' {
+                                        `import`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
                                                     'resulting node': ~
+                                                    'tail': [ ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Imports`
+                                                        'resulting node': ~
+                                                    )
+                                                )
+                                                'type': | 'selected' (
+                                                    'dependency': | 'acyclic' ~
+                                                    'dictionary': ~
                                                 )
                                             )
-                                            'type': | 'selected' (
-                                                'dependency': | 'acyclic' ~
-                                                'dictionary': ~
-                                            )
                                         )
-                                    )
-                                    `type`: (
-                                        'description': ~
-                                        'node': | 'reference' (
-                                            'referent': (
-                                                'resulting node': ~
-                                                'tail': [ ]
-                                                'type location': (
-                                                    'location': | 'internal' `Types`
+                                        `type`: (
+                                            'description': ~
+                                            'node': | 'reference' (
+                                                'referent': (
                                                     'resulting node': ~
+                                                    'tail': [ ]
+                                                    'type location': (
+                                                        'location': | 'internal' `Types`
+                                                        'resulting node': ~
+                                                    )
+                                                )
+                                                'type': | 'selected' (
+                                                    'dependency': | 'acyclic' ~
+                                                    'dictionary': ~
                                                 )
                                             )
-                                            'type': | 'selected' (
-                                                'dependency': | 'acyclic' ~
-                                                'dictionary': ~
-                                            )
                                         )
-                                    )
-                                }
-                                `internal`: | 'reference' (
-                                    'referent': (
-                                        'resulting node': ~
-                                        'tail': [ ]
-                                        'type location': (
-                                            'location': | 'internal' `Types`
+                                    }
+                                )
+                                `internal`: (
+                                    'description': ~
+                                    'node': | 'reference' (
+                                        'referent': (
                                             'resulting node': ~
+                                            'tail': [ ]
+                                            'type location': (
+                                                'location': | 'internal' `Types`
+                                                'resulting node': ~
+                                            )
                                         )
-                                    )
-                                    'type': | 'selected' (
-                                        'dependency': | 'acyclic' ~
-                                        'dictionary': ~
+                                        'type': | 'selected' (
+                                            'dependency': | 'acyclic' ~
+                                            'dictionary': ~
+                                        )
                                     )
                                 )
                             }
@@ -8743,41 +9193,101 @@
                 )
                 `String Type`: (
                     'node': | 'state group' {
-                        `apostrophed`: | 'nothing' ~
-                        `backticked`: | 'nothing' ~
-                        `quoted`: | 'nothing' ~
-                        `undelimited`: | 'nothing' ~
+                        `apostrophed`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `backticked`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `quoted`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `undelimited`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
                     }
                     'type parameters': {
                     }
                 )
                 `Token Type`: (
                     'node': | 'state group' {
-                        `!`: | 'nothing' ~
-                        `#`: | 'nothing' ~
-                        `(`: | 'nothing' ~
-                        `)`: | 'nothing' ~
-                        `*`: | 'nothing' ~
-                        `:`: | 'nothing' ~
-                        `<`: | 'nothing' ~
-                        `>`: | 'nothing' ~
-                        `@`: | 'nothing' ~
-                        `[`: | 'nothing' ~
-                        `]`: | 'nothing' ~
-                        `string`: | 'group' {
-                            `type`: (
-                                'description': ~
-                                'node': | 'component' | 'internal' `String Type`
-                            )
-                            `value`: (
-                                'description': ~
-                                'node': | 'component' | 'internal' `Delimited String`
-                            )
-                        }
-                        `{`: | 'nothing' ~
-                        `|`: | 'nothing' ~
-                        `}`: | 'nothing' ~
-                        `~`: | 'nothing' ~
+                        `!`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `#`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `(`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `)`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `*`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `:`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `<`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `>`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `@`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `[`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `]`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `string`: (
+                            'description': ~
+                            'node': | 'group' {
+                                `type`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `String Type`
+                                )
+                                `value`: (
+                                    'description': ~
+                                    'node': | 'component' | 'internal' `Delimited String`
+                                )
+                            }
+                        )
+                        `{`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `|`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `}`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
+                        `~`: (
+                            'description': ~
+                            'node': | 'nothing' ~
+                        )
                     }
                     'type parameters': {
                     }
@@ -8825,8 +9335,14 @@
                                     `type`: (
                                         'description': ~
                                         'node': | 'state group' {
-                                            `block`: | 'nothing' ~
-                                            `line`: | 'nothing' ~
+                                            `block`: (
+                                                'description': ~
+                                                'node': | 'nothing' ~
+                                            )
+                                            `line`: (
+                                                'description': ~
+                                                'node': | 'nothing' ~
+                                            )
                                         }
                                     )
                                 }
@@ -8880,77 +9396,152 @@
                             `type`: (
                                 'description': ~
                                 'node': | 'state group' {
-                                    `error`: | 'state group' {
-                                        `duplicate property`: | 'group' {
-                                            `name`: (
+                                    `error`: (
+                                        'description': ~
+                                        'node': | 'state group' {
+                                            `duplicate property`: (
                                                 'description': ~
-                                                'node': | 'text' | 'local' (
-                                                    'type': | 'single line' ~
-                                                )
+                                                'node': | 'group' {
+                                                    `name`: (
+                                                        'description': ~
+                                                        'node': | 'text' | 'local' (
+                                                            'type': | 'single line' ~
+                                                        )
+                                                    )
+                                                }
                                             )
-                                        }
-                                        `invalid value type`: | 'group' {
-                                            `expected`: (
+                                            `invalid value type`: (
                                                 'description': ~
-                                                'node': | 'list' (
-                                                    'node': | 'state group' {
-                                                        `concise group`: | 'nothing' ~
-                                                        `dictionary`: | 'nothing' ~
-                                                        `list`: | 'nothing' ~
-                                                        `not set`: | 'nothing' ~
-                                                        `set`: | 'nothing' ~
-                                                        `state`: | 'nothing' ~
-                                                        `text`: | 'nothing' ~
-                                                        `verbose group`: | 'nothing' ~
-                                                    }
-                                                )
+                                                'node': | 'group' {
+                                                    `expected`: (
+                                                        'description': ~
+                                                        'node': | 'list' (
+                                                            'node': | 'state group' {
+                                                                `concise group`: (
+                                                                    'description': ~
+                                                                    'node': | 'nothing' ~
+                                                                )
+                                                                `dictionary`: (
+                                                                    'description': ~
+                                                                    'node': | 'nothing' ~
+                                                                )
+                                                                `list`: (
+                                                                    'description': ~
+                                                                    'node': | 'nothing' ~
+                                                                )
+                                                                `not set`: (
+                                                                    'description': ~
+                                                                    'node': | 'nothing' ~
+                                                                )
+                                                                `set`: (
+                                                                    'description': ~
+                                                                    'node': | 'nothing' ~
+                                                                )
+                                                                `state`: (
+                                                                    'description': ~
+                                                                    'node': | 'nothing' ~
+                                                                )
+                                                                `text`: (
+                                                                    'description': ~
+                                                                    'node': | 'nothing' ~
+                                                                )
+                                                                `verbose group`: (
+                                                                    'description': ~
+                                                                    'node': | 'nothing' ~
+                                                                )
+                                                            }
+                                                        )
+                                                    )
+                                                }
                                             )
-                                        }
-                                        `missing property`: | 'group' {
-                                            `name`: (
+                                            `missing property`: (
                                                 'description': ~
-                                                'node': | 'text' | 'local' (
-                                                    'type': | 'single line' ~
-                                                )
+                                                'node': | 'group' {
+                                                    `name`: (
+                                                        'description': ~
+                                                        'node': | 'text' | 'local' (
+                                                            'type': | 'single line' ~
+                                                        )
+                                                    )
+                                                }
                                             )
-                                        }
-                                        `state`: | 'state group' {
-                                            `missing data marker`: | 'nothing' ~
-                                            `missing state name`: | 'nothing' ~
-                                            `missing value`: | 'nothing' ~
-                                            `more than 2 elements`: | 'nothing' ~
-                                            `state is not a string`: | 'nothing' ~
-                                            `unknown state`: | 'group' {
-                                                `expected`: (
-                                                    'description': ~
-                                                    'node': | 'dictionary' (
+                                            `state`: (
+                                                'description': ~
+                                                'node': | 'state group' {
+                                                    `missing data marker`: (
+                                                        'description': ~
                                                         'node': | 'nothing' ~
-                                                        'ordered': `false`
                                                     )
-                                                )
-                                                `found`: (
-                                                    'description': ~
-                                                    'node': | 'text' | 'local' (
-                                                        'type': | 'single line' ~
+                                                    `missing state name`: (
+                                                        'description': ~
+                                                        'node': | 'nothing' ~
                                                     )
-                                                )
-                                            }
-                                        }
-                                        `superfluous property`: | 'group' {
-                                            `name`: (
+                                                    `missing value`: (
+                                                        'description': ~
+                                                        'node': | 'nothing' ~
+                                                    )
+                                                    `more than 2 elements`: (
+                                                        'description': ~
+                                                        'node': | 'nothing' ~
+                                                    )
+                                                    `state is not a string`: (
+                                                        'description': ~
+                                                        'node': | 'nothing' ~
+                                                    )
+                                                    `unknown state`: (
+                                                        'description': ~
+                                                        'node': | 'group' {
+                                                            `expected`: (
+                                                                'description': ~
+                                                                'node': | 'dictionary' (
+                                                                    'node': | 'nothing' ~
+                                                                    'ordered': `false`
+                                                                )
+                                                            )
+                                                            `found`: (
+                                                                'description': ~
+                                                                'node': | 'text' | 'local' (
+                                                                    'type': | 'single line' ~
+                                                                )
+                                                            )
+                                                        }
+                                                    )
+                                                }
+                                            )
+                                            `superfluous property`: (
                                                 'description': ~
-                                                'node': | 'text' | 'local' (
-                                                    'type': | 'single line' ~
-                                                )
+                                                'node': | 'group' {
+                                                    `name`: (
+                                                        'description': ~
+                                                        'node': | 'text' | 'local' (
+                                                            'type': | 'single line' ~
+                                                        )
+                                                    )
+                                                }
                                             )
                                         }
-                                    }
-                                    `warning`: | 'state group' {
-                                        `expected apostrophed string`: | 'nothing' ~
-                                        `expected backticked string`: | 'nothing' ~
-                                        `expected quoted string`: | 'nothing' ~
-                                        `expected undelimited string`: | 'nothing' ~
-                                    }
+                                    )
+                                    `warning`: (
+                                        'description': ~
+                                        'node': | 'state group' {
+                                            `expected apostrophed string`: (
+                                                'description': ~
+                                                'node': | 'nothing' ~
+                                            )
+                                            `expected backticked string`: (
+                                                'description': ~
+                                                'node': | 'nothing' ~
+                                            )
+                                            `expected quoted string`: (
+                                                'description': ~
+                                                'node': | 'nothing' ~
+                                            )
+                                            `expected undelimited string`: (
+                                                'description': ~
+                                                'node': | 'nothing' ~
+                                            )
+                                        }
+                                    )
                                 }
                             )
                         }

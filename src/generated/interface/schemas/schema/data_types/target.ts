@@ -354,7 +354,10 @@ export type _T_Type_Node<M_Source> = _i_core._T_State_Group<M_Source,
             }]
         >
     }]
-    | readonly ['state group', _i_core._T_Dictionary<M_Source, _T_Type_Node<M_Source>>]
+    | readonly ['state group', _i_core._T_Dictionary<M_Source, {
+        readonly 'description': _pt.Optional_Value<string>
+        readonly 'node': _T_Type_Node<M_Source>
+    }>]
     | readonly ['text', _i_core._T_State_Group<M_Source, 
         | readonly ['global', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Globals.text_types.D<M_Source>>]
         | readonly ['local', _T_Text_Type<M_Source>]
@@ -2410,10 +2413,25 @@ export namespace _T_Type_Node {
         export namespace state_group {
             
             export namespace D {
+                
+                export namespace description {
+                    export type O<M_Source> = string
+                }
+                export type description<M_Source> = _pt.Optional_Value<string>
+                
+                export namespace node {
+                }
+                export type node<M_Source> = _T_Type_Node<M_Source>
             }
-            export type D<M_Source> = _T_Type_Node<M_Source>
+            export type D<M_Source> = {
+                readonly 'description': _pt.Optional_Value<string>
+                readonly 'node': _T_Type_Node<M_Source>
+            }
         }
-        export type state_group<M_Source> = _i_core._T_Dictionary<M_Source, _T_Type_Node<M_Source>>
+        export type state_group<M_Source> = _i_core._T_Dictionary<M_Source, {
+            readonly 'description': _pt.Optional_Value<string>
+            readonly 'node': _T_Type_Node<M_Source>
+        }>
         
         export namespace text {
             
@@ -2475,7 +2493,10 @@ export namespace _T_Type_Node {
                 }]
             >
         }]
-        | readonly ['state group', _i_core._T_Dictionary<M_Source, _T_Type_Node<M_Source>>]
+        | readonly ['state group', _i_core._T_Dictionary<M_Source, {
+            readonly 'description': _pt.Optional_Value<string>
+            readonly 'node': _T_Type_Node<M_Source>
+        }>]
         | readonly ['text', _i_core._T_State_Group<M_Source, 
             | readonly ['global', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Globals.text_types.D<M_Source>>]
             | readonly ['local', _T_Text_Type<M_Source>]
@@ -4572,10 +4593,25 @@ export namespace Type_Node {
         export namespace state_group {
             
             export namespace D {
+                
+                export namespace description {
+                    export type O<M_Source> = string
+                }
+                export type description<M_Source> = _pt.Optional_Value<string>
+                
+                export namespace node {
+                }
+                export type node<M_Source> = _T_Type_Node<M_Source>
             }
-            export type D<M_Source> = _T_Type_Node<M_Source>
+            export type D<M_Source> = {
+                readonly 'description': _pt.Optional_Value<string>
+                readonly 'node': _T_Type_Node<M_Source>
+            }
         }
-        export type state_group<M_Source> = _i_core._T_Dictionary<M_Source, _T_Type_Node<M_Source>>
+        export type state_group<M_Source> = _i_core._T_Dictionary<M_Source, {
+            readonly 'description': _pt.Optional_Value<string>
+            readonly 'node': _T_Type_Node<M_Source>
+        }>
         
         export namespace text {
             
@@ -4637,7 +4673,10 @@ export namespace Type_Node {
                 }]
             >
         }]
-        | readonly ['state group', _i_core._T_Dictionary<M_Source, _T_Type_Node<M_Source>>]
+        | readonly ['state group', _i_core._T_Dictionary<M_Source, {
+            readonly 'description': _pt.Optional_Value<string>
+            readonly 'node': _T_Type_Node<M_Source>
+        }>]
         | readonly ['text', _i_core._T_State_Group<M_Source, 
             | readonly ['global', _i_core._T_Reference_To_Normal_Dictionary_Entry<M_Source, _T_Globals.text_types.D<M_Source>>]
             | readonly ['local', _T_Text_Type<M_Source>]

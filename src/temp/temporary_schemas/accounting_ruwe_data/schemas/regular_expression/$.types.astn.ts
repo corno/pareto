@@ -23,7 +23,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "character class": tstate(t.group({
                     "negated": prop(t.boolean()),
                     "ranges": prop(t.list(t.state_group({
-                        "literal": t.number_global("Character"), //should be a reference to a character in the dictionary
+                        "literal": tstate(t.number_global("Character")), //should be a reference to a character in the dictionary
                         "range": tstate(t.group({
                             "from": prop(t.number_global("Character")),
                             "to": prop(t.number_global("Character")),
@@ -36,9 +36,9 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "alternation": tstate(t.list(t.component_cyclic("Sequence"))),
             })),
             "quantifier": prop(t.optional(t.state_group({
-                "optional": t.nothing(), // ?
-                "multiple": t.nothing(), // *
-                "one or more": t.nothing(), // +
+                "optional": tstate(t.nothing()), // ?
+                "multiple": tstate(t.nothing()), // *
+                "one or more": tstate(t.nothing()), // +
                 // "exact": t.number_local(n.natural()), // {n}
                 // "between": t.group({
                 //     "min": t.number_local(n.natural()), // {n,m}

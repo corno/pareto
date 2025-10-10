@@ -756,10 +756,13 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
             })
             case 'state group': return _ea.ss($, ($) => ['state group', _i_generic.resolve_dictionary($, {
                 'location 2 string': $p['location 2 string'],
-                'map': ($, $l) => Type_Node(
-                    $.value,
-                    $p,
-                ),
+                'map': ($, $l) => ({
+                    'description': $.value.description,
+                    'node': Type_Node(
+                        $.value.node,
+                        $p,
+                    ),
+                }),
             })])
             // case 'type parameter': return _ea.ss($, ($) => ['type parameter', _i_generic.get_entry(
             //     _i_generic.dictionary_to_lookup(
@@ -916,7 +919,7 @@ export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                             )
                             return {
                                 'element': ['state group', p_child],
-                                'result': p_child.entry
+                                'result': p_child.entry.node
                             }
                         })
                         default: return _ea.au($[0])
@@ -1058,7 +1061,7 @@ export const Property_Constraints: _i_signatures.Property_Constraints = ($, $p) 
                                         case 'property': return _ea.ss($, ($) => $p.parameters.values.node)
                                         case 'sibling': return _ea.ss($, ($) => _ea.cc($.entry.constraint.type, ($) => {
                                             switch ($[0]) {
-                                                case 'state': return _ea.ss($, ($) => $.state.entry)
+                                                case 'state': return _ea.ss($, ($) => $.state.entry.node)
                                                 case 'optional value': return _ea.ss($, ($) => $['selected optional value'])
                                                 default: return _ea.au($[0])
                                             }
@@ -1683,7 +1686,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                             'parent sibling property resolvers': $p.parameters.lookups['parent sibling property resolvers'],
                                         },
                                         'values': {
-                                            'definition': x2.entry,
+                                            'definition': x2.entry.node,
                                             'option constraints': _ea.set(p_constraints),
 
                                             'types': $p.parameters.values.types,
@@ -2205,14 +2208,14 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                         switch ($[0]) {
                                             case 'component': return _ea.ss($, ($) => _ea.cc($.constraint.entry.constraint.type, ($) => {
                                                 switch ($[0]) {
-                                                    case 'state': return _ea.ss($, ($) => $.state.entry)
+                                                    case 'state': return _ea.ss($, ($) => $.state.entry.node)
                                                     case 'optional value': return _ea.ss($, ($) => $['selected optional value'])
                                                     default: return _ea.au($[0])
                                                 }
                                             }))
                                             case 'reference': return _ea.ss($, ($) => _ea.cc($.constraint.entry.constraint.type, ($) => {
                                                 switch ($[0]) {
-                                                    case 'state': return _ea.ss($, ($) => $.state.entry)
+                                                    case 'state': return _ea.ss($, ($) => $.state.entry.node)
                                                     case 'optional value': return _ea.ss($, ($) => $['selected optional value'])
 
                                                     default: return _ea.au($[0])
@@ -2241,7 +2244,7 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                     ))
                                     case 'option constraint': return _ea.ss($, ($) => _ea.cc($.entry, ($) => {
                                         switch ($[0]) {
-                                            case 'state': return _ea.ss($, ($) => $.state.entry)
+                                            case 'state': return _ea.ss($, ($) => $.state.entry.node)
                                             case 'assert is set': return _ea.ss($, ($) => pvs($))
                                             default: return _ea.au($[0])
                                         }

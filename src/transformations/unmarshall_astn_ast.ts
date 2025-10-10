@@ -391,7 +391,7 @@ export const Node_Type = (
                                                                 'node': Node(
                                                                     value,
                                                                     {
-                                                                        'definition': $,
+                                                                        'definition': $.node,
                                                                     }
                                                                 )
                                                             })

@@ -111,7 +111,7 @@ export const Type_Node: _ea.Guaranteed_Transformation_Without_Parameters<_in.Typ
             }])
             case 'group': return _ea.ss($, ($) => ['group', wrap_dictionary($.dictionary.map(($) => Type_Node($.node)))])
             case 'optional': return _ea.ss($, ($) => ['optional', Type_Node($)])
-            case 'state group': return _ea.ss($, ($) => ['state group', wrap_dictionary($.map(($) => Type_Node($)))])
+            case 'state group': return _ea.ss($, ($) => ['state group', wrap_dictionary($.map(($) => Type_Node($.node)))])
             case 'text': return _ea.ss($, ($) => ['text', wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG.text.SG<pd.Source_Location> => {
                 switch ($[0]) {
                     case 'global': return _ea.ss($, ($) => ['global', wrap_reference("t" + $.key)])

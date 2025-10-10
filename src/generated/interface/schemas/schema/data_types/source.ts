@@ -354,7 +354,10 @@ export type _T_Type_Node = _i_core._T_State_Group<null,
             }]
         >
     }]
-    | readonly ['state group', _i_core._T_Dictionary<null, _T_Type_Node>]
+    | readonly ['state group', _i_core._T_Dictionary<null, {
+        readonly 'description': _pt.Optional_Value<string>
+        readonly 'node': _T_Type_Node
+    }>]
     | readonly ['text', _i_core._T_State_Group<null, 
         | readonly ['global', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Globals.text_types.D>]
         | readonly ['local', _T_Text_Type]
@@ -2410,10 +2413,25 @@ export namespace _T_Type_Node {
         export namespace state_group {
             
             export namespace D {
+                
+                export namespace description {
+                    export type O = string
+                }
+                export type description = _pt.Optional_Value<string>
+                
+                export namespace node {
+                }
+                export type node = _T_Type_Node
             }
-            export type D = _T_Type_Node
+            export type D = {
+                readonly 'description': _pt.Optional_Value<string>
+                readonly 'node': _T_Type_Node
+            }
         }
-        export type state_group = _i_core._T_Dictionary<null, _T_Type_Node>
+        export type state_group = _i_core._T_Dictionary<null, {
+            readonly 'description': _pt.Optional_Value<string>
+            readonly 'node': _T_Type_Node
+        }>
         
         export namespace text {
             
@@ -2475,7 +2493,10 @@ export namespace _T_Type_Node {
                 }]
             >
         }]
-        | readonly ['state group', _i_core._T_Dictionary<null, _T_Type_Node>]
+        | readonly ['state group', _i_core._T_Dictionary<null, {
+            readonly 'description': _pt.Optional_Value<string>
+            readonly 'node': _T_Type_Node
+        }>]
         | readonly ['text', _i_core._T_State_Group<null, 
             | readonly ['global', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Globals.text_types.D>]
             | readonly ['local', _T_Text_Type]
@@ -4572,10 +4593,25 @@ export namespace Type_Node {
         export namespace state_group {
             
             export namespace D {
+                
+                export namespace description {
+                    export type O = string
+                }
+                export type description = _pt.Optional_Value<string>
+                
+                export namespace node {
+                }
+                export type node = _T_Type_Node
             }
-            export type D = _T_Type_Node
+            export type D = {
+                readonly 'description': _pt.Optional_Value<string>
+                readonly 'node': _T_Type_Node
+            }
         }
-        export type state_group = _i_core._T_Dictionary<null, _T_Type_Node>
+        export type state_group = _i_core._T_Dictionary<null, {
+            readonly 'description': _pt.Optional_Value<string>
+            readonly 'node': _T_Type_Node
+        }>
         
         export namespace text {
             
@@ -4637,7 +4673,10 @@ export namespace Type_Node {
                 }]
             >
         }]
-        | readonly ['state group', _i_core._T_Dictionary<null, _T_Type_Node>]
+        | readonly ['state group', _i_core._T_Dictionary<null, {
+            readonly 'description': _pt.Optional_Value<string>
+            readonly 'node': _T_Type_Node
+        }>]
         | readonly ['text', _i_core._T_State_Group<null, 
             | readonly ['global', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Globals.text_types.D>]
             | readonly ['local', _T_Text_Type]

@@ -221,7 +221,7 @@ export const Type_Node = (
                     $.map(($, key) => i.group({
                         "state": i.string(key, 'quote'),
                         "value": Type_Node(
-                            $,
+                            $.node,
                             {
                                 'type': $p.type,
                                 'subselection': op_append_element(

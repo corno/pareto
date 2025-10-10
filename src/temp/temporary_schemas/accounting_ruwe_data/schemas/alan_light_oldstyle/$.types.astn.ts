@@ -53,7 +53,7 @@ export const $: g_.Types<pd.Source_Location>  = types(
                     "group": tstate(t.group({
                         "node": prop(t.component_cyclic("Node")),
                     })),
-                    "natural": t.text_local(text('single line')), //why is this not a number?
+                    "natural": tstate(t.text_local(text('single line'))), //why is this not a number?
                     "text": tstate(t.nothing()),
                     "reference": tstate(t.nothing()),
                     "state group": tstate(t.group({
