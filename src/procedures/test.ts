@@ -29,52 +29,48 @@ export const $$: _eb.Unguaranteed_Main_Initializer = (
 ) => {
     const instance_path = "./data/test/pareto_modules/pareto-json.astn"
 
-    return _easync.up.sequence([
-
-    ])
-
-    // return _easync.up.action(
-    //     p_fp_to_error_log,
-    //     _easync.uq.u(
-    //         q_load_astn_file,
-    //         _easync.uq.fixed({
-    //             'file path': instance_path,
-    //         }),
-    //         _easync.ut.g(($) => ({
-    //             'block': t_unmarshall_errors_to_fp.Errors(
-    //                 t_unmarshall_result_2_unmarshall_errors.Node($, null),
-    //                 {
-    //                     'document path': instance_path,
-    //                     'line offset': 1,
-    //                     'column offset': 1,
-    //                 }
-    //             ),
-    //             'indentation': '  ',
-    //         })),
-    //         ($) => ({
-    //             'exit code': 1
-    //         }),
-    //         _easync.eh(
-    //             p_console_log,
-    //             ($) => ({
-    //                 'lines': _ea.array_literal([
-    //                     _ea.cc($, ($): string => {
-    //                         switch ($[0]) {
-    //                             case 'no file': return _ea.ss($, ($) => "no file")
-    //                             case 'document': return _ea.ss($, ($) => _ea.cc($, ($) => {
-    //                                 switch ($[0]) {
-    //                                     case 'no schema file': return _ea.ss($, ($) => "no schema file")
-    //                                     case 'schema error': return _ea.ss($, ($) => "schema error")
-    //                                     case 'parse error': return _ea.ss($, ($) => "parse error")
-    //                                     default: return _ea.au($[0])
-    //                                 }
-    //                             }))
-    //                             default: return _ea.au($[0])
-    //                         }
-    //                     })
-    //                 ])
-    //             })
-    //         )
-    //     )
-    // )
+    return _easync.up.action(
+        p_fp_to_error_log,
+        _easync.uq.u(
+            q_load_astn_file,
+            _easync.uq.fixed({
+                'file path': instance_path,
+            }),
+            _easync.ut.g(($) => ({
+                'block': t_unmarshall_errors_to_fp.Errors(
+                    t_unmarshall_result_2_unmarshall_errors.Node($, null),
+                    {
+                        'document path': instance_path,
+                        'line offset': 1,
+                        'column offset': 1,
+                    }
+                ),
+                'indentation': '  ',
+            })),
+            ($) => ({
+                'exit code': 1
+            }),
+            _easync.eh(
+                p_console_log,
+                ($) => ({
+                    'lines': _ea.array_literal([
+                        _ea.cc($, ($): string => {
+                            switch ($[0]) {
+                                case 'no file': return _ea.ss($, ($) => "no file")
+                                case 'document': return _ea.ss($, ($) => _ea.cc($, ($) => {
+                                    switch ($[0]) {
+                                        case 'no schema file': return _ea.ss($, ($) => "no schema file")
+                                        case 'schema error': return _ea.ss($, ($) => "schema error")
+                                        case 'parse error': return _ea.ss($, ($) => "parse error")
+                                        default: return _ea.au($[0])
+                                    }
+                                }))
+                                default: return _ea.au($[0])
+                            }
+                        })
+                    ])
+                })
+            )
+        )
+    )
 }
