@@ -654,10 +654,13 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
             })
             case 'group': return _ea.ss($, ($) => ['group', _i_generic.resolve_ordered_dictionary($, {
                 'location 2 string': $p['location 2 string'],
-                'map': ($, $l) => Type_Node(
-                    $.value,
-                    $p,
-                ),
+                'map': ($, $l) => ({
+                    'description': $.value.description,
+                    'node': Type_Node(
+                        $.value.node,
+                        $p,
+                    )
+                }),
             })])
             case 'list': return _ea.ss($, ($) => {
                 const p_type = Type_Node(
@@ -686,7 +689,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                         _ea.panic(`schema doesn't have settings, so no references are allowed @ ${$p['location 2 string'](loc)}`)
                     }
                 )
-                const p_referent = Type_Part_Reference(
+                const p_referent = Type_Node_Reference(
                     $.referent,
                     {
                         'location 2 string': $p['location 2 string'],
@@ -832,7 +835,7 @@ export const Type_Reference: _i_signatures.Type_Reference = ($, $p) => {
 }
 
 
-export const Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) => {
+export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) => {
     const p_type_location = Type_Reference($['type location'], $p)
     const p_tail_x: _i_generic.Path<_i_generic.Location_Info, _i_out.Type_Node_Reference.tail.L, _i_out.Type_Node> = _i_generic.resolve_path(
         $.tail,
@@ -861,7 +864,7 @@ export const Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                                 }
                                 return $[1]
                             })
-                            const p_child: _i_generic.Acyclic_Entry_Reference<_i_out.Type_Node> = _i_generic.get_entry(
+                            const p_child: _i_generic.Acyclic_Entry_Reference<_i_out.Group.D> = _i_generic.get_entry(
                                 _i_generic.dictionary_to_lookup(sc_definition.dictionary, null),
                                 {
                                     'reference': $,
@@ -870,7 +873,7 @@ export const Type_Part_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                             )
                             return {
                                 'element': ['group', p_child],
-                                'result': p_child.entry
+                                'result': p_child.entry.node
                             }
                         })
                         case 'list': return _ea.ss($, ($) => {
@@ -1467,7 +1470,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                             //copy 
                                         },
                                         'values': {
-                                            'definition': p_definition.entry,
+                                            'definition': p_definition.entry.node,
 
                                             'types': $p.parameters.values.types,
                                             'imports': $p.parameters.values.imports,
@@ -1834,7 +1837,7 @@ export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = 
                                 }
                                 return $[1]
                             })
-                            const p_child: _i_generic.Acyclic_Entry_Reference<_i_out.Type_Node> = _i_generic.get_entry(
+                            const p_child: _i_generic.Acyclic_Entry_Reference<_i_out.Group.D> = _i_generic.get_entry(
                                 _i_generic.dictionary_to_lookup(sc_definition.dictionary, null),
                                 {
                                     'reference': $,
@@ -1843,7 +1846,7 @@ export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = 
                             )
                             return {
                                 'element': ['group', p_child],
-                                'result': p_child.entry
+                                'result': p_child.entry.node
                             }
                         })
                         case 'reference': return _ea.ss($, ($): _i_generic.Resolved_Step<_i_out.Relative_Value_Selection.path.L, _i_out.Type_Node> => {
@@ -2243,8 +2246,8 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                             default: return _ea.au($[0])
                                         }
                                     }))
-                                    case 'sibling': return _ea.ss($, ($) => $.entry.definition)
-                                    case 'parent sibling': return _ea.ss($, ($) => $.entry.definition)
+                                    case 'sibling': return _ea.ss($, ($) => $.entry.definition.node)
+                                    case 'parent sibling': return _ea.ss($, ($) => $.entry.definition.node)
                                     default: return _ea.au($[0])
                                 }
                             })

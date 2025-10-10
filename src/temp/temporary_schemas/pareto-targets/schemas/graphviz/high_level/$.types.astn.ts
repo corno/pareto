@@ -7,6 +7,7 @@ import {
     t,
     tr,
     type,
+    prop,
 } from "../../../../../../shorthands/schema"
 import * as g_ from "../../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -15,54 +16,54 @@ export const $: g_.Types<pd.Source_Location> = types(
 
 
         "Graph": type(t.group({
-            "name": t.optional(t.text_global("Text Value")),
-            "tree": t.component("Tree"),
-            "type": t.state_group({
+            "name": prop(t.optional(t.text_global("Text Value"))),
+            "tree": prop(t.component("Tree")),
+            "type": prop(t.state_group({
                 "undirected": t.group({
-                    "edges": t.list(t.group({
-                        "yin": t.component("End Point Specification"),
-                        "yang": t.component("End Point Specification"),
-                        "attributes": t.component("Edge Attributes"),
-                    }))
+                    "edges": prop(t.list(t.group({
+                        "yin": prop(t.component("End Point Specification")),
+                        "yang": prop(t.component("End Point Specification")),
+                        "attributes": prop(t.component("Edge Attributes")),
+                    })))
                 }),
                 "directed": t.group({
-                    "edges": t.list(t.group({
-                        "from": t.component("End Point Specification"),
-                        "to": t.component("End Point Specification"),
-                        "attributes": t.component("Edge Attributes"),
-                    }))
+                    "edges": prop(t.list(t.group({
+                        "from": prop(t.component("End Point Specification")),
+                        "to": prop(t.component("End Point Specification")),
+                        "attributes": prop(t.component("Edge Attributes")),
+                    })))
                 }),
-            }),
+            })),
         })),
 
         /**
          * a tree contains nodes and subgraphs
          */
         "Tree": type(t.group({
-            "attributes": t.component("Graph Attributes"),
-            "elements": t.dictionary(t.state_group({
+            "attributes": prop(t.component("Graph Attributes")),
+            "elements": prop(t.dictionary(t.state_group({
                 "node": t.group({
-                    "attributes": t.component("Node Attributes"),
+                    "attributes": prop(t.component("Node Attributes")),
                 }),
                 "sub": t.group({
-                    "type": t.state_group({
+                    "type": prop(t.state_group({
                         "group": t.nothing(),
                         "cluster": t.nothing(),
                         "subgraph": t.nothing(),
-                    }),
-                    "tree": t.component_cyclic("Tree"),
+                    })),
+                    "tree": prop(t.component_cyclic("Tree")),
                 }),
             //}), 'ordered') cannot be ordered until the schema is constrained
-            }))
+            })))
         })),
 
         "End Point Specification": type(t.group({
-            "start": t.text_global("Text Value"),
-            "tail": t.list(t.text_global("Text Value")),
-            "port data": t.optional(t.group({
-                "port": t.text_global("Text Value"),
-                "compass direction": t.optional(t.text_global("Text Value")),
-            })),
+            "start": prop(t.text_global("Text Value")),
+            "tail": prop(t.list(t.text_global("Text Value"))),
+            "port data": prop(t.optional(t.group({
+                "port": prop(t.text_global("Text Value")),
+                "compass direction": prop(t.optional(t.text_global("Text Value"))),
+            }))),
         })),
 
 

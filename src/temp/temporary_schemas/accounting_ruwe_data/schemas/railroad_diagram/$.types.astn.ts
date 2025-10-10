@@ -9,13 +9,14 @@ import {
     t,
     tr,
     type,
+    prop,
 } from "../../../../../shorthands/schema"
 
 export const $: g_.Types<pd.Source_Location> = types(
     {
 
         "Grammar": type(t.group({
-            "productions": t.component("Productions"),
+            "productions": prop(t.component("Productions")),
             //"main rule": t.text_local(text('single line'))
         })),
         "Production": type(t.state_group({
@@ -26,23 +27,23 @@ export const $: g_.Types<pd.Source_Location> = types(
         "Composite Expression": type(t.state_group({
             "item list": t.list(t.component("Item")),
             "special": t.group({
-                "preceding item": t.component("Item"),
-                "character": t.state_group({
+                "preceding item": prop(t.component("Item")),
+                "character": prop(t.state_group({
                     "minus": t.nothing(), //matches any string that matches the preceding item, but does not the succeeding item
                     "double star": t.nothing(), //shorthand: 'A ** B' becomes '(A ( B A )* )?'
                     "double plus": t.nothing(), //shorthand: 'A ++ B' becomes 'A ( B A )*'
-                }),
-                "succeeding item": t.component("Item"),
+                })),
+                "succeeding item": prop(t.component("Item")),
             }),
         })),
         "Item": type(t.group({
-            "primary": t.component("Primary"),
-            "occurence": t.state_group({
+            "primary": prop(t.component("Primary")),
+            "occurence": prop(t.state_group({
                 "once": t.nothing(),
                 "zero or more": t.nothing(),
                 "one or more": t.nothing(),
                 "optional": t.nothing(),
-            }),
+            })),
         })),
         "Primary": type(t.state_group({
             // "reference": t.reference("Productions", []), FIXME: make schema constrained first

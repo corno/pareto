@@ -7,6 +7,7 @@ import {
     t,
     tr,
     type,
+    prop,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 

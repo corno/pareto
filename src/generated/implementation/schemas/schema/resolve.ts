@@ -182,23 +182,32 @@ export const r_Group: _i_signatures._T_Group = ($, $p) => _pa.block(() => {
             {
                 'location 2 string': l2s,
                 'map': ($, $p) => _pa.block(() => {
-                    return _pa.cc($['value'], ($) => r_Type_Node(
-                        $,
-                        {
-                            'location 2 string': l2s,
-                            'parameters': ({
-                                'lookups': ({
-                                    'noncircular sibling types': params['lookups']['noncircular sibling types'],
-                                    'possibly circular dependent sibling types': params['lookups']['possibly circular dependent sibling types'],
+                    return _pa.cc($['value'], ($) => _pa.block(() => {
+                        const p_description: _i_out._T_Group.D.description = _pa.cc($['description'], ($) => $.map(($) => _pa.block(() => {
+                            return $
+                        })))
+                        const p_node: _i_out._T_Group.D.node = _pa.cc($['node'], ($) => r_Type_Node(
+                            $,
+                            {
+                                'location 2 string': l2s,
+                                'parameters': ({
+                                    'lookups': ({
+                                        'noncircular sibling types': params['lookups']['noncircular sibling types'],
+                                        'possibly circular dependent sibling types': params['lookups']['possibly circular dependent sibling types'],
+                                    }),
+                                    'values': ({
+                                        'globals': params['values']['globals'],
+                                        'imports': params['values']['imports'],
+                                        'type parameters': params['values']['type parameters'],
+                                    }),
                                 }),
-                                'values': ({
-                                    'globals': params['values']['globals'],
-                                    'imports': params['values']['imports'],
-                                    'type parameters': params['values']['type parameters'],
-                                }),
-                            }),
-                        }
-                    ))
+                            }
+                        ))
+                        return ({
+                            'description': p_description,
+                            'node': p_node,
+                        })
+                    }))
                 }),
             }
         )
@@ -1060,7 +1069,7 @@ export const r_Node_Resolver_Group: _i_signatures._T_Node_Resolver_Group = ($, $
                                     'values': ({
                                         'current dictionary': params['values']['current dictionary'],
                                         'current ordered dictionary': params['values']['current ordered dictionary'],
-                                        'definition': linked_entry,
+                                        'definition': linked_entry['node'],
                                         'imports': params['values']['imports'],
                                         'linked entry': params['values']['linked entry'],
                                         'list cursor': params['values']['list cursor'],
@@ -2250,17 +2259,7 @@ export const r_Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $
                     return null
                 })])
                 case 'group': return _pa.ss($, ($) => ['group', _pa.block(() => {
-                    const c_definition = _pd.implement_me()
-                    return _i_generic.get_entry(
-                        _i_generic.dictionary_to_lookup(
-                            c_definition['dictionary'],
-                            null
-                        ),
-                        {
-                            'location 2 string': l2s,
-                            'reference': $,
-                        }
-                    )
+                    return _pd.implement_me()
                 })])
                 case 'list': return _pa.ss($, ($) => ['list', _pa.block(() => {
                     const c_definition = _pd.implement_me()
@@ -2271,17 +2270,7 @@ export const r_Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $
                     return null
                 })])
                 case 'state group': return _pa.ss($, ($) => ['state group', _pa.block(() => {
-                    const c_definition = _pd.implement_me()
-                    return _i_generic.get_entry(
-                        _i_generic.dictionary_to_lookup(
-                            c_definition,
-                            null
-                        ),
-                        {
-                            'location 2 string': l2s,
-                            'reference': $,
-                        }
-                    )
+                    return _pd.implement_me()
                 })])
                 default: return _pa.au($[0])
             }

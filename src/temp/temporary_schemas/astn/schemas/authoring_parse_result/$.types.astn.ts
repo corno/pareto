@@ -7,6 +7,7 @@ import {
     t,
     tr,
     type,
+    prop,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -19,7 +20,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Parse Error": type(t.group({
-            "type": t.state_group({
+            "type": prop(t.state_group({
                 "lexer": t.state_group({
                     "unexpected control character": t.number_local(n.natural()),
                     "missing character after escape": t.nothing(),
@@ -34,7 +35,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                     "dangling slash": t.nothing(),
                 }),
                 "parser": t.group({
-                    "expected": t.list(t.state_group({
+                    "expected": prop(t.list(t.state_group({
                         "a string": t.nothing(),
                         "a value": t.nothing(),
                         "!": t.nothing(),
@@ -46,16 +47,16 @@ export const $: g_.Types<pd.Source_Location> = types(
                         ")": t.nothing(),
                         "]": t.nothing(),
                         "#": t.nothing(),
-                    })),
-                    "cause": t.state_group({
+                    }))),
+                    "cause": prop(t.state_group({
                         "missing token": t.nothing(),
                         "unexpected token": t.group({
-                            "found": t.component_external("token", "Token Type"),
+                            "found": prop(t.component_external("token", "Token Type")),
                         }),
-                    }),
+                    })),
                 }),
-            }),
-            "range": t.component_external("token", "Range"),
+            })),
+            "range": prop(t.component_external("token", "Range")),
         })),
     }
 )

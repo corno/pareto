@@ -315,7 +315,7 @@ export const Node_Type = (
                                                                     ($) => $.value,
                                                                 ),
                                                                 {
-                                                                    'definition': prop_def,
+                                                                    'definition': prop_def.node,
                                                                 },
                                                             ),
                                                             'key': $.key
@@ -326,7 +326,7 @@ export const Node_Type = (
                                                                     ($) => $.value,
                                                                 ),
                                                                 {
-                                                                    'definition': prop_def,
+                                                                    'definition': prop_def.node,
                                                                 },
                                                             ),
                                                             'key': $.key,

@@ -7,6 +7,7 @@ import {
     t,
     tr,
     type,
+    prop,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -14,9 +15,9 @@ export const $: g_.Types<pd.Source_Location> = types(
     {
 
         "Tokenizer Result": type(t.group({
-            "leading trivia": t.component("Trivia"),
-            "tokens": t.list(t.component("Annotated Token")),
-            "end": t.component("Location"),
+            "leading trivia": prop(t.component("Trivia")),
+            "tokens": prop(t.list(t.component("Annotated Token"))),
+            "end": prop(t.component("Location")),
         })),
 
         "Token Type": type(t.state_group({
@@ -38,41 +39,41 @@ export const $: g_.Types<pd.Source_Location> = types(
             "#": t.nothing(), //missing data
 
             "string": t.group({
-                "value": t.component("Delimited String"),
-                "type": t.component("String Type"),
+                "value": prop(t.component("Delimited String")),
+                "type": prop(t.component("String Type")),
             }),
         })),
 
         "Delimited String": type(t.text_local(text('single line'))),
 
         "Annotated Token": type(t.group({
-            "start": t.component("Location"),
-            "type": t.component("Token Type"),
-            "end": t.component("Location"),
-            "trailing trivia": t.component("Trivia"),
+            "start": prop(t.component("Location")),
+            "type": prop(t.component("Token Type")),
+            "end": prop(t.component("Location")),
+            "trailing trivia": prop(t.component("Trivia")),
         })),
 
         "Whitespace": type(t.group({
-            "range": t.component("Range"),
-            "value": t.text_local(text('single line')),
+            "range": prop(t.component("Range")),
+            "value": prop(t.text_local(text('single line'))),
         })),
 
         "Range": type(t.group({
-            "start": t.component("Location"),
-            "end": t.component("Location"),
+            "start": prop(t.component("Location")),
+            "end": prop(t.component("Location")),
         })),
         
         "Trivia": type(t.group({
-            "leading whitespace": t.component("Whitespace"),
-            "comments": t.list(t.group({
-                "type": t.state_group({
+            "leading whitespace": prop(t.component("Whitespace")),
+            "comments": prop(t.list(t.group({
+                "type": prop(t.state_group({
                     "line": t.nothing(),
                     "block": t.nothing(),
-                }),
-                "content": t.text_local(text('single line')),
-                "range": t.component("Range"),
-                "trailing whitespace": t.component("Whitespace"),
-            })),
+                })),
+                "content": prop(t.text_local(text('single line'))),
+                "range": prop(t.component("Range")),
+                "trailing whitespace": prop(t.component("Whitespace")),
+            }))),
         })),
 
         "String Type": type(t.state_group({
@@ -83,13 +84,13 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Location": type(t.group({
-            "relative": t.component("Relative Location"),
-            "absolute": t.number_local(n.natural()),
+            "relative": prop(t.component("Relative Location")),
+            "absolute": prop(t.number_local(n.natural())),
         })),
 
         "Relative Location": type(t.group({
-            "line": t.number_local(n.natural()),
-            "column": t.number_local(n.natural()), //this value takes the width of a tab into account, if you don't want that, configure the tab width to be 1
+            "line": prop(t.number_local(n.natural())),
+            "column": prop(t.number_local(n.natural())), //this value takes the width of a tab into account, if you don't want that, configure the tab width to be 1
         })),
     }
 )

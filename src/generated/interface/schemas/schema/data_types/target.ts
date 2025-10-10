@@ -37,7 +37,10 @@ export type _T_Globals<M_Source> = {
     readonly 'text types': _i_core._T_Dictionary<M_Source, _T_Text_Type<M_Source>>
 }
 
-export type _T_Group<M_Source> = _i_core._T_Ordered_Dictionary<M_Source, _T_Type_Node<M_Source>>
+export type _T_Group<M_Source> = _i_core._T_Ordered_Dictionary<M_Source, {
+    readonly 'description': _pt.Optional_Value<string>
+    readonly 'node': _T_Type_Node<M_Source>
+}>
 
 export type _T_Guaranteed_Value_Selection<M_Source> = {
     readonly 'resulting node': _i_core._T_Derived_Reference<M_Source, _T_Type_Node<M_Source>>
@@ -595,8 +598,20 @@ export namespace _T_Globals {
 export namespace _T_Group {
     
     export namespace D {
+        
+        export namespace description {
+            export type O<M_Source> = string
+        }
+        export type description<M_Source> = _pt.Optional_Value<string>
+        
+        export namespace node {
+        }
+        export type node<M_Source> = _T_Type_Node<M_Source>
     }
-    export type D<M_Source> = _T_Type_Node<M_Source>
+    export type D<M_Source> = {
+        readonly 'description': _pt.Optional_Value<string>
+        readonly 'node': _T_Type_Node<M_Source>
+    }
 }
 
 export namespace _T_Guaranteed_Value_Selection {
@@ -2745,8 +2760,20 @@ export namespace Globals {
 export namespace Group {
     
     export namespace D {
+        
+        export namespace description {
+            export type O<M_Source> = string
+        }
+        export type description<M_Source> = _pt.Optional_Value<string>
+        
+        export namespace node {
+        }
+        export type node<M_Source> = _T_Type_Node<M_Source>
     }
-    export type D<M_Source> = _T_Type_Node<M_Source>
+    export type D<M_Source> = {
+        readonly 'description': _pt.Optional_Value<string>
+        readonly 'node': _T_Type_Node<M_Source>
+    }
 }
 
 export namespace Guaranteed_Value_Selection {

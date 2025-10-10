@@ -5,35 +5,36 @@ import {
     t,
     type,
     n,
+    prop,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
 export const $: g_.Types<pd.Source_Location> = types(
     {
         "Regular Expression": type(t.group({
-            "characters": t.dictionary(t.number_local(n.positive_natural())),
-            "sequence": t.component_cyclic("Sequence"),
+            "characters": prop(t.dictionary(t.number_local(n.positive_natural()))),
+            "sequence": prop(t.component_cyclic("Sequence")),
         })),
 
         "Sequence": type(t.list(t.group({
-            "type": t.state_group({
+            "type": prop(t.state_group({
                 "literal": t.text_global("Text Value"),
                 "character class": t.group({
-                    "negated": t.boolean(),
-                    "ranges": t.list(t.state_group({
+                    "negated": prop(t.boolean()),
+                    "ranges": prop(t.list(t.state_group({
                         "literal": t.number_global("Character"), //should be a reference to a character in the dictionary
                         "range": t.group({
-                            "from": t.number_global("Character"),
-                            "to": t.number_global("Character"),
+                            "from": prop(t.number_global("Character")),
+                            "to": prop(t.number_global("Character")),
                         }),
-                    })),
+                    }))),
                 }),
                 "group": t.group({
-                    "expression": t.component_cyclic("Sequence"),
+                    "expression": prop(t.component_cyclic("Sequence")),
                 }),
                 "alternation": t.list(t.component_cyclic("Sequence")),
-            }),
-            "quantifier": t.optional(t.state_group({
+            })),
+            "quantifier": prop(t.optional(t.state_group({
                 "optional": t.nothing(), // ?
                 "multiple": t.nothing(), // *
                 "one or more": t.nothing(), // +
@@ -43,7 +44,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                 //     "max": t.number_local(n.natural()),
                 // }),
 
-            })),
+            }))),
         }))),
     }
 )

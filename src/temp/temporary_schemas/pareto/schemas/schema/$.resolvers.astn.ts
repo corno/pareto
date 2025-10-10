@@ -89,17 +89,20 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
             "resulting node": r.reference_derived(gvs.list("tail", [])),
         })),
 
-        "Group": resolver(r.dictionary(r.component("Type Node",
-            {
-                "globals": av.parameter("globals"),
-                "type parameters": av.parameter("type parameters"),
-                "imports": av.parameter("imports"),
-            },
-            {
-                "noncircular sibling types": al.parameter("noncircular sibling types"),
-                "possibly circular dependent sibling types": al.parameter("possibly circular dependent sibling types"),
-            }
-        ))),
+        "Group": resolver(r.dictionary(r.group({
+            "description": r.optional(r.text()),
+            "node": r.component("Type Node",
+                {
+                    "globals": av.parameter("globals"),
+                    "type parameters": av.parameter("type parameters"),
+                    "imports": av.parameter("imports"),
+                },
+                {
+                    "noncircular sibling types": al.parameter("noncircular sibling types"),
+                    "possibly circular dependent sibling types": al.parameter("possibly circular dependent sibling types"),
+                }
+            ),
+        }))),
 
         "Dictionary": resolver(r.group({
             "node": r.component("Type Node",
@@ -470,7 +473,7 @@ export const $: g_.Resolvers<pd.Source_Location> = resolvers(
                 "definition": r.reference_derived(gvs.linked_entry([])),
                 "resolver": r.component("Node Resolver",
                     {
-                        "definition": av.required(gvs.linked_entry([vst.component()])),
+                        "definition": av.required(gvs.linked_entry([vst.group("node"), vst.component()])),
 
                         "types": av.parameter("types"),
                         "imports": av.parameter("imports"),

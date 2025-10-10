@@ -7,14 +7,15 @@ import {
     t,
     tr,
     type,
+    prop,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
 export const $: g_.Types<pd.Source_Location>  = types(
     {
         "Lines": type(t.list(t.group({
-            "text": t.text_global("Output"),
-            "indentation": t.number_local(n.natural())
+            "text": prop(t.text_global("Output")),
+            "indentation": prop(t.number_local(n.natural()))
         }))),
 
         "Directory": type(t.dictionary(

@@ -154,7 +154,7 @@ export const Type_Node = (
                 i.dictionary_literal($.dictionary.map(($, key) => i.change_context(
                     s.from_context([key]),
                     Type_Node(
-                        $,
+                        $.node,
                         {
                             'type': $p.type,
                             'subselection': op_append_element(

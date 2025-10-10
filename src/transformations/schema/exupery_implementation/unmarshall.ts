@@ -183,7 +183,7 @@ export const Type_Node = (
                                 [],
                             ),
                             Type_Node(
-                                $,
+                                $.node,
                                 {
                                     'temp type': $p['temp type'],
                                     'temp subselection': op_append_element(

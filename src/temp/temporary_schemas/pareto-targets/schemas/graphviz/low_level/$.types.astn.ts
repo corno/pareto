@@ -7,6 +7,7 @@ import {
     t,
     tr,
     type,
+    prop,
 } from "../../../../../../shorthands/schema"
 import * as g_ from "../../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -14,55 +15,55 @@ export const $: g_.Types<pd.Source_Location> = types(
     {
 
         "Graph": type(t.group({
-            "strict": t.boolean(),
-            "type": t.state_group({
+            "strict": prop(t.boolean()),
+            "type": prop(t.state_group({
                 "graph": t.nothing(),
                 "digraph": t.nothing(),
-            }),
-            "name": t.optional(t.component("ID")),
-            "statements": t.component("Statement List"),
+            })),
+            "name": prop(t.optional(t.component("ID"))),
+            "statements": prop(t.component("Statement List")),
         })),
         "Statement List": type(t.list(t.state_group({
             "node": t.group({
-                "node": t.component("Node ID"),
-                "attribute list": t.component("Attribute List"),
+                "node": prop(t.component("Node ID")),
+                "attribute list": prop(t.component("Attribute List")),
             }),
             "edge": t.group({
-                "left": t.state_group({
-                    "node": t.component("Node ID"),
-                    "subgraph": t.component("Subgraph"),
-                }),
-                //the operator (-- or ->) can be derived from the graph type
-                "right": t.list(t.state_group({
+                "left": prop(t.state_group({
                     "node": t.component("Node ID"),
                     "subgraph": t.component("Subgraph"),
                 })),
-                "attributes": t.component("Attribute List"),
+                //the operator (-- or ->) can be derived from the graph type
+                "right": prop(t.list(t.state_group({
+                    "node": t.component("Node ID"),
+                    "subgraph": t.component("Subgraph"),
+                }))),
+                "attributes": prop(t.component("Attribute List")),
             }),
             "attribute list": t.group({
-                "type": t.state_group({
+                "type": prop(t.state_group({
                     "graph": t.nothing(),
                     "node": t.nothing(),
                     "edge": t.nothing(),
-                }),
-                "attributes": t.component("Attribute List"),
+                })),
+                "attributes": prop(t.component("Attribute List")),
             }),
             "attribute assignment": t.group({
-                "name": t.component("ID"),
-                "value": t.component("ID"),
+                "name": prop(t.component("ID")),
+                "value": prop(t.component("ID")),
             }),
             "subgraph": t.component("Subgraph"),
         }))),
         "Attribute List": type(t.list(t.group({
-            "name": t.component("ID"),
-            "value": t.component("ID"),
+            "name": prop(t.component("ID")),
+            "value": prop(t.component("ID")),
         }))),
         "Node ID": type(t.group({
-            "id": t.component("ID"),
-            "port": t.optional(t.group({
-                "port": t.component("ID"),
-                "compass point": t.optional(t.component("ID")),
-            }))
+            "id": prop(t.component("ID")),
+            "port": prop(t.optional(t.group({
+                "port": prop(t.component("ID")),
+                "compass point": prop(t.optional(t.component("ID"))),
+            })))
         })),
         "ID": type(t.state_group({
             "id": t.text_global("id"),
@@ -71,8 +72,8 @@ export const $: g_.Types<pd.Source_Location> = types(
             "number": t.number_local(n.integer()),
         })),
         "Subgraph": type(t.group({
-            "subgraph": t.optional(t.optional(t.component("ID"))), // is it a subgraph? and if yes, does it have a name?
-            "statements": t.component_cyclic("Statement List"),
+            "subgraph": prop(t.optional(t.optional(t.component("ID")))), // is it a subgraph? and if yes, does it have a name?
+            "statements": prop(t.component_cyclic("Statement List")),
         })),
     }
 )

@@ -6,6 +6,7 @@ import {
     t,
     tr,
     type,
+    prop,
 
 } from "../../../../../shorthands/schema"
 
@@ -15,38 +16,38 @@ export const $: g_.Types<_edata.Source_Location>  = types(
     {
         "Configuration": type(t.group({
             //the tasks that can be executed
-            "tasks": t.dictionary(t.component("Configuration__Task")),
+            "tasks": prop(t.dictionary(t.component("Configuration__Task"))),
             //the root node of the tree
-            "tree": t.component("Directory"),
+            "tree": prop(t.component("Directory")),
             //shorthands for the used programs
-            "shorthands": t.dictionary(t.group({
+            "shorthands": prop(t.dictionary(t.group({
                 //         'program': $.Dictionary_Entry_Reference<Configuration__Used_Program<Source>, Source>
                 //         'common parameters': pt.Array<Action__Parameter<Source>>
 
                 //         'change working directory to context': boolean
                 //         'silent': boolean
-            })),
+            }))),
             //programs that need to be installed on the host system
-            "used programs": t.dictionary(t.nothing()),
+            "used programs": prop(t.dictionary(t.nothing())),
         })),
         "Directory": type(t.group({
-            "children": t.dictionary(t.component("Node")),
+            "children": prop(t.dictionary(t.component("Node"))),
         })),
 
         "Node": type(t.group({
-            "optional": t.boolean(),
-            "type": t.state_group({
+            "optional": prop(t.boolean()),
+            "type": prop(t.state_group({
                 "automatic": t.component("Target"),
                 "directory": t.group({
-                    "dependencies": t.dictionary(t.group({
-                        "start": t.component("Dependency Start"),
-                        "tail": t.component("Node Selection Tail"),
-                    })),
+                    "dependencies": prop(t.dictionary(t.group({
+                        "start": prop(t.component("Dependency Start")),
+                        "tail": prop(t.component("Node Selection Tail")),
+                    }))),
                 }),
                 "manual": t.group({
-                    "boilerplate": t.component("Target")
+                    "boilerplate": prop(t.component("Target"))
                 })
-            })
+            }))
         })),
 
         "Dependency Start": type(t.state_group({
@@ -55,8 +56,8 @@ export const $: g_.Types<_edata.Source_Location>  = types(
         })),
 
         "Directory Dependency": type(t.group({
-            "start": t.component("Dependency Start"),
-            "tail": t.component("Node Selection Tail"),
+            "start": prop(t.component("Dependency Start")),
+            "tail": prop(t.component("Node Selection Tail")),
         }))
 
     }

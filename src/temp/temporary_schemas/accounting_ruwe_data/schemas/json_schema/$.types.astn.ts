@@ -5,38 +5,39 @@ import {
     t,
     type,
     n,
+    prop,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
 export const $: g_.Types<pd.Source_Location> = types(
     {
         "Document": type(t.group({
-            "$schema": t.text_global("url"),
-            "$id": t.text_global("url"),
-            "type": t.component("Type"),
+            "$schema": prop(t.text_global("url")),
+            "$id": prop(t.text_global("url")),
+            "type": prop(t.component("Type")),
         })),
 
         "Type": type(t.state_group({
             "array": t.group({
-                "minItems": t.optional(t.number_global("amount")),
-                "maxItems": t.optional(t.number_global("amount")),
-                "uniqueItems": t.optional(t.boolean()),
-                "oneOf": t.optional(t.list(t.component_cyclic("Type"))),
-                "maxContains": t.optional(t.number_global("amount")),
-                "minContains": t.optional(t.number_global("amount")),
+                "minItems": prop(t.optional(t.number_global("amount"))),
+                "maxItems": prop(t.optional(t.number_global("amount"))),
+                "uniqueItems": prop(t.optional(t.boolean())),
+                "oneOf": prop(t.optional(t.list(t.component_cyclic("Type")))),
+                "maxContains": prop(t.optional(t.number_global("amount"))),
+                "minContains": prop(t.optional(t.number_global("amount"))),
             }),
             "number": t.group({
-                "multipleOf": t.optional(t.number_global("amount")),
-                "minimum": t.optional(t.number_global("amount")),
-                "maximum": t.optional(t.number_global("amount")),
-                "exclusiveMinimum": t.optional(t.number_global("amount")),
-                "exclusiveMaximum": t.optional(t.number_global("amount")),
+                "multipleOf": prop(t.optional(t.number_global("amount"))),
+                "minimum": prop(t.optional(t.number_global("amount"))),
+                "maximum": prop(t.optional(t.number_global("amount"))),
+                "exclusiveMinimum": prop(t.optional(t.number_global("amount"))),
+                "exclusiveMaximum": prop(t.optional(t.number_global("amount"))),
             }),
             "object": t.group({
-                "minProperties": t.optional(t.number_global("amount")),
-                "maxProperties": t.optional(t.number_global("amount")),
-                "required": t.optional(t.list(t.text_global("identifier"))),
-                "dependentRequired": t.optional(t.list(t.text_global("identifier"))),
+                "minProperties": prop(t.optional(t.number_global("amount"))),
+                "maxProperties": prop(t.optional(t.number_global("amount"))),
+                "required": prop(t.optional(t.list(t.text_global("identifier")))),
+                "dependentRequired": prop(t.optional(t.list(t.text_global("identifier")))),
                 
                 // "properties": t.optional(t.dictionary(t.component("Type"))),
                 // "additionalProperties": t.optional(t.component("Type")),
@@ -51,9 +52,9 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // "maxContains": t.optional(t.number_global("amount")),
             }),
             "string": t.group({
-                "minLength": t.optional(t.number_global("amount")),
-                "maxLength": t.optional(t.number_global("amount")),
-                "pattern": t.optional(t.text_global("regex")),
+                "minLength": prop(t.optional(t.number_global("amount"))),
+                "maxLength": prop(t.optional(t.number_global("amount"))),
+                "pattern": prop(t.optional(t.text_global("regex"))),
             }),
         }))
     }

@@ -7,10 +7,11 @@ import {
     t,
     tr,
     type,
+    prop,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
-export const $: g_.Types<pd.Source_Location>  = types(
+export const $: g_.Types<pd.Source_Location> = types(
     {
         "Phrasing content": type(t.list(t.state_group({
             "text": t.text_global("TBD"),
@@ -63,16 +64,16 @@ export const $: g_.Types<pd.Source_Location>  = types(
         */
 
         "Document": type(t.group({
-            "lang": t.optional(t.text_global("TBD")),
-            "head": t.group({
-                "title": t.text_global("TBD")
-            }),
-            "body": t.component("Flow content")
+            "lang": prop(t.optional(t.text_global("TBD"))),
+            "head": prop(t.group({
+                "title": prop(t.text_global("TBD"))
+            })),
+            "body": prop(t.component("Flow content"))
         })),
 
         "Edit": type(t.group({
-            "cite": t.optional(t.text_global("TBD")),
-            "datetime": t.optional(t.text_global("TBD")),
+            "cite": prop(t.optional(t.text_global("TBD"))),
+            "datetime": prop(t.optional(t.text_global("TBD"))),
         })),
 
         "Embedded": type(t.state_group({
@@ -126,7 +127,7 @@ export const $: g_.Types<pd.Source_Location>  = types(
                 // form — Associates the element with a form element
                 // width — Horizontal dimension
                 // height — Vertical dimension
-                "content": t.component_cyclic("Embedded content")
+                "content": prop(t.component_cyclic("Embedded content"))
             }),
             "video": t.group({
                 /*FIXME*/
@@ -193,25 +194,25 @@ export const $: g_.Types<pd.Source_Location>  = types(
             "h5": t.component("Phrasing content"),
             "h6": t.component("Phrasing content"),
             "hgroup": t.group({
-                "content before": t.state_group({
+                "content before": prop(t.state_group({
                     "p": t.group({/*FIXME*/ }),
                     "script supporting": t.component("Script supporting"),
-                }),
-                "heading": t.state_group({
+                })),
+                "heading": prop(t.state_group({
                     "h1 ": t.component("Phrasing content"),
                     "h2": t.component("Phrasing content"),
                     "h3": t.component("Phrasing content"),
                     "h4": t.component("Phrasing content"),
                     "h5": t.component("Phrasing content"),
                     "h6": t.component("Phrasing content"),
-                }),
-                "content after": t.state_group({
+                })),
+                "content after": prop(t.state_group({
                     "p": t.group({/*FIXME*/ }),
                     "script supporting": t.component("Script supporting"),
-                }),
+                })),
             }),
         })),
-        
+
         //"Heading content": type(list(component("Heading"))),
         //"Script supporting content": type(list(component("Script supporting"))),
 
@@ -225,12 +226,12 @@ export const $: g_.Types<pd.Source_Location>  = types(
         "Flow": type(t.state_group({
             //generic attributes
             "id": t.group({
-                "id": t.text_global("TBD"),
-                "child": t.component_cyclic("Flow")
+                "id": prop(t.text_global("TBD")),
+                "child": prop(t.component_cyclic("Flow")),
             }),
             "class": t.group({
-                "class": t.text_global("TBD"),
-                "child": t.component_cyclic("Flow")
+                "class": prop(t.text_global("TBD")),
+                "child": prop(t.component_cyclic("Flow")),
             }),
             /*
             a'phrase' element does not exist in HTML, but this deviation from the standard is needed to handle whitespace properly 
@@ -238,27 +239,27 @@ export const $: g_.Types<pd.Source_Location>  = types(
             "script supporting": t.component("Script supporting"),
             "embedded": t.component("Embedded"),
             "details": t.group({
-                "summary": t.list(t.state_group({
+                "summary": prop(t.list(t.state_group({
                     "phrasing": t.component("Phrasing content"),
                     "heading": t.component("Heading"),
-                })),
-                "content": t.component("Flow content"),
+                }))),
+                "content": prop(t.component("Flow content")),
             }),
             "address": t.group({
                 /*FIXME*/
                 //Flow content, but with no heading content descendants, no sectioning content descendants, and no header, footer, or address element descendants.Flow content, but with no heading content descendants, no sectioning content descendants, and no header, footer, or address element descendants.
             }),
             "blockquote": t.group({
-                "cite": t.text_global("TBD"),
-                "content": t.component("Flow content")
+                "cite": prop(t.text_global("TBD")),
+                "content": prop(t.component("Flow content")),
             }),
             "del": t.group({
-                "edit": t.component("Edit"),
-                "content": t.component("Flow content")
+                "edit": prop(t.component("Edit")),
+                "content": prop(t.component("Flow content")),
             }),
             "dialog": t.group({
-                "open": t.optional(t.text_global("TBD")),
-                "content": t.component("Flow content"),
+                "open": prop(t.optional(t.text_global("TBD"))),
+                "content": prop(t.component("Flow content")),
             }),
             "div": t.component("Flow content"),
             "dl": t.state_group({
@@ -267,21 +268,21 @@ export const $: g_.Types<pd.Source_Location>  = types(
             }), //description list
             "fieldset": t.group({
                 /*FIXME*/
-                "legend": t.optional(t.group({/*FIXME*/ })),
+                "legend": prop(t.optional(t.group({/*FIXME*/ }))),
                 // disabled — Whether the descendant form controls, except any inside legend, are disabled
                 // form — Associates the element with a form element
                 // name — Name of the element to use in the form.elements API.
-                "content": t.component("Flow content"),
+                "content": prop(t.component("Flow content")),
             }),
             "figure": t.group({
-                "caption": t.optional(t.group({
-                    "content": t.component("Flow content"),
-                    "position": t.state_group({
+                "caption": prop(t.optional(t.group({
+                    "content": prop(t.component("Flow content")),
+                    "position": prop(t.state_group({
                         "top": t.group({}),
                         "botom": t.group({}),
-                    })
-                })),
-                "content": t.component("Flow content"),
+                    })),
+                }))),
+                "content": prop(t.component("Flow content")),
             }),
             "footer": t.group({
                 /*FIXME*/
@@ -306,8 +307,8 @@ export const $: g_.Types<pd.Source_Location>  = types(
             }),
             "hr": t.group({}),
             "ins": t.group({
-                "edit": t.component("Edit"),
-                "content": t.component("Flow content")
+                "edit": prop(t.component("Edit")),
+                "content": prop(t.component("Flow content")),
             }),
             /*
             FIXME
@@ -316,8 +317,8 @@ export const $: g_.Types<pd.Source_Location>  = types(
             */
             "main": t.component("Flow content"),
             "map": t.group({
-                "name": t.text_global("TBD"),
-                "content": t.component("Flow content")
+                "name": prop(t.text_global("TBD")),
+                "content": prop(t.component("Flow content")),
             }),
             "menu": t.list(t.state_group({
                 "li": t.component("Flow content"),
@@ -331,37 +332,37 @@ export const $: g_.Types<pd.Source_Location>  = types(
                 // form — Associates the element with a form element
                 // width — Horizontal dimension
                 // height — Vertical dimension
-                "content": t.component("Flow content")
+                "content": prop(t.component("Flow content")),
             }),
             "ol": t.group({
-                "reversed": t.optional(t.text_global("TBD")),
-                "start": t.optional(t.text_global("TBD")),
-                "type": t.optional(t.state_group({
+                "reversed": prop(t.optional(t.text_global("TBD"))),
+                "start": prop(t.optional(t.text_global("TBD"))),
+                "type": prop(t.optional(t.state_group({
                     "1": t.group({}),
                     "a": t.group({}),
                     "A": t.group({}),
                     "i": t.group({}),
                     "I": t.group({}),
-                })),
-                "content": t.list(t.state_group({
+                }))),
+                "content": prop(t.list(t.state_group({
                     "li": t.group({
-                        "value": t.text_global("TBD"),
-                        "content": t.component("Flow content"),
+                        "value": prop(t.text_global("TBD")),
+                        "content": prop(t.component("Flow content")),
                     }),
                     "script supporting": t.component("Script supporting"),
-                }))
+                })))
             }),
             "p": t.component("Phrasing content"),
             "pre": t.component("Phrasing content"),
             "search": t.component("Flow content"),
             "slot": t.group({
-                "name": t.text_global("TBD"),
-                "content": t.component("Flow content"),
+                "name": prop(t.text_global("TBD")),
+                "content": prop(t.component("Flow content")),
             }),
             "table": t.group({
                 /*FIXME*/
-                "caption": t.optional(t.component("Flow content")),
-                "colgroups": t.list(t.group({/*FIXME*/ })),
+                "caption": prop(t.optional(t.component("Flow content"))),
+                "colgroups": prop(t.list(t.group({/*FIXME*/ }))),
                 //"thead": prop(optional(component("Flow content"))),
 
             }),
@@ -372,16 +373,16 @@ export const $: g_.Types<pd.Source_Location>  = types(
             "heading": t.component("Heading"),
             "sectioning": t.component("Sectioning content"),
         })),
-        
+
         "Phrasing": type(t.state_group({
             //generic attributes
             "id": t.group({
-                "id": t.text_global("TBD"),
-                "child": t.component_cyclic("Phrasing")
+                "id": prop(t.text_global("TBD")),
+                "child": prop(t.component_cyclic("Phrasing"))
             }),
             "class": t.group({
-                "class": t.text_global("TBD"),
-                "child": t.component_cyclic("Phrasing")
+                "class": prop(t.text_global("TBD")),
+                "child": prop(t.component_cyclic("Phrasing"))
             }),
 
             //elements
@@ -438,7 +439,7 @@ export const $: g_.Types<pd.Source_Location>  = types(
                 // form — Associates the element with a form element
                 // width — Horizontal dimension
                 // height — Vertical dimension
-                "content": t.component("Phrasing content")
+                "content": prop(t.component("Phrasing content"))
             }),
             "script supporting": t.component("Script supporting"),
             "a": t.group({/*FIXMEX*/ }),
@@ -510,17 +511,17 @@ export const $: g_.Types<pd.Source_Location>  = types(
                 // name — Name of the element to use for form submission and in the form.elements API
                 // required — Whether the control is required for form submission
                 // size — Size of the control
-                "content": t.list(t.state_group({
+                "content": prop(t.list(t.state_group({
                     "option": t.group({/*FIXME*/ }),
                     "optgroup": t.group({
                         //label
                         //disabled
-                        "options": t.list(t.group({
+                        "options": prop(t.list(t.group({
                             /*FIXME*/
-                        }))
+                        })))
                     }),
                     "script supporting": t.component("Script supporting"),
-                })),
+                }))),
             }),
             "textarea": t.group({
                 /*FIXME*/
@@ -537,11 +538,11 @@ export const $: g_.Types<pd.Source_Location>  = types(
                 // required — Whether the control is required for form submission
                 // rows — Number of lines to show
                 // wrap — How the value of the form control is to be wrapped for form submission 
-                "content": t.text_global("TBD"),
+                "content": prop(t.text_global("TBD")),
             }),
             "abbr": t.group({
-                "title": t.text_global("TBD"),
-                "content": t.component("Phrasing content"),
+                "title": prop(t.text_global("TBD")),
+                "content": prop(t.component("Phrasing content")),
             }),
             "area": t.group({ //FIXME: needs a 'map' ancestor
                 /*FIXME*/
@@ -557,19 +558,19 @@ export const $: g_.Types<pd.Source_Location>  = types(
             }),
             "b": t.component("Phrasing content"),
             "bdi": t.group({
-                "dir": t.text_global("TBD"),
-                "content": t.component("Phrasing content"),
+                "dir": prop(t.text_global("TBD")),
+                "content": prop(t.component("Phrasing content")),
             }),
             "bdo": t.group({
-                "dir": t.text_global("TBD"),
-                "content": t.component("Phrasing content"),
+                "dir": prop(t.text_global("TBD")),
+                "content": prop(t.component("Phrasing content")),
             }),
             "br": t.group({}), //line break
             "cite": t.component("Phrasing content"),
             "code": t.component("Phrasing content"),
             "data": t.group({
-                "value": t.text_global("TBD"),
-                "content": t.component("Phrasing content"),
+                "value": prop(t.text_global("TBD")),
+                "content": prop(t.component("Phrasing content")),
             }),
             "datalist": t.state_group({
                 "phrasing": t.component("Phrasing content"),
@@ -579,23 +580,23 @@ export const $: g_.Types<pd.Source_Location>  = types(
                 })),
             }),
             "del": t.group({
-                "edit": t.component("Edit"),
-                "content": t.component("Phrasing content")
+                "edit": prop(t.component("Edit")),
+                "content": prop(t.component("Phrasing content"))
             }),
             "dfn": t.group({ //FIXME: there may not be a dfn ancestor
-                "title": t.text_global("TBD"),
-                "content": t.component("Phrasing content"),
+                "title": prop(t.text_global("TBD")),
+                "content": prop(t.component("Phrasing content")),
             }),
             "em": t.component("Phrasing content"),
             "i": t.component("Phrasing content"),
             "ins": t.group({
-                "edit": t.component("Edit"),
-                "content": t.component("Phrasing content")
+                "edit": prop(t.component("Edit")),
+                "content": prop(t.component("Phrasing content")),
             }),
             "kbd": t.component("Phrasing content"),
             "map": t.group({
-                "name": t.text_global("TBD"),
-                "content": t.component("Phrasing content")
+                "name": prop(t.text_global("TBD")),
+                "content": prop(t.component("Phrasing content"))
             }),
             "mark": t.component("Phrasing content"),
             "meter": t.group({
@@ -612,19 +613,19 @@ export const $: g_.Types<pd.Source_Location>  = types(
                 // Phrasing content, but there must be no meter element descendants.
             }),
             "output": t.group({
-                "for": t.optional(t.text_global("TBD")),
-                "form": t.text_global("TBD"),//optional?
-                "name": t.text_global("TBD"),//optional?
-                "content": t.component("Phrasing content"),
+                "for": prop(t.optional(t.text_global("TBD"))),
+                "form": prop(t.text_global("TBD")),//optional?
+                "name": prop(t.text_global("TBD")),//optional?
+                "content": prop(t.component("Phrasing content")),
             }),
             "progress": t.group({ //FIXME: there may not be any progress element ancestors
-                "value": t.text_global("TBD"),
-                "max": t.text_global("TBD"),
-                "content": t.component("Phrasing content"),
+                "value": prop(t.text_global("TBD")),
+                "max": prop(t.text_global("TBD")),
+                "content": prop(t.component("Phrasing content")),
             }),
             "q": t.group({
-                "cite": t.text_global("TBD"),
-                "content": t.component("Phrasing content"),
+                "cite": prop(t.text_global("TBD")),
+                "content": prop(t.component("Phrasing content")),
             }),
             "ruby": t.group({
                 /*FIXME*/
@@ -638,8 +639,8 @@ export const $: g_.Types<pd.Source_Location>  = types(
             "s": t.component("Phrasing content"),
             "samp": t.component("Phrasing content"),
             "slot": t.group({
-                "name": t.text_global("TBD"),
-                "content": t.component("Phrasing content"),
+                "name": prop(t.text_global("TBD")),
+                "content": prop(t.component("Phrasing content")),
             }),
             "small": t.component("Phrasing content"),
             "span": t.component("Phrasing content"),
@@ -648,8 +649,8 @@ export const $: g_.Types<pd.Source_Location>  = types(
             "sup": t.component("Phrasing content"),
             "time": t.state_group({
                 "datetime": t.group({
-                    "value": t.text_global("TBD"),
-                    "content": t.component("Phrasing content")
+                    "value": prop(t.text_global("TBD")),
+                    "content": prop(t.component("Phrasing content")),
                 }),
                 "text": t.text_global("TBD"),
             }),

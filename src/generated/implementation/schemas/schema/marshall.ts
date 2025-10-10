@@ -92,12 +92,21 @@ export const Globals: _i_signatures._T_Globals = ($, $p) => ['verbose group', _p
         }
     ))]),
 })]
-export const Group: _i_signatures._T_Group = ($, $p) => ['dictionary', $['dictionary'].map(($) => Type_Node(
-    $,
-    {
-        'value serializers': $p['value serializers'],
-    }
-))]
+export const Group: _i_signatures._T_Group = ($, $p) => ['dictionary', $['dictionary'].map(($) => ['verbose group', _pa.dictionary_literal({
+    'description': _pa.cc($['description'], ($) => ['optional', $.transform(
+        ($): _i_out._T_Value.SG.optional => ['set', ['text', ({
+            'delimiter': ['quote', null],
+            'value': $,
+        })]],
+        () => ['not set', null]
+    )]),
+    'node': _pa.cc($['node'], ($) => Type_Node(
+        $,
+        {
+            'value serializers': $p['value serializers'],
+        }
+    )),
+})])]
 export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selection = ($, $p) => ['verbose group', _pa.dictionary_literal({
     'resulting node': _pa.cc($['resulting node'], ($) => ['nothing', null]),
     'start': _pa.cc($['start'], ($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {

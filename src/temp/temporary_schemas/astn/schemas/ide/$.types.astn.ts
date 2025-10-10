@@ -7,6 +7,7 @@ import {
     t,
     tr,
     type,
+    prop,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -16,21 +17,21 @@ export const $: g_.Types<pd.Source_Location> = types(
     {
         "Text Edits": type(t.list(t.state_group({
             "insert": t.group({
-                "location": t.component_external("token", "Relative Location"),
-                "text": t.text_local(text('single line')),
+                "location": prop(t.component_external("token", "Relative Location")),
+                "text": prop(t.text_local(text('single line'))),
             }),
             "replace": t.group({
-                "range": t.component("Relative Range"),
-                "text": t.text_local(text('single line')),
+                "range": prop(t.component("Relative Range")),
+                "text": prop(t.text_local(text('single line'))),
             }),
             "delete": t.group({
-                "range": t.component("Relative Range"),
+                "range": prop(t.component("Relative Range")),
             }),
         }))),
 
         "Relative Range": type(t.group({
-            "start": t.component_external("token", "Relative Location"),
-            "end": t.component_external("token", "Relative Location"),
+            "start": prop(t.component_external("token", "Relative Location")),
+            "end": prop(t.component_external("token", "Relative Location")),
         })),
 
         "Key Value Pairs To Be Sorted": type(t.dictionary(t.text_local(text('single line')))),

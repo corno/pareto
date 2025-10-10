@@ -7,6 +7,7 @@ import {
     t,
     tr,
     type,
+    prop,
 
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
@@ -19,57 +20,57 @@ import * as g_ from "../../../../../generated/interface/schemas/schema/data_type
 export const $: g_.Types<pd.Source_Location>  = types(
     {
         "Path": type(t.group({
-            "up steps": t.list(t.group({})),
-            "context": t.group({
-                "sibling": t.group({}),
-                "state constraint": t.group({
-                    "name": t.text_global("Pseudo Reference"),
-                }),
-            }),
-            "selection steps": t.list(t.group({
+            "up steps": prop(t.list(t.group({}))),
+            "context": prop(t.group({
+                "sibling": prop(t.group({})),
+                "state constraint": prop(t.group({
+                    "name": prop(t.text_global("Pseudo Reference")),
+                })),
+            })),
+            "selection steps": prop(t.list(t.group({
                 // "dictionary": t.group({
                 //     "name": t.basic_local(b.text()),
                 // }),
-                "group": t.group({
-                    "name": t.text_global("Pseudo Reference"),
-                }),
-                "state constraint": t.group({
-                    "name": t.text_global("Pseudo Reference"),
-                }),
-                "reference": t.group({
-                    "name": t.text_global("Pseudo Reference"),
-                }),
-            }))
+                "group": prop(t.group({
+                    "name": prop(t.text_global("Pseudo Reference")),
+                })),
+                "state constraint": prop(t.group({
+                    "name": prop(t.text_global("Pseudo Reference")),
+                })),
+                "reference": prop(t.group({
+                    "name": prop(t.text_global("Pseudo Reference")),
+                })),
+            })))
         })),
         "Node": type(t.group({
-            "properties": t.dictionary(t.group({
-                "type": t.state_group({
+            "properties": prop(t.dictionary(t.group({
+                "type": prop(t.state_group({
                     "collection": t.group({
-                        "node": t.component_cyclic("Node"),
+                        "node": prop(t.component_cyclic("Node")),
                     }),
                     "file": t.nothing(),
                     "group": t.group({
-                        "node": t.component_cyclic("Node"),
+                        "node": prop(t.component_cyclic("Node")),
                     }),
                     "natural": t.text_local(text('single line')), //why is this not a number?
                     "text": t.nothing(),
                     "reference": t.nothing(),
                     "state group": t.group({
-                        "states": t.dictionary(t.group({
+                        "states": prop(t.dictionary(t.group({
                             // "constraints": t.dictionary(t.group({
                             //     "path": t.component("Path")
                             // })),
-                            "node": t.component_cyclic("Node")
-                        }))
+                            "node": prop(t.component_cyclic("Node"))
+                        })))
                     })
-                })
-            }))
+                }))
+            })))
         })),
         "Root": type(t.group({
-            "numerical types": t.dictionary(t.group({
+            "numerical types": prop(t.dictionary(t.group({
 
-            })),
-            "root": t.component("Node"),
+            }))),
+            "root": prop(t.component("Node")),
         }))
     }
 )

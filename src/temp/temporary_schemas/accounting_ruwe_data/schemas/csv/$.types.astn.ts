@@ -7,6 +7,7 @@ import {
     t,
     tr,
     type,
+    prop,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -14,19 +15,19 @@ export const $: g_.Types<pd.Source_Location>  = types(
     {
 
         "Annotation": type(t.group({
-            "position": t.number_local(n.natural()),
-            "line": t.number_local(n.natural()),
-            "column": t.number_local(n.natural()),
+            "position": prop(t.number_local(n.natural())),
+            "line": prop(t.number_local(n.natural())),
+            "column": prop(t.number_local(n.natural())),
         })),
 
         "Data Set": type(t.group({
-            "lines": t.list(t.group({
-                "fields": t.list(t.group({
-                    "annotation": t.component("Annotation"),
-                    "value": t.text_local(text("single line")),
-                }))
-            })),
-            "ends with unterminated string": t.boolean(),
+            "lines": prop(t.list(t.group({
+                "fields": prop(t.list(t.group({
+                    "annotation": prop(t.component("Annotation")),
+                    "value": prop(t.text_local(text("single line"))),
+                })))
+            }))),
+            "ends with unterminated string": prop(t.boolean()),
         })),
     }
 )

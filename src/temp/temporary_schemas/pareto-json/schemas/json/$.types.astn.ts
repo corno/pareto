@@ -5,6 +5,7 @@ import {
     t,
     type,
     n,
+    prop,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -17,8 +18,8 @@ export const $: g_.Types<pd.Source_Location> = types(
             "array": t.list(t.component_cyclic("Value")),
             "object": t.state_group({
                 "key value array": t.list(t.group({
-                    "key": t.text_global("Text Value"),
-                    "value": t.component_cyclic("Value")
+                    "key": prop(t.text_global("Text Value")),
+                    "value": prop(t.component_cyclic("Value"))
                 })),
                 "dictionary": t.dictionary(t.component_cyclic("Value")),
             }),
