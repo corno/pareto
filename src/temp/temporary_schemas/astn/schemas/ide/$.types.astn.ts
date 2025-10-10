@@ -8,6 +8,7 @@ import {
     tr,
     type,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -16,17 +17,17 @@ import * as _et from 'exupery-core-types'
 export const $: g_.Types<pd.Source_Location> = types(
     {
         "Text Edits": type(t.list(t.state_group({
-            "insert": t.group({
+            "insert": tstate(t.group({
                 "location": prop(t.component_external("token", "Relative Location")),
                 "text": prop(t.text_local(text('single line'))),
-            }),
-            "replace": t.group({
+            })),
+            "replace": tstate(t.group({
                 "range": prop(t.component("Relative Range")),
                 "text": prop(t.text_local(text('single line'))),
-            }),
-            "delete": t.group({
+            })),
+            "delete": tstate(t.group({
                 "range": prop(t.component("Relative Range")),
-            }),
+            })),
         }))),
 
         "Relative Range": type(t.group({

@@ -7,6 +7,7 @@ import {
     tr,
     type,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -20,8 +21,8 @@ export const $: g_.Types<pd.Source_Location>  = types(
         // )),
         "Graphviz Directory": type(t.dictionary(
             t.state_group({
-                "file": t.component_external("graphviz", "Graph"),
-                "directory": t.component_cyclic("Graphviz Directory"),
+                "file": tstate(t.component_external("graphviz", "Graph")),
+                "directory": tstate(t.component_cyclic("Graphviz Directory")),
             })
         )),
     }

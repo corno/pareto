@@ -7,6 +7,7 @@ import {
     tr,
     type,
     prop,
+    tstate,
 
 } from "../../../../../shorthands/schema"
 
@@ -37,22 +38,22 @@ export const $: g_.Types<_edata.Source_Location>  = types(
         "Node": type(t.group({
             "optional": prop(t.boolean()),
             "type": prop(t.state_group({
-                "automatic": t.component("Target"),
-                "directory": t.group({
+                "automatic": tstate(t.component("Target")),
+                "directory": tstate(t.group({
                     "dependencies": prop(t.dictionary(t.group({
                         "start": prop(t.component("Dependency Start")),
                         "tail": prop(t.component("Node Selection Tail")),
                     }))),
-                }),
-                "manual": t.group({
+                })),
+                "manual": tstate(t.group({
                     "boilerplate": prop(t.component("Target"))
-                })
+                }))
             }))
         })),
 
         "Dependency Start": type(t.state_group({
-            "ancestor": t.reference("Directory Dependency", []),
-            "sibling": t.reference("Directory", [tr.g("children")]),
+            "ancestor": tstate(t.reference("Directory Dependency", [])),
+            "sibling": tstate(t.reference("Directory", [tr.g("children")])),
         })),
 
         "Directory Dependency": type(t.group({

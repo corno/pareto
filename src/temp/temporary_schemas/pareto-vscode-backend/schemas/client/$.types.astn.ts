@@ -7,6 +7,7 @@ import {
     n,
 	text,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -31,14 +32,14 @@ export const $: g_.Types<pd.Source_Location> = types(
 		})),
 
 		"Text Edit": type(t.state_group({
-			"replace": t.component("Replace"),
-			"delete": t.group({
+			"replace": tstate(t.component("Replace")),
+			"delete": tstate(t.group({
 				"range": prop(t.component("Range")),
-			}),
-			"insert": t.group({
+			})),
+			"insert": tstate(t.group({
 				"location": prop(t.component("Position")),
 				"text": prop(t.text_local(text('multi line'))),
-			}),
+			})),
 		})),
 
 		"Replace": type(t.group({

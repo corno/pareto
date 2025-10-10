@@ -8,6 +8,7 @@ import {
     tr,
     type,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -38,10 +39,10 @@ export const $: g_.Types<pd.Source_Location> = types(
             "|": t.nothing(), //state
             "#": t.nothing(), //missing data
 
-            "string": t.group({
+            "string": tstate(t.group({
                 "value": prop(t.component("Delimited String")),
                 "type": prop(t.component("String Type")),
-            }),
+            })),
         })),
 
         "Delimited String": type(t.text_local(text('single line'))),
@@ -67,8 +68,8 @@ export const $: g_.Types<pd.Source_Location> = types(
             "leading whitespace": prop(t.component("Whitespace")),
             "comments": prop(t.list(t.group({
                 "type": prop(t.state_group({
-                    "line": t.nothing(),
-                    "block": t.nothing(),
+                    "line": tstate(t.nothing()),
+                    "block": tstate(t.nothing()),
                 })),
                 "content": prop(t.text_local(text('single line'))),
                 "range": prop(t.component("Range")),
@@ -77,10 +78,10 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "String Type": type(t.state_group({
-            "quoted": t.nothing(),
-            "apostrophed": t.nothing(),
-            "undelimited": t.nothing(),
-            "backticked": t.nothing(),
+            "quoted": tstate(t.nothing()),
+            "apostrophed": tstate(t.nothing()),
+            "undelimited": tstate(t.nothing()),
+            "backticked": tstate(t.nothing()),
         })),
 
         "Location": type(t.group({

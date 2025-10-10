@@ -6,6 +6,7 @@ import {
     type,
     n,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -18,21 +19,21 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Sequence": type(t.list(t.group({
             "type": prop(t.state_group({
-                "literal": t.text_global("Text Value"),
-                "character class": t.group({
+                "literal": tstate(t.text_global("Text Value")),
+                "character class": tstate(t.group({
                     "negated": prop(t.boolean()),
                     "ranges": prop(t.list(t.state_group({
                         "literal": t.number_global("Character"), //should be a reference to a character in the dictionary
-                        "range": t.group({
+                        "range": tstate(t.group({
                             "from": prop(t.number_global("Character")),
                             "to": prop(t.number_global("Character")),
-                        }),
+                        })),
                     }))),
-                }),
-                "group": t.group({
+                })),
+                "group": tstate(t.group({
                     "expression": prop(t.component_cyclic("Sequence")),
-                }),
-                "alternation": t.list(t.component_cyclic("Sequence")),
+                })),
+                "alternation": tstate(t.list(t.component_cyclic("Sequence"))),
             })),
             "quantifier": prop(t.optional(t.state_group({
                 "optional": t.nothing(), // ?

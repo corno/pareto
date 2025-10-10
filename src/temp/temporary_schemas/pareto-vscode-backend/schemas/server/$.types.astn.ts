@@ -7,6 +7,7 @@ import {
     n,
     text,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -14,10 +15,10 @@ export const $: g_.Types<pd.Source_Location> = types(
     {
 
         "Diagnostic Severity": type(t.state_group({
-            "error": t.group({}),
-            "warning": t.group({}),
-            "information": t.group({}),
-            "hint": t.group({}),
+            "error": tstate(t.group({})),
+            "warning": tstate(t.group({})),
+            "information": tstate(t.group({})),
+            "hint": tstate(t.group({})),
         })),
 
         "Position": type(t.group({
@@ -62,6 +63,8 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Completion Items": type(t.list(t.group({
             "label": prop(t.text_local(text('single line'))),
+            "insert text": prop(t.text_local(text('single line'))),
+            "documentation": prop(t.text_local(text('multi line'))),
         }))),
 
         "Optional Completion Items": type(t.optional(t.component("Completion Items"))),

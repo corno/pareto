@@ -8,6 +8,7 @@ import {
     type,
     text,
     prop,
+    tstate,
     propd,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
@@ -16,8 +17,8 @@ export const $: g_.Types<pd.Source_Location> = types(
     {
         "Text Type": type(t.group({
             "type": prop(t.state_group({
-                "multi line": t.nothing(),
-                "single line": t.nothing(),
+                "multi line": tstate(t.nothing()),
+                "single line": tstate(t.nothing()),
             })),
         })),
 
@@ -31,16 +32,16 @@ export const $: g_.Types<pd.Source_Location> = types(
                 /**
                  * variable is similar to scientific notation or floating point (in programming languages)
                  */
-                "approximation": t.group({
+                "approximation": tstate(t.group({
                     /**
                      * the total number of digits in the number
                      */
                     "significant digits": prop(t.number_local(n.natural())),
-                }),
+                })),
                 /**
                  * fixed is similar to integers/signed integers
                  */
-                "exact": t.group({
+                "exact": tstate(t.group({
                     /**
                      * the number of digits after the decimal point
                      * in the strict mathematical sense, a natural or an integer is a whole number,
@@ -55,26 +56,27 @@ export const $: g_.Types<pd.Source_Location> = types(
                      * else > 'positive natural'
                      */
                     "type": prop(t.state_group({
-                        "integer": t.nothing(),
-                        "natural": t.nothing(),
-                        "positive natural": t.nothing(),
+                        "integer": tstate(t.nothing()),
+                        "natural": tstate(t.nothing()),
+                        "positive natural": tstate(t.nothing()),
                     })),
-                }),
+                })),
             }))
         })),
 
         "Globals": type(t.group({
             "complexity": prop(t.state_group({
-                "constrained": t.nothing(),
-                "unconstrained": t.nothing(),
+                "constrained": tstate(t.nothing()),
+                "unconstrained": tstate(t.nothing()),
             })),
             "text types": prop(t.dictionary(t.component("Text Type"))),
             "number types": prop(t.dictionary(t.component("Number Type"))),
         })),
 
-        "Presence": type(t.state_group({ //FIXME: inline
-            "optional": t.nothing(),
-            "required": t.nothing(),
+        //FIXME: inline
+        "Presence": type(t.state_group({
+            "optional": tstate(t.nothing()),
+            "required": tstate(t.nothing()),
         })),
 
         "Type Parameters": type(t.dictionary(t.nothing())),
@@ -117,11 +119,11 @@ export const $: g_.Types<pd.Source_Location> = types(
             "type location": prop(t.component("Type Reference")),
             "tail": prop(t.list(
                 t.state_group({
-                    "dictionary": t.nothing(),
-                    "group": t.reference("Group", []),
-                    "list": t.nothing(),
-                    "optional": t.nothing(),
-                    "state group": t.reference("Type Node", [tr.s("state group")])
+                    "dictionary": tstate(t.nothing()),
+                    "group": tstate(t.reference("Group", [])),
+                    "list": tstate(t.nothing()),
+                    "optional": tstate(t.nothing()),
+                    "state group": tstate(t.reference("Type Node", [tr.s("state group")])),
                 }),
             )),
             "resulting node": prop(t.reference_derived("Type Node", [])),
@@ -129,11 +131,11 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Type Reference": type(t.group({
             "location": prop(t.state_group({
-                "internal": t.reference("Types", []),
-                "external": t.group({
+                "internal": tstate(t.reference("Types", [])),
+                "external": tstate(t.group({
                     "import": prop(t.reference("Imports", [])),
                     "type": prop(t.reference("Types", [])),
-                }),
+                })),
             })),
             "resulting node": prop(t.reference_derived("Type Node", [])),
         })),
@@ -147,9 +149,9 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "referent": prop(t.component("Type Reference")),
                 "dictionary": prop(t.reference_derived("Dictionary", [])),
                 "type": prop(t.state_group({
-                    "cyclic": t.nothing(),
-                    "acyclic": t.nothing(),
-                    "stack": t.nothing(),
+                    "cyclic": tstate(t.nothing()),
+                    "acyclic": tstate(t.nothing()),
+                    "stack": tstate(t.nothing()),
                 })),
                 "presence": prop(t.component("Presence")),
             })))
@@ -157,8 +159,8 @@ export const $: g_.Types<pd.Source_Location> = types(
         "Signature": type(t.group({
             "type": prop(t.reference_derived("Type", [])),
             "parameters": prop(t.state_group({
-                "local": t.component("Signature Parameters"),
-                "same as": t.reference("Signatures", []),
+                "local": tstate(t.component("Signature Parameters")),
+                "same as": tstate(t.reference("Signatures", [])),
             })),
             "resolved parameters": prop(t.reference_derived("Signature Parameters", [])),
         })),
@@ -166,11 +168,11 @@ export const $: g_.Types<pd.Source_Location> = types(
         "Relative Value Selection": type(t.group({
             "path": prop(t.list(
                 t.state_group({
-                    "component": t.nothing(),
-                    "group": t.reference("Group", []),
-                    "reference": t.group({
+                    "component": tstate(t.nothing()),
+                    "group": tstate(t.reference("Group", [])),
+                    "reference": tstate(t.group({
                         "definition": prop(t.reference_derived("Type Node", [tr.s("reference")])),
-                    }),
+                    })),
                 }),
             )),
             "resulting node": prop(t.reference_derived("Type Node", [])),
@@ -179,37 +181,39 @@ export const $: g_.Types<pd.Source_Location> = types(
         //FIXME: there has to be a guaranteed lookup selection and a possible lookup selection
         "Lookup Selection": type(t.group({
             "type": prop(t.state_group({
-                "dictionary": t.group({
+                "dictionary": tstate(t.group({
                     "selection": prop(t.component_cyclic("Guaranteed Value Selection")),
                     "selected dictionary": prop(t.reference_derived("Dictionary", [])),
-                }),
-                "parameter": t.reference("Signature Parameters", [tr.g("lookups")]),
-                "not circular dependent siblings": t.reference_derived("Dictionary", []),
-                "possibly circular dependent siblings": t.reference_derived("Dictionary", []),
+                })),
+                "parameter": tstate(t.reference("Signature Parameters", [tr.g("lookups")])),
+                "not circular dependent siblings": tstate(t.reference_derived("Dictionary", [])),
+                "possibly circular dependent siblings": tstate(t.reference_derived("Dictionary", [])),
             })),
             "resulting dictionary": prop(t.reference_derived("Dictionary", [])),
         })),
 
-        "Constraint": type(t.group({ //FIXME: inline
+        //FIXME: inline
+        "Constraint": type(t.group({
             "selection": prop(t.component("Relative Value Selection")),
-            "type": prop(t.state_group({ //maybe this is reusable
-                "state": t.group({
+            //maybe this is reusable
+            "type": prop(t.state_group({
+                "state": tstate(t.group({
                     "selected state group": prop(t.reference_derived("Type Node", [tr.s("state group")])),
                     "state": prop(t.reference("Type Node", [tr.s("state group")])),
-                }),
-                "optional value": t.group({
+                })),
+                "optional value": tstate(t.group({
                     "selected optional value": prop(t.reference_derived("Type Node", [tr.s("optional")])),
-                }),
+                })),
             })),
         })),
 
         "Option Constraints": type(t.dictionary(t.state_group({
-            "state": t.group({
+            "state": tstate(t.group({
                 "selection": prop(t.component_cyclic("Guaranteed Value Selection")),
                 "selected state group": prop(t.reference_derived("Type Node", [tr.s("state group")])),
                 "state": prop(t.reference("Type Node", [tr.s("state group")])),
-            }),
-            "assert is set": t.component_cyclic("Possible Value Selection"),
+            })),
+            "assert is set": tstate(t.component_cyclic("Possible Value Selection")),
         }))),
 
         "Property Constraints": type(t.dictionary(t.component_cyclic("Property Constraint"), 'ordered')),
@@ -218,16 +222,16 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Property Constraint": type(t.group({
             "start": prop(t.state_group({
-                "property": t.nothing(),
-                "sibling": t.component("Reference To Property Constraint"),
+                "property": tstate(t.nothing()),
+                "sibling": tstate(t.component("Reference To Property Constraint")),
             })),
             "constraint": prop(t.component("Constraint")),
         })),
 
         "Optional Value Initialization": type(t.state_group({
-            "not set": t.nothing(),
-            "set": t.component_cyclic("Guaranteed Value Selection"),
-            "selection": t.component_cyclic("Possible Value Selection"),
+            "not set": tstate(t.nothing()),
+            "set": tstate(t.component_cyclic("Guaranteed Value Selection")),
+            "selection": tstate(t.component_cyclic("Possible Value Selection")),
         })),
 
         "Node Resolver Group": type(t.dictionary(t.group({
@@ -252,8 +256,8 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Schema Tree": type(t.state_group({
-            "schema": t.component("Schema"),
-            "set": t.component_cyclic("Schemas")
+            "schema": tstate(t.component("Schema")),
+            "set": tstate(t.component_cyclic("Schemas")),
         })),
 
         "Schema": type(t.group({
@@ -261,8 +265,8 @@ export const $: g_.Types<pd.Source_Location> = types(
             "globals": prop(t.component("Globals")),
             "types": prop(t.component("Types")),
             "complexity": prop(t.state_group({
-                "constrained": t.component("Resolve Logic"),
-                "unconstrained": t.nothing(),
+                "constrained": tstate(t.component("Resolve Logic")),
+                "unconstrained": tstate(t.nothing()),
             })),
         })),
 
@@ -272,156 +276,156 @@ export const $: g_.Types<pd.Source_Location> = types(
         }))),
 
         "Type Node": type(t.state_group({
-            "boolean": t.nothing(),
-            "component": t.state_group({
-                "external": t.group({
+            "boolean": tstate(t.nothing()),
+            "component": tstate(t.state_group({
+                "external": tstate(t.group({
                     "import": prop(t.reference("Imports", [])),
                     "type": prop(t.reference("Types", [])),
-                }),
-                "internal": t.reference("Types", []),
-                "internal cyclic": t.reference("Types", [], 'cyclic'),
-            }),
-            "dictionary": t.component("Dictionary"),
-            "group": t.component("Group"),
-            "list": t.group({
+                })),
+                "internal": tstate(t.reference("Types", [])),
+                "internal cyclic": tstate(t.reference("Types", [], 'cyclic')),
+            })),
+            "dictionary": tstate(t.component("Dictionary")),
+            "group": tstate(t.component("Group")),
+            "list": tstate(t.group({
                 "node": prop(t.component_cyclic("Type Node")),
-            }),
-            "nothing": t.nothing(),
-            "number": t.state_group({
-                "global": t.reference("Globals", [tr.g("number types")]),
-                "local": t.component("Number Type"),
-            }),
-            "optional": t.component_cyclic("Type Node"),
-            "reference": t.group({
+            })),
+            "nothing": tstate(t.nothing()),
+            "number": tstate(t.state_group({
+                "global": tstate(t.reference("Globals", [tr.g("number types")])),
+                "local": tstate(t.component("Number Type")),
+            })),
+            "optional": tstate(t.component_cyclic("Type Node")),
+            "reference": tstate(t.group({
                 "referent": prop(t.component_cyclic("Type Node Reference")),
                 "type": prop(t.state_group({
-                    "derived": t.nothing(),
-                    "selected": t.group({
-                        "dictionary":prop( t.reference_derived("Dictionary", [])),
+                    "derived": tstate(t.nothing()),
+                    "selected": tstate(t.group({
+                        "dictionary": prop(t.reference_derived("Dictionary", [])),
                         "dependency": prop(t.state_group({
-                            "acyclic": t.nothing(),
-                            "cyclic": t.nothing(),
-                            "stack": t.nothing(),
+                            "acyclic": tstate(t.nothing()),
+                            "cyclic": tstate(t.nothing()),
+                            "stack": tstate(t.nothing()),
                         })),
-                    }),
+                    })),
                 })),
-            }),
-            "state group": t.dictionary(t.component_cyclic("Type Node")),
-            "text": t.state_group({
-                "global": t.reference("Globals", [tr.g("text types")]),
-                "local": t.component("Text Type"),
-            }),
+            })),
+            "state group": tstate(t.dictionary(t.component_cyclic("Type Node"))),
+            "text": tstate(t.state_group({
+                "global": tstate(t.reference("Globals", [tr.g("text types")])),
+                "local": tstate(t.component("Text Type")),
+            })),
             //"type parameter": t.reference("Type Parameters", []),
         })),
 
         "Node Resolver": type(t.state_group({
-            "boolean": t.nothing(),
-            "component": t.group({
+            "boolean": tstate(t.nothing()),
+            "component": tstate(t.group({
                 "location": prop(t.state_group({
-                    "external": t.group({
+                    "external": tstate(t.group({
                         "import": prop(t.reference("Imports", [])),
                         "type": prop(t.reference("Signatures", [])),
-                    }),
-                    "internal": t.reference("Signatures", []),
+                    })),
+                    "internal": tstate(t.reference("Signatures", [])),
                 })),
                 "signature": prop(t.reference_derived("Signatures", [tr.d()])),
                 "arguments": prop(t.optional(t.group({
                     "values": prop(t.optional(t.dictionary(t.state_group({
-                        "optional": t.component("Optional Value Initialization"),
-                        "required": t.component_cyclic("Guaranteed Value Selection"),
-                        "parameter": t.reference("Signature Parameters", [tr.g("values")]),
+                        "optional": tstate(t.component("Optional Value Initialization")),
+                        "required": tstate(t.component_cyclic("Guaranteed Value Selection")),
+                        "parameter": tstate(t.reference("Signature Parameters", [tr.g("values")])),
                     })))),
                     "lookups": prop(t.optional(t.dictionary(t.state_group({
-                        "empty stack": t.nothing(),
-                        "not set": t.nothing(),
-                        "selection": t.component("Lookup Selection"),
-                        "stack": t.group({
+                        "empty stack": tstate(t.nothing()),
+                        "not set": tstate(t.nothing()),
+                        "selection": tstate(t.component("Lookup Selection")),
+                        "stack": tstate(t.group({
                             "stack": prop(t.component("Lookup Selection")),
                             "element": prop(t.component("Lookup Selection")),
-                        }),
+                        })),
                     })))),
                 }))),
                 "constraints": prop(t.component("Property Constraints")),
-            }),
-            "dictionary": t.group({
+            })),
+            "dictionary": tstate(t.group({
                 "definition": prop(t.reference_derived("Dictionary", [])),
                 "resolver": prop(t.component_cyclic("Node Resolver")),
                 "benchmark": prop(t.optional(t.component("Benchmark"))),
-            }),
-            "group": t.component("Node Resolver Group"),
-            "list": t.group({
+            })),
+            "group": tstate(t.component("Node Resolver Group")),
+            "list": tstate(t.group({
                 "definition": prop(t.reference_derived("Type Node", [tr.s("list")])),
                 "resolver": prop(t.component_cyclic("Node Resolver")),
                 "result": prop(t.optional(t.component("Node Resolver List Result"))),
-            }),
-            "nothing": t.nothing(),
-            "number": t.nothing(),
-            "optional": t.group({
+            })),
+            "nothing": tstate(t.nothing()),
+            "number": tstate(t.nothing()),
+            "optional": tstate(t.group({
                 "constraints": prop(t.component("Option Constraints")),
                 "resolver": prop(t.component_cyclic("Node Resolver")),
-            }),
-            "reference": t.group({
+            })),
+            "reference": tstate(t.group({
                 "definition": prop(t.reference_derived("Type Node", [tr.s("reference")])),
                 "type": prop(t.state_group({
-                    "derived": t.group({
+                    "derived": tstate(t.group({
                         "value": prop(t.component_cyclic("Guaranteed Value Selection")),
-                    }),
-                    "selected": t.group({
+                    })),
+                    "selected": tstate(t.group({
                         "definition": prop(t.reference_derived("Type Node", [tr.s("reference"), tr.g("type"), tr.s("selected")])),
                         "lookup": prop(t.component("Lookup Selection")),
                         "constraints": prop(t.component("Property Constraints")),
-                    }),
+                    })),
                 })),
-            }),
-            "state group": t.group({
+            })),
+            "state group": tstate(t.group({
                 "definition": prop(t.reference_derived("Type Node", [tr.s("state group")])),
                 "states": prop(t.dictionary(t.group({
                     "constraints": prop(t.component("Option Constraints")),
                     "resolver": prop(t.component_cyclic("Node Resolver")),
                 }))),
-            }),
-            "text": t.nothing(),
+            })),
+            "text": tstate(t.nothing()),
             // "type parameter": t.nothing(),
         })),
 
         "Guaranteed Value Selection": type(t.group({
             "start": prop(t.state_group({
                 //stack
-                "sibling": t.reference("Node Resolver Group", []),
-                "parent sibling": t.reference("Node Resolver Group", []),
-                "option constraint": t.reference("Option Constraints", []),
-                "list cursor": t.nothing(),
-                "linked entry": t.nothing(),
+                "sibling": tstate(t.reference("Node Resolver Group", [])),
+                "parent sibling": tstate(t.reference("Node Resolver Group", [])),
+                "option constraint": tstate(t.reference("Option Constraints", [])),
+                "list cursor": tstate(t.nothing()),
+                "linked entry": tstate(t.nothing()),
 
                 //siblings
-                "constraint": t.state_group({
-                    "component": t.group({
+                "constraint": tstate(t.state_group({
+                    "component": tstate(t.group({
                         "property": prop(t.reference("Node Resolver Group", [])),
                         "constraint": prop(t.reference("Property Constraints", [])),
-                    }),
-                    "reference": t.group({
+                    })),
+                    "reference": tstate(t.group({
                         "property": prop(t.reference("Node Resolver Group", [])),
                         "constraint": prop(t.reference("Property Constraints", [])),
-                    }),
+                    })),
 
-                }),
+                })),
                 "parameter": t.reference("Signature Parameters", [tr.g("values")]), //FIXME: validate that presence is 'required'
-                "result": t.state_group({
-                    "list": t.group({
+                "result": tstate(t.state_group({
+                    "list": tstate(t.group({
                         "property": prop(t.reference("Node Resolver Group", [])),
                         "list result": prop(t.reference_derived("Node Resolver", [tr.s("list"), tr.g("result"), tr.o()])),
-                    }),
-                    "state group": t.group({
+                    })),
+                    "state group": tstate(t.group({
                         "property": prop(t.reference("Node Resolver Group", [])),
                         "state group": prop(t.reference_derived("Node Resolver", [tr.s("state group")])),
                         "result": prop(t.component("Type Reference")),
-                    }),
-                    "optional value": t.group({
+                    })),
+                    "optional value": tstate(t.group({
                         "property": prop(t.reference("Node Resolver Group", [])),
                         "optional value": prop(t.reference_derived("Node Resolver", [tr.s("optional")])),
                         "result": prop(t.component("Type Reference")),
-                    }),
-                })
+                    })),
+                }))
             })),
             "tail": prop(t.component("Relative Value Selection")),
             "resulting node": prop(t.reference_derived("Type Node", [])),
@@ -429,18 +433,18 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Possible Value Selection": type(t.state_group({
             "parameter": t.reference("Signature Parameters", [tr.g("values")]), //FIXME: validate that presence is 'optional'
-            "result": t.state_group({
-                "state group": t.group({
+            "result": tstate(t.state_group({
+                "state group": tstate(t.group({
                     "property": prop(t.reference("Node Resolver Group", [])),
                     "state group": prop(t.reference_derived("Node Resolver", [tr.s("state group")])),
                     "result": prop(t.component("Type Reference")),
-                }),
-                "optional value": t.group({
+                })),
+                "optional value": tstate(t.group({
                     "property": prop(t.reference("Node Resolver Group", [])),
                     "optional value": prop(t.reference_derived("Node Resolver", [tr.s("optional")])),
                     "result": prop(t.component("Type Reference")),
-                }),
-            })
+                })),
+            }))
         })),
 
     }

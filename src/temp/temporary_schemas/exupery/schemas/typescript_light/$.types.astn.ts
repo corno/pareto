@@ -8,6 +8,7 @@ import {
     tr,
     type,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -18,36 +19,36 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "String Literal": type(t.group({
             "delimiter": prop(t.state_group({
-                "quote": t.nothing(),
-                "apostrophe": t.nothing(),
+                "quote": tstate(t.nothing()),
+                "apostrophe": tstate(t.nothing()),
             })),
             "value": prop(t.text_local(text('single line')))
         })),
         "Expression": type(t.state_group({
-            "number literal": t.number_local(n.approximation(10)),
-            "true": t.nothing(),
-            "false": t.nothing(),
-            "null": t.nothing(),
-            "string literal": t.component("String Literal"),
-            "object literal": t.group({
+            "number literal": tstate(t.number_local(n.approximation(10))),
+            "true": tstate(t.nothing()),
+            "false": tstate(t.nothing()),
+            "null": tstate(t.nothing()),
+            "string literal": tstate(t.component("String Literal")),
+            "object literal": tstate(t.group({
                 "properties": prop(t.dictionary(t.component_cyclic("Expression"))),
-            }),
-            "array literal": t.list(t.component_cyclic("Expression")),
-            "arrow function": t.group({
+            })),
+            "array literal": tstate(t.list(t.component_cyclic("Expression"))),
+            "arrow function": tstate(t.group({
                 "parameters": prop(t.list(t.group({
                     "name": prop(t.text_local(text('single line'))),
                     "type": prop(t.optional(t.component_cyclic("Type"))),
                 }))),
                 "return type": prop(t.optional(t.component_cyclic("Type"))),
                 "type": prop(t.state_group({
-                    "block": t.component("Statements"),
-                    "expression": t.component_cyclic("Expression"),
+                    "block": tstate(t.component("Statements")),
+                    "expression": tstate(t.component_cyclic("Expression")),
                 })),
-            }),
-            "call": t.group({
+            })),
+            "call": tstate(t.group({
                 "function selection": prop(t.component_cyclic("Expression")),
                 "arguments": prop(t.list(t.component_cyclic("Expression"))),
-            })
+            }))
 
         })),
         // "Selection": type(t.group({
@@ -55,65 +56,65 @@ export const $: g_.Types<pd.Source_Location> = types(
         //     "tail": t.list(t.text_local(text('single line'))),
         // })),
         "Type": type(t.state_group({
-            "boolean": t.nothing(),
-            "function": t.group({
+            "boolean": tstate(t.nothing()),
+            "function": tstate(t.group({
                 "type parameters": prop(t.list(t.text_local(text('single line')))),
                 "parameters": prop(t.list(t.group({
                     "name": prop(t.text_local(text('single line'))),
                     "type": prop(t.optional(t.component_cyclic("Type"))),
                 }))),
                 "return": prop(t.component_cyclic("Type")),
-            }),
-            "literal type": t.component("String Literal"),
-            "null": t.nothing(),
-            "number": t.nothing(),
-            "string": t.nothing(),
-            "tuple": t.group({
+            })),
+            "literal type": tstate(t.component("String Literal")),
+            "null": tstate(t.nothing()),
+            "number": tstate(t.nothing()),
+            "string": tstate(t.nothing()),
+            "tuple": tstate(t.group({
                 "readonly": prop(t.boolean()),
                 "elements": prop(t.list(t.component_cyclic("Type"))),
-            }),
-            "type literal": t.group({
+            })),
+            "type literal": tstate(t.group({
                 "properties": prop(t.dictionary(t.group({
                     "readonly": prop(t.boolean()),
                     "type": prop(t.component_cyclic("Type")),
                 }))),
-            }),
-            "type reference": t.group({
+            })),
+            "type reference": tstate(t.group({
                 "start": prop(t.text_local(text('single line'))),
                 "tail": prop(t.list(t.text_local(text('single line')))),
                 "type arguments": prop(t.list(t.component_cyclic("Type"))),
-            }),
-            "union": t.list(t.component_cyclic("Type")),
-            "void": t.nothing(),
+            })),
+            "union": tstate(t.list(t.component_cyclic("Type"))),
+            "void": tstate(t.nothing()),
         })),
         "Statements": type(t.list(t.state_group({
-            "import": t.group({
+            "import": tstate(t.group({
                 "type": prop(t.state_group({
-                    "namespace": t.text_local(text('single line')),
-                    "named": t.group({
+                    "namespace": tstate(t.text_local(text('single line'))),
+                    "named": tstate(t.group({
                         "specifiers": prop(t.dictionary(t.text_local(text('single line')))),
-                    }),
+                    })),
                 })),
                 "from": prop(t.text_local(text('single line'))),
-            }),
-            "module declaration": t.group({ //namespace
+            })),
+            "module declaration": tstate(t.group({ //namespace
                 "export": prop(t.boolean()),
                 "name": prop(t.text_local(text('single line'))),
                 "block": prop(t.component_cyclic("Statements")),
-            }),
-            "type alias declaration": t.group({
+            })),
+            "type alias declaration": tstate(t.group({
                 "export": prop(t.boolean()),
                 "name": prop(t.text_local(text('single line'))),
                 "parameters": prop(t.list(t.text_local(text('single line')))),
                 "type": prop(t.component_cyclic("Type")),
-            }),
-            "variable": t.group({
+            })),
+            "variable": tstate(t.group({
                 "export": prop(t.boolean()),
                 "const": prop(t.boolean()),
                 "name": prop(t.text_local(text('single line'))),
                 "type": prop(t.optional(t.component_cyclic("Type"))),
                 "expression": prop(t.optional(t.component_cyclic("Expression"))),
-            }),
+            })),
         }))),
 
         /**
@@ -123,21 +124,21 @@ export const $: g_.Types<pd.Source_Location> = types(
         "Block": type(t.list(t.component_cyclic("Block Part"))),
 
         "Block Part": type(t.state_group({
-            "nested line": t.component("Line"),
-            "line": t.text_global("Output"),
-            "sub block": t.component("Block"),
-            "optional": t.optional(t.component_cyclic("Block Part")),
-            "nothing": t.nothing(),
+            "nested line": tstate(t.component("Line")),
+            "line": tstate(t.text_global("Output")),
+            "sub block": tstate(t.component("Block")),
+            "optional": tstate(t.optional(t.component_cyclic("Block Part"))),
+            "nothing": tstate(t.nothing()),
         })),
 
         "Line": type(t.list(t.component_cyclic("Line Part"))),
 
         "Line Part": type(t.state_group({
-            "snippet": t.text_global("Output"),
-            "indent": t.component("Block"),
-            "sub line": t.component("Line"),
-            "optional": t.optional(t.component_cyclic("Line Part")),
-            "nothing": t.nothing(),
+            "snippet": tstate(t.text_global("Output")),
+            "indent": tstate(t.component("Block")),
+            "sub line": tstate(t.component("Line")),
+            "optional": tstate(t.optional(t.component_cyclic("Line Part"))),
+            "nothing": tstate(t.nothing()),
         })),
 
         "Lines": type(t.list(t.group({
@@ -147,8 +148,8 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Directory": type(t.dictionary(
             t.state_group({
-                "file": t.component("Block"),
-                "directory": t.component_cyclic("Directory"),
+                "file": tstate(t.component("Block")),
+                "directory": tstate(t.component_cyclic("Directory")),
             })
         )),
     }

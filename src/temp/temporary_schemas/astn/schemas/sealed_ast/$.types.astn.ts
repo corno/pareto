@@ -8,6 +8,7 @@ import {
     tr,
     type,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -28,43 +29,43 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Value": type(t.state_group({
-            "string": t.component("String"),
-            "indexed collection": t.state_group({
-                "dictionary": t.group({
+            "string": tstate(t.component("String")),
+            "indexed collection": tstate(t.state_group({
+                "dictionary": tstate(t.group({
                     "{": prop(t.component("Structural Token")), //throw this one away!
                     "entries": prop(t.component("Key Value Pairs")),
                     "}": prop(t.component("Structural Token")), //throw this one away!
-                }),
-                "verbose group": t.group({
+                })),
+                "verbose group": tstate(t.group({
                     "(": prop(t.component("Structural Token")), //throw this one away!
                     "entries": prop(t.component("Key Value Pairs")),
                     ")": prop(t.component("Structural Token")), //throw this one away!
-                }),
-            }),
-            "ordered collection": t.state_group({
-                "list": t.group({
+                })),
+            })),
+            "ordered collection": tstate(t.state_group({
+                "list": tstate(t.group({
                     "[": prop(t.component("Structural Token")), //throw this one away!
                     "elements": prop(t.component("Elements")),
                     "]": prop(t.component("Structural Token")), //throw this one away!
-                }),
-                "concise group": t.group({
+                })),
+                "concise group": tstate(t.group({
                     "<": prop(t.component("Structural Token")), //throw this one away!
                     "elements": prop(t.component("Elements")),
                     ">": prop(t.component("Structural Token")), //throw this one away!
-                }),
-            }),
-            "tagged value": t.group({
+                })),
+            })),
+            "tagged value": tstate(t.group({
                 "|": prop(t.component("Structural Token")), //throw this one away!
                 "state": prop(t.component("String")),
                 "value": prop(t.component_cyclic("Value")),
-            }),
-            "not set": t.group({
+            })),
+            "not set": tstate(t.group({
                 "~": prop(t.component("Structural Token")), //throw this one away!
-            }),
-            "set optional value": t.group({
+            })),
+            "set optional value": tstate(t.group({
                 "*": prop(t.component("Structural Token")), //throw this one away!
                 "value": prop(t.component_cyclic("Value")),
-            }),
+            })),
         })),
 
         "String": type(t.group({

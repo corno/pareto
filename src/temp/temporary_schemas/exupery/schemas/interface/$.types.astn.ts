@@ -8,6 +8,7 @@ import {
     tr,
     type,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
@@ -15,8 +16,8 @@ import * as g_ from "../../../../../generated/interface/schemas/schema/data_type
 export const $: g_.Types<pd.Source_Location>  = types(
     {
         "Module Set": type(t.dictionary(t.state_group({
-            "module": t.component("Module"),
-            "set": t.component_cyclic("Module Set"),
+            "module": tstate(t.component("Module")),
+            "set": tstate(t.component_cyclic("Module Set")),
         }))),
 
         "Type Parameters": type(t.dictionary(t.nothing())),
@@ -32,12 +33,12 @@ export const $: g_.Types<pd.Source_Location>  = types(
 
         "Imports": type(t.dictionary(t.group({
             "type": prop(t.state_group({
-                "external": t.text_global("TBD"),
-                "ancestor": t.group({
+                "external": tstate(t.text_global("TBD")),
+                "ancestor": tstate(t.group({
                     "number of steps": prop(t.number_local(n.natural())),
                     "dependency": prop(t.text_global("TBD")),
-                }),
-                "sibling": t.text_global("TBD"),
+                })),
+                "sibling": tstate(t.text_global("TBD")),
             })),
             "tail": prop(t.list(t.text_global("TBD"))),
             "type arguments": prop(t.component("Type Arguments")),
@@ -47,53 +48,53 @@ export const $: g_.Types<pd.Source_Location>  = types(
 
         "Type Parameter Selection": type(t.group({
             "location": prop(t.state_group({
-                "module": t.nothing(),
-                "type": t.nothing(),
-                "function": t.nothing(),
+                "module": tstate(t.nothing()),
+                "type": tstate(t.nothing()),
+                "function": tstate(t.nothing()),
             })),
             "parameter": prop(t.text_global("TBD")),
         })),
 
         "Type": type(t.state_group({
-            "boolean": t.nothing(),
-            "component": t.group({
+            "boolean": tstate(t.nothing()),
+            "component": tstate(t.group({
                 "location": prop(t.state_group({
-                    "import": t.group({
+                    "import": tstate(t.group({
                         "import": prop(t.text_global("TBD")),
                         "type": prop(t.text_global("TBD")),
-                    }),
-                    "sibling": t.text_global("TBD"),
+                    })),
+                    "sibling": tstate(t.text_global("TBD")),
                 })),
                 "type arguments": prop(t.component("Type Arguments")),
                 "sub selection": prop(t.list(t.state_group({
-                    "dictionary": t.nothing(),
-                    "group": t.text_global("TBD"),
-                    "list": t.nothing(),
-                    "optional": t.nothing(),
-                    "state group": t.text_global("TBD"),
+                    "dictionary": tstate(t.nothing()),
+                    "group": tstate(t.text_global("TBD")),
+                    "list": tstate(t.nothing()),
+                    "optional": tstate(t.nothing()),
+                    "state group": tstate(t.text_global("TBD")),
                 }))),
-            }),
-            "computed": t.component_cyclic("Type"),
-            "dictionary": t.component_cyclic("Type"),
-            "function": t.group({
+            })),
+            "computed": tstate(t.component_cyclic("Type")),
+            "dictionary": tstate(t.component_cyclic("Type")),
+            "function": tstate(t.group({
                 "type parameters": prop(t.component("Type Parameters")),
                 "context": prop(t.component_cyclic("Type")),
                 "parameters": prop(t.dictionary(t.component_cyclic("Type"))),
                 "return": prop(t.component_cyclic("Type")),
-            }),
-            "group": t.dictionary(t.component_cyclic("Type")),
-            "array": t.component_cyclic("Type"),
-            "null": t.nothing(),
-            "number": t.state_group({
-                "integer": t.group({
+            })),
+            "group": tstate(t.dictionary(t.component_cyclic("Type"))),
+            "array": tstate(t.component_cyclic("Type")),
+            "null": tstate(t.nothing()),
+            "number": tstate(t.state_group({
+                "integer": tstate(t.group({
                     "signed": prop(t.boolean())
-                }),
-                "float": t.nothing(),
-            }),
-            "optional": t.component_cyclic("Type"),
-            "parameter": t.component("Type Parameter Selection"),
-            "tagged union": t.dictionary(t.component_cyclic("Type")),
-            "string": t.nothing(),
+                })),
+                "float": tstate(t.nothing()),
+            })),
+            "optional": tstate(t.component_cyclic("Type")),
+            "parameter": tstate(t.component("Type Parameter Selection")),
+            "tagged union": tstate(t.dictionary(t.component_cyclic("Type"))),
+            "string": tstate(t.nothing()),
         })),
 
     }

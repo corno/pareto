@@ -6,6 +6,7 @@ import {
     type,
     text,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -17,22 +18,22 @@ export const $: g_.Types<pd.Source_Location> = types(
         "Number Definition": type(t.nothing()),
         "Object Definition": type(t.group({
             "type": prop(t.state_group({
-                "static": t.group({
+                "static": tstate(t.group({
                     "properties": prop(t.dictionary(t.group({
                         "definition": prop(t.component_cyclic("Definition")),
                         "optional": prop(t.boolean()),
                     }))),
-                }),
-                "dynamic": t.component_cyclic("Definition"),
+                })),
+                "dynamic": tstate(t.component_cyclic("Definition")),
             })),
         })),
         "String Definition": type(t.state_group({
-            "any": t.nothing(),
-            "enum": t.dictionary(t.nothing()),
+            "any": tstate(t.nothing()),
+            "enum": tstate(t.dictionary(t.nothing())),
         })),
         "Definition": type(t.state_group({
-            "any": t.nothing(),
-            "any of": t.group({
+            "any": tstate(t.nothing()),
+            "any of": tstate(t.group({
                 "array": prop(t.optional(t.component("Array Definition"))),
                 "boolean": prop(t.optional(t.component("Boolean Definition"))),
                 "null": prop(t.optional(t.component("Null Definition"))),
@@ -41,15 +42,15 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "string": prop(t.optional(t.component("String Definition"))),
 
                 "else": prop(t.optional(t.text_local(text("single line")))),//reference to a definition
-            }),
-            "definition reference": t.text_local(text("single line")),
+            })),
+            "definition reference": tstate(t.text_local(text("single line"))),
 
-            "array": t.component("Array Definition"),
-            "boolean": t.component("Boolean Definition"),
-            "null": t.component("Null Definition"),
-            "number": t.component("Number Definition"),
-            "object": t.component("Object Definition"),
-            "string": t.component("String Definition"),
+            "array": tstate(t.component("Array Definition")),
+            "boolean": tstate(t.component("Boolean Definition")),
+            "null": tstate(t.component("Null Definition")),
+            "number": tstate(t.component("Number Definition")),
+            "object": tstate(t.component("Object Definition")),
+            "string": tstate(t.component("String Definition")),
         })),
         "Schema": type(t.group({
             "definitions": prop(t.dictionary(t.component("Definition"))),
@@ -59,28 +60,28 @@ export const $: g_.Types<pd.Source_Location> = types(
         "Errors": type(t.list(t.group({
             "path": prop(t.text_local(text("single line"))),
             "type": prop(t.state_group({
-                "not the right type": t.group({
+                "not the right type": tstate(t.group({
                     "expected": prop(t.component("Value Type")),
                     "actual": prop(t.component("Value Type")),
-                }),
-                "type not allowed": t.group({
+                })),
+                "type not allowed": tstate(t.group({
                     "type": prop(t.component("Value Type")),
-                }),
-                "missing property": t.text_local(text("single line")),
-                "superfluous property": t.group({
+                })),
+                "missing property": tstate(t.text_local(text("single line"))),
+                "superfluous property": tstate(t.group({
                     "name": prop(t.text_local(text("single line"))),
                     "type": prop(t.component("Value Type")),
-                }),
+                })),
             })),
         }))),
 
         "Value Type": type(t.state_group({
-            "array": t.nothing(),
-            "boolean": t.nothing(),
-            "null": t.nothing(),
-            "number": t.nothing(),
-            "object": t.nothing(),
-            "string": t.nothing(),
+            "array": tstate(t.nothing()),
+            "boolean": tstate(t.nothing()),
+            "null": tstate(t.nothing()),
+            "number": tstate(t.nothing()),
+            "object": tstate(t.nothing()),
+            "string": tstate(t.nothing()),
         })),
     }
 )

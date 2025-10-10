@@ -8,6 +8,7 @@ import {
     tr,
     type,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -17,46 +18,46 @@ export const $: g_.Types<pd.Source_Location> = types(
         "Errors": type(t.list(t.group({
             "range": prop(t.component("Range")),
             "type": prop(t.state_group({
-                "error": t.state_group({
-                    "invalid value type": t.group({
+                "error": tstate(t.state_group({
+                    "invalid value type": tstate(t.group({
                         "expected": prop(t.list(t.state_group({
-                            "text": t.nothing(),
-                            "verbose group": t.nothing(),
-                            "concise group": t.nothing(),
-                            "dictionary": t.nothing(),
-                            "not set": t.nothing(),
-                            "set": t.nothing(),
-                            "list": t.nothing(),
-                            "state": t.nothing(),
+                            "text": tstate(t.nothing()),
+                            "verbose group": tstate(t.nothing()),
+                            "concise group": tstate(t.nothing()),
+                            "dictionary": tstate(t.nothing()),
+                            "not set": tstate(t.nothing()),
+                            "set": tstate(t.nothing()),
+                            "list": tstate(t.nothing()),
+                            "state": tstate(t.nothing()),
                         }))),
-                    }),
-                    "duplicate property": t.group({
+                    })),
+                    "duplicate property": tstate(t.group({
                         "name": prop(t.text_local(text('single line'))),
-                    }),
-                    "missing property": t.group({
+                    })),
+                    "missing property": tstate(t.group({
                         "name": prop(t.text_local(text('single line'))),
-                    }),
-                    "superfluous property": t.group({
+                    })),
+                    "superfluous property": tstate(t.group({
                         "name": prop(t.text_local(text('single line'))),
-                    }),
-                    "state": t.state_group({
-                        "more than 2 elements": t.nothing(),
-                        "missing state name": t.nothing(),
-                        "state is not a string": t.nothing(),
-                        "missing value": t.nothing(),
-                        "unknown state": t.group({
+                    })),
+                    "state": tstate(t.state_group({
+                        "more than 2 elements": tstate(t.nothing()),
+                        "missing state name": tstate(t.nothing()),
+                        "state is not a string": tstate(t.nothing()),
+                        "missing value": tstate(t.nothing()),
+                        "unknown state": tstate(t.group({
                             "found": prop(t.text_local(text('single line'))),
                             "expected": prop(t.dictionary(t.nothing())),
-                        }),
-                        "missing data marker": t.nothing(),
-                    }),
-                }),
-                "warning": t.state_group({
-                    "expected apostrophed string": t.nothing(),
-                    "expected quoted string": t.nothing(),
-                    "expected backticked string": t.nothing(),
-                    "expected undelimited string": t.nothing(),
-                }),
+                        })),
+                        "missing data marker": tstate(t.nothing()),
+                    })),
+                })),
+                "warning": tstate(t.state_group({
+                    "expected apostrophed string": tstate(t.nothing()),
+                    "expected quoted string": tstate(t.nothing()),
+                    "expected backticked string": tstate(t.nothing()),
+                    "expected undelimited string": tstate(t.nothing()),
+                })),
             })),
         }))),
         

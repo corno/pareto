@@ -8,19 +8,20 @@ import {
     tr,
     type,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
 export const $: g_.Types<pd.Source_Location> = types(
     {
         "Phrasing content": type(t.list(t.state_group({
-            "text": t.text_global("TBD"),
-            "element": t.component_cyclic("Phrasing"),
+            "text": tstate(t.text_global("TBD")),
+            "element": tstate(t.component_cyclic("Phrasing")),
         }))),
 
         "Flow content": type(t.list(t.state_group({
-            "phrase": t.component("Phrasing content"),
-            "flow": t.component_cyclic("Flow"),
+            "phrase": tstate(t.component("Phrasing content")),
+            "flow": tstate(t.component_cyclic("Flow")),
         }))),
 
         /*
@@ -77,20 +78,20 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Embedded": type(t.state_group({
-            "audio": t.group({
+            "audio": tstate(t.group({
                 /*FIXME*/
                 // If the element has a src attribute: zero or more track elements, then transparent, but with no media element descendants.
                 // If the element does not have a src attribute: zero or more source elements, then zero or more track elements, then transparent, but with no media element descendants.
-            }),
-            "embed": t.group({
+            })),
+            "embed": tstate(t.group({
                 /*FIXME*/
                 // src — Address of the resource
                 // type — Type of embedded resource
                 // width — Horizontal dimension
                 // height — Vertical dimension
                 // Any other attribute that has no namespace (see prose).
-            }),
-            "iframe": t.group({
+            })),
+            "iframe": tstate(t.group({
                 /*FIXME*/
                 // src — Address of the resource
                 // srcdoc — A document to render in the iframe
@@ -102,8 +103,8 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // height — Vertical dimension
                 // referrerpolicy — Referrer policy for fetches initiated by the element
                 // loading — Used when determining loading deferral
-            }),
-            "img": t.group({
+            })),
+            "img": tstate(t.group({
                 /*FIXME*/
                 // alt — Replacement text for use when images are not available
                 // src — Address of the resource
@@ -118,8 +119,8 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // decoding — Decoding hint to use when processing this image for presentation
                 // loading — Used when determining loading deferral
                 // fetchpriority — Sets the priority for fetches initiated by the element
-            }),
-            "object": t.group({
+            })),
+            "object": tstate(t.group({
                 /*FIXME*/
                 // data — Address of the resource
                 // type — Type of embedded resource
@@ -128,8 +129,8 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // width — Horizontal dimension
                 // height — Vertical dimension
                 "content": prop(t.component_cyclic("Embedded content"))
-            }),
-            "video": t.group({
+            })),
+            "video": tstate(t.group({
                 /*FIXME*/
                 // src — Address of the resource
                 // crossorigin — How the element handles crossorigin requests
@@ -145,21 +146,21 @@ export const $: g_.Types<pd.Source_Location> = types(
                 //Content:
                 //If the element has a src attribute: zero or more track elements, then transparent, but with no media element descendants.
                 //If the element does not have a src attribute: zero or more source elements, then zero or more track elements, then transparent, but with no media element descendants.
-            }),
-            "canvas": t.group({
+            })),
+            "canvas": tstate(t.group({
                 /*FIXME*/
                 // width — Horizontal dimension
                 // height — Vertical dimension
                 //content
                 //Transparent, but with no interactive content descendants except for a elements, img elements with usemap attributes, button elements, input elements whose type attribute are in the Checkbox or Radio Button states,
                 // input elements that are buttons, and select elements with a multiple attribute or a display size greater than 1.
-            }),
-            "math": t.group({/*FIXME*/ }),
-            "picture": t.group({
+            })),
+            "math": tstate(t.group({/*FIXME*/ })),
+            "picture": tstate(t.group({
                 /*FIXME*/
                 //Zero or more source elements, followed by one img element, optionally intermixed with script-supporting elements.
-            }),
-            "svg": t.group({/*FIXME*/ }),
+            })),
+            "svg": tstate(t.group({/*FIXME*/ })),
         })),
 
         "Embedded content": type(t.list(t.component("Embedded"))),
@@ -167,7 +168,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         "Template": type(t.component("Flow content")),
 
         "Script supporting": type(t.state_group({
-            "script": t.group({
+            "script": tstate(t.group({
                 /*FIXME*/
                 // src — Address of the resource
                 // type — Type of script
@@ -182,113 +183,113 @@ export const $: g_.Types<pd.Source_Location> = types(
                 //content:
                 //If there is no src attribute, depends on the value of the type attribute, but must match script content restrictions.
                 //If there is a src attribute, the element must be either empty or contain only script documentation that also matches script content restrictions.
-            }),
-            "template": t.component("Template"),
+            })),
+            "template": tstate(t.component("Template")),
         })),
 
         "Heading": type(t.state_group({
-            "h1": t.component("Phrasing content"),
-            "h2": t.component("Phrasing content"),
-            "h3": t.component("Phrasing content"),
-            "h4": t.component("Phrasing content"),
-            "h5": t.component("Phrasing content"),
-            "h6": t.component("Phrasing content"),
-            "hgroup": t.group({
+            "h1": tstate(t.component("Phrasing content")),
+            "h2": tstate(t.component("Phrasing content")),
+            "h3": tstate(t.component("Phrasing content")),
+            "h4": tstate(t.component("Phrasing content")),
+            "h5": tstate(t.component("Phrasing content")),
+            "h6": tstate(t.component("Phrasing content")),
+            "hgroup": tstate(t.group({
                 "content before": prop(t.state_group({
-                    "p": t.group({/*FIXME*/ }),
-                    "script supporting": t.component("Script supporting"),
+                    "p": tstate(t.group({/*FIXME*/ })),
+                    "script supporting": tstate(t.component("Script supporting")),
                 })),
                 "heading": prop(t.state_group({
-                    "h1 ": t.component("Phrasing content"),
-                    "h2": t.component("Phrasing content"),
-                    "h3": t.component("Phrasing content"),
-                    "h4": t.component("Phrasing content"),
-                    "h5": t.component("Phrasing content"),
-                    "h6": t.component("Phrasing content"),
+                    "h1 ": tstate(t.component("Phrasing content")),
+                    "h2": tstate(t.component("Phrasing content")),
+                    "h3": tstate(t.component("Phrasing content")),
+                    "h4": tstate(t.component("Phrasing content")),
+                    "h5": tstate(t.component("Phrasing content")),
+                    "h6": tstate(t.component("Phrasing content")),
                 })),
                 "content after": prop(t.state_group({
-                    "p": t.group({/*FIXME*/ }),
-                    "script supporting": t.component("Script supporting"),
+                    "p": tstate(t.group({/*FIXME*/ })),
+                    "script supporting": tstate(t.component("Script supporting")),
                 })),
-            }),
+            })),
         })),
 
         //"Heading content": type(list(component("Heading"))),
         //"Script supporting content": type(list(component("Script supporting"))),
 
         "Sectioning content": type(t.state_group({
-            "article": t.component("Flow content"),
-            "aside": t.component("Flow content"),
-            "nav": t.component("Flow content"),
-            "section": t.component("Flow content"),
+            "article": tstate(t.component("Flow content")),
+            "aside": tstate(t.component("Flow content")),
+            "nav": tstate(t.component("Flow content")),
+            "section": tstate(t.component("Flow content")),
         })),
 
         "Flow": type(t.state_group({
             //generic attributes
-            "id": t.group({
+            "id": tstate(t.group({
                 "id": prop(t.text_global("TBD")),
                 "child": prop(t.component_cyclic("Flow")),
-            }),
-            "class": t.group({
+            })),
+            "class": tstate(t.group({
                 "class": prop(t.text_global("TBD")),
                 "child": prop(t.component_cyclic("Flow")),
-            }),
-            /*
-            a'phrase' element does not exist in HTML, but this deviation from the standard is needed to handle whitespace properly 
-            */
-            "script supporting": t.component("Script supporting"),
-            "embedded": t.component("Embedded"),
-            "details": t.group({
+            })),
+            /**
+             * a'phrase' element does not exist in HTML, but this deviation from the standard is needed to handle whitespace properly 
+             */
+            "script supporting": tstate(t.component("Script supporting")),
+            "embedded": tstate(t.component("Embedded")),
+            "details": tstate(t.group({
                 "summary": prop(t.list(t.state_group({
-                    "phrasing": t.component("Phrasing content"),
-                    "heading": t.component("Heading"),
+                    "phrasing": tstate(t.component("Phrasing content")),
+                    "heading": tstate(t.component("Heading")),
                 }))),
                 "content": prop(t.component("Flow content")),
-            }),
-            "address": t.group({
+            })),
+            "address": tstate(t.group({
                 /*FIXME*/
                 //Flow content, but with no heading content descendants, no sectioning content descendants, and no header, footer, or address element descendants.Flow content, but with no heading content descendants, no sectioning content descendants, and no header, footer, or address element descendants.
-            }),
-            "blockquote": t.group({
+            })),
+            "blockquote": tstate(t.group({
                 "cite": prop(t.text_global("TBD")),
                 "content": prop(t.component("Flow content")),
-            }),
-            "del": t.group({
+            })),
+            "del": tstate(t.group({
                 "edit": prop(t.component("Edit")),
                 "content": prop(t.component("Flow content")),
-            }),
-            "dialog": t.group({
+            })),
+            "dialog": tstate(t.group({
                 "open": prop(t.optional(t.text_global("TBD"))),
                 "content": prop(t.component("Flow content")),
-            }),
-            "div": t.component("Flow content"),
-            "dl": t.state_group({
-                "divs": t.group({/*FIXME*/ }),
-                "dts": t.group({/*FIXME*/ }),
-            }), //description list
-            "fieldset": t.group({
+            })),
+            "div": tstate(t.component("Flow content")),
+            "dl": tstate(t.state_group({
+                "divs": tstate(t.group({/*FIXME*/ })),
+                "dts": tstate(t.group({/*FIXME*/ })),
+            })), //description list
+            "fieldset": tstate(t.group({
                 /*FIXME*/
                 "legend": prop(t.optional(t.group({/*FIXME*/ }))),
                 // disabled — Whether the descendant form controls, except any inside legend, are disabled
                 // form — Associates the element with a form element
                 // name — Name of the element to use in the form.elements API.
                 "content": prop(t.component("Flow content")),
-            }),
-            "figure": t.group({
+            })),
+            "figure": tstate(t.group({
                 "caption": prop(t.optional(t.group({
                     "content": prop(t.component("Flow content")),
                     "position": prop(t.state_group({
-                        "top": t.group({}),
-                        "botom": t.group({}),
+                        "top": tstate(t.group({})),
+                        "botom": tstate(t.group({})),
                     })),
                 }))),
                 "content": prop(t.component("Flow content")),
-            }),
-            "footer": t.group({
+            })),
+            "footer": tstate(t.group({
                 /*FIXME*/
                 //Flow content, but with no header or footer element descendants
-            }),
-            "form": t.group({
+            })),
+            "form": tstate(t.group({
                 /*FIXME*/
                 // accept-charset — Character encodings to use for form submission
                 // action — URL to use for form submission
@@ -300,31 +301,31 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // target — Navigable for form submission
                 // rel
                 //"content": Flow content, but with no form element descendants.
-            }),
-            "header": t.group({
+            })),
+            "header": tstate(t.group({
                 /*FIXME*/
                 //Flow content, but with no header or footer element descendants
-            }),
-            "hr": t.group({}),
-            "ins": t.group({
+            })),
+            "hr": tstate(t.group({})),
+            "ins": tstate(t.group({
                 "edit": prop(t.component("Edit")),
                 "content": prop(t.component("Flow content")),
-            }),
-            /*
-            FIXME
-            A hierarchically correct main element is one whose ancestor elements are limited to html, body, div, form
-            without an accessible name, and autonomous custom elements. Each main element must be a hierarchically correct main element.
-            */
-            "main": t.component("Flow content"),
-            "map": t.group({
+            })),
+            /**
+             * FIXME
+             * A hierarchically correct main element is one whose ancestor elements are limited to html, body, div, form
+             * without an accessible name, and autonomous custom elements. Each main element must be a hierarchically correct main element.
+             */
+            "main": tstate(t.component("Flow content")),
+            "map": tstate(t.group({
                 "name": prop(t.text_global("TBD")),
                 "content": prop(t.component("Flow content")),
-            }),
-            "menu": t.list(t.state_group({
-                "li": t.component("Flow content"),
-                "script supporting": t.component("Script supporting"),
             })),
-            "object": t.group({
+            "menu": tstate(t.list(t.state_group({
+                "li": tstate(t.component("Flow content")),
+                "script supporting": tstate(t.component("Script supporting")),
+            }))),
+            "object": tstate(t.group({
                 /*FIXME*/
                 // data — Address of the resource
                 // type — Type of embedded resource
@@ -333,60 +334,60 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // width — Horizontal dimension
                 // height — Vertical dimension
                 "content": prop(t.component("Flow content")),
-            }),
-            "ol": t.group({
+            })),
+            "ol": tstate(t.group({
                 "reversed": prop(t.optional(t.text_global("TBD"))),
                 "start": prop(t.optional(t.text_global("TBD"))),
                 "type": prop(t.optional(t.state_group({
-                    "1": t.group({}),
-                    "a": t.group({}),
-                    "A": t.group({}),
-                    "i": t.group({}),
-                    "I": t.group({}),
+                    "1": tstate(t.group({})),
+                    "a": tstate(t.group({})),
+                    "A": tstate(t.group({})),
+                    "i": tstate(t.group({})),
+                    "I": tstate(t.group({})),
                 }))),
                 "content": prop(t.list(t.state_group({
-                    "li": t.group({
+                    "li": tstate(t.group({
                         "value": prop(t.text_global("TBD")),
                         "content": prop(t.component("Flow content")),
-                    }),
-                    "script supporting": t.component("Script supporting"),
+                    })),
+                    "script supporting": tstate(t.component("Script supporting")),
                 })))
-            }),
-            "p": t.component("Phrasing content"),
-            "pre": t.component("Phrasing content"),
-            "search": t.component("Flow content"),
-            "slot": t.group({
+            })),
+            "p": tstate(t.component("Phrasing content")),
+            "pre": tstate(t.component("Phrasing content")),
+            "search": tstate(t.component("Flow content")),
+            "slot": tstate(t.group({
                 "name": prop(t.text_global("TBD")),
                 "content": prop(t.component("Flow content")),
-            }),
-            "table": t.group({
+            })),
+            "table": tstate(t.group({
                 /*FIXME*/
                 "caption": prop(t.optional(t.component("Flow content"))),
                 "colgroups": prop(t.list(t.group({/*FIXME*/ }))),
                 //"thead": prop(optional(component("Flow content"))),
 
-            }),
-            "ul": t.list(t.state_group({
-                "li": t.component("Flow content"),
-                "script supporting": t.component("Script supporting"),
             })),
-            "heading": t.component("Heading"),
-            "sectioning": t.component("Sectioning content"),
+            "ul": tstate(t.list(t.state_group({
+                "li": tstate(t.component("Flow content")),
+                "script supporting": tstate(t.component("Script supporting")),
+            }))),
+            "heading": tstate(t.component("Heading")),
+            "sectioning": tstate(t.component("Sectioning content")),
         })),
 
         "Phrasing": type(t.state_group({
             //generic attributes
-            "id": t.group({
+            "id": tstate(t.group({
                 "id": prop(t.text_global("TBD")),
                 "child": prop(t.component_cyclic("Phrasing"))
-            }),
-            "class": t.group({
+            })),
+            "class": tstate(t.group({
                 "class": prop(t.text_global("TBD")),
                 "child": prop(t.component_cyclic("Phrasing"))
-            }),
+            })),
 
             //elements
-            "link": t.group({
+            "link": tstate(t.group({
                 /*FIXME*/
                 // href — Address of the hyperlink
                 // crossorigin — How the element handles crossorigin requests
@@ -405,8 +406,8 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // disabled — Whether the link is disabled
                 // fetchpriority — Sets the priority for fetches initiated by the element
                 // Also, the title attribute has special semantics on this element: Title of the link; CSS style sheet set name.
-            }),
-            "meta": t.group({
+            })),
+            "meta": tstate(t.group({
                 /*FIXME*/
 
                 // name — Metadata name
@@ -422,16 +423,16 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // If the name attribute is present: where metadata content is expected.
                 // If the itemprop attribute is present: where metadata content is expected.
                 // If the itemprop attribute is present: where phrasing content is expected.                
-            }),
-            "noscript": t.group({
+            })),
+            "noscript": tstate(t.group({
                 /*FIXME*/
                 //content: 
                 // When scripting is disabled, in a head element: in any order, zero or more link elements, zero or more style elements, and zero or more meta elements.
                 // When scripting is disabled, not in a head element: transparent, but there must be no noscript element descendants.
                 // Otherwise: text that conforms to the requirements given in the prose.
 
-            }),
-            "object": t.group({
+            })),
+            "object": tstate(t.group({
                 /*FIXME*/
                 // data — Address of the resource
                 // type — Type of embedded resource
@@ -440,10 +441,10 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // width — Horizontal dimension
                 // height — Vertical dimension
                 "content": prop(t.component("Phrasing content"))
-            }),
-            "script supporting": t.component("Script supporting"),
-            "a": t.group({/*FIXMEX*/ }),
-            "button": t.group({
+            })),
+            "script supporting": tstate(t.component("Script supporting")),
+            "a": tstate(t.group({/*FIXMEX*/ })),
+            "button": tstate(t.group({
                 /*FIXME*/
                 // disabled — Whether the form control is disabled
                 // form — Associates the element with a form element
@@ -461,8 +462,8 @@ export const $: g_.Types<pd.Source_Location> = types(
                 //content:
                 //Phrasing content, but there must be no interactive content descendant and no descendant with the tabindex attribute specified.
 
-            }),
-            "input": t.group({
+            })),
+            "input": tstate(t.group({
                 /*FIXME*/
                 // accept — Hint for expected file type in file upload controls
                 // alt — Replacement text for use when images are not available
@@ -497,13 +498,13 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // value — Value of the form control
                 // width — Horizontal dimension
                 // Also, the title attribute has special semantics on this element: Description of pattern (when used with pattern attribute).
-            }),
-            "label": t.group({
+            })),
+            "label": tstate(t.group({
                 /*FIXME*/
                 //for — Associate the label with form control
                 //content: Phrasing content, but with no descendant labelable elements unless it is the element's labeled control, and no descendant label elements.
-            }),
-            "select": t.group({
+            })),
+            "select": tstate(t.group({
                 // autocomplete — Hint for form autofill feature
                 // disabled — Whether the form control is disabled
                 // form — Associates the element with a form element
@@ -512,18 +513,18 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // required — Whether the control is required for form submission
                 // size — Size of the control
                 "content": prop(t.list(t.state_group({
-                    "option": t.group({/*FIXME*/ }),
-                    "optgroup": t.group({
+                    "option": tstate(t.group({/*FIXME*/ })),
+                    "optgroup": tstate(t.group({
                         //label
                         //disabled
                         "options": prop(t.list(t.group({
                             /*FIXME*/
                         })))
-                    }),
-                    "script supporting": t.component("Script supporting"),
+                    })),
+                    "script supporting": tstate(t.component("Script supporting")),
                 }))),
-            }),
-            "textarea": t.group({
+            })),
+            "textarea": tstate(t.group({
                 /*FIXME*/
                 // autocomplete — Hint for form autofill feature
                 // cols — Maximum number of characters per line
@@ -539,12 +540,12 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // rows — Number of lines to show
                 // wrap — How the value of the form control is to be wrapped for form submission 
                 "content": prop(t.text_global("TBD")),
-            }),
-            "abbr": t.group({
+            })),
+            "abbr": tstate(t.group({
                 "title": prop(t.text_global("TBD")),
                 "content": prop(t.component("Phrasing content")),
-            }),
-            "area": t.group({ //FIXME: needs a 'map' ancestor
+            })),
+            "area": tstate(t.group({ //FIXME: needs a 'map' ancestor
                 /*FIXME*/
                 // alt — Replacement text for use when images are not available
                 // coords — Coordinates for the shape to be created in an image map
@@ -555,51 +556,51 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // ping — URLs to ping
                 // rel — Relationship between the location in the document containing the hyperlink and the destination resource
                 // referrerpolicy — Referrer policy for fetches initiated by the element
-            }),
-            "b": t.component("Phrasing content"),
-            "bdi": t.group({
+            })),
+            "b": tstate(t.component("Phrasing content")),
+            "bdi": tstate(t.group({
                 "dir": prop(t.text_global("TBD")),
                 "content": prop(t.component("Phrasing content")),
-            }),
-            "bdo": t.group({
+            })),
+            "bdo": tstate(t.group({
                 "dir": prop(t.text_global("TBD")),
                 "content": prop(t.component("Phrasing content")),
-            }),
+            })),
             "br": t.group({}), //line break
-            "cite": t.component("Phrasing content"),
-            "code": t.component("Phrasing content"),
-            "data": t.group({
+            "cite": tstate(t.component("Phrasing content")),
+            "code": tstate(t.component("Phrasing content")),
+            "data": tstate(t.group({
                 "value": prop(t.text_global("TBD")),
                 "content": prop(t.component("Phrasing content")),
-            }),
-            "datalist": t.state_group({
-                "phrasing": t.component("Phrasing content"),
-                "options": t.list(t.state_group({
-                    "option": t.group({/*FIXME*/ }),
-                    "script supporting": t.component("Script supporting"),
-                })),
-            }),
-            "del": t.group({
+            })),
+            "datalist": tstate(t.state_group({
+                "phrasing": tstate(t.component("Phrasing content")),
+                "options": tstate(t.list(t.state_group({
+                    "option": tstate(t.group({/*FIXME*/ })),
+                    "script supporting": tstate(t.component("Script supporting")),
+                }))),
+            })),
+            "del": tstate(t.group({
                 "edit": prop(t.component("Edit")),
                 "content": prop(t.component("Phrasing content"))
-            }),
-            "dfn": t.group({ //FIXME: there may not be a dfn ancestor
+            })),
+            "dfn": tstate(t.group({ //FIXME: there may not be a dfn ancestor
                 "title": prop(t.text_global("TBD")),
                 "content": prop(t.component("Phrasing content")),
-            }),
-            "em": t.component("Phrasing content"),
-            "i": t.component("Phrasing content"),
-            "ins": t.group({
+            })),
+            "em": tstate(t.component("Phrasing content")),
+            "i": tstate(t.component("Phrasing content")),
+            "ins": tstate(t.group({
                 "edit": prop(t.component("Edit")),
                 "content": prop(t.component("Phrasing content")),
-            }),
-            "kbd": t.component("Phrasing content"),
-            "map": t.group({
+            })),
+            "kbd": tstate(t.component("Phrasing content")),
+            "map": tstate(t.group({
                 "name": prop(t.text_global("TBD")),
                 "content": prop(t.component("Phrasing content"))
-            }),
-            "mark": t.component("Phrasing content"),
-            "meter": t.group({
+            })),
+            "mark": tstate(t.component("Phrasing content")),
+            "meter": tstate(t.group({
                 /*FIXME*/
 
                 // value — Current value of the element
@@ -611,23 +612,23 @@ export const $: g_.Types<pd.Source_Location> = types(
 
                 // content:
                 // Phrasing content, but there must be no meter element descendants.
-            }),
-            "output": t.group({
+            })),
+            "output": tstate(t.group({
                 "for": prop(t.optional(t.text_global("TBD"))),
                 "form": prop(t.text_global("TBD")),//optional?
                 "name": prop(t.text_global("TBD")),//optional?
                 "content": prop(t.component("Phrasing content")),
-            }),
-            "progress": t.group({ //FIXME: there may not be any progress element ancestors
+            })),
+            "progress": tstate(t.group({ //FIXME: there may not be any progress element ancestors
                 "value": prop(t.text_global("TBD")),
                 "max": prop(t.text_global("TBD")),
                 "content": prop(t.component("Phrasing content")),
-            }),
-            "q": t.group({
+            })),
+            "q": tstate(t.group({
                 "cite": prop(t.text_global("TBD")),
                 "content": prop(t.component("Phrasing content")),
-            }),
-            "ruby": t.group({
+            })),
+            "ruby": tstate(t.group({
                 /*FIXME*/
                 // One or the other of the following:
                 // Phrasing content, but with no ruby elements and with no ruby element descendants
@@ -635,29 +636,29 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // One or the other of the following:
                 // One or more rt elements
                 // An rp element followed by one or more rt elements, each of which is itself followed by an rp element            
-            }),
-            "s": t.component("Phrasing content"),
-            "samp": t.component("Phrasing content"),
-            "slot": t.group({
+            })),
+            "s": tstate(t.component("Phrasing content")),
+            "samp": tstate(t.component("Phrasing content")),
+            "slot": tstate(t.group({
                 "name": prop(t.text_global("TBD")),
                 "content": prop(t.component("Phrasing content")),
-            }),
-            "small": t.component("Phrasing content"),
-            "span": t.component("Phrasing content"),
-            "strong": t.component("Phrasing content"),
-            "sub": t.component("Phrasing content"),
-            "sup": t.component("Phrasing content"),
-            "time": t.state_group({
-                "datetime": t.group({
+            })),
+            "small": tstate(t.component("Phrasing content")),
+            "span": tstate(t.component("Phrasing content")),
+            "strong": tstate(t.component("Phrasing content")),
+            "sub": tstate(t.component("Phrasing content")),
+            "sup": tstate(t.component("Phrasing content")),
+            "time": tstate(t.state_group({
+                "datetime": tstate(t.group({
                     "value": prop(t.text_global("TBD")),
                     "content": prop(t.component("Phrasing content")),
-                }),
-                "text": t.text_global("TBD"),
-            }),
-            "u": t.component("Phrasing content"),
-            "var": t.component("Phrasing content"),
+                })),
+                "text": tstate(t.text_global("TBD")),
+            })),
+            "u": tstate(t.component("Phrasing content")),
+            "var": tstate(t.component("Phrasing content")),
             "wbr": t.group({}), //line break opportunity
-            "embedded": t.component("Embedded"),
+            "embedded": tstate(t.component("Embedded")),
         })),
     }
 )

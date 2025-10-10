@@ -8,6 +8,7 @@ import {
     type,
     text,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -15,8 +16,8 @@ export const $: g_.Types<pd.Source_Location> = types(
     {
 
         "Schema Tree": type(t.state_group({
-            "set": t.component("Schemas"),
-            "schema": t.component("Schema"),
+            "set": tstate(t.component("Schemas")),
+            "schema": tstate(t.component("Schema")),
         })),
 
         "Schemas": type(t.dictionary(t.component_cyclic("Schema Tree"), 'ordered')),
@@ -46,42 +47,42 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Type Node": type(t.state_group({
             //"boolean": t.nothing(),
-            "component": t.state_group({
-                "external": t.group({
+            "component": tstate(t.state_group({
+                "external": tstate(t.group({
                     "import": prop(t.reference("Imports", [])),
                     "type": prop(t.reference("Types", [])),
-                }),
-                "internal": t.reference("Types", []),
-                "internal cyclic": t.reference("Types", [], 'cyclic'),
-            }),
-            "dictionary": t.component("Dictionary"),
-            "group": t.component("Group"),
-            "list": t.group({
+                })),
+                "internal": tstate(t.reference("Types", [])),
+                "internal cyclic": tstate(t.reference("Types", [], 'cyclic')),
+            })),
+            "dictionary": tstate(t.component("Dictionary")),
+            "group": tstate(t.component("Group")),
+            "list": tstate(t.group({
                 "node": prop(t.component_cyclic("Type Node")),
-            }),
-            "nothing": t.nothing(),
+            })),
+            "nothing": tstate(t.nothing()),
             // "number": t.state_group({
             //     "global": t.reference("Globals", [tr.g("number types")]),
             //     "local": t.component("Number Type"),
             // }),
-            "optional": t.component_cyclic("Type Node"),
-            "reference": t.group({
+            "optional": tstate(t.component_cyclic("Type Node")),
+            "reference": tstate(t.group({
                 "type": prop(t.state_group({
-                    "derived": t.nothing(),
-                    "selected": t.nothing(),
+                    "derived": tstate(t.nothing()),
+                    "selected": tstate(t.nothing()),
                 })),
-            }),
-            "state group": t.dictionary(t.component_cyclic("Type Node")),
-            "text": t.state_group({
-                "global": t.reference("Globals", [tr.g("text types")]),
-                "local": t.component("Text Type"),
-            }),
+            })),
+            "state group": tstate(t.dictionary(t.component_cyclic("Type Node"))),
+            "text": tstate(t.state_group({
+                "global": tstate(t.reference("Globals", [tr.g("text types")])),
+                "local": tstate(t.component("Text Type")),
+            })),
         })),
 
         "Text Type": type(t.group({
             "type": prop(t.state_group({
-                "multi line": t.nothing(),
-                "single line": t.nothing(),
+                "multi line": tstate(t.nothing()),
+                "single line": tstate(t.nothing()),
             })),
         })),
 

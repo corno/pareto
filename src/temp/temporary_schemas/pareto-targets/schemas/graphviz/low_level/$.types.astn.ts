@@ -8,6 +8,7 @@ import {
     tr,
     type,
     prop,
+    tstate,
 } from "../../../../../../shorthands/schema"
 import * as g_ from "../../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -17,42 +18,42 @@ export const $: g_.Types<pd.Source_Location> = types(
         "Graph": type(t.group({
             "strict": prop(t.boolean()),
             "type": prop(t.state_group({
-                "graph": t.nothing(),
-                "digraph": t.nothing(),
+                "graph": tstate(t.nothing()),
+                "digraph": tstate(t.nothing()),
             })),
             "name": prop(t.optional(t.component("ID"))),
             "statements": prop(t.component("Statement List")),
         })),
         "Statement List": type(t.list(t.state_group({
-            "node": t.group({
+            "node": tstate(t.group({
                 "node": prop(t.component("Node ID")),
                 "attribute list": prop(t.component("Attribute List")),
-            }),
-            "edge": t.group({
+            })),
+            "edge": tstate(t.group({
                 "left": prop(t.state_group({
-                    "node": t.component("Node ID"),
-                    "subgraph": t.component("Subgraph"),
+                    "node": tstate(t.component("Node ID")),
+                    "subgraph": tstate(t.component("Subgraph")),
                 })),
                 //the operator (-- or ->) can be derived from the graph type
                 "right": prop(t.list(t.state_group({
-                    "node": t.component("Node ID"),
-                    "subgraph": t.component("Subgraph"),
+                    "node": tstate(t.component("Node ID")),
+                    "subgraph": tstate(t.component("Subgraph")),
                 }))),
                 "attributes": prop(t.component("Attribute List")),
-            }),
-            "attribute list": t.group({
+            })),
+            "attribute list": tstate(t.group({
                 "type": prop(t.state_group({
-                    "graph": t.nothing(),
-                    "node": t.nothing(),
-                    "edge": t.nothing(),
+                    "graph": tstate(t.nothing()),
+                    "node": tstate(t.nothing()),
+                    "edge": tstate(t.nothing()),
                 })),
                 "attributes": prop(t.component("Attribute List")),
-            }),
-            "attribute assignment": t.group({
+            })),
+            "attribute assignment": tstate(t.group({
                 "name": prop(t.component("ID")),
                 "value": prop(t.component("ID")),
-            }),
-            "subgraph": t.component("Subgraph"),
+            })),
+            "subgraph": tstate(t.component("Subgraph")),
         }))),
         "Attribute List": type(t.list(t.group({
             "name": prop(t.component("ID")),
@@ -66,10 +67,10 @@ export const $: g_.Types<pd.Source_Location> = types(
             })))
         })),
         "ID": type(t.state_group({
-            "id": t.text_global("id"),
-            "string": t.text_global("Text Value"),
-            "html": t.text_global("Text Value"),
-            "number": t.number_local(n.integer()),
+            "id": tstate(t.text_global("id")),
+            "string": tstate(t.text_global("Text Value")),
+            "html": tstate(t.text_global("Text Value")),
+            "number": tstate(t.number_local(n.integer())),
         })),
         "Subgraph": type(t.group({
             "subgraph": prop(t.optional(t.optional(t.component("ID")))), // is it a subgraph? and if yes, does it have a name?

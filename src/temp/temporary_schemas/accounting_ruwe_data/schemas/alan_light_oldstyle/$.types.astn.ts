@@ -8,6 +8,7 @@ import {
     tr,
     type,
     prop,
+    tstate,
 
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
@@ -45,24 +46,24 @@ export const $: g_.Types<pd.Source_Location>  = types(
         "Node": type(t.group({
             "properties": prop(t.dictionary(t.group({
                 "type": prop(t.state_group({
-                    "collection": t.group({
+                    "collection": tstate(t.group({
                         "node": prop(t.component_cyclic("Node")),
-                    }),
-                    "file": t.nothing(),
-                    "group": t.group({
+                    })),
+                    "file": tstate(t.nothing()),
+                    "group": tstate(t.group({
                         "node": prop(t.component_cyclic("Node")),
-                    }),
+                    })),
                     "natural": t.text_local(text('single line')), //why is this not a number?
-                    "text": t.nothing(),
-                    "reference": t.nothing(),
-                    "state group": t.group({
+                    "text": tstate(t.nothing()),
+                    "reference": tstate(t.nothing()),
+                    "state group": tstate(t.group({
                         "states": prop(t.dictionary(t.group({
                             // "constraints": t.dictionary(t.group({
                             //     "path": t.component("Path")
                             // })),
                             "node": prop(t.component_cyclic("Node"))
                         })))
-                    })
+                    }))
                 }))
             })))
         })),

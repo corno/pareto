@@ -8,6 +8,7 @@ import {
     tr,
     type,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -19,28 +20,28 @@ export const $: g_.Types<pd.Source_Location>  = types(
         )),
 
         "Node": type(t.state_group({
-            "file": t.component("Block"),
-            "directory": t.component_cyclic("Directory"),
+            "file": tstate(t.component("Block")),
+            "directory": tstate(t.component_cyclic("Directory")),
         })),
 
         "Block": type(t.list(t.component("Block Part"))),
 
         "Block Part": type(t.state_group({
-            "nested line": t.component("Line"),
-            "line": t.text_global("Output"),
-            "sub block": t.component_cyclic("Block"),
-            "optional": t.optional(t.component_cyclic("Block Part")),
-            "nothing": t.nothing(),
+            "nested line": tstate(t.component("Line")),
+            "line": tstate(t.text_global("Output")),
+            "sub block": tstate(t.component_cyclic("Block")),
+            "optional": tstate(t.optional(t.component_cyclic("Block Part"))),
+            "nothing": tstate(t.nothing()),
         })),
 
         "Line": type(t.list(t.component("Line Part"))),
 
         "Line Part": type(t.state_group({
-            "snippet": t.text_global("Output"),
-            "indent": t.component_cyclic("Block"),
-            "sub line": t.component_cyclic("Line"),
-            "optional": t.optional(t.component_cyclic("Line Part")),
-            "nothing": t.nothing(),
+            "snippet": tstate(t.text_global("Output")),
+            "indent": tstate(t.component_cyclic("Block")),
+            "sub line": tstate(t.component_cyclic("Line")),
+            "optional": tstate(t.optional(t.component_cyclic("Line Part"))),
+            "nothing": tstate(t.nothing()),
         })),
     }
 )

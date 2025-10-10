@@ -72,6 +72,12 @@ export const prop = (
     }
 }
 
+export const tstate = (
+    node: unresolved.Type_Node<_ed.Source_Location>,
+): unresolved.Type_Node.SG.state_group.D<_ed.Source_Location> => {
+    return node
+}
+
 export const propd = (
     description: string,
     node: unresolved.Type_Node<_ed.Source_Location>,

@@ -6,6 +6,7 @@ import {
     type,
     n,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -15,39 +16,39 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Value": type(t.group({
             "type": prop(t.state_group({
-                "list": t.list(t.component_cyclic("Value")),
-                "concise group": t.list(t.component_cyclic("Value")),
-                "dictionary": t.list(t.group({
+                "list": tstate(t.list(t.component_cyclic("Value"))),
+                "concise group": tstate(t.list(t.component_cyclic("Value"))),
+                "dictionary": tstate(t.list(t.group({
                     "key": prop(t.text_global("Text Value")),
                     "value": prop(t.component_cyclic("Value")),
-                })),
+                }))),
                 /**
                  * verbose groups are always ordered
                  */
-                "verbose group": t.list(t.group({
+                "verbose group": tstate(t.list(t.group({
                     "key": prop(t.text_global("Text Value")),
                     "value": prop(t.component_cyclic("Value")),
-                })),
-                "text": t.group({
+                }))),
+                "text": tstate(t.group({
                     "value": prop(t.text_global("Text Value")),
                     "delimiter": prop(t.state_group({
-                        "none": t.nothing(),
-                        "quote": t.nothing(),
-                        "backtick": t.nothing(),
+                        "none": tstate(t.nothing()),
+                        "quote": tstate(t.nothing()),
+                        "backtick": tstate(t.nothing()),
                     })),
-                }),
-                "nothing": t.nothing(),
-                "optional": t.state_group({
-                    "not set": t.nothing(),
-                    "set": t.component_cyclic("Value"),
-                }),
-                "state": t.state_group({
-                    "missing data": t.nothing(),
-                    "set": t.group({
+                })),
+                "nothing": tstate(t.nothing()),
+                "optional": tstate(t.state_group({
+                    "not set": tstate(t.nothing()),
+                    "set": tstate(t.component_cyclic("Value")),
+                })),
+                "state": tstate(t.state_group({
+                    "missing data": tstate(t.nothing()),
+                    "set": tstate(t.group({
                         "state": prop(t.text_global("Text Value")),
                         "value": prop(t.component_cyclic("Value"))
-                    })
-                })
+                    }))
+                }))
             })),
         })),
 

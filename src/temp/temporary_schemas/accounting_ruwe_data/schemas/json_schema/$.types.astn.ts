@@ -6,6 +6,7 @@ import {
     type,
     n,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -18,22 +19,22 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Type": type(t.state_group({
-            "array": t.group({
+            "array": tstate(t.group({
                 "minItems": prop(t.optional(t.number_global("amount"))),
                 "maxItems": prop(t.optional(t.number_global("amount"))),
                 "uniqueItems": prop(t.optional(t.boolean())),
                 "oneOf": prop(t.optional(t.list(t.component_cyclic("Type")))),
                 "maxContains": prop(t.optional(t.number_global("amount"))),
                 "minContains": prop(t.optional(t.number_global("amount"))),
-            }),
-            "number": t.group({
+            })),
+            "number": tstate(t.group({
                 "multipleOf": prop(t.optional(t.number_global("amount"))),
                 "minimum": prop(t.optional(t.number_global("amount"))),
                 "maximum": prop(t.optional(t.number_global("amount"))),
                 "exclusiveMinimum": prop(t.optional(t.number_global("amount"))),
                 "exclusiveMaximum": prop(t.optional(t.number_global("amount"))),
-            }),
-            "object": t.group({
+            })),
+            "object": tstate(t.group({
                 "minProperties": prop(t.optional(t.number_global("amount"))),
                 "maxProperties": prop(t.optional(t.number_global("amount"))),
                 "required": prop(t.optional(t.list(t.text_global("identifier")))),
@@ -50,12 +51,12 @@ export const $: g_.Types<pd.Source_Location> = types(
                 // "additionalItems": t.optional(t.component("Type")),
                 // "minContains": t.optional(t.number_global("amount")),
                 // "maxContains": t.optional(t.number_global("amount")),
-            }),
-            "string": t.group({
+            })),
+            "string": tstate(t.group({
                 "minLength": prop(t.optional(t.number_global("amount"))),
                 "maxLength": prop(t.optional(t.number_global("amount"))),
                 "pattern": prop(t.optional(t.text_global("regex"))),
-            }),
+            })),
         }))
     }
 )

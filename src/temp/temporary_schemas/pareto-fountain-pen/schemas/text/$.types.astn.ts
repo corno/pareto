@@ -8,6 +8,7 @@ import {
     tr,
     type,
     prop,
+    tstate,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
@@ -17,8 +18,8 @@ export const $: g_.Types<pd.Source_Location>  = types(
 
         "Directory": type(t.dictionary(
             t.state_group({
-                "file": t.component("Lines"),
-                "directory": t.component_cyclic("Directory"),
+                "file": tstate(t.component("Lines")),
+                "directory": tstate(t.component_cyclic("Directory")),
             })
         )),
     }
