@@ -11,7 +11,6 @@ import * as temp_astn_to_fp from "../temp_serialize_target_ast"
 import { $ as poormans_modules } from "../temp/temporary_schemas/all"
 
 //data types
-import * as d_module from "../generated/interface/schemas/module/data_types/target"
 import * as d_fp_temp_types from "pareto-fountain-pen/dist/procedures/temp_types"
 
 //resolvers

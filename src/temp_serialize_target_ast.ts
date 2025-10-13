@@ -5,7 +5,7 @@ import * as _ea from 'exupery-core-alg'
  * and there should be no dependencies on pareto-standard-operations
  */
 
-import * as d_in from "./generated/interface/core/astn_target"
+import * as d_in from "astn/dist/generated/interface/schemas/sealed_target/data_types/source"
 import * as d_out from "pareto-fountain-pen/dist/generated/interface/schemas/block/data_types/target"
 
 import {

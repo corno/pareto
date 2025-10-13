@@ -1398,13 +1398,13 @@
                     }
                 )
                 `Type`: (
+                    'type parameters': {
+                    }
                     'node': | 'group' {
                         `node`: (
                             'description': ~
                             'node': | 'component' | 'internal cyclic' `Type Node`
                         )
-                    }
-                    'type parameters': {
                     }
                 )
                 `Type Node`: (
@@ -8467,11 +8467,11 @@
                 `Schema Tree`: (
                     'node': | 'state group' {
                         `schema`: (
-                            'description': ~
+                            'description': * "a single schema"
                             'node': | 'component' | 'internal' `Schema`
                         )
                         `set`: (
-                            'description': ~
+                            'description': * "a hierarchy of schemas"
                             'node': | 'component' | 'internal cyclic' `Schemas`
                         )
                     }
@@ -8644,13 +8644,13 @@
                 )
                 `Type`: (
                     'node': | 'group' {
-                        `node`: (
-                            'description': ~
-                            'node': | 'component' | 'internal cyclic' `Type Node`
-                        )
                         `type parameters`: (
                             'description': ~
                             'node': | 'component' | 'internal' `Type Parameters`
+                        )
+                        `node`: (
+                            'description': ~
+                            'node': | 'component' | 'internal cyclic' `Type Node`
                         )
                     }
                     'type parameters': {
