@@ -1,4 +1,5 @@
+/out
 /pub/dist
 /pub/node_modules
-/out
-/out
+/test/dist
+/test/node_modules
