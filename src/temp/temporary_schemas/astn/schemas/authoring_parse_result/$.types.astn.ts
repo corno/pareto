@@ -17,7 +17,7 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Parse Result": type(t.state_group({
             "failure": tstate(t.component("Parse Error")),
-            "success": tstate(t.component_external("ast", "Document")),
+            "success": tstate(t.component_external("parse tree", "Document")),
         })),
 
         "Parse Error": type(t.group({

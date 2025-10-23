@@ -13,12 +13,16 @@
         'imports': {
         }
         'types': {
-            `SFD`: (
+            `xx`: (
                 'type parameters': {
                 }
-                'node': | 'component' | 'internal cyclic' `SFD`
+                'node': | 'boolean' ~
+            )
+            'yy': (
+                'type parameters': {
+                }
+                'node': | 'component' | 'internal' `xx`
             )
         }
     )
-    
 )

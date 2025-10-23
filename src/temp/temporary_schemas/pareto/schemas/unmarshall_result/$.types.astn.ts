@@ -20,7 +20,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         // })),
 
         // "Node": type(t.group({
-        //     "value": t.reference_derived_external("ast", "Value", []),
+        //     "value": t.reference_derived_external("parse tree", "Value", []),
         //     "type": t.component("Node Type"),
         // })),
 
@@ -29,7 +29,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("boolean")]),
         //         "found value type": t.state_group({
         //             "valid": t.group({
-        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("string")]),
+        //                 "value": t.reference_derived_external("parse tree", "Concrete Value", [tr.s("string")]),
         //                 "range": t.reference_derived_external("token", "Range", []),
         //                 "correct string type": t.boolean(),
         //             }),
@@ -45,7 +45,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("dictionary")]),
         //         "found value type": t.state_group({
         //             "valid": t.group({
-        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("indexed collection")]),
+        //                 "value": t.reference_derived_external("parse tree", "Concrete Value", [tr.s("indexed collection")]),
         //                 "entries": t.dictionary(t.state_group({
         //                     "unique": t.component("Entry Data"),
         //                     "multiple": t.list(t.component("Entry Data")),
@@ -59,11 +59,11 @@ export const $: g_.Types<pd.Source_Location> = types(
         //         "found value type": t.state_group({
         //             "valid": t.state_group({
         //                 "indexed": t.group({
-        //                     "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("indexed collection")]),
+        //                     "value": t.reference_derived_external("parse tree", "Concrete Value", [tr.s("indexed collection")]),
         //                     "content": t.component("Group Content"),
         //                 }),
         //                 "ordered": t.group({
-        //                     "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("ordered collection")]),
+        //                     "value": t.reference_derived_external("parse tree", "Concrete Value", [tr.s("ordered collection")]),
         //                     "content": t.component("Group Content"),
         //                 }),
         //             }),
@@ -77,7 +77,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("list")]),
         //         "found value type": t.state_group({
         //             "valid": t.group({
-        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("ordered collection")]),
+        //                 "value": t.reference_derived_external("parse tree", "Concrete Value", [tr.s("ordered collection")]),
         //                 "elements": t.list(t.component_cyclic("Node")),
         //             }),
         //             "invalid": t.reference_derived_external("token", "Range", []),
@@ -87,7 +87,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("nothing")]),
         //         "found value type": t.state_group({
         //             "valid": t.group({
-        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("not set")]),
+        //                 "value": t.reference_derived_external("parse tree", "Concrete Value", [tr.s("not set")]),
         //             }),
         //             "invalid": t.reference_derived_external("token", "Range", []),
         //         }),
@@ -96,7 +96,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("number")]),
         //         "found value type": t.state_group({
         //             "valid": t.group({
-        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("string")]),
+        //                 "value": t.reference_derived_external("parse tree", "Concrete Value", [tr.s("string")]),
         //                 "range": t.reference_derived_external("token", "Range", []),
         //                 "correct string type": t.boolean(),
         //             }),
@@ -108,11 +108,11 @@ export const $: g_.Types<pd.Source_Location> = types(
         //         "found value type": t.state_group({
         //             "valid": t.state_group({
         //                 "set": t.group({
-        //                     "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("set optional value")]),
+        //                     "value": t.reference_derived_external("parse tree", "Concrete Value", [tr.s("set optional value")]),
         //                     "child node": t.component_cyclic("Node"),
         //                 }),
         //                 "not set": t.group({
-        //                     "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("not set")]),
+        //                     "value": t.reference_derived_external("parse tree", "Concrete Value", [tr.s("not set")]),
         //                 }),
         //             }),
         //             "invalid": t.reference_derived_external("token", "Range", []),
@@ -122,7 +122,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("reference")]),
         //         "found value type": t.state_group({
         //             "valid": t.group({
-        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("string")]),
+        //                 "value": t.reference_derived_external("parse tree", "Concrete Value", [tr.s("string")]),
         //             }),
         //             "invalid": t.reference_derived_external("token", "Range", []),
         //         }),
@@ -133,7 +133,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         //             "valid": t.state_group({
         //                 "value type": t.state_group({
         //                     "state": t.group({
-        //                         "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("tagged value")]),
+        //                         "value": t.reference_derived_external("parse tree", "Concrete Value", [tr.s("tagged value")]),
         //                         "found state definition": t.optional(t.group({
         //                             "definition": t.reference_derived_external("schema", "Type Node", [tr.s("state group")]),
         //                             "node": t.component_cyclic("Node"),
@@ -148,7 +148,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         //         "definition": t.reference_derived_external("schema", "Type Node", [tr.s("text")]),
         //         "found value type": t.state_group({
         //             "valid": t.group({
-        //                 "value": t.reference_derived_external("ast", "Concrete Value", [tr.s("string")]),
+        //                 "value": t.reference_derived_external("parse tree", "Concrete Value", [tr.s("string")]),
         //             }),
         //             "invalid": t.reference_derived_external("token", "Range", []),
         //         }),
@@ -166,7 +166,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         // })),
 
         // "Entry Data": type(t.group({
-        //     "key": t.reference_derived_external("ast", "String", []),
+        //     "key": t.reference_derived_external("parse tree", "String", []),
         //     "node": t.component("Optional Node"),
         // })),
 

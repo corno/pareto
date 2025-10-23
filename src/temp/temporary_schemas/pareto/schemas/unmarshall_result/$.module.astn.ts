@@ -11,7 +11,7 @@ import { $ as globals } from "./$.globals.astn"
 export const $: g_.Schemas.D<pd.Source_Location> = schema_(
     {
         "schema": import_("schema"),
-        "ast": import_("ast"),
+        "parse tree": import_("parse tree"),
         "token": import_("token"),
     },
     globals,

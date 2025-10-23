@@ -13,19 +13,19 @@ import { $ as x_legacy_schema } from "./schemas/legacy_schema/$.module.astn"
 import { $ as x_railroad_diagram } from "./schemas/railroad_diagram/$.module.astn"
 import { $ as x_regular_expression } from "./schemas/regular_expression/$.module.astn"
 import { $ as x_semantic_versioning } from "./schemas/semantic_versioning/$.module.astn"
-import { $ as x_xml_simple } from "./schemas/xml/simple/$.module.astn"
 import { $ as x_xml_parse_result } from "./schemas/xml/parse_result/$.module.astn"
+import { $ as x_xml_simple } from "./schemas/xml/simple/$.module.astn"
 
 export const $: g_.Schema_Tree<pd.Source_Location> = st.set({
     "alan light oldstyle": x_alan_light_oldstyle,
-    //"builder configuration": x_builder_configuration,
     "csv": x_csv,
+    "html": x_html,
     "json schema": x_json_schema,
     "legacy schema": x_legacy_schema,
-    "html": x_html,
     "railroad diagram": x_railroad_diagram,
     "regular expression": x_regular_expression,
     "semantic versioning": x_semantic_versioning,
     "xml parse result": x_xml_parse_result,
     "xml simple": x_xml_simple,
+    //"builder configuration": x_builder_configuration,
 })
