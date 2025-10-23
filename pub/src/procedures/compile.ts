@@ -37,7 +37,7 @@ const p_copy_and_log_error: _easync.Unguaranteed_Procedure_Initializer<Copy_Para
     )
 )({
     'source': {
-        'path': "./src/generated/" + $p.file,
+        'path': "./pub/src/generated/" + $p.file,
         'escape spaces in path': true,
     },
     'target': {

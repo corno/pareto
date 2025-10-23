@@ -54,10 +54,10 @@ export const $: g_.Types<pd.Source_Location> = types(
                 })),
             }))),
         })),
-        "ID": type(t.group({
+        "ID": type(t.optional(t.group({
             "key": prop(t.text_local(text('single line'))),
-            "name": prop(t.text_local(text('single line'))),
-        })),
+            "id": prop(t.text_local(text('single line'))),
+        }))),
         "Raw References": type(t.list(t.group({
             "resolveInfo": prop(t.text_local(text('single line'))),
             "reference": prop(t.optional(t.text_local(text('single line')))),
