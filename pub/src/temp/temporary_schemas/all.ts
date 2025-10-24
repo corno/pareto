@@ -5,6 +5,7 @@ import * as g_ from "../../generated/interface/schemas/module/data_types/target"
 import { $ as m_accounting_ruwe_data } from "./accounting_ruwe_data/module.astn"
 import { $ as m_astn } from "./astn/module.astn"
 import { $ as m_exupery } from "./exupery/module.astn"
+import { $ as m_json_to_astn } from "./json-to-astn/module.astn"
 import { $ as m_pareto_lionweb } from "./pareto-lionweb/module.astn"
 import { $ as m_pareto } from "./pareto/module.astn"
 import { $ as m_pareto_boekhouding } from "./pareto-boekhouding/module.astn"
@@ -19,6 +20,7 @@ export const $ = _edata.d<g_.Module<_edata.Source_Location> >({
     "accounting_ruwe_data": m_accounting_ruwe_data,
     "astn": m_astn,
     "exupery": m_exupery,
+    "json-to-astn": m_json_to_astn,
     "pareto": m_pareto,
     "pareto-boekhouding": m_pareto_boekhouding,
     "pareto-fountain-pen": m_pareto_fountain_pen,
