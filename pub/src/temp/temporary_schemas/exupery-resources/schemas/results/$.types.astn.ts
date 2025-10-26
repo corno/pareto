@@ -12,7 +12,12 @@ import * as g_ from "../../../../../generated/interface/schemas/schema/data_type
 
 export const $: g_.Types<pd.Source_Location> = types(
     {
+        "Node Type": type(t.state_group({
+            "file": tstate(t.nothing()),
+            "directory": tstate(t.nothing()),
+        })),
 
+        "Read Directory": type(t.dictionary(t.component("Node Type"))),
     }
 )
 
