@@ -6,6 +6,7 @@ import { $ as m_accounting_ruwe_data } from "./accounting_ruwe_data/module.astn"
 import { $ as m_antlr } from "./antlr/module.astn"
 import { $ as m_astn } from "./astn/module.astn"
 import { $ as m_exupery } from "./exupery/module.astn"
+import { $ as m_exupery_resources } from "./exupery-resources/module.astn"
 import { $ as m_json_to_astn } from "./json-to-astn/module.astn"
 import { $ as m_pareto_lionweb } from "./pareto-lionweb/module.astn"
 import { $ as m_pareto } from "./pareto/module.astn"
@@ -22,6 +23,7 @@ export const $ = _edata.d<g_.Module<_edata.Source_Location> >({
     "antlr": m_antlr,
     "astn": m_astn,
     "exupery": m_exupery,
+    "exupery-resources": m_exupery_resources,
     "json-to-astn": m_json_to_astn,
     "pareto": m_pareto,
     "pareto-boekhouding": m_pareto_boekhouding,
