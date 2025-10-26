@@ -3,6 +3,7 @@ import * as _edata from 'exupery-core-data'
 import * as g_ from "../../generated/interface/schemas/module/data_types/target"
 
 import { $ as m_accounting_ruwe_data } from "./accounting_ruwe_data/module.astn"
+import { $ as m_antlr } from "./antlr/module.astn"
 import { $ as m_astn } from "./astn/module.astn"
 import { $ as m_exupery } from "./exupery/module.astn"
 import { $ as m_json_to_astn } from "./json-to-astn/module.astn"
@@ -18,6 +19,7 @@ import { $ as m_pareto_vscode_backend } from "./pareto-vscode-backend/module.ast
 
 export const $ = _edata.d<g_.Module<_edata.Source_Location> >({
     "accounting_ruwe_data": m_accounting_ruwe_data,
+    "antlr": m_antlr,
     "astn": m_astn,
     "exupery": m_exupery,
     "json-to-astn": m_json_to_astn,

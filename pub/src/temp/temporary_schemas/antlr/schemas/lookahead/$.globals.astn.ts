@@ -8,13 +8,12 @@ import {
 import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
 
 export const $: g_.Globals<_edata.Source_Location> = globals(
-         'unconstrained',
+    'unconstrained',
     {
         "Text Value": text("single line"),
     },
     {
-        "Position": n.natural(),
+        "Integer": n.integer(),
+        "State Number": n.natural(),
     },
 )
-
-
