@@ -20,9 +20,9 @@ import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/im
 import { $$ as q_read_file } from "exupery-resources/dist/queries/read_file"
 
 
-import { get_directory_path } from "../operations/path"
+import { get_directory_path } from "../operations/impure/tbd/path"
 
-import { $, $ as load_schema } from "../deserializers/load_schema"
+import { $, $ as load_schema } from "../exceptional/deserializers/load_schema"
 
 export type Error =
     | ['parse error', d_parse_result.Parse_Error]

@@ -9,7 +9,7 @@ import { $ as poormans_modules } from "../temp/temporary_schemas/all"
 
 import * as ParameterTypes from "exupery-resources/dist/generated/interface/schemas/parameters/data_types/target"
 
-import * as r_pareto_module from "../resolvers/module"
+import * as r_pareto_module from "../temp/resolvers/module"
 
 import * as t_pareto_module_to_fountain_pen_block from "../transformations/module/temp_typescript"
 
@@ -62,7 +62,7 @@ export const $$: _eb.Unguaranteed_Main_Initializer = () => {
 
         _easync.up.dictionary<_eb.Error, null>(
             poormans_modules.map(($, key) => {
-                const path = "./out/source_code/src/generated"
+                const path = "../out/source_code/src/generated"
 
                 const module_path = `${path}/${key}`
 

@@ -14,12 +14,12 @@ import { $ as poormans_modules } from "../temp/temporary_schemas/all"
 import * as d_fp_temp_types from "pareto-fountain-pen/dist/procedures/temp_types"
 
 //resolvers
-import * as r_module from "../resolvers/module"
+import * as r_module from "../temp/resolvers/module"
 
 //marshall
 import * as m_module from "../generated/implementation/schemas/module/marshall"
 
-const path = "./out/serialized"
+const path = "../out/serialized"
 
 export const $$: _eb.Unguaranteed_Main_Initializer = ($) => {
     return _easync.up.dictionary<_eb.Error, d_fp_temp_types.File_Error>(

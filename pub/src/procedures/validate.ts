@@ -7,7 +7,7 @@ import * as _eb from 'exupery-core-bin'
 //data
 import { $ as poormans_modules } from "../temp/temporary_schemas/all"
 
-import * as r_pareto_module from "../resolvers/module"
+import * as r_pareto_module from "../temp/resolvers/module"
 
 import * as t_pareto_module_to_fountain_pen_block from "../transformations/module/temp_typescript"
 
@@ -20,7 +20,7 @@ export const $$: _eb.Unguaranteed_Main_Initializer = (
     $p
 ) => _easync.up.dictionary(
     poormans_modules.map(($, key) => {
-        const path = "./out/source_code/src/generated"
+        const path = "../out/source_code/src/generated"
 
         const module_path = `${path}/${key}`
         return _easync.up.sequence([
