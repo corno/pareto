@@ -13,8 +13,8 @@ import * as t_resolver from "./resolve"
 import * as t_marshall from "./marshall"
 import * as t_unmarshall from "./unmarshall"
 
-import { $$ as op_append_element } from "pareto-standard-operations/dist/pure/list/append_element"
-import { $$ as op_filter_dictionary } from "pareto-standard-operations/dist/pure/dictionary/filter"
+import { $$ as op_append_element } from "pareto-standard-operations/dist/operations/pure/list/append_element"
+import { $$ as op_filter_dictionary } from "pareto-standard-operations/dist/operations/pure/dictionary/filter"
 
 export const Schema_Tree = (
     $: _in.Schema_Tree,

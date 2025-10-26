@@ -11,10 +11,10 @@ import * as t_ast_to_range from "astn/dist/transformations/authoring_ast/temp_va
 
 import * as _out from "../temp/temp_unmashall_result_types"
 
-import { $$ as op_group } from "pareto-standard-operations/dist/impure/list/group"
-import { $$ as op_expect_exactly_one_element } from "pareto-standard-operations/dist/impure/list/expect_exactly_one_element"
-import { $$ as op_dictionary_filter } from "pareto-standard-operations/dist/pure/dictionary/filter"
-import { $$ as op_dictionary_merge } from "pareto-standard-operations/dist/impure/dictionary/merge"
+import { $$ as op_group } from "pareto-standard-operations/dist/operations/impure/list/group"
+import { $$ as op_expect_exactly_one_element } from "pareto-standard-operations/dist/operations/impure/list/expect_exactly_one_element"
+import { $$ as op_dictionary_filter } from "pareto-standard-operations/dist/operations/pure/dictionary/filter"
+import { $$ as op_dictionary_merge } from "pareto-standard-operations/dist/operations/impure/dictionary/merge"
 
 
 // export const Document = (

@@ -1,8 +1,8 @@
 import * as _ea from "exupery-core-alg"
 import * as _et from "exupery-core-types"
 
-import { $$ as op_remove_last_element } from "pareto-standard-operations/dist/impure/list/remove_last_element"
-import { $$ as op_split } from "exupery-standard-library/dist/text/split"
+import { $$ as op_remove_last_element } from "pareto-standard-operations/dist/operations/impure/list/remove_last_element"
+import { $$ as op_split } from "exupery-standard-library/dist/operations/impure/text/split"
 
 export const get_base_name = (path: string): _et.Optional_Value<string> => {
     const temp = op_split(path, "/")

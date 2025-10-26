@@ -11,11 +11,11 @@ import * as d_parse_result from "astn/dist/generated/interface/schemas/authoring
 
 import * as tu_dynamic_unmarshall from "../transformations/unmarshall_astn_ast"
 
-import * as parse from "astn/dist/authoring_parse/parse"
+import * as parse from "astn/dist/exceptional/authoring_parse/parse"
 
 import * as _out from "../temp/temp_unmashall_result_types"
 
-import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/impure/text/join_list_of_texts_with_separator"
+import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/operations/impure/text/join_list_of_texts_with_separator"
 
 import { $$ as q_read_file } from "exupery-resources/dist/queries/read_file"
 

@@ -7,8 +7,8 @@ import * as _out from "pareto-fountain-pen/dist/generated/interface/schemas/bloc
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
-import { $$ as op_join } from "pareto-standard-operations/dist/impure/text/join_list_of_texts_with_separator"
-import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/impure/dictionary/to_list_sorted_by_code_point"
+import { $$ as op_join } from "pareto-standard-operations/dist/operations/impure/text/join_list_of_texts_with_separator"
+import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/operations/impure/dictionary/to_list_sorted_by_code_point"
 
 export const Errors = (
     $: _in.Errors,

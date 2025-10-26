@@ -8,8 +8,8 @@ import * as _out from "exupery/dist/generated/interface/schemas/interface/data_t
 
 import * as sh from "exupery/dist/shorthands/interface"
 
-import { $$ as op_flatten } from "pareto-standard-operations/dist/pure/dictionary/flatten"
-import { $$ as op_append_element } from "pareto-standard-operations/dist/pure/list/append_element"
+import { $$ as op_flatten } from "pareto-standard-operations/dist/operations/pure/dictionary/flatten"
+import { $$ as op_append_element } from "pareto-standard-operations/dist/operations/pure/list/append_element"
 
 export const Schema = (
     $: _in.Schema,

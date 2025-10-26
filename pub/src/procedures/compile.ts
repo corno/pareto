@@ -7,7 +7,7 @@ import * as _eb from 'exupery-core-bin'
 //data
 import { $ as poormans_modules } from "../temp/temporary_schemas/all"
 
-import * as ParameterTypes from "exupery-resources/dist/generated/interface/schemas/parameters/data_types/target"
+import * as d_log from "exupery-resources/dist/generated/interface/schemas/log/data_types/target"
 
 import * as r_pareto_module from "../temp/resolvers/module"
 
@@ -54,7 +54,7 @@ const p_copy_and_log_error: _easync.Unguaranteed_Procedure_Initializer<Copy_Para
 export const $$: _eb.Unguaranteed_Main_Initializer = () => {
     return _easync.up.sequence([
 
-        _easync.upi.g<ParameterTypes.Log, _eb.Error>(
+        _easync.upi.g<d_log.Parameters, _eb.Error>(
             p_log,
         )({
             'lines': _ea.array_literal([`generating...`])
@@ -68,7 +68,7 @@ export const $$: _eb.Unguaranteed_Main_Initializer = () => {
 
                 return _easync.up.sequence<null>([
 
-                    _easync.upi.g<ParameterTypes.Log, null>(
+                    _easync.upi.g<d_log.Parameters, null>(
                         p_log,
                     )({
                         'lines': _ea.array_literal([`generating: ${key}`])

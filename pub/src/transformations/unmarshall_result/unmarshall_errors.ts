@@ -5,8 +5,8 @@ import * as _in from "../../temp/temp_unmashall_result_types"
 import * as _in_token from "astn/dist/generated/interface/schemas/token/data_types/target"
 import * as _out from "../../generated/interface/schemas/unmarshall_errors/data_types/target"
 
-import { $$ as op_flatten } from "pareto-standard-operations/dist/pure/list/flatten"
-import { $$ as op_dicionary_of_lists_to_list } from "pareto-standard-operations/dist/impure/dictionary/directory_of_lists_to_list"
+import { $$ as op_flatten } from "pareto-standard-operations/dist/operations/pure/list/flatten"
+import { $$ as op_dicionary_of_lists_to_list } from "pareto-standard-operations/dist/operations/impure/dictionary/directory_of_lists_to_list"
 
 export const Optional_Node = (
     $: _in.Optional_Node,

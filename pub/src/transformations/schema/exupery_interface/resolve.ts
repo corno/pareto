@@ -11,7 +11,7 @@ import { m, t, import_, type, sub } from "exupery/dist/shorthands/interface"
 import * as _migration_boilerplate_interface from "./migrate_boilerplate"
 import * as _types from "./types"
 
-import { $$ as op_append_element } from "pareto-standard-operations/dist/pure/list/append_element"
+import { $$ as op_append_element } from "pareto-standard-operations/dist/operations/pure/list/append_element"
 
 export const Signatures = (
     $: _in.Signatures,

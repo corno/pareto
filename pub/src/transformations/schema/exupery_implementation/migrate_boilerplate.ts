@@ -10,8 +10,8 @@ import * as _out_interface from "exupery/dist/generated/interface/schemas/interf
 import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"
 
-import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/pure/dictionary/flatten"
-import { $$ as op_append_element } from "pareto-standard-operations/dist/pure/list/append_element"
+import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/operations/pure/dictionary/flatten"
+import { $$ as op_append_element } from "pareto-standard-operations/dist/operations/pure/list/append_element"
 
 
 export const Types = (

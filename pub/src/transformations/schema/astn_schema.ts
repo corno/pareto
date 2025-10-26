@@ -9,7 +9,7 @@ import {
     wrap_reference,
 } from 'exupery-core-data/dist/shorthands/unresolved_transformation'
 
-import { $$ as op_flatten_dictionaries } from "pareto-standard-operations/dist/pure/dictionary/flatten"
+import { $$ as op_flatten_dictionaries } from "pareto-standard-operations/dist/operations/pure/dictionary/flatten"
 
 import * as _in from "../../generated/interface/schemas/schema/data_types/source"
 import * as _out from "../../generated/interface/schemas/astn_schema/data_types/target"
