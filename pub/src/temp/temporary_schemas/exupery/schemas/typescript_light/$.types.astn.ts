@@ -14,9 +14,6 @@ import * as g_ from "../../../../../generated/interface/schemas/schema/data_type
 
 export const $: g_.Types<pd.Source_Location> = types(
     {
-
-
-
         "String Literal": type(t.group({
             "delimiter": prop(t.state_group({
                 "quote": tstate(t.nothing()),
@@ -126,7 +123,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         "Group Part": type(t.state_group({
             "nested line": tstate(t.component("Line")),
             "line": tstate(t.text_global("Output")),
-            "sub block": tstate(t.component("Group")),
+            "sub group": tstate(t.component("Group")),
             "optional": tstate(t.optional(t.component_cyclic("Group Part"))),
             "nothing": tstate(t.nothing()),
         })),
