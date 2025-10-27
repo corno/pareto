@@ -5,16 +5,16 @@ import * as _easync from 'exupery-core-async'
 import * as _eb from 'exupery-core-bin'
 
 //data
-import { $ as poormans_modules } from "../temp/temporary_schemas/all"
+import { $ as poormans_modules } from "../../temp/temporary_schemas/all"
 
-import * as r_pareto_module from "../temp/resolvers/module"
+import * as r_pareto_module from "../../temp/resolvers/module"
 
-import * as t_pareto_module_to_fountain_pen_block from "../transformations/module/temp_typescript"
+import * as t_pareto_module_to_fountain_pen_block from "../../transformations/module/temp_typescript"
 
-import { $$ as p_fp_write_to_directory } from "pareto-fountain-pen/dist/procedures/write_to_directory"
-import { $$ as p_log } from "exupery-resources/dist/procedures/log"
-import { $$ as p_log_error } from "exupery-resources/dist/procedures/log_error"
-import { $$ as p_remove_node } from "exupery-resources/dist/procedures/remove"
+import { $$ as p_fp_write_to_directory } from "pareto-fountain-pen/dist/procedures/unguaranteed/write_to_directory"
+import { $$ as p_log } from "exupery-resources/dist/procedures/guaranteed/log"
+import { $$ as p_log_error } from "exupery-resources/dist/procedures/guaranteed/log_error"
+import { $$ as p_remove_node } from "exupery-resources/dist/procedures/unguaranteed/remove"
 
 export const $$: _eb.Unguaranteed_Main_Initializer = (
     $p

@@ -121,13 +121,13 @@ export const $: g_.Types<pd.Source_Location> = types(
          * these are all temporary fountain pen types, they should be replaced with the actual types
          */
 
-        "Block": type(t.list(t.component_cyclic("Block Part"))),
+        "Group": type(t.list(t.component_cyclic("Group Part"))),
 
-        "Block Part": type(t.state_group({
+        "Group Part": type(t.state_group({
             "nested line": tstate(t.component("Line")),
             "line": tstate(t.text_global("Output")),
-            "sub block": tstate(t.component("Block")),
-            "optional": tstate(t.optional(t.component_cyclic("Block Part"))),
+            "sub block": tstate(t.component("Group")),
+            "optional": tstate(t.optional(t.component_cyclic("Group Part"))),
             "nothing": tstate(t.nothing()),
         })),
 
@@ -135,7 +135,7 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Line Part": type(t.state_group({
             "snippet": tstate(t.text_global("Output")),
-            "indent": tstate(t.component("Block")),
+            "indent": tstate(t.component("Group")),
             "sub line": tstate(t.component("Line")),
             "optional": tstate(t.optional(t.component_cyclic("Line Part"))),
             "nothing": tstate(t.nothing()),
@@ -148,7 +148,7 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Directory": type(t.dictionary(
             t.state_group({
-                "file": tstate(t.component("Block")),
+                "file": tstate(t.component("Group")),
                 "directory": tstate(t.component_cyclic("Directory")),
             })
         )),

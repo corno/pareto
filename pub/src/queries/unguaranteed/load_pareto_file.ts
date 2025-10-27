@@ -7,15 +7,15 @@ import * as _easync from 'exupery-core-async'
 
 //data
 
-import * as _out from "../temp/temp_unmashall_result_types"
+import * as _out from "../../temp/temp_unmashall_result_types"
 
 import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/operations/impure/text/join_list_of_texts_with_separator"
 
-import { $$ as q_read_file } from "exupery-resources/dist/queries/read_file"
+import { $$ as q_read_file } from "exupery-resources/dist/queries/unguaranteed/read_file"
 
-import { get_directory_path } from "../operations/impure/tbd/path"
+import { get_directory_path } from "../../operations/impure/tbd/path"
 
-import { $ as load_schema } from "../exceptional/deserializers/load_schema"
+import { $ as load_schema } from "../../exceptional/deserializers/load_schema"
 
 import { $$ as q_load_astn_document, Error as Document_Error } from "./load_pareto_document"
 

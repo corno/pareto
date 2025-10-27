@@ -17,9 +17,9 @@ export const Errors = (
         'column offset': number
         'document path': string
     }
-): _out.Block => {
-    return sh.block([sh.b.sub($.map(($) => {
-        return sh.b.nested_line([
+): _out.Group => {
+    return sh.group([ sh.g.sub($.map(($) => {
+        return sh.g.nested_line([
             sh.l.snippet(`${$p['document path']}:${$.range.start.relative.line + $p['line offset']}:${$.range.start.relative.column + $p['column offset']}: `),
             _ea.cc($.type, ($) => {
                 switch ($[0]) {

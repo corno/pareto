@@ -17,9 +17,6 @@ import * as _et from 'exupery-core-types'
 
 export const $: g_.Types<pd.Source_Location> = types(
     {
-
-
-
         "Document": type(t.group({
             "header": prop(t.optional(t.group({
                 "!": prop(t.component("Structural Token")),

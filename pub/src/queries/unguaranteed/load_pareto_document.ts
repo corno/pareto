@@ -9,20 +9,20 @@ import * as _easync from 'exupery-core-async'
 
 import * as d_parse_result from "astn/dist/generated/interface/schemas/authoring_parse_result/data_types/target"
 
-import * as tu_dynamic_unmarshall from "../transformations/temp/unmarshall_astn_ast"
+import * as tu_dynamic_unmarshall from "../../transformations/temp/unmarshall_astn_ast"
 
 import * as parse from "astn/dist/exceptional/authoring_parse/parse"
 
-import * as _out from "../temp/temp_unmashall_result_types"
+import * as _out from "../../temp/temp_unmashall_result_types"
 
 import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/operations/impure/text/join_list_of_texts_with_separator"
 
-import { $$ as q_read_file } from "exupery-resources/dist/queries/read_file"
+import { $$ as q_read_file } from "exupery-resources/dist/queries/unguaranteed/read_file"
 
 
-import { get_directory_path } from "../operations/impure/tbd/path"
+import { get_directory_path } from "../../operations/impure/tbd/path"
 
-import { $, $ as load_schema } from "../exceptional/deserializers/load_schema"
+import { $, $ as load_schema } from "../../exceptional/deserializers/load_schema"
 
 export type Error =
     | ['parse error', d_parse_result.Parse_Error]

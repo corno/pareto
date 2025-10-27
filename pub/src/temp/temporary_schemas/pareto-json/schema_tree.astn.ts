@@ -3,10 +3,8 @@ import * as pd from 'exupery-core-data'
 import { st } from "../../../shorthands/schema"
 import * as g_ from "../../../generated/interface/schemas/schema/data_types/target"
 
-import { $ as x_ast } from "./schemas/ast/$.module.astn"
-import { $ as x_atn } from "./schemas/atn/$.module.astn"
+import { $ as x_json } from "./schemas/json/$.module.astn"
 
 export const $: g_.Schema_Tree<pd.Source_Location> = st.set({
-    "ast": x_ast,
-    "atn": x_atn,
+    "json": x_json,
 })

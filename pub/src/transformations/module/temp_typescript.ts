@@ -16,7 +16,6 @@ import * as t_pareto_to_exupery_implementation from "../../transformations/modul
 import * as r_exupery_interface from "exupery/dist/generated/implementation/schemas/interface/resolve"
 import * as r_exupery_implementation from "exupery/dist/generated/implementation/schemas/implementation/resolve"
 
-//shorthands
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
 export const Module = ($: _in.Module): _out.Directory => {

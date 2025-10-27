@@ -12,6 +12,8 @@ import { $ as x_write_file } from "./schemas/write_file/$.module.astn"
 import { $ as x_get_instream_data } from "./schemas/get_instream_data/$.module.astn"
 import { $ as x_read_directory } from "./schemas/read_directory/$.module.astn"
 import { $ as x_read_file } from "./schemas/read_file/$.module.astn"
+import { $ as x_run_query_executable } from "./schemas/run_query_executable/$.module.astn"
+import { $ as x_run_query_executable_and_catch } from "./schemas/run_query_executable_and_catch/$.module.astn"
 import { $ as x_stat } from "./schemas/stat/$.module.astn"
 
 export const $: g_.Schema_Tree<pd.Source_Location> = st.set({
@@ -24,5 +26,7 @@ export const $: g_.Schema_Tree<pd.Source_Location> = st.set({
     "get_instream_data": x_get_instream_data,
     "read_directory": x_read_directory,
     "read_file": x_read_file,
+    "run_query_executable": x_run_query_executable,
+    "run_query_executable_and_catch": x_run_query_executable_and_catch,
     "stat": x_stat,
 })

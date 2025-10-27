@@ -2,6 +2,6 @@
 
 import * as _eb from 'exupery-core-bin'
 
-import { $$ } from "../procedures/serialize_schemas"
+import { $$ } from "../procedures/unguaranteed/serialize_schemas"
 
 _eb.run_unguaranteed_main_procedure($$)

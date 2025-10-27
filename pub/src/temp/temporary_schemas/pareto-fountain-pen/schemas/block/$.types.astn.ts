@@ -20,17 +20,17 @@ export const $: g_.Types<pd.Source_Location>  = types(
         )),
 
         "Node": type(t.state_group({
-            "file": tstate(t.component("Block")),
+            "file": tstate(t.component("Group")),
             "directory": tstate(t.component_cyclic("Directory")),
         })),
 
-        "Block": type(t.list(t.component("Block Part"))),
+        "Group": type(t.list(t.component("Group Part"))),
 
-        "Block Part": type(t.state_group({
+        "Group Part": type(t.state_group({
             "nested line": tstate(t.component("Line")),
             "line": tstate(t.text_global("Output")),
-            "sub block": tstate(t.component_cyclic("Block")),
-            "optional": tstate(t.optional(t.component_cyclic("Block Part"))),
+            "sub group": tstate(t.component_cyclic("Group")),
+            "optional": tstate(t.optional(t.component_cyclic("Group Part"))),
             "nothing": tstate(t.nothing()),
         })),
 
@@ -38,7 +38,7 @@ export const $: g_.Types<pd.Source_Location>  = types(
 
         "Line Part": type(t.state_group({
             "snippet": tstate(t.text_global("Output")),
-            "indent": tstate(t.component_cyclic("Block")),
+            "indent": tstate(t.component_cyclic("Group")),
             "sub line": tstate(t.component_cyclic("Line")),
             "optional": tstate(t.optional(t.component_cyclic("Line Part"))),
             "nothing": tstate(t.nothing()),
