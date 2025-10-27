@@ -1,7 +1,7 @@
 import * as _pt from 'exupery-core-types'
 
 import * as _i_core from "../../../core/unconstrained"
-import * as _i_imports_ast from "../../ast/data_types/target"
+import * as _i_imports_parse_tree from "../../parse_tree/data_types/target"
 import * as _i_imports_schema from "../../schema/data_types/target"
 import * as _i_imports_token from "../../token/data_types/target"
 

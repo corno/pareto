@@ -1,6 +1,6 @@
 {
   "name": "pareto",
-  "version": "0.76.66",
+  "version": "0.76.67",
   "description": "A library for the Pareto programming Language",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,7 @@
     "dist"
   ],
   "dependencies": {
-    "astn": "^0.111.24",
+    "astn": "^0.111.25",
     "exupery": "^0.1.26",
     "exupery-core-alg": "^0.1.12",
     "exupery-core-bin": "^0.1.18",
