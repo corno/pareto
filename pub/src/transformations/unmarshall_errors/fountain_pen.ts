@@ -19,16 +19,16 @@ export const Errors = (
     }
 ): _out.Group => {
     return sh.group([ sh.g.sub($.map(($) => {
-        return sh.g.nested_line([
-            sh.l.snippet(`${$p['document path']}:${$.range.start.relative.line + $p['line offset']}:${$.range.start.relative.column + $p['column offset']}: `),
+        return sh.g.nested_block([
+            sh.b.snippet(`${$p['document path']}:${$.range.start.relative.line + $p['line offset']}:${$.range.start.relative.column + $p['column offset']}: `),
             _ea.cc($.type, ($) => {
                 switch ($[0]) {
-                    case 'error': return _ea.ss($, ($) => sh.l.sub([
-                        sh.l.snippet(`Error: `),
+                    case 'error': return _ea.ss($, ($) => sh.b.sub([
+                        sh.b.snippet(`Error: `),
                         Error_Type_Error($)
                     ]))
-                    case 'warning': return _ea.ss($, ($) => sh.l.sub([
-                        sh.l.snippet(`Warning: `),
+                    case 'warning': return _ea.ss($, ($) => sh.b.sub([
+                        sh.b.snippet(`Warning: `),
                         Error_Type_Warning($)
                     ]))
                     default: return _ea.au($[0])
@@ -40,22 +40,22 @@ export const Errors = (
 
 export const Error_Type_Error = (
     $: _in.Errors.L._type.SG.error,
-): _out.Line_Part => _ea.cc($, ($) => {
+): _out.Block_Part => _ea.cc($, ($) => {
     switch ($[0]) {
-        case 'duplicate property': return _ea.ss($, ($) => sh.l.snippet(`Duplicate property "${$.name}"`))
-        case 'invalid value type': return _ea.ss($, ($) => sh.l.snippet(`Invalid value type, expected ${op_join($.expected.map(($) => `'${$[0]}'`), { 'separator': ` or ` })}.`))
-        case 'missing property': return _ea.ss($, ($) => sh.l.snippet(`Missing property '${$.name}'`))
-        case 'superfluous property': return _ea.ss($, ($) => sh.l.snippet(`Superfluous property '${$.name}'`))
+        case 'duplicate property': return _ea.ss($, ($) => sh.b.snippet(`Duplicate property "${$.name}"`))
+        case 'invalid value type': return _ea.ss($, ($) => sh.b.snippet(`Invalid value type, expected ${op_join($.expected.map(($) => `'${$[0]}'`), { 'separator': ` or ` })}.`))
+        case 'missing property': return _ea.ss($, ($) => sh.b.snippet(`Missing property '${$.name}'`))
+        case 'superfluous property': return _ea.ss($, ($) => sh.b.snippet(`Superfluous property '${$.name}'`))
         case 'state': return _ea.ss($, ($) => _ea.cc($, ($) => {
             switch ($[0]) {
-                case 'missing state name': return _ea.ss($, ($) => sh.l.snippet(`Missing state name`))
-                case 'missing data marker': return _ea.ss($, ($) => sh.l.snippet(`Missing data marker`))
-                case 'missing value': return _ea.ss($, ($) => sh.l.snippet(`Missing value`))
-                case 'more than 2 elements': return _ea.ss($, ($) => sh.l.snippet(`More than 2 elements`))
-                case 'state is not a string': return _ea.ss($, ($) => sh.l.snippet(`State is not a string`))
-                case 'unknown state': return _ea.ss($, ($) => sh.l.sub([
-                    sh.l.snippet(`Unknown state: ${$.found}, expected one of `),
-                    sh.l.sub(op_dictionary_to_list($.expected).map(($) => sh.l.snippet(`'${$.key}'`)))
+                case 'missing state name': return _ea.ss($, ($) => sh.b.snippet(`Missing state name`))
+                case 'missing data marker': return _ea.ss($, ($) => sh.b.snippet(`Missing data marker`))
+                case 'missing value': return _ea.ss($, ($) => sh.b.snippet(`Missing value`))
+                case 'more than 2 elements': return _ea.ss($, ($) => sh.b.snippet(`More than 2 elements`))
+                case 'state is not a string': return _ea.ss($, ($) => sh.b.snippet(`State is not a string`))
+                case 'unknown state': return _ea.ss($, ($) => sh.b.sub([
+                    sh.b.snippet(`Unknown state: ${$.found}, expected one of `),
+                    sh.b.sub(op_dictionary_to_list($.expected).map(($) => sh.b.snippet(`'${$.key}'`)))
                 ]))
                 default: return _ea.au($[0])
             }
@@ -66,12 +66,12 @@ export const Error_Type_Error = (
 
 export const Error_Type_Warning = (
     $: _in.Errors.L._type.SG.warning,
-): _out.Line_Part => _ea.cc($, ($) => {
+): _out.Block_Part => _ea.cc($, ($) => {
     switch ($[0]) {
-        case 'expected apostrophed string': return _ea.ss($, ($) => sh.l.snippet(`Expected apostrophed string`))
-        case 'expected backticked string': return _ea.ss($, ($) => sh.l.snippet(`Expected backticked string`))
-        case 'expected quoted string': return _ea.ss($, ($) => sh.l.snippet(`Expected quoted string`))
-        case 'expected undelimited string': return _ea.ss($, ($) => sh.l.snippet(`Expected undelimited string`))
+        case 'expected apostrophed string': return _ea.ss($, ($) => sh.b.snippet(`Expected apostrophed string`))
+        case 'expected backticked string': return _ea.ss($, ($) => sh.b.snippet(`Expected backticked string`))
+        case 'expected quoted string': return _ea.ss($, ($) => sh.b.snippet(`Expected quoted string`))
+        case 'expected undelimited string': return _ea.ss($, ($) => sh.b.snippet(`Expected undelimited string`))
         default: return _ea.au($[0])
     }
 })

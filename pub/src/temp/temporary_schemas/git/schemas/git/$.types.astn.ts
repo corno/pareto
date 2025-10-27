@@ -46,7 +46,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                     })),
                 })),
                 "stash": tstate(t.state_group({
-                    "list": tstate(t.group({ // git stash list
+                    "list": tstate(t.group({ // git stash.b.st
                         'oneline': prop(t.boolean()),
                     })),
                     "show": tstate(t.group({ // git stash show

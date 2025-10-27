@@ -29,11 +29,11 @@ export const Schema = (
                     "signatures": import_.ancestor(3, "interface", op_flatten_list(_ea.array_literal([
                         _ea.array_literal(["schemas"]),
                         $p.path,
-                        _ea.array_literal(["marshall"])
+                        _ea.array_literal(["marsh.b."])
                     ])), {}),
                     "out": import_.ancestor(3, "interface", ["core", "astn target"], {}),
                 }),
-                "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["marshall"], {}))
+                "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["marsh.b."], {}))
             }),
             {
                 'separator': "",

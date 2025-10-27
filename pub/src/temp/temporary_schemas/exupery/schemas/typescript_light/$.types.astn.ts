@@ -121,20 +121,20 @@ export const $: g_.Types<pd.Source_Location> = types(
         "Group": type(t.list(t.component_cyclic("Group Part"))),
 
         "Group Part": type(t.state_group({
-            "nested line": tstate(t.component("Line")),
-            "line": tstate(t.text_global("Output")),
+            "nested block": tstate(t.component("Block")),
+            "block": tstate(t.text_global("Output")),
             "sub group": tstate(t.component("Group")),
             "optional": tstate(t.optional(t.component_cyclic("Group Part"))),
             "nothing": tstate(t.nothing()),
         })),
 
-        "Line": type(t.list(t.component_cyclic("Line Part"))),
+        "Block": type(t.list(t.component_cyclic("Block Part"))),
 
-        "Line Part": type(t.state_group({
+        "Block Part": type(t.state_group({
             "snippet": tstate(t.text_global("Output")),
             "indent": tstate(t.component("Group")),
-            "sub line": tstate(t.component("Line")),
-            "optional": tstate(t.optional(t.component_cyclic("Line Part"))),
+            "sub block": tstate(t.component("Block")),
+            "optional": tstate(t.optional(t.component_cyclic("Block Part"))),
             "nothing": tstate(t.nothing()),
         })),
 

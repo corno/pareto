@@ -27,11 +27,11 @@ export const Schema = (
         op_flatten_dictionary(
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
-                    "generic": import_.ancestor(2, "generic", ["unmarshall"], {}),
+                    "generic": import_.ancestor(2, "generic", ["unmarsh.b."], {}),
                     "signatures": import_.ancestor(3, "interface", op_flatten_list(_ea.array_literal([
                         _ea.array_literal(["schemas"]),
                         $p.path,
-                        _ea.array_literal(["unmarshall"]),
+                        _ea.array_literal(["unmarsh.b."]),
                     ])), {}),
                     "in": import_.ancestor(3, "interface", ["core", "astn source"], {}),
                     "out": import_.ancestor(3, "interface", op_flatten_list(_ea.array_literal([
@@ -40,7 +40,7 @@ export const Schema = (
                         _ea.array_literal(["data types", "target"]),
                     ])), $p.constrained ? { "Source": t.component_imported("in", "Range", {}, []) } : {}),
                 }),
-                "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))
+                "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["unmarsh.b."], {}))
             }),
             {
                 'separator': "",
