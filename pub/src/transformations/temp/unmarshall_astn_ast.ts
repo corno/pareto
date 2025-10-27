@@ -4,10 +4,10 @@ import * as _edev from 'exupery-core-dev'
 
 import * as definition from "../../generated/interface/schemas/schema/data_types/source"
 
-import * as _in from "astn/dist/generated/interface/schemas/authoring_ast/data_types/target"
+import * as _in from "astn/dist/generated/interface/schemas/authoring_parse_tree/data_types/target"
 import * as _in_token from "astn/dist/generated/interface/schemas/token/data_types/target"
 
-import * as t_ast_to_range from "astn/dist/transformations/authoring_ast/temp_value_range"
+import * as t_ast_to_range from "astn/dist/transformations/authoring_parse_tree/temp_value_range"
 
 import * as _out from "../../temp/temp_unmashall_result_types"
 

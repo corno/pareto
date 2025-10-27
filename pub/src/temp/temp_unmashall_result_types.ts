@@ -1,7 +1,7 @@
 import * as _et from 'exupery-core-types'
 
 import * as d_astn_token from "astn/dist/generated/interface/schemas/token/data_types/target"
-import * as d_astn_ast from "astn/dist/generated/interface/schemas/authoring_ast/data_types/target"
+import * as d_astn_ast from "astn/dist/generated/interface/schemas/authoring_parse_tree/data_types/target"
 
 import * as d_schema from "../generated/interface/schemas/schema/data_types/source"
 
