@@ -7633,7 +7633,7 @@
                 )
             }
         )
-        `unmarsh.b. errors`: | 'schema' (
+        `unmarshall errors`: | 'schema' (
             'complexity': | 'unconstrained' ~
             'globals': (
                 'complexity': | 'constrained' ~
@@ -7749,7 +7749,7 @@
                 )
             }
         )
-        `unmarsh.b. result`: | 'schema' (
+        `unmarshall result`: | 'schema' (
             'complexity': | 'unconstrained' ~
             'globals': (
                 'complexity': | 'unconstrained' ~

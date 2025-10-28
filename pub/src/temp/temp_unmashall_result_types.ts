@@ -1,9 +1,9 @@
 import * as _et from 'exupery-core-types'
 
-import * as d_astn_token from "astn/dist/generated/interface/schemas/token/data_types/target"
-import * as d_astn_ast from "astn/dist/generated/interface/schemas/authoring_parse_tree/data_types/target"
+import * as d_astn_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
+import * as d_astn_ast from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
 
-import * as d_schema from "../generated/interface/schemas/schema/data_types/source"
+import * as d_schema from "../interface/generated/pareto/schemas/schema/data_types/source"
 
 export type Document = {
     'content': Node

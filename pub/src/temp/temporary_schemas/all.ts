@@ -1,6 +1,6 @@
 import * as _edata from 'exupery-core-data'
 
-import * as g_ from "../../generated/interface/schemas/module/data_types/target"
+import * as g_ from "../../interface/generated/pareto/schemas/module/data_types/target"
 
 import { $ as m_accounting_ruwe_data } from "./accounting_ruwe_data/module.astn"
 import { $ as m_antlr } from "./antlr/module.astn"

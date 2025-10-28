@@ -6,18 +6,18 @@ import * as _ed from 'exupery-core-dev'
 
 //data
 
-import * as d_schema from "../../generated/interface/schemas/schema/data_types/source"
-import * as d_parse_result from "astn/dist/generated/interface/schemas/sealed_parse_result/data_types/target"
+import * as d_schema from "../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_parse_result from "astn/dist/interface/generated/pareto/schemas/sealed_parse_result/data_types/target"
 
 import * as r_pareto_schema from "../../temp/resolvers/schema"
 
-import * as u_pareto_schema from "../../generated/implementation/schemas/schema/unmarshall"
+import * as u_pareto_schema from "../../implementation/generated/pareto/schemas/schema/unmarshall"
 
 import * as parse from "astn/dist/exceptional/sealed_parse/parse"
 
 import * as _out from "../../temp/temp_unmashall_result_types"
 
-import { $$ as op_remove_first_element } from "pareto-standard-operations/dist/operations/impure/list/remove_first_element"
+import { $$ as op_remove_first_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/remove_first_element"
 
 type Error =
     | ['parse error', d_parse_result.Parse_Error]

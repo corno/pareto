@@ -6,9 +6,9 @@ import {
     wrap_state_group,
 } from 'exupery-core-data/dist/shorthands/unresolved_data'
 
-import * as unresolved from "../generated/interface/schemas/module/data_types/target"
+import * as unresolved from "../interface/generated/pareto/schemas/module/data_types/target"
 
-import * as unresolved_schema from "../generated/interface/schemas/schema/data_types/target"
+import * as unresolved_schema from "../interface/generated/pareto/schemas/schema/data_types/target"
 
 export const module_ = (
     operations: unresolved.Operations<_edata.Source_Location>,

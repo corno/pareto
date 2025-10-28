@@ -4,6 +4,6 @@ import * as _ea from 'exupery-core-alg'
 import * as _eb from 'exupery-core-bin'
 import * as _easync from 'exupery-core-async'
 
-import { $$ } from "../procedures/unguaranteed/validate"
+import { $$ } from "../implementation/procedures/unguaranteed/validate"
 
 _eb.run_unguaranteed_main_procedure($$)

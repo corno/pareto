@@ -1,6 +1,6 @@
 import * as pd from 'exupery-core-data'
 
-import * as g_ from "../../../generated/interface/schemas/module/data_types/target"
+import * as g_ from "../../../interface/generated/pareto/schemas/module/data_types/target"
 
 import { module_ } from "../../../shorthands/module"
 

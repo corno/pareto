@@ -1,7 +1,7 @@
 import * as pd from 'exupery-core-data'
 
 import { st } from "../../../shorthands/schema"
-import * as g_ from "../../../generated/interface/schemas/schema/data_types/target"
+import * as g_ from "../../../interface/generated/pareto/schemas/schema/data_types/target"
 
 import { $ as x_astn_schema } from "./schemas/astn_schema/$.module.astn"
 import { $ as x_authoring_parse_tree } from "./schemas/authoring_parse_tree/$.module.astn"

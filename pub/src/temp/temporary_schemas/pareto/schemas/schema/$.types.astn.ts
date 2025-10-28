@@ -12,7 +12,7 @@ import {
     propd,
     tstated,
 } from "../../../../../shorthands/schema"
-import * as g_ from "../../../../../generated/interface/schemas/schema/data_types/target"
+import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
 
 export const $: g_.Types<pd.Source_Location> = types(
     {

@@ -2,7 +2,7 @@ import * as _edata from 'exupery-core-data'
 
 import { operation, set, operations } from "../../../shorthands/module"
 import { t, text, n } from "../../../shorthands/schema"
-import * as g_ from "../../../generated/interface/schemas/module/data_types/target"
+import * as g_ from "../../../interface/generated/pareto/schemas/module/data_types/target"
 
 
 export const $: g_.Operations<_edata.Source_Location> = operations(
