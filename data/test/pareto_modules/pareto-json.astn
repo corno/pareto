@@ -1,28 +1,7 @@
 (
     'operations': {
     }
-    'schema tree': | 'schema' (
-        'complexity': | 'unconstrained' ~
-        'globals': (
-            'complexity': | 'unconstrained' ~
-            'number types': {
-            }
-            'text types': {
-            }
-        )
-        'imports': {
-        }
-        'types': {
-            `xx`: (
-                'type parameters': {
-                }
-                'node': | 'boolean' ~
-            )
-            'yy': (
-                'type parameters': {
-                }
-                'node': | 'component' | 'internal' `xx`
-            )
-        }
-    )
+    'schema tree': | 'set' {
+    }
+    
 )
