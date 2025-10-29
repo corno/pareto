@@ -15,6 +15,8 @@ import { $$ as p_fp_write_to_directory } from "pareto-fountain-pen/dist/implemen
 import { $$ as p_log } from "exupery-resources/dist/implementation/procedures/guaranteed/log"
 import { $$ as p_log_error } from "exupery-resources/dist/implementation/procedures/guaranteed/log_error"
 import { $$ as p_remove_node } from "exupery-resources/dist/implementation/procedures/unguaranteed/remove"
+import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/validate"
+
 
 export const $$: _eb.Unguaranteed_Main_Initializer = (
     $p

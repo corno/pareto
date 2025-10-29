@@ -9,6 +9,8 @@ import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface
 import { m, t, type, import_ } from "exupery/dist/shorthands/interface"
 import * as t_exupery_interface_main from "../schema/exupery_interface/main"
 import * as t_exupery_interface_types from "../schema/exupery_interface/types"
+import { Signature } from "../../../interface/algorithms/transformations/module/exupery_interface"
+
 
 export const Operations = ($: _in.Operations): _out.Type<pd.Source_Location> => {
     return t.group($.map(($) => pa.cc($, ($) => {

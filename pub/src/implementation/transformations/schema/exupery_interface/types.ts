@@ -10,6 +10,8 @@ import * as sh from "exupery/dist/shorthands/interface"
 
 import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/operations/pure/list/append_element"
+import { Signature } from "../../../../interface/algorithms/transformations/schema/exupery_interface/types"
+
 
 export const Schema = (
     $: _in.Schema,

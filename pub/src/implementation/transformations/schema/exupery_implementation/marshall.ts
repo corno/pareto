@@ -13,6 +13,8 @@ import { t, import_, sub } from "exupery/dist/shorthands/interface"
 import {$$ as op_append_element} from "pareto-standard-operations/dist/implementation/operations/pure/list/append_element"
 import {$$ as op_flatten_dictionary} from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 import {$$ as op_flatten_list} from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
+import { Signature } from "../../../../interface/algorithms/transformations/schema/exupery_implementation/marshall"
+
 
 export const Schema = (
     $: _in.Schema,

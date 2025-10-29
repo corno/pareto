@@ -18,6 +18,8 @@ import { get_directory_path } from "../../operations/impure/tbd/path"
 import { $ as load_schema } from "../../../exceptional/deserializers/load_schema"
 
 import { $$ as q_load_astn_document, Error as Document_Error } from "./load_pareto_document"
+import { Signature } from "../../../interface/algorithms/queries/unguaranteed/load_pareto_file"
+
 
 export type Error =
     | ['no file', null]

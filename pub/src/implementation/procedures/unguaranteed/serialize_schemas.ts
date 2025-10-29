@@ -18,6 +18,8 @@ import * as r_module from "../../../temp/resolvers/module"
 
 //marshall
 import * as m_module from "../../../implementation/generated/pareto/schemas/module/marshall"
+import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/serialize_schemas"
+
 
 const path = "../out/serialized"
 

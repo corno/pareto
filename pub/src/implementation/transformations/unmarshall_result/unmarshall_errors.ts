@@ -7,6 +7,8 @@ import * as _out from "../../../interface/generated/pareto/schemas/unmarshall_er
 
 import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
 import { $$ as op_dicionary_of_lists_to_list } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/directory_of_lists_to_list"
+import { Signature } from "../../../interface/algorithms/transformations/unmarshall_result/unmarshall_errors"
+
 
 export const Optional_Node = (
     $: _in.Optional_Node,

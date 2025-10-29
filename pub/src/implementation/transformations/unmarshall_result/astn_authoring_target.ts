@@ -3,6 +3,8 @@ import * as _edev from 'exupery-core-dev'
 
 import * as _in from "../../../temp/temp_unmashall_result_types"
 import * as _out from "astn/dist/interface/generated/pareto/schemas/authoring_target/data_types/target"
+import { Signature } from "../../../interface/algorithms/transformations/unmarshall_result/astn_authoring_target"
+
 
 export const Node = (
     $: _in.Node,

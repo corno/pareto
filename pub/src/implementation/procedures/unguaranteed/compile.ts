@@ -20,6 +20,8 @@ import { $$ as p_log } from "exupery-resources/dist/implementation/procedures/gu
 import { $$ as p_log_error } from "exupery-resources/dist/implementation/procedures/guaranteed/log_error"
 import { $$ as p_copy_file } from "exupery-resources/dist/implementation/procedures/unguaranteed/copy"
 import { $$ as p_remove_node } from "exupery-resources/dist/implementation/procedures/unguaranteed/remove"
+import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/compile"
+
 
 type Copy_Parameters = {
     'file': string,

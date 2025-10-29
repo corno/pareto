@@ -2,6 +2,8 @@ import * as pd from 'exupery-core-data'
 import * as _edev from 'exupery-core-dev'
 import * as _ea from 'exupery-core-alg'
 import * as pt from 'exupery-core-types'
+import { Signature } from "../../../interface/algorithms/transformations/temp/astn_schema"
+
 
 import {
     wrap_dictionary,
