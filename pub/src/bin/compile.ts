@@ -2,6 +2,6 @@
 
 import * as _eb from 'exupery-core-bin'
 
-import { $$ } from "../implementation/procedures/unguaranteed/compile"
+import { $$ } from "../implementation/algorithms/procedures/unguaranteed/compile"
 
 _eb.run_unguaranteed_main_procedure($$)
