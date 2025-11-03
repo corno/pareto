@@ -95,3 +95,18 @@ export const $: g_.Types<pd.Source_Location> = types(
 
     }
 )
+
+type My_Group = {
+    'a': string
+}
+
+type My_Dictionary = { [key: string]: My_Group }
+
+type My_List = My_Group[]
+
+type My_Nothing = null
+
+type My_Optional = My_Group | null
+
+type My_Component = My_Group
+

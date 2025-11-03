@@ -8,13 +8,14 @@ import { $ as m_astn } from "./astn/module.astn"
 import { $ as m_astn_to_xml } from "./astn-to-xml/module.astn"
 import { $ as m_exupery } from "./exupery/module.astn"
 import { $ as m_exupery_resources } from "./exupery-resources/module.astn"
-import { $ as m_json_to_astn } from "./json-to-astn/module.astn"
 import { $ as m_git } from "./git/module.astn"
-import { $ as m_pareto_lionweb } from "./pareto-lionweb/module.astn"
+import { $ as m_json_to_astn } from "./json-to-astn/module.astn"
 import { $ as m_pareto } from "./pareto/module.astn"
 import { $ as m_pareto_boekhouding } from "./pareto-boekhouding/module.astn"
 import { $ as m_pareto_fountain_pen } from "./pareto-fountain-pen/module.astn"
+import { $ as m_pareto_html_print } from "./pareto-html-print/module.astn"
 import { $ as m_pareto_json } from "./pareto-json/module.astn"
+import { $ as m_pareto_lionweb } from "./pareto-lionweb/module.astn"
 import { $ as m_pareto_targets } from "./pareto-targets/module.astn"
 import { $ as m_pareto_vscode_backend } from "./pareto-vscode-backend/module.astn"
 
@@ -31,6 +32,7 @@ export const $ = _edata.d<g_.Module<_edata.Source_Location> >({
     "pareto": m_pareto,
     "pareto-boekhouding": m_pareto_boekhouding,
     "pareto-fountain-pen": m_pareto_fountain_pen,
+    "pareto-html-print": m_pareto_html_print,
     "pareto-json": m_pareto_json,
     "pareto-lionweb": m_pareto_lionweb,
     "pareto-targets": m_pareto_targets,

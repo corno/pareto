@@ -9,7 +9,7 @@ import { $ as poormans_modules } from "../../../../temp/temporary_schemas/all"
 
 import * as r_pareto_module from "../../../../temp/resolvers/module"
 
-import * as t_pareto_module_to_fountain_pen_block from "../../transformations/module/temp_typescript"
+import * as t_pareto_module_to_fountain_pen_block from "../../transformations/module/temp_typescript_implementation"
 
 import { $$ as p_fp_write_to_directory } from "pareto-fountain-pen/dist/implementation/procedures/unguaranteed/write_to_directory"
 import { $$ as p_log } from "exupery-resources/dist/implementation/procedures/guaranteed/log"

@@ -11,7 +11,8 @@ import * as d_log from "exupery-resources/dist/interface/generated/pareto/schema
 
 import * as r_pareto_module from "../../../../temp/resolvers/module"
 
-import * as t_pareto_module_to_fountain_pen_block from "../../transformations/module/temp_typescript"
+import * as t_pareto_module_to_fountain_pen_block__implementation from "../../transformations/module/temp_typescript_implementation"
+import * as t_pareto_module_to_fountain_pen_block__interface from "../../transformations/module/temp_typescript_interface"
 
 
 
@@ -23,10 +24,6 @@ import { $$ as p_remove_node } from "exupery-resources/dist/implementation/proce
 import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/compile"
 
 
-type Copy_Parameters = {
-    'file': string,
-    'module path': string,
-}
 
 const p_copy_interface_file_and_log_error: _easync.Unguaranteed_Procedure_Initializer<Copy_Parameters, null> = ($p) => _easync.upi.u(
     p_copy_file,
@@ -34,16 +31,16 @@ const p_copy_interface_file_and_log_error: _easync.Unguaranteed_Procedure_Initia
     _easync.eh(
         p_log_error,
         ($) => ({
-            'lines': _ea.array_literal([`Could not copy static file: ${$p.file}`])
+            'lines': _ea.array_literal([`Could not copy interface file: ${$p.file}`])
         })
     )
 )({
     'source': {
-        'path': "./pub/src/interfacegenerated/pareto" + $p.file,
+        'path': "./pub/src/interface/generated/pareto/core/" + $p.file,
         'escape spaces in path': true,
     },
     'target': {
-        'path': $p['module path'] + $p.file,
+        'path': $p['module path'] + "/core/"+ $p.file,
         'escape spaces in path': true,
     },
     'options': {
@@ -53,22 +50,28 @@ const p_copy_interface_file_and_log_error: _easync.Unguaranteed_Procedure_Initia
     }
 })
 
+
+type Copy_Parameters = {
+    'file': string,
+    'module path': string,
+}
+
 const p_copy_implementation_file_and_log_error: _easync.Unguaranteed_Procedure_Initializer<Copy_Parameters, null> = ($p) => _easync.upi.u(
     p_copy_file,
     () => null,
     _easync.eh(
         p_log_error,
         ($) => ({
-            'lines': _ea.array_literal([`Could not copy static file: ${$p.file}`])
+            'lines': _ea.array_literal([`Could not copy implementation file: ${$p.file}`])
         })
     )
 )({
     'source': {
-        'path': "./pub/src/interface/generated/pareto/" + $p.file,
+        'path': "./pub/src/implementation/generated/pareto/generic/" + $p.file,
         'escape spaces in path': true,
     },
     'target': {
-        'path': $p['module path'] + $p.file,
+        'path': $p['module path'] + "/generic/" + $p.file,
         'escape spaces in path': true,
     },
     'options': {
@@ -89,11 +92,9 @@ export const $$: _eb.Unguaranteed_Main_Initializer = () => {
 
         _easync.up.dictionary<_eb.Error, null>(
             poormans_modules.map(($, key) => {
-                const interface_path = "./out/source_code/src/interface/generated/pareto"
-                const implementation_path = "./out/source_code/src/interface/generated/pareto"
 
-                const interface_module_path = `${interface_path}/${key}`
-                const implementation_module_path = `${implementation_path}/${key}`
+                const interface_module_path = `./out/source_code/${key}/interface/`
+                const implementation_module_path = `./out/source_code/${key}/implementation/`
 
                 return _easync.up.sequence<null>([
 
@@ -156,7 +157,7 @@ export const $$: _eb.Unguaranteed_Main_Initializer = () => {
                             p_fp_write_to_directory,
                             ($) => null,
                         )({
-                            'directory': t_pareto_module_to_fountain_pen_block.Module(
+                            'directory': t_pareto_module_to_fountain_pen_block__interface.Module(
                                 r_pareto_module.Module(
                                     $,
                                     {
@@ -168,8 +169,28 @@ export const $$: _eb.Unguaranteed_Main_Initializer = () => {
                                     }
                                 ),
                             ),
-                            //'path': module_path,
-                            'path': _ea.panic("IMPLEMENT ME"),
+                            'path': interface_module_path,
+                            'indentation': "    ",
+                            'newline': "\n",
+                            'remove before creating': true,
+                        }),
+                        _easync.upi.u(
+                            p_fp_write_to_directory,
+                            ($) => null,
+                        )({
+                            'directory': t_pareto_module_to_fountain_pen_block__implementation.Module(
+                                r_pareto_module.Module(
+                                    $,
+                                    {
+                                        'parameters': {
+                                            'lookups': null,
+                                            'values': null,
+                                        },
+                                        'location 2 string': _ed.location_to_string
+                                    }
+                                ),
+                            ),
+                            'path': implementation_module_path,
                             'indentation': "    ",
                             'newline': "\n",
                             'remove before creating': true,
@@ -178,23 +199,23 @@ export const $$: _eb.Unguaranteed_Main_Initializer = () => {
 
                         p_copy_implementation_file_and_log_error({
                             'module path': implementation_module_path,
-                            'file': "/implementation/generic/resolve.ts"
+                            'file': "resolve.ts"
                         }),
                         p_copy_implementation_file_and_log_error({
                             'module path': implementation_module_path,
-                            'file': "/implementation/generic/unmarshall.ts"
+                            'file': "unmarshall.ts"
                         }),
                         p_copy_interface_file_and_log_error({
                             'module path': interface_module_path,
-                            'file': "/interface/core/resolve.ts"
+                            'file': "resolve.ts"
                         }),
                         p_copy_interface_file_and_log_error({
                             'module path': interface_module_path,
-                            'file': "/interface/core/astn_target.ts"
+                            'file': "astn_target.ts"
                         }),
                         p_copy_interface_file_and_log_error({
                             'module path': interface_module_path,
-                            'file': "/interface/core/astn_source.ts"
+                            'file': "astn_source.ts"
                         }),
                     ]),
 

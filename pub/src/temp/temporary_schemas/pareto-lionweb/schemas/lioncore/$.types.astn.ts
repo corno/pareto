@@ -43,6 +43,10 @@ export const $: g_.Types<pd.Source_Location> = types(
                                 "link": tstate(t.group({
                                     "multiple": prop(t.text_local(text('single line'))),
                                     "type": prop(t.component("Raw References")),
+                                    "link type": prop(t.state_group({
+                                        "containment": tstate(t.nothing()),
+                                        "reference": tstate(t.nothing()),
+                                    }))
                                 })),
                             })),
                         }))),
