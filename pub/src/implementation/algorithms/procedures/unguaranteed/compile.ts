@@ -205,6 +205,12 @@ export const $$: _eb.Unguaranteed_Main_Initializer = () => {
                             'module path': implementation_module_path,
                             'file': "unmarshall.ts"
                         }),
+                        p_copy_implementation_file_and_log_error({
+                            'module path': implementation_module_path,
+                            'file': "serialize.ts"
+                        }),
+
+
                         p_copy_interface_file_and_log_error({
                             'module path': interface_module_path,
                             'file': "resolve.ts"
