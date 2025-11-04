@@ -16,7 +16,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         "M3": type(t.group({
             "id": prop(t.component("ID")),
             "version": prop(t.text_local(text('single line'))),
-            "dependencies": prop(t.component("Raw References")),
+            "dependencies": prop(t.list(t.component("Raw Reference"))),
             "entities": prop(t.dictionary(t.group({
                 "id": prop(t.component("ID")),
                 "type": prop(t.state_group({
@@ -25,11 +25,11 @@ export const $: g_.Types<pd.Source_Location> = types(
                             "concept": tstate(t.group({
                                 "abstract": prop(t.text_local(text('single line'))),
                                 "partition": prop(t.text_local(text('single line'))),
-                                "extends": prop(t.component("Raw References")),
-                                "implements": prop(t.component("Raw References")),
+                                "extends": prop(t.optional(t.component("Raw Reference"))),
+                                "implements": prop(t.list(t.component("Raw Reference"))),
                             })),
                             "interface": tstate(t.group({
-                                "extends": prop(t.component("Raw References")),
+                                "extends": prop(t.list(t.component("Raw Reference"))),
                             })),
                             //annotation needs to be implemented
                         })),
@@ -38,11 +38,11 @@ export const $: g_.Types<pd.Source_Location> = types(
                             "optional": prop(t.text_local(text('single line'))),
                             "type": prop(t.state_group({
                                 "property": tstate(t.group({
-                                    "type": prop(t.component("Raw References")),
+                                    "type": prop(t.component("Raw Reference")),
                                 })),
                                 "link": tstate(t.group({
                                     "multiple": prop(t.text_local(text('single line'))),
-                                    "type": prop(t.component("Raw References")),
+                                    "type": prop(t.component("Raw Reference")),
                                     "link type": prop(t.state_group({
                                         "containment": tstate(t.nothing()),
                                         "reference": tstate(t.nothing()),
@@ -62,9 +62,9 @@ export const $: g_.Types<pd.Source_Location> = types(
             "key": prop(t.text_local(text('single line'))),
             "id": prop(t.text_local(text('single line'))),
         }))),
-        "Raw References": type(t.list(t.group({
+        "Raw Reference": type(t.group({
             "resolveInfo": prop(t.text_local(text('single line'))),
             "reference": prop(t.optional(t.text_local(text('single line')))),
-        }))),
+        })),
     }
 )
