@@ -7,29 +7,26 @@ import * as _ed from 'exupery-core-dev'
 //data
 
 import * as d_schema from "../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as d_parse_result from "astn/dist/interface/generated/pareto/schemas/sealed_parse_result/data_types/target"
+import * as d_parse_result from "../../interface/generated/pareto/core/parse_result"
 
 import * as r_pareto_schema from "../../temp/resolvers/schema"
 
 import * as u_pareto_schema from "../../implementation/generated/pareto/schemas/schema/unmarshall"
 
-import * as parse from "astn/dist/exceptional/sealed_parse/parse"
+import * as parse from "../../implementation/generated/pareto/generic/parse/parse"
 
 import * as _out from "../../temp/temp_unmashall_result_types"
 
-import { $$ as op_remove_first_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/remove_first_element"
+import { $$ as op_remove_first_element } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/list/remove_first_element"
 
 type Error =
-    | ['parse error', d_parse_result.Parse_Error]
-// ['resolve error', FIXME resolve errors will now panic!
+    | ['parse error', d_parse_result._T_Parse_Error]
+// ['resolve error', FIXME resolve errors will now deprecated_panic!
 
-type Unsafe_Transformation_Result<T, E> =
-    | ['success', T]
-    | ['error', E]
 
 export const $ = (
     $: string,
-): Unsafe_Transformation_Result<d_schema.Type, Error> => {
+): _ea.Refinement_Result<d_schema.Type, Error> => {
 
     return parse.parse(
         $,
@@ -37,7 +34,7 @@ export const $ = (
             'tab size': 4,
         }
     ).transform(
-        ($): Unsafe_Transformation_Result<d_schema.Type, Error> => {
+        ($): _ea.Refinement_Result<d_schema.Type, Error> => {
 
             const resolved_schema_schema = r_pareto_schema.Type_Specification(
                 u_pareto_schema.Type_Specification(
@@ -69,10 +66,10 @@ export const $ = (
                         return _ea.cc(st, ($) => {
                             switch ($[0]) {
 
-                                case 'schema': return _ea.ss($, ($) => _ea.panic(`(FIXME: make this a reference) the selected tree is a schema, not a set, can't do this step: ${split.element} `))
+                                case 'schema': return _ea.ss($, ($) => _ea.deprecated_panic(`(FIXME: make this a reference) the selected tree is a schema, not a set, can't do this step: ${split.element} `))
                                 case 'set': return _ea.ss($, ($) => $.dictionary.__get_entry(split.element).transform(
                                     ($) => temp_find_schema($, split.array),
-                                    () => _ea.panic(`(FIXME: make this a reference) schema not found: ${split.element}`)
+                                    () => _ea.deprecated_panic(`(FIXME: make this a reference) schema not found: ${split.element}`)
                                 ))
                                 default: return _ea.au($[0])
                             }
@@ -81,7 +78,7 @@ export const $ = (
                     () => _ea.cc($, ($) => {
                         switch ($[0]) {
                             case 'schema': return _ea.ss($, ($) => $)
-                            case 'set': return _ea.ss($, ($) => _ea.panic(`(FIXME: make this a reference) the selected tree is a set, not a schema`))
+                            case 'set': return _ea.ss($, ($) => _ea.deprecated_panic(`(FIXME: make this a reference) the selected tree is a set, not a schema`))
                             default: return _ea.au($[0])
                         }
                     })
@@ -95,12 +92,12 @@ export const $ = (
                     schema.types.dictionary.map(($, key) => {
                         _ed.log_debug_message(`available type: ${key}`, () => { })
                     })
-                    _ea.panic(`(FIXME: make this a reference) root type ${resolved_schema_schema.type} not found`)
+                    _ea.deprecated_panic(`(FIXME: make this a reference) root type ${resolved_schema_schema.type} not found`)
                 }
             )
-            return ['success', type]
+            return _ea.refinement.successful(type)
         },
-        ($) => ['error', ['parse error', $]],
+        ($) => _ea.refinement.failed(['parse error', $])
 
     )
 }

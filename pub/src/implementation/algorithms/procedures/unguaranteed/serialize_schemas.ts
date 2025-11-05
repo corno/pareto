@@ -4,7 +4,7 @@ import * as _eb from 'exupery-core-bin'
 import * as _ed from 'exupery-core-data'
 import * as _easync from 'exupery-core-async'
 
-import { $$ as p_write_file } from "exupery-resources/dist/implementation/procedures/unguaranteed/write_file"
+import { $$ as p_write_file } from "exupery-resources/dist/implementation/algorithms/procedures/unguaranteed/write_file"
 import * as serialize from "../../../generated/pareto/generic/serialize"
 //data
 import { $ as poormans_modules } from "../../../../temp/temporary_schemas/all"

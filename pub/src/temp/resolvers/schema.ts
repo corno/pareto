@@ -26,7 +26,7 @@ export const Imports: _i_signatures.Imports = ($, $p) => _ea.block(() => {
                 const p_schema: _i_out.Imports.D.schema = _ea.cc($['schema'], ($) => _ea.cc(p_schema_set_child.entry, ($) => { // reference constraint ('schema set child')
                     switch ($[0]) {
                         case 'schema': return _ea.ss($, ($) => $)
-                        case 'set': return _ea.ss($, ($) => _ea.panic("HELP!!!"))
+                        case 'set': return _ea.ss($, ($) => _ea.deprecated_panic("HELP!!!"))
                         default: return _ea.au($[0])
                     }
                 }))
@@ -56,7 +56,7 @@ export const Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => _ea.b
                     )
 
                     const p_selected_dictionary = p_selection['resulting node'][0] !== 'dictionary' // component constraint (selection)
-                        ? _ea.panic("not a 'dictionary' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
+                        ? _ea.deprecated_panic("not a 'dictionary' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
                         : p_selection['resulting node'][1]
 
                     return ['dictionary', {
@@ -66,7 +66,7 @@ export const Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => _ea.b
                 })
                 case 'not circular dependent siblings': return _ea.ss($, ($) => ['not circular dependent siblings', $p.parameters.values['current dictionary'].transform(
                     ($) => $,
-                    () => _ea.panic("not in a dictionary @ ", $p['location 2 string'](loc))
+                    () => _ea.deprecated_panic("not in a dictionary @ ", $p['location 2 string'](loc))
                 )])
                 case 'parameter': return _ea.ss($, ($) => ['parameter', _i_generic.get_entry(
                     _i_generic.dictionary_to_lookup($p.parameters.values.signature['resolved parameters'].lookups, null),
@@ -77,7 +77,7 @@ export const Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => _ea.b
                 )])
                 case 'possibly circular dependent siblings': return _ea.ss($, ($) => ['possibly circular dependent siblings', $p.parameters.values['current dictionary'].transform(
                     ($) => $,
-                    () => _ea.panic("SFSFSD")
+                    () => _ea.deprecated_panic("SFSFSD")
                 )])
                 default: return _ea.au($[0])
             }
@@ -194,7 +194,7 @@ export const Signature_Parameters: _i_signatures.Signature_Parameters = ($, $p) 
                     'dictionary': _ea.cc(p_referent['resulting node'], ($) => { // component constraint (referent)
                         switch ($[0]) {
                             case 'dictionary': return _ea.ss($, ($) => $)
-                            default: return _ea.panic(`not a 'dictionary' but a '${$[0]}' @ ${$p['location 2 string'](lookups_loc)}`)
+                            default: return _ea.deprecated_panic(`not a 'dictionary' but a '${$[0]}' @ ${$p['location 2 string'](lookups_loc)}`)
 
                         }
                     }),
@@ -551,7 +551,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                     case 'global': return _ea.ss($, ($): _i_out.Type_Node.SG._number => ['global', _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup($p.parameters.values.globals.transform(
                             ($) => $['number types'],
-                            () => _ea.panic("globals not set")
+                            () => _ea.deprecated_panic("globals not set")
                         ),
                             null
                         ),
@@ -578,7 +578,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                     case 'global': return _ea.ss($, ($): _i_out.Type_Node.SG.text => ['global', _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup($p.parameters.values.globals.transform(
                             ($) => $['text types'],
-                            () => _ea.panic("globals not set")
+                            () => _ea.deprecated_panic("globals not set")
                         ),
                             null
                         ),
@@ -605,7 +605,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                     case 'external': return _ea.ss($, ($) => {
                         const sc_import = $p.parameters.values.imports.transform(
                             ($) => $,
-                            () => _ea.panic("missing")
+                            () => _ea.deprecated_panic("missing")
                         )
                         const p_import = _i_generic.get_entry(
                             _i_generic.dictionary_to_lookup(sc_import, null),
@@ -682,11 +682,11 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                 $p.parameters.values.globals.transform(
                     ($) => {
                         if ($.complexity[0] === 'unconstrained') {
-                            _ea.panic(`schema complexity setting is 'unconstrained', so references are not allowed @ ${$p['location 2 string'](loc)}`)
+                            _ea.deprecated_panic(`schema complexity setting is 'unconstrained', so references are not allowed @ ${$p['location 2 string'](loc)}`)
                         }
                     },
                     () => {
-                        _ea.panic(`schema doesn't have settings, so no references are allowed @ ${$p['location 2 string'](loc)}`)
+                        _ea.deprecated_panic(`schema doesn't have settings, so no references are allowed @ ${$p['location 2 string'](loc)}`)
                     }
                 )
                 const p_referent = Type_Node_Reference(
@@ -710,7 +710,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                                 'dictionary': _ea.cc(p_referent['resulting node'], ($) => { // component constraint (referent)
                                     switch ($[0]) {
                                         case 'dictionary': return _ea.ss($, ($) => $)
-                                        default: return _ea.panic(`not a 'dictionary' but a '${$[0]}' @ ${$p['location 2 string'](loc)}`)
+                                        default: return _ea.deprecated_panic(`not a 'dictionary' but a '${$[0]}' @ ${$p['location 2 string'](loc)}`)
 
                                     }
                                 }),
@@ -795,7 +795,7 @@ export const Type_Reference: _i_signatures.Type_Reference = ($, $p) => {
             case 'external': return _ea.ss($, ($): _i_out.Type_Reference.location => {
                 const sc_import = $p.parameters.values.imports.transform(
                     ($) => $,
-                    () => _ea.panic("missing")
+                    () => _ea.deprecated_panic("missing")
                 )
                 const p_import = _i_generic.get_entry(
                     _i_generic.dictionary_to_lookup(sc_import, null),
@@ -851,7 +851,7 @@ export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                         case 'dictionary': return _ea.ss($, ($) => {
                             const sc_definition: _i_out.Type_Node.SG.dictionary = _ea.cc(current, ($) => {
                                 if ($[0] !== 'dictionary') {
-                                    return _ea.panic(`not a 'dictionary' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _ea.deprecated_panic(`not a 'dictionary' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -863,7 +863,7 @@ export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                         case 'group': return _ea.ss($, ($) => {
                             const sc_definition: _i_out.Type_Node.SG.group = _ea.cc(current, ($) => {
                                 if ($[0] !== 'group') {
-                                    return _ea.panic(`not a 'group' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _ea.deprecated_panic(`not a 'group' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -882,7 +882,7 @@ export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                         case 'list': return _ea.ss($, ($) => {
                             const sc_definition: _i_out.Type_Node.SG.list = _ea.cc(current, ($) => {
                                 if ($[0] !== 'list') {
-                                    return _ea.panic(`not a 'list' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _ea.deprecated_panic(`not a 'list' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -894,7 +894,7 @@ export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                         case 'optional': return _ea.ss($, ($) => {
                             const sc_definition: _i_out.Type_Node.SG.optional = _ea.cc(current, ($) => {
                                 if ($[0] !== 'optional') {
-                                    return _ea.panic(`not a 'optional' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _ea.deprecated_panic(`not a 'optional' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -906,7 +906,7 @@ export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                         case 'state group': return _ea.ss($, ($) => {
                             const p_state_group: _i_out.Type_Node.SG.state_group = _ea.cc(current, ($) => {
                                 if ($[0] !== 'state group') {
-                                    return _ea.panic(`not a 'state group' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _ea.deprecated_panic(`not a 'state group' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -952,7 +952,7 @@ export const Option_Constraints: _i_signatures.Option_Constraints = ($, $p) => {
                             }
                         ))
                         const p_selected_state_group = p_selection['resulting node'][0] !== 'state group' // component constraint ('selection')
-                            ? _ea.panic("not a 'state group' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
+                            ? _ea.deprecated_panic("not a 'state group' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
                             : p_selection['resulting node'][1]
                         const p_state: _i_out.Option_Constraints.D.SG.state.state = _ea.cc($['state'], ($) => _i_generic.get_entry(
                             _i_generic.dictionary_to_lookup(p_selected_state_group, null),
@@ -999,7 +999,7 @@ export const Constraint: _i_signatures.Constraint = ($, $p) => {
         switch ($[0]) {
             case 'state': return _ea.ss($, ($) => {
                 const p_selected_state_group = p_selection['resulting node'][0] !== 'state group' // component constraint ('selection')
-                    ? _ea.panic("not a 'state group' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
+                    ? _ea.deprecated_panic("not a 'state group' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
                     : p_selection['resulting node'][1]
                 const p_state: _i_out.Constraint._type.SG.state.state = _ea.cc($['state'], ($) => _i_generic.get_entry(
                     _i_generic.dictionary_to_lookup(p_selected_state_group, null),
@@ -1015,7 +1015,7 @@ export const Constraint: _i_signatures.Constraint = ($, $p) => {
             })
             case 'optional value': return _ea.ss($, ($) => {
                 const p_selected_optional_value = p_selection['resulting node'][0] !== 'optional' // component constraint ('selection')
-                    ? _ea.panic("not a 'optional' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
+                    ? _ea.deprecated_panic("not a 'optional' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
                     : p_selection['resulting node'][1]
                 return ['optional value', {
                     'selected optional value': p_selected_optional_value,
@@ -1088,20 +1088,20 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
         switch ($[0]) {
             case 'boolean': return _ea.ss($, ($) => {
                 const x = $p.parameters.values.definition[0] !== 'boolean'
-                    ? _ea.panic("not a 'boolean' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _ea.deprecated_panic("not a 'boolean' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
                 return ['boolean', null]
             })
             case 'component': return _ea.ss($, ($): _i_out.Node_Resolver => {
                 const x = $p.parameters.values.definition[0] !== 'component'
-                    ? _ea.panic("not a 'component' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _ea.deprecated_panic("not a 'component' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
                 const p_location = _ea.cc($.location['state group'], ($): _i_out.Node_Resolver.SG.component.location => {
                     switch ($[0]) {
                         case 'external': return _ea.ss($, ($) => {
                             const sc_import = $p.parameters.values.imports.transform(
                                 ($) => $,
-                                () => _ea.panic("missing")
+                                () => _ea.deprecated_panic("missing")
                             )
                             const p_import = _i_generic.get_entry(
                                 _i_generic.dictionary_to_lookup(sc_import, null),
@@ -1113,7 +1113,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                             const pc_constrained: _i_out.Schema.complexity.SG.constrained = _ea.cc(p_import.entry.schema.complexity, ($) => {
                                 switch ($[0]) {
                                     case 'constrained': return _ea.ss($, ($) => $)
-                                    case 'unconstrained': return _ea.ss($, ($) => _ea.panic(`not constrained @ ${$p['location 2 string'](loc)}`))
+                                    case 'unconstrained': return _ea.ss($, ($) => _ea.deprecated_panic(`not constrained @ ${$p['location 2 string'](loc)}`))
                                     default: return _ea.au($[0])
                                 }
                             })
@@ -1157,7 +1157,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     }
                 })
                 if (p_signature.type.node !== x_type.node) {
-                    _ea.panic("type mismatch @ ", $p['location 2 string'](loc))
+                    _ea.deprecated_panic("type mismatch @ ", $p['location 2 string'](loc))
                 }
                 const p_arguments: _i_out.Node_Resolver.SG.component._arguments = $.arguments.transform(
                     ($) => {
@@ -1206,7 +1206,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                         //additional validation
                                         if (p_signature['resolved parameters'].lookups !== $p.parameters.values.signature['resolved parameters'].lookups) {
 
-                                            _ea.panic("lookup parameters mismatch @ ", $p['location 2 string'](loc))
+                                            _ea.deprecated_panic("lookup parameters mismatch @ ", $p['location 2 string'](loc))
                                         }
                                     }
                                     return _ea.not_set()
@@ -1282,7 +1282,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                                             case 'optional': return _ea.ss($, ($) => {
 
                                                                 if (benchmark.presence[0] !== 'optional') {
-                                                                    _ea.panic("argument is not optional '", key, "' @ ", $p['location 2 string'](values_location))
+                                                                    _ea.deprecated_panic("argument is not optional '", key, "' @ ", $p['location 2 string'](values_location))
                                                                 }
 
                                                                 _ea.cc($, ($) => {
@@ -1301,7 +1301,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                                                         case 'set': return _ea.ss($, ($) => {
 
                                                                             if (walk_path_till_end(benchmark['data type']['resulting node']) !== walk_path_till_end($.tail['resulting node'])) {
-                                                                                _ea.panic("type mismatch in '", key, "' @ ", $p['location 2 string'](values_location))
+                                                                                _ea.deprecated_panic("type mismatch in '", key, "' @ ", $p['location 2 string'](values_location))
                                                                             }
                                                                         })
                                                                         default: _ea.au($[0])
@@ -1312,18 +1312,18 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                                             })
                                                             case 'parameter': return _ea.ss($, ($) => {
                                                                 if ($.entry.presence[0] !== benchmark.presence[0]) {
-                                                                    _ea.panic("parameter '", key, "' presence mismatch @ ", $p['location 2 string'](values_location))
+                                                                    _ea.deprecated_panic("parameter '", key, "' presence mismatch @ ", $p['location 2 string'](values_location))
                                                                 }
                                                                 if ($.entry['data type']['resulting node'] !== benchmark['data type']['resulting node']) {
-                                                                    _ea.panic("parameter '", key, "' type mismatch @ ", $p['location 2 string'](values_location))
+                                                                    _ea.deprecated_panic("parameter '", key, "' type mismatch @ ", $p['location 2 string'](values_location))
                                                                 }
                                                             })
                                                             case 'required': return _ea.ss($, ($) => {
                                                                 if (benchmark.presence[0] !== 'required') {
-                                                                    _ea.panic("argument '", key, "' is not required @ ", $p['location 2 string'](values_location))
+                                                                    _ea.deprecated_panic("argument '", key, "' is not required @ ", $p['location 2 string'](values_location))
                                                                 }
                                                                 if (walk_path_till_end(benchmark['data type']['resulting node']) !== walk_path_till_end($.tail['resulting node'])) {
-                                                                    _ea.panic("type mismatch in '", key, "' @ ", $p['location 2 string'](values_location))
+                                                                    _ea.deprecated_panic("type mismatch in '", key, "' @ ", $p['location 2 string'](values_location))
                                                                 }
 
                                                             })
@@ -1342,7 +1342,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                         //additional validation
 
                                         if (p_signature['resolved parameters'].values !== $p.parameters.values.signature['resolved parameters'].values) {
-                                            _ea.panic("value parameters mismatch @ ", $p['location 2 string'](loc))
+                                            _ea.deprecated_panic("value parameters mismatch @ ", $p['location 2 string'](loc))
                                         }
                                     }
                                     return _ea.not_set()
@@ -1355,10 +1355,10 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                         {
                             //additional validation
                             if (p_signature['resolved parameters'].lookups !== $p.parameters.values.signature['resolved parameters'].lookups) {
-                                _ea.panic("lookup parameters mismatch @ ", $p['location 2 string'](loc))
+                                _ea.deprecated_panic("lookup parameters mismatch @ ", $p['location 2 string'](loc))
                             }
                             if (p_signature['resolved parameters'].values !== $p.parameters.values.signature['resolved parameters'].values) {
-                                _ea.panic("value parameters mismatch @ ", $p['location 2 string'](loc))
+                                _ea.deprecated_panic("value parameters mismatch @ ", $p['location 2 string'](loc))
                             }
                         }
 
@@ -1392,7 +1392,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
             })
             case 'dictionary': return _ea.ss($, ($) => {
                 const p_definition = $p.parameters.values.definition[0] !== 'dictionary'
-                    ? _ea.panic("not a 'dictionary' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _ea.deprecated_panic("not a 'dictionary' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
 
                 const p_benchmark = $.benchmark.map(($) => {
@@ -1402,7 +1402,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     })
 
                     const p_resulting_dictionary = p_selection['resulting node'][0] !== 'dictionary' // component constraint ('selection')
-                        ? _ea.panic("not a 'dictionary' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
+                        ? _ea.deprecated_panic("not a 'dictionary' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
                         : p_selection['resulting node'][1]
                     return {
                         'selection': p_selection,
@@ -1442,7 +1442,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
             })
             case 'group': return _ea.ss($, ($) => {
                 const x = $p.parameters.values.definition[0] !== 'group'
-                    ? _ea.panic("not a 'group' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _ea.deprecated_panic("not a 'group' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
 
                 const p_properties: _r.Ordered_Dictionary<null, _i_out.Node_Resolver_Group.D> = _i_generic.resolve_dense_ordered_dictionary(
@@ -1501,7 +1501,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
             })
             case 'list': return _ea.ss($, ($) => {
                 const p_definition = $p.parameters.values.definition[0] !== 'list'
-                    ? _ea.panic("not a 'list' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _ea.deprecated_panic("not a 'list' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
                 const p_result = $.result.map(($) => Type_Reference($, {
                     'location 2 string': $p['location 2 string'],
@@ -1547,19 +1547,19 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
             })
             case 'nothing': return _ea.ss($, ($) => {
                 const x = $p.parameters.values.definition[0] !== 'nothing'
-                    ? _ea.panic("not a 'nothing' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _ea.deprecated_panic("not a 'nothing' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
                 return ['nothing', null]
             })
             case 'number': return _ea.ss($, ($) => {
                 const x = $p.parameters.values.definition[0] !== 'number'
-                    ? _ea.panic("not a 'number' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _ea.deprecated_panic("not a 'number' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
                 return ['number', null]
             })
             case 'optional': return _ea.ss($, ($) => {
                 const x = $p.parameters.values.definition[0] !== 'optional'
-                    ? _ea.panic("not a 'optional' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _ea.deprecated_panic("not a 'optional' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
 
                 const p_constraints: _i_out.Node_Resolver.SG.state_group.states.D.constraints = Option_Constraints($.constraints, {
@@ -1598,7 +1598,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
             })
             case 'reference': return _ea.ss($, ($): _i_out.Node_Resolver => {
                 const p_definition = $p.parameters.values.definition[0] !== 'reference'
-                    ? _ea.panic("not a 'reference' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _ea.deprecated_panic("not a 'reference' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
                 return ['reference', {
                     'definition': p_definition,
@@ -1606,7 +1606,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                         switch ($[0]) {
                             case 'derived': return _ea.ss($, ($) => {
                                 const p_definition_2 = p_definition.type[0] !== 'derived'
-                                    ? _ea.panic("not a 'derived' but a '", p_definition.type[0], "' @ ", $p['location 2 string'](loc))
+                                    ? _ea.deprecated_panic("not a 'derived' but a '", p_definition.type[0], "' @ ", $p['location 2 string'](loc))
                                     : p_definition.type[1]
                                 return ['derived', {
                                     'value': Guaranteed_Value_Selection(
@@ -1620,7 +1620,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                             })
                             case 'selected': return _ea.ss($, ($) => {
                                 const p_definition_2 = p_definition.type[0] !== 'selected'
-                                    ? _ea.panic("not a 'selected' but a '", p_definition.type[0], "' @ ", $p['location 2 string'](loc))
+                                    ? _ea.deprecated_panic("not a 'selected' but a '", p_definition.type[0], "' @ ", $p['location 2 string'](loc))
                                     : p_definition.type[1]
                                 const p_lookup = Lookup_Selection(
                                     $.lookup,
@@ -1654,7 +1654,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
             })
             case 'state group': return _ea.ss($, ($): _i_out.Node_Resolver => {
                 const p_definition = $p.parameters.values.definition[0] !== 'state group'
-                    ? _ea.panic("not a 'state group' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _ea.deprecated_panic("not a 'state group' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
 
                 const p_states: _i_out.Node_Resolver.SG.state_group.states = _i_generic.resolve_dense_dictionary(
@@ -1783,14 +1783,14 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
             })
             case 'text': return _ea.ss($, ($) => {
                 const x = $p.parameters.values.definition[0] !== 'text'
-                    ? _ea.panic("not a 'text' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _ea.deprecated_panic("not a 'text' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
                 return ['text', null]
             })
             // case 'type parameter': return _ea.ss($, ($) => {
 
             //     const x = $p.parameters.values.definition[0] !== 'type parameter'
-            //         ? _ea.panic("not a 'type parameter' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+            //         ? _ea.deprecated_panic("not a 'type parameter' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
             //         : $p.parameters.values.definition[1]
             //     return ['type parameter', null]
             // })
@@ -1817,7 +1817,7 @@ export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = 
 
                             const sc_definition: _i_out.Type_Node.SG.component = _ea.cc(current, ($) => {
                                 if ($[0] !== 'component') {
-                                    return _ea.panic(`not a 'component' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _ea.deprecated_panic(`not a 'component' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -1836,7 +1836,7 @@ export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = 
                         case 'group': return _ea.ss($, ($) => {
                             const sc_definition: _i_out.Type_Node.SG.group = _ea.cc(current, ($) => {
                                 if ($[0] !== 'group') {
-                                    return _ea.panic(`not a 'group' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _ea.deprecated_panic(`not a 'group' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -1856,7 +1856,7 @@ export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = 
 
                             const sc_definition: _i_out.Type_Node.SG.reference = _ea.cc(current, ($) => {
                                 if ($[0] !== 'reference') {
-                                    return _ea.panic(`not a 'reference' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _ea.deprecated_panic(`not a 'reference' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -1867,7 +1867,7 @@ export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = 
                                     case 'selected': return _ea.ss($, ($) => _ea.cc(referent['resulting node'], ($) => {
                                         switch ($[0]) {
                                             case 'dictionary': return _ea.ss($, ($) => $.node)
-                                            default: return _ea.panic("not a dictionary @ ", $p['location 2 string'](sg_loc))
+                                            default: return _ea.deprecated_panic("not a dictionary @ ", $p['location 2 string'](sg_loc))
                                         }
                                     }))
                                     default: return _ea.au($[0])
@@ -1931,7 +1931,7 @@ export const Possibly_Optional: _i_signatures.Possible_Value_Selection = ($, $p)
                             }
                         ))
                         const p_state_group = _ea.cc($['state group'], ($) => p_sibling.entry.resolver[0] !== 'state group'
-                            ? _ea.panic("not a 'state group' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                            ? _ea.deprecated_panic("not a 'state group' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                             : p_sibling.entry.resolver[1])
 
                         const p_result = Type_Reference($.result, {
@@ -1961,7 +1961,7 @@ export const Possibly_Optional: _i_signatures.Possible_Value_Selection = ($, $p)
                             }
                         ))
                         const p_optional_value = _ea.cc($['optional value'], ($) => p_sibling.entry.resolver[0] !== 'optional'
-                            ? _ea.panic("not a 'optional' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                            ? _ea.deprecated_panic("not a 'optional' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                             : p_sibling.entry.resolver[1])
                         const p_result = Type_Reference($.result, {
                             'location 2 string': $p['location 2 string'],
@@ -2009,7 +2009,7 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                 ))
 
                                 const x_component = p_sibling.entry.resolver[0] !== 'component'
-                                    ? _ea.panic("not a 'component' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                                    ? _ea.deprecated_panic("not a 'component' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                                     : p_sibling.entry.resolver[1]
 
                                 const p_constraint = _ea.cc($['constraint'], ($) => _i_generic.get_entry(
@@ -2035,11 +2035,11 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                 ))
 
                                 const x_reference = p_sibling.entry.resolver[0] !== 'reference'
-                                    ? _ea.panic("not a 'reference' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                                    ? _ea.deprecated_panic("not a 'reference' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                                     : p_sibling.entry.resolver[1]
 
                                 const x_reference_selected = x_reference.type[0] !== 'selected'
-                                    ? _ea.panic("not a 'selected' but a '", x_reference.type[0], "' @ ", $p['location 2 string'](loc))
+                                    ? _ea.deprecated_panic("not a 'selected' but a '", x_reference.type[0], "' @ ", $p['location 2 string'](loc))
                                     : x_reference.type[1]
 
                                 const p_constraint = _ea.cc($['constraint'], ($) => _i_generic.get_entry(
@@ -2063,7 +2063,7 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                 case 'option constraint': return _ea.ss($, ($): _i_out.Guaranteed_Value_Selection.start => {
                     const sc = $p.parameters.values['option constraints'].transform(
                         ($) => $,
-                        () => _ea.panic("not in an option @ ", $p['location 2 string'](start_location))
+                        () => _ea.deprecated_panic("not in an option @ ", $p['location 2 string'](start_location))
                     )
                     return ['option constraint', _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup(sc, null),
@@ -2092,11 +2092,11 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                 }
                             ))
                             const p_list_result_a = _ea.cc($['list result'], ($) => p_sibling.entry.resolver[0] !== 'list'
-                                ? _ea.panic("not a 'list' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                                ? _ea.deprecated_panic("not a 'list' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                                 : p_sibling.entry.resolver[1])
                             const p_list_result: _i_out.Guaranteed_Value_Selection.start.SG.result.SG.list.list_result = p_list_result_a.result.transform(
                                 ($) => $,
-                                () => _ea.panic("there is no list result")
+                                () => _ea.deprecated_panic("there is no list result")
                             )
                             return ['list', {
                                 'property': p_sibling,
@@ -2113,7 +2113,7 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                 }
                             ))
                             const p_state_group = _ea.cc($['state group'], ($) => p_sibling.entry.resolver[0] !== 'state group'
-                                ? _ea.panic("not a 'state group' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                                ? _ea.deprecated_panic("not a 'state group' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                                 : p_sibling.entry.resolver[1])
                             return ['state group', {
                                 'property': p_sibling,
@@ -2141,7 +2141,7 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                 }
                             ))
                             const p_optional_value = _ea.cc($['optional value'], ($) => p_sibling.entry.resolver[0] !== 'optional'
-                                ? _ea.panic("not a 'optional' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                                ? _ea.deprecated_panic("not a 'optional' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                                 : p_sibling.entry.resolver[1])
                             return ['optional value', {
                                 'property': p_sibling,
@@ -2236,11 +2236,11 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                     }))
                                     case 'list cursor': return _ea.ss($, ($) => $p.parameters.values['list cursor'].transform(
                                         ($) => $['resulting node'],
-                                        () => _ea.panic("there is no cursor")
+                                        () => _ea.deprecated_panic("there is no cursor")
                                     ))
                                     case 'linked entry': return _ea.ss($, ($) => $p.parameters.values['linked entry'].transform(
                                         ($) => $['resulting dictionary'].node,
-                                        () => _ea.panic(`there is no linked entry @ ${$p['location 2 string'](start_loc)}`)
+                                        () => _ea.deprecated_panic(`there is no linked entry @ ${$p['location 2 string'](start_loc)}`)
                                     ))
                                     case 'option constraint': return _ea.ss($, ($) => _ea.cc($.entry, ($) => {
                                         switch ($[0]) {

@@ -9,9 +9,9 @@ import * as _easync from 'exupery-core-async'
 
 import * as _out from "../../../../temp/temp_unmashall_result_types"
 
-import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/implementation/operations/impure/text/join_list_of_texts_with_separator"
+import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/text/join_list_of_texts_with_separator"
 
-import { $$ as q_read_file } from "exupery-resources/dist/implementation/queries/unguaranteed/read_file"
+import { $$ as q_read_file } from "exupery-resources/dist/implementation/algorithms/queries/unguaranteed/read_file"
 
 import { get_directory_path } from "../../operations/impure/tbd/path"
 
@@ -36,7 +36,7 @@ export const $$: _easync.Unguaranteed_Query_Initializer<Parameters, _out.Node, E
     const schema_path = op_join_with_separator(
         get_directory_path($p['file path']).transform(
             ($) => $,
-            () => _ea.panic("could not get directory path"),
+            () => _ea.deprecated_panic("could not get directory path"),
         ),
         {
             'separator': "/",

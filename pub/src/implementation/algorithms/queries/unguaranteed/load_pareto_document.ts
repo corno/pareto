@@ -15,9 +15,9 @@ import * as parse from "astn/dist/exceptional/authoring_parse/parse"
 
 import * as _out from "../../../../temp/temp_unmashall_result_types"
 
-import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/implementation/operations/impure/text/join_list_of_texts_with_separator"
+import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/text/join_list_of_texts_with_separator"
 
-import { $$ as q_read_file } from "exupery-resources/dist/implementation/queries/unguaranteed/read_file"
+import { $$ as q_read_file } from "exupery-resources/dist/implementation/algorithms/queries/unguaranteed/read_file"
 
 
 import { get_directory_path } from "../../operations/impure/tbd/path"
@@ -46,7 +46,7 @@ export const $$: _easync.Unguaranteed_Query_Initializer<Parameters, _out.Node, E
     const schema_path = op_join_with_separator(
         get_directory_path($p['file path']).transform(
             ($) => $,
-            () => _ea.panic("could not get directory path"),
+            () => _ea.deprecated_panic("could not get directory path"),
         ),
         {
             'separator': "/",
@@ -77,20 +77,8 @@ export const $$: _easync.Unguaranteed_Query_Initializer<Parameters, _out.Node, E
                         $,
                     ),
                     ($): _easync._Unguaranteed_Query<_out.Node, Error> => {
-                        switch ($[0]) {
-                            case 'error': return _ea.ss($, ($) => _ea.cc($, ($) => {
-                                switch ($[0]) {
-                                    case 'parse error': return _ea.ss($, ($) => {
-                                        
-                                        return _easync.query.unguaranteed['raise exception'](['schema error', {
-                                        // 'message': $.,
-                                        'file location': schema_path,
-                                    }])
-                                    })
-                                    default: return _ea.au($[0])
-                                }
-                            }))
-                            case 'success': return _ea.ss($, ($) => {
+                        return $.transform(
+                            ($) => {
                                 //the schema was loaded successfully
 
                                 const type = $
@@ -101,9 +89,20 @@ export const $$: _easync.Unguaranteed_Query_Initializer<Parameters, _out.Node, E
                                         'definition': type.node,
                                     }
                                 ))
-                            })
-                            default: return _ea.au($[0])
-                        }
+                            },
+                            ($) => _ea.cc($, ($) => {
+                                switch ($[0]) {
+                                    case 'parse error': return _ea.ss($, ($) => {
+
+                                        return _easync.query.unguaranteed['raise exception'](['schema error', {
+                                            // 'message': $.,
+                                            'file location': schema_path,
+                                        }])
+                                    })
+                                    default: return _ea.au($[0])
+                                }
+                            }),
+                        )
                     }
                 )
             })

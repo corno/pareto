@@ -1,16 +1,16 @@
-import * as _pa from 'exupery-core-alg'
-import * as _pd from 'exupery-core-dev'
+import * as _ea from 'exupery-core-alg'
+import * as _edev from 'exupery-core-dev'
 
 import * as _i_generic from "../../generic/resolve"
 import * as _i_out from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/schema/data_types/resolve"
 
 
-export const r_Benchmark: _i_signatures._T_Benchmark = ($, $p) => _pa.block(() => {
+export const r_Benchmark: _i_signatures._T_Benchmark = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_selection: _i_out._T_Benchmark.selection = _pa.cc($['selection'], ($) => r_Guaranteed_Value_Selection(
+    return _ea.block(() => {
+        const p_selection: _i_out._T_Benchmark.selection = _ea.cc($['selection'], ($) => r_Guaranteed_Value_Selection(
             $,
             {
                 'location 2 string': l2s,
@@ -20,8 +20,8 @@ export const r_Benchmark: _i_signatures._T_Benchmark = ($, $p) => _pa.block(() =
                 }),
             }
         ))
-        const p_resulting_dictionary: _i_out._T_Benchmark.resulting_dictionary = _pa.cc($['resulting dictionary'], ($) => _pd.implement_me())
-        const p_dense: _i_out._T_Benchmark.dense = _pa.cc($['dense'], ($) => $)
+        const p_resulting_dictionary: _i_out._T_Benchmark.resulting_dictionary = _ea.cc($['resulting dictionary'], ($) => _edev.implement_me())
+        const p_dense: _i_out._T_Benchmark.dense = _ea.cc($['dense'], ($) => $)
         return ({
             'dense': p_dense,
             'resulting dictionary': p_resulting_dictionary,
@@ -29,11 +29,11 @@ export const r_Benchmark: _i_signatures._T_Benchmark = ($, $p) => _pa.block(() =
         })
     })
 })
-export const r_Constraint: _i_signatures._T_Constraint = ($, $p) => _pa.block(() => {
+export const r_Constraint: _i_signatures._T_Constraint = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_selection: _i_out._T_Constraint.selection = _pa.cc($['selection'], ($) => r_Relative_Value_Selection(
+    return _ea.block(() => {
+        const p_selection: _i_out._T_Constraint.selection = _ea.cc($['selection'], ($) => r_Relative_Value_Selection(
             $,
             {
                 'location 2 string': l2s,
@@ -43,22 +43,22 @@ export const r_Constraint: _i_signatures._T_Constraint = ($, $p) => _pa.block(()
                 }),
             }
         ))
-        const p_type: _i_out._T_Constraint._type = _pa.cc($['type'], ($) => _pa.cc($['state group'], ($): _i_out._T_Constraint._type => {
+        const p_type: _i_out._T_Constraint._type = _ea.cc($['type'], ($) => _ea.cc($['state group'], ($): _i_out._T_Constraint._type => {
             switch ($[0]) {
-                case 'optional value': return _pa.ss($, ($) => ['optional value', _pa.block(() => {
-                    const c_optional = _pd.implement_me()
-                    return _pa.block(() => {
-                        const p_selected_optional_value: _i_out._T_Constraint._type.SG.optional_value.selected_optional_value = _pa.cc($['selected optional value'], ($) => c_optional)
+                case 'optional value': return _ea.ss($, ($) => ['optional value', _ea.block(() => {
+                    const c_optional = _edev.implement_me()
+                    return _ea.block(() => {
+                        const p_selected_optional_value: _i_out._T_Constraint._type.SG.optional_value.selected_optional_value = _ea.cc($['selected optional value'], ($) => c_optional)
                         return ({
                             'selected optional value': p_selected_optional_value,
                         })
                     })
                 })])
-                case 'state': return _pa.ss($, ($) => ['state', _pa.block(() => {
-                    const c_state_group = _pd.implement_me()
-                    return _pa.block(() => {
-                        const p_selected_state_group: _i_out._T_Constraint._type.SG.state.selected_state_group = _pa.cc($['selected state group'], ($) => c_state_group)
-                        const p_state: _i_out._T_Constraint._type.SG.state.state = _pa.cc($['state'], ($) => _i_generic.get_entry(
+                case 'state': return _ea.ss($, ($) => ['state', _ea.block(() => {
+                    const c_state_group = _edev.implement_me()
+                    return _ea.block(() => {
+                        const p_selected_state_group: _i_out._T_Constraint._type.SG.state.selected_state_group = _ea.cc($['selected state group'], ($) => c_state_group)
+                        const p_state: _i_out._T_Constraint._type.SG.state.state = _ea.cc($['state'], ($) => _i_generic.get_entry(
                             _i_generic.dictionary_to_lookup(
                                 p_selected_state_group,
                                 null
@@ -74,7 +74,7 @@ export const r_Constraint: _i_signatures._T_Constraint = ($, $p) => _pa.block(()
                         })
                     })
                 })])
-                default: return _pa.au($[0])
+                default: return _ea.au($[0])
             }
         }))
         return ({
@@ -83,11 +83,11 @@ export const r_Constraint: _i_signatures._T_Constraint = ($, $p) => _pa.block(()
         })
     })
 })
-export const r_Dictionary: _i_signatures._T_Dictionary = ($, $p) => _pa.block(() => {
+export const r_Dictionary: _i_signatures._T_Dictionary = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_node: _i_out._T_Dictionary.node = _pa.cc($['node'], ($) => r_Type_Node(
+    return _ea.block(() => {
+        const p_node: _i_out._T_Dictionary.node = _ea.cc($['node'], ($) => r_Type_Node(
             $,
             {
                 'location 2 string': l2s,
@@ -104,35 +104,35 @@ export const r_Dictionary: _i_signatures._T_Dictionary = ($, $p) => _pa.block(()
                 }),
             }
         ))
-        const p_ordered: _i_out._T_Dictionary.ordered = _pa.cc($['ordered'], ($) => $)
+        const p_ordered: _i_out._T_Dictionary.ordered = _ea.cc($['ordered'], ($) => $)
         return ({
             'node': p_node,
             'ordered': p_ordered,
         })
     })
 })
-export const r_Globals: _i_signatures._T_Globals = ($, $p) => _pa.block(() => {
+export const r_Globals: _i_signatures._T_Globals = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_complexity: _i_out._T_Globals.complexity = _pa.cc($['complexity'], ($) => _pa.cc($['state group'], ($): _i_out._T_Globals.complexity => {
+    return _ea.block(() => {
+        const p_complexity: _i_out._T_Globals.complexity = _ea.cc($['complexity'], ($) => _ea.cc($['state group'], ($): _i_out._T_Globals.complexity => {
             switch ($[0]) {
-                case 'constrained': return _pa.ss($, ($) => ['constrained', _pa.block(() => {
+                case 'constrained': return _ea.ss($, ($) => ['constrained', _ea.block(() => {
                     return null
                 })])
-                case 'unconstrained': return _pa.ss($, ($) => ['unconstrained', _pa.block(() => {
+                case 'unconstrained': return _ea.ss($, ($) => ['unconstrained', _ea.block(() => {
                     return null
                 })])
-                default: return _pa.au($[0])
+                default: return _ea.au($[0])
             }
         }))
-        const p_text_types: _i_out._T_Globals.text_types = _pa.cc($['text types'], ($) => _pa.block(() => {
+        const p_text_types: _i_out._T_Globals.text_types = _ea.cc($['text types'], ($) => _ea.block(() => {
             return _i_generic.resolve_dictionary(
                 $,
                 {
                     'location 2 string': l2s,
-                    'map': ($, $p) => _pa.block(() => {
-                        return _pa.cc($['value'], ($) => r_Text_Type(
+                    'map': ($, $p) => _ea.block(() => {
+                        return _ea.cc($['value'], ($) => r_Text_Type(
                             $,
                             {
                                 'location 2 string': l2s,
@@ -146,13 +146,13 @@ export const r_Globals: _i_signatures._T_Globals = ($, $p) => _pa.block(() => {
                 }
             )
         }))
-        const p_number_types: _i_out._T_Globals.number_types = _pa.cc($['number types'], ($) => _pa.block(() => {
+        const p_number_types: _i_out._T_Globals.number_types = _ea.cc($['number types'], ($) => _ea.block(() => {
             return _i_generic.resolve_dictionary(
                 $,
                 {
                     'location 2 string': l2s,
-                    'map': ($, $p) => _pa.block(() => {
-                        return _pa.cc($['value'], ($) => r_Number_Type(
+                    'map': ($, $p) => _ea.block(() => {
+                        return _ea.cc($['value'], ($) => r_Number_Type(
                             $,
                             {
                                 'location 2 string': l2s,
@@ -173,20 +173,20 @@ export const r_Globals: _i_signatures._T_Globals = ($, $p) => _pa.block(() => {
         })
     })
 })
-export const r_Group: _i_signatures._T_Group = ($, $p) => _pa.block(() => {
+export const r_Group: _i_signatures._T_Group = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
+    return _ea.block(() => {
         return _i_generic.resolve_ordered_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _pa.block(() => {
-                    return _pa.cc($['value'], ($) => _pa.block(() => {
-                        const p_description: _i_out._T_Group.D.description = _pa.cc($['description'], ($) => $.map(($) => _pa.block(() => {
+                'map': ($, $p) => _ea.block(() => {
+                    return _ea.cc($['value'], ($) => _ea.block(() => {
+                        const p_description: _i_out._T_Group.D.description = _ea.cc($['description'], ($) => $.map(($) => _ea.block(() => {
                             return $
                         })))
-                        const p_node: _i_out._T_Group.D.node = _pa.cc($['node'], ($) => r_Type_Node(
+                        const p_node: _i_out._T_Group.D.node = _ea.cc($['node'], ($) => r_Type_Node(
                             $,
                             {
                                 'location 2 string': l2s,
@@ -213,27 +213,27 @@ export const r_Group: _i_signatures._T_Group = ($, $p) => _pa.block(() => {
         )
     })
 })
-export const r_Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selection = ($, $p) => _pa.block(() => {
+export const r_Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selection = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_start: _i_out._T_Guaranteed_Value_Selection.start = _pa.cc($['start'], ($) => _pa.cc($['state group'], ($): _i_out._T_Guaranteed_Value_Selection.start => {
+    return _ea.block(() => {
+        const p_start: _i_out._T_Guaranteed_Value_Selection.start = _ea.cc($['start'], ($) => _ea.cc($['state group'], ($): _i_out._T_Guaranteed_Value_Selection.start => {
             switch ($[0]) {
-                case 'constraint': return _pa.ss($, ($) => ['constraint', _pa.block(() => {
-                    return _pa.cc($['state group'], ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint => {
+                case 'constraint': return _ea.ss($, ($) => ['constraint', _ea.block(() => {
+                    return _ea.cc($['state group'], ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint => {
                         switch ($[0]) {
-                            case 'component': return _pa.ss($, ($) => ['component', _pa.block(() => {
-                                return _pa.block(() => {
-                                    const p_property: _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG.component.property = _pa.cc($['property'], ($) => _i_generic.get_entry(
+                            case 'component': return _ea.ss($, ($) => ['component', _ea.block(() => {
+                                return _ea.block(() => {
+                                    const p_property: _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG.component.property = _ea.cc($['property'], ($) => _i_generic.get_entry(
                                         params['lookups']['sibling property resolvers'],
                                         {
                                             'location 2 string': l2s,
                                             'reference': $,
                                         }
                                     ))
-                                    const p_constraint: _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG.component.constraint = _pa.cc($['constraint'], ($) => _i_generic.get_entry(
+                                    const p_constraint: _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG.component.constraint = _ea.cc($['constraint'], ($) => _i_generic.get_entry(
                                         _i_generic.dictionary_to_lookup(
-                                            _pd.implement_me(),
+                                            _edev.implement_me(),
                                             null
                                         ),
                                         {
@@ -247,18 +247,18 @@ export const r_Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Sel
                                     })
                                 })
                             })])
-                            case 'reference': return _pa.ss($, ($) => ['reference', _pa.block(() => {
-                                return _pa.block(() => {
-                                    const p_property: _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG.reference.property = _pa.cc($['property'], ($) => _i_generic.get_entry(
+                            case 'reference': return _ea.ss($, ($) => ['reference', _ea.block(() => {
+                                return _ea.block(() => {
+                                    const p_property: _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG.reference.property = _ea.cc($['property'], ($) => _i_generic.get_entry(
                                         params['lookups']['sibling property resolvers'],
                                         {
                                             'location 2 string': l2s,
                                             'reference': $,
                                         }
                                     ))
-                                    const p_constraint: _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG.reference.constraint = _pa.cc($['constraint'], ($) => _i_generic.get_entry(
+                                    const p_constraint: _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG.reference.constraint = _ea.cc($['constraint'], ($) => _i_generic.get_entry(
                                         _i_generic.dictionary_to_lookup(
-                                            _pd.implement_me(),
+                                            _edev.implement_me(),
                                             null
                                         ),
                                         {
@@ -272,20 +272,20 @@ export const r_Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Sel
                                     })
                                 })
                             })])
-                            default: return _pa.au($[0])
+                            default: return _ea.au($[0])
                         }
                     })
                 })])
-                case 'linked entry': return _pa.ss($, ($) => ['linked entry', _pa.block(() => {
+                case 'linked entry': return _ea.ss($, ($) => ['linked entry', _ea.block(() => {
                     return null
                 })])
-                case 'list cursor': return _pa.ss($, ($) => ['list cursor', _pa.block(() => {
+                case 'list cursor': return _ea.ss($, ($) => ['list cursor', _ea.block(() => {
                     return null
                 })])
-                case 'option constraint': return _pa.ss($, ($) => ['option constraint', _pa.block(() => {
+                case 'option constraint': return _ea.ss($, ($) => ['option constraint', _ea.block(() => {
                     const c_oc = params['values']['option constraints'].transform(
                         ($) => $,
-                        () => _pa.panic('ABORT SELECTION')
+                        () => _ea.deprecated_panic('ABORT SELECTION')
                     )
                     return _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup(
@@ -298,7 +298,7 @@ export const r_Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Sel
                         }
                     )
                 })])
-                case 'parameter': return _pa.ss($, ($) => ['parameter', _pa.block(() => {
+                case 'parameter': return _ea.ss($, ($) => ['parameter', _ea.block(() => {
                     return _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup(
                             params['values']['signature']['resolved parameters']['values'],
@@ -310,7 +310,7 @@ export const r_Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Sel
                         }
                     )
                 })])
-                case 'parent sibling': return _pa.ss($, ($) => ['parent sibling', _pa.block(() => {
+                case 'parent sibling': return _ea.ss($, ($) => ['parent sibling', _ea.block(() => {
                     return _i_generic.get_entry(
                         params['lookups']['parent sibling property resolvers'],
                         {
@@ -319,36 +319,36 @@ export const r_Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Sel
                         }
                     )
                 })])
-                case 'result': return _pa.ss($, ($) => ['result', _pa.block(() => {
-                    return _pa.cc($['state group'], ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result => {
+                case 'result': return _ea.ss($, ($) => ['result', _ea.block(() => {
+                    return _ea.cc($['state group'], ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result => {
                         switch ($[0]) {
-                            case 'list': return _pa.ss($, ($) => ['list', _pa.block(() => {
-                                return _pa.block(() => {
-                                    const p_property: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.list.property = _pa.cc($['property'], ($) => _i_generic.get_entry(
+                            case 'list': return _ea.ss($, ($) => ['list', _ea.block(() => {
+                                return _ea.block(() => {
+                                    const p_property: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.list.property = _ea.cc($['property'], ($) => _i_generic.get_entry(
                                         params['lookups']['sibling property resolvers'],
                                         {
                                             'location 2 string': l2s,
                                             'reference': $,
                                         }
                                     ))
-                                    const p_list_result: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.list.list_result = _pa.cc($['list result'], ($) => _pd.implement_me())
+                                    const p_list_result: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.list.list_result = _ea.cc($['list result'], ($) => _edev.implement_me())
                                     return ({
                                         'list result': p_list_result,
                                         'property': p_property,
                                     })
                                 })
                             })])
-                            case 'optional value': return _pa.ss($, ($) => ['optional value', _pa.block(() => {
-                                return _pa.block(() => {
-                                    const p_property: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.optional_value.property = _pa.cc($['property'], ($) => _i_generic.get_entry(
+                            case 'optional value': return _ea.ss($, ($) => ['optional value', _ea.block(() => {
+                                return _ea.block(() => {
+                                    const p_property: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.optional_value.property = _ea.cc($['property'], ($) => _i_generic.get_entry(
                                         params['lookups']['sibling property resolvers'],
                                         {
                                             'location 2 string': l2s,
                                             'reference': $,
                                         }
                                     ))
-                                    const p_optional_value: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.optional_value.optional_value = _pa.cc($['optional value'], ($) => _pd.implement_me())
-                                    const p_result: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.optional_value.result = _pa.cc($['result'], ($) => r_Type_Reference(
+                                    const p_optional_value: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.optional_value.optional_value = _ea.cc($['optional value'], ($) => _edev.implement_me())
+                                    const p_result: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.optional_value.result = _ea.cc($['result'], ($) => r_Type_Reference(
                                         $,
                                         {
                                             'location 2 string': l2s,
@@ -372,17 +372,17 @@ export const r_Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Sel
                                     })
                                 })
                             })])
-                            case 'state group': return _pa.ss($, ($) => ['state group', _pa.block(() => {
-                                return _pa.block(() => {
-                                    const p_property: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.state_group.property = _pa.cc($['property'], ($) => _i_generic.get_entry(
+                            case 'state group': return _ea.ss($, ($) => ['state group', _ea.block(() => {
+                                return _ea.block(() => {
+                                    const p_property: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.state_group.property = _ea.cc($['property'], ($) => _i_generic.get_entry(
                                         params['lookups']['sibling property resolvers'],
                                         {
                                             'location 2 string': l2s,
                                             'reference': $,
                                         }
                                     ))
-                                    const p_state_group: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.state_group.state_group = _pa.cc($['state group'], ($) => _pd.implement_me())
-                                    const p_result: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.state_group.result = _pa.cc($['result'], ($) => r_Type_Reference(
+                                    const p_state_group: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.state_group.state_group = _ea.cc($['state group'], ($) => _edev.implement_me())
+                                    const p_result: _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG.state_group.result = _ea.cc($['result'], ($) => r_Type_Reference(
                                         $,
                                         {
                                             'location 2 string': l2s,
@@ -406,11 +406,11 @@ export const r_Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Sel
                                     })
                                 })
                             })])
-                            default: return _pa.au($[0])
+                            default: return _ea.au($[0])
                         }
                     })
                 })])
-                case 'sibling': return _pa.ss($, ($) => ['sibling', _pa.block(() => {
+                case 'sibling': return _ea.ss($, ($) => ['sibling', _ea.block(() => {
                     return _i_generic.get_entry(
                         params['lookups']['sibling property resolvers'],
                         {
@@ -419,22 +419,22 @@ export const r_Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Sel
                         }
                     )
                 })])
-                default: return _pa.au($[0])
+                default: return _ea.au($[0])
             }
         }))
-        const p_tail: _i_out._T_Guaranteed_Value_Selection.tail = _pa.cc($['tail'], ($) => r_Relative_Value_Selection(
+        const p_tail: _i_out._T_Guaranteed_Value_Selection.tail = _ea.cc($['tail'], ($) => r_Relative_Value_Selection(
             $,
             {
                 'location 2 string': l2s,
                 'parameters': ({
                     'lookups': null,
                     'values': ({
-                        'node': _pd.implement_me(),
+                        'node': _edev.implement_me(),
                     }),
                 }),
             }
         ))
-        const p_resulting_node: _i_out._T_Guaranteed_Value_Selection.resulting_node = _pa.cc($['resulting node'], ($) => p_tail['resulting node'])
+        const p_resulting_node: _i_out._T_Guaranteed_Value_Selection.resulting_node = _ea.cc($['resulting node'], ($) => p_tail['resulting node'])
         return ({
             'resulting node': p_resulting_node,
             'start': p_start,
@@ -442,24 +442,24 @@ export const r_Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Sel
         })
     })
 })
-export const r_Imports: _i_signatures._T_Imports = ($, $p) => _pa.block(() => {
+export const r_Imports: _i_signatures._T_Imports = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
+    return _ea.block(() => {
         return _i_generic.resolve_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _pa.block(() => {
-                    return _pa.cc($['value'], ($) => _pa.block(() => {
-                        const p_schema_set_child: _i_out._T_Imports.D.schema_set_child = _pa.cc($['schema set child'], ($) => _i_generic.get_entry_from_stack(
+                'map': ($, $p) => _ea.block(() => {
+                    return _ea.cc($['value'], ($) => _ea.block(() => {
+                        const p_schema_set_child: _i_out._T_Imports.D.schema_set_child = _ea.cc($['schema set child'], ($) => _i_generic.get_entry_from_stack(
                             params['lookups']['sibling schemas'],
                             {
                                 'location 2 string': l2s,
                                 'reference': $,
                             }
                         ))
-                        const p_schema: _i_out._T_Imports.D.schema = _pa.cc($['schema'], ($) => _pd.implement_me())
+                        const p_schema: _i_out._T_Imports.D.schema = _ea.cc($['schema'], ($) => _edev.implement_me())
                         return ({
                             'schema': p_schema,
                             'schema set child': p_schema_set_child,
@@ -470,15 +470,15 @@ export const r_Imports: _i_signatures._T_Imports = ($, $p) => _pa.block(() => {
         )
     })
 })
-export const r_Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => _pa.block(() => {
+export const r_Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_type: _i_out._T_Lookup_Selection._type = _pa.cc($['type'], ($) => _pa.cc($['state group'], ($): _i_out._T_Lookup_Selection._type => {
+    return _ea.block(() => {
+        const p_type: _i_out._T_Lookup_Selection._type = _ea.cc($['type'], ($) => _ea.cc($['state group'], ($): _i_out._T_Lookup_Selection._type => {
             switch ($[0]) {
-                case 'dictionary': return _pa.ss($, ($) => ['dictionary', _pa.block(() => {
-                    return _pa.block(() => {
-                        const p_selection: _i_out._T_Lookup_Selection._type.SG.dictionary.selection = _pa.cc($['selection'], ($) => r_Guaranteed_Value_Selection(
+                case 'dictionary': return _ea.ss($, ($) => ['dictionary', _ea.block(() => {
+                    return _ea.block(() => {
+                        const p_selection: _i_out._T_Lookup_Selection._type.SG.dictionary.selection = _ea.cc($['selection'], ($) => r_Guaranteed_Value_Selection(
                             $,
                             {
                                 'location 2 string': l2s,
@@ -488,21 +488,21 @@ export const r_Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => 
                                 }),
                             }
                         ))
-                        const p_selected_dictionary: _i_out._T_Lookup_Selection._type.SG.dictionary.selected_dictionary = _pa.cc($['selected dictionary'], ($) => _pd.implement_me())
+                        const p_selected_dictionary: _i_out._T_Lookup_Selection._type.SG.dictionary.selected_dictionary = _ea.cc($['selected dictionary'], ($) => _edev.implement_me())
                         return ({
                             'selected dictionary': p_selected_dictionary,
                             'selection': p_selection,
                         })
                     })
                 })])
-                case 'not circular dependent siblings': return _pa.ss($, ($) => ['not circular dependent siblings', _pa.block(() => {
+                case 'not circular dependent siblings': return _ea.ss($, ($) => ['not circular dependent siblings', _ea.block(() => {
                     const c_cd = params['values']['current ordered dictionary'].transform(
                         ($) => $,
-                        () => _pa.panic('ABORT SELECTION')
+                        () => _ea.deprecated_panic('ABORT SELECTION')
                     )
                     return c_cd
                 })])
-                case 'parameter': return _pa.ss($, ($) => ['parameter', _pa.block(() => {
+                case 'parameter': return _ea.ss($, ($) => ['parameter', _ea.block(() => {
                     return _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup(
                             params['values']['signature']['resolved parameters']['lookups'],
@@ -514,44 +514,44 @@ export const r_Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => 
                         }
                     )
                 })])
-                case 'possibly circular dependent siblings': return _pa.ss($, ($) => ['possibly circular dependent siblings', _pa.block(() => {
+                case 'possibly circular dependent siblings': return _ea.ss($, ($) => ['possibly circular dependent siblings', _ea.block(() => {
                     const c_cd = params['values']['current dictionary'].transform(
                         ($) => $,
-                        () => _pa.panic('ABORT SELECTION')
+                        () => _ea.deprecated_panic('ABORT SELECTION')
                     )
                     return c_cd
                 })])
-                default: return _pa.au($[0])
+                default: return _ea.au($[0])
             }
         }))
-        const p_resulting_dictionary: _i_out._T_Lookup_Selection.resulting_dictionary = _pa.cc($['resulting dictionary'], ($) => _pd.implement_me())
+        const p_resulting_dictionary: _i_out._T_Lookup_Selection.resulting_dictionary = _ea.cc($['resulting dictionary'], ($) => _edev.implement_me())
         return ({
             'resulting dictionary': p_resulting_dictionary,
             'type': p_type,
         })
     })
 })
-export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.block(() => {
+export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.cc($['state group'], ($): _i_out._T_Node_Resolver => {
+    return _ea.cc($['state group'], ($): _i_out._T_Node_Resolver => {
         switch ($[0]) {
-            case 'boolean': return _pa.ss($, ($) => ['boolean', _pa.block(() => {
-                const c_definition = _pd.implement_me()
+            case 'boolean': return _ea.ss($, ($) => ['boolean', _ea.block(() => {
+                const c_definition = _edev.implement_me()
                 return null
             })])
-            case 'component': return _pa.ss($, ($) => ['component', _pa.block(() => {
-                const c_definition = _pd.implement_me()
-                return _pa.block(() => {
-                    const p_location: _i_out._T_Node_Resolver.SG.component.location = _pa.cc($['location'], ($) => _pa.cc($['state group'], ($): _i_out._T_Node_Resolver.SG.component.location => {
+            case 'component': return _ea.ss($, ($) => ['component', _ea.block(() => {
+                const c_definition = _edev.implement_me()
+                return _ea.block(() => {
+                    const p_location: _i_out._T_Node_Resolver.SG.component.location = _ea.cc($['location'], ($) => _ea.cc($['state group'], ($): _i_out._T_Node_Resolver.SG.component.location => {
                         switch ($[0]) {
-                            case 'external': return _pa.ss($, ($) => ['external', _pa.block(() => {
+                            case 'external': return _ea.ss($, ($) => ['external', _ea.block(() => {
                                 const c_import = params['values']['imports'].transform(
                                     ($) => $,
-                                    () => _pa.panic('ABORT SELECTION')
+                                    () => _ea.deprecated_panic('ABORT SELECTION')
                                 )
-                                return _pa.block(() => {
-                                    const p_import: _i_out._T_Node_Resolver.SG.component.location.SG.external._import = _pa.cc($['import'], ($) => _i_generic.get_entry(
+                                return _ea.block(() => {
+                                    const p_import: _i_out._T_Node_Resolver.SG.component.location.SG.external._import = _ea.cc($['import'], ($) => _i_generic.get_entry(
                                         _i_generic.dictionary_to_lookup(
                                             c_import,
                                             null
@@ -561,9 +561,9 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                             'reference': $,
                                         }
                                     ))
-                                    const p_type: _i_out._T_Node_Resolver.SG.component.location.SG.external._type = _pa.cc($['type'], ($) => _i_generic.get_entry(
+                                    const p_type: _i_out._T_Node_Resolver.SG.component.location.SG.external._type = _ea.cc($['type'], ($) => _i_generic.get_entry(
                                         _i_generic.dictionary_to_lookup(
-                                            _pd.implement_me(),
+                                            _edev.implement_me(),
                                             null
                                         ),
                                         {
@@ -577,7 +577,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                     })
                                 })
                             })])
-                            case 'internal': return _pa.ss($, ($) => ['internal', _pa.block(() => {
+                            case 'internal': return _ea.ss($, ($) => ['internal', _ea.block(() => {
                                 return _i_generic.get_entry(
                                     _i_generic.dictionary_to_lookup(
                                         params['values']['signatures']['dictionary'],
@@ -589,24 +589,24 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                     }
                                 )
                             })])
-                            default: return _pa.au($[0])
+                            default: return _ea.au($[0])
                         }
                     }))
-                    const p_signature: _i_out._T_Node_Resolver.SG.component.signature = _pa.cc($['signature'], ($) => _pd.implement_me())
-                    const p_arguments: _i_out._T_Node_Resolver.SG.component._arguments = _pa.cc($['arguments'], ($) => $.map(($) => _pa.block(() => {
-                        return _pa.block(() => {
-                            const p_values: _i_out._T_Node_Resolver.SG.component._arguments.O.values = _pa.cc($['values'], ($) => $.map(($) => _pa.block(() => {
-                                return _pa.block(() => {
+                    const p_signature: _i_out._T_Node_Resolver.SG.component.signature = _ea.cc($['signature'], ($) => _edev.implement_me())
+                    const p_arguments: _i_out._T_Node_Resolver.SG.component._arguments = _ea.cc($['arguments'], ($) => $.map(($) => _ea.block(() => {
+                        return _ea.block(() => {
+                            const p_values: _i_out._T_Node_Resolver.SG.component._arguments.O.values = _ea.cc($['values'], ($) => $.map(($) => _ea.block(() => {
+                                return _ea.block(() => {
                                     const benchmark = p_signature['resolved parameters']['values']
                                     return _i_generic.resolve_dictionary(
                                         $,
                                         {
                                             'location 2 string': l2s,
-                                            'map': ($, $p) => _pa.block(() => {
-                                                const linked_entry = _pd.implement_me()
-                                                return _pa.cc($['value'], ($) => _pa.cc($['state group'], ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D => {
+                                            'map': ($, $p) => _ea.block(() => {
+                                                const linked_entry = _edev.implement_me()
+                                                return _ea.cc($['value'], ($) => _ea.cc($['state group'], ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D => {
                                                     switch ($[0]) {
-                                                        case 'optional': return _pa.ss($, ($) => ['optional', _pa.block(() => {
+                                                        case 'optional': return _ea.ss($, ($) => ['optional', _ea.block(() => {
                                                             return r_Optional_Value_Initialization(
                                                                 $,
                                                                 {
@@ -618,7 +618,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                                                 }
                                                             )
                                                         })])
-                                                        case 'parameter': return _pa.ss($, ($) => ['parameter', _pa.block(() => {
+                                                        case 'parameter': return _ea.ss($, ($) => ['parameter', _ea.block(() => {
                                                             return _i_generic.get_entry(
                                                                 _i_generic.dictionary_to_lookup(
                                                                     params['values']['signature']['resolved parameters']['values'],
@@ -630,7 +630,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                                                 }
                                                             )
                                                         })])
-                                                        case 'required': return _pa.ss($, ($) => ['required', _pa.block(() => {
+                                                        case 'required': return _ea.ss($, ($) => ['required', _ea.block(() => {
                                                             return r_Guaranteed_Value_Selection(
                                                                 $,
                                                                 {
@@ -642,7 +642,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                                                 }
                                                             )
                                                         })])
-                                                        default: return _pa.au($[0])
+                                                        default: return _ea.au($[0])
                                                     }
                                                 }))
                                             }),
@@ -650,24 +650,24 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                     )
                                 })
                             })))
-                            const p_lookups: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups = _pa.cc($['lookups'], ($) => $.map(($) => _pa.block(() => {
-                                return _pa.block(() => {
+                            const p_lookups: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups = _ea.cc($['lookups'], ($) => $.map(($) => _ea.block(() => {
+                                return _ea.block(() => {
                                     const benchmark = p_signature['resolved parameters']['lookups']
                                     return _i_generic.resolve_dictionary(
                                         $,
                                         {
                                             'location 2 string': l2s,
-                                            'map': ($, $p) => _pa.block(() => {
-                                                const linked_entry = _pd.implement_me()
-                                                return _pa.cc($['value'], ($) => _pa.cc($['state group'], ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D => {
+                                            'map': ($, $p) => _ea.block(() => {
+                                                const linked_entry = _edev.implement_me()
+                                                return _ea.cc($['value'], ($) => _ea.cc($['state group'], ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D => {
                                                     switch ($[0]) {
-                                                        case 'empty stack': return _pa.ss($, ($) => ['empty stack', _pa.block(() => {
+                                                        case 'empty stack': return _ea.ss($, ($) => ['empty stack', _ea.block(() => {
                                                             return null
                                                         })])
-                                                        case 'not set': return _pa.ss($, ($) => ['not set', _pa.block(() => {
+                                                        case 'not set': return _ea.ss($, ($) => ['not set', _ea.block(() => {
                                                             return null
                                                         })])
-                                                        case 'selection': return _pa.ss($, ($) => ['selection', _pa.block(() => {
+                                                        case 'selection': return _ea.ss($, ($) => ['selection', _ea.block(() => {
                                                             return r_Lookup_Selection(
                                                                 $,
                                                                 {
@@ -679,9 +679,9 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                                                 }
                                                             )
                                                         })])
-                                                        case 'stack': return _pa.ss($, ($) => ['stack', _pa.block(() => {
-                                                            return _pa.block(() => {
-                                                                const p_stack: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG.stack.stack = _pa.cc($['stack'], ($) => r_Lookup_Selection(
+                                                        case 'stack': return _ea.ss($, ($) => ['stack', _ea.block(() => {
+                                                            return _ea.block(() => {
+                                                                const p_stack: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG.stack.stack = _ea.cc($['stack'], ($) => r_Lookup_Selection(
                                                                     $,
                                                                     {
                                                                         'location 2 string': l2s,
@@ -691,7 +691,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                                                         }),
                                                                     }
                                                                 ))
-                                                                const p_element: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG.stack.element = _pa.cc($['element'], ($) => r_Lookup_Selection(
+                                                                const p_element: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG.stack.element = _ea.cc($['element'], ($) => r_Lookup_Selection(
                                                                     $,
                                                                     {
                                                                         'location 2 string': l2s,
@@ -707,7 +707,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                                                 })
                                                             })
                                                         })])
-                                                        default: return _pa.au($[0])
+                                                        default: return _ea.au($[0])
                                                     }
                                                 }))
                                             }),
@@ -721,7 +721,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                             })
                         })
                     })))
-                    const p_constraints: _i_out._T_Node_Resolver.SG.component.constraints = _pa.cc($['constraints'], ($) => r_Property_Constraints(
+                    const p_constraints: _i_out._T_Node_Resolver.SG.component.constraints = _ea.cc($['constraints'], ($) => r_Property_Constraints(
                         $,
                         {
                             'location 2 string': l2s,
@@ -741,11 +741,11 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                     })
                 })
             })])
-            case 'dictionary': return _pa.ss($, ($) => ['dictionary', _pa.block(() => {
-                const c_definition = _pd.implement_me()
-                return _pa.block(() => {
-                    const p_definition: _i_out._T_Node_Resolver.SG.dictionary.definition = _pa.cc($['definition'], ($) => c_definition)
-                    const p_benchmark: _i_out._T_Node_Resolver.SG.dictionary.benchmark = _pa.cc($['benchmark'], ($) => $.map(($) => _pa.block(() => {
+            case 'dictionary': return _ea.ss($, ($) => ['dictionary', _ea.block(() => {
+                const c_definition = _edev.implement_me()
+                return _ea.block(() => {
+                    const p_definition: _i_out._T_Node_Resolver.SG.dictionary.definition = _ea.cc($['definition'], ($) => c_definition)
+                    const p_benchmark: _i_out._T_Node_Resolver.SG.dictionary.benchmark = _ea.cc($['benchmark'], ($) => $.map(($) => _ea.block(() => {
                         return r_Benchmark(
                             $,
                             {
@@ -757,18 +757,18 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                             }
                         )
                     })))
-                    const p_resolver: _i_out._T_Node_Resolver.SG.dictionary.resolver = _pa.cc($['resolver'], ($) => r_Node_Resolver(
+                    const p_resolver: _i_out._T_Node_Resolver.SG.dictionary.resolver = _ea.cc($['resolver'], ($) => r_Node_Resolver(
                         $,
                         {
                             'location 2 string': l2s,
                             'parameters': ({
                                 'lookups': params['lookups'],
                                 'values': ({
-                                    'current dictionary': _pa.set(p_definition),
-                                    'current ordered dictionary': _pa.set(p_definition),
+                                    'current dictionary': _ea.set(p_definition),
+                                    'current ordered dictionary': _ea.set(p_definition),
                                     'definition': p_definition['node'],
                                     'imports': params['values']['imports'],
-                                    'linked entry': _pd.implement_me(),
+                                    'linked entry': _edev.implement_me(),
                                     'list cursor': params['values']['list cursor'],
                                     'option constraints': params['values']['option constraints'],
                                     'signature': params['values']['signature'],
@@ -785,8 +785,8 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                     })
                 })
             })])
-            case 'group': return _pa.ss($, ($) => ['group', _pa.block(() => {
-                const c_definition = _pd.implement_me()
+            case 'group': return _ea.ss($, ($) => ['group', _ea.block(() => {
+                const c_definition = _edev.implement_me()
                 return r_Node_Resolver_Group(
                     $,
                     {
@@ -812,11 +812,11 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                     }
                 )
             })])
-            case 'list': return _pa.ss($, ($) => ['list', _pa.block(() => {
-                const c_definition = _pd.implement_me()
-                return _pa.block(() => {
-                    const p_definition: _i_out._T_Node_Resolver.SG.list.definition = _pa.cc($['definition'], ($) => c_definition)
-                    const p_result: _i_out._T_Node_Resolver.SG.list.result = _pa.cc($['result'], ($) => $.map(($) => _pa.block(() => {
+            case 'list': return _ea.ss($, ($) => ['list', _ea.block(() => {
+                const c_definition = _edev.implement_me()
+                return _ea.block(() => {
+                    const p_definition: _i_out._T_Node_Resolver.SG.list.definition = _ea.cc($['definition'], ($) => c_definition)
+                    const p_result: _i_out._T_Node_Resolver.SG.list.result = _ea.cc($['result'], ($) => $.map(($) => _ea.block(() => {
                         return r_Node_Resolver_List_Result(
                             $,
                             {
@@ -835,7 +835,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                             }
                         )
                     })))
-                    const p_resolver: _i_out._T_Node_Resolver.SG.list.resolver = _pa.cc($['resolver'], ($) => r_Node_Resolver(
+                    const p_resolver: _i_out._T_Node_Resolver.SG.list.resolver = _ea.cc($['resolver'], ($) => r_Node_Resolver(
                         $,
                         {
                             'location 2 string': l2s,
@@ -847,7 +847,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                     'definition': c_definition['node'],
                                     'imports': params['values']['imports'],
                                     'linked entry': params['values']['linked entry'],
-                                    'list cursor': _pa.set(_pd.implement_me()),
+                                    'list cursor': _ea.set(_edev.implement_me()),
                                     'option constraints': params['values']['option constraints'],
                                     'signature': params['values']['signature'],
                                     'signatures': params['values']['signatures'],
@@ -863,18 +863,18 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                     })
                 })
             })])
-            case 'nothing': return _pa.ss($, ($) => ['nothing', _pa.block(() => {
-                const c_definition = _pd.implement_me()
+            case 'nothing': return _ea.ss($, ($) => ['nothing', _ea.block(() => {
+                const c_definition = _edev.implement_me()
                 return null
             })])
-            case 'number': return _pa.ss($, ($) => ['number', _pa.block(() => {
-                const c_definition = _pd.implement_me()
+            case 'number': return _ea.ss($, ($) => ['number', _ea.block(() => {
+                const c_definition = _edev.implement_me()
                 return null
             })])
-            case 'optional': return _pa.ss($, ($) => ['optional', _pa.block(() => {
-                const c_definition = _pd.implement_me()
-                return _pa.block(() => {
-                    const p_constraints: _i_out._T_Node_Resolver.SG.optional.constraints = _pa.cc($['constraints'], ($) => r_Option_Constraints(
+            case 'optional': return _ea.ss($, ($) => ['optional', _ea.block(() => {
+                const c_definition = _edev.implement_me()
+                return _ea.block(() => {
+                    const p_constraints: _i_out._T_Node_Resolver.SG.optional.constraints = _ea.cc($['constraints'], ($) => r_Option_Constraints(
                         $,
                         {
                             'location 2 string': l2s,
@@ -884,7 +884,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                             }),
                         }
                     ))
-                    const p_resolver: _i_out._T_Node_Resolver.SG.optional.resolver = _pa.cc($['resolver'], ($) => r_Node_Resolver(
+                    const p_resolver: _i_out._T_Node_Resolver.SG.optional.resolver = _ea.cc($['resolver'], ($) => r_Node_Resolver(
                         $,
                         {
                             'location 2 string': l2s,
@@ -911,16 +911,16 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                     })
                 })
             })])
-            case 'reference': return _pa.ss($, ($) => ['reference', _pa.block(() => {
-                const c_definition = _pd.implement_me()
-                return _pa.block(() => {
-                    const p_definition: _i_out._T_Node_Resolver.SG.reference.definition = _pa.cc($['definition'], ($) => c_definition)
-                    const p_type: _i_out._T_Node_Resolver.SG.reference._type = _pa.cc($['type'], ($) => _pa.cc($['state group'], ($): _i_out._T_Node_Resolver.SG.reference._type => {
+            case 'reference': return _ea.ss($, ($) => ['reference', _ea.block(() => {
+                const c_definition = _edev.implement_me()
+                return _ea.block(() => {
+                    const p_definition: _i_out._T_Node_Resolver.SG.reference.definition = _ea.cc($['definition'], ($) => c_definition)
+                    const p_type: _i_out._T_Node_Resolver.SG.reference._type = _ea.cc($['type'], ($) => _ea.cc($['state group'], ($): _i_out._T_Node_Resolver.SG.reference._type => {
                         switch ($[0]) {
-                            case 'derived': return _pa.ss($, ($) => ['derived', _pa.block(() => {
-                                const c_definition = _pd.implement_me()
-                                return _pa.block(() => {
-                                    const p_value: _i_out._T_Node_Resolver.SG.reference._type.SG.derived.value = _pa.cc($['value'], ($) => r_Guaranteed_Value_Selection(
+                            case 'derived': return _ea.ss($, ($) => ['derived', _ea.block(() => {
+                                const c_definition = _edev.implement_me()
+                                return _ea.block(() => {
+                                    const p_value: _i_out._T_Node_Resolver.SG.reference._type.SG.derived.value = _ea.cc($['value'], ($) => r_Guaranteed_Value_Selection(
                                         $,
                                         {
                                             'location 2 string': l2s,
@@ -935,11 +935,11 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                     })
                                 })
                             })])
-                            case 'selected': return _pa.ss($, ($) => ['selected', _pa.block(() => {
-                                const c_definition = _pd.implement_me()
-                                return _pa.block(() => {
-                                    const p_definition: _i_out._T_Node_Resolver.SG.reference._type.SG.selected.definition = _pa.cc($['definition'], ($) => c_definition)
-                                    const p_lookup: _i_out._T_Node_Resolver.SG.reference._type.SG.selected.lookup = _pa.cc($['lookup'], ($) => r_Lookup_Selection(
+                            case 'selected': return _ea.ss($, ($) => ['selected', _ea.block(() => {
+                                const c_definition = _edev.implement_me()
+                                return _ea.block(() => {
+                                    const p_definition: _i_out._T_Node_Resolver.SG.reference._type.SG.selected.definition = _ea.cc($['definition'], ($) => c_definition)
+                                    const p_lookup: _i_out._T_Node_Resolver.SG.reference._type.SG.selected.lookup = _ea.cc($['lookup'], ($) => r_Lookup_Selection(
                                         $,
                                         {
                                             'location 2 string': l2s,
@@ -949,7 +949,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                             }),
                                         }
                                     ))
-                                    const p_constraints: _i_out._T_Node_Resolver.SG.reference._type.SG.selected.constraints = _pa.cc($['constraints'], ($) => r_Property_Constraints(
+                                    const p_constraints: _i_out._T_Node_Resolver.SG.reference._type.SG.selected.constraints = _ea.cc($['constraints'], ($) => r_Property_Constraints(
                                         $,
                                         {
                                             'location 2 string': l2s,
@@ -968,7 +968,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                     })
                                 })
                             })])
-                            default: return _pa.au($[0])
+                            default: return _ea.au($[0])
                         }
                     }))
                     return ({
@@ -977,20 +977,20 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                     })
                 })
             })])
-            case 'state group': return _pa.ss($, ($) => ['state group', _pa.block(() => {
-                const c_definition = _pd.implement_me()
-                return _pa.block(() => {
-                    const p_definition: _i_out._T_Node_Resolver.SG.state_group.definition = _pa.cc($['definition'], ($) => c_definition)
-                    const p_states: _i_out._T_Node_Resolver.SG.state_group.states = _pa.cc($['states'], ($) => _pa.block(() => {
+            case 'state group': return _ea.ss($, ($) => ['state group', _ea.block(() => {
+                const c_definition = _edev.implement_me()
+                return _ea.block(() => {
+                    const p_definition: _i_out._T_Node_Resolver.SG.state_group.definition = _ea.cc($['definition'], ($) => c_definition)
+                    const p_states: _i_out._T_Node_Resolver.SG.state_group.states = _ea.cc($['states'], ($) => _ea.block(() => {
                         const benchmark = c_definition
                         return _i_generic.resolve_dictionary(
                             $,
                             {
                                 'location 2 string': l2s,
-                                'map': ($, $p) => _pa.block(() => {
-                                    const linked_entry = _pd.implement_me()
-                                    return _pa.cc($['value'], ($) => _pa.block(() => {
-                                        const p_constraints: _i_out._T_Node_Resolver.SG.state_group.states.D.constraints = _pa.cc($['constraints'], ($) => r_Option_Constraints(
+                                'map': ($, $p) => _ea.block(() => {
+                                    const linked_entry = _edev.implement_me()
+                                    return _ea.cc($['value'], ($) => _ea.block(() => {
+                                        const p_constraints: _i_out._T_Node_Resolver.SG.state_group.states.D.constraints = _ea.cc($['constraints'], ($) => r_Option_Constraints(
                                             $,
                                             {
                                                 'location 2 string': l2s,
@@ -1000,7 +1000,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                                                 }),
                                             }
                                         ))
-                                        const p_resolver: _i_out._T_Node_Resolver.SG.state_group.states.D.resolver = _pa.cc($['resolver'], ($) => r_Node_Resolver(
+                                        const p_resolver: _i_out._T_Node_Resolver.SG.state_group.states.D.resolver = _ea.cc($['resolver'], ($) => r_Node_Resolver(
                                             $,
                                             {
                                                 'location 2 string': l2s,
@@ -1036,28 +1036,28 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _pa.bl
                     })
                 })
             })])
-            case 'text': return _pa.ss($, ($) => ['text', _pa.block(() => {
-                const c_definition = _pd.implement_me()
+            case 'text': return _ea.ss($, ($) => ['text', _ea.block(() => {
+                const c_definition = _edev.implement_me()
                 return null
             })])
-            default: return _pa.au($[0])
+            default: return _ea.au($[0])
         }
     })
 })
-export const r_Node_Resolver_Group: _i_signatures._T_Node_Resolver_Group = ($, $p) => _pa.block(() => {
+export const r_Node_Resolver_Group: _i_signatures._T_Node_Resolver_Group = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
+    return _ea.block(() => {
         const benchmark = params['values']['definition']
         return _i_generic.resolve_ordered_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _pa.block(() => {
-                    const linked_entry = _pd.implement_me()
-                    return _pa.cc($['value'], ($) => _pa.block(() => {
-                        const p_definition: _i_out._T_Node_Resolver_Group.D.definition = _pa.cc($['definition'], ($) => linked_entry)
-                        const p_resolver: _i_out._T_Node_Resolver_Group.D.resolver = _pa.cc($['resolver'], ($) => r_Node_Resolver(
+                'map': ($, $p) => _ea.block(() => {
+                    const linked_entry = _edev.implement_me()
+                    return _ea.cc($['value'], ($) => _ea.block(() => {
+                        const p_definition: _i_out._T_Node_Resolver_Group.D.definition = _ea.cc($['definition'], ($) => linked_entry)
+                        const p_resolver: _i_out._T_Node_Resolver_Group.D.resolver = _ea.cc($['resolver'], ($) => r_Node_Resolver(
                             $,
                             {
                                 'location 2 string': l2s,
@@ -1091,7 +1091,7 @@ export const r_Node_Resolver_Group: _i_signatures._T_Node_Resolver_Group = ($, $
         )
     })
 })
-export const r_Node_Resolver_List_Result: _i_signatures._T_Node_Resolver_List_Result = ($, $p) => _pa.block(() => {
+export const r_Node_Resolver_List_Result: _i_signatures._T_Node_Resolver_List_Result = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return r_Type_Reference(
@@ -1109,37 +1109,37 @@ export const r_Node_Resolver_List_Result: _i_signatures._T_Node_Resolver_List_Re
         }
     )
 })
-export const r_Number_Type: _i_signatures._T_Number_Type = ($, $p) => _pa.block(() => {
+export const r_Number_Type: _i_signatures._T_Number_Type = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_precision: _i_out._T_Number_Type.precision = _pa.cc($['precision'], ($) => _pa.cc($['state group'], ($): _i_out._T_Number_Type.precision => {
+    return _ea.block(() => {
+        const p_precision: _i_out._T_Number_Type.precision = _ea.cc($['precision'], ($) => _ea.cc($['state group'], ($): _i_out._T_Number_Type.precision => {
             switch ($[0]) {
-                case 'approximation': return _pa.ss($, ($) => ['approximation', _pa.block(() => {
-                    return _pa.block(() => {
-                        const p_significant_digits: _i_out._T_Number_Type.precision.SG.approximation.significant_digits = _pa.cc($['significant digits'], ($) => $)
+                case 'approximation': return _ea.ss($, ($) => ['approximation', _ea.block(() => {
+                    return _ea.block(() => {
+                        const p_significant_digits: _i_out._T_Number_Type.precision.SG.approximation.significant_digits = _ea.cc($['significant digits'], ($) => $)
                         return ({
                             'significant digits': p_significant_digits,
                         })
                     })
                 })])
-                case 'exact': return _pa.ss($, ($) => ['exact', _pa.block(() => {
-                    return _pa.block(() => {
-                        const p_decimal_separator_offset: _i_out._T_Number_Type.precision.SG.exact.decimal_separator_offset = _pa.cc($['decimal separator offset'], ($) => $.map(($) => _pa.block(() => {
+                case 'exact': return _ea.ss($, ($) => ['exact', _ea.block(() => {
+                    return _ea.block(() => {
+                        const p_decimal_separator_offset: _i_out._T_Number_Type.precision.SG.exact.decimal_separator_offset = _ea.cc($['decimal separator offset'], ($) => $.map(($) => _ea.block(() => {
                             return $
                         })))
-                        const p_type: _i_out._T_Number_Type.precision.SG.exact._type = _pa.cc($['type'], ($) => _pa.cc($['state group'], ($): _i_out._T_Number_Type.precision.SG.exact._type => {
+                        const p_type: _i_out._T_Number_Type.precision.SG.exact._type = _ea.cc($['type'], ($) => _ea.cc($['state group'], ($): _i_out._T_Number_Type.precision.SG.exact._type => {
                             switch ($[0]) {
-                                case 'integer': return _pa.ss($, ($) => ['integer', _pa.block(() => {
+                                case 'integer': return _ea.ss($, ($) => ['integer', _ea.block(() => {
                                     return null
                                 })])
-                                case 'natural': return _pa.ss($, ($) => ['natural', _pa.block(() => {
+                                case 'natural': return _ea.ss($, ($) => ['natural', _ea.block(() => {
                                     return null
                                 })])
-                                case 'positive natural': return _pa.ss($, ($) => ['positive natural', _pa.block(() => {
+                                case 'positive natural': return _ea.ss($, ($) => ['positive natural', _ea.block(() => {
                                     return null
                                 })])
-                                default: return _pa.au($[0])
+                                default: return _ea.au($[0])
                             }
                         }))
                         return ({
@@ -1148,7 +1148,7 @@ export const r_Number_Type: _i_signatures._T_Number_Type = ($, $p) => _pa.block(
                         })
                     })
                 })])
-                default: return _pa.au($[0])
+                default: return _ea.au($[0])
             }
         }))
         return ({
@@ -1156,18 +1156,18 @@ export const r_Number_Type: _i_signatures._T_Number_Type = ($, $p) => _pa.block(
         })
     })
 })
-export const r_Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p) => _pa.block(() => {
+export const r_Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
+    return _ea.block(() => {
         return _i_generic.resolve_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _pa.block(() => {
-                    return _pa.cc($['value'], ($) => _pa.cc($['state group'], ($): _i_out._T_Option_Constraints.D => {
+                'map': ($, $p) => _ea.block(() => {
+                    return _ea.cc($['value'], ($) => _ea.cc($['state group'], ($): _i_out._T_Option_Constraints.D => {
                         switch ($[0]) {
-                            case 'assert is set': return _pa.ss($, ($) => ['assert is set', _pa.block(() => {
+                            case 'assert is set': return _ea.ss($, ($) => ['assert is set', _ea.block(() => {
                                 return r_Possible_Value_Selection(
                                     $,
                                     {
@@ -1179,9 +1179,9 @@ export const r_Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p)
                                     }
                                 )
                             })])
-                            case 'state': return _pa.ss($, ($) => ['state', _pa.block(() => {
-                                return _pa.block(() => {
-                                    const p_selection: _i_out._T_Option_Constraints.D.SG.state.selection = _pa.cc($['selection'], ($) => r_Guaranteed_Value_Selection(
+                            case 'state': return _ea.ss($, ($) => ['state', _ea.block(() => {
+                                return _ea.block(() => {
+                                    const p_selection: _i_out._T_Option_Constraints.D.SG.state.selection = _ea.cc($['selection'], ($) => r_Guaranteed_Value_Selection(
                                         $,
                                         {
                                             'location 2 string': l2s,
@@ -1191,8 +1191,8 @@ export const r_Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p)
                                             }),
                                         }
                                     ))
-                                    const p_selected_state_group: _i_out._T_Option_Constraints.D.SG.state.selected_state_group = _pa.cc($['selected state group'], ($) => _pd.implement_me())
-                                    const p_state: _i_out._T_Option_Constraints.D.SG.state.state = _pa.cc($['state'], ($) => _i_generic.get_entry(
+                                    const p_selected_state_group: _i_out._T_Option_Constraints.D.SG.state.selected_state_group = _ea.cc($['selected state group'], ($) => _edev.implement_me())
+                                    const p_state: _i_out._T_Option_Constraints.D.SG.state.state = _ea.cc($['state'], ($) => _i_generic.get_entry(
                                         _i_generic.dictionary_to_lookup(
                                             p_selected_state_group,
                                             null
@@ -1209,7 +1209,7 @@ export const r_Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p)
                                     })
                                 })
                             })])
-                            default: return _pa.au($[0])
+                            default: return _ea.au($[0])
                         }
                     }))
                 }),
@@ -1217,15 +1217,15 @@ export const r_Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p)
         )
     })
 })
-export const r_Optional_Value_Initialization: _i_signatures._T_Optional_Value_Initialization = ($, $p) => _pa.block(() => {
+export const r_Optional_Value_Initialization: _i_signatures._T_Optional_Value_Initialization = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.cc($['state group'], ($): _i_out._T_Optional_Value_Initialization => {
+    return _ea.cc($['state group'], ($): _i_out._T_Optional_Value_Initialization => {
         switch ($[0]) {
-            case 'not set': return _pa.ss($, ($) => ['not set', _pa.block(() => {
+            case 'not set': return _ea.ss($, ($) => ['not set', _ea.block(() => {
                 return null
             })])
-            case 'selection': return _pa.ss($, ($) => ['selection', _pa.block(() => {
+            case 'selection': return _ea.ss($, ($) => ['selection', _ea.block(() => {
                 return r_Possible_Value_Selection(
                     $,
                     {
@@ -1237,7 +1237,7 @@ export const r_Optional_Value_Initialization: _i_signatures._T_Optional_Value_In
                     }
                 )
             })])
-            case 'set': return _pa.ss($, ($) => ['set', _pa.block(() => {
+            case 'set': return _ea.ss($, ($) => ['set', _ea.block(() => {
                 return r_Guaranteed_Value_Selection(
                     $,
                     {
@@ -1249,16 +1249,16 @@ export const r_Optional_Value_Initialization: _i_signatures._T_Optional_Value_In
                     }
                 )
             })])
-            default: return _pa.au($[0])
+            default: return _ea.au($[0])
         }
     })
 })
-export const r_Possible_Value_Selection: _i_signatures._T_Possible_Value_Selection = ($, $p) => _pa.block(() => {
+export const r_Possible_Value_Selection: _i_signatures._T_Possible_Value_Selection = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.cc($['state group'], ($): _i_out._T_Possible_Value_Selection => {
+    return _ea.cc($['state group'], ($): _i_out._T_Possible_Value_Selection => {
         switch ($[0]) {
-            case 'parameter': return _pa.ss($, ($) => ['parameter', _pa.block(() => {
+            case 'parameter': return _ea.ss($, ($) => ['parameter', _ea.block(() => {
                 return _i_generic.get_entry(
                     _i_generic.dictionary_to_lookup(
                         params['values']['signature']['resolved parameters']['values'],
@@ -1270,20 +1270,20 @@ export const r_Possible_Value_Selection: _i_signatures._T_Possible_Value_Selecti
                     }
                 )
             })])
-            case 'result': return _pa.ss($, ($) => ['result', _pa.block(() => {
-                return _pa.cc($['state group'], ($): _i_out._T_Possible_Value_Selection.SG.result => {
+            case 'result': return _ea.ss($, ($) => ['result', _ea.block(() => {
+                return _ea.cc($['state group'], ($): _i_out._T_Possible_Value_Selection.SG.result => {
                     switch ($[0]) {
-                        case 'optional value': return _pa.ss($, ($) => ['optional value', _pa.block(() => {
-                            return _pa.block(() => {
-                                const p_property: _i_out._T_Possible_Value_Selection.SG.result.SG.optional_value.property = _pa.cc($['property'], ($) => _i_generic.get_entry(
+                        case 'optional value': return _ea.ss($, ($) => ['optional value', _ea.block(() => {
+                            return _ea.block(() => {
+                                const p_property: _i_out._T_Possible_Value_Selection.SG.result.SG.optional_value.property = _ea.cc($['property'], ($) => _i_generic.get_entry(
                                     params['lookups']['sibling property resolvers'],
                                     {
                                         'location 2 string': l2s,
                                         'reference': $,
                                     }
                                 ))
-                                const p_optional_value: _i_out._T_Possible_Value_Selection.SG.result.SG.optional_value.optional_value = _pa.cc($['optional value'], ($) => _pd.implement_me())
-                                const p_result: _i_out._T_Possible_Value_Selection.SG.result.SG.optional_value.result = _pa.cc($['result'], ($) => r_Type_Reference(
+                                const p_optional_value: _i_out._T_Possible_Value_Selection.SG.result.SG.optional_value.optional_value = _ea.cc($['optional value'], ($) => _edev.implement_me())
+                                const p_result: _i_out._T_Possible_Value_Selection.SG.result.SG.optional_value.result = _ea.cc($['result'], ($) => r_Type_Reference(
                                     $,
                                     {
                                         'location 2 string': l2s,
@@ -1307,17 +1307,17 @@ export const r_Possible_Value_Selection: _i_signatures._T_Possible_Value_Selecti
                                 })
                             })
                         })])
-                        case 'state group': return _pa.ss($, ($) => ['state group', _pa.block(() => {
-                            return _pa.block(() => {
-                                const p_property: _i_out._T_Possible_Value_Selection.SG.result.SG.state_group.property = _pa.cc($['property'], ($) => _i_generic.get_entry(
+                        case 'state group': return _ea.ss($, ($) => ['state group', _ea.block(() => {
+                            return _ea.block(() => {
+                                const p_property: _i_out._T_Possible_Value_Selection.SG.result.SG.state_group.property = _ea.cc($['property'], ($) => _i_generic.get_entry(
                                     params['lookups']['sibling property resolvers'],
                                     {
                                         'location 2 string': l2s,
                                         'reference': $,
                                     }
                                 ))
-                                const p_state_group: _i_out._T_Possible_Value_Selection.SG.result.SG.state_group.state_group = _pa.cc($['state group'], ($) => _pd.implement_me())
-                                const p_result: _i_out._T_Possible_Value_Selection.SG.result.SG.state_group.result = _pa.cc($['result'], ($) => r_Type_Reference(
+                                const p_state_group: _i_out._T_Possible_Value_Selection.SG.result.SG.state_group.state_group = _ea.cc($['state group'], ($) => _edev.implement_me())
+                                const p_result: _i_out._T_Possible_Value_Selection.SG.result.SG.state_group.result = _ea.cc($['result'], ($) => r_Type_Reference(
                                     $,
                                     {
                                         'location 2 string': l2s,
@@ -1341,39 +1341,39 @@ export const r_Possible_Value_Selection: _i_signatures._T_Possible_Value_Selecti
                                 })
                             })
                         })])
-                        default: return _pa.au($[0])
+                        default: return _ea.au($[0])
                     }
                 })
             })])
-            default: return _pa.au($[0])
+            default: return _ea.au($[0])
         }
     })
 })
-export const r_Presence: _i_signatures._T_Presence = ($, $p) => _pa.block(() => {
+export const r_Presence: _i_signatures._T_Presence = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.cc($['state group'], ($): _i_out._T_Presence => {
+    return _ea.cc($['state group'], ($): _i_out._T_Presence => {
         switch ($[0]) {
-            case 'optional': return _pa.ss($, ($) => ['optional', _pa.block(() => {
+            case 'optional': return _ea.ss($, ($) => ['optional', _ea.block(() => {
                 return null
             })])
-            case 'required': return _pa.ss($, ($) => ['required', _pa.block(() => {
+            case 'required': return _ea.ss($, ($) => ['required', _ea.block(() => {
                 return null
             })])
-            default: return _pa.au($[0])
+            default: return _ea.au($[0])
         }
     })
 })
-export const r_Property_Constraint: _i_signatures._T_Property_Constraint = ($, $p) => _pa.block(() => {
+export const r_Property_Constraint: _i_signatures._T_Property_Constraint = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_start: _i_out._T_Property_Constraint.start = _pa.cc($['start'], ($) => _pa.cc($['state group'], ($): _i_out._T_Property_Constraint.start => {
+    return _ea.block(() => {
+        const p_start: _i_out._T_Property_Constraint.start = _ea.cc($['start'], ($) => _ea.cc($['state group'], ($): _i_out._T_Property_Constraint.start => {
             switch ($[0]) {
-                case 'property': return _pa.ss($, ($) => ['property', _pa.block(() => {
+                case 'property': return _ea.ss($, ($) => ['property', _ea.block(() => {
                     return null
                 })])
-                case 'sibling': return _pa.ss($, ($) => ['sibling', _pa.block(() => {
+                case 'sibling': return _ea.ss($, ($) => ['sibling', _ea.block(() => {
                     return r_Reference_To_Property_Constraint(
                         $,
                         {
@@ -1387,17 +1387,17 @@ export const r_Property_Constraint: _i_signatures._T_Property_Constraint = ($, $
                         }
                     )
                 })])
-                default: return _pa.au($[0])
+                default: return _ea.au($[0])
             }
         }))
-        const p_constraint: _i_out._T_Property_Constraint.constraint = _pa.cc($['constraint'], ($) => r_Constraint(
+        const p_constraint: _i_out._T_Property_Constraint.constraint = _ea.cc($['constraint'], ($) => r_Constraint(
             $,
             {
                 'location 2 string': l2s,
                 'parameters': ({
                     'lookups': null,
                     'values': ({
-                        'node': _pd.implement_me(),
+                        'node': _edev.implement_me(),
                     }),
                 }),
             }
@@ -1408,16 +1408,16 @@ export const r_Property_Constraint: _i_signatures._T_Property_Constraint = ($, $
         })
     })
 })
-export const r_Property_Constraints: _i_signatures._T_Property_Constraints = ($, $p) => _pa.block(() => {
+export const r_Property_Constraints: _i_signatures._T_Property_Constraints = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
+    return _ea.block(() => {
         return _i_generic.resolve_ordered_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _pa.block(() => {
-                    return _pa.cc($['value'], ($) => r_Property_Constraint(
+                'map': ($, $p) => _ea.block(() => {
+                    return _ea.cc($['value'], ($) => r_Property_Constraint(
                         $,
                         {
                             'location 2 string': l2s,
@@ -1434,7 +1434,7 @@ export const r_Property_Constraints: _i_signatures._T_Property_Constraints = ($,
         )
     })
 })
-export const r_Reference_To_Property_Constraint: _i_signatures._T_Reference_To_Property_Constraint = ($, $p) => _pa.block(() => {
+export const r_Reference_To_Property_Constraint: _i_signatures._T_Reference_To_Property_Constraint = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return _i_generic.get_entry(
@@ -1445,18 +1445,18 @@ export const r_Reference_To_Property_Constraint: _i_signatures._T_Reference_To_P
         }
     )
 })
-export const r_Relative_Value_Selection: _i_signatures._T_Relative_Value_Selection = ($, $p) => _pa.block(() => {
+export const r_Relative_Value_Selection: _i_signatures._T_Relative_Value_Selection = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_path: _i_out._T_Relative_Value_Selection.path = _pa.cc($['path'], ($) => $['list'].map(($) => _pa.cc($['element'], ($) => _pa.cc($['state group'], ($): _i_out._T_Relative_Value_Selection.path.L => {
+    return _ea.block(() => {
+        const p_path: _i_out._T_Relative_Value_Selection.path = _ea.cc($['path'], ($) => $['list'].map(($) => _ea.cc($['element'], ($) => _ea.cc($['state group'], ($): _i_out._T_Relative_Value_Selection.path.L => {
             switch ($[0]) {
-                case 'component': return _pa.ss($, ($) => ['component', _pa.block(() => {
-                    const c_definition = _pd.implement_me()
+                case 'component': return _ea.ss($, ($) => ['component', _ea.block(() => {
+                    const c_definition = _edev.implement_me()
                     return null
                 })])
-                case 'group': return _pa.ss($, ($) => ['group', _pa.block(() => {
-                    const c_definition = _pd.implement_me()
+                case 'group': return _ea.ss($, ($) => ['group', _ea.block(() => {
+                    const c_definition = _edev.implement_me()
                     return _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup(
                             c_definition['dictionary'],
@@ -1468,31 +1468,31 @@ export const r_Relative_Value_Selection: _i_signatures._T_Relative_Value_Selecti
                         }
                     )
                 })])
-                case 'reference': return _pa.ss($, ($) => ['reference', _pa.block(() => {
-                    const c_definition = _pd.implement_me()
-                    return _pa.block(() => {
-                        const p_definition: _i_out._T_Relative_Value_Selection.path.L.SG.reference.definition = _pa.cc($['definition'], ($) => c_definition)
+                case 'reference': return _ea.ss($, ($) => ['reference', _ea.block(() => {
+                    const c_definition = _edev.implement_me()
+                    return _ea.block(() => {
+                        const p_definition: _i_out._T_Relative_Value_Selection.path.L.SG.reference.definition = _ea.cc($['definition'], ($) => c_definition)
                         return ({
                             'definition': p_definition,
                         })
                     })
                 })])
-                default: return _pa.au($[0])
+                default: return _ea.au($[0])
             }
         }))))
-        const p_resulting_node: _i_out._T_Relative_Value_Selection.resulting_node = _pa.cc($['resulting node'], ($) => _pd.implement_me())
+        const p_resulting_node: _i_out._T_Relative_Value_Selection.resulting_node = _ea.cc($['resulting node'], ($) => _edev.implement_me())
         return ({
             'path': p_path,
             'resulting node': p_resulting_node,
         })
     })
 })
-export const r_Resolve_Logic: _i_signatures._T_Resolve_Logic = ($, $p) => _pa.block(() => {
+export const r_Resolve_Logic: _i_signatures._T_Resolve_Logic = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_signatures: _i_out._T_Resolve_Logic.signatures = _pa.cc($['signatures'], ($) => _pa.block(() => {
-            const p_types: _i_out._T_Resolve_Logic.signatures.types = _pa.cc($['types'], ($) => r_Signatures(
+    return _ea.block(() => {
+        const p_signatures: _i_out._T_Resolve_Logic.signatures = _ea.cc($['signatures'], ($) => _ea.block(() => {
+            const p_types: _i_out._T_Resolve_Logic.signatures.types = _ea.cc($['types'], ($) => r_Signatures(
                 $,
                 {
                     'location 2 string': l2s,
@@ -1509,7 +1509,7 @@ export const r_Resolve_Logic: _i_signatures._T_Resolve_Logic = ($, $p) => _pa.bl
                 'types': p_types,
             })
         }))
-        const p_resolvers: _i_out._T_Resolve_Logic.resolvers = _pa.cc($['resolvers'], ($) => r_Resolvers(
+        const p_resolvers: _i_out._T_Resolve_Logic.resolvers = _ea.cc($['resolvers'], ($) => r_Resolvers(
             $,
             {
                 'location 2 string': l2s,
@@ -1529,36 +1529,36 @@ export const r_Resolve_Logic: _i_signatures._T_Resolve_Logic = ($, $p) => _pa.bl
         })
     })
 })
-export const r_Resolvers: _i_signatures._T_Resolvers = ($, $p) => _pa.block(() => {
+export const r_Resolvers: _i_signatures._T_Resolvers = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
+    return _ea.block(() => {
         const benchmark = params['values']['signatures']
         return _i_generic.resolve_ordered_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _pa.block(() => {
-                    const linked_entry = _pd.implement_me()
-                    return _pa.cc($['value'], ($) => _pa.block(() => {
-                        const p_signature: _i_out._T_Resolvers.D.signature = _pa.cc($['signature'], ($) => linked_entry)
-                        const p_type_resolver: _i_out._T_Resolvers.D.type_resolver = _pa.cc($['type resolver'], ($) => r_Node_Resolver(
+                'map': ($, $p) => _ea.block(() => {
+                    const linked_entry = _edev.implement_me()
+                    return _ea.cc($['value'], ($) => _ea.block(() => {
+                        const p_signature: _i_out._T_Resolvers.D.signature = _ea.cc($['signature'], ($) => linked_entry)
+                        const p_type_resolver: _i_out._T_Resolvers.D.type_resolver = _ea.cc($['type resolver'], ($) => r_Node_Resolver(
                             $,
                             {
                                 'location 2 string': l2s,
                                 'parameters': ({
                                     'lookups': ({
-                                        'parent sibling property resolvers': _pa.not_set(),
-                                        'sibling property resolvers': _pa.not_set(),
+                                        'parent sibling property resolvers': _ea.not_set(),
+                                        'sibling property resolvers': _ea.not_set(),
                                     }),
                                     'values': ({
-                                        'current dictionary': _pa.not_set(),
-                                        'current ordered dictionary': _pa.not_set(),
+                                        'current dictionary': _ea.not_set(),
+                                        'current ordered dictionary': _ea.not_set(),
                                         'definition': linked_entry['type']['node'],
-                                        'imports': _pa.set(params['values']['imports']),
-                                        'linked entry': _pa.not_set(),
-                                        'list cursor': _pa.not_set(),
-                                        'option constraints': _pa.not_set(),
+                                        'imports': _ea.set(params['values']['imports']),
+                                        'linked entry': _ea.not_set(),
+                                        'list cursor': _ea.not_set(),
+                                        'option constraints': _ea.not_set(),
                                         'signature': p_signature,
                                         'signatures': params['values']['signatures'],
                                         'types': params['values']['types'],
@@ -1576,11 +1576,11 @@ export const r_Resolvers: _i_signatures._T_Resolvers = ($, $p) => _pa.block(() =
         )
     })
 })
-export const r_Schema: _i_signatures._T_Schema = ($, $p) => _pa.block(() => {
+export const r_Schema: _i_signatures._T_Schema = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_imports: _i_out._T_Schema.imports = _pa.cc($['imports'], ($) => r_Imports(
+    return _ea.block(() => {
+        const p_imports: _i_out._T_Schema.imports = _ea.cc($['imports'], ($) => r_Imports(
             $,
             {
                 'location 2 string': l2s,
@@ -1592,7 +1592,7 @@ export const r_Schema: _i_signatures._T_Schema = ($, $p) => _pa.block(() => {
                 }),
             }
         ))
-        const p_globals: _i_out._T_Schema.globals = _pa.cc($['globals'], ($) => r_Globals(
+        const p_globals: _i_out._T_Schema.globals = _ea.cc($['globals'], ($) => r_Globals(
             $,
             {
                 'location 2 string': l2s,
@@ -1602,22 +1602,22 @@ export const r_Schema: _i_signatures._T_Schema = ($, $p) => _pa.block(() => {
                 }),
             }
         ))
-        const p_types: _i_out._T_Schema.types = _pa.cc($['types'], ($) => r_Types(
+        const p_types: _i_out._T_Schema.types = _ea.cc($['types'], ($) => r_Types(
             $,
             {
                 'location 2 string': l2s,
                 'parameters': ({
                     'lookups': null,
                     'values': ({
-                        'globals': _pa.set(p_globals),
-                        'imports': _pa.set(p_imports),
+                        'globals': _ea.set(p_globals),
+                        'imports': _ea.set(p_imports),
                     }),
                 }),
             }
         ))
-        const p_complexity: _i_out._T_Schema.complexity = _pa.cc($['complexity'], ($) => _pa.cc($['state group'], ($): _i_out._T_Schema.complexity => {
+        const p_complexity: _i_out._T_Schema.complexity = _ea.cc($['complexity'], ($) => _ea.cc($['state group'], ($): _i_out._T_Schema.complexity => {
             switch ($[0]) {
-                case 'constrained': return _pa.ss($, ($) => ['constrained', _pa.block(() => {
+                case 'constrained': return _ea.ss($, ($) => ['constrained', _ea.block(() => {
                     return r_Resolve_Logic(
                         $,
                         {
@@ -1632,10 +1632,10 @@ export const r_Schema: _i_signatures._T_Schema = ($, $p) => _pa.block(() => {
                         }
                     )
                 })])
-                case 'unconstrained': return _pa.ss($, ($) => ['unconstrained', _pa.block(() => {
+                case 'unconstrained': return _ea.ss($, ($) => ['unconstrained', _ea.block(() => {
                     return null
                 })])
-                default: return _pa.au($[0])
+                default: return _ea.au($[0])
             }
         }))
         return ({
@@ -1646,12 +1646,12 @@ export const r_Schema: _i_signatures._T_Schema = ($, $p) => _pa.block(() => {
         })
     })
 })
-export const r_Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => _pa.block(() => {
+export const r_Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.cc($['state group'], ($): _i_out._T_Schema_Tree => {
+    return _ea.cc($['state group'], ($): _i_out._T_Schema_Tree => {
         switch ($[0]) {
-            case 'schema': return _pa.ss($, ($) => ['schema', _pa.block(() => {
+            case 'schema': return _ea.ss($, ($) => ['schema', _ea.block(() => {
                 return r_Schema(
                     $,
                     {
@@ -1665,7 +1665,7 @@ export const r_Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => _pa.block(
                     }
                 )
             })])
-            case 'set': return _pa.ss($, ($) => ['set', _pa.block(() => {
+            case 'set': return _ea.ss($, ($) => ['set', _ea.block(() => {
                 return r_Schemas(
                     $,
                     {
@@ -1679,26 +1679,26 @@ export const r_Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => _pa.block(
                     }
                 )
             })])
-            default: return _pa.au($[0])
+            default: return _ea.au($[0])
         }
     })
 })
-export const r_Schemas: _i_signatures._T_Schemas = ($, $p) => _pa.block(() => {
+export const r_Schemas: _i_signatures._T_Schemas = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
+    return _ea.block(() => {
         return _i_generic.resolve_ordered_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _pa.block(() => {
-                    return _pa.cc($['value'], ($) => r_Schema_Tree(
+                'map': ($, $p) => _ea.block(() => {
+                    return _ea.cc($['value'], ($) => r_Schema_Tree(
                         $,
                         {
                             'location 2 string': l2s,
                             'parameters': ({
                                 'lookups': ({
-                                    'sibling schemas': _pd.implement_me(),
+                                    'sibling schemas': _edev.implement_me(),
                                 }),
                                 'values': null,
                             }),
@@ -1709,14 +1709,14 @@ export const r_Schemas: _i_signatures._T_Schemas = ($, $p) => _pa.block(() => {
         )
     })
 })
-export const r_Signature: _i_signatures._T_Signature = ($, $p) => _pa.block(() => {
+export const r_Signature: _i_signatures._T_Signature = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_type: _i_out._T_Signature._type = _pa.cc($['type'], ($) => params['values']['type'])
-        const p_parameters: _i_out._T_Signature.parameters = _pa.cc($['parameters'], ($) => _pa.cc($['state group'], ($): _i_out._T_Signature.parameters => {
+    return _ea.block(() => {
+        const p_type: _i_out._T_Signature._type = _ea.cc($['type'], ($) => params['values']['type'])
+        const p_parameters: _i_out._T_Signature.parameters = _ea.cc($['parameters'], ($) => _ea.cc($['state group'], ($): _i_out._T_Signature.parameters => {
             switch ($[0]) {
-                case 'local': return _pa.ss($, ($) => ['local', _pa.block(() => {
+                case 'local': return _ea.ss($, ($) => ['local', _ea.block(() => {
                     return r_Signature_Parameters(
                         $,
                         {
@@ -1731,7 +1731,7 @@ export const r_Signature: _i_signatures._T_Signature = ($, $p) => _pa.block(() =
                         }
                     )
                 })])
-                case 'same as': return _pa.ss($, ($) => ['same as', _pa.block(() => {
+                case 'same as': return _ea.ss($, ($) => ['same as', _ea.block(() => {
                     return _i_generic.get_entry(
                         params['lookups']['sibling signatures'],
                         {
@@ -1740,10 +1740,10 @@ export const r_Signature: _i_signatures._T_Signature = ($, $p) => _pa.block(() =
                         }
                     )
                 })])
-                default: return _pa.au($[0])
+                default: return _ea.au($[0])
             }
         }))
-        const p_resolved_parameters: _i_out._T_Signature.resolved_parameters = _pa.cc($['resolved parameters'], ($) => _pd.implement_me())
+        const p_resolved_parameters: _i_out._T_Signature.resolved_parameters = _ea.cc($['resolved parameters'], ($) => _edev.implement_me())
         return ({
             'parameters': p_parameters,
             'resolved parameters': p_resolved_parameters,
@@ -1751,18 +1751,18 @@ export const r_Signature: _i_signatures._T_Signature = ($, $p) => _pa.block(() =
         })
     })
 })
-export const r_Signature_Parameters: _i_signatures._T_Signature_Parameters = ($, $p) => _pa.block(() => {
+export const r_Signature_Parameters: _i_signatures._T_Signature_Parameters = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_values: _i_out._T_Signature_Parameters.values = _pa.cc($['values'], ($) => _pa.block(() => {
+    return _ea.block(() => {
+        const p_values: _i_out._T_Signature_Parameters.values = _ea.cc($['values'], ($) => _ea.block(() => {
             return _i_generic.resolve_dictionary(
                 $,
                 {
                     'location 2 string': l2s,
-                    'map': ($, $p) => _pa.block(() => {
-                        return _pa.cc($['value'], ($) => _pa.block(() => {
-                            const p_data_type: _i_out._T_Signature_Parameters.values.D.data_type = _pa.cc($['data type'], ($) => r_Type_Reference(
+                    'map': ($, $p) => _ea.block(() => {
+                        return _ea.cc($['value'], ($) => _ea.block(() => {
+                            const p_data_type: _i_out._T_Signature_Parameters.values.D.data_type = _ea.cc($['data type'], ($) => r_Type_Reference(
                                 $,
                                 {
                                     'location 2 string': l2s,
@@ -1774,12 +1774,12 @@ export const r_Signature_Parameters: _i_signatures._T_Signature_Parameters = ($,
                                             ),
                                         }),
                                         'values': ({
-                                            'imports': _pa.set(params['values']['imports']),
+                                            'imports': _ea.set(params['values']['imports']),
                                         }),
                                     }),
                                 }
                             ))
-                            const p_presence: _i_out._T_Signature_Parameters.values.D.presence = _pa.cc($['presence'], ($) => r_Presence(
+                            const p_presence: _i_out._T_Signature_Parameters.values.D.presence = _ea.cc($['presence'], ($) => r_Presence(
                                 $,
                                 {
                                     'location 2 string': l2s,
@@ -1798,14 +1798,14 @@ export const r_Signature_Parameters: _i_signatures._T_Signature_Parameters = ($,
                 }
             )
         }))
-        const p_lookups: _i_out._T_Signature_Parameters.lookups = _pa.cc($['lookups'], ($) => _pa.block(() => {
+        const p_lookups: _i_out._T_Signature_Parameters.lookups = _ea.cc($['lookups'], ($) => _ea.block(() => {
             return _i_generic.resolve_dictionary(
                 $,
                 {
                     'location 2 string': l2s,
-                    'map': ($, $p) => _pa.block(() => {
-                        return _pa.cc($['value'], ($) => _pa.block(() => {
-                            const p_referent: _i_out._T_Signature_Parameters.lookups.D.referent = _pa.cc($['referent'], ($) => r_Type_Reference(
+                    'map': ($, $p) => _ea.block(() => {
+                        return _ea.cc($['value'], ($) => _ea.block(() => {
+                            const p_referent: _i_out._T_Signature_Parameters.lookups.D.referent = _ea.cc($['referent'], ($) => r_Type_Reference(
                                 $,
                                 {
                                     'location 2 string': l2s,
@@ -1817,27 +1817,27 @@ export const r_Signature_Parameters: _i_signatures._T_Signature_Parameters = ($,
                                             ),
                                         }),
                                         'values': ({
-                                            'imports': _pa.set(params['values']['imports']),
+                                            'imports': _ea.set(params['values']['imports']),
                                         }),
                                     }),
                                 }
                             ))
-                            const p_dictionary: _i_out._T_Signature_Parameters.lookups.D.dictionary = _pa.cc($['dictionary'], ($) => _pd.implement_me())
-                            const p_type: _i_out._T_Signature_Parameters.lookups.D._type = _pa.cc($['type'], ($) => _pa.cc($['state group'], ($): _i_out._T_Signature_Parameters.lookups.D._type => {
+                            const p_dictionary: _i_out._T_Signature_Parameters.lookups.D.dictionary = _ea.cc($['dictionary'], ($) => _edev.implement_me())
+                            const p_type: _i_out._T_Signature_Parameters.lookups.D._type = _ea.cc($['type'], ($) => _ea.cc($['state group'], ($): _i_out._T_Signature_Parameters.lookups.D._type => {
                                 switch ($[0]) {
-                                    case 'acyclic': return _pa.ss($, ($) => ['acyclic', _pa.block(() => {
+                                    case 'acyclic': return _ea.ss($, ($) => ['acyclic', _ea.block(() => {
                                         return null
                                     })])
-                                    case 'cyclic': return _pa.ss($, ($) => ['cyclic', _pa.block(() => {
+                                    case 'cyclic': return _ea.ss($, ($) => ['cyclic', _ea.block(() => {
                                         return null
                                     })])
-                                    case 'stack': return _pa.ss($, ($) => ['stack', _pa.block(() => {
+                                    case 'stack': return _ea.ss($, ($) => ['stack', _ea.block(() => {
                                         return null
                                     })])
-                                    default: return _pa.au($[0])
+                                    default: return _ea.au($[0])
                                 }
                             }))
-                            const p_presence: _i_out._T_Signature_Parameters.lookups.D.presence = _pa.cc($['presence'], ($) => r_Presence(
+                            const p_presence: _i_out._T_Signature_Parameters.lookups.D.presence = _ea.cc($['presence'], ($) => r_Presence(
                                 $,
                                 {
                                     'location 2 string': l2s,
@@ -1864,18 +1864,18 @@ export const r_Signature_Parameters: _i_signatures._T_Signature_Parameters = ($,
         })
     })
 })
-export const r_Signatures: _i_signatures._T_Signatures = ($, $p) => _pa.block(() => {
+export const r_Signatures: _i_signatures._T_Signatures = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
+    return _ea.block(() => {
         const benchmark = params['values']['types']
         return _i_generic.resolve_ordered_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _pa.block(() => {
-                    const linked_entry = _pd.implement_me()
-                    return _pa.cc($['value'], ($) => r_Signature(
+                'map': ($, $p) => _ea.block(() => {
+                    const linked_entry = _edev.implement_me()
+                    return _ea.cc($['value'], ($) => r_Signature(
                         $,
                         {
                             'location 2 string': l2s,
@@ -1896,19 +1896,19 @@ export const r_Signatures: _i_signatures._T_Signatures = ($, $p) => _pa.block(()
         )
     })
 })
-export const r_Text_Type: _i_signatures._T_Text_Type = ($, $p) => _pa.block(() => {
+export const r_Text_Type: _i_signatures._T_Text_Type = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_type: _i_out._T_Text_Type._type = _pa.cc($['type'], ($) => _pa.cc($['state group'], ($): _i_out._T_Text_Type._type => {
+    return _ea.block(() => {
+        const p_type: _i_out._T_Text_Type._type = _ea.cc($['type'], ($) => _ea.cc($['state group'], ($): _i_out._T_Text_Type._type => {
             switch ($[0]) {
-                case 'multi line': return _pa.ss($, ($) => ['multi line', _pa.block(() => {
+                case 'multi line': return _ea.ss($, ($) => ['multi line', _ea.block(() => {
                     return null
                 })])
-                case 'single line': return _pa.ss($, ($) => ['single line', _pa.block(() => {
+                case 'single line': return _ea.ss($, ($) => ['single line', _ea.block(() => {
                     return null
                 })])
-                default: return _pa.au($[0])
+                default: return _ea.au($[0])
             }
         }))
         return ({
@@ -1916,11 +1916,11 @@ export const r_Text_Type: _i_signatures._T_Text_Type = ($, $p) => _pa.block(() =
         })
     })
 })
-export const r_Type: _i_signatures._T_Type = ($, $p) => _pa.block(() => {
+export const r_Type: _i_signatures._T_Type = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_type_parameters: _i_out._T_Type.type_parameters = _pa.cc($['type parameters'], ($) => r_Type_Parameters(
+    return _ea.block(() => {
+        const p_type_parameters: _i_out._T_Type.type_parameters = _ea.cc($['type parameters'], ($) => r_Type_Parameters(
             $,
             {
                 'location 2 string': l2s,
@@ -1930,7 +1930,7 @@ export const r_Type: _i_signatures._T_Type = ($, $p) => _pa.block(() => {
                 }),
             }
         ))
-        const p_node: _i_out._T_Type.node = _pa.cc($['node'], ($) => r_Type_Node(
+        const p_node: _i_out._T_Type.node = _ea.cc($['node'], ($) => r_Type_Node(
             $,
             {
                 'location 2 string': l2s,
@@ -1953,24 +1953,24 @@ export const r_Type: _i_signatures._T_Type = ($, $p) => _pa.block(() => {
         })
     })
 })
-export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() => {
+export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.cc($['state group'], ($): _i_out._T_Type_Node => {
+    return _ea.cc($['state group'], ($): _i_out._T_Type_Node => {
         switch ($[0]) {
-            case 'boolean': return _pa.ss($, ($) => ['boolean', _pa.block(() => {
+            case 'boolean': return _ea.ss($, ($) => ['boolean', _ea.block(() => {
                 return null
             })])
-            case 'component': return _pa.ss($, ($) => ['component', _pa.block(() => {
-                return _pa.cc($['state group'], ($): _i_out._T_Type_Node.SG.component => {
+            case 'component': return _ea.ss($, ($) => ['component', _ea.block(() => {
+                return _ea.cc($['state group'], ($): _i_out._T_Type_Node.SG.component => {
                     switch ($[0]) {
-                        case 'external': return _pa.ss($, ($) => ['external', _pa.block(() => {
+                        case 'external': return _ea.ss($, ($) => ['external', _ea.block(() => {
                             const c_import = params['values']['imports'].transform(
                                 ($) => $,
-                                () => _pa.panic('ABORT SELECTION')
+                                () => _ea.deprecated_panic('ABORT SELECTION')
                             )
-                            return _pa.block(() => {
-                                const p_import: _i_out._T_Type_Node.SG.component.SG.external._import = _pa.cc($['import'], ($) => _i_generic.get_entry(
+                            return _ea.block(() => {
+                                const p_import: _i_out._T_Type_Node.SG.component.SG.external._import = _ea.cc($['import'], ($) => _i_generic.get_entry(
                                     _i_generic.dictionary_to_lookup(
                                         c_import,
                                         null
@@ -1980,7 +1980,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                                         'reference': $,
                                     }
                                 ))
-                                const p_type: _i_out._T_Type_Node.SG.component.SG.external._type = _pa.cc($['type'], ($) => _i_generic.get_entry(
+                                const p_type: _i_out._T_Type_Node.SG.component.SG.external._type = _ea.cc($['type'], ($) => _i_generic.get_entry(
                                     _i_generic.dictionary_to_lookup(
                                         p_import['entry']['schema']['types']['dictionary'],
                                         null
@@ -1996,7 +1996,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                                 })
                             })
                         })])
-                        case 'internal': return _pa.ss($, ($) => ['internal', _pa.block(() => {
+                        case 'internal': return _ea.ss($, ($) => ['internal', _ea.block(() => {
                             return _i_generic.get_entry(
                                 params['lookups']['noncircular sibling types'],
                                 {
@@ -2005,7 +2005,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                                 }
                             )
                         })])
-                        case 'internal cyclic': return _pa.ss($, ($) => ['internal cyclic', _pa.block(() => {
+                        case 'internal cyclic': return _ea.ss($, ($) => ['internal cyclic', _ea.block(() => {
                             return _i_generic.get_possibly_circular_dependent_sibling_entry(
                                 params['lookups']['possibly circular dependent sibling types'],
                                 {
@@ -2014,11 +2014,11 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                                 }
                             )
                         })])
-                        default: return _pa.au($[0])
+                        default: return _ea.au($[0])
                     }
                 })
             })])
-            case 'dictionary': return _pa.ss($, ($) => ['dictionary', _pa.block(() => {
+            case 'dictionary': return _ea.ss($, ($) => ['dictionary', _ea.block(() => {
                 return r_Dictionary(
                     $,
                     {
@@ -2037,7 +2037,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                     }
                 )
             })])
-            case 'group': return _pa.ss($, ($) => ['group', _pa.block(() => {
+            case 'group': return _ea.ss($, ($) => ['group', _ea.block(() => {
                 return r_Group(
                     $,
                     {
@@ -2056,9 +2056,9 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                     }
                 )
             })])
-            case 'list': return _pa.ss($, ($) => ['list', _pa.block(() => {
-                return _pa.block(() => {
-                    const p_node: _i_out._T_Type_Node.SG.list.node = _pa.cc($['node'], ($) => r_Type_Node(
+            case 'list': return _ea.ss($, ($) => ['list', _ea.block(() => {
+                return _ea.block(() => {
+                    const p_node: _i_out._T_Type_Node.SG.list.node = _ea.cc($['node'], ($) => r_Type_Node(
                         $,
                         {
                             'location 2 string': l2s,
@@ -2073,16 +2073,16 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                     })
                 })
             })])
-            case 'nothing': return _pa.ss($, ($) => ['nothing', _pa.block(() => {
+            case 'nothing': return _ea.ss($, ($) => ['nothing', _ea.block(() => {
                 return null
             })])
-            case 'number': return _pa.ss($, ($) => ['number', _pa.block(() => {
-                return _pa.cc($['state group'], ($): _i_out._T_Type_Node.SG._number => {
+            case 'number': return _ea.ss($, ($) => ['number', _ea.block(() => {
+                return _ea.cc($['state group'], ($): _i_out._T_Type_Node.SG._number => {
                     switch ($[0]) {
-                        case 'global': return _pa.ss($, ($) => ['global', _pa.block(() => {
+                        case 'global': return _ea.ss($, ($) => ['global', _ea.block(() => {
                             const c_globals = params['values']['globals'].transform(
                                 ($) => $,
-                                () => _pa.panic('ABORT SELECTION')
+                                () => _ea.deprecated_panic('ABORT SELECTION')
                             )
                             return _i_generic.get_entry(
                                 _i_generic.dictionary_to_lookup(
@@ -2095,7 +2095,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                                 }
                             )
                         })])
-                        case 'local': return _pa.ss($, ($) => ['local', _pa.block(() => {
+                        case 'local': return _ea.ss($, ($) => ['local', _ea.block(() => {
                             return r_Number_Type(
                                 $,
                                 {
@@ -2107,11 +2107,11 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                                 }
                             )
                         })])
-                        default: return _pa.au($[0])
+                        default: return _ea.au($[0])
                     }
                 })
             })])
-            case 'optional': return _pa.ss($, ($) => ['optional', _pa.block(() => {
+            case 'optional': return _ea.ss($, ($) => ['optional', _ea.block(() => {
                 return r_Type_Node(
                     $,
                     {
@@ -2123,9 +2123,9 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                     }
                 )
             })])
-            case 'reference': return _pa.ss($, ($) => ['reference', _pa.block(() => {
-                return _pa.block(() => {
-                    const p_referent: _i_out._T_Type_Node.SG.reference.referent = _pa.cc($['referent'], ($) => r_Type_Node_Reference(
+            case 'reference': return _ea.ss($, ($) => ['reference', _ea.block(() => {
+                return _ea.block(() => {
+                    const p_referent: _i_out._T_Type_Node.SG.reference.referent = _ea.cc($['referent'], ($) => r_Type_Node_Reference(
                         $,
                         {
                             'location 2 string': l2s,
@@ -2139,27 +2139,27 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                             }),
                         }
                     ))
-                    const p_type: _i_out._T_Type_Node.SG.reference._type = _pa.cc($['type'], ($) => _pa.cc($['state group'], ($): _i_out._T_Type_Node.SG.reference._type => {
+                    const p_type: _i_out._T_Type_Node.SG.reference._type = _ea.cc($['type'], ($) => _ea.cc($['state group'], ($): _i_out._T_Type_Node.SG.reference._type => {
                         switch ($[0]) {
-                            case 'derived': return _pa.ss($, ($) => ['derived', _pa.block(() => {
+                            case 'derived': return _ea.ss($, ($) => ['derived', _ea.block(() => {
                                 return null
                             })])
-                            case 'selected': return _pa.ss($, ($) => ['selected', _pa.block(() => {
-                                const c_dictionary = _pd.implement_me()
-                                return _pa.block(() => {
-                                    const p_dictionary: _i_out._T_Type_Node.SG.reference._type.SG.selected.dictionary = _pa.cc($['dictionary'], ($) => c_dictionary)
-                                    const p_dependency: _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency = _pa.cc($['dependency'], ($) => _pa.cc($['state group'], ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency => {
+                            case 'selected': return _ea.ss($, ($) => ['selected', _ea.block(() => {
+                                const c_dictionary = _edev.implement_me()
+                                return _ea.block(() => {
+                                    const p_dictionary: _i_out._T_Type_Node.SG.reference._type.SG.selected.dictionary = _ea.cc($['dictionary'], ($) => c_dictionary)
+                                    const p_dependency: _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency = _ea.cc($['dependency'], ($) => _ea.cc($['state group'], ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency => {
                                         switch ($[0]) {
-                                            case 'acyclic': return _pa.ss($, ($) => ['acyclic', _pa.block(() => {
+                                            case 'acyclic': return _ea.ss($, ($) => ['acyclic', _ea.block(() => {
                                                 return null
                                             })])
-                                            case 'cyclic': return _pa.ss($, ($) => ['cyclic', _pa.block(() => {
+                                            case 'cyclic': return _ea.ss($, ($) => ['cyclic', _ea.block(() => {
                                                 return null
                                             })])
-                                            case 'stack': return _pa.ss($, ($) => ['stack', _pa.block(() => {
+                                            case 'stack': return _ea.ss($, ($) => ['stack', _ea.block(() => {
                                                 return null
                                             })])
-                                            default: return _pa.au($[0])
+                                            default: return _ea.au($[0])
                                         }
                                     }))
                                     return ({
@@ -2168,7 +2168,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                                     })
                                 })
                             })])
-                            default: return _pa.au($[0])
+                            default: return _ea.au($[0])
                         }
                     }))
                     return ({
@@ -2177,15 +2177,15 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                     })
                 })
             })])
-            case 'state group': return _pa.ss($, ($) => ['state group', _pa.block(() => {
-                return _pa.block(() => {
+            case 'state group': return _ea.ss($, ($) => ['state group', _ea.block(() => {
+                return _ea.block(() => {
                     return _i_generic.resolve_dictionary(
                         $,
                         {
                             'location 2 string': l2s,
-                            'map': ($, $p) => _pa.block(() => {
-                                return _pa.cc($['value'], ($) => _pa.block(() => {
-                                    const p_node: _i_out._T_Type_Node.SG.state_group.D.node = _pa.cc($['node'], ($) => r_Type_Node(
+                            'map': ($, $p) => _ea.block(() => {
+                                return _ea.cc($['value'], ($) => _ea.block(() => {
+                                    const p_node: _i_out._T_Type_Node.SG.state_group.D.node = _ea.cc($['node'], ($) => r_Type_Node(
                                         $,
                                         {
                                             'location 2 string': l2s,
@@ -2195,7 +2195,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                                             }),
                                         }
                                     ))
-                                    const p_description: _i_out._T_Type_Node.SG.state_group.D.description = _pa.cc($['description'], ($) => $.map(($) => _pa.block(() => {
+                                    const p_description: _i_out._T_Type_Node.SG.state_group.D.description = _ea.cc($['description'], ($) => $.map(($) => _ea.block(() => {
                                         return $
                                     })))
                                     return ({
@@ -2208,13 +2208,13 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                     )
                 })
             })])
-            case 'text': return _pa.ss($, ($) => ['text', _pa.block(() => {
-                return _pa.cc($['state group'], ($): _i_out._T_Type_Node.SG.text => {
+            case 'text': return _ea.ss($, ($) => ['text', _ea.block(() => {
+                return _ea.cc($['state group'], ($): _i_out._T_Type_Node.SG.text => {
                     switch ($[0]) {
-                        case 'global': return _pa.ss($, ($) => ['global', _pa.block(() => {
+                        case 'global': return _ea.ss($, ($) => ['global', _ea.block(() => {
                             const c_globals = params['values']['globals'].transform(
                                 ($) => $,
-                                () => _pa.panic('ABORT SELECTION')
+                                () => _ea.deprecated_panic('ABORT SELECTION')
                             )
                             return _i_generic.get_entry(
                                 _i_generic.dictionary_to_lookup(
@@ -2227,7 +2227,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                                 }
                             )
                         })])
-                        case 'local': return _pa.ss($, ($) => ['local', _pa.block(() => {
+                        case 'local': return _ea.ss($, ($) => ['local', _ea.block(() => {
                             return r_Text_Type(
                                 $,
                                 {
@@ -2239,19 +2239,19 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _pa.block(() =
                                 }
                             )
                         })])
-                        default: return _pa.au($[0])
+                        default: return _ea.au($[0])
                     }
                 })
             })])
-            default: return _pa.au($[0])
+            default: return _ea.au($[0])
         }
     })
 })
-export const r_Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $p) => _pa.block(() => {
+export const r_Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_type_location: _i_out._T_Type_Node_Reference.type_location = _pa.cc($['type location'], ($) => r_Type_Reference(
+    return _ea.block(() => {
+        const p_type_location: _i_out._T_Type_Node_Reference.type_location = _ea.cc($['type location'], ($) => r_Type_Reference(
             $,
             {
                 'location 2 string': l2s,
@@ -2261,14 +2261,14 @@ export const r_Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $
                 }),
             }
         ))
-        const p_tail: _i_out._T_Type_Node_Reference.tail = _pa.cc($['tail'], ($) => $['list'].map(($) => _pa.cc($['element'], ($) => _pa.cc($['state group'], ($): _i_out._T_Type_Node_Reference.tail.L => {
+        const p_tail: _i_out._T_Type_Node_Reference.tail = _ea.cc($['tail'], ($) => $['list'].map(($) => _ea.cc($['element'], ($) => _ea.cc($['state group'], ($): _i_out._T_Type_Node_Reference.tail.L => {
             switch ($[0]) {
-                case 'dictionary': return _pa.ss($, ($) => ['dictionary', _pa.block(() => {
-                    const c_definition = _pd.implement_me()
+                case 'dictionary': return _ea.ss($, ($) => ['dictionary', _ea.block(() => {
+                    const c_definition = _edev.implement_me()
                     return null
                 })])
-                case 'group': return _pa.ss($, ($) => ['group', _pa.block(() => {
-                    const c_definition = _pd.implement_me()
+                case 'group': return _ea.ss($, ($) => ['group', _ea.block(() => {
+                    const c_definition = _edev.implement_me()
                     return _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup(
                             c_definition['dictionary'],
@@ -2280,16 +2280,16 @@ export const r_Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $
                         }
                     )
                 })])
-                case 'list': return _pa.ss($, ($) => ['list', _pa.block(() => {
-                    const c_definition = _pd.implement_me()
+                case 'list': return _ea.ss($, ($) => ['list', _ea.block(() => {
+                    const c_definition = _edev.implement_me()
                     return null
                 })])
-                case 'optional': return _pa.ss($, ($) => ['optional', _pa.block(() => {
-                    const c_definition = _pd.implement_me()
+                case 'optional': return _ea.ss($, ($) => ['optional', _ea.block(() => {
+                    const c_definition = _edev.implement_me()
                     return null
                 })])
-                case 'state group': return _pa.ss($, ($) => ['state group', _pa.block(() => {
-                    const c_definition = _pd.implement_me()
+                case 'state group': return _ea.ss($, ($) => ['state group', _ea.block(() => {
+                    const c_definition = _edev.implement_me()
                     return _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup(
                             c_definition,
@@ -2301,10 +2301,10 @@ export const r_Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $
                         }
                     )
                 })])
-                default: return _pa.au($[0])
+                default: return _ea.au($[0])
             }
         }))))
-        const p_resulting_node: _i_out._T_Type_Node_Reference.resulting_node = _pa.cc($['resulting node'], ($) => _pd.implement_me())
+        const p_resulting_node: _i_out._T_Type_Node_Reference.resulting_node = _ea.cc($['resulting node'], ($) => _edev.implement_me())
         return ({
             'resulting node': p_resulting_node,
             'tail': p_tail,
@@ -2312,34 +2312,34 @@ export const r_Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $
         })
     })
 })
-export const r_Type_Parameters: _i_signatures._T_Type_Parameters = ($, $p) => _pa.block(() => {
+export const r_Type_Parameters: _i_signatures._T_Type_Parameters = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
+    return _ea.block(() => {
         return _i_generic.resolve_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _pa.block(() => {
-                    return _pa.cc($['value'], ($) => null)
+                'map': ($, $p) => _ea.block(() => {
+                    return _ea.cc($['value'], ($) => null)
                 }),
             }
         )
     })
 })
-export const r_Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _pa.block(() => {
+export const r_Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_location: _i_out._T_Type_Reference.location = _pa.cc($['location'], ($) => _pa.cc($['state group'], ($): _i_out._T_Type_Reference.location => {
+    return _ea.block(() => {
+        const p_location: _i_out._T_Type_Reference.location = _ea.cc($['location'], ($) => _ea.cc($['state group'], ($): _i_out._T_Type_Reference.location => {
             switch ($[0]) {
-                case 'external': return _pa.ss($, ($) => ['external', _pa.block(() => {
+                case 'external': return _ea.ss($, ($) => ['external', _ea.block(() => {
                     const c_import = params['values']['imports'].transform(
                         ($) => $,
-                        () => _pa.panic('ABORT SELECTION')
+                        () => _ea.deprecated_panic('ABORT SELECTION')
                     )
-                    return _pa.block(() => {
-                        const p_import: _i_out._T_Type_Reference.location.SG.external._import = _pa.cc($['import'], ($) => _i_generic.get_entry(
+                    return _ea.block(() => {
+                        const p_import: _i_out._T_Type_Reference.location.SG.external._import = _ea.cc($['import'], ($) => _i_generic.get_entry(
                             _i_generic.dictionary_to_lookup(
                                 c_import,
                                 null
@@ -2349,7 +2349,7 @@ export const r_Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _pa.
                                 'reference': $,
                             }
                         ))
-                        const p_type: _i_out._T_Type_Reference.location.SG.external._type = _pa.cc($['type'], ($) => _i_generic.get_entry(
+                        const p_type: _i_out._T_Type_Reference.location.SG.external._type = _ea.cc($['type'], ($) => _i_generic.get_entry(
                             _i_generic.dictionary_to_lookup(
                                 p_import['entry']['schema']['types']['dictionary'],
                                 null
@@ -2365,7 +2365,7 @@ export const r_Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _pa.
                         })
                     })
                 })])
-                case 'internal': return _pa.ss($, ($) => ['internal', _pa.block(() => {
+                case 'internal': return _ea.ss($, ($) => ['internal', _ea.block(() => {
                     return _i_generic.get_entry(
                         params['lookups']['types'],
                         {
@@ -2374,35 +2374,35 @@ export const r_Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _pa.
                         }
                     )
                 })])
-                default: return _pa.au($[0])
+                default: return _ea.au($[0])
             }
         }))
-        const p_resulting_node: _i_out._T_Type_Reference.resulting_node = _pa.cc($['resulting node'], ($) => _pd.implement_me())
+        const p_resulting_node: _i_out._T_Type_Reference.resulting_node = _ea.cc($['resulting node'], ($) => _edev.implement_me())
         return ({
             'location': p_location,
             'resulting node': p_resulting_node,
         })
     })
 })
-export const r_Type_Specification: _i_signatures._T_Type_Specification = ($, $p) => _pa.block(() => {
+export const r_Type_Specification: _i_signatures._T_Type_Specification = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
-        const p_schema: _i_out._T_Type_Specification.schema = _pa.cc($['schema'], ($) => r_Schema_Tree(
+    return _ea.block(() => {
+        const p_schema: _i_out._T_Type_Specification.schema = _ea.cc($['schema'], ($) => r_Schema_Tree(
             $,
             {
                 'location 2 string': l2s,
                 'parameters': ({
                     'lookups': ({
-                        'sibling schemas': _pa.array_literal([
+                        'sibling schemas': _ea.array_literal([
                         ]),
                     }),
                     'values': null,
                 }),
             }
         ))
-        const p_schema_path: _i_out._T_Type_Specification.schema_path = _pa.cc($['schema path'], ($) => $['list'].map(($) => _pa.cc($['element'], ($) => $)))
-        const p_type: _i_out._T_Type_Specification._type = _pa.cc($['type'], ($) => $)
+        const p_schema_path: _i_out._T_Type_Specification.schema_path = _ea.cc($['schema path'], ($) => $['list'].map(($) => _ea.cc($['element'], ($) => $)))
+        const p_type: _i_out._T_Type_Specification._type = _ea.cc($['type'], ($) => $)
         return ({
             'schema': p_schema,
             'schema path': p_schema_path,
@@ -2410,16 +2410,16 @@ export const r_Type_Specification: _i_signatures._T_Type_Specification = ($, $p)
         })
     })
 })
-export const r_Types: _i_signatures._T_Types = ($, $p) => _pa.block(() => {
+export const r_Types: _i_signatures._T_Types = ($, $p) => _ea.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pa.block(() => {
+    return _ea.block(() => {
         return _i_generic.resolve_ordered_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _pa.block(() => {
-                    return _pa.cc($['value'], ($) => r_Type(
+                'map': ($, $p) => _ea.block(() => {
+                    return _ea.cc($['value'], ($) => r_Type(
                         $,
                         {
                             'location 2 string': l2s,

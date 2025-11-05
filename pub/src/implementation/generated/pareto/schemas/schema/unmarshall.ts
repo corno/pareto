@@ -2,7 +2,8 @@ import * as _pa from 'exupery-core-alg'
 import * as _pd from 'exupery-core-dev'
 
 import * as _i_generic from "../../generic/unmarshall"
-import * as _i_in from "../../../../../interface/generated/pareto/core/astn_source"
+import * as _i_in from "astn/dist/interface/generated/pareto/schemas/authoring_parse_result/data_types/source"
+import * as _i_in_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/source"
 import * as _i_out from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/schema/unmarshall"
 
@@ -69,7 +70,7 @@ export const Constraint: _i_signatures._T_Constraint = ($, $p) => _i_generic.pro
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'optional value': ($): _i_out._T_Constraint._type.SG<_i_in._T_Range> => ['optional value', _i_generic.process_group(
+                        'optional value': ($): _i_out._T_Constraint._type.SG<_i_in_token._T_Range> => ['optional value', _i_generic.process_group(
                             $,
                             {
                                 'properties': ($) => ({
@@ -85,7 +86,7 @@ export const Constraint: _i_signatures._T_Constraint = ($, $p) => _i_generic.pro
                                 }),
                             }
                         )],
-                        'state': ($): _i_out._T_Constraint._type.SG<_i_in._T_Range> => ['state', _i_generic.process_group(
+                        'state': ($): _i_out._T_Constraint._type.SG<_i_in_token._T_Range> => ['state', _i_generic.process_group(
                             $,
                             {
                                 'properties': ($) => ({
@@ -158,11 +159,11 @@ export const Globals: _i_signatures._T_Globals = ($, $p) => _i_generic.process_g
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'constrained': ($): _i_out._T_Globals.complexity.SG<_i_in._T_Range> => ['constrained', _i_generic.process_nothing(
+                        'constrained': ($): _i_out._T_Globals.complexity.SG<_i_in_token._T_Range> => ['constrained', _i_generic.process_nothing(
                             $,
                             null
                         )],
-                        'unconstrained': ($): _i_out._T_Globals.complexity.SG<_i_in._T_Range> => ['unconstrained', _i_generic.process_nothing(
+                        'unconstrained': ($): _i_out._T_Globals.complexity.SG<_i_in_token._T_Range> => ['unconstrained', _i_generic.process_nothing(
                             $,
                             null
                         )],
@@ -263,11 +264,11 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'constraint': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['constraint', _i_generic.process_unresolved_state_group(
+                        'constraint': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in_token._T_Range> => ['constraint', _i_generic.process_unresolved_state_group(
                             $,
                             {
                                 'states': _pa.dictionary_literal({
-                                    'component': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG<_i_in._T_Range> => ['component', _i_generic.process_group(
+                                    'component': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG<_i_in_token._T_Range> => ['component', _i_generic.process_group(
                                         $,
                                         {
                                             'properties': ($) => ({
@@ -292,7 +293,7 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                                             }),
                                         }
                                     )],
-                                    'reference': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG<_i_in._T_Range> => ['reference', _i_generic.process_group(
+                                    'reference': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG<_i_in_token._T_Range> => ['reference', _i_generic.process_group(
                                         $,
                                         {
                                             'properties': ($) => ({
@@ -320,31 +321,31 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                                 }),
                             }
                         )],
-                        'linked entry': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['linked entry', _i_generic.process_nothing(
+                        'linked entry': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in_token._T_Range> => ['linked entry', _i_generic.process_nothing(
                             $,
                             null
                         )],
-                        'list cursor': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['list cursor', _i_generic.process_nothing(
+                        'list cursor': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in_token._T_Range> => ['list cursor', _i_generic.process_nothing(
                             $,
                             null
                         )],
-                        'option constraint': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['option constraint', _i_generic.process_selected_reference(
+                        'option constraint': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in_token._T_Range> => ['option constraint', _i_generic.process_selected_reference(
                             $,
                             null
                         )],
-                        'parameter': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['parameter', _i_generic.process_selected_reference(
+                        'parameter': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in_token._T_Range> => ['parameter', _i_generic.process_selected_reference(
                             $,
                             null
                         )],
-                        'parent sibling': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['parent sibling', _i_generic.process_selected_reference(
+                        'parent sibling': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in_token._T_Range> => ['parent sibling', _i_generic.process_selected_reference(
                             $,
                             null
                         )],
-                        'result': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['result', _i_generic.process_unresolved_state_group(
+                        'result': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in_token._T_Range> => ['result', _i_generic.process_unresolved_state_group(
                             $,
                             {
                                 'states': _pa.dictionary_literal({
-                                    'list': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG<_i_in._T_Range> => ['list', _i_generic.process_group(
+                                    'list': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG<_i_in_token._T_Range> => ['list', _i_generic.process_group(
                                         $,
                                         {
                                             'properties': ($) => ({
@@ -369,7 +370,7 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                                             }),
                                         }
                                     )],
-                                    'optional value': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG<_i_in._T_Range> => ['optional value', _i_generic.process_group(
+                                    'optional value': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG<_i_in_token._T_Range> => ['optional value', _i_generic.process_group(
                                         $,
                                         {
                                             'properties': ($) => ({
@@ -405,7 +406,7 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                                             }),
                                         }
                                     )],
-                                    'state group': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG<_i_in._T_Range> => ['state group', _i_generic.process_group(
+                                    'state group': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG<_i_in_token._T_Range> => ['state group', _i_generic.process_group(
                                         $,
                                         {
                                             'properties': ($) => ({
@@ -444,7 +445,7 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                                 }),
                             }
                         )],
-                        'sibling': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in._T_Range> => ['sibling', _i_generic.process_selected_reference(
+                        'sibling': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in_token._T_Range> => ['sibling', _i_generic.process_selected_reference(
                             $,
                             null
                         )],
@@ -517,7 +518,7 @@ export const Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => _i
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'dictionary': ($): _i_out._T_Lookup_Selection._type.SG<_i_in._T_Range> => ['dictionary', _i_generic.process_group(
+                        'dictionary': ($): _i_out._T_Lookup_Selection._type.SG<_i_in_token._T_Range> => ['dictionary', _i_generic.process_group(
                             $,
                             {
                                 'properties': ($) => ({
@@ -544,15 +545,15 @@ export const Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => _i
                                 }),
                             }
                         )],
-                        'not circular dependent siblings': ($): _i_out._T_Lookup_Selection._type.SG<_i_in._T_Range> => ['not circular dependent siblings', _i_generic.process_derived_reference(
+                        'not circular dependent siblings': ($): _i_out._T_Lookup_Selection._type.SG<_i_in_token._T_Range> => ['not circular dependent siblings', _i_generic.process_derived_reference(
                             $,
                             null
                         )],
-                        'parameter': ($): _i_out._T_Lookup_Selection._type.SG<_i_in._T_Range> => ['parameter', _i_generic.process_selected_reference(
+                        'parameter': ($): _i_out._T_Lookup_Selection._type.SG<_i_in_token._T_Range> => ['parameter', _i_generic.process_selected_reference(
                             $,
                             null
                         )],
-                        'possibly circular dependent siblings': ($): _i_out._T_Lookup_Selection._type.SG<_i_in._T_Range> => ['possibly circular dependent siblings', _i_generic.process_derived_reference(
+                        'possibly circular dependent siblings': ($): _i_out._T_Lookup_Selection._type.SG<_i_in_token._T_Range> => ['possibly circular dependent siblings', _i_generic.process_derived_reference(
                             $,
                             null
                         )],
@@ -566,11 +567,11 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
     $,
     {
         'states': _pa.dictionary_literal({
-            'boolean': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['boolean', _i_generic.process_nothing(
+            'boolean': ($): _i_out._T_Node_Resolver.SG<_i_in_token._T_Range> => ['boolean', _i_generic.process_nothing(
                 $,
                 null
             )],
-            'component': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['component', _i_generic.process_group(
+            'component': ($): _i_out._T_Node_Resolver.SG<_i_in_token._T_Range> => ['component', _i_generic.process_group(
                 $,
                 {
                     'properties': ($) => ({
@@ -601,21 +602,21 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                                                 $,
                                                                 {
                                                                     'states': _pa.dictionary_literal({
-                                                                        'empty stack': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG<_i_in._T_Range> => ['empty stack', _i_generic.process_nothing(
+                                                                        'empty stack': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG<_i_in_token._T_Range> => ['empty stack', _i_generic.process_nothing(
                                                                             $,
                                                                             null
                                                                         )],
-                                                                        'not set': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG<_i_in._T_Range> => ['not set', _i_generic.process_nothing(
+                                                                        'not set': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG<_i_in_token._T_Range> => ['not set', _i_generic.process_nothing(
                                                                             $,
                                                                             null
                                                                         )],
-                                                                        'selection': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG<_i_in._T_Range> => ['selection', Lookup_Selection(
+                                                                        'selection': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG<_i_in_token._T_Range> => ['selection', Lookup_Selection(
                                                                             $,
                                                                             {
                                                                                 'value deserializers': $p['value deserializers'],
                                                                             }
                                                                         )],
-                                                                        'stack': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG<_i_in._T_Range> => ['stack', _i_generic.process_group(
+                                                                        'stack': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG<_i_in_token._T_Range> => ['stack', _i_generic.process_group(
                                                                             $,
                                                                             {
                                                                                 'properties': ($) => ({
@@ -666,17 +667,17 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                                                 $,
                                                                 {
                                                                     'states': _pa.dictionary_literal({
-                                                                        'optional': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D.SG<_i_in._T_Range> => ['optional', Optional_Value_Initialization(
+                                                                        'optional': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D.SG<_i_in_token._T_Range> => ['optional', Optional_Value_Initialization(
                                                                             $,
                                                                             {
                                                                                 'value deserializers': $p['value deserializers'],
                                                                             }
                                                                         )],
-                                                                        'parameter': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D.SG<_i_in._T_Range> => ['parameter', _i_generic.process_selected_reference(
+                                                                        'parameter': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D.SG<_i_in_token._T_Range> => ['parameter', _i_generic.process_selected_reference(
                                                                             $,
                                                                             null
                                                                         )],
-                                                                        'required': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D.SG<_i_in._T_Range> => ['required', Guaranteed_Value_Selection(
+                                                                        'required': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D.SG<_i_in_token._T_Range> => ['required', Guaranteed_Value_Selection(
                                                                             $,
                                                                             {
                                                                                 'value deserializers': $p['value deserializers'],
@@ -714,7 +715,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                             $,
                             {
                                 'states': _pa.dictionary_literal({
-                                    'external': ($): _i_out._T_Node_Resolver.SG.component.location.SG<_i_in._T_Range> => ['external', _i_generic.process_group(
+                                    'external': ($): _i_out._T_Node_Resolver.SG.component.location.SG<_i_in_token._T_Range> => ['external', _i_generic.process_group(
                                         $,
                                         {
                                             'properties': ($) => ({
@@ -739,7 +740,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                             }),
                                         }
                                     )],
-                                    'internal': ($): _i_out._T_Node_Resolver.SG.component.location.SG<_i_in._T_Range> => ['internal', _i_generic.process_selected_reference(
+                                    'internal': ($): _i_out._T_Node_Resolver.SG.component.location.SG<_i_in_token._T_Range> => ['internal', _i_generic.process_selected_reference(
                                         $,
                                         null
                                     )],
@@ -758,7 +759,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                     }),
                 }
             )],
-            'dictionary': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['dictionary', _i_generic.process_group(
+            'dictionary': ($): _i_out._T_Node_Resolver.SG<_i_in_token._T_Range> => ['dictionary', _i_generic.process_group(
                 $,
                 {
                     'properties': ($) => ({
@@ -801,13 +802,13 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                     }),
                 }
             )],
-            'group': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['group', Node_Resolver_Group(
+            'group': ($): _i_out._T_Node_Resolver.SG<_i_in_token._T_Range> => ['group', Node_Resolver_Group(
                 $,
                 {
                     'value deserializers': $p['value deserializers'],
                 }
             )],
-            'list': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['list', _i_generic.process_group(
+            'list': ($): _i_out._T_Node_Resolver.SG<_i_in_token._T_Range> => ['list', _i_generic.process_group(
                 $,
                 {
                     'properties': ($) => ({
@@ -850,15 +851,15 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                     }),
                 }
             )],
-            'nothing': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['nothing', _i_generic.process_nothing(
+            'nothing': ($): _i_out._T_Node_Resolver.SG<_i_in_token._T_Range> => ['nothing', _i_generic.process_nothing(
                 $,
                 null
             )],
-            'number': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['number', _i_generic.process_nothing(
+            'number': ($): _i_out._T_Node_Resolver.SG<_i_in_token._T_Range> => ['number', _i_generic.process_nothing(
                 $,
                 null
             )],
-            'optional': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['optional', _i_generic.process_group(
+            'optional': ($): _i_out._T_Node_Resolver.SG<_i_in_token._T_Range> => ['optional', _i_generic.process_group(
                 $,
                 {
                     'properties': ($) => ({
@@ -887,7 +888,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                     }),
                 }
             )],
-            'reference': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['reference', _i_generic.process_group(
+            'reference': ($): _i_out._T_Node_Resolver.SG<_i_in_token._T_Range> => ['reference', _i_generic.process_group(
                 $,
                 {
                     'properties': ($) => ({
@@ -909,7 +910,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                             $,
                             {
                                 'states': _pa.dictionary_literal({
-                                    'derived': ($): _i_out._T_Node_Resolver.SG.reference._type.SG<_i_in._T_Range> => ['derived', _i_generic.process_group(
+                                    'derived': ($): _i_out._T_Node_Resolver.SG.reference._type.SG<_i_in_token._T_Range> => ['derived', _i_generic.process_group(
                                         $,
                                         {
                                             'properties': ($) => ({
@@ -927,7 +928,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                             }),
                                         }
                                     )],
-                                    'selected': ($): _i_out._T_Node_Resolver.SG.reference._type.SG<_i_in._T_Range> => ['selected', _i_generic.process_group(
+                                    'selected': ($): _i_out._T_Node_Resolver.SG.reference._type.SG<_i_in_token._T_Range> => ['selected', _i_generic.process_group(
                                         $,
                                         {
                                             'properties': ($) => ({
@@ -971,7 +972,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                     }),
                 }
             )],
-            'state group': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['state group', _i_generic.process_group(
+            'state group': ($): _i_out._T_Node_Resolver.SG<_i_in_token._T_Range> => ['state group', _i_generic.process_group(
                 $,
                 {
                     'properties': ($) => ({
@@ -1026,7 +1027,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                     }),
                 }
             )],
-            'text': ($): _i_out._T_Node_Resolver.SG<_i_in._T_Range> => ['text', _i_generic.process_nothing(
+            'text': ($): _i_out._T_Node_Resolver.SG<_i_in_token._T_Range> => ['text', _i_generic.process_nothing(
                 $,
                 null
             )],
@@ -1084,7 +1085,7 @@ export const Number_Type: _i_signatures._T_Number_Type = ($, $p) => _i_generic.p
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'approximation': ($): _i_out._T_Number_Type.precision.SG<_i_in._T_Range> => ['approximation', _i_generic.process_group(
+                        'approximation': ($): _i_out._T_Number_Type.precision.SG<_i_in_token._T_Range> => ['approximation', _i_generic.process_group(
                             $,
                             {
                                 'properties': ($) => ({
@@ -1102,7 +1103,7 @@ export const Number_Type: _i_signatures._T_Number_Type = ($, $p) => _i_generic.p
                                 }),
                             }
                         )],
-                        'exact': ($): _i_out._T_Number_Type.precision.SG<_i_in._T_Range> => ['exact', _i_generic.process_group(
+                        'exact': ($): _i_out._T_Number_Type.precision.SG<_i_in_token._T_Range> => ['exact', _i_generic.process_group(
                             $,
                             {
                                 'properties': ($) => ({
@@ -1131,15 +1132,15 @@ export const Number_Type: _i_signatures._T_Number_Type = ($, $p) => _i_generic.p
                                         $,
                                         {
                                             'states': _pa.dictionary_literal({
-                                                'integer': ($): _i_out._T_Number_Type.precision.SG.exact._type.SG<_i_in._T_Range> => ['integer', _i_generic.process_nothing(
+                                                'integer': ($): _i_out._T_Number_Type.precision.SG.exact._type.SG<_i_in_token._T_Range> => ['integer', _i_generic.process_nothing(
                                                     $,
                                                     null
                                                 )],
-                                                'natural': ($): _i_out._T_Number_Type.precision.SG.exact._type.SG<_i_in._T_Range> => ['natural', _i_generic.process_nothing(
+                                                'natural': ($): _i_out._T_Number_Type.precision.SG.exact._type.SG<_i_in_token._T_Range> => ['natural', _i_generic.process_nothing(
                                                     $,
                                                     null
                                                 )],
-                                                'positive natural': ($): _i_out._T_Number_Type.precision.SG.exact._type.SG<_i_in._T_Range> => ['positive natural', _i_generic.process_nothing(
+                                                'positive natural': ($): _i_out._T_Number_Type.precision.SG.exact._type.SG<_i_in_token._T_Range> => ['positive natural', _i_generic.process_nothing(
                                                     $,
                                                     null
                                                 )],
@@ -1162,13 +1163,13 @@ export const Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p) =
             $,
             {
                 'states': _pa.dictionary_literal({
-                    'assert is set': ($): _i_out._T_Option_Constraints.D.SG<_i_in._T_Range> => ['assert is set', Possible_Value_Selection(
+                    'assert is set': ($): _i_out._T_Option_Constraints.D.SG<_i_in_token._T_Range> => ['assert is set', Possible_Value_Selection(
                         $,
                         {
                             'value deserializers': $p['value deserializers'],
                         }
                     )],
-                    'state': ($): _i_out._T_Option_Constraints.D.SG<_i_in._T_Range> => ['state', _i_generic.process_group(
+                    'state': ($): _i_out._T_Option_Constraints.D.SG<_i_in_token._T_Range> => ['state', _i_generic.process_group(
                         $,
                         {
                             'properties': ($) => ({
@@ -1213,17 +1214,17 @@ export const Optional_Value_Initialization: _i_signatures._T_Optional_Value_Init
     $,
     {
         'states': _pa.dictionary_literal({
-            'not set': ($): _i_out._T_Optional_Value_Initialization.SG<_i_in._T_Range> => ['not set', _i_generic.process_nothing(
+            'not set': ($): _i_out._T_Optional_Value_Initialization.SG<_i_in_token._T_Range> => ['not set', _i_generic.process_nothing(
                 $,
                 null
             )],
-            'selection': ($): _i_out._T_Optional_Value_Initialization.SG<_i_in._T_Range> => ['selection', Possible_Value_Selection(
+            'selection': ($): _i_out._T_Optional_Value_Initialization.SG<_i_in_token._T_Range> => ['selection', Possible_Value_Selection(
                 $,
                 {
                     'value deserializers': $p['value deserializers'],
                 }
             )],
-            'set': ($): _i_out._T_Optional_Value_Initialization.SG<_i_in._T_Range> => ['set', Guaranteed_Value_Selection(
+            'set': ($): _i_out._T_Optional_Value_Initialization.SG<_i_in_token._T_Range> => ['set', Guaranteed_Value_Selection(
                 $,
                 {
                     'value deserializers': $p['value deserializers'],
@@ -1236,15 +1237,15 @@ export const Possible_Value_Selection: _i_signatures._T_Possible_Value_Selection
     $,
     {
         'states': _pa.dictionary_literal({
-            'parameter': ($): _i_out._T_Possible_Value_Selection.SG<_i_in._T_Range> => ['parameter', _i_generic.process_selected_reference(
+            'parameter': ($): _i_out._T_Possible_Value_Selection.SG<_i_in_token._T_Range> => ['parameter', _i_generic.process_selected_reference(
                 $,
                 null
             )],
-            'result': ($): _i_out._T_Possible_Value_Selection.SG<_i_in._T_Range> => ['result', _i_generic.process_unresolved_state_group(
+            'result': ($): _i_out._T_Possible_Value_Selection.SG<_i_in_token._T_Range> => ['result', _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'optional value': ($): _i_out._T_Possible_Value_Selection.SG.result.SG<_i_in._T_Range> => ['optional value', _i_generic.process_group(
+                        'optional value': ($): _i_out._T_Possible_Value_Selection.SG.result.SG<_i_in_token._T_Range> => ['optional value', _i_generic.process_group(
                             $,
                             {
                                 'properties': ($) => ({
@@ -1280,7 +1281,7 @@ export const Possible_Value_Selection: _i_signatures._T_Possible_Value_Selection
                                 }),
                             }
                         )],
-                        'state group': ($): _i_out._T_Possible_Value_Selection.SG.result.SG<_i_in._T_Range> => ['state group', _i_generic.process_group(
+                        'state group': ($): _i_out._T_Possible_Value_Selection.SG.result.SG<_i_in_token._T_Range> => ['state group', _i_generic.process_group(
                             $,
                             {
                                 'properties': ($) => ({
@@ -1326,11 +1327,11 @@ export const Presence: _i_signatures._T_Presence = ($, $p) => _i_generic.process
     $,
     {
         'states': _pa.dictionary_literal({
-            'optional': ($): _i_out._T_Presence.SG<_i_in._T_Range> => ['optional', _i_generic.process_nothing(
+            'optional': ($): _i_out._T_Presence.SG<_i_in_token._T_Range> => ['optional', _i_generic.process_nothing(
                 $,
                 null
             )],
-            'required': ($): _i_out._T_Presence.SG<_i_in._T_Range> => ['required', _i_generic.process_nothing(
+            'required': ($): _i_out._T_Presence.SG<_i_in_token._T_Range> => ['required', _i_generic.process_nothing(
                 $,
                 null
             )],
@@ -1361,11 +1362,11 @@ export const Property_Constraint: _i_signatures._T_Property_Constraint = ($, $p)
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'property': ($): _i_out._T_Property_Constraint.start.SG<_i_in._T_Range> => ['property', _i_generic.process_nothing(
+                        'property': ($): _i_out._T_Property_Constraint.start.SG<_i_in_token._T_Range> => ['property', _i_generic.process_nothing(
                             $,
                             null
                         )],
-                        'sibling': ($): _i_out._T_Property_Constraint.start.SG<_i_in._T_Range> => ['sibling', Reference_To_Property_Constraint(
+                        'sibling': ($): _i_out._T_Property_Constraint.start.SG<_i_in_token._T_Range> => ['sibling', Reference_To_Property_Constraint(
                             $,
                             {
                                 'value deserializers': $p['value deserializers'],
@@ -1408,15 +1409,15 @@ export const Relative_Value_Selection: _i_signatures._T_Relative_Value_Selection
                         $,
                         {
                             'states': _pa.dictionary_literal({
-                                'component': ($): _i_out._T_Relative_Value_Selection.path.L.SG<_i_in._T_Range> => ['component', _i_generic.process_nothing(
+                                'component': ($): _i_out._T_Relative_Value_Selection.path.L.SG<_i_in_token._T_Range> => ['component', _i_generic.process_nothing(
                                     $,
                                     null
                                 )],
-                                'group': ($): _i_out._T_Relative_Value_Selection.path.L.SG<_i_in._T_Range> => ['group', _i_generic.process_selected_reference(
+                                'group': ($): _i_out._T_Relative_Value_Selection.path.L.SG<_i_in_token._T_Range> => ['group', _i_generic.process_selected_reference(
                                     $,
                                     null
                                 )],
-                                'reference': ($): _i_out._T_Relative_Value_Selection.path.L.SG<_i_in._T_Range> => ['reference', _i_generic.process_group(
+                                'reference': ($): _i_out._T_Relative_Value_Selection.path.L.SG<_i_in_token._T_Range> => ['reference', _i_generic.process_group(
                                     $,
                                     {
                                         'properties': ($) => ({
@@ -1535,13 +1536,13 @@ export const Schema: _i_signatures._T_Schema = ($, $p) => _i_generic.process_gro
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'constrained': ($): _i_out._T_Schema.complexity.SG<_i_in._T_Range> => ['constrained', Resolve_Logic(
+                        'constrained': ($): _i_out._T_Schema.complexity.SG<_i_in_token._T_Range> => ['constrained', Resolve_Logic(
                             $,
                             {
                                 'value deserializers': $p['value deserializers'],
                             }
                         )],
-                        'unconstrained': ($): _i_out._T_Schema.complexity.SG<_i_in._T_Range> => ['unconstrained', _i_generic.process_nothing(
+                        'unconstrained': ($): _i_out._T_Schema.complexity.SG<_i_in_token._T_Range> => ['unconstrained', _i_generic.process_nothing(
                             $,
                             null
                         )],
@@ -1588,13 +1589,13 @@ export const Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => _i_generic.p
     $,
     {
         'states': _pa.dictionary_literal({
-            'schema': ($): _i_out._T_Schema_Tree.SG<_i_in._T_Range> => ['schema', Schema(
+            'schema': ($): _i_out._T_Schema_Tree.SG<_i_in_token._T_Range> => ['schema', Schema(
                 $,
                 {
                     'value deserializers': $p['value deserializers'],
                 }
             )],
-            'set': ($): _i_out._T_Schema_Tree.SG<_i_in._T_Range> => ['set', Schemas(
+            'set': ($): _i_out._T_Schema_Tree.SG<_i_in_token._T_Range> => ['set', Schemas(
                 $,
                 {
                     'value deserializers': $p['value deserializers'],
@@ -1627,13 +1628,13 @@ export const Signature: _i_signatures._T_Signature = ($, $p) => _i_generic.proce
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'local': ($): _i_out._T_Signature.parameters.SG<_i_in._T_Range> => ['local', Signature_Parameters(
+                        'local': ($): _i_out._T_Signature.parameters.SG<_i_in_token._T_Range> => ['local', Signature_Parameters(
                             $,
                             {
                                 'value deserializers': $p['value deserializers'],
                             }
                         )],
-                        'same as': ($): _i_out._T_Signature.parameters.SG<_i_in._T_Range> => ['same as', _i_generic.process_selected_reference(
+                        'same as': ($): _i_out._T_Signature.parameters.SG<_i_in_token._T_Range> => ['same as', _i_generic.process_selected_reference(
                             $,
                             null
                         )],
@@ -1717,15 +1718,15 @@ export const Signature_Parameters: _i_signatures._T_Signature_Parameters = ($, $
                                     $,
                                     {
                                         'states': _pa.dictionary_literal({
-                                            'acyclic': ($): _i_out._T_Signature_Parameters.lookups.D._type.SG<_i_in._T_Range> => ['acyclic', _i_generic.process_nothing(
+                                            'acyclic': ($): _i_out._T_Signature_Parameters.lookups.D._type.SG<_i_in_token._T_Range> => ['acyclic', _i_generic.process_nothing(
                                                 $,
                                                 null
                                             )],
-                                            'cyclic': ($): _i_out._T_Signature_Parameters.lookups.D._type.SG<_i_in._T_Range> => ['cyclic', _i_generic.process_nothing(
+                                            'cyclic': ($): _i_out._T_Signature_Parameters.lookups.D._type.SG<_i_in_token._T_Range> => ['cyclic', _i_generic.process_nothing(
                                                 $,
                                                 null
                                             )],
-                                            'stack': ($): _i_out._T_Signature_Parameters.lookups.D._type.SG<_i_in._T_Range> => ['stack', _i_generic.process_nothing(
+                                            'stack': ($): _i_out._T_Signature_Parameters.lookups.D._type.SG<_i_in_token._T_Range> => ['stack', _i_generic.process_nothing(
                                                 $,
                                                 null
                                             )],
@@ -1803,11 +1804,11 @@ export const Text_Type: _i_signatures._T_Text_Type = ($, $p) => _i_generic.proce
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'multi line': ($): _i_out._T_Text_Type._type.SG<_i_in._T_Range> => ['multi line', _i_generic.process_nothing(
+                        'multi line': ($): _i_out._T_Text_Type._type.SG<_i_in_token._T_Range> => ['multi line', _i_generic.process_nothing(
                             $,
                             null
                         )],
-                        'single line': ($): _i_out._T_Text_Type._type.SG<_i_in._T_Range> => ['single line', _i_generic.process_nothing(
+                        'single line': ($): _i_out._T_Text_Type._type.SG<_i_in_token._T_Range> => ['single line', _i_generic.process_nothing(
                             $,
                             null
                         )],
@@ -1850,15 +1851,15 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
     $,
     {
         'states': _pa.dictionary_literal({
-            'boolean': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['boolean', _i_generic.process_nothing(
+            'boolean': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['boolean', _i_generic.process_nothing(
                 $,
                 null
             )],
-            'component': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['component', _i_generic.process_unresolved_state_group(
+            'component': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['component', _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'external': ($): _i_out._T_Type_Node.SG.component.SG<_i_in._T_Range> => ['external', _i_generic.process_group(
+                        'external': ($): _i_out._T_Type_Node.SG.component.SG<_i_in_token._T_Range> => ['external', _i_generic.process_group(
                             $,
                             {
                                 'properties': ($) => ({
@@ -1883,30 +1884,30 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                                 }),
                             }
                         )],
-                        'internal': ($): _i_out._T_Type_Node.SG.component.SG<_i_in._T_Range> => ['internal', _i_generic.process_selected_reference(
+                        'internal': ($): _i_out._T_Type_Node.SG.component.SG<_i_in_token._T_Range> => ['internal', _i_generic.process_selected_reference(
                             $,
                             null
                         )],
-                        'internal cyclic': ($): _i_out._T_Type_Node.SG.component.SG<_i_in._T_Range> => ['internal cyclic', _i_generic.process_selected_reference(
+                        'internal cyclic': ($): _i_out._T_Type_Node.SG.component.SG<_i_in_token._T_Range> => ['internal cyclic', _i_generic.process_selected_reference(
                             $,
                             null
                         )],
                     }),
                 }
             )],
-            'dictionary': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['dictionary', Dictionary(
+            'dictionary': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['dictionary', Dictionary(
                 $,
                 {
                     'value deserializers': $p['value deserializers'],
                 }
             )],
-            'group': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['group', Group(
+            'group': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['group', Group(
                 $,
                 {
                     'value deserializers': $p['value deserializers'],
                 }
             )],
-            'list': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['list', _i_generic.process_group(
+            'list': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['list', _i_generic.process_group(
                 $,
                 {
                     'properties': ($) => ({
@@ -1924,19 +1925,19 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                     }),
                 }
             )],
-            'nothing': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['nothing', _i_generic.process_nothing(
+            'nothing': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['nothing', _i_generic.process_nothing(
                 $,
                 null
             )],
-            'number': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['number', _i_generic.process_unresolved_state_group(
+            'number': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['number', _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'global': ($): _i_out._T_Type_Node.SG._number.SG<_i_in._T_Range> => ['global', _i_generic.process_selected_reference(
+                        'global': ($): _i_out._T_Type_Node.SG._number.SG<_i_in_token._T_Range> => ['global', _i_generic.process_selected_reference(
                             $,
                             null
                         )],
-                        'local': ($): _i_out._T_Type_Node.SG._number.SG<_i_in._T_Range> => ['local', Number_Type(
+                        'local': ($): _i_out._T_Type_Node.SG._number.SG<_i_in_token._T_Range> => ['local', Number_Type(
                             $,
                             {
                                 'value deserializers': $p['value deserializers'],
@@ -1945,13 +1946,13 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                     }),
                 }
             )],
-            'optional': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['optional', Type_Node(
+            'optional': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['optional', Type_Node(
                 $,
                 {
                     'value deserializers': $p['value deserializers'],
                 }
             )],
-            'reference': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['reference', _i_generic.process_group(
+            'reference': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['reference', _i_generic.process_group(
                 $,
                 {
                     'properties': ($) => ({
@@ -1975,11 +1976,11 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                             $,
                             {
                                 'states': _pa.dictionary_literal({
-                                    'derived': ($): _i_out._T_Type_Node.SG.reference._type.SG<_i_in._T_Range> => ['derived', _i_generic.process_nothing(
+                                    'derived': ($): _i_out._T_Type_Node.SG.reference._type.SG<_i_in_token._T_Range> => ['derived', _i_generic.process_nothing(
                                         $,
                                         null
                                     )],
-                                    'selected': ($): _i_out._T_Type_Node.SG.reference._type.SG<_i_in._T_Range> => ['selected', _i_generic.process_group(
+                                    'selected': ($): _i_out._T_Type_Node.SG.reference._type.SG<_i_in_token._T_Range> => ['selected', _i_generic.process_group(
                                         $,
                                         {
                                             'properties': ($) => ({
@@ -1992,15 +1993,15 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                                                     $,
                                                     {
                                                         'states': _pa.dictionary_literal({
-                                                            'acyclic': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency.SG<_i_in._T_Range> => ['acyclic', _i_generic.process_nothing(
+                                                            'acyclic': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency.SG<_i_in_token._T_Range> => ['acyclic', _i_generic.process_nothing(
                                                                 $,
                                                                 null
                                                             )],
-                                                            'cyclic': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency.SG<_i_in._T_Range> => ['cyclic', _i_generic.process_nothing(
+                                                            'cyclic': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency.SG<_i_in_token._T_Range> => ['cyclic', _i_generic.process_nothing(
                                                                 $,
                                                                 null
                                                             )],
-                                                            'stack': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency.SG<_i_in._T_Range> => ['stack', _i_generic.process_nothing(
+                                                            'stack': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency.SG<_i_in_token._T_Range> => ['stack', _i_generic.process_nothing(
                                                                 $,
                                                                 null
                                                             )],
@@ -2025,7 +2026,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                     }),
                 }
             )],
-            'state group': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['state group', _i_generic.process_unresolved_dictionary(
+            'state group': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['state group', _i_generic.process_unresolved_dictionary(
                 $,
                 {
                     'value': ($) => _i_generic.process_group(
@@ -2062,15 +2063,15 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                     ),
                 }
             )],
-            'text': ($): _i_out._T_Type_Node.SG<_i_in._T_Range> => ['text', _i_generic.process_unresolved_state_group(
+            'text': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['text', _i_generic.process_unresolved_state_group(
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'global': ($): _i_out._T_Type_Node.SG.text.SG<_i_in._T_Range> => ['global', _i_generic.process_selected_reference(
+                        'global': ($): _i_out._T_Type_Node.SG.text.SG<_i_in_token._T_Range> => ['global', _i_generic.process_selected_reference(
                             $,
                             null
                         )],
-                        'local': ($): _i_out._T_Type_Node.SG.text.SG<_i_in._T_Range> => ['local', Text_Type(
+                        'local': ($): _i_out._T_Type_Node.SG.text.SG<_i_in_token._T_Range> => ['local', Text_Type(
                             $,
                             {
                                 'value deserializers': $p['value deserializers'],
@@ -2107,23 +2108,23 @@ export const Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $p)
                         $,
                         {
                             'states': _pa.dictionary_literal({
-                                'dictionary': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in._T_Range> => ['dictionary', _i_generic.process_nothing(
+                                'dictionary': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in_token._T_Range> => ['dictionary', _i_generic.process_nothing(
                                     $,
                                     null
                                 )],
-                                'group': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in._T_Range> => ['group', _i_generic.process_selected_reference(
+                                'group': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in_token._T_Range> => ['group', _i_generic.process_selected_reference(
                                     $,
                                     null
                                 )],
-                                'list': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in._T_Range> => ['list', _i_generic.process_nothing(
+                                'list': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in_token._T_Range> => ['list', _i_generic.process_nothing(
                                     $,
                                     null
                                 )],
-                                'optional': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in._T_Range> => ['optional', _i_generic.process_nothing(
+                                'optional': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in_token._T_Range> => ['optional', _i_generic.process_nothing(
                                     $,
                                     null
                                 )],
-                                'state group': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in._T_Range> => ['state group', _i_generic.process_selected_reference(
+                                'state group': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in_token._T_Range> => ['state group', _i_generic.process_selected_reference(
                                     $,
                                     null
                                 )],
@@ -2168,7 +2169,7 @@ export const Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _i_gen
                 $,
                 {
                     'states': _pa.dictionary_literal({
-                        'external': ($): _i_out._T_Type_Reference.location.SG<_i_in._T_Range> => ['external', _i_generic.process_group(
+                        'external': ($): _i_out._T_Type_Reference.location.SG<_i_in_token._T_Range> => ['external', _i_generic.process_group(
                             $,
                             {
                                 'properties': ($) => ({
@@ -2193,7 +2194,7 @@ export const Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _i_gen
                                 }),
                             }
                         )],
-                        'internal': ($): _i_out._T_Type_Reference.location.SG<_i_in._T_Range> => ['internal', _i_generic.process_selected_reference(
+                        'internal': ($): _i_out._T_Type_Reference.location.SG<_i_in_token._T_Range> => ['internal', _i_generic.process_selected_reference(
                             $,
                             null
                         )],

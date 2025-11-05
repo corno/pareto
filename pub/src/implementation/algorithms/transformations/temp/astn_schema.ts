@@ -11,12 +11,12 @@ import {
     wrap_reference,
 } from 'exupery-core-data/dist/shorthands/unresolved_transformation'
 
-import { $$ as op_flatten_dictionaries } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
+import { $$ as op_flatten_dictionaries } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/flatten"
 
 import * as _in from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "../../../../interface/generated/pareto/schemas/astn_schema/data_types/target"
 
-export const Schema: _ea.Guaranteed_Transformation_Without_Parameters<_in.Schema, _out.Schema<_edata.Source_Location>> = (
+export const Schema: _ea.Transformation_Without_Parameters<_in.Schema, _out.Schema<_edata.Source_Location>> = (
     $
 ) => {
     return {
@@ -26,7 +26,7 @@ export const Schema: _ea.Guaranteed_Transformation_Without_Parameters<_in.Schema
     }
 }
 
-export const Globals: _ea.Guaranteed_Transformation_Without_Parameters<_in.Globals, _out.Globals<_edata.Source_Location>> = (
+export const Globals: _ea.Transformation_Without_Parameters<_in.Globals, _out.Globals<_edata.Source_Location>> = (
     $
 ) => {
     return {
@@ -49,7 +49,7 @@ export const Globals: _ea.Guaranteed_Transformation_Without_Parameters<_in.Globa
     }
 }
 
-export const Imports: _ea.Guaranteed_Transformation_Without_Parameters<_in.Imports, _out.Imports<_edata.Source_Location>> = (
+export const Imports: _ea.Transformation_Without_Parameters<_in.Imports, _out.Imports<_edata.Source_Location>> = (
     $
 ) => {
     return wrap_dictionary($.map(($) => ({
@@ -58,7 +58,7 @@ export const Imports: _ea.Guaranteed_Transformation_Without_Parameters<_in.Impor
     })))
 }
 
-export const Type: _ea.Guaranteed_Transformation_Without_Parameters<_in.Type, _out.Type<_edata.Source_Location>> = (
+export const Type: _ea.Transformation_Without_Parameters<_in.Type, _out.Type<_edata.Source_Location>> = (
     $
 ) => {
     return {
@@ -66,7 +66,7 @@ export const Type: _ea.Guaranteed_Transformation_Without_Parameters<_in.Type, _o
     }
 }
 
-export const Type_Node: _ea.Guaranteed_Transformation_Without_Parameters<_in.Type_Node, _out.Type_Node<_edata.Source_Location>> = (
+export const Type_Node: _ea.Transformation_Without_Parameters<_in.Type_Node, _out.Type_Node<_edata.Source_Location>> = (
     $
 ) => {
     return wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG<_edata.Source_Location> => {
@@ -127,7 +127,7 @@ export const Type_Node: _ea.Guaranteed_Transformation_Without_Parameters<_in.Typ
     }))
 }
 
-export const Text_Type: _ea.Guaranteed_Transformation_Without_Parameters<_in.Text_Type, _out.Text_Type<_edata.Source_Location>> = (
+export const Text_Type: _ea.Transformation_Without_Parameters<_in.Text_Type, _out.Text_Type<_edata.Source_Location>> = (
     $
 ) => {
     return {
