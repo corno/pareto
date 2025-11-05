@@ -7,7 +7,7 @@ import * as definition from "../../../../interface/generated/pareto/schemas/sche
 import * as _in from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
 import * as _in_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
 
-import * as t_ast_to_range from "astn/dist/implementation/transformations/authoring_parse_tree/temp_value_range"
+import * as t_ast_to_range from "astn/dist/implementation/algorithms/transformations/authoring_parse_tree/temp_value_range"
 
 import * as _out from "../../../../temp/temp_unmashall_result_types"
 
@@ -17,27 +17,6 @@ import { $$ as op_dictionary_filter } from "pareto-standard-operations/dist/impl
 import { $$ as op_dictionary_merge } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/merge"
 import { Signature } from "../../../../interface/algorithms/transformations/temp/unmarshall_astn_ast"
 
-
-
-// export const Document = (
-//     $: _in.Document,
-//     $p: {
-//         'definition': definition.Type,
-//         'document path': string,
-//     }
-// ): _out.Document => {
-
-//     return {
-//         'content': Node(
-//             $.content,
-//             {
-//                 'definition': $p.definition.node,
-//                 'document path': $p['document path'],
-//             },
-//         )
-//     }
-
-// }
 
 export const Optional_Node = (
     $: _et.Optional_Value<_in.Value>,

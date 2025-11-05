@@ -15,7 +15,7 @@ export const $: g_.Types<pd.Source_Location> = types(
     {
         "Parameters": type(t.component("Path")),
 
-        "Errors": type(t.state_group({
+        "Error": type(t.state_group({
             "directory already exists": tstate(t.nothing()),
             "permission denied": tstate(t.nothing()),
         })),

@@ -1,5 +1,5 @@
-import * as _ea from "exupery-core-alg"
-import * as _et from "exupery-core-types"
+import * as _ea from 'exupery-core-alg'
+import * as _et from 'exupery-core-types'
 
 import { $$ as op_remove_last_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/remove_last_element"
 import { $$ as op_split } from "exupery-standard-library/dist/implementation/operations/impure/text/split"

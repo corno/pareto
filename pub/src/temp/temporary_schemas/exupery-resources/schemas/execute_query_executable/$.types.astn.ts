@@ -18,7 +18,7 @@ export const $: g_.Types<pd.Source_Location> = types(
             "args": prop(t.list(t.text_local(text('single line')))),
         })),
 
-        "Errors": type(t.state_group({
+        "Error": type(t.state_group({
             "failed to spawn": tstate(t.group({
                 "message": prop(t.text_local(text('single line'))),
             })),

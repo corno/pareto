@@ -18,14 +18,6 @@ export const Schema = (
     return sh.m.module(
 
         {
-            "out": sh.import_.ancestor(
-                2,
-                "core",
-                [
-                    "astn target"
-                ],
-                {},
-            ),
             "in": sh.import_.sibling(
                 "data types",
                 [
@@ -52,12 +44,7 @@ export const Schema = (
             {
                 "value serializers": sh.t.component_imported("vs", "Value Serializers", {}, []),
             },
-            sh.t.component_imported(
-                "out",
-                "Value",
-                {},
-                []
-            ),
+            sh.t.string(),
         ))),
     )
 }

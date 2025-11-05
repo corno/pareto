@@ -1,4 +1,4 @@
-import * as pd from 'exupery-core-data'
+import * as _edata from 'exupery-core-data'
 import * as _ea from 'exupery-core-alg'
 
 import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
@@ -6,14 +6,20 @@ import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface
 
 import { m } from "exupery/dist/shorthands/interface"
 
-import * as t_marshall from "./marshall"
 import * as t_migrate_boilerplate from "./migrate_boilerplate"
 import * as t_resolve from "./resolve"
 import * as t_dummy_resolve from "./dummy_resolve"
 import * as t_types from "./types"
+
+import * as t_marshall from "./marshall"
 import * as t_unmarshall from "./unmarshall"
+
+import * as t_serialize from "./serialize"
+import * as t_deserialize from "./deserialize"
+
 import * as t_value_deserializers from "./value_deserializers"
 import * as t_value_serializers from "./value_serializers"
+
 import { Signature } from "../../../../../interface/algorithms/transformations/schema/exupery_interface/main"
 
 
@@ -23,7 +29,7 @@ import { Signature } from "../../../../../interface/algorithms/transformations/s
 //     'filter dictionary': operations.pure.dictionary.filter
 // }
 
-export const Schema = ($: _in.Schema): _out.Module_Set.D<pd.Source_Location> => {
+export const Schema = ($: _in.Schema): _out.Module_Set.D<_edata.Source_Location> => {
     const schema = $
     const constrained: boolean = _ea.cc($.complexity, ($) => {
         switch ($[0]) {
@@ -79,6 +85,18 @@ export const Schema = ($: _in.Schema): _out.Module_Set.D<pd.Source_Location> => 
                 'imports': schema.imports,
             }
         ),
+        "serialize.ts": t_serialize.Schema(
+            schema,
+            {
+                'imports': schema.imports,
+            }
+        ),
+        "deserialize.ts": t_deserialize.Schema(
+            schema,
+            {
+                'imports': schema.imports,
+            }
+        ),
         "value serializers.ts": t_value_serializers.Schema(
             schema,
             {
@@ -95,7 +113,7 @@ export const Schema = ($: _in.Schema): _out.Module_Set.D<pd.Source_Location> => 
     })
 }
 
-export const Schema_Tree = ($: _in.Schema_Tree): _out.Module_Set.D<pd.Source_Location> => {
+export const Schema_Tree = ($: _in.Schema_Tree): _out.Module_Set.D<_edata.Source_Location> => {
     return _ea.cc($, ($) => {
         switch ($[0]) {
             case 'schema': return _ea.ss($, ($) => Schema($))
@@ -106,7 +124,7 @@ export const Schema_Tree = ($: _in.Schema_Tree): _out.Module_Set.D<pd.Source_Loc
 }
 
 
-export const Schemas = ($: _in.Schemas): _out.Module_Set.D<pd.Source_Location> => {
+export const Schemas = ($: _in.Schemas): _out.Module_Set.D<_edata.Source_Location> => {
     return m.set($.dictionary.map(($) => _ea.cc($, ($) => {
         switch ($[0]) {
             case 'schema': return _ea.ss($, ($) => Schema($))

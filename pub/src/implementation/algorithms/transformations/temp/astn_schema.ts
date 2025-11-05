@@ -1,7 +1,7 @@
-import * as pd from 'exupery-core-data'
+import * as _edata from 'exupery-core-data'
 import * as _edev from 'exupery-core-dev'
 import * as _ea from 'exupery-core-alg'
-import * as pt from 'exupery-core-types'
+
 import { Signature } from "../../../../interface/algorithms/transformations/temp/astn_schema"
 
 
@@ -16,7 +16,7 @@ import { $$ as op_flatten_dictionaries } from "pareto-standard-operations/dist/i
 import * as _in from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "../../../../interface/generated/pareto/schemas/astn_schema/data_types/target"
 
-export const Schema: _ea.Guaranteed_Transformation_Without_Parameters<_in.Schema, _out.Schema<pd.Source_Location>> = (
+export const Schema: _ea.Guaranteed_Transformation_Without_Parameters<_in.Schema, _out.Schema<_edata.Source_Location>> = (
     $
 ) => {
     return {
@@ -26,7 +26,7 @@ export const Schema: _ea.Guaranteed_Transformation_Without_Parameters<_in.Schema
     }
 }
 
-export const Globals: _ea.Guaranteed_Transformation_Without_Parameters<_in.Globals, _out.Globals<pd.Source_Location>> = (
+export const Globals: _ea.Guaranteed_Transformation_Without_Parameters<_in.Globals, _out.Globals<_edata.Source_Location>> = (
     $
 ) => {
     return {
@@ -49,7 +49,7 @@ export const Globals: _ea.Guaranteed_Transformation_Without_Parameters<_in.Globa
     }
 }
 
-export const Imports: _ea.Guaranteed_Transformation_Without_Parameters<_in.Imports, _out.Imports<pd.Source_Location>> = (
+export const Imports: _ea.Guaranteed_Transformation_Without_Parameters<_in.Imports, _out.Imports<_edata.Source_Location>> = (
     $
 ) => {
     return wrap_dictionary($.map(($) => ({
@@ -58,7 +58,7 @@ export const Imports: _ea.Guaranteed_Transformation_Without_Parameters<_in.Impor
     })))
 }
 
-export const Type: _ea.Guaranteed_Transformation_Without_Parameters<_in.Type, _out.Type<pd.Source_Location>> = (
+export const Type: _ea.Guaranteed_Transformation_Without_Parameters<_in.Type, _out.Type<_edata.Source_Location>> = (
     $
 ) => {
     return {
@@ -66,12 +66,12 @@ export const Type: _ea.Guaranteed_Transformation_Without_Parameters<_in.Type, _o
     }
 }
 
-export const Type_Node: _ea.Guaranteed_Transformation_Without_Parameters<_in.Type_Node, _out.Type_Node<pd.Source_Location>> = (
+export const Type_Node: _ea.Guaranteed_Transformation_Without_Parameters<_in.Type_Node, _out.Type_Node<_edata.Source_Location>> = (
     $
 ) => {
-    return wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG<pd.Source_Location> => {
+    return wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG<_edata.Source_Location> => {
         switch ($[0]) {
-            case 'number': return _ea.ss($, ($): _out.Type_Node.SG<pd.Source_Location> => ['text', wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG.text.SG<pd.Source_Location> => {
+            case 'number': return _ea.ss($, ($): _out.Type_Node.SG<_edata.Source_Location> => ['text', wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG.text.SG<_edata.Source_Location> => {
                 switch ($[0]) {
                     case 'global': return _ea.ss($, ($) => ['global', wrap_reference("n" + $.key)])
                     case 'local': return _ea.ss($, ($) => ['local', {
@@ -80,7 +80,7 @@ export const Type_Node: _ea.Guaranteed_Transformation_Without_Parameters<_in.Typ
                     default: return _ea.au($[0])
                 }
             }))]) //FIXME
-            case 'boolean': return _ea.ss($, ($) => ['text', wrap_state_group<_out.Type_Node.SG.text.SG<pd.Source_Location>>(['local', {
+            case 'boolean': return _ea.ss($, ($) => ['text', wrap_state_group<_out.Type_Node.SG.text.SG<_edata.Source_Location>>(['local', {
                 'type': wrap_state_group(['single line', null])
             }])])
             case 'list': return _ea.ss($, ($) => ['list', {
@@ -96,7 +96,7 @@ export const Type_Node: _ea.Guaranteed_Transformation_Without_Parameters<_in.Typ
                     }
                 }))
             }])
-            case 'component': return _ea.ss($, ($) => ['component', wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG.component.SG<pd.Source_Location> => {
+            case 'component': return _ea.ss($, ($) => ['component', wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG.component.SG<_edata.Source_Location> => {
                 switch ($[0]) {
                     case 'external': return _ea.ss($, ($) => ['external', {
                         'import': wrap_reference($.import.key),
@@ -114,7 +114,7 @@ export const Type_Node: _ea.Guaranteed_Transformation_Without_Parameters<_in.Typ
             case 'group': return _ea.ss($, ($) => ['group', wrap_dictionary($.dictionary.map(($) => Type_Node($.node)))])
             case 'optional': return _ea.ss($, ($) => ['optional', Type_Node($)])
             case 'state group': return _ea.ss($, ($) => ['state group', wrap_dictionary($.map(($) => Type_Node($.node)))])
-            case 'text': return _ea.ss($, ($) => ['text', wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG.text.SG<pd.Source_Location> => {
+            case 'text': return _ea.ss($, ($) => ['text', wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG.text.SG<_edata.Source_Location> => {
                 switch ($[0]) {
                     case 'global': return _ea.ss($, ($) => ['global', wrap_reference("t" + $.key)])
                     case 'local': return _ea.ss($, ($) => ['local', Text_Type($)])
@@ -127,7 +127,7 @@ export const Type_Node: _ea.Guaranteed_Transformation_Without_Parameters<_in.Typ
     }))
 }
 
-export const Text_Type: _ea.Guaranteed_Transformation_Without_Parameters<_in.Text_Type, _out.Text_Type<pd.Source_Location>> = (
+export const Text_Type: _ea.Guaranteed_Transformation_Without_Parameters<_in.Text_Type, _out.Text_Type<_edata.Source_Location>> = (
     $
 ) => {
     return {

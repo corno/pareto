@@ -9,7 +9,12 @@ import * as _out_interface from "exupery/dist/interface/generated/pareto/schemas
 import { m, } from "exupery/dist/shorthands/implementation"
 
 import * as t_migration_boilerplate from "./migrate_boilerplate"
+
 import * as t_resolver from "./resolve"
+
+import * as t_serialize from "./serialize"
+import * as t_deserialize from "./deserialize"
+
 import * as t_marshall from "./marshall"
 import * as t_unmarshall from "./unmarshall"
 
@@ -55,6 +60,16 @@ export const Schema_Tree = (
                             'path': $p.path,
                             'imports': $.imports,
                             'constrained': $.complexity[0] === 'constrained'
+                        })),
+
+                        "serialize.ts": _ea.set(t_serialize.Schema($, {
+                            'path': $p.path,
+                            'imports': $.imports,
+                            'constrained': $.complexity[0] === 'constrained'
+                        })),
+                        "deserialize.ts": _ea.set(t_deserialize.Schema($, {
+                            'path': $p.path,
+                            'imports': $.imports,
                         })),
                     }))
                 )

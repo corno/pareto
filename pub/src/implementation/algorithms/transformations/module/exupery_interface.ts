@@ -1,5 +1,5 @@
-import * as pd from 'exupery-core-data'
-import * as pa from 'exupery-core-alg'
+import * as _ed from 'exupery-core-data'
+import * as _ea from 'exupery-core-alg'
 
 import { wrap_dictionary } from 'exupery-core-data/dist/shorthands/unresolved_transformation'
 
@@ -12,22 +12,22 @@ import * as t_exupery_interface_types from "../schema/exupery_interface/types"
 import { Signature } from "../../../../interface/algorithms/transformations/module/exupery_interface"
 
 
-export const Operations = ($: _in.Operations): _out.Type<pd.Source_Location> => {
-    return t.group($.map(($) => pa.cc($, ($) => {
+export const Operations = ($: _in.Operations): _out.Type<_ed.Source_Location> => {
+    return t.group($.map(($) => _ea.cc($, ($) => {
         switch ($[0]) {
-            case 'operation': return pa.ss($, ($) => t.function_(
+            case 'operation': return _ea.ss($, ($) => t.function_(
                 $['type parameters'].map(($) => null),
                 t_exupery_interface_types.Type_Node($.context),
-                $.parameters.map(($) => pa.cc($, ($) => t_exupery_interface_types.Type_Node($))),
+                $.parameters.map(($) => _ea.cc($, ($) => t_exupery_interface_types.Type_Node($))),
                 t_exupery_interface_types.Type_Node($.result),
             ))
-            case 'set': return pa.ss($, ($) => Operations($))
-            default: return pa.au($[0])
+            case 'set': return _ea.ss($, ($) => Operations($))
+            default: return _ea.au($[0])
         }
     })))
 }
 
-export const Module = ($: _in.Module): _out.Module_Set<pd.Source_Location> => {
+export const Module = ($: _in.Module): _out.Module_Set<_ed.Source_Location> => {
     return wrap_dictionary({
         "core": m.set({
             "unresolved.ts": m.module(

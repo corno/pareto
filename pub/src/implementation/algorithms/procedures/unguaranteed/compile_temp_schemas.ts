@@ -21,67 +21,13 @@ import { $$ as p_log } from "exupery-resources/dist/implementation/procedures/gu
 import { $$ as p_log_error } from "exupery-resources/dist/implementation/procedures/guaranteed/log_error"
 import { $$ as p_copy_file } from "exupery-resources/dist/implementation/procedures/unguaranteed/copy"
 import { $$ as p_remove_node } from "exupery-resources/dist/implementation/procedures/unguaranteed/remove"
+
+
 import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/compile"
 
 
-
-const p_copy_interface_file_and_log_error: _easync.Unguaranteed_Procedure_Initializer<Copy_Parameters, null> = ($p) => _easync.upi.u(
-    p_copy_file,
-    () => null,
-    _easync.eh(
-        p_log_error,
-        ($) => ({
-            'lines': _ea.array_literal([`Could not copy interface file: ${$p.file}`])
-        })
-    )
-)({
-    'source': {
-        'path': "./pub/src/interface/generated/pareto/core/" + $p.file,
-        'escape spaces in path': true,
-    },
-    'target': {
-        'path': $p['module path'] + "/core/"+ $p.file,
-        'escape spaces in path': true,
-    },
-    'options': {
-        'recursive': _ea.not_set(),
-        'force': _ea.not_set(),
-        'errorOnExist': _ea.not_set(),
-    }
-})
-
-
-type Copy_Parameters = {
-    'file': string,
-    'module path': string,
-}
-
-const p_copy_implementation_file_and_log_error: _easync.Unguaranteed_Procedure_Initializer<Copy_Parameters, null> = ($p) => _easync.upi.u(
-    p_copy_file,
-    () => null,
-    _easync.eh(
-        p_log_error,
-        ($) => ({
-            'lines': _ea.array_literal([`Could not copy implementation file: ${$p.file}`])
-        })
-    )
-)({
-    'source': {
-        'path': "./pub/src/implementation/generated/pareto/generic/" + $p.file,
-        'escape spaces in path': true,
-    },
-    'target': {
-        'path': $p['module path'] + "/generic/" + $p.file,
-        'escape spaces in path': true,
-    },
-    'options': {
-        'recursive': _ea.not_set(),
-        'force': _ea.not_set(),
-        'errorOnExist': _ea.not_set(),
-    }
-})
-
-export const $$: _eb.Unguaranteed_Main_Initializer = () => {
+export const $$: _eb.Unguaranteed_Main_Initializer = ($) => {
+    $.arguments
     return _easync.up.sequence([
 
         _easync.upi.g<d_log.Parameters, _eb.Error>(
@@ -197,31 +143,55 @@ export const $$: _eb.Unguaranteed_Main_Initializer = () => {
                         }),
 
 
-                        p_copy_implementation_file_and_log_error({
-                            'module path': implementation_module_path,
-                            'file': "resolve.ts"
-                        }),
-                        p_copy_implementation_file_and_log_error({
-                            'module path': implementation_module_path,
-                            'file': "unmarshall.ts"
-                        }),
-                        p_copy_implementation_file_and_log_error({
-                            'module path': implementation_module_path,
-                            'file': "serialize.ts"
+                        _easync.upi.u(
+                            p_copy_file,
+                            () => null,
+                            _easync.eh(
+                                p_log_error,
+                                ($) => ({
+                                    'lines': _ea.array_literal([`Could not copy generic implementation directory`])
+                                })
+                            )
+                        )({
+                            'source': {
+                                'path': "./pub/src/implementation/generated/pareto/generic",
+                                'escape spaces in path': true,
+                            },
+                            'target': {
+                                'path': implementation_module_path + "/generic",
+                                'escape spaces in path': true,
+                            },
+                            'options': {
+                                'recursive': _ea.set(true),
+                                'force': _ea.not_set(),
+                                'errorOnExist': _ea.not_set(),
+                            }
                         }),
 
 
-                        p_copy_interface_file_and_log_error({
-                            'module path': interface_module_path,
-                            'file': "resolve.ts"
-                        }),
-                        p_copy_interface_file_and_log_error({
-                            'module path': interface_module_path,
-                            'file': "astn_target.ts"
-                        }),
-                        p_copy_interface_file_and_log_error({
-                            'module path': interface_module_path,
-                            'file': "astn_source.ts"
+                        _easync.upi.u(
+                            p_copy_file,
+                            () => null,
+                            _easync.eh(
+                                p_log_error,
+                                ($) => ({
+                                    'lines': _ea.array_literal([`Could not copy core interface directory`])
+                                })
+                            )
+                        )({
+                            'source': {
+                                'path': "./pub/src/interface/generated/pareto/core",
+                                'escape spaces in path': true,
+                            },
+                            'target': {
+                                'path': interface_module_path + "/core",
+                                'escape spaces in path': true,
+                            },
+                            'options': {
+                                'recursive': _ea.set(true),
+                                'force': _ea.not_set(),
+                                'errorOnExist': _ea.not_set(),
+                            }
                         }),
                     ]),
 

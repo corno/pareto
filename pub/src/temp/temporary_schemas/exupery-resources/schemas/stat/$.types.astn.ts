@@ -15,7 +15,7 @@ export const $: g_.Types<pd.Source_Location> = types(
     {
         "Parameters": type(t.component("Path")),
 
-        "Errors": type(t.state_group({
+        "Error": type(t.state_group({
             "node does not exist": tstate(t.nothing()),
         })),
 

@@ -18,7 +18,7 @@ export const $: g_.Types<pd.Source_Location> = types(
             "data": prop(t.text_local(text('multi line'))),
         })),
 
-        "Errors": type(t.state_group({
+        "Error": type(t.state_group({
             "permission denied": tstate(t.nothing()),
         })),
 

@@ -18,7 +18,7 @@ export const $: g_.Types<pd.Source_Location> = types(
             "error if not exists": prop(t.boolean()),
         })),
 
-        "Errors": type(t.state_group({
+        "Error": type(t.state_group({
             "node does not exist": tstate(t.nothing()),
             "permission denied": tstate(t.nothing()),
         })),

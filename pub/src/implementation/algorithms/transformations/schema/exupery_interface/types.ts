@@ -1,7 +1,7 @@
-import * as pd from 'exupery-core-data'
+import * as _edata from 'exupery-core-data'
 import * as _edev from 'exupery-core-dev'
-import * as pa from 'exupery-core-alg'
-import * as pt from 'exupery-core-types'
+import * as _ea from 'exupery-core-alg'
+import * as _et from 'exupery-core-types'
 
 import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
@@ -21,57 +21,57 @@ export const Schema = (
         | ['target', boolean] //annotated?
         | ['source', null]
     }
-): _out.Module_Set.D<pd.Source_Location> => {
+): _out.Module_Set.D<_edata.Source_Location> => {
     return sh.m.module(
         op_flatten(
-            pa.dictionary_literal({
-                "core": pa.dictionary_literal({
+            _ea.dictionary_literal({
+                "core": _ea.dictionary_literal({
                     "": sh.import_.ancestor(
                         3,
                         "core",
                         [
-                            pa.cc($p['what to generate'], ($) => {
+                            _ea.cc($p['what to generate'], ($) => {
                                 switch ($[0]) {
-                                    case 'source': return pa.ss($, ($) => "resolved")
-                                    case 'target': return pa.ss($, ($) => $ ? "unresolved" : "unconstrained")
-                                    default: return pa.au($[0])
+                                    case 'source': return _ea.ss($, ($) => "resolved")
+                                    case 'target': return _ea.ss($, ($) => $ ? "unresolved" : "unconstrained")
+                                    default: return _ea.au($[0])
                                 }
                             }),
                         ],
                         {
-                            "Source": pa.cc($p['what to generate'], ($) => {
+                            "Source": _ea.cc($p['what to generate'], ($) => {
                                 switch ($[0]) {
-                                    case 'source': return pa.ss($, ($) => sh.t.null_())
-                                    case 'target': return pa.ss($, ($) => $ ? sh.t.parameter_module("Source") : sh.t.null_())
-                                    default: return pa.au($[0])
+                                    case 'source': return _ea.ss($, ($) => sh.t.null_())
+                                    case 'target': return _ea.ss($, ($) => $ ? sh.t.parameter_module("Source") : sh.t.null_())
+                                    default: return _ea.au($[0])
                                 }
                             }),
                         },
                     )
                 }),
-                "imports ": pa.block(() => {
+                "imports ": _ea.block(() => {
                     const types = $p['what to generate']
                     return $p.imports.map(($) => sh.import_.ancestor(
                         2 + $['schema set child']['up steps'],
                         $['schema set child'].key,
                         [
                             "data types",
-                            pa.cc(types, ($) => {
+                            _ea.cc(types, ($) => {
                                 switch ($[0]) {
-                                    case 'target': return pa.ss($, ($) => "target")
-                                    case 'source': return pa.ss($, ($) => "source")
-                                    default: return pa.au($[0])
+                                    case 'target': return _ea.ss($, ($) => "target")
+                                    case 'source': return _ea.ss($, ($) => "source")
+                                    default: return _ea.au($[0])
                                 }
                             })
                         ],
-                        pa.cc(types, ($) => {
+                        _ea.cc(types, ($) => {
                             switch ($[0]) {
 
-                                case 'source': return pa.ss($, ($) => pa.dictionary_literal({}))
-                                case 'target': return pa.ss($, ($) => $ ? pa.dictionary_literal({
+                                case 'source': return _ea.ss($, ($) => _ea.dictionary_literal({}))
+                                case 'target': return _ea.ss($, ($) => $ ? _ea.dictionary_literal({
                                     "Source": sh.t.parameter_module("Source"),
-                                }) : pa.dictionary_literal({}))
-                                default: return pa.au($[0])
+                                }) : _ea.dictionary_literal({}))
+                                default: return _ea.au($[0])
                             }
                         }),
                     ))
@@ -81,11 +81,11 @@ export const Schema = (
                 'separator': "",
             }
         ),
-        pa.cc($p['what to generate'], ($) => {
+        _ea.cc($p['what to generate'], ($) => {
             switch ($[0]) {
-                case 'source': return pa.ss($, ($) => ({}))
-                case 'target': return pa.ss($, ($) => $ ? ({ "Source": null }) : ({}))
-                default: return pa.au($[0])
+                case 'source': return _ea.ss($, ($) => ({}))
+                case 'target': return _ea.ss($, ($) => $ ? ({ "Source": null }) : ({}))
+                default: return _ea.au($[0])
             }
         }),
         $.types.dictionary.map(($) => sh.type({}, Type_Node($.node))),
@@ -99,7 +99,7 @@ export const r_Type_Reference = (
         'add dictionary tail': boolean
     }
 
-): _out.Type<pd.Source_Location> => {
+): _out.Type<_edata.Source_Location> => {
     const referent = $
     const Component_Sub_Selection = (
         $: _in.Type_Node_Reference,
@@ -107,15 +107,15 @@ export const r_Type_Reference = (
             'add dictionary tail': boolean
         }
 
-    ): pt.Array<_out.Type.SG.component.sub_selection.L<pd.Source_Location>> => {
-        const tail: pt.Array<_out.Type.SG.component.sub_selection.L<pd.Source_Location>> = $.tail.map(($) => pa.cc($, ($) => {
+    ): _et.Array<_out.Type.SG.component.sub_selection.L<_edata.Source_Location>> => {
+        const tail: _et.Array<_out.Type.SG.component.sub_selection.L<_edata.Source_Location>> = $.tail.map(($) => _ea.cc($, ($) => {
             switch ($[0]) {
-                case 'dictionary': return pa.ss($, ($) => sh.sub.dictionary())
-                case 'group': return pa.ss($, ($) => sh.sub.group($.key))
-                case 'list': return pa.ss($, ($) => sh.sub.list())
-                case 'optional': return pa.ss($, ($) => sh.sub.optional())
-                case 'state group': return pa.ss($, ($) => sh.sub.state_group($.key))
-                default: return pa.au($[0])
+                case 'dictionary': return _ea.ss($, ($) => sh.sub.dictionary())
+                case 'group': return _ea.ss($, ($) => sh.sub.group($.key))
+                case 'list': return _ea.ss($, ($) => sh.sub.list())
+                case 'optional': return _ea.ss($, ($) => sh.sub.optional())
+                case 'state group': return _ea.ss($, ($) => sh.sub.state_group($.key))
+                default: return _ea.au($[0])
             }
         }))
         return $p['add dictionary tail']
@@ -128,21 +128,21 @@ export const r_Type_Reference = (
             : tail
     }
 
-    return pa.cc($['type location'].location, ($) => {
+    return _ea.cc($['type location'].location, ($) => {
         switch ($[0]) {
-            case 'external': return pa.ss($, ($) => sh.t.component_imported(
+            case 'external': return _ea.ss($, ($) => sh.t.component_imported(
                 `imports ${$.import.key}`,
                 $.type.key,
                 {},
                 Component_Sub_Selection(referent, { 'add dictionary tail': $p['add dictionary tail'] }),
 
             ))
-            case 'internal': return pa.ss($, ($) => sh.t.component_sibling(
+            case 'internal': return _ea.ss($, ($) => sh.t.component_sibling(
                 $.key,
                 {},
                 Component_Sub_Selection(referent, { 'add dictionary tail': $p['add dictionary tail'] }),
             ))
-            default: return pa.au($[0])
+            default: return _ea.au($[0])
         }
     })
 }
@@ -150,19 +150,19 @@ export const r_Type_Reference = (
 export const Number_Type = (
     $: _in.Number_Type
 
-): _out.Type<pd.Source_Location> => {
-    return pa.cc($.precision, ($) => {
+): _out.Type<_edata.Source_Location> => {
+    return _ea.cc($.precision, ($) => {
         switch ($[0]) {
-            case 'approximation': return pa.ss($, ($) => sh.t.float())
-            case 'exact': return pa.ss($, ($) => pa.cc($.type, ($) => {
+            case 'approximation': return _ea.ss($, ($) => sh.t.float())
+            case 'exact': return _ea.ss($, ($) => _ea.cc($.type, ($) => {
                 switch ($[0]) {
-                    case 'integer': return pa.ss($, ($) => sh.t.integer('signed'))
-                    case 'natural': return pa.ss($, ($) => sh.t.integer('unsigned'))
-                    case 'positive natural': return pa.ss($, ($) => sh.t.integer('unsigned'))
-                    default: return pa.au($[0])
+                    case 'integer': return _ea.ss($, ($) => sh.t.integer('signed'))
+                    case 'natural': return _ea.ss($, ($) => sh.t.integer('unsigned'))
+                    case 'positive natural': return _ea.ss($, ($) => sh.t.integer('unsigned'))
+                    default: return _ea.au($[0])
                 }
             }))
-            default: return pa.au($[0])
+            default: return _ea.au($[0])
         }
     })
 }
@@ -170,40 +170,40 @@ export const Number_Type = (
 export const Type_Node = (
     $: _in.Type_Node
 
-): _out.Type<pd.Source_Location> => {
-    return pa.cc($, ($) => {
+): _out.Type<_edata.Source_Location> => {
+    return _ea.cc($, ($) => {
         switch ($[0]) {
-            case 'boolean': return pa.ss($, ($) => sh.t.boolean())
-            case 'number': return pa.ss($, ($) => pa.cc($, ($) => {
+            case 'boolean': return _ea.ss($, ($) => sh.t.boolean())
+            case 'number': return _ea.ss($, ($) => _ea.cc($, ($) => {
                 switch ($[0]) {
-                    case 'global': return pa.ss($, ($) => Number_Type($.entry))
-                    case 'local': return pa.ss($, ($) => Number_Type($))
-                    default: return pa.au($[0])
+                    case 'global': return _ea.ss($, ($) => Number_Type($.entry))
+                    case 'local': return _ea.ss($, ($) => Number_Type($))
+                    default: return _ea.au($[0])
                 }
             }))
-            case 'text': return pa.ss($, ($) => sh.t.string())
-            case 'component': return pa.ss($, ($) => pa.cc($, ($) => {
+            case 'text': return _ea.ss($, ($) => sh.t.string())
+            case 'component': return _ea.ss($, ($) => _ea.cc($, ($) => {
                 switch ($[0]) {
-                    case 'external': return pa.ss($, ($) => sh.t.component_imported(
+                    case 'external': return _ea.ss($, ($) => sh.t.component_imported(
                         `imports ${$.import.key}`,
                         $.type.key,
                         {},
                         []
                     ))
-                    case 'internal': return pa.ss($, ($) => sh.t.component_sibling(
+                    case 'internal': return _ea.ss($, ($) => sh.t.component_sibling(
                         $.key,
                         {},
                         []
                     ))
-                    case 'internal cyclic': return pa.ss($, ($) => sh.t.component_sibling( //FIXME: is this correct?
+                    case 'internal cyclic': return _ea.ss($, ($) => sh.t.component_sibling( //FIXME: is this correct?
                         $.key,
                         {},
                         []
                     ))
-                    default: return pa.au($[0])
+                    default: return _ea.au($[0])
                 }
             }))
-            case 'dictionary': return pa.ss($, ($) => sh.t.component_imported(
+            case 'dictionary': return _ea.ss($, ($) => sh.t.component_imported(
                 "core",
                 $.ordered ? "Ordered Dictionary" : "Dictionary",
                 {
@@ -211,8 +211,8 @@ export const Type_Node = (
                 },
                 []
             ))
-            case 'group': return pa.ss($, ($) => sh.t.group($.dictionary.map(($, key) => Type_Node($.node))))
-            case 'list': return pa.ss($, ($) => {
+            case 'group': return _ea.ss($, ($) => sh.t.group($.dictionary.map(($, key) => Type_Node($.node))))
+            case 'list': return _ea.ss($, ($) => {
                 const type = $.node
                 return sh.t.component_imported(
                     "core",
@@ -223,13 +223,13 @@ export const Type_Node = (
                     []
                 )
             })
-            case 'nothing': return pa.ss($, ($) => sh.t.null_())
-            case 'optional': return pa.ss($, ($) => sh.t.optional(Type_Node($)))
-            case 'reference': return pa.ss($, ($) => {
+            case 'nothing': return _ea.ss($, ($) => sh.t.null_())
+            case 'optional': return _ea.ss($, ($) => sh.t.optional(Type_Node($)))
+            case 'reference': return _ea.ss($, ($) => {
                 const referent = $.referent
-                return pa.cc($.type, ($) => {
+                return _ea.cc($.type, ($) => {
                     switch ($[0]) {
-                        case 'derived': return pa.ss($, ($) => sh.t.component_imported(
+                        case 'derived': return _ea.ss($, ($) => sh.t.component_imported(
                             "core",
                             "Derived Reference",
                             {
@@ -237,14 +237,14 @@ export const Type_Node = (
                             },
                             []
                         ))
-                        case 'selected': return pa.ss($, ($) => sh.t.component_imported(
+                        case 'selected': return _ea.ss($, ($) => sh.t.component_imported(
                             "core",
-                            pa.cc($.dependency, ($) => {
+                            _ea.cc($.dependency, ($) => {
                                 switch ($[0]) {
-                                    case 'cyclic': return pa.ss($, ($) => "Reference To Circular Dependent Sibling")
-                                    case 'acyclic': return pa.ss($, ($) => "Reference To Normal Dictionary Entry")
-                                    case 'stack': return pa.ss($, ($) => "Reference To Stacked Dictionary Entry")
-                                    default: return pa.au($[0])
+                                    case 'cyclic': return _ea.ss($, ($) => "Reference To Circular Dependent Sibling")
+                                    case 'acyclic': return _ea.ss($, ($) => "Reference To Normal Dictionary Entry")
+                                    case 'stack': return _ea.ss($, ($) => "Reference To Stacked Dictionary Entry")
+                                    default: return _ea.au($[0])
                                 }
                             }),
                             {
@@ -252,12 +252,12 @@ export const Type_Node = (
                             },
                             []
                         ))
-                        default: return pa.au($[0])
+                        default: return _ea.au($[0])
                     }
                 })
             })
 
-            case 'state group': return pa.ss($, ($) => sh.t.component_imported(
+            case 'state group': return _ea.ss($, ($) => sh.t.component_imported(
                 "core",
                 "State Group",
                 {
@@ -266,7 +266,7 @@ export const Type_Node = (
                 []
             ))
             // case 'type parameter': return pa.ss($, ($) => sh.t.parameter_type($.key))
-            default: return pa.au($[0])
+            default: return _ea.au($[0])
         }
     })
 }

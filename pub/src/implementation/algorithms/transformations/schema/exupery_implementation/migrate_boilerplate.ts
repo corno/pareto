@@ -1,6 +1,6 @@
-import * as pd from 'exupery-core-data'
-import * as pt from 'exupery-core-types'
-import * as pa from 'exupery-core-alg'
+import * as _edata from 'exupery-core-data'
+import * as _et from 'exupery-core-types'
+import * as _ea from 'exupery-core-alg'
 import * as _edev from 'exupery-core-dev'
 
 import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
@@ -23,11 +23,11 @@ export const Types = (
         'imports': _in.Imports,
         'constrained': boolean
     }
-): _out.Module_Set.D<pd.Source_Location> => {
+): _out.Module_Set.D<_edata.Source_Location> => {
     return m.module(
         op_flatten_dictionary(
-            pa.dictionary_literal({
-                "": pa.dictionary_literal({
+            _ea.dictionary_literal({
+                "": _ea.dictionary_literal({
                     "signatures": import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, "migration boilerplate"], {}),
                     "out": import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, $p.constrained ? "unresolved" : "unconstrained"], $p.constrained ? { "Source": t.null_() } : {}),
                 }),
@@ -46,7 +46,7 @@ export const Types = (
                     $.node,
                     {
                         'type': key,
-                        'subselection': pa.array_literal([])
+                        'subselection': _ea.array_literal([])
                     }
                 ),
             ),
@@ -59,35 +59,35 @@ export const Type_Node = (
     $: _in.Type_Node,
     $p: {
         'type': string
-        'subselection': pt.Array<_out_interface.Type.SG.component.sub_selection.L<pd.Source_Location>>
+        'subselection': _et.Array<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>>
     },
-): _out.Initialization<pd.Source_Location> => {
-    return pa.cc($, ($) => {
+): _out.Initialization<_edata.Source_Location> => {
+    return _ea.cc($, ($) => {
         switch ($[0]) {
-            case 'number': return pa.ss($, ($) => i.select_from_context([]))
-            case 'boolean': return pa.ss($, ($) => i.select_from_context([]))
-            case 'nothing': return pa.ss($, ($) => i.null_())
-            case 'reference': return pa.ss($, ($) => pa.cc($.type, ($) => {
+            case 'number': return _ea.ss($, ($) => i.select_from_context([]))
+            case 'boolean': return _ea.ss($, ($) => i.select_from_context([]))
+            case 'nothing': return _ea.ss($, ($) => i.null_())
+            case 'reference': return _ea.ss($, ($) => _ea.cc($.type, ($) => {
                 switch ($[0]) {
-                    case 'derived': return pa.ss($, ($) => i.null_())
-                    case 'selected': return pa.ss($, ($) => i.select_from_context(["key"]))
-                    default: return pa.au($[0])
+                    case 'derived': return _ea.ss($, ($) => i.null_())
+                    case 'selected': return _ea.ss($, ($) => i.select_from_context(["key"]))
+                    default: return _ea.au($[0])
                 }
             }))
-            case 'text': return pa.ss($, ($) => i.select_from_context([]))
-            case 'component': return pa.ss($, ($) => i.call(
-                pa.cc($, ($) => {
+            case 'text': return _ea.ss($, ($) => i.select_from_context([]))
+            case 'component': return _ea.ss($, ($) => i.call(
+                _ea.cc($, ($) => {
                     switch ($[0]) {
-                        case 'external': return pa.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
-                        case 'internal': return pa.ss($, ($) => s.from_variable($.key, []))
-                        case 'internal cyclic': return pa.ss($, ($) => s.from_variable($.key, []))
-                        default: return pa.au($[0])
+                        case 'external': return _ea.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
+                        case 'internal': return _ea.ss($, ($) => s.from_variable($.key, []))
+                        case 'internal cyclic': return _ea.ss($, ($) => s.from_variable($.key, []))
+                        default: return _ea.au($[0])
                     }
                 }),
                 i.select_from_context([]),
-                pa.dictionary_literal({}),
+                _ea.dictionary_literal({}),
             ))
-            case 'dictionary': return pa.ss($, ($) => i.dictionary_map(
+            case 'dictionary': return _ea.ss($, ($) => i.dictionary_map(
                 $.ordered ? s.from_context(["dictionary"]) : s.from_context([]),
                 Type_Node(
                     $.node,
@@ -102,7 +102,7 @@ export const Type_Node = (
                     }
                 )
             ))
-            case 'group': return pa.ss($, ($) => i.group($.dictionary.map(($, key) => i.change_context(
+            case 'group': return _ea.ss($, ($) => i.group($.dictionary.map(($, key) => i.change_context(
                 s.from_context([key]),
                 Type_Node(
                     $.node,
@@ -117,7 +117,7 @@ export const Type_Node = (
                     }
                 )
             ))))
-            case 'list': return pa.ss($, ($) => i.array_map(
+            case 'list': return _ea.ss($, ($) => i.array_map(
                 s.from_context([]),
                 Type_Node(
                     $.node,
@@ -132,7 +132,7 @@ export const Type_Node = (
                     }
                 )
             ))
-            case 'optional': return pa.ss($, ($) => i.optional_map(
+            case 'optional': return _ea.ss($, ($) => i.optional_map(
                 s.from_context([]),
                 Type_Node(
                     $,
@@ -147,7 +147,7 @@ export const Type_Node = (
                     }
                 )
             ))
-            case 'state group': return pa.ss($, ($) => i.switch_(
+            case 'state group': return _ea.ss($, ($) => i.switch_(
                 s.from_context([]),
                 $.map(($, key) => i.case_(key, Type_Node(
                     $.node,
@@ -169,7 +169,7 @@ export const Type_Node = (
                 ),
             ))
             // case 'type parameter': return pa.ss($, ($) => _edev.implement_me())
-            default: return pa.au($[0])
+            default: return _ea.au($[0])
         }
     })
 }
