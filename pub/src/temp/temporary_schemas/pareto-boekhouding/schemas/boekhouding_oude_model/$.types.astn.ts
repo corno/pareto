@@ -50,7 +50,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                         "Ja": tstate(t.group({
                             "BTW-promillage": prop(t.number_global("Promillage")),
                         })),
-                        //"Nee": t.group({})
+                        "Nee": tstate(t.group({}))
                     }))
                 }))),
                 "Gebruikers": prop(t.dictionary(t.group({
@@ -215,6 +215,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                         })),
                         "Niet van toepassing": tstate(t.group({})),
                         "Ontbreekt": tstate(t.group({})),
+                        "Nog toevoegen": tstate(t.group({})),
                     })),
                     "Datum": prop(t.number_global("Datum")),
                     "Regels": prop(t.dictionary(t.group({

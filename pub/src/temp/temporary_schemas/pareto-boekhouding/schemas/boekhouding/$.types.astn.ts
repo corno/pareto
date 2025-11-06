@@ -226,6 +226,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                     })),
                     "Niet van toepassing": tstate(t.nothing()),
                     "Ontbreekt": tstate(t.nothing()),
+                    // "Nog toevoegen": tstate(t.nothing()),
                 })),
                 "Datum": prop(t.number_global("Datum")),
                 "Regels": prop(t.dictionary(t.group({

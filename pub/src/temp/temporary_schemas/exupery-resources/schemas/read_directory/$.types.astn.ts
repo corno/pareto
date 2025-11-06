@@ -13,7 +13,10 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 
 export const $: g_.Types<pd.Source_Location> = types(
     {
-        "Parameters": type(t.component("Path")),
+        "Parameters": type(t.group({
+            "path": prop(t.component("Path")),
+            "prepend results with path": prop(t.boolean()),
+        })),
 
         "Error": type(t.state_group({
             "directory does not exist": tstate(t.nothing()),
