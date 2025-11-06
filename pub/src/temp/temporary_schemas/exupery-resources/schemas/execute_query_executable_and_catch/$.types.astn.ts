@@ -30,7 +30,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "message": prop(t.text_local(text('single line'))),
             })),
             "non zero exit code": tstate(t.group({
-                "exitCode": prop(t.number_local(n.integer())),
+                "exit code": prop(t.optional(t.number_local(n.integer()))),
                 "stderr": prop(t.text_local(text('multi line'))),
             })),
         })),
