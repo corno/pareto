@@ -9,7 +9,7 @@ import { Signature } from "../../../../../interface/algorithms/operations/impure
 export const get_base_name = (path: string): _et.Optional_Value<string> => {
     const temp = op_split(path, "/")
     
-    return temp.__get_element_at(temp.__get_length() - 1)
+    return temp.__get_element_at(temp.__get_number_of_elements() - 1)
 }
 
 export const get_directory_path = (path: string): _et.Optional_Value<_et.Array<string>> => {

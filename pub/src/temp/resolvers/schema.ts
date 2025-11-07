@@ -1152,7 +1152,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     switch ($[0]) {
                         case 'external': return _ea.ss($, ($) => $.type.entry)
                         case 'internal': return _ea.ss($, ($) => $.entry)
-                        case 'internal cyclic': return _ea.ss($, ($) => $.entry.compute())
+                        case 'internal cyclic': return _ea.ss($, ($) => $.entry['get circular dependent']())
                         default: return _ea.au($[0])
                     }
                 })
@@ -1267,7 +1267,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                                                     switch ($[0]) {
                                                                         case 'external': return _ea.ss($, ($) => $.type.entry.node)
                                                                         case 'internal': return _ea.ss($, ($) => $.entry.node)
-                                                                        case 'internal cyclic': return _ea.ss($, ($) => $.entry.compute().node) //IS THIS SAFE? I Am using a computed value (only available after resolving)
+                                                                        case 'internal cyclic': return _ea.ss($, ($) => $.entry['get circular dependent']().node) //IS THIS SAFE? I Am using a computed value (only available after resolving)
                                                                         default: return _ea.au($[0])
                                                                     }
                                                                 }))
@@ -1827,7 +1827,7 @@ export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = 
                                     switch ($[0]) {
                                         case 'external': return _ea.ss($, ($) => $.type.entry.node)
                                         case 'internal': return _ea.ss($, ($) => $.entry.node)
-                                        case 'internal cyclic': return _ea.ss($, ($) => $.entry.compute().node) //this is safe, the types have been resolved at this stage
+                                        case 'internal cyclic': return _ea.ss($, ($) => $.entry['get circular dependent']().node) //this is safe, the types have been resolved at this stage
                                         default: return _ea.au($[0])
                                     }
                                 })
