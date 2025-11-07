@@ -26,7 +26,7 @@ import { $$ as p_remove_node } from "exupery-resources/dist/implementation/algor
 import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/compile"
 
 
-export const $$: _eb.Unguaranteed_Main_Initializer = ($) => {
+export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.Error> = ($) => {
     $.arguments
     return _easync.up.sequence([
 

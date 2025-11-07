@@ -22,7 +22,7 @@ import { Signature } from "../../../../interface/algorithms/procedures/unguarant
 
 const path = "./out/serialized"
 
-export const $$: _eb.Unguaranteed_Main_Initializer = ($) => {
+export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.Error> = ($) => {
     return _easync.up.dictionary<_eb.Error, d_write_file.Errors>(
         poormans_modules.map(($, key) => p_write_file(
             {

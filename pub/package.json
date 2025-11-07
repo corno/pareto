@@ -9,12 +9,12 @@
   ],
   "dependencies": {
     "astn": "^0.112.1",
-    "exupery": "^0.2.0",
+    "exupery": "^0.2.1",
     "exupery-core-alg": "^0.2.0",
-    "exupery-core-bin": "^0.2.0",
+    "exupery-core-bin": "^0.2.1",
     "exupery-core-data": "^0.2.0",
     "exupery-core-dev": "^0.2.0",
     "pareto-fountain-pen": "^0.2.0",
-    "pareto-standard-operations": "^0.2.0"
+    "pareto-standard-operations": "^0.2.1"
   }
 }

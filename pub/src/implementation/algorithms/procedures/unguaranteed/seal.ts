@@ -6,7 +6,7 @@ import { $$ as p_log_error } from "exupery-resources/dist/implementation/algorit
 import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/seal"
 
 
-export const $$: _eb.Unguaranteed_Main_Initializer = () => _easync.up.action(
+export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.Error> = () => _easync.up.action(
     _easync.upi.u(
         () => {
             return _easync.command.unguaranteed['raise exception'](null)
