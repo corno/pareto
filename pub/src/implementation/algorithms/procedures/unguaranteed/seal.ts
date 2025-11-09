@@ -9,7 +9,13 @@ import { Signature } from "../../../../interface/algorithms/procedures/unguarant
 export const $$: _easync.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, null> = () => _easync.up.action(
     _easync.upi.u(
         () => {
-            return _easync.command.unguaranteed['raise exception'](null)
+            return _easync.__create_unguaranteed_procedure(
+                {
+                    'execute': (on_success, on_exception) => {
+                        on_exception(null)
+                    }
+                }
+            )
         },
         () => ({
             'exit code': 1
