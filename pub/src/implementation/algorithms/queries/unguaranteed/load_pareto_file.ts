@@ -29,7 +29,7 @@ export type Parameters = {
     'file path': string,
 }
 
-export const $$: _easync.Unguaranteed_Query_Initializer<Parameters, _out.Node, Error, null> = (
+export const $$: _easync.Unguaranteed_Query<Parameters, _out.Node, Error, null> = (
     $p,
 ) => {
     const instance_path = $p['file path']
