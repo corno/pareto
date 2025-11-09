@@ -18,7 +18,7 @@ import { $$ as p_remove_node } from "exupery-resources/dist/implementation/algor
 import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/validate"
 
 
-export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.Error> = (
+export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.Error, null> = (
     $p
 ) => _easync.up.dictionary(
     poormans_modules.map(($, key) => {
@@ -26,11 +26,14 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.
 
         const module_path = `${path}/${key}`
         return _easync.up.sequence([
-            p_log_error({
-                'lines': _ea.array_literal(["IMPLEMENT ME"])
-            })
+            p_log_error(
+                {
+                    'lines': _ea.array_literal(["IMPLEMENT ME"])
+                },
+                null,
+            )
         ])
-        
+
 
     }),
     ($) => ({

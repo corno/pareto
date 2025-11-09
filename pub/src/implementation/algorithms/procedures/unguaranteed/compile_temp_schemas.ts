@@ -26,15 +26,19 @@ import { $$ as p_remove_node } from "exupery-resources/dist/implementation/algor
 import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/compile"
 
 
-export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.Error> = ($) => {
+export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.Error, null> = ($) => {
     $.arguments
     return _easync.up.sequence([
 
-        _easync.upi.g<d_log.Parameters, _eb.Error>(
+        _easync.upi.g<d_log.Parameters, _eb.Error, null>(
             p_log,
-        )({
-            'lines': _ea.array_literal([`generating...`])
-        }),
+            null,
+        )(
+            {
+                'lines': _ea.array_literal([`generating...`])
+            },
+            null,
+        ),
 
         _easync.up.dictionary<_eb.Error, null>(
             poormans_modules.map(($, key) => {
@@ -44,11 +48,15 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.
 
                 return _easync.up.sequence<null>([
 
-                    _easync.upi.g<d_log.Parameters, null>(
+                    _easync.upi.g<d_log.Parameters, null, null>(
                         p_log,
-                    )({
-                        'lines': _ea.array_literal([`generating: ${key}`])
-                    }),
+                        null,
+                    )(
+                        {
+                            'lines': _ea.array_literal([`generating: ${key}`])
+                        },
+                        null,
+                    ),
 
                     //FIX do this in parallel
                     _easync.up.sequence([
@@ -63,14 +71,18 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.
                                         'lines': _ea.array_literal([`Could not remove old generated implementation files, ${$[0]}`])
                                     })
                                 },
+                                null,
                             )
-                        )({
-                            'path': {
-                                'path': `${implementation_module_path}`,
-                                'escape spaces in path': true,
+                        )(
+                            {
+                                'path': {
+                                    'path': `${implementation_module_path}`,
+                                    'escape spaces in path': true,
+                                },
+                                'error if not exists': false,
                             },
-                            'error if not exists': false,
-                        }),
+                            null,
+                        ),
 
                         _easync.upi.u(
                             p_remove_node,
@@ -82,14 +94,18 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.
                                         'lines': _ea.array_literal([`Could not remove old generated ihterface files`])
                                     })
                                 },
-                            )
-                        )({
-                            'path': {
-                                'path': `${interface_module_path}`,
-                                'escape spaces in path': true,
+                                null,
+                            ),
+                        )(
+                            {
+                                'path': {
+                                    'path': `${interface_module_path}`,
+                                    'escape spaces in path': true,
+                                },
+                                'error if not exists': false,
                             },
-                            'error if not exists': false,
-                        }),
+                            null,
+                        ),
 
                     ]),
 
@@ -102,45 +118,51 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.
                         _easync.upi.u(
                             p_fp_write_to_directory,
                             ($) => null,
-                        )({
-                            'directory': t_pareto_module_to_fountain_pen_block__interface.Module(
-                                r_pareto_module.Module(
-                                    $,
-                                    {
-                                        'parameters': {
-                                            'lookups': null,
-                                            'values': null,
-                                        },
-                                        'location 2 string': _ed.location_to_string
-                                    }
+                        )(
+                            {
+                                'directory': t_pareto_module_to_fountain_pen_block__interface.Module(
+                                    r_pareto_module.Module(
+                                        $,
+                                        {
+                                            'parameters': {
+                                                'lookups': null,
+                                                'values': null,
+                                            },
+                                            'location 2 string': _ed.location_to_string
+                                        }
+                                    ),
                                 ),
-                            ),
-                            'path': interface_module_path,
-                            'indentation': "    ",
-                            'newline': "\n",
-                            'remove before creating': true,
-                        }),
+                                'path': interface_module_path,
+                                'indentation': "    ",
+                                'newline': "\n",
+                                'remove before creating': true,
+                            },
+                            null,
+                        ),
                         _easync.upi.u(
                             p_fp_write_to_directory,
                             ($) => null,
-                        )({
-                            'directory': t_pareto_module_to_fountain_pen_block__implementation.Module(
-                                r_pareto_module.Module(
-                                    $,
-                                    {
-                                        'parameters': {
-                                            'lookups': null,
-                                            'values': null,
-                                        },
-                                        'location 2 string': _ed.location_to_string
-                                    }
+                        )(
+                            {
+                                'directory': t_pareto_module_to_fountain_pen_block__implementation.Module(
+                                    r_pareto_module.Module(
+                                        $,
+                                        {
+                                            'parameters': {
+                                                'lookups': null,
+                                                'values': null,
+                                            },
+                                            'location 2 string': _ed.location_to_string
+                                        }
+                                    ),
                                 ),
-                            ),
-                            'path': implementation_module_path,
-                            'indentation': "    ",
-                            'newline': "\n",
-                            'remove before creating': true,
-                        }),
+                                'path': implementation_module_path,
+                                'indentation': "    ",
+                                'newline': "\n",
+                                'remove before creating': true,
+                            },
+                            null,
+                        ),
 
 
                         _easync.upi.u(
@@ -150,23 +172,27 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.
                                 p_log_error,
                                 ($) => ({
                                     'lines': _ea.array_literal([`Could not copy generic implementation directory`])
-                                })
+                                }),
+                                null,
                             )
-                        )({
-                            'source': {
-                                'path': "./pub/src/implementation/generated/pareto/generic",
-                                'escape spaces in path': true,
+                        )(
+                            {
+                                'source': {
+                                    'path': "./pub/src/implementation/generated/pareto/generic",
+                                    'escape spaces in path': true,
+                                },
+                                'target': {
+                                    'path': implementation_module_path + "/generic",
+                                    'escape spaces in path': true,
+                                },
+                                'options': {
+                                    'recursive': _ea.set(true),
+                                    'force': _ea.not_set(),
+                                    'errorOnExist': _ea.not_set(),
+                                }
                             },
-                            'target': {
-                                'path': implementation_module_path + "/generic",
-                                'escape spaces in path': true,
-                            },
-                            'options': {
-                                'recursive': _ea.set(true),
-                                'force': _ea.not_set(),
-                                'errorOnExist': _ea.not_set(),
-                            }
-                        }),
+                            null,
+                        ),
 
 
                         _easync.upi.u(
@@ -176,23 +202,27 @@ export const $$: _easync.Unguaranteed_Procedure_Initializer<_eb.Parameters, _eb.
                                 p_log_error,
                                 ($) => ({
                                     'lines': _ea.array_literal([`Could not copy core interface directory`])
-                                })
+                                }),
+                                null,
                             )
-                        )({
-                            'source': {
-                                'path': "./pub/src/interface/generated/pareto/core",
-                                'escape spaces in path': true,
+                        )(
+                            {
+                                'source': {
+                                    'path': "./pub/src/interface/generated/pareto/core",
+                                    'escape spaces in path': true,
+                                },
+                                'target': {
+                                    'path': interface_module_path + "/core",
+                                    'escape spaces in path': true,
+                                },
+                                'options': {
+                                    'recursive': _ea.set(true),
+                                    'force': _ea.not_set(),
+                                    'errorOnExist': _ea.not_set(),
+                                }
                             },
-                            'target': {
-                                'path': interface_module_path + "/core",
-                                'escape spaces in path': true,
-                            },
-                            'options': {
-                                'recursive': _ea.set(true),
-                                'force': _ea.not_set(),
-                                'errorOnExist': _ea.not_set(),
-                            }
-                        }),
+                            null,
+                        ),
                     ]),
 
 
