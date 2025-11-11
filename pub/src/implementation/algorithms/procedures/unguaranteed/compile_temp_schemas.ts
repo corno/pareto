@@ -122,7 +122,7 @@ export const $$: _easync.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, null>
                             {
                                 'directory': t_pareto_module_to_fountain_pen_block__interface.Module(
                                     r_pareto_module.Module(
-                                        $,
+                                        $.module,
                                         {
                                             'parameters': {
                                                 'lookups': null,
@@ -146,7 +146,7 @@ export const $$: _easync.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, null>
                             {
                                 'directory': t_pareto_module_to_fountain_pen_block__implementation.Module(
                                     r_pareto_module.Module(
-                                        $,
+                                        $.module,
                                         {
                                             'parameters': {
                                                 'lookups': null,

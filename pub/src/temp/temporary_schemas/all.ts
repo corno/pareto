@@ -21,21 +21,72 @@ import { $ as m_pareto_vscode_backend } from "./pareto-vscode-backend/module.ast
 import { m } from 'exupery/dist/shorthands/implementation'
 
 
-export const $ = _edata.d<g_.Module<_edata.Source_Location> >({
-    "accounting_ruwe_data": m_accounting_ruwe_data,
-    "antlr": m_antlr,
-    "astn": m_astn,
-    "astn-to-xml": m_astn_to_xml,
-    "exupery": m_exupery,
-    "exupery-resources": m_exupery_resources,
-    "json-to-astn": m_json_to_astn,
-    "git": m_git,
-    "pareto": m_pareto,
-    "pareto-boekhouding": m_pareto_boekhouding,
-    "pareto-fountain-pen": m_pareto_fountain_pen,
-    "pareto-static-html": m_pareto_static_html,
-    "pareto-json": m_pareto_json,
-    "pareto-lionweb": m_pareto_lionweb,
-    "pareto-targets": m_pareto_targets,
-    "pareto-vscode-backend": m_pareto_vscode_backend,
+export const $ = _edata.d<{
+    'target path': string,
+    'module': g_.Module<_edata.Source_Location>
+}>({
+    "accounting_ruwe_data": {
+        'target path': `../../../pareto-rosetta/accounting_ruwe_data`,
+        'module': m_accounting_ruwe_data,
+    },
+    "antlr": {
+        'target path': `../../../pareto-rosetta/antlr`,
+        'module': m_antlr,
+    },
+    "astn": {
+        'target path': `../astn`,
+        'module': m_astn,
+    },
+    "astn-to-xml": {
+        'target path': `../astn-to-xml`,
+        'module': m_astn_to_xml,
+    },
+    "exupery": {
+        'target path': `../exupery`,
+        'module': m_exupery,
+    },
+    "exupery-resources": {
+        'target path': `../exupery-resources`,
+        'module': m_exupery_resources,
+    },
+    "json-to-astn": {
+        'target path': `../json-to-astn`,
+        'module': m_json_to_astn,
+    },
+    "git": {
+        'target path': `../git`,
+        'module': m_git,
+    },
+    "pareto": {
+        'target path': `../pareto`,
+        'module': m_pareto,
+    },
+    "pareto-boekhouding": {
+        'target path': `../pareto-boekhouding`,
+        'module': m_pareto_boekhouding,
+    },
+    "pareto-fountain-pen": {
+        'target path': `../pareto-fountain-pen`,
+        'module': m_pareto_fountain_pen,
+    },
+    "pareto-static-html": {
+        'target path': `../pareto-static-html`,
+        'module': m_pareto_static_html,
+    },
+    "pareto-json": {
+        'target path': `../pareto-json`,
+        'module': m_pareto_json,
+    },
+    "pareto-lionweb": {
+        'target path': `../pareto-lionweb`,
+        'module': m_pareto_lionweb,
+    },
+    "pareto-targets": {
+        'target path': `../pareto-targets`,
+        'module': m_pareto_targets,
+    },
+    "pareto-vscode-backend": {
+        'target path': `../pareto-vscode-backend`,
+        'module': m_pareto_vscode_backend,
+    },
 })

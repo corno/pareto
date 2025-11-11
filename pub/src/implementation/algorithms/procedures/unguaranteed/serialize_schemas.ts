@@ -20,7 +20,6 @@ import * as m_module from "../../../../implementation/generated/pareto/schemas/m
 import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/serialize_schemas"
 
 
-const path = "./out/serialized"
 
 export const $$: _easync.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, null> = ($) => {
     return _easync.up.dictionary<_eb.Error, d_write_file.Error>(
@@ -28,12 +27,12 @@ export const $$: _easync.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, null>
             {
                 'path': {
                     'escape spaces in path': true,
-                    'path': `${path}/${key}.astn`
+                    'path': `${$['target path']}/module.astn`
                 },
                 'data': serialize.Document(
                     m_module.Module(
                         r_module.Module(
-                            $,
+                            $.module,
                             {
                                 'parameters': {
                                     'lookups': null,
