@@ -14,7 +14,6 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 export const $: g_.Types<pd.Source_Location> = types(
     {
         "Parameters": type(t.group({
-            "program": prop(t.text_local(text('single line'))),
             "args": prop(t.list(t.text_local(text('single line')))),
         })),
 
