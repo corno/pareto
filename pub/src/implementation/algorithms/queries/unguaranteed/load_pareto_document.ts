@@ -8,6 +8,7 @@ import * as _easync from 'exupery-core-async'
 //data
 
 import * as d_parse_result from "astn/dist/interface/generated/pareto/schemas/authoring_parse_result/data_types/target"
+import * as d_read_file from "exupery-resources/dist/interface/generated/pareto/schemas/read_file/data_types/source"
 
 import * as tu_dynamic_unmarshall from "../../transformations/temp/unmarshall_astn_ast"
 
@@ -16,9 +17,6 @@ import * as parse from "astn/dist/exceptional/authoring_parse/parse"
 import * as _out from "../../../../temp/temp_unmashall_result_types"
 
 import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/text/join_list_of_texts_with_separator"
-
-import { $$ as q_read_file } from "exupery-resources/dist/implementation/algorithms/queries/unguaranteed/read_file"
-
 
 import { get_directory_path } from "../../operations/impure/tbd/path"
 
@@ -39,8 +37,14 @@ export type Parameters = {
     'file path': string,
 }
 
-export const $$: _easync.Unguaranteed_Query<Parameters, _out.Node, Error, null> = (
-    $p,
+export type Resources = {
+    'queries': {
+        'read file': _easync.Unguaranteed_Query<d_read_file.Parameters, d_read_file.Result, d_read_file.Error, null>
+    }
+}
+
+export const $$: _easync.Unguaranteed_Query<Parameters, _out.Node, Error, Resources> = (
+    $p, $r
 ) => {
     const instance_path = $p['file path']
     const schema_path = op_join_with_separator(
@@ -65,7 +69,7 @@ export const $$: _easync.Unguaranteed_Query<Parameters, _out.Node, Error, null> 
 
             //now first, get the schema
 
-            return q_read_file(
+            return $r.queries['read file'](
                 {
                     'path': schema_path,
                     'escape spaces in path': true,
