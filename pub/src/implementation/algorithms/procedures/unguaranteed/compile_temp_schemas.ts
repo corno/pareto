@@ -9,6 +9,10 @@ import { $ as poormans_modules } from "../../../../temp/temporary_schemas/all"
 
 import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
 
+import * as d_remove from "exupery-resources/dist/interface/generated/pareto/schemas/remove/data_types/source"
+import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"
+import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
+
 import * as r_pareto_module from "../../../../temp/resolvers/module"
 
 import * as t_pareto_module_to_fountain_pen_block__implementation from "../../transformations/module/temp_typescript_implementation"
@@ -26,8 +30,16 @@ import { $$ as p_remove_node } from "exupery-resources/dist/implementation/algor
 import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/compile"
 
 
-export const $$: _easync.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, null> = ($) => {
-    $.arguments
+export type Resources = {
+    'procedures': {
+        'remove': _easync.Unguaranteed_Procedure<d_remove.Parameters, d_remove.Error, null>
+        'make directory': _easync.Unguaranteed_Procedure<d_make_directory.Parameters, d_make_directory.Error, null>
+        'write file': _easync.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
+    }
+}
+
+export const $$: _easync.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources> = ($p, $r) => {
+    $p.arguments
     return _easync.up.sequence([
 
         _easync.upi.g<d_log.Parameters, _eb.Error, null>(
@@ -137,7 +149,7 @@ export const $$: _easync.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, null>
                                 'newline': "\n",
                                 'remove before creating': true,
                             },
-                            null,
+                            $r,
                         ),
                         _easync.upi.u(
                             p_fp_write_to_directory,
@@ -161,7 +173,7 @@ export const $$: _easync.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, null>
                                 'newline': "\n",
                                 'remove before creating': true,
                             },
-                            null,
+                            $r,
                         ),
 
 
