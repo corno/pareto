@@ -50,7 +50,7 @@ export const $ = _edata.d<{
         'module': m_exupery_resources,
     },
     "json-to-astn": {
-        'target path': `../json-to-astn`,
+        'target path': `../../../pareto-rosetta/json-to-astn`,
         'module': m_json_to_astn,
     },
     "git": {
