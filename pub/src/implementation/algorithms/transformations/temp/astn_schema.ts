@@ -1,6 +1,7 @@
 import * as _edata from 'exupery-core-data'
 import * as _edev from 'exupery-core-dev'
 import * as _ea from 'exupery-core-alg'
+import * as _et from 'exupery-core-types'
 
 import { Signature } from "../../../../interface/algorithms/transformations/temp/astn_schema"
 
@@ -16,7 +17,7 @@ import { $$ as op_flatten_dictionaries } from "pareto-standard-operations/dist/i
 import * as _in from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "../../../../interface/generated/pareto/schemas/astn_schema/data_types/target"
 
-export const Schema: _ea.Transformation_Without_Parameters<_in.Schema, _out.Schema<_edata.Source_Location>> = (
+export const Schema: _et.Transformer_Without_Parameters<_in.Schema, _out.Schema<_edata.Source_Location>> = (
     $
 ) => {
     return {
@@ -26,7 +27,7 @@ export const Schema: _ea.Transformation_Without_Parameters<_in.Schema, _out.Sche
     }
 }
 
-export const Globals: _ea.Transformation_Without_Parameters<_in.Globals, _out.Globals<_edata.Source_Location>> = (
+export const Globals: _et.Transformer_Without_Parameters<_in.Globals, _out.Globals<_edata.Source_Location>> = (
     $
 ) => {
     return {
@@ -49,7 +50,7 @@ export const Globals: _ea.Transformation_Without_Parameters<_in.Globals, _out.Gl
     }
 }
 
-export const Imports: _ea.Transformation_Without_Parameters<_in.Imports, _out.Imports<_edata.Source_Location>> = (
+export const Imports: _et.Transformer_Without_Parameters<_in.Imports, _out.Imports<_edata.Source_Location>> = (
     $
 ) => {
     return wrap_dictionary($.map(($) => ({
@@ -58,7 +59,7 @@ export const Imports: _ea.Transformation_Without_Parameters<_in.Imports, _out.Im
     })))
 }
 
-export const Type: _ea.Transformation_Without_Parameters<_in.Type, _out.Type<_edata.Source_Location>> = (
+export const Type: _et.Transformer_Without_Parameters<_in.Type, _out.Type<_edata.Source_Location>> = (
     $
 ) => {
     return {
@@ -66,7 +67,7 @@ export const Type: _ea.Transformation_Without_Parameters<_in.Type, _out.Type<_ed
     }
 }
 
-export const Type_Node: _ea.Transformation_Without_Parameters<_in.Type_Node, _out.Type_Node<_edata.Source_Location>> = (
+export const Type_Node: _et.Transformer_Without_Parameters<_in.Type_Node, _out.Type_Node<_edata.Source_Location>> = (
     $
 ) => {
     return wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG<_edata.Source_Location> => {
@@ -127,7 +128,7 @@ export const Type_Node: _ea.Transformation_Without_Parameters<_in.Type_Node, _ou
     }))
 }
 
-export const Text_Type: _ea.Transformation_Without_Parameters<_in.Text_Type, _out.Text_Type<_edata.Source_Location>> = (
+export const Text_Type: _et.Transformer_Without_Parameters<_in.Text_Type, _out.Text_Type<_edata.Source_Location>> = (
     $
 ) => {
     return {

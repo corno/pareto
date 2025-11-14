@@ -39,11 +39,11 @@ export type Parameters = {
 
 export type Resources = {
     'queries': {
-        'read file': _easync.Unguaranteed_Query<d_read_file.Parameters, d_read_file.Result, d_read_file.Error, null>
+        'read file': _et.Unguaranteed_Query<d_read_file.Parameters, d_read_file.Result, d_read_file.Error, null>
     }
 }
 
-export const $$: _easync.Unguaranteed_Query<Parameters, _out.Node, Error, Resources> = (
+export const $$: _et.Unguaranteed_Query<Parameters, _out.Node, Error, Resources> = (
     $p, $r
 ) => {
     const instance_path = $p['file path']
@@ -83,7 +83,7 @@ export const $$: _easync.Unguaranteed_Query<Parameters, _out.Node, Error, Resour
                     load_schema(
                         $,
                     ),
-                    ($): _easync.Unguaranteed_Query_Promise<_out.Node, Error> => {
+                    ($): _et.Unguaranteed_Query_Promise<_out.Node, Error> => {
                         return $.transform(
                             ($) => {
                                 //the schema was loaded successfully

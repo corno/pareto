@@ -3,6 +3,7 @@ import * as _ea from 'exupery-core-alg'
 import * as _ed from 'exupery-core-data'
 import * as _easync from 'exupery-core-async'
 import * as _eb from 'exupery-core-bin'
+import * as _et from 'exupery-core-types'
 
 //data
 import { $ as poormans_modules } from "../../../../temp/temporary_schemas/all"
@@ -12,7 +13,7 @@ import { Signature } from "../../../../interface/algorithms/procedures/unguarant
 
 export type Resources = null
 
-export const $$: _easync.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources> = (
+export const $$: _et.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources> = (
     $p
 ) => _easync.up.dictionary(
     poormans_modules.map(($, key) => {

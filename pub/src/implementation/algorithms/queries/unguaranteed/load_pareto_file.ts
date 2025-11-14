@@ -25,13 +25,13 @@ import { $$ as q_load_astn_document } from "./load_pareto_document"
 
 export type Resources = {
     'queries': {
-        'read file': _easync.Unguaranteed_Query<d_read_file.Parameters, d_read_file.Result, d_read_file.Error, null>
+        'read file': _et.Unguaranteed_Query<d_read_file.Parameters, d_read_file.Result, d_read_file.Error, null>
     }
 }
 
 import { Signature } from "../../../../interface/algorithms/queries/unguaranteed/load_pareto_file"
 
-export const $$: _easync.Unguaranteed_Query<d.Parameters, d_out.Node, d.Error, Resources> = (
+export const $$: _et.Unguaranteed_Query<d.Parameters, d_out.Node, d.Error, Resources> = (
     $p, $r
 ) => {
     const instance_path = $p['file path']

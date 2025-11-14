@@ -3,6 +3,7 @@ import * as _ea from 'exupery-core-alg'
 import * as _eb from 'exupery-core-bin'
 import * as _ed from 'exupery-core-data'
 import * as _easync from 'exupery-core-async'
+import * as _et from 'exupery-core-types'
 
 import * as serialize from "../../../generated/pareto/generic/serialize"
 //data
@@ -20,11 +21,11 @@ import { Signature } from "../../../../interface/algorithms/procedures/unguarant
 
 export type Resources = {
     'procedures': {
-        'write file': _easync.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
+        'write file': _et.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
     }
 }
 
-export const $$: _easync.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources> = ($p, $r) => {
+export const $$: _et.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources> = ($p, $r) => {
     return _easync.up.dictionary<_eb.Error, d_write_file.Error>(
         poormans_modules.map(($, key) => $r.procedures['write file'](
             {

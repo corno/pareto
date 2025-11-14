@@ -17,7 +17,7 @@ import * as parse from "../../implementation/generated/pareto/generic/parse/pars
 
 import * as _out from "../../temp/temp_unmashall_result_types"
 
-import { $$ as op_remove_first_element } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/list/remove_first_element"
+import { $$ as op_remove_first_element } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/list/pop_first_element"
 
 type Error =
     | ['parse error', d_parse_result._T_Parse_Error]
@@ -26,7 +26,7 @@ type Error =
 
 export const $ = (
     $: string,
-): _ea.Refinement_Result<d_schema.Type, Error> => {
+): _et.Refinement_Result<d_schema.Type, Error> => {
 
     return parse.parse(
         $,
@@ -34,7 +34,7 @@ export const $ = (
             'tab size': 4,
         }
     ).transform(
-        ($): _ea.Refinement_Result<d_schema.Type, Error> => {
+        ($): _et.Refinement_Result<d_schema.Type, Error> => {
 
             const resolved_schema_schema = r_pareto_schema.Type_Specification(
                 u_pareto_schema.Type_Specification(
@@ -68,7 +68,7 @@ export const $ = (
 
                                 case 'schema': return _ea.ss($, ($) => _ea.deprecated_panic(`(FIXME: make this a reference) the selected tree is a schema, not a set, can't do this step: ${split.element} `))
                                 case 'set': return _ea.ss($, ($) => $.dictionary.__get_entry(split.element).transform(
-                                    ($) => temp_find_schema($, split.array),
+                                    ($) => temp_find_schema($, split.rest),
                                     () => _ea.deprecated_panic(`(FIXME: make this a reference) schema not found: ${split.element}`)
                                 ))
                                 default: return _ea.au($[0])

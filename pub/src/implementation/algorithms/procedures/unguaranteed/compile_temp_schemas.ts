@@ -3,6 +3,7 @@ import * as _ea from 'exupery-core-alg'
 import * as _ed from 'exupery-core-data'
 import * as _easync from 'exupery-core-async'
 import * as _eb from 'exupery-core-bin'
+import * as _et from 'exupery-core-types'
 
 //data
 import { $ as poormans_modules } from "../../../../temp/temporary_schemas/all"
@@ -30,16 +31,16 @@ import { Signature } from "../../../../interface/algorithms/procedures/unguarant
 
 export type Resources = {
     'procedures': {
-        'remove': _easync.Unguaranteed_Procedure<d_remove.Parameters, d_remove.Error, null>
-        'make directory': _easync.Unguaranteed_Procedure<d_make_directory.Parameters, d_make_directory.Error, null>
-        'write file': _easync.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
-        'log': _easync.Guaranteed_Procedure<d_log.Parameters, null>
-        'log error': _easync.Guaranteed_Procedure<d_log_error.Parameters, null>
-        'copy': _easync.Unguaranteed_Procedure<d_copy.Parameters, d_copy.Error, null>
+        'remove': _et.Unguaranteed_Procedure<d_remove.Parameters, d_remove.Error, null>
+        'make directory': _et.Unguaranteed_Procedure<d_make_directory.Parameters, d_make_directory.Error, null>
+        'write file': _et.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
+        'log': _et.Guaranteed_Procedure<d_log.Parameters, null>
+        'log error': _et.Guaranteed_Procedure<d_log_error.Parameters, null>
+        'copy': _et.Unguaranteed_Procedure<d_copy.Parameters, d_copy.Error, null>
     }
 }
 
-export const $$: _easync.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources> = ($p, $r) => {
+export const $$: _et.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources> = ($p, $r) => {
     $p.arguments
     return _easync.up.sequence([
 
