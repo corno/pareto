@@ -2,7 +2,6 @@
 import * as _ea from 'exupery-core-alg'
 import * as _ed from 'exupery-core-data'
 import * as _easync from 'exupery-core-async'
-import * as _eb from 'exupery-core-bin'
 import * as _et from 'exupery-core-types'
 
 //data
@@ -10,6 +9,7 @@ import { $ as poormans_modules } from "../../../temp/temporary_schemas/all"
 
 import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
 import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
+import * as d_main from "exupery-resources/dist/interface/temp_main"
 
 import * as d_remove from "exupery-resources/dist/interface/generated/pareto/schemas/remove/data_types/source"
 import * as d_copy from "exupery-resources/dist/interface/generated/pareto/schemas/copy/data_types/source"
@@ -23,14 +23,14 @@ import * as t_pareto_module_to_fountain_pen_block__interface from "../transforma
 
 
 
-import { $$ as p_fp_write_to_directory } from "pareto-fountain-pen/dist/implementation/algorithms/procedures/unguaranteed/write_to_directory"
+import { $$ as p_fp_write_to_directory } from "pareto-fountain-pen/dist/implementation/algorithms/procedures/write_to_directory"
 
 
 import { Signature } from "../../../interface/algorithms/procedures/compile"
 
 
 export type Resources = {
-    'procedures': {
+    'commands': {
         'remove': _et.Command<d_remove.Parameters, d_remove.Error>
         'make directory': _et.Command<d_make_directory.Parameters, d_make_directory.Error>
         'write file': _et.Command<d_write_file.Parameters, d_write_file.Error>
@@ -40,8 +40,8 @@ export type Resources = {
     }
 }
 
-export const $$: _et.Command_Procedure<_eb.Parameters, _eb.Error, Resources> = ($r) => {
-    return ($p) => _easync.sequence<_eb.Error>(_ea.array_literal([
+export const $$: _et.Command_Procedure<d_main.Parameters, d_main.Error, Resources> = ($r) => {
+    return ($p) => _easync.sequence<d_main.Error>(_ea.array_literal([
 
         $r.commands.log({
             'lines': _ea.array_literal([`generating...`])
@@ -49,7 +49,7 @@ export const $$: _et.Command_Procedure<_eb.Parameters, _eb.Error, Resources> = (
             'exit code': 1
         })),
 
-        _easync.p.dictionary<_eb.Error, null>(
+        _easync.p.dictionary<d_main.Error, null>(
             poormans_modules.map(($, key) => {
 
                 const interface_module_path = `./out/source_code/${key}/interface/`

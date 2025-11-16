@@ -42,12 +42,12 @@ export const $$: _et.Query_Procedure<d.Parameters, d_out.Node, d.Error, Resource
                 'path': instance_path,
                 'escape spaces in path': true,
             },
-        ).map_exception_(($): d.Error => ['no file', null])
-            .then(($) => q_load_astn_document($r)(
+        ).transform_error(($): d.Error => ['no file', null])
+            .query_with_result(($) => q_load_astn_document($r)(
                 {
                     'content': $,
                     'file path': instance_path,
                 },
-            ).map_exception_(($) => ['document', $]))
+            ).transform_error(($): d.Error => ['document', $]))
     }
 }

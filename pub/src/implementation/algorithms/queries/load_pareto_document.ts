@@ -21,8 +21,8 @@ import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/im
 import { get_directory_path } from "../operations/impure/tbd/path"
 
 import { $, $ as load_schema } from "../../../exceptional/deserializers/load_schema"
-import { Signature } from "../../../interface/algorithms/queries/load_pareto_document"
 
+import { Signature } from "../../../interface/algorithms/queries/load_pareto_document"
 
 export type Error =
     | ['parse error', d_parse_result.Parse_Error]
@@ -76,9 +76,9 @@ export const $$: _et.Query_Procedure<Parameters, _out.Node, Error, Resources> = 
                     'path': schema_path,
                     'escape spaces in path': true,
                 }
-            ).map_exception_<Error>(
-                () => ['no schema file', null] as Error
-            ).then(($) => {
+            ).transform_error<Error>(
+                () => ['no schema file', null]
+            ).query_with_result(($) => {
                 //the schema file was read successfully
                 return _ea.cc(
                     load_schema(
@@ -91,7 +91,7 @@ export const $$: _et.Query_Procedure<Parameters, _out.Node, Error, Resources> = 
 
                                 const type = $
 
-                                return _easync.query['create result'](tu_dynamic_unmarshall.Node(
+                                return _easync.q.fixed(tu_dynamic_unmarshall.Node(
                                     content,
                                     {
                                         'definition': type.node,
@@ -102,7 +102,7 @@ export const $$: _et.Query_Procedure<Parameters, _out.Node, Error, Resources> = 
                                 switch ($[0]) {
                                     case 'parse error': return _ea.ss($, ($) => {
 
-                                        return _easync.query['raise exception'](['schema error', {
+                                        return _easync.q.raise_error(['schema error', {
                                             // 'message': $.,
                                             'file location': schema_path,
                                         }])
@@ -117,6 +117,6 @@ export const $$: _et.Query_Procedure<Parameters, _out.Node, Error, Resources> = 
 
 
         },
-        ($) => _easync.query['raise exception'](['parse error', $])
+        ($) => _easync.q.raise_error(['parse error', $])
     )
 }

@@ -11,7 +11,7 @@ import { $$ as procedure } from "../implementation/algorithms/procedures/compile
 _eb.run_main_procedure(
     ($r) => {
         return procedure({
-            'procedures': {
+            'commands': {
                 'write file': $r.commands['write file'],
                 'make directory': $r.commands['make directory'],
                 'remove': $r.commands.remove,
