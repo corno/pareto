@@ -39,7 +39,7 @@ export type Parameters = {
 
 export type Resources = {
     'queries': {
-        'read file': _et.Query<d_read_file.Parameters, d_read_file.Result, d_read_file.Error>
+        'read file': _et.Data_Preparer<d_read_file.Parameters, d_read_file.Result, d_read_file.Error>
     }
 }
 
@@ -84,7 +84,7 @@ export const $$: _et.Query_Procedure<Parameters, _out.Node, Error, Resources> = 
                     load_schema(
                         $,
                     ),
-                    ($): _et.Query_Promise<_out.Node, Error> => {
+                    ($): _et.Data_Preparer_Promise<_out.Node, Error> => {
                         return $.transform(
                             ($) => {
                                 //the schema was loaded successfully

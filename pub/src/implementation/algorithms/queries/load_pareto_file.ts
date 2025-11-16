@@ -25,7 +25,7 @@ import { $$ as q_load_astn_document } from "./load_pareto_document"
 
 export type Resources = {
     'queries': {
-        'read file': _et.Query<d_read_file.Parameters, d_read_file.Result, d_read_file.Error>
+        'read file': _et.Data_Preparer<d_read_file.Parameters, d_read_file.Result, d_read_file.Error>
     }
 }
 

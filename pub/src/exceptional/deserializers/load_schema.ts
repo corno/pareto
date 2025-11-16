@@ -26,7 +26,7 @@ type Error =
 
 export const $ = (
     $: string,
-): _et.Refinement_Result<d_schema.Type, Error> => {
+): _et.Data_Preparation_Result<d_schema.Type, Error> => {
 
     return parse.parse(
         $,
@@ -34,7 +34,7 @@ export const $ = (
             'tab size': 4,
         }
     ).transform(
-        ($): _et.Refinement_Result<d_schema.Type, Error> => {
+        ($): _et.Data_Preparation_Result<d_schema.Type, Error> => {
 
             const resolved_schema_schema = r_pareto_schema.Type_Specification(
                 u_pareto_schema.Type_Specification(
