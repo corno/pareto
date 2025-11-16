@@ -10,18 +10,18 @@ import * as _easync from 'exupery-core-async'
 import * as d_parse_result from "astn/dist/interface/generated/pareto/schemas/authoring_parse_result/data_types/target"
 import * as d_read_file from "exupery-resources/dist/interface/generated/pareto/schemas/read_file/data_types/source"
 
-import * as tu_dynamic_unmarshall from "../../transformations/temp/unmarshall_astn_ast"
+import * as tu_dynamic_unmarshall from "../transformations/temp/unmarshall_astn_ast"
 
 import * as parse from "astn/dist/exceptional/authoring_parse/parse"
 
-import * as _out from "../../../../temp/temp_unmashall_result_types"
+import * as _out from "../../../temp/temp_unmashall_result_types"
 
 import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/text/join_list_of_texts_with_separator"
 
-import { get_directory_path } from "../../operations/impure/tbd/path"
+import { get_directory_path } from "../operations/impure/tbd/path"
 
-import { $, $ as load_schema } from "../../../../exceptional/deserializers/load_schema"
-import { Signature } from "../../../../interface/algorithms/queries/unguaranteed/load_pareto_document"
+import { $, $ as load_schema } from "../../../exceptional/deserializers/load_schema"
+import { Signature } from "../../../interface/algorithms/queries/load_pareto_document"
 
 
 export type Error =
@@ -39,30 +39,32 @@ export type Parameters = {
 
 export type Resources = {
     'queries': {
-        'read file': _et.Unguaranteed_Query<d_read_file.Parameters, d_read_file.Result, d_read_file.Error, null>
+        'read file': _et.Query<d_read_file.Parameters, d_read_file.Result, d_read_file.Error>
     }
 }
 
-export const $$: _et.Unguaranteed_Query<Parameters, _out.Node, Error, Resources> = (
-    $p, $r
+export const $$: _et.Query_Procedure<Parameters, _out.Node, Error, Resources> = (
+    $r
 ) => {
-    const instance_path = $p['file path']
-    const schema_path = op_join_with_separator(
-        get_directory_path($p['file path']).transform(
-            ($) => $,
-            () => _ea.deprecated_panic("could not get directory path"),
-        ),
-        {
-            'separator': "/",
-        }
-    ) + "/astn-schema"
-    return parse.parse(
+    return ($p) => parse.parse(
         $p.content,
         {
             'tab size': 4,
         }
     ).transform(
         ($) => {
+
+
+            const instance_path = $p['file path']
+            const schema_path = op_join_with_separator(
+                get_directory_path($p['file path']).transform(
+                    ($) => $,
+                    () => _ea.deprecated_panic("could not get directory path"),
+                ),
+                {
+                    'separator': "/",
+                }
+            ) + "/astn-schema"
             //the instance was parsed successfully
 
             const content = $.content
@@ -73,24 +75,23 @@ export const $$: _et.Unguaranteed_Query<Parameters, _out.Node, Error, Resources>
                 {
                     'path': schema_path,
                     'escape spaces in path': true,
-                },
-                null,
+                }
             ).map_exception_<Error>(
                 () => ['no schema file', null] as Error
-            ).then_unguaranteed(($) => {
+            ).then(($) => {
                 //the schema file was read successfully
                 return _ea.cc(
                     load_schema(
                         $,
                     ),
-                    ($): _et.Unguaranteed_Query_Promise<_out.Node, Error> => {
+                    ($): _et.Query_Promise<_out.Node, Error> => {
                         return $.transform(
                             ($) => {
                                 //the schema was loaded successfully
 
                                 const type = $
 
-                                return _easync.query.unguaranteed['create result'](tu_dynamic_unmarshall.Node(
+                                return _easync.query['create result'](tu_dynamic_unmarshall.Node(
                                     content,
                                     {
                                         'definition': type.node,
@@ -101,7 +102,7 @@ export const $$: _et.Unguaranteed_Query<Parameters, _out.Node, Error, Resources>
                                 switch ($[0]) {
                                     case 'parse error': return _ea.ss($, ($) => {
 
-                                        return _easync.query.unguaranteed['raise exception'](['schema error', {
+                                        return _easync.query['raise exception'](['schema error', {
                                             // 'message': $.,
                                             'file location': schema_path,
                                         }])
@@ -116,6 +117,6 @@ export const $$: _et.Unguaranteed_Query<Parameters, _out.Node, Error, Resources>
 
 
         },
-        ($) => _easync.query.unguaranteed['raise exception'](['parse error', $])
+        ($) => _easync.query['raise exception'](['parse error', $])
     )
 }

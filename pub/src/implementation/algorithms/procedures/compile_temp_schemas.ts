@@ -6,7 +6,7 @@ import * as _eb from 'exupery-core-bin'
 import * as _et from 'exupery-core-types'
 
 //data
-import { $ as poormans_modules } from "../../../../temp/temporary_schemas/all"
+import { $ as poormans_modules } from "../../../temp/temporary_schemas/all"
 
 import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
 import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
@@ -16,70 +16,61 @@ import * as d_copy from "exupery-resources/dist/interface/generated/pareto/schem
 import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"
 import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
 
-import * as r_pareto_module from "../../../../temp/resolvers/module"
+import * as r_pareto_module from "../../../temp/resolvers/module"
 
-import * as t_pareto_module_to_fountain_pen_block__implementation from "../../transformations/module/temp_typescript_implementation"
-import * as t_pareto_module_to_fountain_pen_block__interface from "../../transformations/module/temp_typescript_interface"
+import * as t_pareto_module_to_fountain_pen_block__implementation from "../transformations/module/temp_typescript_implementation"
+import * as t_pareto_module_to_fountain_pen_block__interface from "../transformations/module/temp_typescript_interface"
 
 
 
 import { $$ as p_fp_write_to_directory } from "pareto-fountain-pen/dist/implementation/algorithms/procedures/unguaranteed/write_to_directory"
 
 
-import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/compile"
+import { Signature } from "../../../interface/algorithms/procedures/compile"
 
 
 export type Resources = {
     'procedures': {
-        'remove': _et.Unguaranteed_Procedure<d_remove.Parameters, d_remove.Error, null>
-        'make directory': _et.Unguaranteed_Procedure<d_make_directory.Parameters, d_make_directory.Error, null>
-        'write file': _et.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
-        'log': _et.Guaranteed_Procedure<d_log.Parameters, null>
-        'log error': _et.Guaranteed_Procedure<d_log_error.Parameters, null>
-        'copy': _et.Unguaranteed_Procedure<d_copy.Parameters, d_copy.Error, null>
+        'remove': _et.Command<d_remove.Parameters, d_remove.Error>
+        'make directory': _et.Command<d_make_directory.Parameters, d_make_directory.Error>
+        'write file': _et.Command<d_write_file.Parameters, d_write_file.Error>
+        'log': _et.Command<d_log.Parameters, null>
+        'log error': _et.Command<d_log_error.Parameters, null>
+        'copy': _et.Command<d_copy.Parameters, d_copy.Error>
     }
 }
 
-export const $$: _et.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources> = ($p, $r) => {
-    $p.arguments
-    return _easync.up.sequence([
+export const $$: _et.Command_Procedure<_eb.Parameters, _eb.Error, Resources> = ($r) => {
+    return ($p) => _easync.sequence<_eb.Error>(_ea.array_literal([
 
-        _easync.upi.g<d_log.Parameters, _eb.Error, null>(
-            $r.procedures.log,
-            null,
-        )(
-            {
-                'lines': _ea.array_literal([`generating...`])
-            },
-            null,
-        ),
+        $r.commands.log({
+            'lines': _ea.array_literal([`generating...`])
+        }).map_error(($) => ({
+            'exit code': 1
+        })),
 
-        _easync.up.dictionary<_eb.Error, null>(
+        _easync.p.dictionary<_eb.Error, null>(
             poormans_modules.map(($, key) => {
 
                 const interface_module_path = `./out/source_code/${key}/interface/`
                 const implementation_module_path = `./out/source_code/${key}/implementation/`
 
-                return _easync.up.sequence<null>([
+                return _easync.p.sequence<null>([
 
-                    _easync.upi.g<d_log.Parameters, null, null>(
-                        $r.procedures['log'],
-                        null,
-                    )(
-                        {
-                            'lines': _ea.array_literal([`generating: ${key}`])
-                        },
-                        null,
-                    ),
+                    $r.commands.log({
+                        'lines': _ea.array_literal([`generating: ${key}`])
+                    }).map_error(($) => ({
+                        'exit code': 1
+                    })),
 
                     //FIX do this in parallel
-                    _easync.up.sequence([
+                    _easync.p.sequence([
 
-                        _easync.upi.u(
-                            $r.procedures.remove,
+                        _easync.pi.u(
+                            $r.commands.remove,
                             ($) => null,
                             _easync.eh(
-                                $r.procedures['log error'],
+                                $r.commands['log error'],
                                 ($) => {
                                     return ({
                                         'lines': _ea.array_literal([`Could not remove old generated implementation files, ${$[0]}`])
@@ -99,10 +90,10 @@ export const $$: _et.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources
                         ),
 
                         _easync.upi.u(
-                            $r.procedures.remove,
+                            $r.commands.remove,
                             ($) => null,
                             _easync.eh(
-                                $r.procedures['log error'],
+                                $r.commands['log error'],
                                 ($) => {
                                     return ({
                                         'lines': _ea.array_literal([`Could not remove old generated ihterface files`])
@@ -180,10 +171,10 @@ export const $$: _et.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources
 
 
                         _easync.upi.u(
-                            $r.procedures.copy,
+                            $r.commands.copy,
                             () => null,
                             _easync.eh(
-                                $r.procedures['log error'],
+                                $r.commands['log error'],
                                 ($) => ({
                                     'lines': _ea.array_literal([`Could not copy generic implementation directory`])
                                 }),
@@ -210,10 +201,10 @@ export const $$: _et.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources
 
 
                         _easync.upi.u(
-                            $r.procedures.copy,
+                            $r.commands.copy,
                             () => null,
                             _easync.eh(
-                                $r.procedures['log error'],
+                                $r.commands['log error'],
                                 ($) => ({
                                     'lines': _ea.array_literal([`Could not copy core interface directory`])
                                 }),
@@ -247,5 +238,5 @@ export const $$: _et.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources
             })
         )
 
-    ])
+    ]))
 }

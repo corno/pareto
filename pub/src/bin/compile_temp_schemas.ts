@@ -2,24 +2,23 @@
 
 import * as _eb from 'exupery-core-bin'
 
-import * as d_resources from "../implementation/algorithms/procedures/unguaranteed/compile_temp_schemas"
+import * as d_resources from "../implementation/algorithms/procedures/compile_temp_schemas"
 
-import { $$ as p_compile_temp_schemas } from "../implementation/algorithms/procedures/unguaranteed/compile_temp_schemas"
+import { $$ as p_compile_temp_schemas } from "../implementation/algorithms/procedures/compile_temp_schemas"
 
-import { $$ as procedure } from "../implementation/algorithms/procedures/unguaranteed/compile_temp_schemas"
+import { $$ as procedure } from "../implementation/algorithms/procedures/compile_temp_schemas"
 
-_eb.run_unguaranteed_main_procedure<d_resources.Resources>(
+_eb.run_main_procedure(
     ($r) => {
-        return {
+        return procedure({
             'procedures': {
-                'write file': $r.procedures['write file'],
-                'make directory': $r.procedures['make directory'],
-                'remove': $r.procedures.remove,
-                'copy': $r.procedures.copy,
-                'log': $r.procedures.log,
-                'log error': $r.procedures['log error']
+                'write file': $r.commands['write file'],
+                'make directory': $r.commands['make directory'],
+                'remove': $r.commands.remove,
+                'copy': $r.commands.copy,
+                'log': $r.commands.log,
+                'log error': $r.commands['log error']
             }
-        }
+        })
     },
-    procedure
 )

@@ -5,29 +5,29 @@ import * as _ed from 'exupery-core-data'
 import * as _easync from 'exupery-core-async'
 import * as _et from 'exupery-core-types'
 
-import * as serialize from "../../../generated/pareto/generic/serialize"
+import * as serialize from "../../generated/pareto/generic/serialize"
 //data
-import { $ as poormans_modules } from "../../../../temp/temporary_schemas/all"
+import { $ as poormans_modules } from "../../../temp/temporary_schemas/all"
 
 //data types
 import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
 
 //resolvers
-import * as r_module from "../../../../temp/resolvers/module"
+import * as r_module from "../../../temp/resolvers/module"
 
 //marshall
-import * as m_module from "../../../../implementation/generated/pareto/schemas/module/marshall"
-import { Signature } from "../../../../interface/algorithms/procedures/unguaranteed/serialize_schemas"
+import * as m_module from "../../generated/pareto/schemas/module/marshall"
+import { Signature } from "../../../interface/algorithms/procedures/serialize_schemas"
 
 export type Resources = {
     'procedures': {
-        'write file': _et.Unguaranteed_Procedure<d_write_file.Parameters, d_write_file.Error, null>
+        'write file': _et.Command<d_write_file.Parameters, d_write_file.Error>
     }
 }
 
-export const $$: _et.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources> = ($p, $r) => {
-    return _easync.up.dictionary<_eb.Error, d_write_file.Error>(
-        poormans_modules.map(($, key) => $r.procedures['write file'](
+export const $$: _et.Command_Procedure<_eb.Parameters, _eb.Error, Resources> = ($r) => {
+    return ($p) => _easync.p.dictionary<_eb.Error, d_write_file.Error>(
+        poormans_modules.map(($, key) => $r.commands['write file'](
             {
                 'path': {
                     'escape spaces in path': true,
@@ -55,7 +55,6 @@ export const $$: _et.Unguaranteed_Procedure<_eb.Parameters, _eb.Error, Resources
                     )
                 ),
             },
-            null,
         )),
         ($) => ({
             'exit code': 1

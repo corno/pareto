@@ -2,17 +2,16 @@
 
 import * as _eb from 'exupery-core-bin'
 
-import { $$ as procedure } from "../implementation/algorithms/procedures/unguaranteed/seal"
+import { $$ as procedure } from "../implementation/algorithms/procedures/seal"
 
-import * as d_resources from "../implementation/algorithms/procedures/unguaranteed/seal"
+import * as d_resources from "../implementation/algorithms/procedures/seal"
 
-_eb.run_unguaranteed_main_procedure<d_resources.Resources>(
+_eb.run_main_procedure(
     ($r) => {
-        return {
+        return procedure({
             'procedures': {
-                'log error': $r.procedures['log error']
+                'log error': $r.commands['log error']
             }
-        }
+        })
     },
-    procedure
 )
