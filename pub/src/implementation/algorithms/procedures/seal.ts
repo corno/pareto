@@ -6,14 +6,15 @@ import * as _et from 'exupery-core-types'
 import { Signature } from "../../../interface/algorithms/procedures/seal"
 
 import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/source"
+import * as d_main from "exupery-resources/dist/interface/temp_main"
 
 export type Resources = {
-    'procedures': {
+    'commands': {
         'log error': _et.Command<d_log_error.Parameters, null>
     }
 }
 
-export const $$: _et.Command_Procedure<_eb.Parameters, _eb.Error, Resources> = ($r) => ($p) => _easync.p.action(
+export const $$: _et.Command_Procedure<d_main.Parameters, d_main.Error, Resources> = ($r) => ($p) => _easync.p.action(
     _easync.pi.u(
         () => {
             return _easync.__create_procedure_promise(
