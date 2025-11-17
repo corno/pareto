@@ -2,11 +2,11 @@
 
 import * as _eb from 'exupery-core-bin'
 
-import * as d_resources from "../implementation/algorithms/procedures/compile_temp_schemas"
+import * as d_resources from "../implementation/algorithms/commands/compile_temp_schemas"
 
-import { $$ as p_compile_temp_schemas } from "../implementation/algorithms/procedures/compile_temp_schemas"
+import { $$ as p_compile_temp_schemas } from "../implementation/algorithms/commands/compile_temp_schemas"
 
-import { $$ as procedure } from "../implementation/algorithms/procedures/compile_temp_schemas"
+import { $$ as procedure } from "../implementation/algorithms/commands/compile_temp_schemas"
 
 _eb.run_main_procedure(
     ($r) => {

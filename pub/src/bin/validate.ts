@@ -2,9 +2,9 @@
 
 import * as _eb from 'exupery-core-bin'
 
-import { $$ as procedure } from "../implementation/algorithms/procedures/validate"
+import { $$ as procedure } from "../implementation/algorithms/commands/validate"
 
-import * as d_resources from "../implementation/algorithms/procedures/validate"
+import * as d_resources from "../implementation/algorithms/commands/validate"
 
 _eb.run_main_procedure(
     ($r) => {

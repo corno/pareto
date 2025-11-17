@@ -3,6 +3,7 @@ import * as _ea from 'exupery-core-alg'
 import * as _et from 'exupery-core-types'
 import * as _edata from 'exupery-core-data'
 import * as _ed from 'exupery-core-dev'
+import * as _ei from 'exupery-core-internals'
 
 //data
 
@@ -95,9 +96,9 @@ export const $ = (
                     _ea.deprecated_panic(`(FIXME: make this a reference) root type ${resolved_schema_schema.type} not found`)
                 }
             )
-            return _ea.refinement.successful(type)
+            return _ei.data_processing.successful(type)
         },
-        ($) => _ea.refinement.failed(['parse error', $])
+        ($) => _ei.data_processing.failed(['parse error', $])
 
     )
 }
