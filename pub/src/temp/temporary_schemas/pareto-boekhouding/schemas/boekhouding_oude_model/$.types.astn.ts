@@ -158,7 +158,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "BTW periodes": prop(t.dictionary(t.group({
                     "1. BTW-categorieen": prop(t.dictionary(t.group({}))),
                     "Documenten": prop(t.dictionary(t.group({
-                        "Bestand": prop(t.text_global("Bestandsnaam")),
+                        "Bestand": prop(t.component("Bestandsnaam")),
                     }))),
                     "Omschrijving": prop(t.text_global("Omschrijving")),
                     "Status": prop(t.state_group({
@@ -211,7 +211,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                     })),
                     "Brondocument": prop(t.state_group({
                         "Toegevoegd": tstate(t.group({
-                            "Document": prop(t.text_global("Bestandsnaam")),
+                            "Document": prop(t.component("Bestandsnaam")),
                         })),
                         "Niet van toepassing": tstate(t.group({})),
                         "Ontbreekt": tstate(t.group({})),
@@ -287,7 +287,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                     "BTW-periode": prop(t.text_global("Pseudo Reference")),
                     "Brondocument": prop(t.state_group({
                         "Toegevoegd": tstate(t.group({
-                            "Document": prop(t.text_global("Bestandsnaam"))
+                            "Document": prop(t.component("Bestandsnaam"))
                         })),
                     })),
                     "Contracttype": prop(t.state_group({
@@ -374,6 +374,10 @@ export const $: g_.Types<pd.Source_Location> = types(
             }))),
             "Leveranciers": prop(t.dictionary(t.group({}))),
             "Medewerkers": prop(t.dictionary(t.group({}))),
+        })),
+        "Bestandsnaam": type(t.group({
+            "Naam": prop(t.text_local(text('single line'))),
+            "Extensie": prop(t.text_local(text('single line'))),
         }))
     }
 )
