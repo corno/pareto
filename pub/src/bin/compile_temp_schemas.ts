@@ -10,15 +10,16 @@ import { $$ as procedure } from "../implementation/algorithms/commands/compile_t
 
 _eb.run_main_procedure(
     ($r) => {
-        return procedure({
-            'commands': {
+        return procedure(
+            {
                 'write file': $r.commands['write file'],
                 'make directory': $r.commands['make directory'],
                 'remove': $r.commands.remove,
                 'copy': $r.commands.copy,
                 'log': $r.commands.log,
                 'log error': $r.commands['log error']
-            }
-        })
+            },
+            null,
+        )
     },
 )

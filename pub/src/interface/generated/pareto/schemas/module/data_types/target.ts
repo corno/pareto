@@ -1,4 +1,4 @@
-import * as _pt from 'exupery-core-types'
+import * as _et from 'exupery-core-types'
 
 import * as _i_core from "../../../core/unresolved"
 import * as _i_imports_schema from "../../schema/data_types/target"

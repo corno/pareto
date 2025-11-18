@@ -28,23 +28,22 @@ import { $$ as p_fp_write_to_directory } from "pareto-fountain-pen/dist/implemen
 
 import { Signature } from "../../../interface/algorithms/procedures/compile"
 
+export type Query_Resources = null
 
-export type Resources = {
-    'commands': {
-        'remove': _et.Command<d_remove.Parameters, d_remove.Error>
-        'make directory': _et.Command<d_make_directory.Parameters, d_make_directory.Error>
-        'write file': _et.Command<d_write_file.Parameters, d_write_file.Error>
-        'log': _et.Command<d_log.Parameters, null>
-        'log error': _et.Command<d_log_error.Parameters, null>
-        'copy': _et.Command<d_copy.Parameters, d_copy.Error>
-    }
+export type Command_Resources = {
+    'remove': _et.Command<d_remove.Error, d_remove.Parameters>
+    'make directory': _et.Command<d_make_directory.Error, d_make_directory.Parameters>
+    'write file': _et.Command<d_write_file.Error, d_write_file.Parameters>
+    'log': _et.Command<null, d_log.Parameters>
+    'log error': _et.Command<null, d_log_error.Parameters>
+    'copy': _et.Command<d_copy.Error, d_copy.Parameters>
 }
 
-export const $$: _et.Command_Procedure<d_main.Parameters, d_main.Error, Resources> = ($r) => {
-    return ($p) => _easync.sequence<d_main.Error>(_ea.array_literal([
+export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_Resources, Query_Resources> = ($r) => {
+    return ($p) => _easync.sequence<d_main.Error>(_ea.list_literal([
 
         $r.commands.log({
-            'lines': _ea.array_literal([`generating...`])
+            'lines': _ea.list_literal([`generating...`])
         }).map_error(($) => ({
             'exit code': 1
         })),
@@ -58,7 +57,7 @@ export const $$: _et.Command_Procedure<d_main.Parameters, d_main.Error, Resource
                 return _easync.p.sequence<null>([
 
                     $r.commands.log({
-                        'lines': _ea.array_literal([`generating: ${key}`])
+                        'lines': _ea.list_literal([`generating: ${key}`])
                     }).map_error(($) => ({
                         'exit code': 1
                     })),
@@ -73,7 +72,7 @@ export const $$: _et.Command_Procedure<d_main.Parameters, d_main.Error, Resource
                                 $r.commands['log error'],
                                 ($) => {
                                     return ({
-                                        'lines': _ea.array_literal([`Could not remove old generated implementation files, ${$[0]}`])
+                                        'lines': _ea.list_literal([`Could not remove old generated implementation files, ${$[0]}`])
                                     })
                                 },
                                 null,
@@ -96,7 +95,7 @@ export const $$: _et.Command_Procedure<d_main.Parameters, d_main.Error, Resource
                                 $r.commands['log error'],
                                 ($) => {
                                     return ({
-                                        'lines': _ea.array_literal([`Could not remove old generated ihterface files`])
+                                        'lines': _ea.list_literal([`Could not remove old generated ihterface files`])
                                     })
                                 },
                                 null,
@@ -176,7 +175,7 @@ export const $$: _et.Command_Procedure<d_main.Parameters, d_main.Error, Resource
                             _easync.eh(
                                 $r.commands['log error'],
                                 ($) => ({
-                                    'lines': _ea.array_literal([`Could not copy generic implementation directory`])
+                                    'lines': _ea.list_literal([`Could not copy generic implementation directory`])
                                 }),
                                 null,
                             )
@@ -206,7 +205,7 @@ export const $$: _et.Command_Procedure<d_main.Parameters, d_main.Error, Resource
                             _easync.eh(
                                 $r.commands['log error'],
                                 ($) => ({
-                                    'lines': _ea.array_literal([`Could not copy core interface directory`])
+                                    'lines': _ea.list_literal([`Could not copy core interface directory`])
                                 }),
                                 null,
                             )

@@ -2394,7 +2394,7 @@ export const r_Type_Specification: _i_signatures._T_Type_Specification = ($, $p)
                 'location 2 string': l2s,
                 'parameters': ({
                     'lookups': ({
-                        'sibling schemas': _ea.array_literal([
+                        'sibling schemas': _ea.list_literal([
                         ]),
                     }),
                     'values': null,

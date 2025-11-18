@@ -21,7 +21,7 @@ import { Signature } from "../../../../../interface/algorithms/transformations/s
 export const Resolvers = (
     $: _in.Resolvers,
     $p: {
-        'path': _et.Array<string>,
+        'path': _et.List<string>,
         'imports': _in.Imports
     }
 ): _out.Module_Set.D<_edata.Source_Location> => {
@@ -30,15 +30,15 @@ export const Resolvers = (
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
                     "generic": import_.ancestor(2, "generic", ["resolve"], {}),
-                    "out": import_.ancestor(5, "interface", op_flatten_list(_ea.array_literal([
-                        _ea.array_literal(["generated", "pareto", "schemas"]),
+                    "out": import_.ancestor(5, "interface", op_flatten_list(_ea.list_literal([
+                        _ea.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _ea.array_literal(["data types", "source"]),
+                        _ea.list_literal(["data types", "source"]),
                     ])), {}),
-                    "signatures": import_.ancestor(5, "interface", op_flatten_list(_ea.array_literal([
-                        _ea.array_literal(["generated", "pareto", "schemas"]),
+                    "signatures": import_.ancestor(5, "interface", op_flatten_list(_ea.list_literal([
+                        _ea.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _ea.array_literal(["data types", "resolve"]),
+                        _ea.list_literal(["data types", "resolve"]),
                     ])), {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["resolve"], {}))
@@ -71,7 +71,7 @@ export const Resolvers = (
                             $['type resolver'],
                             {
                                 'temp type': key,
-                                'temp subselection': _ea.array_literal([])
+                                'temp subselection': _ea.list_literal([])
                             }
                         )
                     ),
@@ -91,15 +91,15 @@ export const Resolvers = (
 export const Possible_Value_Selection = (
     $: _in.Possible_Value_Selection,
     $p: {
-        'tail': () => _et.Array<_out.Selection.tail.L<_edata.Source_Location>>
+        'tail': () => _et.List<_out.Selection.tail.L<_edata.Source_Location>>
     },
 ): _out.Selection<_edata.Source_Location> => {
     return _ea.cc($, ($) => {
         switch ($[0]) {
             case 'parameter': return _ea.ss($, ($) => s.from_variable(
                 "params",
-                op_flatten_list(_ea.array_literal([
-                    _ea.array_literal(["values", $.key]),
+                op_flatten_list(_ea.list_literal([
+                    _ea.list_literal(["values", $.key]),
                     $p.tail(),
                 ])),
             ))
@@ -125,8 +125,8 @@ export const Optional_Value_Initialization = (
     return _ea.cc($, ($) => {
         switch ($[0]) {
             case 'not set': return _ea.ss($, ($) => i.not_set())
-            case 'selection': return _ea.ss($, ($) => i.select(Possible_Value_Selection($, { 'tail': () => _ea.array_literal([]) })))
-            case 'set': return _ea.ss($, ($) => i.set(i.select(Guaranteed_Value_Selection($, { 'tail': () => _ea.array_literal([]) }))))
+            case 'selection': return _ea.ss($, ($) => i.select(Possible_Value_Selection($, { 'tail': () => _ea.list_literal([]) })))
+            case 'set': return _ea.ss($, ($) => i.set(i.select(Guaranteed_Value_Selection($, { 'tail': () => _ea.list_literal([]) }))))
             default: return _ea.au($[0])
         }
     })
@@ -135,20 +135,20 @@ export const Optional_Value_Initialization = (
 export const Guaranteed_Value_Selection = (
     $: _in.Guaranteed_Value_Selection,
     $p: {
-        'tail': () => _et.Array<_out.Selection.tail.L<_edata.Source_Location>>
+        'tail': () => _et.List<_out.Selection.tail.L<_edata.Source_Location>>
     },
 ): _out.Selection<_edata.Source_Location> => {
-    const tail = (): _et.Array<_out.Selection.tail.L<_edata.Source_Location>> => {
-        return op_flatten_list(_ea.array_literal([
+    const tail = (): _et.List<_out.Selection.tail.L<_edata.Source_Location>> => {
+        return op_flatten_list(_ea.list_literal([
             op_flatten_list($.tail.path.map(($) => {
                 return _ea.cc($, ($) => {
                     switch ($[0]) {
-                        case 'component': return _ea.ss($, ($) => _ea.array_literal([]))
-                        case 'group': return _ea.ss($, ($) => _ea.array_literal([$.key]))
+                        case 'component': return _ea.ss($, ($) => _ea.list_literal([]))
+                        case 'group': return _ea.ss($, ($) => _ea.list_literal([$.key]))
                         case 'reference': return _ea.ss($, ($) => _ea.cc($.definition.type, ($) => {
                             switch ($[0]) {
-                                case 'derived': return _ea.ss($, ($) => _ea.array_literal([]))
-                                case 'selected': return _ea.ss($, ($) => _ea.array_literal(["entry"]))
+                                case 'derived': return _ea.ss($, ($) => _ea.list_literal([]))
+                                case 'selected': return _ea.ss($, ($) => _ea.list_literal(["entry"]))
                                 default: return _ea.au($[0])
                             }
                         }))
@@ -171,8 +171,8 @@ export const Guaranteed_Value_Selection = (
             }))
             case 'parameter': return _ea.ss($, ($) => s.from_variable(
                 "params",
-                op_flatten_list(_ea.array_literal([
-                    _ea.array_literal(["values", $.key]),
+                op_flatten_list(_ea.list_literal([
+                    _ea.list_literal(["values", $.key]),
                     tail(),
                 ])),
             ))
@@ -222,8 +222,8 @@ export const Lookup_Selection = (
                 s.from_variable_import(" i generic", "dictionary to lookup", []),
                 Guaranteed_Value_Selection($.selection, {
                     'tail': () => $['selected dictionary'].ordered
-                        ? _ea.array_literal(["dictionary"])
-                        : _ea.array_literal([]),
+                        ? _ea.list_literal(["dictionary"])
+                        : _ea.list_literal([]),
                 }),
                 {
 
@@ -260,7 +260,7 @@ export const Option_Constraints = (
             switch ($[0]) {
                 case 'state': return _ea.ss($, ($) => s.implement_me()) // medium work
                 case 'assert is set': return _ea.ss($, ($) => s.optional_transform(
-                    Possible_Value_Selection($, { 'tail': () => _ea.array_literal([]) }),
+                    Possible_Value_Selection($, { 'tail': () => _ea.list_literal([]) }),
                     s.from_context([]),
                     s.abort(),
                     []
@@ -276,7 +276,7 @@ export const Node_Resolver = (
     $: _in.Node_Resolver,
     $p: {
         'temp type': string
-        'temp subselection': _et.Array<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>> //can be removed when exupery has type inference
+        'temp subselection': _et.List<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>> //can be removed when exupery has type inference
     },
 ): _out.Initialization<_edata.Source_Location> => {
     return _ea.cc($, ($) => {
@@ -287,7 +287,7 @@ export const Node_Resolver = (
             case 'reference': return _ea.ss($, ($) => {
                 return i.select(_ea.cc($.type, ($): _out.Selection<_edata.Source_Location> => {
                     switch ($[0]) {
-                        case 'derived': return _ea.ss($, ($) => Guaranteed_Value_Selection($.value, { 'tail': () => _ea.array_literal([]) }))
+                        case 'derived': return _ea.ss($, ($) => Guaranteed_Value_Selection($.value, { 'tail': () => _ea.list_literal([]) }))
                         case 'selected': return _ea.ss($, ($) => {
                             const context = $
                             return _ea.cc($.definition.dependency, ($) => {
@@ -349,7 +349,7 @@ export const Node_Resolver = (
                                             "params",
                                             ["values", $.key],
                                         ))
-                                        case 'required': return _ea.ss($, ($) => i.select(Guaranteed_Value_Selection($, { 'tail': () => _ea.array_literal([]) })))
+                                        case 'required': return _ea.ss($, ($) => i.select(Guaranteed_Value_Selection($, { 'tail': () => _ea.list_literal([]) })))
 
                                         default: return _ea.au($[0])
                                     }
@@ -359,7 +359,7 @@ export const Node_Resolver = (
                             "lookups": $.lookups.transform(
                                 ($) => i.group($.map(($) => _ea.cc($, ($) => {
                                     switch ($[0]) {
-                                        case 'empty stack': return _ea.ss($, ($) => i.array_literal([]))
+                                        case 'empty stack': return _ea.ss($, ($) => i.list_literal([]))
                                         case 'not set': return _ea.ss($, ($) => i.not_set())
                                         case 'selection': return _ea.ss($, ($) => i.select(Lookup_Selection($, {})))
                                         case 'stack': return _ea.ss($, ($) => i.implement_me()) // quite some work
@@ -378,10 +378,10 @@ export const Node_Resolver = (
                 $.benchmark.transform(
                     ($) => _ea.dictionary_literal({
                         // "linked entry": e.call(
-                        //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.array_literal([]) }),
+                        //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.list_literal([]) }),
                         //     e.string("FIXME", 'backtick'),
                         // ),
-                        "benchmark": variable(null, i.select(Guaranteed_Value_Selection($.selection, { 'tail': () => _ea.array_literal([]) }))),
+                        "benchmark": variable(null, i.select(Guaranteed_Value_Selection($.selection, { 'tail': () => _ea.list_literal([]) }))),
                     }),
                     () => _ea.dictionary_literal({})
                 ),
@@ -395,7 +395,7 @@ export const Node_Resolver = (
                             $.benchmark.transform(
                                 ($) => _ea.dictionary_literal({
                                     // "linked entry": e.call(
-                                    //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.array_literal([]) }),
+                                    //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.list_literal([]) }),
                                     //     e.string("FIXME", 'backtick'),
                                     // ),
                                     "linked entry": variable(null, i.implement_me()), // quite some work; a call to __get_entry() from the selection (Guaranteed_Value_Selection), and then transform an optional value

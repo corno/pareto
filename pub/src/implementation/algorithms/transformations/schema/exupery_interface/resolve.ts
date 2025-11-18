@@ -44,7 +44,7 @@ export const Signatures = (
 export const r_Type_Reference = (
     $: _in.Type_Reference,
     $p: {
-        'component sub part': _et.Array<_out.Type.SG.component.sub_selection.L<_edata.Source_Location>>
+        'component sub part': _et.List<_out.Type.SG.component.sub_selection.L<_edata.Source_Location>>
     }
 ): _out.Type<_edata.Source_Location> => {
 
@@ -78,8 +78,8 @@ export const r_Type_Part_Reference = (
     const Component_Sub_Selection = (
         $: _in.Type_Node_Reference.tail,
 
-    ): _et.Array<_out.Type.SG.component.sub_selection.L<_edata.Source_Location>> => {
-        const tail: _et.Array<_out.Type.SG.component.sub_selection.L<_edata.Source_Location>> = $.map(($) => _ea.cc($, ($) => {
+    ): _et.List<_out.Type.SG.component.sub_selection.L<_edata.Source_Location>> => {
+        const tail: _et.List<_out.Type.SG.component.sub_selection.L<_edata.Source_Location>> = $.map(($) => _ea.cc($, ($) => {
             switch ($[0]) {
                 case 'dictionary': return _ea.ss($, ($) => sub.dictionary())
                 case 'group': return _ea.ss($, ($) => sub.group($.key))
@@ -112,7 +112,7 @@ export const r_Signature_Parameters = (
 ): _out.Type<_edata.Source_Location> => {
     return t.group({
         "values": t.group($.values.map(($): _out.Type<_edata.Source_Location> => {
-            const temp_2 = r_Type_Reference($['data type'], { 'component sub part': _ea.array_literal([]) })
+            const temp_2 = r_Type_Reference($['data type'], { 'component sub part': _ea.list_literal([]) })
 
             return _ea.cc($.presence, ($) => {
                 switch ($[0]) {
@@ -127,14 +127,14 @@ export const r_Signature_Parameters = (
             return _ea.cc($.type, ($) => {
                 switch ($[0]) {
                     case 'acyclic': return _ea.ss($, ($) => t.component_imported("resolve", "Acyclic Lookup", {
-                        "T": r_Type_Reference(x, { 'component sub part': _ea.array_literal([sub.dictionary()]) }),
+                        "T": r_Type_Reference(x, { 'component sub part': _ea.list_literal([sub.dictionary()]) }),
                     }, []))
                     case 'cyclic': return _ea.ss($, ($) => t.component_imported("resolve", "Cyclic Lookup", {
-                        "T": r_Type_Reference(x, { 'component sub part': _ea.array_literal([sub.dictionary()]) }),
+                        "T": r_Type_Reference(x, { 'component sub part': _ea.list_literal([sub.dictionary()]) }),
 
                     }, []))
                     case 'stack': return _ea.ss($, ($) => t.component_imported("resolve", "Lookup Stack", {
-                        "T": r_Type_Reference(x, { 'component sub part': _ea.array_literal([sub.dictionary()]) }),
+                        "T": r_Type_Reference(x, { 'component sub part': _ea.list_literal([sub.dictionary()]) }),
 
                     }, []))
                     default: return _ea.au($[0])

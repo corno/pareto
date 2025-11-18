@@ -24,30 +24,28 @@ export namespace d {
 import { $$ as q_load_astn_document } from "./load_pareto_document"
 
 export type Resources = {
-    'queries': {
-        'read file': _et.Data_Preparer<d_read_file.Parameters, d_read_file.Result, d_read_file.Error>
-    }
+        'read file': _et.Stager<d_read_file.Result, d_read_file.Error, d_read_file.Parameters>
 }
 
 import { Signature } from "../../../interface/algorithms/queries/load_pareto_file"
 
-export const $$: _et.Query_Procedure<d.Parameters, d_out.Node, d.Error, Resources> = (
-    $r
+export const $$: _et.Query_Procedure<d_out.Node, d.Error, d.Parameters, Resources> = (
+    $qr
 ) => {
 
     return ($p) => {
         const instance_path = $p['file path']
-        return $r.queries['read file'](
+        return $qr['read file'](
             {
                 'path': instance_path,
                 'escape spaces in path': true,
             },
-        ).transform_error(($): d.Error => ['no file', null])
-            .query_with_result(($) => q_load_astn_document($r)(
+        ).transform_error_temp(($): d.Error => ['no file', null])
+            .query_with_result(($) => q_load_astn_document($qr)(
                 {
                     'content': $,
                     'file path': instance_path,
                 },
-            ).transform_error(($): d.Error => ['document', $]))
+            ).transform_error_temp(($): d.Error => ['document', $]))
     }
 }

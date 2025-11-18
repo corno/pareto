@@ -39,12 +39,12 @@ export type Parameters = {
 
 export type Resources = {
     'queries': {
-        'read file': _et.Data_Preparer<d_read_file.Parameters, d_read_file.Result, d_read_file.Error>
+        'read file': _et.Stager<d_read_file.Result, d_read_file.Error, d_read_file.Parameters>
     }
 }
 
-export const $$: _et.Query_Procedure<Parameters, _out.Node, Error, Resources> = (
-    $r
+export const $$: _et.Query_Procedure<_out.Node, Error, Parameters, Resources> = (
+    $qr
 ) => {
     return ($p) => parse.parse(
         $p.content,
@@ -84,7 +84,7 @@ export const $$: _et.Query_Procedure<Parameters, _out.Node, Error, Resources> = 
                     load_schema(
                         $,
                     ),
-                    ($): _et.Data_Preparer_Promise<_out.Node, Error> => {
+                    ($): _et.Staging_Result<_out.Node, Error> => {
                         return $.transform(
                             ($) => {
                                 //the schema was loaded successfully

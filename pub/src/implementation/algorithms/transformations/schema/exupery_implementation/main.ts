@@ -26,7 +26,7 @@ import { Signature } from "../../../../../interface/algorithms/transformations/s
 export const Schema_Tree = (
     $: _in.Schema_Tree,
     $p: {
-        'path': _et.Array<string>,
+        'path': _et.List<string>,
     }
 ): _out.Module_Set.D<_edata.Source_Location> => {
     return _ea.cc($, ($) => {
@@ -88,7 +88,7 @@ export const Schema_Tree = (
 export const Schemas = (
     $: _in.Schemas,
     $p: {
-        'path': _et.Array<string>,
+        'path': _et.List<string>,
     }
 ): _out.Module_Set.D<_edata.Source_Location> => {
     return m.set($.dictionary.map(($, key) => Schema_Tree($, {

@@ -20,7 +20,7 @@ import { Signature } from "../../../../../interface/algorithms/transformations/s
 export const Schema = (
     $: _in.Schema,
     $p: {
-        'path': _et.Array<string>,
+        'path': _et.List<string>,
         'imports': _in.Imports,
         'constrained': boolean
     }
@@ -30,16 +30,16 @@ export const Schema = (
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
                     "generic": import_.ancestor(2, "generic", ["unmarshall"], {}),
-                    "signatures": import_.ancestor(5, "interface", op_flatten_list(_ea.array_literal([
-                        _ea.array_literal(["generated", "pareto", "schemas"]),
+                    "signatures": import_.ancestor(5, "interface", op_flatten_list(_ea.list_literal([
+                        _ea.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _ea.array_literal(["unmarshall"]),
+                        _ea.list_literal(["unmarshall"]),
                     ])), {}),
                     "in": import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn source"], {}),
-                    "out": import_.ancestor(5, "interface", op_flatten_list(_ea.array_literal([
-                        _ea.array_literal(["generated", "pareto", "schemas"]),
+                    "out": import_.ancestor(5, "interface", op_flatten_list(_ea.list_literal([
+                        _ea.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _ea.array_literal(["data types", "target"]),
+                        _ea.list_literal(["data types", "target"]),
                     ])), $p.constrained ? { "Source": t.component_imported("in", "Range", {}, []) } : {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))
@@ -57,7 +57,7 @@ export const Schema = (
                     $.node,
                     {
                         'temp type': key,
-                        'temp subselection': _ea.array_literal([]),
+                        'temp subselection': _ea.list_literal([]),
                         'constrained': $p.constrained
                     }
                 ),
@@ -71,7 +71,7 @@ export const Type_Node = (
     $: _in.Type_Node,
     $p: {
         'temp type': string
-        'temp subselection': _et.Array<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>> //can be removed when exupery has type inference
+        'temp subselection': _et.List<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>> //can be removed when exupery has type inference
         'constrained': boolean
     },
 ): _out.Initialization<_edata.Source_Location> => {

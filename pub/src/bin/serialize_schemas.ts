@@ -8,10 +8,12 @@ import * as d_resources from "../implementation/algorithms/commands/serialize_sc
 
 _eb.run_main_procedure(
     ($r) => {
-        return procedure({
-            'procedures': {
+        return procedure(
+            {
                 'write file': $r.commands['write file']
-            }
-        })
+            },
+            null,
+
+        )
     },
 )

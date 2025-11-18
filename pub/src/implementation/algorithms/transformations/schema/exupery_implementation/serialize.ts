@@ -20,7 +20,7 @@ import { Signature } from "../../../../../interface/algorithms/transformations/s
 export const Schema = (
     $: _in.Schema,
     $p: {
-        'path': _et.Array<string>,
+        'path': _et.List<string>,
         'imports': _in.Imports,
         'constrained': boolean
     }
@@ -29,15 +29,15 @@ export const Schema = (
         op_flatten_dictionary(
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
-                    "signatures": import_.ancestor(5, "interface", op_flatten_list(_ea.array_literal([
-                        _ea.array_literal(["generated", "pareto", "schemas"]),
+                    "signatures": import_.ancestor(5, "interface", op_flatten_list(_ea.list_literal([
+                        _ea.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _ea.array_literal(["serialize"])
+                        _ea.list_literal(["serialize"])
                     ])), {}),
-                    "serialize": import_.ancestor(2, "generic", op_flatten_list(_ea.array_literal([
-                        _ea.array_literal(["serialize"]),
+                    "serialize": import_.ancestor(2, "generic", op_flatten_list(_ea.list_literal([
+                        _ea.list_literal(["serialize"]),
                     ])), {}),
-                    "marshall": import_.sibling("marshall", op_flatten_list(_ea.array_literal([
+                    "marshall": import_.sibling("marshall", op_flatten_list(_ea.list_literal([
                     ])), {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["serialize"], {}))

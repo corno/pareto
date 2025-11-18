@@ -4,7 +4,7 @@ import * as _et from 'exupery-core-types'
 import { $$ as op_pop_last_element } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/list/pop_last_element"
 import { Signature } from "../../../../../interface/algorithms/operations/impure/tbd/path"
 
-const op_split: _et.Transformer_With_Parameters<string, { 'separator': number }, _et.Array<string>> = (
+const op_split: _et.Transformer_With_Parameters<_et.List<string>, string, { 'separator': number }> = (
     $,
     $p,
 ) => {
@@ -48,7 +48,7 @@ export const get_base_name = (path: string): _et.Optional_Value<string> => {
     return temp.__get_element_at(temp.__get_number_of_elements() - 1)
 }
 
-export const get_directory_path = (path: string): _et.Optional_Value<_et.Array<string>> => {
+export const get_directory_path = (path: string): _et.Optional_Value<_et.List<string>> => {
     const temp = op_split(path, { separator: 47 }) // '/'
 
     return op_pop_last_element(temp).map(($) => $.rest)

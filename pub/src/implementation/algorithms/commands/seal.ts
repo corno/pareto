@@ -8,13 +8,13 @@ import { Signature } from "../../../interface/algorithms/procedures/seal"
 import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/source"
 import * as d_main from "exupery-resources/dist/interface/temp_main"
 
-export type Resources = {
-    'commands': {
-        'log error': _et.Command<d_log_error.Parameters, null>
-    }
+export type Query_Resources = null
+
+export type Command_Resources = {
+        'log error': _et.Command<null, d_log_error.Parameters>
 }
 
-export const $$: _et.Command_Procedure<d_main.Parameters, d_main.Error, Resources> = ($r) => ($p) => _easync.p.action(
+export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_Resources, Query_Resources> = ($r) => ($p) => _easync.p.action(
     _easync.pi.u(
         () => {
             return _easync.__create_procedure_promise(
@@ -31,7 +31,7 @@ export const $$: _et.Command_Procedure<d_main.Parameters, d_main.Error, Resource
         _easync.eh(
             $r.commands['log error'],
             ($) => ({
-                'lines': _ea.array_literal(["The seal procedure is not implemented yet"])
+                'lines': _ea.list_literal(["The seal procedure is not implemented yet"])
             }),
             null,
         ),

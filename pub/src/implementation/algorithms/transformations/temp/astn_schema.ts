@@ -17,7 +17,7 @@ import { $$ as op_flatten_dictionaries } from "pareto-standard-operations/dist/i
 import * as _in from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "../../../../interface/generated/pareto/schemas/astn_schema/data_types/target"
 
-export const Schema: _et.Transformer_Without_Parameters<_in.Schema, _out.Schema<_edata.Source_Location>> = (
+export const Schema: _et.Transformer_Without_Parameters<_out.Schema<_edata.Source_Location>, _in.Schema> = (
     $
 ) => {
     return {
@@ -27,7 +27,7 @@ export const Schema: _et.Transformer_Without_Parameters<_in.Schema, _out.Schema<
     }
 }
 
-export const Globals: _et.Transformer_Without_Parameters<_in.Globals, _out.Globals<_edata.Source_Location>> = (
+export const Globals: _et.Transformer_Without_Parameters<_out.Globals<_edata.Source_Location>, _in.Globals> = (
     $
 ) => {
     return {
@@ -50,7 +50,7 @@ export const Globals: _et.Transformer_Without_Parameters<_in.Globals, _out.Globa
     }
 }
 
-export const Imports: _et.Transformer_Without_Parameters<_in.Imports, _out.Imports<_edata.Source_Location>> = (
+export const Imports: _et.Transformer_Without_Parameters<_out.Imports<_edata.Source_Location>, _in.Imports> = (
     $
 ) => {
     return wrap_dictionary($.map(($) => ({
@@ -59,7 +59,7 @@ export const Imports: _et.Transformer_Without_Parameters<_in.Imports, _out.Impor
     })))
 }
 
-export const Type: _et.Transformer_Without_Parameters<_in.Type, _out.Type<_edata.Source_Location>> = (
+export const Type: _et.Transformer_Without_Parameters<_out.Type<_edata.Source_Location>, _in.Type> = (
     $
 ) => {
     return {
@@ -67,7 +67,7 @@ export const Type: _et.Transformer_Without_Parameters<_in.Type, _out.Type<_edata
     }
 }
 
-export const Type_Node: _et.Transformer_Without_Parameters<_in.Type_Node, _out.Type_Node<_edata.Source_Location>> = (
+export const Type_Node: _et.Transformer_Without_Parameters<_out.Type_Node<_edata.Source_Location>, _in.Type_Node> = (
     $
 ) => {
     return wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG<_edata.Source_Location> => {
@@ -128,7 +128,7 @@ export const Type_Node: _et.Transformer_Without_Parameters<_in.Type_Node, _out.T
     }))
 }
 
-export const Text_Type: _et.Transformer_Without_Parameters<_in.Text_Type, _out.Text_Type<_edata.Source_Location>> = (
+export const Text_Type: _et.Transformer_Without_Parameters<_out.Text_Type<_edata.Source_Location>, _in.Text_Type> = (
     $
 ) => {
     return {

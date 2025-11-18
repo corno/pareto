@@ -23,7 +23,7 @@ export type Optional_Node = _et.Optional_Value<Node>
 export type Property =
     | ['missing', d_astn_token.Range]
     | ['unique', Entry_Data]
-    | ['multiple', _et.Array<Entry_Data>]
+    | ['multiple', _et.List<Entry_Data>]
 
 export type Node = {
     'definition': d_schema.Type_Node
@@ -113,7 +113,7 @@ export type List = {
     'found value type':
     | ['valid', {
         'value': d_astn_ast.Concrete_Value.SG.ordered_collection
-        'elements': _et.Array<Node>
+        'elements': _et.List<Node>
     }]
     | ['invalid', d_astn_token.Range]
 }
@@ -183,7 +183,7 @@ export type Dictionary = {
 
 export type Entry =
     | ['unique', Optional_Node]
-    | ['multiple', _et.Array<Entry_Data>]
+    | ['multiple', _et.List<Entry_Data>]
 
 export type Group = {
     'definition': d_schema.Type_Node.SG.group
@@ -210,6 +210,6 @@ export type Indexed_Group = {
 
 export type Group_Content = {
     'properties': _et.Dictionary<Property>
-    'superfluous entries': _et.Dictionary<_et.Array<d_astn_token.Range>>
+    'superfluous entries': _et.Dictionary<_et.List<d_astn_token.Range>>
 
 }

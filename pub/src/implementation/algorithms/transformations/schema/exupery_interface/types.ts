@@ -107,8 +107,8 @@ export const r_Type_Reference = (
             'add dictionary tail': boolean
         }
 
-    ): _et.Array<_out.Type.SG.component.sub_selection.L<_edata.Source_Location>> => {
-        const tail: _et.Array<_out.Type.SG.component.sub_selection.L<_edata.Source_Location>> = $.tail.map(($) => _ea.cc($, ($) => {
+    ): _et.List<_out.Type.SG.component.sub_selection.L<_edata.Source_Location>> => {
+        const tail: _et.List<_out.Type.SG.component.sub_selection.L<_edata.Source_Location>> = $.tail.map(($) => _ea.cc($, ($) => {
             switch ($[0]) {
                 case 'dictionary': return _ea.ss($, ($) => sh.sub.dictionary())
                 case 'group': return _ea.ss($, ($) => sh.sub.group($.key))

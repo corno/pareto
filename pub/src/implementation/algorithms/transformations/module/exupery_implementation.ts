@@ -17,7 +17,7 @@ export const Module = ($: _in.Module): _out.Module_Set<_edata.Source_Location> =
             'schemas': t_exupery_implementation_main.Schema_Tree(
                 $['schema tree'],
                 {
-                    'path': _ea.array_literal([]),
+                    'path': _ea.list_literal([]),
                 }
             )
         }).map(($) => ({

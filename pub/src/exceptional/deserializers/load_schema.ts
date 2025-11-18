@@ -27,7 +27,7 @@ type Error =
 
 export const $ = (
     $: string,
-): _et.Data_Preparation_Result<d_schema.Type, Error> => {
+): _et.Staging_Result<d_schema.Type, Error> => {
 
     return parse.parse(
         $,
@@ -35,7 +35,7 @@ export const $ = (
             'tab size': 4,
         }
     ).transform(
-        ($): _et.Data_Preparation_Result<d_schema.Type, Error> => {
+        ($): _et.Staging_Result<d_schema.Type, Error> => {
 
             const resolved_schema_schema = r_pareto_schema.Type_Specification(
                 u_pareto_schema.Type_Specification(
@@ -58,7 +58,7 @@ export const $ = (
             )
             const temp_find_schema = (
                 $: d_schema.Schema_Tree,
-                schema_path: _et.Array<string>,
+                schema_path: _et.List<string>,
             ): d_schema.Schema => {
                 const st = $
                 return op_remove_first_element(schema_path).transform(

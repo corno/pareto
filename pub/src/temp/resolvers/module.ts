@@ -20,7 +20,7 @@ export const Module: _i_signatures._T_Module = ($, $p) => _ea.block(() => {
                 'location 2 string': l2s,
                 'parameters': ({
                     'lookups': ({
-                        'sibling schemas': _ea.array_literal([
+                        'sibling schemas': _ea.list_literal([
                         ]),
                     }),
                     'values': null,

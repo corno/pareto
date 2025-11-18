@@ -19,7 +19,7 @@ import { Signature } from "../../../../../interface/algorithms/transformations/s
 export const Schema = (
     $: _in.Schema,
     $p: {
-        'path': _et.Array<string>,
+        'path': _et.List<string>,
         'imports': _in.Imports,
         'constrained': boolean
     }
@@ -28,10 +28,10 @@ export const Schema = (
         op_flatten_dictionary(
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
-                    "signatures": import_.ancestor(5, "interface", op_flatten_list(_ea.array_literal([
-                        _ea.array_literal(["generated", "pareto", "schemas"]),
+                    "signatures": import_.ancestor(5, "interface", op_flatten_list(_ea.list_literal([
+                        _ea.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _ea.array_literal(["marshall"])
+                        _ea.list_literal(["marshall"])
                     ])), {}),
                     "out": import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn target"], {}),
                 }),
@@ -50,7 +50,7 @@ export const Schema = (
                     $.node,
                     {
                         'type': key,
-                        'subselection': _ea.array_literal([])
+                        'subselection': _ea.list_literal([])
                     }
                 ),
             ),
@@ -63,7 +63,7 @@ export const Type_Node = (
     $: _in.Type_Node,
     $p: {
         'type': string
-        'subselection': _et.Array<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>>
+        'subselection': _et.List<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>>
     },
 ): _out.Initialization<_edata.Source_Location> => {
 

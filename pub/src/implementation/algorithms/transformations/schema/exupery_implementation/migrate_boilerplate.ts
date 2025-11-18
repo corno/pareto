@@ -46,7 +46,7 @@ export const Types = (
                     $.node,
                     {
                         'type': key,
-                        'subselection': _ea.array_literal([])
+                        'subselection': _ea.list_literal([])
                     }
                 ),
             ),
@@ -59,7 +59,7 @@ export const Type_Node = (
     $: _in.Type_Node,
     $p: {
         'type': string
-        'subselection': _et.Array<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>>
+        'subselection': _et.List<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>>
     },
 ): _out.Initialization<_edata.Source_Location> => {
     return _ea.cc($, ($) => {
