@@ -20,7 +20,7 @@ import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/im
 
 import { get_directory_path } from "../operations/impure/tbd/path"
 
-import { $, $ as load_schema } from "../../../exceptional/deserializers/load_schema"
+import { $, $ as load_schema } from "../../refiners/load_schema"
 
 import { Signature } from "../../../interface/algorithms/queries/load_pareto_document"
 

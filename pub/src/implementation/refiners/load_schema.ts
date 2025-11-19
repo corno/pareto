@@ -12,9 +12,9 @@ import * as d_parse_result from "../../interface/generated/pareto/core/parse_res
 
 import * as r_pareto_schema from "../../temp/resolvers/schema"
 
-import * as u_pareto_schema from "../../implementation/generated/pareto/schemas/schema/unmarshall"
+import * as u_pareto_schema from "../generated/pareto/schemas/schema/unmarshall"
 
-import * as parse from "../../implementation/generated/pareto/generic/parse/parse"
+import * as parse from "../generated/pareto/generic/parse/parse"
 
 import * as _out from "../../temp/temp_unmashall_result_types"
 
