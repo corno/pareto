@@ -7,7 +7,7 @@ import * as _easync from 'exupery-core-async'
 
 //data
 
-import * as d_out from "../../../temp/temp_unmashall_result_types"
+import * as d_out from "../../temp/temp_unmashall_result_types"
 import * as d_lpd from "./load_pareto_document"
 import * as d_read_file from "exupery-resources/dist/interface/generated/pareto/schemas/read_file/data_types/source"
 
@@ -21,31 +21,35 @@ export namespace d {
     }
 }
 
-import { $$ as q_load_astn_document } from "./load_pareto_document"
+import { $$ as q_load_pareto_document } from "./load_pareto_document"
 
 export type Resources = {
-        'read file': _et.Stager<d_read_file.Result, d_read_file.Error, d_read_file.Parameters>
+    'read file': _et.Query<d_read_file.Result, d_read_file.Error, d_read_file.Parameters>
 }
 
-import { Signature } from "../../../interface/algorithms/queries/load_pareto_file"
+import { Signature } from "../../interface/algorithms/queries/load_pareto_file"
 
-export const $$: _et.Query_Procedure<d_out.Node, d.Error, d.Parameters, Resources> = (
-    $qr
-) => {
-
-    return ($p) => {
-        const instance_path = $p['file path']
-        return $qr['read file'](
-            {
-                'path': instance_path,
-                'escape spaces in path': true,
-            },
-        ).transform_error_temp(($): d.Error => ['no file', null])
-            .query_with_result(($) => q_load_astn_document($qr)(
+export const $$: _et.Query_Procedure<d_out.Node, d.Error, d.Parameters, Resources> = _easync.create_query_procedure(
+    ($p, $qr) => $qr['read file'](
+        {
+            'path': $p['file path'],
+            'escape spaces in path': true,
+        },
+        (): d.Error => ['no file', null]
+    ).stage(
+        ($) => {
+            return q_load_pareto_document(
+                {
+                    'read file': $qr['read file'],
+                },
+            )(
                 {
                     'content': $,
-                    'file path': instance_path,
+                    'file path': $p['file path'],
                 },
-            ).transform_error_temp(($): d.Error => ['document', $]))
-    }
-}
+                ($): d.Error => ['document', $]
+            )
+        },
+        ($): d.Error => $
+    )
+)

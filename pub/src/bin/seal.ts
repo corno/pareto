@@ -2,16 +2,17 @@
 
 import * as _eb from 'exupery-core-bin'
 
-import { $$ as procedure } from "../implementation/algorithms/commands/seal"
+import { $$ as procedure } from "../implementation/commands/seal"
 
-import * as d_resources from "../implementation/algorithms/commands/seal"
+import * as d_resources from "../implementation/commands/seal"
 
 _eb.run_main_procedure(
     ($r) => {
-        return procedure({
-            'procedures': {
+        return procedure(
+            {
                 'log error': $r.commands['log error']
-            }
-        })
+            },
+            null,
+        )
     },
 )

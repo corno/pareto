@@ -3,7 +3,7 @@ import * as _edev from 'exupery-core-dev'
 import * as _ea from 'exupery-core-alg'
 import * as _et from 'exupery-core-types'
 
-import { Signature } from "../../../../interface/algorithms/transformations/temp/astn_schema"
+import { Signature } from "../../../interface/algorithms/transformations/temp/astn_schema"
 
 
 import {
@@ -14,8 +14,8 @@ import {
 
 import { $$ as op_flatten_dictionaries } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/flatten"
 
-import * as _in from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as _out from "../../../../interface/generated/pareto/schemas/astn_schema/data_types/target"
+import * as _in from "../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as _out from "../../../interface/generated/pareto/schemas/astn_schema/data_types/target"
 
 export const Schema: _et.Transformer<_out.Schema<_edata.Source_Location>, _in.Schema> = (
     $

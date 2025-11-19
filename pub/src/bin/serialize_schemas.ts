@@ -2,9 +2,9 @@
 
 import * as _eb from 'exupery-core-bin'
 
-import { $$ as procedure } from "../implementation/algorithms/commands/serialize_schemas"
+import { $$ as procedure } from "../implementation/commands/serialize_schemas"
 
-import * as d_resources from "../implementation/algorithms/commands/serialize_schemas"
+import * as d_resources from "../implementation/commands/serialize_schemas"
 
 _eb.run_main_procedure(
     ($r) => {

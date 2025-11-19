@@ -15,56 +15,61 @@ export type Command_Resources = {
 }
 
 
-import { Signature } from "../../../interface/algorithms/procedures/serialize_schemas"
+import { Signature } from "../../interface/algorithms/procedures/serialize_schemas"
 
 //data
-import { $ as poormans_modules } from "../../../temp/temporary_schemas/all"
+import { $ as poormans_modules } from "../../temp/temporary_schemas/all"
 
-import * as serialize from "../../generated/pareto/generic/serialize"
+import * as serialize from "../generated/pareto/generic/serialize"
 
 
 //resolvers
-import * as r_module from "../../../temp/resolvers/module"
+import * as r_module from "../../temp/resolvers/module"
 
 //marshall
-import * as m_module from "../../generated/pareto/schemas/module/marshall"
+import * as m_module from "../generated/pareto/schemas/module/marshall"
 
 export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_Resources, Query_Resources> = _easync.create_command_procedure(
-    ($p, $cr, $qr) => _easync.p.dictionary.parallel.direct(
-        poormans_modules,
-        ($, key) => $cr['write file'].execute(
-            {
-                'path': {
-                    'escape spaces in path': true,
-                    'path': `${$['target path']}/module.astn`
-                },
-                'data': serialize.Document(
-                    m_module.Module(
-                        r_module.Module(
-                            $.module,
-                            {
-                                'parameters': {
-                                    'lookups': null,
-                                    'values': null,
-                                },
-                                'location 2 string': _ed.location_to_string
-                            }
-                        ),
-                        {
-                            'value serializers': {
-                                'boolean': ($) => $ ? "true" : "false",
-                                'default number': () => "FIXME NUMBER",
-                                'custom numbers': null
-                            }
-                        }
-                    )
-                ),
-            },
-            ($) => $
-        ),
-        ($) => ({
-            'exit code': 1
-        })
+    ($p, $cr, $qr) => [
+        _easync.p.dictionary.parallel(
+            poormans_modules,
+            ($, key) => [
 
-    )
+                $cr['write file'].execute(
+                    {
+                        'path': {
+                            'escape spaces in path': true,
+                            'path': `${$['target path']}/module.astn`
+                        },
+                        'data': serialize.Document(
+                            m_module.Module(
+                                r_module.Module(
+                                    $.module,
+                                    {
+                                        'parameters': {
+                                            'lookups': null,
+                                            'values': null,
+                                        },
+                                        'location 2 string': _ed.location_to_string
+                                    }
+                                ),
+                                {
+                                    'value serializers': {
+                                        'boolean': ($) => $ ? "true" : "false",
+                                        'default number': () => "FIXME NUMBER",
+                                        'custom numbers': null
+                                    }
+                                }
+                            )
+                        ),
+                    },
+                    ($) => $
+                )
+            ],
+            ($) => ({
+                'exit code': 1
+            })
+
+        )
+    ]
 )

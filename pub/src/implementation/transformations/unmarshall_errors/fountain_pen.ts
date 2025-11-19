@@ -1,14 +1,14 @@
 import * as _ea from 'exupery-core-alg'
 import * as _edev from 'exupery-core-dev'
 
-import * as _in from "../../../../interface/generated/pareto/schemas/unmarshall_errors/data_types/target"
+import * as _in from "../../../interface/generated/pareto/schemas/unmarshall_errors/data_types/target"
 import * as _out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
 import { $$ as op_join } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/text/join_list_of_texts_with_separator"
 import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/dictionary/to_list_sorted_by_insertion"
-import { Signature } from "../../../../interface/algorithms/transformations/unmarshall_errors/fountain_pen"
+import { Signature } from "../../../interface/algorithms/transformations/unmarshall_errors/fountain_pen"
 
 
 export const Errors = (

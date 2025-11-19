@@ -3,7 +3,7 @@ import * as _et from 'exupery-core-types'
 import * as _ea from 'exupery-core-alg'
 import * as _edev from 'exupery-core-dev'
 
-import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as _in from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as _out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
@@ -12,7 +12,7 @@ import { t, import_, sub } from "exupery/dist/shorthands/interface"
 
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/flatten"
 import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/list/append_element"
-import { Signature } from "../../../../../interface/algorithms/transformations/schema/exupery_implementation/migrate_boilerplate"
+import { Signature } from "../../../../interface/algorithms/transformations/schema/exupery_implementation/migrate_boilerplate"
 
 
 

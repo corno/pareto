@@ -1,13 +1,13 @@
 import * as _edata from 'exupery-core-data'
 import * as _ea from 'exupery-core-alg'
 
-import * as _out$ from "../../../../interface/generated/pareto/core/unresolved"
+import * as _out$ from "../../../interface/generated/pareto/core/unresolved"
 
-import * as _in from "../../../../interface/generated/pareto/schemas/module/data_types/source"
+import * as _in from "../../../interface/generated/pareto/schemas/module/data_types/source"
 import * as _out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 
 import * as t_exupery_implementation_main from "../schema/exupery_implementation/main"
-import { Signature } from "../../../../interface/algorithms/transformations/module/exupery_implementation"
+import { Signature } from "../../../interface/algorithms/transformations/module/exupery_implementation"
 
 
 export const Module = ($: _in.Module): _out.Module_Set<_edata.Source_Location> => {

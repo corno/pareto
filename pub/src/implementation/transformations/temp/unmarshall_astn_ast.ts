@@ -2,20 +2,20 @@ import * as _ea from 'exupery-core-alg'
 import * as _et from 'exupery-core-types'
 import * as _edev from 'exupery-core-dev'
 
-import * as definition from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as definition from "../../../interface/generated/pareto/schemas/schema/data_types/source"
 
 import * as _in from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
 import * as _in_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
 
 import * as t_ast_to_range from "astn/dist/implementation/algorithms/transformers/authoring_parse_tree/temp_value_range"
 
-import * as _out from "../../../../temp/temp_unmashall_result_types"
+import * as _out from "../../../temp/temp_unmashall_result_types"
 
 import { $$ as op_group } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/list/group"
 import { $$ as op_expect_exactly_one_element } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/list/expect_exactly_one_element"
 import { $$ as op_dictionary_filter } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/filter"
 import { $$ as op_dictionary_merge } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/dictionary/merge"
-import { Signature } from "../../../../interface/algorithms/transformations/temp/unmarshall_astn_ast"
+import { Signature } from "../../../interface/algorithms/transformations/temp/unmarshall_astn_ast"
 
 
 export const Optional_Node = (

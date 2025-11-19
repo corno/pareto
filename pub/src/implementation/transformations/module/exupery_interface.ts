@@ -3,13 +3,13 @@ import * as _ea from 'exupery-core-alg'
 
 import { wrap_dictionary } from 'exupery-core-data/dist/shorthands/unresolved_transformation'
 
-import * as _in from "../../../../interface/generated/pareto/schemas/module/data_types/source"
+import * as _in from "../../../interface/generated/pareto/schemas/module/data_types/source"
 import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m, t, type, import_ } from "exupery/dist/shorthands/interface"
 import * as t_exupery_interface_main from "../schema/exupery_interface/main"
 import * as t_exupery_interface_types from "../schema/exupery_interface/types"
-import { Signature } from "../../../../interface/algorithms/transformations/module/exupery_interface"
+import { Signature } from "../../../interface/algorithms/transformations/module/exupery_interface"
 
 
 export const Operations = ($: _in.Operations): _out.Type<_ed.Source_Location> => {

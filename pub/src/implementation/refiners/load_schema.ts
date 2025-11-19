@@ -22,7 +22,7 @@ import { $$ as op_remove_first_element } from "pareto-standard-operations/dist/i
 
 type Error =
     | ['parse error', d_parse_result._T_Parse_Error]
-// ['resolve error', FIXME resolve errors will now deprecated_panic!
+    | ['resolve errorx', null]
 
 
 export const $ = (
@@ -34,8 +34,10 @@ export const $ = (
         {
             'tab size': 4,
         }
-    ).transform(
-        ($): _et.Staging_Result<d_schema.Type, Error> => {
+    ).transform_error_temp(
+        ($): Error => ['parse error', $]
+    ).stage<d_schema.Type, null>(
+        ($) => {
 
             const resolved_schema_schema = r_pareto_schema.Type_Specification(
                 u_pareto_schema.Type_Specification(
@@ -98,7 +100,7 @@ export const $ = (
             )
             return _ei.data_processing.successful(type)
         },
-        ($) => _ei.data_processing.failed(['parse error', $])
+        ($): Error => ['resolve errorx', null]
 
     )
 }

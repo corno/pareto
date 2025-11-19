@@ -2,7 +2,7 @@ import * as _ea from 'exupery-core-alg'
 import * as _et from 'exupery-core-types'
 
 import { $$ as op_pop_last_element } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/list/pop_last_element"
-import { Signature } from "../../../../../interface/algorithms/operations/impure/tbd/path"
+import { Signature } from "../../../../interface/algorithms/operations/impure/tbd/path"
 
 const op_split: _et.Transformer_With_Parameters<_et.List<string>, string, { 'separator': number }> = (
     $,

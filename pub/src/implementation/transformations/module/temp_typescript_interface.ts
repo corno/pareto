@@ -3,8 +3,8 @@ import * as _ea from 'exupery-core-alg'
 
 //FIXME, this one should be moved to pareto-targets
 
-import * as _in_s from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as _in from "../../../../interface/generated/pareto/schemas/module/data_types/source"
+import * as _in_s from "../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as _in from "../../../interface/generated/pareto/schemas/module/data_types/source"
 import * as _out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
 
 //transformations
@@ -17,7 +17,7 @@ import * as t_pareto_to_exupery_interface from "./exupery_interface"
 import * as r_exupery_interface from "exupery/dist/implementation/generated/pareto/schemas/interface/resolve"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
-import { Signature } from "../../../../interface/algorithms/transformations/module/temp_typescript"
+import { Signature } from "../../../interface/algorithms/transformations/module/temp_typescript"
 
 
 export const Module = ($: _in.Module): _out.Directory => {
