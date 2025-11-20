@@ -15,7 +15,6 @@ export const $: g_.Types<pd.Source_Location> = types(
     {
         "Parameters": type(t.group({
             "path": prop(t.component("Path")),
-            "prepend results with path": prop(t.boolean()),
         })),
 
         "Error": type(t.state_group({
@@ -23,7 +22,10 @@ export const $: g_.Types<pd.Source_Location> = types(
             "node is not a directory": tstate(t.nothing()),
         })),
 
-        "Result": type(t.dictionary(t.component("Node Type"))),
+        "Result": type(t.dictionary(t.group({
+            "concatenated path": prop(t.text_local(text('single line'))),
+            "node type": prop(t.component("Node Type")),
+        }))),
 
         "Path": type(t.group({
             "path": prop(t.text_local(text('single line'))),

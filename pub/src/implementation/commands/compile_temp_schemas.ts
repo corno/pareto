@@ -22,10 +22,6 @@ import * as t_pareto_module_to_fountain_pen_block__implementation from "../trans
 import * as t_pareto_module_to_fountain_pen_block__interface from "../transformations/module/temp_typescript_interface"
 
 
-
-import { $$ as p_fp_write_to_directory } from "pareto-fountain-pen/dist/implementation/algorithms/procedures/write_to_directory"
-
-
 export type Package_Error =
     | ['could not log', null]
     | ['could not remove interface', null]
