@@ -375,9 +375,12 @@ export const $: g_.Types<pd.Source_Location> = types(
             "Leveranciers": prop(t.dictionary(t.group({}))),
             "Medewerkers": prop(t.dictionary(t.group({}))),
         })),
-        "Bestandsnaam": type(t.group({
-            "Naam": prop(t.text_local(text('single line'))),
-            "Extensie": prop(t.text_local(text('single line'))),
-        }))
+        
+        // "Bestandsnaam": type(t.group({
+        //     "Naam": prop(t.text_local(text('single line'))),
+        //     "Extensie": prop(t.text_local(text('single line'))),
+        // }))  
+
+        "Bestandsnaam": type(t.text_local(text('single line'))),
     }
 )

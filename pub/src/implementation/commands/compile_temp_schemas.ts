@@ -71,14 +71,6 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
 
                 return [
 
-                    //log
-                    $cr.log.execute(
-                        {
-                            'lines': _ea.list_literal([`generating package: ${key}`])
-                        },
-                        ($): Package_Error => ['could not log', null]
-                    ),
-
                     //remove old implementation files
                     $cr.remove.execute(
                         {
@@ -187,6 +179,15 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                             }
                         },
                         ($) => ['could not copy core interface', null]
+                    ),
+
+
+                    //log
+                    $cr.log.execute(
+                        {
+                            'lines': _ea.list_literal([`generated package: ${key}`])
+                        },
+                        ($): Package_Error => ['could not log', null]
                     ),
                 ]
             },
