@@ -98,7 +98,7 @@ export const $ = (
                     _ea.deprecated_panic(`(FIXME: make this a reference) root type ${resolved_schema_schema.type} not found`)
                 }
             )
-            return _ei.data_processing.successful(type)
+            return _ei.__create_success_refinement_result(type)
         },
         ($): Error => ['resolve errorx', null]
 
