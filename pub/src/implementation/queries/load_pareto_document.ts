@@ -4,6 +4,7 @@ import * as _et from 'exupery-core-types'
 import * as _edata from 'exupery-core-data'
 import * as _ed from 'exupery-core-dev'
 import * as _easync from 'exupery-core-async'
+import * as _ei from 'exupery-core-internals'
 
 //data
 
@@ -72,7 +73,7 @@ export const $$: _et.Query_Procedure<_out.Node, Error, Parameters, Resources> = 
             (): Error => ['no schema file', {
                 'file location': schema_path,
             }]
-        ).stage(
+        ).refine(
             ($) => {
                 const type = $
                 return load_schema(
@@ -82,7 +83,7 @@ export const $$: _et.Query_Procedure<_out.Node, Error, Parameters, Resources> = 
             ($) => ['schema error', {
                 'file location': schema_path,
             }]
-        ).stage(
+        ).refine(
             ($) => {
                 const type = $
                 return parse.parse(
@@ -90,16 +91,16 @@ export const $$: _et.Query_Procedure<_out.Node, Error, Parameters, Resources> = 
                     {
                         'tab size': 4,
                     }
-                ).transform(($): Schema_And_Instance => ({
+                ).transform_result(($): Schema_And_Instance => ({
                     'schema type': type,
                     'instance': $,
                 }))
             },
             ($): Error => ['parse error', $]
-        ).stage<_out.Node, never>( //FIXME; unmarshaller should produce proper errors
+        ).refine<_out.Node, never>( //FIXME; unmarshaller should produce proper errors
             ($) => {
 
-                return _easync.q.fixed(tu_dynamic_unmarshall.Node(
+                return _ei.__create_success_refinement_result(tu_dynamic_unmarshall.Node(
                     $.instance.content,
                     {
                         'definition': $['schema type'].node,

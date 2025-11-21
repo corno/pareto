@@ -36,7 +36,7 @@ export const $$: _et.Query_Procedure<d_out.Node, d.Error, d.Parameters, Resource
             'escape spaces in path': true,
         },
         (): d.Error => ['no file', null]
-    ).stage(
+    ).query(
         ($) => {
             return q_load_pareto_document(
                 {

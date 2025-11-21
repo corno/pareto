@@ -27,7 +27,7 @@ type Error =
 
 export const $ = (
     $: string,
-): _et.Staging_Result<d_schema.Type, Error> => {
+): _et.Refinement_Result<d_schema.Type, Error> => {
 
     return parse.parse(
         $,
@@ -36,7 +36,7 @@ export const $ = (
         }
     ).transform_error_temp(
         ($): Error => ['parse error', $]
-    ).stage<d_schema.Type, null>(
+    ).refine<d_schema.Type, null>(
         ($) => {
 
             const resolved_schema_schema = r_pareto_schema.Type_Specification(
