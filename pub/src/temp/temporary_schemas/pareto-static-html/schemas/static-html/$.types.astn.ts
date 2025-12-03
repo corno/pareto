@@ -31,7 +31,7 @@ export const $: g_.Types<pd.Source_Location> = types(
             })),
             "table": tstate(t.group({
                 "classes": prop(t.component("Classes")),
-                "children": prop(t.list(t.group({
+                "sections": prop(t.list(t.group({
                     "classes": prop(t.component("Classes")),
                     "type": prop(t.state_group({
                         "header": tstate(t.nothing()),

@@ -26,7 +26,6 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Concrete Value": type(t.state_group({
-            "string": tstate(t.component("String")),
             "indexed collection": tstate(t.state_group({
                 "dictionary": tstate(t.group({
                     "{": prop(t.component("Structural Token")),
@@ -38,6 +37,9 @@ export const $: g_.Types<pd.Source_Location> = types(
                     "entries": prop(t.component("Key Value Pairs")),
                     ")": prop(t.component("Structural Token")),
                 })),
+            })),
+            "not set": tstate(t.group({
+                "~": prop(t.component("Structural Token")),
             })),
             "ordered collection": tstate(t.state_group({
                 "list": tstate(t.group({
@@ -51,7 +53,11 @@ export const $: g_.Types<pd.Source_Location> = types(
                     ">": prop(t.component("Structural Token")),
                 })),
             })),
-            "tagged value": tstate(t.group({
+            "set optional value": tstate(t.group({
+                "*": prop(t.component("Structural Token")),
+                "value": prop(t.component_cyclic("Value")),
+            })),
+            "state": tstate(t.group({
                 "|": prop(t.component("Structural Token")),
                 "status": prop(t.state_group({
                     "missing data": tstate(t.group({
@@ -63,13 +69,7 @@ export const $: g_.Types<pd.Source_Location> = types(
                     }))
                 })),
             })),
-            "not set": tstate(t.group({
-                "~": prop(t.component("Structural Token")),
-            })),
-            "set optional value": tstate(t.group({
-                "*": prop(t.component("Structural Token")),
-                "value": prop(t.component_cyclic("Value")),
-            })),
+            "text": tstate(t.component("String")),
         })),
 
         "Value": type(t.group({
