@@ -15,7 +15,7 @@ import * as d_schema from "../../interface/generated/pareto/schemas/schema/data_
 
 import * as tu_dynamic_unmarshall from "../transformations/temp/unmarshall_astn_ast"
 
-import * as parse from "astn/dist/exceptional/authoring_parse/parse"
+import * as parse from "astn/dist/implementation/algorithms/refiners/authoring_parse_tree/text/refiners"
 
 import * as _out from "../../temp/temp_unmashall_result_types"
 
