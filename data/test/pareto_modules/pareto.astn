@@ -491,8 +491,8 @@
                             `*`: | 'component' | 'internal' `Structural Token`
                             `value`: | 'component' | 'internal cyclic' `Value`
                         }
-                        `string`: | 'component' | 'internal' `String`
-                        `tagged value`: | 'group' {
+                        `text`: | 'component' | 'internal' `String`
+                        `state`: | 'group' {
                             `state`: | 'component' | 'internal' `String`
                             `value`: | 'component' | 'internal cyclic' `Value`
                             `|`: | 'component' | 'internal' `Structural Token`
