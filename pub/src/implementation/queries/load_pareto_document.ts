@@ -36,7 +36,7 @@ export type Error =
         'file location': string
     }]
     | ['parse error', d_parse_result.Parse_Error]
-    | ['unmashall error', null]
+    | ['unmarshall error', null]
 
 export type Parameters = {
     'content': string,
@@ -107,7 +107,7 @@ export const $$: _et.Query_Procedure<_out.Node, Error, Parameters, Resources> = 
                     }
                 ))
             },
-            ($): Error => ['unmashall error', null]
+            ($): Error => ['unmarshall error', null]
         )
     }
 )

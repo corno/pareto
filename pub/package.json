@@ -1,6 +1,6 @@
 {
   "name": "pareto",
-  "version": "0.78.4",
+  "version": "0.78.5",
   "description": "A library for the Pareto programming Language",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,6 +15,6 @@
     "exupery-core-data": "^0.3.3",
     "exupery-core-dev": "^0.3.2",
     "pareto-fountain-pen": "^0.3.13",
-    "pareto-standard-operations": "^0.3.11"
+    "pareto-standard-operations": "^0.3.13"
   }
 }
