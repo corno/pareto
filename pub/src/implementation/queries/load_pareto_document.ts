@@ -11,46 +11,56 @@ import * as api from "../../interface/algorithms/queries/load_pareto_document"
 import * as d from "../../interface/algorithms/queries/load_pareto_document"
 
 
+
+
+
 //depencencies
 
 import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/text/join_list_of_texts_with_separator"
 
-import { deprecated_get_directory_path } from "../operations/impure/tbd/path"
-
 import { $$ as r_load_pareto_document } from "../refiners/load_pareto_document"
+import { create_node_path } from "exupery-resources/dist/implementation/transformers/path/path"
+
+import * as r_path_from_text from "exupery-resources/dist/implementation/refiners/node_path/text"
+
+import * as t_path_to_text from "exupery-resources/dist/implementation/transformers/path/text"
+
 
 //implementation
 
 export const $$: api.Signature = _easync.create_query_function(
     ($p, $qr) => {
 
-        const schema_path = op_join_with_separator(
-            deprecated_get_directory_path($p['file path']).transform(
-                ($) => $,
-                () => _ea.deprecated_panic("could not get directory path"),
-            ),
+        const parsed_file_path = r_path_from_text.Node_Path(
+            $p['file path'],
             {
-                'separator': "/",
-            }
-        ) + "/astn-schema"
+                'pedantic': true,
+            },
+            () => _ea.deprecated_panic("could not parse file path")
+        )
+
+        const schema_path = create_node_path(parsed_file_path.context, "astn-schema")
+
+        const schema_path_text = t_path_to_text.Node_Path(schema_path)
+
 
         return $qr['read file'](
             {
-                'path': schema_path,
+                'path': schema_path_text,
                 'escape spaces in path': true,
             },
             (): d.Error => ['no schema file', {
-                'file location': schema_path,
+                'file location': schema_path_text,
             }]
         ).refine(
             ($) => r_load_pareto_document({
                 'schema content': $,
-                'schema path': schema_path,
+                'schema path': schema_path_text,
                 'content': $p.content,
             })
             ,
             ($) => ['schema error', {
-                'file location': schema_path,
+                'file location': schema_path_text,
             }]
         )
     }
