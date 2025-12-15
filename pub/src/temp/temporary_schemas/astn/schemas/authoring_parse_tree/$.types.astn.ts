@@ -22,8 +22,10 @@ export const $: g_.Types<pd.Source_Location> = types(
                 "!": prop(t.component("Structural Token")),
                 "value": prop(t.component("Value")),
             }))),
-            "content": prop(t.component("Value")),
+            "content": prop(t.component("Content")),
         })),
+
+        "Content": type(t.component("Value")),
 
         "Concrete Value": type(t.state_group({
             "indexed collection": tstate(t.state_group({

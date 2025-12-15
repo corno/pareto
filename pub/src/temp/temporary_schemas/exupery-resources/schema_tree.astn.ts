@@ -15,6 +15,7 @@ import { $ as m_get_instream_data } from "./schemas/get_instream_data/$.module.a
 import { $ as m_log } from "./schemas/log/$.module.astn"
 import { $ as m_log_error } from "./schemas/log_error/$.module.astn"
 import { $ as m_make_directory } from "./schemas/make_directory/$.module.astn"
+import { $ as m_path } from "./schemas/path/$.module.astn"
 import { $ as m_read_directory } from "./schemas/read_directory/$.module.astn"
 import { $ as m_read_file } from "./schemas/read_file/$.module.astn"
 import { $ as m_remove } from "./schemas/remove/$.module.astn"
@@ -36,6 +37,7 @@ export const $: g_.Schema_Tree<pd.Source_Location> = st.set({
     "log error": m_log_error,
     "log": m_log,
     "make directory": m_make_directory,
+    "path": m_path,
     "read directory": m_read_directory,
     "read file": m_read_file,
     "remove": m_remove,

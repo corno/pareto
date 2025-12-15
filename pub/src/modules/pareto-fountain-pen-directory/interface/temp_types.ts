@@ -4,6 +4,7 @@ import * as d_write_file from "exupery-resources/dist/interface/generated/pareto
 import * as d_remove from "exupery-resources/dist/interface/generated/pareto/schemas/remove/data_types/target"
 import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/target"
 import * as d_in from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/source"
+import * as d_path from "exupery-resources/dist/interface/generated/pareto/schemas/path/data_types/target"
 
 export type File_Error =
     | ['make directory', d_make_directory.Error]
@@ -19,14 +20,14 @@ export type Node_Error =
 
 export type File_Parameters = {
     'group': d_in.Group,
-    'directory path': string
+    'directory path': d_path.Node_Path
     'filename': string
     'indentation': string
     'newline': string
 }
 
 export type Directory_Parameters = {
-    'path': string
+    'path': d_path.Node_Path
     'directory': d_in.Directory,
     'indentation': string
     'newline': string
@@ -35,7 +36,7 @@ export type Directory_Parameters = {
 
 export type Node_Parameters = {
     'node': d_in.Node,
-    'path': string
+    'path': d_path.Node_Path
     'key': string
     'indentation': string
     'newline': string

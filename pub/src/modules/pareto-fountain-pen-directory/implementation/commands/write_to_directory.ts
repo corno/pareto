@@ -12,6 +12,8 @@ import * as D from "../../interface/temp_types"
 import { $$ as p_write_to_node } from "./write_to_node"
 // import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/write_to_directory"
 
+import * as t_path_to_text from "exupery-resources/dist/implementation/transformers/path/text"
+
 
 export type Query_Resources = null
 
@@ -30,7 +32,7 @@ export const $$: _et.Command_Procedure<D.Directory_Error, D.Directory_Parameters
                     $cr.remove.execute(
                         {
                             'path': {
-                                'path': $p.path,
+                                'path': t_path_to_text.Node_Path($p.path),
                                 'escape spaces in path': true,
                             },
                             'error if not exists': false

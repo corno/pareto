@@ -11,6 +11,10 @@ import * as d_write_file from "exupery-resources/dist/interface/generated/pareto
 
 import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/text/join_list_of_texts"
 
+import * as r_path from "exupery-resources/dist/implementation/transformers/path/text"
+
+
+import * as t_path_to_text from "exupery-resources/dist/implementation/transformers/path/text"
 
 export type Query_Resources = null
 
@@ -33,7 +37,7 @@ export const $$: _et.Command_Procedure<D.File_Error, D.File_Parameters, Command_
             $cr['write file'].execute(
                 {
                     'path': {
-                        'path': `${$p['directory path']}/${$p.filename}`,
+                        'path': `${t_path_to_text.Node_Path($p['directory path'])}/${$p.filename}`,
                         'escape spaces in path': true,
                     },
                     'data': op_join_list_of_texts(

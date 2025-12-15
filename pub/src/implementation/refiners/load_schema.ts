@@ -18,7 +18,7 @@ import * as parse from "../generated/pareto/generic/parse/parse"
 
 import * as _out from "../../temp/temp_unmashall_result_types"
 
-import { $$ as op_remove_first_element } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/list/pop_first_element"
+import { $$ as op_pop_first_element } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/list/pop_first_element"
 
 type Error =
     | ['parse error', d_parse_result._T_Parse_Error]
@@ -34,7 +34,7 @@ export const $ = (
         {
             'tab size': 4,
         }
-    ).transform_error_temp(
+    ).deprecated_transform_error(
         ($): Error => ['parse error', $]
     ).refine<d_schema.Type, null>(
         ($) => {
@@ -63,7 +63,7 @@ export const $ = (
                 schema_path: _et.List<string>,
             ): d_schema.Schema => {
                 const st = $
-                return op_remove_first_element(schema_path).transform(
+                return op_pop_first_element(schema_path).transform(
                     ($) => {
                         const split = $
                         return _ea.cc(st, ($) => {

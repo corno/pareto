@@ -85,7 +85,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Location": type(t.group({
-            "relative": prop(t.component("Relative Location")),
+            "relative": prop(t.optional(t.component("Relative Location"))), //if at the end of the document, this is not set
             "absolute": prop(t.number_local(n.natural())),
         })),
 

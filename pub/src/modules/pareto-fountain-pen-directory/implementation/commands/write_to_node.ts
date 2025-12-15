@@ -14,6 +14,8 @@ import * as d_remove from "exupery-resources/dist/interface/generated/pareto/sch
 import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"
 import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
 
+import { extend_path, create_node_path, node_path_to_context_path } from "exupery-resources/dist/implementation/transformers/path/path"
+
 export type Query_Resources = null
 
 export type Command_Resources = {
@@ -44,7 +46,7 @@ export const $$: _et.Command_Procedure<D.Node_Error, D.Node_Parameters, Command_
                         return p_write_to_directory($cr, $qr).execute(
                             {
                                 'directory': $,
-                                'path': `${$p.path}/${$p.key}`,
+                                'path': create_node_path(node_path_to_context_path($p.path), $p.key),
                                 'indentation': $p.indentation,
                                 'newline': $p.newline,
                                 'remove before creating': false,

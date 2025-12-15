@@ -22,6 +22,11 @@ import * as t_pareto_module_to_fountain_pen_block__implementation from "../trans
 import * as t_pareto_module_to_fountain_pen_block__interface from "../transformations/module/temp_typescript_interface"
 
 
+import * as t_path_to_text from "exupery-resources/dist/implementation/transformers/path/text"
+import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
+
+
+
 export type Package_Error =
     | ['could not log', null]
     | ['could not remove interface', null]
@@ -44,7 +49,7 @@ export type Command_Resources = {
     'write to directory': _et.Command<d_write_to_directory.Directory_Error, d_write_to_directory.Directory_Parameters>
 }
 
-
+import * as r_context_path from "exupery-resources/dist/implementation/refiners/context_path/text"
 
 export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_Resources, Query_Resources> = _easync.create_command_procedure(
     ($p, $cr, $qr) => [
@@ -62,8 +67,8 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
             poormans_modules,
             ($, key) => {
 
-                const interface_module_path = `./out/source_code/${key}/interface/`
-                const implementation_module_path = `./out/source_code/${key}/implementation/`
+                const interface_module_path = t_path_to_path.create_node_path( r_context_path.Context_Path(`./out/source_code/${key}`), `interface`)
+                const implementation_module_path = t_path_to_path.create_node_path( r_context_path.Context_Path(`./out/source_code/${key}`), `implementation`)
 
                 return [
 
@@ -71,7 +76,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     $cr.remove.execute(
                         {
                             'path': {
-                                'path': implementation_module_path,
+                                'path': t_path_to_text.Node_Path(implementation_module_path),
                                 'escape spaces in path': true,
                             },
                             'error if not exists': false,
@@ -83,7 +88,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     $cr.remove.execute(
                         {
                             'path': {
-                                'path': interface_module_path,
+                                'path': t_path_to_text.Node_Path(interface_module_path),
                                 'escape spaces in path': true,
                             },
                             'error if not exists': false,
@@ -145,7 +150,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                                 'escape spaces in path': true,
                             },
                             'target': {
-                                'path': implementation_module_path + "/generic",
+                                'path': t_path_to_text.Context_Path(t_path_to_path.node_path_to_context_path(implementation_module_path)) + "/generic",
                                 'escape spaces in path': true,
                             },
                             'options': {
@@ -165,7 +170,8 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                                 'escape spaces in path': true,
                             },
                             'target': {
-                                'path': interface_module_path + "/core",
+                                
+                                'path': t_path_to_text.Node_Path(interface_module_path) + "/core",
                                 'escape spaces in path': true,
                             },
                             'options': {
