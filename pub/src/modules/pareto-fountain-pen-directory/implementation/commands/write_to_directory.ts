@@ -32,7 +32,7 @@ export const $$: _et.Command_Procedure<D.Directory_Error, D.Directory_Parameters
                     $cr.remove.execute(
                         {
                             'path': {
-                                'path': t_path_to_text.Node_Path($p.path),
+                                'path': $p.path,
                                 'escape spaces in path': true,
                             },
                             'error if not exists': false

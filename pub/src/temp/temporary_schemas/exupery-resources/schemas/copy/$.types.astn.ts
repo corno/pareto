@@ -14,8 +14,8 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 export const $: g_.Types<pd.Source_Location> = types(
     {
         "Parameters": type(t.group({
-            "source": prop(t.component("Path")),
-            "target": prop(t.component("Path")),
+            "source": prop(t.component_external("path", "Node Path Parameter")),
+            "target": prop(t.component_external("path", "Node Path Parameter")),
             "options": prop(t.group({
                 "recursive": prop(t.optional(t.boolean())),
                 "force": prop(t.optional(t.boolean())),
@@ -29,11 +29,6 @@ export const $: g_.Types<pd.Source_Location> = types(
             "permission denied": tstate(t.nothing()),
             "file too large": tstate(t.nothing()),
             "device not ready": tstate(t.nothing()),
-        })),
-
-        "Path": type(t.group({
-            "path": prop(t.text_local(text('single line'))),
-            "escape spaces in path": prop(t.boolean()),
         })),
     }
 )

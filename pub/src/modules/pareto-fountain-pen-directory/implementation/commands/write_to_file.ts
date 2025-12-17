@@ -14,7 +14,7 @@ import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/imp
 import * as r_path from "exupery-resources/dist/implementation/transformers/path/text"
 
 
-import * as t_path_to_text from "exupery-resources/dist/implementation/transformers/path/text"
+import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
 
 export type Query_Resources = null
 
@@ -37,7 +37,7 @@ export const $$: _et.Command_Procedure<D.File_Error, D.File_Parameters, Command_
             $cr['write file'].execute(
                 {
                     'path': {
-                        'path': `${t_path_to_text.Node_Path($p['directory path'])}/${$p.filename}`,
+                        'path': t_path_to_path.create_node_path(t_path_to_path.node_path_to_context_path($p['directory path']), $p.filename),
                         'escape spaces in path': true,
                     },
                     'data': op_join_list_of_texts(

@@ -14,7 +14,7 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 export const $: g_.Types<pd.Source_Location> = types(
     {
         "Parameters": type(t.group({
-            "path": prop(t.component("Path")),
+            "path": prop(t.component_external("path", "Node Path Parameter")),
         })),
 
         "Error": type(t.state_group({
@@ -23,14 +23,15 @@ export const $: g_.Types<pd.Source_Location> = types(
         })),
 
         "Result": type(t.dictionary(t.group({
-            "concatenated path": prop(t.text_local(text('single line'))),
             "node type": prop(t.component("Node Type")),
-        }))),
 
-        "Path": type(t.group({
-            "path": prop(t.text_local(text('single line'))),
-            "escape spaces in path": prop(t.boolean()),
-        })),
+            /**
+             * The context directory is the directory that was read to produce the listing
+             * it is provided so that there is no need to store a variable
+             */
+            "context directory": prop(t.component_external("path", "Context Path")),
+            "path": prop(t.component_external("path", "Node Path")),
+        }))),
 
         "Node Type": type(t.state_group({
             "file": tstate(t.nothing()),

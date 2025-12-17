@@ -16,6 +16,7 @@ import * as d_parse_result from "astn/dist/interface/generated/pareto/schemas/au
 import * as d_parse_tree from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
 import * as d_read_file from "exupery-resources/dist/interface/generated/pareto/schemas/read_file/data_types/source"
 import * as d_schema from "../../generated/pareto/schemas/schema/data_types/source"
+import * as d_path from "exupery-resources/dist/interface/generated/pareto/schemas/path/data_types/source"
 
 
 import * as _out from "../../../temp/temp_unmashall_result_types"
@@ -36,7 +37,7 @@ export type Error =
 
 export type Parameters = {
     'content': string,
-    'file path': string,
+    'file path': d_path.Node_Path,
 }
 
 export type Resources = {

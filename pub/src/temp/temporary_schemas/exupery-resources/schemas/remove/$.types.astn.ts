@@ -14,18 +14,13 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 export const $: g_.Types<pd.Source_Location> = types(
     {
         "Parameters": type(t.group({
-            "path": prop(t.component("Path")),
+            "path": prop(t.component_external("path", "Node Path Parameter")),
             "error if not exists": prop(t.boolean()),
         })),
 
         "Error": type(t.state_group({
             "node does not exist": tstate(t.nothing()),
             "permission denied": tstate(t.nothing()),
-        })),
-
-        "Path": type(t.group({
-            "path": prop(t.text_local(text('single line'))),
-            "escape spaces in path": prop(t.boolean()),
         })),
     }
 )

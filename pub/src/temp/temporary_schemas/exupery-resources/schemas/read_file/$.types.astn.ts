@@ -13,7 +13,7 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 
 export const $: g_.Types<pd.Source_Location> = types(
     {
-        "Parameters": type(t.component("Path")),
+        "Parameters": type(t.component_external("path", "Node Path Parameter")),
 
         "Error": type(t.state_group({
             "file does not exist": tstate(t.nothing()),
@@ -25,10 +25,6 @@ export const $: g_.Types<pd.Source_Location> = types(
 
         "Result": type(t.text_local(text('multi line'))),
 
-        "Path": type(t.group({
-            "path": prop(t.text_local(text('single line'))),
-            "escape spaces in path": prop(t.boolean()),
-        })),
     }
 )
 

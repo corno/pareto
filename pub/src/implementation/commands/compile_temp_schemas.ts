@@ -1,31 +1,13 @@
-//core
 import * as _ea from 'exupery-core-alg'
 import * as _ed from 'exupery-core-data'
 import * as _easync from 'exupery-core-async'
 import * as _et from 'exupery-core-types'
 
 //data
+
 import { $ as poormans_modules } from "../../temp/temporary_schemas/all"
 
-import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
-import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
-import * as d_main from "exupery-resources/dist/interface/temp_main"
-
-import * as d_remove from "exupery-resources/dist/interface/generated/pareto/schemas/remove/data_types/source"
-import * as d_copy from "exupery-resources/dist/interface/generated/pareto/schemas/copy/data_types/source"
-import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"
-import * as d_write_to_directory from "../../modules/pareto-fountain-pen-directory/interface/temp_types"
-
-import * as r_pareto_module from "../../temp/resolvers/module"
-
-import * as t_pareto_module_to_fountain_pen_block__implementation from "../transformations/module/temp_typescript_implementation"
-import * as t_pareto_module_to_fountain_pen_block__interface from "../transformations/module/temp_typescript_interface"
-
-
-import * as t_path_to_text from "exupery-resources/dist/implementation/transformers/path/text"
-import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
-
-
+//interface
 
 export type Package_Error =
     | ['could not log', null]
@@ -49,7 +31,26 @@ export type Command_Resources = {
     'write to directory': _et.Command<d_write_to_directory.Directory_Error, d_write_to_directory.Directory_Parameters>
 }
 
+//dependencies
+
+import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
+import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
+import * as d_main from "exupery-resources/dist/interface/temp_main"
+
+import * as d_remove from "exupery-resources/dist/interface/generated/pareto/schemas/remove/data_types/source"
+import * as d_copy from "exupery-resources/dist/interface/generated/pareto/schemas/copy/data_types/source"
+import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"
+import * as d_write_to_directory from "../../modules/pareto-fountain-pen-directory/interface/temp_types"
+
+import * as r_pareto_module from "../../temp/resolvers/module"
+
+import * as t_pareto_module_to_fountain_pen_block__implementation from "../transformations/module/temp_typescript_implementation"
+import * as t_pareto_module_to_fountain_pen_block__interface from "../transformations/module/temp_typescript_interface"
+
+import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
+
 import * as r_context_path from "exupery-resources/dist/implementation/refiners/context_path/text"
+
 
 export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_Resources, Query_Resources> = _easync.create_command_procedure(
     ($p, $cr, $qr) => [
@@ -76,7 +77,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     $cr.remove.execute(
                         {
                             'path': {
-                                'path': t_path_to_text.Node_Path(implementation_module_path),
+                                'path': implementation_module_path,
                                 'escape spaces in path': true,
                             },
                             'error if not exists': false,
@@ -88,7 +89,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     $cr.remove.execute(
                         {
                             'path': {
-                                'path': t_path_to_text.Node_Path(interface_module_path),
+                                'path': interface_module_path,
                                 'escape spaces in path': true,
                             },
                             'error if not exists': false,
@@ -146,11 +147,11 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     $cr.copy.execute(
                         {
                             'source': {
-                                'path': "./pub/src/implementation/generated/pareto/generic",
+                                'path': t_path_to_path.create_node_path( r_context_path.Context_Path(`./pub/src/implementation/generated/pareto`), `generic`),
                                 'escape spaces in path': true,
                             },
                             'target': {
-                                'path': t_path_to_text.Context_Path(t_path_to_path.node_path_to_context_path(implementation_module_path)) + "/generic",
+                                'path': t_path_to_path.create_node_path(t_path_to_path.node_path_to_context_path(implementation_module_path), `generic`),
                                 'escape spaces in path': true,
                             },
                             'options': {
@@ -166,12 +167,12 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     $cr.copy.execute(
                         {
                             'source': {
-                                'path': "./pub/src/interface/generated/pareto/core",
+                                'path': t_path_to_path.create_node_path( r_context_path.Context_Path(`./pub/src/interface/generated/pareto`), `core`),
                                 'escape spaces in path': true,
                             },
                             'target': {
                                 
-                                'path': t_path_to_text.Node_Path(interface_module_path) + "/core",
+                                'path': t_path_to_path.create_node_path(t_path_to_path.node_path_to_context_path(interface_module_path), `core`),
                                 'escape spaces in path': true,
                             },
                             'options': {

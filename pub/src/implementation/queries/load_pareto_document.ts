@@ -31,22 +31,14 @@ import * as t_path_to_text from "exupery-resources/dist/implementation/transform
 export const $$: api.Signature = _easync.create_query_function(
     ($p, $qr) => {
 
-        const parsed_file_path = r_path_from_text.Node_Path(
-            $p['file path'],
-            {
-                'pedantic': true,
-            },
-            () => _ea.deprecated_panic("could not parse file path")
-        )
-
-        const schema_path = create_node_path(parsed_file_path.context, "astn-schema")
+        const schema_path = create_node_path($p['file path'].context, "astn-schema")
 
         const schema_path_text = t_path_to_text.Node_Path(schema_path)
 
 
         return $qr['read file'](
             {
-                'path': schema_path_text,
+                'path': schema_path,
                 'escape spaces in path': true,
             },
             (): d.Error => ['no schema file', {

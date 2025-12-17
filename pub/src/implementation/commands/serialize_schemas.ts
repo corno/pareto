@@ -20,14 +20,14 @@ import { Signature } from "../../interface/algorithms/procedures/serialize_schem
 //data
 import { $ as poormans_modules } from "../../temp/temporary_schemas/all"
 
-import * as serialize from "../generated/pareto/generic/serialize"
 
 
-//resolvers
+//dependencies
 import * as r_module from "../../temp/resolvers/module"
-
-//marshall
 import * as m_module from "../generated/pareto/schemas/module/marshall"
+import * as serialize from "../generated/pareto/generic/serialize"
+import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
+import * as r_path from "exupery-resources/dist/implementation/refiners/context_path/text"
 
 export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_Resources, Query_Resources> = _easync.create_command_procedure(
     ($p, $cr, $qr) => [
@@ -39,7 +39,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     {
                         'path': {
                             'escape spaces in path': true,
-                            'path': `${$['target path']}/module.astn`
+                            'path': t_path_to_path.create_node_path(r_path.Context_Path($['target path']), `module.astn`)
                         },
                         'data': serialize.Document(
                             m_module.Module(

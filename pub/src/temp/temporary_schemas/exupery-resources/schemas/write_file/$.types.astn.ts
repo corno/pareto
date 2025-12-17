@@ -14,17 +14,12 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 export const $: g_.Types<pd.Source_Location> = types(
     {
         "Parameters": type(t.group({
-            "path": prop(t.component("Path")),
+            "path": prop(t.component_external("path", "Node Path Parameter")),
             "data": prop(t.text_local(text('multi line'))),
         })),
 
         "Error": type(t.state_group({
             "permission denied": tstate(t.nothing()),
-        })),
-
-        "Path": type(t.group({
-            "path": prop(t.text_local(text('single line'))),
-            "escape spaces in path": prop(t.boolean()),
         })),
     }
 )
