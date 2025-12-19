@@ -32,6 +32,7 @@ export const $$: _et.Command_Procedure<D.Node_Error, D.Node_Parameters, Command_
                     return _ea.ss($, ($) => {
                         return p_write_to_file($cr, $qr).execute(
                             {
+                                'escape spaces in path': $p['escape spaces in path'],
                                 'group': $,
                                 'directory path': $p.path,
                                 'filename': $p.key,
@@ -45,6 +46,7 @@ export const $$: _et.Command_Procedure<D.Node_Error, D.Node_Parameters, Command_
                     return _ea.ss($, ($) => {
                         return p_write_to_directory($cr, $qr).execute(
                             {
+                                'escape spaces in path': $p['escape spaces in path'],
                                 'directory': $,
                                 'path': create_node_path(node_path_to_context_path($p.path), $p.key),
                                 'indentation': $p.indentation,

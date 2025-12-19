@@ -19,26 +19,35 @@ export type Node_Error =
     | ['file', File_Error]
 
 export type File_Parameters = {
-    'group': d_in.Group,
+    'escape spaces in path': boolean
     'directory path': d_path.Node_Path
     'filename': string
+
+    'group': d_in.Group,
     'indentation': string
     'newline': string
 }
 
 export type Directory_Parameters = {
+    'escape spaces in path': boolean
     'path': d_path.Node_Path
     'directory': d_in.Directory,
+
     'indentation': string
     'newline': string
+
     'remove before creating': boolean
 }
 
 export type Node_Parameters = {
-    'node': d_in.Node,
+    'escape spaces in path': boolean
     'path': d_path.Node_Path
     'key': string
+
+    'node': d_in.Node,
+
     'indentation': string
     'newline': string
+    
     'remove before creating': boolean
 }

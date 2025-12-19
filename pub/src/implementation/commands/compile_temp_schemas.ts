@@ -94,6 +94,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     //write new interface files
                     $cr['write to directory'].execute(
                         {
+                            'escape spaces in path': true,
                             'path': interface_module_path,
                             'directory': t_pareto_module_to_fountain_pen_block__interface.Module(
                                 r_pareto_module.Module(
@@ -117,6 +118,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     //write new implementation files
                     $cr['write to directory'].execute(
                         {
+                            'escape spaces in path': true,
                             'path': implementation_module_path,
                             'directory': t_pareto_module_to_fountain_pen_block__implementation.Module(
                                 r_pareto_module.Module(

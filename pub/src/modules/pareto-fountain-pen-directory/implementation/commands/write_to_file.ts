@@ -15,6 +15,7 @@ import * as r_path from "exupery-resources/dist/implementation/transformers/path
 
 
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
+import { replace_space_in_context_path } from '../transformations/path/path'
 
 export type Query_Resources = null
 
@@ -33,7 +34,12 @@ export const $$: _et.Command_Procedure<D.File_Error, D.File_Parameters, Command_
             ),
             $cr['write file'].execute(
                 {
-                    'path': t_path_to_path.create_node_path(t_path_to_path.node_path_to_context_path($p['directory path']), $p.filename),
+                    'path': _ea.cc(
+                        t_path_to_path.create_node_path(t_path_to_path.node_path_to_context_path($p['directory path']), $p.filename),
+                        ($) => $p['escape spaces in path']
+                            ? replace_space_in_context_path($)
+                            : $,
+                    ),
                     'data': op_join_list_of_texts(
                         t_block_2_lines.Group($p.group, { 'indentation': $p.indentation }).map(($) => $ + $p.newline),
                     ),

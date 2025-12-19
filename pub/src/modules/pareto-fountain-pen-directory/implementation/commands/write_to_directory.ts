@@ -13,6 +13,7 @@ import { $$ as p_write_to_node } from "./write_to_node"
 // import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/write_to_directory"
 
 import * as t_path_to_text from "exupery-resources/dist/implementation/transformers/path/text"
+import { replace_space_in_context_path } from '../transformations/path/path'
 
 
 export type Query_Resources = null
@@ -31,7 +32,9 @@ export const $$: _et.Command_Procedure<D.Directory_Error, D.Directory_Parameters
                 [
                     $cr.remove.execute(
                         {
-                            'path': $p.path,
+                            'path': $p['escape spaces in path']
+                                ? replace_space_in_context_path($p.path)
+                                : $p.path,
                             'error if not exists': false
                         },
                         ($) => ['remove', $],
@@ -50,8 +53,11 @@ export const $$: _et.Command_Procedure<D.Directory_Error, D.Directory_Parameters
                         null,
                     ).execute(
                         {
+                            'escape spaces in path': $p['escape spaces in path'],
                             'node': $,
-                            'path': $p.path,
+                            'path': $p['escape spaces in path']
+                                ? replace_space_in_context_path($p.path)
+                                : $p.path,
                             'key': key,
                             'indentation': $p.indentation,
                             'newline': $p.newline,
