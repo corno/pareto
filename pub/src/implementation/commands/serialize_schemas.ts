@@ -37,10 +37,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
 
                 $cr['write file'].execute(
                     {
-                        'path': {
-                            'escape spaces in path': true,
-                            'path': t_path_to_path.create_node_path(r_path.Context_Path($['target path']), `module.astn`)
-                        },
+                        'path': t_path_to_path.create_node_path(r_path.Context_Path($['target path']), `module.astn`),
                         'data': serialize.Document(
                             m_module.Module(
                                 r_module.Module(

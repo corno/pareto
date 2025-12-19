@@ -68,18 +68,15 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
             poormans_modules,
             ($, key) => {
 
-                const interface_module_path = t_path_to_path.create_node_path( r_context_path.Context_Path(`./out/source_code/${key}`), `interface`)
-                const implementation_module_path = t_path_to_path.create_node_path( r_context_path.Context_Path(`./out/source_code/${key}`), `implementation`)
+                const interface_module_path = t_path_to_path.create_node_path(r_context_path.Context_Path(`./out/source_code/${key}`), `interface`)
+                const implementation_module_path = t_path_to_path.create_node_path(r_context_path.Context_Path(`./out/source_code/${key}`), `implementation`)
 
                 return [
 
                     //remove old implementation files
                     $cr.remove.execute(
                         {
-                            'path': {
-                                'path': implementation_module_path,
-                                'escape spaces in path': true,
-                            },
+                            'path': implementation_module_path,
                             'error if not exists': false,
                         },
                         ($) => ['could not remove implementation', null]
@@ -88,10 +85,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     //remove old interface files
                     $cr.remove.execute(
                         {
-                            'path': {
-                                'path': interface_module_path,
-                                'escape spaces in path': true,
-                            },
+                            'path': interface_module_path,
                             'error if not exists': false,
                         },
                         ($) => ['could not remove interface', null]
@@ -146,14 +140,8 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     //copy generic implementation files
                     $cr.copy.execute(
                         {
-                            'source': {
-                                'path': t_path_to_path.create_node_path( r_context_path.Context_Path(`./pub/src/implementation/generated/pareto`), `generic`),
-                                'escape spaces in path': true,
-                            },
-                            'target': {
-                                'path': t_path_to_path.create_node_path(t_path_to_path.node_path_to_context_path(implementation_module_path), `generic`),
-                                'escape spaces in path': true,
-                            },
+                            'source': t_path_to_path.create_node_path(r_context_path.Context_Path(`./pub/src/implementation/generated/pareto`), `generic`),
+                            'target': t_path_to_path.create_node_path(t_path_to_path.node_path_to_context_path(implementation_module_path), `generic`),
                             'options': {
                                 'recursive': _ea.set(true),
                                 'force': _ea.not_set(),
@@ -166,15 +154,8 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     //copy core interface files
                     $cr.copy.execute(
                         {
-                            'source': {
-                                'path': t_path_to_path.create_node_path( r_context_path.Context_Path(`./pub/src/interface/generated/pareto`), `core`),
-                                'escape spaces in path': true,
-                            },
-                            'target': {
-                                
-                                'path': t_path_to_path.create_node_path(t_path_to_path.node_path_to_context_path(interface_module_path), `core`),
-                                'escape spaces in path': true,
-                            },
+                            'source': t_path_to_path.create_node_path(r_context_path.Context_Path(`./pub/src/interface/generated/pareto`), `core`),
+                            'target': t_path_to_path.create_node_path(t_path_to_path.node_path_to_context_path(interface_module_path), `core`),
                             'options': {
                                 'recursive': _ea.set(true),
                                 'force': _ea.not_set(),

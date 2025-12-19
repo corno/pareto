@@ -14,7 +14,7 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 export const $: g_.Types<pd.Source_Location> = types(
     {
         "Parameters": type(t.group({
-            "path": prop(t.component_external("path", "Node Path Parameter")),
+            "path": prop(t.component_external("path", "Node Path")),
         })),
 
         "Error": type(t.state_group({
@@ -36,6 +36,7 @@ export const $: g_.Types<pd.Source_Location> = types(
         "Node Type": type(t.state_group({
             "file": tstate(t.nothing()),
             "directory": tstate(t.nothing()),
+            "other": tstate(t.nothing()),
         })),
     }
 )

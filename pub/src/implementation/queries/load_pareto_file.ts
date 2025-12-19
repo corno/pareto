@@ -38,10 +38,7 @@ import { $$ as q_load_pareto_document } from "./load_pareto_document"
 
 export const $$: Signature = _easync.create_query_function(
     ($p, $qr) => $qr['read file'](
-        {
-            'path': $p['file path'],
-            'escape spaces in path': true,
-        },
+        $p['file path'],
         (): d.Error => ['no file', null]
     ).query(
         ($) => {

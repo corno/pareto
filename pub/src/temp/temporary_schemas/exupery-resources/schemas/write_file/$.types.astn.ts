@@ -14,7 +14,7 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 export const $: g_.Types<pd.Source_Location> = types(
     {
         "Parameters": type(t.group({
-            "path": prop(t.component_external("path", "Node Path Parameter")),
+            "path": prop(t.component_external("path", "Node Path")),
             "data": prop(t.text_local(text('multi line'))),
         })),
 

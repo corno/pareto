@@ -14,8 +14,8 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 export const $: g_.Types<pd.Source_Location> = types(
     {
         "Parameters": type(t.group({
-            "source": prop(t.component_external("path", "Node Path Parameter")),
-            "target": prop(t.component_external("path", "Node Path Parameter")),
+            "source": prop(t.component_external("path", "Node Path")),
+            "target": prop(t.component_external("path", "Node Path")),
             "options": prop(t.group({
                 "recursive": prop(t.optional(t.boolean())),
                 "force": prop(t.optional(t.boolean())),

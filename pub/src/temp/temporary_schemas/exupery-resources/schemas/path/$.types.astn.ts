@@ -14,16 +14,6 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 export const $: g_.Types<pd.Source_Location> = types(
     {
 
-        "Node Path Parameter": type(t.group({
-            "path": prop(t.component("Node Path")),
-            "escape spaces in path": prop(t.boolean()),
-        })),
-        
-        "Context Path Parameter": type(t.group({
-            "path": prop(t.component("Context Path")),
-            "escape spaces in path": prop(t.boolean()),
-        })),
-
         // "Optional Node Path": type(t.group({
         //     "start": prop(t.component("Start")),
         //     "subpath": prop(t.component("Node Subpath")),

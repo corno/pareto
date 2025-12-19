@@ -37,10 +37,7 @@ export const $$: api.Signature = _easync.create_query_function(
 
 
         return $qr['read file'](
-            {
-                'path': schema_path,
-                'escape spaces in path': true,
-            },
+            schema_path,
             (): d.Error => ['no schema file', {
                 'file location': schema_path_text,
             }]

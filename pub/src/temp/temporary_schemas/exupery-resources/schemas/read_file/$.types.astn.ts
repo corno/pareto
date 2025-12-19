@@ -13,7 +13,7 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 
 export const $: g_.Types<pd.Source_Location> = types(
     {
-        "Parameters": type(t.component_external("path", "Node Path Parameter")),
+        "Parameters": type(t.component_external("path", "Node Path")),
 
         "Error": type(t.state_group({
             "file does not exist": tstate(t.nothing()),
