@@ -13,9 +13,10 @@ import { $ as m_json_to_astn } from "./json-to-astn/module.astn"
 import { $ as m_pareto } from "./pareto/module.astn"
 import { $ as m_pareto_boekhouding } from "./pareto-boekhouding/module.astn"
 import { $ as m_pareto_fountain_pen } from "./pareto-fountain-pen/module.astn"
-import { $ as m_pareto_static_html } from "./pareto-static-html/module.astn"
+import { $ as m_pareto_graphviz } from "./pareto-graphviz/module.astn"
 import { $ as m_pareto_json } from "./pareto-json/module.astn"
 import { $ as m_pareto_lionweb } from "./pareto-lionweb/module.astn"
+import { $ as m_pareto_static_html } from "./pareto-static-html/module.astn"
 import { $ as m_pareto_targets } from "./pareto-targets/module.astn"
 import { $ as m_pareto_vscode_backend } from "./pareto-vscode-backend/module.astn"
 import { m } from 'exupery/dist/shorthands/implementation'
@@ -69,17 +70,21 @@ export const $ = _edata.d<{
         'target path': `../pareto-fountain-pen`,
         'module': m_pareto_fountain_pen,
     },
-    "pareto-static-html": {
-        'target path': `../pareto-static-html`,
-        'module': m_pareto_static_html,
-    },
     "pareto-json": {
         'target path': `../pareto-json`,
         'module': m_pareto_json,
     },
+    "pareto-graphviz": {
+        'target path': `../pareto-graphviz`,
+        'module': m_pareto_graphviz,
+    },
     "pareto-lionweb": {
         'target path': `../pareto-lionweb`,
         'module': m_pareto_lionweb,
+    },
+    "pareto-static-html": {
+        'target path': `../pareto-static-html`,
+        'module': m_pareto_static_html,
     },
     "pareto-targets": {
         'target path': `../pareto-targets`,
