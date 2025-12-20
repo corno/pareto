@@ -12,6 +12,7 @@ import { $ as m_git } from "./git/module.astn"
 import { $ as m_json_to_astn } from "./json-to-astn/module.astn"
 import { $ as m_pareto } from "./pareto/module.astn"
 import { $ as m_pareto_boekhouding } from "./pareto-boekhouding/module.astn"
+import { $ as m_development_tools } from "./pareto-development-tools/module.astn"
 import { $ as m_pareto_fountain_pen } from "./pareto-fountain-pen/module.astn"
 import { $ as m_pareto_graphviz } from "./pareto-graphviz/module.astn"
 import { $ as m_pareto_json } from "./pareto-json/module.astn"
@@ -65,6 +66,10 @@ export const $ = _edata.d<{
     "pareto-boekhouding": {
         'target path': `../pareto-boekhouding`,
         'module': m_pareto_boekhouding,
+    },
+    "pareto-development-tools": {
+        'target path': `../pareto-development-tools`,
+        'module': m_development_tools,
     },
     "pareto-fountain-pen": {
         'target path': `../pareto-fountain-pen`,
