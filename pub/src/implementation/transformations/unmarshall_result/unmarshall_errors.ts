@@ -227,7 +227,7 @@ export const Node = (
             case 'component': return _ea.ss($, ($) => {
                 return Node($.node, $p)
             })
-            case 'type parameter': return _ea.ss($, ($) => _edev.implement_me())
+            case 'type parameter': return _ea.ss($, ($) => _edev.implement_me("xx"))
             case 'optional': return _ea.ss($, ($) => _ea.cc($['found value type'], ($) => {
                 switch ($[0]) {
                     case 'valid': return _ea.ss($, ($): _out.Errors => _ea.cc($, ($) => {

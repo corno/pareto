@@ -6,15 +6,16 @@ import * as _easync from 'exupery-core-async'
 
 import * as D from "../../interface/temp_types"
 
-import { $$ as p_write_to_file } from "./write_to_file"
-import { $$ as p_write_to_directory } from "./write_to_directory"
-// import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/write_to_node"
-
 import * as d_remove from "exupery-resources/dist/interface/generated/pareto/schemas/remove/data_types/source"
 import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"
 import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
 
-import { extend_path, create_node_path, node_path_to_context_path } from "exupery-resources/dist/implementation/transformers/path/path"
+import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
+
+import { $$ as p_write_to_file } from "./write_to_file"
+import { $$ as p_write_to_directory } from "./write_to_directory"
+// import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/write_to_node"
+
 
 export type Query_Resources = null
 
@@ -48,7 +49,7 @@ export const $$: _et.Command_Procedure<D.Node_Error, D.Node_Parameters, Command_
                             {
                                 'escape spaces in path': $p['escape spaces in path'],
                                 'directory': $,
-                                'path': create_node_path(node_path_to_context_path($p.path), $p.key),
+                                'path': t_path_to_path.extend_node_path($p.path, { 'addition': $p.key }),
                                 'indentation': $p.indentation,
                                 'newline': $p.newline,
                                 'remove before creating': false,

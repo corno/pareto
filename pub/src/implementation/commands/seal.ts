@@ -18,7 +18,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
     ($p, $cr, $qr) => [
         $cr['log error'].execute(
             {
-                'lines': _ea.list_literal([`IMPLEMENT ME`])
+                'lines': _ea.list_literal([`IMPLEMENT ME: seal`])
             },
             ($) => {
                 return {

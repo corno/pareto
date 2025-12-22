@@ -143,7 +143,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     $cr.copy.execute(
                         {
                             'source': t_path_to_path.create_node_path(r_context_path.Context_Path(`./pub/src/implementation/generated/pareto`), `generic`),
-                            'target': t_path_to_path.create_node_path(t_path_to_path.node_path_to_context_path(implementation_module_path), `generic`),
+                            'target': t_path_to_path.extend_node_path(implementation_module_path, { 'addition': `generic` }),
                             'options': {
                                 'recursive': _ea.set(true),
                                 'force': _ea.not_set(),
@@ -157,7 +157,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     $cr.copy.execute(
                         {
                             'source': t_path_to_path.create_node_path(r_context_path.Context_Path(`./pub/src/interface/generated/pareto`), `core`),
-                            'target': t_path_to_path.create_node_path(t_path_to_path.node_path_to_context_path(interface_module_path), `core`),
+                            'target': t_path_to_path.extend_node_path(interface_module_path, { 'addition': `core` }),
                             'options': {
                                 'recursive': _ea.set(true),
                                 'force': _ea.not_set(),
