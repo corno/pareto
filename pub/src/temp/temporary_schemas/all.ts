@@ -18,6 +18,7 @@ import { $ as m_pareto_graphviz } from "./pareto-graphviz/module.astn"
 import { $ as m_pareto_json } from "./pareto-json/module.astn"
 import { $ as m_pareto_lionweb } from "./pareto-lionweb/module.astn"
 import { $ as m_pareto_static_html } from "./pareto-static-html/module.astn"
+import { $ as m_pareto_test } from "./pareto-test/module.astn"
 import { $ as m_pareto_targets } from "./pareto-targets/module.astn"
 import { $ as m_pareto_vscode_backend } from "./pareto-vscode-backend/module.astn"
 import { m } from 'exupery/dist/shorthands/implementation'
@@ -94,6 +95,10 @@ export const $ = _edata.d<{
     "pareto-targets": {
         'target path': `../pareto-targets`,
         'module': m_pareto_targets,
+    },
+    "pareto-test": {
+        'target path': `../pareto-test`,
+        'module': m_pareto_test,
     },
     "pareto-vscode-backend": {
         'target path': `../pareto-vscode-backend`,
