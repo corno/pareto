@@ -27,7 +27,7 @@ export type Parameters = {
     'content': string
 }
 
-export const $$: _et.Refiner<d.Node, d.Error, Parameters> = ($p) => load_schema(
+export const $$: _et.Refiner_Old<d.Node, d.Error, Parameters> = ($p) => load_schema(
     $p['schema content'],
 ).deprecated_transform_error(
     ($): d.Error => ['schema error', {
