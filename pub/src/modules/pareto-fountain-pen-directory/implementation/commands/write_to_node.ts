@@ -10,7 +10,7 @@ import * as d_remove from "exupery-resources/dist/interface/generated/pareto/sch
 import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"
 import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
 
-import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
+import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 
 import { $$ as p_write_to_file } from "./write_to_file"
 import { $$ as p_write_to_directory } from "./write_to_directory"
@@ -25,7 +25,7 @@ export type Command_Resources = {
     'write file': _et.Command<d_write_file.Error, d_write_file.Parameters>
 }
 
-export const $$: _et.Command_Procedure<D.Node_Error, D.Node_Parameters, Command_Resources, Query_Resources> = _easync.create_command_procedure(
+export const $$: _et.Command_Procedure<_et.Command<D.Node_Error, D.Node_Parameters>, Command_Resources, Query_Resources> = _easync.create_command_procedure(
     ($p, $cr, $qr) => [
         _ea.cc($p.node, ($) => {
             switch ($[0]) {

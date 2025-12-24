@@ -6,7 +6,7 @@ import * as _et from 'exupery-core-types'
 
 //data types
 import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
-import * as d_main from "exupery-resources/dist/interface/temp_main"
+import * as d_main from "exupery-resources/dist/interface/to_be_generated/temp_main"
 
 export type Query_Resources = null
 
@@ -26,10 +26,10 @@ import { $ as poormans_modules } from "../../temp/temporary_schemas/all"
 import * as r_module from "../../temp/resolvers/module"
 import * as m_module from "../generated/pareto/schemas/module/marshall"
 import * as serialize from "../generated/pareto/generic/serialize"
-import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
-import * as r_path from "exupery-resources/dist/implementation/refiners/context_path/text"
+import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
+import * as ds_path from "exupery-resources/dist/implementation/deserializers/schemas/context_path"
 
-export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_Resources, Query_Resources> = _easync.create_command_procedure(
+export const $$: _et.Command_Procedure<_et.Command<d_main.Error, d_main.Parameters>, Command_Resources, Query_Resources> = _easync.create_command_procedure(
     ($p, $cr, $qr) => [
         _easync.p.dictionary.parallel(
             poormans_modules,
@@ -37,7 +37,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
 
                 $cr['write file'].execute(
                     {
-                        'path': t_path_to_path.create_node_path(r_path.Context_Path($['target path']), `module.astn`),
+                        'path': t_path_to_path.create_node_path(ds_path.Context_Path($['target path']), `module.astn`),
                         'data': serialize.Document(
                             m_module.Module(
                                 r_module.Module(

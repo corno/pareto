@@ -28,7 +28,7 @@ export type Resources = {
     'read file': _et.Query<d_read_file.Result, d_read_file.Error, d_read_file.Parameters>
 }
 
-export type Signature = _et.Query_Function<d_out.Node, d.Error, d.Parameters, Resources>
+export type Signature = _et.Query_Function<_et.Query<d_out.Node, d.Error, d.Parameters>, Resources>
 
 //depencencies
 

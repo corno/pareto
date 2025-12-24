@@ -49,4 +49,4 @@ export type Schema_And_Instance = {
     'instance': d_parse_tree.Document
 }
 
-export type Signature = _et.Query_Function<_out.Node, Error, Parameters, Resources>
+export type Signature = _et.Query_Function<_et.Query<_out.Node, Error, Parameters>, Resources>

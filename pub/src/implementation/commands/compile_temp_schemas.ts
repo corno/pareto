@@ -35,7 +35,7 @@ export type Command_Resources = {
 
 import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
 import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
-import * as d_main from "exupery-resources/dist/interface/temp_main"
+import * as d_main from "exupery-resources/dist/interface/to_be_generated/temp_main"
 
 import * as d_remove from "exupery-resources/dist/interface/generated/pareto/schemas/remove/data_types/source"
 import * as d_copy from "exupery-resources/dist/interface/generated/pareto/schemas/copy/data_types/source"
@@ -47,12 +47,12 @@ import * as r_pareto_module from "../../temp/resolvers/module"
 import * as t_pareto_module_to_fountain_pen_block__implementation from "../transformations/module/temp_typescript_implementation"
 import * as t_pareto_module_to_fountain_pen_block__interface from "../transformations/module/temp_typescript_interface"
 
-import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/path/path"
+import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 
-import * as r_context_path from "exupery-resources/dist/implementation/refiners/context_path/text"
+import * as ds_context_path from "exupery-resources/dist/implementation/deserializers/schemas/context_path"
 
 
-export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_Resources, Query_Resources> = _easync.create_command_procedure(
+export const $$: _et.Command_Procedure<_et.Command<d_main.Error, d_main.Parameters>, Command_Resources, Query_Resources> = _easync.create_command_procedure(
     ($p, $cr, $qr) => [
 
         $cr.log.execute(
@@ -68,8 +68,8 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
             poormans_modules,
             ($, key) => {
 
-                const interface_module_path = t_path_to_path.create_node_path(r_context_path.Context_Path(`./out/source_code/${key}`), `interface`)
-                const implementation_module_path = t_path_to_path.create_node_path(r_context_path.Context_Path(`./out/source_code/${key}`), `implementation`)
+                const interface_module_path = t_path_to_path.create_node_path(ds_context_path.Context_Path(`./out/source_code/${key}`), `interface`)
+                const implementation_module_path = t_path_to_path.create_node_path(ds_context_path.Context_Path(`./out/source_code/${key}`), `implementation`)
 
                 return [
 
@@ -142,7 +142,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     //copy generic implementation files
                     $cr.copy.execute(
                         {
-                            'source': t_path_to_path.create_node_path(r_context_path.Context_Path(`./pub/src/implementation/generated/pareto`), `generic`),
+                            'source': t_path_to_path.create_node_path(ds_context_path.Context_Path(`./pub/src/implementation/generated/pareto`), `generic`),
                             'target': t_path_to_path.extend_node_path(implementation_module_path, { 'addition': `generic` }),
                             'options': {
                                 'recursive': _ea.set(true),
@@ -156,7 +156,7 @@ export const $$: _et.Command_Procedure<d_main.Error, d_main.Parameters, Command_
                     //copy core interface files
                     $cr.copy.execute(
                         {
-                            'source': t_path_to_path.create_node_path(r_context_path.Context_Path(`./pub/src/interface/generated/pareto`), `core`),
+                            'source': t_path_to_path.create_node_path(ds_context_path.Context_Path(`./pub/src/interface/generated/pareto`), `core`),
                             'target': t_path_to_path.extend_node_path(interface_module_path, { 'addition': `core` }),
                             'options': {
                                 'recursive': _ea.set(true),
