@@ -16,7 +16,7 @@ import * as d from "../../interface/algorithms/queries/load_pareto_document"
 
 //depencencies
 
-import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/text/join_list_of_texts_with_separator"
+import { $$ as op_join_with_separator } from "pareto-standard-operations/dist/implementation/operations/impure/text/join_list_of_texts_with_separator"
 
 import { $$ as r_load_pareto_document } from "../refiners/load_pareto_document"
 import { create_node_path } from "exupery-resources/dist/implementation/transformers/path/path"
@@ -41,7 +41,7 @@ export const $$: api.Signature = _easync.create_query_function(
             (): d.Error => ['no schema file', {
                 'file location': schema_path_text,
             }]
-        ).refine(
+        ).deprecated_refine_old(
             ($) => r_load_pareto_document({
                 'schema content': $,
                 'schema path': schema_path_text,

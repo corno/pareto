@@ -18,7 +18,7 @@ import * as parse from "../generated/pareto/generic/parse/parse"
 
 import * as _out from "../../temp/temp_unmashall_result_types"
 
-import { $$ as op_pop_first_element } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/list/deprecated_pop_first_element"
+import { $$ as op_pop_first_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/deprecated_pop_first_element"
 
 type Error =
     | ['parse error', d_parse_result._T_Parse_Error]
@@ -36,7 +36,7 @@ export const $ = (
         }
     ).deprecated_transform_error(
         ($): Error => ['parse error', $]
-    ).refine<d_schema.Type, null>(
+    ).deprecated_refine_old<d_schema.Type, null>(
         ($) => {
 
             const resolved_schema_schema = r_pareto_schema.Type_Specification(

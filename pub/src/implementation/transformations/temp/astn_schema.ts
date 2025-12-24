@@ -12,12 +12,12 @@ import {
     wrap_reference,
 } from 'exupery-core-data/dist/shorthands/unresolved_transformation'
 
-import { $$ as op_flatten_dictionaries } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/flatten"
+import { $$ as op_flatten_dictionaries } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 
 import * as _in from "../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "../../../interface/generated/pareto/schemas/astn_schema/data_types/target"
 
-export const Schema: _et.Transformer_New<_in.Schema, _out.Schema<_edata.Source_Location>> = (
+export const Schema: _et.Transformer<_in.Schema, _out.Schema<_edata.Source_Location>> = (
     $
 ) => {
     return {
@@ -27,7 +27,7 @@ export const Schema: _et.Transformer_New<_in.Schema, _out.Schema<_edata.Source_L
     }
 }
 
-export const Globals: _et.Transformer_New<_in.Globals, _out.Globals<_edata.Source_Location>> = (
+export const Globals: _et.Transformer<_in.Globals, _out.Globals<_edata.Source_Location>> = (
     $
 ) => {
     return {
@@ -50,7 +50,7 @@ export const Globals: _et.Transformer_New<_in.Globals, _out.Globals<_edata.Sourc
     }
 }
 
-export const Imports: _et.Transformer_New<_in.Imports, _out.Imports<_edata.Source_Location>> = (
+export const Imports: _et.Transformer<_in.Imports, _out.Imports<_edata.Source_Location>> = (
     $
 ) => {
     return wrap_dictionary($.map(($) => ({
@@ -59,7 +59,7 @@ export const Imports: _et.Transformer_New<_in.Imports, _out.Imports<_edata.Sourc
     })))
 }
 
-export const Type: _et.Transformer_New<_in.Type, _out.Type<_edata.Source_Location>> = (
+export const Type: _et.Transformer<_in.Type, _out.Type<_edata.Source_Location>> = (
     $
 ) => {
     return {
@@ -67,7 +67,7 @@ export const Type: _et.Transformer_New<_in.Type, _out.Type<_edata.Source_Locatio
     }
 }
 
-export const Type_Node: _et.Transformer_New<_in.Type_Node, _out.Type_Node<_edata.Source_Location>> = (
+export const Type_Node: _et.Transformer<_in.Type_Node, _out.Type_Node<_edata.Source_Location>> = (
     $
 ) => {
     return wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG<_edata.Source_Location> => {
@@ -128,7 +128,7 @@ export const Type_Node: _et.Transformer_New<_in.Type_Node, _out.Type_Node<_edata
     }))
 }
 
-export const Text_Type: _et.Transformer_New<_in.Text_Type, _out.Text_Type<_edata.Source_Location>> = (
+export const Text_Type: _et.Transformer<_in.Text_Type, _out.Text_Type<_edata.Source_Location>> = (
     $
 ) => {
     return {

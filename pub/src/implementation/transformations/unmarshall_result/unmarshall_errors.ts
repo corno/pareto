@@ -5,8 +5,8 @@ import * as _in from "../../../temp/temp_unmashall_result_types"
 import * as _in_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
 import * as _out from "../../../interface/generated/pareto/schemas/unmarshall_errors/data_types/target"
 
-import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/list/flatten"
-import { $$ as op_dicionary_of_lists_to_list } from "pareto-standard-operations/dist/implementation/algorithms/operations/impure/dictionary/directory_of_lists_to_list"
+import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
+import { $$ as op_dicionary_of_lists_to_list } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/directory_of_lists_to_list"
 import { Signature } from "../../../interface/algorithms/transformations/unmarshall_result/unmarshall_errors"
 
 

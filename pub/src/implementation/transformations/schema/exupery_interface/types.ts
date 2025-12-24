@@ -8,8 +8,8 @@ import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface
 
 import * as sh from "exupery/dist/shorthands/interface"
 
-import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/flatten"
-import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/list/append_element"
+import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
+import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/operations/pure/list/append_element"
 import { Signature } from "../../../../interface/algorithms/transformations/schema/exupery_interface/types"
 
 

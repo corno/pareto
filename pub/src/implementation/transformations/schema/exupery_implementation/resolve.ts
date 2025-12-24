@@ -10,11 +10,11 @@ import * as _out_interface from "exupery/dist/interface/generated/pareto/schemas
 import { m, variable, i, s, temp_ordered_variable } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub as sub } from "exupery/dist/shorthands/interface"
 
-import { $$ as op_flatten_list } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/list/flatten"
-import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/flatten"
+import { $$ as op_flatten_list } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
+import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 
-import { $$ as op_pad_dictionary_identifiers } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/pad_identifiers"
-import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/list/append_element"
+import { $$ as op_pad_dictionary_identifiers } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/pad_identifiers"
+import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/operations/pure/list/append_element"
 import { Signature } from "../../../../interface/algorithms/transformations/schema/exupery_implementation/resolve"
 
 

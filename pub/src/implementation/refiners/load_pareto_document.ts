@@ -31,13 +31,13 @@ import { $ as load_schema } from "./load_schema"
 
 //implementation
 
-export const $$: _et.Refiner_Old<d.Node, d.Error, Parameters> = ($p) => load_schema(
+export const $$: _et.Deprecated_Refiner_Catcher<d.Node, d.Error, Parameters> = ($p) => load_schema(
     $p['schema content'],
 ).deprecated_transform_error(
     ($): d.Error => ['schema error', {
         'file location': $p['schema path'],
     }],
-).refine(
+).deprecated_refine_old(
     ($) => {
         const type = $
         return _ea.create_refinement_context<d_parse_tree._T_Document, d_parse_result.Parse_Error>((abort) => r_parse.Document(
@@ -52,7 +52,7 @@ export const $$: _et.Refiner_Old<d.Node, d.Error, Parameters> = ($p) => load_sch
         }))
     },
     ($): d.Error => ['parse error', $]
-).refine<d.Node, never>( //FIXME; unmarshaller should produce proper errors
+).deprecated_refine_old<d.Node, never>( //FIXME; unmarshaller should produce proper errors
     ($) => {
 
         return _ei.__create_success_refinement_result(tu_dynamic_unmarshall.Node(

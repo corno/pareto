@@ -18,8 +18,8 @@ import * as t_deserialize from "./deserialize"
 import * as t_marshall from "./marshall"
 import * as t_unmarshall from "./unmarshall"
 
-import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/list/append_element"
-import { $$ as op_filter_dictionary } from "pareto-standard-operations/dist/implementation/algorithms/operations/pure/dictionary/filter"
+import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/operations/pure/list/append_element"
+import { $$ as op_filter_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/filter"
 import { Signature } from "../../../../interface/algorithms/transformations/schema/exupery_implementation/main"
 
 
