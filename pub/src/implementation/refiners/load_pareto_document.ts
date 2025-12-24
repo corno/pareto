@@ -7,25 +7,29 @@ import * as _easync from 'exupery-core-async'
 import * as _ei from 'exupery-core-internals'
 
 
-import * as api from "../../interface/algorithms/queries/load_pareto_document"
 import * as d from "../../interface/algorithms/queries/load_pareto_document"
+import * as d_parse_result from "astn/dist/interface/generated/pareto/schemas/authoring_parse_result/data_types/target"
+import * as d_parse_tree from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
 
-
-//depencencies
-
-import * as tu_dynamic_unmarshall from "../transformations/temp/unmarshall_astn_ast"
-
-import * as parse from "astn/dist/implementation/algorithms/refiners/authoring_parse_tree/text/refiners"
-
-import { $ as load_schema } from "./load_schema"
-
-//implementation
 
 export type Parameters = {
     'schema content': string
     'schema path': string
     'content': string
 }
+
+
+import * as api from "../../interface/algorithms/queries/load_pareto_document"
+
+//depencencies
+
+import * as tu_dynamic_unmarshall from "../transformations/temp/unmarshall_astn_ast"
+
+import * as r_parse from "astn/dist/implementation/algorithms/refiners/authoring_parse_tree/text/refiners"
+
+import { $ as load_schema } from "./load_schema"
+
+//implementation
 
 export const $$: _et.Refiner_Old<d.Node, d.Error, Parameters> = ($p) => load_schema(
     $p['schema content'],
@@ -36,12 +40,13 @@ export const $$: _et.Refiner_Old<d.Node, d.Error, Parameters> = ($p) => load_sch
 ).refine(
     ($) => {
         const type = $
-        return parse.parse(
+        return _ea.create_refinement_context<d_parse_tree._T_Document, d_parse_result.Parse_Error>((abort) => r_parse.Document(
             $p.content,
             {
                 'tab size': 4,
-            }
-        ).transform_result(($): d.Schema_And_Instance => ({
+            },
+            abort,
+        )).transform_result(($): d.Schema_And_Instance => ({
             'schema type': type,
             'instance': $,
         }))
