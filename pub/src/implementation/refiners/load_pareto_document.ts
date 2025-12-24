@@ -7,7 +7,7 @@ import * as _easync from 'exupery-core-async'
 import * as _ei from 'exupery-core-internals'
 
 
-import * as d from "../../interface/algorithms/queries/load_pareto_document"
+import * as d_load_pareto_document from "../../interface/to_be_generated/load_pareto_document"
 import * as d_parse_result from "astn/dist/interface/generated/pareto/schemas/authoring_parse_result/data_types/target"
 import * as d_parse_tree from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
 
@@ -19,11 +19,11 @@ export type Parameters = {
 }
 
 
-import * as api from "../../interface/algorithms/queries/load_pareto_document"
+import * as api from "../../interface/to_be_generated/load_pareto_document"
 
 //depencencies
 
-import * as tu_dynamic_unmarshall from "../transformations/temp/unmarshall_astn_ast"
+import * as tu_dynamic_unmarshall from "../transformers/schemas/temp/unmarshall_astn_ast"
 
 import * as r_parse from "astn/dist/implementation/algorithms/refiners/authoring_parse_tree/text/refiners"
 
@@ -31,10 +31,10 @@ import { $ as load_schema } from "./load_schema"
 
 //implementation
 
-export const $$: _et.Deprecated_Refiner_Catcher<d.Node, d.Error, Parameters> = ($p) => load_schema(
+export const $$: _et.Deprecated_Refiner_Catcher<d_load_pareto_document.Node, d_load_pareto_document.Error, Parameters> = ($p) => load_schema(
     $p['schema content'],
 ).deprecated_transform_error(
-    ($): d.Error => ['schema error', {
+    ($): d_load_pareto_document.Error => ['schema error', {
         'file location': $p['schema path'],
     }],
 ).deprecated_refine_old(
@@ -46,13 +46,13 @@ export const $$: _et.Deprecated_Refiner_Catcher<d.Node, d.Error, Parameters> = (
                 'tab size': 4,
             },
             abort,
-        )).transform_result(($): d.Schema_And_Instance => ({
+        )).transform_result(($): d_load_pareto_document.Schema_And_Instance => ({
             'schema type': type,
             'instance': $,
         }))
     },
-    ($): d.Error => ['parse error', $]
-).deprecated_refine_old<d.Node, never>( //FIXME; unmarshaller should produce proper errors
+    ($): d_load_pareto_document.Error => ['parse error', $]
+).deprecated_refine_old<d_load_pareto_document.Node, never>( //FIXME; unmarshaller should produce proper errors
     ($) => {
 
         return _ei.__create_success_refinement_result(tu_dynamic_unmarshall.Node(
@@ -62,5 +62,5 @@ export const $$: _et.Deprecated_Refiner_Catcher<d.Node, d.Error, Parameters> = (
             }
         ))
     },
-    ($): d.Error => ['unmarshall error', null]
+    ($): d_load_pareto_document.Error => ['unmarshall error', null]
 )

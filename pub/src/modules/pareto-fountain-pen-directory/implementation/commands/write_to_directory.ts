@@ -7,7 +7,7 @@ import * as d_remove from "exupery-resources/dist/interface/generated/pareto/sch
 import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"
 import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
 
-import * as D from "../../interface/temp_types"
+import * as D from "../../interface/to_be_generated/temp_types"
 
 import { $$ as p_write_to_node } from "./write_to_node"
 // import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/write_to_directory"

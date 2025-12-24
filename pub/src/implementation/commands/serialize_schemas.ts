@@ -14,16 +14,13 @@ export type Command_Resources = {
     'write file': _et.Command<d_write_file.Error, d_write_file.Parameters>
 }
 
-
-import { Signature } from "../../interface/algorithms/procedures/serialize_schemas"
-
 //data
-import { $ as poormans_modules } from "../../temp/temporary_schemas/all"
+import { $ as poormans_modules } from "../../data/temporary_schemas/all"
 
 
 
 //dependencies
-import * as r_module from "../../temp/resolvers/module"
+import * as r_module from "../temp/resolvers/module"
 import * as m_module from "../generated/pareto/schemas/module/marshall"
 import * as serialize from "../generated/pareto/generic/serialize"
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"

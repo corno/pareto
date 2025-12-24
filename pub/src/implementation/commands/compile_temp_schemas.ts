@@ -5,7 +5,7 @@ import * as _et from 'exupery-core-types'
 
 //data
 
-import { $ as poormans_modules } from "../../temp/temporary_schemas/all"
+import { $ as poormans_modules } from "../../data/temporary_schemas/all"
 
 //interface
 
@@ -17,8 +17,6 @@ export type Package_Error =
     | ['could not write implementation', null]
     | ['could not copy generic implementation', null]
     | ['could not copy core interface', null]
-
-import { Signature } from "../../interface/algorithms/procedures/compile"
 
 export type Query_Resources = null
 
@@ -40,12 +38,12 @@ import * as d_main from "exupery-resources/dist/interface/to_be_generated/temp_m
 import * as d_remove from "exupery-resources/dist/interface/generated/pareto/schemas/remove/data_types/source"
 import * as d_copy from "exupery-resources/dist/interface/generated/pareto/schemas/copy/data_types/source"
 import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"
-import * as d_write_to_directory from "../../modules/pareto-fountain-pen-directory/interface/temp_types"
+import * as d_write_to_directory from "../../modules/pareto-fountain-pen-directory/interface/to_be_generated/temp_types"
 
-import * as r_pareto_module from "../../temp/resolvers/module"
+import * as r_pareto_module from "../temp/resolvers/module"
 
-import * as t_pareto_module_to_fountain_pen_block__implementation from "../transformations/module/temp_typescript_implementation"
-import * as t_pareto_module_to_fountain_pen_block__interface from "../transformations/module/temp_typescript_interface"
+import * as t_pareto_module_to_fountain_pen_block__implementation from "../transformers/schemas/module/temp_typescript_implementation"
+import * as t_pareto_module_to_fountain_pen_block__interface from "../transformers/schemas/module/temp_typescript_interface"
 
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 

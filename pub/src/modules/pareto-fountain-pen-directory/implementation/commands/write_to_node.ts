@@ -4,7 +4,7 @@ import * as _et from 'exupery-core-types'
 import * as _ei from 'exupery-core-internals'
 import * as _easync from 'exupery-core-async'
 
-import * as D from "../../interface/temp_types"
+import * as D from "../../interface/to_be_generated/temp_types"
 
 import * as d_remove from "exupery-resources/dist/interface/generated/pareto/schemas/remove/data_types/source"
 import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"

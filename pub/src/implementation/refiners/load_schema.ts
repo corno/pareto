@@ -10,13 +10,13 @@ import * as _ei from 'exupery-core-internals'
 import * as d_schema from "../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as d_parse_result from "../../interface/generated/pareto/core/parse_result"
 
-import * as r_pareto_schema from "../../temp/resolvers/schema"
+import * as r_pareto_schema from "../temp/resolvers/schema"
 
 import * as u_pareto_schema from "../generated/pareto/schemas/schema/unmarshall"
 
 import * as parse from "../generated/pareto/generic/parse/parse"
 
-import * as _out from "../../temp/temp_unmashall_result_types"
+import * as _out from "../../interface/to_be_generated/temp_unmashall_result_types"
 
 import { $$ as op_pop_first_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/deprecated_pop_first_element"
 

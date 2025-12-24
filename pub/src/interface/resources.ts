@@ -1,0 +1,10 @@
+import * as _et from 'exupery-core-types'
+
+import * as d_unmarshall_result_types from "./to_be_generated/temp_unmashall_result_types"
+import * as d_load_pareto_document from "./to_be_generated/load_pareto_document"
+
+export namespace queries {
+
+    export type load_pareto_document = _et.Query<d_unmarshall_result_types.Node, d_load_pareto_document.Error, d_load_pareto_document.Parameters>
+
+}

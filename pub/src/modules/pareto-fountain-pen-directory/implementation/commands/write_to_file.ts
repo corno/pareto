@@ -5,7 +5,7 @@ import * as _easync from 'exupery-core-async'
 
 import * as t_block_2_lines from "pareto-fountain-pen/dist/implementation/algorithms/transformations/block/lines"
 
-import * as D from "../../interface/temp_types"
+import * as D from "../../interface/to_be_generated/temp_types"
 import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"
 import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
 
