@@ -18,39 +18,29 @@ export type Package_Error =
     | ['could not copy generic implementation', null]
     | ['could not copy core interface', null]
 
+
+import * as resources_exupery from "exupery-resources/dist/interface/resources"
+import * as resources_fountain_pen from "../../modules/pareto-fountain-pen-directory/interface/resources"
+
 export type Query_Resources = null
 
 export type Command_Resources = {
-    'copy': _et.Command<d_copy.Error, d_copy.Parameters>
-    'log': _et.Command<null, d_log.Parameters>
-    'log error': _et.Command<null, d_log_error.Parameters>
-    'make directory': _et.Command<d_make_directory.Error, d_make_directory.Parameters>
-    'remove': _et.Command<d_remove.Error, d_remove.Parameters>
-    'write to directory': _et.Command<d_write_to_directory.Directory_Error, d_write_to_directory.Directory_Parameters>
+    'copy': resources_exupery.commands.copy
+    'log': resources_exupery.commands.log
+    'log error': resources_exupery.commands.log_error
+    'make directory': resources_exupery.commands.make_directory
+    'remove': resources_exupery.commands.remove
+    'write to directory': resources_fountain_pen.commands.write_to_directory
 }
 
 //dependencies
-
-import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/target"
-import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/target"
-import * as d_main from "exupery-resources/dist/interface/to_be_generated/temp_main"
-
-import * as d_remove from "exupery-resources/dist/interface/generated/pareto/schemas/remove/data_types/source"
-import * as d_copy from "exupery-resources/dist/interface/generated/pareto/schemas/copy/data_types/source"
-import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"
-import * as d_write_to_directory from "../../modules/pareto-fountain-pen-directory/interface/to_be_generated/temp_types"
-
 import * as r_pareto_module from "../temp/resolvers/module"
-
 import * as t_pareto_module_to_fountain_pen_block__implementation from "../transformers/schemas/module/temp_typescript_implementation"
 import * as t_pareto_module_to_fountain_pen_block__interface from "../transformers/schemas/module/temp_typescript_interface"
-
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
-
 import * as ds_context_path from "exupery-resources/dist/implementation/deserializers/schemas/context_path"
 
-
-export const $$: _et.Command_Procedure<_et.Command<d_main.Error, d_main.Parameters>, Command_Resources, Query_Resources> = _easync.create_command_procedure(
+export const $$: _et.Command_Procedure<resources_exupery.commands.main, Command_Resources, Query_Resources> = _easync.create_command_procedure(
     ($p, $cr, $qr) => [
 
         $cr.log.execute(

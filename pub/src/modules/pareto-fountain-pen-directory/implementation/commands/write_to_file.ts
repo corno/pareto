@@ -14,15 +14,19 @@ import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/imp
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 import { replace_space_in_context_path } from '../transformations/path/path'
 
+import * as resources_exupery from "exupery-resources/dist/interface/resources"
+
 export type Query_Resources = null
 
 export type Command_Resources = {
-    'make directory': _et.Command<d_make_directory.Error, d_make_directory.Parameters>
-    'write file': _et.Command<d_write_file.Error, d_write_file.Parameters>
+    'make directory': resources_exupery.commands.make_directory
+    'write file': resources_exupery.commands.write_file
 }
 
+export type Command = _et.Command<D.File_Error, D.File_Parameters>
 
-export const $$: _et.Command_Procedure<_et.Command<D.File_Error, D.File_Parameters>, Command_Resources, Query_Resources> = _easync.create_command_procedure(
+
+export const $$: _et.Command_Procedure<Command, Command_Resources, Query_Resources> = _easync.create_command_procedure(
     ($p, $cr) => [
         _easync.p.sequence<D.File_Error>([
             $cr['make directory'].execute(

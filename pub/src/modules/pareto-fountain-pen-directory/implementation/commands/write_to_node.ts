@@ -1,31 +1,27 @@
 
 import * as _ea from 'exupery-core-alg'
 import * as _et from 'exupery-core-types'
-import * as _ei from 'exupery-core-internals'
 import * as _easync from 'exupery-core-async'
 
 import * as D from "../../interface/to_be_generated/temp_types"
 
-import * as d_remove from "exupery-resources/dist/interface/generated/pareto/schemas/remove/data_types/source"
-import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"
-import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
+import * as resources_exupery from "exupery-resources/dist/interface/resources"
+import * as resources from "../../interface/resources"
+
+export type Query_Resources = null
+
+export type Command_Resources = {
+    'remove': resources_exupery.commands.remove
+    'make directory': resources_exupery.commands.make_directory
+    'write file': resources_exupery.commands.write_file
+}
 
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 
 import { $$ as p_write_to_file } from "./write_to_file"
 import { $$ as p_write_to_directory } from "./write_to_directory"
-// import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/write_to_node"
 
-
-export type Query_Resources = null
-
-export type Command_Resources = {
-    'remove': _et.Command<d_remove.Error, d_remove.Parameters>
-    'make directory': _et.Command<d_make_directory.Error, d_make_directory.Parameters>
-    'write file': _et.Command<d_write_file.Error, d_write_file.Parameters>
-}
-
-export const $$: _et.Command_Procedure<_et.Command<D.Node_Error, D.Node_Parameters>, Command_Resources, Query_Resources> = _easync.create_command_procedure(
+export const $$: _et.Command_Procedure<resources.commands.write_to_node, Command_Resources, Query_Resources> = _easync.create_command_procedure(
     ($p, $cr, $qr) => [
         _ea.cc($p.node, ($) => {
             switch ($[0]) {

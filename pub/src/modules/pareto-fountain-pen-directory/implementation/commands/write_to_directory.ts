@@ -3,28 +3,27 @@ import * as _ea from 'exupery-core-alg'
 import * as _et from 'exupery-core-types'
 import * as _easync from 'exupery-core-async'
 
-import * as d_remove from "exupery-resources/dist/interface/generated/pareto/schemas/remove/data_types/source"
-import * as d_make_directory from "exupery-resources/dist/interface/generated/pareto/schemas/make_directory/data_types/source"
-import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
+
+import * as resources_exupery from "exupery-resources/dist/interface/resources"
+import * as resources from "../../interface/resources"
 
 import * as D from "../../interface/to_be_generated/temp_types"
-
-import { $$ as p_write_to_node } from "./write_to_node"
-// import { Signature } from "../../../interface/algorithms/procedures/unguaranteed/write_to_directory"
-
-import * as s_path from "exupery-resources/dist/implementation/serializers/schemas/path"
-import { replace_space_in_context_path } from '../transformations/path/path'
-
 
 export type Query_Resources = null
 
 export type Command_Resources = {
-    'remove': _et.Command<d_remove.Error, d_remove.Parameters>
-    'make directory': _et.Command<d_make_directory.Error, d_make_directory.Parameters>
-    'write file': _et.Command<d_write_file.Error, d_write_file.Parameters>
+    'remove': resources_exupery.commands.remove
+    'make directory': resources_exupery.commands.make_directory
+    'write file': resources_exupery.commands.write_file
 }
 
-export const $$: _et.Command_Procedure<_et.Command<D.Directory_Error, D.Directory_Parameters>, Command_Resources, Query_Resources> = _easync.create_command_procedure(
+
+import { $$ as p_write_to_node } from "./write_to_node"
+import { replace_space_in_context_path } from "../transformations/path/path"
+
+
+
+export const $$: _et.Command_Procedure<resources.commands.write_to_directory, Command_Resources, Query_Resources> = _easync.create_command_procedure(
     ($p, $cr) => [
         _easync.p.sequence<D.Directory_Error>([
             _easync.p.if_(

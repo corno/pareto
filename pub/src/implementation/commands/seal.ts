@@ -3,16 +3,15 @@ import * as _eb from 'exupery-core-bin'
 import * as _easync from 'exupery-core-async'
 import * as _et from 'exupery-core-types'
 
-import * as d_log_error from "exupery-resources/dist/interface/generated/pareto/schemas/log_error/data_types/source"
-import * as d_main from "exupery-resources/dist/interface/to_be_generated/temp_main"
+import * as resources_exupery from "exupery-resources/dist/interface/resources"
 
 export type Query_Resources = null
 
 export type Command_Resources = {
-        'log error': _et.Command<null, d_log_error.Parameters>
+    'log error': resources_exupery.commands.log_error
 }
 
-export const $$: _et.Command_Procedure<_et.Command<d_main.Error, d_main.Parameters>, Command_Resources, Query_Resources> = _easync.create_command_procedure(
+export const $$: _et.Command_Procedure<resources_exupery.commands.main, Command_Resources, Query_Resources> = _easync.create_command_procedure(
     ($p, $cr, $qr) => [
         $cr['log error'].execute(
             {

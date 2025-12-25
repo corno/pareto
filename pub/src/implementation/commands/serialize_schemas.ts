@@ -4,20 +4,22 @@ import * as _ed from 'exupery-core-data'
 import * as _easync from 'exupery-core-async'
 import * as _et from 'exupery-core-types'
 
-//data types
-import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
-import * as d_main from "exupery-resources/dist/interface/to_be_generated/temp_main"
+import * as resources_exupery from "exupery-resources/dist/interface/resources"
+
 
 export type Query_Resources = null
 
 export type Command_Resources = {
-    'write file': _et.Command<d_write_file.Error, d_write_file.Parameters>
+    'write file': resources_exupery.commands.write_file
 }
+
+
+//data types
+import * as d_write_file from "exupery-resources/dist/interface/generated/pareto/schemas/write_file/data_types/source"
+import * as d_main from "exupery-resources/dist/interface/to_be_generated/temp_main"
 
 //data
 import { $ as poormans_modules } from "../../data/temporary_schemas/all"
-
-
 
 //dependencies
 import * as r_module from "../temp/resolvers/module"
@@ -26,7 +28,7 @@ import * as serialize from "../generated/pareto/generic/serialize"
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 import * as ds_path from "exupery-resources/dist/implementation/deserializers/schemas/context_path"
 
-export const $$: _et.Command_Procedure<_et.Command<d_main.Error, d_main.Parameters>, Command_Resources, Query_Resources> = _easync.create_command_procedure(
+export const $$: _et.Command_Procedure<resources_exupery.commands.main, Command_Resources, Query_Resources> = _easync.create_command_procedure(
     ($p, $cr, $qr) => [
         _easync.p.dictionary.parallel(
             poormans_modules,
