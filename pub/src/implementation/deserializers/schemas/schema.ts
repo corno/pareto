@@ -7,18 +7,41 @@ import * as _ei from 'exupery-core-internals'
 
 //data
 
-import * as d_schema from "../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as d_parse_result from "../../interface/generated/pareto/core/parse_result"
+import * as d_schema from "../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_parse_result from "../../../interface/generated/pareto/core/parse_result"
 
-import * as r_pareto_schema from "../temp/resolvers/schema"
+import * as r_pareto_schema from "../../temp/resolvers/schema"
 
-import * as u_pareto_schema from "../generated/pareto/schemas/schema/unmarshall"
+import * as u_pareto_schema from "../../generated/pareto/schemas/schema/unmarshall"
 
-import * as parse from "../generated/pareto/generic/parse/parse"
+import * as parse from "../../generated/pareto/generic/parse/parse"
 
-import * as _out from "../../interface/to_be_generated/temp_unmashall_result_types"
+import * as _out from "../../../interface/to_be_generated/temp_unmashall_result_types"
 
-import { $$ as op_pop_first_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/deprecated_pop_first_element"
+
+
+type Element_And_Rest<T> = {
+    'element': T
+    'rest': _et.List<T>
+}
+
+export const temp_pop_first_element = <T>($: _et.List<T>): _et.Optional_Value<Element_And_Rest<T>> => {
+    const arr = $
+    return $.__get_element_at(0).map(
+        ($) => ({
+            'rest': _ea.build_list(($i) => {
+                let is_first = true
+                arr.__for_each(($) => {
+                    if (!is_first) {
+                        $i['add element']($)
+                    }
+                    is_first = false
+                })
+            }),
+            'element': $,
+        }),
+    )
+}
 
 type Error =
     | ['parse error', d_parse_result._T_Parse_Error]
@@ -63,7 +86,7 @@ export const $ = (
                 schema_path: _et.List<string>,
             ): d_schema.Schema => {
                 const st = $
-                return op_pop_first_element(schema_path).transform(
+                return temp_pop_first_element(schema_path).transform(
                     ($) => {
                         const split = $
                         return _ea.cc(st, ($) => {

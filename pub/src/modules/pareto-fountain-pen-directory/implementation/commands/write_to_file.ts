@@ -12,7 +12,7 @@ import * as d_write_file from "exupery-resources/dist/interface/generated/pareto
 import { $$ as op_join_list_of_texts } from "pareto-standard-operations/dist/implementation/operations/pure/text/join_list_of_texts"
 
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
-import { replace_space_in_context_path } from '../transformations/path/path'
+import { replace_space_in_context_path } from '../transformers/schemas/path/path'
 
 import * as resources_exupery from "exupery-resources/dist/interface/resources"
 

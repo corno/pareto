@@ -12,16 +12,7 @@ import * as _ei from 'exupery-core-internals'
 
 //data
 import * as d_parse_result from "astn/dist/interface/generated/pareto/schemas/authoring_parse_result/data_types/target"
-import * as d_parse_tree from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
-import * as d_read_file from "exupery-resources/dist/interface/generated/pareto/schemas/read_file/data_types/source"
-import * as d_schema from "../generated/pareto/schemas/schema/data_types/source"
 import * as d_path from "exupery-resources/dist/interface/generated/pareto/schemas/path/data_types/source"
-
-
-import * as _out from "./temp_unmashall_result_types"
-
-
-export type Node = _out.Node
 
 export type Error =
     | ['no schema file', {
@@ -37,9 +28,4 @@ export type Error =
 export type Parameters = {
     'content': string,
     'file path': d_path.Node_Path,
-}
-
-export type Schema_And_Instance = {
-    'schema type': d_schema.Type
-    'instance': d_parse_tree.Document
 }

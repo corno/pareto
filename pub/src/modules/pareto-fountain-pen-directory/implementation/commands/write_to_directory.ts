@@ -19,7 +19,7 @@ export type Command_Resources = {
 
 
 import { $$ as p_write_to_node } from "./write_to_node"
-import { replace_space_in_context_path } from "../transformations/path/path"
+import { replace_space_in_context_path } from "../transformers/schemas/path/path"
 
 
 

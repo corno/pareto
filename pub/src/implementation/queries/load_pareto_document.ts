@@ -13,7 +13,7 @@ import * as d from "../../interface/to_be_generated/load_pareto_document"
 
 //depencencies
 
-import { $$ as r_load_pareto_document } from "../refiners/load_pareto_document"
+import { $$ as r_unmarshall_result } from "../deserializers/schemas/unmarshall_result"
 import { create_node_path } from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 import * as s_path from "exupery-resources/dist/implementation/serializers/schemas/path"
 
@@ -29,7 +29,7 @@ export const $$: signatures.queries.load_pareto_document = _easync.create_query_
             'file location': schema_path_text,
         }]
     ).deprecated_refine_old(
-        ($) => r_load_pareto_document({
+        ($) => r_unmarshall_result({
             'schema content': $,
             'schema path': schema_path_text,
             'content': $p.content,

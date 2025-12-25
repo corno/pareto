@@ -9,7 +9,7 @@ import * as _out from "pareto-fountain-pen/dist/interface/generated/pareto/schem
 
 //transformations
 import * as t_pareto_to_exupery_implementation from "./exupery_implementation"
-import * as t_implementation_to_typescript_temp from "exupery/dist/implementation/algorithms/transformations/implementation/typescript_light"
+import * as t_implementation_to_typescript_temp from "exupery/dist/implementation/transformers/schemas/implementation/typescript_light"
 
 //resolvers
 import * as r_exupery_implementation from "exupery/dist/implementation/generated/pareto/schemas/implementation/resolve"

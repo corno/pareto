@@ -22,17 +22,6 @@ export type Package_Error =
 import * as resources_exupery from "exupery-resources/dist/interface/resources"
 import * as resources_fountain_pen from "../../modules/pareto-fountain-pen-directory/interface/resources"
 
-export type Query_Resources = null
-
-export type Command_Resources = {
-    'copy': resources_exupery.commands.copy
-    'log': resources_exupery.commands.log
-    'log error': resources_exupery.commands.log_error
-    'make directory': resources_exupery.commands.make_directory
-    'remove': resources_exupery.commands.remove
-    'write to directory': resources_fountain_pen.commands.write_to_directory
-}
-
 //dependencies
 import * as r_pareto_module from "../temp/resolvers/module"
 import * as t_pareto_module_to_fountain_pen_block__implementation from "../transformers/schemas/module/temp_typescript_implementation"
@@ -40,7 +29,20 @@ import * as t_pareto_module_to_fountain_pen_block__interface from "../transforme
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 import * as ds_context_path from "exupery-resources/dist/implementation/deserializers/schemas/context_path"
 
-export const $$: _et.Command_Procedure<resources_exupery.commands.main, Command_Resources, Query_Resources> = _easync.create_command_procedure(
+export type Procedure = _et.Command_Procedure<
+    resources_exupery.commands.main,
+    {
+        'copy': resources_exupery.commands.copy
+        'log': resources_exupery.commands.log
+        'log error': resources_exupery.commands.log_error
+        'make directory': resources_exupery.commands.make_directory
+        'remove': resources_exupery.commands.remove
+        'write to directory': resources_fountain_pen.commands.write_to_directory
+    },
+    null
+>
+
+export const $$: Procedure = _easync.create_command_procedure(
     ($p, $cr, $qr) => [
 
         $cr.log.execute(

@@ -5,23 +5,23 @@ import * as _in from "pareto-fountain-pen/dist/interface/generated/pareto/schema
 
 import * as t_block_to_lines from "pareto-fountain-pen/dist/implementation/transformers/schemas/block/lines"
 
-// import { Signature } from "../../../interface/algorithms/procedures/guaranteed/console_log"
-
-import * as d_log from "exupery-resources/dist/interface/generated/pareto/schemas/log/data_types/source"
-
 
 export type Parameters = {
     'group': _in.Group,
     'indentation': string,
 }
 
-export type Query_Resources = null
+import * as resources_exupery from "exupery-resources/dist/interface/resources"
 
-export type Command_Resources = {
-    'log': _et.Command<null, d_log.Parameters>
-}
+export type Procedure = _et.Command_Procedure<
+    _et.Command<null, Parameters>,
+    {
+        'log': resources_exupery.commands.log
+    },
+    null
+>
 
-export const $$: _et.Command_Procedure<_et.Command<null, Parameters>, Command_Resources, Query_Resources> = _easync.create_command_procedure(
+export const $$: Procedure = _easync.create_command_procedure(
     ($p, $cr) => [
         $cr['log'].execute(
             {

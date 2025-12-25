@@ -19,8 +19,10 @@ export namespace d {
     }
 }
 
+import * as resources_exupery from "exupery-resources/dist/interface/resources"
+
 export type Signature = _et.Query_Function<_et.Query<d_out.Node, d.Error, d.Parameters>, {
-    'read file': _et.Query<d_read_file.Result, d_read_file.Error, d_read_file.Parameters>
+    'read file': resources_exupery.queries.read_file
 }>
 
 //depencencies
