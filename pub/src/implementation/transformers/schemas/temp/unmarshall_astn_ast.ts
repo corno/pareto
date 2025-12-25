@@ -7,7 +7,7 @@ import * as definition from "../../../../interface/generated/pareto/schemas/sche
 import * as _in from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
 import * as _in_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
 
-import * as t_ast_to_range from "astn/dist/implementation/transformers/authoring_parse_tree/temp_value_range"
+import * as t_ast_to_range from "astn/dist/implementation/transformers/schemas/authoring_parse_tree/temp_value_range"
 
 import * as _out from "../../../../interface/to_be_generated/temp_unmashall_result_types"
 

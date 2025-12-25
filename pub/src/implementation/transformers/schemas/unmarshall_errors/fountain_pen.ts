@@ -6,7 +6,7 @@ import * as _out from "pareto-fountain-pen/dist/interface/generated/pareto/schem
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
-import { $$ as op_join } from "pareto-standard-operations/dist/implementation/operations/impure/text/join_list_of_texts_with_separator"
+import { $$ as op_join } from "pareto-standard-operations/dist/implementation/serializers/schemas/list_of_separated_texts"
 import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/to_list_sorted_by_insertion"
 
 

@@ -35,7 +35,7 @@ import * as api from "../../../interface/to_be_generated/load_pareto_document"
 
 import * as tu_dynamic_unmarshall from "../../transformers/schemas/temp/unmarshall_astn_ast"
 
-import * as r_parse from "astn/dist/implementation/refiners/authoring_parse_tree/text/refiners"
+import * as r_parse from "astn/dist/implementation/deserializers/schemas/authoring_parse_tree"
 
 import { $ as load_schema } from "./schema"
 
