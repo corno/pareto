@@ -1,7 +1,7 @@
 import * as _ea from 'exupery-core-alg'
 import * as _edev from 'exupery-core-dev'
 
-import * as _in from "../../../../interface/to_be_generated/temp_unmashall_result_types"
+import * as _in from "../../../../interface/to_be_generated/temp_unmashall_result"
 import * as _out from "astn/dist/interface/generated/pareto/schemas/authoring_target/data_types/target"
 
 

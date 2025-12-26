@@ -16,7 +16,7 @@ import * as u_pareto_schema from "../../generated/pareto/schemas/schema/unmarsha
 
 import * as parse from "../../generated/pareto/generic/parse/parse"
 
-import * as _out from "../../../interface/to_be_generated/temp_unmashall_result_types"
+import * as _out from "../../../interface/to_be_generated/temp_unmashall_result"
 
 
 

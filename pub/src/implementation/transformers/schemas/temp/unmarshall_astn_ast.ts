@@ -9,7 +9,7 @@ import * as _in_token from "astn/dist/interface/generated/pareto/schemas/token/d
 
 import * as t_ast_to_range from "astn/dist/implementation/transformers/schemas/authoring_parse_tree/temp_value_range"
 
-import * as _out from "../../../../interface/to_be_generated/temp_unmashall_result_types"
+import * as _out from "../../../../interface/to_be_generated/temp_unmashall_result"
 
 import { $$ as op_group } from "pareto-standard-operations/dist/implementation/operations/impure/list/group"
 import { $$ as op_expect_exactly_one_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/expect_exactly_one_element"

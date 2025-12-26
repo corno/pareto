@@ -25,7 +25,7 @@ export type Parameters = {
     'content': string
 }
 
-import * as d_unmarshall_result_types from "../../../interface/to_be_generated/temp_unmashall_result_types"
+import * as d_unmarshall_result_types from "../../../interface/to_be_generated/temp_unmashall_result"
 
 
 

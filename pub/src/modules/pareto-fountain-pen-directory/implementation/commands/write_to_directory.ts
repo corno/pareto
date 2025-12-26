@@ -3,29 +3,19 @@ import * as _ea from 'exupery-core-alg'
 import * as _et from 'exupery-core-types'
 import * as _easync from 'exupery-core-async'
 
+import * as signatures from "../../interface/signatures"
 
-import * as resources_exupery from "exupery-resources/dist/interface/resources"
-import * as resources from "../../interface/resources"
+//data types
+import * as d_write_to_directory from "../../interface/to_be_generated/write_to_dictionary"
 
-import * as D from "../../interface/to_be_generated/temp_types"
-
-export type Query_Resources = null
-
-export type Command_Resources = {
-    'remove': resources_exupery.commands.remove
-    'make directory': resources_exupery.commands.make_directory
-    'write file': resources_exupery.commands.write_file
-}
-
-
-import { $$ as p_write_to_node } from "./write_to_node"
+//dependencies
+import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 import { replace_space_in_context_path } from "../transformers/schemas/path/path"
 
 
-
-export const $$: _et.Command_Procedure<resources.commands.write_to_directory, Command_Resources, Query_Resources> = _easync.create_command_procedure(
-    ($p, $cr) => [
-        _easync.p.sequence<D.Directory_Error>([
+export const $$: signatures.commands.write_to_directory = _easync.create_command_procedure(
+    ($p, $cr, $qr) => [
+        _easync.p.sequence<d_write_to_directory.Error>([
             _easync.p.if_(
                 $p['remove before creating'],
                 [
@@ -43,29 +33,43 @@ export const $$: _et.Command_Procedure<resources.commands.write_to_directory, Co
             _easync.p.dictionary.parallel(
                 $p.directory,
                 ($, key) => [
-                    p_write_to_node(
-                        {
-                            'remove': $cr.remove,
-                            'make directory': $cr['make directory'],
-                            'write file': $cr['write file'],
-                        },
-                        null,
-                    ).execute(
-                        {
-                            'escape spaces in path': $p['escape spaces in path'],
-                            'node': $,
-                            'path': $p['escape spaces in path']
-                                ? replace_space_in_context_path($p.path)
-                                : $p.path,
-                            'key': key,
-                            'indentation': $p.indentation,
-                            'newline': $p.newline,
-                            'remove before creating': false,
-                        },
-                        ($) => $,
-                    ),
+                    _ea.cc($, ($): _et.Command_Promise<d_write_to_directory.Error__nodes> => {
+                        switch ($[0]) {
+                            case 'file':
+                                return _ea.ss($, ($) => {
+                                    return $cr['write to_file'].execute(
+                                        {
+                                            'escape spaces in path': $p['escape spaces in path'],
+                                            'group': $,
+                                            'directory path': $p.path,
+                                            'filename': key,
+                                            'indentation': $p.indentation,
+                                            'newline': $p.newline
+                                        },
+                                        ($): d_write_to_directory.Error__nodes => ['file', $],
+                                    )
+                                })
+                            case 'directory':
+                                return _ea.ss($, ($) => {
+                                    return $$($cr, $qr).execute(
+                                        {
+                                            'escape spaces in path': $p['escape spaces in path'],
+                                            'directory': $,
+                                            'path': $p['escape spaces in path']
+                                                ? replace_space_in_context_path($p.path)
+                                                : $p.path,
+                                            'indentation': $p.indentation,
+                                            'newline': $p.newline,
+                                            'remove before creating': false,
+                                        },
+                                        ($): d_write_to_directory.Error__nodes => ['directory', $],
+                                    )
+                                })
+                            default: return _ea.au($[0])
+                        }
+                    }),
                 ],
-                ($): D.Directory_Error => ['nodes', $]
+                ($): d_write_to_directory.Error => ['nodes', $]
             )
         ])
     ]
