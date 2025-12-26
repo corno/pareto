@@ -6,7 +6,7 @@ import * as _out from "pareto-fountain-pen/dist/interface/generated/pareto/schem
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
-import { $$ as op_join } from "pareto-standard-operations/dist/implementation/serializers/schemas/list_of_separated_texts"
+import { $$ as s_list_of_separated_texts } from "pareto-standard-operations/dist/implementation/serializers/schemas/list_of_separated_texts"
 import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/to_list_sorted_by_insertion"
 
 
@@ -43,7 +43,7 @@ export const Error_Type_Error = (
 ): _out.Block_Part => _ea.cc($, ($) => {
     switch ($[0]) {
         case 'duplicate property': return _ea.ss($, ($) => sh.b.snippet(`Duplicate property "${$.name}"`))
-        case 'invalid value type': return _ea.ss($, ($) => sh.b.snippet(`Invalid value type, expected ${op_join($.expected.map(($) => `'${$[0]}'`), { 'separator': ` or ` })}.`))
+        case 'invalid value type': return _ea.ss($, ($) => sh.b.snippet(`Invalid value type, expected ${s_list_of_separated_texts($.expected.map(($) => `'${$[0]}'`), { 'separator': ` or ` })}.`))
         case 'missing property': return _ea.ss($, ($) => sh.b.snippet(`Missing property '${$.name}'`))
         case 'superfluous property': return _ea.ss($, ($) => sh.b.snippet(`Superfluous property '${$.name}'`))
         case 'state': return _ea.ss($, ($) => _ea.cc($, ($) => {
