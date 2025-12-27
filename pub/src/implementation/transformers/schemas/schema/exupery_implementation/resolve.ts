@@ -397,7 +397,7 @@ export const Node_Resolver = (
                                     //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.list_literal([]) }),
                                     //     e.string("FIXME", 'backtick'),
                                     // ),
-                                    "linked entry": variable(null, i.implement_me()), // quite some work; a call to __get_entry() from the selection (Guaranteed_Value_Selection), and then transform an optional value
+                                    "linked entry": variable(null, i.implement_me()), // quite some work; a call to get_entry() from the selection (Guaranteed_Value_Selection), and then transform an optional value
                                 }),
                                 () => _ea.dictionary_literal({})
                             ),

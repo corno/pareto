@@ -93,7 +93,7 @@ export const $ = (
                             switch ($[0]) {
 
                                 case 'schema': return _ea.ss($, ($) => _ea.deprecated_panic(`(FIXME: make this a reference) the selected tree is a schema, not a set, can't do this step: ${split.element} `))
-                                case 'set': return _ea.ss($, ($) => $.dictionary.__get_entry(split.element).transform(
+                                case 'set': return _ea.ss($, ($) => $.dictionary.get_entry(split.element).transform(
                                     ($) => temp_find_schema($, split.rest),
                                     () => _ea.deprecated_panic(`(FIXME: make this a reference) schema not found: ${split.element}`)
                                 ))
@@ -112,7 +112,7 @@ export const $ = (
             }
             const schema = temp_find_schema(resolved_schema_schema.schema, resolved_schema_schema['schema path'])
 
-            const type = schema.types.dictionary.__get_entry(resolved_schema_schema.type).transform(
+            const type = schema.types.dictionary.get_entry(resolved_schema_schema.type).transform(
                 ($) => $,
                 () => {
                     schema.types.dictionary.map(($, key) => {

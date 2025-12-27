@@ -219,7 +219,7 @@ export const Node_Type = (
                 // //                 }
                 // //             }))
                 // //             group_def.map(($, key) => {
-                // //                 properties.__get_entry(key).transform(
+                // //                 properties.get_entry(key).transform(
                 // //                     ($) => {
                 // //                         _edev.log_debug_message(`property ${key} found in data`)
                 // //                         // do_node(
@@ -365,7 +365,7 @@ export const Node_Type = (
                                                 const value = $.value
                                                 return ['set', {
                                                         'value': $,
-                                                        'found state definition': def.__get_entry($.state.value).map(
+                                                        'found state definition': def.get_entry($.state.value).map(
                                                             ($) => ({
                                                                 'definition': $,
                                                                 'node': Node(
@@ -413,7 +413,7 @@ export const Node_Type = (
                             //             return elements.__get_element_at(1).transform<_out.State_Status>(
                             //                 ($) => {
                             //                     const value = $.value
-                            //                     return def.__get_entry(state_name).transform<_out.State_Status>(
+                            //                     return def.get_entry(state_name).transform<_out.State_Status>(
                             //                         ($) => ['valid', {
                             //                             'node': Node(
                             //                                 value,
