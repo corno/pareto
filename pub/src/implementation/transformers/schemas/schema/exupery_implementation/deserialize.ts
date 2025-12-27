@@ -12,8 +12,6 @@ import { t, import_, sub } from "exupery/dist/shorthands/interface"
 
 
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
-import { $$ as op_flatten_list } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
-import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/operations/pure/list/append_element"
 
 export const Schema = (
     $: _in.Schema,
@@ -26,16 +24,16 @@ export const Schema = (
         op_flatten_dictionary(
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
-                    "signatures": import_.ancestor(5, "interface", op_flatten_list(_ea.list_literal([
+                    "signatures": import_.ancestor(5, "interface", _ea.list_literal([
                         _ea.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _ea.list_literal(["deserialize"]),
-                    ])), {}),
-                    "out": import_.ancestor(5, "interface", op_flatten_list(_ea.list_literal([
+                    ]).flatten(($) => $), {}),
+                    "out": import_.ancestor(5, "interface", _ea.list_literal([
                         _ea.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _ea.list_literal(["data types", "target"]),
-                    ])), {}),
+                    ]).flatten(($) => $), {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["deserialize"], {}))
             }),

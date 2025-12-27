@@ -5,9 +5,6 @@ import * as _in from "../../../../interface/to_be_generated/temp_unmashall_resul
 import * as _in_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
 import * as _out from "../../../../interface/generated/pareto/schemas/unmarshall_errors/data_types/target"
 
-import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
-import { $$ as op_dicionary_of_lists_to_list } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/dictionary_of_lists_to_list"
-
 export const Optional_Node = (
     $: _in.Optional_Node,
     $p: null
@@ -24,10 +21,10 @@ export const Group_Content = (
         'group range': _in_token.Range
     }
 ): _out.Errors => {
-    return op_flatten(_ea.list_literal([
-        op_dicionary_of_lists_to_list($.properties.map(($, key) => _ea.cc($, ($): _out.Errors => {
+    return _ea.list_literal([
+        $.properties.to_list(($, key) => _ea.cc($, ($): _out.Errors => {
             switch ($[0]) {
-                case 'multiple': return _ea.ss($, ($) => op_flatten($.map(($) => op_flatten(_ea.list_literal([
+                case 'multiple': return _ea.ss($, ($) => $.flatten(($) => _ea.list_literal([
                     _ea.list_literal<_out.Errors.L>([
                         {
                             'range': $.key.range,
@@ -37,7 +34,7 @@ export const Group_Content = (
                         }
                     ]),
                     Optional_Node($.node, null)
-                ])))))
+                ]).flatten(($) => $)))
                 case 'missing': return _ea.ss($, ($) => _ea.list_literal([
                     {
                         'range': $p['group range'],
@@ -49,16 +46,16 @@ export const Group_Content = (
                 case 'unique': return _ea.ss($, ($) => Optional_Node($.node, null))
                 default: return _ea.au($[0])
             }
-        }))),
-        op_dicionary_of_lists_to_list($['superfluous entries'].map(($, key): _out.Errors => op_flatten($.map(($) => _ea.list_literal([
+        })).flatten(($) => $),
+        $['superfluous entries'].to_list(($, key): _out.Errors => $.flatten(($) => _ea.list_literal([
             {
                 'range': $,
                 'type': ['error', ['superfluous property', {
                     name: key
                 }]]
             }
-        ])))))
-    ]))
+        ]))).flatten(($) => $)
+    ]).flatten(($) => $)
 }
 
 export const Node = (
@@ -111,11 +108,11 @@ export const Node = (
             case 'dictionary': return _ea.ss($, ($) => _ea.cc($['found value type'], ($): _out.Errors => {
                 switch ($[0]) {
                     case 'valid': return _ea.ss($, ($) => {
-                        return op_dicionary_of_lists_to_list($.entries.map(($, key) => {
+                        return $.entries.to_list(($, key) => {
                             return _ea.cc($, ($): _out.Errors => {
                                 switch ($[0]) {
                                     case 'unique': return _ea.ss($, ($) => Optional_Node($, $p))
-                                    case 'multiple': return _ea.ss($, ($) => op_flatten($.map(($) => op_flatten(_ea.list_literal([
+                                    case 'multiple': return _ea.ss($, ($) => $.flatten(($)  => _ea.list_literal<_out.Errors>([
                                         _ea.list_literal([
                                             {
                                                 'range': $.key.range,
@@ -125,11 +122,11 @@ export const Node = (
                                             }
                                         ]),
                                         Optional_Node($.node, $p)
-                                    ])))))
+                                    ]).flatten(($) => $)))
                                     default: return _ea.au($[0])
                                 }
                             })
-                        }))
+                        }).flatten(($) => $)
                     })
                     case 'invalid': return _ea.ss($, ($) => _ea.list_literal([
                         {
@@ -182,7 +179,7 @@ export const Node = (
             }))
             case 'list': return _ea.ss($, ($) => _ea.cc($['found value type'], ($) => {
                 switch ($[0]) {
-                    case 'valid': return _ea.ss($, ($): _out.Errors => op_flatten($.elements.map(($) => Node($, $p))))
+                    case 'valid': return _ea.ss($, ($): _out.Errors => $.elements.flatten(($) => Node($, $p)))
                     case 'invalid': return _ea.ss($, ($) => _ea.list_literal([
                         {
                             'range': $,

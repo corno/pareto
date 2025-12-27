@@ -11,8 +11,6 @@ import { m, t, import_, type, sub } from "exupery/dist/shorthands/interface"
 import * as _migration_boilerplate_interface from "./migrate_boilerplate"
 import * as _types from "./types"
 
-import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/operations/pure/list/append_element"
-
 
 export const Signatures = (
     $: _in.Signatures,
@@ -89,12 +87,7 @@ export const r_Type_Part_Reference = (
             }
         }))
         return $p['add dictionary tail']
-            ? op_append_element(
-                tail,
-                {
-                    'element': sub.dictionary(),
-                }
-            )
+            ? tail.append_element(sub.dictionary())
             : tail
     }
 

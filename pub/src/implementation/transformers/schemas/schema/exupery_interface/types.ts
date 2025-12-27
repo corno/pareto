@@ -9,7 +9,6 @@ import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface
 import * as sh from "exupery/dist/shorthands/interface"
 
 import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
-import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/operations/pure/list/append_element"
 
 
 export const Schema = (
@@ -118,12 +117,7 @@ export const r_Type_Reference = (
             }
         }))
         return $p['add dictionary tail']
-            ? op_append_element(
-                tail,
-                {
-                    'element': sh.sub.dictionary(),
-                }
-            )
+            ? tail.append_element(sh.sub.dictionary())
             : tail
     }
 

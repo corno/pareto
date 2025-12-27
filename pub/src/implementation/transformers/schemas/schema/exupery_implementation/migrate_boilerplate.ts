@@ -11,8 +11,6 @@ import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"
 
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
-import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/operations/pure/list/append_element"
-
 
 
 export const Types = (
@@ -92,12 +90,7 @@ export const Type_Node = (
                     $.node,
                     {
                         'type': $p.type,
-                        'subselection': op_append_element(
-                            $p.subselection,
-                            {
-                                'element': sub.dictionary(),
-                            },
-                        ),
+                        'subselection': $p.subselection.append_element(sub.dictionary()),
                     }
                 )
             ))
@@ -107,12 +100,7 @@ export const Type_Node = (
                     $.node,
                     {
                         'type': $p.type,
-                        'subselection': op_append_element(
-                            $p.subselection,
-                            {
-                                'element': sub.group(key),
-                            },
-                        ),
+                        'subselection': $p.subselection.append_element(sub.group(key)),
                     }
                 )
             ))))
@@ -122,12 +110,7 @@ export const Type_Node = (
                     $.node,
                     {
                         'type': $p.type,
-                        'subselection': op_append_element(
-                            $p.subselection,
-                            {
-                                'element': sub.list(),
-                            },
-                        ),
+                        'subselection': $p.subselection.append_element(sub.list()),
                     }
                 )
             ))
@@ -137,12 +120,7 @@ export const Type_Node = (
                     $,
                     {
                         'type': $p.type,
-                        'subselection': op_append_element(
-                            $p.subselection,
-                            {
-                                'element': sub.optional(),
-                            },
-                        ),
+                        'subselection': $p.subselection.append_element(sub.optional()),
                     }
                 )
             ))
@@ -152,12 +130,7 @@ export const Type_Node = (
                     $.node,
                     {
                         'type': $p.type,
-                        'subselection': op_append_element(
-                            $p.subselection,
-                            {
-                                'element': sub.state_group(key),
-                            },
-                        ),
+                        'subselection': $p.subselection.append_element(sub.state_group(key)),
                     }
                 ))),
                 t.component_imported(

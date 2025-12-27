@@ -10,9 +10,7 @@ import * as _out_interface from "exupery/dist/interface/generated/pareto/schemas
 import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"
 
-import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/operations/pure/list/append_element"
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
-import { $$ as op_flatten_list } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
 
 
 export const Schema = (
@@ -27,16 +25,16 @@ export const Schema = (
         op_flatten_dictionary(
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
-                    "signatures": import_.ancestor(5, "interface", op_flatten_list(_ea.list_literal([
+                    "signatures": import_.ancestor(5, "interface", _ea.list_literal([
                         _ea.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _ea.list_literal(["serialize"])
-                    ])), {}),
-                    "serialize": import_.ancestor(2, "generic", op_flatten_list(_ea.list_literal([
+                    ]).flatten(($) => $), {}),
+                    "serialize": import_.ancestor(2, "generic", _ea.list_literal([
                         _ea.list_literal(["serialize"]),
-                    ])), {}),
-                    "marshall": import_.sibling("marshall", op_flatten_list(_ea.list_literal([
-                    ])), {}),
+                    ]).flatten(($) => $), {}),
+                    "marshall": import_.sibling("marshall", _ea.list_literal([
+                    ]).flatten(($) => $), {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["serialize"], {}))
             }),

@@ -18,10 +18,6 @@ import * as t_deserialize from "./deserialize"
 import * as t_marshall from "./marshall"
 import * as t_unmarshall from "./unmarshall"
 
-import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/operations/pure/list/append_element"
-
-
-
 export const Schema_Tree = (
     $: _in.Schema_Tree,
     $p: {
@@ -91,6 +87,6 @@ export const Schemas = (
     }
 ): _out.Module_Set.D<_edata.Source_Location> => {
     return m.set($.dictionary.map(($, key) => Schema_Tree($, {
-        'path': op_append_element($p.path, { 'element': key })
+        'path': $p.path.append_element(key)
     })))
 }

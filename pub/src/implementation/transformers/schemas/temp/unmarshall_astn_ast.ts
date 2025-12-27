@@ -11,10 +11,13 @@ import * as t_ast_to_range from "astn/dist/implementation/transformers/schemas/a
 
 import * as _out from "../../../../interface/to_be_generated/temp_unmashall_result"
 
-import { $$ as op_group } from "pareto-standard-operations/dist/implementation/operations/impure/list/group"
 import { $$ as op_expect_exactly_one_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/expect_exactly_one_element"
-import { $$ as op_dictionary_merge } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/merge"
 
+const op_group = <T>(
+    $: _et.List<_et.Key_Value_Pair<T>>,
+): _et.Dictionary<_et.List<T>> => {
+    return _ea.group_list($)
+}
 
 export const Optional_Node = (
     $: _et.Optional_Value<_in.Value>,
@@ -156,21 +159,20 @@ export const Node_Type = (
                     'found value type': _ea.cc(data, ($) => {
                         switch ($[0]) {
                             case 'indexed collection': return _ea.ss($, ($) => {
-                                const entries = op_group(_ea.cc($, ($): _in.Key_Value_Pairs => {
-                                    switch ($[0]) {
-                                        case 'dictionary': return _ea.ss($, ($) => $.entries)
-                                        case 'verbose group': return _ea.ss($, ($) => $.entries)
-                                        default: return _ea.au($[0])
-                                    }
-                                }).map(($) => {
-                                    return {
-                                        'key': $.key.value,
-                                        'value': $
-                                    }
-                                }))
                                 return ['valid', {
                                     'value': $,
-                                    'entries': entries.map<_out.Entry>(($) => op_expect_exactly_one_element($).transform(
+                                    'entries': op_group(_ea.cc($, ($): _in.Key_Value_Pairs => {
+                                        switch ($[0]) {
+                                            case 'dictionary': return _ea.ss($, ($) => $.entries)
+                                            case 'verbose group': return _ea.ss($, ($) => $.entries)
+                                            default: return _ea.au($[0])
+                                        }
+                                    }).map(($) => {
+                                        return {
+                                            'key': $.key.value,
+                                            'value': $
+                                        }
+                                    })).map<_out.Entry>(($) => op_expect_exactly_one_element($).transform(
                                         ($): _out.Entry => ['unique', Optional_Node(
                                             $.value.map(
                                                 ($) => $.value,
@@ -263,6 +265,18 @@ export const Node_Type = (
                                             default: return _ea.au($[0])
                                         }
                                     })
+                                    const op_dictionary_merge = <Main, Supporting>(
+                                        $: _et.Dictionary<Main>,
+                                        $p: { 'supporting dictionary': _et.Dictionary<Supporting> }
+                                    ): _et.Dictionary<{
+                                        'context': Main
+                                        'supporting': _et.Optional_Value<Supporting>
+                                    }> => $.map(($, key) => ({
+                                        'context': $,
+                                        'supporting': $p['supporting dictionary'].get_entry(
+                                            key,
+                                        ),
+                                    }))
                                     return ['valid', ['indexed', {
                                         'value': $,
                                         'content': {

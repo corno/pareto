@@ -12,8 +12,6 @@ import { t, import_, sub } from "exupery/dist/shorthands/interface"
 
 
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
-import { $$ as op_flatten_list } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
-import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/operations/pure/list/append_element"
 
 
 export const Schema = (
@@ -29,17 +27,17 @@ export const Schema = (
             _ea.dictionary_literal({
                 "": _ea.dictionary_literal({
                     "generic": import_.ancestor(2, "generic", ["unmarshall"], {}),
-                    "signatures": import_.ancestor(5, "interface", op_flatten_list(_ea.list_literal([
+                    "signatures": import_.ancestor(5, "interface", _ea.list_literal([
                         _ea.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _ea.list_literal(["unmarshall"]),
-                    ])), {}),
+                    ]).flatten(($) => $), {}),
                     "in": import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn source"], {}),
-                    "out": import_.ancestor(5, "interface", op_flatten_list(_ea.list_literal([
+                    "out": import_.ancestor(5, "interface", _ea.list_literal([
                         _ea.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _ea.list_literal(["data types", "target"]),
-                    ])), $p.constrained ? { "Source": t.component_imported("in", "Range", {}, []) } : {}),
+                    ]).flatten(($) => $), $p.constrained ? { "Source": t.component_imported("in", "Range", {}, []) } : {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))
             }),
@@ -156,12 +154,7 @@ export const Type_Node = (
                             $.node,
                             {
                                 'temp type': $p['temp type'],
-                                'temp subselection': op_append_element(
-                                    $p['temp subselection'],
-                                    {
-                                        'element': sub.dictionary(),
-                                    },
-                                ),
+                                'temp subselection': $p['temp subselection'].append_element(sub.dictionary()),
                                 'constrained': $p.constrained
                             }
                         ),
@@ -187,12 +180,7 @@ export const Type_Node = (
                                 $.node,
                                 {
                                     'temp type': $p['temp type'],
-                                    'temp subselection': op_append_element(
-                                        $p['temp subselection'],
-                                        {
-                                            'element': sub.group(key),
-                                        },
-                                    ),
+                                    'temp subselection': $p['temp subselection'].append_element(sub.group(key)),
                                     'constrained': $p.constrained
                                 }
                             )
@@ -210,12 +198,7 @@ export const Type_Node = (
                             $.node,
                             {
                                 'temp type': $p['temp type'],
-                                'temp subselection': op_append_element(
-                                    $p['temp subselection'],
-                                    {
-                                        'element': sub.list(),
-                                    },
-                                ),
+                                'temp subselection': $p['temp subselection'].append_element(sub.list()),
                                 'constrained': $p.constrained
                             }
                         ),
@@ -232,12 +215,7 @@ export const Type_Node = (
                             $,
                             {
                                 'temp type': $p['temp type'],
-                                'temp subselection': op_append_element(
-                                    $p['temp subselection'],
-                                    {
-                                        'element': sub.optional(),
-                                    },
-                                ),
+                                'temp subselection': $p['temp subselection'].append_element(sub.optional()),
                                 'constrained': $p.constrained
                             }
                         ),
@@ -256,17 +234,12 @@ export const Type_Node = (
                                 $.node,
                                 {
                                     'temp type': $p['temp type'],
-                                    'temp subselection': op_append_element(
-                                        $p['temp subselection'],
-                                        {
-                                            'element': sub.state_group(key),
-                                        },
-                                    ),
+                                    'temp subselection': $p['temp subselection'].append_element(sub.state_group(key)),
                                     'constrained': $p.constrained
                                 }
                             )
                         ),
-                        t.component_imported("out", $p['temp type'], {}, op_append_element($p['temp subselection'], { 'element': sub.group("SG") }))
+                        t.component_imported("out", $p['temp type'], {}, $p['temp subselection'].append_element(sub.group("SG")))
                     )))
                 })
             ))
