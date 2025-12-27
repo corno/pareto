@@ -6,7 +6,7 @@ import * as _in_token from "astn/dist/interface/generated/pareto/schemas/token/d
 import * as _out from "../../../../interface/generated/pareto/schemas/unmarshall_errors/data_types/target"
 
 import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/list/flatten"
-import { $$ as op_dicionary_of_lists_to_list } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/directory_of_lists_to_list"
+import { $$ as op_dicionary_of_lists_to_list } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/dictionary_of_lists_to_list"
 
 export const Optional_Node = (
     $: _in.Optional_Node,

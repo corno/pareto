@@ -13,7 +13,6 @@ import * as _out from "../../../../interface/to_be_generated/temp_unmashall_resu
 
 import { $$ as op_group } from "pareto-standard-operations/dist/implementation/operations/impure/list/group"
 import { $$ as op_expect_exactly_one_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/expect_exactly_one_element"
-import { $$ as op_dictionary_filter } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/filter"
 import { $$ as op_dictionary_merge } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/merge"
 
 
@@ -267,19 +266,17 @@ export const Node_Type = (
                                     return ['valid', ['indexed', {
                                         'value': $,
                                         'content': {
-                                            'superfluous entries': op_dictionary_filter(
-                                                op_dictionary_merge(
-                                                    entries,
-                                                    {
-                                                        'supporting dictionary': group_def.dictionary
-                                                    }
-                                                ).map(($) => {
-                                                    return $.supporting.transform( //drop all the ones for which there is a definition
-                                                        ($) => _ea.not_set(),
-                                                        () => _ea.set($.context)
-                                                    )
-                                                })
-                                            ).map(($) => $.map(($) => $.key.range)), //select the locations
+                                            'superfluous entries': op_dictionary_merge(
+                                                entries,
+                                                {
+                                                    'supporting dictionary': group_def.dictionary
+                                                }
+                                            ).filter(($) => {
+                                                return $.supporting.transform( //drop all the ones for which there is a definition
+                                                    ($) => _ea.not_set(),
+                                                    () => _ea.set($.context)
+                                                )
+                                            }).map(($) => $.map(($) => $.key.range)), //select the locations
                                             'properties': op_dictionary_merge(
                                                 group_def.dictionary,
                                                 {
@@ -358,12 +355,12 @@ export const Node_Type = (
                                 return ['valid', {
                                     'value type': ['state', {
                                         'value substatus': _ea.cc($.status, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
-                                        switch ($[0]) {
-                                            case 'missing data': return _ea.ss($, ($) => ['missing data', $['#']])
-                                            case 'set': return _ea.ss($, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
-                                                const state = $.state
-                                                const value = $.value
-                                                return ['set', {
+                                            switch ($[0]) {
+                                                case 'missing data': return _ea.ss($, ($) => ['missing data', $['#']])
+                                                case 'set': return _ea.ss($, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
+                                                    const state = $.state
+                                                    const value = $.value
+                                                    return ['set', {
                                                         'value': $,
                                                         'found state definition': def.get_entry($.state.value).map(
                                                             ($) => ({
@@ -377,10 +374,10 @@ export const Node_Type = (
                                                             })
                                                         ),
                                                     }]
-                                            })
-                                            default: return _ea.au($[0])
-                                        }
-                                    })
+                                                })
+                                                default: return _ea.au($[0])
+                                            }
+                                        })
                                     }]
                                 }]
                             })

@@ -19,7 +19,6 @@ import * as t_marshall from "./marshall"
 import * as t_unmarshall from "./unmarshall"
 
 import { $$ as op_append_element } from "pareto-standard-operations/dist/implementation/operations/pure/list/append_element"
-import { $$ as op_filter_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/filter"
 
 
 
@@ -33,8 +32,8 @@ export const Schema_Tree = (
         switch ($[0]) {
             case 'schema': return _ea.ss($, ($) => {
                 const imports = $.imports
-                return m.set(op_filter_dictionary<_out.Module_Set.D<_edata.Source_Location>>(
-                    _ea.dictionary_literal({
+                return m.set(
+                    _ea.dictionary_literal<_et.Optional_Value<_out.Module_Set.D<_edata.Source_Location>>>({
                         // "migration boilerplate.ts": pa.set(_migration_boilerplate.Types($.types, {
                         //     'key': key,
                         //     'imports': $.imports,
@@ -71,7 +70,7 @@ export const Schema_Tree = (
                             'path': $p.path,
                             'imports': $.imports,
                         })),
-                    }))
+                    }).filter(($) => $)
                 )
             })
             case 'set': return _ea.ss($, ($): _out.Module_Set.D<_edata.Source_Location> => Schemas(

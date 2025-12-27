@@ -7,7 +7,6 @@ import * as _out from "pareto-fountain-pen/dist/interface/generated/pareto/schem
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
 import { $$ as s_list_of_separated_texts } from "pareto-standard-operations/dist/implementation/serializers/schemas/list_of_separated_texts"
-import { $$ as op_dictionary_to_list } from "pareto-standard-operations/dist/implementation/operations/impure/dictionary/to_list_sorted_by_insertion"
 
 
 export const Errors = (
@@ -55,7 +54,7 @@ export const Error_Type_Error = (
                 case 'state is not a string': return _ea.ss($, ($) => sh.b.snippet(`State is not a string`))
                 case 'unknown state': return _ea.ss($, ($) => sh.b.sub([
                     sh.b.snippet(`Unknown state: ${$.found}, expected one of `),
-                    sh.b.sub(op_dictionary_to_list($.expected).map(($) => sh.b.snippet(`'${$.key}'`)))
+                    sh.b.sub($.expected.to_list(($, key) => sh.b.snippet(`'${key}'`)))
                 ]))
                 default: return _ea.au($[0])
             }
