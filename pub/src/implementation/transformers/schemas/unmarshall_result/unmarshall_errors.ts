@@ -112,7 +112,7 @@ export const Node = (
                             return _ea.cc($, ($): _out.Errors => {
                                 switch ($[0]) {
                                     case 'unique': return _ea.ss($, ($) => Optional_Node($, $p))
-                                    case 'multiple': return _ea.ss($, ($) => $.flatten(($)  => _ea.list_literal<_out.Errors>([
+                                    case 'multiple': return _ea.ss($, ($) => $.flatten(($) => _ea.list_literal<_out.Errors>([
                                         _ea.list_literal([
                                             {
                                                 'range': $.key.range,

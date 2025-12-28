@@ -8,7 +8,7 @@ import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface
 
 import * as sh from "exupery/dist/shorthands/interface"
 
-import { $$ as op_flatten } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
+import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 
 
 export const Schema = (
@@ -21,7 +21,7 @@ export const Schema = (
     }
 ): _out.Module_Set.D<_edata.Source_Location> => {
     return sh.m.module(
-        op_flatten(
+        op_flatten_dictionary(
             _ea.dictionary_literal({
                 "core": _ea.dictionary_literal({
                     "": sh.import_.ancestor(
