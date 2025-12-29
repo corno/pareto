@@ -15,7 +15,7 @@ import * as _out from "../../../../interface/to_be_generated/temp_unmashall_resu
 import { $$ as op_expect_exactly_one_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/expect_exactly_one_element"
 
 const op_group = <T>(
-    $: _pi.List<_pi.Key_Value_Pair<T>>,
+    $: _pi.List<_pi.Deprecated_Key_Value_Pair<T>>,
 ): _pi.Dictionary<_pi.List<T>> => {
     return _pt.group_list($, ($) => $.key).map(($) => $.map(($) => $.value))
 }
