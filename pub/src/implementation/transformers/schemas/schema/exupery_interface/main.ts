@@ -1,5 +1,5 @@
-import * as _edata from 'exupery-core-data'
-import * as _ea from 'exupery-core-alg'
+import * as _pt from 'pareto-core-transformer'
+import * as _pi from 'pareto-core-interface'
 
 import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
@@ -27,17 +27,17 @@ import * as t_value_serializers from "./value_serializers"
 //     'filter dictionary': operations.pure.dictionary.filter
 // }
 
-export const Schema = ($: _in.Schema): _out.Module_Set.D<_edata.Source_Location> => {
+export const Schema = ($: _in.Schema): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     const schema = $
-    const constrained: boolean = _ea.cc($.complexity, ($) => {
+    const constrained: boolean = _pt.cc($.complexity, ($) => {
         switch ($[0]) {
-            case 'constrained': return _ea.ss($, ($) => true)
-            case 'unconstrained': return _ea.ss($, ($) => false)
-            default: return _ea.au($[0])
+            case 'constrained': return _pt.ss($, ($) => true)
+            case 'unconstrained': return _pt.ss($, ($) => false)
+            default: return _pt.au($[0])
         }
     })
     return m.set({
-        "data types": m.set(_ea.dictionary_literal({
+        "data types": m.set(_pt.dictionary_literal({
             "source.ts": t_types.Schema(
                 schema,
                 {
@@ -52,14 +52,14 @@ export const Schema = ($: _in.Schema): _out.Module_Set.D<_edata.Source_Location>
                     'imports': schema.imports,
                 }
             ),
-            "resolve.ts": _ea.cc($.complexity, ($) => {
+            "resolve.ts": _pt.cc($.complexity, ($) => {
                 switch ($[0]) {
-                    case 'constrained': return _ea.ss($, ($) => t_resolve.Signatures(
+                    case 'constrained': return _pt.ss($, ($) => t_resolve.Signatures(
                         $.signatures.types
                     ))
-                    case 'unconstrained': return _ea.ss($, ($) => t_dummy_resolve.Signatures(
+                    case 'unconstrained': return _pt.ss($, ($) => t_dummy_resolve.Signatures(
                     ))
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             }),
         })),
@@ -111,23 +111,23 @@ export const Schema = ($: _in.Schema): _out.Module_Set.D<_edata.Source_Location>
     })
 }
 
-export const Schema_Tree = ($: _in.Schema_Tree): _out.Module_Set.D<_edata.Source_Location> => {
-    return _ea.cc($, ($) => {
+export const Schema_Tree = ($: _in.Schema_Tree): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+    return _pt.cc($, ($) => {
         switch ($[0]) {
-            case 'schema': return _ea.ss($, ($) => Schema($))
-            case 'set': return _ea.ss($, ($) => Schemas($))
-            default: return _ea.au($[0])
+            case 'schema': return _pt.ss($, ($) => Schema($))
+            case 'set': return _pt.ss($, ($) => Schemas($))
+            default: return _pt.au($[0])
         }
     })
 }
 
 
-export const Schemas = ($: _in.Schemas): _out.Module_Set.D<_edata.Source_Location> => {
-    return m.set($.dictionary.map(($) => _ea.cc($, ($) => {
+export const Schemas = ($: _in.Schemas): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+    return m.set($.dictionary.map(($) => _pt.cc($, ($) => {
         switch ($[0]) {
-            case 'schema': return _ea.ss($, ($) => Schema($))
-            case 'set': return _ea.ss($, ($) => Schemas($))
-            default: return _ea.au($[0])
+            case 'schema': return _pt.ss($, ($) => Schema($))
+            case 'set': return _pt.ss($, ($) => Schemas($))
+            default: return _pt.au($[0])
         }
     })))
 }

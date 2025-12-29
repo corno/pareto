@@ -1,7 +1,7 @@
-import * as _ed from 'exupery-core-data'
-import * as _ea from 'exupery-core-alg'
+import * as _pt from 'pareto-core-transformer'
+import * as _pi from 'pareto-core-interface'
+import * as _psh from 'pareto-core-transformer/dist/deprecated_shorthands_for_unresolved'
 
-import { wrap_dictionary } from 'exupery-core-data/dist/shorthands/unresolved_transformation'
 
 import * as _in from "../../../../interface/generated/pareto/schemas/module/data_types/source"
 import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
@@ -11,23 +11,23 @@ import * as t_exupery_interface_main from "../schema/exupery_interface/main"
 import * as t_exupery_interface_types from "../schema/exupery_interface/types"
 
 
-export const Operations = ($: _in.Operations): _out.Type<_ed.Source_Location> => {
-    return t.group($.map(($) => _ea.cc($, ($) => {
+export const Operations = ($: _in.Operations): _out.Type<_pi.Deprecated_Source_Location> => {
+    return t.group($.map(($) => _pt.cc($, ($) => {
         switch ($[0]) {
-            case 'operation': return _ea.ss($, ($) => t.function_(
+            case 'operation': return _pt.ss($, ($) => t.function_(
                 $['type parameters'].map(($) => null),
                 t_exupery_interface_types.Type_Node($.context),
-                $.parameters.map(($) => _ea.cc($, ($) => t_exupery_interface_types.Type_Node($))),
+                $.parameters.map(($) => _pt.cc($, ($) => t_exupery_interface_types.Type_Node($))),
                 t_exupery_interface_types.Type_Node($.result),
             ))
-            case 'set': return _ea.ss($, ($) => Operations($))
-            default: return _ea.au($[0])
+            case 'set': return _pt.ss($, ($) => Operations($))
+            default: return _pt.au($[0])
         }
     })))
 }
 
-export const Module = ($: _in.Module): _out.Module_Set<_ed.Source_Location> => {
-    return wrap_dictionary({
+export const Module = ($: _in.Module): _out.Module_Set<_pi.Deprecated_Source_Location> => {
+    return _psh.wrap_dictionary({
         "core": m.set({
             "unresolved.ts": m.module(
                 {},

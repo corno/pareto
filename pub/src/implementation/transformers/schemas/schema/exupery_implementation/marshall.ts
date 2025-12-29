@@ -1,7 +1,6 @@
-import * as _edata from 'exupery-core-data'
-import * as _et from 'exupery-core-types'
-import * as _ea from 'exupery-core-alg'
-import * as _edev from 'exupery-core-dev'
+import * as _pi from 'pareto-core-interface'
+import * as _pt from 'pareto-core-transformer'
+import * as _pdev from 'pareto-core-dev'
 
 import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
@@ -16,19 +15,19 @@ import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/imp
 export const Schema = (
     $: _in.Schema,
     $p: {
-        'path': _et.List<string>,
+        'path': _pi.List<string>,
         'imports': _in.Imports,
         'constrained': boolean
     }
-): _out.Module_Set.D<_edata.Source_Location> => {
+): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
         op_flatten_dictionary(
-            _ea.dictionary_literal({
-                "": _ea.dictionary_literal({
-                    "signatures": import_.ancestor(5, "interface", _ea.list_literal([
-                        _ea.list_literal(["generated", "pareto", "schemas"]),
+            _pt.dictionary_literal({
+                "": _pt.dictionary_literal({
+                    "signatures": import_.ancestor(5, "interface", _pt.list_literal([
+                        _pt.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _ea.list_literal(["marshall"])
+                        _pt.list_literal(["marshall"])
                     ]).flatten(($) => $), {}),
                     "out": import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn target"], {}),
                 }),
@@ -36,7 +35,8 @@ export const Schema = (
             }),
             {
                 'separator': "",
-            }
+            },
+                        () => _pt.unreachable_code_path(),
         ),
         {},
         $.types.dictionary.map(($, key) => variable(
@@ -47,7 +47,7 @@ export const Schema = (
                     $.node,
                     {
                         'type': key,
-                        'subselection': _ea.list_literal([])
+                        'subselection': _pt.list_literal([])
                     }
                 ),
             ),
@@ -60,11 +60,11 @@ export const Type_Node = (
     $: _in.Type_Node,
     $p: {
         'type': string
-        'subselection': _et.List<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>>
+        'subselection': _pi.List<_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>>
     },
-): _out.Initialization<_edata.Source_Location> => {
+): _out.Initialization<_pi.Deprecated_Source_Location> => {
 
-    const string = (value: _out.Initialization<_edata.Source_Location>, delimiter: 'quote' | 'backtick' | 'none'): _out.Initialization<_edata.Source_Location> => {
+    const string = (value: _out.Initialization<_pi.Deprecated_Source_Location>, delimiter: 'quote' | 'backtick' | 'none'): _out.Initialization<_pi.Deprecated_Source_Location> => {
         return i.tagged_union(
             "text",
             i.group({
@@ -74,48 +74,48 @@ export const Type_Node = (
         )
     }
 
-    return _ea.cc($, ($) => {
+    return _pt.cc($, ($) => {
         switch ($[0]) {
-            case 'number': return _ea.ss($, ($) => string(i.call(
-                s.from_parameter("value serializers", _ea.cc($, ($) => {
+            case 'number': return _pt.ss($, ($) => string(i.call(
+                s.from_parameter("value serializers", _pt.cc($, ($) => {
                     switch ($[0]) {
-                        case 'global': return _ea.ss($, ($) => ["custom numbers", $.key])
-                        case 'local': return _ea.ss($, ($) => ["default number"])
-                        default: return _ea.au($[0])
+                        case 'global': return _pt.ss($, ($) => ["custom numbers", $.key])
+                        case 'local': return _pt.ss($, ($) => ["default number"])
+                        default: return _pt.au($[0])
                     }
                 })),
                 i.select_from_context([]),
-                _ea.dictionary_literal({}),
+                _pt.dictionary_literal({}),
             ), 'backtick')) //FIXME should be 'none'
-            case 'boolean': return _ea.ss($, ($) => string(i.call(
+            case 'boolean': return _pt.ss($, ($) => string(i.call(
                 s.from_parameter("value serializers", ["boolean"]),
                 i.select_from_context([]),
-                _ea.dictionary_literal({}),
+                _pt.dictionary_literal({}),
             ), 'backtick')) //FIXME should be 'none'
-            case 'nothing': return _ea.ss($, ($) => i.tagged_union("nothing", i.null_()))
-            case 'reference': return _ea.ss($, ($) => _ea.cc($.type, ($) => {
+            case 'nothing': return _pt.ss($, ($) => i.tagged_union("nothing", i.null_()))
+            case 'reference': return _pt.ss($, ($) => _pt.cc($.type, ($) => {
                 switch ($[0]) {
-                    case 'derived': return _ea.ss($, ($) => i.tagged_union("nothing", i.null_()))
-                    case 'selected': return _ea.ss($, ($) => string(i.select_from_context(["key"]), 'backtick'))
-                    default: return _ea.au($[0])
+                    case 'derived': return _pt.ss($, ($) => i.tagged_union("nothing", i.null_()))
+                    case 'selected': return _pt.ss($, ($) => string(i.select_from_context(["key"]), 'backtick'))
+                    default: return _pt.au($[0])
                 }
             }))
-            case 'text': return _ea.ss($, ($) => string(i.select_from_context([]), 'quote'))
-            case 'component': return _ea.ss($, ($) => i.call(
-                _ea.cc($, ($) => {
+            case 'text': return _pt.ss($, ($) => string(i.select_from_context([]), 'quote'))
+            case 'component': return _pt.ss($, ($) => i.call(
+                _pt.cc($, ($) => {
                     switch ($[0]) {
-                        case 'external': return _ea.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
-                        case 'internal': return _ea.ss($, ($) => s.from_variable($.key, []))
-                        case 'internal cyclic': return _ea.ss($, ($) => s.from_variable($.key, []))
-                        default: return _ea.au($[0])
+                        case 'external': return _pt.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
+                        case 'internal': return _pt.ss($, ($) => s.from_variable($.key, []))
+                        case 'internal cyclic': return _pt.ss($, ($) => s.from_variable($.key, []))
+                        default: return _pt.au($[0])
                     }
                 }),
                 i.select_from_context([]),
-                _ea.dictionary_literal({
+                _pt.dictionary_literal({
                     "value serializers": i.select_from_parameter("value serializers", []),
                 }),
             ))
-            case 'dictionary': return _ea.ss($, ($) => i.tagged_union(
+            case 'dictionary': return _pt.ss($, ($) => i.tagged_union(
                 "dictionary",
                 i.dictionary_map(
                     $.ordered ? s.from_context(["dictionary"]) : s.from_context([]),
@@ -143,7 +143,7 @@ export const Type_Node = (
             //         }
             //     )
             // ))))
-            case 'group': return _ea.ss($, ($) => i.tagged_union(
+            case 'group': return _pt.ss($, ($) => i.tagged_union(
                 "verbose group",
                 i.dictionary_literal($.dictionary.map(($, key) => i.change_context(
                     s.from_context([key]),
@@ -156,7 +156,7 @@ export const Type_Node = (
                     )
                 )))
             ))
-            case 'list': return _ea.ss($, ($) => i.tagged_union(
+            case 'list': return _pt.ss($, ($) => i.tagged_union(
                 "list",
                 i.array_map(
                     s.from_context([]),
@@ -168,7 +168,7 @@ export const Type_Node = (
                         }
                     )
                 )))
-            case 'optional': return _ea.ss($, ($) => i.tagged_union(
+            case 'optional': return _pt.ss($, ($) => i.tagged_union(
                 "optional",
                 i.optional_transform(
                     s.from_context([]),
@@ -193,7 +193,7 @@ export const Type_Node = (
                         [sub.state_group("optional")]
                     ),
                 )))
-            case 'state group': return _ea.ss($, ($) => i.tagged_union(
+            case 'state group': return _pt.ss($, ($) => i.tagged_union(
                 "state",
                 i.switch_(
                     s.from_context([]),
@@ -215,8 +215,8 @@ export const Type_Node = (
                     ),
                 )
             ))
-            // case 'type parameter': return _ea.ss($, ($) => _edev.implement_me("xx"))
-            default: return _ea.au($[0])
+            // case 'type parameter': return _pt.ss($, ($) => _pdev.implement_me("xx"))
+            default: return _pt.au($[0])
         }
     })
 }

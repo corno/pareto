@@ -1,9 +1,12 @@
-import * as _ea from 'exupery-core-alg'
+import * as _pt from 'pareto-core-transformer'
+import * as _pds from 'pareto-core-deserializer'
+
+
 import * as d_path from "exupery-resources/dist/interface/generated/pareto/schemas/path/data_types/target"
 
 const replace = ($: string, search: number, replace: number): string => {
-    return _ea.build_text(($i) => {
-        _ea.text_to_character_list($).__for_each(($) => {
+    return _pds.build_text(($i) => {
+        _pds.text_to_character_list($).__for_each(($) => {
             if ($ === search) {
                 $i['add character'](replace)
             } else {

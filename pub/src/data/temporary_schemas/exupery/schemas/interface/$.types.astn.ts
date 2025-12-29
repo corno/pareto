@@ -1,4 +1,4 @@
-import * as pd from 'exupery-core-data'
+import * as _pi from 'pareto-core-interface'
 
 import {
     text,
@@ -13,7 +13,7 @@ import {
 
 import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
 
-export const $: g_.Types<pd.Source_Location>  = types(
+export const $: g_.Types<_pi.Deprecated_Source_Location>  = types(
     {
         "Module Set": type(t.dictionary(t.state_group({
             "module": tstate(t.component("Module")),

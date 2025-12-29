@@ -1,4 +1,4 @@
-import * as _edata from 'exupery-core-data'
+import * as _pi from 'pareto-core-interface'
 
 import * as g_ from "../../interface/generated/pareto/schemas/module/data_types/target"
 
@@ -21,12 +21,12 @@ import { $ as m_pareto_static_html } from "./pareto-static-html/module.astn"
 import { $ as m_pareto_test } from "./pareto-test/module.astn"
 import { $ as m_pareto_targets } from "./pareto-targets/module.astn"
 import { $ as m_pareto_vscode_backend } from "./pareto-vscode-backend/module.astn"
-import { m } from 'exupery/dist/shorthands/implementation'
 
+import * as _psh from 'pareto-core-shorthands/dist/unconstrained' //should be unresolved_data I think
 
-export const $ = _edata.d<{
+export const $ = _psh.wrap_dictionary<{
     'target path': string,
-    'module': g_.Module<_edata.Source_Location>
+    'module': g_.Module<_pi.Deprecated_Source_Location>
 }>({
     "accounting_ruwe_data": {
         'target path': `../../../pareto-rosetta/accounting_ruwe_data`,

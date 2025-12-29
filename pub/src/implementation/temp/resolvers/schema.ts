@@ -1,4 +1,4 @@
-import * as _ea from 'exupery-core-alg'
+import * as _pt from 'pareto-core-refiner'
 
 import * as _i_generic from "../../generated/pareto/generic/resolve"
 import * as _i_signatures from "../../../interface/generated/pareto/schemas/schema/data_types/resolve"
@@ -8,26 +8,26 @@ import * as _i_out from "../../../interface/generated/pareto/schemas/schema/data
 
 import * as _r from "../../../interface/generated/pareto/core/resolved"
 
-export const Imports: _i_signatures.Imports = ($, $p) => _ea.block(() => {
+export const Imports: _i_signatures.Imports = ($, $p) => _pt.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _ea.cc($, ($) => _i_generic.resolve_dictionary(
+    return _pt.cc($, ($) => _i_generic.resolve_dictionary(
         $,
         {
             'location 2 string': l2s,
-            'map': ($, $p) => _ea.cc($['value'], ($) => _ea.cc($, ($): _i_out.Imports.D => {
-                const p_schema_set_child: _i_out.Imports.D.schema_set_child = _ea.cc($['schema set child'], ($) => _i_generic.get_entry_from_stack(
+            'map': ($, $p) => _pt.cc($['value'], ($) => _pt.cc($, ($): _i_out.Imports.D => {
+                const p_schema_set_child: _i_out.Imports.D.schema_set_child = _pt.cc($['schema set child'], ($) => _i_generic.get_entry_from_stack(
                     params.lookups['sibling schemas'],
                     {
                         'location 2 string': l2s,
                         'reference': $,
                     }
                 ))
-                const p_schema: _i_out.Imports.D.schema = _ea.cc($['schema'], ($) => _ea.cc(p_schema_set_child.entry, ($) => { // reference constraint ('schema set child')
+                const p_schema: _i_out.Imports.D.schema = _pt.cc($['schema'], ($) => _pt.cc(p_schema_set_child.entry, ($) => { // reference constraint ('schema set child')
                     switch ($[0]) {
-                        case 'schema': return _ea.ss($, ($) => $)
-                        case 'set': return _ea.ss($, ($) => _ea.deprecated_panic("HELP!!!"))
-                        default: return _ea.au($[0])
+                        case 'schema': return _pt.ss($, ($) => $)
+                        case 'set': return _pt.ss($, ($) => _pt.fixme_abort("HELP!!!"))
+                        default: return _pt.au($[0])
                     }
                 }))
                 return {
@@ -39,14 +39,14 @@ export const Imports: _i_signatures.Imports = ($, $p) => _ea.block(() => {
     ))
 })
 
-export const Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => _ea.block(() => {
+export const Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => _pt.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _ea.block(() => {
+    return _pt.block(() => {
         const loc = $.type.location
-        const p_type: _i_out.Lookup_Selection._type = _ea.cc($['type'], ($) => _ea.cc($['state group'], ($): _i_out.Lookup_Selection._type => {
+        const p_type: _i_out.Lookup_Selection._type = _pt.cc($['type'], ($) => _pt.cc($['state group'], ($): _i_out.Lookup_Selection._type => {
             switch ($[0]) {
-                case 'dictionary': return _ea.ss($, ($) => {
+                case 'dictionary': return _pt.ss($, ($) => {
                     const p_selection = Guaranteed_Value_Selection(
                         $.selection,
                         {
@@ -56,7 +56,7 @@ export const Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => _ea.b
                     )
 
                     const p_selected_dictionary = p_selection['resulting node'][0] !== 'dictionary' // component constraint (selection)
-                        ? _ea.deprecated_panic("not a 'dictionary' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
+                        ? _pt.fixme_abort("not a 'dictionary' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
                         : p_selection['resulting node'][1]
 
                     return ['dictionary', {
@@ -64,31 +64,31 @@ export const Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => _ea.b
                         'selected dictionary': p_selected_dictionary,
                     }]
                 })
-                case 'not circular dependent siblings': return _ea.ss($, ($) => ['not circular dependent siblings', $p.parameters.values['current dictionary'].transform(
+                case 'not circular dependent siblings': return _pt.ss($, ($) => ['not circular dependent siblings', $p.parameters.values['current dictionary'].transform(
                     ($) => $,
-                    () => _ea.deprecated_panic("not in a dictionary @ ", $p['location 2 string'](loc))
+                    () => _pt.fixme_abort("not in a dictionary @ ", $p['location 2 string'](loc))
                 )])
-                case 'parameter': return _ea.ss($, ($) => ['parameter', _i_generic.get_entry(
+                case 'parameter': return _pt.ss($, ($) => ['parameter', _i_generic.get_entry(
                     _i_generic.dictionary_to_lookup($p.parameters.values.signature['resolved parameters'].lookups, null),
                     {
                         'reference': $,
                         'location 2 string': $p['location 2 string']
                     }
                 )])
-                case 'possibly circular dependent siblings': return _ea.ss($, ($) => ['possibly circular dependent siblings', $p.parameters.values['current dictionary'].transform(
+                case 'possibly circular dependent siblings': return _pt.ss($, ($) => ['possibly circular dependent siblings', $p.parameters.values['current dictionary'].transform(
                     ($) => $,
-                    () => _ea.deprecated_panic("SFSFSD")
+                    () => _pt.fixme_abort("SFSFSD")
                 )])
-                default: return _ea.au($[0])
+                default: return _pt.au($[0])
             }
         }))
-        const p_resulting_dictionary = _ea.cc(p_type, ($): _i_out.Type_Node.SG.dictionary => {
+        const p_resulting_dictionary = _pt.cc(p_type, ($): _i_out.Type_Node.SG.dictionary => {
             switch ($[0]) {
-                case 'dictionary': return _ea.ss($, ($) => $['selected dictionary'])
-                case 'not circular dependent siblings': return _ea.ss($, ($) => $)
-                case 'parameter': return _ea.ss($, ($) => $.entry.dictionary)
-                case 'possibly circular dependent siblings': return _ea.ss($, ($) => $)
-                default: return _ea.au($[0])
+                case 'dictionary': return _pt.ss($, ($) => $['selected dictionary'])
+                case 'not circular dependent siblings': return _pt.ss($, ($) => $)
+                case 'parameter': return _pt.ss($, ($) => $.entry.dictionary)
+                case 'possibly circular dependent siblings': return _pt.ss($, ($) => $)
+                default: return _pt.au($[0])
             }
         })
         return ({
@@ -100,27 +100,27 @@ export const Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => _ea.b
 
 export const Number_Type: _i_signatures.Number_Type = ($, $p) => {
     return {
-        'precision': _ea.cc($.precision['state group'], ($): _i_out.Number_Type.precision => {
+        'precision': _pt.cc($.precision['state group'], ($): _i_out.Number_Type.precision => {
             switch ($[0]) {
-                case 'exact': return _ea.ss($, ($) => {
+                case 'exact': return _pt.ss($, ($) => {
                     return ['exact', {
-                        'type': _ea.cc($.type['state group'], ($) => {
+                        'type': _pt.cc($.type['state group'], ($) => {
                             switch ($[0]) {
-                                case 'integer': return _ea.ss($, ($) => ['integer', null])
-                                case 'natural': return _ea.ss($, ($) => ['natural', null])
-                                case 'positive natural': return _ea.ss($, ($) => ['positive natural', null])
-                                default: return _ea.au($[0])
+                                case 'integer': return _pt.ss($, ($) => ['integer', null])
+                                case 'natural': return _pt.ss($, ($) => ['natural', null])
+                                case 'positive natural': return _pt.ss($, ($) => ['positive natural', null])
+                                default: return _pt.au($[0])
                             }
                         }),
-                        'decimal separator offset': _ea.cc($['decimal separator offset'], ($) => {
+                        'decimal separator offset': _pt.cc($['decimal separator offset'], ($) => {
                             return $
                         })
                     }]
                 })
-                case 'approximation': return _ea.ss($, ($) => ['approximation', {
+                case 'approximation': return _pt.ss($, ($) => ['approximation', {
                     'significant digits': $['significant digits']
                 }])
-                default: return _ea.au($[0])
+                default: return _pt.au($[0])
             }
         }),
     }
@@ -143,7 +143,7 @@ export const Signature_Parameters: _i_signatures.Signature_Parameters = ($, $p) 
                                 'types': _i_generic.dictionary_to_lookup($p.parameters.values.types.dictionary, null),
                             },
                             'values': {
-                                'imports': _ea.not_set(),
+                                'imports': _pt.not_set(),
                             },
                         },
                     }
@@ -174,27 +174,27 @@ export const Signature_Parameters: _i_signatures.Signature_Parameters = ($, $p) 
                                 'types': _i_generic.dictionary_to_lookup($p.parameters.values.types.dictionary, null),
                             },
                             'values': {
-                                'imports': _ea.not_set(),
+                                'imports': _pt.not_set(),
                             },
                         }
                     }
                 )
 
-                const p_type: _i_out.Signature_Parameters.lookups.D._type = _ea.cc($.value.type['state group'], ($) => {
+                const p_type: _i_out.Signature_Parameters.lookups.D._type = _pt.cc($.value.type['state group'], ($) => {
                     switch ($[0]) {
-                        case 'acyclic': return _ea.ss($, ($) => ['acyclic', null])
-                        case 'cyclic': return _ea.ss($, ($) => ['cyclic', null])
-                        case 'stack': return _ea.ss($, ($) => ['stack', $])
-                        default: return _ea.au($[0])
+                        case 'acyclic': return _pt.ss($, ($) => ['acyclic', null])
+                        case 'cyclic': return _pt.ss($, ($) => ['cyclic', null])
+                        case 'stack': return _pt.ss($, ($) => ['stack', $])
+                        default: return _pt.au($[0])
                     }
                 })
                 const p_presence = $.value.presence['state group']
                 return {
                     'referent': p_referent,
-                    'dictionary': _ea.cc(p_referent['resulting node'], ($) => { // component constraint (referent)
+                    'dictionary': _pt.cc(p_referent['resulting node'], ($) => { // component constraint (referent)
                         switch ($[0]) {
-                            case 'dictionary': return _ea.ss($, ($) => $)
-                            default: return _ea.deprecated_panic(`not a 'dictionary' but a '${$[0]}' @ ${$p['location 2 string'](lookups_loc)}`)
+                            case 'dictionary': return _pt.ss($, ($) => $)
+                            default: return _pt.fixme_abort(`not a 'dictionary' but a '${$[0]}' @ ${$p['location 2 string'](lookups_loc)}`)
 
                         }
                     }),
@@ -250,9 +250,9 @@ export const Globals: _i_signatures.Globals = ($, $p) => {
 }
 
 export const Signature: _i_signatures.Signature = ($, $p) => {
-    const p_parameters: _i_out.Signature.parameters = _ea.cc($.parameters['state group'], ($) => {
+    const p_parameters: _i_out.Signature.parameters = _pt.cc($.parameters['state group'], ($) => {
         switch ($[0]) {
-            case 'local': return _ea.ss($, ($) => ['local', Signature_Parameters($, {
+            case 'local': return _pt.ss($, ($) => ['local', Signature_Parameters($, {
                 'location 2 string': $p['location 2 string'],
                 'parameters': {
                     'lookups': null,
@@ -262,7 +262,7 @@ export const Signature: _i_signatures.Signature = ($, $p) => {
                     },
                 }
             })])
-            case 'same as': return _ea.ss($, ($) => ['same as', _i_generic.get_entry(
+            case 'same as': return _pt.ss($, ($) => ['same as', _i_generic.get_entry(
                 $p.parameters.lookups['sibling signatures'],
                 {
                     'reference': {
@@ -272,17 +272,17 @@ export const Signature: _i_signatures.Signature = ($, $p) => {
                     'location 2 string': $p['location 2 string'],
                 }
             )])
-            default: return _ea.au($[0])
+            default: return _pt.au($[0])
         }
     })
     return {
         'type': $p.parameters.values.type,
         'parameters': p_parameters,
-        'resolved parameters': _ea.cc(p_parameters, ($) => {
+        'resolved parameters': _pt.cc(p_parameters, ($) => {
             switch ($[0]) {
-                case 'local': return _ea.ss($, ($) => $)
-                case 'same as': return _ea.ss($, ($) => $.entry['resolved parameters'])
-                default: return _ea.au($[0])
+                case 'local': return _pt.ss($, ($) => $)
+                case 'same as': return _pt.ss($, ($) => $.entry['resolved parameters'])
+                default: return _pt.au($[0])
             }
         })
     }
@@ -324,12 +324,12 @@ export const Signatures: _i_signatures.Signatures = ($, $p) => {
     )
 }
 
-export const Schema_Tree: _i_signatures.Schema_Tree = ($, $p) => _ea.block(() => {
+export const Schema_Tree: _i_signatures.Schema_Tree = ($, $p) => _pt.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _ea.cc($['state group'], ($): _i_out.Schemas.D => {
+    return _pt.cc($['state group'], ($): _i_out.Schemas.D => {
         switch ($[0]) {
-            case 'schema': return _ea.ss($, ($) => ['schema', _ea.block(() => {
+            case 'schema': return _pt.ss($, ($) => ['schema', _pt.block(() => {
                 const p_imports = Imports($.imports, {
                     'location 2 string': l2s,
                     'parameters': {
@@ -340,7 +340,7 @@ export const Schema_Tree: _i_signatures.Schema_Tree = ($, $p) => _ea.block(() =>
                         'values': null,
                     }
                 })
-                const p_globals: _i_out.Schema.globals = _ea.cc($['globals'], ($) => Globals(
+                const p_globals: _i_out.Schema.globals = _pt.cc($['globals'], ($) => Globals(
                     $,
                     {
                         'location 2 string': l2s,
@@ -373,8 +373,8 @@ export const Schema_Tree: _i_signatures.Schema_Tree = ($, $p) => _ea.block(() =>
                                             'possibly circular dependent sibling types': $l['possibly circular dependent siblings'],
                                         },
                                         'values': {
-                                            'imports': _ea.set(p_imports),
-                                            'globals': _ea.set(p_globals),
+                                            'imports': _pt.set(p_imports),
+                                            'globals': _pt.set(p_globals),
                                             'type parameters': p_type_parameters,
                                         },
                                     },
@@ -389,12 +389,12 @@ export const Schema_Tree: _i_signatures.Schema_Tree = ($, $p) => _ea.block(() =>
                         },
                     }
                 )
-                const p_complexity: _i_out.Schema.complexity = _ea.cc($.complexity['state group'], ($) => {
+                const p_complexity: _i_out.Schema.complexity = _pt.cc($.complexity['state group'], ($) => {
                     switch ($[0]) {
-                        case 'constrained': return _ea.ss($, ($) => {
+                        case 'constrained': return _pt.ss($, ($) => {
 
-                            const p_signatures: _i_out.Resolve_Logic.signatures = _ea.cc($.signatures, ($) => {
-                                const p_types_2: _i_out.Resolve_Logic.signatures.types = _ea.cc($, ($) => Signatures(
+                            const p_signatures: _i_out.Resolve_Logic.signatures = _pt.cc($.signatures, ($) => {
+                                const p_types_2: _i_out.Resolve_Logic.signatures.types = _pt.cc($, ($) => Signatures(
                                     $.types,
                                     {
                                         'location 2 string': l2s,
@@ -445,22 +445,22 @@ export const Schema_Tree: _i_signatures.Schema_Tree = ($, $p) => _ea.block(() =>
                                             {
                                                 'parameters': {
                                                     'lookups': {
-                                                        'sibling property resolvers': _ea.not_set(),
-                                                        'parent sibling property resolvers': _ea.not_set(),
+                                                        'sibling property resolvers': _pt.not_set(),
+                                                        'parent sibling property resolvers': _pt.not_set(),
 
                                                     },
                                                     'values': {
-                                                        'list cursor': _ea.not_set(),
-                                                        'linked entry': _ea.not_set(),
-                                                        'current dictionary': _ea.not_set(),
-                                                        'current ordered dictionary': _ea.not_set(),
-                                                        'option constraints': _ea.not_set(),
+                                                        'list cursor': _pt.not_set(),
+                                                        'linked entry': _pt.not_set(),
+                                                        'current dictionary': _pt.not_set(),
+                                                        'current ordered dictionary': _pt.not_set(),
+                                                        'option constraints': _pt.not_set(),
 
                                                         'definition': p_linked_entry.entry.node,
                                                         'signature': p_signature.entry,
 
                                                         'types': p_types,
-                                                        'imports': _ea.set(p_imports),
+                                                        'imports': _pt.set(p_imports),
                                                         'signatures': p_signatures.types
                                                     },
                                                 },
@@ -480,8 +480,8 @@ export const Schema_Tree: _i_signatures.Schema_Tree = ($, $p) => _ea.block(() =>
                                 'resolvers': p_resolvers,
                             }]
                         })
-                        case 'unconstrained': return _ea.ss($, ($) => ['unconstrained', null])
-                        default: return _ea.au($[0])
+                        case 'unconstrained': return _pt.ss($, ($) => ['unconstrained', null])
+                        default: return _pt.au($[0])
                     }
                 })
                 return ({
@@ -492,26 +492,26 @@ export const Schema_Tree: _i_signatures.Schema_Tree = ($, $p) => _ea.block(() =>
                 })
             })])
             case 'set':
-            case 'set': return _ea.ss($, ($) => ['set', Schemas(
+            case 'set': return _pt.ss($, ($) => ['set', Schemas(
                 $,
                 {
                     'location 2 string': l2s,
                     'parameters': params,
                 }
             )])
-            default: return _ea.au($[0])
+            default: return _pt.au($[0])
         }
     })
 })
 
-export const Schemas: _i_signatures.Schemas = ($, $p) => _ea.block(() => {
+export const Schemas: _i_signatures.Schemas = ($, $p) => _pt.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return _i_generic.resolve_ordered_dictionary(
         $,
         {
             'location 2 string': l2s,
-            'map': ($, $l) => _ea.cc($['value'], ($) => Schema_Tree(
+            'map': ($, $l) => _pt.cc($['value'], ($) => Schema_Tree(
                 $,
                 {
                     'location 2 string': l2s,
@@ -531,11 +531,11 @@ export const Schemas: _i_signatures.Schemas = ($, $p) => _ea.block(() => {
 
 export const Text_Type: _i_signatures.Text_Type = ($, $p) => {
     return {
-        'type': _ea.cc($.type['state group'], ($): _i_out.Text_Type._type => {
+        'type': _pt.cc($.type['state group'], ($): _i_out.Text_Type._type => {
             switch ($[0]) {
-                case 'single line': return _ea.ss($, ($) => ['single line', null])
-                case 'multi line': return _ea.ss($, ($) => ['multi line', null])
-                default: return _ea.au($[0])
+                case 'single line': return _pt.ss($, ($) => ['single line', null])
+                case 'multi line': return _pt.ss($, ($) => ['multi line', null])
+                default: return _pt.au($[0])
             }
         }),
     }
@@ -543,15 +543,15 @@ export const Text_Type: _i_signatures.Text_Type = ($, $p) => {
 
 export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
     const loc = $.location
-    return _ea.cc($['state group'], ($) => {
+    return _pt.cc($['state group'], ($) => {
         switch ($[0]) {
-            case 'boolean': return _ea.ss($, ($): _i_out.Type_Node => ['boolean', null])
-            case 'number': return _ea.ss($, ($): _i_out.Type_Node => ['number', _ea.cc($['state group'], ($): _i_out.Type_Node.SG._number => {
+            case 'boolean': return _pt.ss($, ($): _i_out.Type_Node => ['boolean', null])
+            case 'number': return _pt.ss($, ($): _i_out.Type_Node => ['number', _pt.cc($['state group'], ($): _i_out.Type_Node.SG._number => {
                 switch ($[0]) {
-                    case 'global': return _ea.ss($, ($): _i_out.Type_Node.SG._number => ['global', _i_generic.get_entry(
+                    case 'global': return _pt.ss($, ($): _i_out.Type_Node.SG._number => ['global', _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup($p.parameters.values.globals.transform(
                             ($) => $['number types'],
-                            () => _ea.deprecated_panic("globals not set")
+                            () => _pt.fixme_abort("globals not set")
                         ),
                             null
                         ),
@@ -560,7 +560,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                             'location 2 string': $p['location 2 string']
                         }
                     )])
-                    case 'local': return _ea.ss($, ($) => ['local', Number_Type(
+                    case 'local': return _pt.ss($, ($) => ['local', Number_Type(
                         $,
                         {
                             'location 2 string': $p['location 2 string'],
@@ -570,15 +570,15 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                             },
                         }
                     )])
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             })])
-            case 'text': return _ea.ss($, ($): _i_out.Type_Node => ['text', _ea.cc($['state group'], ($): _i_out.Type_Node.SG.text => {
+            case 'text': return _pt.ss($, ($): _i_out.Type_Node => ['text', _pt.cc($['state group'], ($): _i_out.Type_Node.SG.text => {
                 switch ($[0]) {
-                    case 'global': return _ea.ss($, ($): _i_out.Type_Node.SG.text => ['global', _i_generic.get_entry(
+                    case 'global': return _pt.ss($, ($): _i_out.Type_Node.SG.text => ['global', _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup($p.parameters.values.globals.transform(
                             ($) => $['text types'],
-                            () => _ea.deprecated_panic("globals not set")
+                            () => _pt.fixme_abort("globals not set")
                         ),
                             null
                         ),
@@ -587,7 +587,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                             'location 2 string': $p['location 2 string']
                         }
                     )])
-                    case 'local': return _ea.ss($, ($) => ['local', Text_Type(
+                    case 'local': return _pt.ss($, ($) => ['local', Text_Type(
                         $,
                         {
                             'location 2 string': $p['location 2 string'],
@@ -597,15 +597,15 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                             },
                         }
                     )])
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             })])
-            case 'component': return _ea.ss($, ($): _i_out.Type_Node => ['component', _ea.cc($['state group'], ($): _i_out.Type_Node.SG.component => {
+            case 'component': return _pt.ss($, ($): _i_out.Type_Node => ['component', _pt.cc($['state group'], ($): _i_out.Type_Node.SG.component => {
                 switch ($[0]) {
-                    case 'external': return _ea.ss($, ($) => {
+                    case 'external': return _pt.ss($, ($) => {
                         const sc_import = $p.parameters.values.imports.transform(
                             ($) => $,
-                            () => _ea.deprecated_panic("missing")
+                            () => _pt.fixme_abort("missing")
                         )
                         const p_import = _i_generic.get_entry(
                             _i_generic.dictionary_to_lookup(sc_import, null),
@@ -625,24 +625,24 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                             )
                         }]
                     })
-                    case 'internal': return _ea.ss($, ($) => ['internal', _i_generic.get_entry(
+                    case 'internal': return _pt.ss($, ($) => ['internal', _i_generic.get_entry(
                         $p.parameters.lookups['noncircular sibling types'],
                         {
                             'reference': $,
                             'location 2 string': $p['location 2 string']
                         }
                     )])
-                    case 'internal cyclic': return _ea.ss($, ($) => ['internal cyclic', _i_generic.get_possibly_circular_dependent_sibling_entry(
+                    case 'internal cyclic': return _pt.ss($, ($) => ['internal cyclic', _i_generic.get_possibly_circular_dependent_sibling_entry(
                         $p.parameters.lookups['possibly circular dependent sibling types'],
                         {
                             'reference': $,
                             'location 2 string': $p['location 2 string']
                         }
                     )])
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             })])
-            case 'dictionary': return _ea.ss($, ($) => {
+            case 'dictionary': return _pt.ss($, ($) => {
                 const p_type = Type_Node(
                     $.node,
                     $p,
@@ -652,7 +652,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                     'ordered': $.ordered,
                 }]
             })
-            case 'group': return _ea.ss($, ($) => ['group', _i_generic.resolve_ordered_dictionary($, {
+            case 'group': return _pt.ss($, ($) => ['group', _i_generic.resolve_ordered_dictionary($, {
                 'location 2 string': $p['location 2 string'],
                 'map': ($, $l) => ({
                     'description': $.value.description,
@@ -662,7 +662,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                     )
                 }),
             })])
-            case 'list': return _ea.ss($, ($) => {
+            case 'list': return _pt.ss($, ($) => {
                 const p_type = Type_Node(
                     $.node,
                     $p,
@@ -671,22 +671,22 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                     'node': p_type,
                 }]
             })
-            case 'nothing': return _ea.ss($, ($) => ['nothing', null])
-            case 'optional': return _ea.ss($, ($) => ['optional', Type_Node(
+            case 'nothing': return _pt.ss($, ($) => ['nothing', null])
+            case 'optional': return _pt.ss($, ($) => ['optional', Type_Node(
                 $,
                 $p,
             )])
 
-            case 'reference': return _ea.ss($, ($): _i_out.Type_Node => {
+            case 'reference': return _pt.ss($, ($): _i_out.Type_Node => {
                 const loc = $.referent['type location'].location.location
                 $p.parameters.values.globals.transform(
                     ($) => {
                         if ($.complexity[0] === 'unconstrained') {
-                            _ea.deprecated_panic(`schema complexity setting is 'unconstrained', so references are not allowed @ ${$p['location 2 string'](loc)}`)
+                            _pt.fixme_abort(`schema complexity setting is 'unconstrained', so references are not allowed @ ${$p['location 2 string'](loc)}`)
                         }
                     },
                     () => {
-                        _ea.deprecated_panic(`schema doesn't have settings, so no references are allowed @ ${$p['location 2 string'](loc)}`)
+                        _pt.fixme_abort(`schema doesn't have settings, so no references are allowed @ ${$p['location 2 string'](loc)}`)
                     }
                 )
                 const p_referent = Type_Node_Reference(
@@ -703,29 +703,29 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                         }
                     }
                 )
-                const p_type: _i_out.Type_Node.SG.reference._type = _ea.cc($.type['state group'], ($) => {
+                const p_type: _i_out.Type_Node.SG.reference._type = _pt.cc($.type['state group'], ($) => {
                     switch ($[0]) {
-                        case 'selected': return _ea.ss($, ($) => {
+                        case 'selected': return _pt.ss($, ($) => {
                             return ['selected', {
-                                'dictionary': _ea.cc(p_referent['resulting node'], ($) => { // component constraint (referent)
+                                'dictionary': _pt.cc(p_referent['resulting node'], ($) => { // component constraint (referent)
                                     switch ($[0]) {
-                                        case 'dictionary': return _ea.ss($, ($) => $)
-                                        default: return _ea.deprecated_panic(`not a 'dictionary' but a '${$[0]}' @ ${$p['location 2 string'](loc)}`)
+                                        case 'dictionary': return _pt.ss($, ($) => $)
+                                        default: return _pt.fixme_abort(`not a 'dictionary' but a '${$[0]}' @ ${$p['location 2 string'](loc)}`)
 
                                     }
                                 }),
-                                'dependency': _ea.cc($.dependency['state group'], ($) => {
+                                'dependency': _pt.cc($.dependency['state group'], ($) => {
                                     switch ($[0]) {
-                                        case 'cyclic': return _ea.ss($, ($) => ['cyclic', null])
-                                        case 'acyclic': return _ea.ss($, ($) => ['acyclic', null])
-                                        case 'stack': return _ea.ss($, ($) => ['stack', $])
-                                        default: return _ea.au($[0])
+                                        case 'cyclic': return _pt.ss($, ($) => ['cyclic', null])
+                                        case 'acyclic': return _pt.ss($, ($) => ['acyclic', null])
+                                        case 'stack': return _pt.ss($, ($) => ['stack', $])
+                                        default: return _pt.au($[0])
                                     }
                                 })
                             }]
                         })
-                        case 'derived': return _ea.ss($, ($) => ['derived', null])
-                        default: return _ea.au($[0])
+                        case 'derived': return _pt.ss($, ($) => ['derived', null])
+                        default: return _pt.au($[0])
                     }
                 })
 
@@ -754,7 +754,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                 //     }]
                 // }
             })
-            case 'state group': return _ea.ss($, ($) => ['state group', _i_generic.resolve_dictionary($, {
+            case 'state group': return _pt.ss($, ($) => ['state group', _i_generic.resolve_dictionary($, {
                 'location 2 string': $p['location 2 string'],
                 'map': ($, $l) => ({
                     'description': $.value.description,
@@ -764,7 +764,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
                     ),
                 }),
             })])
-            // case 'type parameter': return _ea.ss($, ($) => ['type parameter', _i_generic.get_entry(
+            // case 'type parameter': return _pt.ss($, ($) => ['type parameter', _i_generic.get_entry(
             //     _i_generic.dictionary_to_lookup(
             //         $p.parameters.values['type parameters'],
             //         null,
@@ -774,7 +774,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
             //         'location 2 string': $p['location 2 string']
             //     }
             // )])
-            default: return _ea.au($[0])
+            default: return _pt.au($[0])
         }
     })
 }
@@ -790,12 +790,12 @@ export const Type_Parameters: _i_signatures.Type_Parameters = ($, $p) => _i_gene
 )
 
 export const Type_Reference: _i_signatures.Type_Reference = ($, $p) => {
-    const x: _i_out.Type_Reference.location = _ea.cc($.location['state group'], ($) => {
+    const x: _i_out.Type_Reference.location = _pt.cc($.location['state group'], ($) => {
         switch ($[0]) {
-            case 'external': return _ea.ss($, ($): _i_out.Type_Reference.location => {
+            case 'external': return _pt.ss($, ($): _i_out.Type_Reference.location => {
                 const sc_import = $p.parameters.values.imports.transform(
                     ($) => $,
-                    () => _ea.deprecated_panic("missing")
+                    () => _pt.fixme_abort("missing")
                 )
                 const p_import = _i_generic.get_entry(
                     _i_generic.dictionary_to_lookup(sc_import, null),
@@ -815,23 +815,23 @@ export const Type_Reference: _i_signatures.Type_Reference = ($, $p) => {
                     )
                 }]
             })
-            case 'internal': return _ea.ss($, ($) => ['internal', _i_generic.get_entry(
+            case 'internal': return _pt.ss($, ($) => ['internal', _i_generic.get_entry(
                 $p.parameters.lookups['types'],
                 {
                     'reference': $,
                     'location 2 string': $p['location 2 string']
                 }
             )])
-            default: return _ea.au($[0])
+            default: return _pt.au($[0])
         }
     })
     return {
         'location': x,
-        'resulting node': _ea.cc(x, ($): _i_out.Type_Node => {
+        'resulting node': _pt.cc(x, ($): _i_out.Type_Node => {
             switch ($[0]) {
-                case 'external': return _ea.ss($, ($) => $.type.entry.node)
-                case 'internal': return _ea.ss($, ($) => $.entry.node)
-                default: return _ea.au($[0])
+                case 'external': return _pt.ss($, ($) => $.type.entry.node)
+                case 'internal': return _pt.ss($, ($) => $.entry.node)
+                default: return _pt.au($[0])
             }
         })
     }
@@ -846,12 +846,12 @@ export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
             'seed': p_type_location['resulting node'],
             'map': ($, current) => {
                 const sg_loc = $.location
-                return _ea.cc($['state group'], ($) => {
+                return _pt.cc($['state group'], ($) => {
                     switch ($[0]) {
-                        case 'dictionary': return _ea.ss($, ($) => {
-                            const sc_definition: _i_out.Type_Node.SG.dictionary = _ea.cc(current, ($) => {
+                        case 'dictionary': return _pt.ss($, ($) => {
+                            const sc_definition: _i_out.Type_Node.SG.dictionary = _pt.cc(current, ($) => {
                                 if ($[0] !== 'dictionary') {
-                                    return _ea.deprecated_panic(`not a 'dictionary' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _pt.fixme_abort(`not a 'dictionary' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -860,10 +860,10 @@ export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                                 'result': sc_definition.node
                             }
                         })
-                        case 'group': return _ea.ss($, ($) => {
-                            const sc_definition: _i_out.Type_Node.SG.group = _ea.cc(current, ($) => {
+                        case 'group': return _pt.ss($, ($) => {
+                            const sc_definition: _i_out.Type_Node.SG.group = _pt.cc(current, ($) => {
                                 if ($[0] !== 'group') {
-                                    return _ea.deprecated_panic(`not a 'group' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _pt.fixme_abort(`not a 'group' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -879,10 +879,10 @@ export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                                 'result': p_child.entry.node
                             }
                         })
-                        case 'list': return _ea.ss($, ($) => {
-                            const sc_definition: _i_out.Type_Node.SG.list = _ea.cc(current, ($) => {
+                        case 'list': return _pt.ss($, ($) => {
+                            const sc_definition: _i_out.Type_Node.SG.list = _pt.cc(current, ($) => {
                                 if ($[0] !== 'list') {
-                                    return _ea.deprecated_panic(`not a 'list' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _pt.fixme_abort(`not a 'list' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -891,10 +891,10 @@ export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                                 'result': sc_definition.node
                             }
                         })
-                        case 'optional': return _ea.ss($, ($) => {
-                            const sc_definition: _i_out.Type_Node.SG.optional = _ea.cc(current, ($) => {
+                        case 'optional': return _pt.ss($, ($) => {
+                            const sc_definition: _i_out.Type_Node.SG.optional = _pt.cc(current, ($) => {
                                 if ($[0] !== 'optional') {
-                                    return _ea.deprecated_panic(`not a 'optional' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _pt.fixme_abort(`not a 'optional' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -903,10 +903,10 @@ export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                                 'result': sc_definition
                             }
                         })
-                        case 'state group': return _ea.ss($, ($) => {
-                            const p_state_group: _i_out.Type_Node.SG.state_group = _ea.cc(current, ($) => {
+                        case 'state group': return _pt.ss($, ($) => {
+                            const p_state_group: _i_out.Type_Node.SG.state_group = _pt.cc(current, ($) => {
                                 if ($[0] !== 'state group') {
-                                    return _ea.deprecated_panic(`not a 'state group' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _pt.fixme_abort(`not a 'state group' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -922,7 +922,7 @@ export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
                                 'result': p_child.entry.node
                             }
                         })
-                        default: return _ea.au($[0])
+                        default: return _pt.au($[0])
                     }
                 })
             }
@@ -936,15 +936,15 @@ export const Type_Node_Reference: _i_signatures.Type_Node_Reference = ($, $p) =>
 }
 
 export const Option_Constraints: _i_signatures.Option_Constraints = ($, $p) => {
-    return _ea.cc($, ($) => _i_generic.resolve_dictionary(
+    return _pt.cc($, ($) => _i_generic.resolve_dictionary(
         $,
         {
             'location 2 string': $p['location 2 string'],
-            'map': ($, $l) => _ea.cc($['value'], ($) => _ea.cc($['state group'], ($) => {
+            'map': ($, $l) => _pt.cc($['value'], ($) => _pt.cc($['state group'], ($) => {
                 switch ($[0]) {
-                    case 'state': return _ea.ss($, ($) => ['state', _ea.block(() => {
+                    case 'state': return _pt.ss($, ($) => ['state', _pt.block(() => {
                         const loc = $.selection.start.location
-                        const p_selection: _i_out.Option_Constraints.D.SG.state.selection = _ea.cc($['selection'], ($) => Guaranteed_Value_Selection(
+                        const p_selection: _i_out.Option_Constraints.D.SG.state.selection = _pt.cc($['selection'], ($) => Guaranteed_Value_Selection(
                             $,
                             {
                                 'location 2 string': $p['location 2 string'],
@@ -952,9 +952,9 @@ export const Option_Constraints: _i_signatures.Option_Constraints = ($, $p) => {
                             }
                         ))
                         const p_selected_state_group = p_selection['resulting node'][0] !== 'state group' // component constraint ('selection')
-                            ? _ea.deprecated_panic("not a 'state group' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
+                            ? _pt.fixme_abort("not a 'state group' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
                             : p_selection['resulting node'][1]
-                        const p_state: _i_out.Option_Constraints.D.SG.state.state = _ea.cc($['state'], ($) => _i_generic.get_entry(
+                        const p_state: _i_out.Option_Constraints.D.SG.state.state = _pt.cc($['state'], ($) => _i_generic.get_entry(
                             _i_generic.dictionary_to_lookup(p_selected_state_group, null),
                             {
                                 'location 2 string': $p['location 2 string'],
@@ -967,14 +967,14 @@ export const Option_Constraints: _i_signatures.Option_Constraints = ($, $p) => {
                             'state': p_state,
                         })
                     })])
-                    case 'assert is set': return _ea.ss($, ($) => ['assert is set', Possibly_Optional(
+                    case 'assert is set': return _pt.ss($, ($) => ['assert is set', Possibly_Optional(
                         $,
                         {
                             'location 2 string': $p['location 2 string'],
                             'parameters': $p.parameters
                         }
                     )])
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             })),
         }
@@ -982,7 +982,7 @@ export const Option_Constraints: _i_signatures.Option_Constraints = ($, $p) => {
 }
 
 export const Constraint: _i_signatures.Constraint = ($, $p) => {
-    const p_selection: _i_out.Constraint.selection = _ea.cc($['selection'], ($) => Relative_Value_Selection(
+    const p_selection: _i_out.Constraint.selection = _pt.cc($['selection'], ($) => Relative_Value_Selection(
         $,
         {
             'location 2 string': $p['location 2 string'],
@@ -995,13 +995,13 @@ export const Constraint: _i_signatures.Constraint = ($, $p) => {
         }
     ))
     const loc = $.type.location
-    const p_type: _i_out.Constraint._type = _ea.cc($.type, ($) => _ea.cc($['state group'], ($) => {
+    const p_type: _i_out.Constraint._type = _pt.cc($.type, ($) => _pt.cc($['state group'], ($) => {
         switch ($[0]) {
-            case 'state': return _ea.ss($, ($) => {
+            case 'state': return _pt.ss($, ($) => {
                 const p_selected_state_group = p_selection['resulting node'][0] !== 'state group' // component constraint ('selection')
-                    ? _ea.deprecated_panic("not a 'state group' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
+                    ? _pt.fixme_abort("not a 'state group' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
                     : p_selection['resulting node'][1]
-                const p_state: _i_out.Constraint._type.SG.state.state = _ea.cc($['state'], ($) => _i_generic.get_entry(
+                const p_state: _i_out.Constraint._type.SG.state.state = _pt.cc($['state'], ($) => _i_generic.get_entry(
                     _i_generic.dictionary_to_lookup(p_selected_state_group, null),
                     {
                         'location 2 string': $p['location 2 string'],
@@ -1013,15 +1013,15 @@ export const Constraint: _i_signatures.Constraint = ($, $p) => {
                     'state': p_state,
                 }]
             })
-            case 'optional value': return _ea.ss($, ($) => {
+            case 'optional value': return _pt.ss($, ($) => {
                 const p_selected_optional_value = p_selection['resulting node'][0] !== 'optional' // component constraint ('selection')
-                    ? _ea.deprecated_panic("not a 'optional' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
+                    ? _pt.fixme_abort("not a 'optional' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
                     : p_selection['resulting node'][1]
                 return ['optional value', {
                     'selected optional value': p_selected_optional_value,
                 }]
             })
-            default: return _ea.au($[0])
+            default: return _pt.au($[0])
         }
     }))
     return {
@@ -1031,22 +1031,22 @@ export const Constraint: _i_signatures.Constraint = ($, $p) => {
 }
 
 export const Property_Constraints: _i_signatures.Property_Constraints = ($, $p) => {
-    return _ea.cc($, ($) => _i_generic.resolve_ordered_dictionary(
+    return _pt.cc($, ($) => _i_generic.resolve_ordered_dictionary(
         $,
         {
             'location 2 string': $p['location 2 string'],
-            'map': ($, $l) => _ea.cc($['value'], ($) => _ea.block(() => {
-                const p_start: _i_out.Property_Constraint.start = _ea.cc($.start['state group'], ($) => {
+            'map': ($, $l) => _pt.cc($['value'], ($) => _pt.block(() => {
+                const p_start: _i_out.Property_Constraint.start = _pt.cc($.start['state group'], ($) => {
                     switch ($[0]) {
-                        case 'property': return _ea.ss($, ($) => ['property', null])
-                        case 'sibling': return _ea.ss($, ($) => ['sibling', _i_generic.get_entry(
+                        case 'property': return _pt.ss($, ($) => ['property', null])
+                        case 'sibling': return _pt.ss($, ($) => ['sibling', _i_generic.get_entry(
                             $l['not circular dependent siblings'],
                             {
                                 'location 2 string': $p['location 2 string'],
                                 'reference': $
                             }
                         )])
-                        default: return _ea.au($[0])
+                        default: return _pt.au($[0])
                     }
                 })
                 const p_constraint: _i_out.Property_Constraint.constraint = Constraint(
@@ -1056,17 +1056,17 @@ export const Property_Constraints: _i_signatures.Property_Constraints = ($, $p) 
                         'parameters': {
                             'lookups': null,
                             'values': {
-                                'node': _ea.cc(p_start, ($) => {
+                                'node': _pt.cc(p_start, ($) => {
                                     switch ($[0]) {
-                                        case 'property': return _ea.ss($, ($) => $p.parameters.values.node)
-                                        case 'sibling': return _ea.ss($, ($) => _ea.cc($.entry.constraint.type, ($) => {
+                                        case 'property': return _pt.ss($, ($) => $p.parameters.values.node)
+                                        case 'sibling': return _pt.ss($, ($) => _pt.cc($.entry.constraint.type, ($) => {
                                             switch ($[0]) {
-                                                case 'state': return _ea.ss($, ($) => $.state.entry.node)
-                                                case 'optional value': return _ea.ss($, ($) => $['selected optional value'])
-                                                default: return _ea.au($[0])
+                                                case 'state': return _pt.ss($, ($) => $.state.entry.node)
+                                                case 'optional value': return _pt.ss($, ($) => $['selected optional value'])
+                                                default: return _pt.au($[0])
                                             }
                                         }))
-                                        default: return _ea.au($[0])
+                                        default: return _pt.au($[0])
                                     }
                                 }),
                             }
@@ -1084,24 +1084,24 @@ export const Property_Constraints: _i_signatures.Property_Constraints = ($, $p) 
 
 export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
     const loc = $.location
-    const p_type = _ea.cc($['state group'], ($): _i_out.Node_Resolver => {
+    const p_type = _pt.cc($['state group'], ($): _i_out.Node_Resolver => {
         switch ($[0]) {
-            case 'boolean': return _ea.ss($, ($) => {
+            case 'boolean': return _pt.ss($, ($) => {
                 const x = $p.parameters.values.definition[0] !== 'boolean'
-                    ? _ea.deprecated_panic("not a 'boolean' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _pt.fixme_abort("not a 'boolean' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
                 return ['boolean', null]
             })
-            case 'component': return _ea.ss($, ($): _i_out.Node_Resolver => {
+            case 'component': return _pt.ss($, ($): _i_out.Node_Resolver => {
                 const x = $p.parameters.values.definition[0] !== 'component'
-                    ? _ea.deprecated_panic("not a 'component' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _pt.fixme_abort("not a 'component' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
-                const p_location = _ea.cc($.location['state group'], ($): _i_out.Node_Resolver.SG.component.location => {
+                const p_location = _pt.cc($.location['state group'], ($): _i_out.Node_Resolver.SG.component.location => {
                     switch ($[0]) {
-                        case 'external': return _ea.ss($, ($) => {
+                        case 'external': return _pt.ss($, ($) => {
                             const sc_import = $p.parameters.values.imports.transform(
                                 ($) => $,
-                                () => _ea.deprecated_panic("missing")
+                                () => _pt.fixme_abort("missing")
                             )
                             const p_import = _i_generic.get_entry(
                                 _i_generic.dictionary_to_lookup(sc_import, null),
@@ -1110,11 +1110,11 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                     'location 2 string': $p['location 2 string']
                                 }
                             )
-                            const pc_constrained: _i_out.Schema.complexity.SG.constrained = _ea.cc(p_import.entry.schema.complexity, ($) => {
+                            const pc_constrained: _i_out.Schema.complexity.SG.constrained = _pt.cc(p_import.entry.schema.complexity, ($) => {
                                 switch ($[0]) {
-                                    case 'constrained': return _ea.ss($, ($) => $)
-                                    case 'unconstrained': return _ea.ss($, ($) => _ea.deprecated_panic(`not constrained @ ${$p['location 2 string'](loc)}`))
-                                    default: return _ea.au($[0])
+                                    case 'constrained': return _pt.ss($, ($) => $)
+                                    case 'unconstrained': return _pt.ss($, ($) => _pt.fixme_abort(`not constrained @ ${$p['location 2 string'](loc)}`))
+                                    default: return _pt.au($[0])
                                 }
                             })
                             return ['external', {
@@ -1128,7 +1128,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                 )
                             }]
                         })
-                        case 'internal': return _ea.ss($, ($) => ['internal', _i_generic.get_entry(
+                        case 'internal': return _pt.ss($, ($) => ['internal', _i_generic.get_entry(
                             _i_generic.dictionary_to_lookup(
                                 $p.parameters.values['signatures'].dictionary,
                                 null,
@@ -1138,49 +1138,49 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                 'location 2 string': $p['location 2 string']
                             }
                         )])
-                        default: return _ea.au($[0])
+                        default: return _pt.au($[0])
                     }
                 })
-                const p_signature: _i_out.Node_Resolver.SG.component.signature = _ea.cc(p_location, ($) => {
+                const p_signature: _i_out.Node_Resolver.SG.component.signature = _pt.cc(p_location, ($) => {
                     switch ($[0]) {
-                        case 'external': return _ea.ss($, ($) => $.type.entry)
-                        case 'internal': return _ea.ss($, ($) => $.entry)
-                        default: return _ea.au($[0])
+                        case 'external': return _pt.ss($, ($) => $.type.entry)
+                        case 'internal': return _pt.ss($, ($) => $.entry)
+                        default: return _pt.au($[0])
                     }
                 })
-                const x_type: _i_out.Types.D = _ea.cc(x, ($) => {
+                const x_type: _i_out.Types.D = _pt.cc(x, ($) => {
                     switch ($[0]) {
-                        case 'external': return _ea.ss($, ($) => $.type.entry)
-                        case 'internal': return _ea.ss($, ($) => $.entry)
-                        case 'internal cyclic': return _ea.ss($, ($) => $.entry['get circular dependent']())
-                        default: return _ea.au($[0])
+                        case 'external': return _pt.ss($, ($) => $.type.entry)
+                        case 'internal': return _pt.ss($, ($) => $.entry)
+                        case 'internal cyclic': return _pt.ss($, ($) => $.entry['get circular dependent']())
+                        default: return _pt.au($[0])
                     }
                 })
                 if (p_signature.type.node !== x_type.node) {
-                    _ea.deprecated_panic("type mismatch @ ", $p['location 2 string'](loc))
+                    _pt.fixme_abort("type mismatch @ ", $p['location 2 string'](loc))
                 }
                 const p_arguments: _i_out.Node_Resolver.SG.component._arguments = $.arguments.transform(
                     ($) => {
                         const x: _i_out.Node_Resolver.SG.component._arguments.O = {
                             'lookups': $.lookups.transform(
-                                ($) => _ea.set(_i_generic.resolve_dense_dictionary(
+                                ($) => _pt.set(_i_generic.resolve_dense_dictionary(
                                     $,
                                     {
                                         'location 2 string': $p['location 2 string'],
-                                        'map': ($, $l) => _ea.cc($['value'], ($) => {
+                                        'map': ($, $l) => _pt.cc($['value'], ($) => {
                                             //do additional validation
-                                            return _ea.cc($['state group'], ($): _i_out.Node_Resolver.SG.component._arguments.O.lookups.O.D => {
+                                            return _pt.cc($['state group'], ($): _i_out.Node_Resolver.SG.component._arguments.O.lookups.O.D => {
                                                 switch ($[0]) {
-                                                    case 'empty stack': return _ea.ss($, ($) => ['empty stack', null])
-                                                    case 'not set': return _ea.ss($, ($) => ['not set', null])
-                                                    case 'selection': return _ea.ss($, ($) => ['selection', Lookup_Selection(
+                                                    case 'empty stack': return _pt.ss($, ($) => ['empty stack', null])
+                                                    case 'not set': return _pt.ss($, ($) => ['not set', null])
+                                                    case 'selection': return _pt.ss($, ($) => ['selection', Lookup_Selection(
                                                         $,
                                                         {
                                                             'location 2 string': $p['location 2 string'],
                                                             'parameters': $p.parameters,
                                                         }
                                                     )])
-                                                    case 'stack': return _ea.ss($, ($) => {
+                                                    case 'stack': return _pt.ss($, ($) => {
                                                         const p_stack = Lookup_Selection($.stack, {
                                                             'location 2 string': $p['location 2 string'],
                                                             'parameters': $p.parameters
@@ -1194,7 +1194,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                                             'element': p_element
                                                         }]
                                                     })
-                                                    default: return _ea.au($[0])
+                                                    default: return _pt.au($[0])
                                                 }
                                             })
                                         }),
@@ -1206,21 +1206,21 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                         //additional validation
                                         if (p_signature['resolved parameters'].lookups !== $p.parameters.values.signature['resolved parameters'].lookups) {
 
-                                            _ea.deprecated_panic("lookup parameters mismatch @ ", $p['location 2 string'](loc))
+                                            _pt.fixme_abort("lookup parameters mismatch @ ", $p['location 2 string'](loc))
                                         }
                                     }
-                                    return _ea.not_set()
+                                    return _pt.not_set()
                                 }
                             ),
                             'values': $.values.transform(
                                 ($) => {
                                     const values_location = $.location
 
-                                    return _ea.set(_i_generic.resolve_dense_dictionary(
+                                    return _pt.set(_i_generic.resolve_dense_dictionary(
                                         $,
                                         {
                                             'location 2 string': $p['location 2 string'],
-                                            'map': ($, $l) => _ea.cc($, ($) => {
+                                            'map': ($, $l) => _pt.cc($, ($) => {
                                                 const linked_entry = _i_generic.get_entry(
                                                     _i_generic.dictionary_to_lookup(p_signature['resolved parameters'].values, null),
                                                     {
@@ -1228,30 +1228,30 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                                         'reference': $
                                                     }
                                                 )
-                                                const out = _ea.cc($.value['state group'], ($): _i_out.Node_Resolver.SG.component._arguments.O.values.O.D => {
+                                                const out = _pt.cc($.value['state group'], ($): _i_out.Node_Resolver.SG.component._arguments.O.values.O.D => {
                                                     switch ($[0]) {
-                                                        case 'optional': return _ea.ss($, ($) => ['optional', Possible_Value_Selection(
+                                                        case 'optional': return _pt.ss($, ($) => ['optional', Possible_Value_Selection(
                                                             $,
                                                             {
                                                                 'location 2 string': $p['location 2 string'],
                                                                 'parameters': $p.parameters,
                                                             }
                                                         )])
-                                                        case 'parameter': return _ea.ss($, ($) => ['parameter', _i_generic.get_entry(
+                                                        case 'parameter': return _pt.ss($, ($) => ['parameter', _i_generic.get_entry(
                                                             _i_generic.dictionary_to_lookup($p.parameters.values.signature['resolved parameters'].values, null),
                                                             {
                                                                 'reference': $,
                                                                 'location 2 string': $p['location 2 string']
                                                             }
                                                         )])
-                                                        case 'required': return _ea.ss($, ($) => ['required', Guaranteed_Value_Selection(
+                                                        case 'required': return _pt.ss($, ($) => ['required', Guaranteed_Value_Selection(
                                                             $,
                                                             {
                                                                 'location 2 string': $p['location 2 string'],
                                                                 'parameters': $p.parameters,
                                                             }
                                                         )])
-                                                        default: return _ea.au($[0])
+                                                        default: return _pt.au($[0])
                                                     }
                                                 })
                                                 {
@@ -1261,73 +1261,73 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                                     const focus = out
 
                                                     const walk_path_till_end = ($: _i_out.Type_Node): _i_out.Type_Node => {
-                                                        return _ea.cc($, ($) => {
+                                                        return _pt.cc($, ($) => {
                                                             switch ($[0]) {
-                                                                case 'component': return _ea.ss($, ($) => _ea.cc($, ($) => {
+                                                                case 'component': return _pt.ss($, ($) => _pt.cc($, ($) => {
                                                                     switch ($[0]) {
-                                                                        case 'external': return _ea.ss($, ($) => $.type.entry.node)
-                                                                        case 'internal': return _ea.ss($, ($) => $.entry.node)
-                                                                        case 'internal cyclic': return _ea.ss($, ($) => $.entry['get circular dependent']().node) //IS THIS SAFE? I Am using a computed value (only available after resolving)
-                                                                        default: return _ea.au($[0])
+                                                                        case 'external': return _pt.ss($, ($) => $.type.entry.node)
+                                                                        case 'internal': return _pt.ss($, ($) => $.entry.node)
+                                                                        case 'internal cyclic': return _pt.ss($, ($) => $.entry['get circular dependent']().node) //IS THIS SAFE? I Am using a computed value (only available after resolving)
+                                                                        default: return _pt.au($[0])
                                                                     }
                                                                 }))
-                                                                case 'reference': return _ea.ss($, ($) => $.referent['resulting node'])
+                                                                case 'reference': return _pt.ss($, ($) => $.referent['resulting node'])
                                                                 default: return $
                                                             }
                                                         })
                                                     }
 
-                                                    _ea.cc(focus, ($) => {
+                                                    _pt.cc(focus, ($) => {
                                                         switch ($[0]) {
-                                                            case 'optional': return _ea.ss($, ($) => {
+                                                            case 'optional': return _pt.ss($, ($) => {
 
                                                                 if (benchmark.presence[0] !== 'optional') {
-                                                                    _ea.deprecated_panic("argument is not optional '", key, "' @ ", $p['location 2 string'](values_location))
+                                                                    _pt.fixme_abort("argument is not optional '", key, "' @ ", $p['location 2 string'](values_location))
                                                                 }
 
-                                                                _ea.cc($, ($) => {
+                                                                _pt.cc($, ($) => {
                                                                     switch ($[0]) {
-                                                                        case 'not set': return _ea.ss($, ($) => { })
-                                                                        case 'selection': return _ea.ss($, ($) => {
+                                                                        case 'not set': return _pt.ss($, ($) => { })
+                                                                        case 'selection': return _pt.ss($, ($) => {
                                                                             //FIXME
-                                                                            _ea.cc($, ($) => {
+                                                                            _pt.cc($, ($) => {
                                                                                 switch ($[0]) {
-                                                                                    case 'parameter': return _ea.ss($, ($) => { })
-                                                                                    case 'result': return _ea.ss($, ($) => { })
-                                                                                    default: _ea.au($[0])
+                                                                                    case 'parameter': return _pt.ss($, ($) => { })
+                                                                                    case 'result': return _pt.ss($, ($) => { })
+                                                                                    default: _pt.au($[0])
                                                                                 }
                                                                             })
                                                                         })
-                                                                        case 'set': return _ea.ss($, ($) => {
+                                                                        case 'set': return _pt.ss($, ($) => {
 
                                                                             if (walk_path_till_end(benchmark['data type']['resulting node']) !== walk_path_till_end($.tail['resulting node'])) {
-                                                                                _ea.deprecated_panic("type mismatch in '", key, "' @ ", $p['location 2 string'](values_location))
+                                                                                _pt.fixme_abort("type mismatch in '", key, "' @ ", $p['location 2 string'](values_location))
                                                                             }
                                                                         })
-                                                                        default: _ea.au($[0])
+                                                                        default: _pt.au($[0])
                                                                     }
                                                                 })
 
                                                                 //FIX validate that types are the same
                                                             })
-                                                            case 'parameter': return _ea.ss($, ($) => {
+                                                            case 'parameter': return _pt.ss($, ($) => {
                                                                 if ($.entry.presence[0] !== benchmark.presence[0]) {
-                                                                    _ea.deprecated_panic("parameter '", key, "' presence mismatch @ ", $p['location 2 string'](values_location))
+                                                                    _pt.fixme_abort("parameter '", key, "' presence mismatch @ ", $p['location 2 string'](values_location))
                                                                 }
                                                                 if ($.entry['data type']['resulting node'] !== benchmark['data type']['resulting node']) {
-                                                                    _ea.deprecated_panic("parameter '", key, "' type mismatch @ ", $p['location 2 string'](values_location))
+                                                                    _pt.fixme_abort("parameter '", key, "' type mismatch @ ", $p['location 2 string'](values_location))
                                                                 }
                                                             })
-                                                            case 'required': return _ea.ss($, ($) => {
+                                                            case 'required': return _pt.ss($, ($) => {
                                                                 if (benchmark.presence[0] !== 'required') {
-                                                                    _ea.deprecated_panic("argument '", key, "' is not required @ ", $p['location 2 string'](values_location))
+                                                                    _pt.fixme_abort("argument '", key, "' is not required @ ", $p['location 2 string'](values_location))
                                                                 }
                                                                 if (walk_path_till_end(benchmark['data type']['resulting node']) !== walk_path_till_end($.tail['resulting node'])) {
-                                                                    _ea.deprecated_panic("type mismatch in '", key, "' @ ", $p['location 2 string'](values_location))
+                                                                    _pt.fixme_abort("type mismatch in '", key, "' @ ", $p['location 2 string'](values_location))
                                                                 }
 
                                                             })
-                                                            default: return _ea.au($[0])
+                                                            default: return _pt.au($[0])
                                                         }
                                                     })
                                                 }
@@ -1342,27 +1342,27 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                         //additional validation
 
                                         if (p_signature['resolved parameters'].values !== $p.parameters.values.signature['resolved parameters'].values) {
-                                            _ea.deprecated_panic("value parameters mismatch @ ", $p['location 2 string'](loc))
+                                            _pt.fixme_abort("value parameters mismatch @ ", $p['location 2 string'](loc))
                                         }
                                     }
-                                    return _ea.not_set()
+                                    return _pt.not_set()
                                 }
                             ),
                         }
-                        return _ea.set(x)
+                        return _pt.set(x)
                     },
                     () => {
                         {
                             //additional validation
                             if (p_signature['resolved parameters'].lookups !== $p.parameters.values.signature['resolved parameters'].lookups) {
-                                _ea.deprecated_panic("lookup parameters mismatch @ ", $p['location 2 string'](loc))
+                                _pt.fixme_abort("lookup parameters mismatch @ ", $p['location 2 string'](loc))
                             }
                             if (p_signature['resolved parameters'].values !== $p.parameters.values.signature['resolved parameters'].values) {
-                                _ea.deprecated_panic("value parameters mismatch @ ", $p['location 2 string'](loc))
+                                _pt.fixme_abort("value parameters mismatch @ ", $p['location 2 string'](loc))
                             }
                         }
 
-                        return _ea.not_set()
+                        return _pt.not_set()
                     }
                 )
                 const p_constraints = Property_Constraints(
@@ -1372,11 +1372,11 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                         'parameters': {
                             'lookups': null,
                             'values': {
-                                'node': _ea.cc(p_location, ($): _i_out.Type_Node => {
+                                'node': _pt.cc(p_location, ($): _i_out.Type_Node => {
                                     switch ($[0]) {
-                                        case 'external': return _ea.ss($, ($) => $.type.entry.type.node)
-                                        case 'internal': return _ea.ss($, ($) => $.entry.type.node)
-                                        default: return _ea.au($[0])
+                                        case 'external': return _pt.ss($, ($) => $.type.entry.type.node)
+                                        case 'internal': return _pt.ss($, ($) => $.entry.type.node)
+                                        default: return _pt.au($[0])
                                     }
                                 })
                             }
@@ -1390,9 +1390,9 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     'constraints': p_constraints,
                 }]
             })
-            case 'dictionary': return _ea.ss($, ($) => {
+            case 'dictionary': return _pt.ss($, ($) => {
                 const p_definition = $p.parameters.values.definition[0] !== 'dictionary'
-                    ? _ea.deprecated_panic("not a 'dictionary' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _pt.fixme_abort("not a 'dictionary' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
 
                 const p_benchmark = $.benchmark.map(($) => {
@@ -1402,7 +1402,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     })
 
                     const p_resulting_dictionary = p_selection['resulting node'][0] !== 'dictionary' // component constraint ('selection')
-                        ? _ea.deprecated_panic("not a 'dictionary' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
+                        ? _pt.fixme_abort("not a 'dictionary' but a '", p_selection['resulting node'][0], "' @ ", $p['location 2 string'](loc))
                         : p_selection['resulting node'][1]
                     return {
                         'selection': p_selection,
@@ -1420,12 +1420,12 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                 'lookups': $p.parameters.lookups,
                                 'values': {
                                     'linked entry': p_benchmark.transform( //optional value result ('benchmark')
-                                        ($) => _ea.set($),
+                                        ($) => _pt.set($),
                                         () => $p.parameters.values['linked entry']
                                     ),
                                     'definition': p_definition.node,
-                                    'current dictionary': _ea.set(p_definition),
-                                    'current ordered dictionary': _ea.set(p_definition),//FIXME: is it ordered
+                                    'current dictionary': _pt.set(p_definition),
+                                    'current ordered dictionary': _pt.set(p_definition),//FIXME: is it ordered
 
                                     'types': $p.parameters.values.types,
                                     'imports': $p.parameters.values.imports,
@@ -1440,9 +1440,9 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     ),
                 }]
             })
-            case 'group': return _ea.ss($, ($) => {
+            case 'group': return _pt.ss($, ($) => {
                 const x = $p.parameters.values.definition[0] !== 'group'
-                    ? _ea.deprecated_panic("not a 'group' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _pt.fixme_abort("not a 'group' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
 
                 const p_properties: _r.Ordered_Dictionary<null, _i_out.Node_Resolver_Group.D> = _i_generic.resolve_dense_ordered_dictionary(
@@ -1499,9 +1499,9 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                 )
                 return ['group', p_properties]
             })
-            case 'list': return _ea.ss($, ($) => {
+            case 'list': return _pt.ss($, ($) => {
                 const p_definition = $p.parameters.values.definition[0] !== 'list'
-                    ? _ea.deprecated_panic("not a 'list' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _pt.fixme_abort("not a 'list' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
                 const p_result = $.result.map(($) => Type_Reference($, {
                     'location 2 string': $p['location 2 string'],
@@ -1522,7 +1522,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                             'values': {
                                 'definition': p_definition.node,
                                 'list cursor': p_result.transform( // optional value result ('result')
-                                    ($) => _ea.set($),
+                                    ($) => _pt.set($),
                                     () => $p.parameters.values['list cursor']
                                 ), //setting the cursor
 
@@ -1545,21 +1545,21 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     'resolver': p_resolver,
                 }]
             })
-            case 'nothing': return _ea.ss($, ($) => {
+            case 'nothing': return _pt.ss($, ($) => {
                 const x = $p.parameters.values.definition[0] !== 'nothing'
-                    ? _ea.deprecated_panic("not a 'nothing' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _pt.fixme_abort("not a 'nothing' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
                 return ['nothing', null]
             })
-            case 'number': return _ea.ss($, ($) => {
+            case 'number': return _pt.ss($, ($) => {
                 const x = $p.parameters.values.definition[0] !== 'number'
-                    ? _ea.deprecated_panic("not a 'number' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _pt.fixme_abort("not a 'number' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
                 return ['number', null]
             })
-            case 'optional': return _ea.ss($, ($) => {
+            case 'optional': return _pt.ss($, ($) => {
                 const x = $p.parameters.values.definition[0] !== 'optional'
-                    ? _ea.deprecated_panic("not a 'optional' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _pt.fixme_abort("not a 'optional' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
 
                 const p_constraints: _i_out.Node_Resolver.SG.state_group.states.D.constraints = Option_Constraints($.constraints, {
@@ -1576,7 +1576,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                             },
                             'values': {
                                 'definition': x,
-                                'option constraints': _ea.set(p_constraints),
+                                'option constraints': _pt.set(p_constraints),
 
                                 'types': $p.parameters.values.types,
                                 'imports': $p.parameters.values.imports,
@@ -1596,17 +1596,17 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     'resolver': p_resolver,
                 }]
             })
-            case 'reference': return _ea.ss($, ($): _i_out.Node_Resolver => {
+            case 'reference': return _pt.ss($, ($): _i_out.Node_Resolver => {
                 const p_definition = $p.parameters.values.definition[0] !== 'reference'
-                    ? _ea.deprecated_panic("not a 'reference' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _pt.fixme_abort("not a 'reference' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
                 return ['reference', {
                     'definition': p_definition,
-                    'type': _ea.cc($.type['state group'], ($): _i_out.Node_Resolver.SG.reference._type => {
+                    'type': _pt.cc($.type['state group'], ($): _i_out.Node_Resolver.SG.reference._type => {
                         switch ($[0]) {
-                            case 'derived': return _ea.ss($, ($) => {
+                            case 'derived': return _pt.ss($, ($) => {
                                 const p_definition_2 = p_definition.type[0] !== 'derived'
-                                    ? _ea.deprecated_panic("not a 'derived' but a '", p_definition.type[0], "' @ ", $p['location 2 string'](loc))
+                                    ? _pt.fixme_abort("not a 'derived' but a '", p_definition.type[0], "' @ ", $p['location 2 string'](loc))
                                     : p_definition.type[1]
                                 return ['derived', {
                                     'value': Guaranteed_Value_Selection(
@@ -1618,9 +1618,9 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                     )
                                 }]
                             })
-                            case 'selected': return _ea.ss($, ($) => {
+                            case 'selected': return _pt.ss($, ($) => {
                                 const p_definition_2 = p_definition.type[0] !== 'selected'
-                                    ? _ea.deprecated_panic("not a 'selected' but a '", p_definition.type[0], "' @ ", $p['location 2 string'](loc))
+                                    ? _pt.fixme_abort("not a 'selected' but a '", p_definition.type[0], "' @ ", $p['location 2 string'](loc))
                                     : p_definition.type[1]
                                 const p_lookup = Lookup_Selection(
                                     $.lookup,
@@ -1647,14 +1647,14 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                     'constraints': p_constraints,
                                 }]
                             })
-                            default: return _ea.au($[0])
+                            default: return _pt.au($[0])
                         }
                     })
                 }]
             })
-            case 'state group': return _ea.ss($, ($): _i_out.Node_Resolver => {
+            case 'state group': return _pt.ss($, ($): _i_out.Node_Resolver => {
                 const p_definition = $p.parameters.values.definition[0] !== 'state group'
-                    ? _ea.deprecated_panic("not a 'state group' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _pt.fixme_abort("not a 'state group' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
 
                 const p_states: _i_out.Node_Resolver.SG.state_group.states = _i_generic.resolve_dense_dictionary(
@@ -1687,7 +1687,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                         },
                                         'values': {
                                             'definition': x2.entry.node,
-                                            'option constraints': _ea.set(p_constraints),
+                                            'option constraints': _pt.set(p_constraints),
 
                                             'types': $p.parameters.values.types,
                                             'imports': $p.parameters.values.imports,
@@ -1781,26 +1781,26 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     'states': p_states,
                 }]
             })
-            case 'text': return _ea.ss($, ($) => {
+            case 'text': return _pt.ss($, ($) => {
                 const x = $p.parameters.values.definition[0] !== 'text'
-                    ? _ea.deprecated_panic("not a 'text' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+                    ? _pt.fixme_abort("not a 'text' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
                 return ['text', null]
             })
-            // case 'type parameter': return _ea.ss($, ($) => {
+            // case 'type parameter': return _pt.ss($, ($) => {
 
             //     const x = $p.parameters.values.definition[0] !== 'type parameter'
-            //         ? _ea.deprecated_panic("not a 'type parameter' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
+            //         ? _pt.fixme_abort("not a 'type parameter' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
             //         : $p.parameters.values.definition[1]
             //     return ['type parameter', null]
             // })
-            default: return _ea.au($[0])
+            default: return _pt.au($[0])
         }
     })
     return p_type
 }
 
-export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = ($, $p) => _ea.block(() => {
+export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = ($, $p) => _pt.block(() => {
 
     const l2s = $p['location 2 string']
     const params = $p['parameters']
@@ -1811,32 +1811,32 @@ export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = 
             'seed': $p.parameters.values.node,
             'map': ($, current) => {
                 const sg_loc = $.location
-                return _ea.cc($['state group'], ($): _i_generic.Resolved_Step<_i_out.Relative_Value_Selection.path.L, _i_out.Type_Node> => {
+                return _pt.cc($['state group'], ($): _i_generic.Resolved_Step<_i_out.Relative_Value_Selection.path.L, _i_out.Type_Node> => {
                     switch ($[0]) {
-                        case 'component': return _ea.ss($, ($) => {
+                        case 'component': return _pt.ss($, ($) => {
 
-                            const sc_definition: _i_out.Type_Node.SG.component = _ea.cc(current, ($) => {
+                            const sc_definition: _i_out.Type_Node.SG.component = _pt.cc(current, ($) => {
                                 if ($[0] !== 'component') {
-                                    return _ea.deprecated_panic(`not a 'component' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _pt.fixme_abort(`not a 'component' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
                             return {
                                 'element': ['component', null],
-                                'result': _ea.cc(sc_definition, ($) => {
+                                'result': _pt.cc(sc_definition, ($) => {
                                     switch ($[0]) {
-                                        case 'external': return _ea.ss($, ($) => $.type.entry.node)
-                                        case 'internal': return _ea.ss($, ($) => $.entry.node)
-                                        case 'internal cyclic': return _ea.ss($, ($) => $.entry['get circular dependent']().node) //this is safe, the types have been resolved at this stage
-                                        default: return _ea.au($[0])
+                                        case 'external': return _pt.ss($, ($) => $.type.entry.node)
+                                        case 'internal': return _pt.ss($, ($) => $.entry.node)
+                                        case 'internal cyclic': return _pt.ss($, ($) => $.entry['get circular dependent']().node) //this is safe, the types have been resolved at this stage
+                                        default: return _pt.au($[0])
                                     }
                                 })
                             }
                         })
-                        case 'group': return _ea.ss($, ($) => {
-                            const sc_definition: _i_out.Type_Node.SG.group = _ea.cc(current, ($) => {
+                        case 'group': return _pt.ss($, ($) => {
+                            const sc_definition: _i_out.Type_Node.SG.group = _pt.cc(current, ($) => {
                                 if ($[0] !== 'group') {
-                                    return _ea.deprecated_panic(`not a 'group' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _pt.fixme_abort(`not a 'group' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
@@ -1852,25 +1852,25 @@ export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = 
                                 'result': p_child.entry.node
                             }
                         })
-                        case 'reference': return _ea.ss($, ($): _i_generic.Resolved_Step<_i_out.Relative_Value_Selection.path.L, _i_out.Type_Node> => {
+                        case 'reference': return _pt.ss($, ($): _i_generic.Resolved_Step<_i_out.Relative_Value_Selection.path.L, _i_out.Type_Node> => {
 
-                            const sc_definition: _i_out.Type_Node.SG.reference = _ea.cc(current, ($) => {
+                            const sc_definition: _i_out.Type_Node.SG.reference = _pt.cc(current, ($) => {
                                 if ($[0] !== 'reference') {
-                                    return _ea.deprecated_panic(`not a 'reference' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
+                                    return _pt.fixme_abort(`not a 'reference' but a '${$[0]}' @ ${$p['location 2 string'](sg_loc)}`)
                                 }
                                 return $[1]
                             })
                             const referent: _i_out.Type_Node_Reference = sc_definition.referent
-                            const x: _i_out.Type_Node = _ea.cc(sc_definition.type, ($) => {
+                            const x: _i_out.Type_Node = _pt.cc(sc_definition.type, ($) => {
                                 switch ($[0]) {
-                                    case 'derived': return _ea.ss($, ($) => referent['resulting node'])
-                                    case 'selected': return _ea.ss($, ($) => _ea.cc(referent['resulting node'], ($) => {
+                                    case 'derived': return _pt.ss($, ($) => referent['resulting node'])
+                                    case 'selected': return _pt.ss($, ($) => _pt.cc(referent['resulting node'], ($) => {
                                         switch ($[0]) {
-                                            case 'dictionary': return _ea.ss($, ($) => $.node)
-                                            default: return _ea.deprecated_panic("not a dictionary @ ", $p['location 2 string'](sg_loc))
+                                            case 'dictionary': return _pt.ss($, ($) => $.node)
+                                            default: return _pt.fixme_abort("not a dictionary @ ", $p['location 2 string'](sg_loc))
                                         }
                                     }))
-                                    default: return _ea.au($[0])
+                                    default: return _pt.au($[0])
                                 }
                             })
                             return {
@@ -1880,7 +1880,7 @@ export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = 
                                 'result': x
                             }
                         })
-                        default: return _ea.au($[0])
+                        default: return _pt.au($[0])
                     }
                 })
             }
@@ -1892,46 +1892,46 @@ export const Relative_Value_Selection: _i_signatures.Relative_Value_Selection = 
     }
 })
 
-export const Possible_Value_Selection: _i_signatures.Optional_Value_Initialization = ($, $p) => _ea.block(() => {
+export const Possible_Value_Selection: _i_signatures.Optional_Value_Initialization = ($, $p) => _pt.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _ea.cc($['state group'], ($) => {
+    return _pt.cc($['state group'], ($) => {
         switch ($[0]) {
-            case 'not set': return _ea.ss($, ($) => ['not set', null])
-            case 'set': return _ea.ss($, ($) => ['set', Guaranteed_Value_Selection($, $p)])
-            case 'selection': return _ea.ss($, ($): _i_out.Optional_Value_Initialization => {
+            case 'not set': return _pt.ss($, ($) => ['not set', null])
+            case 'set': return _pt.ss($, ($) => ['set', Guaranteed_Value_Selection($, $p)])
+            case 'selection': return _pt.ss($, ($): _i_out.Optional_Value_Initialization => {
                 return ['selection', Possibly_Optional($, $p)]
             })
-            default: return _ea.au($[0])
+            default: return _pt.au($[0])
         }
     })
 })
 
-export const Possibly_Optional: _i_signatures.Possible_Value_Selection = ($, $p) => _ea.block(() => {
+export const Possibly_Optional: _i_signatures.Possible_Value_Selection = ($, $p) => _pt.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _ea.cc($['state group'], ($) => {
+    return _pt.cc($['state group'], ($) => {
         switch ($[0]) {
-            case 'parameter': return _ea.ss($, ($) => ['parameter', _i_generic.get_entry(
+            case 'parameter': return _pt.ss($, ($) => ['parameter', _i_generic.get_entry(
                 _i_generic.dictionary_to_lookup($p.parameters.values.signature['resolved parameters'].values, null),
                 {
                     'reference': $,
                     'location 2 string': $p['location 2 string']
                 }
             )])
-            case 'result': return _ea.ss($, ($) => ['result', _ea.cc($['state group'], ($): _i_out.Possible_Value_Selection.SG.result => {
+            case 'result': return _pt.ss($, ($) => ['result', _pt.cc($['state group'], ($): _i_out.Possible_Value_Selection.SG.result => {
                 switch ($[0]) {
-                    case 'state group': return _ea.ss($, ($) => {
+                    case 'state group': return _pt.ss($, ($) => {
                         const loc = $['property'].location
-                        const p_sibling: _i_out.Possible_Value_Selection.SG.result.SG.state_group.property = _ea.cc($['property'], ($) => _i_generic.get_entry(
+                        const p_sibling: _i_out.Possible_Value_Selection.SG.result.SG.state_group.property = _pt.cc($['property'], ($) => _i_generic.get_entry(
                             $p.parameters.lookups['sibling property resolvers'],
                             {
                                 'reference': $,
                                 'location 2 string': $p['location 2 string']
                             }
                         ))
-                        const p_state_group = _ea.cc($['state group'], ($) => p_sibling.entry.resolver[0] !== 'state group'
-                            ? _ea.deprecated_panic("not a 'state group' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                        const p_state_group = _pt.cc($['state group'], ($) => p_sibling.entry.resolver[0] !== 'state group'
+                            ? _pt.fixme_abort("not a 'state group' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                             : p_sibling.entry.resolver[1])
 
                         const p_result = Type_Reference($.result, {
@@ -1951,17 +1951,17 @@ export const Possibly_Optional: _i_signatures.Possible_Value_Selection = ($, $p)
                             'result': p_result,
                         }]
                     })
-                    case 'optional value': return _ea.ss($, ($) => {
+                    case 'optional value': return _pt.ss($, ($) => {
                         const loc = $['property'].location
-                        const p_sibling: _i_out.Possible_Value_Selection.SG.result.SG.optional_value.property = _ea.cc($['property'], ($) => _i_generic.get_entry(
+                        const p_sibling: _i_out.Possible_Value_Selection.SG.result.SG.optional_value.property = _pt.cc($['property'], ($) => _i_generic.get_entry(
                             $p.parameters.lookups['sibling property resolvers'],
                             {
                                 'reference': $,
                                 'location 2 string': $p['location 2 string']
                             }
                         ))
-                        const p_optional_value = _ea.cc($['optional value'], ($) => p_sibling.entry.resolver[0] !== 'optional'
-                            ? _ea.deprecated_panic("not a 'optional' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                        const p_optional_value = _pt.cc($['optional value'], ($) => p_sibling.entry.resolver[0] !== 'optional'
+                            ? _pt.fixme_abort("not a 'optional' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                             : p_sibling.entry.resolver[1])
                         const p_result = Type_Reference($.result, {
                             'location 2 string': $p['location 2 string'],
@@ -1980,27 +1980,27 @@ export const Possibly_Optional: _i_signatures.Possible_Value_Selection = ($, $p)
                             'result': p_result,
                         }]
                     })
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             })])
-            default: return _ea.au($[0])
+            default: return _pt.au($[0])
         }
     })
 })
 
-export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selection = ($, $p) => _ea.block(() => {
+export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selection = ($, $p) => _pt.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _ea.block(() => {
+    return _pt.block(() => {
         const start_location = $.start.location
-        const p_start: _i_out.Guaranteed_Value_Selection.start = _ea.cc($.start['state group'], ($): _i_out.Guaranteed_Value_Selection.start => {
+        const p_start: _i_out.Guaranteed_Value_Selection.start = _pt.cc($.start['state group'], ($): _i_out.Guaranteed_Value_Selection.start => {
             switch ($[0]) {
-                case 'constraint': return _ea.ss($, ($): _i_out.Guaranteed_Value_Selection.start => {
-                    return ['constraint', _ea.cc($['state group'], ($): _i_out.Guaranteed_Value_Selection.start.SG.constraint => {
+                case 'constraint': return _pt.ss($, ($): _i_out.Guaranteed_Value_Selection.start => {
+                    return ['constraint', _pt.cc($['state group'], ($): _i_out.Guaranteed_Value_Selection.start.SG.constraint => {
                         switch ($[0]) {
-                            case 'component': return _ea.ss($, ($) => {
+                            case 'component': return _pt.ss($, ($) => {
                                 const loc = $['property'].location
-                                const p_sibling = _ea.cc($['property'], ($) => _i_generic.get_entry(
+                                const p_sibling = _pt.cc($['property'], ($) => _i_generic.get_entry(
                                     $p.parameters.lookups['sibling property resolvers'],
                                     {
                                         'reference': $,
@@ -2009,10 +2009,10 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                 ))
 
                                 const x_component = p_sibling.entry.resolver[0] !== 'component'
-                                    ? _ea.deprecated_panic("not a 'component' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                                    ? _pt.fixme_abort("not a 'component' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                                     : p_sibling.entry.resolver[1]
 
-                                const p_constraint = _ea.cc($['constraint'], ($) => _i_generic.get_entry(
+                                const p_constraint = _pt.cc($['constraint'], ($) => _i_generic.get_entry(
                                     _i_generic.dictionary_to_lookup(x_component.constraints.dictionary, null),
                                     {
                                         'reference': $,
@@ -2024,9 +2024,9 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                     'constraint': p_constraint
                                 }]
                             })
-                            case 'reference': return _ea.ss($, ($) => {
+                            case 'reference': return _pt.ss($, ($) => {
                                 const loc = $['property'].location
-                                const p_sibling = _ea.cc($['property'], ($) => _i_generic.get_entry(
+                                const p_sibling = _pt.cc($['property'], ($) => _i_generic.get_entry(
                                     $p.parameters.lookups['sibling property resolvers'],
                                     {
                                         'reference': $,
@@ -2035,14 +2035,14 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                 ))
 
                                 const x_reference = p_sibling.entry.resolver[0] !== 'reference'
-                                    ? _ea.deprecated_panic("not a 'reference' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                                    ? _pt.fixme_abort("not a 'reference' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                                     : p_sibling.entry.resolver[1]
 
                                 const x_reference_selected = x_reference.type[0] !== 'selected'
-                                    ? _ea.deprecated_panic("not a 'selected' but a '", x_reference.type[0], "' @ ", $p['location 2 string'](loc))
+                                    ? _pt.fixme_abort("not a 'selected' but a '", x_reference.type[0], "' @ ", $p['location 2 string'](loc))
                                     : x_reference.type[1]
 
-                                const p_constraint = _ea.cc($['constraint'], ($) => _i_generic.get_entry(
+                                const p_constraint = _pt.cc($['constraint'], ($) => _i_generic.get_entry(
                                     _i_generic.dictionary_to_lookup(x_reference_selected.constraints.dictionary, null),
                                     {
                                         'reference': $,
@@ -2054,16 +2054,16 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                     'constraint': p_constraint
                                 }]
                             })
-                            default: return _ea.au($[0])
+                            default: return _pt.au($[0])
                         }
                     })]
                 })
-                case 'list cursor': return _ea.ss($, ($) => ['list cursor', null])
-                case 'linked entry': return _ea.ss($, ($) => ['linked entry', null])
-                case 'option constraint': return _ea.ss($, ($): _i_out.Guaranteed_Value_Selection.start => {
+                case 'list cursor': return _pt.ss($, ($) => ['list cursor', null])
+                case 'linked entry': return _pt.ss($, ($) => ['linked entry', null])
+                case 'option constraint': return _pt.ss($, ($): _i_out.Guaranteed_Value_Selection.start => {
                     const sc = $p.parameters.values['option constraints'].transform(
                         ($) => $,
-                        () => _ea.deprecated_panic("not in an option @ ", $p['location 2 string'](start_location))
+                        () => _pt.fixme_abort("not in an option @ ", $p['location 2 string'](start_location))
                     )
                     return ['option constraint', _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup(sc, null),
@@ -2073,47 +2073,47 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                         }
                     )]
                 })
-                case 'parameter': return _ea.ss($, ($) => ['parameter', _i_generic.get_entry(
+                case 'parameter': return _pt.ss($, ($) => ['parameter', _i_generic.get_entry(
                     _i_generic.dictionary_to_lookup($p.parameters.values.signature['resolved parameters'].values, null),
                     {
                         'reference': $,
                         'location 2 string': $p['location 2 string']
                     }
                 )])
-                case 'result': return _ea.ss($, ($) => ['result', _ea.cc($['state group'], ($): _i_out.Guaranteed_Value_Selection.start.SG.result => {
+                case 'result': return _pt.ss($, ($) => ['result', _pt.cc($['state group'], ($): _i_out.Guaranteed_Value_Selection.start.SG.result => {
                     switch ($[0]) {
-                        case 'list': return _ea.ss($, ($) => {
+                        case 'list': return _pt.ss($, ($) => {
                             const loc = $['property'].location
-                            const p_sibling: _i_out.Guaranteed_Value_Selection.start.SG.result.SG.list.property = _ea.cc($['property'], ($) => _i_generic.get_entry(
+                            const p_sibling: _i_out.Guaranteed_Value_Selection.start.SG.result.SG.list.property = _pt.cc($['property'], ($) => _i_generic.get_entry(
                                 $p.parameters.lookups['sibling property resolvers'],
                                 {
                                     'reference': $,
                                     'location 2 string': $p['location 2 string']
                                 }
                             ))
-                            const p_list_result_a = _ea.cc($['list result'], ($) => p_sibling.entry.resolver[0] !== 'list'
-                                ? _ea.deprecated_panic("not a 'list' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                            const p_list_result_a = _pt.cc($['list result'], ($) => p_sibling.entry.resolver[0] !== 'list'
+                                ? _pt.fixme_abort("not a 'list' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                                 : p_sibling.entry.resolver[1])
                             const p_list_result: _i_out.Guaranteed_Value_Selection.start.SG.result.SG.list.list_result = p_list_result_a.result.transform(
                                 ($) => $,
-                                () => _ea.deprecated_panic("there is no list result")
+                                () => _pt.fixme_abort("there is no list result")
                             )
                             return ['list', {
                                 'property': p_sibling,
                                 'list result': p_list_result,
                             }]
                         })
-                        case 'state group': return _ea.ss($, ($) => {
+                        case 'state group': return _pt.ss($, ($) => {
                             const loc = $['property'].location
-                            const p_sibling: _i_out.Guaranteed_Value_Selection.start.SG.result.SG.state_group.property = _ea.cc($['property'], ($) => _i_generic.get_entry(
+                            const p_sibling: _i_out.Guaranteed_Value_Selection.start.SG.result.SG.state_group.property = _pt.cc($['property'], ($) => _i_generic.get_entry(
                                 $p.parameters.lookups['sibling property resolvers'],
                                 {
                                     'reference': $,
                                     'location 2 string': $p['location 2 string']
                                 }
                             ))
-                            const p_state_group = _ea.cc($['state group'], ($) => p_sibling.entry.resolver[0] !== 'state group'
-                                ? _ea.deprecated_panic("not a 'state group' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                            const p_state_group = _pt.cc($['state group'], ($) => p_sibling.entry.resolver[0] !== 'state group'
+                                ? _pt.fixme_abort("not a 'state group' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                                 : p_sibling.entry.resolver[1])
                             return ['state group', {
                                 'property': p_sibling,
@@ -2131,17 +2131,17 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                 })
                             }]
                         })
-                        case 'optional value': return _ea.ss($, ($) => {
+                        case 'optional value': return _pt.ss($, ($) => {
                             const loc = $['property'].location
-                            const p_sibling: _i_out.Guaranteed_Value_Selection.start.SG.result.SG.optional_value.property = _ea.cc($['property'], ($) => _i_generic.get_entry(
+                            const p_sibling: _i_out.Guaranteed_Value_Selection.start.SG.result.SG.optional_value.property = _pt.cc($['property'], ($) => _i_generic.get_entry(
                                 $p.parameters.lookups['sibling property resolvers'],
                                 {
                                     'reference': $,
                                     'location 2 string': $p['location 2 string']
                                 }
                             ))
-                            const p_optional_value = _ea.cc($['optional value'], ($) => p_sibling.entry.resolver[0] !== 'optional'
-                                ? _ea.deprecated_panic("not a 'optional' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                            const p_optional_value = _pt.cc($['optional value'], ($) => p_sibling.entry.resolver[0] !== 'optional'
+                                ? _pt.fixme_abort("not a 'optional' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                                 : p_sibling.entry.resolver[1])
                             return ['optional value', {
                                 'property': p_sibling,
@@ -2159,24 +2159,24 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                 })
                             }]
                         })
-                        default: return _ea.au($[0])
+                        default: return _pt.au($[0])
                     }
                 })])
-                case 'sibling': return _ea.ss($, ($): _i_out.Guaranteed_Value_Selection.start => ['sibling', _i_generic.get_entry(
+                case 'sibling': return _pt.ss($, ($): _i_out.Guaranteed_Value_Selection.start => ['sibling', _i_generic.get_entry(
                     $p.parameters.lookups['sibling property resolvers'],
                     {
                         'reference': $,
                         'location 2 string': $p['location 2 string']
                     }
                 )])
-                case 'parent sibling': return _ea.ss($, ($): _i_out.Guaranteed_Value_Selection.start => ['parent sibling', _i_generic.get_entry(
+                case 'parent sibling': return _pt.ss($, ($): _i_out.Guaranteed_Value_Selection.start => ['parent sibling', _i_generic.get_entry(
                     $p.parameters.lookups['parent sibling property resolvers'],
                     {
                         'reference': $,
                         'location 2 string': $p['location 2 string']
                     }
                 )])
-                default: return _ea.au($[0])
+                default: return _pt.au($[0])
             }
         })
         const p_tail = Relative_Value_Selection(
@@ -2185,73 +2185,73 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                 'location 2 string': l2s,
                 'parameters': {
                     'values': {
-                        'node': _ea.block(() => {
-                            const pvs = ($: _i_out.Possible_Value_Selection) => _ea.cc($, ($): _i_out.Type_Node => {
-                                return _ea.cc($, ($) => {
+                        'node': _pt.block(() => {
+                            const pvs = ($: _i_out.Possible_Value_Selection) => _pt.cc($, ($): _i_out.Type_Node => {
+                                return _pt.cc($, ($) => {
                                     switch ($[0]) {
-                                        case 'parameter': return _ea.ss($, ($) => $.entry['data type']['resulting node'])
-                                        case 'result': return _ea.ss($, ($) => _ea.cc($, ($) => {
+                                        case 'parameter': return _pt.ss($, ($) => $.entry['data type']['resulting node'])
+                                        case 'result': return _pt.ss($, ($) => _pt.cc($, ($) => {
                                             switch ($[0]) {
-                                                case 'state group': return _ea.ss($, ($) => $.result['resulting node'])
-                                                case 'optional value': return _ea.ss($, ($) => $.result['resulting node'])
-                                                default: return _ea.au($[0])
+                                                case 'state group': return _pt.ss($, ($) => $.result['resulting node'])
+                                                case 'optional value': return _pt.ss($, ($) => $.result['resulting node'])
+                                                default: return _pt.au($[0])
                                             }
                                         }))
-                                        default: return _ea.au($[0])
+                                        default: return _pt.au($[0])
                                     }
                                 })
                             })
                             const start_loc = $.start.location
-                            const gvs_start = ($: _i_out.Guaranteed_Value_Selection.start) => _ea.cc($, ($): _i_out.Type_Node => {
+                            const gvs_start = ($: _i_out.Guaranteed_Value_Selection.start) => _pt.cc($, ($): _i_out.Type_Node => {
                                 switch ($[0]) {
-                                    case 'constraint': return _ea.ss($, ($) => _ea.cc($, ($) => {
+                                    case 'constraint': return _pt.ss($, ($) => _pt.cc($, ($) => {
                                         switch ($[0]) {
-                                            case 'component': return _ea.ss($, ($) => _ea.cc($.constraint.entry.constraint.type, ($) => {
+                                            case 'component': return _pt.ss($, ($) => _pt.cc($.constraint.entry.constraint.type, ($) => {
                                                 switch ($[0]) {
-                                                    case 'state': return _ea.ss($, ($) => $.state.entry.node)
-                                                    case 'optional value': return _ea.ss($, ($) => $['selected optional value'])
-                                                    default: return _ea.au($[0])
+                                                    case 'state': return _pt.ss($, ($) => $.state.entry.node)
+                                                    case 'optional value': return _pt.ss($, ($) => $['selected optional value'])
+                                                    default: return _pt.au($[0])
                                                 }
                                             }))
-                                            case 'reference': return _ea.ss($, ($) => _ea.cc($.constraint.entry.constraint.type, ($) => {
+                                            case 'reference': return _pt.ss($, ($) => _pt.cc($.constraint.entry.constraint.type, ($) => {
                                                 switch ($[0]) {
-                                                    case 'state': return _ea.ss($, ($) => $.state.entry.node)
-                                                    case 'optional value': return _ea.ss($, ($) => $['selected optional value'])
+                                                    case 'state': return _pt.ss($, ($) => $.state.entry.node)
+                                                    case 'optional value': return _pt.ss($, ($) => $['selected optional value'])
 
-                                                    default: return _ea.au($[0])
+                                                    default: return _pt.au($[0])
                                                 }
                                             }))
 
-                                            default: return _ea.au($[0])
+                                            default: return _pt.au($[0])
                                         }
                                     }))
-                                    case 'parameter': return _ea.ss($, ($) => $.entry['data type']['resulting node'])
-                                    case 'result': return _ea.ss($, ($) => _ea.cc($, ($) => {
+                                    case 'parameter': return _pt.ss($, ($) => $.entry['data type']['resulting node'])
+                                    case 'result': return _pt.ss($, ($) => _pt.cc($, ($) => {
                                         switch ($[0]) {
-                                            case 'state group': return _ea.ss($, ($) => $.result['resulting node'])
-                                            case 'optional value': return _ea.ss($, ($) => $.result['resulting node'])
-                                            case 'list': return _ea.ss($, ($) => $['list result']['resulting node'])
-                                            default: return _ea.au($[0])
+                                            case 'state group': return _pt.ss($, ($) => $.result['resulting node'])
+                                            case 'optional value': return _pt.ss($, ($) => $.result['resulting node'])
+                                            case 'list': return _pt.ss($, ($) => $['list result']['resulting node'])
+                                            default: return _pt.au($[0])
                                         }
                                     }))
-                                    case 'list cursor': return _ea.ss($, ($) => $p.parameters.values['list cursor'].transform(
+                                    case 'list cursor': return _pt.ss($, ($) => $p.parameters.values['list cursor'].transform(
                                         ($) => $['resulting node'],
-                                        () => _ea.deprecated_panic("there is no cursor")
+                                        () => _pt.fixme_abort("there is no cursor")
                                     ))
-                                    case 'linked entry': return _ea.ss($, ($) => $p.parameters.values['linked entry'].transform(
+                                    case 'linked entry': return _pt.ss($, ($) => $p.parameters.values['linked entry'].transform(
                                         ($) => $['resulting dictionary'].node,
-                                        () => _ea.deprecated_panic(`there is no linked entry @ ${$p['location 2 string'](start_loc)}`)
+                                        () => _pt.fixme_abort(`there is no linked entry @ ${$p['location 2 string'](start_loc)}`)
                                     ))
-                                    case 'option constraint': return _ea.ss($, ($) => _ea.cc($.entry, ($) => {
+                                    case 'option constraint': return _pt.ss($, ($) => _pt.cc($.entry, ($) => {
                                         switch ($[0]) {
-                                            case 'state': return _ea.ss($, ($) => $.state.entry.node)
-                                            case 'assert is set': return _ea.ss($, ($) => pvs($))
-                                            default: return _ea.au($[0])
+                                            case 'state': return _pt.ss($, ($) => $.state.entry.node)
+                                            case 'assert is set': return _pt.ss($, ($) => pvs($))
+                                            default: return _pt.au($[0])
                                         }
                                     }))
-                                    case 'sibling': return _ea.ss($, ($) => $.entry.definition.node)
-                                    case 'parent sibling': return _ea.ss($, ($) => $.entry.definition.node)
-                                    default: return _ea.au($[0])
+                                    case 'sibling': return _pt.ss($, ($) => $.entry.definition.node)
+                                    case 'parent sibling': return _pt.ss($, ($) => $.entry.definition.node)
+                                    default: return _pt.au($[0])
                                 }
                             })
                             return gvs_start(p_start)
@@ -2270,7 +2270,7 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
     })
 })
 
-export const Type_Specification: _i_signatures.Type_Specification = ($, $p) => _ea.block(() => {
+export const Type_Specification: _i_signatures.Type_Specification = ($, $p) => _pt.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return {
@@ -2278,7 +2278,7 @@ export const Type_Specification: _i_signatures.Type_Specification = ($, $p) => _
             'location 2 string': l2s,
             'parameters': {
                 'lookups': {
-                    'sibling schemas': _ea.list_literal([]),
+                    'sibling schemas': _pt.list_literal([]),
                 },
                 'values': params.values,
             }

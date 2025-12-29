@@ -1,5 +1,5 @@
-import * as _ed from 'exupery-core-data'
-import * as _ea from 'exupery-core-alg'
+import * as _pt from 'pareto-core-transformer'
+import * as _pinternals from 'pareto-core-internals'
 
 //FIXME, this one should be moved to pareto-targets
 
@@ -26,7 +26,7 @@ export const Module = ($: _in.Module): _out.Directory => {
                     'lookups': null,
                     'values': null,
                 },
-                'location 2 string': _ed.location_to_string
+                'location 2 string': _pinternals.location_to_string
             }
         ),
         {

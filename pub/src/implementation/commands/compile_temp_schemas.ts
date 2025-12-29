@@ -1,7 +1,6 @@
-import * as _ea from 'exupery-core-alg'
-import * as _ed from 'exupery-core-data'
-import * as _easync from 'exupery-core-async'
-import * as _et from 'exupery-core-types'
+import * as _pc from 'pareto-core-command'
+import * as _pi from 'pareto-core-interface'
+import * as _pinternals from 'pareto-core-internals'
 
 //data
 
@@ -29,7 +28,7 @@ import * as t_pareto_module_to_fountain_pen_block__interface from "../transforme
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 import * as ds_context_path from "exupery-resources/dist/implementation/deserializers/schemas/context_path"
 
-export type Procedure = _et.Command_Procedure<
+export type Procedure = _pi.Command_Procedure<
     resources_exupery.commands.main,
     {
         'copy': resources_exupery.commands.copy
@@ -42,19 +41,19 @@ export type Procedure = _et.Command_Procedure<
     null
 >
 
-export const $$: Procedure = _easync.create_command_procedure(
+export const $$: Procedure = _pc.create_command_procedure(
     ($p, $cr, $qr) => [
 
         $cr.log.execute(
             {
-                'lines': _ea.list_literal([`generating...`])
+                'lines': _pinternals.list_literal([`generating...`])
             },
             ($) => ({
                 'exit code': 1
             })
         ),
 
-        _easync.p.dictionary.parallel(
+        _pc.dictionary.parallel(
             poormans_modules,
             ($, key) => {
 
@@ -94,7 +93,7 @@ export const $$: Procedure = _easync.create_command_procedure(
                                             'lookups': null,
                                             'values': null,
                                         },
-                                        'location 2 string': _ed.location_to_string
+                                        'location 2 string': _pinternals.location_to_string
                                     }
                                 ),
                             ),
@@ -118,7 +117,7 @@ export const $$: Procedure = _easync.create_command_procedure(
                                             'lookups': null,
                                             'values': null,
                                         },
-                                        'location 2 string': _ed.location_to_string
+                                        'location 2 string': _pinternals.location_to_string
                                     }
                                 ),
                             ),
@@ -135,9 +134,9 @@ export const $$: Procedure = _easync.create_command_procedure(
                             'source': t_path_to_path.create_node_path(ds_context_path.Context_Path(`./pub/src/implementation/generated/pareto`), `generic`),
                             'target': t_path_to_path.extend_node_path(implementation_module_path, { 'addition': `generic` }),
                             'options': {
-                                'recursive': _ea.set(true),
-                                'force': _ea.not_set(),
-                                'errorOnExist': _ea.not_set(),
+                                'recursive': _pinternals.set(true),
+                                'force': _pinternals.not_set(),
+                                'errorOnExist': _pinternals.not_set(),
                             }
                         },
                         ($) => ['could not copy generic implementation', null]
@@ -149,9 +148,9 @@ export const $$: Procedure = _easync.create_command_procedure(
                             'source': t_path_to_path.create_node_path(ds_context_path.Context_Path(`./pub/src/interface/generated/pareto`), `core`),
                             'target': t_path_to_path.extend_node_path(interface_module_path, { 'addition': `core` }),
                             'options': {
-                                'recursive': _ea.set(true),
-                                'force': _ea.not_set(),
-                                'errorOnExist': _ea.not_set(),
+                                'recursive': _pinternals.set(true),
+                                'force': _pinternals.not_set(),
+                                'errorOnExist': _pinternals.not_set(),
                             }
                         },
                         ($) => ['could not copy core interface', null]
@@ -161,7 +160,7 @@ export const $$: Procedure = _easync.create_command_procedure(
                     //log
                     $cr.log.execute(
                         {
-                            'lines': _ea.list_literal([`generated package: ${key}`])
+                            'lines': _pinternals.list_literal([`generated package: ${key}`])
                         },
                         ($): Package_Error => ['could not log', null]
                     ),

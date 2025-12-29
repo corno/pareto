@@ -1,6 +1,5 @@
-import * as _edata from 'exupery-core-data'
-import * as _ea from 'exupery-core-alg'
-import * as _et from 'exupery-core-types'
+import * as _pt from 'pareto-core-transformer'
+import * as _pi from 'pareto-core-interface'
 
 import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
@@ -21,61 +20,61 @@ import * as t_unmarshall from "./unmarshall"
 export const Schema_Tree = (
     $: _in.Schema_Tree,
     $p: {
-        'path': _et.List<string>,
+        'path': _pi.List<string>,
     }
-): _out.Module_Set.D<_edata.Source_Location> => {
-    return _ea.cc($, ($) => {
+): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+    return _pt.cc($, ($) => {
         switch ($[0]) {
-            case 'schema': return _ea.ss($, ($) => {
+            case 'schema': return _pt.ss($, ($) => {
                 const imports = $.imports
                 return m.set(
-                    _ea.dictionary_literal<_et.Optional_Value<_out.Module_Set.D<_edata.Source_Location>>>({
+                    _pt.dictionary_literal<_pi.Optional_Value<_out.Module_Set.D<_pi.Deprecated_Source_Location>>>({
                         // "migration boilerplate.ts": pa.set(_migration_boilerplate.Types($.types, {
                         //     'key': key,
                         //     'imports': $.imports,
                         //     'constrained': $.complexity[0] === 'constrained'
                         // })),
 
-                        "resolve.ts": _ea.cc($.complexity, ($) => {
+                        "resolve.ts": _pt.cc($.complexity, ($) => {
                             switch ($[0]) {
-                                case 'constrained': return _ea.ss($, ($) => _ea.set(t_resolver.Resolvers($.resolvers, {
+                                case 'constrained': return _pt.ss($, ($) => _pt.set(t_resolver.Resolvers($.resolvers, {
                                     'path': $p.path,
                                     'imports': imports
                                 })))
-                                case 'unconstrained': return _ea.ss($, ($) => _ea.not_set())
-                                default: return _ea.au($[0])
+                                case 'unconstrained': return _pt.ss($, ($) => _pt.not_set())
+                                default: return _pt.au($[0])
                             }
                         }),
-                        "marshall.ts": _ea.set(t_marshall.Schema($, {
+                        "marshall.ts": _pt.set(t_marshall.Schema($, {
                             'path': $p.path,
                             'imports': $.imports,
                             'constrained': $.complexity[0] === 'constrained'
                         })),
-                        "unmarshall.ts": _ea.set(t_unmarshall.Schema($, {
+                        "unmarshall.ts": _pt.set(t_unmarshall.Schema($, {
                             'path': $p.path,
                             'imports': $.imports,
                             'constrained': $.complexity[0] === 'constrained'
                         })),
 
-                        "serialize.ts": _ea.set(t_serialize.Schema($, {
+                        "serialize.ts": _pt.set(t_serialize.Schema($, {
                             'path': $p.path,
                             'imports': $.imports,
                             'constrained': $.complexity[0] === 'constrained'
                         })),
-                        "deserialize.ts": _ea.set(t_deserialize.Schema($, {
+                        "deserialize.ts": _pt.set(t_deserialize.Schema($, {
                             'path': $p.path,
                             'imports': $.imports,
                         })),
                     }).filter(($) => $)
                 )
             })
-            case 'set': return _ea.ss($, ($): _out.Module_Set.D<_edata.Source_Location> => Schemas(
+            case 'set': return _pt.ss($, ($): _out.Module_Set.D<_pi.Deprecated_Source_Location> => Schemas(
                 $,
                 {
                     'path': $p.path,
                 }
             ))
-            default: return _ea.au($[0])
+            default: return _pt.au($[0])
         }
     })
 }
@@ -83,9 +82,9 @@ export const Schema_Tree = (
 export const Schemas = (
     $: _in.Schemas,
     $p: {
-        'path': _et.List<string>,
+        'path': _pi.List<string>,
     }
-): _out.Module_Set.D<_edata.Source_Location> => {
+): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.set($.dictionary.map(($, key) => Schema_Tree($, {
         'path': $p.path.append_element(key)
     })))

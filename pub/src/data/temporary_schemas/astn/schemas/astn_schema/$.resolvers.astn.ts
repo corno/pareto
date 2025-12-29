@@ -1,4 +1,4 @@
-import * as pd from 'exupery-core-data'
+import * as _pi from 'pareto-core-interface'
 
 import {
     resolvers, r, resolver, al, ls, av, gvs, ovi, vst, state, state_constrained, oc, pc, pvs, reference,
@@ -7,7 +7,7 @@ import {
 import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
 
 
-export const $: g_.Resolvers<pd.Source_Location> = resolvers(
+export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
     {
         "Type": resolver(r.group({
             "node": r.component("Type Node", {

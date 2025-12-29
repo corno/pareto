@@ -1,4 +1,4 @@
-import * as _et from 'exupery-core-types'
+import * as _pi from 'pareto-core-interface'
 
 import * as d_astn_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
 import * as d_astn_ast from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
@@ -14,7 +14,7 @@ export type Entry_Data = {
     'node': Optional_Node
 }
 
-export type Optional_Node = _et.Optional_Value<Node>
+export type Optional_Node = _pi.Optional_Value<Node>
 
 // export type Key_Value_Pair = {
 //     'node': Node
@@ -23,7 +23,7 @@ export type Optional_Node = _et.Optional_Value<Node>
 export type Property =
     | ['missing', d_astn_token.Range]
     | ['unique', Entry_Data]
-    | ['multiple', _et.List<Entry_Data>]
+    | ['multiple', _pi.List<Entry_Data>]
 
 export type Node = {
     'definition': d_schema.Type_Node
@@ -65,7 +65,7 @@ export type Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_
 
 export type Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus_SG_set = {
     'value': d_astn_ast.Concrete_Value.SG.tagged_value.status.SG._set
-    'found state definition': _et.Optional_Value<State_Definition_Found>
+    'found state definition': _pi.Optional_Value<State_Definition_Found>
 }
 
 export type Node_Type_SG_State_found_value_type_valid = {
@@ -113,7 +113,7 @@ export type List = {
     'found value type':
     | ['valid', {
         'value': d_astn_ast.Concrete_Value.SG.ordered_collection
-        'elements': _et.List<Node>
+        'elements': _pi.List<Node>
     }]
     | ['invalid', d_astn_token.Range]
 }
@@ -176,14 +176,14 @@ export type Dictionary = {
     'found value type':
     | ['valid', {
         'value': d_astn_ast.Concrete_Value.SG.indexed_collection
-        'entries': _et.Dictionary<Entry>
+        'entries': _pi.Dictionary<Entry>
     }]
     | ['invalid', d_astn_token.Range]
 }
 
 export type Entry =
     | ['unique', Optional_Node]
-    | ['multiple', _et.List<Entry_Data>]
+    | ['multiple', _pi.List<Entry_Data>]
 
 export type Group = {
     'definition': d_schema.Type_Node.SG.group
@@ -209,7 +209,7 @@ export type Indexed_Group = {
 }
 
 export type Group_Content = {
-    'properties': _et.Dictionary<Property>
-    'superfluous entries': _et.Dictionary<_et.List<d_astn_token.Range>>
+    'properties': _pi.Dictionary<Property>
+    'superfluous entries': _pi.Dictionary<_pi.List<d_astn_token.Range>>
 
 }

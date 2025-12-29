@@ -1,6 +1,6 @@
 #!/usr/bin/env -S node --enable-source-maps
 
-import * as _eb from 'exupery-core-bin'
+import * as _pn from 'pareto-host-nodejs'
 
 import * as d_resources from "../implementation/commands/compile_temp_schemas"
 
@@ -10,7 +10,7 @@ import { $$ as p_write_to_file } from "../modules/pareto-fountain-pen-directory/
 
 import { $$ as procedure } from "../implementation/commands/compile_temp_schemas"
 
-_eb.run_main_procedure(
+_pn.run_main_procedure(
     ($r) => {
         return procedure(
             {

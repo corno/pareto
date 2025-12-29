@@ -1,5 +1,5 @@
-import * as _ea from 'exupery-core-alg'
-import * as _ed from 'exupery-core-dev'
+import * as _ea from 'pareto-core-refiner'
+import * as _ed from 'pareto-core-dev'
 
 import * as _i_generic from "../../generic/resolve"
 import * as _i_out from "../../../../../interface/generated/pareto/schemas/module/data_types/source"

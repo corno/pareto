@@ -1,9 +1,9 @@
-import * as pd from 'exupery-core-data'
+import * as _pi from 'pareto-core-interface'
 
 import { resolvers, r, resolver, sig, state } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
 
-export const $: g_.Resolvers<pd.Source_Location> = resolvers(
+export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
     {
         "Initialization": resolver(r.state_group({
             "block": state(r.group({

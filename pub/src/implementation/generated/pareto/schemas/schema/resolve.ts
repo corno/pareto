@@ -1,5 +1,5 @@
-import * as _ea from 'exupery-core-alg'
-import * as _edev from 'exupery-core-dev'
+import * as _ea from 'pareto-core-refiner'
+import * as _edev from 'pareto-core-dev'
 
 import * as _i_generic from "../../generic/resolve"
 import * as _i_out from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
@@ -285,7 +285,7 @@ export const r_Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Sel
                 case 'option constraint': return _ea.ss($, ($) => ['option constraint', _ea.block(() => {
                     const c_oc = params['values']['option constraints'].transform(
                         ($) => $,
-                        () => _ea.deprecated_panic('ABORT SELECTION')
+                        () => _ea.fixme_abort('ABORT SELECTION')
                     )
                     return _i_generic.get_entry(
                         _i_generic.dictionary_to_lookup(
@@ -498,7 +498,7 @@ export const r_Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => 
                 case 'not circular dependent siblings': return _ea.ss($, ($) => ['not circular dependent siblings', _ea.block(() => {
                     const c_cd = params['values']['current ordered dictionary'].transform(
                         ($) => $,
-                        () => _ea.deprecated_panic('ABORT SELECTION')
+                        () => _ea.fixme_abort('ABORT SELECTION')
                     )
                     return c_cd
                 })])
@@ -517,7 +517,7 @@ export const r_Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => 
                 case 'possibly circular dependent siblings': return _ea.ss($, ($) => ['possibly circular dependent siblings', _ea.block(() => {
                     const c_cd = params['values']['current dictionary'].transform(
                         ($) => $,
-                        () => _ea.deprecated_panic('ABORT SELECTION')
+                        () => _ea.fixme_abort('ABORT SELECTION')
                     )
                     return c_cd
                 })])
@@ -548,7 +548,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _ea.bl
                             case 'external': return _ea.ss($, ($) => ['external', _ea.block(() => {
                                 const c_import = params['values']['imports'].transform(
                                     ($) => $,
-                                    () => _ea.deprecated_panic('ABORT SELECTION')
+                                    () => _ea.fixme_abort('ABORT SELECTION')
                                 )
                                 return _ea.block(() => {
                                     const p_import: _i_out._T_Node_Resolver.SG.component.location.SG.external._import = _ea.cc($['import'], ($) => _i_generic.get_entry(
@@ -1967,7 +1967,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _ea.block(() =
                         case 'external': return _ea.ss($, ($) => ['external', _ea.block(() => {
                             const c_import = params['values']['imports'].transform(
                                 ($) => $,
-                                () => _ea.deprecated_panic('ABORT SELECTION')
+                                () => _ea.fixme_abort('ABORT SELECTION')
                             )
                             return _ea.block(() => {
                                 const p_import: _i_out._T_Type_Node.SG.component.SG.external._import = _ea.cc($['import'], ($) => _i_generic.get_entry(
@@ -2082,7 +2082,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _ea.block(() =
                         case 'global': return _ea.ss($, ($) => ['global', _ea.block(() => {
                             const c_globals = params['values']['globals'].transform(
                                 ($) => $,
-                                () => _ea.deprecated_panic('ABORT SELECTION')
+                                () => _ea.fixme_abort('ABORT SELECTION')
                             )
                             return _i_generic.get_entry(
                                 _i_generic.dictionary_to_lookup(
@@ -2214,7 +2214,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _ea.block(() =
                         case 'global': return _ea.ss($, ($) => ['global', _ea.block(() => {
                             const c_globals = params['values']['globals'].transform(
                                 ($) => $,
-                                () => _ea.deprecated_panic('ABORT SELECTION')
+                                () => _ea.fixme_abort('ABORT SELECTION')
                             )
                             return _i_generic.get_entry(
                                 _i_generic.dictionary_to_lookup(
@@ -2336,7 +2336,7 @@ export const r_Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _ea.
                 case 'external': return _ea.ss($, ($) => ['external', _ea.block(() => {
                     const c_import = params['values']['imports'].transform(
                         ($) => $,
-                        () => _ea.deprecated_panic('ABORT SELECTION')
+                        () => _ea.fixme_abort('ABORT SELECTION')
                     )
                     return _ea.block(() => {
                         const p_import: _i_out._T_Type_Reference.location.SG.external._import = _ea.cc($['import'], ($) => _i_generic.get_entry(

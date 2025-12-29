@@ -1,20 +1,19 @@
-import * as _edata from 'exupery-core-data'
-import * as _edev from 'exupery-core-dev'
-import * as _ea from 'exupery-core-alg'
-import * as _et from 'exupery-core-types'
+import * as _pdev from 'pareto-core-dev'
+import * as _pt from 'pareto-core-transformer'
+import * as _pi from 'pareto-core-interface'
 
 import {
     wrap_dictionary,
     wrap_state_group,
     wrap_reference,
-} from 'exupery-core-data/dist/shorthands/unresolved_transformation'
+} from 'pareto-core-transformer/dist/deprecated_shorthands_for_unresolved'
 
 import { $$ as op_flatten_dictionaries } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 
 import * as _in from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "../../../../interface/generated/pareto/schemas/astn_schema/data_types/target"
 
-export const Schema: _et.Transformer<_in.Schema, _out.Schema<_edata.Source_Location>> = (
+export const Schema: _pi.Transformer<_in.Schema, _out.Schema<_pi.Deprecated_Source_Location>> = (
     $
 ) => {
     return {
@@ -24,13 +23,13 @@ export const Schema: _et.Transformer<_in.Schema, _out.Schema<_edata.Source_Locat
     }
 }
 
-export const Globals: _et.Transformer<_in.Globals, _out.Globals<_edata.Source_Location>> = (
+export const Globals: _pi.Transformer<_in.Globals, _out.Globals<_pi.Deprecated_Source_Location>> = (
     $
 ) => {
     return {
         //FIXME!! merge the number types with the text types in here
         'text types': wrap_dictionary(op_flatten_dictionaries(
-            _ea.dictionary_literal({
+            _pt.dictionary_literal({
                 "t": $['text types'].map(($) => {
                     return Text_Type($)
                 }),
@@ -42,12 +41,13 @@ export const Globals: _et.Transformer<_in.Globals, _out.Globals<_edata.Source_Lo
             }),
             {
                 'separator': "",
-            }
+            },
+            () => _pt.unreachable_code_path(),
         )),
     }
 }
 
-export const Imports: _et.Transformer<_in.Imports, _out.Imports<_edata.Source_Location>> = (
+export const Imports: _pi.Transformer<_in.Imports, _out.Imports<_pi.Deprecated_Source_Location>> = (
     $
 ) => {
     return wrap_dictionary($.map(($) => ({
@@ -56,7 +56,7 @@ export const Imports: _et.Transformer<_in.Imports, _out.Imports<_edata.Source_Lo
     })))
 }
 
-export const Type: _et.Transformer<_in.Type, _out.Type<_edata.Source_Location>> = (
+export const Type: _pi.Transformer<_in.Type, _out.Type<_pi.Deprecated_Source_Location>> = (
     $
 ) => {
     return {
@@ -64,76 +64,76 @@ export const Type: _et.Transformer<_in.Type, _out.Type<_edata.Source_Location>> 
     }
 }
 
-export const Type_Node: _et.Transformer<_in.Type_Node, _out.Type_Node<_edata.Source_Location>> = (
+export const Type_Node: _pi.Transformer<_in.Type_Node, _out.Type_Node<_pi.Deprecated_Source_Location>> = (
     $
 ) => {
-    return wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG<_edata.Source_Location> => {
+    return wrap_state_group(_pt.cc($, ($): _out.Type_Node.SG<_pi.Deprecated_Source_Location> => {
         switch ($[0]) {
-            case 'number': return _ea.ss($, ($): _out.Type_Node.SG<_edata.Source_Location> => ['text', wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG.text.SG<_edata.Source_Location> => {
+            case 'number': return _pt.ss($, ($): _out.Type_Node.SG<_pi.Deprecated_Source_Location> => ['text', wrap_state_group(_pt.cc($, ($): _out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location> => {
                 switch ($[0]) {
-                    case 'global': return _ea.ss($, ($) => ['global', wrap_reference("n" + $.key)])
-                    case 'local': return _ea.ss($, ($) => ['local', {
+                    case 'global': return _pt.ss($, ($) => ['global', wrap_reference("n" + $.key)])
+                    case 'local': return _pt.ss($, ($) => ['local', {
                         'type': wrap_state_group(['single line', null])
                     }])
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             }))]) //FIXME
-            case 'boolean': return _ea.ss($, ($) => ['text', wrap_state_group<_out.Type_Node.SG.text.SG<_edata.Source_Location>>(['local', {
+            case 'boolean': return _pt.ss($, ($) => ['text', wrap_state_group<_out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location>>(['local', {
                 'type': wrap_state_group(['single line', null])
             }])])
-            case 'list': return _ea.ss($, ($) => ['list', {
+            case 'list': return _pt.ss($, ($) => ['list', {
                 'node': Type_Node($.node)
             }])
-            case 'nothing': return _ea.ss($, ($) => ['nothing', null])
-            case 'reference': return _ea.ss($, ($) => ['reference', {
-                'type': wrap_state_group(_ea.cc($.type, ($) => {
+            case 'nothing': return _pt.ss($, ($) => ['nothing', null])
+            case 'reference': return _pt.ss($, ($) => ['reference', {
+                'type': wrap_state_group(_pt.cc($.type, ($) => {
                     switch ($[0]) {
-                        case 'derived': return _ea.ss($, ($) => ['derived', null])
-                        case 'selected': return _ea.ss($, ($) => ['selected', null])
-                        default: return _ea.au($[0])
+                        case 'derived': return _pt.ss($, ($) => ['derived', null])
+                        case 'selected': return _pt.ss($, ($) => ['selected', null])
+                        default: return _pt.au($[0])
                     }
                 }))
             }])
-            case 'component': return _ea.ss($, ($) => ['component', wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG.component.SG<_edata.Source_Location> => {
+            case 'component': return _pt.ss($, ($) => ['component', wrap_state_group(_pt.cc($, ($): _out.Type_Node.SG.component.SG<_pi.Deprecated_Source_Location> => {
                 switch ($[0]) {
-                    case 'external': return _ea.ss($, ($) => ['external', {
+                    case 'external': return _pt.ss($, ($) => ['external', {
                         'import': wrap_reference($.import.key),
                         'type': wrap_reference($.type.key)
                     }])
-                    case 'internal': return _ea.ss($, ($) => ['internal', wrap_reference($.key)])
-                    case 'internal cyclic': return _ea.ss($, ($) => ['internal cyclic', wrap_reference($.key)])
-                    default: return _ea.au($[0])
+                    case 'internal': return _pt.ss($, ($) => ['internal', wrap_reference($.key)])
+                    case 'internal cyclic': return _pt.ss($, ($) => ['internal cyclic', wrap_reference($.key)])
+                    default: return _pt.au($[0])
                 }
             }))])
-            case 'dictionary': return _ea.ss($, ($) => ['dictionary', {
+            case 'dictionary': return _pt.ss($, ($) => ['dictionary', {
                 'ordered': $.ordered,
                 'node': Type_Node($.node)
             }])
-            case 'group': return _ea.ss($, ($) => ['group', wrap_dictionary($.dictionary.map(($) => Type_Node($.node)))])
-            case 'optional': return _ea.ss($, ($) => ['optional', Type_Node($)])
-            case 'state group': return _ea.ss($, ($) => ['state group', wrap_dictionary($.map(($) => Type_Node($.node)))])
-            case 'text': return _ea.ss($, ($) => ['text', wrap_state_group(_ea.cc($, ($): _out.Type_Node.SG.text.SG<_edata.Source_Location> => {
+            case 'group': return _pt.ss($, ($) => ['group', wrap_dictionary($.dictionary.map(($) => Type_Node($.node)))])
+            case 'optional': return _pt.ss($, ($) => ['optional', Type_Node($)])
+            case 'state group': return _pt.ss($, ($) => ['state group', wrap_dictionary($.map(($) => Type_Node($.node)))])
+            case 'text': return _pt.ss($, ($) => ['text', wrap_state_group(_pt.cc($, ($): _out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location> => {
                 switch ($[0]) {
-                    case 'global': return _ea.ss($, ($) => ['global', wrap_reference("t" + $.key)])
-                    case 'local': return _ea.ss($, ($) => ['local', Text_Type($)])
-                    default: return _ea.au($[0])
+                    case 'global': return _pt.ss($, ($) => ['global', wrap_reference("t" + $.key)])
+                    case 'local': return _pt.ss($, ($) => ['local', Text_Type($)])
+                    default: return _pt.au($[0])
                 }
             }))])
-            // case 'type parameter': return _ea.ss($, ($) => _edev.implement_me("xx"))
-            default: return _ea.au($[0])
+            // case 'type parameter': return _pt.ss($, ($) => _pdev.implement_me("xx"))
+            default: return _pt.au($[0])
         }
     }))
 }
 
-export const Text_Type: _et.Transformer<_in.Text_Type, _out.Text_Type<_edata.Source_Location>> = (
+export const Text_Type: _pi.Transformer<_in.Text_Type, _out.Text_Type<_pi.Deprecated_Source_Location>> = (
     $
 ) => {
     return {
-        'type': wrap_state_group(_ea.cc($.type, ($) => {
+        'type': wrap_state_group(_pt.cc($.type, ($) => {
             switch ($[0]) {
-                case 'multi line': return _ea.ss($, ($) => ['multi line', null])
-                case 'single line': return _ea.ss($, ($) => ['single line', null])
-                default: return _ea.au($[0])
+                case 'multi line': return _pt.ss($, ($) => ['multi line', null])
+                case 'single line': return _pt.ss($, ($) => ['single line', null])
+                default: return _pt.au($[0])
             }
         }))
     }

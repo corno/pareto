@@ -1,4 +1,4 @@
-import * as pd from 'exupery-core-data'
+import * as _pi from 'pareto-core-interface'
 
 import {
     types,
@@ -18,7 +18,7 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
  * Het enige verschil met de normale alan_light is het ontbreken van de key van de collection
  * In deze versie werd de data nog als objecten opgeslagen ipv arrays
  */
-export const $: g_.Types<pd.Source_Location>  = types(
+export const $: g_.Types<_pi.Deprecated_Source_Location>  = types(
     {
         "Path": type(t.group({
             "up steps": prop(t.list(t.group({}))),

@@ -1,7 +1,6 @@
-import * as _ea from 'exupery-core-alg'
-import * as _eb from 'exupery-core-bin'
-import * as _easync from 'exupery-core-async'
-import * as _et from 'exupery-core-types'
+import * as _pc from 'pareto-core-command'
+import * as _pi from 'pareto-core-interface'
+import * as _pinternals from 'pareto-core-internals'
 
 import * as resources_exupery from "exupery-resources/dist/interface/resources"
 
@@ -11,11 +10,11 @@ export type Command_Resources = {
     'log error': resources_exupery.commands.log_error
 }
 
-export const $$: _et.Command_Procedure<resources_exupery.commands.main, Command_Resources, Query_Resources> = _easync.create_command_procedure(
+export const $$: _pi.Command_Procedure<resources_exupery.commands.main, Command_Resources, Query_Resources> = _pc.create_command_procedure(
     ($p, $cr, $qr) => [
         $cr['log error'].execute(
             {
-                'lines': _ea.list_literal([`IMPLEMENT ME: seal`])
+                'lines': _pinternals.list_literal([`IMPLEMENT ME: seal`])
             },
             ($) => {
                 return {

@@ -1,4 +1,4 @@
-import * as pd from 'exupery-core-data'
+import * as _pi from 'pareto-core-interface'
 
 import { st } from "../../../shorthands/schema"
 import * as g_ from "../../../interface/generated/pareto/schemas/schema/data_types/target"
@@ -24,7 +24,7 @@ import { $ as m_write_file } from "./schemas/write_file/$.module.astn"
 import { $ as m_write_to_stderr } from "./schemas/write_to_stderr/$.module.astn"
 import { $ as m_write_to_stdout } from "./schemas/write_to_stdout/$.module.astn"
 
-export const $: g_.Schema_Tree<pd.Source_Location> = st.set({
+export const $: g_.Schema_Tree<_pi.Deprecated_Source_Location> = st.set({
     "copy": m_copy,
     "execute any procedure executable": m_execute_any_procedure_executable,
     "execute any query executable": m_execute_any_query_executable,

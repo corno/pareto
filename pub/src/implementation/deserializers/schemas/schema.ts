@@ -1,9 +1,8 @@
 //core
-import * as _ea from 'exupery-core-alg'
-import * as _et from 'exupery-core-types'
-import * as _edata from 'exupery-core-data'
-import * as _ed from 'exupery-core-dev'
-import * as _ei from 'exupery-core-internals'
+import * as _pds from 'pareto-core-deserializer'
+import * as _pi from 'pareto-core-interface'
+import * as _ed from 'pareto-core-dev'
+import * as _pinternals from 'pareto-core-internals'
 
 //data
 
@@ -22,14 +21,14 @@ import * as _out from "../../../interface/to_be_generated/temp_unmashall_result"
 
 type Element_And_Rest<T> = {
     'element': T
-    'rest': _et.List<T>
+    'rest': _pi.List<T>
 }
 
-export const temp_pop_first_element = <T>($: _et.List<T>): _et.Optional_Value<Element_And_Rest<T>> => {
+export const temp_pop_first_element = <T>($: _pi.List<T>): _pi.Optional_Value<Element_And_Rest<T>> => {
     const arr = $
     return $.__get_element_at(0).map(
         ($) => ({
-            'rest': _ea.build_list(($i) => {
+            'rest': _pds.build_list(($i) => {
                 let is_first = true
                 arr.__for_each(($) => {
                     if (!is_first) {
@@ -48,82 +47,76 @@ type Error =
     | ['resolve errorx', null]
 
 
-export const $ = (
-    $: string,
-): _et.Refinement_Result<d_schema.Type, Error> => {
+export const $: _pi.Deserializer<d_schema.Type, Error> = ($, abort) => {
 
-    return parse.parse(
+
+    const x = parse.parse(
         $,
         {
             'tab size': 4,
-        }
-    ).deprecated_transform_error(
-        ($): Error => ['parse error', $]
-    ).deprecated_refine_old<d_schema.Type, null>(
-        ($) => {
-
-            const resolved_schema_schema = r_pareto_schema.Type_Specification(
-                u_pareto_schema.Type_Specification(
-                    $.content, //if this goes wrong, the ast schema for astn and in 'generated' differ. Copy the astn one to generated
-                    {
-                        'value deserializers': {
-                            'boolean': ($) => $ === "true",
-                            'default number': () => 0,
-                            'custom numbers': null
-                        }
-                    }
-                ),
-                {
-                    'location 2 string': ($) => `${$.start.relative.line}:${$.start.relative.column}`,
-                    'parameters': {
-                        'lookups': null,
-                        'values': null,
-                    }
-                }
-            )
-            const temp_find_schema = (
-                $: d_schema.Schema_Tree,
-                schema_path: _et.List<string>,
-            ): d_schema.Schema => {
-                const st = $
-                return temp_pop_first_element(schema_path).transform(
-                    ($) => {
-                        const split = $
-                        return _ea.cc(st, ($) => {
-                            switch ($[0]) {
-
-                                case 'schema': return _ea.ss($, ($) => _ea.deprecated_panic(`(FIXME: make this a reference) the selected tree is a schema, not a set, can't do this step: ${split.element} `))
-                                case 'set': return _ea.ss($, ($) => $.dictionary.get_entry(split.element).transform(
-                                    ($) => temp_find_schema($, split.rest),
-                                    () => _ea.deprecated_panic(`(FIXME: make this a reference) schema not found: ${split.element}`)
-                                ))
-                                default: return _ea.au($[0])
-                            }
-                        })
-                    },
-                    () => _ea.cc($, ($) => {
-                        switch ($[0]) {
-                            case 'schema': return _ea.ss($, ($) => $)
-                            case 'set': return _ea.ss($, ($) => _ea.deprecated_panic(`(FIXME: make this a reference) the selected tree is a set, not a schema`))
-                            default: return _ea.au($[0])
-                        }
-                    })
-                )
-            }
-            const schema = temp_find_schema(resolved_schema_schema.schema, resolved_schema_schema['schema path'])
-
-            const type = schema.types.dictionary.get_entry(resolved_schema_schema.type).transform(
-                ($) => $,
-                () => {
-                    schema.types.dictionary.map(($, key) => {
-                        _ed.log_debug_message(`available type: ${key}`, () => { })
-                    })
-                    _ea.deprecated_panic(`(FIXME: make this a reference) root type ${resolved_schema_schema.type} not found`)
-                }
-            )
-            return _ei.__create_success_refinement_result(type)
         },
-        ($): Error => ['resolve errorx', null]
-
+        ($) => abort(['parse error', $])
     )
+
+    const resolved_schema_schema = r_pareto_schema.Type_Specification(
+        u_pareto_schema.Type_Specification(
+            x.content, //if this goes wrong, the ast schema for astn and in 'generated' differ. Copy the astn one to generated
+            {
+                'value deserializers': {
+                    'boolean': ($) => $ === "true",
+                    'default number': () => 0,
+                    'custom numbers': null
+                }
+            }
+        ),
+        {
+            'location 2 string': ($) => `${$.start.relative.line}:${$.start.relative.column}`,
+            'parameters': {
+                'lookups': null,
+                'values': null,
+            }
+        }
+    )
+    const temp_find_schema = (
+        $: d_schema.Schema_Tree,
+        schema_path: _pi.List<string>,
+    ): d_schema.Schema => {
+        const st = $
+        return temp_pop_first_element(schema_path).transform(
+            ($) => {
+                const split = $
+                return _pinternals.cc(st, ($) => {
+                    switch ($[0]) {
+
+                        case 'schema': return _pinternals.ss($, ($) => _pinternals.panic(`(FIXME: make this a reference) the selected tree is a schema, not a set, can't do this step: ${split.element} `))
+                        case 'set': return _pinternals.ss($, ($) => $.dictionary.get_entry(split.element).transform(
+                            ($) => temp_find_schema($, split.rest),
+                            () => _pinternals.panic(`(FIXME: make this a reference) schema not found: ${split.element}`)
+                        ))
+                        default: return _pinternals.au($[0])
+                    }
+                })
+            },
+            () => _pinternals.cc($, ($) => {
+                switch ($[0]) {
+                    case 'schema': return _pinternals.ss($, ($) => $)
+                    case 'set': return _pinternals.ss($, ($) => _pinternals.panic(`(FIXME: make this a reference) the selected tree is a set, not a schema`))
+                    default: return _pinternals.au($[0])
+                }
+            })
+        )
+    }
+    const schema = temp_find_schema(resolved_schema_schema.schema, resolved_schema_schema['schema path'])
+
+    const type = schema.types.dictionary.get_entry(resolved_schema_schema.type).transform(
+        ($) => $,
+        () => {
+            schema.types.dictionary.map(($, key) => {
+                _ed.log_debug_message(`available type: ${key}`, () => { })
+            })
+            _pinternals.panic(`(FIXME: make this a reference) root type ${resolved_schema_schema.type} not found`)
+        }
+    )
+    
+    return type
 }

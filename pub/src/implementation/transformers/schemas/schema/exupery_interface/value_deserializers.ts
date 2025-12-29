@@ -1,6 +1,6 @@
-import * as _edata from 'exupery-core-data'
-import * as _edev from 'exupery-core-dev'
-import * as _ea from 'exupery-core-alg'
+import * as _pdev from 'pareto-core-dev'
+import * as _pt from 'pareto-core-transformer'
+import * as _pi from 'pareto-core-interface'
 
 import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
@@ -13,7 +13,7 @@ export const Schema = (
     $p: {
         'imports': _in.Imports
     }
-): _out.Module_Set.D<_edata.Source_Location> => {
+): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return sh.m.module(
 
         {
@@ -38,11 +38,11 @@ export const Schema = (
             "Value Deserializers": sh.type({}, sh.t.group({
                 "default number": sh.t.function_({}, sh.t.string(), {}, sh.t.integer()),
                 "boolean": sh.t.function_({}, sh.t.string(), {}, sh.t.boolean()),
-                "custom numbers": sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, sh.t.string(), {}, _ea.cc($.precision, ($) => {
+                "custom numbers": sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, sh.t.string(), {}, _pt.cc($.precision, ($) => {
                     switch ($[0]) {
-                        case 'approximation': return _ea.ss($, ($) => sh.t.float())
-                        case 'exact': return _ea.ss($, ($) => sh.t.integer())
-                        default: return _ea.au($[0])
+                        case 'approximation': return _pt.ss($, ($) => sh.t.float())
+                        case 'exact': return _pt.ss($, ($) => sh.t.integer())
+                        default: return _pt.au($[0])
                     }
                 }))))
             })),

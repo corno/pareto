@@ -1,6 +1,7 @@
-import * as _ea from 'exupery-core-alg'
-import * as _et from 'exupery-core-types'
-import * as _edev from 'exupery-core-dev'
+import * as _pt from 'pareto-core-transformer'
+import * as _pi from 'pareto-core-interface'
+import * as _pdev from 'pareto-core-dev'
+import * as _pinternals from 'pareto-core-internals'
 
 import * as definition from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
 
@@ -14,13 +15,13 @@ import * as _out from "../../../../interface/to_be_generated/temp_unmashall_resu
 import { $$ as op_expect_exactly_one_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/expect_exactly_one_element"
 
 const op_group = <T>(
-    $: _et.List<_et.Key_Value_Pair<T>>,
-): _et.Dictionary<_et.List<T>> => {
-    return _ea.group_list($)
+    $: _pi.List<_pi.Key_Value_Pair<T>>,
+): _pi.Dictionary<_pi.List<T>> => {
+    return _pt.group_list($, ($) => $.key).map(($) => $.map(($) => $.value))
 }
 
 export const Optional_Node = (
-    $: _et.Optional_Value<_in.Value>,
+    $: _pi.Optional_Value<_in.Value>,
     $p: {
         'definition': definition.Type_Node,
     }
@@ -39,23 +40,23 @@ export const Node_Type = (
     }
 ): _out.Node_Type => {
     const data = $
-    return _ea.cc($p.definition, ($): _out.Node_Type => {
+    return _pt.cc($p.definition, ($): _out.Node_Type => {
         switch ($[0]) {
-            case 'number': return _ea.ss($, ($): _out.Node_Type => {
+            case 'number': return _pt.ss($, ($): _out.Node_Type => {
                 return ['number', {
                     'definition': $,
-                    'found value type': _ea.cc(data, ($) => {
+                    'found value type': _pt.cc(data, ($) => {
                         switch ($[0]) {
-                            case 'string': return _ea.ss($, ($) => ['valid', {
+                            case 'string': return _pt.ss($, ($) => ['valid', {
                                 'value': $,
                                 'range': $.range,
-                                'correct string type': _ea.cc($.type, ($) => {
+                                'correct string type': _pt.cc($.type, ($) => {
                                     switch ($[0]) {
                                         case 'quoted': return true
                                         case 'apostrophed': return false
                                         case 'undelimited': return true
                                         case 'backticked': return false
-                                        default: return _ea.au($[0])
+                                        default: return _pt.au($[0])
                                     }
                                 })
                             }])
@@ -65,21 +66,21 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'boolean': return _ea.ss($, ($): _out.Node_Type => {
+            case 'boolean': return _pt.ss($, ($): _out.Node_Type => {
                 return ['boolean', {
                     'definition': $,
-                    'found value type': _ea.cc(data, ($) => {
+                    'found value type': _pt.cc(data, ($) => {
                         switch ($[0]) {
-                            case 'string': return _ea.ss($, ($) => ['valid', {
+                            case 'string': return _pt.ss($, ($) => ['valid', {
                                 'value': $,
                                 'range': $.range,
-                                'correct string type': _ea.cc($.type, ($) => {
+                                'correct string type': _pt.cc($.type, ($) => {
                                     switch ($[0]) {
                                         case 'quoted': return false
                                         case 'apostrophed': return false
                                         case 'undelimited': return true
                                         case 'backticked': return false
-                                        default: return _ea.au($[0])
+                                        default: return _pt.au($[0])
                                     }
                                 })
                             }])
@@ -89,16 +90,16 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'list': return _ea.ss($, ($) => {
+            case 'list': return _pt.ss($, ($) => {
                 const prop_def = $.node
                 return ['list', {
                     'definition': $,
-                    'found value type': _ea.cc(data, ($) => {
+                    'found value type': _pt.cc(data, ($) => {
                         switch ($[0]) {
-                            case 'ordered collection': return _ea.ss($, ($) => {
+                            case 'ordered collection': return _pt.ss($, ($) => {
                                 return ['valid', {
                                     'value': $,
-                                    'elements': _edev.implement_me("list elements deserialization") //TODO
+                                    'elements': _pdev.implement_me("list elements deserialization") //TODO
                                 }]
                             })
                             default: return ['invalid', $p.range]
@@ -107,12 +108,12 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'nothing': return _ea.ss($, ($): _out.Node_Type => {
+            case 'nothing': return _pt.ss($, ($): _out.Node_Type => {
                 return ['nothing', {
                     'definition': $,
-                    'found value type': _ea.cc(data, ($) => {
+                    'found value type': _pt.cc(data, ($) => {
                         switch ($[0]) {
-                            case 'not set': return _ea.ss($, ($) => ['valid', {
+                            case 'not set': return _pt.ss($, ($) => ['valid', {
                                 'value': $,
                             }])
                             default: return ['invalid', $p.range]
@@ -120,12 +121,12 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'reference': return _ea.ss($, ($): _out.Node_Type => {
+            case 'reference': return _pt.ss($, ($): _out.Node_Type => {
                 return ['reference', {
                     'definition': $,
-                    'found value type': _ea.cc(data, ($) => {
+                    'found value type': _pt.cc(data, ($) => {
                         switch ($[0]) {
-                            case 'string': return _ea.ss($, ($) => ['valid', {
+                            case 'string': return _pt.ss($, ($) => ['valid', {
                                 'value': $,
                             }])
                             // case 'not set': return pa.ss($, () => ['invalid', data.location])
@@ -134,38 +135,38 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'component': return _ea.ss($, ($): _out.Node_Type => {
+            case 'component': return _pt.ss($, ($): _out.Node_Type => {
                 return ['component', {
                     'definition': $,
                     'node': Node(
                         $p['temp value'],
                         {
-                            'definition': _ea.cc($, ($) => {
+                            'definition': _pt.cc($, ($) => {
                                 switch ($[0]) {
-                                    case 'external': return _ea.ss($, ($) => $.type.entry.node)
-                                    case 'internal': return _ea.ss($, ($) => $.entry.node)
-                                    case 'internal cyclic': return _ea.ss($, ($) => $.entry['get circular dependent']().node)
-                                    default: return _ea.au($[0])
+                                    case 'external': return _pt.ss($, ($) => $.type.entry.node)
+                                    case 'internal': return _pt.ss($, ($) => $.entry.node)
+                                    case 'internal cyclic': return _pt.ss($, ($) => $.entry['get circular dependent']().node)
+                                    default: return _pt.au($[0])
                                 }
                             }),
                         }
                     )
                 }]
             })
-            case 'dictionary': return _ea.ss($, ($): _out.Node_Type => {
+            case 'dictionary': return _pt.ss($, ($): _out.Node_Type => {
                 const prop_def = $.node
                 return ['dictionary', {
                     'definition': $,
-                    'found value type': _ea.cc(data, ($) => {
+                    'found value type': _pt.cc(data, ($) => {
                         switch ($[0]) {
-                            case 'indexed collection': return _ea.ss($, ($) => {
+                            case 'indexed collection': return _pt.ss($, ($) => {
                                 return ['valid', {
                                     'value': $,
-                                    'entries': op_group(_ea.cc($, ($): _in.Key_Value_Pairs => {
+                                    'entries': op_group(_pt.cc($, ($): _in.Key_Value_Pairs => {
                                         switch ($[0]) {
-                                            case 'dictionary': return _ea.ss($, ($) => $.entries)
-                                            case 'verbose group': return _ea.ss($, ($) => $.entries)
-                                            default: return _ea.au($[0])
+                                            case 'dictionary': return _pt.ss($, ($) => $.entries)
+                                            case 'verbose group': return _pt.ss($, ($) => $.entries)
+                                            default: return _pt.au($[0])
                                         }
                                     }).map(($) => {
                                         return {
@@ -200,7 +201,7 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'group': return _ea.ss($, ($): _out.Node_Type => {
+            case 'group': return _pt.ss($, ($): _out.Node_Type => {
                 const group_def = $
                 // pa.cc(data.type, ($) => {
                 // //     switch ($[0]) {
@@ -211,7 +212,7 @@ export const Node_Type = (
                 // //                     'value': $
                 // //                 }
                 // //             })).map(($, key) => {
-                // //                 _edev.log_debug_message(`clashing key: ${key}`)
+                // //                 _pdev.log_debug_message(`clashing key: ${key}`)
                 // //             })
                 // //             const properties = impure.list['to dictionary, overwrite clashing keys']($.entries.map(($) => {
                 // //                 return {
@@ -222,35 +223,35 @@ export const Node_Type = (
                 // //             group_def.map(($, key) => {
                 // //                 properties.get_entry(key).transform(
                 // //                     ($) => {
-                // //                         _edev.log_debug_message(`property ${key} found in data`)
+                // //                         _pdev.log_debug_message(`property ${key} found in data`)
                 // //                         // do_node(
                 // //                         //     $.type,
                 // //                         //     $.value
                 // //                         // )
                 // //                     },
                 // //                     () => {
-                // //                         _edev.log_debug_message(`property ${key} not found in data`)
+                // //                         _pdev.log_debug_message(`property ${key} not found in data`)
                 // //                     }
                 // //                 )
 
                 // //             })
 
                 // //         })
-                // //         default: return _edev.implement_me("xx")
+                // //         default: return _pdev.implement_me("xx")
                 // //     }
                 // // })
                 return ['group', {
                     'definition': $,
-                    'found value type': _ea.cc(data, ($) => {
+                    'found value type': _pt.cc(data, ($) => {
                         const value = $
-                        return _ea.cc($, ($) => {
+                        return _pt.cc($, ($) => {
                             switch ($[0]) {
-                                case 'indexed collection': return _ea.ss($, ($): _out.Group_Found_Value_Type => {
-                                    const entries = op_group(_ea.cc($, ($): _in.Key_Value_Pairs => {
+                                case 'indexed collection': return _pt.ss($, ($): _out.Group_Found_Value_Type => {
+                                    const entries = op_group(_pt.cc($, ($): _in.Key_Value_Pairs => {
                                         switch ($[0]) {
-                                            case 'dictionary': return _ea.ss($, ($) => $.entries)
-                                            case 'verbose group': return _ea.ss($, ($) => $.entries)
-                                            default: return _ea.au($[0])
+                                            case 'dictionary': return _pt.ss($, ($) => $.entries)
+                                            case 'verbose group': return _pt.ss($, ($) => $.entries)
+                                            default: return _pt.au($[0])
                                         }
                                     }).map(($) => {
                                         return {
@@ -258,19 +259,19 @@ export const Node_Type = (
                                             'value': $
                                         }
                                     }))
-                                    const range: _in_token.Range = _ea.cc($, ($) => {
+                                    const range: _in_token.Range = _pt.cc($, ($) => {
                                         switch ($[0]) {
-                                            case 'dictionary': return _ea.ss($, ($) => $['{'].range)
-                                            case 'verbose group': return _ea.ss($, ($) => $['('].range)
-                                            default: return _ea.au($[0])
+                                            case 'dictionary': return _pt.ss($, ($) => $['{'].range)
+                                            case 'verbose group': return _pt.ss($, ($) => $['('].range)
+                                            default: return _pt.au($[0])
                                         }
                                     })
                                     const op_dictionary_merge = <Main, Supporting>(
-                                        $: _et.Dictionary<Main>,
-                                        $p: { 'supporting dictionary': _et.Dictionary<Supporting> }
-                                    ): _et.Dictionary<{
+                                        $: _pi.Dictionary<Main>,
+                                        $p: { 'supporting dictionary': _pi.Dictionary<Supporting> }
+                                    ): _pi.Dictionary<{
                                         'context': Main
-                                        'supporting': _et.Optional_Value<Supporting>
+                                        'supporting': _pi.Optional_Value<Supporting>
                                     }> => $.map(($, key) => ({
                                         'context': $,
                                         'supporting': $p['supporting dictionary'].get_entry(
@@ -287,8 +288,8 @@ export const Node_Type = (
                                                 }
                                             ).filter(($) => {
                                                 return $.supporting.transform( //drop all the ones for which there is a definition
-                                                    ($) => _ea.not_set(),
-                                                    () => _ea.set($.context)
+                                                    ($) => _pt.not_set(),
+                                                    () => _pt.set($.context)
                                                 )
                                             }).map(($) => $.map(($) => $.key.range)), //select the locations
                                             'properties': op_dictionary_merge(
@@ -335,16 +336,16 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'optional': return _ea.ss($, ($): _out.Node_Type => {
+            case 'optional': return _pt.ss($, ($): _out.Node_Type => {
                 const def = $
                 return ['optional', {
                     'definition': $,
-                    'found value type': _ea.cc(data, ($) => {
+                    'found value type': _pt.cc(data, ($) => {
                         switch ($[0]) {
-                            case 'not set': return _ea.ss($, ($) => ['valid', ['not set', {
+                            case 'not set': return _pt.ss($, ($) => ['valid', ['not set', {
                                 'value': $,
                             }]])
-                            case 'set optional value': return _ea.ss($, ($) => ['valid', ['set', {
+                            case 'set optional value': return _pt.ss($, ($) => ['valid', ['set', {
                                 'value': $,
                                 'child node': Node(
                                     $.value,
@@ -358,20 +359,20 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'state group': return _ea.ss($, ($): _out.Node_Type => {
+            case 'state group': return _pt.ss($, ($): _out.Node_Type => {
                 const def = $
                 return ['state', {
                     'definition': $,
-                    'found value type': _ea.cc(data, ($): _out.Node_Type_SG_State_found_value_type => {
+                    'found value type': _pt.cc(data, ($): _out.Node_Type_SG_State_found_value_type => {
                         switch ($[0]) {
-                            case 'tagged value': return _ea.ss($, ($): _out.Node_Type_SG_State_found_value_type => {
+                            case 'tagged value': return _pt.ss($, ($): _out.Node_Type_SG_State_found_value_type => {
                                 const tv = $
                                 return ['valid', {
                                     'value type': ['state', {
-                                        'value substatus': _ea.cc($.status, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
+                                        'value substatus': _pt.cc($.status, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
                                             switch ($[0]) {
-                                                case 'missing data': return _ea.ss($, ($) => ['missing data', $['#']])
-                                                case 'set': return _ea.ss($, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
+                                                case 'missing data': return _pt.ss($, ($) => ['missing data', $['#']])
+                                                case 'set': return _pt.ss($, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
                                                     const state = $.state
                                                     const value = $.value
                                                     return ['set', {
@@ -389,25 +390,25 @@ export const Node_Type = (
                                                         ),
                                                     }]
                                                 })
-                                                default: return _ea.au($[0])
+                                                default: return _pt.au($[0])
                                             }
                                         })
                                     }]
                                 }]
                             })
-                            // case 'ordered collection': return _ea.ss($, ($) => {
-                            //     const elements = _ea.cc($, ($): _in.Elements => {
+                            // case 'ordered collection': return _pt.ss($, ($) => {
+                            //     const elements = _pt.cc($, ($): _in.Elements => {
                             //         switch ($[0]) {
-                            //             case 'list': return _ea.ss($, ($) => $.elements)
-                            //             case 'concise group': return _ea.ss($, ($) => $.elements)
-                            //             default: return _ea.au($[0])
+                            //             case 'list': return _pt.ss($, ($) => $.elements)
+                            //             case 'concise group': return _pt.ss($, ($) => $.elements)
+                            //             default: return _pt.au($[0])
                             //         }
                             //     })
-                            //     const range = _ea.cc($, ($): _in_token.Range => {
+                            //     const range = _pt.cc($, ($): _in_token.Range => {
                             //         switch ($[0]) {
-                            //             case 'list': return _ea.ss($, ($) => $['['].range)
-                            //             case 'concise group': return _ea.ss($, ($) => $['<'].range)
-                            //             default: return _ea.au($[0])
+                            //             case 'list': return _pt.ss($, ($) => $['['].range)
+                            //             case 'concise group': return _pt.ss($, ($) => $['<'].range)
+                            //             default: return _pt.au($[0])
                             //         }
                             //     })
                             //     if (elements.__get_length() > 2) {
@@ -453,12 +454,12 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'text': return _ea.ss($, ($) => {
+            case 'text': return _pt.ss($, ($) => {
                 return ['text', {
                     'definition': $,
-                    'found value type': _ea.cc(data, ($) => {
+                    'found value type': _pt.cc(data, ($) => {
                         switch ($[0]) {
-                            case 'string': return _ea.ss($, ($) => ['valid', {
+                            case 'string': return _pt.ss($, ($) => ['valid', {
                                 'value': $,
                             }])
                             // case 'not set': return pa.ss($, () => ['invalid', data.location])
@@ -467,8 +468,8 @@ export const Node_Type = (
                     })
                 }]
             })
-            // case 'type parameter': return _ea.ss($, ($) => _edev.implement_me("xx"))
-            default: return _ea.au($[0])
+            // case 'type parameter': return _pt.ss($, ($) => _pdev.implement_me("xx"))
+            default: return _pt.au($[0])
         }
     })
 }
@@ -483,9 +484,9 @@ export const Node = (
     return {
         'definition': $p.definition,
         'value': datax,
-        'type': _ea.cc(datax.type, ($) => {
+        'type': _pt.cc(datax.type, ($) => {
             switch ($[0]) {
-                case 'concrete': return _ea.ss($, ($) => {
+                case 'concrete': return _pt.ss($, ($) => {
                     const data = $
                     return Node_Type(data, {
                         'definition': $p.definition,
@@ -493,9 +494,9 @@ export const Node = (
                         'temp value': datax,
                     })
                 })
-                case 'include': return _ea.ss($, ($) => _edev.implement_me("include node deserialization")) //TODO
-                case 'missing data': return _ea.ss($, ($) => _edev.implement_me("missing data node deserialization")) //TODO
-                default: return _ea.au($[0])
+                case 'include': return _pt.ss($, ($) => _pdev.implement_me("include node deserialization")) //TODO
+                case 'missing data': return _pt.ss($, ($) => _pdev.implement_me("missing data node deserialization")) //TODO
+                default: return _pt.au($[0])
             }
         })
     }

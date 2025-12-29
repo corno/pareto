@@ -1,4 +1,4 @@
-import * as pd from 'exupery-core-data'
+import * as _pi from 'pareto-core-interface'
 
 import {
     globals,
@@ -7,7 +7,7 @@ import {
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
 
-export const $: g_.Globals<pd.Source_Location> = globals(
+export const $: g_.Globals<_pi.Deprecated_Source_Location> = globals(
          'unconstrained',
     {
         "Text Value": text("single line"),

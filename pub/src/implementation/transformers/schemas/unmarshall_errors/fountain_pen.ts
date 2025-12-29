@@ -1,5 +1,5 @@
-import * as _ea from 'exupery-core-alg'
-import * as _edev from 'exupery-core-dev'
+import * as _pt from 'pareto-core-transformer'
+import * as _pdev from 'pareto-core-dev'
 
 import * as _in from "../../../../interface/generated/pareto/schemas/unmarshall_errors/data_types/target"
 import * as _out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
@@ -20,17 +20,17 @@ export const Errors = (
     return sh.group([ sh.g.sub($.map(($) => {
         return sh.g.nested_block([
             sh.b.snippet(`${$p['document path']}:${$.range.start.relative.line + $p['line offset']}:${$.range.start.relative.column + $p['column offset']}: `),
-            _ea.cc($.type, ($) => {
+            _pt.cc($.type, ($) => {
                 switch ($[0]) {
-                    case 'error': return _ea.ss($, ($) => sh.b.sub([
+                    case 'error': return _pt.ss($, ($) => sh.b.sub([
                         sh.b.snippet(`Error: `),
                         Error_Type_Error($)
                     ]))
-                    case 'warning': return _ea.ss($, ($) => sh.b.sub([
+                    case 'warning': return _pt.ss($, ($) => sh.b.sub([
                         sh.b.snippet(`Warning: `),
                         Error_Type_Warning($)
                     ]))
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             })
         ])
@@ -39,38 +39,38 @@ export const Errors = (
 
 export const Error_Type_Error = (
     $: _in.Errors.L._type.SG.error,
-): _out.Block_Part => _ea.cc($, ($) => {
+): _out.Block_Part => _pt.cc($, ($) => {
     switch ($[0]) {
-        case 'duplicate property': return _ea.ss($, ($) => sh.b.snippet(`Duplicate property "${$.name}"`))
-        case 'invalid value type': return _ea.ss($, ($) => sh.b.snippet(`Invalid value type, expected ${s_list_of_separated_texts($.expected.map(($) => `'${$[0]}'`), { 'separator': ` or ` })}.`))
-        case 'missing property': return _ea.ss($, ($) => sh.b.snippet(`Missing property '${$.name}'`))
-        case 'superfluous property': return _ea.ss($, ($) => sh.b.snippet(`Superfluous property '${$.name}'`))
-        case 'state': return _ea.ss($, ($) => _ea.cc($, ($) => {
+        case 'duplicate property': return _pt.ss($, ($) => sh.b.snippet(`Duplicate property "${$.name}"`))
+        case 'invalid value type': return _pt.ss($, ($) => sh.b.snippet(`Invalid value type, expected ${s_list_of_separated_texts($.expected.map(($) => `'${$[0]}'`), { 'separator': ` or ` })}.`))
+        case 'missing property': return _pt.ss($, ($) => sh.b.snippet(`Missing property '${$.name}'`))
+        case 'superfluous property': return _pt.ss($, ($) => sh.b.snippet(`Superfluous property '${$.name}'`))
+        case 'state': return _pt.ss($, ($) => _pt.cc($, ($) => {
             switch ($[0]) {
-                case 'missing state name': return _ea.ss($, ($) => sh.b.snippet(`Missing state name`))
-                case 'missing data marker': return _ea.ss($, ($) => sh.b.snippet(`Missing data marker`))
-                case 'missing value': return _ea.ss($, ($) => sh.b.snippet(`Missing value`))
-                case 'more than 2 elements': return _ea.ss($, ($) => sh.b.snippet(`More than 2 elements`))
-                case 'state is not a string': return _ea.ss($, ($) => sh.b.snippet(`State is not a string`))
-                case 'unknown state': return _ea.ss($, ($) => sh.b.sub([
+                case 'missing state name': return _pt.ss($, ($) => sh.b.snippet(`Missing state name`))
+                case 'missing data marker': return _pt.ss($, ($) => sh.b.snippet(`Missing data marker`))
+                case 'missing value': return _pt.ss($, ($) => sh.b.snippet(`Missing value`))
+                case 'more than 2 elements': return _pt.ss($, ($) => sh.b.snippet(`More than 2 elements`))
+                case 'state is not a string': return _pt.ss($, ($) => sh.b.snippet(`State is not a string`))
+                case 'unknown state': return _pt.ss($, ($) => sh.b.sub([
                     sh.b.snippet(`Unknown state: ${$.found}, expected one of `),
                     sh.b.sub($.expected.to_list(($, key) => sh.b.snippet(`'${key}'`)))
                 ]))
-                default: return _ea.au($[0])
+                default: return _pt.au($[0])
             }
         }))
-        default: return _ea.au($[0])
+        default: return _pt.au($[0])
     }
 })
 
 export const Error_Type_Warning = (
     $: _in.Errors.L._type.SG.warning,
-): _out.Block_Part => _ea.cc($, ($) => {
+): _out.Block_Part => _pt.cc($, ($) => {
     switch ($[0]) {
-        case 'expected apostrophed string': return _ea.ss($, ($) => sh.b.snippet(`Expected apostrophed string`))
-        case 'expected backticked string': return _ea.ss($, ($) => sh.b.snippet(`Expected backticked string`))
-        case 'expected quoted string': return _ea.ss($, ($) => sh.b.snippet(`Expected quoted string`))
-        case 'expected undelimited string': return _ea.ss($, ($) => sh.b.snippet(`Expected undelimited string`))
-        default: return _ea.au($[0])
+        case 'expected apostrophed string': return _pt.ss($, ($) => sh.b.snippet(`Expected apostrophed string`))
+        case 'expected backticked string': return _pt.ss($, ($) => sh.b.snippet(`Expected backticked string`))
+        case 'expected quoted string': return _pt.ss($, ($) => sh.b.snippet(`Expected quoted string`))
+        case 'expected undelimited string': return _pt.ss($, ($) => sh.b.snippet(`Expected undelimited string`))
+        default: return _pt.au($[0])
     }
 })

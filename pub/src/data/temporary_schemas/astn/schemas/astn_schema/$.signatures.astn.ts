@@ -1,11 +1,11 @@
-import * as pd from 'exupery-core-data'
+import * as _pi from 'pareto-core-interface'
 
 import {
     signatures, sig, lookup_parameter, value_parameter,
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
 
-export const $: g_.Resolve_Logic.signatures<pd.Source_Location> = signatures(
+export const $: g_.Resolve_Logic.signatures<_pi.Deprecated_Source_Location> = signatures(
     {
         "Text Type": sig.local({}, {}),
         "Globals": sig.local({}, {}),

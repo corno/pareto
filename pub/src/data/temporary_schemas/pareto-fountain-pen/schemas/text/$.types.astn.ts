@@ -1,4 +1,4 @@
-import * as pd from 'exupery-core-data'
+import * as _pi from 'pareto-core-interface'
 
 import {
     types,
@@ -12,7 +12,7 @@ import {
 } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
 
-export const $: g_.Types<pd.Source_Location>  = types(
+export const $: g_.Types<_pi.Deprecated_Source_Location>  = types(
     {
         "Lines": type(t.text_global("Output")),
 

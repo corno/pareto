@@ -1,8 +1,7 @@
 //core
-import * as _ea from 'exupery-core-alg'
-import * as _ed from 'exupery-core-data'
-import * as _easync from 'exupery-core-async'
-import * as _et from 'exupery-core-types'
+import * as _pc from 'pareto-core-command'
+import * as _pi from 'pareto-core-interface'
+import * as _pinternals from 'pareto-core-internals'
 
 import * as resources_exupery from "exupery-resources/dist/interface/resources"
 
@@ -28,9 +27,9 @@ import * as serialize from "../generated/pareto/generic/serialize"
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 import * as ds_path from "exupery-resources/dist/implementation/deserializers/schemas/context_path"
 
-export const $$: _et.Command_Procedure<resources_exupery.commands.main, Command_Resources, Query_Resources> = _easync.create_command_procedure(
+export const $$: _pi.Command_Procedure<resources_exupery.commands.main, Command_Resources, Query_Resources> = _pc.create_command_procedure(
     ($p, $cr, $qr) => [
-        _easync.p.dictionary.parallel(
+        _pc.dictionary.parallel(
             poormans_modules,
             ($, key) => [
 
@@ -46,7 +45,7 @@ export const $$: _et.Command_Procedure<resources_exupery.commands.main, Command_
                                             'lookups': null,
                                             'values': null,
                                         },
-                                        'location 2 string': _ed.location_to_string
+                                        'location 2 string': _pinternals.location_to_string
                                     }
                                 ),
                                 {

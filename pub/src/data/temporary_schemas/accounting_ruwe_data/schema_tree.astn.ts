@@ -1,4 +1,4 @@
-import * as pd from 'exupery-core-data'
+import * as _pi from 'pareto-core-interface'
 
 import { st } from "../../../shorthands/schema"
 import * as g_ from "../../../interface/generated/pareto/schemas/schema/data_types/target"
@@ -16,7 +16,7 @@ import { $ as x_semantic_versioning } from "./schemas/semantic_versioning/$.modu
 import { $ as x_xml_parse_result } from "./schemas/xml/parse_result/$.module.astn"
 import { $ as x_xml_simple } from "./schemas/xml/simple/$.module.astn"
 
-export const $: g_.Schema_Tree<pd.Source_Location> = st.set({
+export const $: g_.Schema_Tree<_pi.Deprecated_Source_Location> = st.set({
     "alan light oldstyle": x_alan_light_oldstyle,
     "csv": x_csv,
     "html": x_html,

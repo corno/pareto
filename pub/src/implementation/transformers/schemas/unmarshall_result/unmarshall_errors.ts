@@ -1,5 +1,5 @@
-import * as _ea from 'exupery-core-alg'
-import * as _edev from 'exupery-core-dev'
+import * as _pt from 'pareto-core-transformer'
+import * as _pdev from 'pareto-core-dev'
 
 import * as _in from "../../../../interface/to_be_generated/temp_unmashall_result"
 import * as _in_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
@@ -11,7 +11,7 @@ export const Optional_Node = (
 ): _out.Errors => {
     return $.transform(
         ($) => Node($, $p),
-        () => _ea.list_literal([]), //FIXME! optional node not set is often an error
+        () => _pt.list_literal([]), //FIXME! optional node not set is often an error
     )
 }
 
@@ -21,11 +21,11 @@ export const Group_Content = (
         'group range': _in_token.Range
     }
 ): _out.Errors => {
-    return _ea.list_literal([
-        $.properties.to_list(($, key) => _ea.cc($, ($): _out.Errors => {
+    return _pt.list_literal([
+        $.properties.to_list(($, key) => _pt.cc($, ($): _out.Errors => {
             switch ($[0]) {
-                case 'multiple': return _ea.ss($, ($) => $.flatten(($) => _ea.list_literal([
-                    _ea.list_literal<_out.Errors.L>([
+                case 'multiple': return _pt.ss($, ($) => $.flatten(($) => _pt.list_literal([
+                    _pt.list_literal<_out.Errors.L>([
                         {
                             'range': $.key.range,
                             'type': ['error', ['duplicate property', {
@@ -35,7 +35,7 @@ export const Group_Content = (
                     ]),
                     Optional_Node($.node, null)
                 ]).flatten(($) => $)))
-                case 'missing': return _ea.ss($, ($) => _ea.list_literal([
+                case 'missing': return _pt.ss($, ($) => _pt.list_literal([
                     {
                         'range': $p['group range'],
                         'type': ['error', ['missing property', {
@@ -43,11 +43,11 @@ export const Group_Content = (
                         }]]
                     }
                 ]))
-                case 'unique': return _ea.ss($, ($) => Optional_Node($.node, null))
-                default: return _ea.au($[0])
+                case 'unique': return _pt.ss($, ($) => Optional_Node($.node, null))
+                default: return _pt.au($[0])
             }
         })).flatten(($) => $),
-        $['superfluous entries'].to_list(($, key): _out.Errors => $.flatten(($) => _ea.list_literal([
+        $['superfluous entries'].to_list(($, key): _out.Errors => $.flatten(($) => _pt.list_literal([
             {
                 'range': $,
                 'type': ['error', ['superfluous property', {
@@ -62,58 +62,58 @@ export const Node = (
     $: _in.Node,
     $p: null
 ): _out.Errors => {
-    return _ea.cc($.type, ($): _out.Errors => {
+    return _pt.cc($.type, ($): _out.Errors => {
         switch ($[0]) {
-            case 'group': return _ea.ss($, ($) => _ea.cc($['found value type'], ($): _out.Errors => {
+            case 'group': return _pt.ss($, ($) => _pt.cc($['found value type'], ($): _out.Errors => {
                 switch ($[0]) {
-                    case 'valid': return _ea.ss($, ($) => _ea.cc($, ($) => {
+                    case 'valid': return _pt.ss($, ($) => _pt.cc($, ($) => {
                         switch ($[0]) {
-                            case 'ordered': return _ea.ss($, ($) => {
+                            case 'ordered': return _pt.ss($, ($) => {
                                 return Group_Content($.content, {
-                                    'group range': _ea.cc($.value, ($) => {
+                                    'group range': _pt.cc($.value, ($) => {
                                         switch ($[0]) {
-                                            case 'concise group': return _ea.ss($, ($) => $['<'].range)
-                                            case 'list': return _ea.ss($, ($) => $['['].range)
-                                            default: return _ea.au($[0])
+                                            case 'concise group': return _pt.ss($, ($) => $['<'].range)
+                                            case 'list': return _pt.ss($, ($) => $['['].range)
+                                            default: return _pt.au($[0])
                                         }
                                     })
                                 })
                             })
-                            case 'indexed': return _ea.ss($, ($) => {
+                            case 'indexed': return _pt.ss($, ($) => {
                                 return Group_Content($.content, {
-                                    'group range': _ea.cc($.value, ($) => {
+                                    'group range': _pt.cc($.value, ($) => {
                                         switch ($[0]) {
-                                            case 'verbose group': return _ea.ss($, ($) => $['('].range)
-                                            case 'dictionary': return _ea.ss($, ($) => $['{'].range)
-                                            default: return _ea.au($[0])
+                                            case 'verbose group': return _pt.ss($, ($) => $['('].range)
+                                            case 'dictionary': return _pt.ss($, ($) => $['{'].range)
+                                            default: return _pt.au($[0])
                                         }
                                     })
                                 })
                             })
 
-                            default: return _ea.au($[0])
+                            default: return _pt.au($[0])
                         }
                     }))
-                    case 'invalid': return _ea.ss($, ($) => _ea.list_literal([
+                    case 'invalid': return _pt.ss($, ($) => _pt.list_literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _ea.list_literal([['verbose group', null]]),
+                                'expected': _pt.list_literal([['verbose group', null]]),
                             }]]
                         }
                     ]))
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             }))
-            case 'dictionary': return _ea.ss($, ($) => _ea.cc($['found value type'], ($): _out.Errors => {
+            case 'dictionary': return _pt.ss($, ($) => _pt.cc($['found value type'], ($): _out.Errors => {
                 switch ($[0]) {
-                    case 'valid': return _ea.ss($, ($) => {
+                    case 'valid': return _pt.ss($, ($) => {
                         return $.entries.to_list(($, key) => {
-                            return _ea.cc($, ($): _out.Errors => {
+                            return _pt.cc($, ($): _out.Errors => {
                                 switch ($[0]) {
-                                    case 'unique': return _ea.ss($, ($) => Optional_Node($, $p))
-                                    case 'multiple': return _ea.ss($, ($) => $.flatten(($) => _ea.list_literal<_out.Errors>([
-                                        _ea.list_literal([
+                                    case 'unique': return _pt.ss($, ($) => Optional_Node($, $p))
+                                    case 'multiple': return _pt.ss($, ($) => $.flatten(($) => _pt.list_literal<_out.Errors>([
+                                        _pt.list_literal([
                                             {
                                                 'range': $.key.range,
                                                 'type': ['error', ['duplicate property', {
@@ -123,147 +123,147 @@ export const Node = (
                                         ]),
                                         Optional_Node($.node, $p)
                                     ]).flatten(($) => $)))
-                                    default: return _ea.au($[0])
+                                    default: return _pt.au($[0])
                                 }
                             })
                         }).flatten(($) => $)
                     })
-                    case 'invalid': return _ea.ss($, ($) => _ea.list_literal([
+                    case 'invalid': return _pt.ss($, ($) => _pt.list_literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _ea.list_literal([['dictionary', null]]),
+                                'expected': _pt.list_literal([['dictionary', null]]),
                             }]]
                         }
                     ]))
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             }))
-            case 'number': return _ea.ss($, ($) => _ea.cc($['found value type'], ($) => {
+            case 'number': return _pt.ss($, ($) => _pt.cc($['found value type'], ($) => {
                 switch ($[0]) {
-                    case 'valid': return _ea.ss($, ($): _out.Errors => $['correct string type']
-                        ? _ea.list_literal([])
-                        : _ea.list_literal<_out.Errors.L>([{
+                    case 'valid': return _pt.ss($, ($): _out.Errors => $['correct string type']
+                        ? _pt.list_literal([])
+                        : _pt.list_literal<_out.Errors.L>([{
                             'range': $.range,
                             'type': ['warning', ['expected undelimited string', null]]
                         }]))
-                    case 'invalid': return _ea.ss($, ($) => _ea.list_literal([
+                    case 'invalid': return _pt.ss($, ($) => _pt.list_literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _ea.list_literal([['text', null]]),
+                                'expected': _pt.list_literal([['text', null]]),
                             }]]
                         }
                     ]))
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             }))
-            case 'boolean': return _ea.ss($, ($) => _ea.cc($['found value type'], ($) => {
+            case 'boolean': return _pt.ss($, ($) => _pt.cc($['found value type'], ($) => {
                 switch ($[0]) {
-                    case 'valid': return _ea.ss($, ($): _out.Errors => $['correct string type']
-                        ? _ea.list_literal([])
-                        : _ea.list_literal<_out.Errors.L>([{
+                    case 'valid': return _pt.ss($, ($): _out.Errors => $['correct string type']
+                        ? _pt.list_literal([])
+                        : _pt.list_literal<_out.Errors.L>([{
                             'range': $.range,
                             'type': ['warning', ['expected undelimited string', null]]
                         }]))
-                    case 'invalid': return _ea.ss($, ($) => _ea.list_literal([
+                    case 'invalid': return _pt.ss($, ($) => _pt.list_literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _ea.list_literal([['text', null]]),
+                                'expected': _pt.list_literal([['text', null]]),
                             }]]
                         }
                     ]))
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             }))
-            case 'list': return _ea.ss($, ($) => _ea.cc($['found value type'], ($) => {
+            case 'list': return _pt.ss($, ($) => _pt.cc($['found value type'], ($) => {
                 switch ($[0]) {
-                    case 'valid': return _ea.ss($, ($): _out.Errors => $.elements.flatten(($) => Node($, $p)))
-                    case 'invalid': return _ea.ss($, ($) => _ea.list_literal([
+                    case 'valid': return _pt.ss($, ($): _out.Errors => $.elements.flatten(($) => Node($, $p)))
+                    case 'invalid': return _pt.ss($, ($) => _pt.list_literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _ea.list_literal([['list', null]]),
+                                'expected': _pt.list_literal([['list', null]]),
                             }]]
                         }
                     ]))
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             }))
-            case 'nothing': return _ea.ss($, ($) => _ea.cc($['found value type'], ($) => {
+            case 'nothing': return _pt.ss($, ($) => _pt.cc($['found value type'], ($) => {
                 switch ($[0]) {
-                    case 'valid': return _ea.ss($, ($): _out.Errors => _ea.list_literal([]))
-                    case 'invalid': return _ea.ss($, ($) => _ea.list_literal([
+                    case 'valid': return _pt.ss($, ($): _out.Errors => _pt.list_literal([]))
+                    case 'invalid': return _pt.ss($, ($) => _pt.list_literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _ea.list_literal([['not set', null]]),
+                                'expected': _pt.list_literal([['not set', null]]),
                             }]]
                         }
                     ]))
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             }))
-            case 'reference': return _ea.ss($, ($) => _ea.cc($['found value type'], ($) => {
+            case 'reference': return _pt.ss($, ($) => _pt.cc($['found value type'], ($) => {
                 switch ($[0]) {
-                    case 'valid': return _ea.ss($, ($): _out.Errors => _ea.list_literal([]))
-                    case 'invalid': return _ea.ss($, ($) => _ea.list_literal([
+                    case 'valid': return _pt.ss($, ($): _out.Errors => _pt.list_literal([]))
+                    case 'invalid': return _pt.ss($, ($) => _pt.list_literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _ea.list_literal([['text', null]]),
+                                'expected': _pt.list_literal([['text', null]]),
                             }]]
                         }
                     ]))
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             }))
-            case 'component': return _ea.ss($, ($) => {
+            case 'component': return _pt.ss($, ($) => {
                 return Node($.node, $p)
             })
-            case 'type parameter': return _ea.ss($, ($) => _edev.implement_me("xx"))
-            case 'optional': return _ea.ss($, ($) => _ea.cc($['found value type'], ($) => {
+            case 'type parameter': return _pt.ss($, ($) => _pdev.implement_me("xx"))
+            case 'optional': return _pt.ss($, ($) => _pt.cc($['found value type'], ($) => {
                 switch ($[0]) {
-                    case 'valid': return _ea.ss($, ($): _out.Errors => _ea.cc($, ($) => {
+                    case 'valid': return _pt.ss($, ($): _out.Errors => _pt.cc($, ($) => {
                         switch ($[0]) {
-                            case 'set': return _ea.ss($, ($) => Node($['child node'], $p))
-                            case 'not set': return _ea.ss($, ($) => _ea.list_literal([]))
-                            default: return _ea.au($[0])
+                            case 'set': return _pt.ss($, ($) => Node($['child node'], $p))
+                            case 'not set': return _pt.ss($, ($) => _pt.list_literal([]))
+                            default: return _pt.au($[0])
                         }
                     }))
-                    case 'invalid': return _ea.ss($, ($) => _ea.list_literal([
+                    case 'invalid': return _pt.ss($, ($) => _pt.list_literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _ea.list_literal([['set', null], ['not set', null]]),
+                                'expected': _pt.list_literal([['set', null], ['not set', null]]),
                             }]]
                         }
                     ]))
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             }))
-            case 'state': return _ea.ss($, ($) => {
+            case 'state': return _pt.ss($, ($) => {
                 const sg_def = $.definition
-                return _ea.cc($['found value type'], ($): _out.Errors => {
+                return _pt.cc($['found value type'], ($): _out.Errors => {
                     switch ($[0]) {
-                        case 'valid': return _ea.ss($, ($) => {
-                            return _ea.cc($['value type'], ($) => {
+                        case 'valid': return _pt.ss($, ($) => {
+                            return _pt.cc($['value type'], ($) => {
                                 switch ($[0]) {
-                                    case 'state': return _ea.ss($, ($) => _ea.cc($['value substatus'], ($) => {
+                                    case 'state': return _pt.ss($, ($) => _pt.cc($['value substatus'], ($) => {
                                         switch ($[0]) {
-                                            case 'missing data': return _ea.ss($, ($) => _ea.list_literal([
+                                            case 'missing data': return _pt.ss($, ($) => _pt.list_literal([
                                                 {
                                                     'range': $.range,
                                                     'type': ['error', ['state', ['state is not a string', null]]] //FIXME wrong error
                                                 }
                                             ]))
-                                            case 'set': return _ea.ss($, ($) => {
+                                            case 'set': return _pt.ss($, ($) => {
                                                 {
                                                     const xx = $.value
                                                     return $['found state definition'].transform(
                                                         ($) => Node($.node, $p),
-                                                        (): _out.Errors => _ea.list_literal([
+                                                        (): _out.Errors => _pt.list_literal([
                                                             {
                                                                 'range': xx.state.range,
                                                                 'type': ['error', ['state', ['unknown state', {
@@ -275,63 +275,63 @@ export const Node = (
                                                     )
                                                 }
                                             })
-                                            default: return _ea.au($[0])
+                                            default: return _pt.au($[0])
                                         }
                                     }))
-                                    default: return _ea.au($[0])
+                                    default: return _pt.au($[0])
                                 }
                             })
                         })
-                        case 'invalid': return _ea.ss($, ($) => _ea.list_literal([
+                        case 'invalid': return _pt.ss($, ($) => _pt.list_literal([
                             {
                                 'range': $,
                                 'type': ['error', ['invalid value type', {
-                                    'expected': _ea.list_literal([['state', null]]),
+                                    'expected': _pt.list_literal([['state', null]]),
                                 }]]
                             }
                         ]))
-                        // case 'more than 2 elements': return _ea.ss($, ($) => _ea.list_literal([{
+                        // case 'more than 2 elements': return _pt.ss($, ($) => _pt.list_literal([{
                         //     'range': $,
                         //     'type': ['error', ['state', ['more than 2 elements', null]]]
                         // }]))
-                        // case 'missing state name': return _ea.ss($, ($) => _ea.list_literal([{
+                        // case 'missing state name': return _pt.ss($, ($) => _pt.list_literal([{
                         //     'range': $,
                         //     'type': ['error', ['state', ['missing state name', null]]]
                         // }]))
-                        // case 'state is not a string': return _ea.ss($, ($) => _ea.list_literal([{
+                        // case 'state is not a string': return _pt.ss($, ($) => _pt.list_literal([{
                         //     'range': $,
                         //     'type': ['error', ['state', ['state is not a string', null]]]
                         // }]))
-                        // case 'missing value': return _ea.ss($, ($) => _ea.list_literal([{
+                        // case 'missing value': return _pt.ss($, ($) => _pt.list_literal([{
                         //     'range': $,
                         //     'type': ['error', ['state', ['missing value', null]]]
                         // }]))
-                        // case 'unknown state': return _ea.ss($, ($) => _ea.list_literal([{
+                        // case 'unknown state': return _pt.ss($, ($) => _pt.list_literal([{
                         //     'range': $.range,
                         //     'type': ['error', ['state', ['unknown state', {
                         //         'found': $.found,
                         //         'expected': $.expected
                         //     }]]]
                         // }]))
-                        default: return _ea.au($[0])
+                        default: return _pt.au($[0])
                     }
                 })
             })
-            case 'text': return _ea.ss($, ($) => _ea.cc($['found value type'], ($) => {
+            case 'text': return _pt.ss($, ($) => _pt.cc($['found value type'], ($) => {
                 switch ($[0]) {
-                    case 'valid': return _ea.list_literal([])
-                    case 'invalid': return _ea.ss($, ($) => _ea.list_literal([
+                    case 'valid': return _pt.list_literal([])
+                    case 'invalid': return _pt.ss($, ($) => _pt.list_literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _ea.list_literal([['text', null]]),
+                                'expected': _pt.list_literal([['text', null]]),
                             }]]
                         }
                     ]))
-                    default: return _ea.au($[0])
+                    default: return _pt.au($[0])
                 }
             }))
-            default: return _ea.au($[0])
+            default: return _pt.au($[0])
         }
     })
 }

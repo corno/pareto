@@ -1,7 +1,6 @@
-import * as _edata from 'exupery-core-data'
-import * as _et from 'exupery-core-types'
-import * as _ea from 'exupery-core-alg'
-import * as _edev from 'exupery-core-dev'
+import * as _pi from 'pareto-core-interface'
+import * as _pt from 'pareto-core-transformer'
+import * as _pdev from 'pareto-core-dev'
 
 import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
@@ -16,31 +15,32 @@ import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/imp
 export const Schema = (
     $: _in.Schema,
     $p: {
-        'path': _et.List<string>,
+        'path': _pi.List<string>,
         'imports': _in.Imports,
         'constrained': boolean
     }
-): _out.Module_Set.D<_edata.Source_Location> => {
+): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
         op_flatten_dictionary(
-            _ea.dictionary_literal({
-                "": _ea.dictionary_literal({
-                    "signatures": import_.ancestor(5, "interface", _ea.list_literal([
-                        _ea.list_literal(["generated", "pareto", "schemas"]),
+            _pt.dictionary_literal({
+                "": _pt.dictionary_literal({
+                    "signatures": import_.ancestor(5, "interface", _pt.list_literal([
+                        _pt.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _ea.list_literal(["serialize"])
+                        _pt.list_literal(["serialize"])
                     ]).flatten(($) => $), {}),
-                    "serialize": import_.ancestor(2, "generic", _ea.list_literal([
-                        _ea.list_literal(["serialize"]),
+                    "serialize": import_.ancestor(2, "generic", _pt.list_literal([
+                        _pt.list_literal(["serialize"]),
                     ]).flatten(($) => $), {}),
-                    "marshall": import_.sibling("marshall", _ea.list_literal([
+                    "marshall": import_.sibling("marshall", _pt.list_literal([
                     ]).flatten(($) => $), {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["serialize"], {}))
             }),
             {
                 'separator': "",
-            }
+            },
+                        () => _pt.unreachable_code_path(),
         ),
         {},
         $.types.dictionary.map(($, key) => variable(

@@ -1,7 +1,6 @@
-import * as _edata from 'exupery-core-data'
-import * as _et from 'exupery-core-types'
-import * as _ea from 'exupery-core-alg'
-import * as _edev from 'exupery-core-dev'
+import * as _pi from 'pareto-core-interface'
+import * as _pt from 'pareto-core-transformer'
+import * as _pdev from 'pareto-core-dev'
 
 import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
@@ -20,11 +19,11 @@ export const Types = (
         'imports': _in.Imports,
         'constrained': boolean
     }
-): _out.Module_Set.D<_edata.Source_Location> => {
+): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
         op_flatten_dictionary(
-            _ea.dictionary_literal({
-                "": _ea.dictionary_literal({
+            _pt.dictionary_literal({
+                "": _pt.dictionary_literal({
                     "signatures": import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, "migration boilerplate"], {}),
                     "out": import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, $p.constrained ? "unresolved" : "unconstrained"], $p.constrained ? { "Source": t.null_() } : {}),
                 }),
@@ -32,7 +31,8 @@ export const Types = (
             }),
             {
                 'separator': "",
-            }
+            },
+            () => _pt.unreachable_code_path(),
         ),
         {},
         $.dictionary.map(($, key) => variable(
@@ -43,7 +43,7 @@ export const Types = (
                     $.node,
                     {
                         'type': key,
-                        'subselection': _ea.list_literal([])
+                        'subselection': _pt.list_literal([])
                     }
                 ),
             ),
@@ -56,35 +56,35 @@ export const Type_Node = (
     $: _in.Type_Node,
     $p: {
         'type': string
-        'subselection': _et.List<_out_interface.Type.SG.component.sub_selection.L<_edata.Source_Location>>
+        'subselection': _pi.List<_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>>
     },
-): _out.Initialization<_edata.Source_Location> => {
-    return _ea.cc($, ($) => {
+): _out.Initialization<_pi.Deprecated_Source_Location> => {
+    return _pt.cc($, ($) => {
         switch ($[0]) {
-            case 'number': return _ea.ss($, ($) => i.select_from_context([]))
-            case 'boolean': return _ea.ss($, ($) => i.select_from_context([]))
-            case 'nothing': return _ea.ss($, ($) => i.null_())
-            case 'reference': return _ea.ss($, ($) => _ea.cc($.type, ($) => {
+            case 'number': return _pt.ss($, ($) => i.select_from_context([]))
+            case 'boolean': return _pt.ss($, ($) => i.select_from_context([]))
+            case 'nothing': return _pt.ss($, ($) => i.null_())
+            case 'reference': return _pt.ss($, ($) => _pt.cc($.type, ($) => {
                 switch ($[0]) {
-                    case 'derived': return _ea.ss($, ($) => i.null_())
-                    case 'selected': return _ea.ss($, ($) => i.select_from_context(["key"]))
-                    default: return _ea.au($[0])
+                    case 'derived': return _pt.ss($, ($) => i.null_())
+                    case 'selected': return _pt.ss($, ($) => i.select_from_context(["key"]))
+                    default: return _pt.au($[0])
                 }
             }))
-            case 'text': return _ea.ss($, ($) => i.select_from_context([]))
-            case 'component': return _ea.ss($, ($) => i.call(
-                _ea.cc($, ($) => {
+            case 'text': return _pt.ss($, ($) => i.select_from_context([]))
+            case 'component': return _pt.ss($, ($) => i.call(
+                _pt.cc($, ($) => {
                     switch ($[0]) {
-                        case 'external': return _ea.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
-                        case 'internal': return _ea.ss($, ($) => s.from_variable($.key, []))
-                        case 'internal cyclic': return _ea.ss($, ($) => s.from_variable($.key, []))
-                        default: return _ea.au($[0])
+                        case 'external': return _pt.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
+                        case 'internal': return _pt.ss($, ($) => s.from_variable($.key, []))
+                        case 'internal cyclic': return _pt.ss($, ($) => s.from_variable($.key, []))
+                        default: return _pt.au($[0])
                     }
                 }),
                 i.select_from_context([]),
-                _ea.dictionary_literal({}),
+                _pt.dictionary_literal({}),
             ))
-            case 'dictionary': return _ea.ss($, ($) => i.dictionary_map(
+            case 'dictionary': return _pt.ss($, ($) => i.dictionary_map(
                 $.ordered ? s.from_context(["dictionary"]) : s.from_context([]),
                 Type_Node(
                     $.node,
@@ -94,7 +94,7 @@ export const Type_Node = (
                     }
                 )
             ))
-            case 'group': return _ea.ss($, ($) => i.group($.dictionary.map(($, key) => i.change_context(
+            case 'group': return _pt.ss($, ($) => i.group($.dictionary.map(($, key) => i.change_context(
                 s.from_context([key]),
                 Type_Node(
                     $.node,
@@ -104,7 +104,7 @@ export const Type_Node = (
                     }
                 )
             ))))
-            case 'list': return _ea.ss($, ($) => i.array_map(
+            case 'list': return _pt.ss($, ($) => i.array_map(
                 s.from_context([]),
                 Type_Node(
                     $.node,
@@ -114,7 +114,7 @@ export const Type_Node = (
                     }
                 )
             ))
-            case 'optional': return _ea.ss($, ($) => i.optional_map(
+            case 'optional': return _pt.ss($, ($) => i.optional_map(
                 s.from_context([]),
                 Type_Node(
                     $,
@@ -124,7 +124,7 @@ export const Type_Node = (
                     }
                 )
             ))
-            case 'state group': return _ea.ss($, ($) => i.switch_(
+            case 'state group': return _pt.ss($, ($) => i.switch_(
                 s.from_context([]),
                 $.map(($, key) => i.case_(key, Type_Node(
                     $.node,
@@ -140,8 +140,8 @@ export const Type_Node = (
                     $p.subselection,
                 ),
             ))
-            // case 'type parameter': return pa.ss($, ($) => _edev.implement_me("xx"))
-            default: return _ea.au($[0])
+            // case 'type parameter': return pa.ss($, ($) => _pdev.implement_me("xx"))
+            default: return _pt.au($[0])
         }
     })
 }
