@@ -1,0 +1,32 @@
+import * as _pt from 'pareto-core-transformer'
+import * as _pq from 'pareto-core-query'
+
+import * as signatures from "../../../interface/signatures"
+
+//data types
+import * as d from "../../../interface/to_be_generated/load_pareto_file"
+
+//depencencies
+import { $$ as q_load_pareto_document } from "./load_pareto_document"
+
+export const $$: signatures.queries.load_pareto_file = _pq.create_query_function(
+    ($p, $qr) => $qr['read file'](
+        $p['file path'],
+        (): d.Error => ['no file', null]
+    ).query(
+        ($) => {
+            return q_load_pareto_document(
+                {
+                    'read file': $qr['read file'],
+                },
+            )(
+                {
+                    'content': $,
+                    'file path': $p['file path'],
+                },
+                ($): d.Error => ['document', $]
+            )
+        },
+        ($): d.Error => $
+    )
+)

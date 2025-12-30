@@ -2,13 +2,13 @@
 
 import * as _pn from 'pareto-host-nodejs'
 
-import * as d_resources from "../implementation/commands/compile_temp_schemas"
+import * as d_resources from "../implementation/manual/commands/compile_temp_schemas"
 
-import { $$ as p_compile_temp_schemas } from "../implementation/commands/compile_temp_schemas"
-import { $$ as p_write_to_directory } from "../modules/pareto-fountain-pen-directory/implementation/commands/write_to_directory"
-import { $$ as p_write_to_file } from "../modules/pareto-fountain-pen-directory/implementation/commands/write_to_file"
+import { $$ as p_compile_temp_schemas } from "../implementation/manual/commands/compile_temp_schemas"
+import { $$ as p_write_to_directory } from "../modules/pareto-fountain-pen-directory/implementation/manual/commands/write_to_directory"
+import { $$ as p_write_to_file } from "../modules/pareto-fountain-pen-directory/implementation/manual/commands/write_to_file"
 
-import { $$ as procedure } from "../implementation/commands/compile_temp_schemas"
+import { $$ as procedure } from "../implementation/manual/commands/compile_temp_schemas"
 
 _pn.run_main_procedure(
     ($r) => {
