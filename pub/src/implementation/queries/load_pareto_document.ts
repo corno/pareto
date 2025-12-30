@@ -8,7 +8,6 @@ import * as signatures from "../../interface/signatures"
 
 //data types
 import * as d from "../../interface/to_be_generated/load_pareto_document"
-import * as d_unmarshall_result_types from "../../interface/to_be_generated/temp_unmashall_result"
 
 //depencencies
 
@@ -27,18 +26,18 @@ export const $$: signatures.queries.load_pareto_document = _pq.create_query_func
         (): d.Error => ['no schema file', {
             'file location': schema_path_text,
         }]
-    ).deprecated_refine_old(
-        ($) => _pinternals.deprecated_create_refinement_context<d_unmarshall_result_types.Node, d.Error>((abort) => r_unmarshall_result(
+    ).refine_without_error_transformation(
+        ($, abort) => r_unmarshall_result(
             $p.content,
             {
                 'schema content': $,
                 'schema path': schema_path_text,
             },
-            abort,
-        )),
-        ($) => ['schema error', {
-            'file location': schema_path_text,
-        }]
+            ($) => abort(['schema error', {
+                'file location': schema_path_text,
+            }]),
+        ),
+
     )
 }
 )
