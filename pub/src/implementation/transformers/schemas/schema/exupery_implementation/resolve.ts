@@ -1,6 +1,7 @@
 import * as _pi from 'pareto-core-interface'
 import * as _pt from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
+import * as _pinternals from 'pareto-core-internals'
 
 import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
@@ -11,8 +12,20 @@ import { t, import_, sub as sub } from "exupery/dist/shorthands/interface"
 
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 
-import { $$ as op_pad_dictionary_identifiers } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/pad_identifiers"
-
+const op_pad_dictionary_identifiers = <T>(
+    $: _pi.Dictionary<T>,
+    $p: {
+        'prefix': string,
+        'suffix': string
+    }
+): _pi.Dictionary<T> => _pinternals.build_dictionary(
+    ($i) => {
+        $.map(($, key) => {
+            $i['add entry']($p.prefix + key + $p.suffix, $)
+        })
+    },
+    () => _pt.unreachable_code_path() // no possibility of duplicate keys
+)
 
 export const Resolvers = (
     $: _in.Resolvers,
@@ -42,7 +55,7 @@ export const Resolvers = (
             {
                 'separator': "",
             },
-                        () => _pt.unreachable_code_path(),
+            () => _pt.unreachable_code_path(),
         ),
         {},
         op_pad_dictionary_identifiers(
