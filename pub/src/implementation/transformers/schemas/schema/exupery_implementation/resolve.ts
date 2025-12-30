@@ -3,8 +3,8 @@ import * as _pt from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 import * as _pinternals from 'pareto-core-internals'
 
-import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as _out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as _out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m, variable, i, s, temp_ordered_variable } from "exupery/dist/shorthands/implementation"
@@ -28,12 +28,12 @@ const op_pad_dictionary_identifiers = <T>(
 )
 
 export const Resolvers = (
-    $: _in.Resolvers,
+    $: d_in.Resolvers,
     $p: {
         'path': _pi.List<string>,
-        'imports': _in.Imports
+        'imports': d_in.Imports
     }
-): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
         op_flatten_dictionary(
             _pt.dictionary_literal({
@@ -99,11 +99,11 @@ export const Resolvers = (
 
 
 export const Possible_Value_Selection = (
-    $: _in.Possible_Value_Selection,
+    $: d_in.Possible_Value_Selection,
     $p: {
-        'tail': () => _pi.List<_out.Selection.tail.L<_pi.Deprecated_Source_Location>>
+        'tail': () => _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>>
     },
-): _out.Selection<_pi.Deprecated_Source_Location> => {
+): d_out.Selection<_pi.Deprecated_Source_Location> => {
     return _pt.cc($, ($) => {
         switch ($[0]) {
             case 'parameter': return _pt.ss($, ($) => s.from_variable(
@@ -129,9 +129,9 @@ export const Possible_Value_Selection = (
 
 
 export const Optional_Value_Initialization = (
-    $: _in.Optional_Value_Initialization,
+    $: d_in.Optional_Value_Initialization,
     $p: null,
-): _out.Initialization<_pi.Deprecated_Source_Location> => {
+): d_out.Initialization<_pi.Deprecated_Source_Location> => {
     return _pt.cc($, ($) => {
         switch ($[0]) {
             case 'not set': return _pt.ss($, ($) => i.not_set())
@@ -143,15 +143,15 @@ export const Optional_Value_Initialization = (
 }
 
 export const Guaranteed_Value_Selection = (
-    $: _in.Guaranteed_Value_Selection,
+    $: d_in.Guaranteed_Value_Selection,
     $p: {
-        'tail': () => _pi.List<_out.Selection.tail.L<_pi.Deprecated_Source_Location>>
+        'tail': () => _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>>
     },
-): _out.Selection<_pi.Deprecated_Source_Location> => {
-    const tail = (): _pi.List<_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => {
+): d_out.Selection<_pi.Deprecated_Source_Location> => {
+    const tail = (): _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => {
         return _pt.list_literal([
             $.tail.path.map(($) => {
-                return _pt.cc($, ($): _pi.List<_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => {
+                return _pt.cc($, ($): _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => {
                     switch ($[0]) {
                         case 'component': return _pt.ss($, ($) => _pt.list_literal([]))
                         case 'group': return _pt.ss($, ($) => _pt.list_literal([$.key]))
@@ -221,11 +221,11 @@ export const Guaranteed_Value_Selection = (
 }
 
 export const Lookup_Selection = (
-    $: _in.Lookup_Selection,
+    $: d_in.Lookup_Selection,
     $p: {
 
     },
-): _out.Selection<_pi.Deprecated_Source_Location> => {
+): d_out.Selection<_pi.Deprecated_Source_Location> => {
     return _pt.cc($.type, ($) => {
         switch ($[0]) {
             case 'dictionary': return _pt.ss($, ($) => s.call(
@@ -259,11 +259,11 @@ export const Lookup_Selection = (
 }
 
 export const Option_Constraints = (
-    $: _in.Option_Constraints,
+    $: d_in.Option_Constraints,
     $p: {
-        sub: () => _out.Initialization<_pi.Deprecated_Source_Location>
+        sub: () => d_out.Initialization<_pi.Deprecated_Source_Location>
     },
-): _out.Initialization<_pi.Deprecated_Source_Location> => {
+): d_out.Initialization<_pi.Deprecated_Source_Location> => {
     return i.block(
         [],
         op_pad_dictionary_identifiers($, { 'prefix': "c ", 'suffix': "" }).map(($) => variable(null, i.select(_pt.cc($, ($) => {
@@ -283,19 +283,19 @@ export const Option_Constraints = (
 }
 
 export const Node_Resolver = (
-    $: _in.Node_Resolver,
+    $: d_in.Node_Resolver,
     $p: {
         'temp type': string
         'temp subselection': _pi.List<_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> //can be removed when exupery has type inference
     },
-): _out.Initialization<_pi.Deprecated_Source_Location> => {
+): d_out.Initialization<_pi.Deprecated_Source_Location> => {
     return _pt.cc($, ($) => {
         switch ($[0]) {
             case 'number': return _pt.ss($, ($) => i.select_from_context([]))
             case 'boolean': return _pt.ss($, ($) => i.select_from_context([]))
             case 'nothing': return _pt.ss($, ($) => i.null_())
             case 'reference': return _pt.ss($, ($) => {
-                return i.select(_pt.cc($.type, ($): _out.Selection<_pi.Deprecated_Source_Location> => {
+                return i.select(_pt.cc($.type, ($): d_out.Selection<_pi.Deprecated_Source_Location> => {
                     switch ($[0]) {
                         case 'derived': return _pt.ss($, ($) => Guaranteed_Value_Selection($.value, { 'tail': () => _pt.list_literal([]) }))
                         case 'selected': return _pt.ss($, ($) => {

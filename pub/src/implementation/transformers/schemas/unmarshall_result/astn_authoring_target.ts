@@ -1,29 +1,29 @@
 import * as _pt from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
-import * as _in from "../../../../interface/to_be_generated/temp_unmashall_result"
-import * as _out from "astn/dist/interface/generated/pareto/schemas/authoring_target/data_types/target"
+import * as d_in from "../../../../interface/to_be_generated/temp_unmashall_result"
+import * as d_out from "astn/dist/interface/generated/pareto/schemas/authoring_target/data_types/target"
 
 
 export const Node = (
-    $: _in.Node,
+    $: d_in.Node,
     $p: null
-): _out.Value => {
+): d_out.Value => {
     return {
         'type': _pt.cc($.type, ($) => {
             switch ($[0]) {
-                case 'number': return _pt.ss($, ($): _out.Value._type => ['text', {
+                case 'number': return _pt.ss($, ($): d_out.Value._type => ['text', {
                     'value': "FIXME_NUMBER",
                     'delimiter': ['none', null],
 
                 }])
-                case 'boolean': return _pt.ss($, ($): _out.Value._type => ['text', {
+                case 'boolean': return _pt.ss($, ($): d_out.Value._type => ['text', {
                     'value': "FIXME_BOOLEAN",
                     'delimiter': ['none', null],
 
                 }])
                 case 'nothing': return _pt.ss($, ($) => ['nothing', null])
-                case 'text': return _pt.ss($, ($): _out.Value._type => ['text', {
+                case 'text': return _pt.ss($, ($): d_out.Value._type => ['text', {
                     'value': "FIXME_TEXT",
                     'delimiter': ['none', null],
 

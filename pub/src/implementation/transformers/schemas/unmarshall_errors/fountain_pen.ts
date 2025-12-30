@@ -1,8 +1,8 @@
 import * as _pt from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
-import * as _in from "../../../../interface/generated/pareto/schemas/unmarshall_errors/data_types/target"
-import * as _out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
+import * as d_in from "../../../../interface/generated/pareto/schemas/unmarshall_errors/data_types/target"
+import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
@@ -10,13 +10,13 @@ import { $$ as s_list_of_separated_texts } from "pareto-standard-operations/dist
 
 
 export const Errors = (
-    $: _in.Errors,
+    $: d_in.Errors,
     $p: {
         'line offset': number
         'column offset': number
         'document path': string
     }
-): _out.Group => {
+): d_out.Group => {
     return sh.group([ sh.g.sub($.map(($) => {
         return sh.g.nested_block([
             sh.b.snippet(`${$p['document path']}:${$.range.start.relative.line + $p['line offset']}:${$.range.start.relative.column + $p['column offset']}: `),
@@ -38,8 +38,8 @@ export const Errors = (
 }
 
 export const Error_Type_Error = (
-    $: _in.Errors.L._type.SG.error,
-): _out.Block_Part => _pt.cc($, ($) => {
+    $: d_in.Errors.L._type.SG.error,
+): d_out.Block_Part => _pt.cc($, ($) => {
     switch ($[0]) {
         case 'duplicate property': return _pt.ss($, ($) => sh.b.snippet(`Duplicate property "${$.name}"`))
         case 'invalid value type': return _pt.ss($, ($) => sh.b.snippet(`Invalid value type, expected ${s_list_of_separated_texts($.expected.map(($) => `'${$[0]}'`), { 'separator': ` or ` })}.`))
@@ -64,8 +64,8 @@ export const Error_Type_Error = (
 })
 
 export const Error_Type_Warning = (
-    $: _in.Errors.L._type.SG.warning,
-): _out.Block_Part => _pt.cc($, ($) => {
+    $: d_in.Errors.L._type.SG.warning,
+): d_out.Block_Part => _pt.cc($, ($) => {
     switch ($[0]) {
         case 'expected apostrophed string': return _pt.ss($, ($) => sh.b.snippet(`Expected apostrophed string`))
         case 'expected backticked string': return _pt.ss($, ($) => sh.b.snippet(`Expected backticked string`))

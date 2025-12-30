@@ -5,12 +5,12 @@ import * as _pinternals from 'pareto-core-internals'
 
 import * as definition from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
 
-import * as _in from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
+import * as d_in from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
 import * as _in_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
 
 import * as t_ast_to_range from "astn/dist/implementation/transformers/schemas/authoring_parse_tree/temp_value_range"
 
-import * as _out from "../../../../interface/to_be_generated/temp_unmashall_result"
+import * as d_out from "../../../../interface/to_be_generated/temp_unmashall_result"
 
 import { $$ as op_expect_exactly_one_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/expect_exactly_one_element"
 
@@ -21,28 +21,28 @@ const op_group = <T>(
 }
 
 export const Optional_Node = (
-    $: _pi.Optional_Value<_in.Value>,
+    $: _pi.Optional_Value<d_in.Value>,
     $p: {
         'definition': definition.Type_Node,
     }
-): _out.Optional_Node => {
+): d_out.Optional_Node => {
     return $.map(
         ($) => Node($, $p),
     )
 }
 
 export const Node_Type = (
-    $: _in.Concrete_Value,
+    $: d_in.Concrete_Value,
     $p: {
         'definition': definition.Type_Node,
         'range': _in_token.Range,
-        'temp value': _in.Value,
+        'temp value': d_in.Value,
     }
-): _out.Node_Type => {
+): d_out.Node_Type => {
     const data = $
-    return _pt.cc($p.definition, ($): _out.Node_Type => {
+    return _pt.cc($p.definition, ($): d_out.Node_Type => {
         switch ($[0]) {
-            case 'number': return _pt.ss($, ($): _out.Node_Type => {
+            case 'number': return _pt.ss($, ($): d_out.Node_Type => {
                 return ['number', {
                     'definition': $,
                     'found value type': _pt.cc(data, ($) => {
@@ -66,7 +66,7 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'boolean': return _pt.ss($, ($): _out.Node_Type => {
+            case 'boolean': return _pt.ss($, ($): d_out.Node_Type => {
                 return ['boolean', {
                     'definition': $,
                     'found value type': _pt.cc(data, ($) => {
@@ -108,7 +108,7 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'nothing': return _pt.ss($, ($): _out.Node_Type => {
+            case 'nothing': return _pt.ss($, ($): d_out.Node_Type => {
                 return ['nothing', {
                     'definition': $,
                     'found value type': _pt.cc(data, ($) => {
@@ -121,7 +121,7 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'reference': return _pt.ss($, ($): _out.Node_Type => {
+            case 'reference': return _pt.ss($, ($): d_out.Node_Type => {
                 return ['reference', {
                     'definition': $,
                     'found value type': _pt.cc(data, ($) => {
@@ -135,7 +135,7 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'component': return _pt.ss($, ($): _out.Node_Type => {
+            case 'component': return _pt.ss($, ($): d_out.Node_Type => {
                 return ['component', {
                     'definition': $,
                     'node': Node(
@@ -153,7 +153,7 @@ export const Node_Type = (
                     )
                 }]
             })
-            case 'dictionary': return _pt.ss($, ($): _out.Node_Type => {
+            case 'dictionary': return _pt.ss($, ($): d_out.Node_Type => {
                 const prop_def = $.node
                 return ['dictionary', {
                     'definition': $,
@@ -162,7 +162,7 @@ export const Node_Type = (
                             case 'indexed collection': return _pt.ss($, ($) => {
                                 return ['valid', {
                                     'value': $,
-                                    'entries': op_group(_pt.cc($, ($): _in.Key_Value_Pairs => {
+                                    'entries': op_group(_pt.cc($, ($): d_in.Key_Value_Pairs => {
                                         switch ($[0]) {
                                             case 'dictionary': return _pt.ss($, ($) => $.entries)
                                             case 'verbose group': return _pt.ss($, ($) => $.entries)
@@ -173,8 +173,8 @@ export const Node_Type = (
                                             'key': $.key.value,
                                             'value': $
                                         }
-                                    })).map<_out.Entry>(($) => op_expect_exactly_one_element($).transform(
-                                        ($): _out.Entry => ['unique', Optional_Node(
+                                    })).map<d_out.Entry>(($) => op_expect_exactly_one_element($).transform(
+                                        ($): d_out.Entry => ['unique', Optional_Node(
                                             $.value.map(
                                                 ($) => $.value,
                                             ),
@@ -182,7 +182,7 @@ export const Node_Type = (
                                                 'definition': prop_def,
                                             },
                                         )],
-                                        (): _out.Entry => ['multiple', $.map(($): _out.Entry_Data => ({
+                                        (): d_out.Entry => ['multiple', $.map(($): d_out.Entry_Data => ({
                                             'node': Optional_Node(
                                                 $.value.map(
                                                     ($) => $.value,
@@ -201,7 +201,7 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'group': return _pt.ss($, ($): _out.Node_Type => {
+            case 'group': return _pt.ss($, ($): d_out.Node_Type => {
                 const group_def = $
                 // pa.cc(data.type, ($) => {
                 // //     switch ($[0]) {
@@ -246,8 +246,8 @@ export const Node_Type = (
                         const value = $
                         return _pt.cc($, ($) => {
                             switch ($[0]) {
-                                case 'indexed collection': return _pt.ss($, ($): _out.Group_Found_Value_Type => {
-                                    const entries = op_group(_pt.cc($, ($): _in.Key_Value_Pairs => {
+                                case 'indexed collection': return _pt.ss($, ($): d_out.Group_Found_Value_Type => {
+                                    const entries = op_group(_pt.cc($, ($): d_in.Key_Value_Pairs => {
                                         switch ($[0]) {
                                             case 'dictionary': return _pt.ss($, ($) => $.entries)
                                             case 'verbose group': return _pt.ss($, ($) => $.entries)
@@ -297,11 +297,11 @@ export const Node_Type = (
                                                 {
                                                     'supporting dictionary': entries
                                                 }
-                                            ).map<_out.Property>(($) => {
+                                            ).map<d_out.Property>(($) => {
                                                 const prop_def = $.context
                                                 return $.supporting.transform(
-                                                    ($): _out.Property => op_expect_exactly_one_element($).transform(
-                                                        ($): _out.Property => ['unique', {
+                                                    ($): d_out.Property => op_expect_exactly_one_element($).transform(
+                                                        ($): d_out.Property => ['unique', {
                                                             'node': Optional_Node(
                                                                 $.value.map(
                                                                     ($) => $.value,
@@ -312,7 +312,7 @@ export const Node_Type = (
                                                             ),
                                                             'key': $.key
                                                         }],
-                                                        (): _out.Property => ['multiple', $.map(($): _out.Entry_Data => ({
+                                                        (): d_out.Property => ['multiple', $.map(($): d_out.Entry_Data => ({
                                                             'node': Optional_Node(
                                                                 $.value.map(
                                                                     ($) => $.value,
@@ -324,7 +324,7 @@ export const Node_Type = (
                                                             'key': $.key,
                                                         }))]
                                                     ),
-                                                    (): _out.Property => ['missing', range]
+                                                    (): d_out.Property => ['missing', range]
                                                 )
                                             })
                                         }
@@ -336,7 +336,7 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'optional': return _pt.ss($, ($): _out.Node_Type => {
+            case 'optional': return _pt.ss($, ($): d_out.Node_Type => {
                 const def = $
                 return ['optional', {
                     'definition': $,
@@ -359,20 +359,20 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'state group': return _pt.ss($, ($): _out.Node_Type => {
+            case 'state group': return _pt.ss($, ($): d_out.Node_Type => {
                 const def = $
                 return ['state', {
                     'definition': $,
-                    'found value type': _pt.cc(data, ($): _out.Node_Type_SG_State_found_value_type => {
+                    'found value type': _pt.cc(data, ($): d_out.Node_Type_SG_State_found_value_type => {
                         switch ($[0]) {
-                            case 'tagged value': return _pt.ss($, ($): _out.Node_Type_SG_State_found_value_type => {
+                            case 'tagged value': return _pt.ss($, ($): d_out.Node_Type_SG_State_found_value_type => {
                                 const tv = $
                                 return ['valid', {
                                     'value type': ['state', {
-                                        'value substatus': _pt.cc($.status, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
+                                        'value substatus': _pt.cc($.status, ($): d_out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
                                             switch ($[0]) {
                                                 case 'missing data': return _pt.ss($, ($) => ['missing data', $['#']])
-                                                case 'set': return _pt.ss($, ($): _out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
+                                                case 'set': return _pt.ss($, ($): d_out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
                                                     const state = $.state
                                                     const value = $.value
                                                     return ['set', {
@@ -397,7 +397,7 @@ export const Node_Type = (
                                 }]
                             })
                             // case 'ordered collection': return _pt.ss($, ($) => {
-                            //     const elements = _pt.cc($, ($): _in.Elements => {
+                            //     const elements = _pt.cc($, ($): d_in.Elements => {
                             //         switch ($[0]) {
                             //             case 'list': return _pt.ss($, ($) => $.elements)
                             //             case 'concise group': return _pt.ss($, ($) => $.elements)
@@ -415,17 +415,17 @@ export const Node_Type = (
                             //         return ['more than 2 elements', range]
                             //     }
                             //     const first = elements.__get_element_at(0)
-                            //     return first.transform<_out.State_Status>(
+                            //     return first.transform<d_out.State_Status>(
                             //         ($) => {
                             //             if ($.value.type[0] !== 'string') {
                             //                 return ['state is not a string', t_ast_to_range.Value(data)]
                             //             }
                             //             const state_name = $.value.type[1].value
                             //             const state_name_range = $.value.type[1].range
-                            //             return elements.__get_element_at(1).transform<_out.State_Status>(
+                            //             return elements.__get_element_at(1).transform<d_out.State_Status>(
                             //                 ($) => {
                             //                     const value = $.value
-                            //                     return def.get_entry(state_name).transform<_out.State_Status>(
+                            //                     return def.get_entry(state_name).transform<d_out.State_Status>(
                             //                         ($) => ['valid', {
                             //                             'node': Node(
                             //                                 value,
@@ -475,11 +475,11 @@ export const Node_Type = (
 }
 
 export const Node = (
-    $: _in.Value,
+    $: d_in.Value,
     $p: {
         'definition': definition.Type_Node,
     }
-): _out.Node => {
+): d_out.Node => {
     const datax = $
     return {
         'definition': $p.definition,

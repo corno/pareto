@@ -3,15 +3,15 @@ import * as _pi from 'pareto-core-interface'
 import * as _psh from 'pareto-core-transformer/dist/deprecated_shorthands_for_unresolved'
 
 
-import * as _in from "../../../../interface/generated/pareto/schemas/module/data_types/source"
-import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
+import * as d_in from "../../../../interface/generated/pareto/schemas/module/data_types/source"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m, t, type, import_ } from "exupery/dist/shorthands/interface"
 import * as t_exupery_interface_main from "../schema/exupery_interface/main"
 import * as t_exupery_interface_types from "../schema/exupery_interface/types"
 
 
-export const Operations = ($: _in.Operations): _out.Type<_pi.Deprecated_Source_Location> => {
+export const Operations = ($: d_in.Operations): d_out.Type<_pi.Deprecated_Source_Location> => {
     return t.group($.map(($) => _pt.cc($, ($) => {
         switch ($[0]) {
             case 'operation': return _pt.ss($, ($) => t.function_(
@@ -26,7 +26,7 @@ export const Operations = ($: _in.Operations): _out.Type<_pi.Deprecated_Source_L
     })))
 }
 
-export const Module = ($: _in.Module): _out.Module_Set<_pi.Deprecated_Source_Location> => {
+export const Module = ($: d_in.Module): d_out.Module_Set<_pi.Deprecated_Source_Location> => {
     return _psh.wrap_dictionary({
         "core": m.set({
             "unresolved.ts": m.module(

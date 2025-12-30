@@ -3,8 +3,8 @@ import * as _pt from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 import * as _pinternals from 'pareto-core-internals'
 
-import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import * as sh from "exupery/dist/shorthands/interface"
 
@@ -12,14 +12,14 @@ import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/imp
 
 
 export const Schema = (
-    $: _in.Schema,
+    $: d_in.Schema,
     $p: {
-        'imports': _in.Imports
+        'imports': d_in.Imports
         'what to generate':
         | ['target', boolean] //annotated?
         | ['source', null]
     }
-): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return sh.m.module(
         op_flatten_dictionary(
             _pt.dictionary_literal({
@@ -93,21 +93,21 @@ export const Schema = (
 
 
 export const r_Type_Reference = (
-    $: _in.Type_Node_Reference,
+    $: d_in.Type_Node_Reference,
     $p: {
         'add dictionary tail': boolean
     }
 
-): _out.Type<_pi.Deprecated_Source_Location> => {
+): d_out.Type<_pi.Deprecated_Source_Location> => {
     const referent = $
     const Component_Sub_Selection = (
-        $: _in.Type_Node_Reference,
+        $: d_in.Type_Node_Reference,
         $p: {
             'add dictionary tail': boolean
         }
 
-    ): _pi.List<_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> => {
-        const tail: _pi.List<_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.tail.map(($) => _pt.cc($, ($) => {
+    ): _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> => {
+        const tail: _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.tail.map(($) => _pt.cc($, ($) => {
             switch ($[0]) {
                 case 'dictionary': return _pt.ss($, ($) => sh.sub.dictionary())
                 case 'group': return _pt.ss($, ($) => sh.sub.group($.key))
@@ -142,9 +142,9 @@ export const r_Type_Reference = (
 }
 
 export const Number_Type = (
-    $: _in.Number_Type
+    $: d_in.Number_Type
 
-): _out.Type<_pi.Deprecated_Source_Location> => {
+): d_out.Type<_pi.Deprecated_Source_Location> => {
     return _pt.cc($.precision, ($) => {
         switch ($[0]) {
             case 'approximation': return _pt.ss($, ($) => sh.t.float())
@@ -162,9 +162,9 @@ export const Number_Type = (
 }
 
 export const Type_Node = (
-    $: _in.Type_Node
+    $: d_in.Type_Node
 
-): _out.Type<_pi.Deprecated_Source_Location> => {
+): d_out.Type<_pi.Deprecated_Source_Location> => {
     return _pt.cc($, ($) => {
         switch ($[0]) {
             case 'boolean': return _pt.ss($, ($) => sh.t.boolean())

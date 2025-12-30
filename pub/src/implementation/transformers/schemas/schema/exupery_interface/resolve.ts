@@ -2,8 +2,8 @@ import * as _pdev from 'pareto-core-dev'
 import * as _pt from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
-import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m, t, import_, type, sub } from "exupery/dist/shorthands/interface"
 
@@ -12,8 +12,8 @@ import * as _types from "./types"
 
 
 export const Signatures = (
-    $: _in.Signatures,
-): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+    $: d_in.Signatures,
+): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
         {
             "resolve": import_.ancestor(3, "core", ["resolve"], {}),
@@ -38,11 +38,11 @@ export const Signatures = (
 }
 
 export const r_Type_Reference = (
-    $: _in.Type_Reference,
+    $: d_in.Type_Reference,
     $p: {
-        'component sub part': _pi.List<_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>>
+        'component sub part': _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>>
     }
-): _out.Type<_pi.Deprecated_Source_Location> => {
+): d_out.Type<_pi.Deprecated_Source_Location> => {
 
     return _pt.cc($.location, ($) => {
         switch ($[0]) {
@@ -65,17 +65,17 @@ export const r_Type_Reference = (
 }
 
 export const r_Type_Part_Reference = (
-    $: _in.Type_Node_Reference,
+    $: d_in.Type_Node_Reference,
     $p: {
         'add dictionary tail': boolean
     }
 
-): _out.Type<_pi.Deprecated_Source_Location> => {
+): d_out.Type<_pi.Deprecated_Source_Location> => {
     const Component_Sub_Selection = (
-        $: _in.Type_Node_Reference.tail,
+        $: d_in.Type_Node_Reference.tail,
 
-    ): _pi.List<_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> => {
-        const tail: _pi.List<_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.map(($) => _pt.cc($, ($) => {
+    ): _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> => {
+        const tail: _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.map(($) => _pt.cc($, ($) => {
             switch ($[0]) {
                 case 'dictionary': return _pt.ss($, ($) => sub.dictionary())
                 case 'group': return _pt.ss($, ($) => sub.group($.key))
@@ -99,10 +99,10 @@ export const r_Type_Part_Reference = (
 }
 
 export const r_Signature_Parameters = (
-    $: _in.Signature_Parameters,
-): _out.Type<_pi.Deprecated_Source_Location> => {
+    $: d_in.Signature_Parameters,
+): d_out.Type<_pi.Deprecated_Source_Location> => {
     return t.group({
-        "values": t.group($.values.map(($): _out.Type<_pi.Deprecated_Source_Location> => {
+        "values": t.group($.values.map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
             const temp_2 = r_Type_Reference($['data type'], { 'component sub part': _pt.list_literal([]) })
 
             return _pt.cc($.presence, ($) => {
@@ -113,7 +113,7 @@ export const r_Signature_Parameters = (
                 }
             })
         })),
-        "lookups": t.group($.lookups.map(($): _out.Type<_pi.Deprecated_Source_Location> => {
+        "lookups": t.group($.lookups.map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
             const x = $.referent
             return _pt.cc($.type, ($) => {
                 switch ($[0]) {

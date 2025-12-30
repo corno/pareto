@@ -10,10 +10,10 @@ import {
 
 import { $$ as op_flatten_dictionaries } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 
-import * as _in from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as _out from "../../../../interface/generated/pareto/schemas/astn_schema/data_types/target"
+import * as d_in from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_out from "../../../../interface/generated/pareto/schemas/astn_schema/data_types/target"
 
-export const Schema: _pi.Transformer<_in.Schema, _out.Schema<_pi.Deprecated_Source_Location>> = (
+export const Schema: _pi.Transformer<d_in.Schema, d_out.Schema<_pi.Deprecated_Source_Location>> = (
     $
 ) => {
     return {
@@ -23,7 +23,7 @@ export const Schema: _pi.Transformer<_in.Schema, _out.Schema<_pi.Deprecated_Sour
     }
 }
 
-export const Globals: _pi.Transformer<_in.Globals, _out.Globals<_pi.Deprecated_Source_Location>> = (
+export const Globals: _pi.Transformer<d_in.Globals, d_out.Globals<_pi.Deprecated_Source_Location>> = (
     $
 ) => {
     return {
@@ -47,7 +47,7 @@ export const Globals: _pi.Transformer<_in.Globals, _out.Globals<_pi.Deprecated_S
     }
 }
 
-export const Imports: _pi.Transformer<_in.Imports, _out.Imports<_pi.Deprecated_Source_Location>> = (
+export const Imports: _pi.Transformer<d_in.Imports, d_out.Imports<_pi.Deprecated_Source_Location>> = (
     $
 ) => {
     return wrap_dictionary($.map(($) => ({
@@ -56,7 +56,7 @@ export const Imports: _pi.Transformer<_in.Imports, _out.Imports<_pi.Deprecated_S
     })))
 }
 
-export const Type: _pi.Transformer<_in.Type, _out.Type<_pi.Deprecated_Source_Location>> = (
+export const Type: _pi.Transformer<d_in.Type, d_out.Type<_pi.Deprecated_Source_Location>> = (
     $
 ) => {
     return {
@@ -64,12 +64,12 @@ export const Type: _pi.Transformer<_in.Type, _out.Type<_pi.Deprecated_Source_Loc
     }
 }
 
-export const Type_Node: _pi.Transformer<_in.Type_Node, _out.Type_Node<_pi.Deprecated_Source_Location>> = (
+export const Type_Node: _pi.Transformer<d_in.Type_Node, d_out.Type_Node<_pi.Deprecated_Source_Location>> = (
     $
 ) => {
-    return wrap_state_group(_pt.cc($, ($): _out.Type_Node.SG<_pi.Deprecated_Source_Location> => {
+    return wrap_state_group(_pt.cc($, ($): d_out.Type_Node.SG<_pi.Deprecated_Source_Location> => {
         switch ($[0]) {
-            case 'number': return _pt.ss($, ($): _out.Type_Node.SG<_pi.Deprecated_Source_Location> => ['text', wrap_state_group(_pt.cc($, ($): _out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location> => {
+            case 'number': return _pt.ss($, ($): d_out.Type_Node.SG<_pi.Deprecated_Source_Location> => ['text', wrap_state_group(_pt.cc($, ($): d_out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location> => {
                 switch ($[0]) {
                     case 'global': return _pt.ss($, ($) => ['global', wrap_reference("n" + $.key)])
                     case 'local': return _pt.ss($, ($) => ['local', {
@@ -78,7 +78,7 @@ export const Type_Node: _pi.Transformer<_in.Type_Node, _out.Type_Node<_pi.Deprec
                     default: return _pt.au($[0])
                 }
             }))]) //FIXME
-            case 'boolean': return _pt.ss($, ($) => ['text', wrap_state_group<_out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location>>(['local', {
+            case 'boolean': return _pt.ss($, ($) => ['text', wrap_state_group<d_out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location>>(['local', {
                 'type': wrap_state_group(['single line', null])
             }])])
             case 'list': return _pt.ss($, ($) => ['list', {
@@ -94,7 +94,7 @@ export const Type_Node: _pi.Transformer<_in.Type_Node, _out.Type_Node<_pi.Deprec
                     }
                 }))
             }])
-            case 'component': return _pt.ss($, ($) => ['component', wrap_state_group(_pt.cc($, ($): _out.Type_Node.SG.component.SG<_pi.Deprecated_Source_Location> => {
+            case 'component': return _pt.ss($, ($) => ['component', wrap_state_group(_pt.cc($, ($): d_out.Type_Node.SG.component.SG<_pi.Deprecated_Source_Location> => {
                 switch ($[0]) {
                     case 'external': return _pt.ss($, ($) => ['external', {
                         'import': wrap_reference($.import.key),
@@ -112,7 +112,7 @@ export const Type_Node: _pi.Transformer<_in.Type_Node, _out.Type_Node<_pi.Deprec
             case 'group': return _pt.ss($, ($) => ['group', wrap_dictionary($.dictionary.map(($) => Type_Node($.node)))])
             case 'optional': return _pt.ss($, ($) => ['optional', Type_Node($)])
             case 'state group': return _pt.ss($, ($) => ['state group', wrap_dictionary($.map(($) => Type_Node($.node)))])
-            case 'text': return _pt.ss($, ($) => ['text', wrap_state_group(_pt.cc($, ($): _out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location> => {
+            case 'text': return _pt.ss($, ($) => ['text', wrap_state_group(_pt.cc($, ($): d_out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location> => {
                 switch ($[0]) {
                     case 'global': return _pt.ss($, ($) => ['global', wrap_reference("t" + $.key)])
                     case 'local': return _pt.ss($, ($) => ['local', Text_Type($)])
@@ -125,7 +125,7 @@ export const Type_Node: _pi.Transformer<_in.Type_Node, _out.Type_Node<_pi.Deprec
     }))
 }
 
-export const Text_Type: _pi.Transformer<_in.Text_Type, _out.Text_Type<_pi.Deprecated_Source_Location>> = (
+export const Text_Type: _pi.Transformer<d_in.Text_Type, d_out.Text_Type<_pi.Deprecated_Source_Location>> = (
     $
 ) => {
     return {

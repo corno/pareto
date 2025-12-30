@@ -1,8 +1,8 @@
 import * as _pt from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
-import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as _out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as _out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m, } from "exupery/dist/shorthands/implementation"
@@ -18,17 +18,17 @@ import * as t_marshall from "./marshall"
 import * as t_unmarshall from "./unmarshall"
 
 export const Schema_Tree = (
-    $: _in.Schema_Tree,
+    $: d_in.Schema_Tree,
     $p: {
         'path': _pi.List<string>,
     }
-): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return _pt.cc($, ($) => {
         switch ($[0]) {
             case 'schema': return _pt.ss($, ($) => {
                 const imports = $.imports
                 return m.set(
-                    _pt.dictionary_literal<_pi.Optional_Value<_out.Module_Set.D<_pi.Deprecated_Source_Location>>>({
+                    _pt.dictionary_literal<_pi.Optional_Value<d_out.Module_Set.D<_pi.Deprecated_Source_Location>>>({
                         // "migration boilerplate.ts": pa.set(_migration_boilerplate.Types($.types, {
                         //     'key': key,
                         //     'imports': $.imports,
@@ -68,7 +68,7 @@ export const Schema_Tree = (
                     }).filter(($) => $)
                 )
             })
-            case 'set': return _pt.ss($, ($): _out.Module_Set.D<_pi.Deprecated_Source_Location> => Schemas(
+            case 'set': return _pt.ss($, ($): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => Schemas(
                 $,
                 {
                     'path': $p.path,
@@ -80,11 +80,11 @@ export const Schema_Tree = (
 }
 
 export const Schemas = (
-    $: _in.Schemas,
+    $: d_in.Schemas,
     $p: {
         'path': _pi.List<string>,
     }
-): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.set($.dictionary.map(($, key) => Schema_Tree($, {
         'path': $p.path.append_element(key)
     })))

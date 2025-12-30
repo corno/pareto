@@ -5,8 +5,8 @@ import * as _pinternals from 'pareto-core-internals'
 //FIXME, this one should be moved to pareto-targets
 
 import * as _in_s from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as _in from "../../../../interface/generated/pareto/schemas/module/data_types/source"
-import * as _out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
+import * as d_in from "../../../../interface/generated/pareto/schemas/module/data_types/source"
+import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
 
 //transformations
 
@@ -20,7 +20,7 @@ import * as r_exupery_interface from "exupery/dist/implementation/generated/pare
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
 
-export const Module = ($: _in.Module): _out.Directory => {
+export const Module = ($: d_in.Module): d_out.Directory => {
     return t_interface_to_typescript_temp.Module_Set(r_exupery_interface.r_Module_Set(
         t_pareto_to_exupery_interface.Module($),
         {

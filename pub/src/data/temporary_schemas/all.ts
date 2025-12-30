@@ -24,10 +24,12 @@ import { $ as m_pareto_vscode_backend } from "./pareto-vscode-backend/module.ast
 
 import * as _psh from 'pareto-core-shorthands/dist/unconstrained' //should be unresolved_data I think
 
-export const $ = _psh.wrap_dictionary<{
+export type Module = {
     'target path': string,
     'module': g_.Module<_pi.Deprecated_Source_Location>
-}>({
+}
+
+export const $ = _psh.wrap_dictionary<Module>({
     "accounting_ruwe_data": {
         'target path': `../../../pareto-rosetta/accounting_ruwe_data`,
         'module': m_accounting_ruwe_data,

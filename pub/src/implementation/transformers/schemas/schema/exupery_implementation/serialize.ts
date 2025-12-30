@@ -2,8 +2,8 @@ import * as _pi from 'pareto-core-interface'
 import * as _pt from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
-import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as _out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as _out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
@@ -13,13 +13,13 @@ import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/imp
 
 
 export const Schema = (
-    $: _in.Schema,
+    $: d_in.Schema,
     $p: {
         'path': _pi.List<string>,
-        'imports': _in.Imports,
+        'imports': d_in.Imports,
         'constrained': boolean
     }
-): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
         op_flatten_dictionary(
             _pt.dictionary_literal({

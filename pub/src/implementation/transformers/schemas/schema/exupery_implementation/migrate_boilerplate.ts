@@ -2,8 +2,8 @@ import * as _pi from 'pareto-core-interface'
 import * as _pt from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
-import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as _out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as _out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
@@ -13,13 +13,13 @@ import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/imp
 
 
 export const Types = (
-    $: _in.Types,
+    $: d_in.Types,
     $p: {
         'key': string,
-        'imports': _in.Imports,
+        'imports': d_in.Imports,
         'constrained': boolean
     }
-): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
         op_flatten_dictionary(
             _pt.dictionary_literal({
@@ -53,12 +53,12 @@ export const Types = (
 }
 
 export const Type_Node = (
-    $: _in.Type_Node,
+    $: d_in.Type_Node,
     $p: {
         'type': string
         'subselection': _pi.List<_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>>
     },
-): _out.Initialization<_pi.Deprecated_Source_Location> => {
+): d_out.Initialization<_pi.Deprecated_Source_Location> => {
     return _pt.cc($, ($) => {
         switch ($[0]) {
             case 'number': return _pt.ss($, ($) => i.select_from_context([]))

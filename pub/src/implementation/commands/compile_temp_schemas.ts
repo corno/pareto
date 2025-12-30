@@ -1,13 +1,10 @@
 import * as _pc from 'pareto-core-command'
-import * as _pi from 'pareto-core-interface'
 import * as _pinternals from 'pareto-core-internals'
 
-//data
+import * as signatures from "../../interface/signatures"
 
-import { $ as poormans_modules } from "../../data/temporary_schemas/all"
-
-//interface
-
+//data types
+import * as d_main from "exupery-resources/dist/interface/to_be_generated/temp_main"
 export type Package_Error =
     | ['could not log', null]
     | ['could not remove interface', null]
@@ -18,8 +15,8 @@ export type Package_Error =
     | ['could not copy core interface', null]
 
 
-import * as resources_exupery from "exupery-resources/dist/interface/resources"
-import * as resources_fountain_pen from "../../modules/pareto-fountain-pen-directory/interface/resources"
+//data
+import { Module, $ as poormans_modules } from "../../data/temporary_schemas/all"
 
 //dependencies
 import * as r_pareto_module from "../temp/resolvers/module"
@@ -28,20 +25,7 @@ import * as t_pareto_module_to_fountain_pen_block__interface from "../transforme
 import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
 import * as ds_context_path from "exupery-resources/dist/implementation/deserializers/schemas/context_path"
 
-export type Procedure = _pi.Command_Procedure<
-    resources_exupery.commands.main,
-    {
-        'copy': resources_exupery.commands.copy
-        'log': resources_exupery.commands.log
-        'log error': resources_exupery.commands.log_error
-        'make directory': resources_exupery.commands.make_directory
-        'remove': resources_exupery.commands.remove
-        'write to directory': resources_fountain_pen.commands.write_to_directory
-    },
-    null
->
-
-export const $$: Procedure = _pc.create_command_procedure(
+export const $$: signatures.commands.compile_temp_schemas = _pc.create_command_procedure(
     ($p, $cr, $qr) => [
 
         $cr.log.execute(
@@ -53,7 +37,7 @@ export const $$: Procedure = _pc.create_command_procedure(
             })
         ),
 
-        _pc.dictionary.parallel(
+        _pc.dictionary.parallel<Module, d_main.Error, Package_Error>(
             poormans_modules,
             ($, key) => {
 
@@ -162,11 +146,11 @@ export const $$: Procedure = _pc.create_command_procedure(
                         {
                             'lines': _pinternals.list_literal([`generated package: ${key}`])
                         },
-                        ($): Package_Error => ['could not log', null]
+                        ($) => ['could not log', null]
                     ),
                 ]
             },
-            ($) => ({
+            ($):d_main.Error => ({
                 'exit code': 1
             })
         )

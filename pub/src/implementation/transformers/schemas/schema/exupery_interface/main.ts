@@ -1,8 +1,8 @@
 import * as _pt from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
-import * as _in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as _out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m } from "exupery/dist/shorthands/interface"
 
@@ -27,7 +27,7 @@ import * as t_value_serializers from "./value_serializers"
 //     'filter dictionary': operations.pure.dictionary.filter
 // }
 
-export const Schema = ($: _in.Schema): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+export const Schema = ($: d_in.Schema): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     const schema = $
     const constrained: boolean = _pt.cc($.complexity, ($) => {
         switch ($[0]) {
@@ -111,7 +111,7 @@ export const Schema = ($: _in.Schema): _out.Module_Set.D<_pi.Deprecated_Source_L
     })
 }
 
-export const Schema_Tree = ($: _in.Schema_Tree): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+export const Schema_Tree = ($: d_in.Schema_Tree): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return _pt.cc($, ($) => {
         switch ($[0]) {
             case 'schema': return _pt.ss($, ($) => Schema($))
@@ -122,7 +122,7 @@ export const Schema_Tree = ($: _in.Schema_Tree): _out.Module_Set.D<_pi.Deprecate
 }
 
 
-export const Schemas = ($: _in.Schemas): _out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+export const Schemas = ($: d_in.Schemas): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.set($.dictionary.map(($) => _pt.cc($, ($) => {
         switch ($[0]) {
             case 'schema': return _pt.ss($, ($) => Schema($))
