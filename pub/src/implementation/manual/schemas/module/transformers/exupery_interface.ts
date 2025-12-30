@@ -7,8 +7,8 @@ import * as d_in from "../../../../../interface/generated/pareto/schemas/module/
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m, t, type, import_ } from "exupery/dist/shorthands/interface"
-import * as t_exupery_interface_main from "../../../../manual/schemas/schema/transformers/exupery_interface/main"
-import * as t_exupery_interface_types from "../../../../manual/schemas/schema/transformers/exupery_interface/types"
+import * as t_exupery_interface_main from "../../../../manual/schemas/schema/transformers/exupery_interface_main"
+import * as t_exupery_interface_types from "../../../../manual/schemas/schema/transformers/exupery_interface_types"
 
 
 export const Operations = ($: d_in.Operations): d_out.Type<_pi.Deprecated_Source_Location> => {

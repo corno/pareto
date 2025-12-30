@@ -1,24 +1,24 @@
 import * as _pt from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
-import * as d_in from "../../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m } from "exupery/dist/shorthands/interface"
 
-import * as t_migrate_boilerplate from "./migrate_boilerplate"
-import * as t_resolve from "./resolve"
-import * as t_dummy_resolve from "./dummy_resolve"
-import * as t_types from "./types"
+import * as t_migrate_boilerplate from "./exupery_interface_migrate_boilerplate"
+import * as t_resolve from "./exupery_interface_resolve"
+import * as t_dummy_resolve from "./exupery_interface_dummy_resolve"
+import * as t_types from "./exupery_interface_types"
 
-import * as t_marshall from "./marshall"
-import * as t_unmarshall from "./unmarshall"
+import * as t_marshall from "./exupery_interface_marshall"
+import * as t_unmarshall from "./exupery_interface_unmarshall"
 
-import * as t_serialize from "./serialize"
-import * as t_deserialize from "./deserialize"
+import * as t_serialize from "./exupery_interface_serialize"
+import * as t_deserialize from "./exupery_interface_deserialize"
 
-import * as t_value_deserializers from "./value_deserializers"
-import * as t_value_serializers from "./value_serializers"
+import * as t_value_deserializers from "./exupery_interface_value_deserializers"
+import * as t_value_serializers from "./exupery_interface_value_serializers"
 
 
 // import * as operations from "pareto-standard-operations"

@@ -1,13 +1,13 @@
 import * as _pdev from 'pareto-core-dev'
 import * as _pi from 'pareto-core-interface'
 
-import * as d_in from "../../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m, t, import_, type, sub } from "exupery/dist/shorthands/interface"
 
-import * as _migration_boilerplate_interface from "./migrate_boilerplate"
-import * as _types from "./types"
+import * as _migration_boilerplate_interface from "./exupery_interface_migrate_boilerplate"
+import * as _types from "./exupery_interface_types"
 
 
 export const Signatures = (

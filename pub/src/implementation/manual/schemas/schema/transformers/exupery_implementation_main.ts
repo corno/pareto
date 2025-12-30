@@ -1,21 +1,21 @@
 import * as _pt from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
-import * as d_in from "../../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as _out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m, } from "exupery/dist/shorthands/implementation"
 
-import * as t_migration_boilerplate from "./migrate_boilerplate"
+import * as t_migration_boilerplate from "./exupery_implementation_migrate_boilerplate"
 
-import * as t_resolver from "./resolve"
+import * as t_resolver from "./exupery_implementation_resolve"
 
-import * as t_serialize from "./serialize"
-import * as t_deserialize from "./deserialize"
+import * as t_serialize from "./exupery_implementation_serialize"
+import * as t_deserialize from "./exupery_implementation_deserialize"
 
-import * as t_marshall from "./marshall"
-import * as t_unmarshall from "./unmarshall"
+import * as t_marshall from "./exupery_implementation_marshall"
+import * as t_unmarshall from "./exupery_implementation_unmarshall"
 
 export const Schema_Tree = (
     $: d_in.Schema_Tree,
