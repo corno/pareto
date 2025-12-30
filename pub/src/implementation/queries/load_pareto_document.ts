@@ -1,6 +1,5 @@
 //core
 import * as _pt from 'pareto-core-transformer'
-import * as _pi from 'pareto-core-interface'
 import * as _pq from 'pareto-core-query'
 import * as _pinternals from 'pareto-core-internals'
 
