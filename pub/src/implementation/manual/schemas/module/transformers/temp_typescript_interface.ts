@@ -10,7 +10,7 @@ import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/sche
 
 //transformations
 
-import * as t_interface_to_typescript_temp from "exupery/dist/implementation/transformers/schemas/interface/typescript_light"
+import * as t_interface_to_typescript_temp from "exupery/dist/implementation/manual/schemas/interface/transformers/typescript_light"
 
 import * as t_pareto_to_exupery_interface from "./exupery_interface"
 
