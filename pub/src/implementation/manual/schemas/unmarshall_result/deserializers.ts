@@ -32,7 +32,7 @@ import * as tu_dynamic_unmarshall from "../temp/transformers/unmarshall_astn_ast
 
 import * as r_parse from "astn/dist/implementation/manual/schemas/authoring_parse_tree/deserializers"
 
-import { $ as load_schema } from "../schema/deserializers"
+import { $ as load_schema } from "../schema/temp_astn_deserializers"
 
 //implementation
 
