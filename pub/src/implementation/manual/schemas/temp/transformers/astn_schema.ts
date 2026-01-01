@@ -1,5 +1,5 @@
 import * as _pdev from 'pareto-core-dev'
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
 import {
@@ -29,7 +29,7 @@ export const Globals: _pi.Transformer<d_in.Globals, d_out.Globals<_pi.Deprecated
     return {
         //FIXME!! merge the number types with the text types in here
         'text types': wrap_dictionary(op_flatten_dictionaries(
-            _pt.dictionary_literal({
+            _p.dictionary_literal({
                 "t": $['text types'].map(($) => {
                     return Text_Type($)
                 }),
@@ -42,7 +42,7 @@ export const Globals: _pi.Transformer<d_in.Globals, d_out.Globals<_pi.Deprecated
             {
                 'separator': "",
             },
-            () => _pt.unreachable_code_path(),
+            () => _p.unreachable_code_path(),
         )),
     }
 }
@@ -67,60 +67,60 @@ export const Type: _pi.Transformer<d_in.Type, d_out.Type<_pi.Deprecated_Source_L
 export const Type_Node: _pi.Transformer<d_in.Type_Node, d_out.Type_Node<_pi.Deprecated_Source_Location>> = (
     $
 ) => {
-    return wrap_state_group(_pt.cc($, ($): d_out.Type_Node.SG<_pi.Deprecated_Source_Location> => {
+    return wrap_state_group(_p.cc($, ($): d_out.Type_Node.SG<_pi.Deprecated_Source_Location> => {
         switch ($[0]) {
-            case 'number': return _pt.ss($, ($): d_out.Type_Node.SG<_pi.Deprecated_Source_Location> => ['text', wrap_state_group(_pt.cc($, ($): d_out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location> => {
+            case 'number': return _p.ss($, ($): d_out.Type_Node.SG<_pi.Deprecated_Source_Location> => ['text', wrap_state_group(_p.cc($, ($): d_out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location> => {
                 switch ($[0]) {
-                    case 'global': return _pt.ss($, ($) => ['global', wrap_reference("n" + $.key)])
-                    case 'local': return _pt.ss($, ($) => ['local', {
+                    case 'global': return _p.ss($, ($) => ['global', wrap_reference("n" + $.key)])
+                    case 'local': return _p.ss($, ($) => ['local', {
                         'type': wrap_state_group(['single line', null])
                     }])
-                    default: return _pt.au($[0])
+                    default: return _p.au($[0])
                 }
             }))]) //FIXME
-            case 'boolean': return _pt.ss($, ($) => ['text', wrap_state_group<d_out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location>>(['local', {
+            case 'boolean': return _p.ss($, ($) => ['text', wrap_state_group<d_out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location>>(['local', {
                 'type': wrap_state_group(['single line', null])
             }])])
-            case 'list': return _pt.ss($, ($) => ['list', {
+            case 'list': return _p.ss($, ($) => ['list', {
                 'node': Type_Node($.node)
             }])
-            case 'nothing': return _pt.ss($, ($) => ['nothing', null])
-            case 'reference': return _pt.ss($, ($) => ['reference', {
-                'type': wrap_state_group(_pt.cc($.type, ($) => {
+            case 'nothing': return _p.ss($, ($) => ['nothing', null])
+            case 'reference': return _p.ss($, ($) => ['reference', {
+                'type': wrap_state_group(_p.cc($.type, ($) => {
                     switch ($[0]) {
-                        case 'derived': return _pt.ss($, ($) => ['derived', null])
-                        case 'selected': return _pt.ss($, ($) => ['selected', null])
-                        default: return _pt.au($[0])
+                        case 'derived': return _p.ss($, ($) => ['derived', null])
+                        case 'selected': return _p.ss($, ($) => ['selected', null])
+                        default: return _p.au($[0])
                     }
                 }))
             }])
-            case 'component': return _pt.ss($, ($) => ['component', wrap_state_group(_pt.cc($, ($): d_out.Type_Node.SG.component.SG<_pi.Deprecated_Source_Location> => {
+            case 'component': return _p.ss($, ($) => ['component', wrap_state_group(_p.cc($, ($): d_out.Type_Node.SG.component.SG<_pi.Deprecated_Source_Location> => {
                 switch ($[0]) {
-                    case 'external': return _pt.ss($, ($) => ['external', {
+                    case 'external': return _p.ss($, ($) => ['external', {
                         'import': wrap_reference($.import.key),
                         'type': wrap_reference($.type.key)
                     }])
-                    case 'internal': return _pt.ss($, ($) => ['internal', wrap_reference($.key)])
-                    case 'internal cyclic': return _pt.ss($, ($) => ['internal cyclic', wrap_reference($.key)])
-                    default: return _pt.au($[0])
+                    case 'internal': return _p.ss($, ($) => ['internal', wrap_reference($.key)])
+                    case 'internal cyclic': return _p.ss($, ($) => ['internal cyclic', wrap_reference($.key)])
+                    default: return _p.au($[0])
                 }
             }))])
-            case 'dictionary': return _pt.ss($, ($) => ['dictionary', {
+            case 'dictionary': return _p.ss($, ($) => ['dictionary', {
                 'ordered': $.ordered,
                 'node': Type_Node($.node)
             }])
-            case 'group': return _pt.ss($, ($) => ['group', wrap_dictionary($.dictionary.map(($) => Type_Node($.node)))])
-            case 'optional': return _pt.ss($, ($) => ['optional', Type_Node($)])
-            case 'state group': return _pt.ss($, ($) => ['state group', wrap_dictionary($.map(($) => Type_Node($.node)))])
-            case 'text': return _pt.ss($, ($) => ['text', wrap_state_group(_pt.cc($, ($): d_out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location> => {
+            case 'group': return _p.ss($, ($) => ['group', wrap_dictionary($.dictionary.map(($) => Type_Node($.node)))])
+            case 'optional': return _p.ss($, ($) => ['optional', Type_Node($)])
+            case 'state group': return _p.ss($, ($) => ['state group', wrap_dictionary($.map(($) => Type_Node($.node)))])
+            case 'text': return _p.ss($, ($) => ['text', wrap_state_group(_p.cc($, ($): d_out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location> => {
                 switch ($[0]) {
-                    case 'global': return _pt.ss($, ($) => ['global', wrap_reference("t" + $.key)])
-                    case 'local': return _pt.ss($, ($) => ['local', Text_Type($)])
-                    default: return _pt.au($[0])
+                    case 'global': return _p.ss($, ($) => ['global', wrap_reference("t" + $.key)])
+                    case 'local': return _p.ss($, ($) => ['local', Text_Type($)])
+                    default: return _p.au($[0])
                 }
             }))])
-            // case 'type parameter': return _pt.ss($, ($) => _pdev.implement_me("xx"))
-            default: return _pt.au($[0])
+            // case 'type parameter': return _p.ss($, ($) => _pdev.implement_me("xx"))
+            default: return _p.au($[0])
         }
     }))
 }
@@ -129,11 +129,11 @@ export const Text_Type: _pi.Transformer<d_in.Text_Type, d_out.Text_Type<_pi.Depr
     $
 ) => {
     return {
-        'type': wrap_state_group(_pt.cc($.type, ($) => {
+        'type': wrap_state_group(_p.cc($.type, ($) => {
             switch ($[0]) {
-                case 'multi line': return _pt.ss($, ($) => ['multi line', null])
-                case 'single line': return _pt.ss($, ($) => ['single line', null])
-                default: return _pt.au($[0])
+                case 'multi line': return _p.ss($, ($) => ['multi line', null])
+                case 'single line': return _p.ss($, ($) => ['single line', null])
+                default: return _p.au($[0])
             }
         }))
     }

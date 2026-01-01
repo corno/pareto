@@ -1,4 +1,4 @@
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 import * as _psh from 'pareto-core-transformer/dist/deprecated_shorthands_for_unresolved'
 
@@ -13,11 +13,11 @@ import * as t_exupery_implementation_main from "../../../../manual/schemas/schem
 export const Module = ($: d_in.Module): d_out.Module_Set<_pi.Deprecated_Source_Location> => {
     return {
         'location': _psh.location(),
-        'dictionary': _pt.dictionary_literal<d_out.Module_Set.D<_pi.Deprecated_Source_Location>>({
+        'dictionary': _p.dictionary_literal<d_out.Module_Set.D<_pi.Deprecated_Source_Location>>({
             'schemas': t_exupery_implementation_main.Schema_Tree(
                 $['schema tree'],
                 {
-                    'path': _pt.list_literal([]),
+                    'path': _p.list_literal([]),
                 }
             )
         }).map(($) => ({

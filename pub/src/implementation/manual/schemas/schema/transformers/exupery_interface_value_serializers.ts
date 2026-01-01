@@ -1,4 +1,4 @@
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 import * as _pi from 'pareto-core-interface'
 
@@ -37,11 +37,11 @@ export const Schema = (
             "Value Serializers": sh.type({}, sh.t.group({
                 "default number": sh.t.function_({}, sh.t.integer(), {}, sh.t.string()),
                 "boolean": sh.t.function_({}, sh.t.boolean(), {}, sh.t.string()),
-                "custom numbers": sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, _pt.cc($.precision, ($) => {
+                "custom numbers": sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, _p.cc($.precision, ($) => {
                     switch ($[0]) {
-                        case 'approximation': return _pt.ss($, ($) => sh.t.float())
-                        case 'exact': return _pt.ss($, ($) => sh.t.integer())
-                        default: return _pt.au($[0])
+                        case 'approximation': return _p.ss($, ($) => sh.t.float())
+                        case 'exact': return _p.ss($, ($) => sh.t.integer())
+                        default: return _p.au($[0])
                     }
                 }), {}, sh.t.string())))
             })),

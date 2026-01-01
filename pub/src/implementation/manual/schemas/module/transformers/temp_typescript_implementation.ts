@@ -1,4 +1,4 @@
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 import * as _pinternals from 'pareto-core-internals'
 
 //FIXME, this one should be moved to pareto-targets

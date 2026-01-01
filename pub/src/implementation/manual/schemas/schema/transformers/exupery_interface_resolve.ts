@@ -1,5 +1,5 @@
 import * as _pdev from 'pareto-core-dev'
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
@@ -44,22 +44,22 @@ export const r_Type_Reference = (
     }
 ): d_out.Type<_pi.Deprecated_Source_Location> => {
 
-    return _pt.cc($.location, ($) => {
+    return _p.cc($.location, ($) => {
         switch ($[0]) {
-            case 'external': return _pt.ss($, ($) => t.component_imported(
+            case 'external': return _p.ss($, ($) => t.component_imported(
                 `imports ${$.import.key}`,
                 $.type.key,
                 {},
                 $p['component sub part'],
 
             ))
-            case 'internal': return _pt.ss($, ($) => t.component_imported(
+            case 'internal': return _p.ss($, ($) => t.component_imported(
                 "resolved",
                 $.key,
                 {},
                 $p['component sub part'],
             ))
-            default: return _pt.au($[0])
+            default: return _p.au($[0])
         }
     })
 }
@@ -75,14 +75,14 @@ export const r_Type_Part_Reference = (
         $: d_in.Type_Node_Reference.tail,
 
     ): _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> => {
-        const tail: _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.map(($) => _pt.cc($, ($) => {
+        const tail: _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.map(($) => _p.cc($, ($) => {
             switch ($[0]) {
-                case 'dictionary': return _pt.ss($, ($) => sub.dictionary())
-                case 'group': return _pt.ss($, ($) => sub.group($.key))
-                case 'list': return _pt.ss($, ($) => sub.list())
-                case 'optional': return _pt.ss($, ($) => sub.optional())
-                case 'state group': return _pt.ss($, ($) => sub.state_group($.key))
-                default: return _pt.au($[0])
+                case 'dictionary': return _p.ss($, ($) => sub.dictionary())
+                case 'group': return _p.ss($, ($) => sub.group($.key))
+                case 'list': return _p.ss($, ($) => sub.list())
+                case 'optional': return _p.ss($, ($) => sub.optional())
+                case 'state group': return _p.ss($, ($) => sub.state_group($.key))
+                default: return _p.au($[0])
             }
         }))
         return $p['add dictionary tail']
@@ -103,32 +103,32 @@ export const r_Signature_Parameters = (
 ): d_out.Type<_pi.Deprecated_Source_Location> => {
     return t.group({
         "values": t.group($.values.map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
-            const temp_2 = r_Type_Reference($['data type'], { 'component sub part': _pt.list_literal([]) })
+            const temp_2 = r_Type_Reference($['data type'], { 'component sub part': _p.list_literal([]) })
 
-            return _pt.cc($.presence, ($) => {
+            return _p.cc($.presence, ($) => {
                 switch ($[0]) {
                     case 'optional': return t.optional(temp_2)
                     case 'required': return temp_2
-                    default: return _pt.au($[0])
+                    default: return _p.au($[0])
                 }
             })
         })),
         "lookups": t.group($.lookups.map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
             const x = $.referent
-            return _pt.cc($.type, ($) => {
+            return _p.cc($.type, ($) => {
                 switch ($[0]) {
-                    case 'acyclic': return _pt.ss($, ($) => t.component_imported("resolve", "Acyclic Lookup", {
-                        "T": r_Type_Reference(x, { 'component sub part': _pt.list_literal([sub.dictionary()]) }),
+                    case 'acyclic': return _p.ss($, ($) => t.component_imported("resolve", "Acyclic Lookup", {
+                        "T": r_Type_Reference(x, { 'component sub part': _p.list_literal([sub.dictionary()]) }),
                     }, []))
-                    case 'cyclic': return _pt.ss($, ($) => t.component_imported("resolve", "Cyclic Lookup", {
-                        "T": r_Type_Reference(x, { 'component sub part': _pt.list_literal([sub.dictionary()]) }),
+                    case 'cyclic': return _p.ss($, ($) => t.component_imported("resolve", "Cyclic Lookup", {
+                        "T": r_Type_Reference(x, { 'component sub part': _p.list_literal([sub.dictionary()]) }),
 
                     }, []))
-                    case 'stack': return _pt.ss($, ($) => t.component_imported("resolve", "Lookup Stack", {
-                        "T": r_Type_Reference(x, { 'component sub part': _pt.list_literal([sub.dictionary()]) }),
+                    case 'stack': return _p.ss($, ($) => t.component_imported("resolve", "Lookup Stack", {
+                        "T": r_Type_Reference(x, { 'component sub part': _p.list_literal([sub.dictionary()]) }),
 
                     }, []))
-                    default: return _pt.au($[0])
+                    default: return _p.au($[0])
                 }
             })
         }))

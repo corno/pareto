@@ -1,4 +1,4 @@
-import * as _pds from 'pareto-core-deserializer'
+import * as _p from 'pareto-core-deserializer'
 import * as _pi from 'pareto-core-interface'
 import * as _pinternals from 'pareto-core-internals'
 

@@ -1,5 +1,5 @@
 import * as _pi from 'pareto-core-interface'
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
@@ -21,17 +21,17 @@ export const Schema = (
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
         op_flatten_dictionary(
-            _pt.dictionary_literal({
-                "": _pt.dictionary_literal({
-                    "signatures": import_.ancestor(5, "interface", _pt.list_literal([
-                        _pt.list_literal(["generated", "pareto", "schemas"]),
+            _p.dictionary_literal({
+                "": _p.dictionary_literal({
+                    "signatures": import_.ancestor(5, "interface", _p.list_literal([
+                        _p.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _pt.list_literal(["deserialize"]),
+                        _p.list_literal(["deserialize"]),
                     ]).flatten(($) => $), {}),
-                    "out": import_.ancestor(5, "interface", _pt.list_literal([
-                        _pt.list_literal(["generated", "pareto", "schemas"]),
+                    "out": import_.ancestor(5, "interface", _p.list_literal([
+                        _p.list_literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _pt.list_literal(["data types", "target"]),
+                        _p.list_literal(["data types", "target"]),
                     ]).flatten(($) => $), {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["deserialize"], {}))
@@ -39,7 +39,7 @@ export const Schema = (
             {
                 'separator': "",
             },
-            () => _pt.unreachable_code_path(),
+            () => _p.unreachable_code_path(),
         ),
         {},
         $.types.dictionary.map(($, key) => variable(

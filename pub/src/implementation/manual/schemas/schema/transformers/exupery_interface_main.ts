@@ -1,4 +1,4 @@
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
@@ -29,15 +29,15 @@ import * as t_value_serializers from "./exupery_interface_value_serializers"
 
 export const Schema = ($: d_in.Schema): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     const schema = $
-    const constrained: boolean = _pt.cc($.complexity, ($) => {
+    const constrained: boolean = _p.cc($.complexity, ($) => {
         switch ($[0]) {
-            case 'constrained': return _pt.ss($, ($) => true)
-            case 'unconstrained': return _pt.ss($, ($) => false)
-            default: return _pt.au($[0])
+            case 'constrained': return _p.ss($, ($) => true)
+            case 'unconstrained': return _p.ss($, ($) => false)
+            default: return _p.au($[0])
         }
     })
     return m.set({
-        "data types": m.set(_pt.dictionary_literal({
+        "data types": m.set(_p.dictionary_literal({
             "source.ts": t_types.Schema(
                 schema,
                 {
@@ -52,14 +52,14 @@ export const Schema = ($: d_in.Schema): d_out.Module_Set.D<_pi.Deprecated_Source
                     'imports': schema.imports,
                 }
             ),
-            "resolve.ts": _pt.cc($.complexity, ($) => {
+            "resolve.ts": _p.cc($.complexity, ($) => {
                 switch ($[0]) {
-                    case 'constrained': return _pt.ss($, ($) => t_resolve.Signatures(
+                    case 'constrained': return _p.ss($, ($) => t_resolve.Signatures(
                         $.signatures.types
                     ))
-                    case 'unconstrained': return _pt.ss($, ($) => t_dummy_resolve.Signatures(
+                    case 'unconstrained': return _p.ss($, ($) => t_dummy_resolve.Signatures(
                     ))
-                    default: return _pt.au($[0])
+                    default: return _p.au($[0])
                 }
             }),
         })),
@@ -112,22 +112,22 @@ export const Schema = ($: d_in.Schema): d_out.Module_Set.D<_pi.Deprecated_Source
 }
 
 export const Schema_Tree = ($: d_in.Schema_Tree): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
-    return _pt.cc($, ($) => {
+    return _p.cc($, ($) => {
         switch ($[0]) {
-            case 'schema': return _pt.ss($, ($) => Schema($))
-            case 'set': return _pt.ss($, ($) => Schemas($))
-            default: return _pt.au($[0])
+            case 'schema': return _p.ss($, ($) => Schema($))
+            case 'set': return _p.ss($, ($) => Schemas($))
+            default: return _p.au($[0])
         }
     })
 }
 
 
 export const Schemas = ($: d_in.Schemas): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
-    return m.set($.dictionary.map(($) => _pt.cc($, ($) => {
+    return m.set($.dictionary.map(($) => _p.cc($, ($) => {
         switch ($[0]) {
-            case 'schema': return _pt.ss($, ($) => Schema($))
-            case 'set': return _pt.ss($, ($) => Schemas($))
-            default: return _pt.au($[0])
+            case 'schema': return _p.ss($, ($) => Schema($))
+            case 'set': return _p.ss($, ($) => Schemas($))
+            default: return _p.au($[0])
         }
     })))
 }

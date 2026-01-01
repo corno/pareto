@@ -1,4 +1,4 @@
-import * as _pc from 'pareto-core-command'
+import * as _p from 'pareto-core-command'
 import * as _pinternals from 'pareto-core-internals'
 
 import * as signatures from "../../../interface/signatures"
@@ -25,7 +25,7 @@ import * as t_pareto_module_to_fountain_pen_block__interface from "../schemas/mo
 import * as t_path_to_path from "pareto-resources/dist/implementation/manual/schemas/path/transformers/path"
 import * as ds_context_path from "pareto-resources/dist/implementation/manual/schemas/context_path/deserializers"
 
-export const $$: signatures.commands.compile_temp_schemas = _pc.create_command_procedure(
+export const $$: signatures.commands.compile_temp_schemas = _p.create_command_procedure(
     ($p, $cr, $qr) => [
 
         $cr.log.execute(
@@ -37,7 +37,7 @@ export const $$: signatures.commands.compile_temp_schemas = _pc.create_command_p
             })
         ),
 
-        _pc.dictionary.parallel<Module, d_main.Error, Package_Error>(
+        _p.dictionary.parallel<Module, d_main.Error, Package_Error>(
             poormans_modules,
             ($, key) => {
 

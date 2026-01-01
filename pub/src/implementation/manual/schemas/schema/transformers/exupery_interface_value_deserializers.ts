@@ -1,5 +1,5 @@
 import * as _pdev from 'pareto-core-dev'
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
@@ -38,11 +38,11 @@ export const Schema = (
             "Value Deserializers": sh.type({}, sh.t.group({
                 "default number": sh.t.function_({}, sh.t.string(), {}, sh.t.integer()),
                 "boolean": sh.t.function_({}, sh.t.string(), {}, sh.t.boolean()),
-                "custom numbers": sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, sh.t.string(), {}, _pt.cc($.precision, ($) => {
+                "custom numbers": sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, sh.t.string(), {}, _p.cc($.precision, ($) => {
                     switch ($[0]) {
-                        case 'approximation': return _pt.ss($, ($) => sh.t.float())
-                        case 'exact': return _pt.ss($, ($) => sh.t.integer())
-                        default: return _pt.au($[0])
+                        case 'approximation': return _p.ss($, ($) => sh.t.float())
+                        case 'exact': return _p.ss($, ($) => sh.t.integer())
+                        default: return _p.au($[0])
                     }
                 }))))
             })),

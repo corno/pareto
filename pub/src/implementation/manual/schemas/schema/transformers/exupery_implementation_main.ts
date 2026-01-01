@@ -1,4 +1,4 @@
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
@@ -23,58 +23,58 @@ export const Schema_Tree = (
         'path': _pi.List<string>,
     }
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
-    return _pt.cc($, ($) => {
+    return _p.cc($, ($) => {
         switch ($[0]) {
-            case 'schema': return _pt.ss($, ($) => {
+            case 'schema': return _p.ss($, ($) => {
                 const imports = $.imports
                 return m.set(
-                    _pt.dictionary_literal<_pi.Optional_Value<d_out.Module_Set.D<_pi.Deprecated_Source_Location>>>({
+                    _p.dictionary_literal<_pi.Optional_Value<d_out.Module_Set.D<_pi.Deprecated_Source_Location>>>({
                         // "migration boilerplate.ts": pa.set(_migration_boilerplate.Types($.types, {
                         //     'key': key,
                         //     'imports': $.imports,
                         //     'constrained': $.complexity[0] === 'constrained'
                         // })),
 
-                        "resolve.ts": _pt.cc($.complexity, ($) => {
+                        "resolve.ts": _p.cc($.complexity, ($) => {
                             switch ($[0]) {
-                                case 'constrained': return _pt.ss($, ($) => _pt.set(t_resolver.Resolvers($.resolvers, {
+                                case 'constrained': return _p.ss($, ($) => _p.set(t_resolver.Resolvers($.resolvers, {
                                     'path': $p.path,
                                     'imports': imports
                                 })))
-                                case 'unconstrained': return _pt.ss($, ($) => _pt.not_set())
-                                default: return _pt.au($[0])
+                                case 'unconstrained': return _p.ss($, ($) => _p.not_set())
+                                default: return _p.au($[0])
                             }
                         }),
-                        "marshall.ts": _pt.set(t_marshall.Schema($, {
+                        "marshall.ts": _p.set(t_marshall.Schema($, {
                             'path': $p.path,
                             'imports': $.imports,
                             'constrained': $.complexity[0] === 'constrained'
                         })),
-                        "unmarshall.ts": _pt.set(t_unmarshall.Schema($, {
+                        "unmarshall.ts": _p.set(t_unmarshall.Schema($, {
                             'path': $p.path,
                             'imports': $.imports,
                             'constrained': $.complexity[0] === 'constrained'
                         })),
 
-                        "serialize.ts": _pt.set(t_serialize.Schema($, {
+                        "serialize.ts": _p.set(t_serialize.Schema($, {
                             'path': $p.path,
                             'imports': $.imports,
                             'constrained': $.complexity[0] === 'constrained'
                         })),
-                        "deserialize.ts": _pt.set(t_deserialize.Schema($, {
+                        "deserialize.ts": _p.set(t_deserialize.Schema($, {
                             'path': $p.path,
                             'imports': $.imports,
                         })),
                     }).filter(($) => $)
                 )
             })
-            case 'set': return _pt.ss($, ($): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => Schemas(
+            case 'set': return _p.ss($, ($): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => Schemas(
                 $,
                 {
                     'path': $p.path,
                 }
             ))
-            default: return _pt.au($[0])
+            default: return _p.au($[0])
         }
     })
 }

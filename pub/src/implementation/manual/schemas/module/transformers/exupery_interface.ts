@@ -1,4 +1,4 @@
-import * as _pt from 'pareto-core-transformer'
+import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 import * as _psh from 'pareto-core-transformer/dist/deprecated_shorthands_for_unresolved'
 
@@ -12,16 +12,16 @@ import * as t_exupery_interface_types from "../../../../manual/schemas/schema/tr
 
 
 export const Operations = ($: d_in.Operations): d_out.Type<_pi.Deprecated_Source_Location> => {
-    return t.group($.map(($) => _pt.cc($, ($) => {
+    return t.group($.map(($) => _p.cc($, ($) => {
         switch ($[0]) {
-            case 'operation': return _pt.ss($, ($) => t.function_(
+            case 'operation': return _p.ss($, ($) => t.function_(
                 $['type parameters'].map(($) => null),
                 t_exupery_interface_types.Type_Node($.context),
-                $.parameters.map(($) => _pt.cc($, ($) => t_exupery_interface_types.Type_Node($))),
+                $.parameters.map(($) => _p.cc($, ($) => t_exupery_interface_types.Type_Node($))),
                 t_exupery_interface_types.Type_Node($.result),
             ))
-            case 'set': return _pt.ss($, ($) => Operations($))
-            default: return _pt.au($[0])
+            case 'set': return _p.ss($, ($) => Operations($))
+            default: return _p.au($[0])
         }
     })))
 }

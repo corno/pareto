@@ -1,4 +1,4 @@
-import * as _pds from 'pareto-core-deserializer'
+import * as _p from 'pareto-core-deserializer'
 import * as _pi from 'pareto-core-interface'
 import * as _pdev from 'pareto-core-dev'
 import * as _pinternals from 'pareto-core-internals'
@@ -26,7 +26,7 @@ export const temp_pop_first_element = <T>($: _pi.List<T>): _pi.Optional_Value<El
     const arr = $
     return $.__get_element_at(0).map(
         ($) => ({
-            'rest': _pds.build_list(($i) => {
+            'rest': _p.build_list(($i) => {
                 let is_first = true
                 arr.__for_each(($) => {
                     if (!is_first) {

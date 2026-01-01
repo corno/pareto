@@ -1,5 +1,5 @@
 //core
-import * as _pc from 'pareto-core-command'
+import * as _p from 'pareto-core-command'
 import * as _pinternals from 'pareto-core-internals'
 
 import * as signatures from "../../../interface/signatures"
@@ -14,9 +14,9 @@ import * as t_m_module from "../../generated/pareto/schemas/module/marshall"
 import * as t_path_to_path from "pareto-resources/dist/implementation/manual/schemas/path/transformers/path"
 import * as s_serialize from "../../generated/pareto/generic/serialize"
 
-export const $$:  signatures.commands.serialize_schemas = _pc.create_command_procedure(
+export const $$:  signatures.commands.serialize_schemas = _p.create_command_procedure(
     ($p, $cr, $qr) => [
-        _pc.dictionary.parallel(
+        _p.dictionary.parallel(
             poormans_modules,
             ($, key) => [
 
