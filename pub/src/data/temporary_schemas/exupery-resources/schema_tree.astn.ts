@@ -4,13 +4,13 @@ import { st } from "../../../shorthands/schema"
 import * as g_ from "../../../interface/generated/pareto/schemas/schema/data_types/target"
 
 import { $ as m_copy } from "./schemas/copy/$.module.astn"
-import { $ as m_execute_any_procedure_executable } from "./schemas/execute_any_procedure_executable/$.module.astn"
+import { $ as m_execute_any_command_executable } from "./schemas/execute_any_command_executable/$.module.astn"
 import { $ as m_execute_any_query_executable } from "./schemas/execute_any_query_executable/$.module.astn"
-import { $ as m_execute_any_smelly_procedure_executable } from "./schemas/execute_any_smelly_procedure_executable/$.module.astn"
-import { $ as m_execute_procedure_executable } from "./schemas/execute_procedure_executable/$.module.astn"
+import { $ as m_execute_any_smelly_command_executable } from "./schemas/execute_any_smelly_command_executable/$.module.astn"
+import { $ as m_execute_command_executable } from "./schemas/execute_command_executable/$.module.astn"
 import { $ as m_execute_query_executable } from "./schemas/execute_query_executable/$.module.astn"
 import { $ as m_execute_query_executable_and_catch } from "./schemas/execute_query_executable_and_catch/$.module.astn"
-import { $ as m_execute_smelly_procedure_executable } from "./schemas/execute_smelly_procedure_executable/$.module.astn"
+import { $ as m_execute_smelly_command_executable } from "./schemas/execute_smelly_command_executable/$.module.astn"
 import { $ as m_get_instream_data } from "./schemas/get_instream_data/$.module.astn"
 import { $ as m_log } from "./schemas/log/$.module.astn"
 import { $ as m_log_error } from "./schemas/log_error/$.module.astn"
@@ -26,13 +26,13 @@ import { $ as m_write_to_stdout } from "./schemas/write_to_stdout/$.module.astn"
 
 export const $: g_.Schema_Tree<_pi.Deprecated_Source_Location> = st.set({
     "copy": m_copy,
-    "execute any procedure executable": m_execute_any_procedure_executable,
+    "execute any command executable": m_execute_any_command_executable,
     "execute any query executable": m_execute_any_query_executable,
-    "execute any smelly procedure executable": m_execute_any_smelly_procedure_executable,
-    "execute procedure executable": m_execute_procedure_executable,
+    "execute any smelly command executable": m_execute_any_smelly_command_executable,
+    "execute command executable": m_execute_command_executable,
     "execute query executable and catch": m_execute_query_executable_and_catch,
     "execute query executable": m_execute_query_executable,
-    "execute smelly procedure executable": m_execute_smelly_procedure_executable,
+    "execute smelly command executable": m_execute_smelly_command_executable,
     "get instream data": m_get_instream_data,
     "log error": m_log_error,
     "log": m_log,

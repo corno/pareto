@@ -1,5 +1,5 @@
 import * as d_lpd from "./load_pareto_document"
-import * as d_path from "exupery-resources/dist/interface/generated/pareto/schemas/path/data_types/source"
+import * as d_path from "pareto-resources/dist/interface/generated/pareto/schemas/path/data_types/source"
 import * as d_unmarshall_result from "./temp_unmashall_result"
 
 export type Result = d_unmarshall_result.Node

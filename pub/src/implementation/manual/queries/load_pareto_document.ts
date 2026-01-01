@@ -12,8 +12,8 @@ import * as d from "../../../interface/to_be_generated/load_pareto_document"
 //depencencies
 
 import { $$ as r_unmarshall_result } from "../schemas/unmarshall_result/deserializers"
-import { create_node_path } from "exupery-resources/dist/implementation/transformers/schemas/path/path"
-import * as s_path from "exupery-resources/dist/implementation/serializers/schemas/path"
+import { create_node_path } from "pareto-resources/dist/implementation/manual/schemas/path/transformers/path"
+import * as s_path from "pareto-resources/dist/implementation/manual/schemas/path/serializers"
 
 export const $$: signatures.queries.load_pareto_document = _pq.create_query_function(($p, $qr) => {
 
@@ -29,13 +29,13 @@ export const $$: signatures.queries.load_pareto_document = _pq.create_query_func
     ).refine_without_error_transformation(
         ($, abort) => r_unmarshall_result(
             $p.content,
+            ($) => abort(['schema error', {
+                'file location': schema_path_text,
+            }]),
             {
                 'schema content': $,
                 'schema path': schema_path_text,
             },
-            ($) => abort(['schema error', {
-                'file location': schema_path_text,
-            }]),
         ),
 
     )

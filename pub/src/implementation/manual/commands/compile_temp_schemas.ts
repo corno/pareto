@@ -4,7 +4,7 @@ import * as _pinternals from 'pareto-core-internals'
 import * as signatures from "../../../interface/signatures"
 
 //data types
-import * as d_main from "exupery-resources/dist/interface/to_be_generated/temp_main"
+import * as d_main from "pareto-resources/dist/interface/to_be_generated/temp_main"
 export type Package_Error =
     | ['could not log', null]
     | ['could not remove interface', null]
@@ -22,8 +22,8 @@ import { Module, $ as poormans_modules } from "../../../data/temporary_schemas/a
 import * as r_pareto_module from "../../temp/resolvers/module"
 import * as t_pareto_module_to_fountain_pen_block__implementation from "../schemas/module/transformers/temp_typescript_implementation"
 import * as t_pareto_module_to_fountain_pen_block__interface from "../schemas/module/transformers/temp_typescript_interface"
-import * as t_path_to_path from "exupery-resources/dist/implementation/transformers/schemas/path/path"
-import * as ds_context_path from "exupery-resources/dist/implementation/deserializers/schemas/context_path"
+import * as t_path_to_path from "pareto-resources/dist/implementation/manual/schemas/path/transformers/path"
+import * as ds_context_path from "pareto-resources/dist/implementation/manual/schemas/context_path/deserializers"
 
 export const $$: signatures.commands.compile_temp_schemas = _pc.create_command_procedure(
     ($p, $cr, $qr) => [

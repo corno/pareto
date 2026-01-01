@@ -36,7 +36,7 @@ import { $ as load_schema } from "../schema/deserializers"
 
 //implementation
 
-export const $$: _pi.Deserializer_With_Parameters<d_unmarshall_result_types.Node, d_load_pareto_document.Error, Parameters> = ($, $p, abort) => {
+export const $$: _pi.Deserializer_With_Parameters<d_unmarshall_result_types.Node, d_load_pareto_document.Error, Parameters> = ($, abort, $p) => {
     const x = load_schema(
         $p['schema content'],
         ($) => abort(['schema error', {
@@ -46,10 +46,10 @@ export const $$: _pi.Deserializer_With_Parameters<d_unmarshall_result_types.Node
 
     const x2 = r_parse.Document(
         $,
+        ($) => abort(['parse error', $]),
         {
             'tab size': 4,
         },
-        ($) => abort(['parse error', $])
     )
 
     const x3 = tu_dynamic_unmarshall.Node(
