@@ -1,5 +1,3 @@
-//core
-import * as _pt from 'pareto-core-transformer'
 import * as _p from 'pareto-core-query'
 import * as _pinternals from 'pareto-core-internals'
 

@@ -1,4 +1,3 @@
-import * as _pt from 'pareto-core-transformer'
 import * as _p from 'pareto-core-query'
 
 import * as signatures from "../../../interface/signatures"
