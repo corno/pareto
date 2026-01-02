@@ -12,7 +12,7 @@ export const $$: signatures.queries.load_pareto_file = _p.create_query_function(
     ($p, $qr) => $qr['read file'](
         $p['file path'],
         (): d.Error => ['no file', null]
-    ).query(
+    ).query_without_error_transformation(
         ($) => {
             return q_load_pareto_document(
                 {
@@ -26,6 +26,5 @@ export const $$: signatures.queries.load_pareto_file = _p.create_query_function(
                 ($): d.Error => ['document', $]
             )
         },
-        ($): d.Error => $
     )
 )
