@@ -3,7 +3,6 @@ import * as _pinternals from 'pareto-core-internals'
 
 //FIXME, this one should be moved to pareto-targets
 
-import * as _in_s from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as d_in from "../../../../../interface/generated/pareto/schemas/module/data_types/source"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
 

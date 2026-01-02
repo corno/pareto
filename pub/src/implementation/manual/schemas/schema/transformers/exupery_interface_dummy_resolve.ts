@@ -6,8 +6,8 @@ import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interfac
 
 import { m, t, import_, type, sub } from "exupery/dist/shorthands/interface"
 
-import * as _migration_boilerplate_interface from "./exupery_interface_migrate_boilerplate"
-import * as _types from "./exupery_interface_types"
+import * as t_migration_boilerplate_interface from "./exupery_interface_migrate_boilerplate"
+import * as t_types from "./exupery_interface_types"
 
 
 export const Signatures = (

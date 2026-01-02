@@ -3,7 +3,7 @@ import * as _pi from 'pareto-core-interface'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
-import * as _out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
+import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m, } from "exupery/dist/shorthands/implementation"
 

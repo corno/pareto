@@ -7,7 +7,7 @@ import { $ as m_antlr } from "./antlr/module.astn"
 import { $ as m_astn } from "./astn/module.astn"
 import { $ as m_astn_to_xml } from "./astn-to-xml/module.astn"
 import { $ as m_exupery } from "./exupery/module.astn"
-import { $ as m_exupery_resources } from "./exupery-resources/module.astn"
+import { $ as m_pareto_resources } from "./pareto-resources/module.astn"
 import { $ as m_git } from "./git/module.astn"
 import { $ as m_json_to_astn } from "./json-to-astn/module.astn"
 import { $ as m_pareto } from "./pareto/module.astn"
@@ -50,9 +50,9 @@ export const $ = _psh.wrap_dictionary<Module>({
         'target path': `../exupery`,
         'module': m_exupery,
     },
-    "exupery-resources": {
-        'target path': `../exupery-resources`,
-        'module': m_exupery_resources,
+    "pareto-resources": {
+        'target path': `../pareto-resources`,
+        'module': m_pareto_resources,
     },
     "json-to-astn": {
         'target path': `../../../pareto-rosetta/json-to-astn`,

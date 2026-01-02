@@ -2,7 +2,7 @@ import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_in from "../../../../../interface/to_be_generated/temp_unmashall_result"
-import * as _in_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
+import * as d_in_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
 import * as d_out from "../../../../../interface/generated/pareto/schemas/unmarshall_errors/data_types/target"
 
 export const Optional_Node = (
@@ -18,7 +18,7 @@ export const Optional_Node = (
 export const Group_Content = (
     $: d_in.Group_Content,
     $p: {
-        'group range': _in_token.Range
+        'group range': d_in_token.Range
     }
 ): d_out.Errors => {
     return _p.list_literal([

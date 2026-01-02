@@ -1,16 +1,14 @@
 import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 import * as _pdev from 'pareto-core-dev'
-import * as _pinternals from 'pareto-core-internals'
 
-import * as definition from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-
+import * as d_definition from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as d_in from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
-import * as _in_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
+import * as d_in_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
+import * as d_out from "../../../../../interface/to_be_generated/temp_unmashall_result"
 
 import * as t_ast_to_range from "astn/dist/implementation/manual/schemas/authoring_parse_tree/transformers/token"
 
-import * as d_out from "../../../../../interface/to_be_generated/temp_unmashall_result"
 
 import { $$ as op_expect_exactly_one_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/expect_exactly_one_element"
 
@@ -23,7 +21,7 @@ const op_group = <T>(
 export const Optional_Node = (
     $: _pi.Optional_Value<d_in.Value>,
     $p: {
-        'definition': definition.Type_Node,
+        'definition': d_definition.Type_Node,
     }
 ): d_out.Optional_Node => {
     return $.map(
@@ -34,8 +32,8 @@ export const Optional_Node = (
 export const Node_Type = (
     $: d_in.Concrete_Value,
     $p: {
-        'definition': definition.Type_Node,
-        'range': _in_token.Range,
+        'definition': d_definition.Type_Node,
+        'range': d_in_token.Range,
         'temp value': d_in.Value,
     }
 ): d_out.Node_Type => {
@@ -259,7 +257,7 @@ export const Node_Type = (
                                             'value': $
                                         }
                                     }))
-                                    const range: _in_token.Range = _p.cc($, ($) => {
+                                    const range: d_in_token.Range = _p.cc($, ($) => {
                                         switch ($[0]) {
                                             case 'dictionary': return _p.ss($, ($) => $['{'].range)
                                             case 'verbose group': return _p.ss($, ($) => $['('].range)
@@ -477,7 +475,7 @@ export const Node_Type = (
 export const Node = (
     $: d_in.Value,
     $p: {
-        'definition': definition.Type_Node,
+        'definition': d_definition.Type_Node,
     }
 ): d_out.Node => {
     const datax = $

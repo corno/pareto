@@ -4,7 +4,7 @@ import * as _pdev from 'pareto-core-dev'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
-import * as _out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
+import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
 import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"
@@ -68,7 +68,7 @@ export const Type_Node = (
     $: d_in.Type_Node,
     $p: {
         'temp type': string
-        'temp subselection': _pi.List<_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> //can be removed when exupery has type inference
+        'temp subselection': _pi.List<d_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> //can be removed when exupery has type inference
         'constrained': boolean
     },
 ): d_out.Initialization<_pi.Deprecated_Source_Location> => {
