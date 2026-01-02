@@ -1,5 +1,4 @@
 import * as _p from 'pareto-core-query'
-import * as _pinternals from 'pareto-core-internals'
 
 //interface
 import * as signatures from "../../../interface/signatures"
