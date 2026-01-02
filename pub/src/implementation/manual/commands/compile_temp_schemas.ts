@@ -25,7 +25,7 @@ import * as t_pareto_module_to_fountain_pen_block__interface from "../schemas/mo
 import * as t_path_to_path from "pareto-resources/dist/implementation/manual/schemas/path/transformers/path"
 import * as ds_context_path from "pareto-resources/dist/implementation/manual/schemas/context_path/deserializers"
 
-export const $$: signatures.commands.compile_temp_schemas = _p.create_command_procedure(
+export const $$: signatures.commands.compile_temp_schemas = _p.command_procedure(
     ($p, $cr, $qr) => [
 
         $cr.log.execute(

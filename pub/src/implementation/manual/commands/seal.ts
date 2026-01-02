@@ -3,7 +3,7 @@ import * as _pinternals from 'pareto-core-internals'
 
 import * as signatures from "../../../interface/signatures"
 
-export const $$: signatures.commands.seal = _p.create_command_procedure(
+export const $$: signatures.commands.seal = _p.command_procedure(
     ($p, $cr, $qr) => [
         $cr['log error'].execute(
             {

@@ -13,7 +13,7 @@ import { $$ as r_unmarshall_result } from "../schemas/unmarshall_result/deserial
 import { create_node_path } from "pareto-resources/dist/implementation/manual/schemas/path/transformers/path"
 import * as s_path from "pareto-resources/dist/implementation/manual/schemas/path/serializers"
 
-export const $$: signatures.queries.load_pareto_document = _p.create_query_function(($p, $qr) => {
+export const $$: signatures.queries.load_pareto_document = _p.query_function(($p, $qr) => {
 
     const schema_path = create_node_path($p['file path'].context, "astn-schema")
 
