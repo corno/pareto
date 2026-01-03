@@ -12,8 +12,13 @@ import * as t_ast_to_range from "astn/dist/implementation/manual/schemas/authori
 
 import { $$ as op_expect_exactly_one_element } from "pareto-standard-operations/dist/implementation/operations/impure/list/expect_exactly_one_element"
 
+type Key_Value_Pair<T> = {
+    'key': string,
+    'value': T,
+}
+
 const op_group = <T>(
-    $: _pi.List<_pi.Deprecated_Key_Value_Pair<T>>,
+    $: _pi.List<Key_Value_Pair<T>>,
 ): _pi.Dictionary<_pi.List<T>> => {
     return _p.dictionary.group_list($, ($) => $.key).map(($) => $.map(($) => $.value))
 }
