@@ -15,7 +15,7 @@ import { $$ as op_expect_exactly_one_element } from "pareto-standard-operations/
 const op_group = <T>(
     $: _pi.List<_pi.Deprecated_Key_Value_Pair<T>>,
 ): _pi.Dictionary<_pi.List<T>> => {
-    return _p.group_list($, ($) => $.key).map(($) => $.map(($) => $.value))
+    return _p.dictionary.group_list($, ($) => $.key).map(($) => $.map(($) => $.value))
 }
 
 export const Optional_Node = (
@@ -272,7 +272,7 @@ export const Node_Type = (
                                         'supporting': _pi.Optional_Value<Supporting>
                                     }> => $.map(($, key) => ({
                                         'context': $,
-                                        'supporting': $p['supporting dictionary'].get_entry(
+                                        'supporting': $p['supporting dictionary'].get_possible_entry(
                                             key,
                                         ),
                                     }))
@@ -286,8 +286,8 @@ export const Node_Type = (
                                                 }
                                             ).filter(($) => {
                                                 return $.supporting.transform( //drop all the ones for which there is a definition
-                                                    ($) => _p.not_set(),
-                                                    () => _p.set($.context)
+                                                    ($) => _p.optional.not_set(),
+                                                    () => _p.optional.set($.context)
                                                 )
                                             }).map(($) => $.map(($) => $.key.range)), //select the locations
                                             'properties': op_dictionary_merge(
@@ -375,7 +375,7 @@ export const Node_Type = (
                                                     const value = $.value
                                                     return ['set', {
                                                         'value': $,
-                                                        'found state definition': def.get_entry($.state.value).map(
+                                                        'found state definition': def.get_possible_entry($.state.value).map(
                                                             ($) => ({
                                                                 'definition': $,
                                                                 'node': Node(
@@ -412,7 +412,7 @@ export const Node_Type = (
                             //     if (elements.__get_length() > 2) {
                             //         return ['more than 2 elements', range]
                             //     }
-                            //     const first = elements.__get_element_at(0)
+                            //     const first = elements.__get_possible_element_at(0)
                             //     return first.transform<d_out.State_Status>(
                             //         ($) => {
                             //             if ($.value.type[0] !== 'string') {
@@ -420,7 +420,7 @@ export const Node_Type = (
                             //             }
                             //             const state_name = $.value.type[1].value
                             //             const state_name_range = $.value.type[1].range
-                            //             return elements.__get_element_at(1).transform<d_out.State_Status>(
+                            //             return elements.__get_possible_element_at(1).transform<d_out.State_Status>(
                             //                 ($) => {
                             //                     const value = $.value
                             //                     return def.get_entry(state_name).transform<d_out.State_Status>(

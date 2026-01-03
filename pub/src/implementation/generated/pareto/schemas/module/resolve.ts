@@ -1,7 +1,8 @@
 import * as _ea from 'pareto-core-refiner'
 import * as _ed from 'pareto-core-dev'
 
-import * as _i_generic from "../../generic/resolve"
+import * as _i_resolve from 'pareto-core-refiner/dist/resolve'
+import * as _i_generic from 'pareto-core-refiner/dist/resolve'
 import * as _i_out from "../../../../../interface/generated/pareto/schemas/module/data_types/source"
 import * as _i_r_schema from "../schema/resolve"
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/module/data_types/resolve"
@@ -17,7 +18,7 @@ export const r_Module: _i_signatures._T_Module = ($, $p) => _ea.block(() => {
                 'location 2 string': l2s,
                 'parameters': ({
                     'lookups': ({
-                        'sibling schemas': _ea.list_literal([
+                        'sibling schemas': _ea.list.literal([
                         ]),
                     }),
                     'values': null,
@@ -69,12 +70,12 @@ export const r_Operations: _i_signatures._T_Operations = ($, $p) => _ea.block(()
                                             'location 2 string': l2s,
                                             'parameters': ({
                                                 'lookups': ({
-                                                    'noncircular sibling types': _ea.not_set(),
-                                                    'possibly circular dependent sibling types': _ea.not_set(),
+                                                    'noncircular sibling types': _ea.optional.not_set(),
+                                                    'possibly circular dependent sibling types': _ea.optional.not_set(),
                                                 }),
                                                 'values': ({
-                                                    'globals': _ea.not_set(),
-                                                    'imports': _ea.not_set(),
+                                                    'globals': _ea.optional.not_set(),
+                                                    'imports': _ea.optional.not_set(),
                                                     'type parameters': p_type_parameters,
                                                 }),
                                             }),
@@ -92,12 +93,12 @@ export const r_Operations: _i_signatures._T_Operations = ($, $p) => _ea.block(()
                                                             'location 2 string': l2s,
                                                             'parameters': ({
                                                                 'lookups': ({
-                                                                    'noncircular sibling types': _ea.not_set(),
-                                                                    'possibly circular dependent sibling types': _ea.not_set(),
+                                                                    'noncircular sibling types': _ea.optional.not_set(),
+                                                                    'possibly circular dependent sibling types': _ea.optional.not_set(),
                                                                 }),
                                                                 'values': ({
-                                                                    'globals': _ea.not_set(),
-                                                                    'imports': _ea.not_set(),
+                                                                    'globals': _ea.optional.not_set(),
+                                                                    'imports': _ea.optional.not_set(),
                                                                     'type parameters': p_type_parameters,
                                                                 }),
                                                             }),
@@ -113,12 +114,12 @@ export const r_Operations: _i_signatures._T_Operations = ($, $p) => _ea.block(()
                                             'location 2 string': l2s,
                                             'parameters': ({
                                                 'lookups': ({
-                                                    'noncircular sibling types': _ea.not_set(),
-                                                    'possibly circular dependent sibling types': _ea.not_set(),
+                                                    'noncircular sibling types': _ea.optional.not_set(),
+                                                    'possibly circular dependent sibling types': _ea.optional.not_set(),
                                                 }),
                                                 'values': ({
-                                                    'globals': _ea.not_set(),
-                                                    'imports': _ea.not_set(),
+                                                    'globals': _ea.optional.not_set(),
+                                                    'imports': _ea.optional.not_set(),
                                                     'type parameters': p_type_parameters,
                                                 }),
                                             }),

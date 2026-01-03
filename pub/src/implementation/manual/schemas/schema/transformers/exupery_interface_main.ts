@@ -37,7 +37,7 @@ export const Schema = ($: d_in.Schema): d_out.Module_Set.D<_pi.Deprecated_Source
         }
     })
     return m.set({
-        "data types": m.set(_p.dictionary_literal({
+        "data types": m.set(_p.dictionary.literal({
             "source.ts": t_types.Schema(
                 schema,
                 {

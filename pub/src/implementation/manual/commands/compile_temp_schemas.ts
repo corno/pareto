@@ -30,14 +30,14 @@ export const $$: signatures.commands.compile_temp_schemas = _p.command_procedure
 
         $cr.log.execute(
             {
-                'lines': _pinternals.list_literal([`generating...`])
+                'lines': _p.list.literal([`generating...`])
             },
             ($) => ({
                 'exit code': 1
             })
         ),
 
-        _p.dictionary.parallel<Module, d_main.Error, Package_Error>(
+        _p.dictionaryx.parallel<Module, d_main.Error, Package_Error>(
             poormans_modules,
             ($, key) => {
 
@@ -118,9 +118,9 @@ export const $$: signatures.commands.compile_temp_schemas = _p.command_procedure
                             'source': t_path_to_path.create_node_path(ds_context_path.Context_Path(`./pub/src/implementation/generated/pareto`), `generic`),
                             'target': t_path_to_path.extend_node_path(implementation_module_path, { 'addition': `generic` }),
                             'options': {
-                                'recursive': _pinternals.set(true),
-                                'force': _pinternals.not_set(),
-                                'errorOnExist': _pinternals.not_set(),
+                                'recursive': _p.optional.set(true),
+                                'force': _p.optional.not_set(),
+                                'errorOnExist': _p.optional.not_set(),
                             }
                         },
                         ($) => ['could not copy generic implementation', null]
@@ -132,9 +132,9 @@ export const $$: signatures.commands.compile_temp_schemas = _p.command_procedure
                             'source': t_path_to_path.create_node_path(ds_context_path.Context_Path(`./pub/src/interface/generated/pareto`), `core`),
                             'target': t_path_to_path.extend_node_path(interface_module_path, { 'addition': `core` }),
                             'options': {
-                                'recursive': _pinternals.set(true),
-                                'force': _pinternals.not_set(),
-                                'errorOnExist': _pinternals.not_set(),
+                                'recursive': _p.optional.set(true),
+                                'force': _p.optional.not_set(),
+                                'errorOnExist': _p.optional.not_set(),
                             }
                         },
                         ($) => ['could not copy core interface', null]
@@ -144,7 +144,7 @@ export const $$: signatures.commands.compile_temp_schemas = _p.command_procedure
                     //log
                     $cr.log.execute(
                         {
-                            'lines': _pinternals.list_literal([`generated package: ${key}`])
+                            'lines': _p.list.literal([`generated package: ${key}`])
                         },
                         ($) => ['could not log', null]
                     ),

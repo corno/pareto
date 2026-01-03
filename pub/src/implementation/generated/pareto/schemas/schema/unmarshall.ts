@@ -69,7 +69,7 @@ export const Constraint: _i_signatures._T_Constraint = ($, $p) => _i_generic.pro
             ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'optional value': ($): _i_out._T_Constraint._type.SG<_i_in_token._T_Range> => ['optional value', _i_generic.process_group(
                             $,
                             {
@@ -158,7 +158,7 @@ export const Globals: _i_signatures._T_Globals = ($, $p) => _i_generic.process_g
             ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'constrained': ($): _i_out._T_Globals.complexity.SG<_i_in_token._T_Range> => ['constrained', _i_generic.process_nothing(
                             $,
                             null
@@ -263,11 +263,11 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
             ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'constraint': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in_token._T_Range> => ['constraint', _i_generic.process_unresolved_state_group(
                             $,
                             {
-                                'states': _pa.dictionary_literal({
+                                'states': _pa.dictionary.literal({
                                     'component': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.constraint.SG<_i_in_token._T_Range> => ['component', _i_generic.process_group(
                                         $,
                                         {
@@ -344,7 +344,7 @@ export const Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Selec
                         'result': ($): _i_out._T_Guaranteed_Value_Selection.start.SG<_i_in_token._T_Range> => ['result', _i_generic.process_unresolved_state_group(
                             $,
                             {
-                                'states': _pa.dictionary_literal({
+                                'states': _pa.dictionary.literal({
                                     'list': ($): _i_out._T_Guaranteed_Value_Selection.start.SG.result.SG<_i_in_token._T_Range> => ['list', _i_generic.process_group(
                                         $,
                                         {
@@ -517,7 +517,7 @@ export const Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => _i
             ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'dictionary': ($): _i_out._T_Lookup_Selection._type.SG<_i_in_token._T_Range> => ['dictionary', _i_generic.process_group(
                             $,
                             {
@@ -566,7 +566,7 @@ export const Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => _i
 export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_generic.process_unresolved_state_group(
     $,
     {
-        'states': _pa.dictionary_literal({
+        'states': _pa.dictionary.literal({
             'boolean': ($): _i_out._T_Node_Resolver.SG<_i_in_token._T_Range> => ['boolean', _i_generic.process_nothing(
                 $,
                 null
@@ -601,7 +601,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                                             'value': ($) => _i_generic.process_unresolved_state_group(
                                                                 $,
                                                                 {
-                                                                    'states': _pa.dictionary_literal({
+                                                                    'states': _pa.dictionary.literal({
                                                                         'empty stack': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG<_i_in_token._T_Range> => ['empty stack', _i_generic.process_nothing(
                                                                             $,
                                                                             null
@@ -666,7 +666,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                                                             'value': ($) => _i_generic.process_unresolved_state_group(
                                                                 $,
                                                                 {
-                                                                    'states': _pa.dictionary_literal({
+                                                                    'states': _pa.dictionary.literal({
                                                                         'optional': ($): _i_out._T_Node_Resolver.SG.component._arguments.O.values.O.D.SG<_i_in_token._T_Range> => ['optional', Optional_Value_Initialization(
                                                                             $,
                                                                             {
@@ -714,7 +714,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                         ), ($) => _i_generic.process_unresolved_state_group(
                             $,
                             {
-                                'states': _pa.dictionary_literal({
+                                'states': _pa.dictionary.literal({
                                     'external': ($): _i_out._T_Node_Resolver.SG.component.location.SG<_i_in_token._T_Range> => ['external', _i_generic.process_group(
                                         $,
                                         {
@@ -909,7 +909,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _i_gener
                         ), ($) => _i_generic.process_unresolved_state_group(
                             $,
                             {
-                                'states': _pa.dictionary_literal({
+                                'states': _pa.dictionary.literal({
                                     'derived': ($): _i_out._T_Node_Resolver.SG.reference._type.SG<_i_in_token._T_Range> => ['derived', _i_generic.process_group(
                                         $,
                                         {
@@ -1084,7 +1084,7 @@ export const Number_Type: _i_signatures._T_Number_Type = ($, $p) => _i_generic.p
             ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'approximation': ($): _i_out._T_Number_Type.precision.SG<_i_in_token._T_Range> => ['approximation', _i_generic.process_group(
                             $,
                             {
@@ -1131,7 +1131,7 @@ export const Number_Type: _i_signatures._T_Number_Type = ($, $p) => _i_generic.p
                                     ), ($) => _i_generic.process_unresolved_state_group(
                                         $,
                                         {
-                                            'states': _pa.dictionary_literal({
+                                            'states': _pa.dictionary.literal({
                                                 'integer': ($): _i_out._T_Number_Type.precision.SG.exact._type.SG<_i_in_token._T_Range> => ['integer', _i_generic.process_nothing(
                                                     $,
                                                     null
@@ -1162,7 +1162,7 @@ export const Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p) =
         'value': ($) => _i_generic.process_unresolved_state_group(
             $,
             {
-                'states': _pa.dictionary_literal({
+                'states': _pa.dictionary.literal({
                     'assert is set': ($): _i_out._T_Option_Constraints.D.SG<_i_in_token._T_Range> => ['assert is set', Possible_Value_Selection(
                         $,
                         {
@@ -1213,7 +1213,7 @@ export const Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p) =
 export const Optional_Value_Initialization: _i_signatures._T_Optional_Value_Initialization = ($, $p) => _i_generic.process_unresolved_state_group(
     $,
     {
-        'states': _pa.dictionary_literal({
+        'states': _pa.dictionary.literal({
             'not set': ($): _i_out._T_Optional_Value_Initialization.SG<_i_in_token._T_Range> => ['not set', _i_generic.process_nothing(
                 $,
                 null
@@ -1236,7 +1236,7 @@ export const Optional_Value_Initialization: _i_signatures._T_Optional_Value_Init
 export const Possible_Value_Selection: _i_signatures._T_Possible_Value_Selection = ($, $p) => _i_generic.process_unresolved_state_group(
     $,
     {
-        'states': _pa.dictionary_literal({
+        'states': _pa.dictionary.literal({
             'parameter': ($): _i_out._T_Possible_Value_Selection.SG<_i_in_token._T_Range> => ['parameter', _i_generic.process_selected_reference(
                 $,
                 null
@@ -1244,7 +1244,7 @@ export const Possible_Value_Selection: _i_signatures._T_Possible_Value_Selection
             'result': ($): _i_out._T_Possible_Value_Selection.SG<_i_in_token._T_Range> => ['result', _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'optional value': ($): _i_out._T_Possible_Value_Selection.SG.result.SG<_i_in_token._T_Range> => ['optional value', _i_generic.process_group(
                             $,
                             {
@@ -1326,7 +1326,7 @@ export const Possible_Value_Selection: _i_signatures._T_Possible_Value_Selection
 export const Presence: _i_signatures._T_Presence = ($, $p) => _i_generic.process_unresolved_state_group(
     $,
     {
-        'states': _pa.dictionary_literal({
+        'states': _pa.dictionary.literal({
             'optional': ($): _i_out._T_Presence.SG<_i_in_token._T_Range> => ['optional', _i_generic.process_nothing(
                 $,
                 null
@@ -1361,7 +1361,7 @@ export const Property_Constraint: _i_signatures._T_Property_Constraint = ($, $p)
             ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'property': ($): _i_out._T_Property_Constraint.start.SG<_i_in_token._T_Range> => ['property', _i_generic.process_nothing(
                             $,
                             null
@@ -1408,7 +1408,7 @@ export const Relative_Value_Selection: _i_signatures._T_Relative_Value_Selection
                     'value': ($) => _i_generic.process_unresolved_state_group(
                         $,
                         {
-                            'states': _pa.dictionary_literal({
+                            'states': _pa.dictionary.literal({
                                 'component': ($): _i_out._T_Relative_Value_Selection.path.L.SG<_i_in_token._T_Range> => ['component', _i_generic.process_nothing(
                                     $,
                                     null
@@ -1535,7 +1535,7 @@ export const Schema: _i_signatures._T_Schema = ($, $p) => _i_generic.process_gro
             ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'constrained': ($): _i_out._T_Schema.complexity.SG<_i_in_token._T_Range> => ['constrained', Resolve_Logic(
                             $,
                             {
@@ -1588,7 +1588,7 @@ export const Schema: _i_signatures._T_Schema = ($, $p) => _i_generic.process_gro
 export const Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => _i_generic.process_unresolved_state_group(
     $,
     {
-        'states': _pa.dictionary_literal({
+        'states': _pa.dictionary.literal({
             'schema': ($): _i_out._T_Schema_Tree.SG<_i_in_token._T_Range> => ['schema', Schema(
                 $,
                 {
@@ -1627,7 +1627,7 @@ export const Signature: _i_signatures._T_Signature = ($, $p) => _i_generic.proce
             ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'local': ($): _i_out._T_Signature.parameters.SG<_i_in_token._T_Range> => ['local', Signature_Parameters(
                             $,
                             {
@@ -1717,7 +1717,7 @@ export const Signature_Parameters: _i_signatures._T_Signature_Parameters = ($, $
                                 ), ($) => _i_generic.process_unresolved_state_group(
                                     $,
                                     {
-                                        'states': _pa.dictionary_literal({
+                                        'states': _pa.dictionary.literal({
                                             'acyclic': ($): _i_out._T_Signature_Parameters.lookups.D._type.SG<_i_in_token._T_Range> => ['acyclic', _i_generic.process_nothing(
                                                 $,
                                                 null
@@ -1803,7 +1803,7 @@ export const Text_Type: _i_signatures._T_Text_Type = ($, $p) => _i_generic.proce
             ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'multi line': ($): _i_out._T_Text_Type._type.SG<_i_in_token._T_Range> => ['multi line', _i_generic.process_nothing(
                             $,
                             null
@@ -1850,7 +1850,7 @@ export const Type: _i_signatures._T_Type = ($, $p) => _i_generic.process_group(
 export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.process_unresolved_state_group(
     $,
     {
-        'states': _pa.dictionary_literal({
+        'states': _pa.dictionary.literal({
             'boolean': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['boolean', _i_generic.process_nothing(
                 $,
                 null
@@ -1858,7 +1858,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
             'component': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['component', _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'external': ($): _i_out._T_Type_Node.SG.component.SG<_i_in_token._T_Range> => ['external', _i_generic.process_group(
                             $,
                             {
@@ -1932,7 +1932,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
             'number': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['number', _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'global': ($): _i_out._T_Type_Node.SG._number.SG<_i_in_token._T_Range> => ['global', _i_generic.process_selected_reference(
                             $,
                             null
@@ -1975,7 +1975,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                         ), ($) => _i_generic.process_unresolved_state_group(
                             $,
                             {
-                                'states': _pa.dictionary_literal({
+                                'states': _pa.dictionary.literal({
                                     'derived': ($): _i_out._T_Type_Node.SG.reference._type.SG<_i_in_token._T_Range> => ['derived', _i_generic.process_nothing(
                                         $,
                                         null
@@ -1992,7 +1992,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
                                                 ), ($) => _i_generic.process_unresolved_state_group(
                                                     $,
                                                     {
-                                                        'states': _pa.dictionary_literal({
+                                                        'states': _pa.dictionary.literal({
                                                             'acyclic': ($): _i_out._T_Type_Node.SG.reference._type.SG.selected.dependency.SG<_i_in_token._T_Range> => ['acyclic', _i_generic.process_nothing(
                                                                 $,
                                                                 null
@@ -2066,7 +2066,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => _i_generic.proce
             'text': ($): _i_out._T_Type_Node.SG<_i_in_token._T_Range> => ['text', _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'global': ($): _i_out._T_Type_Node.SG.text.SG<_i_in_token._T_Range> => ['global', _i_generic.process_selected_reference(
                             $,
                             null
@@ -2107,7 +2107,7 @@ export const Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $p)
                     'value': ($) => _i_generic.process_unresolved_state_group(
                         $,
                         {
-                            'states': _pa.dictionary_literal({
+                            'states': _pa.dictionary.literal({
                                 'dictionary': ($): _i_out._T_Type_Node_Reference.tail.L.SG<_i_in_token._T_Range> => ['dictionary', _i_generic.process_nothing(
                                     $,
                                     null
@@ -2168,7 +2168,7 @@ export const Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _i_gen
             ), ($) => _i_generic.process_unresolved_state_group(
                 $,
                 {
-                    'states': _pa.dictionary_literal({
+                    'states': _pa.dictionary.literal({
                         'external': ($): _i_out._T_Type_Reference.location.SG<_i_in_token._T_Range> => ['external', _i_generic.process_group(
                             $,
                             {

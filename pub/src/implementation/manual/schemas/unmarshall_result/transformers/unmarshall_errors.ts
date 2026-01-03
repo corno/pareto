@@ -11,7 +11,7 @@ export const Optional_Node = (
 ): d_out.Errors => {
     return $.transform(
         ($) => Node($, $p),
-        () => _p.list_literal([]), //FIXME! optional node not set is often an error
+        () => _p.list.literal([]), //FIXME! optional node not set is often an error
     )
 }
 
@@ -21,11 +21,11 @@ export const Group_Content = (
         'group range': d_in_token.Range
     }
 ): d_out.Errors => {
-    return _p.list_literal([
+    return _p.list.literal([
         $.properties.to_list(($, key) => _p.cc($, ($): d_out.Errors => {
             switch ($[0]) {
-                case 'multiple': return _p.ss($, ($) => $.flatten(($) => _p.list_literal([
-                    _p.list_literal<d_out.Errors.L>([
+                case 'multiple': return _p.ss($, ($) => $.flatten(($) => _p.list.literal([
+                    _p.list.literal<d_out.Errors.L>([
                         {
                             'range': $.key.range,
                             'type': ['error', ['duplicate property', {
@@ -35,7 +35,7 @@ export const Group_Content = (
                     ]),
                     Optional_Node($.node, null)
                 ]).flatten(($) => $)))
-                case 'missing': return _p.ss($, ($) => _p.list_literal([
+                case 'missing': return _p.ss($, ($) => _p.list.literal([
                     {
                         'range': $p['group range'],
                         'type': ['error', ['missing property', {
@@ -47,7 +47,7 @@ export const Group_Content = (
                 default: return _p.au($[0])
             }
         })).flatten(($) => $),
-        $['superfluous entries'].to_list(($, key): d_out.Errors => $.flatten(($) => _p.list_literal([
+        $['superfluous entries'].to_list(($, key): d_out.Errors => $.flatten(($) => _p.list.literal([
             {
                 'range': $,
                 'type': ['error', ['superfluous property', {
@@ -94,11 +94,11 @@ export const Node = (
                             default: return _p.au($[0])
                         }
                     }))
-                    case 'invalid': return _p.ss($, ($) => _p.list_literal([
+                    case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _p.list_literal([['verbose group', null]]),
+                                'expected': _p.list.literal([['verbose group', null]]),
                             }]]
                         }
                     ]))
@@ -112,8 +112,8 @@ export const Node = (
                             return _p.cc($, ($): d_out.Errors => {
                                 switch ($[0]) {
                                     case 'unique': return _p.ss($, ($) => Optional_Node($, $p))
-                                    case 'multiple': return _p.ss($, ($) => $.flatten(($) => _p.list_literal<d_out.Errors>([
-                                        _p.list_literal([
+                                    case 'multiple': return _p.ss($, ($) => $.flatten(($) => _p.list.literal<d_out.Errors>([
+                                        _p.list.literal([
                                             {
                                                 'range': $.key.range,
                                                 'type': ['error', ['duplicate property', {
@@ -128,11 +128,11 @@ export const Node = (
                             })
                         }).flatten(($) => $)
                     })
-                    case 'invalid': return _p.ss($, ($) => _p.list_literal([
+                    case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _p.list_literal([['dictionary', null]]),
+                                'expected': _p.list.literal([['dictionary', null]]),
                             }]]
                         }
                     ]))
@@ -142,16 +142,16 @@ export const Node = (
             case 'number': return _p.ss($, ($) => _p.cc($['found value type'], ($) => {
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($): d_out.Errors => $['correct string type']
-                        ? _p.list_literal([])
-                        : _p.list_literal<d_out.Errors.L>([{
+                        ? _p.list.literal([])
+                        : _p.list.literal<d_out.Errors.L>([{
                             'range': $.range,
                             'type': ['warning', ['expected undelimited string', null]]
                         }]))
-                    case 'invalid': return _p.ss($, ($) => _p.list_literal([
+                    case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _p.list_literal([['text', null]]),
+                                'expected': _p.list.literal([['text', null]]),
                             }]]
                         }
                     ]))
@@ -161,16 +161,16 @@ export const Node = (
             case 'boolean': return _p.ss($, ($) => _p.cc($['found value type'], ($) => {
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($): d_out.Errors => $['correct string type']
-                        ? _p.list_literal([])
-                        : _p.list_literal<d_out.Errors.L>([{
+                        ? _p.list.literal([])
+                        : _p.list.literal<d_out.Errors.L>([{
                             'range': $.range,
                             'type': ['warning', ['expected undelimited string', null]]
                         }]))
-                    case 'invalid': return _p.ss($, ($) => _p.list_literal([
+                    case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _p.list_literal([['text', null]]),
+                                'expected': _p.list.literal([['text', null]]),
                             }]]
                         }
                     ]))
@@ -180,11 +180,11 @@ export const Node = (
             case 'list': return _p.ss($, ($) => _p.cc($['found value type'], ($) => {
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($): d_out.Errors => $.elements.flatten(($) => Node($, $p)))
-                    case 'invalid': return _p.ss($, ($) => _p.list_literal([
+                    case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _p.list_literal([['list', null]]),
+                                'expected': _p.list.literal([['list', null]]),
                             }]]
                         }
                     ]))
@@ -193,12 +193,12 @@ export const Node = (
             }))
             case 'nothing': return _p.ss($, ($) => _p.cc($['found value type'], ($) => {
                 switch ($[0]) {
-                    case 'valid': return _p.ss($, ($): d_out.Errors => _p.list_literal([]))
-                    case 'invalid': return _p.ss($, ($) => _p.list_literal([
+                    case 'valid': return _p.ss($, ($): d_out.Errors => _p.list.literal([]))
+                    case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _p.list_literal([['not set', null]]),
+                                'expected': _p.list.literal([['not set', null]]),
                             }]]
                         }
                     ]))
@@ -207,12 +207,12 @@ export const Node = (
             }))
             case 'reference': return _p.ss($, ($) => _p.cc($['found value type'], ($) => {
                 switch ($[0]) {
-                    case 'valid': return _p.ss($, ($): d_out.Errors => _p.list_literal([]))
-                    case 'invalid': return _p.ss($, ($) => _p.list_literal([
+                    case 'valid': return _p.ss($, ($): d_out.Errors => _p.list.literal([]))
+                    case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _p.list_literal([['text', null]]),
+                                'expected': _p.list.literal([['text', null]]),
                             }]]
                         }
                     ]))
@@ -228,15 +228,15 @@ export const Node = (
                     case 'valid': return _p.ss($, ($): d_out.Errors => _p.cc($, ($) => {
                         switch ($[0]) {
                             case 'set': return _p.ss($, ($) => Node($['child node'], $p))
-                            case 'not set': return _p.ss($, ($) => _p.list_literal([]))
+                            case 'not set': return _p.ss($, ($) => _p.list.literal([]))
                             default: return _p.au($[0])
                         }
                     }))
-                    case 'invalid': return _p.ss($, ($) => _p.list_literal([
+                    case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _p.list_literal([['set', null], ['not set', null]]),
+                                'expected': _p.list.literal([['set', null], ['not set', null]]),
                             }]]
                         }
                     ]))
@@ -252,7 +252,7 @@ export const Node = (
                                 switch ($[0]) {
                                     case 'state': return _p.ss($, ($) => _p.cc($['value substatus'], ($) => {
                                         switch ($[0]) {
-                                            case 'missing data': return _p.ss($, ($) => _p.list_literal([
+                                            case 'missing data': return _p.ss($, ($) => _p.list.literal([
                                                 {
                                                     'range': $.range,
                                                     'type': ['error', ['state', ['state is not a string', null]]] //FIXME wrong error
@@ -263,7 +263,7 @@ export const Node = (
                                                     const xx = $.value
                                                     return $['found state definition'].transform(
                                                         ($) => Node($.node, $p),
-                                                        (): d_out.Errors => _p.list_literal([
+                                                        (): d_out.Errors => _p.list.literal([
                                                             {
                                                                 'range': xx.state.range,
                                                                 'type': ['error', ['state', ['unknown state', {
@@ -282,31 +282,31 @@ export const Node = (
                                 }
                             })
                         })
-                        case 'invalid': return _p.ss($, ($) => _p.list_literal([
+                        case 'invalid': return _p.ss($, ($) => _p.list.literal([
                             {
                                 'range': $,
                                 'type': ['error', ['invalid value type', {
-                                    'expected': _p.list_literal([['state', null]]),
+                                    'expected': _p.list.literal([['state', null]]),
                                 }]]
                             }
                         ]))
-                        // case 'more than 2 elements': return _p.ss($, ($) => _p.list_literal([{
+                        // case 'more than 2 elements': return _p.ss($, ($) => _p.list.literal([{
                         //     'range': $,
                         //     'type': ['error', ['state', ['more than 2 elements', null]]]
                         // }]))
-                        // case 'missing state name': return _p.ss($, ($) => _p.list_literal([{
+                        // case 'missing state name': return _p.ss($, ($) => _p.list.literal([{
                         //     'range': $,
                         //     'type': ['error', ['state', ['missing state name', null]]]
                         // }]))
-                        // case 'state is not a string': return _p.ss($, ($) => _p.list_literal([{
+                        // case 'state is not a string': return _p.ss($, ($) => _p.list.literal([{
                         //     'range': $,
                         //     'type': ['error', ['state', ['state is not a string', null]]]
                         // }]))
-                        // case 'missing value': return _p.ss($, ($) => _p.list_literal([{
+                        // case 'missing value': return _p.ss($, ($) => _p.list.literal([{
                         //     'range': $,
                         //     'type': ['error', ['state', ['missing value', null]]]
                         // }]))
-                        // case 'unknown state': return _p.ss($, ($) => _p.list_literal([{
+                        // case 'unknown state': return _p.ss($, ($) => _p.list.literal([{
                         //     'range': $.range,
                         //     'type': ['error', ['state', ['unknown state', {
                         //         'found': $.found,
@@ -319,12 +319,12 @@ export const Node = (
             })
             case 'text': return _p.ss($, ($) => _p.cc($['found value type'], ($) => {
                 switch ($[0]) {
-                    case 'valid': return _p.list_literal([])
-                    case 'invalid': return _p.ss($, ($) => _p.list_literal([
+                    case 'valid': return _p.list.literal([])
+                    case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
                             'range': $,
                             'type': ['error', ['invalid value type', {
-                                'expected': _p.list_literal([['text', null]]),
+                                'expected': _p.list.literal([['text', null]]),
                             }]]
                         }
                     ]))

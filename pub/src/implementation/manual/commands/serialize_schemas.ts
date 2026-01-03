@@ -16,7 +16,7 @@ import * as s_serialize from "../../generated/pareto/generic/serialize"
 
 export const $$:  signatures.commands.serialize_schemas = _p.command_procedure(
     ($p, $cr, $qr) => [
-        _p.dictionary.parallel(
+        _p.dictionaryx.parallel(
             poormans_modules,
             ($, key) => [
 

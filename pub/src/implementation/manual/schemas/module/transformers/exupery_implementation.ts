@@ -13,11 +13,11 @@ import * as t_exupery_implementation_main from "../../../../manual/schemas/schem
 export const Module = ($: d_in.Module): d_out.Module_Set<_pi.Deprecated_Source_Location> => {
     return {
         'location': _psh.location(),
-        'dictionary': _p.dictionary_literal<d_out.Module_Set.D<_pi.Deprecated_Source_Location>>({
+        'dictionary': _p.dictionary.literal<d_out.Module_Set.D<_pi.Deprecated_Source_Location>>({
             'schemas': t_exupery_implementation_main.Schema_Tree(
                 $['schema tree'],
                 {
-                    'path': _p.list_literal([]),
+                    'path': _p.list.literal([]),
                 }
             )
         }).map(($) => ({

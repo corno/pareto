@@ -23,19 +23,19 @@ export const Schema = (
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
         op_flatten_dictionary(
-            _p.dictionary_literal({
-                "": _p.dictionary_literal({
+            _p.dictionary.literal({
+                "": _p.dictionary.literal({
                     "generic": import_.ancestor(2, "generic", ["unmarshall"], {}),
-                    "signatures": import_.ancestor(5, "interface", _p.list_literal([
-                        _p.list_literal(["generated", "pareto", "schemas"]),
+                    "signatures": import_.ancestor(5, "interface", _p.list.literal([
+                        _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _p.list_literal(["unmarshall"]),
+                        _p.list.literal(["unmarshall"]),
                     ]).flatten(($) => $), {}),
                     "in": import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn source"], {}),
-                    "out": import_.ancestor(5, "interface", _p.list_literal([
-                        _p.list_literal(["generated", "pareto", "schemas"]),
+                    "out": import_.ancestor(5, "interface", _p.list.literal([
+                        _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _p.list_literal(["data types", "target"]),
+                        _p.list.literal(["data types", "target"]),
                     ]).flatten(($) => $), $p.constrained ? { "Source": t.component_imported("in", "Range", {}, []) } : {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))
@@ -54,7 +54,7 @@ export const Schema = (
                     $.node,
                     {
                         'temp type': key,
-                        'temp subselection': _p.list_literal([]),
+                        'temp subselection': _p.list.literal([]),
                         'constrained': $p.constrained
                     }
                 ),
@@ -77,7 +77,7 @@ export const Type_Node = (
             case 'number': return _p.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process number", []),
                 i.select_from_context([]),
-                _p.dictionary_literal({
+                _p.dictionary.literal({
                     "deserializer": i.select_from_parameter("value deserializers", _p.cc($, ($) => {
                         switch ($[0]) {
                             case 'global': return _p.ss($, ($) => ["custom numbers", $.key])
@@ -90,14 +90,14 @@ export const Type_Node = (
             case 'boolean': return _p.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process boolean", []),
                 i.select_from_context([]),
-                _p.dictionary_literal({
+                _p.dictionary.literal({
                     "deserializer": i.select_from_parameter("value deserializers", ["boolean"]),
                 })
             ))
             case 'nothing': return _p.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process nothing", []),
                 i.select_from_context([]),
-                _p.dictionary_literal({
+                _p.dictionary.literal({
                 })
             ))
             case 'reference': return _p.ss($, ($) => _p.cc($.type, ($) => {
@@ -105,7 +105,7 @@ export const Type_Node = (
                     case 'derived': return _p.ss($, ($) => i.call(
                         s.from_variable_import(" i generic", "process derived reference", []),
                         i.select_from_context([]),
-                        _p.dictionary_literal({
+                        _p.dictionary.literal({
                         })
                     ))
                     case 'selected': return _p.ss($, ($) => i.call(
@@ -118,7 +118,7 @@ export const Type_Node = (
                             }
                         }), []),
                         i.select_from_context([]),
-                        _p.dictionary_literal({
+                        _p.dictionary.literal({
                         })
                     ))
                     default: return _p.au($[0])
@@ -127,7 +127,7 @@ export const Type_Node = (
             case 'text': return _p.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process text", []),
                 i.select_from_context([]),
-                _p.dictionary_literal({
+                _p.dictionary.literal({
                 })
             ))
             case 'component': return _p.ss($, ($) => i.call(
@@ -140,14 +140,14 @@ export const Type_Node = (
                     }
                 }),
                 i.select_from_context([]),
-                _p.dictionary_literal({
+                _p.dictionary.literal({
                     "value deserializers": i.select_from_parameter("value deserializers", []),
                 }),
             ))
             case 'dictionary': return _p.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", $p.constrained ? "process unresolved dictionary" : "process unconstrained dictionary", []),
                 i.select_from_context([]),
-                _p.dictionary_literal({
+                _p.dictionary.literal({
                     "value": i.function_(
                         false,
                         Type_Node(
@@ -164,14 +164,14 @@ export const Type_Node = (
             case 'group': return _p.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process group", []),
                 i.select_from_context([]),
-                _p.dictionary_literal({
+                _p.dictionary.literal({
                     "properties": i.function_(
                         false,
                         i.group($.dictionary.map(($, key) => i.change_context(
                             s.call(
                                 s.from_variable_import(" i generic", "get entry", []),
                                 s.from_context([]),
-                                _p.dictionary_literal({
+                                _p.dictionary.literal({
                                     "key": i.string(key, 'quote'),
                                 }),
                                 [],
@@ -191,7 +191,7 @@ export const Type_Node = (
             case 'list': return _p.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", $p.constrained ? "process unresolved list" : "process unconstrained list", []),
                 i.select_from_context([]),
-                _p.dictionary_literal({
+                _p.dictionary.literal({
                     "value": i.function_(
                         false,
                         Type_Node(
@@ -208,7 +208,7 @@ export const Type_Node = (
             case 'optional': return _p.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process optional", []),
                 i.select_from_context([]),
-                _p.dictionary_literal({
+                _p.dictionary.literal({
                     "value": i.function_(
                         false,
                         Type_Node(
@@ -225,7 +225,7 @@ export const Type_Node = (
             case 'state group': return _p.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", $p.constrained ? "process unresolved state group" : "process unconstrained state group", []),
                 i.select_from_context([]),
-                _p.dictionary_literal({
+                _p.dictionary.literal({
                     "states": i.dictionary_literal($.map(($, key) => i.function_(
                         false,
                         i.case_(
@@ -246,7 +246,7 @@ export const Type_Node = (
             // case 'type parameter': return _p.ss($, ($) => i.call(
             //     s.from_variable_import(" i generic", "process type parameter", []),
             //     i.select_from_context([]),
-            //     _p.dictionary_literal({
+            //     _p.dictionary.literal({
             //     })
             // ))
             default: return _p.au($[0])

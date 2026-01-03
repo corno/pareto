@@ -33,11 +33,11 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => _i_generic.process_unc
                     ), ($) => _i_generic.process_unconstrained_state_group(
                         $,
                         {
-                            'states': _pa.dictionary_literal({
+                            'states': _pa.dictionary.literal({
                                 'error': ($): _i_out._T_Errors.L._type.SG => ['error', _i_generic.process_unconstrained_state_group(
                                     $,
                                     {
-                                        'states': _pa.dictionary_literal({
+                                        'states': _pa.dictionary.literal({
                                             'duplicate property': ($): _i_out._T_Errors.L._type.SG.error.SG => ['duplicate property', _i_generic.process_group(
                                                 $,
                                                 {
@@ -69,7 +69,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => _i_generic.process_unc
                                                                 'value': ($) => _i_generic.process_unconstrained_state_group(
                                                                     $,
                                                                     {
-                                                                        'states': _pa.dictionary_literal({
+                                                                        'states': _pa.dictionary.literal({
                                                                             'concise group': ($): _i_out._T_Errors.L._type.SG.error.SG.invalid_value_type.expected.L.SG => ['concise group', _i_generic.process_nothing(
                                                                                 $,
                                                                                 null
@@ -129,7 +129,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => _i_generic.process_unc
                                             'state': ($): _i_out._T_Errors.L._type.SG.error.SG => ['state', _i_generic.process_unconstrained_state_group(
                                                 $,
                                                 {
-                                                    'states': _pa.dictionary_literal({
+                                                    'states': _pa.dictionary.literal({
                                                         'missing data marker': ($): _i_out._T_Errors.L._type.SG.error.SG.state.SG => ['missing data marker', _i_generic.process_nothing(
                                                             $,
                                                             null
@@ -205,7 +205,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => _i_generic.process_unc
                                 'warning': ($): _i_out._T_Errors.L._type.SG => ['warning', _i_generic.process_unconstrained_state_group(
                                     $,
                                     {
-                                        'states': _pa.dictionary_literal({
+                                        'states': _pa.dictionary.literal({
                                             'expected apostrophed string': ($): _i_out._T_Errors.L._type.SG.warning.SG => ['expected apostrophed string', _i_generic.process_nothing(
                                                 $,
                                                 null

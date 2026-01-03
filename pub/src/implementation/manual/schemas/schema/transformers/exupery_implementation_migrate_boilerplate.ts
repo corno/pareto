@@ -22,8 +22,8 @@ export const Types = (
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
         op_flatten_dictionary(
-            _p.dictionary_literal({
-                "": _p.dictionary_literal({
+            _p.dictionary.literal({
+                "": _p.dictionary.literal({
                     "signatures": import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, "migration boilerplate"], {}),
                     "out": import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, $p.constrained ? "unresolved" : "unconstrained"], $p.constrained ? { "Source": t.null_() } : {}),
                 }),
@@ -43,7 +43,7 @@ export const Types = (
                     $.node,
                     {
                         'type': key,
-                        'subselection': _p.list_literal([])
+                        'subselection': _p.list.literal([])
                     }
                 ),
             ),
@@ -82,7 +82,7 @@ export const Type_Node = (
                     }
                 }),
                 i.select_from_context([]),
-                _p.dictionary_literal({}),
+                _p.dictionary.literal({}),
             ))
             case 'dictionary': return _p.ss($, ($) => i.dictionary_map(
                 $.ordered ? s.from_context(["dictionary"]) : s.from_context([]),

@@ -18,7 +18,7 @@ const op_pad_dictionary_identifiers = <T>(
         'prefix': string,
         'suffix': string
     }
-): _pi.Dictionary<T> => _pinternals.build_dictionary(
+): _pi.Dictionary<T> => _pinternals.dictionary_build(
     ($i) => {
         $.map(($, key) => {
             $i['add entry']($p.prefix + key + $p.suffix, $)
@@ -36,18 +36,18 @@ export const Resolvers = (
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
         op_flatten_dictionary(
-            _p.dictionary_literal({
-                "": _p.dictionary_literal({
+            _p.dictionary.literal({
+                "": _p.dictionary.literal({
                     "generic": import_.ancestor(2, "generic", ["resolve"], {}),
-                    "out": import_.ancestor(5, "interface", _p.list_literal([
-                        _p.list_literal(["generated", "pareto", "schemas"]),
+                    "out": import_.ancestor(5, "interface", _p.list.literal([
+                        _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _p.list_literal(["data types", "source"]),
+                        _p.list.literal(["data types", "source"]),
                     ]).flatten(($) => $), {}),
-                    "signatures": import_.ancestor(5, "interface", _p.list_literal([
-                        _p.list_literal(["generated", "pareto", "schemas"]),
+                    "signatures": import_.ancestor(5, "interface", _p.list.literal([
+                        _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _p.list_literal(["data types", "resolve"]),
+                        _p.list.literal(["data types", "resolve"]),
                     ]).flatten(($) => $), {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["resolve"], {}))
@@ -81,7 +81,7 @@ export const Resolvers = (
                             $['type resolver'],
                             {
                                 'temp type': key,
-                                'temp subselection': _p.list_literal([])
+                                'temp subselection': _p.list.literal([])
                             }
                         )
                     ),
@@ -108,8 +108,8 @@ export const Possible_Value_Selection = (
         switch ($[0]) {
             case 'parameter': return _p.ss($, ($) => s.from_variable(
                 "params",
-                _p.list_literal([
-                    _p.list_literal(["values", $.key]),
+                _p.list.literal([
+                    _p.list.literal(["values", $.key]),
                     $p.tail(),
                 ]).flatten(($) => $),
             ))
@@ -135,8 +135,8 @@ export const Optional_Value_Initialization = (
     return _p.cc($, ($) => {
         switch ($[0]) {
             case 'not set': return _p.ss($, ($) => i.not_set())
-            case 'selection': return _p.ss($, ($) => i.select(Possible_Value_Selection($, { 'tail': () => _p.list_literal([]) })))
-            case 'set': return _p.ss($, ($) => i.set(i.select(Guaranteed_Value_Selection($, { 'tail': () => _p.list_literal([]) }))))
+            case 'selection': return _p.ss($, ($) => i.select(Possible_Value_Selection($, { 'tail': () => _p.list.literal([]) })))
+            case 'set': return _p.ss($, ($) => i.set(i.select(Guaranteed_Value_Selection($, { 'tail': () => _p.list.literal([]) }))))
             default: return _p.au($[0])
         }
     })
@@ -149,16 +149,16 @@ export const Guaranteed_Value_Selection = (
     },
 ): d_out.Selection<_pi.Deprecated_Source_Location> => {
     const tail = (): _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => {
-        return _p.list_literal([
+        return _p.list.literal([
             $.tail.path.map(($) => {
                 return _p.cc($, ($): _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => {
                     switch ($[0]) {
-                        case 'component': return _p.ss($, ($) => _p.list_literal([]))
-                        case 'group': return _p.ss($, ($) => _p.list_literal([$.key]))
+                        case 'component': return _p.ss($, ($) => _p.list.literal([]))
+                        case 'group': return _p.ss($, ($) => _p.list.literal([$.key]))
                         case 'reference': return _p.ss($, ($) => _p.cc($.definition.type, ($) => {
                             switch ($[0]) {
-                                case 'derived': return _p.ss($, ($) => _p.list_literal([]))
-                                case 'selected': return _p.ss($, ($) => _p.list_literal(["entry"]))
+                                case 'derived': return _p.ss($, ($) => _p.list.literal([]))
+                                case 'selected': return _p.ss($, ($) => _p.list.literal(["entry"]))
                                 default: return _p.au($[0])
                             }
                         }))
@@ -181,8 +181,8 @@ export const Guaranteed_Value_Selection = (
             }))
             case 'parameter': return _p.ss($, ($) => s.from_variable(
                 "params",
-                _p.list_literal([
-                    _p.list_literal(["values", $.key]),
+                _p.list.literal([
+                    _p.list.literal(["values", $.key]),
                     tail(),
                 ]).flatten(($) => $),
             ))
@@ -232,8 +232,8 @@ export const Lookup_Selection = (
                 s.from_variable_import(" i generic", "dictionary to lookup", []),
                 Guaranteed_Value_Selection($.selection, {
                     'tail': () => $['selected dictionary'].ordered
-                        ? _p.list_literal(["dictionary"])
-                        : _p.list_literal([]),
+                        ? _p.list.literal(["dictionary"])
+                        : _p.list.literal([]),
                 }),
                 {
 
@@ -270,7 +270,7 @@ export const Option_Constraints = (
             switch ($[0]) {
                 case 'state': return _p.ss($, ($) => s.implement_me()) // medium work
                 case 'assert is set': return _p.ss($, ($) => s.optional_transform(
-                    Possible_Value_Selection($, { 'tail': () => _p.list_literal([]) }),
+                    Possible_Value_Selection($, { 'tail': () => _p.list.literal([]) }),
                     s.from_context([]),
                     s.abort(),
                     []
@@ -297,7 +297,7 @@ export const Node_Resolver = (
             case 'reference': return _p.ss($, ($) => {
                 return i.select(_p.cc($.type, ($): d_out.Selection<_pi.Deprecated_Source_Location> => {
                     switch ($[0]) {
-                        case 'derived': return _p.ss($, ($) => Guaranteed_Value_Selection($.value, { 'tail': () => _p.list_literal([]) }))
+                        case 'derived': return _p.ss($, ($) => Guaranteed_Value_Selection($.value, { 'tail': () => _p.list.literal([]) }))
                         case 'selected': return _p.ss($, ($) => {
                             const context = $
                             return _p.cc($.definition.dependency, ($) => {
@@ -359,7 +359,7 @@ export const Node_Resolver = (
                                             "params",
                                             ["values", $.key],
                                         ))
-                                        case 'required': return _p.ss($, ($) => i.select(Guaranteed_Value_Selection($, { 'tail': () => _p.list_literal([]) })))
+                                        case 'required': return _p.ss($, ($) => i.select(Guaranteed_Value_Selection($, { 'tail': () => _p.list.literal([]) })))
 
                                         default: return _p.au($[0])
                                     }
@@ -386,14 +386,14 @@ export const Node_Resolver = (
             case 'dictionary': return _p.ss($, ($) => i.block(
                 [],
                 $.benchmark.transform(
-                    ($) => _p.dictionary_literal({
+                    ($) => _p.dictionary.literal({
                         // "linked entry": e.call(
-                        //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.list_literal([]) }),
+                        //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.list.literal([]) }),
                         //     e.string("FIXME", 'backtick'),
                         // ),
-                        "benchmark": variable(null, i.select(Guaranteed_Value_Selection($.selection, { 'tail': () => _p.list_literal([]) }))),
+                        "benchmark": variable(null, i.select(Guaranteed_Value_Selection($.selection, { 'tail': () => _p.list.literal([]) }))),
                     }),
-                    () => _p.dictionary_literal({})
+                    () => _p.dictionary.literal({})
                 ),
                 i.call(
                     s.from_variable_import(" i generic", $.definition.ordered ? "resolve ordered dictionary" : "resolve dictionary", []),
@@ -403,14 +403,14 @@ export const Node_Resolver = (
                         "map": i.function_(true, i.block(
                             [],
                             $.benchmark.transform(
-                                ($) => _p.dictionary_literal({
+                                ($) => _p.dictionary.literal({
                                     // "linked entry": e.call(
-                                    //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.list_literal([]) }),
+                                    //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.list.literal([]) }),
                                     //     e.string("FIXME", 'backtick'),
                                     // ),
                                     "linked entry": variable(null, i.implement_me()), // quite some work; a call to get_entry() from the selection (Guaranteed_Value_Selection), and then transform an optional value
                                 }),
-                                () => _p.dictionary_literal({})
+                                () => _p.dictionary.literal({})
                             ),
                             i.change_context(
                                 s.from_context(["value"]),

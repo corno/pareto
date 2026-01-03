@@ -1,6 +1,6 @@
-import * as _pt from 'pareto-core-refiner'
+import * as _p from 'pareto-core-refiner'
 
-import * as _i_generic from "../../generated/pareto/generic/resolve"
+import * as _i_generic from 'pareto-core-refiner/dist/resolve'
 import * as d_signatures from "../../../interface/generated/pareto/schemas/module/data_types/resolve"
 
 import * as d_out from "../../../interface/generated/pareto/schemas/module/data_types/source"
@@ -8,24 +8,24 @@ import * as d_out from "../../../interface/generated/pareto/schemas/module/data_
 import * as _i_r_schema from "./schema"
 
 
-export const Module: d_signatures._T_Module = ($, $p) => _pt.block(() => {
+export const Module: d_signatures._T_Module = ($, $p) => _p.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _pt.block(() => {
-        const p_schema_tree: d_out._T_Module.schema_tree = _pt.cc($['schema tree'], ($) => _i_r_schema.Schema_Tree(
+    return _p.block(() => {
+        const p_schema_tree: d_out._T_Module.schema_tree = _p.cc($['schema tree'], ($) => _i_r_schema.Schema_Tree(
             $,
             {
                 'location 2 string': l2s,
                 'parameters': ({
                     'lookups': ({
-                        'sibling schemas': _pt.list_literal([
+                        'sibling schemas': _p.list.literal([
                         ]),
                     }),
                     'values': null,
                 }),
             }
         ))
-        const p_operations: d_out._T_Module.operations = _pt.cc($['operations'], ($) => Operations(
+        const p_operations: d_out._T_Module.operations = _p.cc($['operations'], ($) => Operations(
             $,
             {
                 'location 2 string': l2s,
@@ -38,57 +38,57 @@ export const Module: d_signatures._T_Module = ($, $p) => _pt.block(() => {
         })
     })
 })
-export const Operations: d_signatures._T_Operations = ($, $p) => _pt.block(() => {
+export const Operations: d_signatures._T_Operations = ($, $p) => _p.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return _i_generic.resolve_dictionary(
         $,
         {
             'location 2 string': l2s,
-            'map': ($, $p) => _pt.cc($['value'], ($) => _pt.cc($['state group'], ($): d_out._T_Operations.D => {
+            'map': ($, $p) => _p.cc($['value'], ($) => _p.cc($['state group'], ($): d_out._T_Operations.D => {
                 switch ($[0]) {
-                    case 'operation': return _pt.ss($, ($) => ['operation', _pt.block(() => {
-                        return _pt.block(() => {
-                            const p_type_parameters: d_out._T_Operations.D.SG.operation.type_parameters = _pt.cc($['type parameters'], ($) => _i_r_schema.Type_Parameters(
+                    case 'operation': return _p.ss($, ($) => ['operation', _p.block(() => {
+                        return _p.block(() => {
+                            const p_type_parameters: d_out._T_Operations.D.SG.operation.type_parameters = _p.cc($['type parameters'], ($) => _i_r_schema.Type_Parameters(
                                 $,
                                 {
                                     'location 2 string': l2s,
                                     'parameters': params,
                                 }
                             ))
-                            const p_context: d_out._T_Operations.D.SG.operation.context = _pt.cc($['context'], ($) => _i_r_schema.Type_Node(
+                            const p_context: d_out._T_Operations.D.SG.operation.context = _p.cc($['context'], ($) => _i_r_schema.Type_Node(
                                 $,
                                 {
                                     'location 2 string': l2s,
                                     'parameters': ({
                                         'lookups': ({
-                                            'noncircular sibling types': _pt.not_set(),
-                                            'possibly circular dependent sibling types': _pt.not_set(),
+                                            'noncircular sibling types': _p.optional.not_set(),
+                                            'possibly circular dependent sibling types': _p.optional.not_set(),
                                         }),
                                         'values': {
-                                            'imports': _pt.not_set(),
-                                            'globals': _pt.not_set(),
+                                            'imports': _p.optional.not_set(),
+                                            'globals': _p.optional.not_set(),
                                             'type parameters': p_type_parameters,
                                         },
                                     }),
                                 }
                             ))
-                            const p_parameters: d_out._T_Operations.D.SG.operation.parameters = _pt.cc($['parameters'], ($) => _i_generic.resolve_dictionary(
+                            const p_parameters: d_out._T_Operations.D.SG.operation.parameters = _p.cc($['parameters'], ($) => _i_generic.resolve_dictionary(
                                 $,
                                 {
                                     'location 2 string': l2s,
-                                    'map': ($, $p) => _pt.cc($['value'], ($) => _i_r_schema.Type_Node(
+                                    'map': ($, $p) => _p.cc($['value'], ($) => _i_r_schema.Type_Node(
                                         $,
                                         {
                                             'location 2 string': l2s,
                                             'parameters': ({
                                                 'lookups': ({
-                                                    'noncircular sibling types': _pt.not_set(),
-                                                    'possibly circular dependent sibling types': _pt.not_set(),
+                                                    'noncircular sibling types': _p.optional.not_set(),
+                                                    'possibly circular dependent sibling types': _p.optional.not_set(),
                                                 }),
                                                 'values': {
-                                                    'imports': _pt.not_set(),
-                                                    'globals': _pt.not_set(),
+                                                    'imports': _p.optional.not_set(),
+                                                    'globals': _p.optional.not_set(),
                                                     'type parameters': p_type_parameters,
                                                 },
                                             }),
@@ -96,18 +96,18 @@ export const Operations: d_signatures._T_Operations = ($, $p) => _pt.block(() =>
                                     )),
                                 }
                             ))
-                            const p_result: d_out._T_Operations.D.SG.operation.result = _pt.cc($['result'], ($) => _i_r_schema.Type_Node(
+                            const p_result: d_out._T_Operations.D.SG.operation.result = _p.cc($['result'], ($) => _i_r_schema.Type_Node(
                                 $,
                                 {
                                     'location 2 string': l2s,
                                     'parameters': ({
                                         'lookups': ({
-                                            'noncircular sibling types': _pt.not_set(),
-                                            'possibly circular dependent sibling types': _pt.not_set(),
+                                            'noncircular sibling types': _p.optional.not_set(),
+                                            'possibly circular dependent sibling types': _p.optional.not_set(),
                                         }),
                                         'values': {
-                                            'imports': _pt.not_set(),
-                                            'globals': _pt.not_set(),
+                                            'imports': _p.optional.not_set(),
+                                            'globals': _p.optional.not_set(),
                                             'type parameters': p_type_parameters,
                                         },
                                     }),
@@ -121,7 +121,7 @@ export const Operations: d_signatures._T_Operations = ($, $p) => _pt.block(() =>
                             })
                         })
                     })])
-                    case 'set': return _pt.ss($, ($) => ['set', _pt.block(() => {
+                    case 'set': return _p.ss($, ($) => ['set', _p.block(() => {
                         return Operations(
                             $,
                             {
@@ -130,7 +130,7 @@ export const Operations: d_signatures._T_Operations = ($, $p) => _pt.block(() =>
                             }
                         )
                     })])
-                    default: return _pt.au($[0])
+                    default: return _p.au($[0])
                 }
             })),
         }

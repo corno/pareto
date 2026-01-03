@@ -22,8 +22,8 @@ export const Schema = (
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return sh.m.module(
         op_flatten_dictionary(
-            _p.dictionary_literal({
-                "core": _p.dictionary_literal({
+            _p.dictionary.literal({
+                "core": _p.dictionary.literal({
                     "": sh.import_.ancestor(
                         3,
                         "core",
@@ -65,10 +65,10 @@ export const Schema = (
                         _p.cc(types, ($) => {
                             switch ($[0]) {
 
-                                case 'source': return _p.ss($, ($) => _p.dictionary_literal({}))
-                                case 'target': return _p.ss($, ($) => $ ? _p.dictionary_literal({
+                                case 'source': return _p.ss($, ($) => _p.dictionary.literal({}))
+                                case 'target': return _p.ss($, ($) => $ ? _p.dictionary.literal({
                                     "Source": sh.t.parameter_module("Source"),
-                                }) : _p.dictionary_literal({}))
+                                }) : _p.dictionary.literal({}))
                                 default: return _p.au($[0])
                             }
                         }),

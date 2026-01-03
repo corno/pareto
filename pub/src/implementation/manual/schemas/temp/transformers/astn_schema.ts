@@ -29,7 +29,7 @@ export const Globals: _pi.Transformer<d_in.Globals, d_out.Globals<_pi.Deprecated
     return {
         //FIXME!! merge the number types with the text types in here
         'text types': wrap_dictionary(op_flatten_dictionaries(
-            _p.dictionary_literal({
+            _p.dictionary.literal({
                 "t": $['text types'].map(($) => {
                     return Text_Type($)
                 }),

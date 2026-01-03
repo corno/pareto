@@ -5,7 +5,7 @@ import * as _i_out from "../../../../../interface/generated/pareto/core/astn_tar
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/unmarshall_errors/marshall"
 
 
-export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => ['verbose group', _pa.dictionary_literal({
+export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => ['verbose group', _pa.dictionary.literal({
     'range': _pa.cc($['range'], ($) => Range(
         $,
         {
@@ -20,7 +20,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                     switch ($[0]) {
                         case 'duplicate property': return _pa.ss($, ($) => ({
                             'state': "duplicate property",
-                            'value': ['verbose group', _pa.dictionary_literal({
+                            'value': ['verbose group', _pa.dictionary.literal({
                                 'name': _pa.cc($['name'], ($) => ['text', ({
                                     'delimiter': ['quote', null],
                                     'value': $,
@@ -29,7 +29,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                         }))
                         case 'invalid value type': return _pa.ss($, ($) => ({
                             'state': "invalid value type",
-                            'value': ['verbose group', _pa.dictionary_literal({
+                            'value': ['verbose group', _pa.dictionary.literal({
                                 'expected': _pa.cc($['expected'], ($) => ['list', $.map(($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
                                     switch ($[0]) {
                                         case 'concise group': return _pa.ss($, ($) => ({
@@ -71,7 +71,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                         }))
                         case 'missing property': return _pa.ss($, ($) => ({
                             'state': "missing property",
-                            'value': ['verbose group', _pa.dictionary_literal({
+                            'value': ['verbose group', _pa.dictionary.literal({
                                 'name': _pa.cc($['name'], ($) => ['text', ({
                                     'delimiter': ['quote', null],
                                     'value': $,
@@ -104,7 +104,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                                     }))
                                     case 'unknown state': return _pa.ss($, ($) => ({
                                         'state': "unknown state",
-                                        'value': ['verbose group', _pa.dictionary_literal({
+                                        'value': ['verbose group', _pa.dictionary.literal({
                                             'expected': _pa.cc($['expected'], ($) => ['dictionary', $.map(($) => ['nothing', null])]),
                                             'found': _pa.cc($['found'], ($) => ['text', ({
                                                 'delimiter': ['quote', null],
@@ -118,7 +118,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                         }))
                         case 'superfluous property': return _pa.ss($, ($) => ({
                             'state': "superfluous property",
-                            'value': ['verbose group', _pa.dictionary_literal({
+                            'value': ['verbose group', _pa.dictionary.literal({
                                 'name': _pa.cc($['name'], ($) => ['text', ({
                                     'delimiter': ['quote', null],
                                     'value': $,
@@ -157,7 +157,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
         }
     })]),
 })])]
-export const Location: _i_signatures._T_Location = ($, $p) => ['verbose group', _pa.dictionary_literal({
+export const Location: _i_signatures._T_Location = ($, $p) => ['verbose group', _pa.dictionary.literal({
     'absolute': _pa.cc($['absolute'], ($) => ['text', ({
         'delimiter': ['backtick', null],
         'value': $p['value serializers']['default number'](
@@ -172,7 +172,7 @@ export const Location: _i_signatures._T_Location = ($, $p) => ['verbose group', 
         }
     )),
 })]
-export const Range: _i_signatures._T_Range = ($, $p) => ['verbose group', _pa.dictionary_literal({
+export const Range: _i_signatures._T_Range = ($, $p) => ['verbose group', _pa.dictionary.literal({
     'end': _pa.cc($['end'], ($) => Location(
         $,
         {
@@ -186,7 +186,7 @@ export const Range: _i_signatures._T_Range = ($, $p) => ['verbose group', _pa.di
         }
     )),
 })]
-export const Relative_Location: _i_signatures._T_Relative_Location = ($, $p) => ['verbose group', _pa.dictionary_literal({
+export const Relative_Location: _i_signatures._T_Relative_Location = ($, $p) => ['verbose group', _pa.dictionary.literal({
     'column': _pa.cc($['column'], ($) => ['text', ({
         'delimiter': ['backtick', null],
         'value': $p['value serializers']['default number'](

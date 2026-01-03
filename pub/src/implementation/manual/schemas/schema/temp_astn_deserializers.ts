@@ -24,9 +24,9 @@ type Element_And_Rest<T> = {
 
 export const temp_pop_first_element = <T>($: _pi.List<T>): _pi.Optional_Value<Element_And_Rest<T>> => {
     const arr = $
-    return $.__get_element_at(0).map(
+    return $.__get_possible_element_at(0).map(
         ($) => ({
-            'rest': _p.build_list(($i) => {
+            'rest': _p.list.build(($i) => {
                 let is_first = true
                 arr.__for_each(($) => {
                     if (!is_first) {
@@ -87,7 +87,7 @@ export const $: _pi.Deserializer<d_schema.Type, Error> = ($, abort) => {
                     switch ($[0]) {
 
                         case 'schema': return _pinternals.ss($, ($) => _pinternals.panic(`(FIXME: make this a reference) the selected tree is a schema, not a set, can't do this step: ${split.element} `))
-                        case 'set': return _pinternals.ss($, ($) => $.dictionary.get_entry(split.element).transform(
+                        case 'set': return _pinternals.ss($, ($) => $.dictionary.get_possible_entry(split.element).transform(
                             ($) => temp_find_schema($, split.rest),
                             () => _pinternals.panic(`(FIXME: make this a reference) schema not found: ${split.element}`)
                         ))
@@ -106,7 +106,7 @@ export const $: _pi.Deserializer<d_schema.Type, Error> = ($, abort) => {
     }
     const schema = temp_find_schema(resolved_schema_schema.schema, resolved_schema_schema['schema path'])
 
-    const type = schema.types.dictionary.get_entry(resolved_schema_schema.type).transform(
+    const type = schema.types.dictionary.get_possible_entry(resolved_schema_schema.type).transform(
         ($) => $,
         () => {
             schema.types.dictionary.map(($, key) => {

@@ -6,7 +6,7 @@ import * as _i_r_schema from "../schema/marshall"
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/module/marshall"
 
 
-export const Module: _i_signatures._T_Module = ($, $p) => ['verbose group', _pa.dictionary_literal({
+export const Module: _i_signatures._T_Module = ($, $p) => ['verbose group', _pa.dictionary.literal({
     'operations': _pa.cc($['operations'], ($) => Operations(
         $,
         {
@@ -24,7 +24,7 @@ export const Operations: _i_signatures._T_Operations = ($, $p) => ['dictionary',
     switch ($[0]) {
         case 'operation': return _pa.ss($, ($) => ({
             'state': "operation",
-            'value': ['verbose group', _pa.dictionary_literal({
+            'value': ['verbose group', _pa.dictionary.literal({
                 'context': _pa.cc($['context'], ($) => _i_r_schema.Type_Node(
                     $,
                     {

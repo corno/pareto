@@ -43,7 +43,7 @@ export const Operations: _i_signatures._T_Operations = ($, $p) => _i_generic.pro
         'value': ($) => _i_generic.process_unresolved_state_group(
             $,
             {
-                'states': _pa.dictionary_literal({
+                'states': _pa.dictionary.literal({
                     'operation': ($): _i_out._T_Operations.D.SG<_i_in._T_Range> => ['operation', _i_generic.process_group(
                         $,
                         {

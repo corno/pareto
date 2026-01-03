@@ -10,7 +10,7 @@
   "dependencies": {
     "astn": "^0.113.20",
     "exupery": "^0.3.14",
-    "pareto-fountain-pen": "^0.3.23",
-    "pareto-standard-operations": "^0.3.33"
+    "pareto-fountain-pen": "^0.3.24",
+    "pareto-standard-operations": "^0.3.35"
   }
 }

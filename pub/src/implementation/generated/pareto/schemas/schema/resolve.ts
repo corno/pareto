@@ -1,7 +1,7 @@
 import * as _ea from 'pareto-core-refiner'
 import * as _edev from 'pareto-core-dev'
 
-import * as _i_generic from "../../generic/resolve"
+import * as _i_generic from 'pareto-core-refiner/dist/resolve'
 import * as _i_out from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/schema/data_types/resolve"
 
@@ -764,8 +764,8 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _ea.bl
                             'parameters': ({
                                 'lookups': params['lookups'],
                                 'values': ({
-                                    'current dictionary': _ea.set(p_definition),
-                                    'current ordered dictionary': _ea.set(p_definition),
+                                    'current dictionary': _ea.optional.set(p_definition),
+                                    'current ordered dictionary': _ea.optional.set(p_definition),
                                     'definition': p_definition['node'],
                                     'imports': params['values']['imports'],
                                     'linked entry': _edev.implement_me("zz"),
@@ -847,7 +847,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _ea.bl
                                     'definition': c_definition['node'],
                                     'imports': params['values']['imports'],
                                     'linked entry': params['values']['linked entry'],
-                                    'list cursor': _ea.set(_edev.implement_me("zz")),
+                                    'list cursor': _ea.optional.set(_edev.implement_me("zz")),
                                     'option constraints': params['values']['option constraints'],
                                     'signature': params['values']['signature'],
                                     'signatures': params['values']['signatures'],
@@ -1548,17 +1548,17 @@ export const r_Resolvers: _i_signatures._T_Resolvers = ($, $p) => _ea.block(() =
                                 'location 2 string': l2s,
                                 'parameters': ({
                                     'lookups': ({
-                                        'parent sibling property resolvers': _ea.not_set(),
-                                        'sibling property resolvers': _ea.not_set(),
+                                        'parent sibling property resolvers': _ea.optional.not_set(),
+                                        'sibling property resolvers': _ea.optional.not_set(),
                                     }),
                                     'values': ({
-                                        'current dictionary': _ea.not_set(),
-                                        'current ordered dictionary': _ea.not_set(),
+                                        'current dictionary': _ea.optional.not_set(),
+                                        'current ordered dictionary': _ea.optional.not_set(),
                                         'definition': linked_entry['type']['node'],
-                                        'imports': _ea.set(params['values']['imports']),
-                                        'linked entry': _ea.not_set(),
-                                        'list cursor': _ea.not_set(),
-                                        'option constraints': _ea.not_set(),
+                                        'imports': _ea.optional.set(params['values']['imports']),
+                                        'linked entry': _ea.optional.not_set(),
+                                        'list cursor': _ea.optional.not_set(),
+                                        'option constraints': _ea.optional.not_set(),
                                         'signature': p_signature,
                                         'signatures': params['values']['signatures'],
                                         'types': params['values']['types'],
@@ -1609,8 +1609,8 @@ export const r_Schema: _i_signatures._T_Schema = ($, $p) => _ea.block(() => {
                 'parameters': ({
                     'lookups': null,
                     'values': ({
-                        'globals': _ea.set(p_globals),
-                        'imports': _ea.set(p_imports),
+                        'globals': _ea.optional.set(p_globals),
+                        'imports': _ea.optional.set(p_imports),
                     }),
                 }),
             }
@@ -1774,7 +1774,7 @@ export const r_Signature_Parameters: _i_signatures._T_Signature_Parameters = ($,
                                             ),
                                         }),
                                         'values': ({
-                                            'imports': _ea.set(params['values']['imports']),
+                                            'imports': _ea.optional.set(params['values']['imports']),
                                         }),
                                     }),
                                 }
@@ -1817,7 +1817,7 @@ export const r_Signature_Parameters: _i_signatures._T_Signature_Parameters = ($,
                                             ),
                                         }),
                                         'values': ({
-                                            'imports': _ea.set(params['values']['imports']),
+                                            'imports': _ea.optional.set(params['values']['imports']),
                                         }),
                                     }),
                                 }
@@ -2394,7 +2394,7 @@ export const r_Type_Specification: _i_signatures._T_Type_Specification = ($, $p)
                 'location 2 string': l2s,
                 'parameters': ({
                     'lookups': ({
-                        'sibling schemas': _ea.list_literal([
+                        'sibling schemas': _ea.list.literal([
                         ]),
                     }),
                     'values': null,

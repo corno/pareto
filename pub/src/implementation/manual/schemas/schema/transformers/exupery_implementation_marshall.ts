@@ -22,12 +22,12 @@ export const Schema = (
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
         op_flatten_dictionary(
-            _p.dictionary_literal({
-                "": _p.dictionary_literal({
-                    "signatures": import_.ancestor(5, "interface", _p.list_literal([
-                        _p.list_literal(["generated", "pareto", "schemas"]),
+            _p.dictionary.literal({
+                "": _p.dictionary.literal({
+                    "signatures": import_.ancestor(5, "interface", _p.list.literal([
+                        _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
-                        _p.list_literal(["marshall"])
+                        _p.list.literal(["marshall"])
                     ]).flatten(($) => $), {}),
                     "out": import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn target"], {}),
                 }),
@@ -47,7 +47,7 @@ export const Schema = (
                     $.node,
                     {
                         'type': key,
-                        'subselection': _p.list_literal([])
+                        'subselection': _p.list.literal([])
                     }
                 ),
             ),
@@ -85,12 +85,12 @@ export const Type_Node = (
                     }
                 })),
                 i.select_from_context([]),
-                _p.dictionary_literal({}),
+                _p.dictionary.literal({}),
             ), 'backtick')) //FIXME should be 'none'
             case 'boolean': return _p.ss($, ($) => string(i.call(
                 s.from_parameter("value serializers", ["boolean"]),
                 i.select_from_context([]),
-                _p.dictionary_literal({}),
+                _p.dictionary.literal({}),
             ), 'backtick')) //FIXME should be 'none'
             case 'nothing': return _p.ss($, ($) => i.tagged_union("nothing", i.null_()))
             case 'reference': return _p.ss($, ($) => _p.cc($.type, ($) => {
@@ -111,7 +111,7 @@ export const Type_Node = (
                     }
                 }),
                 i.select_from_context([]),
-                _p.dictionary_literal({
+                _p.dictionary.literal({
                     "value serializers": i.select_from_parameter("value serializers", []),
                 }),
             ))

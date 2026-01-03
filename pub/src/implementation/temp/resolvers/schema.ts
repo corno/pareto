@@ -1,6 +1,6 @@
 import * as _p from 'pareto-core-refiner'
 
-import * as _i_generic from "../../generated/pareto/generic/resolve"
+import * as _i_generic from 'pareto-core-refiner/dist/resolve'
 import * as _i_signatures from "../../../interface/generated/pareto/schemas/schema/data_types/resolve"
 
 import * as _i_in from "../../../interface/generated/pareto/schemas/schema/data_types/target"
@@ -143,7 +143,7 @@ export const Signature_Parameters: _i_signatures.Signature_Parameters = ($, $p) 
                                 'types': _i_generic.dictionary_to_lookup($p.parameters.values.types.dictionary, null),
                             },
                             'values': {
-                                'imports': _p.not_set(),
+                                'imports': _p.optional.not_set(),
                             },
                         },
                     }
@@ -174,7 +174,7 @@ export const Signature_Parameters: _i_signatures.Signature_Parameters = ($, $p) 
                                 'types': _i_generic.dictionary_to_lookup($p.parameters.values.types.dictionary, null),
                             },
                             'values': {
-                                'imports': _p.not_set(),
+                                'imports': _p.optional.not_set(),
                             },
                         }
                     }
@@ -373,8 +373,8 @@ export const Schema_Tree: _i_signatures.Schema_Tree = ($, $p) => _p.block(() => 
                                             'possibly circular dependent sibling types': $l['possibly circular dependent siblings'],
                                         },
                                         'values': {
-                                            'imports': _p.set(p_imports),
-                                            'globals': _p.set(p_globals),
+                                            'imports': _p.optional.set(p_imports),
+                                            'globals': _p.optional.set(p_globals),
                                             'type parameters': p_type_parameters,
                                         },
                                     },
@@ -445,22 +445,22 @@ export const Schema_Tree: _i_signatures.Schema_Tree = ($, $p) => _p.block(() => 
                                             {
                                                 'parameters': {
                                                     'lookups': {
-                                                        'sibling property resolvers': _p.not_set(),
-                                                        'parent sibling property resolvers': _p.not_set(),
+                                                        'sibling property resolvers': _p.optional.not_set(),
+                                                        'parent sibling property resolvers': _p.optional.not_set(),
 
                                                     },
                                                     'values': {
-                                                        'list cursor': _p.not_set(),
-                                                        'linked entry': _p.not_set(),
-                                                        'current dictionary': _p.not_set(),
-                                                        'current ordered dictionary': _p.not_set(),
-                                                        'option constraints': _p.not_set(),
+                                                        'list cursor': _p.optional.not_set(),
+                                                        'linked entry': _p.optional.not_set(),
+                                                        'current dictionary': _p.optional.not_set(),
+                                                        'current ordered dictionary': _p.optional.not_set(),
+                                                        'option constraints': _p.optional.not_set(),
 
                                                         'definition': p_linked_entry.entry.node,
                                                         'signature': p_signature.entry,
 
                                                         'types': p_types,
-                                                        'imports': _p.set(p_imports),
+                                                        'imports': _p.optional.set(p_imports),
                                                         'signatures': p_signatures.types
                                                     },
                                                 },
@@ -1163,7 +1163,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     ($) => {
                         const x: _i_out.Node_Resolver.SG.component._arguments.O = {
                             'lookups': $.lookups.transform(
-                                ($) => _p.set(_i_generic.resolve_dense_dictionary(
+                                ($) => _p.optional.set(_i_generic.resolve_dense_dictionary(
                                     $,
                                     {
                                         'location 2 string': $p['location 2 string'],
@@ -1209,14 +1209,14 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                             _p.fixme_abort("lookup parameters mismatch @ ", $p['location 2 string'](loc))
                                         }
                                     }
-                                    return _p.not_set()
+                                    return _p.optional.not_set()
                                 }
                             ),
                             'values': $.values.transform(
                                 ($) => {
                                     const values_location = $.location
 
-                                    return _p.set(_i_generic.resolve_dense_dictionary(
+                                    return _p.optional.set(_i_generic.resolve_dense_dictionary(
                                         $,
                                         {
                                             'location 2 string': $p['location 2 string'],
@@ -1345,11 +1345,11 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                             _p.fixme_abort("value parameters mismatch @ ", $p['location 2 string'](loc))
                                         }
                                     }
-                                    return _p.not_set()
+                                    return _p.optional.not_set()
                                 }
                             ),
                         }
-                        return _p.set(x)
+                        return _p.optional.set(x)
                     },
                     () => {
                         {
@@ -1362,7 +1362,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                             }
                         }
 
-                        return _p.not_set()
+                        return _p.optional.not_set()
                     }
                 )
                 const p_constraints = Property_Constraints(
@@ -1420,12 +1420,12 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                 'lookups': $p.parameters.lookups,
                                 'values': {
                                     'linked entry': p_benchmark.transform( //optional value result ('benchmark')
-                                        ($) => _p.set($),
+                                        ($) => _p.optional.set($),
                                         () => $p.parameters.values['linked entry']
                                     ),
                                     'definition': p_definition.node,
-                                    'current dictionary': _p.set(p_definition),
-                                    'current ordered dictionary': _p.set(p_definition),//FIXME: is it ordered
+                                    'current dictionary': _p.optional.set(p_definition),
+                                    'current ordered dictionary': _p.optional.set(p_definition),//FIXME: is it ordered
 
                                     'types': $p.parameters.values.types,
                                     'imports': $p.parameters.values.imports,
@@ -1522,7 +1522,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                             'values': {
                                 'definition': p_definition.node,
                                 'list cursor': p_result.transform( // optional value result ('result')
-                                    ($) => _p.set($),
+                                    ($) => _p.optional.set($),
                                     () => $p.parameters.values['list cursor']
                                 ), //setting the cursor
 
@@ -1576,7 +1576,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                             },
                             'values': {
                                 'definition': x,
-                                'option constraints': _p.set(p_constraints),
+                                'option constraints': _p.optional.set(p_constraints),
 
                                 'types': $p.parameters.values.types,
                                 'imports': $p.parameters.values.imports,
@@ -1687,7 +1687,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                         },
                                         'values': {
                                             'definition': x2.entry.node,
-                                            'option constraints': _p.set(p_constraints),
+                                            'option constraints': _p.optional.set(p_constraints),
 
                                             'types': $p.parameters.values.types,
                                             'imports': $p.parameters.values.imports,
@@ -2278,7 +2278,7 @@ export const Type_Specification: _i_signatures.Type_Specification = ($, $p) => _
             'location 2 string': l2s,
             'parameters': {
                 'lookups': {
-                    'sibling schemas': _p.list_literal([]),
+                    'sibling schemas': _p.list.literal([]),
                 },
                 'values': params.values,
             }
