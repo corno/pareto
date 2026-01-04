@@ -68,28 +68,24 @@ export const Node = (
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($) => _p.cc($, ($) => {
                         switch ($[0]) {
-                            case 'ordered': return _p.ss($, ($) => {
-                                return Group_Content($.content, {
-                                    'group range': _p.cc($.value, ($) => {
-                                        switch ($[0]) {
-                                            case 'concise group': return _p.ss($, ($) => $['<'].range)
-                                            case 'list': return _p.ss($, ($) => $['['].range)
-                                            default: return _p.au($[0])
-                                        }
-                                    })
+                            case 'ordered': return _p.ss($, ($) => Group_Content($.content, {
+                                'group range': _p.cc($.value, ($) => {
+                                    switch ($[0]) {
+                                        case 'concise group': return _p.ss($, ($) => $['<'].range)
+                                        case 'list': return _p.ss($, ($) => $['['].range)
+                                        default: return _p.au($[0])
+                                    }
                                 })
-                            })
-                            case 'indexed': return _p.ss($, ($) => {
-                                return Group_Content($.content, {
-                                    'group range': _p.cc($.value, ($) => {
-                                        switch ($[0]) {
-                                            case 'verbose group': return _p.ss($, ($) => $['('].range)
-                                            case 'dictionary': return _p.ss($, ($) => $['{'].range)
-                                            default: return _p.au($[0])
-                                        }
-                                    })
+                            }))
+                            case 'indexed': return _p.ss($, ($) => Group_Content($.content, {
+                                'group range': _p.cc($.value, ($) => {
+                                    switch ($[0]) {
+                                        case 'verbose group': return _p.ss($, ($) => $['('].range)
+                                        case 'dictionary': return _p.ss($, ($) => $['{'].range)
+                                        default: return _p.au($[0])
+                                    }
                                 })
-                            })
+                            }))
 
                             default: return _p.au($[0])
                         }
@@ -108,25 +104,23 @@ export const Node = (
             case 'dictionary': return _p.ss($, ($) => _p.cc($['found value type'], ($): d_out.Errors => {
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($) => {
-                        return $.entries.to_list(($, key) => {
-                            return _p.cc($, ($): d_out.Errors => {
-                                switch ($[0]) {
-                                    case 'unique': return _p.ss($, ($) => Optional_Node($, $p))
-                                    case 'multiple': return _p.ss($, ($) => $.flatten(($) => _p.list.literal<d_out.Errors>([
-                                        _p.list.literal([
-                                            {
-                                                'range': $.key.range,
-                                                'type': ['error', ['duplicate property', {
-                                                    name: key
-                                                }]]
-                                            }
-                                        ]),
-                                        Optional_Node($.node, $p)
-                                    ]).flatten(($) => $)))
-                                    default: return _p.au($[0])
-                                }
-                            })
-                        }).flatten(($) => $)
+                        return $.entries.to_list(($, key) => _p.cc($, ($): d_out.Errors => {
+                            switch ($[0]) {
+                                case 'unique': return _p.ss($, ($) => Optional_Node($, $p))
+                                case 'multiple': return _p.ss($, ($) => $.flatten(($) => _p.list.literal<d_out.Errors>([
+                                    _p.list.literal([
+                                        {
+                                            'range': $.key.range,
+                                            'type': ['error', ['duplicate property', {
+                                                name: key
+                                            }]]
+                                        }
+                                    ]),
+                                    Optional_Node($.node, $p)
+                                ]).flatten(($) => $)))
+                                default: return _p.au($[0])
+                            }
+                        })).flatten(($) => $)
                     })
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {

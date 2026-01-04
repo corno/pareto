@@ -1,9 +1,9 @@
+import * as _p from 'pareto-core-shorthands/dist/unresolved_data'
 import * as _pi from 'pareto-core-interface'
 
-import * as _p from 'pareto-core-shorthands/dist/unresolved_data'
 
 
-import * as unresolved from "../interface/generated/pareto/schemas/schema/data_types/target"
+import * as d_schema from "../interface/generated/pareto/schemas/schema/data_types/target"
 
 /**
  * schema tree
@@ -11,30 +11,30 @@ import * as unresolved from "../interface/generated/pareto/schemas/schema/data_t
 export namespace st {
 
     export const set = (
-        schemas: _p.Raw_Or_Normal_Dictionary<unresolved.Schema_Tree<_pi.Deprecated_Source_Location>>,
-    ): unresolved.Schema_Tree<_pi.Deprecated_Source_Location> => {
+        schemas: _p.Raw_Or_Normal_Dictionary<d_schema.Schema_Tree<_pi.Deprecated_Source_Location>>,
+    ): d_schema.Schema_Tree<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['set', _p.wrap_dictionary(schemas)])
     }
 
     export const schema = (
-        schema: unresolved.Schema<_pi.Deprecated_Source_Location>,
-    ): unresolved.Schema_Tree<_pi.Deprecated_Source_Location> => {
+        schema: d_schema.Schema<_pi.Deprecated_Source_Location>,
+    ): d_schema.Schema_Tree<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['schema', schema])
     }
 
 }
 
 export const types = (
-    types: _p.Raw_Or_Normal_Dictionary<unresolved.Types.D<_pi.Deprecated_Source_Location>>,
-): unresolved.Types<_pi.Deprecated_Source_Location> => {
+    types: _p.Raw_Or_Normal_Dictionary<d_schema.Types.D<_pi.Deprecated_Source_Location>>,
+): d_schema.Types<_pi.Deprecated_Source_Location> => {
     return _p.wrap_dictionary(types)
 }
 
 export const globals = (
     complexity: 'unconstrained' | 'constrained',
-    text_types: _p.Raw_Or_Normal_Dictionary<unresolved.Globals.text_types.D<_pi.Deprecated_Source_Location>>,
-    number_types: _p.Raw_Or_Normal_Dictionary<unresolved.Globals.number_types.D<_pi.Deprecated_Source_Location>>,
-): unresolved.Globals<_pi.Deprecated_Source_Location> => {
+    text_types: _p.Raw_Or_Normal_Dictionary<d_schema.Globals.text_types.D<_pi.Deprecated_Source_Location>>,
+    number_types: _p.Raw_Or_Normal_Dictionary<d_schema.Globals.number_types.D<_pi.Deprecated_Source_Location>>,
+): d_schema.Globals<_pi.Deprecated_Source_Location> => {
     return {
         'complexity': complexity === 'unconstrained'
             ? _p.wrap_state_group(['unconstrained', null])
@@ -44,110 +44,91 @@ export const globals = (
     }
 }
 
-export const type = (type: unresolved.Type_Node<_pi.Deprecated_Source_Location>): unresolved.Types.D<_pi.Deprecated_Source_Location> => {
-    return {
-        'type parameters': _p.wrap_dictionary({}),
-        'node': type,
-    }
-}
+export const type = (type: d_schema.Type_Node<_pi.Deprecated_Source_Location>): d_schema.Types.D<_pi.Deprecated_Source_Location> => ({
+    'type parameters': _p.wrap_dictionary({}),
+    'node': type,
+})
 
-export const text = (type: 'single line' | 'multi line'): unresolved.Text_Type<_pi.Deprecated_Source_Location> => {
-    return {
-        'type': type === 'single line' ? _p.wrap_state_group(['single line', null]) : _p.wrap_state_group(['multi line', null]),
-    }
-}
+export const text = (type: 'single line' | 'multi line'): d_schema.Text_Type<_pi.Deprecated_Source_Location> => ({
+    'type': type === 'single line' ? _p.wrap_state_group(['single line', null]) : _p.wrap_state_group(['multi line', null]),
+})
 
 export const prop = (
-    node: unresolved.Type_Node<_pi.Deprecated_Source_Location>,
-): unresolved.Group.D<_pi.Deprecated_Source_Location> => {
-    return {
-        'description': _p.optional.not_set(),
-        'node': node,
-    }
-}
+    node: d_schema.Type_Node<_pi.Deprecated_Source_Location>,
+): d_schema.Group.D<_pi.Deprecated_Source_Location> => ({
+    'description': _p.optional.not_set(),
+    'node': node,
+})
 
 export const tstate = (
-    node: unresolved.Type_Node<_pi.Deprecated_Source_Location>,
-): unresolved.Type_Node.SG.state_group.D<_pi.Deprecated_Source_Location> => {
-    return {
-        'description': _p.optional.not_set(),
-        'node': node,
-    }
-}
+    node: d_schema.Type_Node<_pi.Deprecated_Source_Location>,
+): d_schema.Type_Node.SG.state_group.D<_pi.Deprecated_Source_Location> => ({
+    'description': _p.optional.not_set(),
+    'node': node,
+})
 
 export const tstated = (
     description: string,
-    node: unresolved.Type_Node<_pi.Deprecated_Source_Location>,
-): unresolved.Type_Node.SG.state_group.D<_pi.Deprecated_Source_Location> => {
-    return {
-        'description': _p.optional.set(description),
-        'node': node,
-    }
-}
+    node: d_schema.Type_Node<_pi.Deprecated_Source_Location>,
+): d_schema.Type_Node.SG.state_group.D<_pi.Deprecated_Source_Location> => ({
+    'description': _p.optional.set(description),
+    'node': node,
+})
 
 export const propd = (
     description: string,
-    node: unresolved.Type_Node<_pi.Deprecated_Source_Location>,
-): unresolved.Group.D<_pi.Deprecated_Source_Location> => {
-    return {
-        'description': _p.optional.set(description),
-        'node': node,
-    }
-}
+    node: d_schema.Type_Node<_pi.Deprecated_Source_Location>,
+): d_schema.Group.D<_pi.Deprecated_Source_Location> => ({
+    'description': _p.optional.set(description),
+    'node': node,
+})
 
 /**
  * number type
  */
 export namespace n {
 
-    export const integer = (decimal_separator_offset?: number): unresolved.Number_Type<_pi.Deprecated_Source_Location> => {
-        return {
-            'precision': _p.wrap_state_group<unresolved.Number_Type.precision.SG<_pi.Deprecated_Source_Location>>(['exact', {
-                'decimal separator offset': decimal_separator_offset === undefined ? _p.optional.not_set() : _p.optional.set(decimal_separator_offset),
-                'type': _p.wrap_state_group(['integer', null]),
-            }])
-        }
-    }
-    export const approximation = (significant_digits: number): unresolved.Number_Type<_pi.Deprecated_Source_Location> => {
-        return {
-            'precision': _p.wrap_state_group<unresolved.Number_Type.precision.SG<_pi.Deprecated_Source_Location>>(['approximation', {
-                'significant digits': significant_digits,
-            }])
-        }
-    }
-    export const natural = (decimal_separator_offset?: number): unresolved.Number_Type<_pi.Deprecated_Source_Location> => {
-        return {
-            'precision': _p.wrap_state_group<unresolved.Number_Type.precision.SG<_pi.Deprecated_Source_Location>>(['exact', {
-                'decimal separator offset': decimal_separator_offset === undefined ? _p.optional.not_set() : _p.optional.set(decimal_separator_offset),
-                'type': _p.wrap_state_group(['natural', null]),
-            }])
-        }
-    }
-    export const positive_natural = (decimal_separator_offset?: number): unresolved.Number_Type<_pi.Deprecated_Source_Location> => {
-        return {
-            'precision': _p.wrap_state_group<unresolved.Number_Type.precision.SG<_pi.Deprecated_Source_Location>>(['exact', {
-                'decimal separator offset': decimal_separator_offset === undefined ? _p.optional.not_set() : _p.optional.set(decimal_separator_offset),
-                'type': _p.wrap_state_group(['positive natural', null]),
-            }])
-        }
-    }
+    export const integer = (decimal_separator_offset?: number): d_schema.Number_Type<_pi.Deprecated_Source_Location> => ({
+        'precision': _p.wrap_state_group<d_schema.Number_Type.precision.SG<_pi.Deprecated_Source_Location>>(['exact', {
+            'decimal separator offset': decimal_separator_offset === undefined ? _p.optional.not_set() : _p.optional.set(decimal_separator_offset),
+            'type': _p.wrap_state_group(['integer', null]),
+        }])
+    })
+
+    export const approximation = (significant_digits: number): d_schema.Number_Type<_pi.Deprecated_Source_Location> => ({
+        'precision': _p.wrap_state_group<d_schema.Number_Type.precision.SG<_pi.Deprecated_Source_Location>>(['approximation', {
+            'significant digits': significant_digits,
+        }])
+    })
+
+    export const natural = (decimal_separator_offset?: number): d_schema.Number_Type<_pi.Deprecated_Source_Location> => ({
+        'precision': _p.wrap_state_group<d_schema.Number_Type.precision.SG<_pi.Deprecated_Source_Location>>(['exact', {
+            'decimal separator offset': decimal_separator_offset === undefined ? _p.optional.not_set() : _p.optional.set(decimal_separator_offset),
+            'type': _p.wrap_state_group(['natural', null]),
+        }])
+    })
+
+    export const positive_natural = (decimal_separator_offset?: number): d_schema.Number_Type<_pi.Deprecated_Source_Location> => ({
+        'precision': _p.wrap_state_group<d_schema.Number_Type.precision.SG<_pi.Deprecated_Source_Location>>(['exact', {
+            'decimal separator offset': decimal_separator_offset === undefined ? _p.optional.not_set() : _p.optional.set(decimal_separator_offset),
+            'type': _p.wrap_state_group(['positive natural', null]),
+        }])
+    })
 
 }
 
 export const reference = (
     type: string,
-): unresolved.Type_Reference<_pi.Deprecated_Source_Location> => {
-    return {
-        'location': _p.wrap_state_group(['internal', _p.wrap_reference(type)]),
-        'resulting node': null,
-    }
-}
+): d_schema.Type_Reference<_pi.Deprecated_Source_Location> => ({
+    'location': _p.wrap_state_group(['internal', _p.wrap_reference(type)]),
+    'resulting node': null,
+})
 
 export const part_reference = (
     type: string,
-    tail: unresolved.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location>[],
+    tail: d_schema.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location>[],
 
-): unresolved.Type_Node_Reference<_pi.Deprecated_Source_Location> => {
+): d_schema.Type_Node_Reference<_pi.Deprecated_Source_Location> => {
     return {
         'type location': {
             'location': _p.wrap_state_group(['internal', _p.wrap_reference(type)]),
@@ -163,54 +144,54 @@ export const part_reference = (
  */
 export namespace t {
 
-    export const boolean = (): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const boolean = (): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['boolean', null])
     }
-    export const component = (type: string): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const component = (type: string): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['component', _p.wrap_state_group(['internal', _p.wrap_reference(type)])])
     }
-    export const component_cyclic = (type: string): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const component_cyclic = (type: string): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['component', _p.wrap_state_group(['internal cyclic', _p.wrap_reference(type)])])
     }
-    export const component_external = (imp: string, type: string): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const component_external = (imp: string, type: string): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['component', _p.wrap_state_group(['external', {
             'import': _p.wrap_reference(imp),
             'type': _p.wrap_reference(type),
         }])])
     }
-    export const dictionary = (type: unresolved.Type_Node<_pi.Deprecated_Source_Location>, ordered?: 'ordered' | ''): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const dictionary = (type: d_schema.Type_Node<_pi.Deprecated_Source_Location>, ordered?: 'ordered' | ''): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['dictionary', {
             'node': type,
             'ordered': ordered === 'ordered',
             'benchmark': _p.optional.not_set(),
         }])
     }
-    export const group = (properties: _p.Raw_Or_Normal_Dictionary<unresolved.Group.D<_pi.Deprecated_Source_Location>>): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const group = (properties: _p.Raw_Or_Normal_Dictionary<d_schema.Group.D<_pi.Deprecated_Source_Location>>): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['group', _p.wrap_dictionary(properties)])
     }
-    export const list = (type: unresolved.Type_Node<_pi.Deprecated_Source_Location>): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const list = (type: d_schema.Type_Node<_pi.Deprecated_Source_Location>): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['list', {
             'node': type,
             'result': _p.optional.not_set(),
         }])
     }
-    export const nothing = (): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const nothing = (): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['nothing', null])
     }
-    export const number_global = (name: string): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const number_global = (name: string): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['number', _p.wrap_state_group(['global', _p.wrap_reference(name)])])
     }
-    export const number_local = (bt: unresolved.Number_Type<_pi.Deprecated_Source_Location>): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const number_local = (bt: d_schema.Number_Type<_pi.Deprecated_Source_Location>): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['number', _p.wrap_state_group(['local', bt])])
     }
-    export const optional = (type: unresolved.Type_Node<_pi.Deprecated_Source_Location>): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const optional = (type: d_schema.Type_Node<_pi.Deprecated_Source_Location>): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['optional', type])
     }
     export const reference_derived = (
         type: string,
-        tail: unresolved.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
-        const x: unresolved.Type_Node_Reference<_pi.Deprecated_Source_Location> = {
+        tail: d_schema.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
+        const x: d_schema.Type_Node_Reference<_pi.Deprecated_Source_Location> = {
             'type location': {
                 'location': _p.wrap_state_group(['internal', _p.wrap_reference(type)]),
                 'resulting node': null,
@@ -226,10 +207,10 @@ export namespace t {
     export const reference_derived_external = (
         imp: string,
         type: string,
-        tail: unresolved.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location>[],
+        tail: d_schema.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location>[],
 
-    ): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
-        const x: unresolved.Type_Node_Reference<_pi.Deprecated_Source_Location> = {
+    ): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
+        const x: d_schema.Type_Node_Reference<_pi.Deprecated_Source_Location> = {
             'type location': {
                 'location': _p.wrap_state_group(['external', {
                     'import': _p.wrap_reference(imp),
@@ -249,11 +230,11 @@ export namespace t {
 
     export const reference = (
         type: string,
-        tail: unresolved.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location>[],
+        tail: d_schema.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location>[],
         dependency?: "cyclic" | "acyclic",
-    ): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
 
-        const p_type: unresolved.Type_Node.SG.reference._type<_pi.Deprecated_Source_Location> = _p.wrap_state_group(['selected', {
+        const p_type: d_schema.Type_Node.SG.reference._type<_pi.Deprecated_Source_Location> = _p.wrap_state_group(['selected', {
             'referent': {
                 'type location': {
                     'location': _p.wrap_state_group(['internal', _p.wrap_reference(type)]),
@@ -280,10 +261,10 @@ export namespace t {
 
     export const reference_stack = (
         type: string,
-        tail: unresolved.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+        tail: d_schema.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
 
-        const p_type: unresolved.Type_Node.SG.reference._type<_pi.Deprecated_Source_Location> = _p.wrap_state_group(['selected', {
+        const p_type: d_schema.Type_Node.SG.reference._type<_pi.Deprecated_Source_Location> = _p.wrap_state_group(['selected', {
             'dictionary': null,
             'dependency': _p.wrap_state_group(['stack', null])
         }])
@@ -304,10 +285,10 @@ export namespace t {
         schema: string,
 
         type: string,
-        tail: unresolved.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+        tail: d_schema.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
 
-        const p_type: unresolved.Type_Node.SG.reference._type<_pi.Deprecated_Source_Location> = _p.wrap_state_group(['selected', {
+        const p_type: d_schema.Type_Node.SG.reference._type<_pi.Deprecated_Source_Location> = _p.wrap_state_group(['selected', {
             'dictionary': null,
             'dependency': _p.wrap_state_group(['acyclic', null]) // <-- external references cannot be cyclic, but this should not have to be specified here
         }])
@@ -326,13 +307,13 @@ export namespace t {
             'type': p_type,
         }])
     }
-    export const state_group = (states: _p.Raw_Or_Normal_Dictionary<unresolved.Type_Node.SG.state_group.D<_pi.Deprecated_Source_Location>>): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const state_group = (states: _p.Raw_Or_Normal_Dictionary<d_schema.Type_Node.SG.state_group.D<_pi.Deprecated_Source_Location>>): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['state group', _p.wrap_dictionary(states)])
     }
-    export const text_global = (name: string): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const text_global = (name: string): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['text', _p.wrap_state_group(['global', _p.wrap_reference(name)])])
     }
-    export const text_local = (bt: unresolved.Text_Type<_pi.Deprecated_Source_Location>): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
+    export const text_local = (bt: d_schema.Text_Type<_pi.Deprecated_Source_Location>): d_schema.Type_Node<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['text', _p.wrap_state_group(['local', bt])])
     }
     // export const type_parameter = (name: string): unresolved.Type_Node<_pi.Deprecated_Source_Location> => {
@@ -345,16 +326,16 @@ export namespace t {
  */
 export namespace tr {
 
-    export const d = (): unresolved.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location> => {
+    export const d = (): d_schema.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['dictionary', null])
     }
-    export const g = (grp: string): unresolved.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location> => {
+    export const g = (grp: string): d_schema.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['group', _p.wrap_reference(grp)])
     }
-    export const s = (state: string): unresolved.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location> => {
+    export const s = (state: string): d_schema.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['state group', _p.wrap_reference(state)])
     }
-    export const o = (): unresolved.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location> => {
+    export const o = (): d_schema.Type_Node_Reference.tail.L<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['optional', null])
     }
 }
@@ -362,9 +343,9 @@ export namespace tr {
 
 
 export const sig_params = (
-    values: _p.Raw_Or_Normal_Dictionary<unresolved.Signature_Parameters.values.D<_pi.Deprecated_Source_Location>>,
-    lookups: _p.Raw_Or_Normal_Dictionary<unresolved.Signature_Parameters.lookups.D<_pi.Deprecated_Source_Location>>,
-): unresolved.Signature_Parameters<_pi.Deprecated_Source_Location> => {
+    values: _p.Raw_Or_Normal_Dictionary<d_schema.Signature_Parameters.values.D<_pi.Deprecated_Source_Location>>,
+    lookups: _p.Raw_Or_Normal_Dictionary<d_schema.Signature_Parameters.lookups.D<_pi.Deprecated_Source_Location>>,
+): d_schema.Signature_Parameters<_pi.Deprecated_Source_Location> => {
     return {
         'values': _p.wrap_dictionary(values),
         'lookups': _p.wrap_dictionary(lookups),
@@ -377,9 +358,9 @@ export const sig_params = (
 export namespace sig {
 
     export const local = (
-        values: _p.Raw_Or_Normal_Dictionary<unresolved.Signature_Parameters.values.D<_pi.Deprecated_Source_Location>>,
-        lookups: _p.Raw_Or_Normal_Dictionary<unresolved.Signature_Parameters.lookups.D<_pi.Deprecated_Source_Location>>,
-    ): unresolved.Signatures.D<_pi.Deprecated_Source_Location> => {
+        values: _p.Raw_Or_Normal_Dictionary<d_schema.Signature_Parameters.values.D<_pi.Deprecated_Source_Location>>,
+        lookups: _p.Raw_Or_Normal_Dictionary<d_schema.Signature_Parameters.lookups.D<_pi.Deprecated_Source_Location>>,
+    ): d_schema.Signatures.D<_pi.Deprecated_Source_Location> => {
         return {
             'type': null,
             'parameters': _p.wrap_state_group(['local', {
@@ -392,7 +373,7 @@ export namespace sig {
 
     export const same_as = (
         name: string
-    ): unresolved.Signatures.D<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Signatures.D<_pi.Deprecated_Source_Location> => {
         return {
             'type': null,
             'parameters': _p.wrap_state_group(['same as', _p.wrap_reference(name)]),
@@ -404,7 +385,7 @@ export namespace sig {
 export const value_parameter = (
     name: string,
     presence?: 'optional' | 'required',
-): unresolved.Signature_Parameters.values.D<_pi.Deprecated_Source_Location> => {
+): d_schema.Signature_Parameters.values.D<_pi.Deprecated_Source_Location> => {
     return {
         'data type': {
             'location': _p.wrap_state_group(['internal', _p.wrap_reference(name)]),
@@ -420,7 +401,7 @@ export const value_parameter_external = (
     imp: string,
     type: string,
     presence?: 'optional' | 'required',
-): unresolved.Signature_Parameters.values.D<_pi.Deprecated_Source_Location> => {
+): d_schema.Signature_Parameters.values.D<_pi.Deprecated_Source_Location> => {
     return {
         'data type': {
             'location': _p.wrap_state_group(['external', {
@@ -439,7 +420,7 @@ export const lookup_parameter = (
     name: string,
     type?: 'acyclic' | 'cyclic' | 'stack',
     presence?: 'optional' | 'required',
-): unresolved.Signature_Parameters.lookups.D<_pi.Deprecated_Source_Location> => {
+): d_schema.Signature_Parameters.lookups.D<_pi.Deprecated_Source_Location> => {
     return {
         'referent': {
             'location': _p.wrap_state_group(['internal', _p.wrap_reference(name)]),
@@ -462,19 +443,19 @@ export const lookup_parameter = (
  */
 export namespace ls {
 
-    export const parameter = (parameter: string): unresolved.Lookup_Selection<_pi.Deprecated_Source_Location> => {
+    export const parameter = (parameter: string): d_schema.Lookup_Selection<_pi.Deprecated_Source_Location> => {
         return {
             'type': _p.wrap_state_group(['parameter', _p.wrap_reference(parameter)]),
             'resulting dictionary': null
         }
     }
-    export const not_circular_dependent_siblings = (): unresolved.Lookup_Selection<_pi.Deprecated_Source_Location> => {
+    export const not_circular_dependent_siblings = (): d_schema.Lookup_Selection<_pi.Deprecated_Source_Location> => {
         return {
             'type': _p.wrap_state_group(['not circular dependent siblings', null]),
             'resulting dictionary': null
         }
     }
-    export const possibly_circular_dependent_siblings = (): unresolved.Lookup_Selection<_pi.Deprecated_Source_Location> => {
+    export const possibly_circular_dependent_siblings = (): d_schema.Lookup_Selection<_pi.Deprecated_Source_Location> => {
         return {
             'type': _p.wrap_state_group(['possibly circular dependent siblings', null]),
             'resulting dictionary': null
@@ -491,13 +472,13 @@ export namespace al {
 
     export const not_set = (
 
-    ): unresolved.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['not set', null])
     }
 
     export const empty_stack = (
 
-    ): unresolved.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['empty stack', null])
     }
 
@@ -505,9 +486,9 @@ export namespace al {
      * creates a new stack of lookup selections from an existing stack and a new element
      */
     export const stack = (
-        stack: unresolved.Lookup_Selection<_pi.Deprecated_Source_Location>,
-        element: unresolved.Lookup_Selection<_pi.Deprecated_Source_Location>,
-    ): unresolved.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
+        stack: d_schema.Lookup_Selection<_pi.Deprecated_Source_Location>,
+        element: d_schema.Lookup_Selection<_pi.Deprecated_Source_Location>,
+    ): d_schema.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['stack', {
             'stack': stack,
             'element': element,
@@ -517,7 +498,7 @@ export namespace al {
     /**
      * provides a dictionary by selecting a value (that is guaranteed to be a dictionary)
      */
-    export const dictionary = (value_selection: unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>): unresolved.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
+    export const dictionary = (value_selection: d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>): d_schema.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['selection', {
             'type': _p.wrap_state_group(['dictionary', {
                 'selection': value_selection,
@@ -530,7 +511,7 @@ export namespace al {
     /**
      * selects a lookup parameter of this resolver and passes it to the next resolver
      */
-    export const parameter = (parameter: string): unresolved.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
+    export const parameter = (parameter: string): d_schema.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['selection', {
             'type': _p.wrap_state_group(['parameter', _p.wrap_reference(parameter)]),
             'resulting dictionary': null,
@@ -540,7 +521,7 @@ export namespace al {
     /**
      * this one is only usable in the context of an ordered dictionary
      */
-    export const not_circular_dependent_siblings = (): unresolved.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
+    export const not_circular_dependent_siblings = (): d_schema.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['selection', {
             'type': _p.wrap_state_group(['not circular dependent siblings', null]),
             'resulting dictionary': null,
@@ -550,7 +531,7 @@ export namespace al {
     /**
      * this one is only usable in the context of a dictionary (ordered or not)
      */
-    export const possibly_circular_dependent_siblings = (): unresolved.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
+    export const possibly_circular_dependent_siblings = (): d_schema.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['selection', {
             'type': _p.wrap_state_group(['possibly circular dependent siblings', null]),
             'resulting dictionary': null,
@@ -565,18 +546,18 @@ export namespace al {
 export namespace vst {
 
     export const component = (
-    ): unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['component', null])
     }
 
     export const group = (
         property: string,
-    ): unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['group', _p.wrap_reference(property)])
     }
 
     export const reference = (
-    ): unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['reference', {
             'definition': null,
         }])
@@ -602,19 +583,19 @@ export namespace ovi {
 
     export const not_set = (
 
-    ): unresolved.Optional_Value_Initialization<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Optional_Value_Initialization<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['not set', null])
     }
 
     export const set = (
-        value: unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>,
-    ): unresolved.Optional_Value_Initialization<_pi.Deprecated_Source_Location> => {
+        value: d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>,
+    ): d_schema.Optional_Value_Initialization<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['set', value])
     }
 
     export const selection = (
-        selection: unresolved.Possible_Value_Selection<_pi.Deprecated_Source_Location>,
-    ): unresolved.Optional_Value_Initialization<_pi.Deprecated_Source_Location> => {
+        selection: d_schema.Possible_Value_Selection<_pi.Deprecated_Source_Location>,
+    ): d_schema.Optional_Value_Initialization<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['selection', selection])
     }
 
@@ -626,8 +607,8 @@ export namespace ovi {
 export namespace pvs {
     export const state_group = (
         state_group: string,
-        result: unresolved.Type_Reference<_pi.Deprecated_Source_Location>,
-    ): unresolved.Possible_Value_Selection<_pi.Deprecated_Source_Location> => {
+        result: d_schema.Type_Reference<_pi.Deprecated_Source_Location>,
+    ): d_schema.Possible_Value_Selection<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['result', _p.wrap_state_group(['state group', {
             'property': _p.wrap_reference(state_group),
             'state group': null,
@@ -637,8 +618,8 @@ export namespace pvs {
 
     export const optional_value = (
         optional_value: string,
-        result: unresolved.Type_Reference<_pi.Deprecated_Source_Location>,
-    ): unresolved.Possible_Value_Selection<_pi.Deprecated_Source_Location> => {
+        result: d_schema.Type_Reference<_pi.Deprecated_Source_Location>,
+    ): d_schema.Possible_Value_Selection<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['result', _p.wrap_state_group(['optional value', {
             'property': _p.wrap_reference(optional_value),
             'optional value': null,
@@ -648,7 +629,7 @@ export namespace pvs {
 
     export const parameter = (
         parameter: string,
-    ): unresolved.Possible_Value_Selection<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Possible_Value_Selection<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['parameter', _p.wrap_reference(parameter)])
     }
 
@@ -659,7 +640,7 @@ export namespace pvs {
  */
 export namespace gvs {
 
-    export const dictionary = (value_selection: unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>): unresolved.Lookup_Selection<_pi.Deprecated_Source_Location> => {
+    export const dictionary = (value_selection: d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>): d_schema.Lookup_Selection<_pi.Deprecated_Source_Location> => {
         return {
             'type': _p.wrap_state_group(['dictionary', {
                 'selection': value_selection,
@@ -671,8 +652,8 @@ export namespace gvs {
     export const component = (
         component: string,
         constraint: string,
-        tail: unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
+        tail: d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
         return {
             'start': _p.wrap_state_group(['constraint', _p.wrap_state_group(['component', {
                 'property': _p.wrap_reference(component),
@@ -689,8 +670,8 @@ export namespace gvs {
     export const reference = (
         reference: string,
         constraint: string,
-        tail: unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
+        tail: d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
         return {
             'start': _p.wrap_state_group(['constraint', _p.wrap_state_group(['reference', {
                 'property': _p.wrap_reference(reference),
@@ -706,10 +687,10 @@ export namespace gvs {
 
     export const list = (
         list: string,
-        tail: unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
+        tail: d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
         return {
-            'start': _p.wrap_state_group<unresolved.Guaranteed_Value_Selection.start.SG<_pi.Deprecated_Source_Location>>(['result', _p.wrap_state_group(['list', {
+            'start': _p.wrap_state_group<d_schema.Guaranteed_Value_Selection.start.SG<_pi.Deprecated_Source_Location>>(['result', _p.wrap_state_group(['list', {
                 'property': _p.wrap_reference(list),
                 'list result': null,
             }])]),
@@ -723,11 +704,11 @@ export namespace gvs {
 
     export const state_group = (
         state_group: string,
-        result: unresolved.Type_Reference<_pi.Deprecated_Source_Location>,
-        tail: unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
+        result: d_schema.Type_Reference<_pi.Deprecated_Source_Location>,
+        tail: d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
         return {
-            'start': _p.wrap_state_group<unresolved.Possible_Value_Selection.SG<_pi.Deprecated_Source_Location>>(['result', _p.wrap_state_group(['state group', {
+            'start': _p.wrap_state_group<d_schema.Possible_Value_Selection.SG<_pi.Deprecated_Source_Location>>(['result', _p.wrap_state_group(['state group', {
                 'property': _p.wrap_reference(state_group),
                 'state group': null,
                 'result': result,
@@ -742,11 +723,11 @@ export namespace gvs {
 
     export const optional_value = (
         optional_value: string,
-        result: unresolved.Type_Reference<_pi.Deprecated_Source_Location>,
-        tail: unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
+        result: d_schema.Type_Reference<_pi.Deprecated_Source_Location>,
+        tail: d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
         return {
-            'start': _p.wrap_state_group<unresolved.Possible_Value_Selection.SG<_pi.Deprecated_Source_Location>>(['result', _p.wrap_state_group(['optional value', {
+            'start': _p.wrap_state_group<d_schema.Possible_Value_Selection.SG<_pi.Deprecated_Source_Location>>(['result', _p.wrap_state_group(['optional value', {
                 'property': _p.wrap_reference(optional_value),
                 'optional value': null,
                 'result': result,
@@ -761,10 +742,10 @@ export namespace gvs {
 
     export const parameter = (
         parameter: string,
-        tail: unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
+        tail: d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
         return {
-            'start': _p.wrap_state_group<unresolved.Possible_Value_Selection.SG<_pi.Deprecated_Source_Location>>(['parameter', _p.wrap_reference(parameter)]),
+            'start': _p.wrap_state_group<d_schema.Possible_Value_Selection.SG<_pi.Deprecated_Source_Location>>(['parameter', _p.wrap_reference(parameter)]),
             'tail': {
                 'path': _p.wrap_list(tail),
                 'resulting node': null,
@@ -774,8 +755,8 @@ export namespace gvs {
     }
 
     export const list_cursor = (
-        tail: unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
+        tail: d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
         return {
             'start': _p.wrap_state_group(['list cursor', null]),
             'tail': {
@@ -787,8 +768,8 @@ export namespace gvs {
     }
 
     export const linked_entry = (
-        tail: unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
+        tail: d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
         return {
             'start': _p.wrap_state_group(['linked entry', null]),
             'tail': {
@@ -801,8 +782,8 @@ export namespace gvs {
 
     export const sibling = (
         sibling: string,
-        tail: unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
+        tail: d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
         return {
             'start': _p.wrap_state_group(['sibling', _p.wrap_reference(sibling)]),
             'tail': {
@@ -815,8 +796,8 @@ export namespace gvs {
 
     export const parent_sibling = (
         parent_sibling: string,
-        tail: unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
+        tail: d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
         return {
             'start': _p.wrap_state_group(['parent sibling', _p.wrap_reference(parent_sibling)]),
             'tail': {
@@ -829,8 +810,8 @@ export namespace gvs {
 
     export const option_constraint = (
         constraint: string,
-        tail: unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
-    ): unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
+        tail: d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
+    ): d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location> => {
         return {
             'start': _p.wrap_state_group(['option constraint', _p.wrap_reference(constraint)]),
             'tail': {
@@ -850,27 +831,27 @@ export namespace av {
 
     export const parameter = (
         parameter: string,
-    ): unresolved.Node_Resolver.SG.component._arguments.O.values.O.D<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Node_Resolver.SG.component._arguments.O.values.O.D<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['parameter', _p.wrap_reference(parameter)])
     }
 
     export const required = (
-        value: unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>,
-    ): unresolved.Node_Resolver.SG.component._arguments.O.values.O.D<_pi.Deprecated_Source_Location> => {
+        value: d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>,
+    ): d_schema.Node_Resolver.SG.component._arguments.O.values.O.D<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['required', value])
     }
 
     export const optional = (
-        value: unresolved.Optional_Value_Initialization<_pi.Deprecated_Source_Location>,
-    ): unresolved.Node_Resolver.SG.component._arguments.O.values.O.D<_pi.Deprecated_Source_Location> => {
+        value: d_schema.Optional_Value_Initialization<_pi.Deprecated_Source_Location>,
+    ): d_schema.Node_Resolver.SG.component._arguments.O.values.O.D<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['optional', value])
     }
 
 }
 
 export const state = (
-    resolver: unresolved.Node_Resolver<_pi.Deprecated_Source_Location>,
-): unresolved.Node_Resolver.SG.state_group.states.D<_pi.Deprecated_Source_Location> => {
+    resolver: d_schema.Node_Resolver<_pi.Deprecated_Source_Location>,
+): d_schema.Node_Resolver.SG.state_group.states.D<_pi.Deprecated_Source_Location> => {
     return {
         'constraints': _p.wrap_dictionary({}),
         'resolver': resolver,
@@ -878,9 +859,9 @@ export const state = (
 }
 
 export const state_constrained = (
-    constraints: _p.Raw_Or_Normal_Dictionary<unresolved.Option_Constraints.D<_pi.Deprecated_Source_Location>>,
-    resolver: unresolved.Node_Resolver<_pi.Deprecated_Source_Location>,
-): unresolved.Node_Resolver.SG.state_group.states.D<_pi.Deprecated_Source_Location> => {
+    constraints: _p.Raw_Or_Normal_Dictionary<d_schema.Option_Constraints.D<_pi.Deprecated_Source_Location>>,
+    resolver: d_schema.Node_Resolver<_pi.Deprecated_Source_Location>,
+): d_schema.Node_Resolver.SG.state_group.states.D<_pi.Deprecated_Source_Location> => {
     return {
         'constraints': _p.wrap_dictionary(constraints),
         'resolver': resolver,
@@ -893,9 +874,9 @@ export const state_constrained = (
 export namespace oc {
 
     export const state = (
-        value_selection: unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>,
+        value_selection: d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>,
         state: string,
-    ): unresolved.Option_Constraints.D<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Option_Constraints.D<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['state', {
             'selection': value_selection,
             'selected state group': null,
@@ -904,8 +885,8 @@ export namespace oc {
     }
 
     export const assert_set = (
-        possibly_optional: unresolved.Possible_Value_Selection<_pi.Deprecated_Source_Location>,
-    ): unresolved.Option_Constraints.D<_pi.Deprecated_Source_Location> => {
+        possibly_optional: d_schema.Possible_Value_Selection<_pi.Deprecated_Source_Location>,
+    ): d_schema.Option_Constraints.D<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['assert is set', possibly_optional])
     }
 
@@ -917,9 +898,9 @@ export namespace oc {
 export namespace pc {
 
     export const property = (
-        value_selection_tail: unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
+        value_selection_tail: d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
         state: string,
-    ): unresolved.Property_Constraints.D<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Property_Constraints.D<_pi.Deprecated_Source_Location> => {
         return {
             'start': _p.wrap_state_group(['property', null]),
             'constraint': {
@@ -937,9 +918,9 @@ export namespace pc {
 
     export const constraint = (
         constraint: string,
-        value_selection_tail: unresolved.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
+        value_selection_tail: d_schema.Relative_Value_Selection.path.L<_pi.Deprecated_Source_Location>[],
         state?: string,
-    ): unresolved.Property_Constraints.D<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Property_Constraints.D<_pi.Deprecated_Source_Location> => {
         return {
             'start': _p.wrap_state_group(['sibling', _p.wrap_reference(constraint)]),
             'constraint': {
@@ -966,23 +947,23 @@ export namespace pc {
  */
 export namespace r {
 
-    export const text = (): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+    export const text = (): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['text', null])
     }
 
-    export const boolean = (): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+    export const boolean = (): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['boolean', null])
     }
 
-    export const number = (): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+    export const number = (): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['number', null])
     }
     export const component = (
         type: string,
-        values: null | _p.Raw_Or_Normal_Dictionary<unresolved.Node_Resolver.SG.component._arguments.O.values.O.D<_pi.Deprecated_Source_Location>>,
-        lookups: null | _p.Raw_Or_Normal_Dictionary<unresolved.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location>>,
-        constraints?: _p.Raw_Or_Normal_Dictionary<unresolved.Property_Constraints.D<_pi.Deprecated_Source_Location>>,
-    ): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+        values: null | _p.Raw_Or_Normal_Dictionary<d_schema.Node_Resolver.SG.component._arguments.O.values.O.D<_pi.Deprecated_Source_Location>>,
+        lookups: null | _p.Raw_Or_Normal_Dictionary<d_schema.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location>>,
+        constraints?: _p.Raw_Or_Normal_Dictionary<d_schema.Property_Constraints.D<_pi.Deprecated_Source_Location>>,
+    ): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['component', {
             'location': _p.wrap_state_group(['internal', _p.wrap_reference(type)]),
             'signature': null,
@@ -996,10 +977,10 @@ export namespace r {
     export const component_external = (
         imp: string,
         type: string,
-        values: null | _p.Raw_Or_Normal_Dictionary<unresolved.Node_Resolver.SG.component._arguments.O.values.O.D<_pi.Deprecated_Source_Location>>,
-        lookups: null | _p.Raw_Or_Normal_Dictionary<unresolved.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location>>,
-        constraints?: _p.Raw_Or_Normal_Dictionary<unresolved.Property_Constraints.D<_pi.Deprecated_Source_Location>>,
-    ): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+        values: null | _p.Raw_Or_Normal_Dictionary<d_schema.Node_Resolver.SG.component._arguments.O.values.O.D<_pi.Deprecated_Source_Location>>,
+        lookups: null | _p.Raw_Or_Normal_Dictionary<d_schema.Node_Resolver.SG.component._arguments.O.lookups.O.D<_pi.Deprecated_Source_Location>>,
+        constraints?: _p.Raw_Or_Normal_Dictionary<d_schema.Property_Constraints.D<_pi.Deprecated_Source_Location>>,
+    ): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['component', {
             'location': _p.wrap_state_group(['external', {
                 'import': _p.wrap_reference(imp),
@@ -1014,7 +995,7 @@ export namespace r {
         }])
     }
 
-    export const dictionary = (resolver: unresolved.Node_Resolver<_pi.Deprecated_Source_Location>): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+    export const dictionary = (resolver: d_schema.Node_Resolver<_pi.Deprecated_Source_Location>): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['dictionary', {
             'definition': null,
             'resolver': resolver,
@@ -1024,9 +1005,9 @@ export namespace r {
 
     export const dictionary_linked = (
         dense: 'dense' | 'sparse',
-        selection: unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>,
-        resolver: unresolved.Node_Resolver<_pi.Deprecated_Source_Location>,
-    ): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+        selection: d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>,
+        resolver: d_schema.Node_Resolver<_pi.Deprecated_Source_Location>,
+    ): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['dictionary', {
             'definition': null,
             'resolver': resolver,
@@ -1039,8 +1020,8 @@ export namespace r {
     }
 
     export const group = (
-        properties: _p.Raw_Or_Normal_Dictionary<unresolved.Node_Resolver_Group.D.resolver<_pi.Deprecated_Source_Location>> //FIXME: remove the 'this entry' step
-    ): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+        properties: _p.Raw_Or_Normal_Dictionary<d_schema.Node_Resolver_Group.D.resolver<_pi.Deprecated_Source_Location>> //FIXME: remove the 'this entry' step
+    ): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         const temp_dict = _p.wrap_dictionary(properties)
         return _p.wrap_state_group(['group', {
             'location': temp_dict.location,
@@ -1057,19 +1038,19 @@ export namespace r {
     }
 
     export const list = (
-        type_resolver: unresolved.Node_Resolver<_pi.Deprecated_Source_Location>
-    ): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+        type_resolver: d_schema.Node_Resolver<_pi.Deprecated_Source_Location>
+    ): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['list', {
             'definition': null,
             'resolver': type_resolver,
-            'result': _p.optional.not_set<unresolved.Node_Resolver.SG.list.result.O<_pi.Deprecated_Source_Location>>(),
+            'result': _p.optional.not_set<d_schema.Node_Resolver.SG.list.result.O<_pi.Deprecated_Source_Location>>(),
         }])
     }
     export const list_with_result = (
-        type_resolver: unresolved.Node_Resolver<_pi.Deprecated_Source_Location>,
-        result: unresolved.Type_Reference<_pi.Deprecated_Source_Location>,
+        type_resolver: d_schema.Node_Resolver<_pi.Deprecated_Source_Location>,
+        result: d_schema.Type_Reference<_pi.Deprecated_Source_Location>,
 
-    ): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+    ): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['list', {
             'definition': null,
             'resolver': type_resolver,
@@ -1077,23 +1058,23 @@ export namespace r {
         }])
     }
 
-    export const nothing = (): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+    export const nothing = (): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['nothing', null])
     }
 
     export const optional = (
-        type_resolver: unresolved.Node_Resolver<_pi.Deprecated_Source_Location>
-    ): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+        type_resolver: d_schema.Node_Resolver<_pi.Deprecated_Source_Location>
+    ): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['optional', {
-            'constraints': _p.wrap_dictionary<unresolved.Option_Constraints.D<_pi.Deprecated_Source_Location>>({}),
+            'constraints': _p.wrap_dictionary<d_schema.Option_Constraints.D<_pi.Deprecated_Source_Location>>({}),
             'resolver': type_resolver,
         }])
     }
 
     export const optional_constrained = (
-        constraints: _p.Raw_Or_Normal_Dictionary<unresolved.Option_Constraints.D<_pi.Deprecated_Source_Location>>,
-        type_resolver: unresolved.Node_Resolver<_pi.Deprecated_Source_Location>
-    ): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+        constraints: _p.Raw_Or_Normal_Dictionary<d_schema.Option_Constraints.D<_pi.Deprecated_Source_Location>>,
+        type_resolver: d_schema.Node_Resolver<_pi.Deprecated_Source_Location>
+    ): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['optional', {
             'constraints': _p.wrap_dictionary(constraints),
             'resolver': type_resolver,
@@ -1101,8 +1082,8 @@ export namespace r {
     }
 
     export const reference_derived = (
-        value_selection: unresolved.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>
-    ): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+        value_selection: d_schema.Guaranteed_Value_Selection<_pi.Deprecated_Source_Location>
+    ): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['reference', {
             'definition': null,
             'type': _p.wrap_state_group(['derived', {
@@ -1112,9 +1093,9 @@ export namespace r {
     }
 
     export const reference = (
-        lookup_selection: unresolved.Lookup_Selection<_pi.Deprecated_Source_Location>,
-        constraints?: _p.Raw_Or_Normal_Dictionary<unresolved.Property_Constraints.D<_pi.Deprecated_Source_Location>>,
-    ): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+        lookup_selection: d_schema.Lookup_Selection<_pi.Deprecated_Source_Location>,
+        constraints?: _p.Raw_Or_Normal_Dictionary<d_schema.Property_Constraints.D<_pi.Deprecated_Source_Location>>,
+    ): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['reference', {
             'definition': null,
             'type': _p.wrap_state_group(['selected', {
@@ -1126,9 +1107,9 @@ export namespace r {
     }
 
     export const reference_stack = (
-        lookup_selection: unresolved.Lookup_Selection<_pi.Deprecated_Source_Location>,
-        constraints?: _p.Raw_Or_Normal_Dictionary<unresolved.Property_Constraints.D<_pi.Deprecated_Source_Location>>,
-    ): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+        lookup_selection: d_schema.Lookup_Selection<_pi.Deprecated_Source_Location>,
+        constraints?: _p.Raw_Or_Normal_Dictionary<d_schema.Property_Constraints.D<_pi.Deprecated_Source_Location>>,
+    ): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['reference', {
             'definition': null,
             'type': _p.wrap_state_group(['selected', {
@@ -1140,8 +1121,8 @@ export namespace r {
     }
 
     export const state_group = (
-        states: _p.Raw_Or_Normal_Dictionary<unresolved.Node_Resolver.SG.state_group.states.D<_pi.Deprecated_Source_Location>>
-    ): unresolved.Node_Resolver<_pi.Deprecated_Source_Location> => {
+        states: _p.Raw_Or_Normal_Dictionary<d_schema.Node_Resolver.SG.state_group.states.D<_pi.Deprecated_Source_Location>>
+    ): d_schema.Node_Resolver<_pi.Deprecated_Source_Location> => {
         return _p.wrap_state_group(['state group', {
             'definition': null,
             'states': _p.wrap_dictionary(states),
@@ -1150,8 +1131,8 @@ export namespace r {
 }
 
 export const resolver = (
-    type_resolver: unresolved.Node_Resolver<_pi.Deprecated_Source_Location>
-): unresolved.Resolvers.D<_pi.Deprecated_Source_Location> => {
+    type_resolver: d_schema.Node_Resolver<_pi.Deprecated_Source_Location>
+): d_schema.Resolvers.D<_pi.Deprecated_Source_Location> => {
     return {
         'signature': null,
         'type resolver': type_resolver,
@@ -1159,8 +1140,8 @@ export const resolver = (
 }
 
 export const signatures = (
-    signatures: _p.Raw_Or_Normal_Dictionary<unresolved.Signatures.D<_pi.Deprecated_Source_Location>>,
-): unresolved.Resolve_Logic.signatures<_pi.Deprecated_Source_Location> => {
+    signatures: _p.Raw_Or_Normal_Dictionary<d_schema.Signatures.D<_pi.Deprecated_Source_Location>>,
+): d_schema.Resolve_Logic.signatures<_pi.Deprecated_Source_Location> => {
     return {
         'types': _p.wrap_dictionary(signatures)
     }
@@ -1168,13 +1149,13 @@ export const signatures = (
 
 
 export const resolvers = (
-    resolvers: _p.Raw_Or_Normal_Dictionary<unresolved.Resolvers.D<_pi.Deprecated_Source_Location>>,
-): unresolved.Resolvers<_pi.Deprecated_Source_Location> => {
+    resolvers: _p.Raw_Or_Normal_Dictionary<d_schema.Resolvers.D<_pi.Deprecated_Source_Location>>,
+): d_schema.Resolvers<_pi.Deprecated_Source_Location> => {
     return _p.wrap_dictionary(resolvers)
 }
 export const import_ = (
     name: string,
-): unresolved.Imports.D<_pi.Deprecated_Source_Location> => {
+): d_schema.Imports.D<_pi.Deprecated_Source_Location> => {
     return {
         'schema set child': _p.wrap_stack_reference(name),
         'schema': null,
@@ -1182,9 +1163,9 @@ export const import_ = (
 }
 
 export const constrained = (
-    signatures: unresolved.Resolve_Logic.signatures<_pi.Deprecated_Source_Location>,
-    resolvers: unresolved.Resolvers<_pi.Deprecated_Source_Location>,
-): unresolved.Schema.complexity.SG.constrained<_pi.Deprecated_Source_Location> => {
+    signatures: d_schema.Resolve_Logic.signatures<_pi.Deprecated_Source_Location>,
+    resolvers: d_schema.Resolvers<_pi.Deprecated_Source_Location>,
+): d_schema.Schema.complexity.SG.constrained<_pi.Deprecated_Source_Location> => {
     return {
         'signatures': signatures,
         'resolvers': resolvers,
@@ -1192,15 +1173,15 @@ export const constrained = (
 }
 
 export const unconstrained = (
-): unresolved.Schema.complexity.SG.unconstrained<_pi.Deprecated_Source_Location> => {
+): d_schema.Schema.complexity.SG.unconstrained<_pi.Deprecated_Source_Location> => {
     return null
 }
 export const schema_ = (
-    imports: _p.Raw_Or_Normal_Dictionary<unresolved.Imports.D<_pi.Deprecated_Source_Location>>,
-    globals: unresolved.Globals<_pi.Deprecated_Source_Location>,
-    types: unresolved.Types<_pi.Deprecated_Source_Location>,
-    resolve: null | unresolved.Schema.complexity.SG.constrained<_pi.Deprecated_Source_Location>,
-): unresolved.Schemas.D<_pi.Deprecated_Source_Location> => {
+    imports: _p.Raw_Or_Normal_Dictionary<d_schema.Imports.D<_pi.Deprecated_Source_Location>>,
+    globals: d_schema.Globals<_pi.Deprecated_Source_Location>,
+    types: d_schema.Types<_pi.Deprecated_Source_Location>,
+    resolve: null | d_schema.Schema.complexity.SG.constrained<_pi.Deprecated_Source_Location>,
+): d_schema.Schemas.D<_pi.Deprecated_Source_Location> => {
     return _p.wrap_state_group(['schema', {
         'imports': _p.wrap_dictionary(imports),
         'globals': globals,

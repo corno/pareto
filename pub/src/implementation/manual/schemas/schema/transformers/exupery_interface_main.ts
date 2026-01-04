@@ -111,23 +111,19 @@ export const Schema = ($: d_in.Schema): d_out.Module_Set.D<_pi.Deprecated_Source
     })
 }
 
-export const Schema_Tree = ($: d_in.Schema_Tree): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
-    return _p.cc($, ($) => {
-        switch ($[0]) {
-            case 'schema': return _p.ss($, ($) => Schema($))
-            case 'set': return _p.ss($, ($) => Schemas($))
-            default: return _p.au($[0])
-        }
-    })
-}
+export const Schema_Tree = ($: d_in.Schema_Tree): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => _p.cc($, ($) => {
+    switch ($[0]) {
+        case 'schema': return _p.ss($, ($) => Schema($))
+        case 'set': return _p.ss($, ($) => Schemas($))
+        default: return _p.au($[0])
+    }
+})
 
 
-export const Schemas = ($: d_in.Schemas): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
-    return m.set($.dictionary.map(($) => _p.cc($, ($) => {
-        switch ($[0]) {
-            case 'schema': return _p.ss($, ($) => Schema($))
-            case 'set': return _p.ss($, ($) => Schemas($))
-            default: return _p.au($[0])
-        }
-    })))
-}
+export const Schemas = ($: d_in.Schemas): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => m.set($.dictionary.map(($) => _p.cc($, ($) => {
+    switch ($[0]) {
+        case 'schema': return _p.ss($, ($) => Schema($))
+        case 'set': return _p.ss($, ($) => Schemas($))
+        default: return _p.au($[0])
+    }
+})))

@@ -13,18 +13,16 @@ export const $$: signatures.queries.load_pareto_file = _p.query_function(
         $p['file path'],
         (): d.Error => ['no file', null]
     ).query_without_error_transformation(
-        ($) => {
-            return q_load_pareto_document(
-                {
-                    'read file': $qr['read file'],
-                },
-            )(
-                {
-                    'content': $,
-                    'file path': $p['file path'],
-                },
-                ($): d.Error => ['document', $]
-            )
-        },
+        ($) => q_load_pareto_document(
+            {
+                'read file': $qr['read file'],
+            },
+        )(
+            {
+                'content': $,
+                'file path': $p['file path'],
+            },
+            ($): d.Error => ['document', $]
+        )
     )
 )

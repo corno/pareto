@@ -19,20 +19,16 @@ type Key_Value_Pair<T> = {
 
 const op_group = <T>(
     $: _pi.List<Key_Value_Pair<T>>,
-): _pi.Dictionary<_pi.List<T>> => {
-    return _p.dictionary.group_list($, ($) => $.key).map(($) => $.map(($) => $.value))
-}
+): _pi.Dictionary<_pi.List<T>> => _p.dictionary.group_list($, ($) => $.key).map(($) => $.map(($) => $.value))
 
 export const Optional_Node = (
     $: _pi.Optional_Value<d_in.Value>,
     $p: {
         'definition': d_definition.Type_Node,
     }
-): d_out.Optional_Node => {
-    return $.map(
-        ($) => Node($, $p),
-    )
-}
+): d_out.Optional_Node => $.map(
+    ($) => Node($, $p),
+)
 
 export const Node_Type = (
     $: d_in.Concrete_Value,
@@ -138,8 +134,7 @@ export const Node_Type = (
                     })
                 }]
             })
-            case 'component': return _p.ss($, ($): d_out.Node_Type => {
-                return ['component', {
+            case 'component': return _p.ss($, ($): d_out.Node_Type => ['component', {
                     'definition': $,
                     'node': Node(
                         $p['temp value'],
@@ -154,8 +149,7 @@ export const Node_Type = (
                             }),
                         }
                     )
-                }]
-            })
+                }])
             case 'dictionary': return _p.ss($, ($): d_out.Node_Type => {
                 const prop_def = $.node
                 return ['dictionary', {

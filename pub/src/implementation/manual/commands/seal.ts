@@ -8,11 +8,9 @@ export const $$: signatures.commands.seal = _p.command_procedure(
             {
                 'lines': _p.list.literal([`IMPLEMENT ME: seal`])
             },
-            ($) => {
-                return {
-                    'exit code': 1
-                }
-            }
+            ($) => ({
+                'exit code': 1
+            })
         )
     ]
 )

@@ -14,43 +14,41 @@ export const Schema = (
         'imports': d_in.Imports
         'constrained': boolean
     }
-): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
-    return sh.m.module(
-        {
-            "out": sh.import_.sibling(
-                "data types",
-                [
-                    "target",
-                ],
-                {},
-            ),
-            "in": sh.import_.sibling(
-                "data types",
-                [
-                    "source",
-                ],
-                {},
-            )
-        },
-        {},
-        $.types.dictionary.map(($, key) => sh.type({}, sh.t.function_(
+): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => sh.m.module(
+    {
+        "out": sh.import_.sibling(
+            "data types",
+            [
+                "target",
+            ],
             {},
-            sh.t.component_imported(
-                "in",
-                key,
-                {},
-                []
-            ),
-            {},
-            sh.t.component_imported(
-                "out",
-                key,
-                $p.constrained ? {
-                    "annotation": sh.t.null_()
-                } : {},
-                []
-            ),
         ),
-        )),
-    )
-}
+        "in": sh.import_.sibling(
+            "data types",
+            [
+                "source",
+            ],
+            {},
+        )
+    },
+    {},
+    $.types.dictionary.map(($, key) => sh.type({}, sh.t.function_(
+        {},
+        sh.t.component_imported(
+            "in",
+            key,
+            {},
+            []
+        ),
+        {},
+        sh.t.component_imported(
+            "out",
+            key,
+            $p.constrained ? {
+                "annotation": sh.t.null_()
+            } : {},
+            []
+        ),
+    ),
+    )),
+)

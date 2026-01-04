@@ -13,39 +13,36 @@ export const Schema = (
     $p: {
         'imports': d_in.Imports
     }
-): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
-    return sh.m.module(
-
-        {
-            "out": sh.import_.ancestor(
-                2,
-                "core",
-                [
-                    "astn target"
-                ],
-                {},
-            ),
-            "in": sh.import_.sibling(
-                "data types",
-                [
-                   "source",
-                ],
-                {},
-            )
-        },
-        {},
-        {
-            "Value Deserializers": sh.type({}, sh.t.group({
-                "default number": sh.t.function_({}, sh.t.string(), {}, sh.t.integer()),
-                "boolean": sh.t.function_({}, sh.t.string(), {}, sh.t.boolean()),
-                "custom numbers": sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, sh.t.string(), {}, _p.cc($.precision, ($) => {
-                    switch ($[0]) {
-                        case 'approximation': return _p.ss($, ($) => sh.t.float())
-                        case 'exact': return _p.ss($, ($) => sh.t.integer())
-                        default: return _p.au($[0])
-                    }
-                }))))
-            })),
-        }
-    )
-}
+): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => sh.m.module(
+    {
+        "out": sh.import_.ancestor(
+            2,
+            "core",
+            [
+                "astn target"
+            ],
+            {},
+        ),
+        "in": sh.import_.sibling(
+            "data types",
+            [
+                "source",
+            ],
+            {},
+        )
+    },
+    {},
+    {
+        "Value Deserializers": sh.type({}, sh.t.group({
+            "default number": sh.t.function_({}, sh.t.string(), {}, sh.t.integer()),
+            "boolean": sh.t.function_({}, sh.t.string(), {}, sh.t.boolean()),
+            "custom numbers": sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, sh.t.string(), {}, _p.cc($.precision, ($) => {
+                switch ($[0]) {
+                    case 'approximation': return _p.ss($, ($) => sh.t.float())
+                    case 'exact': return _p.ss($, ($) => sh.t.integer())
+                    default: return _p.au($[0])
+                }
+            }))))
+        })),
+    }
+)

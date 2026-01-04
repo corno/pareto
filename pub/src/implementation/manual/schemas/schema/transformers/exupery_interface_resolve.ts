@@ -100,37 +100,35 @@ export const r_Type_Part_Reference = (
 
 export const r_Signature_Parameters = (
     $: d_in.Signature_Parameters,
-): d_out.Type<_pi.Deprecated_Source_Location> => {
-    return t.group({
-        "values": t.group($.values.map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
-            const temp_2 = r_Type_Reference($['data type'], { 'component sub part': _p.list.literal([]) })
+): d_out.Type<_pi.Deprecated_Source_Location> => t.group({
+    "values": t.group($.values.map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
+        const temp_2 = r_Type_Reference($['data type'], { 'component sub part': _p.list.literal([]) })
 
-            return _p.cc($.presence, ($) => {
-                switch ($[0]) {
-                    case 'optional': return t.optional(temp_2)
-                    case 'required': return temp_2
-                    default: return _p.au($[0])
-                }
-            })
-        })),
-        "lookups": t.group($.lookups.map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
-            const x = $.referent
-            return _p.cc($.type, ($) => {
-                switch ($[0]) {
-                    case 'acyclic': return _p.ss($, ($) => t.component_imported("resolve", "Acyclic Lookup", {
-                        "T": r_Type_Reference(x, { 'component sub part': _p.list.literal([sub.dictionary()]) }),
-                    }, []))
-                    case 'cyclic': return _p.ss($, ($) => t.component_imported("resolve", "Cyclic Lookup", {
-                        "T": r_Type_Reference(x, { 'component sub part': _p.list.literal([sub.dictionary()]) }),
+        return _p.cc($.presence, ($) => {
+            switch ($[0]) {
+                case 'optional': return t.optional(temp_2)
+                case 'required': return temp_2
+                default: return _p.au($[0])
+            }
+        })
+    })),
+    "lookups": t.group($.lookups.map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
+        const x = $.referent
+        return _p.cc($.type, ($) => {
+            switch ($[0]) {
+                case 'acyclic': return _p.ss($, ($) => t.component_imported("resolve", "Acyclic Lookup", {
+                    "T": r_Type_Reference(x, { 'component sub part': _p.list.literal([sub.dictionary()]) }),
+                }, []))
+                case 'cyclic': return _p.ss($, ($) => t.component_imported("resolve", "Cyclic Lookup", {
+                    "T": r_Type_Reference(x, { 'component sub part': _p.list.literal([sub.dictionary()]) }),
 
-                    }, []))
-                    case 'stack': return _p.ss($, ($) => t.component_imported("resolve", "Lookup Stack", {
-                        "T": r_Type_Reference(x, { 'component sub part': _p.list.literal([sub.dictionary()]) }),
+                }, []))
+                case 'stack': return _p.ss($, ($) => t.component_imported("resolve", "Lookup Stack", {
+                    "T": r_Type_Reference(x, { 'component sub part': _p.list.literal([sub.dictionary()]) }),
 
-                    }, []))
-                    default: return _p.au($[0])
-                }
-            })
-        }))
-    })
-}
+                }, []))
+                default: return _p.au($[0])
+            }
+        })
+    }))
+})

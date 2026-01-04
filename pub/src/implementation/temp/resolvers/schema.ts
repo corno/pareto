@@ -1995,69 +1995,67 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
         const start_location = $.start.location
         const p_start: _i_out.Guaranteed_Value_Selection.start = _p.cc($.start['state group'], ($): _i_out.Guaranteed_Value_Selection.start => {
             switch ($[0]) {
-                case 'constraint': return _p.ss($, ($): _i_out.Guaranteed_Value_Selection.start => {
-                    return ['constraint', _p.cc($['state group'], ($): _i_out.Guaranteed_Value_Selection.start.SG.constraint => {
-                        switch ($[0]) {
-                            case 'component': return _p.ss($, ($) => {
-                                const loc = $['property'].location
-                                const p_sibling = _p.cc($['property'], ($) => _i_generic.get_entry(
-                                    $p.parameters.lookups['sibling property resolvers'],
-                                    {
-                                        'reference': $,
-                                        'location 2 string': $p['location 2 string']
-                                    }
-                                ))
+                case 'constraint': return _p.ss($, ($): _i_out.Guaranteed_Value_Selection.start => ['constraint', _p.cc($['state group'], ($): _i_out.Guaranteed_Value_Selection.start.SG.constraint => {
+                    switch ($[0]) {
+                        case 'component': return _p.ss($, ($) => {
+                            const loc = $['property'].location
+                            const p_sibling = _p.cc($['property'], ($) => _i_generic.get_entry(
+                                $p.parameters.lookups['sibling property resolvers'],
+                                {
+                                    'reference': $,
+                                    'location 2 string': $p['location 2 string']
+                                }
+                            ))
 
-                                const x_component = p_sibling.entry.resolver[0] !== 'component'
-                                    ? _p.fixme_abort("not a 'component' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
-                                    : p_sibling.entry.resolver[1]
+                            const x_component = p_sibling.entry.resolver[0] !== 'component'
+                                ? _p.fixme_abort("not a 'component' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                                : p_sibling.entry.resolver[1]
 
-                                const p_constraint = _p.cc($['constraint'], ($) => _i_generic.get_entry(
-                                    _i_generic.dictionary_to_lookup(x_component.constraints.dictionary, null),
-                                    {
-                                        'reference': $,
-                                        'location 2 string': $p['location 2 string']
-                                    }
-                                ))
-                                return ['component', {
-                                    'property': p_sibling,
-                                    'constraint': p_constraint
-                                }]
-                            })
-                            case 'reference': return _p.ss($, ($) => {
-                                const loc = $['property'].location
-                                const p_sibling = _p.cc($['property'], ($) => _i_generic.get_entry(
-                                    $p.parameters.lookups['sibling property resolvers'],
-                                    {
-                                        'reference': $,
-                                        'location 2 string': $p['location 2 string']
-                                    }
-                                ))
+                            const p_constraint = _p.cc($['constraint'], ($) => _i_generic.get_entry(
+                                _i_generic.dictionary_to_lookup(x_component.constraints.dictionary, null),
+                                {
+                                    'reference': $,
+                                    'location 2 string': $p['location 2 string']
+                                }
+                            ))
+                            return ['component', {
+                                'property': p_sibling,
+                                'constraint': p_constraint
+                            }]
+                        })
+                        case 'reference': return _p.ss($, ($) => {
+                            const loc = $['property'].location
+                            const p_sibling = _p.cc($['property'], ($) => _i_generic.get_entry(
+                                $p.parameters.lookups['sibling property resolvers'],
+                                {
+                                    'reference': $,
+                                    'location 2 string': $p['location 2 string']
+                                }
+                            ))
 
-                                const x_reference = p_sibling.entry.resolver[0] !== 'reference'
-                                    ? _p.fixme_abort("not a 'reference' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
-                                    : p_sibling.entry.resolver[1]
+                            const x_reference = p_sibling.entry.resolver[0] !== 'reference'
+                                ? _p.fixme_abort("not a 'reference' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
+                                : p_sibling.entry.resolver[1]
 
-                                const x_reference_selected = x_reference.type[0] !== 'selected'
-                                    ? _p.fixme_abort("not a 'selected' but a '", x_reference.type[0], "' @ ", $p['location 2 string'](loc))
-                                    : x_reference.type[1]
+                            const x_reference_selected = x_reference.type[0] !== 'selected'
+                                ? _p.fixme_abort("not a 'selected' but a '", x_reference.type[0], "' @ ", $p['location 2 string'](loc))
+                                : x_reference.type[1]
 
-                                const p_constraint = _p.cc($['constraint'], ($) => _i_generic.get_entry(
-                                    _i_generic.dictionary_to_lookup(x_reference_selected.constraints.dictionary, null),
-                                    {
-                                        'reference': $,
-                                        'location 2 string': $p['location 2 string']
-                                    }
-                                ))
-                                return ['reference', {
-                                    'property': p_sibling,
-                                    'constraint': p_constraint
-                                }]
-                            })
-                            default: return _p.au($[0])
-                        }
-                    })]
-                })
+                            const p_constraint = _p.cc($['constraint'], ($) => _i_generic.get_entry(
+                                _i_generic.dictionary_to_lookup(x_reference_selected.constraints.dictionary, null),
+                                {
+                                    'reference': $,
+                                    'location 2 string': $p['location 2 string']
+                                }
+                            ))
+                            return ['reference', {
+                                'property': p_sibling,
+                                'constraint': p_constraint
+                            }]
+                        })
+                        default: return _p.au($[0])
+                    }
+                })])
                 case 'list cursor': return _p.ss($, ($) => ['list cursor', null])
                 case 'linked entry': return _p.ss($, ($) => ['linked entry', null])
                 case 'option constraint': return _p.ss($, ($): _i_out.Guaranteed_Value_Selection.start => {
