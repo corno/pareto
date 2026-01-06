@@ -83,7 +83,7 @@ export const $: _pi.Deserializer<d_schema.Type, Error> = ($, abort) => {
         return temp_pop_first_element(schema_path).transform(
             ($) => {
                 const split = $
-                return _pinternals.cc(st, ($) => {
+                return _pinternals.sg(st, ($) => {
                     switch ($[0]) {
 
                         case 'schema': return _pinternals.ss($, ($) => _pinternals.panic(`(FIXME: make this a reference) the selected tree is a schema, not a set, can't do this step: ${split.element} `))
@@ -95,7 +95,7 @@ export const $: _pi.Deserializer<d_schema.Type, Error> = ($, abort) => {
                     }
                 })
             },
-            () => _pinternals.cc($, ($) => {
+            () => _pinternals.sg($, ($) => {
                 switch ($[0]) {
                     case 'schema': return _pinternals.ss($, ($) => $)
                     case 'set': return _pinternals.ss($, ($) => _pinternals.panic(`(FIXME: make this a reference) the selected tree is a set, not a schema`))

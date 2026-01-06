@@ -20,7 +20,7 @@ export const Errors = (
     return sh.group([ sh.g.sub($.map(($) => {
         return sh.g.nested_block([
             sh.b.snippet(`${$p['document path']}:${$.range.start.relative.line + $p['line offset']}:${$.range.start.relative.column + $p['column offset']}: `),
-            _p.cc($.type, ($) => {
+            _p.sg($.type, ($) => {
                 switch ($[0]) {
                     case 'error': return _p.ss($, ($) => sh.b.sub([
                         sh.b.snippet(`Error: `),
@@ -39,13 +39,13 @@ export const Errors = (
 
 export const Error_Type_Error = (
     $: d_in.Errors.L._type.SG.error,
-): d_out.Block_Part => _p.cc($, ($) => {
+): d_out.Block_Part => _p.sg($, ($) => {
     switch ($[0]) {
         case 'duplicate property': return _p.ss($, ($) => sh.b.snippet(`Duplicate property "${$.name}"`))
         case 'invalid value type': return _p.ss($, ($) => sh.b.snippet(`Invalid value type, expected ${s_list_of_separated_texts($.expected.map(($) => `'${$[0]}'`), { 'separator': ` or ` })}.`))
         case 'missing property': return _p.ss($, ($) => sh.b.snippet(`Missing property '${$.name}'`))
         case 'superfluous property': return _p.ss($, ($) => sh.b.snippet(`Superfluous property '${$.name}'`))
-        case 'state': return _p.ss($, ($) => _p.cc($, ($) => {
+        case 'state': return _p.ss($, ($) => _p.sg($, ($) => {
             switch ($[0]) {
                 case 'missing state name': return _p.ss($, ($) => sh.b.snippet(`Missing state name`))
                 case 'missing data marker': return _p.ss($, ($) => sh.b.snippet(`Missing data marker`))
@@ -65,7 +65,7 @@ export const Error_Type_Error = (
 
 export const Error_Type_Warning = (
     $: d_in.Errors.L._type.SG.warning,
-): d_out.Block_Part => _p.cc($, ($) => {
+): d_out.Block_Part => _p.sg($, ($) => {
     switch ($[0]) {
         case 'expected apostrophed string': return _p.ss($, ($) => sh.b.snippet(`Expected apostrophed string`))
         case 'expected backticked string': return _p.ss($, ($) => sh.b.snippet(`Expected backticked string`))

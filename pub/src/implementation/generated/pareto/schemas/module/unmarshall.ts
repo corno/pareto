@@ -12,7 +12,7 @@ export const Module: _i_signatures._T_Module = ($, $p) => _i_generic.process_gro
     $,
     {
         'properties': ($) => ({
-            'operations': _pa.cc(_i_generic.get_entry(
+            'operations': _pa.deprecated_cc(_i_generic.get_entry(
                 $,
                 {
                     'key': "operations",
@@ -23,7 +23,7 @@ export const Module: _i_signatures._T_Module = ($, $p) => _i_generic.process_gro
                     'value deserializers': $p['value deserializers'],
                 }
             )),
-            'schema tree': _pa.cc(_i_generic.get_entry(
+            'schema tree': _pa.deprecated_cc(_i_generic.get_entry(
                 $,
                 {
                     'key': "schema tree",
@@ -48,7 +48,7 @@ export const Operations: _i_signatures._T_Operations = ($, $p) => _i_generic.pro
                         $,
                         {
                             'properties': ($) => ({
-                                'context': _pa.cc(_i_generic.get_entry(
+                                'context': _pa.deprecated_cc(_i_generic.get_entry(
                                     $,
                                     {
                                         'key': "context",
@@ -59,7 +59,7 @@ export const Operations: _i_signatures._T_Operations = ($, $p) => _i_generic.pro
                                         'value deserializers': $p['value deserializers'],
                                     }
                                 )),
-                                'parameters': _pa.cc(_i_generic.get_entry(
+                                'parameters': _pa.deprecated_cc(_i_generic.get_entry(
                                     $,
                                     {
                                         'key': "parameters",
@@ -75,7 +75,7 @@ export const Operations: _i_signatures._T_Operations = ($, $p) => _i_generic.pro
                                         ),
                                     }
                                 )),
-                                'result': _pa.cc(_i_generic.get_entry(
+                                'result': _pa.deprecated_cc(_i_generic.get_entry(
                                     $,
                                     {
                                         'key': "result",
@@ -86,7 +86,7 @@ export const Operations: _i_signatures._T_Operations = ($, $p) => _i_generic.pro
                                         'value deserializers': $p['value deserializers'],
                                     }
                                 )),
-                                'type parameters': _pa.cc(_i_generic.get_entry(
+                                'type parameters': _pa.deprecated_cc(_i_generic.get_entry(
                                     $,
                                     {
                                         'key': "type parameters",

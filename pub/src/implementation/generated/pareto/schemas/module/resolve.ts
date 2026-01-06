@@ -8,11 +8,11 @@ import * as _i_r_schema from "../schema/resolve"
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/module/data_types/resolve"
 
 
-export const r_Module: _i_signatures._T_Module = ($, $p) => _ea.block(() => {
+export const r_Module: _i_signatures._T_Module = ($, $p) => _ea.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _ea.block(() => {
-        const p_schema_tree: _i_out._T_Module.schema_tree = _ea.cc($['schema tree'], ($) => _i_r_schema.r_Schema_Tree(
+    return _ea.deprecated_block(() => {
+        const p_schema_tree: _i_out._T_Module.schema_tree = _ea.deprecated_cc($['schema tree'], ($) => _i_r_schema.r_Schema_Tree(
             $,
             {
                 'location 2 string': l2s,
@@ -25,7 +25,7 @@ export const r_Module: _i_signatures._T_Module = ($, $p) => _ea.block(() => {
                 }),
             }
         ))
-        const p_operations: _i_out._T_Module.operations = _ea.cc($['operations'], ($) => r_Operations(
+        const p_operations: _i_out._T_Module.operations = _ea.deprecated_cc($['operations'], ($) => r_Operations(
             $,
             {
                 'location 2 string': l2s,
@@ -41,20 +41,20 @@ export const r_Module: _i_signatures._T_Module = ($, $p) => _ea.block(() => {
         })
     })
 })
-export const r_Operations: _i_signatures._T_Operations = ($, $p) => _ea.block(() => {
+export const r_Operations: _i_signatures._T_Operations = ($, $p) => _ea.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _ea.block(() => {
+    return _ea.deprecated_block(() => {
         return _i_generic.resolve_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _ea.block(() => {
-                    return _ea.cc($['value'], ($) => _ea.cc($['state group'], ($): _i_out._T_Operations.D => {
+                'map': ($, $p) => _ea.deprecated_block(() => {
+                    return _ea.deprecated_cc($['value'], ($) => _ea.deprecated_cc($['state group'], ($): _i_out._T_Operations.D => {
                         switch ($[0]) {
-                            case 'operation': return _ea.ss($, ($) => ['operation', _ea.block(() => {
-                                return _ea.block(() => {
-                                    const p_type_parameters: _i_out._T_Operations.D.SG.operation.type_parameters = _ea.cc($['type parameters'], ($) => _i_r_schema.r_Type_Parameters(
+                            case 'operation': return _ea.ss($, ($) => ['operation', _ea.deprecated_block(() => {
+                                return _ea.deprecated_block(() => {
+                                    const p_type_parameters: _i_out._T_Operations.D.SG.operation.type_parameters = _ea.deprecated_cc($['type parameters'], ($) => _i_r_schema.r_Type_Parameters(
                                         $,
                                         {
                                             'location 2 string': l2s,
@@ -64,7 +64,7 @@ export const r_Operations: _i_signatures._T_Operations = ($, $p) => _ea.block(()
                                             }),
                                         }
                                     ))
-                                    const p_context: _i_out._T_Operations.D.SG.operation.context = _ea.cc($['context'], ($) => _i_r_schema.r_Type_Node(
+                                    const p_context: _i_out._T_Operations.D.SG.operation.context = _ea.deprecated_cc($['context'], ($) => _i_r_schema.r_Type_Node(
                                         $,
                                         {
                                             'location 2 string': l2s,
@@ -81,13 +81,13 @@ export const r_Operations: _i_signatures._T_Operations = ($, $p) => _ea.block(()
                                             }),
                                         }
                                     ))
-                                    const p_parameters: _i_out._T_Operations.D.SG.operation.parameters = _ea.cc($['parameters'], ($) => _ea.block(() => {
+                                    const p_parameters: _i_out._T_Operations.D.SG.operation.parameters = _ea.deprecated_cc($['parameters'], ($) => _ea.deprecated_block(() => {
                                         return _i_generic.resolve_dictionary(
                                             $,
                                             {
                                                 'location 2 string': l2s,
-                                                'map': ($, $p) => _ea.block(() => {
-                                                    return _ea.cc($['value'], ($) => _i_r_schema.r_Type_Node(
+                                                'map': ($, $p) => _ea.deprecated_block(() => {
+                                                    return _ea.deprecated_cc($['value'], ($) => _i_r_schema.r_Type_Node(
                                                         $,
                                                         {
                                                             'location 2 string': l2s,
@@ -108,7 +108,7 @@ export const r_Operations: _i_signatures._T_Operations = ($, $p) => _ea.block(()
                                             }
                                         )
                                     }))
-                                    const p_result: _i_out._T_Operations.D.SG.operation.result = _ea.cc($['result'], ($) => _i_r_schema.r_Type_Node(
+                                    const p_result: _i_out._T_Operations.D.SG.operation.result = _ea.deprecated_cc($['result'], ($) => _i_r_schema.r_Type_Node(
                                         $,
                                         {
                                             'location 2 string': l2s,
@@ -133,7 +133,7 @@ export const r_Operations: _i_signatures._T_Operations = ($, $p) => _ea.block(()
                                     })
                                 })
                             })])
-                            case 'set': return _ea.ss($, ($) => ['set', _ea.block(() => {
+                            case 'set': return _ea.ss($, ($) => ['set', _ea.deprecated_block(() => {
                                 return r_Operations(
                                     $,
                                     {

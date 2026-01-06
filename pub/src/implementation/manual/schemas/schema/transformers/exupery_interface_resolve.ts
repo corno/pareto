@@ -44,7 +44,7 @@ export const r_Type_Reference = (
     }
 ): d_out.Type<_pi.Deprecated_Source_Location> => {
 
-    return _p.cc($.location, ($) => {
+    return _p.sg($.location, ($) => {
         switch ($[0]) {
             case 'external': return _p.ss($, ($) => t.component_imported(
                 `imports ${$.import.key}`,
@@ -75,7 +75,7 @@ export const r_Type_Part_Reference = (
         $: d_in.Type_Node_Reference.tail,
 
     ): _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> => {
-        const tail: _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.map(($) => _p.cc($, ($) => {
+        const tail: _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.map(($) => _p.sg($, ($) => {
             switch ($[0]) {
                 case 'dictionary': return _p.ss($, ($) => sub.dictionary())
                 case 'group': return _p.ss($, ($) => sub.group($.key))
@@ -104,7 +104,7 @@ export const r_Signature_Parameters = (
     "values": t.group($.values.map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
         const temp_2 = r_Type_Reference($['data type'], { 'component sub part': _p.list.literal([]) })
 
-        return _p.cc($.presence, ($) => {
+        return _p.sg($.presence, ($) => {
             switch ($[0]) {
                 case 'optional': return t.optional(temp_2)
                 case 'required': return temp_2
@@ -114,7 +114,7 @@ export const r_Signature_Parameters = (
     })),
     "lookups": t.group($.lookups.map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
         const x = $.referent
-        return _p.cc($.type, ($) => {
+        return _p.sg($.type, ($) => {
             switch ($[0]) {
                 case 'acyclic': return _p.ss($, ($) => t.component_imported("resolve", "Acyclic Lookup", {
                     "T": r_Type_Reference(x, { 'component sub part': _p.list.literal([sub.dictionary()]) }),

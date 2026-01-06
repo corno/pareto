@@ -27,7 +27,7 @@ export const Schema = (
                     3,
                     "core",
                     [
-                        _p.cc($p['what to generate'], ($) => {
+                        _p.sg($p['what to generate'], ($) => {
                             switch ($[0]) {
                                 case 'source': return _p.ss($, ($) => "resolved")
                                 case 'target': return _p.ss($, ($) => $ ? "unresolved" : "unconstrained")
@@ -36,7 +36,7 @@ export const Schema = (
                         }),
                     ],
                     {
-                        "Source": _p.cc($p['what to generate'], ($) => {
+                        "Source": _p.sg($p['what to generate'], ($) => {
                             switch ($[0]) {
                                 case 'source': return _p.ss($, ($) => sh.t.null_())
                                 case 'target': return _p.ss($, ($) => $ ? sh.t.parameter_module("Source") : sh.t.null_())
@@ -53,7 +53,7 @@ export const Schema = (
                     $['schema set child'].key,
                     [
                         "data types",
-                        _p.cc(types, ($) => {
+                        _p.sg(types, ($) => {
                             switch ($[0]) {
                                 case 'target': return _p.ss($, ($) => "target")
                                 case 'source': return _p.ss($, ($) => "source")
@@ -61,7 +61,7 @@ export const Schema = (
                             }
                         })
                     ],
-                    _p.cc(types, ($) => {
+                    _p.sg(types, ($) => {
                         switch ($[0]) {
 
                             case 'source': return _p.ss($, ($) => _p.dictionary.literal({}))
@@ -79,7 +79,7 @@ export const Schema = (
         },
         () => _p.unreachable_code_path(),
     ),
-    _p.cc($p['what to generate'], ($) => {
+    _p.sg($p['what to generate'], ($) => {
         switch ($[0]) {
             case 'source': return _p.ss($, ($) => ({}))
             case 'target': return _p.ss($, ($) => $ ? ({ "Source": null }) : ({}))
@@ -105,7 +105,7 @@ export const r_Type_Reference = (
         }
 
     ): _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> => {
-        const tail: _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.tail.map(($) => _p.cc($, ($) => {
+        const tail: _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.tail.map(($) => _p.sg($, ($) => {
             switch ($[0]) {
                 case 'dictionary': return _p.ss($, ($) => sh.sub.dictionary())
                 case 'group': return _p.ss($, ($) => sh.sub.group($.key))
@@ -120,7 +120,7 @@ export const r_Type_Reference = (
             : tail
     }
 
-    return _p.cc($['type location'].location, ($) => {
+    return _p.sg($['type location'].location, ($) => {
         switch ($[0]) {
             case 'external': return _p.ss($, ($) => sh.t.component_imported(
                 `imports ${$.import.key}`,
@@ -141,10 +141,10 @@ export const r_Type_Reference = (
 
 export const Number_Type = (
     $: d_in.Number_Type
-): d_out.Type<_pi.Deprecated_Source_Location> => _p.cc($.precision, ($) => {
+): d_out.Type<_pi.Deprecated_Source_Location> => _p.sg($.precision, ($) => {
     switch ($[0]) {
         case 'approximation': return _p.ss($, ($) => sh.t.float())
-        case 'exact': return _p.ss($, ($) => _p.cc($.type, ($) => {
+        case 'exact': return _p.ss($, ($) => _p.sg($.type, ($) => {
             switch ($[0]) {
                 case 'integer': return _p.ss($, ($) => sh.t.integer('signed'))
                 case 'natural': return _p.ss($, ($) => sh.t.integer('unsigned'))
@@ -158,10 +158,10 @@ export const Number_Type = (
 
 export const Type_Node = (
     $: d_in.Type_Node
-): d_out.Type<_pi.Deprecated_Source_Location> => _p.cc($, ($) => {
+): d_out.Type<_pi.Deprecated_Source_Location> => _p.sg($, ($) => {
     switch ($[0]) {
         case 'boolean': return _p.ss($, ($) => sh.t.boolean())
-        case 'number': return _p.ss($, ($) => _p.cc($, ($) => {
+        case 'number': return _p.ss($, ($) => _p.sg($, ($) => {
             switch ($[0]) {
                 case 'global': return _p.ss($, ($) => Number_Type($.entry))
                 case 'local': return _p.ss($, ($) => Number_Type($))
@@ -169,7 +169,7 @@ export const Type_Node = (
             }
         }))
         case 'text': return _p.ss($, ($) => sh.t.string())
-        case 'component': return _p.ss($, ($) => _p.cc($, ($) => {
+        case 'component': return _p.ss($, ($) => _p.sg($, ($) => {
             switch ($[0]) {
                 case 'external': return _p.ss($, ($) => sh.t.component_imported(
                     `imports ${$.import.key}`,
@@ -214,7 +214,7 @@ export const Type_Node = (
         case 'optional': return _p.ss($, ($) => sh.t.optional(Type_Node($)))
         case 'reference': return _p.ss($, ($) => {
             const referent = $.referent
-            return _p.cc($.type, ($) => {
+            return _p.sg($.type, ($) => {
                 switch ($[0]) {
                     case 'derived': return _p.ss($, ($) => sh.t.component_imported(
                         "core",
@@ -226,7 +226,7 @@ export const Type_Node = (
                     ))
                     case 'selected': return _p.ss($, ($) => sh.t.component_imported(
                         "core",
-                        _p.cc($.dependency, ($) => {
+                        _p.sg($.dependency, ($) => {
                             switch ($[0]) {
                                 case 'cyclic': return _p.ss($, ($) => "Reference To Circular Dependent Sibling")
                                 case 'acyclic': return _p.ss($, ($) => "Reference To Normal Dictionary Entry")

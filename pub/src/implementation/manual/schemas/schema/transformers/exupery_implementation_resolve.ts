@@ -18,14 +18,11 @@ const op_pad_dictionary_identifiers = <T>(
         'prefix': string,
         'suffix': string
     }
-): _pi.Dictionary<T> => _pinternals.dictionary_build(
-    ($i) => {
-        $.map(($, key) => {
-            $i['add entry']($p.prefix + key + $p.suffix, $)
-        })
-    },
+): _pi.Dictionary<T> => _pinternals.dictionary_from_list(
+    _p.list.from_dictionary($, ($, key) => ({ 'key': key, value: $ })),
+    ($) => $p.prefix + $.key + $p.suffix,
     () => _p.unreachable_code_path() // no possibility of duplicate keys
-)
+).map(($) => $.value)
 
 export const Resolvers = (
     $: d_in.Resolvers,
@@ -104,7 +101,7 @@ export const Possible_Value_Selection = (
         'tail': () => _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>>
     },
 ): d_out.Selection<_pi.Deprecated_Source_Location> => {
-    return _p.cc($, ($) => {
+    return _p.sg($, ($) => {
         switch ($[0]) {
             case 'parameter': return _p.ss($, ($) => s.from_variable(
                 "params",
@@ -113,7 +110,7 @@ export const Possible_Value_Selection = (
                     $p.tail(),
                 ]).flatten(($) => $),
             ))
-            case 'result': return _p.ss($, ($) => _p.cc($, ($) => {
+            case 'result': return _p.ss($, ($) => _p.sg($, ($) => {
                 switch ($[0]) {
                     case 'state group': return _p.ss($, ($) => s.implement_me()) //quite some work
                     case 'optional value': return _p.ss($, ($) => s.implement_me()) //quite some work
@@ -131,7 +128,7 @@ export const Possible_Value_Selection = (
 export const Optional_Value_Initialization = (
     $: d_in.Optional_Value_Initialization,
     $p: null,
-): d_out.Initialization<_pi.Deprecated_Source_Location> => _p.cc($, ($) => {
+): d_out.Initialization<_pi.Deprecated_Source_Location> => _p.sg($, ($) => {
     switch ($[0]) {
         case 'not set': return _p.ss($, ($) => i.not_set())
         case 'selection': return _p.ss($, ($) => i.select(Possible_Value_Selection($, { 'tail': () => _p.list.literal([]) })))
@@ -147,11 +144,11 @@ export const Guaranteed_Value_Selection = (
     },
 ): d_out.Selection<_pi.Deprecated_Source_Location> => {
     const tail = (): _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => _p.list.literal([
-        $.tail.path.map(($) => _p.cc($, ($): _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => {
+        $.tail.path.map(($) => _p.sg($, ($): _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => {
             switch ($[0]) {
                 case 'component': return _p.ss($, ($) => _p.list.literal([]))
                 case 'group': return _p.ss($, ($) => _p.list.literal([$.key]))
-                case 'reference': return _p.ss($, ($) => _p.cc($.definition.type, ($) => {
+                case 'reference': return _p.ss($, ($) => _p.sg($.definition.type, ($) => {
                     switch ($[0]) {
                         case 'derived': return _p.ss($, ($) => _p.list.literal([]))
                         case 'selected': return _p.ss($, ($) => _p.list.literal(["entry"]))
@@ -163,9 +160,9 @@ export const Guaranteed_Value_Selection = (
         })).flatten(($) => $),
         $p.tail()
     ]).flatten(($) => $)
-    return _p.cc($.start, ($) => {
+    return _p.sg($.start, ($) => {
         switch ($[0]) {
-            case 'constraint': return _p.ss($, ($) => _p.cc($, ($) => {
+            case 'constraint': return _p.ss($, ($) => _p.sg($, ($) => {
                 switch ($[0]) {
 
                     case 'component': return _p.ss($, ($) => s.implement_me()) //simple
@@ -180,7 +177,7 @@ export const Guaranteed_Value_Selection = (
                     tail(),
                 ]).flatten(($) => $),
             ))
-            case 'result': return _p.ss($, ($) => _p.cc($, ($) => {
+            case 'result': return _p.ss($, ($) => _p.sg($, ($) => {
                 switch ($[0]) {
                     case 'state group': return _p.ss($, ($) => s.implement_me())  // quite some work
                     case 'optional value': return _p.ss($, ($) => s.implement_me()) // quite some work
@@ -219,7 +216,7 @@ export const Lookup_Selection = (
     $p: {
 
     },
-): d_out.Selection<_pi.Deprecated_Source_Location> => _p.cc($.type, ($) => {
+): d_out.Selection<_pi.Deprecated_Source_Location> => _p.sg($.type, ($) => {
     switch ($[0]) {
         case 'dictionary': return _p.ss($, ($) => s.call(
             s.from_variable_import(" i generic", "dictionary to lookup", []),
@@ -256,7 +253,7 @@ export const Option_Constraints = (
     },
 ): d_out.Initialization<_pi.Deprecated_Source_Location> => i.block(
     [],
-    op_pad_dictionary_identifiers($, { 'prefix': "c ", 'suffix': "" }).map(($) => variable(null, i.select(_p.cc($, ($) => {
+    op_pad_dictionary_identifiers($, { 'prefix': "c ", 'suffix': "" }).map(($) => variable(null, i.select(_p.sg($, ($) => {
         switch ($[0]) {
             case 'state': return _p.ss($, ($) => s.implement_me()) // medium work
             case 'assert is set': return _p.ss($, ($) => s.optional_transform(
@@ -277,17 +274,17 @@ export const Node_Resolver = (
         'temp type': string
         'temp subselection': _pi.List<d_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> //can be removed when exupery has type inference
     },
-): d_out.Initialization<_pi.Deprecated_Source_Location> => _p.cc($, ($) => {
+): d_out.Initialization<_pi.Deprecated_Source_Location> => _p.sg($, ($) => {
     switch ($[0]) {
         case 'number': return _p.ss($, ($) => i.select_from_context([]))
         case 'boolean': return _p.ss($, ($) => i.select_from_context([]))
         case 'nothing': return _p.ss($, ($) => i.null_())
-        case 'reference': return _p.ss($, ($) => i.select(_p.cc($.type, ($): d_out.Selection<_pi.Deprecated_Source_Location> => {
+        case 'reference': return _p.ss($, ($) => i.select(_p.sg($.type, ($): d_out.Selection<_pi.Deprecated_Source_Location> => {
             switch ($[0]) {
                 case 'derived': return _p.ss($, ($) => Guaranteed_Value_Selection($.value, { 'tail': () => _p.list.literal([]) }))
                 case 'selected': return _p.ss($, ($) => {
                     const context = $
-                    return _p.cc($.definition.dependency, ($) => {
+                    return _p.sg($.definition.dependency, ($) => {
                         switch ($[0]) {
                             case 'acyclic': return _p.ss($, ($) => s.call(
                                 s.from_variable_import(" i generic", "get entry", []),
@@ -325,7 +322,7 @@ export const Node_Resolver = (
         })))
         case 'text': return _p.ss($, ($) => i.select_from_context([]))
         case 'component': return _p.ss($, ($) => i.call(
-            _p.cc($.location, ($) => {
+            _p.sg($.location, ($) => {
                 switch ($[0]) {
                     case 'external': return _p.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, `r ${$.type.key}`, []))
                     case 'internal': return _p.ss($, ($) => s.from_variable(`r ${$.key}`, []))
@@ -338,7 +335,7 @@ export const Node_Resolver = (
                 "parameters": $.arguments.transform(
                     ($) => i.group({
                         "values": $.values.transform(
-                            ($) => i.group($.map(($) => _p.cc($, ($) => {
+                            ($) => i.group($.map(($) => _p.sg($, ($) => {
                                 switch ($[0]) {
                                     case 'optional': return _p.ss($, ($) => Optional_Value_Initialization($, null))
                                     case 'parameter': return _p.ss($, ($) => i.select_from_variable(
@@ -353,7 +350,7 @@ export const Node_Resolver = (
                             () => i.select_from_variable("params", ["values"]),
                         ),
                         "lookups": $.lookups.transform(
-                            ($) => i.group($.map(($) => _p.cc($, ($) => {
+                            ($) => i.group($.map(($) => _p.sg($, ($) => {
                                 switch ($[0]) {
                                     case 'empty stack': return _p.ss($, ($) => i.list_literal([]))
                                     case 'not set': return _p.ss($, ($) => i.not_set())

@@ -12,12 +12,12 @@ import * as t_exupery_interface_types from "../../../../manual/schemas/schema/tr
 
 
 export const Operations = ($: d_in.Operations): d_out.Type<_pi.Deprecated_Source_Location> => {
-    return t.group($.map(($) => _p.cc($, ($) => {
+    return t.group($.map(($) => _p.sg($, ($) => {
         switch ($[0]) {
             case 'operation': return _p.ss($, ($) => t.function_(
                 $['type parameters'].map(($) => null),
                 t_exupery_interface_types.Type_Node($.context),
-                $.parameters.map(($) => _p.cc($, ($) => t_exupery_interface_types.Type_Node($))),
+                $.parameters.map(($) => _p.sg($, ($) => t_exupery_interface_types.Type_Node($))),
                 t_exupery_interface_types.Type_Node($.result),
             ))
             case 'set': return _p.ss($, ($) => Operations($))
@@ -160,7 +160,7 @@ export const Module = ($: d_in.Module): d_out.Module_Set<_pi.Deprecated_Source_L
         //                 "resolved"
         //             ],
         //             {
-        //                 "Source": pa.cc($, ($) => t.null_()),
+        //                 "Source": pa.sg($, ($) => t.null_()),
         //             },
         //         )
         //     },

@@ -22,7 +22,7 @@ export const Group_Content = (
     }
 ): d_out.Errors => {
     return _p.list.literal([
-        $.properties.to_list(($, key) => _p.cc($, ($): d_out.Errors => {
+        $.properties.to_list(($, key) => _p.sg($, ($): d_out.Errors => {
             switch ($[0]) {
                 case 'multiple': return _p.ss($, ($) => $.flatten(($) => _p.list.literal([
                     _p.list.literal<d_out.Errors.L>([
@@ -62,14 +62,14 @@ export const Node = (
     $: d_in.Node,
     $p: null
 ): d_out.Errors => {
-    return _p.cc($.type, ($): d_out.Errors => {
+    return _p.sg($.type, ($): d_out.Errors => {
         switch ($[0]) {
-            case 'group': return _p.ss($, ($) => _p.cc($['found value type'], ($): d_out.Errors => {
+            case 'group': return _p.ss($, ($) => _p.sg($['found value type'], ($): d_out.Errors => {
                 switch ($[0]) {
-                    case 'valid': return _p.ss($, ($) => _p.cc($, ($) => {
+                    case 'valid': return _p.ss($, ($) => _p.sg($, ($) => {
                         switch ($[0]) {
                             case 'ordered': return _p.ss($, ($) => Group_Content($.content, {
-                                'group range': _p.cc($.value, ($) => {
+                                'group range': _p.sg($.value, ($) => {
                                     switch ($[0]) {
                                         case 'concise group': return _p.ss($, ($) => $['<'].range)
                                         case 'list': return _p.ss($, ($) => $['['].range)
@@ -78,7 +78,7 @@ export const Node = (
                                 })
                             }))
                             case 'indexed': return _p.ss($, ($) => Group_Content($.content, {
-                                'group range': _p.cc($.value, ($) => {
+                                'group range': _p.sg($.value, ($) => {
                                     switch ($[0]) {
                                         case 'verbose group': return _p.ss($, ($) => $['('].range)
                                         case 'dictionary': return _p.ss($, ($) => $['{'].range)
@@ -101,10 +101,10 @@ export const Node = (
                     default: return _p.au($[0])
                 }
             }))
-            case 'dictionary': return _p.ss($, ($) => _p.cc($['found value type'], ($): d_out.Errors => {
+            case 'dictionary': return _p.ss($, ($) => _p.sg($['found value type'], ($): d_out.Errors => {
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($) => {
-                        return $.entries.to_list(($, key) => _p.cc($, ($): d_out.Errors => {
+                        return $.entries.to_list(($, key) => _p.sg($, ($): d_out.Errors => {
                             switch ($[0]) {
                                 case 'unique': return _p.ss($, ($) => Optional_Node($, $p))
                                 case 'multiple': return _p.ss($, ($) => $.flatten(($) => _p.list.literal<d_out.Errors>([
@@ -133,7 +133,7 @@ export const Node = (
                     default: return _p.au($[0])
                 }
             }))
-            case 'number': return _p.ss($, ($) => _p.cc($['found value type'], ($) => {
+            case 'number': return _p.ss($, ($) => _p.sg($['found value type'], ($) => {
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($): d_out.Errors => $['correct string type']
                         ? _p.list.literal([])
@@ -152,7 +152,7 @@ export const Node = (
                     default: return _p.au($[0])
                 }
             }))
-            case 'boolean': return _p.ss($, ($) => _p.cc($['found value type'], ($) => {
+            case 'boolean': return _p.ss($, ($) => _p.sg($['found value type'], ($) => {
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($): d_out.Errors => $['correct string type']
                         ? _p.list.literal([])
@@ -171,7 +171,7 @@ export const Node = (
                     default: return _p.au($[0])
                 }
             }))
-            case 'list': return _p.ss($, ($) => _p.cc($['found value type'], ($) => {
+            case 'list': return _p.ss($, ($) => _p.sg($['found value type'], ($) => {
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($): d_out.Errors => $.elements.flatten(($) => Node($, $p)))
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
@@ -185,7 +185,7 @@ export const Node = (
                     default: return _p.au($[0])
                 }
             }))
-            case 'nothing': return _p.ss($, ($) => _p.cc($['found value type'], ($) => {
+            case 'nothing': return _p.ss($, ($) => _p.sg($['found value type'], ($) => {
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($): d_out.Errors => _p.list.literal([]))
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
@@ -199,7 +199,7 @@ export const Node = (
                     default: return _p.au($[0])
                 }
             }))
-            case 'reference': return _p.ss($, ($) => _p.cc($['found value type'], ($) => {
+            case 'reference': return _p.ss($, ($) => _p.sg($['found value type'], ($) => {
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($): d_out.Errors => _p.list.literal([]))
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
@@ -217,9 +217,9 @@ export const Node = (
                 return Node($.node, $p)
             })
             case 'type parameter': return _p.ss($, ($) => _pdev.implement_me("xx"))
-            case 'optional': return _p.ss($, ($) => _p.cc($['found value type'], ($) => {
+            case 'optional': return _p.ss($, ($) => _p.sg($['found value type'], ($) => {
                 switch ($[0]) {
-                    case 'valid': return _p.ss($, ($): d_out.Errors => _p.cc($, ($) => {
+                    case 'valid': return _p.ss($, ($): d_out.Errors => _p.sg($, ($) => {
                         switch ($[0]) {
                             case 'set': return _p.ss($, ($) => Node($['child node'], $p))
                             case 'not set': return _p.ss($, ($) => _p.list.literal([]))
@@ -239,12 +239,12 @@ export const Node = (
             }))
             case 'state': return _p.ss($, ($) => {
                 const sg_def = $.definition
-                return _p.cc($['found value type'], ($): d_out.Errors => {
+                return _p.sg($['found value type'], ($): d_out.Errors => {
                     switch ($[0]) {
                         case 'valid': return _p.ss($, ($) => {
-                            return _p.cc($['value type'], ($) => {
+                            return _p.sg($['value type'], ($) => {
                                 switch ($[0]) {
-                                    case 'state': return _p.ss($, ($) => _p.cc($['value substatus'], ($) => {
+                                    case 'state': return _p.ss($, ($) => _p.sg($['value substatus'], ($) => {
                                         switch ($[0]) {
                                             case 'missing data': return _p.ss($, ($) => _p.list.literal([
                                                 {
@@ -311,7 +311,7 @@ export const Node = (
                     }
                 })
             })
-            case 'text': return _p.ss($, ($) => _p.cc($['found value type'], ($) => {
+            case 'text': return _p.ss($, ($) => _p.sg($['found value type'], ($) => {
                 switch ($[0]) {
                     case 'valid': return _p.list.literal([])
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([

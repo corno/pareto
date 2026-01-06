@@ -6,11 +6,11 @@ import * as _i_out from "../../../../../interface/generated/pareto/schemas/astn_
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/astn_schema/data_types/resolve"
 
 
-export const r_Dictionary: _i_signatures._T_Dictionary = ($, $p) => _p.block(() => {
+export const r_Dictionary: _i_signatures._T_Dictionary = ($, $p) => _p.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _p.block(() => {
-        const p_node: _i_out._T_Dictionary.node = _p.cc($['node'], ($) => r_Type_Node(
+    return _p.deprecated_block(() => {
+        const p_node: _i_out._T_Dictionary.node = _p.deprecated_cc($['node'], ($) => r_Type_Node(
             $,
             {
                 'location 2 string': l2s,
@@ -26,24 +26,24 @@ export const r_Dictionary: _i_signatures._T_Dictionary = ($, $p) => _p.block(() 
                 }),
             }
         ))
-        const p_ordered: _i_out._T_Dictionary.ordered = _p.cc($['ordered'], ($) => $)
+        const p_ordered: _i_out._T_Dictionary.ordered = _p.deprecated_cc($['ordered'], ($) => $)
         return ({
             'node': p_node,
             'ordered': p_ordered,
         })
     })
 })
-export const r_Globals: _i_signatures._T_Globals = ($, $p) => _p.block(() => {
+export const r_Globals: _i_signatures._T_Globals = ($, $p) => _p.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _p.block(() => {
-        const p_text_types: _i_out._T_Globals.text_types = _p.cc($['text types'], ($) => _p.block(() => {
+    return _p.deprecated_block(() => {
+        const p_text_types: _i_out._T_Globals.text_types = _p.deprecated_cc($['text types'], ($) => _p.deprecated_block(() => {
             return _i_generic.resolve_dictionary(
                 $,
                 {
                     'location 2 string': l2s,
-                    'map': ($, $p) => _p.block(() => {
-                        return _p.cc($['value'], ($) => r_Text_Type(
+                    'map': ($, $p) => _p.deprecated_block(() => {
+                        return _p.deprecated_cc($['value'], ($) => r_Text_Type(
                             $,
                             {
                                 'location 2 string': l2s,
@@ -62,16 +62,16 @@ export const r_Globals: _i_signatures._T_Globals = ($, $p) => _p.block(() => {
         })
     })
 })
-export const r_Group: _i_signatures._T_Group = ($, $p) => _p.block(() => {
+export const r_Group: _i_signatures._T_Group = ($, $p) => _p.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _p.block(() => {
+    return _p.deprecated_block(() => {
         return _i_generic.resolve_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _p.block(() => {
-                    return _p.cc($['value'], ($) => r_Type_Node(
+                'map': ($, $p) => _p.deprecated_block(() => {
+                    return _p.deprecated_cc($['value'], ($) => r_Type_Node(
                         $,
                         {
                             'location 2 string': l2s,
@@ -92,24 +92,24 @@ export const r_Group: _i_signatures._T_Group = ($, $p) => _p.block(() => {
         )
     })
 })
-export const r_Imports: _i_signatures._T_Imports = ($, $p) => _p.block(() => {
+export const r_Imports: _i_signatures._T_Imports = ($, $p) => _p.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _p.block(() => {
+    return _p.deprecated_block(() => {
         return _i_generic.resolve_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _p.block(() => {
-                    return _p.cc($['value'], ($) => _p.block(() => {
-                        const p_schema_set_child: _i_out._T_Imports.D.schema_set_child = _p.cc($['schema set child'], ($) => _i_generic.get_entry_from_stack(
+                'map': ($, $p) => _p.deprecated_block(() => {
+                    return _p.deprecated_cc($['value'], ($) => _p.deprecated_block(() => {
+                        const p_schema_set_child: _i_out._T_Imports.D.schema_set_child = _p.deprecated_cc($['schema set child'], ($) => _i_generic.get_entry_from_stack(
                             params['lookups']['sibling schemas'],
                             {
                                 'location 2 string': l2s,
                                 'reference': $,
                             }
                         ))
-                        const p_schema: _i_out._T_Imports.D.schema = _p.cc($['schema'], ($) => _pd.implement_me("yy"))
+                        const p_schema: _i_out._T_Imports.D.schema = _p.deprecated_cc($['schema'], ($) => _pd.implement_me("yy"))
                         return ({
                             'schema': p_schema,
                             'schema set child': p_schema_set_child,
@@ -120,11 +120,11 @@ export const r_Imports: _i_signatures._T_Imports = ($, $p) => _p.block(() => {
         )
     })
 })
-export const r_Schema: _i_signatures._T_Schema = ($, $p) => _p.block(() => {
+export const r_Schema: _i_signatures._T_Schema = ($, $p) => _p.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _p.block(() => {
-        const p_imports: _i_out._T_Schema.imports = _p.cc($['imports'], ($) => r_Imports(
+    return _p.deprecated_block(() => {
+        const p_imports: _i_out._T_Schema.imports = _p.deprecated_cc($['imports'], ($) => r_Imports(
             $,
             {
                 'location 2 string': l2s,
@@ -136,7 +136,7 @@ export const r_Schema: _i_signatures._T_Schema = ($, $p) => _p.block(() => {
                 }),
             }
         ))
-        const p_globals: _i_out._T_Schema.globals = _p.cc($['globals'], ($) => r_Globals(
+        const p_globals: _i_out._T_Schema.globals = _p.deprecated_cc($['globals'], ($) => r_Globals(
             $,
             {
                 'location 2 string': l2s,
@@ -146,7 +146,7 @@ export const r_Schema: _i_signatures._T_Schema = ($, $p) => _p.block(() => {
                 }),
             }
         ))
-        const p_types: _i_out._T_Schema.types = _p.cc($['types'], ($) => r_Types(
+        const p_types: _i_out._T_Schema.types = _p.deprecated_cc($['types'], ($) => r_Types(
             $,
             {
                 'location 2 string': l2s,
@@ -166,12 +166,12 @@ export const r_Schema: _i_signatures._T_Schema = ($, $p) => _p.block(() => {
         })
     })
 })
-export const r_Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => _p.block(() => {
+export const r_Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => _p.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _p.cc($['state group'], ($): _i_out._T_Schema_Tree => {
+    return _p.deprecated_cc($['state group'], ($): _i_out._T_Schema_Tree => {
         switch ($[0]) {
-            case 'schema': return _p.ss($, ($) => ['schema', _p.block(() => {
+            case 'schema': return _p.ss($, ($) => ['schema', _p.deprecated_block(() => {
                 return r_Schema(
                     $,
                     {
@@ -185,7 +185,7 @@ export const r_Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => _p.block((
                     }
                 )
             })])
-            case 'set': return _p.ss($, ($) => ['set', _p.block(() => {
+            case 'set': return _p.ss($, ($) => ['set', _p.deprecated_block(() => {
                 return r_Schemas(
                     $,
                     {
@@ -203,16 +203,16 @@ export const r_Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => _p.block((
         }
     })
 })
-export const r_Schemas: _i_signatures._T_Schemas = ($, $p) => _p.block(() => {
+export const r_Schemas: _i_signatures._T_Schemas = ($, $p) => _p.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _p.block(() => {
+    return _p.deprecated_block(() => {
         return _i_generic.resolve_ordered_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _p.block(() => {
-                    return _p.cc($['value'], ($) => r_Schema_Tree(
+                'map': ($, $p) => _p.deprecated_block(() => {
+                    return _p.deprecated_cc($['value'], ($) => r_Schema_Tree(
                         $,
                         {
                             'location 2 string': l2s,
@@ -229,16 +229,16 @@ export const r_Schemas: _i_signatures._T_Schemas = ($, $p) => _p.block(() => {
         )
     })
 })
-export const r_Text_Type: _i_signatures._T_Text_Type = ($, $p) => _p.block(() => {
+export const r_Text_Type: _i_signatures._T_Text_Type = ($, $p) => _p.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _p.block(() => {
-        const p_type: _i_out._T_Text_Type._type = _p.cc($['type'], ($) => _p.cc($['state group'], ($): _i_out._T_Text_Type._type => {
+    return _p.deprecated_block(() => {
+        const p_type: _i_out._T_Text_Type._type = _p.deprecated_cc($['type'], ($) => _p.deprecated_cc($['state group'], ($): _i_out._T_Text_Type._type => {
             switch ($[0]) {
-                case 'multi line': return _p.ss($, ($) => ['multi line', _p.block(() => {
+                case 'multi line': return _p.ss($, ($) => ['multi line', _p.deprecated_block(() => {
                     return null
                 })])
-                case 'single line': return _p.ss($, ($) => ['single line', _p.block(() => {
+                case 'single line': return _p.ss($, ($) => ['single line', _p.deprecated_block(() => {
                     return null
                 })])
                 default: return _p.au($[0])
@@ -249,11 +249,11 @@ export const r_Text_Type: _i_signatures._T_Text_Type = ($, $p) => _p.block(() =>
         })
     })
 })
-export const r_Type: _i_signatures._T_Type = ($, $p) => _p.block(() => {
+export const r_Type: _i_signatures._T_Type = ($, $p) => _p.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _p.block(() => {
-        const p_node: _i_out._T_Type.node = _p.cc($['node'], ($) => r_Type_Node(
+    return _p.deprecated_block(() => {
+        const p_node: _i_out._T_Type.node = _p.deprecated_cc($['node'], ($) => r_Type_Node(
             $,
             {
                 'location 2 string': l2s,
@@ -274,21 +274,21 @@ export const r_Type: _i_signatures._T_Type = ($, $p) => _p.block(() => {
         })
     })
 })
-export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.block(() => {
+export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _p.cc($['state group'], ($): _i_out._T_Type_Node => {
+    return _p.deprecated_cc($['state group'], ($): _i_out._T_Type_Node => {
         switch ($[0]) {
-            case 'component': return _p.ss($, ($) => ['component', _p.block(() => {
-                return _p.cc($['state group'], ($): _i_out._T_Type_Node.SG.component => {
+            case 'component': return _p.ss($, ($) => ['component', _p.deprecated_block(() => {
+                return _p.deprecated_cc($['state group'], ($): _i_out._T_Type_Node.SG.component => {
                     switch ($[0]) {
-                        case 'external': return _p.ss($, ($) => ['external', _p.block(() => {
+                        case 'external': return _p.ss($, ($) => ['external', _p.deprecated_block(() => {
                             const c_import = params['values']['imports'].transform(
                                 ($) => $,
                                 () => _p.fixme_abort('ABORT SELECTION')
                             )
-                            return _p.block(() => {
-                                const p_import: _i_out._T_Type_Node.SG.component.SG.external._import = _p.cc($['import'], ($) => _i_generic.get_entry(
+                            return _p.deprecated_block(() => {
+                                const p_import: _i_out._T_Type_Node.SG.component.SG.external._import = _p.deprecated_cc($['import'], ($) => _i_generic.get_entry(
                                     _i_generic.dictionary_to_lookup(
                                         c_import,
                                         null
@@ -298,7 +298,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.block(() =>
                                         'reference': $,
                                     }
                                 ))
-                                const p_type: _i_out._T_Type_Node.SG.component.SG.external._type = _p.cc($['type'], ($) => _i_generic.get_entry(
+                                const p_type: _i_out._T_Type_Node.SG.component.SG.external._type = _p.deprecated_cc($['type'], ($) => _i_generic.get_entry(
                                     _i_generic.dictionary_to_lookup(
                                         p_import['entry']['schema']['types']['dictionary'],
                                         null
@@ -314,7 +314,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.block(() =>
                                 })
                             })
                         })])
-                        case 'internal': return _p.ss($, ($) => ['internal', _p.block(() => {
+                        case 'internal': return _p.ss($, ($) => ['internal', _p.deprecated_block(() => {
                             return _i_generic.get_entry(
                                 params['lookups']['noncircular sibling types'],
                                 {
@@ -323,7 +323,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.block(() =>
                                 }
                             )
                         })])
-                        case 'internal cyclic': return _p.ss($, ($) => ['internal cyclic', _p.block(() => {
+                        case 'internal cyclic': return _p.ss($, ($) => ['internal cyclic', _p.deprecated_block(() => {
                             return _i_generic.get_possibly_circular_dependent_sibling_entry(
                                 params['lookups']['possibly circular dependent sibling types'],
                                 {
@@ -336,7 +336,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.block(() =>
                     }
                 })
             })])
-            case 'dictionary': return _p.ss($, ($) => ['dictionary', _p.block(() => {
+            case 'dictionary': return _p.ss($, ($) => ['dictionary', _p.deprecated_block(() => {
                 return r_Dictionary(
                     $,
                     {
@@ -354,7 +354,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.block(() =>
                     }
                 )
             })])
-            case 'group': return _p.ss($, ($) => ['group', _p.block(() => {
+            case 'group': return _p.ss($, ($) => ['group', _p.deprecated_block(() => {
                 return r_Group(
                     $,
                     {
@@ -372,9 +372,9 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.block(() =>
                     }
                 )
             })])
-            case 'list': return _p.ss($, ($) => ['list', _p.block(() => {
-                return _p.block(() => {
-                    const p_node: _i_out._T_Type_Node.SG.list.node = _p.cc($['node'], ($) => r_Type_Node(
+            case 'list': return _p.ss($, ($) => ['list', _p.deprecated_block(() => {
+                return _p.deprecated_block(() => {
+                    const p_node: _i_out._T_Type_Node.SG.list.node = _p.deprecated_cc($['node'], ($) => r_Type_Node(
                         $,
                         {
                             'location 2 string': l2s,
@@ -389,10 +389,10 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.block(() =>
                     })
                 })
             })])
-            case 'nothing': return _p.ss($, ($) => ['nothing', _p.block(() => {
+            case 'nothing': return _p.ss($, ($) => ['nothing', _p.deprecated_block(() => {
                 return null
             })])
-            case 'optional': return _p.ss($, ($) => ['optional', _p.block(() => {
+            case 'optional': return _p.ss($, ($) => ['optional', _p.deprecated_block(() => {
                 return r_Type_Node(
                     $,
                     {
@@ -404,14 +404,14 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.block(() =>
                     }
                 )
             })])
-            case 'reference': return _p.ss($, ($) => ['reference', _p.block(() => {
-                return _p.block(() => {
-                    const p_type: _i_out._T_Type_Node.SG.reference._type = _p.cc($['type'], ($) => _p.cc($['state group'], ($): _i_out._T_Type_Node.SG.reference._type => {
+            case 'reference': return _p.ss($, ($) => ['reference', _p.deprecated_block(() => {
+                return _p.deprecated_block(() => {
+                    const p_type: _i_out._T_Type_Node.SG.reference._type = _p.deprecated_cc($['type'], ($) => _p.deprecated_cc($['state group'], ($): _i_out._T_Type_Node.SG.reference._type => {
                         switch ($[0]) {
-                            case 'derived': return _p.ss($, ($) => ['derived', _p.block(() => {
+                            case 'derived': return _p.ss($, ($) => ['derived', _p.deprecated_block(() => {
                                 return null
                             })])
-                            case 'selected': return _p.ss($, ($) => ['selected', _p.block(() => {
+                            case 'selected': return _p.ss($, ($) => ['selected', _p.deprecated_block(() => {
                                 return null
                             })])
                             default: return _p.au($[0])
@@ -422,14 +422,14 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.block(() =>
                     })
                 })
             })])
-            case 'state group': return _p.ss($, ($) => ['state group', _p.block(() => {
-                return _p.block(() => {
+            case 'state group': return _p.ss($, ($) => ['state group', _p.deprecated_block(() => {
+                return _p.deprecated_block(() => {
                     return _i_generic.resolve_dictionary(
                         $,
                         {
                             'location 2 string': l2s,
-                            'map': ($, $p) => _p.block(() => {
-                                return _p.cc($['value'], ($) => r_Type_Node(
+                            'map': ($, $p) => _p.deprecated_block(() => {
+                                return _p.deprecated_cc($['value'], ($) => r_Type_Node(
                                     $,
                                     {
                                         'location 2 string': l2s,
@@ -444,10 +444,10 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.block(() =>
                     )
                 })
             })])
-            case 'text': return _p.ss($, ($) => ['text', _p.block(() => {
-                return _p.cc($['state group'], ($): _i_out._T_Type_Node.SG.text => {
+            case 'text': return _p.ss($, ($) => ['text', _p.deprecated_block(() => {
+                return _p.deprecated_cc($['state group'], ($): _i_out._T_Type_Node.SG.text => {
                     switch ($[0]) {
-                        case 'global': return _p.ss($, ($) => ['global', _p.block(() => {
+                        case 'global': return _p.ss($, ($) => ['global', _p.deprecated_block(() => {
                             const c_globals = params['values']['globals'].transform(
                                 ($) => $,
                                 () => _p.fixme_abort('ABORT SELECTION')
@@ -463,7 +463,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.block(() =>
                                 }
                             )
                         })])
-                        case 'local': return _p.ss($, ($) => ['local', _p.block(() => {
+                        case 'local': return _p.ss($, ($) => ['local', _p.deprecated_block(() => {
                             return r_Text_Type(
                                 $,
                                 {
@@ -483,16 +483,16 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.block(() =>
         }
     })
 })
-export const r_Types: _i_signatures._T_Types = ($, $p) => _p.block(() => {
+export const r_Types: _i_signatures._T_Types = ($, $p) => _p.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _p.block(() => {
+    return _p.deprecated_block(() => {
         return _i_generic.resolve_ordered_dictionary(
             $,
             {
                 'location 2 string': l2s,
-                'map': ($, $p) => _p.block(() => {
-                    return _p.cc($['value'], ($) => r_Type(
+                'map': ($, $p) => _p.deprecated_block(() => {
+                    return _p.deprecated_cc($['value'], ($) => r_Type(
                         $,
                         {
                             'location 2 string': l2s,

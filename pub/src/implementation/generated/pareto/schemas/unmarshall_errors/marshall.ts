@@ -6,22 +6,22 @@ import * as _i_signatures from "../../../../../interface/generated/pareto/schema
 
 
 export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => ['verbose group', _pa.dictionary.literal({
-    'range': _pa.cc($['range'], ($) => Range(
+    'range': _pa.deprecated_cc($['range'], ($) => Range(
         $,
         {
             'value serializers': $p['value serializers'],
         }
     )),
-    'type': _pa.cc($['type'], ($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+    'type': _pa.deprecated_cc($['type'], ($) => ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
         switch ($[0]) {
             case 'error': return _pa.ss($, ($) => ({
                 'state': "error",
-                'value': ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+                'value': ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
                     switch ($[0]) {
                         case 'duplicate property': return _pa.ss($, ($) => ({
                             'state': "duplicate property",
                             'value': ['verbose group', _pa.dictionary.literal({
-                                'name': _pa.cc($['name'], ($) => ['text', ({
+                                'name': _pa.deprecated_cc($['name'], ($) => ['text', ({
                                     'delimiter': ['quote', null],
                                     'value': $,
                                 })]),
@@ -30,7 +30,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                         case 'invalid value type': return _pa.ss($, ($) => ({
                             'state': "invalid value type",
                             'value': ['verbose group', _pa.dictionary.literal({
-                                'expected': _pa.cc($['expected'], ($) => ['list', $.map(($) => ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+                                'expected': _pa.deprecated_cc($['expected'], ($) => ['list', $.map(($) => ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
                                     switch ($[0]) {
                                         case 'concise group': return _pa.ss($, ($) => ({
                                             'state': "concise group",
@@ -72,7 +72,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                         case 'missing property': return _pa.ss($, ($) => ({
                             'state': "missing property",
                             'value': ['verbose group', _pa.dictionary.literal({
-                                'name': _pa.cc($['name'], ($) => ['text', ({
+                                'name': _pa.deprecated_cc($['name'], ($) => ['text', ({
                                     'delimiter': ['quote', null],
                                     'value': $,
                                 })]),
@@ -80,7 +80,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                         }))
                         case 'state': return _pa.ss($, ($) => ({
                             'state': "state",
-                            'value': ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+                            'value': ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
                                 switch ($[0]) {
                                     case 'missing data marker': return _pa.ss($, ($) => ({
                                         'state': "missing data marker",
@@ -105,8 +105,8 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                                     case 'unknown state': return _pa.ss($, ($) => ({
                                         'state': "unknown state",
                                         'value': ['verbose group', _pa.dictionary.literal({
-                                            'expected': _pa.cc($['expected'], ($) => ['dictionary', $.map(($) => ['nothing', null])]),
-                                            'found': _pa.cc($['found'], ($) => ['text', ({
+                                            'expected': _pa.deprecated_cc($['expected'], ($) => ['dictionary', $.map(($) => ['nothing', null])]),
+                                            'found': _pa.deprecated_cc($['found'], ($) => ['text', ({
                                                 'delimiter': ['quote', null],
                                                 'value': $,
                                             })]),
@@ -119,7 +119,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                         case 'superfluous property': return _pa.ss($, ($) => ({
                             'state': "superfluous property",
                             'value': ['verbose group', _pa.dictionary.literal({
-                                'name': _pa.cc($['name'], ($) => ['text', ({
+                                'name': _pa.deprecated_cc($['name'], ($) => ['text', ({
                                     'delimiter': ['quote', null],
                                     'value': $,
                                 })]),
@@ -131,7 +131,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
             }))
             case 'warning': return _pa.ss($, ($) => ({
                 'state': "warning",
-                'value': ['state', _pa.cc($, ($): _i_out._T_Value.SG.state => {
+                'value': ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
                     switch ($[0]) {
                         case 'expected apostrophed string': return _pa.ss($, ($) => ({
                             'state': "expected apostrophed string",
@@ -158,14 +158,14 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
     })]),
 })])]
 export const Location: _i_signatures._T_Location = ($, $p) => ['verbose group', _pa.dictionary.literal({
-    'absolute': _pa.cc($['absolute'], ($) => ['text', ({
+    'absolute': _pa.deprecated_cc($['absolute'], ($) => ['text', ({
         'delimiter': ['backtick', null],
         'value': $p['value serializers']['default number'](
             $,
             null
         ),
     })]),
-    'relative': _pa.cc($['relative'], ($) => Relative_Location(
+    'relative': _pa.deprecated_cc($['relative'], ($) => Relative_Location(
         $,
         {
             'value serializers': $p['value serializers'],
@@ -173,13 +173,13 @@ export const Location: _i_signatures._T_Location = ($, $p) => ['verbose group', 
     )),
 })]
 export const Range: _i_signatures._T_Range = ($, $p) => ['verbose group', _pa.dictionary.literal({
-    'end': _pa.cc($['end'], ($) => Location(
+    'end': _pa.deprecated_cc($['end'], ($) => Location(
         $,
         {
             'value serializers': $p['value serializers'],
         }
     )),
-    'start': _pa.cc($['start'], ($) => Location(
+    'start': _pa.deprecated_cc($['start'], ($) => Location(
         $,
         {
             'value serializers': $p['value serializers'],
@@ -187,14 +187,14 @@ export const Range: _i_signatures._T_Range = ($, $p) => ['verbose group', _pa.di
     )),
 })]
 export const Relative_Location: _i_signatures._T_Relative_Location = ($, $p) => ['verbose group', _pa.dictionary.literal({
-    'column': _pa.cc($['column'], ($) => ['text', ({
+    'column': _pa.deprecated_cc($['column'], ($) => ['text', ({
         'delimiter': ['backtick', null],
         'value': $p['value serializers']['default number'](
             $,
             null
         ),
     })]),
-    'line': _pa.cc($['line'], ($) => ['text', ({
+    'line': _pa.deprecated_cc($['line'], ($) => ['text', ({
         'delimiter': ['backtick', null],
         'value': $p['value serializers']['default number'](
             $,

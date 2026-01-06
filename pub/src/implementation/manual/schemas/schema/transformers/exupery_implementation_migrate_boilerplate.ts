@@ -59,12 +59,12 @@ export const Type_Node = (
         'subselection': _pi.List<d_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>>
     },
 ): d_out.Initialization<_pi.Deprecated_Source_Location> => {
-    return _p.cc($, ($) => {
+    return _p.sg($, ($) => {
         switch ($[0]) {
             case 'number': return _p.ss($, ($) => i.select_from_context([]))
             case 'boolean': return _p.ss($, ($) => i.select_from_context([]))
             case 'nothing': return _p.ss($, ($) => i.null_())
-            case 'reference': return _p.ss($, ($) => _p.cc($.type, ($) => {
+            case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
                 switch ($[0]) {
                     case 'derived': return _p.ss($, ($) => i.null_())
                     case 'selected': return _p.ss($, ($) => i.select_from_context(["key"]))
@@ -73,7 +73,7 @@ export const Type_Node = (
             }))
             case 'text': return _p.ss($, ($) => i.select_from_context([]))
             case 'component': return _p.ss($, ($) => i.call(
-                _p.cc($, ($) => {
+                _p.sg($, ($) => {
                     switch ($[0]) {
                         case 'external': return _p.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
                         case 'internal': return _p.ss($, ($) => s.from_variable($.key, []))

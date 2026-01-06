@@ -72,13 +72,13 @@ export const Type_Node = (
         'constrained': boolean
     },
 ): d_out.Initialization<_pi.Deprecated_Source_Location> => {
-    return _p.cc($, ($) => {
+    return _p.sg($, ($) => {
         switch ($[0]) {
             case 'number': return _p.ss($, ($) => i.call(
                 s.from_variable_import(" i generic", "process number", []),
                 i.select_from_context([]),
                 _p.dictionary.literal({
-                    "deserializer": i.select_from_parameter("value deserializers", _p.cc($, ($) => {
+                    "deserializer": i.select_from_parameter("value deserializers", _p.sg($, ($) => {
                         switch ($[0]) {
                             case 'global': return _p.ss($, ($) => ["custom numbers", $.key])
                             case 'local': return _p.ss($, ($) => ["default number"])
@@ -100,7 +100,7 @@ export const Type_Node = (
                 _p.dictionary.literal({
                 })
             ))
-            case 'reference': return _p.ss($, ($) => _p.cc($.type, ($) => {
+            case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
                 switch ($[0]) {
                     case 'derived': return _p.ss($, ($) => i.call(
                         s.from_variable_import(" i generic", "process derived reference", []),
@@ -109,7 +109,7 @@ export const Type_Node = (
                         })
                     ))
                     case 'selected': return _p.ss($, ($) => i.call(
-                        s.from_variable_import(" i generic", _p.cc($.dependency, ($) => {
+                        s.from_variable_import(" i generic", _p.sg($.dependency, ($) => {
                             switch ($[0]) {
                                 case 'acyclic': return "process selected reference"
                                 case 'cyclic': return "process selected reference"
@@ -131,7 +131,7 @@ export const Type_Node = (
                 })
             ))
             case 'component': return _p.ss($, ($) => i.call(
-                _p.cc($, ($) => {
+                _p.sg($, ($) => {
                     switch ($[0]) {
                         case 'external': return _p.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
                         case 'internal': return _p.ss($, ($) => s.from_variable($.key, []))

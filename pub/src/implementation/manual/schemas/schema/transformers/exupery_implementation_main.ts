@@ -23,7 +23,7 @@ export const Schema_Tree = (
         'path': _pi.List<string>,
     }
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
-    return _p.cc($, ($) => {
+    return _p.sg($, ($) => {
         switch ($[0]) {
             case 'schema': return _p.ss($, ($) => {
                 const imports = $.imports
@@ -35,7 +35,7 @@ export const Schema_Tree = (
                         //     'constrained': $.complexity[0] === 'constrained'
                         // })),
 
-                        "resolve.ts": _p.cc($.complexity, ($) => {
+                        "resolve.ts": _p.sg($.complexity, ($) => {
                             switch ($[0]) {
                                 case 'constrained': return _p.ss($, ($) => _p.optional.set(t_resolver.Resolvers($.resolvers, {
                                     'path': $p.path,

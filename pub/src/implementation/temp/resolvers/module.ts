@@ -12,7 +12,7 @@ export const Module: d_signatures._T_Module = ($, $p) => _p.block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return _p.block(() => {
-        const p_schema_tree: d_out._T_Module.schema_tree = _p.cc($['schema tree'], ($) => _i_r_schema.Schema_Tree(
+        const p_schema_tree: d_out._T_Module.schema_tree = _p.sg($['schema tree'], ($) => _i_r_schema.Schema_Tree(
             $,
             {
                 'location 2 string': l2s,
@@ -25,7 +25,7 @@ export const Module: d_signatures._T_Module = ($, $p) => _p.block(() => {
                 }),
             }
         ))
-        const p_operations: d_out._T_Module.operations = _p.cc($['operations'], ($) => Operations(
+        const p_operations: d_out._T_Module.operations = _p.sg($['operations'], ($) => Operations(
             $,
             {
                 'location 2 string': l2s,
@@ -45,18 +45,18 @@ export const Operations: d_signatures._T_Operations = ($, $p) => _p.block(() => 
         $,
         {
             'location 2 string': l2s,
-            'map': ($, $p) => _p.cc($['value'], ($) => _p.cc($['state group'], ($): d_out._T_Operations.D => {
+            'map': ($, $p) => _p.sg($['value'], ($) => _p.sg($['state group'], ($): d_out._T_Operations.D => {
                 switch ($[0]) {
                     case 'operation': return _p.ss($, ($) => ['operation', _p.block(() => {
                         return _p.block(() => {
-                            const p_type_parameters: d_out._T_Operations.D.SG.operation.type_parameters = _p.cc($['type parameters'], ($) => _i_r_schema.Type_Parameters(
+                            const p_type_parameters: d_out._T_Operations.D.SG.operation.type_parameters = _p.sg($['type parameters'], ($) => _i_r_schema.Type_Parameters(
                                 $,
                                 {
                                     'location 2 string': l2s,
                                     'parameters': params,
                                 }
                             ))
-                            const p_context: d_out._T_Operations.D.SG.operation.context = _p.cc($['context'], ($) => _i_r_schema.Type_Node(
+                            const p_context: d_out._T_Operations.D.SG.operation.context = _p.sg($['context'], ($) => _i_r_schema.Type_Node(
                                 $,
                                 {
                                     'location 2 string': l2s,
@@ -73,11 +73,11 @@ export const Operations: d_signatures._T_Operations = ($, $p) => _p.block(() => 
                                     }),
                                 }
                             ))
-                            const p_parameters: d_out._T_Operations.D.SG.operation.parameters = _p.cc($['parameters'], ($) => _i_generic.resolve_dictionary(
+                            const p_parameters: d_out._T_Operations.D.SG.operation.parameters = _p.sg($['parameters'], ($) => _i_generic.resolve_dictionary(
                                 $,
                                 {
                                     'location 2 string': l2s,
-                                    'map': ($, $p) => _p.cc($['value'], ($) => _i_r_schema.Type_Node(
+                                    'map': ($, $p) => _p.sg($['value'], ($) => _i_r_schema.Type_Node(
                                         $,
                                         {
                                             'location 2 string': l2s,
@@ -96,7 +96,7 @@ export const Operations: d_signatures._T_Operations = ($, $p) => _p.block(() => 
                                     )),
                                 }
                             ))
-                            const p_result: d_out._T_Operations.D.SG.operation.result = _p.cc($['result'], ($) => _i_r_schema.Type_Node(
+                            const p_result: d_out._T_Operations.D.SG.operation.result = _p.sg($['result'], ($) => _i_r_schema.Type_Node(
                                 $,
                                 {
                                     'location 2 string': l2s,

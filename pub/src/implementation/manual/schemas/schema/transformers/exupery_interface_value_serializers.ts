@@ -37,7 +37,7 @@ export const Schema = (
             "Value Serializers": sh.type({}, sh.t.group({
                 "default number": sh.t.function_({}, sh.t.integer(), {}, sh.t.string()),
                 "boolean": sh.t.function_({}, sh.t.boolean(), {}, sh.t.string()),
-                "custom numbers": sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, _p.cc($.precision, ($) => {
+                "custom numbers": sh.t.group($.globals['number types'].map(($) => sh.t.function_({}, _p.sg($.precision, ($) => {
                     switch ($[0]) {
                         case 'approximation': return _p.ss($, ($) => sh.t.float())
                         case 'exact': return _p.ss($, ($) => sh.t.integer())

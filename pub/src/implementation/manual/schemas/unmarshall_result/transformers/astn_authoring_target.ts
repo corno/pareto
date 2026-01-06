@@ -10,7 +10,7 @@ export const Node = (
     $p: null
 ): d_out.Value => {
     return {
-        'type': _p.cc($.type, ($) => {
+        'type': _p.sg($.type, ($) => {
             switch ($[0]) {
                 case 'number': return _p.ss($, ($): d_out.Value._type => ['text', {
                     'value': "FIXME_NUMBER",

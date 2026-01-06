@@ -39,17 +39,17 @@ export const Node_Type = (
     }
 ): d_out.Node_Type => {
     const data = $
-    return _p.cc($p.definition, ($): d_out.Node_Type => {
+    return _p.sg($p.definition, ($): d_out.Node_Type => {
         switch ($[0]) {
             case 'number': return _p.ss($, ($): d_out.Node_Type => {
                 return ['number', {
                     'definition': $,
-                    'found value type': _p.cc(data, ($) => {
+                    'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
                             case 'string': return _p.ss($, ($) => ['valid', {
                                 'value': $,
                                 'range': $.range,
-                                'correct string type': _p.cc($.type, ($) => {
+                                'correct string type': _p.sg($.type, ($) => {
                                     switch ($[0]) {
                                         case 'quoted': return true
                                         case 'apostrophed': return false
@@ -68,12 +68,12 @@ export const Node_Type = (
             case 'boolean': return _p.ss($, ($): d_out.Node_Type => {
                 return ['boolean', {
                     'definition': $,
-                    'found value type': _p.cc(data, ($) => {
+                    'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
                             case 'string': return _p.ss($, ($) => ['valid', {
                                 'value': $,
                                 'range': $.range,
-                                'correct string type': _p.cc($.type, ($) => {
+                                'correct string type': _p.sg($.type, ($) => {
                                     switch ($[0]) {
                                         case 'quoted': return false
                                         case 'apostrophed': return false
@@ -93,7 +93,7 @@ export const Node_Type = (
                 const prop_def = $.node
                 return ['list', {
                     'definition': $,
-                    'found value type': _p.cc(data, ($) => {
+                    'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
                             case 'ordered collection': return _p.ss($, ($) => {
                                 return ['valid', {
@@ -110,7 +110,7 @@ export const Node_Type = (
             case 'nothing': return _p.ss($, ($): d_out.Node_Type => {
                 return ['nothing', {
                     'definition': $,
-                    'found value type': _p.cc(data, ($) => {
+                    'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
                             case 'not set': return _p.ss($, ($) => ['valid', {
                                 'value': $,
@@ -123,7 +123,7 @@ export const Node_Type = (
             case 'reference': return _p.ss($, ($): d_out.Node_Type => {
                 return ['reference', {
                     'definition': $,
-                    'found value type': _p.cc(data, ($) => {
+                    'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
                             case 'string': return _p.ss($, ($) => ['valid', {
                                 'value': $,
@@ -139,7 +139,7 @@ export const Node_Type = (
                     'node': Node(
                         $p['temp value'],
                         {
-                            'definition': _p.cc($, ($) => {
+                            'definition': _p.sg($, ($) => {
                                 switch ($[0]) {
                                     case 'external': return _p.ss($, ($) => $.type.entry.node)
                                     case 'internal': return _p.ss($, ($) => $.entry.node)
@@ -154,12 +154,12 @@ export const Node_Type = (
                 const prop_def = $.node
                 return ['dictionary', {
                     'definition': $,
-                    'found value type': _p.cc(data, ($) => {
+                    'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
                             case 'indexed collection': return _p.ss($, ($) => {
                                 return ['valid', {
                                     'value': $,
-                                    'entries': op_group(_p.cc($, ($): d_in.Key_Value_Pairs => {
+                                    'entries': op_group(_p.sg($, ($): d_in.Key_Value_Pairs => {
                                         switch ($[0]) {
                                             case 'dictionary': return _p.ss($, ($) => $.entries)
                                             case 'verbose group': return _p.ss($, ($) => $.entries)
@@ -200,7 +200,7 @@ export const Node_Type = (
             })
             case 'group': return _p.ss($, ($): d_out.Node_Type => {
                 const group_def = $
-                // pa.cc(data.type, ($) => {
+                // pa.sg(data.type, ($) => {
                 // //     switch ($[0]) {
                 // //         case 'verbose group': return pa.ss($, ($) => {
                 // //             impure.list['select clashing keys']($.entries.map(($) => {
@@ -239,12 +239,12 @@ export const Node_Type = (
                 // // })
                 return ['group', {
                     'definition': $,
-                    'found value type': _p.cc(data, ($) => {
+                    'found value type': _p.sg(data, ($) => {
                         const value = $
-                        return _p.cc($, ($) => {
+                        return _p.sg($, ($) => {
                             switch ($[0]) {
                                 case 'indexed collection': return _p.ss($, ($): d_out.Group_Found_Value_Type => {
-                                    const entries = op_group(_p.cc($, ($): d_in.Key_Value_Pairs => {
+                                    const entries = op_group(_p.sg($, ($): d_in.Key_Value_Pairs => {
                                         switch ($[0]) {
                                             case 'dictionary': return _p.ss($, ($) => $.entries)
                                             case 'verbose group': return _p.ss($, ($) => $.entries)
@@ -256,7 +256,7 @@ export const Node_Type = (
                                             'value': $
                                         }
                                     }))
-                                    const range: d_in_token.Range = _p.cc($, ($) => {
+                                    const range: d_in_token.Range = _p.sg($, ($) => {
                                         switch ($[0]) {
                                             case 'dictionary': return _p.ss($, ($) => $['{'].range)
                                             case 'verbose group': return _p.ss($, ($) => $['('].range)
@@ -337,7 +337,7 @@ export const Node_Type = (
                 const def = $
                 return ['optional', {
                     'definition': $,
-                    'found value type': _p.cc(data, ($) => {
+                    'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
                             case 'not set': return _p.ss($, ($) => ['valid', ['not set', {
                                 'value': $,
@@ -360,13 +360,13 @@ export const Node_Type = (
                 const def = $
                 return ['state', {
                     'definition': $,
-                    'found value type': _p.cc(data, ($): d_out.Node_Type_SG_State_found_value_type => {
+                    'found value type': _p.sg(data, ($): d_out.Node_Type_SG_State_found_value_type => {
                         switch ($[0]) {
                             case 'tagged value': return _p.ss($, ($): d_out.Node_Type_SG_State_found_value_type => {
                                 const tv = $
                                 return ['valid', {
                                     'value type': ['state', {
-                                        'value substatus': _p.cc($.status, ($): d_out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
+                                        'value substatus': _p.sg($.status, ($): d_out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
                                             switch ($[0]) {
                                                 case 'missing data': return _p.ss($, ($) => ['missing data', $['#']])
                                                 case 'set': return _p.ss($, ($): d_out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
@@ -394,14 +394,14 @@ export const Node_Type = (
                                 }]
                             })
                             // case 'ordered collection': return _p.ss($, ($) => {
-                            //     const elements = _p.cc($, ($): d_in.Elements => {
+                            //     const elements = _p.sg($, ($): d_in.Elements => {
                             //         switch ($[0]) {
                             //             case 'list': return _p.ss($, ($) => $.elements)
                             //             case 'concise group': return _p.ss($, ($) => $.elements)
                             //             default: return _p.au($[0])
                             //         }
                             //     })
-                            //     const range = _p.cc($, ($): _in_token.Range => {
+                            //     const range = _p.sg($, ($): _in_token.Range => {
                             //         switch ($[0]) {
                             //             case 'list': return _p.ss($, ($) => $['['].range)
                             //             case 'concise group': return _p.ss($, ($) => $['<'].range)
@@ -454,7 +454,7 @@ export const Node_Type = (
             case 'text': return _p.ss($, ($) => {
                 return ['text', {
                     'definition': $,
-                    'found value type': _p.cc(data, ($) => {
+                    'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
                             case 'string': return _p.ss($, ($) => ['valid', {
                                 'value': $,
@@ -481,7 +481,7 @@ export const Node = (
     return {
         'definition': $p.definition,
         'value': datax,
-        'type': _p.cc(datax.type, ($) => {
+        'type': _p.sg(datax.type, ($) => {
             switch ($[0]) {
                 case 'concrete': return _p.ss($, ($) => {
                     const data = $
