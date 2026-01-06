@@ -1,6 +1,5 @@
 import * as _p from 'pareto-core-deserializer'
 import * as _pi from 'pareto-core-interface'
-import * as _pinternals from 'pareto-core-internals'
 
 
 import * as d_load_pareto_document from "../../../../interface/to_be_generated/load_pareto_document"
@@ -41,7 +40,10 @@ export const $$: _pi.Deserializer_With_Parameters<d_unmarshall_result_types.Node
         $p['schema content'],
         ($) => abort(['schema error', {
             'file location': $p['schema path'],
-        }])
+        }]),
+        {
+            'uri': $p['schema path'],
+        }
     )
 
     const x2 = r_parse.Document(

@@ -5,7 +5,7 @@ import * as _pds from 'pareto-core-deserializer'
 import * as d_path from "pareto-resources/dist/interface/generated/pareto/schemas/path/data_types/target"
 
 const replace = ($: string, search: number, replace: number): string => {
-    return _pds.text.build(($i) => {
+    return _pds.text.deprecated_build(($i) => {
         _pds.list.from_text($, ($) => $).__for_each(($) => {
             if ($ === search) {
                 $i['add character'](replace)

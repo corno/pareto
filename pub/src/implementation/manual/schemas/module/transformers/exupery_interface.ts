@@ -1,6 +1,6 @@
 import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
-import * as _psh from 'pareto-core-transformer/dist/deprecated_shorthands_for_unresolved'
+import * as _psh from 'pareto-core-internals/dist/algorithm_types/transformer/deprecated_shorthands_for_unresolved'
 
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/module/data_types/source"

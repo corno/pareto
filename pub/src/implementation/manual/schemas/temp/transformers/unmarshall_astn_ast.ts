@@ -135,21 +135,21 @@ export const Node_Type = (
                 }]
             })
             case 'component': return _p.ss($, ($): d_out.Node_Type => ['component', {
-                    'definition': $,
-                    'node': Node(
-                        $p['temp value'],
-                        {
-                            'definition': _p.sg($, ($) => {
-                                switch ($[0]) {
-                                    case 'external': return _p.ss($, ($) => $.type.entry.node)
-                                    case 'internal': return _p.ss($, ($) => $.entry.node)
-                                    case 'internal cyclic': return _p.ss($, ($) => $.entry['get circular dependent']().node)
-                                    default: return _p.au($[0])
-                                }
-                            }),
-                        }
-                    )
-                }])
+                'definition': $,
+                'node': Node(
+                    $p['temp value'],
+                    {
+                        'definition': _p.sg($, ($) => {
+                            switch ($[0]) {
+                                case 'external': return _p.ss($, ($) => $.type.entry.node)
+                                case 'internal': return _p.ss($, ($) => $.entry.node)
+                                case 'internal cyclic': return _p.ss($, ($) => $.entry['get circular dependent']().node)
+                                default: return _p.au($[0])
+                            }
+                        }),
+                    }
+                )
+            }])
             case 'dictionary': return _p.ss($, ($): d_out.Node_Type => {
                 const prop_def = $.node
                 return ['dictionary', {
@@ -271,24 +271,30 @@ export const Node_Type = (
                                         'supporting': _pi.Optional_Value<Supporting>
                                     }> => $.map(($, key) => ({
                                         'context': $,
-                                        'supporting': $p['supporting dictionary'].get_possible_entry(
+                                        'supporting': $p['supporting dictionary'].__get_possible_entry(
                                             key,
                                         ),
                                     }))
                                     return ['valid', ['indexed', {
                                         'value': $,
                                         'content': {
-                                            'superfluous entries': op_dictionary_merge(
-                                                entries,
-                                                {
-                                                    'supporting dictionary': group_def.dictionary
+                                            'superfluous entries': _p.dictionary.filter(
+                                                op_dictionary_merge(
+                                                    entries,
+                                                    {
+                                                        'supporting dictionary': group_def.dictionary
+                                                    }
+                                                ), ($) => {
+                                                    return $.supporting.transform( //drop all the ones for which there is a definition
+                                                        ($) => _p.optional.not_set(),
+                                                        () => _p.optional.set($.context)
+                                                    )
                                                 }
-                                            ).filter(($) => {
-                                                return $.supporting.transform( //drop all the ones for which there is a definition
-                                                    ($) => _p.optional.not_set(),
-                                                    () => _p.optional.set($.context)
+                                            ).map(
+                                                ($) => $.map(
+                                                    ($) => $.key.range
                                                 )
-                                            }).map(($) => $.map(($) => $.key.range)), //select the locations
+                                            ), //select the locations
                                             'properties': op_dictionary_merge(
                                                 group_def.dictionary,
                                                 {
@@ -374,7 +380,7 @@ export const Node_Type = (
                                                     const value = $.value
                                                     return ['set', {
                                                         'value': $,
-                                                        'found state definition': def.get_possible_entry($.state.value).map(
+                                                        'found state definition': def.__get_possible_entry($.state.value).map(
                                                             ($) => ({
                                                                 'definition': $,
                                                                 'node': Node(

@@ -23,16 +23,16 @@ export const Schema = (
         op_flatten_dictionary(
             _p.dictionary.literal({
                 "": _p.dictionary.literal({
-                    "signatures": import_.ancestor(5, "interface", _p.list.literal([
+                    "signatures": import_.ancestor(5, "interface", _p.list.nested_literal([
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _p.list.literal(["serialize"])
-                    ]).flatten(($) => $), {}),
-                    "serialize": import_.ancestor(2, "generic", _p.list.literal([
+                    ]), {}),
+                    "serialize": import_.ancestor(2, "generic", _p.list.nested_literal([
                         _p.list.literal(["serialize"]),
-                    ]).flatten(($) => $), {}),
-                    "marshall": import_.sibling("marshall", _p.list.literal([
-                    ]).flatten(($) => $), {}),
+                    ]), {}),
+                    "marshall": import_.sibling("marshall", _p.list.nested_literal([
+                    ]), {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["serialize"], {}))
             }),

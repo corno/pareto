@@ -1,7 +1,6 @@
 import * as _pi from 'pareto-core-interface'
 import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
-import * as _pinternals from 'pareto-core-internals'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
@@ -18,11 +17,12 @@ const op_pad_dictionary_identifiers = <T>(
         'prefix': string,
         'suffix': string
     }
-): _pi.Dictionary<T> => _pinternals.dictionary_from_list(
+): _pi.Dictionary<T> => _p.dictionary.from_list(
     _p.list.from_dictionary($, ($, key) => ({ 'key': key, value: $ })),
     ($) => $p.prefix + $.key + $p.suffix,
+    ($) => $.value,
     () => _p.unreachable_code_path() // no possibility of duplicate keys
-).map(($) => $.value)
+)
 
 export const Resolvers = (
     $: d_in.Resolvers,
@@ -36,16 +36,16 @@ export const Resolvers = (
             _p.dictionary.literal({
                 "": _p.dictionary.literal({
                     "generic": import_.ancestor(2, "generic", ["resolve"], {}),
-                    "out": import_.ancestor(5, "interface", _p.list.literal([
+                    "out": import_.ancestor(5, "interface", _p.list.nested_literal([
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _p.list.literal(["data types", "source"]),
-                    ]).flatten(($) => $), {}),
-                    "signatures": import_.ancestor(5, "interface", _p.list.literal([
+                    ]), {}),
+                    "signatures": import_.ancestor(5, "interface", _p.list.nested_literal([
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _p.list.literal(["data types", "resolve"]),
-                    ]).flatten(($) => $), {}),
+                    ]), {}),
                 }),
                 "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["resolve"], {}))
             }),
@@ -105,10 +105,13 @@ export const Possible_Value_Selection = (
         switch ($[0]) {
             case 'parameter': return _p.ss($, ($) => s.from_variable(
                 "params",
-                _p.list.literal([
-                    _p.list.literal(["values", $.key]),
+                _p.list.nested_literal([
+                    [
+                        "values",
+                        $.key
+                    ],
                     $p.tail(),
-                ]).flatten(($) => $),
+                ]),
             ))
             case 'result': return _p.ss($, ($) => _p.sg($, ($) => {
                 switch ($[0]) {
@@ -143,23 +146,26 @@ export const Guaranteed_Value_Selection = (
         'tail': () => _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>>
     },
 ): d_out.Selection<_pi.Deprecated_Source_Location> => {
-    const tail = (): _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => _p.list.literal([
-        $.tail.path.map(($) => _p.sg($, ($): _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => {
-            switch ($[0]) {
-                case 'component': return _p.ss($, ($) => _p.list.literal([]))
-                case 'group': return _p.ss($, ($) => _p.list.literal([$.key]))
-                case 'reference': return _p.ss($, ($) => _p.sg($.definition.type, ($) => {
-                    switch ($[0]) {
-                        case 'derived': return _p.ss($, ($) => _p.list.literal([]))
-                        case 'selected': return _p.ss($, ($) => _p.list.literal(["entry"]))
-                        default: return _p.au($[0])
-                    }
-                }))
-                default: return _p.au($[0])
-            }
-        })).flatten(($) => $),
+    const tail = (): _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => _p.list.nested_literal([
+        _p.list.flatten(
+            $.tail.path,
+            ($) => _p.sg($, ($): _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => {
+                switch ($[0]) {
+                    case 'component': return _p.ss($, ($) => _p.list.literal([]))
+                    case 'group': return _p.ss($, ($) => _p.list.literal([$.key]))
+                    case 'reference': return _p.ss($, ($) => _p.sg($.definition.type, ($) => {
+                        switch ($[0]) {
+                            case 'derived': return _p.ss($, ($) => _p.list.literal([]))
+                            case 'selected': return _p.ss($, ($) => _p.list.literal(["entry"]))
+                            default: return _p.au($[0])
+                        }
+                    }))
+                    default: return _p.au($[0])
+                }
+            })
+        ),
         $p.tail()
-    ]).flatten(($) => $)
+    ])
     return _p.sg($.start, ($) => {
         switch ($[0]) {
             case 'constraint': return _p.ss($, ($) => _p.sg($, ($) => {
@@ -172,10 +178,13 @@ export const Guaranteed_Value_Selection = (
             }))
             case 'parameter': return _p.ss($, ($) => s.from_variable(
                 "params",
-                _p.list.literal([
-                    _p.list.literal(["values", $.key]),
+                _p.list.nested_literal([
+                    [
+                        "values",
+                        $.key
+                    ],
                     tail(),
-                ]).flatten(($) => $),
+                ]),
             ))
             case 'result': return _p.ss($, ($) => _p.sg($, ($) => {
                 switch ($[0]) {
@@ -401,7 +410,12 @@ export const Node_Resolver = (
                                 $.resolver,
                                 {
                                     'temp type': $p['temp type'],
-                                    'temp subselection': $p['temp subselection'].append_element(sub.dictionary()),
+                                    'temp subselection': _p.list.nested_literal([
+                                        $p['temp subselection'],
+                                        [
+                                            sub.dictionary()
+                                        ]
+                                    ]),
                                 }
                             )
                         )
@@ -423,7 +437,12 @@ export const Node_Resolver = (
                     "out",
                     $p['temp type'],
                     {},
-                    $p['temp subselection'].append_element(sub.group($.key)),
+                    _p.list.nested_literal([
+                        $p['temp subselection'],
+                        [
+                            sub.group($.key)
+                        ]
+                    ]),
                 ),
                 i.change_context(
                     s.from_context([$.key]),
@@ -431,7 +450,12 @@ export const Node_Resolver = (
                         $.value.resolver,
                         {
                             'temp type': $p['temp type'],
-                            'temp subselection': $p['temp subselection'].append_element(sub.group($.key)),
+                            'temp subselection': _p.list.nested_literal([
+                                $p['temp subselection'],
+                                [
+                                    sub.group($.key)
+                                ]
+                            ]),
                         }
                     )
                 )
@@ -447,7 +471,12 @@ export const Node_Resolver = (
                     $.resolver,
                     {
                         'temp type': $p['temp type'],
-                        'temp subselection': $p['temp subselection'].append_element(sub.list()),
+                        'temp subselection': _p.list.nested_literal([
+                            $p['temp subselection'],
+                            [
+                                sub.list()
+                            ]
+                        ]),
                     }
                 )
             )
@@ -461,7 +490,12 @@ export const Node_Resolver = (
                         $['resolver'],
                         {
                             'temp type': $p['temp type'],
-                            'temp subselection': $p['temp subselection'].append_element(sub.optional()),
+                            'temp subselection': _p.list.nested_literal([
+                                $p['temp subselection'],
+                                [
+                                    sub.optional()
+                                ]
+                            ]),
                         }
                     )
                 }
@@ -476,7 +510,12 @@ export const Node_Resolver = (
                         $['resolver'],
                         {
                             'temp type': $p['temp type'],
-                            'temp subselection': $p['temp subselection'].append_element(sub.state_group(key)),
+                            'temp subselection': _p.list.nested_literal([
+                                $p['temp subselection'],
+                                [
+                                    sub.state_group(key)
+                                ]
+                            ]),
                         }
                     )
                 }

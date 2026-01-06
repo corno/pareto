@@ -1,6 +1,5 @@
 import * as _p from 'pareto-core-transformer'
-import * as _psh from 'pareto-core-transformer/dist/deprecated_shorthands_for_unresolved'
-import * as _pinternals from 'pareto-core-internals'
+import { location_to_string } from 'pareto-core-internals/dist/misc/location_to_string'
 
 //FIXME, this one should be moved to pareto-targets
 
@@ -28,7 +27,7 @@ export const Module = ($: d_in.Module): d_out.Directory => {
                 'lookups': null,
                 'values': null,
             },
-            'location 2 string': _pinternals.location_to_string
+            'location 2 string': location_to_string
         }
     ))
 }

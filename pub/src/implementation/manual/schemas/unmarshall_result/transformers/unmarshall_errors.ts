@@ -21,41 +21,58 @@ export const Group_Content = (
         'group range': d_in_token.Range
     }
 ): d_out.Errors => {
-    return _p.list.literal([
-        $.properties.to_list(($, key) => _p.sg($, ($): d_out.Errors => {
-            switch ($[0]) {
-                case 'multiple': return _p.ss($, ($) => $.flatten(($) => _p.list.literal([
-                    _p.list.literal<d_out.Errors.L>([
+    return _p.list.nested_literal([
+        _p.list.flatten(
+            _p.list.from_dictionary(
+                $.properties,
+                ($, key) => _p.sg($, ($): d_out.Errors => {
+                    switch ($[0]) {
+                        case 'multiple': return _p.ss($, ($) => _p.list.flatten(
+                            $,
+                            ($) => _p.list.nested_literal([
+                                _p.list.literal<d_out.Errors.L>([
+                                    {
+                                        'range': $.key.range,
+                                        'type': ['error', ['duplicate property', {
+                                            name: key
+                                        }]]
+                                    }
+                                ]),
+                                Optional_Node($.node, null)
+                            ])
+                        ))
+                        case 'missing': return _p.ss($, ($) => _p.list.literal([
+                            {
+                                'range': $p['group range'],
+                                'type': ['error', ['missing property', {
+                                    name: key
+                                }]]
+                            }
+                        ]))
+                        case 'unique': return _p.ss($, ($) => Optional_Node($.node, null))
+                        default: return _p.au($[0])
+                    }
+                })
+            ),
+            ($) => $
+        ),
+        _p.list.flatten(
+            _p.list.from_dictionary(
+                $['superfluous entries'],
+                ($, key): d_out.Errors => _p.list.flatten(
+                    $,
+                    ($) => _p.list.literal([
                         {
-                            'range': $.key.range,
-                            'type': ['error', ['duplicate property', {
+                            'range': $,
+                            'type': ['error', ['superfluous property', {
                                 name: key
                             }]]
                         }
-                    ]),
-                    Optional_Node($.node, null)
-                ]).flatten(($) => $)))
-                case 'missing': return _p.ss($, ($) => _p.list.literal([
-                    {
-                        'range': $p['group range'],
-                        'type': ['error', ['missing property', {
-                            name: key
-                        }]]
-                    }
-                ]))
-                case 'unique': return _p.ss($, ($) => Optional_Node($.node, null))
-                default: return _p.au($[0])
-            }
-        })).flatten(($) => $),
-        $['superfluous entries'].to_list(($, key): d_out.Errors => $.flatten(($) => _p.list.literal([
-            {
-                'range': $,
-                'type': ['error', ['superfluous property', {
-                    name: key
-                }]]
-            }
-        ]))).flatten(($) => $)
-    ]).flatten(($) => $)
+                    ])
+                )),
+            ($) => $
+        )
+    ])
 }
 
 export const Node = (
@@ -104,23 +121,32 @@ export const Node = (
             case 'dictionary': return _p.ss($, ($) => _p.sg($['found value type'], ($): d_out.Errors => {
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($) => {
-                        return $.entries.to_list(($, key) => _p.sg($, ($): d_out.Errors => {
-                            switch ($[0]) {
-                                case 'unique': return _p.ss($, ($) => Optional_Node($, $p))
-                                case 'multiple': return _p.ss($, ($) => $.flatten(($) => _p.list.literal<d_out.Errors>([
-                                    _p.list.literal([
-                                        {
-                                            'range': $.key.range,
-                                            'type': ['error', ['duplicate property', {
-                                                name: key
-                                            }]]
-                                        }
-                                    ]),
-                                    Optional_Node($.node, $p)
-                                ]).flatten(($) => $)))
-                                default: return _p.au($[0])
-                            }
-                        })).flatten(($) => $)
+                        return _p.list.flatten(
+                            _p.list.from_dictionary(
+                                $.entries,
+                                ($, key) => _p.sg($, ($): d_out.Errors => {
+                                    switch ($[0]) {
+                                        case 'unique': return _p.ss($, ($) => Optional_Node($, $p))
+                                        case 'multiple': return _p.ss($, ($) => _p.list.flatten(
+                                            $,
+                                            ($) => _p.list.nested_literal<d_out.Errors.L>([
+                                                _p.list.literal([
+                                                    {
+                                                        'range': $.key.range,
+                                                        'type': ['error', ['duplicate property', {
+                                                            name: key
+                                                        }]]
+                                                    }
+                                                ]),
+                                                Optional_Node($.node, $p)
+                                            ])
+                                        ))
+                                        default: return _p.au($[0])
+                                    }
+                                })
+                            ),
+                            ($) => $
+                        )
                     })
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
@@ -173,7 +199,7 @@ export const Node = (
             }))
             case 'list': return _p.ss($, ($) => _p.sg($['found value type'], ($) => {
                 switch ($[0]) {
-                    case 'valid': return _p.ss($, ($): d_out.Errors => $.elements.flatten(($) => Node($, $p)))
+                    case 'valid': return _p.ss($, ($): d_out.Errors => _p.list.flatten($.elements, ($) => Node($, $p)))
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
                             'range': $,

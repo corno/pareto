@@ -1,8 +1,8 @@
 import * as _ea from 'pareto-core-refiner'
 import * as _ed from 'pareto-core-dev'
 
-import * as _i_resolve from 'pareto-core-refiner/dist/resolve'
-import * as _i_generic from 'pareto-core-refiner/dist/resolve'
+import * as _i_resolve from 'pareto-core-internals/dist/algorithm_types/refiner/resolve'
+import * as _i_generic from 'pareto-core-internals/dist/algorithm_types/refiner/resolve'
 import * as _i_out from "../../../../../interface/generated/pareto/schemas/module/data_types/source"
 import * as _i_r_schema from "../schema/resolve"
 import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/module/data_types/resolve"

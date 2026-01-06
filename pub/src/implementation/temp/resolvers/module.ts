@@ -1,6 +1,6 @@
 import * as _p from 'pareto-core-refiner'
 
-import * as _i_generic from 'pareto-core-refiner/dist/resolve'
+import * as _i_generic from 'pareto-core-internals/dist/algorithm_types/refiner/resolve'
 import * as d_signatures from "../../../interface/generated/pareto/schemas/module/data_types/resolve"
 
 import * as d_out from "../../../interface/generated/pareto/schemas/module/data_types/source"
@@ -8,11 +8,11 @@ import * as d_out from "../../../interface/generated/pareto/schemas/module/data_
 import * as _i_r_schema from "./schema"
 
 
-export const Module: d_signatures._T_Module = ($, $p) => _p.block(() => {
+export const Module: d_signatures._T_Module = ($, $p) => _p.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
-    return _p.block(() => {
-        const p_schema_tree: d_out._T_Module.schema_tree = _p.sg($['schema tree'], ($) => _i_r_schema.Schema_Tree(
+    return _p.deprecated_block(() => {
+        const p_schema_tree: d_out._T_Module.schema_tree = _p.deprecated_cc($['schema tree'], ($) => _i_r_schema.Schema_Tree(
             $,
             {
                 'location 2 string': l2s,
@@ -25,7 +25,7 @@ export const Module: d_signatures._T_Module = ($, $p) => _p.block(() => {
                 }),
             }
         ))
-        const p_operations: d_out._T_Module.operations = _p.sg($['operations'], ($) => Operations(
+        const p_operations: d_out._T_Module.operations = _p.deprecated_cc($['operations'], ($) => Operations(
             $,
             {
                 'location 2 string': l2s,
@@ -38,25 +38,25 @@ export const Module: d_signatures._T_Module = ($, $p) => _p.block(() => {
         })
     })
 })
-export const Operations: d_signatures._T_Operations = ($, $p) => _p.block(() => {
+export const Operations: d_signatures._T_Operations = ($, $p) => _p.deprecated_block(() => {
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return _i_generic.resolve_dictionary(
         $,
         {
             'location 2 string': l2s,
-            'map': ($, $p) => _p.sg($['value'], ($) => _p.sg($['state group'], ($): d_out._T_Operations.D => {
+            'map': ($, $p) => _p.deprecated_cc($['value'], ($) => _p.deprecated_cc($['state group'], ($): d_out._T_Operations.D => {
                 switch ($[0]) {
-                    case 'operation': return _p.ss($, ($) => ['operation', _p.block(() => {
-                        return _p.block(() => {
-                            const p_type_parameters: d_out._T_Operations.D.SG.operation.type_parameters = _p.sg($['type parameters'], ($) => _i_r_schema.Type_Parameters(
+                    case 'operation': return _p.ss($, ($) => ['operation', _p.deprecated_block(() => {
+                        return _p.deprecated_block(() => {
+                            const p_type_parameters: d_out._T_Operations.D.SG.operation.type_parameters = _p.deprecated_cc($['type parameters'], ($) => _i_r_schema.Type_Parameters(
                                 $,
                                 {
                                     'location 2 string': l2s,
                                     'parameters': params,
                                 }
                             ))
-                            const p_context: d_out._T_Operations.D.SG.operation.context = _p.sg($['context'], ($) => _i_r_schema.Type_Node(
+                            const p_context: d_out._T_Operations.D.SG.operation.context = _p.deprecated_cc($['context'], ($) => _i_r_schema.Type_Node(
                                 $,
                                 {
                                     'location 2 string': l2s,
@@ -73,11 +73,11 @@ export const Operations: d_signatures._T_Operations = ($, $p) => _p.block(() => 
                                     }),
                                 }
                             ))
-                            const p_parameters: d_out._T_Operations.D.SG.operation.parameters = _p.sg($['parameters'], ($) => _i_generic.resolve_dictionary(
+                            const p_parameters: d_out._T_Operations.D.SG.operation.parameters = _p.deprecated_cc($['parameters'], ($) => _i_generic.resolve_dictionary(
                                 $,
                                 {
                                     'location 2 string': l2s,
-                                    'map': ($, $p) => _p.sg($['value'], ($) => _i_r_schema.Type_Node(
+                                    'map': ($, $p) => _p.deprecated_cc($['value'], ($) => _i_r_schema.Type_Node(
                                         $,
                                         {
                                             'location 2 string': l2s,
@@ -96,7 +96,7 @@ export const Operations: d_signatures._T_Operations = ($, $p) => _p.block(() => 
                                     )),
                                 }
                             ))
-                            const p_result: d_out._T_Operations.D.SG.operation.result = _p.sg($['result'], ($) => _i_r_schema.Type_Node(
+                            const p_result: d_out._T_Operations.D.SG.operation.result = _p.deprecated_cc($['result'], ($) => _i_r_schema.Type_Node(
                                 $,
                                 {
                                     'location 2 string': l2s,
@@ -121,7 +121,7 @@ export const Operations: d_signatures._T_Operations = ($, $p) => _p.block(() => 
                             })
                         })
                     })])
-                    case 'set': return _p.ss($, ($) => ['set', _p.block(() => {
+                    case 'set': return _p.ss($, ($) => ['set', _p.deprecated_block(() => {
                         return Operations(
                             $,
                             {

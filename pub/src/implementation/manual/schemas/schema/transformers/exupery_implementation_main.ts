@@ -28,44 +28,47 @@ export const Schema_Tree = (
             case 'schema': return _p.ss($, ($) => {
                 const imports = $.imports
                 return m.set(
-                    _p.dictionary.literal<_pi.Optional_Value<d_out.Module_Set.D<_pi.Deprecated_Source_Location>>>({
-                        // "migration boilerplate.ts": pa.set(_migration_boilerplate.Types($.types, {
-                        //     'key': key,
-                        //     'imports': $.imports,
-                        //     'constrained': $.complexity[0] === 'constrained'
-                        // })),
+                    _p.dictionary.filter(
+                        _p.dictionary.literal<_pi.Optional_Value<d_out.Module_Set.D<_pi.Deprecated_Source_Location>>>({
+                            // "migration boilerplate.ts": pa.set(_migration_boilerplate.Types($.types, {
+                            //     'key': key,
+                            //     'imports': $.imports,
+                            //     'constrained': $.complexity[0] === 'constrained'
+                            // })),
 
-                        "resolve.ts": _p.sg($.complexity, ($) => {
-                            switch ($[0]) {
-                                case 'constrained': return _p.ss($, ($) => _p.optional.set(t_resolver.Resolvers($.resolvers, {
-                                    'path': $p.path,
-                                    'imports': imports
-                                })))
-                                case 'unconstrained': return _p.ss($, ($) => _p.optional.not_set())
-                                default: return _p.au($[0])
-                            }
+                            "resolve.ts": _p.sg($.complexity, ($) => {
+                                switch ($[0]) {
+                                    case 'constrained': return _p.ss($, ($) => _p.optional.set(t_resolver.Resolvers($.resolvers, {
+                                        'path': $p.path,
+                                        'imports': imports
+                                    })))
+                                    case 'unconstrained': return _p.ss($, ($) => _p.optional.not_set())
+                                    default: return _p.au($[0])
+                                }
+                            }),
+                            "marshall.ts": _p.optional.set(t_marshall.Schema($, {
+                                'path': $p.path,
+                                'imports': $.imports,
+                                'constrained': $.complexity[0] === 'constrained'
+                            })),
+                            "unmarshall.ts": _p.optional.set(t_unmarshall.Schema($, {
+                                'path': $p.path,
+                                'imports': $.imports,
+                                'constrained': $.complexity[0] === 'constrained'
+                            })),
+
+                            "serialize.ts": _p.optional.set(t_serialize.Schema($, {
+                                'path': $p.path,
+                                'imports': $.imports,
+                                'constrained': $.complexity[0] === 'constrained'
+                            })),
+                            "deserialize.ts": _p.optional.set(t_deserialize.Schema($, {
+                                'path': $p.path,
+                                'imports': $.imports,
+                            })),
                         }),
-                        "marshall.ts": _p.optional.set(t_marshall.Schema($, {
-                            'path': $p.path,
-                            'imports': $.imports,
-                            'constrained': $.complexity[0] === 'constrained'
-                        })),
-                        "unmarshall.ts": _p.optional.set(t_unmarshall.Schema($, {
-                            'path': $p.path,
-                            'imports': $.imports,
-                            'constrained': $.complexity[0] === 'constrained'
-                        })),
-
-                        "serialize.ts": _p.optional.set(t_serialize.Schema($, {
-                            'path': $p.path,
-                            'imports': $.imports,
-                            'constrained': $.complexity[0] === 'constrained'
-                        })),
-                        "deserialize.ts": _p.optional.set(t_deserialize.Schema($, {
-                            'path': $p.path,
-                            'imports': $.imports,
-                        })),
-                    }).filter(($) => $)
+                        ($) => $
+                    )
                 )
             })
             case 'set': return _p.ss($, ($): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => Schemas(
@@ -86,6 +89,11 @@ export const Schemas = (
     }
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.set($.dictionary.map(($, key) => Schema_Tree($, {
-        'path': $p.path.append_element(key)
+        'path': _p.list.nested_literal([
+            $p.path,
+            [
+                key,
+            ]
+        ]),
     })))
 }

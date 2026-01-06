@@ -23,11 +23,11 @@ export const Schema = (
     op_flatten_dictionary(
         _p.dictionary.literal({
             "": _p.dictionary.literal({
-                "signatures": import_.ancestor(5, "interface", _p.list.literal([
+                "signatures": import_.ancestor(5, "interface", _p.list.nested_literal([
                     _p.list.literal(["generated", "pareto", "schemas"]),
                     $p.path,
                     _p.list.literal(["marshall"])
-                ]).flatten(($) => $), {}),
+                ]), {}),
                 "out": import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn target"], {}),
             }),
             "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["marshall"], {}))
@@ -121,7 +121,12 @@ export const Type_Node = (
                         $.node,
                         {
                             'type': $p.type,
-                            'subselection': $p.subselection.append_element(sub.dictionary()),
+                            'subselection': _p.list.nested_literal([
+                                $p.subselection,
+                                [
+                                    sub.dictionary(),
+                                ]
+                            ]),
                         }
                     )
                 )
@@ -149,7 +154,12 @@ export const Type_Node = (
                         $.node,
                         {
                             'type': $p.type,
-                            'subselection': $p.subselection.append_element(sub.group(key)),
+                            'subselection': _p.list.nested_literal([
+                                $p.subselection,
+                                [
+                                    sub.group(key),
+                                ]
+                            ]),
                         }
                     )
                 )))
@@ -162,7 +172,12 @@ export const Type_Node = (
                         $.node,
                         {
                             'type': $p.type,
-                            'subselection': $p.subselection.append_element(sub.list()),
+                            'subselection': _p.list.nested_literal([
+                                $p.subselection,
+                                [
+                                    sub.list(),
+                                ]
+                            ]),
                         }
                     )
                 )))
@@ -176,7 +191,12 @@ export const Type_Node = (
                             $,
                             {
                                 'type': $p.type,
-                                'subselection': $p.subselection.append_element(sub.optional()),
+                                'subselection': _p.list.nested_literal([
+                                    $p.subselection,
+                                    [
+                                        sub.optional(),
+                                    ]
+                                ]),
                             }
                         ),
                     ),
@@ -201,7 +221,12 @@ export const Type_Node = (
                             $.node,
                             {
                                 'type': $p.type,
-                                'subselection': $p.subselection.append_element(sub.state_group(key)),
+                                'subselection': _p.list.nested_literal([
+                                    $p.subselection,
+                                    [
+                                        sub.state_group(key),
+                                    ]
+                                ]),
                             }
                         )
                     })),

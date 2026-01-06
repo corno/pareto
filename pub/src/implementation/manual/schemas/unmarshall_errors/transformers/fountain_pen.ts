@@ -17,7 +17,7 @@ export const Errors = (
         'document path': string
     }
 ): d_out.Group => {
-    return sh.group([ sh.g.sub($.map(($) => {
+    return sh.group([sh.g.sub($.map(($) => {
         return sh.g.nested_block([
             sh.b.snippet(`${$p['document path']}:${$.range.start.relative.line + $p['line offset']}:${$.range.start.relative.column + $p['column offset']}: `),
             _p.sg($.type, ($) => {
@@ -54,7 +54,12 @@ export const Error_Type_Error = (
                 case 'state is not a string': return _p.ss($, ($) => sh.b.snippet(`State is not a string`))
                 case 'unknown state': return _p.ss($, ($) => sh.b.sub([
                     sh.b.snippet(`Unknown state: ${$.found}, expected one of `),
-                    sh.b.sub($.expected.to_list(($, key) => sh.b.snippet(`'${key}'`)))
+                    sh.b.sub(
+                        _p.list.from_dictionary(
+                            $.expected,
+                            ($, key) => sh.b.snippet(`'${key}'`)
+                        )
+                    )
                 ]))
                 default: return _p.au($[0])
             }

@@ -1,7 +1,6 @@
 import * as _pdev from 'pareto-core-dev'
 import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
-import * as _pinternals from 'pareto-core-internals'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
@@ -46,7 +45,7 @@ export const Schema = (
                     },
                 )
             }),
-            "imports ": _pinternals.block(() => {
+            "imports ": _p.deprecated_cc($, ($) => {
                 const types = $p['what to generate']
                 return $p.imports.map(($) => sh.import_.ancestor(
                     2 + $['schema set child']['up steps'],
@@ -116,7 +115,12 @@ export const r_Type_Reference = (
             }
         }))
         return $p['add dictionary tail']
-            ? tail.append_element(sh.sub.dictionary())
+            ? _p.list.nested_literal([
+                tail,
+                [
+                    sh.sub.dictionary(),
+                ]
+            ])
             : tail
     }
 

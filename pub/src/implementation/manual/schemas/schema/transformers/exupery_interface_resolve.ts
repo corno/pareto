@@ -86,7 +86,12 @@ export const r_Type_Part_Reference = (
             }
         }))
         return $p['add dictionary tail']
-            ? tail.append_element(sub.dictionary())
+            ? _p.list.nested_literal([
+                tail,
+                [
+                    sub.dictionary()
+                ]
+            ])
             : tail
     }
 
