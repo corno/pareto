@@ -1908,8 +1908,6 @@ export const Possible_Value_Selection: _i_signatures.Optional_Value_Initializati
 })
 
 export const Possibly_Optional: _i_signatures.Possible_Value_Selection = ($, $p) => _p.deprecated_block(() => {
-    const l2s = $p['location 2 string']
-    const params = $p['parameters']
     return _p.deprecated_cc($['state group'], ($) => {
         switch ($[0]) {
             case 'parameter': return _p.ss($, ($) => ['parameter', _i_generic.get_entry(
