@@ -4,15 +4,14 @@ import * as _pn from 'pareto-host-nodejs'
 
 import { $$ as procedure } from "../implementation/manual/commands/seal"
 
-import * as d_resources from "../implementation/manual/commands/seal"
-
 _pn.run_main_procedure(
-    ($r) => {
-        return procedure(
-            {
-                'log error': $r.commands['log error']
-            },
-            null,
-        )
-    },
+    ($r) => procedure(
+        {
+            'write file': $r.commands['write file'],
+            'log error': $r.commands['log error'],
+        },
+        {
+            'read file': $r.queries['read file'],
+        },
+    ),
 )

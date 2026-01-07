@@ -11,7 +11,7 @@ import { $$ as q_load_pareto_document } from "./load_pareto_document"
 export const $$: signatures.queries.load_pareto_file = _p.query_function(
     ($p, $qr) => $qr['read file'](
         $p['file path'],
-        (): d.Error => ['no file', null]
+        ($): d.Error => ['read file', $]
     ).query_without_error_transformation(
         ($) => q_load_pareto_document(
             {
