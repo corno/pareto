@@ -15,6 +15,39 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 
 export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
     {
+
+        "Module Set": type(t.dictionary(t.state_group({
+            "module": tstate(t.component("Module")),
+            "set": tstate(t.component_cyclic("Module Set")),
+        }))),
+
+        "Module": type(t.group({
+            "type": prop(t.state_group({
+                "serializer": tstate(t.nothing()),
+                "deserializer": tstate(t.nothing()),
+                "transformer": tstate(t.nothing()),
+                "refiner": tstate(t.nothing()),
+            })),
+            "type imports": prop(t.component_external("interface", "Imports")),
+            "variable imports": prop(t.dictionary(t.group({
+                "tail": prop(t.list(t.text_global("TBD"))),
+                "type": prop(t.state_group({
+                    "ancestor": tstate(t.group({
+                        "dependency": prop(t.text_global("TBD")),
+                        "number of steps": prop(t.number_local(n.natural())),
+                    })),
+                    "external": tstate(t.text_global("TBD")),
+                    "sibling": tstate(t.text_global("TBD")),
+                })),
+            }))),
+            "variables": prop(t.component("Variables")),
+        })),
+
+        "Variables": type(t.dictionary(t.group({
+            "type": prop(t.optional(t.component_external("interface", "Type"))),
+            "initialization": prop(t.component_cyclic("Initialization")),
+        }))),
+
         "Initialization": type(t.state_group({
             "block": tstate(t.group({
                 "variables": prop(t.component("Variables")),
@@ -91,6 +124,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 })),
             })),
         })),
+
         "Literal": type(t.state_group({
             "array": tstate(t.list(t.component_cyclic("Initialization"))),
             "boolean": tstate(t.state_group({
@@ -126,25 +160,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "value": prop(t.component_cyclic("Initialization")),
             })),
         })),
-        "Module": type(t.group({
-            "type imports": prop(t.component_external("interface", "Imports")),
-            "variable imports": prop(t.dictionary(t.group({
-                "tail": prop(t.list(t.text_global("TBD"))),
-                "type": prop(t.state_group({
-                    "ancestor": tstate(t.group({
-                        "dependency": prop(t.text_global("TBD")),
-                        "number of steps": prop(t.number_local(n.natural())),
-                    })),
-                    "external": tstate(t.text_global("TBD")),
-                    "sibling": tstate(t.text_global("TBD")),
-                })),
-            }))),
-            "variables": prop(t.component("Variables")),
-        })),
-        "Module Set": type(t.dictionary(t.state_group({
-            "module": tstate(t.component("Module")),
-            "set": tstate(t.component_cyclic("Module Set")),
-        }))),
+
         "Selection": type(t.group({
             "start": prop(t.state_group({
                 "abort": tstate(t.nothing()),
@@ -170,10 +186,8 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             })),
             "tail": prop(t.list(t.text_global("TBD"))),
         })),
-        "Type Parameters": type(t.dictionary(t.nothing())),
-        "Variables": type(t.dictionary(t.group({
-            "type": prop(t.optional(t.component_external("interface", "Type"))),
-            "initialization": prop(t.component_cyclic("Initialization")),
-        }))),
+
+        // "Type Parameters": type(t.dictionary(t.nothing())),
+
     }
 )

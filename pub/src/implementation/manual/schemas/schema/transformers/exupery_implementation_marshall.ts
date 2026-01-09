@@ -20,6 +20,7 @@ export const Schema = (
         'constrained': boolean
     }
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => m.module(
+    'transformer',
     op_flatten_dictionary(
         _p.dictionary.literal({
             "": _p.dictionary.literal({

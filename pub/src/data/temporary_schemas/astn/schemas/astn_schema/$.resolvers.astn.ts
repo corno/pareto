@@ -98,12 +98,7 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
             "nothing": state(r.nothing()),
 
             "optional": state(r.component("Type Node", null, null)),
-            "reference": state(r.group({
-                "type": r.state_group({
-                    "derived": state(r.nothing()),
-                    "selected": state_constrained({}, r.nothing()),
-                }),
-            })),
+
             "state group": state(r.dictionary(r.component("Type Node", null, null))),
             "text": state(r.state_group({
                 "global": state_constrained({ "globals": oc.assert_set(pvs.parameter("globals")) }, r.reference(gvs.dictionary(gvs.option_constraint("globals", [vst.group("text types")])))),

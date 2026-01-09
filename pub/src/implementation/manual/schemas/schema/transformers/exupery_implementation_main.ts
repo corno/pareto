@@ -12,7 +12,7 @@ import * as t_migration_boilerplate from "./exupery_implementation_migrate_boile
 import * as t_resolver from "./exupery_implementation_resolve"
 
 import * as t_serialize from "./exupery_implementation_serialize"
-import * as t_deserialize from "./exupery_implementation_deserialize"
+// import * as t_deserialize from "./exupery_implementation_deserialize"
 
 import * as t_marshall from "./exupery_implementation_marshall"
 import * as t_unmarshall from "./exupery_implementation_unmarshall"
@@ -62,10 +62,10 @@ export const Schema_Tree = (
                                 'imports': $.imports,
                                 'constrained': $.complexity[0] === 'constrained'
                             })),
-                            "deserialize.ts": _p.optional.set(t_deserialize.Schema($, {
-                                'path': $p.path,
-                                'imports': $.imports,
-                            })),
+                            // "deserialize.ts": _p.optional.set(t_deserialize.Schema($, {
+                            //     'path': $p.path,
+                            //     'imports': $.imports,
+                            // })),
                         }),
                         ($) => $
                     )

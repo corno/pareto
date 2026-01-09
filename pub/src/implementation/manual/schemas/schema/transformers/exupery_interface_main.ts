@@ -15,7 +15,7 @@ import * as t_marshall from "./exupery_interface_marshall"
 import * as t_unmarshall from "./exupery_interface_unmarshall"
 
 import * as t_serialize from "./exupery_interface_serialize"
-import * as t_deserialize from "./exupery_interface_deserialize"
+// import * as t_deserialize from "./exupery_interface_deserialize"
 
 import * as t_value_deserializers from "./exupery_interface_value_deserializers"
 import * as t_value_serializers from "./exupery_interface_value_serializers"
@@ -89,12 +89,12 @@ export const Schema = ($: d_in.Schema): d_out.Module_Set.D<_pi.Deprecated_Source
                 'imports': schema.imports,
             }
         ),
-        "deserialize.ts": t_deserialize.Schema(
-            schema,
-            {
-                'imports': schema.imports,
-            }
-        ),
+        // "deserialize.ts": t_deserialize.Schema(
+        //     schema,
+        //     {
+        //         'imports': schema.imports,
+        //     }
+        // ),
         "value serializers.ts": t_value_serializers.Schema(
             schema,
             {

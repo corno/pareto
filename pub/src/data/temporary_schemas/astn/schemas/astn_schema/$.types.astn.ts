@@ -61,17 +61,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "node": prop(t.component_cyclic("Type Node")),
             })),
             "nothing": tstate(t.nothing()),
-            // "number": t.state_group({
-            //     "global": t.reference("Globals", [tr.g("number types")]),
-            //     "local": t.component("Number Type"),
-            // }),
             "optional": tstate(t.component_cyclic("Type Node")),
-            "reference": tstate(t.group({
-                "type": prop(t.state_group({
-                    "derived": tstate(t.nothing()),
-                    "selected": tstate(t.nothing()),
-                })),
-            })),
             "state group": tstate(t.dictionary(t.component_cyclic("Type Node"))),
             "text": tstate(t.state_group({
                 "global": tstate(t.reference("Globals", [tr.g("text types")])),
@@ -95,18 +85,3 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
 
     }
 )
-
-type My_Group = {
-    'a': string
-}
-
-type My_Dictionary = { [key: string]: My_Group }
-
-type My_List = My_Group[]
-
-type My_Nothing = null
-
-type My_Optional = My_Group | null
-
-type My_Component = My_Group
-

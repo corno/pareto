@@ -32,10 +32,11 @@ export const Resolvers = (
     }
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
+        'refiner',
         op_flatten_dictionary(
             _p.dictionary.literal({
                 "": _p.dictionary.literal({
-                    "generic": import_.ancestor(2, "generic", ["resolve"], {}),
+                    "generic": import_.external("pareto-core-internals", ["dist", "algorithm types", "refiner", "resolve"], {}),
                     "out": import_.ancestor(5, "interface", _p.list.nested_literal([
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,

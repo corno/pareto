@@ -5,6 +5,39 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 
 export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
     {
+
+        "Module Set": resolver(r.dictionary(r.state_group({
+            "module": state(r.component("Module", {}, {})),
+            "set": state(r.component("Module Set", {}, {})),
+        }))),
+
+        "Module": resolver(r.group({
+            "type": r.state_group({
+                "serializer": state(r.nothing()),
+                "deserializer": state(r.nothing()),
+                "transformer": state(r.nothing()),
+                "refiner": state(r.nothing()),
+            }),
+            "type imports": r.component_external("interface", "Imports", {}, {}),
+            "variable imports": r.dictionary(r.group({
+                "tail": r.list(r.text()),
+                "type": r.state_group({
+                    "ancestor": state(r.group({
+                        "dependency": r.text(),
+                        "number of steps": r.number(),
+                    })),
+                    "external": state(r.text()),
+                    "sibling": state(r.text()),
+                }),
+            })),
+            "variables": r.component("Variables", {}, {}),
+        })),
+
+        "Variables": resolver(r.dictionary(r.group({
+            "type": r.optional(r.component_external("interface", "Type", {}, {})),
+            "initialization": r.component("Initialization", {}, {}),
+        }))),
+
         "Initialization": resolver(r.state_group({
             "block": state(r.group({
                 "variables": r.component("Variables", {}, {}),
@@ -70,6 +103,7 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                 }),
             })),
         })),
+
         "Literal": resolver(r.state_group({
             "array": state(r.list(r.component("Initialization", {}, {}))),
             "boolean": state(r.state_group({
@@ -105,25 +139,7 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                 "value": r.component("Initialization", {}, {}),
             })),
         })),
-        "Module": resolver(r.group({
-            "type imports": r.component_external("interface", "Imports", {}, {}),
-            "variable imports": r.dictionary(r.group({
-                "tail": r.list(r.text()),
-                "type": r.state_group({
-                    "ancestor": state(r.group({
-                        "dependency": r.text(),
-                        "number of steps": r.number(),
-                    })),
-                    "external": state(r.text()),
-                    "sibling": state(r.text()),
-                }),
-            })),
-            "variables": r.component("Variables", {}, {}),
-        })),
-        "Module Set": resolver(r.dictionary(r.state_group({
-            "module": state(r.component("Module", {}, {})),
-            "set": state(r.component("Module Set", {}, {})),
-        }))),
+
         "Selection": resolver(r.group({
             "start": r.state_group({
                 "abort": state(r.nothing()),
@@ -150,9 +166,5 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
             }),
             "tail": r.list(r.text()),
         })),
-        "Type Parameters": resolver(r.dictionary(r.nothing())),
-        "Variables": resolver(r.dictionary(r.group({
-            "type": r.optional(r.component_external("interface", "Type", {}, {})),
-            "initialization": r.component("Initialization", {}, {}),
-        }))),
+
     })

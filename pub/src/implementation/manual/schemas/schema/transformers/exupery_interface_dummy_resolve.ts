@@ -14,7 +14,7 @@ export const Signatures = (
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
     return m.module(
         {
-            "resolve": import_.ancestor(3, "core", ["resolve"], {}),
+            "resolve": import_.external("pareto-core-internals", ["dist", "algorithm types", "refiner", "resolve"], {}),
             "resolved": import_.sibling("source", [], {}),
             "unresolved": import_.sibling("target", [], {}),
         },

@@ -98,7 +98,6 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 ":": prop(t.component("Structural Token")),
                 "value": prop(t.component_cyclic("Value")),
             }))),
-            ",": prop(t.optional(t.component("Structural Token"))),
         }))),
 
         "Elements": type(t.list(t.group({
