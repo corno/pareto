@@ -76,15 +76,15 @@ export const Type_Node: _pi.Transformer<d_in.Type_Node, d_out.Type_Node<_pi.Depr
             'node': Type_Node($.node)
         }])
         case 'nothing': return _p.ss($, ($) => ['nothing', null])
-        case 'reference': return _p.ss($, ($) => ['reference', {
-            'type': wrap_state_group(_p.sg($.type, ($) => {
-                switch ($[0]) {
-                    case 'derived': return _p.ss($, ($) => ['derived', null])
-                    case 'selected': return _p.ss($, ($) => ['selected', null])
-                    default: return _p.au($[0])
-                }
-            }))
-        }])
+        case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
+            switch ($[0]) {
+                case 'derived': return _p.ss($, ($) => ['nothing', null])
+                case 'selected': return _p.ss($, ($) => ['text', wrap_state_group<d_out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location>>(['local', {
+                    'type': wrap_state_group(['single line', null])
+                }])])
+                default: return _p.au($[0])
+            }
+        }))
         case 'component': return _p.ss($, ($) => ['component', wrap_state_group(_p.sg($, ($): d_out.Type_Node.SG.component.SG<_pi.Deprecated_Source_Location> => {
             switch ($[0]) {
                 case 'external': return _p.ss($, ($) => ['external', {

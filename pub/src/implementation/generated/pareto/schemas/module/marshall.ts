@@ -1,49 +1,35 @@
-import * as _pa from 'pareto-core-transformer'
-import * as _pd from 'pareto-core-dev'
+import * as _p from 'pareto-core-transformer'
+import * as _pdev from 'pareto-core-dev'
 
+import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/module/marshall"
 import * as _i_out from "../../../../../interface/generated/pareto/core/astn_target"
 import * as _i_r_schema from "../schema/marshall"
-import * as _i_signatures from "../../../../../interface/generated/pareto/schemas/module/marshall"
 
 
-export const Module: _i_signatures._T_Module = ($, $p) => ['verbose group', _pa.dictionary.literal({
-    'operations': _pa.deprecated_cc($['operations'], ($) => Operations(
-        $,
-        {
-            'value serializers': $p['value serializers'],
-        }
-    )),
-    'schema tree': _pa.deprecated_cc($['schema tree'], ($) => _i_r_schema.Schema_Tree(
-        $,
-        {
-            'value serializers': $p['value serializers'],
-        }
-    )),
-})]
-export const Operations: _i_signatures._T_Operations = ($, $p) => ['dictionary', $.map(($) => ['state', _pa.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
+export const Operations: _i_signatures._T_Operations = ($, $p) => ['dictionary', $.map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
-        case 'operation': return _pa.ss($, ($) => ({
+        case 'operation': return _p.ss($, ($) => ({
             'state': "operation",
-            'value': ['verbose group', _pa.dictionary.literal({
-                'context': _pa.deprecated_cc($['context'], ($) => _i_r_schema.Type_Node(
+            'value': ['verbose group', _p.dictionary.literal({
+                'type parameters': _p.deprecated_cc($['type parameters'], ($) => _i_r_schema.Type_Parameters(
                     $,
                     {
                         'value serializers': $p['value serializers'],
                     }
                 )),
-                'parameters': _pa.deprecated_cc($['parameters'], ($) => ['dictionary', $.map(($) => _i_r_schema.Type_Node(
+                'context': _p.deprecated_cc($['context'], ($) => _i_r_schema.Type_Node(
+                    $,
+                    {
+                        'value serializers': $p['value serializers'],
+                    }
+                )),
+                'parameters': _p.deprecated_cc($['parameters'], ($) => ['dictionary', $.map(($) => _i_r_schema.Type_Node(
                     $,
                     {
                         'value serializers': $p['value serializers'],
                     }
                 ))]),
-                'result': _pa.deprecated_cc($['result'], ($) => _i_r_schema.Type_Node(
-                    $,
-                    {
-                        'value serializers': $p['value serializers'],
-                    }
-                )),
-                'type parameters': _pa.deprecated_cc($['type parameters'], ($) => _i_r_schema.Type_Parameters(
+                'result': _p.deprecated_cc($['result'], ($) => _i_r_schema.Type_Node(
                     $,
                     {
                         'value serializers': $p['value serializers'],
@@ -51,7 +37,7 @@ export const Operations: _i_signatures._T_Operations = ($, $p) => ['dictionary',
                 )),
             })],
         }))
-        case 'set': return _pa.ss($, ($) => ({
+        case 'set': return _p.ss($, ($) => ({
             'state': "set",
             'value': Operations(
                 $,
@@ -60,6 +46,20 @@ export const Operations: _i_signatures._T_Operations = ($, $p) => ['dictionary',
                 }
             ),
         }))
-        default: return _pa.au($[0])
+        default: return _p.au($[0])
     }
 })])]
+export const Module: _i_signatures._T_Module = ($, $p) => ['verbose group', _p.dictionary.literal({
+    'schema tree': _p.deprecated_cc($['schema tree'], ($) => _i_r_schema.Schema_Tree(
+        $,
+        {
+            'value serializers': $p['value serializers'],
+        }
+    )),
+    'operations': _p.deprecated_cc($['operations'], ($) => Operations(
+        $,
+        {
+            'value serializers': $p['value serializers'],
+        }
+    )),
+})]

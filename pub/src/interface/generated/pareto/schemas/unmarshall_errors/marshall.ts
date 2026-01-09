@@ -1,13 +1,13 @@
 import * as _pi from 'pareto-core-interface'
 
-import * as _i_in from "./data_types/source"
 import * as _i_out from "../../core/astn_target"
+import * as _i_in from "./data_types/source"
 import * as _i_vs from "./value_serializers"
 
 // **** TYPES
 
-export type _T_Errors = (
-    $$_: _i_in._T_Errors,
+export type _T_Relative_Location = (
+    $$_: _i_in._T_Relative_Location,
     $$_p: {
         readonly 'value serializers': _i_vs._T_Value_Serializers
     },
@@ -27,8 +27,8 @@ export type _T_Range = (
     },
 ) => _i_out._T_Value
 
-export type _T_Relative_Location = (
-    $$_: _i_in._T_Relative_Location,
+export type _T_Errors = (
+    $$_: _i_in._T_Errors,
     $$_p: {
         readonly 'value serializers': _i_vs._T_Value_Serializers
     },
@@ -36,21 +36,21 @@ export type _T_Relative_Location = (
 
 // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
 
-export type Errors = _T_Errors
+export type Relative_Location = _T_Relative_Location
 
 export type Location = _T_Location
 
 export type Range = _T_Range
 
-export type Relative_Location = _T_Relative_Location
+export type Errors = _T_Errors
 
 // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
 
-export namespace _T_Errors {
+export namespace _T_Relative_Location {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Errors
+    export type CONTEXT = _i_in._T_Relative_Location
     
     export namespace PARAMS {
         
@@ -100,11 +100,11 @@ export namespace _T_Range {
     export type RESULT = _i_out._T_Value
 }
 
-export namespace _T_Relative_Location {
+export namespace _T_Errors {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Relative_Location
+    export type CONTEXT = _i_in._T_Errors
     
     export namespace PARAMS {
         
@@ -120,11 +120,11 @@ export namespace _T_Relative_Location {
 
 // *** ALIASES FOR NESTED TYPES
 
-export namespace Errors {
+export namespace Relative_Location {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Errors
+    export type CONTEXT = _i_in._T_Relative_Location
     
     export namespace PARAMS {
         
@@ -174,11 +174,11 @@ export namespace Range {
     export type RESULT = _i_out._T_Value
 }
 
-export namespace Relative_Location {
+export namespace Errors {
     
     export namespace CONTEXT {
     }
-    export type CONTEXT = _i_in._T_Relative_Location
+    export type CONTEXT = _i_in._T_Errors
     
     export namespace PARAMS {
         
