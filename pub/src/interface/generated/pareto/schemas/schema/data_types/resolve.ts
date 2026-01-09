@@ -1,4 +1,4 @@
-import * as _et from 'pareto-core-interface'
+import * as _pi from 'pareto-core-interface'
 
 
 import * as _i_resolve from 'pareto-core-internals/dist/algorithm_types/refiner/resolve'
@@ -18,13 +18,13 @@ export type _T_Benchmark = <F_Source>(
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -56,8 +56,8 @@ export type _T_Dictionary = <F_Source>(
                 readonly 'possibly circular dependent sibling types': _i_resolve._T_Cyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -85,8 +85,8 @@ export type _T_Group = <F_Source>(
                 readonly 'possibly circular dependent sibling types': _i_resolve._T_Cyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -103,13 +103,13 @@ export type _T_Guaranteed_Value_Selection = <F_Source>(
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -141,13 +141,13 @@ export type _T_Lookup_Selection = <F_Source>(
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -166,13 +166,13 @@ export type _T_Node_Resolver = <F_Source>(
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -191,13 +191,13 @@ export type _T_Node_Resolver_Group = <F_Source>(
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Group
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -215,7 +215,7 @@ export type _T_Node_Resolver_List_Result = <F_Source>(
                 readonly 'types': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     },
@@ -242,13 +242,13 @@ export type _T_Option_Constraints = <F_Source>(
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -267,13 +267,13 @@ export type _T_Optional_Value_Initialization = <F_Source>(
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -292,13 +292,13 @@ export type _T_Possible_Value_Selection = <F_Source>(
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -504,8 +504,8 @@ export type _T_Type = <F_Source>(
                 readonly 'possibly circular dependent sibling types': _i_resolve._T_Cyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     },
@@ -521,8 +521,8 @@ export type _T_Type_Node = <F_Source>(
                 readonly 'possibly circular dependent sibling types': _i_resolve._T_Cyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -538,7 +538,7 @@ export type _T_Type_Node_Reference = <F_Source>(
                 readonly 'types': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     },
@@ -564,7 +564,7 @@ export type _T_Type_Reference = <F_Source>(
                 readonly 'types': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     },
@@ -588,8 +588,8 @@ export type _T_Types = <F_Source>(
         readonly 'parameters': {
             readonly 'lookups': null
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     },
@@ -718,7 +718,7 @@ export namespace _T_Benchmark {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -726,7 +726,7 @@ export namespace _T_Benchmark {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -738,7 +738,7 @@ export namespace _T_Benchmark {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -746,7 +746,7 @@ export namespace _T_Benchmark {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -754,7 +754,7 @@ export namespace _T_Benchmark {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -762,7 +762,7 @@ export namespace _T_Benchmark {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -777,13 +777,13 @@ export namespace _T_Benchmark {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -795,13 +795,13 @@ export namespace _T_Benchmark {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -904,7 +904,7 @@ export namespace _T_Dictionary {
                     }
                     export type O<F_Source> = _i_resolved._T_Globals
                 }
-                export type globals<F_Source> = _et.Optional_Value<_i_resolved._T_Globals>
+                export type globals<F_Source> = _pi.Optional_Value<_i_resolved._T_Globals>
                 
                 export namespace imports {
                     
@@ -912,15 +912,15 @@ export namespace _T_Dictionary {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace type_parameters {
                 }
                 export type type_parameters<F_Source> = _i_resolved._T_Type_Parameters
             }
             export type values<F_Source> = {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -930,8 +930,8 @@ export namespace _T_Dictionary {
                 readonly 'possibly circular dependent sibling types': _i_resolve._T_Cyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -1024,7 +1024,7 @@ export namespace _T_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Globals
                 }
-                export type globals<F_Source> = _et.Optional_Value<_i_resolved._T_Globals>
+                export type globals<F_Source> = _pi.Optional_Value<_i_resolved._T_Globals>
                 
                 export namespace imports {
                     
@@ -1032,15 +1032,15 @@ export namespace _T_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace type_parameters {
                 }
                 export type type_parameters<F_Source> = _i_resolved._T_Type_Parameters
             }
             export type values<F_Source> = {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -1050,8 +1050,8 @@ export namespace _T_Group {
                 readonly 'possibly circular dependent sibling types': _i_resolve._T_Cyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -1109,7 +1109,7 @@ export namespace _T_Guaranteed_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -1117,7 +1117,7 @@ export namespace _T_Guaranteed_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -1129,7 +1129,7 @@ export namespace _T_Guaranteed_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -1137,7 +1137,7 @@ export namespace _T_Guaranteed_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -1145,7 +1145,7 @@ export namespace _T_Guaranteed_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -1153,7 +1153,7 @@ export namespace _T_Guaranteed_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -1168,13 +1168,13 @@ export namespace _T_Guaranteed_Value_Selection {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -1186,13 +1186,13 @@ export namespace _T_Guaranteed_Value_Selection {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -1299,7 +1299,7 @@ export namespace _T_Lookup_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -1307,7 +1307,7 @@ export namespace _T_Lookup_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -1319,7 +1319,7 @@ export namespace _T_Lookup_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -1327,7 +1327,7 @@ export namespace _T_Lookup_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -1335,7 +1335,7 @@ export namespace _T_Lookup_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -1343,7 +1343,7 @@ export namespace _T_Lookup_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -1358,13 +1358,13 @@ export namespace _T_Lookup_Selection {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -1376,13 +1376,13 @@ export namespace _T_Lookup_Selection {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -1442,7 +1442,7 @@ export namespace _T_Node_Resolver {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -1450,7 +1450,7 @@ export namespace _T_Node_Resolver {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -1462,7 +1462,7 @@ export namespace _T_Node_Resolver {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -1470,7 +1470,7 @@ export namespace _T_Node_Resolver {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -1478,7 +1478,7 @@ export namespace _T_Node_Resolver {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -1486,7 +1486,7 @@ export namespace _T_Node_Resolver {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -1501,13 +1501,13 @@ export namespace _T_Node_Resolver {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -1519,13 +1519,13 @@ export namespace _T_Node_Resolver {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -1585,7 +1585,7 @@ export namespace _T_Node_Resolver_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -1593,7 +1593,7 @@ export namespace _T_Node_Resolver_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -1605,7 +1605,7 @@ export namespace _T_Node_Resolver_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -1613,7 +1613,7 @@ export namespace _T_Node_Resolver_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -1621,7 +1621,7 @@ export namespace _T_Node_Resolver_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -1629,7 +1629,7 @@ export namespace _T_Node_Resolver_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -1644,13 +1644,13 @@ export namespace _T_Node_Resolver_Group {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Group
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -1662,13 +1662,13 @@ export namespace _T_Node_Resolver_Group {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Group
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -1719,10 +1719,10 @@ export namespace _T_Node_Resolver_List_Result {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
             }
             export type values<F_Source> = {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
         export type parameters<F_Source> = {
@@ -1730,7 +1730,7 @@ export namespace _T_Node_Resolver_List_Result {
                 readonly 'types': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     }
@@ -1822,7 +1822,7 @@ export namespace _T_Option_Constraints {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -1830,7 +1830,7 @@ export namespace _T_Option_Constraints {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -1842,7 +1842,7 @@ export namespace _T_Option_Constraints {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -1850,7 +1850,7 @@ export namespace _T_Option_Constraints {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -1858,7 +1858,7 @@ export namespace _T_Option_Constraints {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -1866,7 +1866,7 @@ export namespace _T_Option_Constraints {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -1881,13 +1881,13 @@ export namespace _T_Option_Constraints {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -1899,13 +1899,13 @@ export namespace _T_Option_Constraints {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -1965,7 +1965,7 @@ export namespace _T_Optional_Value_Initialization {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -1973,7 +1973,7 @@ export namespace _T_Optional_Value_Initialization {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -1985,7 +1985,7 @@ export namespace _T_Optional_Value_Initialization {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -1993,7 +1993,7 @@ export namespace _T_Optional_Value_Initialization {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -2001,7 +2001,7 @@ export namespace _T_Optional_Value_Initialization {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -2009,7 +2009,7 @@ export namespace _T_Optional_Value_Initialization {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -2024,13 +2024,13 @@ export namespace _T_Optional_Value_Initialization {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -2042,13 +2042,13 @@ export namespace _T_Optional_Value_Initialization {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -2108,7 +2108,7 @@ export namespace _T_Possible_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -2116,7 +2116,7 @@ export namespace _T_Possible_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -2128,7 +2128,7 @@ export namespace _T_Possible_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -2136,7 +2136,7 @@ export namespace _T_Possible_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -2144,7 +2144,7 @@ export namespace _T_Possible_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -2152,7 +2152,7 @@ export namespace _T_Possible_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -2167,13 +2167,13 @@ export namespace _T_Possible_Value_Selection {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -2185,13 +2185,13 @@ export namespace _T_Possible_Value_Selection {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -2911,7 +2911,7 @@ export namespace _T_Type {
                     }
                     export type O<F_Source> = _i_resolved._T_Globals
                 }
-                export type globals<F_Source> = _et.Optional_Value<_i_resolved._T_Globals>
+                export type globals<F_Source> = _pi.Optional_Value<_i_resolved._T_Globals>
                 
                 export namespace imports {
                     
@@ -2919,11 +2919,11 @@ export namespace _T_Type {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
             }
             export type values<F_Source> = {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
         export type parameters<F_Source> = {
@@ -2932,8 +2932,8 @@ export namespace _T_Type {
                 readonly 'possibly circular dependent sibling types': _i_resolve._T_Cyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     }
@@ -2990,7 +2990,7 @@ export namespace _T_Type_Node {
                     }
                     export type O<F_Source> = _i_resolved._T_Globals
                 }
-                export type globals<F_Source> = _et.Optional_Value<_i_resolved._T_Globals>
+                export type globals<F_Source> = _pi.Optional_Value<_i_resolved._T_Globals>
                 
                 export namespace imports {
                     
@@ -2998,15 +2998,15 @@ export namespace _T_Type_Node {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace type_parameters {
                 }
                 export type type_parameters<F_Source> = _i_resolved._T_Type_Parameters
             }
             export type values<F_Source> = {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -3016,8 +3016,8 @@ export namespace _T_Type_Node {
                 readonly 'possibly circular dependent sibling types': _i_resolve._T_Cyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -3066,10 +3066,10 @@ export namespace _T_Type_Node_Reference {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
             }
             export type values<F_Source> = {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
         export type parameters<F_Source> = {
@@ -3077,7 +3077,7 @@ export namespace _T_Type_Node_Reference {
                 readonly 'types': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     }
@@ -3160,10 +3160,10 @@ export namespace _T_Type_Reference {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
             }
             export type values<F_Source> = {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
         export type parameters<F_Source> = {
@@ -3171,7 +3171,7 @@ export namespace _T_Type_Reference {
                 readonly 'types': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     }
@@ -3244,7 +3244,7 @@ export namespace _T_Types {
                     }
                     export type O<F_Source> = _i_resolved._T_Globals
                 }
-                export type globals<F_Source> = _et.Optional_Value<_i_resolved._T_Globals>
+                export type globals<F_Source> = _pi.Optional_Value<_i_resolved._T_Globals>
                 
                 export namespace imports {
                     
@@ -3252,18 +3252,18 @@ export namespace _T_Types {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
             }
             export type values<F_Source> = {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
         export type parameters<F_Source> = {
             readonly 'lookups': null
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     }
@@ -3322,7 +3322,7 @@ export namespace Benchmark {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -3330,7 +3330,7 @@ export namespace Benchmark {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -3342,7 +3342,7 @@ export namespace Benchmark {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -3350,7 +3350,7 @@ export namespace Benchmark {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -3358,7 +3358,7 @@ export namespace Benchmark {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -3366,7 +3366,7 @@ export namespace Benchmark {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -3381,13 +3381,13 @@ export namespace Benchmark {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -3399,13 +3399,13 @@ export namespace Benchmark {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -3508,7 +3508,7 @@ export namespace Dictionary {
                     }
                     export type O<F_Source> = _i_resolved._T_Globals
                 }
-                export type globals<F_Source> = _et.Optional_Value<_i_resolved._T_Globals>
+                export type globals<F_Source> = _pi.Optional_Value<_i_resolved._T_Globals>
                 
                 export namespace imports {
                     
@@ -3516,15 +3516,15 @@ export namespace Dictionary {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace type_parameters {
                 }
                 export type type_parameters<F_Source> = _i_resolved._T_Type_Parameters
             }
             export type values<F_Source> = {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -3534,8 +3534,8 @@ export namespace Dictionary {
                 readonly 'possibly circular dependent sibling types': _i_resolve._T_Cyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -3628,7 +3628,7 @@ export namespace Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Globals
                 }
-                export type globals<F_Source> = _et.Optional_Value<_i_resolved._T_Globals>
+                export type globals<F_Source> = _pi.Optional_Value<_i_resolved._T_Globals>
                 
                 export namespace imports {
                     
@@ -3636,15 +3636,15 @@ export namespace Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace type_parameters {
                 }
                 export type type_parameters<F_Source> = _i_resolved._T_Type_Parameters
             }
             export type values<F_Source> = {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -3654,8 +3654,8 @@ export namespace Group {
                 readonly 'possibly circular dependent sibling types': _i_resolve._T_Cyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -3713,7 +3713,7 @@ export namespace Guaranteed_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -3721,7 +3721,7 @@ export namespace Guaranteed_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -3733,7 +3733,7 @@ export namespace Guaranteed_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -3741,7 +3741,7 @@ export namespace Guaranteed_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -3749,7 +3749,7 @@ export namespace Guaranteed_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -3757,7 +3757,7 @@ export namespace Guaranteed_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -3772,13 +3772,13 @@ export namespace Guaranteed_Value_Selection {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -3790,13 +3790,13 @@ export namespace Guaranteed_Value_Selection {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -3903,7 +3903,7 @@ export namespace Lookup_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -3911,7 +3911,7 @@ export namespace Lookup_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -3923,7 +3923,7 @@ export namespace Lookup_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -3931,7 +3931,7 @@ export namespace Lookup_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -3939,7 +3939,7 @@ export namespace Lookup_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -3947,7 +3947,7 @@ export namespace Lookup_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -3962,13 +3962,13 @@ export namespace Lookup_Selection {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -3980,13 +3980,13 @@ export namespace Lookup_Selection {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -4046,7 +4046,7 @@ export namespace Node_Resolver {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -4054,7 +4054,7 @@ export namespace Node_Resolver {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -4066,7 +4066,7 @@ export namespace Node_Resolver {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -4074,7 +4074,7 @@ export namespace Node_Resolver {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -4082,7 +4082,7 @@ export namespace Node_Resolver {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -4090,7 +4090,7 @@ export namespace Node_Resolver {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -4105,13 +4105,13 @@ export namespace Node_Resolver {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -4123,13 +4123,13 @@ export namespace Node_Resolver {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -4189,7 +4189,7 @@ export namespace Node_Resolver_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -4197,7 +4197,7 @@ export namespace Node_Resolver_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -4209,7 +4209,7 @@ export namespace Node_Resolver_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -4217,7 +4217,7 @@ export namespace Node_Resolver_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -4225,7 +4225,7 @@ export namespace Node_Resolver_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -4233,7 +4233,7 @@ export namespace Node_Resolver_Group {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -4248,13 +4248,13 @@ export namespace Node_Resolver_Group {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Group
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -4266,13 +4266,13 @@ export namespace Node_Resolver_Group {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Group
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -4323,10 +4323,10 @@ export namespace Node_Resolver_List_Result {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
             }
             export type values<F_Source> = {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
         export type parameters<F_Source> = {
@@ -4334,7 +4334,7 @@ export namespace Node_Resolver_List_Result {
                 readonly 'types': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     }
@@ -4426,7 +4426,7 @@ export namespace Option_Constraints {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -4434,7 +4434,7 @@ export namespace Option_Constraints {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -4446,7 +4446,7 @@ export namespace Option_Constraints {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -4454,7 +4454,7 @@ export namespace Option_Constraints {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -4462,7 +4462,7 @@ export namespace Option_Constraints {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -4470,7 +4470,7 @@ export namespace Option_Constraints {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -4485,13 +4485,13 @@ export namespace Option_Constraints {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -4503,13 +4503,13 @@ export namespace Option_Constraints {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -4569,7 +4569,7 @@ export namespace Optional_Value_Initialization {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -4577,7 +4577,7 @@ export namespace Optional_Value_Initialization {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -4589,7 +4589,7 @@ export namespace Optional_Value_Initialization {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -4597,7 +4597,7 @@ export namespace Optional_Value_Initialization {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -4605,7 +4605,7 @@ export namespace Optional_Value_Initialization {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -4613,7 +4613,7 @@ export namespace Optional_Value_Initialization {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -4628,13 +4628,13 @@ export namespace Optional_Value_Initialization {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -4646,13 +4646,13 @@ export namespace Optional_Value_Initialization {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -4712,7 +4712,7 @@ export namespace Possible_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace current_ordered_dictionary {
                     
@@ -4720,7 +4720,7 @@ export namespace Possible_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Dictionary
                 }
-                export type current_ordered_dictionary<F_Source> = _et.Optional_Value<_i_resolved._T_Dictionary>
+                export type current_ordered_dictionary<F_Source> = _pi.Optional_Value<_i_resolved._T_Dictionary>
                 
                 export namespace definition {
                 }
@@ -4732,7 +4732,7 @@ export namespace Possible_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace linked_entry {
                     
@@ -4740,7 +4740,7 @@ export namespace Possible_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Benchmark
                 }
-                export type linked_entry<F_Source> = _et.Optional_Value<_i_resolved._T_Benchmark>
+                export type linked_entry<F_Source> = _pi.Optional_Value<_i_resolved._T_Benchmark>
                 
                 export namespace list_cursor {
                     
@@ -4748,7 +4748,7 @@ export namespace Possible_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Node_Resolver_List_Result
                 }
-                export type list_cursor<F_Source> = _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                export type list_cursor<F_Source> = _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
                 
                 export namespace option_constraints {
                     
@@ -4756,7 +4756,7 @@ export namespace Possible_Value_Selection {
                     }
                     export type O<F_Source> = _i_resolved._T_Option_Constraints
                 }
-                export type option_constraints<F_Source> = _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                export type option_constraints<F_Source> = _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 
                 export namespace signature {
                 }
@@ -4771,13 +4771,13 @@ export namespace Possible_Value_Selection {
                 export type types<F_Source> = _i_resolved._T_Types
             }
             export type values<F_Source> = {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -4789,13 +4789,13 @@ export namespace Possible_Value_Selection {
                 readonly 'sibling property resolvers': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Node_Resolver_Group.D>
             }
             readonly 'values': {
-                readonly 'current dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
-                readonly 'current ordered dictionary': _et.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
+                readonly 'current ordered dictionary': _pi.Optional_Value<_i_resolved._T_Dictionary>
                 readonly 'definition': _i_resolved._T_Type_Node
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
-                readonly 'linked entry': _et.Optional_Value<_i_resolved._T_Benchmark>
-                readonly 'list cursor': _et.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
-                readonly 'option constraints': _et.Optional_Value<_i_resolved._T_Option_Constraints>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
+                readonly 'linked entry': _pi.Optional_Value<_i_resolved._T_Benchmark>
+                readonly 'list cursor': _pi.Optional_Value<_i_resolved._T_Node_Resolver_List_Result>
+                readonly 'option constraints': _pi.Optional_Value<_i_resolved._T_Option_Constraints>
                 readonly 'signature': _i_resolved._T_Signature
                 readonly 'signatures': _i_resolved._T_Signatures
                 readonly 'types': _i_resolved._T_Types
@@ -5515,7 +5515,7 @@ export namespace Type {
                     }
                     export type O<F_Source> = _i_resolved._T_Globals
                 }
-                export type globals<F_Source> = _et.Optional_Value<_i_resolved._T_Globals>
+                export type globals<F_Source> = _pi.Optional_Value<_i_resolved._T_Globals>
                 
                 export namespace imports {
                     
@@ -5523,11 +5523,11 @@ export namespace Type {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
             }
             export type values<F_Source> = {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
         export type parameters<F_Source> = {
@@ -5536,8 +5536,8 @@ export namespace Type {
                 readonly 'possibly circular dependent sibling types': _i_resolve._T_Cyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     }
@@ -5594,7 +5594,7 @@ export namespace Type_Node {
                     }
                     export type O<F_Source> = _i_resolved._T_Globals
                 }
-                export type globals<F_Source> = _et.Optional_Value<_i_resolved._T_Globals>
+                export type globals<F_Source> = _pi.Optional_Value<_i_resolved._T_Globals>
                 
                 export namespace imports {
                     
@@ -5602,15 +5602,15 @@ export namespace Type_Node {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
                 
                 export namespace type_parameters {
                 }
                 export type type_parameters<F_Source> = _i_resolved._T_Type_Parameters
             }
             export type values<F_Source> = {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -5620,8 +5620,8 @@ export namespace Type_Node {
                 readonly 'possibly circular dependent sibling types': _i_resolve._T_Cyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
                 readonly 'type parameters': _i_resolved._T_Type_Parameters
             }
         }
@@ -5670,10 +5670,10 @@ export namespace Type_Node_Reference {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
             }
             export type values<F_Source> = {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
         export type parameters<F_Source> = {
@@ -5681,7 +5681,7 @@ export namespace Type_Node_Reference {
                 readonly 'types': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     }
@@ -5764,10 +5764,10 @@ export namespace Type_Reference {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
             }
             export type values<F_Source> = {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
         export type parameters<F_Source> = {
@@ -5775,7 +5775,7 @@ export namespace Type_Reference {
                 readonly 'types': _i_resolve._T_Acyclic_Lookup<_i_resolved._T_Types.D>
             }
             readonly 'values': {
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     }
@@ -5848,7 +5848,7 @@ export namespace Types {
                     }
                     export type O<F_Source> = _i_resolved._T_Globals
                 }
-                export type globals<F_Source> = _et.Optional_Value<_i_resolved._T_Globals>
+                export type globals<F_Source> = _pi.Optional_Value<_i_resolved._T_Globals>
                 
                 export namespace imports {
                     
@@ -5856,18 +5856,18 @@ export namespace Types {
                     }
                     export type O<F_Source> = _i_resolved._T_Imports
                 }
-                export type imports<F_Source> = _et.Optional_Value<_i_resolved._T_Imports>
+                export type imports<F_Source> = _pi.Optional_Value<_i_resolved._T_Imports>
             }
             export type values<F_Source> = {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
         export type parameters<F_Source> = {
             readonly 'lookups': null
             readonly 'values': {
-                readonly 'globals': _et.Optional_Value<_i_resolved._T_Globals>
-                readonly 'imports': _et.Optional_Value<_i_resolved._T_Imports>
+                readonly 'globals': _pi.Optional_Value<_i_resolved._T_Globals>
+                readonly 'imports': _pi.Optional_Value<_i_resolved._T_Imports>
             }
         }
     }

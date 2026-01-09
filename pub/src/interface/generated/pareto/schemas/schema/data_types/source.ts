@@ -1,4 +1,4 @@
-import * as _et from 'pareto-core-interface'
+import * as _pi from 'pareto-core-interface'
 
 import * as _i_core from "../../../core/resolved"
 
@@ -38,7 +38,7 @@ export type _T_Globals = {
 }
 
 export type _T_Group = _i_core._T_Ordered_Dictionary<null, {
-    readonly 'description': _et.Optional_Value<string>
+    readonly 'description': _pi.Optional_Value<string>
     readonly 'node': _T_Type_Node
 }>
 
@@ -102,8 +102,8 @@ export type _T_Lookup_Selection = {
 export type _T_Node_Resolver = _i_core._T_State_Group<null, 
     | readonly ['boolean', null]
     | readonly ['component', {
-        readonly 'arguments': _et.Optional_Value<{
-            readonly 'lookups': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+        readonly 'arguments': _pi.Optional_Value<{
+            readonly 'lookups': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                 | readonly ['empty stack', null]
                 | readonly ['not set', null]
                 | readonly ['selection', _T_Lookup_Selection]
@@ -112,7 +112,7 @@ export type _T_Node_Resolver = _i_core._T_State_Group<null,
                     readonly 'stack': _T_Lookup_Selection
                 }]
             >>>
-            readonly 'values': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+            readonly 'values': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                 | readonly ['optional', _T_Optional_Value_Initialization]
                 | readonly ['parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Signature_Parameters.values.D>]
                 | readonly ['required', _T_Guaranteed_Value_Selection]
@@ -129,7 +129,7 @@ export type _T_Node_Resolver = _i_core._T_State_Group<null,
         readonly 'signature': _i_core._T_Derived_Reference<null, _T_Signatures.D>
     }]
     | readonly ['dictionary', {
-        readonly 'benchmark': _et.Optional_Value<_T_Benchmark>
+        readonly 'benchmark': _pi.Optional_Value<_T_Benchmark>
         readonly 'definition': _i_core._T_Derived_Reference<null, _T_Dictionary>
         readonly 'resolver': _T_Node_Resolver
     }]
@@ -137,7 +137,7 @@ export type _T_Node_Resolver = _i_core._T_State_Group<null,
     | readonly ['list', {
         readonly 'definition': _i_core._T_Derived_Reference<null, _T_Type_Node.SG.list>
         readonly 'resolver': _T_Node_Resolver
-        readonly 'result': _et.Optional_Value<_T_Node_Resolver_List_Result>
+        readonly 'result': _pi.Optional_Value<_T_Node_Resolver_List_Result>
     }]
     | readonly ['nothing', null]
     | readonly ['number', null]
@@ -181,7 +181,7 @@ export type _T_Number_Type = {
             readonly 'significant digits': number
         }]
         | readonly ['exact', {
-            readonly 'decimal separator offset': _et.Optional_Value<number>
+            readonly 'decimal separator offset': _pi.Optional_Value<number>
             readonly 'type': _i_core._T_State_Group<null, 
                 | readonly ['integer', null]
                 | readonly ['natural', null]
@@ -355,7 +355,7 @@ export type _T_Type_Node = _i_core._T_State_Group<null,
         >
     }]
     | readonly ['state group', _i_core._T_Dictionary<null, {
-        readonly 'description': _et.Optional_Value<string>
+        readonly 'description': _pi.Optional_Value<string>
         readonly 'node': _T_Type_Node
     }>]
     | readonly ['text', _i_core._T_State_Group<null, 
@@ -605,14 +605,14 @@ export namespace _T_Group {
         export namespace description {
             export type O = string
         }
-        export type description = _et.Optional_Value<string>
+        export type description = _pi.Optional_Value<string>
         
         export namespace node {
         }
         export type node = _T_Type_Node
     }
     export type D = {
-        readonly 'description': _et.Optional_Value<string>
+        readonly 'description': _pi.Optional_Value<string>
         readonly 'node': _T_Type_Node
     }
 }
@@ -1098,7 +1098,7 @@ export namespace _T_Node_Resolver {
                             }]
                         >>
                     }
-                    export type lookups = _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                    export type lookups = _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                         | readonly ['empty stack', null]
                         | readonly ['not set', null]
                         | readonly ['selection', _T_Lookup_Selection]
@@ -1149,14 +1149,14 @@ export namespace _T_Node_Resolver {
                             | readonly ['required', _T_Guaranteed_Value_Selection]
                         >>
                     }
-                    export type values = _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                    export type values = _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                         | readonly ['optional', _T_Optional_Value_Initialization]
                         | readonly ['parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Signature_Parameters.values.D>]
                         | readonly ['required', _T_Guaranteed_Value_Selection]
                     >>>
                 }
                 export type O = {
-                    readonly 'lookups': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                    readonly 'lookups': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                         | readonly ['empty stack', null]
                         | readonly ['not set', null]
                         | readonly ['selection', _T_Lookup_Selection]
@@ -1165,15 +1165,15 @@ export namespace _T_Node_Resolver {
                             readonly 'stack': _T_Lookup_Selection
                         }]
                     >>>
-                    readonly 'values': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                    readonly 'values': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                         | readonly ['optional', _T_Optional_Value_Initialization]
                         | readonly ['parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Signature_Parameters.values.D>]
                         | readonly ['required', _T_Guaranteed_Value_Selection]
                     >>>
                 }
             }
-            export type _arguments = _et.Optional_Value<{
-                readonly 'lookups': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+            export type _arguments = _pi.Optional_Value<{
+                readonly 'lookups': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                     | readonly ['empty stack', null]
                     | readonly ['not set', null]
                     | readonly ['selection', _T_Lookup_Selection]
@@ -1182,7 +1182,7 @@ export namespace _T_Node_Resolver {
                         readonly 'stack': _T_Lookup_Selection
                     }]
                 >>>
-                readonly 'values': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                readonly 'values': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                     | readonly ['optional', _T_Optional_Value_Initialization]
                     | readonly ['parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Signature_Parameters.values.D>]
                     | readonly ['required', _T_Guaranteed_Value_Selection]
@@ -1252,8 +1252,8 @@ export namespace _T_Node_Resolver {
             export type signature = _i_core._T_Derived_Reference<null, _T_Signatures.D>
         }
         export type component = {
-            readonly 'arguments': _et.Optional_Value<{
-                readonly 'lookups': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+            readonly 'arguments': _pi.Optional_Value<{
+                readonly 'lookups': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                     | readonly ['empty stack', null]
                     | readonly ['not set', null]
                     | readonly ['selection', _T_Lookup_Selection]
@@ -1262,7 +1262,7 @@ export namespace _T_Node_Resolver {
                         readonly 'stack': _T_Lookup_Selection
                     }]
                 >>>
-                readonly 'values': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                readonly 'values': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                     | readonly ['optional', _T_Optional_Value_Initialization]
                     | readonly ['parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Signature_Parameters.values.D>]
                     | readonly ['required', _T_Guaranteed_Value_Selection]
@@ -1287,7 +1287,7 @@ export namespace _T_Node_Resolver {
                 }
                 export type O = _T_Benchmark
             }
-            export type benchmark = _et.Optional_Value<_T_Benchmark>
+            export type benchmark = _pi.Optional_Value<_T_Benchmark>
             
             export namespace definition {
                 
@@ -1302,7 +1302,7 @@ export namespace _T_Node_Resolver {
             export type resolver = _T_Node_Resolver
         }
         export type dictionary = {
-            readonly 'benchmark': _et.Optional_Value<_T_Benchmark>
+            readonly 'benchmark': _pi.Optional_Value<_T_Benchmark>
             readonly 'definition': _i_core._T_Derived_Reference<null, _T_Dictionary>
             readonly 'resolver': _T_Node_Resolver
         }
@@ -1331,12 +1331,12 @@ export namespace _T_Node_Resolver {
                 }
                 export type O = _T_Node_Resolver_List_Result
             }
-            export type result = _et.Optional_Value<_T_Node_Resolver_List_Result>
+            export type result = _pi.Optional_Value<_T_Node_Resolver_List_Result>
         }
         export type list = {
             readonly 'definition': _i_core._T_Derived_Reference<null, _T_Type_Node.SG.list>
             readonly 'resolver': _T_Node_Resolver
-            readonly 'result': _et.Optional_Value<_T_Node_Resolver_List_Result>
+            readonly 'result': _pi.Optional_Value<_T_Node_Resolver_List_Result>
         }
         export type nothing = null
         export type _number = null
@@ -1483,8 +1483,8 @@ export namespace _T_Node_Resolver {
     export type SG = 
         | readonly ['boolean', null]
         | readonly ['component', {
-            readonly 'arguments': _et.Optional_Value<{
-                readonly 'lookups': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+            readonly 'arguments': _pi.Optional_Value<{
+                readonly 'lookups': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                     | readonly ['empty stack', null]
                     | readonly ['not set', null]
                     | readonly ['selection', _T_Lookup_Selection]
@@ -1493,7 +1493,7 @@ export namespace _T_Node_Resolver {
                         readonly 'stack': _T_Lookup_Selection
                     }]
                 >>>
-                readonly 'values': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                readonly 'values': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                     | readonly ['optional', _T_Optional_Value_Initialization]
                     | readonly ['parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Signature_Parameters.values.D>]
                     | readonly ['required', _T_Guaranteed_Value_Selection]
@@ -1510,7 +1510,7 @@ export namespace _T_Node_Resolver {
             readonly 'signature': _i_core._T_Derived_Reference<null, _T_Signatures.D>
         }]
         | readonly ['dictionary', {
-            readonly 'benchmark': _et.Optional_Value<_T_Benchmark>
+            readonly 'benchmark': _pi.Optional_Value<_T_Benchmark>
             readonly 'definition': _i_core._T_Derived_Reference<null, _T_Dictionary>
             readonly 'resolver': _T_Node_Resolver
         }]
@@ -1518,7 +1518,7 @@ export namespace _T_Node_Resolver {
         | readonly ['list', {
             readonly 'definition': _i_core._T_Derived_Reference<null, _T_Type_Node.SG.list>
             readonly 'resolver': _T_Node_Resolver
-            readonly 'result': _et.Optional_Value<_T_Node_Resolver_List_Result>
+            readonly 'result': _pi.Optional_Value<_T_Node_Resolver_List_Result>
         }]
         | readonly ['nothing', null]
         | readonly ['number', null]
@@ -1592,7 +1592,7 @@ export namespace _T_Number_Type {
                 export namespace decimal_separator_offset {
                     export type O = number
                 }
-                export type decimal_separator_offset = _et.Optional_Value<number>
+                export type decimal_separator_offset = _pi.Optional_Value<number>
                 
                 export namespace _type {
                     
@@ -1613,7 +1613,7 @@ export namespace _T_Number_Type {
                 >
             }
             export type exact = {
-                readonly 'decimal separator offset': _et.Optional_Value<number>
+                readonly 'decimal separator offset': _pi.Optional_Value<number>
                 readonly 'type': _i_core._T_State_Group<null, 
                     | readonly ['integer', null]
                     | readonly ['natural', null]
@@ -1626,7 +1626,7 @@ export namespace _T_Number_Type {
                 readonly 'significant digits': number
             }]
             | readonly ['exact', {
-                readonly 'decimal separator offset': _et.Optional_Value<number>
+                readonly 'decimal separator offset': _pi.Optional_Value<number>
                 readonly 'type': _i_core._T_State_Group<null, 
                     | readonly ['integer', null]
                     | readonly ['natural', null]
@@ -1639,7 +1639,7 @@ export namespace _T_Number_Type {
             readonly 'significant digits': number
         }]
         | readonly ['exact', {
-            readonly 'decimal separator offset': _et.Optional_Value<number>
+            readonly 'decimal separator offset': _pi.Optional_Value<number>
             readonly 'type': _i_core._T_State_Group<null, 
                 | readonly ['integer', null]
                 | readonly ['natural', null]
@@ -2417,19 +2417,19 @@ export namespace _T_Type_Node {
                 export namespace description {
                     export type O = string
                 }
-                export type description = _et.Optional_Value<string>
+                export type description = _pi.Optional_Value<string>
                 
                 export namespace node {
                 }
                 export type node = _T_Type_Node
             }
             export type D = {
-                readonly 'description': _et.Optional_Value<string>
+                readonly 'description': _pi.Optional_Value<string>
                 readonly 'node': _T_Type_Node
             }
         }
         export type state_group = _i_core._T_Dictionary<null, {
-            readonly 'description': _et.Optional_Value<string>
+            readonly 'description': _pi.Optional_Value<string>
             readonly 'node': _T_Type_Node
         }>
         
@@ -2494,7 +2494,7 @@ export namespace _T_Type_Node {
             >
         }]
         | readonly ['state group', _i_core._T_Dictionary<null, {
-            readonly 'description': _et.Optional_Value<string>
+            readonly 'description': _pi.Optional_Value<string>
             readonly 'node': _T_Type_Node
         }>]
         | readonly ['text', _i_core._T_State_Group<null, 
@@ -2785,14 +2785,14 @@ export namespace Group {
         export namespace description {
             export type O = string
         }
-        export type description = _et.Optional_Value<string>
+        export type description = _pi.Optional_Value<string>
         
         export namespace node {
         }
         export type node = _T_Type_Node
     }
     export type D = {
-        readonly 'description': _et.Optional_Value<string>
+        readonly 'description': _pi.Optional_Value<string>
         readonly 'node': _T_Type_Node
     }
 }
@@ -3278,7 +3278,7 @@ export namespace Node_Resolver {
                             }]
                         >>
                     }
-                    export type lookups = _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                    export type lookups = _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                         | readonly ['empty stack', null]
                         | readonly ['not set', null]
                         | readonly ['selection', _T_Lookup_Selection]
@@ -3329,14 +3329,14 @@ export namespace Node_Resolver {
                             | readonly ['required', _T_Guaranteed_Value_Selection]
                         >>
                     }
-                    export type values = _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                    export type values = _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                         | readonly ['optional', _T_Optional_Value_Initialization]
                         | readonly ['parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Signature_Parameters.values.D>]
                         | readonly ['required', _T_Guaranteed_Value_Selection]
                     >>>
                 }
                 export type O = {
-                    readonly 'lookups': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                    readonly 'lookups': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                         | readonly ['empty stack', null]
                         | readonly ['not set', null]
                         | readonly ['selection', _T_Lookup_Selection]
@@ -3345,15 +3345,15 @@ export namespace Node_Resolver {
                             readonly 'stack': _T_Lookup_Selection
                         }]
                     >>>
-                    readonly 'values': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                    readonly 'values': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                         | readonly ['optional', _T_Optional_Value_Initialization]
                         | readonly ['parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Signature_Parameters.values.D>]
                         | readonly ['required', _T_Guaranteed_Value_Selection]
                     >>>
                 }
             }
-            export type _arguments = _et.Optional_Value<{
-                readonly 'lookups': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+            export type _arguments = _pi.Optional_Value<{
+                readonly 'lookups': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                     | readonly ['empty stack', null]
                     | readonly ['not set', null]
                     | readonly ['selection', _T_Lookup_Selection]
@@ -3362,7 +3362,7 @@ export namespace Node_Resolver {
                         readonly 'stack': _T_Lookup_Selection
                     }]
                 >>>
-                readonly 'values': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                readonly 'values': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                     | readonly ['optional', _T_Optional_Value_Initialization]
                     | readonly ['parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Signature_Parameters.values.D>]
                     | readonly ['required', _T_Guaranteed_Value_Selection]
@@ -3432,8 +3432,8 @@ export namespace Node_Resolver {
             export type signature = _i_core._T_Derived_Reference<null, _T_Signatures.D>
         }
         export type component = {
-            readonly 'arguments': _et.Optional_Value<{
-                readonly 'lookups': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+            readonly 'arguments': _pi.Optional_Value<{
+                readonly 'lookups': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                     | readonly ['empty stack', null]
                     | readonly ['not set', null]
                     | readonly ['selection', _T_Lookup_Selection]
@@ -3442,7 +3442,7 @@ export namespace Node_Resolver {
                         readonly 'stack': _T_Lookup_Selection
                     }]
                 >>>
-                readonly 'values': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                readonly 'values': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                     | readonly ['optional', _T_Optional_Value_Initialization]
                     | readonly ['parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Signature_Parameters.values.D>]
                     | readonly ['required', _T_Guaranteed_Value_Selection]
@@ -3467,7 +3467,7 @@ export namespace Node_Resolver {
                 }
                 export type O = _T_Benchmark
             }
-            export type benchmark = _et.Optional_Value<_T_Benchmark>
+            export type benchmark = _pi.Optional_Value<_T_Benchmark>
             
             export namespace definition {
                 
@@ -3482,7 +3482,7 @@ export namespace Node_Resolver {
             export type resolver = _T_Node_Resolver
         }
         export type dictionary = {
-            readonly 'benchmark': _et.Optional_Value<_T_Benchmark>
+            readonly 'benchmark': _pi.Optional_Value<_T_Benchmark>
             readonly 'definition': _i_core._T_Derived_Reference<null, _T_Dictionary>
             readonly 'resolver': _T_Node_Resolver
         }
@@ -3511,12 +3511,12 @@ export namespace Node_Resolver {
                 }
                 export type O = _T_Node_Resolver_List_Result
             }
-            export type result = _et.Optional_Value<_T_Node_Resolver_List_Result>
+            export type result = _pi.Optional_Value<_T_Node_Resolver_List_Result>
         }
         export type list = {
             readonly 'definition': _i_core._T_Derived_Reference<null, _T_Type_Node.SG.list>
             readonly 'resolver': _T_Node_Resolver
-            readonly 'result': _et.Optional_Value<_T_Node_Resolver_List_Result>
+            readonly 'result': _pi.Optional_Value<_T_Node_Resolver_List_Result>
         }
         export type nothing = null
         export type _number = null
@@ -3663,8 +3663,8 @@ export namespace Node_Resolver {
     export type SG = 
         | readonly ['boolean', null]
         | readonly ['component', {
-            readonly 'arguments': _et.Optional_Value<{
-                readonly 'lookups': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+            readonly 'arguments': _pi.Optional_Value<{
+                readonly 'lookups': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                     | readonly ['empty stack', null]
                     | readonly ['not set', null]
                     | readonly ['selection', _T_Lookup_Selection]
@@ -3673,7 +3673,7 @@ export namespace Node_Resolver {
                         readonly 'stack': _T_Lookup_Selection
                     }]
                 >>>
-                readonly 'values': _et.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
+                readonly 'values': _pi.Optional_Value<_i_core._T_Dictionary<null, _i_core._T_State_Group<null, 
                     | readonly ['optional', _T_Optional_Value_Initialization]
                     | readonly ['parameter', _i_core._T_Reference_To_Normal_Dictionary_Entry<null, _T_Signature_Parameters.values.D>]
                     | readonly ['required', _T_Guaranteed_Value_Selection]
@@ -3690,7 +3690,7 @@ export namespace Node_Resolver {
             readonly 'signature': _i_core._T_Derived_Reference<null, _T_Signatures.D>
         }]
         | readonly ['dictionary', {
-            readonly 'benchmark': _et.Optional_Value<_T_Benchmark>
+            readonly 'benchmark': _pi.Optional_Value<_T_Benchmark>
             readonly 'definition': _i_core._T_Derived_Reference<null, _T_Dictionary>
             readonly 'resolver': _T_Node_Resolver
         }]
@@ -3698,7 +3698,7 @@ export namespace Node_Resolver {
         | readonly ['list', {
             readonly 'definition': _i_core._T_Derived_Reference<null, _T_Type_Node.SG.list>
             readonly 'resolver': _T_Node_Resolver
-            readonly 'result': _et.Optional_Value<_T_Node_Resolver_List_Result>
+            readonly 'result': _pi.Optional_Value<_T_Node_Resolver_List_Result>
         }]
         | readonly ['nothing', null]
         | readonly ['number', null]
@@ -3772,7 +3772,7 @@ export namespace Number_Type {
                 export namespace decimal_separator_offset {
                     export type O = number
                 }
-                export type decimal_separator_offset = _et.Optional_Value<number>
+                export type decimal_separator_offset = _pi.Optional_Value<number>
                 
                 export namespace _type {
                     
@@ -3793,7 +3793,7 @@ export namespace Number_Type {
                 >
             }
             export type exact = {
-                readonly 'decimal separator offset': _et.Optional_Value<number>
+                readonly 'decimal separator offset': _pi.Optional_Value<number>
                 readonly 'type': _i_core._T_State_Group<null, 
                     | readonly ['integer', null]
                     | readonly ['natural', null]
@@ -3806,7 +3806,7 @@ export namespace Number_Type {
                 readonly 'significant digits': number
             }]
             | readonly ['exact', {
-                readonly 'decimal separator offset': _et.Optional_Value<number>
+                readonly 'decimal separator offset': _pi.Optional_Value<number>
                 readonly 'type': _i_core._T_State_Group<null, 
                     | readonly ['integer', null]
                     | readonly ['natural', null]
@@ -3819,7 +3819,7 @@ export namespace Number_Type {
             readonly 'significant digits': number
         }]
         | readonly ['exact', {
-            readonly 'decimal separator offset': _et.Optional_Value<number>
+            readonly 'decimal separator offset': _pi.Optional_Value<number>
             readonly 'type': _i_core._T_State_Group<null, 
                 | readonly ['integer', null]
                 | readonly ['natural', null]
@@ -4597,19 +4597,19 @@ export namespace Type_Node {
                 export namespace description {
                     export type O = string
                 }
-                export type description = _et.Optional_Value<string>
+                export type description = _pi.Optional_Value<string>
                 
                 export namespace node {
                 }
                 export type node = _T_Type_Node
             }
             export type D = {
-                readonly 'description': _et.Optional_Value<string>
+                readonly 'description': _pi.Optional_Value<string>
                 readonly 'node': _T_Type_Node
             }
         }
         export type state_group = _i_core._T_Dictionary<null, {
-            readonly 'description': _et.Optional_Value<string>
+            readonly 'description': _pi.Optional_Value<string>
             readonly 'node': _T_Type_Node
         }>
         
@@ -4674,7 +4674,7 @@ export namespace Type_Node {
             >
         }]
         | readonly ['state group', _i_core._T_Dictionary<null, {
-            readonly 'description': _et.Optional_Value<string>
+            readonly 'description': _pi.Optional_Value<string>
             readonly 'node': _T_Type_Node
         }>]
         | readonly ['text', _i_core._T_State_Group<null, 

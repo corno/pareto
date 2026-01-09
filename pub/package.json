@@ -1,6 +1,6 @@
 {
   "name": "pareto",
-  "version": "0.78.17",
+  "version": "0.78.18",
   "description": "A library for the Pareto programming Language",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,8 +10,8 @@
   "dependencies": {
     "astn": "^0.113.22",
     "astn-sealed": "^0.1.1",
-    "exupery": "^0.3.14",
+    "exupery": "^0.3.15",
     "pareto-fountain-pen": "^0.3.29",
-    "pareto-standard-operations": "^0.3.37"
+    "pareto-standard-operations": "^0.3.38"
   }
 }
