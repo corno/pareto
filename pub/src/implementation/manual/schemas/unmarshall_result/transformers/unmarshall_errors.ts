@@ -16,28 +16,7 @@ export const Optional_Node = (
 }
 
 const convert_range = (r: d_in_token.Range): d_out.Range => {
-    return {
-        'start': {
-            'absolute': r.start.absolute,
-            'relative': r.start.relative.transform(
-                ($) => $,
-                () => ({
-                    'line': -1,
-                    'column': -1,
-                })
-            )
-        },
-        'end': {
-            'absolute': r.end.absolute,
-            'relative': r.end.relative.transform(
-                ($) => $,
-                () => ({
-                    'line': -1,
-                    'column': -1,
-                })
-            )
-        },
-    }
+    return r
 }
 
 export const Group_Content = (
