@@ -57,7 +57,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                     })),
                 })),
             })),
-            "range": prop(t.component_external("token", "Range")),
+            "range": prop(t.optional(t.component_external("token", "Range"))),
         })),
     }
 )

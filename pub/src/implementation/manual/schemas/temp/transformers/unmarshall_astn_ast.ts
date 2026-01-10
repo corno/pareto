@@ -46,7 +46,7 @@ export const Node_Type = (
                     'definition': $,
                     'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
-                            case 'string': return _p.ss($, ($) => ['valid', {
+                            case 'text': return _p.ss($, ($) => ['valid', {
                                 'value': $,
                                 'range': $.range,
                                 'correct string type': _p.sg($.type, ($) => {
@@ -70,7 +70,7 @@ export const Node_Type = (
                     'definition': $,
                     'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
-                            case 'string': return _p.ss($, ($) => ['valid', {
+                            case 'text': return _p.ss($, ($) => ['valid', {
                                 'value': $,
                                 'range': $.range,
                                 'correct string type': _p.sg($.type, ($) => {
@@ -125,7 +125,7 @@ export const Node_Type = (
                     'definition': $,
                     'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
-                            case 'string': return _p.ss($, ($) => ['valid', {
+                            case 'text': return _p.ss($, ($) => ['valid', {
                                 'value': $,
                             }])
                             // case 'not set': return pa.ss($, () => ['invalid', data.location])
@@ -368,7 +368,7 @@ export const Node_Type = (
                     'definition': $,
                     'found value type': _p.sg(data, ($): d_out.Node_Type_SG_State_found_value_type => {
                         switch ($[0]) {
-                            case 'tagged value': return _p.ss($, ($): d_out.Node_Type_SG_State_found_value_type => {
+                            case 'state': return _p.ss($, ($): d_out.Node_Type_SG_State_found_value_type => {
                                 const tv = $
                                 return ['valid', {
                                     'value type': ['state', {
@@ -462,7 +462,7 @@ export const Node_Type = (
                     'definition': $,
                     'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
-                            case 'string': return _p.ss($, ($) => ['valid', {
+                            case 'text': return _p.ss($, ($) => ['valid', {
                                 'value': $,
                             }])
                             // case 'not set': return pa.ss($, () => ['invalid', data.location])

@@ -64,7 +64,7 @@ export type Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_
     | ['set', Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus_SG_set]
 
 export type Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus_SG_set = {
-    'value': d_astn_ast.Concrete_Value.SG.tagged_value.status.SG._set
+    'value': d_astn_ast.Concrete_Value.SG.state.status.SG._set
     'found state definition': _pi.Optional_Value<State_Definition_Found>
 }
 
@@ -122,7 +122,7 @@ export type Reference = {
     'definition': d_schema.Type_Node.SG.reference
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Concrete_Value.SG._string
+        'value': d_astn_ast.Concrete_Value.SG.text
     }] //FIXME
     | ['invalid', d_astn_token.Range]
 }
@@ -136,7 +136,7 @@ export type Boolean = {
     'definition': d_schema.Type_Node.SG._boolean
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Concrete_Value.SG._string
+        'value': d_astn_ast.Concrete_Value.SG.text
         'range': d_astn_token.Range
         'correct string type': boolean
     }]
@@ -155,7 +155,7 @@ export type Text = {
     'definition': d_schema.Type_Node.SG.text
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Concrete_Value.SG._string
+        'value': d_astn_ast.Concrete_Value.SG.text
     }]
     | ['invalid', d_astn_token.Range]
 }
@@ -164,7 +164,7 @@ export type Number = {
     'definition': d_schema.Type_Node.SG._number
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Concrete_Value.SG._string
+        'value': d_astn_ast.Concrete_Value.SG.text
         'range': d_astn_token.Range
         'correct string type': boolean
     }]

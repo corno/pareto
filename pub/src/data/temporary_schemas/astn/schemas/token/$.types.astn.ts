@@ -85,7 +85,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
         })),
 
         "Location": type(t.group({
-            "relative": prop(t.optional(t.component("Relative Location"))), //if at the end of the document, this is not set
+            "relative": prop(t.component("Relative Location")), //if at the end of the document, this is not set
             "absolute": prop(t.number_local(n.natural())),
         })),
 

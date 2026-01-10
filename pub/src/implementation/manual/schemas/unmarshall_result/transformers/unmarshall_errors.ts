@@ -15,6 +15,31 @@ export const Optional_Node = (
     )
 }
 
+const convert_range = (r: d_in_token.Range): d_out.Range => {
+    return {
+        'start': {
+            'absolute': r.start.absolute,
+            'relative': r.start.relative.transform(
+                ($) => $,
+                () => ({
+                    'line': -1,
+                    'column': -1,
+                })
+            )
+        },
+        'end': {
+            'absolute': r.end.absolute,
+            'relative': r.end.relative.transform(
+                ($) => $,
+                () => ({
+                    'line': -1,
+                    'column': -1,
+                })
+            )
+        },
+    }
+}
+
 export const Group_Content = (
     $: d_in.Group_Content,
     $p: {
@@ -32,7 +57,7 @@ export const Group_Content = (
                             ($) => _p.list.nested_literal([
                                 _p.list.literal<d_out.Errors.L>([
                                     {
-                                        'range': $.key.range,
+                                        'range': convert_range($.key.range),
                                         'type': ['error', ['duplicate property', {
                                             name: key
                                         }]]
@@ -43,7 +68,7 @@ export const Group_Content = (
                         ))
                         case 'missing': return _p.ss($, ($) => _p.list.literal([
                             {
-                                'range': $p['group range'],
+                                'range': convert_range($p['group range']),
                                 'type': ['error', ['missing property', {
                                     name: key
                                 }]]
@@ -63,7 +88,7 @@ export const Group_Content = (
                     $,
                     ($) => _p.list.literal([
                         {
-                            'range': $,
+                            'range': convert_range($),
                             'type': ['error', ['superfluous property', {
                                 name: key
                             }]]
@@ -109,7 +134,7 @@ export const Node = (
                     }))
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
-                            'range': $,
+                            'range': convert_range($),
                             'type': ['error', ['invalid value type', {
                                 'expected': _p.list.literal([['verbose group', null]]),
                             }]]
@@ -132,7 +157,7 @@ export const Node = (
                                             ($) => _p.list.nested_literal<d_out.Errors.L>([
                                                 _p.list.literal([
                                                     {
-                                                        'range': $.key.range,
+                                                        'range': convert_range($.key.range),
                                                         'type': ['error', ['duplicate property', {
                                                             name: key
                                                         }]]
@@ -150,7 +175,7 @@ export const Node = (
                     })
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
-                            'range': $,
+                            'range': convert_range($),
                             'type': ['error', ['invalid value type', {
                                 'expected': _p.list.literal([['dictionary', null]]),
                             }]]
@@ -164,12 +189,12 @@ export const Node = (
                     case 'valid': return _p.ss($, ($): d_out.Errors => $['correct string type']
                         ? _p.list.literal([])
                         : _p.list.literal<d_out.Errors.L>([{
-                            'range': $.range,
+                            'range': convert_range($.range),
                             'type': ['warning', ['expected undelimited string', null]]
                         }]))
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
-                            'range': $,
+                            'range': convert_range($),
                             'type': ['error', ['invalid value type', {
                                 'expected': _p.list.literal([['text', null]]),
                             }]]
@@ -183,12 +208,12 @@ export const Node = (
                     case 'valid': return _p.ss($, ($): d_out.Errors => $['correct string type']
                         ? _p.list.literal([])
                         : _p.list.literal<d_out.Errors.L>([{
-                            'range': $.range,
+                            'range': convert_range($.range),
                             'type': ['warning', ['expected undelimited string', null]]
                         }]))
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
-                            'range': $,
+                            'range': convert_range($),
                             'type': ['error', ['invalid value type', {
                                 'expected': _p.list.literal([['text', null]]),
                             }]]
@@ -202,7 +227,7 @@ export const Node = (
                     case 'valid': return _p.ss($, ($): d_out.Errors => _p.list.flatten($.elements, ($) => Node($, $p)))
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
-                            'range': $,
+                            'range': convert_range($),
                             'type': ['error', ['invalid value type', {
                                 'expected': _p.list.literal([['list', null]]),
                             }]]
@@ -216,7 +241,7 @@ export const Node = (
                     case 'valid': return _p.ss($, ($): d_out.Errors => _p.list.literal([]))
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
-                            'range': $,
+                            'range': convert_range($),
                             'type': ['error', ['invalid value type', {
                                 'expected': _p.list.literal([['not set', null]]),
                             }]]
@@ -230,7 +255,7 @@ export const Node = (
                     case 'valid': return _p.ss($, ($): d_out.Errors => _p.list.literal([]))
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
-                            'range': $,
+                            'range': convert_range($),
                             'type': ['error', ['invalid value type', {
                                 'expected': _p.list.literal([['text', null]]),
                             }]]
@@ -254,7 +279,7 @@ export const Node = (
                     }))
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
-                            'range': $,
+                            'range': convert_range($),
                             'type': ['error', ['invalid value type', {
                                 'expected': _p.list.literal([['set', null], ['not set', null]]),
                             }]]
@@ -274,7 +299,7 @@ export const Node = (
                                         switch ($[0]) {
                                             case 'missing data': return _p.ss($, ($) => _p.list.literal([
                                                 {
-                                                    'range': $.range,
+                                                    'range': convert_range($.range),
                                                     'type': ['error', ['state', ['state is not a string', null]]] //FIXME wrong error
                                                 }
                                             ]))
@@ -285,7 +310,7 @@ export const Node = (
                                                         ($) => Node($.node, $p),
                                                         (): d_out.Errors => _p.list.literal([
                                                             {
-                                                                'range': xx.state.range,
+                                                                'range': convert_range(xx.state.range),
                                                                 'type': ['error', ['state', ['unknown state', {
                                                                     'found': xx.state.value,
                                                                     'expected': sg_def.map(($) => null)
@@ -304,26 +329,26 @@ export const Node = (
                         })
                         case 'invalid': return _p.ss($, ($) => _p.list.literal([
                             {
-                                'range': $,
+                                'range': convert_range($),
                                 'type': ['error', ['invalid value type', {
                                     'expected': _p.list.literal([['state', null]]),
                                 }]]
                             }
                         ]))
                         // case 'more than 2 elements': return _p.ss($, ($) => _p.list.literal([{
-                        //     'range': $,
+                        //     'range': convert_range($),
                         //     'type': ['error', ['state', ['more than 2 elements', null]]]
                         // }]))
                         // case 'missing state name': return _p.ss($, ($) => _p.list.literal([{
-                        //     'range': $,
+                        //     'range': convert_range($),
                         //     'type': ['error', ['state', ['missing state name', null]]]
                         // }]))
                         // case 'state is not a string': return _p.ss($, ($) => _p.list.literal([{
-                        //     'range': $,
+                        //     'range': convert_range($),
                         //     'type': ['error', ['state', ['state is not a string', null]]]
                         // }]))
                         // case 'missing value': return _p.ss($, ($) => _p.list.literal([{
-                        //     'range': $,
+                        //     'range': convert_range($),
                         //     'type': ['error', ['state', ['missing value', null]]]
                         // }]))
                         // case 'unknown state': return _p.ss($, ($) => _p.list.literal([{
@@ -342,7 +367,7 @@ export const Node = (
                     case 'valid': return _p.list.literal([])
                     case 'invalid': return _p.ss($, ($) => _p.list.literal([
                         {
-                            'range': $,
+                            'range': convert_range($),
                             'type': ['error', ['invalid value type', {
                                 'expected': _p.list.literal([['text', null]]),
                             }]]
