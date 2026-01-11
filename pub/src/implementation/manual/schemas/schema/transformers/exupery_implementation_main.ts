@@ -88,7 +88,7 @@ export const Schemas = (
         'path': _pi.List<string>,
     }
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
-    return m.set($.dictionary.map(($, key) => Schema_Tree($, {
+    return m.set($.dictionary.__d_map(($, key) => Schema_Tree($, {
         'path': _p.list.nested_literal([
             $p.path,
             [

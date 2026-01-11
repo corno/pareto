@@ -21,7 +21,7 @@ export const Signatures = (
             "unresolved": import_.sibling("target", [], {}),
         },
         {},
-        $.dictionary.map(($, key) => type({}, t.function_(
+        $.dictionary.__d_map(($, key) => type({}, t.function_(
             { "Source": null },
             t.component_imported("unresolved", key, {
                 "Source": t.parameter_function("Source"),
@@ -106,7 +106,7 @@ export const r_Type_Part_Reference = (
 export const r_Signature_Parameters = (
     $: d_in.Signature_Parameters,
 ): d_out.Type<_pi.Deprecated_Source_Location> => t.group({
-    "values": t.group($.values.map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
+    "values": t.group($.values.__d_map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
         const temp_2 = r_Type_Reference($['data type'], { 'component sub part': _p.list.literal([]) })
 
         return _p.sg($.presence, ($) => {
@@ -117,7 +117,7 @@ export const r_Signature_Parameters = (
             }
         })
     })),
-    "lookups": t.group($.lookups.map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
+    "lookups": t.group($.lookups.__d_map(($): d_out.Type<_pi.Deprecated_Source_Location> => {
         const x = $.referent
         return _p.sg($.type, ($) => {
             switch ($[0]) {

@@ -18,7 +18,7 @@ export const Schema: _pi.Transformer<d_in.Schema, d_out.Schema<_pi.Deprecated_So
 ) => ({
     'globals': Globals($.globals),
     'imports': Imports($.imports),
-    'types': wrap_dictionary($.types.dictionary.map(($) => Type($))),
+    'types': wrap_dictionary($.types.dictionary.__d_map(($) => Type($))),
 })
 
 export const Globals: _pi.Transformer<d_in.Globals, d_out.Globals<_pi.Deprecated_Source_Location>> = (
@@ -27,10 +27,10 @@ export const Globals: _pi.Transformer<d_in.Globals, d_out.Globals<_pi.Deprecated
     //FIXME!! merge the number types with the text types in here
     'text types': wrap_dictionary(op_flatten_dictionaries(
         _p.dictionary.literal({
-            "t": $['text types'].map(($) => {
+            "t": $['text types'].__d_map(($) => {
                 return Text_Type($)
             }),
-            "n": $['number types'].map(($) => {
+            "n": $['number types'].__d_map(($) => {
                 return {
                     'type': wrap_state_group(['single line', null])
                 }
@@ -45,7 +45,7 @@ export const Globals: _pi.Transformer<d_in.Globals, d_out.Globals<_pi.Deprecated
 
 export const Imports: _pi.Transformer<d_in.Imports, d_out.Imports<_pi.Deprecated_Source_Location>> = (
     $
-) => wrap_dictionary($.map(($) => ({
+) => wrap_dictionary($.__d_map(($) => ({
     'schema': null,
     'schema set child': wrap_reference($['schema set child'].key)
 })))
@@ -100,9 +100,9 @@ export const Type_Node: _pi.Transformer<d_in.Type_Node, d_out.Type_Node<_pi.Depr
             'ordered': $.ordered,
             'node': Type_Node($.node)
         }])
-        case 'group': return _p.ss($, ($) => ['group', wrap_dictionary($.dictionary.map(($) => Type_Node($.node)))])
+        case 'group': return _p.ss($, ($) => ['group', wrap_dictionary($.dictionary.__d_map(($) => Type_Node($.node)))])
         case 'optional': return _p.ss($, ($) => ['optional', Type_Node($)])
-        case 'state group': return _p.ss($, ($) => ['state group', wrap_dictionary($.map(($) => Type_Node($.node)))])
+        case 'state group': return _p.ss($, ($) => ['state group', wrap_dictionary($.__d_map(($) => Type_Node($.node)))])
         case 'text': return _p.ss($, ($) => ['text', wrap_state_group(_p.sg($, ($): d_out.Type_Node.SG.text.SG<_pi.Deprecated_Source_Location> => {
             switch ($[0]) {
                 case 'global': return _p.ss($, ($) => ['global', wrap_reference("t" + $.key)])

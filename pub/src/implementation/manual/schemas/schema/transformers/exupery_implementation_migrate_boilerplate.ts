@@ -28,7 +28,7 @@ export const Types = (
                     "signatures": import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, "migration boilerplate"], {}),
                     "out": import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, $p.constrained ? "unresolved" : "unconstrained"], $p.constrained ? { "Source": t.null_() } : {}),
                 }),
-                "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["migration boilerplate"], {}))
+                "r ": $p.imports.__d_map(($, key) => import_.ancestor(1, $['schema set child'].key, ["migration boilerplate"], {}))
             }),
             {
                 'separator': "",
@@ -36,7 +36,7 @@ export const Types = (
             () => _p.unreachable_code_path(),
         ),
         {},
-        $.dictionary.map(($, key) => variable(
+        $.dictionary.__d_map(($, key) => variable(
             t.component_imported("signatures", key, {}, []),
             i.function_(
                 false,
@@ -100,7 +100,7 @@ export const Type_Node = (
                     }
                 )
             ))
-            case 'group': return _p.ss($, ($) => i.group($.dictionary.map(($, key) => i.change_context(
+            case 'group': return _p.ss($, ($) => i.group($.dictionary.__d_map(($, key) => i.change_context(
                 s.from_context([key]),
                 Type_Node(
                     $.node,
@@ -147,7 +147,7 @@ export const Type_Node = (
             ))
             case 'state group': return _p.ss($, ($) => i.switch_(
                 s.from_context([]),
-                $.map(($, key) => i.case_(key, Type_Node(
+                $.__d_map(($, key) => i.case_(key, Type_Node(
                     $.node,
                     {
                         'type': $p.type,

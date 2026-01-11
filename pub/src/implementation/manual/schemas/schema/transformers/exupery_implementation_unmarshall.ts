@@ -39,7 +39,7 @@ export const Schema = (
                         _p.list.literal(["data types", "target"]),
                     ]), $p.constrained ? { "Source": t.component_imported("in", "Range", {}, []) } : {}),
                 }),
-                "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))
+                "r ": $p.imports.__d_map(($, key) => import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))
             }),
             {
                 'separator': "",
@@ -47,7 +47,7 @@ export const Schema = (
                         () => _p.unreachable_code_path(),
         ),
         {},
-        $.types.dictionary.map(($, key) => variable(
+        $.types.dictionary.__d_map(($, key) => variable(
             t.component_imported("signatures", key, {}, []),
             i.function_(
                 true,
@@ -173,7 +173,7 @@ export const Type_Node = (
                 _p.dictionary.literal({
                     "properties": i.function_(
                         false,
-                        i.group($.dictionary.map(($, key) => i.change_context(
+                        i.group($.dictionary.__d_map(($, key) => i.change_context(
                             s.call(
                                 s.from_variable_import(" i generic", "get entry", []),
                                 s.from_context([]),
@@ -247,7 +247,7 @@ export const Type_Node = (
                 s.from_variable_import(" i generic", $p.constrained ? "process unresolved state group" : "process unconstrained state group", []),
                 i.select_from_context([]),
                 _p.dictionary.literal({
-                    "states": i.dictionary_literal($.map(($, key) => i.function_(
+                    "states": i.dictionary_literal($.__d_map(($, key) => i.function_(
                         false,
                         i.case_(
                             key,

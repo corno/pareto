@@ -292,7 +292,7 @@ export const Node = (
                                                                 'range': convert_range(xx.state.range),
                                                                 'type': ['error', ['state', ['unknown state', {
                                                                     'found': xx.state.value,
-                                                                    'expected': sg_def.map(($) => null)
+                                                                    'expected': sg_def.__d_map(($) => null)
                                                                 }]]]
                                                             }
                                                         ])

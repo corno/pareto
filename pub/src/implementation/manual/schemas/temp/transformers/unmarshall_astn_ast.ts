@@ -19,7 +19,7 @@ type Key_Value_Pair<T> = {
 
 const op_group = <T>(
     $: _pi.List<Key_Value_Pair<T>>,
-): _pi.Dictionary<_pi.List<T>> => _p.dictionary.group_list($, ($) => $.key).map(($) => $.__l_map(($) => $.value))
+): _pi.Dictionary<_pi.List<T>> => _p.dictionary.group_list($, ($) => $.key).__d_map(($) => $.__l_map(($) => $.value))
 
 export const Optional_Node = (
     $: _pi.Optional_Value<d_in.Value>,
@@ -170,7 +170,7 @@ export const Node_Type = (
                                             'key': $.key.value,
                                             'value': $
                                         }
-                                    })).map<d_out.Entry>(($) => op_expect_exactly_one_element($).__decide(
+                                    })).__d_map(($) => op_expect_exactly_one_element($).__decide(
                                         ($): d_out.Entry => ['unique', Optional_Node(
                                             $.value.__o_map(
                                                 ($) => $.value,
@@ -203,21 +203,21 @@ export const Node_Type = (
                 // pa.sg(data.type, ($) => {
                 // //     switch ($[0]) {
                 // //         case 'verbose group': return pa.ss($, ($) => {
-                // //             impure.list['select clashing keys']($.entries.map(($) => {
+                // //             impure.list['select clashing keys']($.entries.__d_map(($) => {
                 // //                 return {
                 // //                     'key': $.key.value,
                 // //                     'value': $
                 // //                 }
-                // //             })).map(($, key) => {
+                // //             })).__d_map(($, key) => {
                 // //                 _pdev.log_debug_message(`clashing key: ${key}`)
                 // //             })
-                // //             const properties = impure.list['to dictionary, overwrite clashing keys']($.entries.map(($) => {
+                // //             const properties = impure.list['to dictionary, overwrite clashing keys']($.entries.__d_map(($) => {
                 // //                 return {
                 // //                     'key': $.key.value,
                 // //                     'value': $
                 // //                 }
                 // //             }))
-                // //             group_def.map(($, key) => {
+                // //             group_def.__d_map(($, key) => {
                 // //                 properties.get_entry(key).__decide(
                 // //                     ($) => {
                 // //                         _pdev.log_debug_message(`property ${key} found in data`)
@@ -269,7 +269,7 @@ export const Node_Type = (
                                     ): _pi.Dictionary<{
                                         'context': Main
                                         'supporting': _pi.Optional_Value<Supporting>
-                                    }> => $.map(($, key) => ({
+                                    }> => $.__d_map(($, key) => ({
                                         'context': $,
                                         'supporting': $p['supporting dictionary'].__get_possible_entry(
                                             key,
@@ -290,7 +290,7 @@ export const Node_Type = (
                                                         () => _p.optional.set($.context)
                                                     )
                                                 }
-                                            ).map(
+                                            ).__d_map(
                                                 ($) => $.__l_map(
                                                     ($) => $.key.range
                                                 )
@@ -300,7 +300,7 @@ export const Node_Type = (
                                                 {
                                                     'supporting dictionary': entries
                                                 }
-                                            ).map<d_out.Property>(($) => {
+                                            ).__d_map(($) => {
                                                 const prop_def = $.context
                                                 return $.supporting.__decide(
                                                     ($): d_out.Property => op_expect_exactly_one_element($).__decide(
@@ -440,7 +440,7 @@ export const Node_Type = (
                             //                         () => ['invalid', ['unknown state', {
                             //                             'range': state_name_range,
                             //                             'found': state_name,
-                            //                             'expected': def.map(($) => null)
+                            //                             'expected': def.__d_map(($) => null)
                             //                         }]]
                             //                     )
                             //                 },

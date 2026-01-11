@@ -1750,7 +1750,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                 //                             },
                 //                         }
                 //                     )
-                //                     return $.value.map(($) => Value_Selection_Tail(
+                //                     return $.value.__d_map(($) => Value_Selection_Tail(
                 //                         $,
                 //                         {
                 //                             'location 2 string': l2s,

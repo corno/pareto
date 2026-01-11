@@ -85,13 +85,13 @@ export const Globals: _i_signatures._T_Globals = ($, $p) => ['verbose group', _p
             default: return _p.au($[0])
         }
     })]),
-    'text types': _p.deprecated_cc($['text types'], ($) => ['dictionary', $.map(($) => Text_Type(
+    'text types': _p.deprecated_cc($['text types'], ($) => ['dictionary', $.__d_map(($) => Text_Type(
         $,
         {
             'value serializers': $p['value serializers'],
         }
     ))]),
-    'number types': _p.deprecated_cc($['number types'], ($) => ['dictionary', $.map(($) => Number_Type(
+    'number types': _p.deprecated_cc($['number types'], ($) => ['dictionary', $.__d_map(($) => Number_Type(
         $,
         {
             'value serializers': $p['value serializers'],
@@ -111,7 +111,7 @@ export const Presence: _i_signatures._T_Presence = ($, $p) => ['state', _p.depre
         default: return _p.au($[0])
     }
 })]
-export const Type_Parameters: _i_signatures._T_Type_Parameters = ($, $p) => ['dictionary', $.map(($) => ['nothing', null])]
+export const Type_Parameters: _i_signatures._T_Type_Parameters = ($, $p) => ['dictionary', $.__d_map(($) => ['nothing', null])]
 export const Type: _i_signatures._T_Type = ($, $p) => ['verbose group', _p.dictionary.literal({
     'type parameters': _p.deprecated_cc($['type parameters'], ($) => Type_Parameters(
         $,
@@ -126,7 +126,7 @@ export const Type: _i_signatures._T_Type = ($, $p) => ['verbose group', _p.dicti
         }
     )),
 })]
-export const Types: _i_signatures._T_Types = ($, $p) => ['dictionary', $['dictionary'].map(($) => Type(
+export const Types: _i_signatures._T_Types = ($, $p) => ['dictionary', $['dictionary'].__d_map(($) => Type(
     $,
     {
         'value serializers': $p['value serializers'],
@@ -147,13 +147,13 @@ export const Dictionary: _i_signatures._T_Dictionary = ($, $p) => ['verbose grou
         ),
     })]),
 })]
-export const Signatures: _i_signatures._T_Signatures = ($, $p) => ['dictionary', $['dictionary'].map(($) => Signature(
+export const Signatures: _i_signatures._T_Signatures = ($, $p) => ['dictionary', $['dictionary'].__d_map(($) => Signature(
     $,
     {
         'value serializers': $p['value serializers'],
     }
 ))]
-export const Resolvers: _i_signatures._T_Resolvers = ($, $p) => ['dictionary', $['dictionary'].map(($) => ['verbose group', _p.dictionary.literal({
+export const Resolvers: _i_signatures._T_Resolvers = ($, $p) => ['dictionary', $['dictionary'].__d_map(($) => ['verbose group', _p.dictionary.literal({
     'signature': _p.deprecated_cc($['signature'], ($) => ['nothing', null]),
     'type resolver': _p.deprecated_cc($['type resolver'], ($) => Node_Resolver(
         $,
@@ -178,7 +178,7 @@ export const Resolve_Logic: _i_signatures._T_Resolve_Logic = ($, $p) => ['verbos
         }
     )),
 })]
-export const Group: _i_signatures._T_Group = ($, $p) => ['dictionary', $['dictionary'].map(($) => ['verbose group', _p.dictionary.literal({
+export const Group: _i_signatures._T_Group = ($, $p) => ['dictionary', $['dictionary'].__d_map(($) => ['verbose group', _p.dictionary.literal({
     'description': _p.deprecated_cc($['description'], ($) => ['optional', $.__decide(
         ($): _i_out._T_Value.SG.optional => ['set', ['text', ({
             'delimiter': ['quote', null],
@@ -254,13 +254,13 @@ export const Schema_Tree: _i_signatures._T_Schema_Tree = ($, $p) => ['state', _p
         default: return _p.au($[0])
     }
 })]
-export const Schemas: _i_signatures._T_Schemas = ($, $p) => ['dictionary', $['dictionary'].map(($) => Schema_Tree(
+export const Schemas: _i_signatures._T_Schemas = ($, $p) => ['dictionary', $['dictionary'].__d_map(($) => Schema_Tree(
     $,
     {
         'value serializers': $p['value serializers'],
     }
 ))]
-export const Imports: _i_signatures._T_Imports = ($, $p) => ['dictionary', $.map(($) => ['verbose group', _p.dictionary.literal({
+export const Imports: _i_signatures._T_Imports = ($, $p) => ['dictionary', $.__d_map(($) => ['verbose group', _p.dictionary.literal({
     'schema set child': _p.deprecated_cc($['schema set child'], ($) => ['text', ({
         'delimiter': ['backtick', null],
         'value': $['key'],
@@ -419,7 +419,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => ['state', _p.dep
         }))
         case 'state group': return _p.ss($, ($) => ({
             'state': "state group",
-            'value': ['dictionary', $.map(($) => ['verbose group', _p.dictionary.literal({
+            'value': ['dictionary', $.__d_map(($) => ['verbose group', _p.dictionary.literal({
                 'description': _p.deprecated_cc($['description'], ($) => ['optional', $.__decide(
                     ($): _i_out._T_Value.SG.optional => ['set', ['text', ({
                         'delimiter': ['quote', null],
@@ -531,7 +531,7 @@ export const Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $p)
     'resulting node': _p.deprecated_cc($['resulting node'], ($) => ['nothing', null]),
 })]
 export const Signature_Parameters: _i_signatures._T_Signature_Parameters = ($, $p) => ['verbose group', _p.dictionary.literal({
-    'values': _p.deprecated_cc($['values'], ($) => ['dictionary', $.map(($) => ['verbose group', _p.dictionary.literal({
+    'values': _p.deprecated_cc($['values'], ($) => ['dictionary', $.__d_map(($) => ['verbose group', _p.dictionary.literal({
         'data type': _p.deprecated_cc($['data type'], ($) => Type_Reference(
             $,
             {
@@ -545,7 +545,7 @@ export const Signature_Parameters: _i_signatures._T_Signature_Parameters = ($, $
             }
         )),
     })])]),
-    'lookups': _p.deprecated_cc($['lookups'], ($) => ['dictionary', $.map(($) => ['verbose group', _p.dictionary.literal({
+    'lookups': _p.deprecated_cc($['lookups'], ($) => ['dictionary', $.__d_map(($) => ['verbose group', _p.dictionary.literal({
         'referent': _p.deprecated_cc($['referent'], ($) => Type_Reference(
             $,
             {
@@ -692,7 +692,7 @@ export const Constraint: _i_signatures._T_Constraint = ($, $p) => ['verbose grou
         }
     })]),
 })]
-export const Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p) => ['dictionary', $.map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
+export const Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p) => ['dictionary', $.__d_map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'state': return _p.ss($, ($) => ({
             'state': "state",
@@ -722,7 +722,7 @@ export const Option_Constraints: _i_signatures._T_Option_Constraints = ($, $p) =
         default: return _p.au($[0])
     }
 })])]
-export const Property_Constraints: _i_signatures._T_Property_Constraints = ($, $p) => ['dictionary', $['dictionary'].map(($) => Property_Constraint(
+export const Property_Constraints: _i_signatures._T_Property_Constraints = ($, $p) => ['dictionary', $['dictionary'].__d_map(($) => Property_Constraint(
     $,
     {
         'value serializers': $p['value serializers'],
@@ -785,7 +785,7 @@ export const Optional_Value_Initialization: _i_signatures._T_Optional_Value_Init
         default: return _p.au($[0])
     }
 })]
-export const Node_Resolver_Group: _i_signatures._T_Node_Resolver_Group = ($, $p) => ['dictionary', $['dictionary'].map(($) => ['verbose group', _p.dictionary.literal({
+export const Node_Resolver_Group: _i_signatures._T_Node_Resolver_Group = ($, $p) => ['dictionary', $['dictionary'].__d_map(($) => ['verbose group', _p.dictionary.literal({
     'definition': _p.deprecated_cc($['definition'], ($) => ['nothing', null]),
     'resolver': _p.deprecated_cc($['resolver'], ($) => Node_Resolver(
         $,
@@ -870,7 +870,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => ['state'
                 'arguments': _p.deprecated_cc($['arguments'], ($) => ['optional', $.__decide(
                     ($): _i_out._T_Value.SG.optional => ['set', ['verbose group', _p.dictionary.literal({
                         'values': _p.deprecated_cc($['values'], ($) => ['optional', $.__decide(
-                            ($): _i_out._T_Value.SG.optional => ['set', ['dictionary', $.map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
+                            ($): _i_out._T_Value.SG.optional => ['set', ['dictionary', $.__d_map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
                                 switch ($[0]) {
                                     case 'optional': return _p.ss($, ($) => ({
                                         'state': "optional",
@@ -903,7 +903,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => ['state'
                             () => ['not set', null]
                         )]),
                         'lookups': _p.deprecated_cc($['lookups'], ($) => ['optional', $.__decide(
-                            ($): _i_out._T_Value.SG.optional => ['set', ['dictionary', $.map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
+                            ($): _i_out._T_Value.SG.optional => ['set', ['dictionary', $.__d_map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
                                 switch ($[0]) {
                                     case 'empty stack': return _p.ss($, ($) => ({
                                         'state': "empty stack",
@@ -1075,7 +1075,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => ['state'
             'state': "state group",
             'value': ['verbose group', _p.dictionary.literal({
                 'definition': _p.deprecated_cc($['definition'], ($) => ['nothing', null]),
-                'states': _p.deprecated_cc($['states'], ($) => ['dictionary', $.map(($) => ['verbose group', _p.dictionary.literal({
+                'states': _p.deprecated_cc($['states'], ($) => ['dictionary', $.__d_map(($) => ['verbose group', _p.dictionary.literal({
                     'constraints': _p.deprecated_cc($['constraints'], ($) => Option_Constraints(
                         $,
                         {

@@ -47,7 +47,7 @@ export const Schema = (
             }),
             "imports ": _p.deprecated_cc($, ($) => {
                 const types = $p['what to generate']
-                return $p.imports.map(($) => sh.import_.ancestor(
+                return $p.imports.__d_map(($) => sh.import_.ancestor(
                     2 + $['schema set child']['up steps'],
                     $['schema set child'].key,
                     [
@@ -85,7 +85,7 @@ export const Schema = (
             default: return _p.au($[0])
         }
     }),
-    $.types.dictionary.map(($) => sh.type({}, Type_Node($.node))),
+    $.types.dictionary.__d_map(($) => sh.type({}, Type_Node($.node))),
 )
 
 
@@ -202,7 +202,7 @@ export const Type_Node = (
             },
             []
         ))
-        case 'group': return _p.ss($, ($) => sh.t.group($.dictionary.map(($, key) => Type_Node($.node))))
+        case 'group': return _p.ss($, ($) => sh.t.group($.dictionary.__d_map(($, key) => Type_Node($.node))))
         case 'list': return _p.ss($, ($) => {
             const type = $.node
             return sh.t.component_imported(
@@ -252,7 +252,7 @@ export const Type_Node = (
             "core",
             "State Group",
             {
-                "SG": sh.t.tagged_union($.map(($, key) => Type_Node($.node)))
+                "SG": sh.t.tagged_union($.__d_map(($, key) => Type_Node($.node)))
             },
             []
         ))

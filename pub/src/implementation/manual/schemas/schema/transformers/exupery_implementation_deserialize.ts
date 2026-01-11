@@ -35,7 +35,7 @@ export const Schema = (
                         _p.list.literal(["data types", "target"]),
                     ]), {}),
                 }),
-                "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["deserialize"], {}))
+                "r ": $p.imports.__d_map(($, key) => import_.ancestor(1, $['schema set child'].key, ["deserialize"], {}))
             }),
             {
                 'separator': "",
@@ -43,7 +43,7 @@ export const Schema = (
             () => _p.unreachable_code_path(),
         ),
         {},
-        $.types.dictionary.map(($, key) => variable(
+        $.types.dictionary.__d_map(($, key) => variable(
             t.component_imported("signatures", key, {}, []),
             i.function_(
                 true,

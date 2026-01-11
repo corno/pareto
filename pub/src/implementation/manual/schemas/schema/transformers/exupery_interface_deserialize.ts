@@ -30,7 +30,7 @@ export const Schema = (
         ),
     },
     {},
-    $.types.dictionary.map(($, key) => sh.type({}, sh.t.function_(
+    $.types.dictionary.__d_map(($, key) => sh.type({}, sh.t.function_(
         {},
         sh.t.string(),
         {

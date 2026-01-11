@@ -1025,7 +1025,7 @@ export namespace r {
         const temp_dict = _p.wrap_dictionary(properties)
         return _p.wrap_state_group(['group', {
             'location': temp_dict.location,
-            'dictionary': temp_dict.dictionary.map(($) => {
+            'dictionary': temp_dict.dictionary.__d_map(($) => {
                 return {
                     'location': $.location,
                     'entry': {

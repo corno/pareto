@@ -20,7 +20,7 @@ export const Module = ($: d_in.Module): d_out.Module_Set<_pi.Deprecated_Source_L
                     'path': _p.list.literal([]),
                 }
             )
-        }).map(($) => ({
+        }).__d_map(($) => ({
             'location': _psh.location(),
             'entry': $
         }))

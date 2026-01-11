@@ -31,7 +31,7 @@ export const Schema = (
                 ]), {}),
                 "out": import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn target"], {}),
             }),
-            "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["marshall"], {}))
+            "r ": $p.imports.__d_map(($, key) => import_.ancestor(1, $['schema set child'].key, ["marshall"], {}))
         }),
         {
             'separator': "",
@@ -39,7 +39,7 @@ export const Schema = (
         () => _p.unreachable_code_path(),
     ),
     {},
-    $.types.dictionary.map(($, key) => variable(
+    $.types.dictionary.__d_map(($, key) => variable(
         t.component_imported("signatures", key, {}, []),
         i.function_(
             true,
@@ -132,7 +132,7 @@ export const Type_Node = (
                     )
                 )
             ))
-            // case 'group': return pa.ss($, ($) => i.group($.map(($, key) => i.change_context(
+            // case 'group': return pa.ss($, ($) => i.group($.__d_map(($, key) => i.change_context(
             //     s.from_context([key]),
             //     Type_Node(
             //         $,
@@ -149,7 +149,7 @@ export const Type_Node = (
             // ))))
             case 'group': return _p.ss($, ($) => i.tagged_union(
                 "verbose group",
-                i.dictionary_literal($.dictionary.map(($, key) => i.change_context(
+                i.dictionary_literal($.dictionary.__d_map(($, key) => i.change_context(
                     s.from_context([key]),
                     Type_Node(
                         $.node,
@@ -216,7 +216,7 @@ export const Type_Node = (
                 "state",
                 i.switch_(
                     s.from_context([]),
-                    $.map(($, key) => i.group({
+                    $.__d_map(($, key) => i.group({
                         "state": i.string(key, 'quote'),
                         "value": Type_Node(
                             $.node,

@@ -6,7 +6,7 @@ import * as _i_out from "../../../../../interface/generated/pareto/core/astn_tar
 import * as _i_r_schema from "../schema/marshall"
 
 
-export const Operations: _i_signatures._T_Operations = ($, $p) => ['dictionary', $.map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
+export const Operations: _i_signatures._T_Operations = ($, $p) => ['dictionary', $.__d_map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
     switch ($[0]) {
         case 'operation': return _p.ss($, ($) => ({
             'state': "operation",
@@ -23,7 +23,7 @@ export const Operations: _i_signatures._T_Operations = ($, $p) => ['dictionary',
                         'value serializers': $p['value serializers'],
                     }
                 )),
-                'parameters': _p.deprecated_cc($['parameters'], ($) => ['dictionary', $.map(($) => _i_r_schema.Type_Node(
+                'parameters': _p.deprecated_cc($['parameters'], ($) => ['dictionary', $.__d_map(($) => _i_r_schema.Type_Node(
                     $,
                     {
                         'value serializers': $p['value serializers'],

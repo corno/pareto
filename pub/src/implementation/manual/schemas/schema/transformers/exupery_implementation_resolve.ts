@@ -48,7 +48,7 @@ export const Resolvers = (
                         _p.list.literal(["data types", "resolve"]),
                     ]), {}),
                 }),
-                "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["resolve"], {}))
+                "r ": $p.imports.__d_map(($, key) => import_.ancestor(1, $['schema set child'].key, ["resolve"], {}))
             }),
             {
                 'separator': "",
@@ -57,7 +57,7 @@ export const Resolvers = (
         ),
         {},
         op_pad_dictionary_identifiers(
-            $.dictionary.map(($, key) => variable(
+            $.dictionary.__d_map(($, key) => variable(
                 t.component_imported("signatures", key, {
                     // "Source": t.component_imported("generic", "Location Info", {}, []),
                 }, []),
@@ -263,7 +263,7 @@ export const Option_Constraints = (
     },
 ): d_out.Initialization<_pi.Deprecated_Source_Location> => i.block(
     [],
-    op_pad_dictionary_identifiers($, { 'prefix': "c ", 'suffix': "" }).map(($) => variable(null, i.select(_p.sg($, ($) => {
+    op_pad_dictionary_identifiers($, { 'prefix': "c ", 'suffix': "" }).__d_map(($) => variable(null, i.select(_p.sg($, ($) => {
         switch ($[0]) {
             case 'state': return _p.ss($, ($) => s.implement_me()) // medium work
             case 'assert is set': return _p.ss($, ($) => s.optional_transform(
@@ -345,7 +345,7 @@ export const Node_Resolver = (
                 "parameters": $.arguments.__decide(
                     ($) => i.group({
                         "values": $.values.__decide(
-                            ($) => i.group($.map(($) => _p.sg($, ($) => {
+                            ($) => i.group($.__d_map(($) => _p.sg($, ($) => {
                                 switch ($[0]) {
                                     case 'optional': return _p.ss($, ($) => Optional_Value_Initialization($, null))
                                     case 'parameter': return _p.ss($, ($) => i.select_from_variable(
@@ -360,7 +360,7 @@ export const Node_Resolver = (
                             () => i.select_from_variable("params", ["values"]),
                         ),
                         "lookups": $.lookups.__decide(
-                            ($) => i.group($.map(($) => _p.sg($, ($) => {
+                            ($) => i.group($.__d_map(($) => _p.sg($, ($) => {
                                 switch ($[0]) {
                                     case 'empty stack': return _p.ss($, ($) => i.list_literal([]))
                                     case 'not set': return _p.ss($, ($) => i.not_set())
@@ -462,7 +462,7 @@ export const Node_Resolver = (
                 )
             )),
             {},
-            i.group($.dictionary.map(($, key) => i.select_from_variable(`p ${key}`, [])))
+            i.group($.dictionary.__d_map(($, key) => i.select_from_variable(`p ${key}`, [])))
         ))
         case 'list': return _p.ss($, ($) => i.array_map(
             s.from_context(["list"]),
@@ -504,7 +504,7 @@ export const Node_Resolver = (
         ))
         case 'state group': return _p.ss($, ($) => i.switch_(
             s.from_context(['state group']),
-            $.states.map(($, key) => i.case_(key, Option_Constraints(
+            $.states.__d_map(($, key) => i.case_(key, Option_Constraints(
                 $.constraints,
                 {
                     'sub': () => Node_Resolver(

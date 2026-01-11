@@ -111,7 +111,7 @@ export const $: _pi.Deserializer_With_Parameters<d_schema.Type, Error, { 'uri': 
     const type = schema.types.dictionary.__get_possible_entry(resolved_schema_schema.type).__decide(
         ($) => $,
         () => {
-            schema.types.dictionary.map(($, key) => {
+            schema.types.dictionary.__d_map(($, key) => {
                 _pdev.log_debug_message(`available type: ${key}`, () => { })
             })
             _pdev.implement_me(`(FIXME: make this a reference) root type ${resolved_schema_schema.type} not found`)

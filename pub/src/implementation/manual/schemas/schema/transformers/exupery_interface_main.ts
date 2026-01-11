@@ -120,7 +120,7 @@ export const Schema_Tree = ($: d_in.Schema_Tree): d_out.Module_Set.D<_pi.Depreca
 })
 
 
-export const Schemas = ($: d_in.Schemas): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => m.set($.dictionary.map(($) => _p.sg($, ($) => {
+export const Schemas = ($: d_in.Schemas): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => m.set($.dictionary.__d_map(($) => _p.sg($, ($) => {
     switch ($[0]) {
         case 'schema': return _p.ss($, ($) => Schema($))
         case 'set': return _p.ss($, ($) => Schemas($))

@@ -35,7 +35,7 @@ export const Schema = (
                     "marshall": import_.sibling("marshall", _p.list.nested_literal([
                     ]), {}),
                 }),
-                "r ": $p.imports.map(($, key) => import_.ancestor(1, $['schema set child'].key, ["serialize"], {}))
+                "r ": $p.imports.__d_map(($, key) => import_.ancestor(1, $['schema set child'].key, ["serialize"], {}))
             }),
             {
                 'separator': "",
@@ -43,7 +43,7 @@ export const Schema = (
                         () => _p.unreachable_code_path(),
         ),
         {},
-        $.types.dictionary.map(($, key) => variable(
+        $.types.dictionary.__d_map(($, key) => variable(
             t.component_imported("signatures", key, {}, []),
             i.function_(
                 true,
