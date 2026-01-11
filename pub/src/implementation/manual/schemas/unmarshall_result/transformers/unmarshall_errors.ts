@@ -9,7 +9,7 @@ export const Optional_Node = (
     $: d_in.Optional_Node,
     $p: null
 ): d_out.Errors => {
-    return $.transform(
+    return $.__decide(
         ($) => Node($, $p),
         () => _p.list.literal([]), //FIXME! optional node not set is often an error
     )
@@ -285,7 +285,7 @@ export const Node = (
                                             case 'set': return _p.ss($, ($) => {
                                                 {
                                                     const xx = $.value
-                                                    return $['found state definition'].transform(
+                                                    return $['found state definition'].__decide(
                                                         ($) => Node($.node, $p),
                                                         (): d_out.Errors => _p.list.literal([
                                                             {

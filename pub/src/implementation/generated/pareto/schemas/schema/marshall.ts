@@ -38,7 +38,7 @@ export const Number_Type: _i_signatures._T_Number_Type = ($, $p) => ['verbose gr
             case 'exact': return _p.ss($, ($) => ({
                 'state': "exact",
                 'value': ['verbose group', _p.dictionary.literal({
-                    'decimal separator offset': _p.deprecated_cc($['decimal separator offset'], ($) => ['optional', $.transform(
+                    'decimal separator offset': _p.deprecated_cc($['decimal separator offset'], ($) => ['optional', $.__decide(
                         ($): _i_out._T_Value.SG.optional => ['set', ['text', ({
                             'delimiter': ['backtick', null],
                             'value': $p['value serializers']['default number'](
@@ -179,7 +179,7 @@ export const Resolve_Logic: _i_signatures._T_Resolve_Logic = ($, $p) => ['verbos
     )),
 })]
 export const Group: _i_signatures._T_Group = ($, $p) => ['dictionary', $['dictionary'].map(($) => ['verbose group', _p.dictionary.literal({
-    'description': _p.deprecated_cc($['description'], ($) => ['optional', $.transform(
+    'description': _p.deprecated_cc($['description'], ($) => ['optional', $.__decide(
         ($): _i_out._T_Value.SG.optional => ['set', ['text', ({
             'delimiter': ['quote', null],
             'value': $,
@@ -420,7 +420,7 @@ export const Type_Node: _i_signatures._T_Type_Node = ($, $p) => ['state', _p.dep
         case 'state group': return _p.ss($, ($) => ({
             'state': "state group",
             'value': ['dictionary', $.map(($) => ['verbose group', _p.dictionary.literal({
-                'description': _p.deprecated_cc($['description'], ($) => ['optional', $.transform(
+                'description': _p.deprecated_cc($['description'], ($) => ['optional', $.__decide(
                     ($): _i_out._T_Value.SG.optional => ['set', ['text', ({
                         'delimiter': ['quote', null],
                         'value': $,
@@ -867,9 +867,9 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => ['state'
                     }
                 })]),
                 'signature': _p.deprecated_cc($['signature'], ($) => ['nothing', null]),
-                'arguments': _p.deprecated_cc($['arguments'], ($) => ['optional', $.transform(
+                'arguments': _p.deprecated_cc($['arguments'], ($) => ['optional', $.__decide(
                     ($): _i_out._T_Value.SG.optional => ['set', ['verbose group', _p.dictionary.literal({
-                        'values': _p.deprecated_cc($['values'], ($) => ['optional', $.transform(
+                        'values': _p.deprecated_cc($['values'], ($) => ['optional', $.__decide(
                             ($): _i_out._T_Value.SG.optional => ['set', ['dictionary', $.map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
                                 switch ($[0]) {
                                     case 'optional': return _p.ss($, ($) => ({
@@ -902,7 +902,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => ['state'
                             })])]],
                             () => ['not set', null]
                         )]),
-                        'lookups': _p.deprecated_cc($['lookups'], ($) => ['optional', $.transform(
+                        'lookups': _p.deprecated_cc($['lookups'], ($) => ['optional', $.__decide(
                             ($): _i_out._T_Value.SG.optional => ['set', ['dictionary', $.map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
                                 switch ($[0]) {
                                     case 'empty stack': return _p.ss($, ($) => ({
@@ -965,7 +965,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => ['state'
                         'value serializers': $p['value serializers'],
                     }
                 )),
-                'benchmark': _p.deprecated_cc($['benchmark'], ($) => ['optional', $.transform(
+                'benchmark': _p.deprecated_cc($['benchmark'], ($) => ['optional', $.__decide(
                     ($): _i_out._T_Value.SG.optional => ['set', Benchmark(
                         $,
                         {
@@ -995,7 +995,7 @@ export const Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => ['state'
                         'value serializers': $p['value serializers'],
                     }
                 )),
-                'result': _p.deprecated_cc($['result'], ($) => ['optional', $.transform(
+                'result': _p.deprecated_cc($['result'], ($) => ['optional', $.__decide(
                     ($): _i_out._T_Value.SG.optional => ['set', Node_Resolver_List_Result(
                         $,
                         {

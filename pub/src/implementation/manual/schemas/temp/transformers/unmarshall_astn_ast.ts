@@ -26,7 +26,7 @@ export const Optional_Node = (
     $p: {
         'definition': d_definition.Type_Node,
     }
-): d_out.Optional_Node => $.map(
+): d_out.Optional_Node => $.__o_map(
     ($) => Node($, $p),
 )
 
@@ -170,9 +170,9 @@ export const Node_Type = (
                                             'key': $.key.value,
                                             'value': $
                                         }
-                                    })).map<d_out.Entry>(($) => op_expect_exactly_one_element($).transform(
+                                    })).map<d_out.Entry>(($) => op_expect_exactly_one_element($).__decide(
                                         ($): d_out.Entry => ['unique', Optional_Node(
-                                            $.value.map(
+                                            $.value.__o_map(
                                                 ($) => $.value,
                                             ),
                                             {
@@ -181,7 +181,7 @@ export const Node_Type = (
                                         )],
                                         (): d_out.Entry => ['multiple', $.map(($): d_out.Entry_Data => ({
                                             'node': Optional_Node(
-                                                $.value.map(
+                                                $.value.__o_map(
                                                     ($) => $.value,
                                                 ),
                                                 {
@@ -218,7 +218,7 @@ export const Node_Type = (
                 // //                 }
                 // //             }))
                 // //             group_def.map(($, key) => {
-                // //                 properties.get_entry(key).transform(
+                // //                 properties.get_entry(key).__decide(
                 // //                     ($) => {
                 // //                         _pdev.log_debug_message(`property ${key} found in data`)
                 // //                         // do_node(
@@ -285,7 +285,7 @@ export const Node_Type = (
                                                         'supporting dictionary': group_def.dictionary
                                                     }
                                                 ), ($) => {
-                                                    return $.supporting.transform( //drop all the ones for which there is a definition
+                                                    return $.supporting.__decide( //drop all the ones for which there is a definition
                                                         ($) => _p.optional.not_set(),
                                                         () => _p.optional.set($.context)
                                                     )
@@ -302,11 +302,11 @@ export const Node_Type = (
                                                 }
                                             ).map<d_out.Property>(($) => {
                                                 const prop_def = $.context
-                                                return $.supporting.transform(
-                                                    ($): d_out.Property => op_expect_exactly_one_element($).transform(
+                                                return $.supporting.__decide(
+                                                    ($): d_out.Property => op_expect_exactly_one_element($).__decide(
                                                         ($): d_out.Property => ['unique', {
                                                             'node': Optional_Node(
-                                                                $.value.map(
+                                                                $.value.__o_map(
                                                                     ($) => $.value,
                                                                 ),
                                                                 {
@@ -317,7 +317,7 @@ export const Node_Type = (
                                                         }],
                                                         (): d_out.Property => ['multiple', $.map(($): d_out.Entry_Data => ({
                                                             'node': Optional_Node(
-                                                                $.value.map(
+                                                                $.value.__o_map(
                                                                     ($) => $.value,
                                                                 ),
                                                                 {
@@ -380,7 +380,7 @@ export const Node_Type = (
                                                     const value = $.value
                                                     return ['set', {
                                                         'value': $,
-                                                        'found state definition': def.__get_possible_entry($.state.value).map(
+                                                        'found state definition': def.__get_possible_entry($.state.value).__o_map(
                                                             ($) => ({
                                                                 'definition': $,
                                                                 'node': Node(
@@ -418,17 +418,17 @@ export const Node_Type = (
                             //         return ['more than 2 elements', range]
                             //     }
                             //     const first = elements.__get_possible_element_at(0)
-                            //     return first.transform<d_out.State_Status>(
+                            //     return first.__decide<d_out.State_Status>(
                             //         ($) => {
                             //             if ($.value.type[0] !== 'string') {
                             //                 return ['state is not a string', t_ast_to_range.Value(data)]
                             //             }
                             //             const state_name = $.value.type[1].value
                             //             const state_name_range = $.value.type[1].range
-                            //             return elements.__get_possible_element_at(1).transform<d_out.State_Status>(
+                            //             return elements.__get_possible_element_at(1).__decide<d_out.State_Status>(
                             //                 ($) => {
                             //                     const value = $.value
-                            //                     return def.get_entry(state_name).transform<d_out.State_Status>(
+                            //                     return def.get_entry(state_name).__decide<d_out.State_Status>(
                             //                         ($) => ['valid', {
                             //                             'node': Node(
                             //                                 value,

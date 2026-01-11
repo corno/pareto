@@ -10,7 +10,7 @@ import { $$ as p_write_to_file } from "../modules/pareto-fountain-pen-directory/
 
 import { $$ as procedure } from "../implementation/manual/commands/compile_temp_schemas"
 
-_pn.run_main_procedure(
+_pn.run_main_command(
     ($r) => {
         return procedure(
             {

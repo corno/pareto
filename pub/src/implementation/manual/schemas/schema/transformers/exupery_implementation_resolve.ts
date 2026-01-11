@@ -342,9 +342,9 @@ export const Node_Resolver = (
             i.select_from_context([]),
             {
                 "location 2 string": i.select_from_variable("l2s", []),
-                "parameters": $.arguments.transform(
+                "parameters": $.arguments.__decide(
                     ($) => i.group({
-                        "values": $.values.transform(
+                        "values": $.values.__decide(
                             ($) => i.group($.map(($) => _p.sg($, ($) => {
                                 switch ($[0]) {
                                     case 'optional': return _p.ss($, ($) => Optional_Value_Initialization($, null))
@@ -359,7 +359,7 @@ export const Node_Resolver = (
                             }))),
                             () => i.select_from_variable("params", ["values"]),
                         ),
-                        "lookups": $.lookups.transform(
+                        "lookups": $.lookups.__decide(
                             ($) => i.group($.map(($) => _p.sg($, ($) => {
                                 switch ($[0]) {
                                     case 'empty stack': return _p.ss($, ($) => i.list_literal([]))
@@ -378,7 +378,7 @@ export const Node_Resolver = (
         ))
         case 'dictionary': return _p.ss($, ($) => i.block(
             [],
-            $.benchmark.transform(
+            $.benchmark.__decide(
                 ($) => _p.dictionary.literal({
                     // "linked entry": e.call(
                     //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.list.literal([]) }),
@@ -395,7 +395,7 @@ export const Node_Resolver = (
                     //"denseness benchmark": e.not_set(),
                     "map": i.function_(true, i.block(
                         [],
-                        $.benchmark.transform(
+                        $.benchmark.__decide(
                             ($) => _p.dictionary.literal({
                                 // "linked entry": e.call(
                                 //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.list.literal([]) }),

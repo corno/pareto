@@ -64,7 +64,7 @@ export const Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => _p.de
                         'selected dictionary': p_selected_dictionary,
                     }]
                 })
-                case 'not circular dependent siblings': return _p.ss($, ($) => ['not circular dependent siblings', $p.parameters.values['current dictionary'].transform(
+                case 'not circular dependent siblings': return _p.ss($, ($) => ['not circular dependent siblings', $p.parameters.values['current dictionary'].__decide(
                     ($) => $,
                     () => _p.fixme_abort("not in a dictionary @ ", $p['location 2 string'](loc))
                 )])
@@ -75,7 +75,7 @@ export const Lookup_Selection: _i_signatures.Lookup_Selection = ($, $p) => _p.de
                         'location 2 string': $p['location 2 string']
                     }
                 )])
-                case 'possibly circular dependent siblings': return _p.ss($, ($) => ['possibly circular dependent siblings', $p.parameters.values['current dictionary'].transform(
+                case 'possibly circular dependent siblings': return _p.ss($, ($) => ['possibly circular dependent siblings', $p.parameters.values['current dictionary'].__decide(
                     ($) => $,
                     () => _p.fixme_abort("SFSFSD")
                 )])
@@ -549,7 +549,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
             case 'number': return _p.ss($, ($): _i_out.Type_Node => ['number', _p.deprecated_cc($['state group'], ($): _i_out.Type_Node.SG._number => {
                 switch ($[0]) {
                     case 'global': return _p.ss($, ($): _i_out.Type_Node.SG._number => ['global', _i_generic.get_entry(
-                        _i_generic.dictionary_to_lookup($p.parameters.values.globals.transform(
+                        _i_generic.dictionary_to_lookup($p.parameters.values.globals.__decide(
                             ($) => $['number types'],
                             () => _p.fixme_abort("globals not set")
                         ),
@@ -576,7 +576,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
             case 'text': return _p.ss($, ($): _i_out.Type_Node => ['text', _p.deprecated_cc($['state group'], ($): _i_out.Type_Node.SG.text => {
                 switch ($[0]) {
                     case 'global': return _p.ss($, ($): _i_out.Type_Node.SG.text => ['global', _i_generic.get_entry(
-                        _i_generic.dictionary_to_lookup($p.parameters.values.globals.transform(
+                        _i_generic.dictionary_to_lookup($p.parameters.values.globals.__decide(
                             ($) => $['text types'],
                             () => _p.fixme_abort("globals not set")
                         ),
@@ -603,7 +603,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
             case 'component': return _p.ss($, ($): _i_out.Type_Node => ['component', _p.deprecated_cc($['state group'], ($): _i_out.Type_Node.SG.component => {
                 switch ($[0]) {
                     case 'external': return _p.ss($, ($) => {
-                        const sc_import = $p.parameters.values.imports.transform(
+                        const sc_import = $p.parameters.values.imports.__decide(
                             ($) => $,
                             () => _p.fixme_abort("missing")
                         )
@@ -679,7 +679,7 @@ export const Type_Node: _i_signatures.Type_Node = ($, $p) => {
 
             case 'reference': return _p.ss($, ($): _i_out.Type_Node => {
                 const loc = $.referent['type location'].location.location
-                $p.parameters.values.globals.transform(
+                $p.parameters.values.globals.__decide(
                     ($) => {
                         if ($.complexity[0] === 'unconstrained') {
                             _p.fixme_abort(`schema complexity setting is 'unconstrained', so references are not allowed @ ${$p['location 2 string'](loc)}`)
@@ -793,7 +793,7 @@ export const Type_Reference: _i_signatures.Type_Reference = ($, $p) => {
     const x: _i_out.Type_Reference.location = _p.deprecated_cc($.location['state group'], ($) => {
         switch ($[0]) {
             case 'external': return _p.ss($, ($): _i_out.Type_Reference.location => {
-                const sc_import = $p.parameters.values.imports.transform(
+                const sc_import = $p.parameters.values.imports.__decide(
                     ($) => $,
                     () => _p.fixme_abort("missing")
                 )
@@ -1099,7 +1099,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                 const p_location = _p.deprecated_cc($.location['state group'], ($): _i_out.Node_Resolver.SG.component.location => {
                     switch ($[0]) {
                         case 'external': return _p.ss($, ($) => {
-                            const sc_import = $p.parameters.values.imports.transform(
+                            const sc_import = $p.parameters.values.imports.__decide(
                                 ($) => $,
                                 () => _p.fixme_abort("missing")
                             )
@@ -1159,10 +1159,10 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                 if (p_signature.type.node !== x_type.node) {
                     _p.fixme_abort("type mismatch @ ", $p['location 2 string'](loc))
                 }
-                const p_arguments: _i_out.Node_Resolver.SG.component._arguments = $.arguments.transform(
+                const p_arguments: _i_out.Node_Resolver.SG.component._arguments = $.arguments.__decide(
                     ($) => {
                         const x: _i_out.Node_Resolver.SG.component._arguments.O = {
-                            'lookups': $.lookups.transform(
+                            'lookups': $.lookups.__decide(
                                 ($) => _p.optional.set(_i_generic.resolve_dense_dictionary(
                                     $,
                                     {
@@ -1212,7 +1212,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                                     return _p.optional.not_set()
                                 }
                             ),
-                            'values': $.values.transform(
+                            'values': $.values.__decide(
                                 ($) => {
                                     const values_location = $.location
 
@@ -1395,7 +1395,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                     ? _p.fixme_abort("not a 'dictionary' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
 
-                const p_benchmark = $.benchmark.map(($) => {
+                const p_benchmark = $.benchmark.__o_map(($) => {
                     const p_selection = Guaranteed_Value_Selection($.selection, {
                         'location 2 string': $p['location 2 string'],
                         'parameters': $p.parameters,
@@ -1419,7 +1419,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                             'parameters': {
                                 'lookups': $p.parameters.lookups,
                                 'values': {
-                                    'linked entry': p_benchmark.transform( //optional value result ('benchmark')
+                                    'linked entry': p_benchmark.__decide( //optional value result ('benchmark')
                                         ($) => _p.optional.set($),
                                         () => $p.parameters.values['linked entry']
                                     ),
@@ -1503,7 +1503,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                 const p_definition = $p.parameters.values.definition[0] !== 'list'
                     ? _p.fixme_abort("not a 'list' but a '", $p.parameters.values.definition[0], "' @ ", $p['location 2 string'](loc))
                     : $p.parameters.values.definition[1]
-                const p_result = $.result.map(($) => Type_Reference($, {
+                const p_result = $.result.__o_map(($) => Type_Reference($, {
                     'location 2 string': $p['location 2 string'],
                     'parameters': {
                         'lookups': {
@@ -1521,7 +1521,7 @@ export const Node_Resolver: _i_signatures.Node_Resolver = ($, $p) => {
                             'lookups': $p.parameters.lookups,
                             'values': {
                                 'definition': p_definition.node,
-                                'list cursor': p_result.transform( // optional value result ('result')
+                                'list cursor': p_result.__decide( // optional value result ('result')
                                     ($) => _p.optional.set($),
                                     () => $p.parameters.values['list cursor']
                                 ), //setting the cursor
@@ -2057,7 +2057,7 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                 case 'list cursor': return _p.ss($, ($) => ['list cursor', null])
                 case 'linked entry': return _p.ss($, ($) => ['linked entry', null])
                 case 'option constraint': return _p.ss($, ($): _i_out.Guaranteed_Value_Selection.start => {
-                    const sc = $p.parameters.values['option constraints'].transform(
+                    const sc = $p.parameters.values['option constraints'].__decide(
                         ($) => $,
                         () => _p.fixme_abort("not in an option @ ", $p['location 2 string'](start_location))
                     )
@@ -2090,7 +2090,7 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                             const p_list_result_a = _p.deprecated_cc($['list result'], ($) => p_sibling.entry.resolver[0] !== 'list'
                                 ? _p.fixme_abort("not a 'list' but a '", p_sibling.entry.resolver[0], "' @ ", $p['location 2 string'](loc))
                                 : p_sibling.entry.resolver[1])
-                            const p_list_result: _i_out.Guaranteed_Value_Selection.start.SG.result.SG.list.list_result = p_list_result_a.result.transform(
+                            const p_list_result: _i_out.Guaranteed_Value_Selection.start.SG.result.SG.list.list_result = p_list_result_a.result.__decide(
                                 ($) => $,
                                 () => _p.fixme_abort("there is no list result")
                             )
@@ -2230,11 +2230,11 @@ export const Guaranteed_Value_Selection: _i_signatures.Guaranteed_Value_Selectio
                                             default: return _p.au($[0])
                                         }
                                     }))
-                                    case 'list cursor': return _p.ss($, ($) => $p.parameters.values['list cursor'].transform(
+                                    case 'list cursor': return _p.ss($, ($) => $p.parameters.values['list cursor'].__decide(
                                         ($) => $['resulting node'],
                                         () => _p.fixme_abort("there is no cursor")
                                     ))
-                                    case 'linked entry': return _p.ss($, ($) => $p.parameters.values['linked entry'].transform(
+                                    case 'linked entry': return _p.ss($, ($) => $p.parameters.values['linked entry'].__decide(
                                         ($) => $['resulting dictionary'].node,
                                         () => _p.fixme_abort(`there is no linked entry @ ${$p['location 2 string'](start_loc)}`)
                                     ))

@@ -25,7 +25,7 @@ type Element_And_Rest<T> = {
 
 export const temp_pop_first_element = <T>($: _pi.List<T>): _pi.Optional_Value<Element_And_Rest<T>> => {
     const arr = $
-    return $.__get_possible_element_at(0).map(
+    return $.__get_possible_element_at(0).__o_map(
         ($) => ({
             'rest': _p.list.deprecated_build(($i) => {
                 let is_first = true
@@ -82,14 +82,14 @@ export const $: _pi.Deserializer_With_Parameters<d_schema.Type, Error, { 'uri': 
         schema_path: _pi.List<string>,
     ): d_schema.Schema => {
         const st = $
-        return temp_pop_first_element(schema_path).transform(
+        return temp_pop_first_element(schema_path).__decide(
             ($) => {
                 const split = $
                 return _p_temp.sg(st, ($) => {
                     switch ($[0]) {
 
                         case 'schema': return _p_temp.ss($, ($) => _pdev.implement_me(`(FIXME: make this a reference) the selected tree is a schema, not a set, can't do this step: ${split.element} `))
-                        case 'set': return _p_temp.ss($, ($) => $.dictionary.__get_possible_entry(split.element).transform(
+                        case 'set': return _p_temp.ss($, ($) => $.dictionary.__get_possible_entry(split.element).__decide(
                             ($) => temp_find_schema($, split.rest),
                             () => _pdev.implement_me(`(FIXME: make this a reference) schema not found: ${split.element}`)
                         ))
@@ -108,7 +108,7 @@ export const $: _pi.Deserializer_With_Parameters<d_schema.Type, Error, { 'uri': 
     }
     const schema = temp_find_schema(resolved_schema_schema.schema, resolved_schema_schema['schema path'])
 
-    const type = schema.types.dictionary.__get_possible_entry(resolved_schema_schema.type).transform(
+    const type = schema.types.dictionary.__get_possible_entry(resolved_schema_schema.type).__decide(
         ($) => $,
         () => {
             schema.types.dictionary.map(($, key) => {

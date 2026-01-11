@@ -151,7 +151,7 @@ export const r_Number_Type: _i_signatures._T_Number_Type = ($, $p) => _p.depreca
                 })])
                 case 'exact': return _p.ss($, ($) => ['exact', _p.deprecated_block(() => {
                     return _p.deprecated_block(() => {
-                        const p_decimal_separator_offset: _i_out._T_Number_Type.precision.SG.exact.decimal_separator_offset = _p.deprecated_cc($['decimal separator offset'], ($) => $.map(($) => _p.deprecated_block(() => {
+                        const p_decimal_separator_offset: _i_out._T_Number_Type.precision.SG.exact.decimal_separator_offset = _p.deprecated_cc($['decimal separator offset'], ($) => $.__o_map(($) => _p.deprecated_block(() => {
                             return $
                         })))
                         const p_type: _i_out._T_Number_Type.precision.SG.exact._type = _p.deprecated_cc($['type'], ($) => _p.deprecated_cc($['state group'], ($): _i_out._T_Number_Type.precision.SG.exact._type => {
@@ -218,7 +218,7 @@ export const r_Type_Reference: _i_signatures._T_Type_Reference = ($, $p) => _p.d
                     )
                 })])
                 case 'external': return _p.ss($, ($) => ['external', _p.deprecated_block(() => {
-                    const c_import = params['values']['imports'].transform(
+                    const c_import = params['values']['imports'].__decide(
                         ($) => $,
                         () => _p.fixme_abort('ABORT SELECTION')
                     )
@@ -333,7 +333,7 @@ export const r_Group: _i_signatures._T_Group = ($, $p) => _p.deprecated_block(()
             {
                 'map': ($, $p) => _p.deprecated_block(() => {
                     return _p.deprecated_cc($['value'], ($) => _p.deprecated_block(() => {
-                        const p_description: _i_out._T_Group.D.description = _p.deprecated_cc($['description'], ($) => $.map(($) => _p.deprecated_block(() => {
+                        const p_description: _i_out._T_Group.D.description = _p.deprecated_cc($['description'], ($) => $.__o_map(($) => _p.deprecated_block(() => {
                             return $
                         })))
                         const p_node: _i_out._T_Group.D.node = _p.deprecated_cc($['node'], ($) => r_Type_Node(
@@ -404,7 +404,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.deprecated_
                 return _p.deprecated_cc($['state group'], ($): _i_out._T_Type_Node.SG.component => {
                     switch ($[0]) {
                         case 'external': return _p.ss($, ($) => ['external', _p.deprecated_block(() => {
-                            const c_import = params['values']['imports'].transform(
+                            const c_import = params['values']['imports'].__decide(
                                 ($) => $,
                                 () => _p.fixme_abort('ABORT SELECTION')
                             )
@@ -519,7 +519,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.deprecated_
                 return _p.deprecated_cc($['state group'], ($): _i_out._T_Type_Node.SG._number => {
                     switch ($[0]) {
                         case 'global': return _p.ss($, ($) => ['global', _p.deprecated_block(() => {
-                            const c_globals = params['values']['globals'].transform(
+                            const c_globals = params['values']['globals'].__decide(
                                 ($) => $,
                                 () => _p.fixme_abort('ABORT SELECTION')
                             )
@@ -633,7 +633,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.deprecated_
                                             }),
                                         }
                                     ))
-                                    const p_description: _i_out._T_Type_Node.SG.state_group.D.description = _p.deprecated_cc($['description'], ($) => $.map(($) => _p.deprecated_block(() => {
+                                    const p_description: _i_out._T_Type_Node.SG.state_group.D.description = _p.deprecated_cc($['description'], ($) => $.__o_map(($) => _p.deprecated_block(() => {
                                         return $
                                     })))
                                     return ({
@@ -651,7 +651,7 @@ export const r_Type_Node: _i_signatures._T_Type_Node = ($, $p) => _p.deprecated_
                 return _p.deprecated_cc($['state group'], ($): _i_out._T_Type_Node.SG.text => {
                     switch ($[0]) {
                         case 'global': return _p.ss($, ($) => ['global', _p.deprecated_block(() => {
-                            const c_globals = params['values']['globals'].transform(
+                            const c_globals = params['values']['globals'].__decide(
                                 ($) => $,
                                 () => _p.fixme_abort('ABORT SELECTION')
                             )
@@ -1108,7 +1108,7 @@ export const r_Guaranteed_Value_Selection: _i_signatures._T_Guaranteed_Value_Sel
                     )
                 })])
                 case 'option constraint': return _p.ss($, ($) => ['option constraint', _p.deprecated_block(() => {
-                    const c_oc = params['values']['option constraints'].transform(
+                    const c_oc = params['values']['option constraints'].__decide(
                         ($) => $,
                         () => _p.fixme_abort('ABORT SELECTION')
                     )
@@ -1344,14 +1344,14 @@ export const r_Lookup_Selection: _i_signatures._T_Lookup_Selection = ($, $p) => 
                     )
                 })])
                 case 'not circular dependent siblings': return _p.ss($, ($) => ['not circular dependent siblings', _p.deprecated_block(() => {
-                    const c_cd = params['values']['current ordered dictionary'].transform(
+                    const c_cd = params['values']['current ordered dictionary'].__decide(
                         ($) => $,
                         () => _p.fixme_abort('ABORT SELECTION')
                     )
                     return c_cd
                 })])
                 case 'possibly circular dependent siblings': return _p.ss($, ($) => ['possibly circular dependent siblings', _p.deprecated_block(() => {
-                    const c_cd = params['values']['current dictionary'].transform(
+                    const c_cd = params['values']['current dictionary'].__decide(
                         ($) => $,
                         () => _p.fixme_abort('ABORT SELECTION')
                     )
@@ -1713,7 +1713,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _p.dep
                     const p_location: _i_out._T_Node_Resolver.SG.component.location = _p.deprecated_cc($['location'], ($) => _p.deprecated_cc($['state group'], ($): _i_out._T_Node_Resolver.SG.component.location => {
                         switch ($[0]) {
                             case 'external': return _p.ss($, ($) => ['external', _p.deprecated_block(() => {
-                                const c_import = params['values']['imports'].transform(
+                                const c_import = params['values']['imports'].__decide(
                                     ($) => $,
                                     () => _p.fixme_abort('ABORT SELECTION')
                                 )
@@ -1760,9 +1760,9 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _p.dep
                         }
                     }))
                     const p_signature: _i_out._T_Node_Resolver.SG.component.signature = _p.deprecated_cc($['signature'], ($) => _pdev.implement_me("marker tbd"))
-                    const p_arguments: _i_out._T_Node_Resolver.SG.component._arguments = _p.deprecated_cc($['arguments'], ($) => $.map(($) => _p.deprecated_block(() => {
+                    const p_arguments: _i_out._T_Node_Resolver.SG.component._arguments = _p.deprecated_cc($['arguments'], ($) => $.__o_map(($) => _p.deprecated_block(() => {
                         return _p.deprecated_block(() => {
-                            const p_values: _i_out._T_Node_Resolver.SG.component._arguments.O.values = _p.deprecated_cc($['values'], ($) => $.map(($) => _p.deprecated_block(() => {
+                            const p_values: _i_out._T_Node_Resolver.SG.component._arguments.O.values = _p.deprecated_cc($['values'], ($) => $.__o_map(($) => _p.deprecated_block(() => {
                                 return _p.deprecated_block(() => {
                                     const benchmark = p_signature['resolved parameters']['values']
                                     return _i_generic.resolve_dictionary(
@@ -1817,7 +1817,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _p.dep
                                     )
                                 })
                             })))
-                            const p_lookups: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups = _p.deprecated_cc($['lookups'], ($) => $.map(($) => _p.deprecated_block(() => {
+                            const p_lookups: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups = _p.deprecated_cc($['lookups'], ($) => $.__o_map(($) => _p.deprecated_block(() => {
                                 return _p.deprecated_block(() => {
                                     const benchmark = p_signature['resolved parameters']['lookups']
                                     return _i_generic.resolve_dictionary(
@@ -1825,29 +1825,17 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _p.dep
                                         {
                                             'map': ($, $p) => _p.deprecated_block(() => {
                                                 const linked_entry = _pdev.implement_me("marker tbd")
-                                                return _p.deprecated_cc($['value'], ($) => _p.deprecated_cc($['state group'], ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D => {
-                                                    switch ($[0]) {
-                                                        case 'empty stack': return _p.ss($, ($) => ['empty stack', _p.deprecated_block(() => {
-                                                            return null
-                                                        })])
-                                                        case 'not set': return _p.ss($, ($) => ['not set', _p.deprecated_block(() => {
-                                                            return null
-                                                        })])
-                                                        case 'selection': return _p.ss($, ($) => ['selection', _p.deprecated_block(() => {
-                                                            return r_Lookup_Selection(
-                                                                $,
-                                                                {
-                                                                    'location 2 string': l2s,
-                                                                    'parameters': ({
-                                                                        'values': params['values'],
-                                                                        'lookups': params['lookups'],
-                                                                    }),
-                                                                }
-                                                            )
-                                                        })])
-                                                        case 'stack': return _p.ss($, ($) => ['stack', _p.deprecated_block(() => {
-                                                            return _p.deprecated_block(() => {
-                                                                const p_stack: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG.stack.stack = _p.deprecated_cc($['stack'], ($) => r_Lookup_Selection(
+                                                return _p.deprecated_cc($['value'], ($) => _p.deprecated_cc(
+                                                    $['state group'], ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D => {
+                                                        switch ($[0]) {
+                                                            case 'empty stack': return _p.ss($, ($) => ['empty stack', _p.deprecated_block(() => {
+                                                                return null
+                                                            })])
+                                                            case 'not set': return _p.ss($, ($) => ['not set', _p.deprecated_block(() => {
+                                                                return null
+                                                            })])
+                                                            case 'selection': return _p.ss($, ($) => ['selection', _p.deprecated_block(() => {
+                                                                return r_Lookup_Selection(
                                                                     $,
                                                                     {
                                                                         'location 2 string': l2s,
@@ -1856,26 +1844,43 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _p.dep
                                                                             'lookups': params['lookups'],
                                                                         }),
                                                                     }
-                                                                ))
-                                                                const p_element: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG.stack.element = _p.deprecated_cc($['element'], ($) => r_Lookup_Selection(
-                                                                    $,
-                                                                    {
-                                                                        'location 2 string': l2s,
-                                                                        'parameters': ({
-                                                                            'values': params['values'],
-                                                                            'lookups': params['lookups'],
-                                                                        }),
-                                                                    }
-                                                                ))
-                                                                return ({
-                                                                    'stack': p_stack,
-                                                                    'element': p_element,
+                                                                )
+                                                            })])
+                                                            case 'stack': return _p.ss($, ($) => ['stack', _p.deprecated_block(() => {
+                                                                return _p.deprecated_block(() => {
+                                                                    const p_stack: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG.stack.stack = _p.deprecated_cc(
+                                                                        $['stack'], ($) => r_Lookup_Selection(
+                                                                            $,
+                                                                            {
+                                                                                'location 2 string': l2s,
+                                                                                'parameters': ({
+                                                                                    'values': params['values'],
+                                                                                    'lookups': params['lookups'],
+                                                                                }),
+                                                                            }
+                                                                        )
+                                                                    )
+                                                                    const p_element: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG.stack.element = _p.deprecated_cc(
+                                                                        $['element'], ($) => r_Lookup_Selection(
+                                                                            $,
+                                                                            {
+                                                                                'location 2 string': l2s,
+                                                                                'parameters': ({
+                                                                                    'values': params['values'],
+                                                                                    'lookups': params['lookups'],
+                                                                                }),
+                                                                            }
+                                                                        )
+                                                                    )
+                                                                    return ({
+                                                                        'stack': p_stack,
+                                                                        'element': p_element,
+                                                                    })
                                                                 })
-                                                            })
-                                                        })])
-                                                        default: return _p.au($[0])
-                                                    }
-                                                }))
+                                                            })])
+                                                            default: return _p.au($[0])
+                                                        }
+                                                    }))
                                             }),
                                             'location 2 string': l2s,
                                         }
@@ -1912,7 +1917,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _p.dep
                 const c_definition = _pdev.implement_me("marker tbd")
                 return _p.deprecated_block(() => {
                     const p_definition: _i_out._T_Node_Resolver.SG.dictionary.definition = _p.deprecated_cc($['definition'], ($) => c_definition)
-                    const p_benchmark: _i_out._T_Node_Resolver.SG.dictionary.benchmark = _p.deprecated_cc($['benchmark'], ($) => $.map(($) => _p.deprecated_block(() => {
+                    const p_benchmark: _i_out._T_Node_Resolver.SG.dictionary.benchmark = _p.deprecated_cc($['benchmark'], ($) => $.__o_map(($) => _p.deprecated_block(() => {
                         return r_Benchmark(
                             $,
                             {
@@ -1983,7 +1988,7 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _p.dep
                 const c_definition = _pdev.implement_me("marker tbd")
                 return _p.deprecated_block(() => {
                     const p_definition: _i_out._T_Node_Resolver.SG.list.definition = _p.deprecated_cc($['definition'], ($) => c_definition)
-                    const p_result: _i_out._T_Node_Resolver.SG.list.result = _p.deprecated_cc($['result'], ($) => $.map(($) => _p.deprecated_block(() => {
+                    const p_result: _i_out._T_Node_Resolver.SG.list.result = _p.deprecated_cc($['result'], ($) => $.__o_map(($) => _p.deprecated_block(() => {
                         return r_Node_Resolver_List_Result(
                             $,
                             {
