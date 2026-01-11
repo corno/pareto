@@ -39,19 +39,24 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
         }))),
 
         "Expression": resolver(r.state_group({
-            "abort": state(r.component("Expression", {}, {})),
-            "block": state(r.group({
-                "variables": r.component("Variables", {}, {}),
-                "temp ordered variables": r.list(r.group({
-                    "name": r.text(),
-                    "type": r.optional(r.component_external("interface", "Type", {}, {})),
+            "special": state(r.state_group({
+                "abort": state(r.component("Expression", {}, {})),
+                "block": state(r.group({
+                    "variables": r.component("Variables", {}, {}),
+                    "temp ordered variables": r.list(r.group({
+                        "name": r.text(),
+                        "type": r.optional(r.component_external("interface", "Type", {}, {})),
+                        "initialization": r.component("Expression", {}, {}),
+                    })),
                     "initialization": r.component("Expression", {}, {}),
                 })),
-                "initialization": r.component("Expression", {}, {}),
-            })),
-            "change context": state(r.group({
-                "new context": r.component("Selection", {}, {}),
-                "initialization": r.component("Expression", {}, {}),
+                "change context": state(r.group({
+                    "new context": r.component("Selection", {}, {}),
+                    "initialization": r.component("Expression", {}, {}),
+                })),
+                "implement me": state(r.nothing()),
+                "selection deprecated": state(r.component("Selection", {}, {})),
+                "unreachable": state(r.nothing()),
             })),
             "initialize": state(r.state_group({
                 "boolean": state(r.state_group({
@@ -60,6 +65,14 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                         "true": state(r.nothing()),
                     })),
                     "not": state(r.component("Selection", {}, {})),
+                })),
+                "component": state(r.state_group({
+                    "call": state(r.group({
+                        "source": r.component("Selection", {}, {}),
+                        "context": r.component("Expression", {}, {}),
+                        "arguments": r.optional(r.dictionary(r.component("Expression", {}, {}))),
+                        "abort": r.boolean()
+                    })),
                 })),
                 "dictionary": state(r.state_group({
                     "literal": state(r.dictionary(r.component("Expression", {}, {}))),
@@ -119,23 +132,13 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                     }))
                 })),
             })),
-            "implement me": state(r.nothing()),
-            "selection deprecated": state(r.component("Selection", {}, {})),
-            "transformation": state(r.group({
+            "decide": state(r.group({
                 "type": r.state_group({
                     "boolean": state(r.state_group({
                         "decide": state(r.group({
                             "source": r.component("Selection", {}, {}),
                             "if false": r.component("Expression", {}, {}),
                             "if true": r.component("Expression", {}, {}),
-                        })),
-                    })),
-                    "function": state(r.state_group({
-                        "call": state(r.group({
-                            "source": r.component("Selection", {}, {}),
-                            "context": r.component("Expression", {}, {}),
-                            "arguments": r.optional(r.dictionary(r.component("Expression", {}, {}))),
-                            "abort": r.boolean()
                         })),
                     })),
                     "optional": state(r.state_group({
@@ -168,7 +171,7 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
         "Selection": resolver(r.group({
             "start": r.state_group({
                 "abort deprecated": state(r.nothing()),
-                "transform optional value": state(r.group({
+                "transform optional value deprecated": state(r.group({
                     "source": r.component("Selection", {}, {}),
                     "if not set": r.component("Selection", {}, {}),
                     "if set": r.component("Selection", {}, {}),
