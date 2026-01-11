@@ -108,31 +108,42 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
             })),
             "selection": state(r.component("Selection", {}, {})),
             "transformation": state(r.group({
-                "source": r.component("Selection", {}, {}),
                 "type": r.state_group({
                     "list": state(r.state_group({
-                        "map": state(r.component("Expression", {}, {})),
+                        "map": state(r.group({
+                            "source": r.component("Selection", {}, {}),
+                            "element handler": r.component("Expression", {}, {})
+                        })),
                     })),
                     "boolean": state(r.state_group({
-                        "not": state(r.nothing()),
+                        "not": state(r.component("Selection", {}, {})),
                         "transform": state(r.group({
+                            "source": r.component("Selection", {}, {}),
                             "if false": r.component("Expression", {}, {}),
                             "if true": r.component("Expression", {}, {}),
                         })),
                     })),
                     "dictionary": state(r.state_group({
-                        "map": state(r.component("Expression", {}, {})),
+                        "map": state(r.group({
+                            "source": r.component("Selection", {}, {}),
+                            "entry handler": r.component("Expression", {}, {})
+                        })),
                     })),
                     "function": state(r.state_group({
                         "call": state(r.group({
+                            "source": r.component("Selection", {}, {}),
                             "context": r.component("Expression", {}, {}),
                             "arguments": r.optional(r.dictionary(r.component("Expression", {}, {}))),
                             "abort": r.boolean()
                         })),
                     })),
                     "optional": state(r.state_group({
-                        "map": state(r.component("Expression", {}, {})),
+                        "map": state(r.group({
+                            "source": r.component("Selection", {}, {}),
+                            "set handler": r.component("Expression", {}, {})
+                        })),
                         "transform": state(r.group({
+                            "source": r.component("Selection", {}, {}),
                             "if not set": r.component("Expression", {}, {}),
                             "if set": r.component("Expression", {}, {}),
                             "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
@@ -140,6 +151,7 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                     })),
                     "state group": state(r.state_group({
                         "switch": state(r.group({
+                            "source": r.component("Selection", {}, {}),
                             "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
                             "type": r.state_group({
                                 "partial": state(r.group({

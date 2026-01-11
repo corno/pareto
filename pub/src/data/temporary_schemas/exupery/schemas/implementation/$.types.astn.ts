@@ -119,14 +119,17 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             "selection": tstate(t.component_cyclic("Selection")),
 
             "transformation": tstate(t.group({
-                "source": prop(t.component_cyclic("Selection")),
                 "type": prop(t.state_group({
                     "list": tstate(t.state_group({
-                        "map": tstate(t.component_cyclic("Expression")),
+                        "map": tstate(t.group({
+                            "source": prop(t.component_cyclic("Selection")),
+                            "element handler": prop(t.component_cyclic("Expression"))
+                        })),
                     })),
                     "boolean": tstate(t.state_group({
-                        "not": tstate(t.nothing()),
+                        "not": tstate(t.component_cyclic("Selection")),
                         "transform": tstate(t.group({
+                            "source": prop(t.component_cyclic("Selection")),
                             "if false": prop(t.component_cyclic("Expression")),
                             "if true": prop(t.component_cyclic("Expression")),
                         })),
@@ -134,10 +137,14 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                     // "component": t.nothing(),
                     // "computed": t.nothing(),
                     "dictionary": tstate(t.state_group({
-                        "map": tstate(t.component_cyclic("Expression")),
+                        "map": tstate(t.group({
+                            "source": prop(t.component_cyclic("Selection")),
+                            "entry handler": prop(t.component_cyclic("Expression"))
+                        })),
                     })),
                     "function": tstate(t.state_group({
                         "call": tstate(t.group({
+                            "source": prop(t.component_cyclic("Selection")),
                             "context": prop(t.component_cyclic("Expression")),
                             "arguments": prop(t.optional(t.dictionary(t.component_cyclic("Expression")))),
                             "abort": prop(t.boolean())
@@ -148,8 +155,12 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                     // "number": t.state_group({
                     // }),
                     "optional": tstate(t.state_group({
-                        "map": tstate(t.component_cyclic("Expression")),
+                        "map": tstate(t.group({
+                            "source": prop(t.component_cyclic("Selection")),
+                            "set handler": prop(t.component_cyclic("Expression"))
+                        })),
                         "transform": tstate(t.group({
+                            "source": prop(t.component_cyclic("Selection")),
                             "if not set": prop(t.component_cyclic("Expression")),
                             "if set": prop(t.component_cyclic("Expression")),
                             "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
@@ -161,6 +172,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                     // }),
                     "state group": tstate(t.state_group({
                         "switch": tstate(t.group({
+                            "source": prop(t.component_cyclic("Selection")),
                             "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
                             "type": prop(t.state_group({
                                 "partial": tstate(t.group({
