@@ -35,56 +35,88 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
 
         "Variables": resolver(r.dictionary(r.group({
             "type": r.optional(r.component_external("interface", "Type", {}, {})),
-            "initialization": r.component("Initialization", {}, {}),
+            "initialization": r.component("Expression", {}, {}),
         }))),
 
-        "Initialization": resolver(r.state_group({
-            "abort": state(r.component("Initialization", {}, {})),
+        "Expression": resolver(r.state_group({
+            "abort": state(r.component("Expression", {}, {})),
             "block": state(r.group({
                 "variables": r.component("Variables", {}, {}),
                 "temp ordered variables": r.list(r.group({
                     "name": r.text(),
                     "type": r.optional(r.component_external("interface", "Type", {}, {})),
-                    "initialization": r.component("Initialization", {}, {}),
+                    "initialization": r.component("Expression", {}, {}),
                 })),
-                "initialization": r.component("Initialization", {}, {}),
+                "initialization": r.component("Expression", {}, {}),
             })),
             "change context": state(r.group({
                 "new context": r.component("Selection", {}, {}),
-                "initialization": r.component("Initialization", {}, {}),
+                "initialization": r.component("Expression", {}, {}),
             })),
-            "literal": state(r.group({
-                "value": r.component("Literal", {}, {}),
+            "initialize": state(r.state_group({
+                "list": state(r.list(r.component("Expression", {}, {}))),
+                "boolean": state(r.state_group({
+                    "false": state(r.nothing()),
+                    "true": state(r.nothing()),
+                })),
+                "dictionary": state(r.dictionary(r.component("Expression", {}, {}))),
+                "deprecated function": state(r.group({
+                    "initialization": r.component("Expression", {}, {}),
+                    "temp has parameters": r.boolean(),
+                    "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
+                })),
+                "group": state(r.dictionary(r.component("Expression", {}, {}))),
+                "nothing": state(r.nothing()),
+                "number": state(r.state_group({
+                    "approximation": state(r.number()),
+                    "integer": state(r.number()),
+                    "natural": state(r.number()),
+                })),
+                "optional": state(r.state_group({
+                    "not set": state(r.nothing()),
+                    "set": state(r.component("Expression", {}, {})),
+                })),
+                "text": state(r.group({
+                    "delimiter": r.state_group({
+                        "backtick": state(r.nothing()),
+                        "quote": state(r.nothing()),
+                    }),
+                    "value": r.text(),
+                })),
+                "state": state(r.group({
+                    "case": r.text(),
+                    "value": r.component("Expression", {}, {}),
+                })),
             })),
             "selection": state(r.component("Selection", {}, {})),
             "transformation": state(r.group({
                 "source": r.component("Selection", {}, {}),
                 "type": r.state_group({
                     "list": state(r.state_group({
-                        "map": state(r.component("Initialization", {}, {})),
+                        "map": state(r.component("Expression", {}, {})),
                     })),
                     "boolean": state(r.state_group({
                         "not": state(r.nothing()),
                         "transform": state(r.group({
-                            "if false": r.component("Initialization", {}, {}),
-                            "if true": r.component("Initialization", {}, {}),
+                            "if false": r.component("Expression", {}, {}),
+                            "if true": r.component("Expression", {}, {}),
                         })),
                     })),
                     "dictionary": state(r.state_group({
-                        "map": state(r.component("Initialization", {}, {})),
+                        "map": state(r.component("Expression", {}, {})),
                     })),
                     "function": state(r.state_group({
                         "call": state(r.group({
-                            "context": r.component("Initialization", {}, {}),
-                            "arguments": r.optional(r.dictionary(r.component("Initialization", {}, {}))),
+                            "context": r.component("Expression", {}, {}),
+                            "arguments": r.optional(r.dictionary(r.component("Expression", {}, {}))),
                             "abort": r.boolean()
                         })),
                     })),
                     "optional": state(r.state_group({
-                        "map": state(r.component("Initialization", {}, {})),
+                        "map": state(r.component("Expression", {}, {})),
                         "transform": state(r.group({
-                            "if not set": r.component("Initialization", {}, {}),
-                            "if set": r.component("Initialization", {}, {}),
+                            "if not set": r.component("Expression", {}, {}),
+                            "if set": r.component("Expression", {}, {}),
                             "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
                         })),
                     })),
@@ -93,52 +125,16 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                             "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
                             "type": r.state_group({
                                 "partial": state(r.group({
-                                    "cases": r.dictionary(r.component("Initialization", {}, {})),
-                                    "default": r.component("Initialization", {}, {}),
+                                    "cases": r.dictionary(r.component("Expression", {}, {})),
+                                    "default": r.component("Expression", {}, {}),
                                 })),
                                 "full": state(r.group({
-                                    "cases": r.dictionary(r.component("Initialization", {}, {})),
+                                    "cases": r.dictionary(r.component("Expression", {}, {})),
                                 }))
                             }),
                         })),
                     })),
                 }),
-            })),
-        })),
-
-        "Literal": resolver(r.state_group({
-            "list": state(r.list(r.component("Initialization", {}, {}))),
-            "boolean": state(r.state_group({
-                "false": state(r.nothing()),
-                "true": state(r.nothing()),
-            })),
-            "dictionary": state(r.dictionary(r.component("Initialization", {}, {}))),
-            "deprecated function": state(r.group({
-                "initialization": r.component("Initialization", {}, {}),
-                "temp has parameters": r.boolean(),
-                "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
-            })),
-            "group": state(r.dictionary(r.component("Initialization", {}, {}))),
-            "nothing": state(r.nothing()),
-            "number": state(r.state_group({
-                "approximation": state(r.number()),
-                "integer": state(r.number()),
-                "natural": state(r.number()),
-            })),
-            "optional": state(r.state_group({
-                "not set": state(r.nothing()),
-                "set": state(r.component("Initialization", {}, {})),
-            })),
-            "text": state(r.group({
-                "delimiter": r.state_group({
-                    "backtick": state(r.nothing()),
-                    "quote": state(r.nothing()),
-                }),
-                "value": r.text(),
-            })),
-            "state": state(r.group({
-                "case": r.text(),
-                "value": r.component("Initialization", {}, {}),
             })),
         })),
 
@@ -154,7 +150,7 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                 "call": state(r.group({
                     "source": r.component("Selection", {}, {}),
                     "context": r.component("Selection", {}, {}),
-                    "arguments": r.optional(r.dictionary(r.component("Initialization", {}, {}))),
+                    "arguments": r.optional(r.dictionary(r.component("Expression", {}, {}))),
                 })),
                 "implement me": state(r.nothing()),
                 "argument": state(r.text()),

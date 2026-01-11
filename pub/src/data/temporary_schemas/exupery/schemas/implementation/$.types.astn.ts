@@ -45,26 +45,58 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
 
         "Variables": type(t.dictionary(t.group({
             "type": prop(t.optional(t.component_external("interface", "Type"))),
-            "initialization": prop(t.component_cyclic("Initialization")),
+            "initialization": prop(t.component_cyclic("Expression")),
         }))),
 
-        "Initialization": type(t.state_group({
-            "abort": tstate(t.component_cyclic("Initialization")),
+        "Expression": type(t.state_group({
+            "abort": tstate(t.component_cyclic("Expression")),
             "block": tstate(t.group({
                 "variables": prop(t.component("Variables")),
                 "temp ordered variables": prop(t.list(t.group({ //FIXME: remove this as soon as the dependencies can be determined in the variables dictionary
                     "name": prop(t.text_global("Identifier")),
                     "type": prop(t.optional(t.component_external("interface", "Type"))),
-                    "initialization": prop(t.component_cyclic("Initialization")),
+                    "initialization": prop(t.component_cyclic("Expression")),
                 }))),
-                "initialization": prop(t.component_cyclic("Initialization")),
+                "initialization": prop(t.component_cyclic("Expression")),
             })),
             "change context": tstate(t.group({
                 "new context": prop(t.component_cyclic("Selection")),
-                "initialization": prop(t.component_cyclic("Initialization")),
+                "initialization": prop(t.component_cyclic("Expression")),
             })),
-            "literal": tstate(t.group({
-                "value": prop(t.component("Literal")),
+            "initialize": tstate(t.state_group({
+                "list": tstate(t.list(t.component_cyclic("Expression"))),
+                "boolean": tstate(t.state_group({
+                    "false": tstate(t.nothing()),
+                    "true": tstate(t.nothing()),
+                })),
+                "dictionary": tstate(t.dictionary(t.component_cyclic("Expression"))),
+                "deprecated function": tstate(t.group({
+                    "initialization": prop(t.component_cyclic("Expression")),
+                    "temp has parameters": prop(t.boolean()),
+                    "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
+                })),
+                "group": tstate(t.dictionary(t.component_cyclic("Expression"))),
+                "nothing": tstate(t.nothing()),
+                "number": tstate(t.state_group({
+                    "approximation": tstate(t.number_local(n.approximation(10))),
+                    "integer": tstate(t.number_local(n.integer())),
+                    "natural": tstate(t.number_local(n.natural())),
+                })),
+                "optional": tstate(t.state_group({
+                    "not set": tstate(t.nothing()),
+                    "set": tstate(t.component_cyclic("Expression")),
+                })),
+                "text": tstate(t.group({
+                    "delimiter": prop(t.state_group({
+                        "backtick": tstate(t.nothing()),
+                        "quote": tstate(t.nothing()),
+                    })),
+                    "value": prop(t.text_local(text('single line'))),
+                })),
+                "state": tstate(t.group({
+                    "case": prop(t.text_global("Identifier")),
+                    "value": prop(t.component_cyclic("Expression")),
+                })),
             })),
             "selection": tstate(t.component_cyclic("Selection")),
 
@@ -72,24 +104,24 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "source": prop(t.component_cyclic("Selection")),
                 "type": prop(t.state_group({
                     "list": tstate(t.state_group({
-                        "map": tstate(t.component_cyclic("Initialization")),
+                        "map": tstate(t.component_cyclic("Expression")),
                     })),
                     "boolean": tstate(t.state_group({
                         "not": tstate(t.nothing()),
                         "transform": tstate(t.group({
-                            "if false": prop(t.component_cyclic("Initialization")),
-                            "if true": prop(t.component_cyclic("Initialization")),
+                            "if false": prop(t.component_cyclic("Expression")),
+                            "if true": prop(t.component_cyclic("Expression")),
                         })),
                     })),
                     // "component": t.nothing(),
                     // "computed": t.nothing(),
                     "dictionary": tstate(t.state_group({
-                        "map": tstate(t.component_cyclic("Initialization")),
+                        "map": tstate(t.component_cyclic("Expression")),
                     })),
                     "function": tstate(t.state_group({
                         "call": tstate(t.group({
-                            "context": prop(t.component_cyclic("Initialization")),
-                            "arguments": prop(t.optional(t.dictionary(t.component_cyclic("Initialization")))),
+                            "context": prop(t.component_cyclic("Expression")),
+                            "arguments": prop(t.optional(t.dictionary(t.component_cyclic("Expression")))),
                             "abort": prop(t.boolean())
                         })),
                     })),
@@ -98,10 +130,10 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                     // "number": t.state_group({
                     // }),
                     "optional": tstate(t.state_group({
-                        "map": tstate(t.component_cyclic("Initialization")),
+                        "map": tstate(t.component_cyclic("Expression")),
                         "transform": tstate(t.group({
-                            "if not set": prop(t.component_cyclic("Initialization")),
-                            "if set": prop(t.component_cyclic("Initialization")),
+                            "if not set": prop(t.component_cyclic("Expression")),
+                            "if set": prop(t.component_cyclic("Expression")),
                             "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
                         })),
                     })),
@@ -114,52 +146,16 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                             "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
                             "type": prop(t.state_group({
                                 "partial": tstate(t.group({
-                                    "cases": prop(t.dictionary(t.component_cyclic("Initialization"))),
-                                    "default": prop(t.component_cyclic("Initialization")),
+                                    "cases": prop(t.dictionary(t.component_cyclic("Expression"))),
+                                    "default": prop(t.component_cyclic("Expression")),
                                 })),
                                 "full": tstate(t.group({
-                                    "cases": prop(t.dictionary(t.component_cyclic("Initialization"))),
+                                    "cases": prop(t.dictionary(t.component_cyclic("Expression"))),
                                 }))
                             })),
                         })),
                     })),
                 })),
-            })),
-        })),
-
-        "Literal": type(t.state_group({
-            "list": tstate(t.list(t.component_cyclic("Initialization"))),
-            "boolean": tstate(t.state_group({
-                "false": tstate(t.nothing()),
-                "true": tstate(t.nothing()),
-            })),
-            "dictionary": tstate(t.dictionary(t.component_cyclic("Initialization"))),
-            "deprecated function": tstate(t.group({
-                "initialization": prop(t.component_cyclic("Initialization")),
-                "temp has parameters": prop(t.boolean()),
-                "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
-            })),
-            "group": tstate(t.dictionary(t.component_cyclic("Initialization"))),
-            "nothing": tstate(t.nothing()),
-            "number": tstate(t.state_group({
-                "approximation": tstate(t.number_local(n.approximation(10))),
-                "integer": tstate(t.number_local(n.integer())),
-                "natural": tstate(t.number_local(n.natural())),
-            })),
-            "optional": tstate(t.state_group({
-                "not set": tstate(t.nothing()),
-                "set": tstate(t.component_cyclic("Initialization")),
-            })),
-            "text": tstate(t.group({
-                "delimiter": prop(t.state_group({
-                    "backtick": tstate(t.nothing()),
-                    "quote": tstate(t.nothing()),
-                })),
-                "value": prop(t.text_local(text('single line'))),
-            })),
-            "state": tstate(t.group({
-                "case": prop(t.text_global("Identifier")),
-                "value": prop(t.component_cyclic("Initialization")),
             })),
         })),
 
@@ -174,7 +170,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "call": tstate(t.group({
                     "source": prop(t.component_cyclic("Selection")),
                     "context": prop(t.component_cyclic("Selection")),
-                    "arguments": prop(t.optional(t.dictionary(t.component_cyclic("Initialization")))),
+                    "arguments": prop(t.optional(t.dictionary(t.component_cyclic("Expression")))),
                 })),
                 "implement me": tstate(t.nothing()),
                 "argument": tstate(t.text_global("TBD")),
