@@ -144,34 +144,29 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             })),
             "decide": tstate(t.group({
                 "type": prop(t.state_group({
-                    "boolean": tstate(t.state_group({
-                        "decide": tstate(t.group({
-                            "source": prop(t.component_cyclic("Selection")),
-                            "if false": prop(t.component_cyclic("Expression")),
-                            "if true": prop(t.component_cyclic("Expression")),
-                        })),
+                    "boolean": tstate(t.group({
+                        "source": prop(t.component_cyclic("Selection")),
+                        "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
+                        "if false": prop(t.component_cyclic("Expression")),
+                        "if true": prop(t.component_cyclic("Expression")),
                     })),
-                    "optional": tstate(t.state_group({
-                        "decide": tstate(t.group({
-                            "source": prop(t.component_cyclic("Selection")),
-                            "if not set": prop(t.component_cyclic("Expression")),
-                            "if set": prop(t.component_cyclic("Expression")),
-                            "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
-                        })),
+                    "optional": tstate(t.group({
+                        "source": prop(t.component_cyclic("Selection")),
+                        "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
+                        "if not set": prop(t.component_cyclic("Expression")),
+                        "if set": prop(t.component_cyclic("Expression")),
                     })),
-                    "state group": tstate(t.state_group({
-                        "decide": tstate(t.group({
-                            "source": prop(t.component_cyclic("Selection")),
-                            "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
-                            "type": prop(t.state_group({
-                                "partial": tstate(t.group({
-                                    "cases": prop(t.dictionary(t.component_cyclic("Expression"))),
-                                    "default": prop(t.component_cyclic("Expression")),
-                                })),
-                                "full": tstate(t.group({
-                                    "cases": prop(t.dictionary(t.component_cyclic("Expression"))),
-                                }))
+                    "state group": tstate(t.group({
+                        "source": prop(t.component_cyclic("Selection")),
+                        "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
+                        "type": prop(t.state_group({
+                            "partial": tstate(t.group({
+                                "cases": prop(t.dictionary(t.component_cyclic("Expression"))),
+                                "default": prop(t.component_cyclic("Expression")),
                             })),
+                            "full": tstate(t.group({
+                                "cases": prop(t.dictionary(t.component_cyclic("Expression"))),
+                            }))
                         })),
                     })),
                 })),
@@ -180,6 +175,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
 
         "Selection": type(t.group({
             "start": prop(t.state_group({
+                "implement me": tstate(t.nothing()),
                 "abort deprecated": tstate(t.nothing()),
                 "transform optional value deprecated": tstate(t.group({
                     "source": prop(t.component_cyclic("Selection")),

@@ -5,7 +5,7 @@ import * as _pdev from 'pareto-core-dev'
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 
-import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
+import { m, variable, e, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"
 
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
@@ -45,16 +45,16 @@ export const Schema = (
         {},
         $.types.dictionary.__d_map(($, key) => variable(
             t.component_imported("signatures", key, {}, []),
-            i.function_(
+            e.function_(
                 true,
-                i.call(
+                e.call(
                     s.from_variable_import(" i serialize", "Document", []),
-                    i.call(
+                    e.call(
                         s.from_variable_import(" i marshall", key, []),
-                        i.select_from_context([]),
+                        e.select_from_context_deprecated([]),
                         false,
                         {
-                            'value serializers': i.select_from_parameter("value serializers", []),
+                            'value serializers': e.select_from_parameter_deprecated("value serializers", []),
                         }
                     ),
                     false,

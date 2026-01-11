@@ -6,7 +6,7 @@ import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
-import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
+import { m, variable, e, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"
 
 
@@ -45,9 +45,9 @@ export const Schema = (
         {},
         $.types.dictionary.__d_map(($, key) => variable(
             t.component_imported("signatures", key, {}, []),
-            i.function_(
+            e.function_(
                 true,
-                i.implement_me(),
+                e.implement_me(),
             ),
 
         )),

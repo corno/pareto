@@ -6,7 +6,7 @@ import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
-import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
+import { m, variable, e, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"
 
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
@@ -41,7 +41,7 @@ export const Schema = (
     {},
     $.types.dictionary.__d_map(($, key) => variable(
         t.component_imported("signatures", key, {}, []),
-        i.function_(
+        e.function_(
             true,
             Type_Node(
                 $.node,
@@ -61,13 +61,13 @@ export const Type_Node = (
         'type': string
         'subselection': _pi.List<d_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>>
     },
-): d_out.Initialization<_pi.Deprecated_Source_Location> => {
+): d_out.Expression<_pi.Deprecated_Source_Location> => {
 
-    const string = (value: d_out.Initialization<_pi.Deprecated_Source_Location>, delimiter: 'quote' | 'backtick' | 'none'): d_out.Initialization<_pi.Deprecated_Source_Location> => {
-        return i.tagged_union(
+    const string = (value: d_out.Expression<_pi.Deprecated_Source_Location>, delimiter: 'quote' | 'backtick' | 'none'): d_out.Expression<_pi.Deprecated_Source_Location> => {
+        return e.tagged_union(
             "text",
-            i.group({
-                "delimiter": i.tagged_union(delimiter, i.null_()),
+            e.group({
+                "delimiter": e.tagged_union(delimiter, e.null_()),
                 "value": value,
             })
         )
@@ -75,7 +75,7 @@ export const Type_Node = (
 
     return _p.sg($, ($) => {
         switch ($[0]) {
-            case 'number': return _p.ss($, ($) => string(i.call(
+            case 'number': return _p.ss($, ($) => string(e.call(
                 s.from_parameter("value serializers", _p.sg($, ($) => {
                     switch ($[0]) {
                         case 'global': return _p.ss($, ($) => ["custom numbers", $.key])
@@ -83,26 +83,26 @@ export const Type_Node = (
                         default: return _p.au($[0])
                     }
                 })),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({}),
             ), 'backtick')) //FIXME should be 'none'
-            case 'boolean': return _p.ss($, ($) => string(i.call(
+            case 'boolean': return _p.ss($, ($) => string(e.call(
                 s.from_parameter("value serializers", ["boolean"]),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({}),
             ), 'backtick')) //FIXME should be 'none'
-            case 'nothing': return _p.ss($, ($) => i.tagged_union("nothing", i.null_()))
+            case 'nothing': return _p.ss($, ($) => e.tagged_union("nothing", e.null_()))
             case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
                 switch ($[0]) {
-                    case 'derived': return _p.ss($, ($) => i.tagged_union("nothing", i.null_()))
-                    case 'selected': return _p.ss($, ($) => string(i.select_from_context(["key"]), 'backtick'))
+                    case 'derived': return _p.ss($, ($) => e.tagged_union("nothing", e.null_()))
+                    case 'selected': return _p.ss($, ($) => string(e.select_from_context_deprecated(["key"]), 'backtick'))
                     default: return _p.au($[0])
                 }
             }))
-            case 'text': return _p.ss($, ($) => string(i.select_from_context([]), 'quote'))
-            case 'component': return _p.ss($, ($) => i.call(
+            case 'text': return _p.ss($, ($) => string(e.select_from_context_deprecated([]), 'quote'))
+            case 'component': return _p.ss($, ($) => e.call(
                 _p.sg($, ($) => {
                     switch ($[0]) {
                         case 'external': return _p.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
@@ -111,15 +111,15 @@ export const Type_Node = (
                         default: return _p.au($[0])
                     }
                 }),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "value serializers": i.select_from_parameter("value serializers", []),
+                    "value serializers": e.select_from_parameter_deprecated("value serializers", []),
                 }),
             ))
-            case 'dictionary': return _p.ss($, ($) => i.tagged_union(
+            case 'dictionary': return _p.ss($, ($) => e.tagged_union(
                 "dictionary",
-                i.dictionary_map(
+                e.dictionary_map(
                     $.ordered ? s.from_context(["dictionary"]) : s.from_context([]),
                     Type_Node(
                         $.node,
@@ -150,9 +150,9 @@ export const Type_Node = (
             //         }
             //     )
             // ))))
-            case 'group': return _p.ss($, ($) => i.tagged_union(
+            case 'group': return _p.ss($, ($) => e.tagged_union(
                 "verbose group",
-                i.dictionary_literal($.dictionary.__d_map(($, key) => i.change_context(
+                e.dictionary_literal($.dictionary.__d_map(($, key) => e.change_context(
                     s.from_context([key]),
                     Type_Node(
                         $.node,
@@ -168,9 +168,9 @@ export const Type_Node = (
                     )
                 )))
             ))
-            case 'list': return _p.ss($, ($) => i.tagged_union(
+            case 'list': return _p.ss($, ($) => e.tagged_union(
                 "list",
-                i.list_map(
+                e.list_map(
                     s.from_context([]),
                     Type_Node(
                         $.node,
@@ -185,11 +185,11 @@ export const Type_Node = (
                         }
                     )
                 )))
-            case 'optional': return _p.ss($, ($) => i.tagged_union(
+            case 'optional': return _p.ss($, ($) => e.tagged_union(
                 "optional",
-                i.optional_transform(
+                e.decide_optional(
                     s.from_context([]),
-                    i.tagged_union(
+                    e.tagged_union(
                         "set",
                         Type_Node(
                             $,
@@ -204,9 +204,9 @@ export const Type_Node = (
                             }
                         ),
                     ),
-                    i.tagged_union(
+                    e.tagged_union(
                         "not set",
-                        i.null_()
+                        e.null_()
                     ),
                     t.component_imported(
                         "out",
@@ -215,12 +215,12 @@ export const Type_Node = (
                         [sub.state_group("optional")]
                     ),
                 )))
-            case 'state group': return _p.ss($, ($) => i.tagged_union(
+            case 'state group': return _p.ss($, ($) => e.tagged_union(
                 "state",
-                i.switch_(
+                e.decide_state_group(
                     s.from_context([]),
-                    $.__d_map(($, key) => i.group({
-                        "state": i.string(key, 'quote'),
+                    $.__d_map(($, key) => e.group({
+                        "state": e.string(key, 'quote'),
                         "value": Type_Node(
                             $.node,
                             {

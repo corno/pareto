@@ -134,35 +134,30 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
             })),
             "decide": state(r.group({
                 "type": r.state_group({
-                    "boolean": state(r.state_group({
-                        "decide": state(r.group({
-                            "source": r.component("Selection", {}, {}),
-                            "if false": r.component("Expression", {}, {}),
-                            "if true": r.component("Expression", {}, {}),
-                        })),
+                    "boolean": state(r.group({
+                        "source": r.component("Selection", {}, {}),
+                        "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
+                        "if false": r.component("Expression", {}, {}),
+                        "if true": r.component("Expression", {}, {}),
                     })),
-                    "optional": state(r.state_group({
-                        "decide": state(r.group({
-                            "source": r.component("Selection", {}, {}),
-                            "if not set": r.component("Expression", {}, {}),
-                            "if set": r.component("Expression", {}, {}),
-                            "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
-                        })),
+                    "optional": state(r.group({
+                        "source": r.component("Selection", {}, {}),
+                        "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
+                        "if not set": r.component("Expression", {}, {}),
+                        "if set": r.component("Expression", {}, {}),
                     })),
-                    "state group": state(r.state_group({
-                        "decide": state(r.group({
-                            "source": r.component("Selection", {}, {}),
-                            "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
-                            "type": r.state_group({
-                                "partial": state(r.group({
-                                    "cases": r.dictionary(r.component("Expression", {}, {})),
-                                    "default": r.component("Expression", {}, {}),
-                                })),
-                                "full": state(r.group({
-                                    "cases": r.dictionary(r.component("Expression", {}, {})),
-                                }))
-                            }),
-                        })),
+                    "state group": state(r.group({
+                        "source": r.component("Selection", {}, {}),
+                        "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
+                        "type": r.state_group({
+                            "partial": state(r.group({
+                                "cases": r.dictionary(r.component("Expression", {}, {})),
+                                "default": r.component("Expression", {}, {}),
+                            })),
+                            "full": state(r.group({
+                                "cases": r.dictionary(r.component("Expression", {}, {})),
+                            }))
+                        }),
                     })),
                 }),
             })),
@@ -170,6 +165,8 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
 
         "Selection": resolver(r.group({
             "start": r.state_group({
+                "implement me": state(r.nothing()),
+
                 "abort deprecated": state(r.nothing()),
                 "transform optional value deprecated": state(r.group({
                     "source": r.component("Selection", {}, {}),

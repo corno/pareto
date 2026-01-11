@@ -6,7 +6,7 @@ import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
-import { m, variable, i, s, temp_ordered_variable } from "exupery/dist/shorthands/implementation"
+import { m, variable, e, s, temp_ordered_variable } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub as sub } from "exupery/dist/shorthands/interface"
 
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
@@ -61,18 +61,18 @@ export const Resolvers = (
                 t.component_imported("signatures", key, {
                     // "Source": t.component_imported("generic", "Location Info", {}, []),
                 }, []),
-                i.function_(
+                e.function_(
                     true,
-                    i.block(
+                    e.block(
                         [],
                         {
                             "l2s": variable(
                                 null,
-                                i.select_from_parameter("location 2 string", [])
+                                e.select_from_parameter_deprecated("location 2 string", [])
                             ),
                             "params": variable(
                                 null,
-                                i.select_from_parameter("parameters", [])
+                                e.select_from_parameter_deprecated("parameters", [])
                             )
                         },
                         Node_Resolver(
@@ -132,11 +132,11 @@ export const Possible_Value_Selection = (
 export const Optional_Value_Initialization = (
     $: d_in.Optional_Value_Initialization,
     $p: null,
-): d_out.Initialization<_pi.Deprecated_Source_Location> => _p.sg($, ($) => {
+): d_out.Expression<_pi.Deprecated_Source_Location> => _p.sg($, ($) => {
     switch ($[0]) {
-        case 'not set': return _p.ss($, ($) => i.not_set())
-        case 'selection': return _p.ss($, ($) => i.select(Possible_Value_Selection($, { 'tail': () => _p.list.literal([]) })))
-        case 'set': return _p.ss($, ($) => i.set(i.select(Guaranteed_Value_Selection($, { 'tail': () => _p.list.literal([]) }))))
+        case 'not set': return _p.ss($, ($) => e.not_set())
+        case 'selection': return _p.ss($, ($) => e.select_deprecated(Possible_Value_Selection($, { 'tail': () => _p.list.literal([]) })))
+        case 'set': return _p.ss($, ($) => e.set(e.select_deprecated(Guaranteed_Value_Selection($, { 'tail': () => _p.list.literal([]) }))))
         default: return _p.au($[0])
     }
 })
@@ -259,22 +259,21 @@ export const Lookup_Selection = (
 export const Option_Constraints = (
     $: d_in.Option_Constraints,
     $p: {
-        sub: () => d_out.Initialization<_pi.Deprecated_Source_Location>
+        sub: () => d_out.Expression<_pi.Deprecated_Source_Location>
     },
-): d_out.Initialization<_pi.Deprecated_Source_Location> => i.block(
+): d_out.Expression<_pi.Deprecated_Source_Location> => e.block(
     [],
-    op_pad_dictionary_identifiers($, { 'prefix': "c ", 'suffix': "" }).__d_map(($) => variable(null, i.select(_p.sg($, ($) => {
+    op_pad_dictionary_identifiers($, { 'prefix': "c ", 'suffix': "" }).__d_map(($) => variable(null, _p.sg($, ($) => {
         switch ($[0]) {
-            case 'state': return _p.ss($, ($) => s.implement_me()) // medium work
-            case 'assert is set': return _p.ss($, ($) => s.optional_transform(
+            case 'assert is set': return _p.ss($, ($) => e.decide_optional(
                 Possible_Value_Selection($, { 'tail': () => _p.list.literal([]) }),
-                s.from_context([]),
-                s.abort(),
-                []
+                e.select_from_context_deprecated([]),
+                e.implement_me(),
             ))
+            case 'state': return _p.ss($, ($) => e.implement_me()) // medium work
             default: return _p.au($[0])
         }
-    })))),
+    }))),
     $p.sub(),
 )
 
@@ -284,12 +283,12 @@ export const Node_Resolver = (
         'temp type': string
         'temp subselection': _pi.List<d_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> //can be removed when exupery has type inference
     },
-): d_out.Initialization<_pi.Deprecated_Source_Location> => _p.sg($, ($) => {
+): d_out.Expression<_pi.Deprecated_Source_Location> => _p.sg($, ($) => {
     switch ($[0]) {
-        case 'number': return _p.ss($, ($) => i.select_from_context([]))
-        case 'boolean': return _p.ss($, ($) => i.select_from_context([]))
-        case 'nothing': return _p.ss($, ($) => i.null_())
-        case 'reference': return _p.ss($, ($) => i.select(_p.sg($.type, ($): d_out.Selection<_pi.Deprecated_Source_Location> => {
+        case 'number': return _p.ss($, ($) => e.select_from_context_deprecated([]))
+        case 'boolean': return _p.ss($, ($) => e.select_from_context_deprecated([]))
+        case 'nothing': return _p.ss($, ($) => e.null_())
+        case 'reference': return _p.ss($, ($) => e.select_deprecated(_p.sg($.type, ($): d_out.Selection<_pi.Deprecated_Source_Location> => {
             switch ($[0]) {
                 case 'derived': return _p.ss($, ($) => Guaranteed_Value_Selection($.value, { 'tail': () => _p.list.literal([]) }))
                 case 'selected': return _p.ss($, ($) => {
@@ -300,8 +299,8 @@ export const Node_Resolver = (
                                 s.from_variable_import(" i generic", "get entry", []),
                                 Lookup_Selection(context.lookup, {}),
                                 {
-                                    "reference": i.select_from_context([]),
-                                    "location 2 string": i.select_from_variable("l2s", []),
+                                    "reference": e.select_from_context_deprecated([]),
+                                    "location 2 string": e.select_from_variable_deprecated("l2s", []),
                                 },
                                 []
                             ))
@@ -309,8 +308,8 @@ export const Node_Resolver = (
                                 s.from_variable_import(" i generic", "get possibly circular dependent sibling entry", []),
                                 Lookup_Selection(context.lookup, {}),
                                 {
-                                    "reference": i.select_from_context([]),
-                                    "location 2 string": i.select_from_variable("l2s", []),
+                                    "reference": e.select_from_context_deprecated([]),
+                                    "location 2 string": e.select_from_variable_deprecated("l2s", []),
                                 },
                                 []
                             ))
@@ -318,8 +317,8 @@ export const Node_Resolver = (
                                 s.from_variable_import(" i generic", "get entry from stack", []),
                                 Lookup_Selection(context.lookup, {}),
                                 {
-                                    "reference": i.select_from_context([]),
-                                    "location 2 string": i.select_from_variable("l2s", []),
+                                    "reference": e.select_from_context_deprecated([]),
+                                    "location 2 string": e.select_from_variable_deprecated("l2s", []),
                                 },
                                 []
                             ))
@@ -330,8 +329,8 @@ export const Node_Resolver = (
                 default: return _p.au($[0])
             }
         })))
-        case 'text': return _p.ss($, ($) => i.select_from_context([]))
-        case 'component': return _p.ss($, ($) => i.call(
+        case 'text': return _p.ss($, ($) => e.select_from_context_deprecated([]))
+        case 'component': return _p.ss($, ($) => e.call(
             _p.sg($.location, ($) => {
                 switch ($[0]) {
                     case 'external': return _p.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, `r ${$.type.key}`, []))
@@ -339,45 +338,45 @@ export const Node_Resolver = (
                     default: return _p.au($[0])
                 }
             }),
-            i.select_from_context([]),
+            e.select_from_context_deprecated([]),
             false,
             {
-                "location 2 string": i.select_from_variable("l2s", []),
+                "location 2 string": e.select_from_variable_deprecated("l2s", []),
                 "parameters": $.arguments.__decide(
-                    ($) => i.group({
+                    ($) => e.group({
                         "values": $.values.__decide(
-                            ($) => i.group($.__d_map(($) => _p.sg($, ($) => {
+                            ($) => e.group($.__d_map(($) => _p.sg($, ($) => {
                                 switch ($[0]) {
                                     case 'optional': return _p.ss($, ($) => Optional_Value_Initialization($, null))
-                                    case 'parameter': return _p.ss($, ($) => i.select_from_variable(
+                                    case 'parameter': return _p.ss($, ($) => e.select_from_variable_deprecated(
                                         "params",
                                         ["values", $.key],
                                     ))
-                                    case 'required': return _p.ss($, ($) => i.select(Guaranteed_Value_Selection($, { 'tail': () => _p.list.literal([]) })))
+                                    case 'required': return _p.ss($, ($) => e.select_deprecated(Guaranteed_Value_Selection($, { 'tail': () => _p.list.literal([]) })))
 
                                     default: return _p.au($[0])
                                 }
                             }))),
-                            () => i.select_from_variable("params", ["values"]),
+                            () => e.select_from_variable_deprecated("params", ["values"]),
                         ),
                         "lookups": $.lookups.__decide(
-                            ($) => i.group($.__d_map(($) => _p.sg($, ($) => {
+                            ($) => e.group($.__d_map(($) => _p.sg($, ($) => {
                                 switch ($[0]) {
-                                    case 'empty stack': return _p.ss($, ($) => i.list_literal([]))
-                                    case 'not set': return _p.ss($, ($) => i.not_set())
-                                    case 'selection': return _p.ss($, ($) => i.select(Lookup_Selection($, {})))
-                                    case 'stack': return _p.ss($, ($) => i.implement_me()) // quite some work
+                                    case 'empty stack': return _p.ss($, ($) => e.list_literal([]))
+                                    case 'not set': return _p.ss($, ($) => e.not_set())
+                                    case 'selection': return _p.ss($, ($) => e.select_deprecated(Lookup_Selection($, {})))
+                                    case 'stack': return _p.ss($, ($) => e.implement_me()) // quite some work
                                     default: return _p.au($[0])
                                 }
                             }))),
-                            () => i.select_from_variable("params", ["lookups"]),
+                            () => e.select_from_variable_deprecated("params", ["lookups"]),
                         ),
                     }),
-                    () => i.select_from_variable("params", [])
+                    () => e.select_from_variable_deprecated("params", [])
                 )
             },
         ))
-        case 'dictionary': return _p.ss($, ($) => i.block(
+        case 'dictionary': return _p.ss($, ($) => e.block(
             [],
             $.benchmark.__decide(
                 ($) => _p.dictionary.literal({
@@ -385,17 +384,17 @@ export const Node_Resolver = (
                     //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.list.literal([]) }),
                     //     e.string("FIXME", 'backtick'),
                     // ),
-                    "benchmark": variable(null, i.select(Guaranteed_Value_Selection($.selection, { 'tail': () => _p.list.literal([]) }))),
+                    "benchmark": variable(null, e.select_deprecated(Guaranteed_Value_Selection($.selection, { 'tail': () => _p.list.literal([]) }))),
                 }),
                 () => _p.dictionary.literal({})
             ),
-            i.call(
+            e.call(
                 s.from_variable_import(" i generic", $.definition.ordered ? "resolve ordered dictionary" : "resolve dictionary", []),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 {
                     //"denseness benchmark": e.not_set(),
-                    "map": i.function_(true, i.block(
+                    "map": e.function_(true, e.block(
                         [],
                         $.benchmark.__decide(
                             ($) => _p.dictionary.literal({
@@ -403,11 +402,11 @@ export const Node_Resolver = (
                                 //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.list.literal([]) }),
                                 //     e.string("FIXME", 'backtick'),
                                 // ),
-                                "linked entry": variable(null, i.implement_me()), // quite some work; a call to get_entry() from the selection (Guaranteed_Value_Selection), and then transform an optional value
+                                "linked entry": variable(null, e.implement_me()), // quite some work; a call to get_entry() from the selection (Guaranteed_Value_Selection), and then transform an optional value
                             }),
                             () => _p.dictionary.literal({})
                         ),
-                        i.change_context(
+                        e.change_context(
                             s.from_context(["value"]),
                             Node_Resolver(
                                 $.resolver,
@@ -428,12 +427,12 @@ export const Node_Resolver = (
 
 
                     ),
-                    "location 2 string": i.select_from_variable("l2s", []),
+                    "location 2 string": e.select_from_variable_deprecated("l2s", []),
 
                 }
             )
         ))
-        case 'group': return _p.ss($, ($) => i.block(
+        case 'group': return _p.ss($, ($) => e.block(
             $['ordered list'].__l_map(($) => temp_ordered_variable(
                 `p ${$.key}`,
                 t.component_imported(
@@ -447,7 +446,7 @@ export const Node_Resolver = (
                         ]
                     ]),
                 ),
-                i.change_context(
+                e.change_context(
                     s.from_context([$.key]),
                     Node_Resolver(
                         $.value.resolver,
@@ -464,11 +463,11 @@ export const Node_Resolver = (
                 )
             )),
             {},
-            i.group($.dictionary.__d_map(($, key) => i.select_from_variable(`p ${key}`, [])))
+            e.group($.dictionary.__d_map(($, key) => e.select_from_variable_deprecated(`p ${key}`, [])))
         ))
-        case 'list': return _p.ss($, ($) => i.list_map(
+        case 'list': return _p.ss($, ($) => e.list_map(
             s.from_context(["list"]),
-            i.change_context(
+            e.change_context(
                 s.from_context(["element"]),
                 Node_Resolver(
                     $.resolver,
@@ -484,7 +483,7 @@ export const Node_Resolver = (
                 )
             )
         ))
-        case 'optional': return _p.ss($, ($) => i.optional_map(
+        case 'optional': return _p.ss($, ($) => e.optional_map(
             s.from_context([]),
             Option_Constraints(
                 $.constraints,
@@ -504,9 +503,9 @@ export const Node_Resolver = (
                 }
             )
         ))
-        case 'state group': return _p.ss($, ($) => i.switch_(
+        case 'state group': return _p.ss($, ($) => e.decide_state_group(
             s.from_context(['state group']),
-            $.states.__d_map(($, key) => i.case_(key, Option_Constraints(
+            $.states.__d_map(($, key) => e.case_(key, Option_Constraints(
                 $.constraints,
                 {
                     'sub': () => Node_Resolver(

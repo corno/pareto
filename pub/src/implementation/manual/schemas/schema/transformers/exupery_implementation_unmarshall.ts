@@ -6,7 +6,7 @@ import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
-import { m, variable, i, s } from "exupery/dist/shorthands/implementation"
+import { m, variable, e, s } from "exupery/dist/shorthands/implementation"
 import { t, import_, sub } from "exupery/dist/shorthands/interface"
 
 
@@ -49,7 +49,7 @@ export const Schema = (
         {},
         $.types.dictionary.__d_map(($, key) => variable(
             t.component_imported("signatures", key, {}, []),
-            i.function_(
+            e.function_(
                 true,
                 Type_Node(
                     $.node,
@@ -72,15 +72,15 @@ export const Type_Node = (
         'temp subselection': _pi.List<d_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> //can be removed when exupery has type inference
         'constrained': boolean
     },
-): d_out.Initialization<_pi.Deprecated_Source_Location> => {
+): d_out.Expression<_pi.Deprecated_Source_Location> => {
     return _p.sg($, ($) => {
         switch ($[0]) {
-            case 'number': return _p.ss($, ($) => i.call(
+            case 'number': return _p.ss($, ($) => e.call(
                 s.from_variable_import(" i generic", "process number", []),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "deserializer": i.select_from_parameter("value deserializers", _p.sg($, ($) => {
+                    "deserializer": e.select_from_parameter_deprecated("value deserializers", _p.sg($, ($) => {
                         switch ($[0]) {
                             case 'global': return _p.ss($, ($) => ["custom numbers", $.key])
                             case 'local': return _p.ss($, ($) => ["default number"])
@@ -89,31 +89,31 @@ export const Type_Node = (
                     })),
                 }),
             ))
-            case 'boolean': return _p.ss($, ($) => i.call(
+            case 'boolean': return _p.ss($, ($) => e.call(
                 s.from_variable_import(" i generic", "process boolean", []),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "deserializer": i.select_from_parameter("value deserializers", ["boolean"]),
+                    "deserializer": e.select_from_parameter_deprecated("value deserializers", ["boolean"]),
                 })
             ))
-            case 'nothing': return _p.ss($, ($) => i.call(
+            case 'nothing': return _p.ss($, ($) => e.call(
                 s.from_variable_import(" i generic", "process nothing", []),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
                 })
             ))
             case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
                 switch ($[0]) {
-                    case 'derived': return _p.ss($, ($) => i.call(
+                    case 'derived': return _p.ss($, ($) => e.call(
                         s.from_variable_import(" i generic", "process derived reference", []),
-                        i.select_from_context([]),
+                        e.select_from_context_deprecated([]),
                         false,
                         _p.dictionary.literal({
                         })
                     ))
-                    case 'selected': return _p.ss($, ($) => i.call(
+                    case 'selected': return _p.ss($, ($) => e.call(
                         s.from_variable_import(" i generic", _p.sg($.dependency, ($) => {
                             switch ($[0]) {
                                 case 'acyclic': return "process selected reference"
@@ -122,7 +122,7 @@ export const Type_Node = (
                                 default: return _p.au($[0])
                             }
                         }), []),
-                        i.select_from_context([]),
+                        e.select_from_context_deprecated([]),
                         false,
                         _p.dictionary.literal({
                         })
@@ -130,14 +130,14 @@ export const Type_Node = (
                     default: return _p.au($[0])
                 }
             }))
-            case 'text': return _p.ss($, ($) => i.call(
+            case 'text': return _p.ss($, ($) => e.call(
                 s.from_variable_import(" i generic", "process text", []),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
                 })
             ))
-            case 'component': return _p.ss($, ($) => i.call(
+            case 'component': return _p.ss($, ($) => e.call(
                 _p.sg($, ($) => {
                     switch ($[0]) {
                         case 'external': return _p.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
@@ -146,18 +146,18 @@ export const Type_Node = (
                         default: return _p.au($[0])
                     }
                 }),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "value deserializers": i.select_from_parameter("value deserializers", []),
+                    "value deserializers": e.select_from_parameter_deprecated("value deserializers", []),
                 }),
             ))
-            case 'dictionary': return _p.ss($, ($) => i.call(
+            case 'dictionary': return _p.ss($, ($) => e.call(
                 s.from_variable_import(" i generic", $p.constrained ? "process unresolved dictionary" : "process unconstrained dictionary", []),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "value": i.function_(
+                    "value": e.function_(
                         false,
                         Type_Node(
                             $.node,
@@ -175,19 +175,19 @@ export const Type_Node = (
                     ),
                 })
             ))
-            case 'group': return _p.ss($, ($) => i.call(
+            case 'group': return _p.ss($, ($) => e.call(
                 s.from_variable_import(" i generic", "process group", []),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "properties": i.function_(
+                    "properties": e.function_(
                         false,
-                        i.group($.dictionary.__d_map(($, key) => i.change_context(
+                        e.group($.dictionary.__d_map(($, key) => e.change_context(
                             s.call(
                                 s.from_variable_import(" i generic", "get entry", []),
                                 s.from_context([]),
                                 _p.dictionary.literal({
-                                    "key": i.string(key, 'quote'),
+                                    "key": e.string(key, 'quote'),
                                 }),
                                 [],
                             ),
@@ -208,12 +208,12 @@ export const Type_Node = (
                     ),
                 })
             ))
-            case 'list': return _p.ss($, ($) => i.call(
+            case 'list': return _p.ss($, ($) => e.call(
                 s.from_variable_import(" i generic", $p.constrained ? "process unresolved list" : "process unconstrained list", []),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "value": i.function_(
+                    "value": e.function_(
                         false,
                         Type_Node(
                             $.node,
@@ -231,12 +231,12 @@ export const Type_Node = (
                     ),
                 })
             ))
-            case 'optional': return _p.ss($, ($) => i.call(
+            case 'optional': return _p.ss($, ($) => e.call(
                 s.from_variable_import(" i generic", "process optional", []),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "value": i.function_(
+                    "value": e.function_(
                         false,
                         Type_Node(
                             $,
@@ -254,14 +254,14 @@ export const Type_Node = (
                     ),
                 })
             ))
-            case 'state group': return _p.ss($, ($) => i.call(
+            case 'state group': return _p.ss($, ($) => e.call(
                 s.from_variable_import(" i generic", $p.constrained ? "process unresolved state group" : "process unconstrained state group", []),
-                i.select_from_context([]),
+                e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "states": i.dictionary_literal($.__d_map(($, key) => i.function_(
+                    "states": e.dictionary_literal($.__d_map(($, key) => e.function_(
                         false,
-                        i.case_(
+                        e.case_(
                             key,
                             Type_Node(
                                 $.node,
@@ -288,7 +288,7 @@ export const Type_Node = (
             ))
             // case 'type parameter': return _p.ss($, ($) => i.call(
             //     s.from_variable_import(" i generic", "process type parameter", []),
-            //     i.select_from_context([]),
+            //     i.select_from_context_deprecated([]),
             //     _p.dictionary.literal({
             //     })
             // ))
