@@ -432,7 +432,7 @@ export const Node_Resolver = (
             )
         ))
         case 'group': return _p.ss($, ($) => i.block(
-            $['ordered list'].map(($) => temp_ordered_variable(
+            $['ordered list'].__l_map(($) => temp_ordered_variable(
                 `p ${$.key}`,
                 t.component_imported(
                     "out",

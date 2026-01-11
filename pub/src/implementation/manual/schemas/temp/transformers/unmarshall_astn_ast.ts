@@ -19,7 +19,7 @@ type Key_Value_Pair<T> = {
 
 const op_group = <T>(
     $: _pi.List<Key_Value_Pair<T>>,
-): _pi.Dictionary<_pi.List<T>> => _p.dictionary.group_list($, ($) => $.key).map(($) => $.map(($) => $.value))
+): _pi.Dictionary<_pi.List<T>> => _p.dictionary.group_list($, ($) => $.key).map(($) => $.__l_map(($) => $.value))
 
 export const Optional_Node = (
     $: _pi.Optional_Value<d_in.Value>,
@@ -165,7 +165,7 @@ export const Node_Type = (
                                             case 'verbose group': return _p.ss($, ($) => $.entries)
                                             default: return _p.au($[0])
                                         }
-                                    }).map(($) => {
+                                    }).__l_map(($) => {
                                         return {
                                             'key': $.key.value,
                                             'value': $
@@ -179,7 +179,7 @@ export const Node_Type = (
                                                 'definition': prop_def,
                                             },
                                         )],
-                                        (): d_out.Entry => ['multiple', $.map(($): d_out.Entry_Data => ({
+                                        (): d_out.Entry => ['multiple', $.__l_map(($): d_out.Entry_Data => ({
                                             'node': Optional_Node(
                                                 $.value.__o_map(
                                                     ($) => $.value,
@@ -250,7 +250,7 @@ export const Node_Type = (
                                             case 'verbose group': return _p.ss($, ($) => $.entries)
                                             default: return _p.au($[0])
                                         }
-                                    }).map(($) => {
+                                    }).__l_map(($) => {
                                         return {
                                             'key': $.key.value,
                                             'value': $
@@ -291,7 +291,7 @@ export const Node_Type = (
                                                     )
                                                 }
                                             ).map(
-                                                ($) => $.map(
+                                                ($) => $.__l_map(
                                                     ($) => $.key.range
                                                 )
                                             ), //select the locations
@@ -315,7 +315,7 @@ export const Node_Type = (
                                                             ),
                                                             'key': $.key
                                                         }],
-                                                        (): d_out.Property => ['multiple', $.map(($): d_out.Entry_Data => ({
+                                                        (): d_out.Property => ['multiple', $.__l_map(($): d_out.Entry_Data => ({
                                                             'node': Optional_Node(
                                                                 $.value.__o_map(
                                                                     ($) => $.value,

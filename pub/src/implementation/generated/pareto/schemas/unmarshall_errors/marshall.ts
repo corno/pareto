@@ -50,7 +50,7 @@ export const Range: _i_signatures._T_Range = ($, $p) => ['verbose group', _p.dic
         }
     )),
 })]
-export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => ['verbose group', _p.dictionary.literal({
+export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.__l_map(($) => ['verbose group', _p.dictionary.literal({
     'range': _p.deprecated_cc($['range'], ($) => Range(
         $,
         {
@@ -66,7 +66,7 @@ export const Errors: _i_signatures._T_Errors = ($, $p) => ['list', $.map(($) => 
                         case 'invalid value type': return _p.ss($, ($) => ({
                             'state': "invalid value type",
                             'value': ['verbose group', _p.dictionary.literal({
-                                'expected': _p.deprecated_cc($['expected'], ($) => ['list', $.map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
+                                'expected': _p.deprecated_cc($['expected'], ($) => ['list', $.__l_map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
                                     switch ($[0]) {
                                         case 'text': return _p.ss($, ($) => ({
                                             'state': "text",

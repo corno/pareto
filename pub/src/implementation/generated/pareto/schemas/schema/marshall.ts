@@ -497,7 +497,7 @@ export const Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $p)
             'value serializers': $p['value serializers'],
         }
     )),
-    'tail': _p.deprecated_cc($['tail'], ($) => ['list', $.map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
+    'tail': _p.deprecated_cc($['tail'], ($) => ['list', $.__l_map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
         switch ($[0]) {
             case 'dictionary': return _p.ss($, ($) => ({
                 'state': "dictionary",
@@ -604,7 +604,7 @@ export const Signature: _i_signatures._T_Signature = ($, $p) => ['verbose group'
     'resolved parameters': _p.deprecated_cc($['resolved parameters'], ($) => ['nothing', null]),
 })]
 export const Relative_Value_Selection: _i_signatures._T_Relative_Value_Selection = ($, $p) => ['verbose group', _p.dictionary.literal({
-    'path': _p.deprecated_cc($['path'], ($) => ['list', $.map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
+    'path': _p.deprecated_cc($['path'], ($) => ['list', $.__l_map(($) => ['state', _p.deprecated_cc($, ($): _i_out._T_Value.SG.state => {
         switch ($[0]) {
             case 'component': return _p.ss($, ($) => ({
                 'state': "component",
@@ -823,7 +823,7 @@ export const Type_Specification: _i_signatures._T_Type_Specification = ($, $p) =
             'value serializers': $p['value serializers'],
         }
     )),
-    'schema path': _p.deprecated_cc($['schema path'], ($) => ['list', $.map(($) => ['text', ({
+    'schema path': _p.deprecated_cc($['schema path'], ($) => ['list', $.__l_map(($) => ['text', ({
         'delimiter': ['quote', null],
         'value': $,
     })])]),

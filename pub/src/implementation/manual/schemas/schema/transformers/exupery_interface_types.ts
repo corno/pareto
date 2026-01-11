@@ -104,7 +104,7 @@ export const r_Type_Reference = (
         }
 
     ): _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> => {
-        const tail: _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.tail.map(($) => _p.sg($, ($) => {
+        const tail: _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.tail.__l_map(($) => _p.sg($, ($) => {
             switch ($[0]) {
                 case 'dictionary': return _p.ss($, ($) => sh.sub.dictionary())
                 case 'group': return _p.ss($, ($) => sh.sub.group($.key))

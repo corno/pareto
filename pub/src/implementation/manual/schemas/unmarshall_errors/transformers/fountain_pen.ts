@@ -17,7 +17,7 @@ export const Errors = (
         'document path': string
     }
 ): d_out.Group => {
-    return sh.group([sh.g.sub($.map(($) => {
+    return sh.group([sh.g.sub($.__l_map(($) => {
         return sh.g.nested_block([
             sh.b.snippet(`${$p['document path']}:${$.range.start.relative.line + $p['line offset']}:${$.range.start.relative.column + $p['column offset']}: `),
             _p.sg($.type, ($) => {
@@ -42,7 +42,7 @@ export const Error_Type_Error = (
 ): d_out.Block_Part => _p.sg($, ($) => {
     switch ($[0]) {
         case 'duplicate property': return _p.ss($, ($) => sh.b.snippet(`Duplicate property "${$.name}"`))
-        case 'invalid value type': return _p.ss($, ($) => sh.b.snippet(`Invalid value type, expected ${s_list_of_separated_texts($.expected.map(($) => `'${$[0]}'`), { 'separator': ` or ` })}.`))
+        case 'invalid value type': return _p.ss($, ($) => sh.b.snippet(`Invalid value type, expected ${s_list_of_separated_texts($.expected.__l_map(($) => `'${$[0]}'`), { 'separator': ` or ` })}.`))
         case 'missing property': return _p.ss($, ($) => sh.b.snippet(`Missing property '${$.name}'`))
         case 'superfluous property': return _p.ss($, ($) => sh.b.snippet(`Superfluous property '${$.name}'`))
         case 'state': return _p.ss($, ($) => _p.sg($, ($) => {

@@ -2279,7 +2279,7 @@ export const Type_Specification: _i_signatures.Type_Specification = ($, $p) => _
                 'values': params.values,
             }
         }),
-        'schema path': $['schema path'].list.map(($) => $.element),
+        'schema path': $['schema path'].list.__l_map(($) => $.element),
         'type': $.type,
     }
 })

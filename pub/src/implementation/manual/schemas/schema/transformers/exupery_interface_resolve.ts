@@ -75,7 +75,7 @@ export const r_Type_Part_Reference = (
         $: d_in.Type_Node_Reference.tail,
 
     ): _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> => {
-        const tail: _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.map(($) => _p.sg($, ($) => {
+        const tail: _pi.List<d_out.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> = $.__l_map(($) => _p.sg($, ($) => {
             switch ($[0]) {
                 case 'dictionary': return _p.ss($, ($) => sub.dictionary())
                 case 'group': return _p.ss($, ($) => sub.group($.key))

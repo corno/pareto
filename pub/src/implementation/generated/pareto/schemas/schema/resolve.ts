@@ -273,7 +273,7 @@ export const r_Type_Node_Reference: _i_signatures._T_Type_Node_Reference = ($, $
                 }),
             }
         ))
-        const p_tail: _i_out._T_Type_Node_Reference.tail = _p.deprecated_cc($['tail'], ($) => $['list'].map(($) => _p.deprecated_cc($['element'], ($) => _p.deprecated_cc($['state group'], ($): _i_out._T_Type_Node_Reference.tail.L => {
+        const p_tail: _i_out._T_Type_Node_Reference.tail = _p.deprecated_cc($['tail'], ($) => $['list'].__l_map(($) => _p.deprecated_cc($['element'], ($) => _p.deprecated_cc($['state group'], ($): _i_out._T_Type_Node_Reference.tail.L => {
             switch ($[0]) {
                 case 'dictionary': return _p.ss($, ($) => ['dictionary', _p.deprecated_block(() => {
                     const c_definition = _pdev.implement_me("marker tbd")
@@ -705,7 +705,7 @@ export const r_Relative_Value_Selection: _i_signatures._T_Relative_Value_Selecti
     const l2s = $p['location 2 string']
     const params = $p['parameters']
     return _p.deprecated_block(() => {
-        const p_path: _i_out._T_Relative_Value_Selection.path = _p.deprecated_cc($['path'], ($) => $['list'].map(($) => _p.deprecated_cc($['element'], ($) => _p.deprecated_cc($['state group'], ($): _i_out._T_Relative_Value_Selection.path.L => {
+        const p_path: _i_out._T_Relative_Value_Selection.path = _p.deprecated_cc($['path'], ($) => $['list'].__l_map(($) => _p.deprecated_cc($['element'], ($) => _p.deprecated_cc($['state group'], ($): _i_out._T_Relative_Value_Selection.path.L => {
             switch ($[0]) {
                 case 'component': return _p.ss($, ($) => ['component', _p.deprecated_block(() => {
                     const c_definition = _pdev.implement_me("marker tbd")
@@ -2301,7 +2301,7 @@ export const r_Type_Specification: _i_signatures._T_Type_Specification = ($, $p)
                 }),
             }
         ))
-        const p_schema_path: _i_out._T_Type_Specification.schema_path = _p.deprecated_cc($['schema path'], ($) => $['list'].map(($) => _p.deprecated_cc($['element'], ($) => $)))
+        const p_schema_path: _i_out._T_Type_Specification.schema_path = _p.deprecated_cc($['schema path'], ($) => $['list'].__l_map(($) => _p.deprecated_cc($['element'], ($) => $)))
         const p_type: _i_out._T_Type_Specification._type = _p.deprecated_cc($['type'], ($) => $)
         return ({
             'schema': p_schema,
