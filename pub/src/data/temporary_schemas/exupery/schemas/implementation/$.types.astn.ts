@@ -49,6 +49,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
         }))),
 
         "Initialization": type(t.state_group({
+            "abort": tstate(t.component_cyclic("Initialization")),
             "block": tstate(t.group({
                 "variables": prop(t.component("Variables")),
                 "temp ordered variables": prop(t.list(t.group({ //FIXME: remove this as soon as the dependencies can be determined in the variables dictionary
@@ -70,7 +71,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             "transformation": tstate(t.group({
                 "source": prop(t.component_cyclic("Selection")),
                 "type": prop(t.state_group({
-                    "array": tstate(t.state_group({
+                    "list": tstate(t.state_group({
                         "map": tstate(t.component_cyclic("Initialization")),
                     })),
                     "boolean": tstate(t.state_group({
@@ -89,6 +90,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                         "call": tstate(t.group({
                             "context": prop(t.component_cyclic("Initialization")),
                             "arguments": prop(t.optional(t.dictionary(t.component_cyclic("Initialization")))),
+                            "abort": prop(t.boolean())
                         })),
                     })),
                     // "group": t.nothing(),
@@ -107,7 +109,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                     // "string": t.state_group({
                     //     "copy": t.nothing(),
                     // }),
-                    "tagged union": tstate(t.state_group({
+                    "state group": tstate(t.state_group({
                         "switch": tstate(t.group({
                             "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
                             "type": prop(t.state_group({
@@ -126,36 +128,36 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
         })),
 
         "Literal": type(t.state_group({
-            "array": tstate(t.list(t.component_cyclic("Initialization"))),
+            "list": tstate(t.list(t.component_cyclic("Initialization"))),
             "boolean": tstate(t.state_group({
                 "false": tstate(t.nothing()),
                 "true": tstate(t.nothing()),
             })),
             "dictionary": tstate(t.dictionary(t.component_cyclic("Initialization"))),
-            "function": tstate(t.group({
+            "deprecated function": tstate(t.group({
                 "initialization": prop(t.component_cyclic("Initialization")),
                 "temp has parameters": prop(t.boolean()),
                 "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
             })),
             "group": tstate(t.dictionary(t.component_cyclic("Initialization"))),
-            "null": tstate(t.nothing()),
+            "nothing": tstate(t.nothing()),
             "number": tstate(t.state_group({
-                "floting point": tstate(t.number_local(n.approximation(10))),
+                "approximation": tstate(t.number_local(n.approximation(10))),
                 "integer": tstate(t.number_local(n.integer())),
-                "signed integer": tstate(t.number_local(n.natural())),
+                "natural": tstate(t.number_local(n.natural())),
             })),
             "optional": tstate(t.state_group({
                 "not set": tstate(t.nothing()),
                 "set": tstate(t.component_cyclic("Initialization")),
             })),
-            "string": tstate(t.group({
+            "text": tstate(t.group({
                 "delimiter": prop(t.state_group({
                     "backtick": tstate(t.nothing()),
                     "quote": tstate(t.nothing()),
                 })),
                 "value": prop(t.text_local(text('single line'))),
             })),
-            "tagged union": tstate(t.group({
+            "state": tstate(t.group({
                 "case": prop(t.text_global("Identifier")),
                 "value": prop(t.component_cyclic("Initialization")),
             })),

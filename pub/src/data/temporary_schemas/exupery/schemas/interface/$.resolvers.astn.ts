@@ -15,8 +15,8 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
         "Module": resolver(r.group({
             "imports": r.component("Imports", {}, {}),
             "type parameters": r.component("Type Parameters", {}, {}),
-            "types": r.dictionary(r.group({
-                "parameters": r.component("Type Parameters", {}, {}),
+            "data types": r.dictionary(r.group({
+                "deprecated parameters": r.component("Type Parameters", {}, {}),
                 "type": r.component("Type", {}, {}),
             })),
         })),
@@ -64,28 +64,30 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                     "state group": state(r.text()),
                 })),
             })),
-            "computed": state(r.component("Type", {}, {})),
+            "circular dependent": state(r.component("Type", {}, {})),
             "dictionary": state(r.component("Type", {}, {})),
-            "function": state(r.group({
+            "deprecated function": state(r.group({
                 "type parameters": r.component("Type Parameters", {}, {}),
                 "context": r.component("Type", {}, {}),
                 "parameters": r.dictionary(r.component("Type", {}, {})),
                 "return": r.component("Type", {}, {}),
+                "abort": r.optional(r.component("Type", {}, {})),
             })),
             "group": state(r.dictionary(r.component("Type", {}, {}))),
-            "array": state(r.component("Type", {}, {})),
-            "null": state(r.nothing()),
+            "list": state(r.component("Type", {}, {})),
+            "nothing": state(r.nothing()),
 
             "number": state(r.state_group({
-                "integer": state(r.group({
-                    "signed": r.boolean()
+                "exact": state(r.state_group({
+                    "natural": state(r.nothing()),
+                    "integer": state(r.nothing()),
                 })),
-                "float": state(r.nothing()),
+                "approximation": state(r.nothing()),
             })),
             "optional": state(r.component("Type", {}, {})),
-            "parameter": state(r.component("Type Parameter Selection", {}, {})),
-            "tagged union": state(r.dictionary(r.component("Type", {}, {}))),
-            "string": state(r.nothing()),
+            "deprecated parameter": state(r.component("Type Parameter Selection", {}, {})),
+            "state group": state(r.dictionary(r.component("Type", {}, {}))),
+            "text": state(r.nothing()),
         })),
 
     })

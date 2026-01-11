@@ -39,6 +39,7 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
         }))),
 
         "Initialization": resolver(r.state_group({
+            "abort": state(r.component("Initialization", {}, {})),
             "block": state(r.group({
                 "variables": r.component("Variables", {}, {}),
                 "temp ordered variables": r.list(r.group({
@@ -59,7 +60,7 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
             "transformation": state(r.group({
                 "source": r.component("Selection", {}, {}),
                 "type": r.state_group({
-                    "array": state(r.state_group({
+                    "list": state(r.state_group({
                         "map": state(r.component("Initialization", {}, {})),
                     })),
                     "boolean": state(r.state_group({
@@ -76,6 +77,7 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                         "call": state(r.group({
                             "context": r.component("Initialization", {}, {}),
                             "arguments": r.optional(r.dictionary(r.component("Initialization", {}, {}))),
+                            "abort": r.boolean()
                         })),
                     })),
                     "optional": state(r.state_group({
@@ -86,7 +88,7 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                             "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
                         })),
                     })),
-                    "tagged union": state(r.state_group({
+                    "state group": state(r.state_group({
                         "switch": state(r.group({
                             "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
                             "type": r.state_group({
@@ -105,36 +107,36 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
         })),
 
         "Literal": resolver(r.state_group({
-            "array": state(r.list(r.component("Initialization", {}, {}))),
+            "list": state(r.list(r.component("Initialization", {}, {}))),
             "boolean": state(r.state_group({
                 "false": state(r.nothing()),
                 "true": state(r.nothing()),
             })),
             "dictionary": state(r.dictionary(r.component("Initialization", {}, {}))),
-            "function": state(r.group({
+            "deprecated function": state(r.group({
                 "initialization": r.component("Initialization", {}, {}),
                 "temp has parameters": r.boolean(),
                 "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
             })),
             "group": state(r.dictionary(r.component("Initialization", {}, {}))),
-            "null": state(r.nothing()),
+            "nothing": state(r.nothing()),
             "number": state(r.state_group({
-                "floting point": state(r.number()),
+                "approximation": state(r.number()),
                 "integer": state(r.number()),
-                "signed integer": state(r.number()),
+                "natural": state(r.number()),
             })),
             "optional": state(r.state_group({
                 "not set": state(r.nothing()),
                 "set": state(r.component("Initialization", {}, {})),
             })),
-            "string": state(r.group({
+            "text": state(r.group({
                 "delimiter": r.state_group({
                     "backtick": state(r.nothing()),
                     "quote": state(r.nothing()),
                 }),
                 "value": r.text(),
             })),
-            "tagged union": state(r.group({
+            "state": state(r.group({
                 "case": r.text(),
                 "value": r.component("Initialization", {}, {}),
             })),

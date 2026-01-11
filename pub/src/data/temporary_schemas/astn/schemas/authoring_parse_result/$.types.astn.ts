@@ -15,12 +15,7 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
     {
 
-        "Parse Result": type(t.state_group({
-            "failure": tstate(t.component("Parse Error")),
-            "success": tstate(t.component_external("parse tree", "Document")),
-        })),
-
-        "Parse Error": type(t.group({
+        "Error": type(t.group({
             "type": prop(t.state_group({
                 "lexer": tstate(t.state_group({
                     "unexpected control character": tstate(t.number_local(n.natural())),

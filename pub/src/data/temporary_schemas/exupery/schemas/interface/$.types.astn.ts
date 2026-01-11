@@ -25,8 +25,8 @@ export const $: g_.Types<_pi.Deprecated_Source_Location>  = types(
         "Module": type(t.group({
             "imports": prop(t.component("Imports")),
             "type parameters": prop(t.component("Type Parameters")),
-            "types": prop(t.dictionary(t.group({
-                "parameters": prop(t.component("Type Parameters")),
+            "data types": prop(t.dictionary(t.group({
+                "deprecated parameters": prop(t.component("Type Parameters")),
                 "type": prop(t.component_cyclic("Type")),
             }))),
         })),
@@ -56,6 +56,16 @@ export const $: g_.Types<_pi.Deprecated_Source_Location>  = types(
         })),
 
         "Type": type(t.state_group({
+
+            "deprecated function": tstate(t.group({
+                "type parameters": prop(t.component("Type Parameters")),
+                "context": prop(t.component_cyclic("Type")),
+                "parameters": prop(t.dictionary(t.component_cyclic("Type"))),
+                "return": prop(t.component_cyclic("Type")),
+                "abort": prop(t.optional(t.component_cyclic("Type"))),
+            })),
+            "deprecated parameter": tstate(t.component("Type Parameter Selection")),
+
             "boolean": tstate(t.nothing()),
             "component": tstate(t.group({
                 "location": prop(t.state_group({
@@ -74,27 +84,21 @@ export const $: g_.Types<_pi.Deprecated_Source_Location>  = types(
                     "state group": tstate(t.text_global("TBD")),
                 }))),
             })),
-            "computed": tstate(t.component_cyclic("Type")),
+            "circular dependent": tstate(t.component_cyclic("Type")),
             "dictionary": tstate(t.component_cyclic("Type")),
-            "function": tstate(t.group({
-                "type parameters": prop(t.component("Type Parameters")),
-                "context": prop(t.component_cyclic("Type")),
-                "parameters": prop(t.dictionary(t.component_cyclic("Type"))),
-                "return": prop(t.component_cyclic("Type")),
-            })),
             "group": tstate(t.dictionary(t.component_cyclic("Type"))),
-            "array": tstate(t.component_cyclic("Type")),
-            "null": tstate(t.nothing()),
+            "list": tstate(t.component_cyclic("Type")),
+            "nothing": tstate(t.nothing()),
             "number": tstate(t.state_group({
-                "integer": tstate(t.group({
-                    "signed": prop(t.boolean())
+                "exact": tstate(t.state_group({
+                    "natural": prop(t.nothing()),
+                    "integer": prop(t.nothing()),
                 })),
-                "float": tstate(t.nothing()),
+                "approximation": tstate(t.nothing()),
             })),
             "optional": tstate(t.component_cyclic("Type")),
-            "parameter": tstate(t.component("Type Parameter Selection")),
-            "tagged union": tstate(t.dictionary(t.component_cyclic("Type"))),
-            "string": tstate(t.nothing()),
+            "state group": tstate(t.dictionary(t.component_cyclic("Type"))),
+            "text": tstate(t.nothing()),
         })),
 
     }
