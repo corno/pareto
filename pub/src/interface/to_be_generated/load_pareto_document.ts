@@ -14,7 +14,7 @@ export type Error =
         // 'message': string,
         'file location': string
     }]
-    | ['parse error', d_parse_result.Parse_Error]
+    | ['parse error', d_parse_result.Error]
     | ['unmarshall error', null]
 
 export type Parameters = {

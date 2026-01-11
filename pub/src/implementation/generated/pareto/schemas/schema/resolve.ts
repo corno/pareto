@@ -1825,17 +1825,29 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _p.dep
                                         {
                                             'map': ($, $p) => _p.deprecated_block(() => {
                                                 const linked_entry = _pdev.implement_me("marker tbd")
-                                                return _p.deprecated_cc($['value'], ($) => _p.deprecated_cc(
-                                                    $['state group'], ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D => {
-                                                        switch ($[0]) {
-                                                            case 'empty stack': return _p.ss($, ($) => ['empty stack', _p.deprecated_block(() => {
-                                                                return null
-                                                            })])
-                                                            case 'not set': return _p.ss($, ($) => ['not set', _p.deprecated_block(() => {
-                                                                return null
-                                                            })])
-                                                            case 'selection': return _p.ss($, ($) => ['selection', _p.deprecated_block(() => {
-                                                                return r_Lookup_Selection(
+                                                return _p.deprecated_cc($['value'], ($) => _p.deprecated_cc($['state group'], ($): _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D => {
+                                                    switch ($[0]) {
+                                                        case 'empty stack': return _p.ss($, ($) => ['empty stack', _p.deprecated_block(() => {
+                                                            return null
+                                                        })])
+                                                        case 'not set': return _p.ss($, ($) => ['not set', _p.deprecated_block(() => {
+                                                            return null
+                                                        })])
+                                                        case 'selection': return _p.ss($, ($) => ['selection', _p.deprecated_block(() => {
+                                                            return r_Lookup_Selection(
+                                                                $,
+                                                                {
+                                                                    'location 2 string': l2s,
+                                                                    'parameters': ({
+                                                                        'values': params['values'],
+                                                                        'lookups': params['lookups'],
+                                                                    }),
+                                                                }
+                                                            )
+                                                        })])
+                                                        case 'stack': return _p.ss($, ($) => ['stack', _p.deprecated_block(() => {
+                                                            return _p.deprecated_block(() => {
+                                                                const p_stack: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG.stack.stack = _p.deprecated_cc($['stack'], ($) => r_Lookup_Selection(
                                                                     $,
                                                                     {
                                                                         'location 2 string': l2s,
@@ -1844,43 +1856,26 @@ export const r_Node_Resolver: _i_signatures._T_Node_Resolver = ($, $p) => _p.dep
                                                                             'lookups': params['lookups'],
                                                                         }),
                                                                     }
-                                                                )
-                                                            })])
-                                                            case 'stack': return _p.ss($, ($) => ['stack', _p.deprecated_block(() => {
-                                                                return _p.deprecated_block(() => {
-                                                                    const p_stack: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG.stack.stack = _p.deprecated_cc(
-                                                                        $['stack'], ($) => r_Lookup_Selection(
-                                                                            $,
-                                                                            {
-                                                                                'location 2 string': l2s,
-                                                                                'parameters': ({
-                                                                                    'values': params['values'],
-                                                                                    'lookups': params['lookups'],
-                                                                                }),
-                                                                            }
-                                                                        )
-                                                                    )
-                                                                    const p_element: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG.stack.element = _p.deprecated_cc(
-                                                                        $['element'], ($) => r_Lookup_Selection(
-                                                                            $,
-                                                                            {
-                                                                                'location 2 string': l2s,
-                                                                                'parameters': ({
-                                                                                    'values': params['values'],
-                                                                                    'lookups': params['lookups'],
-                                                                                }),
-                                                                            }
-                                                                        )
-                                                                    )
-                                                                    return ({
-                                                                        'stack': p_stack,
-                                                                        'element': p_element,
-                                                                    })
+                                                                ))
+                                                                const p_element: _i_out._T_Node_Resolver.SG.component._arguments.O.lookups.O.D.SG.stack.element = _p.deprecated_cc($['element'], ($) => r_Lookup_Selection(
+                                                                    $,
+                                                                    {
+                                                                        'location 2 string': l2s,
+                                                                        'parameters': ({
+                                                                            'values': params['values'],
+                                                                            'lookups': params['lookups'],
+                                                                        }),
+                                                                    }
+                                                                ))
+                                                                return ({
+                                                                    'stack': p_stack,
+                                                                    'element': p_element,
                                                                 })
-                                                            })])
-                                                            default: return _p.au($[0])
-                                                        }
-                                                    }))
+                                                            })
+                                                        })])
+                                                        default: return _p.au($[0])
+                                                    }
+                                                }))
                                             }),
                                             'location 2 string': l2s,
                                         }
