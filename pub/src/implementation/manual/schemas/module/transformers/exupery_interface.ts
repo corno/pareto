@@ -14,11 +14,12 @@ import * as t_exupery_interface_types from "../../../../manual/schemas/schema/tr
 export const Operations = ($: d_in.Operations): d_out.Type<_pi.Deprecated_Source_Location> => {
     return t.group($.__d_map(($) => _p.sg($, ($) => {
         switch ($[0]) {
-            case 'operation': return _p.ss($, ($) => t.function_(
+            case 'operation': return _p.ss($, ($) => t.deprecated_function_(
                 $['type parameters'].__d_map(($) => null),
                 t_exupery_interface_types.Type_Node($.context),
                 $.parameters.__d_map(($) => _p.sg($, ($) => t_exupery_interface_types.Type_Node($))),
                 t_exupery_interface_types.Type_Node($.result),
+                null,
             ))
             case 'set': return _p.ss($, ($) => Operations($))
             default: return _p.au($[0])
@@ -35,49 +36,49 @@ export const Module = ($: d_in.Module): d_out.Module_Set<_pi.Deprecated_Source_L
                 {
 
                     "Reference To Circular Dependent Sibling": type({ "Dictionary Entry": null }, t.group({
-                        "key": t.string(),
-                        "location": t.parameter_module("Source"),
+                        "key": t.text(),
+                        "location": t.deprecated_parameter_module("Source"),
                     })),
 
-                    "Derived Reference": type({ "Type": null }, t.null_()),
+                    "Derived Reference": type({ "Type": null }, t.nothing()),
 
                     "Dictionary": type({ "D": null }, t.group({
-                        "location": t.parameter_module("Source"),
+                        "location": t.deprecated_parameter_module("Source"),
                         "dictionary": t.dictionary(t.group({
-                            "location": t.parameter_module("Source"),
-                            "entry": t.parameter_type("D"),
+                            "location": t.deprecated_parameter_module("Source"),
+                            "entry": t.deprecated_parameter_type("D"),
                         })),
                     })),
 
                     "Ordered Dictionary": type({ "D": null }, t.group({
-                        "location": t.parameter_module("Source"),
+                        "location": t.deprecated_parameter_module("Source"),
                         "dictionary": t.dictionary(t.group({
-                            "location": t.parameter_module("Source"),
-                            "entry": t.parameter_type("D"),
+                            "location": t.deprecated_parameter_module("Source"),
+                            "entry": t.deprecated_parameter_type("D"),
                         })),
                     })),
 
                     "List": type({ "L": null }, t.group({
-                        "location": t.parameter_module("Source"),
-                        "list": t.array(t.group({
-                            "location": t.parameter_module("Source"),
-                            "element": t.parameter_type("L"),
+                        "location": t.deprecated_parameter_module("Source"),
+                        "list": t.list(t.group({
+                            "location": t.deprecated_parameter_module("Source"),
+                            "element": t.deprecated_parameter_type("L"),
                         })),
                     })),
 
                     "Reference To Normal Dictionary Entry": type({ "Dictionary Entry": null }, t.group({
-                        "key": t.string(),
-                        "location": t.parameter_module("Source"),
+                        "key": t.text(),
+                        "location": t.deprecated_parameter_module("Source"),
                     })),
 
                     "Reference To Stacked Dictionary Entry": type({ "Dictionary Entry": null }, t.group({
-                        "key": t.string(),
-                        "location": t.parameter_module("Source"),
+                        "key": t.text(),
+                        "location": t.deprecated_parameter_module("Source"),
                     })),
 
                     "State Group": type({ "SG": null }, t.group({
-                        "location": t.parameter_module("Source"), //needed for state constraints
-                        "state group": t.parameter_type("SG"),
+                        "location": t.deprecated_parameter_module("Source"), //needed for state constraints
+                        "state group": t.deprecated_parameter_type("SG"),
                     })),
                 },
             ),
@@ -86,47 +87,47 @@ export const Module = ($: d_in.Module): d_out.Module_Set<_pi.Deprecated_Source_L
                 { "Source": null },
                 {
                     "Reference To Circular Dependent Sibling": type({ "Dictionary Entry": null }, t.group({
-                        "key": t.string(),
-                        "entry": t.computed_value(t.parameter_type("Dictionary Entry")),
+                        "key": t.text(),
+                        "entry": t.computed_value(t.deprecated_parameter_type("Dictionary Entry")),
                     })),
 
-                    "Derived Reference": type({ "Type": null }, t.parameter_type("Type")),
+                    "Derived Reference": type({ "Type": null }, t.deprecated_parameter_type("Type")),
 
-                    "Dictionary": type({ "D": null }, t.dictionary(t.parameter_type("D"))),
+                    "Dictionary": type({ "D": null }, t.dictionary(t.deprecated_parameter_type("D"))),
 
                     "Ordered Dictionary": type({ "D": null }, t.group({
-                        "dictionary": t.dictionary(t.parameter_type("D")),
-                        "ordered list": t.array(t.group({
-                            "key": t.string(),
-                            "value": t.parameter_type("D")
+                        "dictionary": t.dictionary(t.deprecated_parameter_type("D")),
+                        "ordered list": t.list(t.group({
+                            "key": t.text(),
+                            "value": t.deprecated_parameter_type("D")
                         })),
                     })),
 
-                    "List": type({ "L": null }, t.array(t.parameter_type("L"))),
+                    "List": type({ "L": null }, t.list(t.deprecated_parameter_type("L"))),
 
                     "Reference To Normal Dictionary Entry": type({ "Dictionary Entry": null }, t.group({
-                        "key": t.string(),
-                        "entry": t.parameter_type("Dictionary Entry"),
+                        "key": t.text(),
+                        "entry": t.deprecated_parameter_type("Dictionary Entry"),
                     })),
 
                     "Reference To Stacked Dictionary Entry": type({ "Dictionary Entry": null }, t.group({
-                        "key": t.string(),
-                        "up steps": t.integer('unsigned'),
-                        "entry": t.parameter_type("Dictionary Entry"),
+                        "key": t.text(),
+                        "up steps": t.natural(),
+                        "entry": t.deprecated_parameter_type("Dictionary Entry"),
                     })),
 
-                    "State Group": type({ "SG": null }, t.parameter_type("SG")),
+                    "State Group": type({ "SG": null }, t.deprecated_parameter_type("SG")),
                 },
             ),
             "unconstrained.ts": m.module(
                 {},
                 { "Source": null },
                 {
-                    "Dictionary": type({ "D": null }, t.dictionary(t.parameter_type("D"))),
+                    "Dictionary": type({ "D": null }, t.dictionary(t.deprecated_parameter_type("D"))),
 
-                    "List": type({ "L": null }, t.array(t.parameter_type("L"))),
+                    "List": type({ "L": null }, t.list(t.deprecated_parameter_type("L"))),
 
-                    "State Group": type({ "SG": null }, t.parameter_type("SG")),
+                    "State Group": type({ "SG": null }, t.deprecated_parameter_type("SG")),
                 },
             ),
             // "unresolved.ts": m.module(
@@ -134,21 +135,21 @@ export const Module = ($: d_in.Module): d_out.Module_Set<_pi.Deprecated_Source_L
             //     { "Source": null },
             //     {
 
-            //         "Reference To Circular Dependent Sibling": type({ "Dictionary Entry": null }, t.string()),
+            //         "Reference To Circular Dependent Sibling": type({ "Dictionary Entry": null }, t.text()),
 
             //         "Derived Reference": type({ "Type": null }, t.null_()),
 
-            //         "Dictionary": type({ "D": null }, t.dictionary(t.parameter_type("D"))),
+            //         "Dictionary": type({ "D": null }, t.dictionary(t.deprecated_parameter_type("D"))),
 
-            //         "Ordered Dictionary": type({ "D": null }, t.dictionary(t.parameter_type("D"))),
+            //         "Ordered Dictionary": type({ "D": null }, t.dictionary(t.deprecated_parameter_type("D"))),
 
-            //         "List": type({ "L": null }, t.array(t.parameter_type("L"))),
+            //         "List": type({ "L": null }, t.list(t.deprecated_parameter_type("L"))),
 
-            //         "Reference To Normal Dictionary Entry": type({ "Dictionary Entry": null }, t.string()),
+            //         "Reference To Normal Dictionary Entry": type({ "Dictionary Entry": null }, t.text()),
 
-            //         "Reference To Stacked Dictionary Entry": type({ "Dictionary Entry": null }, t.string()),
+            //         "Reference To Stacked Dictionary Entry": type({ "Dictionary Entry": null }, t.text()),
 
-            //         "State Group": type({ "SG": null }, t.parameter_type("SG")),
+            //         "State Group": type({ "SG": null }, t.deprecated_parameter_type("SG")),
             //     },
             // ),
         }),

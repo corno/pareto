@@ -340,6 +340,7 @@ export const Node_Resolver = (
                 }
             }),
             i.select_from_context([]),
+            false,
             {
                 "location 2 string": i.select_from_variable("l2s", []),
                 "parameters": $.arguments.__decide(
@@ -391,6 +392,7 @@ export const Node_Resolver = (
             i.call(
                 s.from_variable_import(" i generic", $.definition.ordered ? "resolve ordered dictionary" : "resolve dictionary", []),
                 i.select_from_context([]),
+                false,
                 {
                     //"denseness benchmark": e.not_set(),
                     "map": i.function_(true, i.block(
@@ -464,7 +466,7 @@ export const Node_Resolver = (
             {},
             i.group($.dictionary.__d_map(($, key) => i.select_from_variable(`p ${key}`, [])))
         ))
-        case 'list': return _p.ss($, ($) => i.array_map(
+        case 'list': return _p.ss($, ($) => i.list_map(
             s.from_context(["list"]),
             i.change_context(
                 s.from_context(["element"]),

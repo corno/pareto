@@ -35,15 +35,24 @@ export const Schema = (
         {},
         {
             "Value Serializers": sh.type({}, sh.t.group({
-                "default number": sh.t.function_({}, sh.t.integer(), {}, sh.t.string()),
-                "boolean": sh.t.function_({}, sh.t.boolean(), {}, sh.t.string()),
-                "custom numbers": sh.t.group($.globals['number types'].__d_map(($) => sh.t.function_({}, _p.sg($.precision, ($) => {
-                    switch ($[0]) {
-                        case 'approximation': return _p.ss($, ($) => sh.t.float())
-                        case 'exact': return _p.ss($, ($) => sh.t.integer())
-                        default: return _p.au($[0])
-                    }
-                }), {}, sh.t.string())))
+                "default number": sh.t.deprecated_function_({}, sh.t.integer(), {}, sh.t.text(), null),
+                "boolean": sh.t.deprecated_function_({}, sh.t.boolean(), {}, sh.t.text(), null),
+                "custom numbers": sh.t.group($.globals['number types'].__d_map(
+                    ($) => sh.t.deprecated_function_(
+
+                        {},
+                        _p.sg($.precision, ($) => {
+                            switch ($[0]) {
+                                case 'approximation': return _p.ss($, ($) => sh.t.number_approximation())
+                                case 'exact': return _p.ss($, ($) => sh.t.integer())
+                                default: return _p.au($[0])
+                            }
+                        }),
+                        {},
+                        sh.t.text(),
+                        null,
+                    )
+                ))
             })),
         }
     )

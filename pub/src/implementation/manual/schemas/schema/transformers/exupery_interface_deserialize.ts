@@ -30,9 +30,9 @@ export const Schema = (
         ),
     },
     {},
-    $.types.dictionary.__d_map(($, key) => sh.type({}, sh.t.function_(
+    $.types.dictionary.__d_map(($, key) => sh.type({}, sh.t.deprecated_function_(
         {},
-        sh.t.string(),
+        sh.t.text(),
         {
             "value deserializers": sh.t.component_imported("vd", "Value Deserializers", {}, []),
         },
@@ -42,6 +42,7 @@ export const Schema = (
             {},
             []
         ),
+        null,
     ),
     )),
 )

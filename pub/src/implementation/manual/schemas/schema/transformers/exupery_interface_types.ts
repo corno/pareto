@@ -37,8 +37,8 @@ export const Schema = (
                     {
                         "Source": _p.sg($p['what to generate'], ($) => {
                             switch ($[0]) {
-                                case 'source': return _p.ss($, ($) => sh.t.null_())
-                                case 'target': return _p.ss($, ($) => $ ? sh.t.parameter_module("Source") : sh.t.null_())
+                                case 'source': return _p.ss($, ($) => sh.t.nothing())
+                                case 'target': return _p.ss($, ($) => $ ? sh.t.deprecated_parameter_module("Source") : sh.t.nothing())
                                 default: return _p.au($[0])
                             }
                         }),
@@ -65,7 +65,7 @@ export const Schema = (
 
                             case 'source': return _p.ss($, ($) => _p.dictionary.literal({}))
                             case 'target': return _p.ss($, ($) => $ ? _p.dictionary.literal({
-                                "Source": sh.t.parameter_module("Source"),
+                                "Source": sh.t.deprecated_parameter_module("Source"),
                             }) : _p.dictionary.literal({}))
                             default: return _p.au($[0])
                         }
@@ -147,12 +147,12 @@ export const Number_Type = (
     $: d_in.Number_Type
 ): d_out.Type<_pi.Deprecated_Source_Location> => _p.sg($.precision, ($) => {
     switch ($[0]) {
-        case 'approximation': return _p.ss($, ($) => sh.t.float())
+        case 'approximation': return _p.ss($, ($) => sh.t.number_approximation())
         case 'exact': return _p.ss($, ($) => _p.sg($.type, ($) => {
             switch ($[0]) {
-                case 'integer': return _p.ss($, ($) => sh.t.integer('signed'))
-                case 'natural': return _p.ss($, ($) => sh.t.integer('unsigned'))
-                case 'positive natural': return _p.ss($, ($) => sh.t.integer('unsigned'))
+                case 'integer': return _p.ss($, ($) => sh.t.integer())
+                case 'natural': return _p.ss($, ($) => sh.t.natural())
+                case 'positive natural': return _p.ss($, ($) => sh.t.natural())
                 default: return _p.au($[0])
             }
         }))
@@ -172,7 +172,7 @@ export const Type_Node = (
                 default: return _p.au($[0])
             }
         }))
-        case 'text': return _p.ss($, ($) => sh.t.string())
+        case 'text': return _p.ss($, ($) => sh.t.text())
         case 'component': return _p.ss($, ($) => _p.sg($, ($) => {
             switch ($[0]) {
                 case 'external': return _p.ss($, ($) => sh.t.component_imported(
@@ -214,7 +214,7 @@ export const Type_Node = (
                 []
             )
         })
-        case 'nothing': return _p.ss($, ($) => sh.t.null_())
+        case 'nothing': return _p.ss($, ($) => sh.t.nothing())
         case 'optional': return _p.ss($, ($) => sh.t.optional(Type_Node($)))
         case 'reference': return _p.ss($, ($) => {
             const referent = $.referent
@@ -252,11 +252,11 @@ export const Type_Node = (
             "core",
             "State Group",
             {
-                "SG": sh.t.tagged_union($.__d_map(($, key) => Type_Node($.node)))
+                "SG": sh.t.state_group($.__d_map(($, key) => Type_Node($.node)))
             },
             []
         ))
-        // case 'type parameter': return pa.ss($, ($) => sh.t.parameter_type($.key))
+        // case 'type parameter': return pa.ss($, ($) => sh.t.deprecated_parameter_type($.key))
         default: return _p.au($[0])
     }
 })

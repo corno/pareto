@@ -34,15 +34,23 @@ export const Schema = (
     {},
     {
         "Value Deserializers": sh.type({}, sh.t.group({
-            "default number": sh.t.function_({}, sh.t.string(), {}, sh.t.integer()),
-            "boolean": sh.t.function_({}, sh.t.string(), {}, sh.t.boolean()),
-            "custom numbers": sh.t.group($.globals['number types'].__d_map(($) => sh.t.function_({}, sh.t.string(), {}, _p.sg($.precision, ($) => {
-                switch ($[0]) {
-                    case 'approximation': return _p.ss($, ($) => sh.t.float())
-                    case 'exact': return _p.ss($, ($) => sh.t.integer())
-                    default: return _p.au($[0])
-                }
-            }))))
+            "default number": sh.t.deprecated_function_({}, sh.t.text(), {}, sh.t.integer(), null),
+            "boolean": sh.t.deprecated_function_({}, sh.t.text(), {}, sh.t.boolean(), null),
+            "custom numbers": sh.t.group($.globals['number types'].__d_map(
+                ($) => sh.t.deprecated_function_(
+                    {},
+                    sh.t.text(),
+                    {},
+                    _p.sg($.precision, ($) => {
+                        switch ($[0]) {
+                            case 'approximation': return _p.ss($, ($) => sh.t.number_approximation())
+                            case 'exact': return _p.ss($, ($) => sh.t.integer())
+                            default: return _p.au($[0])
+                        }
+                    }),
+                    null,
+                )
+            ))
         })),
     }
 )

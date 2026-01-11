@@ -21,18 +21,19 @@ export const Signatures = (
             "unresolved": import_.sibling("target", [], {}),
         },
         {},
-        $.dictionary.__d_map(($, key) => type({}, t.function_(
+        $.dictionary.__d_map(($, key) => type({}, t.deprecated_function_(
             { "Source": null },
             t.component_imported("unresolved", key, {
-                "Source": t.parameter_function("Source"),
+                "Source": t.deprecated_parameter_function("Source"),
             }, []),
             {
                 "parameters": r_Signature_Parameters($['resolved parameters']),
                 "location 2 string": t.component_imported("resolve", "Location 2 String", {
-                    "Source": t.parameter_function("Source"),
+                    "Source": t.deprecated_parameter_function("Source"),
                 }, []),
             },
             t.component_imported("resolved", key, {}, []),
+            null,
         ))),
     )
 }
