@@ -64,12 +64,18 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "initialization": prop(t.component_cyclic("Expression")),
             })),
             "initialize": tstate(t.state_group({
-                "list": tstate(t.list(t.component_cyclic("Expression"))),
-                "boolean": tstate(t.state_group({
-                    "false": tstate(t.nothing()),
-                    "true": tstate(t.nothing()),
+                "list": tstate(t.state_group({
+                    "literal": tstate(t.list(t.component_cyclic("Expression")))
                 })),
-                "dictionary": tstate(t.dictionary(t.component_cyclic("Expression"))),
+                "boolean": tstate(t.state_group({
+                    "literal": tstate(t.state_group({
+                        "false": tstate(t.nothing()),
+                        "true": tstate(t.nothing()),
+                    }))
+                })),
+                "dictionary": tstate(t.state_group({
+                    "literal": tstate(t.dictionary(t.component_cyclic("Expression"))),
+                })),
                 "deprecated function": tstate(t.group({
                     "initialization": prop(t.component_cyclic("Expression")),
                     "temp has parameters": prop(t.boolean()),
@@ -78,24 +84,36 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "group": tstate(t.dictionary(t.component_cyclic("Expression"))),
                 "nothing": tstate(t.nothing()),
                 "number": tstate(t.state_group({
-                    "approximation": tstate(t.number_local(n.approximation(10))),
-                    "integer": tstate(t.number_local(n.integer())),
-                    "natural": tstate(t.number_local(n.natural())),
+                    "approximation": tstate(t.state_group({
+                        "literal": tstate(t.number_local(n.approximation(10)))
+                    })),
+                    "integer": tstate(t.state_group({
+                        "literal": tstate(t.number_local(n.integer()))
+                    })),
+                    "natural": tstate(t.state_group({
+                        "literal": tstate(t.number_local(n.natural()))
+                    })),
                 })),
                 "optional": tstate(t.state_group({
-                    "not set": tstate(t.nothing()),
-                    "set": tstate(t.component_cyclic("Expression")),
+                    "literal": tstate(t.state_group({
+                        "not set": tstate(t.nothing()),
+                        "set": tstate(t.component_cyclic("Expression")),
+                    }))
                 })),
-                "text": tstate(t.group({
-                    "delimiter": prop(t.state_group({
-                        "backtick": tstate(t.nothing()),
-                        "quote": tstate(t.nothing()),
-                    })),
-                    "value": prop(t.text_local(text('single line'))),
+                "text": tstate(t.state_group({
+                    "literal": tstate(t.group({
+                        "delimiter": prop(t.state_group({
+                            "backtick": tstate(t.nothing()),
+                            "quote": tstate(t.nothing()),
+                        })),
+                        "value": prop(t.text_local(text('single line'))),
+                    }))
                 })),
-                "state": tstate(t.group({
-                    "case": prop(t.text_global("Identifier")),
-                    "value": prop(t.component_cyclic("Expression")),
+                "state group": tstate(t.state_group({
+                    "literal": tstate(t.group({
+                        "state": prop(t.text_global("Identifier")),
+                        "value": prop(t.component_cyclic("Expression")),
+                    }))
                 })),
             })),
             "selection": tstate(t.component_cyclic("Selection")),

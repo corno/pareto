@@ -1,6 +1,6 @@
 import * as _pi from 'pareto-core-interface'
 
-import { resolvers, r, resolver, sig, state } from "../../../../../shorthands/schema"
+import { resolvers, r, resolver, sig, state, st } from "../../../../../shorthands/schema"
 import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
 
 export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
@@ -54,12 +54,18 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                 "initialization": r.component("Expression", {}, {}),
             })),
             "initialize": state(r.state_group({
-                "list": state(r.list(r.component("Expression", {}, {}))),
-                "boolean": state(r.state_group({
-                    "false": state(r.nothing()),
-                    "true": state(r.nothing()),
+                "list": state(r.state_group({
+                    "literal": state(r.list(r.component("Expression", {}, {}))),
                 })),
-                "dictionary": state(r.dictionary(r.component("Expression", {}, {}))),
+                "boolean": state(r.state_group({
+                    "literal": state(r.state_group({
+                        "false": state(r.nothing()),
+                        "true": state(r.nothing()),
+                    }))
+                })),
+                "dictionary": state(r.state_group({
+                    "literal": state(r.dictionary(r.component("Expression", {}, {})))
+                })),
                 "deprecated function": state(r.group({
                     "initialization": r.component("Expression", {}, {}),
                     "temp has parameters": r.boolean(),
@@ -68,24 +74,36 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                 "group": state(r.dictionary(r.component("Expression", {}, {}))),
                 "nothing": state(r.nothing()),
                 "number": state(r.state_group({
-                    "approximation": state(r.number()),
-                    "integer": state(r.number()),
-                    "natural": state(r.number()),
+                    "approximation": state(r.state_group({
+                        "literal": state(r.number())
+                    })),
+                    "integer": state(r.state_group({
+                        "literal": state(r.number())
+                    })),
+                    "natural": state(r.state_group({
+                        "literal": state(r.number())
+                    })),
                 })),
                 "optional": state(r.state_group({
-                    "not set": state(r.nothing()),
-                    "set": state(r.component("Expression", {}, {})),
+                    "literal": state(r.state_group({
+                        "not set": state(r.nothing()),
+                        "set": state(r.component("Expression", {}, {})),
+                    })),
                 })),
-                "text": state(r.group({
-                    "delimiter": r.state_group({
-                        "backtick": state(r.nothing()),
-                        "quote": state(r.nothing()),
-                    }),
-                    "value": r.text(),
+                "text": state(r.state_group({
+                    "literal": state(r.group({
+                        "delimiter": r.state_group({
+                            "backtick": state(r.nothing()),
+                            "quote": state(r.nothing()),
+                        }),
+                        "value": r.text(),
+                    }))
                 })),
-                "state": state(r.group({
-                    "case": r.text(),
-                    "value": r.component("Expression", {}, {}),
+                "state group": state(r.state_group({
+                    "literal": state(r.group({
+                        "state": r.text(),
+                        "value": r.component("Expression", {}, {}),
+                    })),
                 })),
             })),
             "selection": state(r.component("Selection", {}, {})),
