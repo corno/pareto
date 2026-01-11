@@ -29,8 +29,7 @@ export const Schema = (
             {},
         ),
     },
-    {},
-    $.types.dictionary.__d_map(($, key) => sh.type({}, sh.t.deprecated_function_(
+    $.types.dictionary.__d_map(($, key) => sh.type({}, sh.t.deprecated_transformer_(
         {},
         sh.t.text(),
         {
@@ -42,7 +41,6 @@ export const Schema = (
             {},
             []
         ),
-        null,
     ),
     )),
 )

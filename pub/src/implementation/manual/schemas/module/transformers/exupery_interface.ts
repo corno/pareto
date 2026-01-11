@@ -14,12 +14,11 @@ import * as t_exupery_interface_types from "../../../../manual/schemas/schema/tr
 export const Operations = ($: d_in.Operations): d_out.Type<_pi.Deprecated_Source_Location> => {
     return t.group($.__d_map(($) => _p.sg($, ($) => {
         switch ($[0]) {
-            case 'operation': return _p.ss($, ($) => t.deprecated_function_(
+            case 'operation': return _p.ss($, ($) => t.deprecated_transformer_(
                 $['type parameters'].__d_map(($) => null),
                 t_exupery_interface_types.Type_Node($.context),
                 $.parameters.__d_map(($) => _p.sg($, ($) => t_exupery_interface_types.Type_Node($))),
                 t_exupery_interface_types.Type_Node($.result),
-                null,
             ))
             case 'set': return _p.ss($, ($) => Operations($))
             default: return _p.au($[0])
@@ -30,7 +29,7 @@ export const Operations = ($: d_in.Operations): d_out.Type<_pi.Deprecated_Source
 export const Module = ($: d_in.Module): d_out.Module_Set<_pi.Deprecated_Source_Location> => {
     return _psh.wrap_dictionary({
         "core": m.set({
-            "unresolved.ts": m.module(
+            "unresolved.ts": m.module_with_type_parameters_deprecated(
                 {},
                 { "Source": null },
                 {
@@ -82,13 +81,13 @@ export const Module = ($: d_in.Module): d_out.Module_Set<_pi.Deprecated_Source_L
                     })),
                 },
             ),
-            "resolved.ts": m.module(
+            "resolved.ts": m.module_with_type_parameters_deprecated(
                 {},
                 { "Source": null },
                 {
                     "Reference To Circular Dependent Sibling": type({ "Dictionary Entry": null }, t.group({
                         "key": t.text(),
-                        "entry": t.computed_value(t.deprecated_parameter_type("Dictionary Entry")),
+                        "entry": t.circular_dependent(t.deprecated_parameter_type("Dictionary Entry")),
                     })),
 
                     "Derived Reference": type({ "Type": null }, t.deprecated_parameter_type("Type")),
@@ -119,7 +118,7 @@ export const Module = ($: d_in.Module): d_out.Module_Set<_pi.Deprecated_Source_L
                     "State Group": type({ "SG": null }, t.deprecated_parameter_type("SG")),
                 },
             ),
-            "unconstrained.ts": m.module(
+            "unconstrained.ts": m.module_with_type_parameters_deprecated(
                 {},
                 { "Source": null },
                 {

@@ -20,8 +20,7 @@ export const Signatures = (
             "resolved": import_.sibling("source", [], {}),
             "unresolved": import_.sibling("target", [], {}),
         },
-        {},
-        $.dictionary.__d_map(($, key) => type({}, t.deprecated_function_(
+        $.dictionary.__d_map(($, key) => type({}, t.deprecated_transformer_(
             { "Source": null },
             t.component_imported("unresolved", key, {
                 "Source": t.deprecated_parameter_function("Source"),
@@ -33,7 +32,6 @@ export const Signatures = (
                 }, []),
             },
             t.component_imported("resolved", key, {}, []),
-            null,
         ))),
     )
 }

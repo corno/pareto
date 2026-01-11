@@ -18,7 +18,7 @@ export const Schema = (
         | ['target', boolean] //annotated?
         | ['source', null]
     }
-): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => sh.m.module(
+): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => sh.m.module_with_type_parameters_deprecated(
     op_flatten_dictionary(
         _p.dictionary.literal({
             "core": _p.dictionary.literal({

@@ -6,8 +6,8 @@ import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
-import { m, variable, e, s } from "exupery/dist/shorthands/implementation"
-import { t, import_, sub } from "exupery/dist/shorthands/interface"
+import * as sh from "exupery/dist/shorthands/implementation"
+import * as sh_i from "exupery/dist/shorthands/interface"
 
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 
@@ -20,15 +20,15 @@ export const Types = (
         'constrained': boolean
     }
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
-    return m.module(
+    return sh.m.module(
         'refiner',
         op_flatten_dictionary(
             _p.dictionary.literal({
                 "": _p.dictionary.literal({
-                    "signatures": import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, "migration boilerplate"], {}),
-                    "out": import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, $p.constrained ? "unresolved" : "unconstrained"], $p.constrained ? { "Source": t.nothing() } : {}),
+                    "signatures": sh_i.import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, "migration boilerplate"], {}),
+                    "out": sh_i.import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, $p.constrained ? "unresolved" : "unconstrained"], $p.constrained ? { "Source": sh_i.t.nothing() } : {}),
                 }),
-                "r ": $p.imports.__d_map(($, key) => import_.ancestor(1, $['schema set child'].key, ["migration boilerplate"], {}))
+                "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["migration boilerplate"], {}))
             }),
             {
                 'separator': "",
@@ -36,19 +36,16 @@ export const Types = (
             () => _p.unreachable_code_path(),
         ),
         {},
-        $.dictionary.__d_map(($, key) => variable(
-            t.component_imported("signatures", key, {}, []),
-            e.function_(
-                false,
-                Type_Node(
-                    $.node,
-                    {
-                        'type': key,
-                        'subselection': _p.list.literal([])
-                    }
-                ),
+        $.dictionary.__d_map(($, key) => sh.algorithm(
+            sh_i.t.component_imported("signatures", key, {}, []),
+            false,
+            Type_Node(
+                $.node,
+                {
+                    'type': key,
+                    'subselection': _p.list.literal([])
+                }
             ),
-
         )),
     )
 }
@@ -62,32 +59,32 @@ export const Type_Node = (
 ): d_out.Expression<_pi.Deprecated_Source_Location> => {
     return _p.sg($, ($) => {
         switch ($[0]) {
-            case 'number': return _p.ss($, ($) => e.select_from_context_deprecated([]))
-            case 'boolean': return _p.ss($, ($) => e.select_from_context_deprecated([]))
-            case 'nothing': return _p.ss($, ($) => e.null_())
+            case 'number': return _p.ss($, ($) => sh.e.select_from_context_deprecated([]))
+            case 'boolean': return _p.ss($, ($) => sh.e.select_from_context_deprecated([]))
+            case 'nothing': return _p.ss($, ($) => sh.e.null_())
             case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
                 switch ($[0]) {
-                    case 'derived': return _p.ss($, ($) => e.null_())
-                    case 'selected': return _p.ss($, ($) => e.select_from_context_deprecated(["key"]))
+                    case 'derived': return _p.ss($, ($) => sh.e.null_())
+                    case 'selected': return _p.ss($, ($) => sh.e.select_from_context_deprecated(["key"]))
                     default: return _p.au($[0])
                 }
             }))
-            case 'text': return _p.ss($, ($) => e.select_from_context_deprecated([]))
-            case 'component': return _p.ss($, ($) => e.call(
+            case 'text': return _p.ss($, ($) => sh.e.select_from_context_deprecated([]))
+            case 'component': return _p.ss($, ($) => sh.e.call(
                 _p.sg($, ($) => {
                     switch ($[0]) {
-                        case 'external': return _p.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
-                        case 'internal': return _p.ss($, ($) => s.from_variable($.key, []))
-                        case 'internal cyclic': return _p.ss($, ($) => s.from_variable($.key, []))
+                        case 'external': return _p.ss($, ($) => sh.s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
+                        case 'internal': return _p.ss($, ($) => sh.s.from_variable($.key, []))
+                        case 'internal cyclic': return _p.ss($, ($) => sh.s.from_variable($.key, []))
                         default: return _p.au($[0])
                     }
                 }),
-                e.select_from_context_deprecated([]),
+                sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({}),
             ))
-            case 'dictionary': return _p.ss($, ($) => e.dictionary_map(
-                $.ordered ? s.from_context(["dictionary"]) : s.from_context([]),
+            case 'dictionary': return _p.ss($, ($) => sh.e.dictionary_map(
+                $.ordered ? sh.s.from_context(["dictionary"]) : sh.s.from_context([]),
                 Type_Node(
                     $.node,
                     {
@@ -95,14 +92,14 @@ export const Type_Node = (
                         'subselection': _p.list.nested_literal([
                             $p.subselection,
                             [
-                                sub.dictionary()
+                                sh_i.sub.dictionary()
                             ]
                         ]),
                     }
                 )
             ))
-            case 'group': return _p.ss($, ($) => e.group($.dictionary.__d_map(($, key) => e.change_context(
-                s.from_context([key]),
+            case 'group': return _p.ss($, ($) => sh.e.group($.dictionary.__d_map(($, key) => sh.e.change_context(
+                sh.s.from_context([key]),
                 Type_Node(
                     $.node,
                     {
@@ -110,14 +107,14 @@ export const Type_Node = (
                         'subselection': _p.list.nested_literal([
                             $p.subselection,
                             [
-                                sub.group(key)
+                                sh_i.sub.group(key)
                             ]
                         ]),
                     }
                 )
             ))))
-            case 'list': return _p.ss($, ($) => e.list_map(
-                s.from_context([]),
+            case 'list': return _p.ss($, ($) => sh.e.list_map(
+                sh.s.from_context([]),
                 Type_Node(
                     $.node,
                     {
@@ -125,14 +122,14 @@ export const Type_Node = (
                         'subselection': _p.list.nested_literal([
                             $p.subselection,
                             [
-                                sub.list()
+                                sh_i.sub.list()
                             ]
                         ]),
                     }
                 )
             ))
-            case 'optional': return _p.ss($, ($) => e.optional_map(
-                s.from_context([]),
+            case 'optional': return _p.ss($, ($) => sh.e.optional_map(
+                sh.s.from_context([]),
                 Type_Node(
                     $,
                     {
@@ -140,27 +137,27 @@ export const Type_Node = (
                         'subselection': _p.list.nested_literal([
                             $p.subselection,
                             [
-                                sub.optional()
+                                sh_i.sub.optional()
                             ]
                         ]),
                     }
                 )
             ))
-            case 'state group': return _p.ss($, ($) => e.decide_state_group(
-                s.from_context([]),
-                $.__d_map(($, key) => e.case_(key, Type_Node(
+            case 'state group': return _p.ss($, ($) => sh.e.decide_state_group(
+                sh.s.from_context([]),
+                $.__d_map(($, key) => sh.e.case_(key, Type_Node(
                     $.node,
                     {
                         'type': $p.type,
                         'subselection': _p.list.nested_literal([
                             $p.subselection,
                             [
-                                sub.state_group(key)
+                                sh_i.sub.state_group(key)
                             ]
                         ]),
                     }
                 ))),
-                t.component_imported(
+                sh_i.t.component_imported(
                     "out",
                     $p.type,
                     {},

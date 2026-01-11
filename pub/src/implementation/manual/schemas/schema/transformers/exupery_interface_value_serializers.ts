@@ -32,13 +32,12 @@ export const Schema = (
                 {},
             )
         },
-        {},
         {
             "Value Serializers": sh.type({}, sh.t.group({
-                "default number": sh.t.deprecated_function_({}, sh.t.integer(), {}, sh.t.text(), null),
-                "boolean": sh.t.deprecated_function_({}, sh.t.boolean(), {}, sh.t.text(), null),
+                "default number": sh.t.deprecated_transformer_({}, sh.t.integer(), {}, sh.t.text()),
+                "boolean": sh.t.deprecated_transformer_({}, sh.t.boolean(), {}, sh.t.text()),
                 "custom numbers": sh.t.group($.globals['number types'].__d_map(
-                    ($) => sh.t.deprecated_function_(
+                    ($) => sh.t.deprecated_transformer_(
 
                         {},
                         _p.sg($.precision, ($) => {
@@ -50,7 +49,6 @@ export const Schema = (
                         }),
                         {},
                         sh.t.text(),
-                        null,
                     )
                 ))
             })),

@@ -31,25 +31,27 @@ export const Schema = (
             {},
         )
     },
-    {},
-    $.types.dictionary.__d_map(($, key) => sh.type({}, sh.t.deprecated_function_(
-        {},
-        sh.t.component_imported(
-            "in",
-            key,
+    $.types.dictionary.__d_map(
+        ($, key) => sh.type(
             {},
-            []
-        ),
-        {},
-        sh.t.component_imported(
-            "out",
-            key,
-            $p.constrained ? {
-                "annotation": sh.t.nothing()
-            } : {},
-            []
-        ),
-        null,
+            sh.t.deprecated_transformer_(
+                {},
+                sh.t.component_imported(
+                    "in",
+                    key,
+                    {},
+                    []
+                ),
+                {},
+                sh.t.component_imported(
+                    "out",
+                    key,
+                    $p.constrained ? {
+                        "annotation": sh.t.nothing()
+                    } : {},
+                    []
+                ),
+            )
+        )
     ),
-    )),
 )

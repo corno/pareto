@@ -2,44 +2,46 @@ import * as _pi from 'pareto-core-interface'
 import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
+//data types
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
-import { m, variable, e, s } from "exupery/dist/shorthands/implementation"
-import { t, import_, sub } from "exupery/dist/shorthands/interface"
+//shorthands
+import * as sh from "exupery/dist/shorthands/implementation"
+import * as sh_i from "exupery/dist/shorthands/interface"
 
-
+//dependencies
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 
-
-export const Schema = (
-    $: d_in.Schema,
-    $p: {
+export const Schema: _pi.Transformer_With_Parameters<
+    d_in.Schema,
+    d_out.Module_Set.D<_pi.Deprecated_Source_Location>,
+    {
         'path': _pi.List<string>,
         'imports': d_in.Imports,
         'constrained': boolean
     }
-): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
-    return m.module(
+> = ($, $p) => {
+    return sh.m.module(
         'refiner',
         op_flatten_dictionary(
             _p.dictionary.literal({
                 "": _p.dictionary.literal({
-                    "generic": import_.ancestor(2, "generic", ["unmarshall"], {}),
-                    "signatures": import_.ancestor(5, "interface", _p.list.nested_literal([
+                    "generic": sh_i.import_.ancestor(2, "generic", ["unmarshall"], {}),
+                    "signatures": sh_i.import_.ancestor(5, "interface", _p.list.nested_literal([
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _p.list.literal(["unmarshall"]),
                     ]), {}),
-                    "in": import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn source"], {}),
-                    "out": import_.ancestor(5, "interface", _p.list.nested_literal([
+                    "in": sh_i.import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn source"], {}),
+                    "out": sh_i.import_.ancestor(5, "interface", _p.list.nested_literal([
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _p.list.literal(["data types", "target"]),
-                    ]), $p.constrained ? { "Source": t.component_imported("in", "Range", {}, []) } : {}),
+                    ]), $p.constrained ? { "Source": sh_i.t.component_imported("in", "Range", {}, []) } : {}),
                 }),
-                "r ": $p.imports.__d_map(($, key) => import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))
+                "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))
             }),
             {
                 'separator': "",
@@ -47,20 +49,17 @@ export const Schema = (
             () => _p.unreachable_code_path(),
         ),
         {},
-        $.types.dictionary.__d_map(($, key) => variable(
-            t.component_imported("signatures", key, {}, []),
-            e.function_(
-                true,
-                Type_Node(
-                    $.node,
-                    {
-                        'temp type': key,
-                        'temp subselection': _p.list.literal([]),
-                        'constrained': $p.constrained
-                    }
-                ),
+        $.types.dictionary.__d_map(($, key) => sh.algorithm(
+            sh_i.t.component_imported("signatures", key, {}, []),
+            true,
+            Type_Node(
+                $.node,
+                {
+                    'temp type': key,
+                    'temp subselection': _p.list.literal([]),
+                    'constrained': $p.constrained
+                }
             ),
-
         )),
     )
 }
@@ -75,89 +74,35 @@ export const Type_Node = (
 ): d_out.Expression<_pi.Deprecated_Source_Location> => {
     return _p.sg($, ($) => {
         switch ($[0]) {
-            case 'number': return _p.ss($, ($) => e.call(
-                s.from_variable_import(" i generic", "process number", []),
-                e.select_from_context_deprecated([]),
+            case 'boolean': return _p.ss($, ($) => sh.e.call(
+                sh.s.from_variable_import(" i generic", "process boolean", []),
+                sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "deserializer": e.select_from_parameter_deprecated("value deserializers", _p.sg($, ($) => {
-                        switch ($[0]) {
-                            case 'global': return _p.ss($, ($) => ["custom numbers", $.key])
-                            case 'local': return _p.ss($, ($) => ["default number"])
-                            default: return _p.au($[0])
-                        }
-                    })),
-                }),
-            ))
-            case 'boolean': return _p.ss($, ($) => e.call(
-                s.from_variable_import(" i generic", "process boolean", []),
-                e.select_from_context_deprecated([]),
-                false,
-                _p.dictionary.literal({
-                    "deserializer": e.select_from_parameter_deprecated("value deserializers", ["boolean"]),
+                    "deserializer": sh.e.select_from_parameter_deprecated("value deserializers", ["boolean"]),
                 })
             ))
-            case 'nothing': return _p.ss($, ($) => e.call(
-                s.from_variable_import(" i generic", "process nothing", []),
-                e.select_from_context_deprecated([]),
-                false,
-                _p.dictionary.literal({
-                })
-            ))
-            case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
-                switch ($[0]) {
-                    case 'derived': return _p.ss($, ($) => e.call(
-                        s.from_variable_import(" i generic", "process derived reference", []),
-                        e.select_from_context_deprecated([]),
-                        false,
-                        _p.dictionary.literal({
-                        })
-                    ))
-                    case 'selected': return _p.ss($, ($) => e.call(
-                        s.from_variable_import(" i generic", _p.sg($.dependency, ($) => {
-                            switch ($[0]) {
-                                case 'acyclic': return "process selected reference"
-                                case 'cyclic': return "process selected reference"
-                                case 'stack': return "process stack reference"
-                                default: return _p.au($[0])
-                            }
-                        }), []),
-                        e.select_from_context_deprecated([]),
-                        false,
-                        _p.dictionary.literal({
-                        })
-                    ))
-                    default: return _p.au($[0])
-                }
-            }))
-            case 'text': return _p.ss($, ($) => e.call(
-                s.from_variable_import(" i generic", "process text", []),
-                e.select_from_context_deprecated([]),
-                false,
-                _p.dictionary.literal({
-                })
-            ))
-            case 'component': return _p.ss($, ($) => e.call(
+            case 'component': return _p.ss($, ($) => sh.e.call(
                 _p.sg($, ($) => {
                     switch ($[0]) {
-                        case 'external': return _p.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
-                        case 'internal': return _p.ss($, ($) => s.from_variable($.key, []))
-                        case 'internal cyclic': return _p.ss($, ($) => s.from_variable($.key, []))
+                        case 'external': return _p.ss($, ($) => sh.s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
+                        case 'internal': return _p.ss($, ($) => sh.s.from_variable($.key, []))
+                        case 'internal cyclic': return _p.ss($, ($) => sh.s.from_variable($.key, []))
                         default: return _p.au($[0])
                     }
                 }),
-                e.select_from_context_deprecated([]),
+                sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "value deserializers": e.select_from_parameter_deprecated("value deserializers", []),
+                    "value deserializers": sh.e.select_from_parameter_deprecated("value deserializers", []),
                 }),
             ))
-            case 'dictionary': return _p.ss($, ($) => e.call(
-                s.from_variable_import(" i generic", $p.constrained ? "process unresolved dictionary" : "process unconstrained dictionary", []),
-                e.select_from_context_deprecated([]),
+            case 'dictionary': return _p.ss($, ($) => sh.e.call(
+                sh.s.from_variable_import(" i generic", $p.constrained ? "process unresolved dictionary" : "process unconstrained dictionary", []),
+                sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "value": e.function_(
+                    "value": sh.e.function_deprecated(
                         false,
                         Type_Node(
                             $.node,
@@ -166,7 +111,7 @@ export const Type_Node = (
                                 'temp subselection': _p.list.nested_literal([
                                     $p['temp subselection'],
                                     [
-                                        sub.dictionary(),
+                                        sh_i.sub.dictionary(),
                                     ]
                                 ]),
                                 'constrained': $p.constrained
@@ -175,19 +120,19 @@ export const Type_Node = (
                     ),
                 })
             ))
-            case 'group': return _p.ss($, ($) => e.call(
-                s.from_variable_import(" i generic", "process group", []),
-                e.select_from_context_deprecated([]),
+            case 'group': return _p.ss($, ($) => sh.e.call(
+                sh.s.from_variable_import(" i generic", "process group", []),
+                sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "properties": e.function_(
+                    "properties": sh.e.function_deprecated(
                         false,
-                        e.group($.dictionary.__d_map(($, key) => e.change_context(
-                            s.call(
-                                s.from_variable_import(" i generic", "get entry", []),
-                                s.from_context([]),
+                        sh.e.group($.dictionary.__d_map(($, key) => sh.e.change_context(
+                            sh.s.call(
+                                sh.s.from_variable_import(" i generic", "get entry", []),
+                                sh.s.from_context([]),
                                 _p.dictionary.literal({
-                                    "key": e.string(key, 'quote'),
+                                    "key": sh.e.string(key, 'quote'),
                                 }),
                                 [],
                             ),
@@ -198,7 +143,7 @@ export const Type_Node = (
                                     'temp subselection': _p.list.nested_literal([
                                         $p['temp subselection'],
                                         [
-                                            sub.group(key),
+                                            sh_i.sub.group(key),
                                         ]
                                     ]),
                                     'constrained': $p.constrained
@@ -208,12 +153,12 @@ export const Type_Node = (
                     ),
                 })
             ))
-            case 'list': return _p.ss($, ($) => e.call(
-                s.from_variable_import(" i generic", $p.constrained ? "process unresolved list" : "process unconstrained list", []),
-                e.select_from_context_deprecated([]),
+            case 'list': return _p.ss($, ($) => sh.e.call(
+                sh.s.from_variable_import(" i generic", $p.constrained ? "process unresolved list" : "process unconstrained list", []),
+                sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "value": e.function_(
+                    "value": sh.e.function_deprecated(
                         false,
                         Type_Node(
                             $.node,
@@ -222,7 +167,7 @@ export const Type_Node = (
                                 'temp subselection': _p.list.nested_literal([
                                     $p['temp subselection'],
                                     [
-                                        sub.list(),
+                                        sh_i.sub.list(),
                                     ]
                                 ]),
                                 'constrained': $p.constrained
@@ -231,12 +176,33 @@ export const Type_Node = (
                     ),
                 })
             ))
-            case 'optional': return _p.ss($, ($) => e.call(
-                s.from_variable_import(" i generic", "process optional", []),
-                e.select_from_context_deprecated([]),
+            case 'nothing': return _p.ss($, ($) => sh.e.call(
+                sh.s.from_variable_import(" i generic", "process nothing", []),
+                sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "value": e.function_(
+                })
+            ))
+            case 'number': return _p.ss($, ($) => sh.e.call(
+                sh.s.from_variable_import(" i generic", "process number", []),
+                sh.e.select_from_context_deprecated([]),
+                false,
+                _p.dictionary.literal({
+                    "deserializer": sh.e.select_from_parameter_deprecated("value deserializers", _p.sg($, ($) => {
+                        switch ($[0]) {
+                            case 'global': return _p.ss($, ($) => ["custom numbers", $.key])
+                            case 'local': return _p.ss($, ($) => ["default number"])
+                            default: return _p.au($[0])
+                        }
+                    })),
+                }),
+            ))
+            case 'optional': return _p.ss($, ($) => sh.e.call(
+                sh.s.from_variable_import(" i generic", "process optional", []),
+                sh.e.select_from_context_deprecated([]),
+                false,
+                _p.dictionary.literal({
+                    "value": sh.e.function_deprecated(
                         false,
                         Type_Node(
                             $,
@@ -245,7 +211,7 @@ export const Type_Node = (
                                 'temp subselection': _p.list.nested_literal([
                                     $p['temp subselection'],
                                     [
-                                        sub.optional(),
+                                        sh_i.sub.optional(),
                                     ]
                                 ]),
                                 'constrained': $p.constrained
@@ -254,14 +220,40 @@ export const Type_Node = (
                     ),
                 })
             ))
-            case 'state group': return _p.ss($, ($) => e.call(
-                s.from_variable_import(" i generic", $p.constrained ? "process unresolved state group" : "process unconstrained state group", []),
-                e.select_from_context_deprecated([]),
+            case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
+                switch ($[0]) {
+                    case 'derived': return _p.ss($, ($) => sh.e.call(
+                        sh.s.from_variable_import(" i generic", "process derived reference", []),
+                        sh.e.select_from_context_deprecated([]),
+                        false,
+                        _p.dictionary.literal({
+                        })
+                    ))
+                    case 'selected': return _p.ss($, ($) => sh.e.call(
+                        sh.s.from_variable_import(" i generic", _p.sg($.dependency, ($) => {
+                            switch ($[0]) {
+                                case 'acyclic': return "process selected reference"
+                                case 'cyclic': return "process selected reference"
+                                case 'stack': return "process stack reference"
+                                default: return _p.au($[0])
+                            }
+                        }), []),
+                        sh.e.select_from_context_deprecated([]),
+                        false,
+                        _p.dictionary.literal({
+                        })
+                    ))
+                    default: return _p.au($[0])
+                }
+            }))
+            case 'state group': return _p.ss($, ($) => sh.e.call(
+                sh.s.from_variable_import(" i generic", $p.constrained ? "process unresolved state group" : "process unconstrained state group", []),
+                sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "states": e.dictionary_literal($.__d_map(($, key) => e.function_(
+                    "states": sh.e.dictionary_literal($.__d_map(($, key) => sh.e.function_deprecated(
                         false,
-                        e.case_(
+                        sh.e.case_(
                             key,
                             Type_Node(
                                 $.node,
@@ -270,28 +262,29 @@ export const Type_Node = (
                                     'temp subselection': _p.list.nested_literal([
                                         $p['temp subselection'],
                                         [
-                                            sub.state_group(key),
+                                            sh_i.sub.state_group(key),
                                         ]
                                     ]),
                                     'constrained': $p.constrained
                                 }
                             )
                         ),
-                        t.component_imported("out", $p['temp type'], {}, _p.list.nested_literal([
+                        sh_i.t.component_imported("out", $p['temp type'], {}, _p.list.nested_literal([
                             $p['temp subselection'],
                             [
-                                sub.group("SG"),
+                                sh_i.sub.group("SG"),
                             ]
                         ]))
                     )))
                 })
             ))
-            // case 'type parameter': return _p.ss($, ($) => i.call(
-            //     s.from_variable_import(" i generic", "process type parameter", []),
-            //     i.select_from_context_deprecated([]),
-            //     _p.dictionary.literal({
-            //     })
-            // ))
+            case 'text': return _p.ss($, ($) => sh.e.call(
+                sh.s.from_variable_import(" i generic", "process text", []),
+                sh.e.select_from_context_deprecated([]),
+                false,
+                _p.dictionary.literal({
+                })
+            ))
             default: return _p.au($[0])
         }
     })

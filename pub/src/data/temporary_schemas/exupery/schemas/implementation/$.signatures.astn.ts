@@ -9,6 +9,5 @@ export const $: g_.Resolve_Logic.signatures<_pi.Deprecated_Source_Location>  = s
         "Module": sig.local({}, {}),
         "Module Set": sig.local({}, {}),
         "Selection": sig.local({}, {}),
-        "Variables": sig.local({}, {}),
     },
 )

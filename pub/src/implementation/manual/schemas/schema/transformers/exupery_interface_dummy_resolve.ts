@@ -19,6 +19,5 @@ export const Signatures = (
             "unresolved": import_.sibling("target", [], {}),
         },
         {},
-        {},
     )
 }

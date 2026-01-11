@@ -13,7 +13,7 @@ import {
 
 import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
 
-export const $: g_.Types<_pi.Deprecated_Source_Location>  = types(
+export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
     {
         "Module Set": type(t.dictionary(t.state_group({
             "module": tstate(t.component("Module")),
@@ -56,13 +56,19 @@ export const $: g_.Types<_pi.Deprecated_Source_Location>  = types(
         })),
 
         "Type": type(t.state_group({
-
             "deprecated function": tstate(t.group({
+                "result": prop(t.component_cyclic("Type")),
                 "type parameters": prop(t.component("Type Parameters")),
                 "context": prop(t.component_cyclic("Type")),
-                "parameters": prop(t.dictionary(t.component_cyclic("Type"))),
-                "return": prop(t.component_cyclic("Type")),
-                "abort": prop(t.optional(t.component_cyclic("Type"))),
+                "type": prop(t.state_group({
+                    "transformer": tstate(t.group({
+                    })),
+                    "refiner": tstate(t.group({
+                        "error": prop(t.optional(t.component_cyclic("Type"))),
+
+                    }))
+                })),
+                "parameters": prop(t.optional(t.dictionary(t.component_cyclic("Type")))),
             })),
             "deprecated parameter": tstate(t.component("Type Parameter Selection")),
 

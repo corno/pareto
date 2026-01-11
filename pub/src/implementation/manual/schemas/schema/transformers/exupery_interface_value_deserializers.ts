@@ -31,13 +31,12 @@ export const Schema = (
             {},
         )
     },
-    {},
     {
         "Value Deserializers": sh.type({}, sh.t.group({
-            "default number": sh.t.deprecated_function_({}, sh.t.text(), {}, sh.t.integer(), null),
-            "boolean": sh.t.deprecated_function_({}, sh.t.text(), {}, sh.t.boolean(), null),
+            "default number": sh.t.deprecated_transformer_({}, sh.t.text(), {}, sh.t.integer()),
+            "boolean": sh.t.deprecated_transformer_({}, sh.t.text(), {}, sh.t.boolean()),
             "custom numbers": sh.t.group($.globals['number types'].__d_map(
-                ($) => sh.t.deprecated_function_(
+                ($) => sh.t.deprecated_transformer_(
                     {},
                     sh.t.text(),
                     {},
@@ -48,7 +47,6 @@ export const Schema = (
                             default: return _p.au($[0])
                         }
                     }),
-                    null,
                 )
             ))
         })),

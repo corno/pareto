@@ -6,8 +6,8 @@ import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
-import { m, variable, e, s } from "exupery/dist/shorthands/implementation"
-import { t, import_, sub } from "exupery/dist/shorthands/interface"
+import * as sh from "exupery/dist/shorthands/implementation"
+import * as sh_i from "exupery/dist/shorthands/interface"
 
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 
@@ -19,19 +19,19 @@ export const Schema = (
         'imports': d_in.Imports,
         'constrained': boolean
     }
-): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => m.module(
+): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => sh.m.module(
     'transformer',
     op_flatten_dictionary(
         _p.dictionary.literal({
             "": _p.dictionary.literal({
-                "signatures": import_.ancestor(5, "interface", _p.list.nested_literal([
+                "signatures": sh_i.import_.ancestor(5, "interface", _p.list.nested_literal([
                     _p.list.literal(["generated", "pareto", "schemas"]),
                     $p.path,
                     _p.list.literal(["marshall"])
                 ]), {}),
-                "out": import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn target"], {}),
+                "out": sh_i.import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn target"], {}),
             }),
-            "r ": $p.imports.__d_map(($, key) => import_.ancestor(1, $['schema set child'].key, ["marshall"], {}))
+            "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["marshall"], {}))
         }),
         {
             'separator': "",
@@ -39,19 +39,16 @@ export const Schema = (
         () => _p.unreachable_code_path(),
     ),
     {},
-    $.types.dictionary.__d_map(($, key) => variable(
-        t.component_imported("signatures", key, {}, []),
-        e.function_(
-            true,
-            Type_Node(
-                $.node,
-                {
-                    'type': key,
-                    'subselection': _p.list.literal([])
-                }
-            ),
+    $.types.dictionary.__d_map(($, key) => sh.algorithm(
+        sh_i.t.component_imported("signatures", key, {}, []),
+        true,
+        Type_Node(
+            $.node,
+            {
+                'type': key,
+                'subselection': _p.list.literal([])
+            }
         ),
-
     )),
 )
 
@@ -64,10 +61,10 @@ export const Type_Node = (
 ): d_out.Expression<_pi.Deprecated_Source_Location> => {
 
     const string = (value: d_out.Expression<_pi.Deprecated_Source_Location>, delimiter: 'quote' | 'backtick' | 'none'): d_out.Expression<_pi.Deprecated_Source_Location> => {
-        return e.tagged_union(
+        return sh.e.tagged_union(
             "text",
-            e.group({
-                "delimiter": e.tagged_union(delimiter, e.null_()),
+            sh.e.group({
+                "delimiter": sh.e.tagged_union(delimiter, sh.e.null_()),
                 "value": value,
             })
         )
@@ -75,52 +72,52 @@ export const Type_Node = (
 
     return _p.sg($, ($) => {
         switch ($[0]) {
-            case 'number': return _p.ss($, ($) => string(e.call(
-                s.from_parameter("value serializers", _p.sg($, ($) => {
+            case 'number': return _p.ss($, ($) => string(sh.e.call(
+                sh.s.from_parameter("value serializers", _p.sg($, ($) => {
                     switch ($[0]) {
                         case 'global': return _p.ss($, ($) => ["custom numbers", $.key])
                         case 'local': return _p.ss($, ($) => ["default number"])
                         default: return _p.au($[0])
                     }
                 })),
-                e.select_from_context_deprecated([]),
+                sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({}),
             ), 'backtick')) //FIXME should be 'none'
-            case 'boolean': return _p.ss($, ($) => string(e.call(
-                s.from_parameter("value serializers", ["boolean"]),
-                e.select_from_context_deprecated([]),
+            case 'boolean': return _p.ss($, ($) => string(sh.e.call(
+                sh.s.from_parameter("value serializers", ["boolean"]),
+                sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({}),
             ), 'backtick')) //FIXME should be 'none'
-            case 'nothing': return _p.ss($, ($) => e.tagged_union("nothing", e.null_()))
+            case 'nothing': return _p.ss($, ($) => sh.e.tagged_union("nothing", sh.e.null_()))
             case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
                 switch ($[0]) {
-                    case 'derived': return _p.ss($, ($) => e.tagged_union("nothing", e.null_()))
-                    case 'selected': return _p.ss($, ($) => string(e.select_from_context_deprecated(["key"]), 'backtick'))
+                    case 'derived': return _p.ss($, ($) => sh.e.tagged_union("nothing", sh.e.null_()))
+                    case 'selected': return _p.ss($, ($) => string(sh.e.select_from_context_deprecated(["key"]), 'backtick'))
                     default: return _p.au($[0])
                 }
             }))
-            case 'text': return _p.ss($, ($) => string(e.select_from_context_deprecated([]), 'quote'))
-            case 'component': return _p.ss($, ($) => e.call(
+            case 'text': return _p.ss($, ($) => string(sh.e.select_from_context_deprecated([]), 'quote'))
+            case 'component': return _p.ss($, ($) => sh.e.call(
                 _p.sg($, ($) => {
                     switch ($[0]) {
-                        case 'external': return _p.ss($, ($) => s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
-                        case 'internal': return _p.ss($, ($) => s.from_variable($.key, []))
-                        case 'internal cyclic': return _p.ss($, ($) => s.from_variable($.key, []))
+                        case 'external': return _p.ss($, ($) => sh.s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
+                        case 'internal': return _p.ss($, ($) => sh.s.from_variable($.key, []))
+                        case 'internal cyclic': return _p.ss($, ($) => sh.s.from_variable($.key, []))
                         default: return _p.au($[0])
                     }
                 }),
-                e.select_from_context_deprecated([]),
+                sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "value serializers": e.select_from_parameter_deprecated("value serializers", []),
+                    "value serializers": sh.e.select_from_parameter_deprecated("value serializers", []),
                 }),
             ))
-            case 'dictionary': return _p.ss($, ($) => e.tagged_union(
+            case 'dictionary': return _p.ss($, ($) => sh.e.tagged_union(
                 "dictionary",
-                e.dictionary_map(
-                    $.ordered ? s.from_context(["dictionary"]) : s.from_context([]),
+                sh.e.dictionary_map(
+                    $.ordered ? sh.s.from_context(["dictionary"]) : sh.s.from_context([]),
                     Type_Node(
                         $.node,
                         {
@@ -128,7 +125,7 @@ export const Type_Node = (
                             'subselection': _p.list.nested_literal([
                                 $p.subselection,
                                 [
-                                    sub.dictionary(),
+                                    sh_i.sub.dictionary(),
                                 ]
                             ]),
                         }
@@ -150,10 +147,10 @@ export const Type_Node = (
             //         }
             //     )
             // ))))
-            case 'group': return _p.ss($, ($) => e.tagged_union(
+            case 'group': return _p.ss($, ($) => sh.e.tagged_union(
                 "verbose group",
-                e.dictionary_literal($.dictionary.__d_map(($, key) => e.change_context(
-                    s.from_context([key]),
+                sh.e.dictionary_literal($.dictionary.__d_map(($, key) => sh.e.change_context(
+                    sh.s.from_context([key]),
                     Type_Node(
                         $.node,
                         {
@@ -161,17 +158,17 @@ export const Type_Node = (
                             'subselection': _p.list.nested_literal([
                                 $p.subselection,
                                 [
-                                    sub.group(key),
+                                    sh_i.sub.group(key),
                                 ]
                             ]),
                         }
                     )
                 )))
             ))
-            case 'list': return _p.ss($, ($) => e.tagged_union(
+            case 'list': return _p.ss($, ($) => sh.e.tagged_union(
                 "list",
-                e.list_map(
-                    s.from_context([]),
+                sh.e.list_map(
+                    sh.s.from_context([]),
                     Type_Node(
                         $.node,
                         {
@@ -179,17 +176,17 @@ export const Type_Node = (
                             'subselection': _p.list.nested_literal([
                                 $p.subselection,
                                 [
-                                    sub.list(),
+                                    sh_i.sub.list(),
                                 ]
                             ]),
                         }
                     )
                 )))
-            case 'optional': return _p.ss($, ($) => e.tagged_union(
+            case 'optional': return _p.ss($, ($) => sh.e.tagged_union(
                 "optional",
-                e.decide_optional(
-                    s.from_context([]),
-                    e.tagged_union(
+                sh.e.decide_optional(
+                    sh.s.from_context([]),
+                    sh.e.tagged_union(
                         "set",
                         Type_Node(
                             $,
@@ -198,29 +195,29 @@ export const Type_Node = (
                                 'subselection': _p.list.nested_literal([
                                     $p.subselection,
                                     [
-                                        sub.optional(),
+                                        sh_i.sub.optional(),
                                     ]
                                 ]),
                             }
                         ),
                     ),
-                    e.tagged_union(
+                    sh.e.tagged_union(
                         "not set",
-                        e.null_()
+                        sh.e.null_()
                     ),
-                    t.component_imported(
+                    sh_i.t.component_imported(
                         "out",
                         "Value",
                         {},
-                        [sub.state_group("optional")]
+                        [sh_i.sub.state_group("optional")]
                     ),
                 )))
-            case 'state group': return _p.ss($, ($) => e.tagged_union(
+            case 'state group': return _p.ss($, ($) => sh.e.tagged_union(
                 "state",
-                e.decide_state_group(
-                    s.from_context([]),
-                    $.__d_map(($, key) => e.group({
-                        "state": e.string(key, 'quote'),
+                sh.e.decide_state_group(
+                    sh.s.from_context([]),
+                    $.__d_map(($, key) => sh.e.group({
+                        "state": sh.e.string(key, 'quote'),
                         "value": Type_Node(
                             $.node,
                             {
@@ -228,17 +225,17 @@ export const Type_Node = (
                                 'subselection': _p.list.nested_literal([
                                     $p.subselection,
                                     [
-                                        sub.state_group(key),
+                                        sh_i.sub.state_group(key),
                                     ]
                                 ]),
                             }
                         )
                     })),
-                    t.component_imported(
+                    sh_i.t.component_imported(
                         "out",
                         "Value",
                         {},
-                        [sub.state_group("state")]
+                        [sh_i.sub.state_group("state")]
                     ),
                 )
             ))

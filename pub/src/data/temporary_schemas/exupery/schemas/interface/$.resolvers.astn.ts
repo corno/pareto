@@ -67,11 +67,17 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
             "circular dependent": state(r.component("Type", {}, {})),
             "dictionary": state(r.component("Type", {}, {})),
             "deprecated function": state(r.group({
+                "result": r.component("Type", {}, {}),
                 "type parameters": r.component("Type Parameters", {}, {}),
                 "context": r.component("Type", {}, {}),
-                "parameters": r.dictionary(r.component("Type", {}, {})),
-                "return": r.component("Type", {}, {}),
-                "abort": r.optional(r.component("Type", {}, {})),
+                "type": r.state_group({
+                    "transformer": state(r.group({
+                    })),
+                    "refiner": state(r.group({
+                        "error": r.optional(r.component("Type", {}, {})),
+                    })),
+                }),
+                "parameters": r.optional(r.dictionary(r.component("Type", {}, {}))),
             })),
             "group": state(r.dictionary(r.component("Type", {}, {}))),
             "list": state(r.component("Type", {}, {})),

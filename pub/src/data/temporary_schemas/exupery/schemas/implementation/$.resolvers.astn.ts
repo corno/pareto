@@ -30,33 +30,40 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                     "sibling": state(r.text()),
                 }),
             })),
-            "variables": r.component("Variables", {}, {}),
+            "algorithms": r.dictionary(r.group({
+                "type": r.component_external("interface", "Type", {}, {}),
+                "expression": r.component("Expression", {}, {}),
+                "temp has parameters": r.boolean(),
+            })),
         })),
-
-        "Variables": resolver(r.dictionary(r.group({
-            "type": r.optional(r.component_external("interface", "Type", {}, {})),
-            "initialization": r.component("Expression", {}, {}),
-        }))),
 
         "Expression": resolver(r.state_group({
             "special": state(r.state_group({
                 "abort": state(r.component("Expression", {}, {})),
                 "block": state(r.group({
-                    "variables": r.component("Variables", {}, {}),
+                    "variables": r.dictionary(r.group({
+                        "type": r.optional(r.component_external("interface", "Type", {}, {})),
+                        "expression": r.component("Expression", {}, {}),
+                    })),
                     "temp ordered variables": r.list(r.group({
                         "name": r.text(),
                         "type": r.optional(r.component_external("interface", "Type", {}, {})),
-                        "initialization": r.component("Expression", {}, {}),
+                        "expression": r.component("Expression", {}, {}),
                     })),
-                    "initialization": r.component("Expression", {}, {}),
+                    "expression": r.component("Expression", {}, {}),
                 })),
                 "change context": state(r.group({
                     "new context": r.component("Selection", {}, {}),
-                    "initialization": r.component("Expression", {}, {}),
+                    "expression": r.component("Expression", {}, {}),
                 })),
                 "implement me": state(r.nothing()),
                 "selection deprecated": state(r.component("Selection", {}, {})),
                 "unreachable": state(r.nothing()),
+                "deprecated function": state(r.group({
+                    "expression": r.component("Expression", {}, {}),
+                    "temp has parameters": r.boolean(),
+                    "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
+                })),
             })),
             "initialize": state(r.state_group({
                 "boolean": state(r.state_group({
@@ -80,11 +87,6 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                         "source": r.component("Selection", {}, {}),
                         "entry handler": r.component("Expression", {}, {})
                     })),
-                })),
-                "deprecated function": state(r.group({
-                    "initialization": r.component("Expression", {}, {}),
-                    "temp has parameters": r.boolean(),
-                    "temp resulting node": r.optional(r.component_external("interface", "Type", {}, {})),
                 })),
                 "group": state(r.dictionary(r.component("Expression", {}, {}))),
                 "list": state(r.state_group({
@@ -168,11 +170,7 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                 "implement me": state(r.nothing()),
 
                 "abort deprecated": state(r.nothing()),
-                "transform optional value deprecated": state(r.group({
-                    "source": r.component("Selection", {}, {}),
-                    "if not set": r.component("Selection", {}, {}),
-                    "if set": r.component("Selection", {}, {}),
-                })),
+
 
                 "call": state(r.group({
                     "source": r.component("Selection", {}, {}),

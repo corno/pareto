@@ -40,33 +40,40 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                     "sibling": tstate(t.text_global("TBD")),
                 })),
             }))),
-            "variables": prop(t.component("Variables")),
+            "algorithms": prop(t.dictionary(t.group({
+                "type": prop(t.component_external("interface", "Type")),
+                "expression": prop(t.component_cyclic("Expression")),
+                "temp has parameters": prop(t.boolean()),
+            }))),
         })),
-
-        "Variables": type(t.dictionary(t.group({
-            "type": prop(t.optional(t.component_external("interface", "Type"))),
-            "initialization": prop(t.component_cyclic("Expression")),
-        }))),
 
         "Expression": type(t.state_group({
             "special": tstate(t.state_group({
                 "abort": tstate(t.component_cyclic("Expression")),
                 "block": tstate(t.group({
-                    "variables": prop(t.component("Variables")),
+                    "variables": prop(t.dictionary(t.group({
+                        "type": prop(t.optional(t.component_external("interface", "Type"))),
+                        "expression": prop(t.component_cyclic("Expression")),
+                    }))),
                     "temp ordered variables": prop(t.list(t.group({ //FIXME: remove this as soon as the dependencies can be determined in the variables dictionary
                         "name": prop(t.text_global("Identifier")),
                         "type": prop(t.optional(t.component_external("interface", "Type"))),
-                        "initialization": prop(t.component_cyclic("Expression")),
+                        "expression": prop(t.component_cyclic("Expression")),
                     }))),
-                    "initialization": prop(t.component_cyclic("Expression")),
+                    "expression": prop(t.component_cyclic("Expression")),
                 })),
                 "change context": tstate(t.group({
                     "new context": prop(t.component_cyclic("Selection")),
-                    "initialization": prop(t.component_cyclic("Expression")),
+                    "expression": prop(t.component_cyclic("Expression")),
                 })),
                 "implement me": tstate(t.nothing()),
                 "selection deprecated": tstate(t.component_cyclic("Selection")),
                 "unreachable": tstate(t.nothing()),
+                "deprecated function": tstate(t.group({
+                    "expression": prop(t.component_cyclic("Expression")),
+                    "temp has parameters": prop(t.boolean()),
+                    "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
+                })),
             })),
             "initialize": tstate(t.state_group({
                 "boolean": tstate(t.state_group({
@@ -90,11 +97,6 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                         "source": prop(t.component_cyclic("Selection")),
                         "entry handler": prop(t.component_cyclic("Expression"))
                     })),
-                })),
-                "deprecated function": tstate(t.group({
-                    "initialization": prop(t.component_cyclic("Expression")),
-                    "temp has parameters": prop(t.boolean()),
-                    "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
                 })),
                 "group": tstate(t.dictionary(t.component_cyclic("Expression"))),
                 "list": tstate(t.state_group({
@@ -177,11 +179,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             "start": prop(t.state_group({
                 "implement me": tstate(t.nothing()),
                 "abort deprecated": tstate(t.nothing()),
-                "transform optional value deprecated": tstate(t.group({
-                    "source": prop(t.component_cyclic("Selection")),
-                    "if not set": prop(t.component_cyclic("Selection")),
-                    "if set": prop(t.component_cyclic("Selection")),
-                })),
+
                 "call": tstate(t.group({
                     "source": prop(t.component_cyclic("Selection")),
                     "context": prop(t.component_cyclic("Selection")),

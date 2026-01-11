@@ -6,8 +6,8 @@ import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
 import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
 
-import { m, variable, e, s } from "exupery/dist/shorthands/implementation"
-import { t, import_, sub } from "exupery/dist/shorthands/interface"
+import * as sh from "exupery/dist/shorthands/implementation"
+import * as sh_i from "exupery/dist/shorthands/interface"
 
 
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
@@ -19,23 +19,23 @@ export const Schema = (
         'imports': d_in.Imports,
     }
 ): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
-    return m.module(
+    return sh.m.module(
         'deserializer',
         op_flatten_dictionary(
             _p.dictionary.literal({
                 "": _p.dictionary.literal({
-                    "signatures": import_.ancestor(5, "interface", _p.list.nested_literal([
+                    "signatures": sh_i.import_.ancestor(5, "interface", _p.list.nested_literal([
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _p.list.literal(["deserialize"]),
                     ]), {}),
-                    "out": import_.ancestor(5, "interface", _p.list.nested_literal([
+                    "out": sh_i.import_.ancestor(5, "interface", _p.list.nested_literal([
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _p.list.literal(["data types", "target"]),
                     ]), {}),
                 }),
-                "r ": $p.imports.__d_map(($, key) => import_.ancestor(1, $['schema set child'].key, ["deserialize"], {}))
+                "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["deserialize"], {}))
             }),
             {
                 'separator': "",
@@ -43,13 +43,10 @@ export const Schema = (
             () => _p.unreachable_code_path(),
         ),
         {},
-        $.types.dictionary.__d_map(($, key) => variable(
-            t.component_imported("signatures", key, {}, []),
-            e.function_(
-                true,
-                e.implement_me(),
-            ),
-
+        $.types.dictionary.__d_map(($, key) => sh.algorithm(
+            sh_i.t.component_imported("signatures", key, {}, []),
+            true,
+            sh.e.implement_me(),
         )),
     )
 }
