@@ -16,6 +16,53 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 
 export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
     {
+
+        "Type Specification": type(t.group({
+            "schema": propd("select 'schema' if you want to have 1 schema, if you have or need multple, select 'set'", t.component("Schema Tree")),
+            "schema path": propd("selects the schema in which the root type is specified", t.list(t.text_local(text('single line')))),
+            "type": propd("the type that is the root of the document", t.text_local(text('single line'))),
+        })),
+
+        "Schema Tree": type(t.state_group({
+            "schema": tstated("a single schema", t.component("Schema")),
+            "set": tstated("a hierarchy of schemas", t.component_cyclic("Schemas")),
+        })),
+
+        "Schemas": type(t.dictionary(t.component("Schema Tree"), 'ordered')),
+
+        "Schema": type(t.group({
+            "imports": prop(t.component_cyclic("Imports")),
+            "globals": prop(t.component("Globals")),
+            "types": prop(t.component("Types")),
+            "complexity": prop(t.state_group({
+                "constrained": tstate(t.component("Resolve Logic")),
+                "unconstrained": tstate(t.nothing()),
+            })),
+        })),
+
+        "Imports": type(t.dictionary(t.group({
+            "schema set child": prop(t.reference_stack("Schemas", [])),
+            "schema": prop(t.reference_derived("Schema", [])),
+        }))),
+
+        "Globals": type(t.group({
+            "complexity": prop(t.state_group({
+                "constrained": tstate(t.nothing()),
+                "unconstrained": tstate(t.nothing()),
+            })),
+            "text types": prop(t.dictionary(t.component("Text Type"))),
+            "number types": prop(t.dictionary(t.component("Number Type"))),
+        })),
+
+        "Types": type(t.dictionary(t.component("Type"), 'ordered')),
+
+        "Resolve Logic": type(t.group({ //FIXME: inline
+            "signatures": prop(t.group({ //this is a group because this data is in the file $.signatures.astn.ts
+                "types": prop(t.component_cyclic("Signatures"))
+            })),
+            "resolvers": prop(t.component_cyclic("Resolvers")),
+        })),
+
         "Text Type": type(t.group({
             "type": prop(t.state_group({
                 "multi line": tstate(t.nothing()),
@@ -65,29 +112,18 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             }))
         })),
 
-        "Globals": type(t.group({
-            "complexity": prop(t.state_group({
-                "constrained": tstate(t.nothing()),
-                "unconstrained": tstate(t.nothing()),
-            })),
-            "text types": prop(t.dictionary(t.component("Text Type"))),
-            "number types": prop(t.dictionary(t.component("Number Type"))),
+        "Type": type(t.group({
+            "type parameters": prop(t.component("Type Parameters")),
+            "node": prop(t.component_cyclic("Type Node"))
         })),
+
+        "Type Parameters": type(t.dictionary(t.nothing())),
 
         //FIXME: inline
         "Presence": type(t.state_group({
             "optional": tstate(t.nothing()),
             "required": tstate(t.nothing()),
         })),
-
-        "Type Parameters": type(t.dictionary(t.nothing())),
-
-        "Type": type(t.group({
-            "type parameters": prop(t.component("Type Parameters")),
-            "node": prop(t.component_cyclic("Type Node"))
-        })),
-
-        "Types": type(t.dictionary(t.component("Type"), 'ordered')),
 
         "Dictionary": type(t.group({
             "node": prop(t.component_cyclic("Type Node")),
@@ -100,13 +136,6 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             "signature": prop(t.reference_derived("Signatures", [tr.d()])),
             "type resolver": prop(t.component_cyclic("Node Resolver")),
         }), 'ordered')),
-
-        "Resolve Logic": type(t.group({ //FIXME: inline
-            "signatures": prop(t.group({ //this is a group because this data is in the file $.signatures.astn.ts
-                "types": prop(t.component_cyclic("Signatures"))
-            })),
-            "resolvers": prop(t.component_cyclic("Resolvers")),
-        })),
 
         /**
          * the properties in a group are ordered. This way there is a canonical concise representation
@@ -157,6 +186,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "presence": prop(t.component("Presence")),
             })))
         })),
+        
         "Signature": type(t.group({
             "type": prop(t.reference_derived("Type", [])),
             "parameters": prop(t.state_group({
@@ -247,34 +277,6 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             "resulting dictionary": prop(t.reference_derived("Dictionary", [])),
             "dense": prop(t.boolean()),
         })),
-
-        "Schemas": type(t.dictionary(t.component("Schema Tree"), 'ordered')),
-
-        "Type Specification": type(t.group({
-            "schema": propd("select 'schema' if you want to have 1 schema, if you have or need multple, select 'set'", t.component("Schema Tree")),
-            "schema path": propd("selects the schema in which the root type is specified", t.list(t.text_local(text('single line')))),
-            "type": propd("the type that is the root of the document", t.text_local(text('single line'))),
-        })),
-
-        "Schema Tree": type(t.state_group({
-            "schema": tstated("a single schema", t.component("Schema")),
-            "set": tstated("a hierarchy of schemas", t.component_cyclic("Schemas")),
-        })),
-
-        "Schema": type(t.group({
-            "imports": prop(t.component_cyclic("Imports")),
-            "globals": prop(t.component("Globals")),
-            "types": prop(t.component("Types")),
-            "complexity": prop(t.state_group({
-                "constrained": tstate(t.component("Resolve Logic")),
-                "unconstrained": tstate(t.nothing()),
-            })),
-        })),
-
-        "Imports": type(t.dictionary(t.group({
-            "schema set child": prop(t.reference_stack("Schemas", [])),
-            "schema": prop(t.reference_derived("Schema", [])),
-        }))),
 
         "Type Node": type(t.state_group({
             "boolean": tstate(t.nothing()),

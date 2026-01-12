@@ -20,6 +20,8 @@ import * as s_transform_file from "../../../modules/common_tool_signatures/imple
 //dependencies
 import { $$ as create_file_to_file_command } from "../../../modules/common_tool_signatures/implementation/manual/command_creators/create_file_to_file_command"
 import * as s_load_pareto_file from "../schemas/load_pareto_file/serializers"
+import * as t_parse_result_to_fp from "astn/dist/implementation/manual/schemas/authoring_parse_tree/transformers/token"
+import * as s_fp from "pareto-fountain-pen/dist/implementation/manual/schemas/block/serializers"
 
 
 export const $$: signatures.commands.transform_file = _p.command_procedure(($p, $cr, $qr) => [
@@ -42,7 +44,14 @@ export const $$: signatures.commands.transform_file = _p.command_procedure(($p, 
                         ($) => $,
                         ($) => [
 
-                            //IMPLEMENT ME serialize....
+                           $cr['write file'].execute(
+                                {
+                                    'data': "FIXME: SERALIZED DATA",
+                                    'path': $r.out,
+                                },
+                                ($) => ['file in file out', ['writing file', $]]
+                            )
+
                         ]
                     ),
                 ]

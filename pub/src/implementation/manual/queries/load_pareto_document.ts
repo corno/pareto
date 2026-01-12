@@ -8,7 +8,7 @@ import * as d from "../../../interface/to_be_generated/load_pareto_document"
 
 //depencencies
 
-import { $$ as r_unmarshall_result } from "../schemas/unmarshall_result/deserializers"
+import { $$ as ds_unmarshall_result } from "../schemas/unmarshall_result/deserializers"
 import { create_node_path } from "pareto-resources/dist/implementation/manual/schemas/path/transformers/path"
 import * as s_path from "pareto-resources/dist/implementation/manual/schemas/path/serializers"
 
@@ -24,11 +24,9 @@ export const $$: signatures.queries.load_pareto_document = _p.query_function(($p
             'file location': schema_path_text,
         }]
     ).refine_without_error_transformation(
-        ($, abort) => r_unmarshall_result(
+        ($, abort) => ds_unmarshall_result(
             $p.content,
-            ($) => abort(['schema error', {
-                'file location': schema_path_text,
-            }]),
+            ($)=> abort(['deserialize', $]),
             {
                 'schema content': $,
                 'schema path': schema_path_text,

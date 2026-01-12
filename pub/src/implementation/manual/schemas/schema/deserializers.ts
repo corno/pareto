@@ -7,6 +7,7 @@ import { location_to_string } from 'pareto-core-internals/dist/misc/location_to_
 //data types
 import * as d_schema from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
 import * as d_parse_result from "astn-sealed/dist/interface/to_be_generated/parse_astn_source"
+import * as d_deserialize_schema from "../../../../interface/to_be_generated/deserialize_schema"
 
 //dependencies
 import * as r_pareto_schema from "../../../temp/resolvers/schema"
@@ -41,12 +42,8 @@ export const temp_pop_first_element = <T>($: _pi.List<T>): _pi.Optional_Value<El
     )
 }
 
-type Error =
-    | ['parse error', d_parse_result.Error]
-    | ['resolve errorx', null]
 
-
-export const $: _pi.Deserializer_With_Parameters<d_schema.Type, Error, { 'uri': string }> = ($, abort, $p) => {
+export const $: _pi.Deserializer_With_Parameters<d_schema.Type, d_deserialize_schema.Error, { 'uri': string }> = ($, abort, $p) => {
 
 
     const x = ds_astn_source.Document(
