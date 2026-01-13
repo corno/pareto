@@ -43,6 +43,8 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             "algorithms": prop(t.dictionary(t.group({
                 "type": prop(t.component("Type Reference")),
                 "expression": prop(t.component_cyclic("Expression")),
+                "temp has error": prop(t.boolean()),
+                "temp has lookups": prop(t.boolean()),
                 "temp has parameters": prop(t.boolean()),
             }))),
         })),

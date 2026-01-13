@@ -51,7 +51,7 @@ export const Schema = (
         },
         () => _p.unreachable_code_path(),
     ),
-    $.types.dictionary.__d_map(($) => sh.type(Type_Node(
+    $.types.dictionary.__d_map(($) => sh.type.data(Type_Node(
         $.node,
         $p
     ))),
@@ -73,11 +73,9 @@ export const Type_Node = (
                 ))
                 case 'internal': return _p.ss($, ($) => sh.t.component_sibling(
                     $.key,
-                    false,
                 ))
                 case 'internal cyclic': return _p.ss($, ($) => sh.t.component_sibling( //FIXME: is this correct?
                     $.key,
-                    true,
                 ))
                 default: return _p.au($[0])
             }

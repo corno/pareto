@@ -60,6 +60,8 @@ export const Resolvers = (
             $.dictionary.__d_map(($, key) => sh.algorithm(
                 sh.type_reference("signatures", key),
                 true,
+                true,
+                true,
                 sh.e.block(
                     [],
                     {
@@ -390,39 +392,34 @@ export const Node_Resolver = (
                 false,
                 {
                     //"denseness benchmark": e.not_set(),
-                    "map": sh.e.function_deprecated(true, sh.e.block(
-                        [],
-                        $.benchmark.__decide(
-                            ($) => _p.dictionary.literal({
-                                // "linked entry": e.call(
-                                //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.list.literal([]) }),
-                                //     e.string("FIXME", 'backtick'),
-                                // ),
-                                "linked entry": sh.variable(null, sh.e.implement_me()), // quite some work; a call to get_entry() from the selection (Guaranteed_Value_Selection), and then transform an optional value
-                            }),
-                            () => _p.dictionary.literal({})
-                        ),
-                        sh.e.change_context(
-                            sh.s.from_context(["value"]),
-                            Node_Resolver(
-                                $.resolver,
-                                {
-                                    'temp type': $p['temp type'],
-                                    'temp subselection': _p.list.nested_literal([
-                                        $p['temp subselection'],
-                                        [
-                                            sh_i.sub.dictionary()
-                                        ]
-                                    ]),
-                                }
-                            )
-                        )
-                    )
-
-
-
-
-                    ),
+                    // "map": sh.e.function_deprecated(true, sh.e.block(
+                    //     [],
+                    //     $.benchmark.__decide(
+                    //         ($) => _p.dictionary.literal({
+                    //             // "linked entry": e.call(
+                    //             //     s.from_context([]), //Value_Selection($.selection, { 'tail': pa.list.literal([]) }),
+                    //             //     e.string("FIXME", 'backtick'),
+                    //             // ),
+                    //             "linked entry": sh.variable(null, sh.e.implement_me()), // quite some work; a call to get_entry() from the selection (Guaranteed_Value_Selection), and then transform an optional value
+                    //         }),
+                    //         () => _p.dictionary.literal({})
+                    //     ),
+                    //     sh.e.change_context(
+                    //         sh.s.from_context(["value"]),
+                    //         Node_Resolver(
+                    //             $.resolver,
+                    //             {
+                    //                 'temp type': $p['temp type'],
+                    //                 'temp subselection': _p.list.nested_literal([
+                    //                     $p['temp subselection'],
+                    //                     [
+                    //                         sh_i.sub.dictionary()
+                    //                     ]
+                    //                 ]),
+                    //             }
+                    //         )
+                    //     )
+                    // )),
                     "location 2 string": sh.e.select_from_variable_deprecated("l2s", []),
 
                 }

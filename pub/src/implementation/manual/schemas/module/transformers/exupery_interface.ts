@@ -17,22 +17,23 @@ export const Operations = (
         'add location': boolean
     }
 ): d_out.Type => {
-    return sh.t.group($.__d_map(($) => _p.sg($, ($) => {
-        switch ($[0]) {
-            case 'operation': return _p.ss($, ($) => sh.t.deprecated_transformer(
-                t_exupery_interface_types.Type_Node($.result, { 'add location': $p['add location'] }),
-                t_exupery_interface_types.Type_Node(
-                    $.context,
-                    {
-                        'add location': $p['add location'],
-                    }
-                ),
-                $.parameters.__d_map(($) => _p.sg($, ($) => t_exupery_interface_types.Type_Node($, { 'add location': $p['add location'] }))),
-            ))
-            case 'set': return _p.ss($, ($) => Operations($, { 'add location': $p['add location'] }))
-            default: return _p.au($[0])
-        }
-    })))
+    return sh.t.group({})
+    // return sh.t.group($.__d_map(($) => _p.sg($, ($) => {
+    //     switch ($[0]) {
+    //         case 'operation': return _p.ss($, ($) => sh.type.transformer(
+    //             t_exupery_interface_types.Type_Node($.result, { 'add location': $p['add location'] }),
+    //             t_exupery_interface_types.Type_Node(
+    //                 $.context,
+    //                 {
+    //                     'add location': $p['add location'],
+    //                 }
+    //             ),
+    //             $.parameters.__d_map(($) => _p.sg($, ($) => t_exupery_interface_types.Type_Node($, { 'add location': $p['add location'] }))),
+    //         ))
+    //         case 'set': return _p.ss($, ($) => Operations($, { 'add location': $p['add location'] }))
+    //         default: return _p.au($[0])
+    //     }
+    // })))
 }
 
 export const Module = ($: d_in.Module): d_out.Module_Set => {
@@ -42,7 +43,7 @@ export const Module = ($: d_in.Module): d_out.Module_Set => {
             "location.ts": sh.m.module(
                 {},
                 {
-                    "Location": sh.type(sh.t.group({
+                    "Location": sh.type.data(sh.t.group({
                         "file": sh.t.text(),
                         "line": sh.t.natural(),
                         "column": sh.t.natural(),

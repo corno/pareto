@@ -11,7 +11,6 @@ import * as sh from "exupery/dist/shorthands/interface"
 export const Schema = (
     $: d_in.Schema,
     $p: {
-        'imports': d_in.Imports
         'constrained': boolean
     }
 ): d_out.Module_Set.D => sh.m.module(
@@ -30,18 +29,16 @@ export const Schema = (
         )
     },
     $.types.dictionary.__d_map(
-        ($, key) => sh.type(
-            sh.t.deprecated_transformer(
-                sh.t.component_imported(
-                    "in",
-                    key,
-                ),
-                sh.t.component_imported(
-                    "out",
-                    key,
-                ),
-                null
-            )
+        ($, key) => sh.type.transformer(
+            sh.t.component_imported(
+                "in",
+                key,
+            ),
+            sh.t.component_imported(
+                "out",
+                key,
+            ),
+            null
         )
     ),
 )

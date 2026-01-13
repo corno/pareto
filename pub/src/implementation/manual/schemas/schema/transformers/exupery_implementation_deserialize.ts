@@ -45,7 +45,9 @@ export const Schema = (
         {},
         $.types.dictionary.__d_map(($, key) => sh.algorithm(
             sh.type_reference("signatures", key),
-            true,
+            false,
+            false,
+            false,
             sh.e.implement_me(),
         )),
     )

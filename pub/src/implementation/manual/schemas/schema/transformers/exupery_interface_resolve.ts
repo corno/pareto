@@ -18,32 +18,34 @@ export const Signatures = (
             "resolved": sh.import_.sibling("source", []),
             "unresolved": sh.import_.sibling("target", []),
         },
-        $.dictionary.__d_map(($, key) => sh.type(sh.t.deprecated_refiner(
-            sh.t.component_imported("unresolved", key),
-            sh.t.component_imported("resolved", key),
-            null,
-            $['resolved parameters'].lookups.__d_map(($): d_out.Type.deprecated_function.lookups.O.D => {
-                const x = $.referent
-                return _p.sg($.type, ($) => {
-                    switch ($[0]) {
-                        case 'acyclic': return _p.ss($, ($) => ['acyclic', Type_Reference(x, { 'reference sub part': _p.list.literal([sh.sub.dictionary()]) })])
-                        case 'cyclic': return _p.ss($, ($) => ['cyclic', Type_Reference(x, { 'reference sub part': _p.list.literal([sh.sub.dictionary()]) })])
-                        case 'stack': return _p.ss($, ($) => ['stack', Type_Reference(x, { 'reference sub part': _p.list.literal([sh.sub.dictionary()]) })])
-                        default: return _p.au($[0])
-                    }
-                })
-            }),
-            $['resolved parameters'].values.__d_map(($) => {
-                const temp_2 = Type_Reference($['data type'], { 'reference sub part': _p.list.literal([]) })
-                return _p.sg($.presence, ($) => {
-                    switch ($[0]) {
-                        case 'optional': return sh.t.optional(temp_2)
-                        case 'required': return temp_2
-                        default: return _p.au($[0])
-                    }
-                })
-            }),
-        ))),
+        $.dictionary.__d_map(
+            ($, key) => sh.type.refiner(
+                sh.t.component_imported("unresolved", key),
+                sh.t.component_imported("resolved", key),
+                null,
+                $['resolved parameters'].lookups.__d_map(($): d_out.Module.types.D.algorithm._type.refiner.lookups.O.D => {
+                    const x = $.referent
+                    return _p.sg($.type, ($) => {
+                        switch ($[0]) {
+                            case 'acyclic': return _p.ss($, ($) => ['acyclic', Type_Reference(x, { 'reference sub part': _p.list.literal([sh.sub.dictionary()]) })])
+                            case 'cyclic': return _p.ss($, ($) => ['cyclic', Type_Reference(x, { 'reference sub part': _p.list.literal([sh.sub.dictionary()]) })])
+                            case 'stack': return _p.ss($, ($) => ['stack', Type_Reference(x, { 'reference sub part': _p.list.literal([sh.sub.dictionary()]) })])
+                            default: return _p.au($[0])
+                        }
+                    })
+                }),
+                $['resolved parameters'].values.__d_map(($) => {
+                    const temp_2 = Type_Reference($['data type'], { 'reference sub part': _p.list.literal([]) })
+                    return _p.sg($.presence, ($) => {
+                        switch ($[0]) {
+                            case 'optional': return sh.t.optional(temp_2)
+                            case 'required': return temp_2
+                            default: return _p.au($[0])
+                        }
+                    })
+                }),
+            )
+        ),
     )
 }
 

@@ -22,8 +22,25 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
 
         "Module": type(t.group({
             "imports": prop(t.component("Imports")),
-            "data types": prop(t.dictionary(t.group({
-                "type": prop(t.component_cyclic("Type")),
+            "types": prop(t.dictionary(t.state_group({
+                "data": tstate(t.component_cyclic("Type")),
+                "algorithm": tstate(t.group({
+                    "result": prop(t.component_cyclic("Type")),
+                    "context": prop(t.component_cyclic("Type")),
+                    "type": prop(t.state_group({
+                        "transformer": tstate(t.group({
+                        })),
+                        "refiner": tstate(t.group({
+                            "error": prop(t.optional(t.component_cyclic("Type"))),
+                            "lookups": prop(t.optional(t.dictionary(t.state_group({
+                                "acyclic": tstate(t.component_cyclic("Type")),
+                                "cyclic": tstate(t.component_cyclic("Type")),
+                                "stack": tstate(t.component_cyclic("Type")),
+                            })))),
+                        }))
+                    })),
+                    "parameters": prop(t.optional(t.dictionary(t.component_cyclic("Type")))),
+                })),
             }))),
         })),
 
@@ -40,26 +57,6 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
         }))),
 
         "Type": type(t.state_group({
-            "deprecated function": tstate(t.group({
-                "result": prop(t.component_cyclic("Type")),
-                "context": prop(t.component_cyclic("Type")),
-                "type": prop(t.state_group({
-                    "transformer": tstate(t.group({
-                    })),
-                    "refiner": tstate(t.group({
-                        "error": prop(t.optional(t.component_cyclic("Type"))),
-                        "lookups": prop(t.optional(t.dictionary(t.state_group({
-                            "acyclic": tstate(t.component_cyclic("Type")),
-                            "cyclic": tstate(t.component_cyclic("Type")),
-                            "stack": tstate(t.component_cyclic("Type")),
-                        })))),
-                    }))
-                })),
-                "parameters": prop(t.optional(t.dictionary(t.component_cyclic("Type")))),
-            })),
-
-
-
 
             "boolean": tstate(t.nothing()),
             "component": tstate(t.group({
@@ -68,11 +65,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                         "import": prop(t.text_global("TBD")),
                         "type": prop(t.text_global("TBD")),
                     })),
-                    "sibling": tstate(t.group({
-                        "sibling": prop(t.text_global("TBD")),
-                        "circular dependent": prop(t.boolean()),
-                    })),
-
+                    "sibling": tstate(t.text_global("TBD")),
                 })),
             })),
             "dictionary": tstate(t.component_cyclic("Type")),
@@ -93,7 +86,10 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                         "import": prop(t.text_global("TBD")),
                         "type": prop(t.text_global("TBD")),
                     })),
-                    "sibling": tstate(t.text_global("TBD")),
+                    "sibling": tstate(t.group({
+                        "sibling": prop(t.text_global("TBD")),
+                        "circular dependent": prop(t.boolean()),
+                    })),
                 })),
                 "sub selection": prop(t.list(t.state_group({
                     "dictionary": tstate(t.nothing()),

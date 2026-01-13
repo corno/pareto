@@ -9,10 +9,7 @@ import * as sh from "exupery/dist/shorthands/interface"
 
 
 export const Schema = (
-    $: d_in.Schema,
-    $p: {
-        'imports': d_in.Imports
-    }
+    $: d_in.Schema
 ): d_out.Module_Set.D => sh.m.module(
     {
         "out": sh.import_.sibling(
@@ -21,13 +18,8 @@ export const Schema = (
                 "target",
             ],
         ),
-        "vd": sh.import_.sibling(
-            "value deserializers",
-            [
-            ],
-        ),
     },
-    $.types.dictionary.__d_map(($, key) => sh.type(sh.t.deprecated_refiner(
+    $.types.dictionary.__d_map(($, key) => sh.type.refiner(
         sh.t.text(),
         sh.t.component_imported(
             "out",
@@ -36,6 +28,5 @@ export const Schema = (
         null,
         null,
         null,
-    ),
     )),
 )

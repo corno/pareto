@@ -10,9 +10,6 @@ import * as sh from "exupery/dist/shorthands/interface"
 
 export const Schema = (
     $: d_in.Schema,
-    $p: {
-        'imports': d_in.Imports
-    }
 ): d_out.Module_Set.D => sh.m.module(
     {
         "out": sh.import_.external(
@@ -35,7 +32,7 @@ export const Schema = (
             ],
         ),
     },
-    $.types.dictionary.__d_map(($, key) => sh.type(sh.t.deprecated_transformer(
+    $.types.dictionary.__d_map(($, key) => sh.type.transformer(
         sh.t.component_imported(
             "in",
             key,
@@ -45,5 +42,5 @@ export const Schema = (
             "Value",
         ),
         null,
-    ))),
+    )),
 )

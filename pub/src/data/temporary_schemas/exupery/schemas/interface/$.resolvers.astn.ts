@@ -12,8 +12,25 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
 
         "Module": resolver(r.group({
             "imports": r.component("Imports", {}, {}),
-            "data types": r.dictionary(r.group({
-                "type": r.component("Type", {}, {}),
+            "types": r.dictionary(r.state_group({
+                "data": state(r.component("Type", {}, {})),
+                "algorithm": state(r.group({
+                    "result": r.component("Type", {}, {}),
+                    "context": r.component("Type", {}, {}),
+                    "type": r.state_group({
+                        "transformer": state(r.group({
+                        })),
+                        "refiner": state(r.group({
+                            "error": r.optional(r.component("Type", {}, {})),
+                            "lookups": r.optional(r.dictionary(r.state_group({
+                                "acyclic": state(r.component("Type", {}, {})),
+                                "cyclic": state(r.component("Type", {}, {})),
+                                "stack": state(r.component("Type", {}, {})),
+                            }))),
+                        })),
+                    }),
+                    "parameters": r.optional(r.dictionary(r.component("Type", {}, {}))),
+                })),
             })),
         })),
 
@@ -30,23 +47,6 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
         }))),
 
         "Type": resolver(r.state_group({
-            "deprecated function": state(r.group({
-                "result": r.component("Type", {}, {}),
-                "context": r.component("Type", {}, {}),
-                "type": r.state_group({
-                    "transformer": state(r.group({
-                    })),
-                    "refiner": state(r.group({
-                        "error": r.optional(r.component("Type", {}, {})),
-                        "lookups": r.optional(r.dictionary(r.state_group({
-                            "acyclic": state(r.component("Type", {}, {})),
-                            "cyclic": state(r.component("Type", {}, {})),
-                            "stack": state(r.component("Type", {}, {})),
-                        }))),
-                    })),
-                }),
-                "parameters": r.optional(r.dictionary(r.component("Type", {}, {}))),
-            })),
 
             "boolean": state(r.nothing()),
             "component": state(r.group({
@@ -55,10 +55,7 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                         "import": r.text(),
                         "type": r.text(),
                     })),
-                    "sibling": state(r.group({
-                        "sibling": r.text(),
-                        "circular dependent": r.boolean(),
-                    })),
+                    "sibling": state(r.text()),
                 }),
             })),
             "dictionary": state(r.component("Type", {}, {})),
@@ -80,7 +77,10 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                         "import": r.text(),
                         "type": r.text(),
                     })),
-                    "sibling": state(r.text()),
+                    "sibling": state(r.group({
+                        "sibling": r.text(),
+                        "circular dependent": r.boolean(),
+                    })),
                 }),
                 "sub selection": r.list(r.state_group({
                     "dictionary": state(r.nothing()),

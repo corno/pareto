@@ -24,13 +24,13 @@ export const Schema = (
                 ],
             ),
         },
-        $.types.dictionary.__d_map(($, key) => sh.type(sh.t.deprecated_transformer(
+        $.types.dictionary.__d_map(($, key) => sh.type.transformer(
             sh.t.component_imported(
                 "in",
                 key,
             ),
             sh.t.text(),
             null,
-        ))),
+        )),
     )
 }

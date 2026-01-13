@@ -33,6 +33,8 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
             "algorithms": r.dictionary(r.group({
                 "type": r.component("Type Reference", {}, {}),
                 "expression": r.component("Expression", {}, {}),
+                "temp has error": r.boolean(),
+                "temp has lookups": r.boolean(),
                 "temp has parameters": r.boolean(),
             })),
         })),

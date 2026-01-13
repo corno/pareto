@@ -24,12 +24,32 @@ export const Schema = (
     op_flatten_dictionary(
         _p.dictionary.literal({
             "": _p.dictionary.literal({
-                "signatures": sh_i.import_.ancestor(5, "interface", _p.list.nested_literal([
-                    _p.list.literal(["generated", "pareto", "schemas"]),
-                    $p.path,
-                    _p.list.literal(["marshall"])
-                ])),
-                "out": sh_i.import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn target"]),
+                "signatures": sh_i.import_.ancestor(
+                    3, //5,
+                    "interface",
+                    _p.list.nested_literal([
+                        _p.list.literal([
+                            // "generated",
+                            // "pareto",
+                            "schemas"
+                        ]),
+                        $p.path,
+                        _p.list.literal(["marshall"])
+                    ])
+                ),
+                "out": sh_i.import_.external(
+                    "astn",
+                    [
+                        "dist",
+                        "interface",
+                        "generated",
+                        "pareto",
+                        "schemas",
+                        "sealed target",
+                        "data types",
+                        "target",
+                    ],
+                ),
             }),
             "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["marshall"]))
         }),
@@ -41,7 +61,9 @@ export const Schema = (
     {},
     $.types.dictionary.__d_map(($, key) => sh.algorithm(
         sh.type_reference("signatures", key),
-        true,
+        false,
+        false,
+        false,
         Type_Node(
             $.node,
             {
@@ -72,37 +94,14 @@ export const Type_Node = (
 
     return _p.sg($, ($) => {
         switch ($[0]) {
-            case 'number': return _p.ss($, ($) => string(sh.e.call(
-                sh.s.from_parameter("value serializers", _p.sg($, ($) => {
-                    switch ($[0]) {
-                        case 'global': return _p.ss($, ($) => ["custom numbers", $.key])
-                        case 'local': return _p.ss($, ($) => ["default number"])
-                        default: return _p.au($[0])
-                    }
-                })),
-                sh.e.select_from_context_deprecated([]),
-                false,
-                _p.dictionary.literal({}),
-            ), 'backtick')) //FIXME should be 'none'
-            case 'boolean': return _p.ss($, ($) => string(sh.e.call(
-                sh.s.from_parameter("value serializers", ["boolean"]),
-                sh.e.select_from_context_deprecated([]),
-                false,
-                _p.dictionary.literal({}),
-            ), 'backtick')) //FIXME should be 'none'
-            case 'nothing': return _p.ss($, ($) => sh.e.tagged_union("nothing", sh.e.null_()))
-            case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
-                switch ($[0]) {
-                    case 'derived': return _p.ss($, ($) => sh.e.tagged_union("nothing", sh.e.null_()))
-                    case 'selected': return _p.ss($, ($) => string(sh.e.select_from_context_deprecated(["key"]), 'backtick'))
-                    default: return _p.au($[0])
-                }
-            }))
-            case 'text': return _p.ss($, ($) => string(sh.e.select_from_context_deprecated([]), 'quote'))
+            case 'boolean': return _p.ss($, ($) => string(
+                sh.e.implement_me(),
+                'backtick' //FIXME should be 'none'
+            ))
             case 'component': return _p.ss($, ($) => sh.e.call(
                 _p.sg($, ($) => {
                     switch ($[0]) {
-                        case 'external': return _p.ss($, ($) => sh.s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
+                        case 'external': return _p.ss($, ($) => sh.s.from_variable_import(`v r ${$.import.key}`, $.type.key, []))
                         case 'internal': return _p.ss($, ($) => sh.s.from_variable($.key, []))
                         case 'internal cyclic': return _p.ss($, ($) => sh.s.from_variable($.key, []))
                         default: return _p.au($[0])
@@ -110,9 +109,6 @@ export const Type_Node = (
                 }),
                 sh.e.select_from_context_deprecated([]),
                 false,
-                _p.dictionary.literal({
-                    "value serializers": sh.e.select_from_parameter_deprecated("value serializers", []),
-                }),
             ))
             case 'dictionary': return _p.ss($, ($) => sh.e.tagged_union(
                 "dictionary",
@@ -132,21 +128,6 @@ export const Type_Node = (
                     )
                 )
             ))
-            // case 'group': return pa.ss($, ($) => i.group($.__d_map(($, key) => i.change_context(
-            //     s.from_context([key]),
-            //     Type_Node(
-            //         $,
-            //         {
-            //             'type': $p.type,
-            //             'subselection': op['append element'](
-            //                 $p.subselection,
-            //                 {
-            //                     'element': sub.group(key),
-            //                 },
-            //             ),
-            //         }
-            //     )
-            // ))))
             case 'group': return _p.ss($, ($) => sh.e.tagged_union(
                 "verbose group",
                 sh.e.dictionary_literal($.dictionary.__d_map(($, key) => sh.e.change_context(
@@ -182,6 +163,11 @@ export const Type_Node = (
                         }
                     )
                 )))
+            case 'nothing': return _p.ss($, ($) => sh.e.tagged_union("nothing", sh.e.null_()))
+            case 'number': return _p.ss($, ($) => string(
+                sh.e.implement_me(),
+                'backtick'//FIXME should be 'none'
+            )) 
             case 'optional': return _p.ss($, ($) => sh.e.tagged_union(
                 "optional",
                 sh.e.decide_optional(
@@ -211,6 +197,13 @@ export const Type_Node = (
                         [sh_i.sub.state_group("optional")]
                     ),
                 )))
+            case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
+                switch ($[0]) {
+                    case 'derived': return _p.ss($, ($) => sh.e.tagged_union("nothing", sh.e.null_()))
+                    case 'selected': return _p.ss($, ($) => string(sh.e.select_from_context_deprecated(["key"]), 'backtick'))
+                    default: return _p.au($[0])
+                }
+            }))
             case 'state group': return _p.ss($, ($) => sh.e.tagged_union(
                 "state",
                 sh.e.decide_state_group(
@@ -237,7 +230,7 @@ export const Type_Node = (
                     ),
                 )
             ))
-            // case 'type parameter': return _p.ss($, ($) => _pdev.implement_me("xx"))
+            case 'text': return _p.ss($, ($) => string(sh.e.select_from_context_deprecated([]), 'quote'))
             default: return _p.au($[0])
         }
     })

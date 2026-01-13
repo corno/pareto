@@ -11,7 +11,6 @@ import * as sh from "exupery/dist/shorthands/interface"
 export const Schema = (
     $: d_in.Schema,
     $p: {
-        'imports': d_in.Imports
         'constrained': boolean
     }
 ): d_out.Module_Set.D => {
@@ -23,20 +22,21 @@ export const Schema = (
                     "target",
                 ],
             ),
-            "in": sh.import_.ancestor(
-                2,
-                "core",
+            "in": sh.import_.external(
+                "astn",
                 [
-                    "astn source"
-                ],
-            ),
-            "vd": sh.import_.sibling(
-                "value deserializers",
-                [
+                    "dist",
+                    "interface",
+                    "generated",
+                    "pareto",
+                    "schemas",
+                    "authoring parse tree",
+                    "data types",
+                    "target",
                 ],
             ),
         },
-        $.types.dictionary.__d_map(($, key) => sh.type(sh.t.deprecated_refiner(
+        $.types.dictionary.__d_map(($, key) => sh.type.refiner(
             sh.t.component_imported(
                 "in",
                 "Value",
@@ -48,7 +48,6 @@ export const Schema = (
             null,
             null,
             null,
-        ),
         )),
     )
 }

@@ -51,7 +51,9 @@ export const Schema: _pi.Transformer_With_Parameters<
         {},
         $.types.dictionary.__d_map(($, key) => sh.algorithm(
             sh.type_reference("signatures", key),
-            true,
+            false,
+            false,
+            false,
             Type_Node(
                 $.node,
                 {
@@ -102,22 +104,22 @@ export const Type_Node = (
                 sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "value": sh.e.function_deprecated(
-                        false,
-                        Type_Node(
-                            $.node,
-                            {
-                                'temp type': $p['temp type'],
-                                'temp subselection': _p.list.nested_literal([
-                                    $p['temp subselection'],
-                                    [
-                                        sh_i.sub.dictionary(),
-                                    ]
-                                ]),
-                                'constrained': $p.constrained
-                            }
-                        ),
-                    ),
+                    // "value": sh.e.function_deprecated(
+                    //     false,
+                    //     Type_Node(
+                    //         $.node,
+                    //         {
+                    //             'temp type': $p['temp type'],
+                    //             'temp subselection': _p.list.nested_literal([
+                    //                 $p['temp subselection'],
+                    //                 [
+                    //                     sh_i.sub.dictionary(),
+                    //                 ]
+                    //             ]),
+                    //             'constrained': $p.constrained
+                    //         }
+                    //     ),
+                    // ),
                 })
             ))
             case 'group': return _p.ss($, ($) => sh.e.call(
@@ -125,32 +127,36 @@ export const Type_Node = (
                 sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "properties": sh.e.function_deprecated(
-                        false,
-                        sh.e.group($.dictionary.__d_map(($, key) => sh.e.change_context(
-                            sh.s.call(
-                                sh.s.from_variable_import(" i generic", "get entry", []),
-                                sh.s.from_context([]),
-                                _p.dictionary.literal({
-                                    "key": sh.e.string(key, 'quote'),
-                                }),
-                                [],
-                            ),
-                            Type_Node(
-                                $.node,
-                                {
-                                    'temp type': $p['temp type'],
-                                    'temp subselection': _p.list.nested_literal([
-                                        $p['temp subselection'],
-                                        [
-                                            sh_i.sub.group(key),
-                                        ]
-                                    ]),
-                                    'constrained': $p.constrained
-                                }
-                            )
-                        )))
-                    ),
+                    // "properties": sh.e.function_deprecated(
+                    //     false,
+                    //     sh.e.group(
+                    //         $.dictionary.__d_map(
+                    //             ($, key) => sh.e.change_context(
+                    //                 sh.s.call(
+                    //                     sh.s.from_variable_import(" i generic", "get entry", []),
+                    //                     sh.s.from_context([]),
+                    //                     _p.dictionary.literal({
+                    //                         "key": sh.e.string(key, 'quote'),
+                    //                     }),
+                    //                     [],
+                    //                 ),
+                    //                 Type_Node(
+                    //                     $.node,
+                    //                     {
+                    //                         'temp type': $p['temp type'],
+                    //                         'temp subselection': _p.list.nested_literal([
+                    //                             $p['temp subselection'],
+                    //                             [
+                    //                                 sh_i.sub.group(key),
+                    //                             ]
+                    //                         ]),
+                    //                         'constrained': $p.constrained
+                    //                     }
+                    //                 )
+                    //             )
+                    //         )
+                    //     )
+                    // ),
                 })
             ))
             case 'list': return _p.ss($, ($) => sh.e.call(
@@ -158,22 +164,22 @@ export const Type_Node = (
                 sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "value": sh.e.function_deprecated(
-                        false,
-                        Type_Node(
-                            $.node,
-                            {
-                                'temp type': $p['temp type'],
-                                'temp subselection': _p.list.nested_literal([
-                                    $p['temp subselection'],
-                                    [
-                                        sh_i.sub.list(),
-                                    ]
-                                ]),
-                                'constrained': $p.constrained
-                            }
-                        ),
-                    ),
+                    // "value": sh.e.function_deprecated(
+                    //     false,
+                    //     Type_Node(
+                    //         $.node,
+                    //         {
+                    //             'temp type': $p['temp type'],
+                    //             'temp subselection': _p.list.nested_literal([
+                    //                 $p['temp subselection'],
+                    //                 [
+                    //                     sh_i.sub.list(),
+                    //                 ]
+                    //             ]),
+                    //             'constrained': $p.constrained
+                    //         }
+                    //     ),
+                    // ),
                 })
             ))
             case 'nothing': return _p.ss($, ($) => sh.e.call(
@@ -202,22 +208,22 @@ export const Type_Node = (
                 sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "value": sh.e.function_deprecated(
-                        false,
-                        Type_Node(
-                            $,
-                            {
-                                'temp type': $p['temp type'],
-                                'temp subselection': _p.list.nested_literal([
-                                    $p['temp subselection'],
-                                    [
-                                        sh_i.sub.optional(),
-                                    ]
-                                ]),
-                                'constrained': $p.constrained
-                            }
-                        ),
-                    ),
+                    // "value": sh.e.function_deprecated(
+                    //     false,
+                    //     Type_Node(
+                    //         $,
+                    //         {
+                    //             'temp type': $p['temp type'],
+                    //             'temp subselection': _p.list.nested_literal([
+                    //                 $p['temp subselection'],
+                    //                 [
+                    //                     sh_i.sub.optional(),
+                    //                 ]
+                    //             ]),
+                    //             'constrained': $p.constrained
+                    //         }
+                    //     ),
+                    // ),
                 })
             ))
             case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
@@ -251,31 +257,35 @@ export const Type_Node = (
                 sh.e.select_from_context_deprecated([]),
                 false,
                 _p.dictionary.literal({
-                    "states": sh.e.dictionary_literal($.__d_map(($, key) => sh.e.function_deprecated(
-                        false,
-                        sh.e.case_(
-                            key,
-                            Type_Node(
-                                $.node,
-                                {
-                                    'temp type': $p['temp type'],
-                                    'temp subselection': _p.list.nested_literal([
-                                        $p['temp subselection'],
-                                        [
-                                            sh_i.sub.state_group(key),
-                                        ]
-                                    ]),
-                                    'constrained': $p.constrained
-                                }
-                            )
-                        ),
-                        sh.type_node_reference("out", $p['temp type'], _p.list.nested_literal([
-                            $p['temp subselection'],
-                            [
-                                //sh_i.sub.group("SG"),
-                            ]
-                        ]))
-                    )))
+                    // "states": sh.e.dictionary_literal(
+                    //     $.__d_map(
+                    //         ($, key) => sh.e.function_deprecated(
+                    //             false,
+                    //             sh.e.case_(
+                    //                 key,
+                    //                 Type_Node(
+                    //                     $.node,
+                    //                     {
+                    //                         'temp type': $p['temp type'],
+                    //                         'temp subselection': _p.list.nested_literal([
+                    //                             $p['temp subselection'],
+                    //                             [
+                    //                                 sh_i.sub.state_group(key),
+                    //                             ]
+                    //                         ]),
+                    //                         'constrained': $p.constrained
+                    //                     }
+                    //                 )
+                    //             ),
+                    //             sh.type_node_reference("out", $p['temp type'], _p.list.nested_literal([
+                    //                 $p['temp subselection'],
+                    //                 [
+                    //                     //sh_i.sub.group("SG"),
+                    //                 ]
+                    //             ]))
+                    //         )
+                    //     )
+                    // )
                 })
             ))
             case 'text': return _p.ss($, ($) => sh.e.call(

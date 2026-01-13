@@ -40,6 +40,8 @@ export const Types = (
         $.dictionary.__d_map(($, key) => sh.algorithm(
             sh.type_reference("signatures", key),
             false,
+            false,
+            false,
             Type_Node(
                 $.node,
                 {
