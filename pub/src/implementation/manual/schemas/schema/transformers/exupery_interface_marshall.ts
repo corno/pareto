@@ -22,7 +22,7 @@ export const Schema = (
                 "schemas",
                 "sealed target",
                 "data types",
-                "target",
+                "source",
             ],
         ),
         "in": sh.import_.sibling(

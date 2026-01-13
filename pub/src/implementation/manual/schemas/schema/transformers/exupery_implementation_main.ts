@@ -57,11 +57,11 @@ export const Schema_Tree = (
                             //     'constrained': $.complexity[0] === 'constrained'
                             // })),
 
-                            // "serialize.ts": _p.optional.set(t_serialize.Schema($, {
-                            //     'path': $p.path,
-                            //     'imports': $.imports,
-                            //     'constrained': $.complexity[0] === 'constrained'
-                            // })),
+                            "serialize.ts": _p.optional.set(t_serialize.Schema($, {
+                                'path': $p.path,
+                                'imports': $.imports,
+                                'constrained': $.complexity[0] === 'constrained'
+                            })),
                             // "deserialize.ts": _p.optional.set(t_deserialize.Schema($, {
                             //     'path': $p.path,
                             //     'imports': $.imports,

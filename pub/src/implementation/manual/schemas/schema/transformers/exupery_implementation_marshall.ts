@@ -21,44 +21,35 @@ export const Schema = (
     }
 ): d_out.Module_Set.D => sh.m.module(
     'transformer',
-    op_flatten_dictionary(
-        _p.dictionary.literal({
-            "": _p.dictionary.literal({
-                "signatures": sh_i.import_.ancestor(
-                    3, //5,
-                    "interface",
-                    _p.list.nested_literal([
-                        _p.list.literal([
-                            // "generated",
-                            // "pareto",
-                            "schemas"
-                        ]),
-                        $p.path,
-                        _p.list.literal(["marshall"])
-                    ])
-                ),
-                "out": sh_i.import_.external(
-                    "astn",
-                    [
-                        "dist",
-                        "interface",
-                        "generated",
-                        "pareto",
-                        "schemas",
-                        "sealed target",
-                        "data types",
-                        "target",
-                    ],
-                ),
-            }),
-            "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["marshall"]))
-        }),
-        {
-            'separator': "",
-        },
-        () => _p.unreachable_code_path(),
-    ),
-    {},
+    _p.dictionary.literal({
+        "signatures": sh_i.import_.ancestor(
+            3, //5,
+            "interface",
+            _p.list.nested_literal([
+                _p.list.literal([
+                    // "generated",
+                    // "pareto",
+                    "schemas"
+                ]),
+                $p.path,
+                _p.list.literal(["marshall"])
+            ])
+        ),
+        "out": sh_i.import_.external(
+            "astn",
+            [
+                "dist",
+                "interface",
+                "generated",
+                "pareto",
+                "schemas",
+                "sealed target",
+                "data types",
+                "source",
+            ],
+        ),
+    }),
+    $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["marshall"])),
     $.types.dictionary.__d_map(($, key) => sh.algorithm(
         sh.type_reference("signatures", key),
         false,
@@ -101,7 +92,7 @@ export const Type_Node = (
             case 'component': return _p.ss($, ($) => sh.e.call(
                 _p.sg($, ($) => {
                     switch ($[0]) {
-                        case 'external': return _p.ss($, ($) => sh.s.from_variable_import(`v r ${$.import.key}`, $.type.key, []))
+                        case 'external': return _p.ss($, ($) => sh.s.from_variable_import(`${$.import.key}`, $.type.key, []))
                         case 'internal': return _p.ss($, ($) => sh.s.from_variable($.key, []))
                         case 'internal cyclic': return _p.ss($, ($) => sh.s.from_variable($.key, []))
                         default: return _p.au($[0])
@@ -113,7 +104,7 @@ export const Type_Node = (
             case 'dictionary': return _p.ss($, ($) => sh.e.tagged_union(
                 "dictionary",
                 sh.e.dictionary_map(
-                    $.ordered ? sh.s.from_context(["dictionary"]) : sh.s.from_context([]),
+                    sh.s.from_context([]),
                     Type_Node(
                         $.node,
                         {
@@ -167,7 +158,7 @@ export const Type_Node = (
             case 'number': return _p.ss($, ($) => string(
                 sh.e.implement_me(),
                 'backtick'//FIXME should be 'none'
-            )) 
+            ))
             case 'optional': return _p.ss($, ($) => sh.e.tagged_union(
                 "optional",
                 sh.e.decide_optional(

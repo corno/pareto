@@ -21,17 +21,37 @@ export const Schema = (
 ): d_out.Module_Set.D => {
     return sh.m.module(
         'serializer',
+        _p.dictionary.literal({
+            "signatures": sh_i.import_.ancestor(
+                3, //5,
+                "interface",
+                _p.list.nested_literal([
+                    _p.list.literal([
+                        // "generated",
+                        // "pareto",
+                        "schemas"
+                    ]),
+                    $p.path,
+                    _p.list.literal([
+                        "serialize"
+                    ])
+                ])
+            ),
+        }),
         op_flatten_dictionary(
             _p.dictionary.literal({
                 "": _p.dictionary.literal({
-                    "signatures": sh_i.import_.ancestor(5, "interface", _p.list.nested_literal([
-                        _p.list.literal(["generated", "pareto", "schemas"]),
-                        $p.path,
-                        _p.list.literal(["serialize"])
-                    ])),
-                    "serialize": sh_i.import_.ancestor(2, "generic", _p.list.nested_literal([
-                        _p.list.literal(["serialize"]),
-                    ])),
+                    "serialize": sh_i.import_.external(
+                        "astn",
+                        [
+                            "dist",
+                            "implementation",
+                            "manual",
+                            "schemas",
+                            "sealed target",
+                            "serializers",
+                        ],
+                    ),
                     "marshall": sh_i.import_.sibling("marshall", _p.list.nested_literal([
                     ])),
                 }),
@@ -42,21 +62,18 @@ export const Schema = (
             },
             () => _p.unreachable_code_path(),
         ),
-        {},
         $.types.dictionary.__d_map(($, key) => sh.algorithm(
             sh.type_reference("signatures", key),
             false,
             false,
             false,
             sh.e.call(
-                sh.s.from_variable_import(" i serialize", "Document", []),
+                sh.s.from_variable_import("serialize", "Document", []),
                 sh.e.call(
-                    sh.s.from_variable_import(" i marshall", key, []),
+                    sh.s.from_variable_import("marshall", key, []),
                     sh.e.select_from_context_deprecated([]),
                     false,
-                    {
-                        'value serializers': sh.e.select_from_parameter_deprecated("value serializers", []),
-                    }
+
                 ),
                 false,
             )
