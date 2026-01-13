@@ -5,9 +5,11 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 
 export const $: g_.Resolve_Logic.signatures<_pi.Deprecated_Source_Location>  = signatures(
     {
-        "Expression": sig.local({}, {}),
-        "Module": sig.local({}, {}),
         "Module Set": sig.local({}, {}),
+        "Module": sig.local({}, {}),
+        "Type Reference": sig.local({}, {}),
+        "Type Node Reference": sig.local({}, {}),
+        "Expression": sig.local({}, {}),
         "Selection": sig.local({}, {}),
     },
 )

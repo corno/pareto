@@ -4,8 +4,8 @@ import * as _pdev from 'pareto-core-dev'
 
 //data types
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
-import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/source"
+import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/source"
 
 //shorthands
 import * as sh from "exupery/dist/shorthands/implementation"
@@ -16,7 +16,7 @@ import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/imp
 
 export const Schema: _pi.Transformer_With_Parameters<
     d_in.Schema,
-    d_out.Module_Set.D<_pi.Deprecated_Source_Location>,
+    d_out.Module_Set.D,
     {
         'path': _pi.List<string>,
         'imports': d_in.Imports,
@@ -39,7 +39,7 @@ export const Schema: _pi.Transformer_With_Parameters<
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _p.list.literal(["data types", "target"]),
-                    ]), $p.constrained ? { "Source": sh_i.t.component_imported("in", "Range", {}, []) } : {}),
+                    ]), $p.constrained ? { "Source": sh_i.t.component_imported("in", "Range") } : {}),
                 }),
                 "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["unmarshall"], {}))
             }),
@@ -50,7 +50,7 @@ export const Schema: _pi.Transformer_With_Parameters<
         ),
         {},
         $.types.dictionary.__d_map(($, key) => sh.algorithm(
-            sh_i.t.component_imported("signatures", key, {}, []),
+            sh.type_reference("signatures", key),
             true,
             Type_Node(
                 $.node,
@@ -68,10 +68,10 @@ export const Type_Node = (
     $: d_in.Type_Node,
     $p: {
         'temp type': string
-        'temp subselection': _pi.List<d_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> //can be removed when exupery has type inference
+        'temp subselection': _pi.List<d_out_interface.Type.reference.sub_selection.L> //can be removed when exupery has type inference
         'constrained': boolean
     },
-): d_out.Expression<_pi.Deprecated_Source_Location> => {
+): d_out.Expression => {
     return _p.sg($, ($) => {
         switch ($[0]) {
             case 'boolean': return _p.ss($, ($) => sh.e.call(
@@ -269,10 +269,10 @@ export const Type_Node = (
                                 }
                             )
                         ),
-                        sh_i.t.component_imported("out", $p['temp type'], {}, _p.list.nested_literal([
+                        sh.type_node_reference("out", $p['temp type'], _p.list.nested_literal([
                             $p['temp subselection'],
                             [
-                                sh_i.sub.group("SG"),
+                                //sh_i.sub.group("SG"),
                             ]
                         ]))
                     )))

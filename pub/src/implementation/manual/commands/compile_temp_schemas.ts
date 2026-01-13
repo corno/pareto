@@ -22,6 +22,7 @@ import { Module, $ as poormans_modules } from "../../../data/temporary_schemas/a
 import * as r_pareto_module from "../../temp/resolvers/module"
 import * as t_pareto_module_to_fountain_pen_block__implementation from "../schemas/module/transformers/temp_typescript_implementation"
 import * as t_pareto_module_to_fountain_pen_block__interface from "../schemas/module/transformers/temp_typescript_interface"
+import * as t_pareto_module_to_fountain_pen_block__interface2 from "../schemas/module/transformers/temp_typescript_interface"
 import * as t_path_to_path from "pareto-resources/dist/implementation/manual/schemas/path/transformers/path"
 import * as ds_context_path from "pareto-resources/dist/implementation/manual/schemas/context_path/deserializers"
 
@@ -42,6 +43,7 @@ export const $$: signatures.commands.compile_temp_schemas = _p.command_procedure
             ($, key) => {
 
                 const interface_module_path = t_path_to_path.create_node_path(ds_context_path.Context_Path(`./out/source_code/${key}`), `interface`)
+                const interface_module_path_new = t_path_to_path.create_node_path(ds_context_path.Context_Path(`./out/source_code/${key}`), `interface_new`)
                 const implementation_module_path = t_path_to_path.create_node_path(ds_context_path.Context_Path(`./out/source_code/${key}`), `implementation`)
 
                 return [
@@ -64,12 +66,36 @@ export const $$: signatures.commands.compile_temp_schemas = _p.command_procedure
                         ($) => ['could not remove interface', null]
                     ),
 
-                    //write new interface files
+                    // //write new interface files
+                    // $cr['write to directory'].execute(
+                    //     {
+                    //         'escape spaces in path': true,
+                    //         'path': interface_module_path,
+                    //         'directory': t_pareto_module_to_fountain_pen_block__interface.Module(
+                    //             r_pareto_module.Module(
+                    //                 $.module,
+                    //                 {
+                    //                     'parameters': {
+                    //                         'lookups': null,
+                    //                         'values': null,
+                    //                     },
+                    //                     'location 2 string': location_to_string
+                    //                 }
+                    //             ),
+                    //         ),
+                    //         'indentation': "    ",
+                    //         'newline': "\n",
+                    //         'remove before creating': true,
+                    //     },
+                    //     ($) => ['could not write interface', null]
+                    // ),
+
+                    //write new new_style interface files
                     $cr['write to directory'].execute(
                         {
                             'escape spaces in path': true,
-                            'path': interface_module_path,
-                            'directory': t_pareto_module_to_fountain_pen_block__interface.Module(
+                            'path': interface_module_path_new,
+                            'directory': t_pareto_module_to_fountain_pen_block__interface2.Module(
                                 r_pareto_module.Module(
                                     $.module,
                                     {
@@ -112,19 +138,19 @@ export const $$: signatures.commands.compile_temp_schemas = _p.command_procedure
                         ($) => ['could not write implementation', null]
                     ),
 
-                    //copy generic implementation files
-                    $cr.copy.execute(
-                        {
-                            'source': t_path_to_path.create_node_path(ds_context_path.Context_Path(`./pub/src/implementation/generated/pareto`), `generic`),
-                            'target': t_path_to_path.extend_node_path(implementation_module_path, { 'addition': `generic` }),
-                            'options': {
-                                'recursive': _p.optional.set(true),
-                                'force': _p.optional.not_set(),
-                                'errorOnExist': _p.optional.not_set(),
-                            }
-                        },
-                        ($) => ['could not copy generic implementation', null]
-                    ),
+                    // //copy generic implementation files
+                    // $cr.copy.execute(
+                    //     {
+                    //         'source': t_path_to_path.create_node_path(ds_context_path.Context_Path(`./pub/src/implementation/generated/pareto`), `generic`),
+                    //         'target': t_path_to_path.extend_node_path(implementation_module_path, { 'addition': `generic` }),
+                    //         'options': {
+                    //             'recursive': _p.optional.set(true),
+                    //             'force': _p.optional.not_set(),
+                    //             'errorOnExist': _p.optional.not_set(),
+                    //         }
+                    //     },
+                    //     ($) => ['could not copy generic implementation', null]
+                    // ),
 
                     //copy core interface files
                     $cr.copy.execute(

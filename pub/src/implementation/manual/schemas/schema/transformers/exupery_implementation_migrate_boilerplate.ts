@@ -3,8 +3,8 @@ import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
-import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/source"
+import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/source"
 
 import * as sh from "exupery/dist/shorthands/implementation"
 import * as sh_i from "exupery/dist/shorthands/interface"
@@ -19,7 +19,7 @@ export const Types = (
         'imports': d_in.Imports,
         'constrained': boolean
     }
-): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+): d_out.Module_Set.D => {
     return sh.m.module(
         'refiner',
         op_flatten_dictionary(
@@ -37,7 +37,7 @@ export const Types = (
         ),
         {},
         $.dictionary.__d_map(($, key) => sh.algorithm(
-            sh_i.t.component_imported("signatures", key, {}, []),
+            sh.type_reference("signatures", key),
             false,
             Type_Node(
                 $.node,
@@ -54,9 +54,9 @@ export const Type_Node = (
     $: d_in.Type_Node,
     $p: {
         'type': string
-        'subselection': _pi.List<d_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>>
+        'subselection': _pi.List<d_out_interface.Type.reference.sub_selection.L>
     },
-): d_out.Expression<_pi.Deprecated_Source_Location> => {
+): d_out.Expression => {
     return _p.sg($, ($) => {
         switch ($[0]) {
             case 'number': return _p.ss($, ($) => sh.e.select_from_context_deprecated([]))
@@ -157,10 +157,9 @@ export const Type_Node = (
                         ]),
                     }
                 ))),
-                sh_i.t.component_imported(
+                sh.type_node_reference(
                     "out",
                     $p.type,
-                    {},
                     $p.subselection,
                 ),
             ))

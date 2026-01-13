@@ -29,10 +29,24 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "type": prop(t.state_group({
                     "namespace": tstate(t.text_local(text('single line'))),
                     "named": tstate(t.group({
-                        "specifiers": prop(t.dictionary(t.text_local(text('single line')))),
+                        "specifiers": prop(t.list(t.group({
+                            "name": prop(t.text_local(text('single line'))),
+                            "as": prop(t.optional(t.text_local(text('single line')))),
+                        }))),
                     })),
                 })),
                 "from": prop(t.text_local(text('single line'))),
+            })),
+            "export": tstate(t.group({
+                "type": prop(t.state_group({
+                    "named exports": tstate(t.group({
+                        "specifiers": prop(t.list(t.group({
+                            "name": prop(t.text_local(text('single line'))),
+                            "as": prop(t.optional(t.text_local(text('single line')))),
+                        }))),
+                        "from": prop(t.optional(t.text_local(text('single line')))),
+                    })),
+                })),
             })),
             "module declaration": tstate(t.group({ //namespace
                 "export": prop(t.boolean()),
@@ -52,7 +66,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "type": prop(t.optional(t.component_cyclic("Type"))),
                 "expression": prop(t.optional(t.component("Expression"))),
             })),
-            "raw": tstate(t.component("Block Part")),
+            "raw": tstate(t.component("Group")),
         }))),
 
         "Type": type(t.state_group({
@@ -89,6 +103,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
         })),
 
         "Expression": type(t.state_group({
+            "raw": tstate(t.component("Block Part")),
             "number literal": tstate(t.number_local(n.approximation(10))),
             "true": tstate(t.nothing()),
             "false": tstate(t.nothing()),

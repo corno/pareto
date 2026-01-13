@@ -41,9 +41,25 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 })),
             }))),
             "algorithms": prop(t.dictionary(t.group({
-                "type": prop(t.component_external("interface", "Type")),
+                "type": prop(t.component("Type Reference")),
                 "expression": prop(t.component_cyclic("Expression")),
                 "temp has parameters": prop(t.boolean()),
+            }))),
+        })),
+
+        "Type Reference": type(t.group({
+            "import": prop(t.text_global("TBD")),
+            "type": prop(t.text_global("TBD")),
+        })),
+
+        "Type Node Reference": type(t.group({
+            "type": prop(t.component("Type Reference")),
+            "sub selection": prop(t.list(t.state_group({
+                "dictionary": tstate(t.nothing()),
+                "group": tstate(t.text_global("TBD")),
+                "list": tstate(t.nothing()),
+                "optional": tstate(t.nothing()),
+                "state group": tstate(t.text_global("TBD")),
             }))),
         })),
 
@@ -52,12 +68,12 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "abort": tstate(t.component_cyclic("Expression")),
                 "block": tstate(t.group({
                     "variables": prop(t.dictionary(t.group({
-                        "type": prop(t.optional(t.component_external("interface", "Type"))),
+                        "type": prop(t.optional(t.component("Type Node Reference"))),
                         "expression": prop(t.component_cyclic("Expression")),
                     }))),
                     "temp ordered variables": prop(t.list(t.group({ //FIXME: remove this as soon as the dependencies can be determined in the variables dictionary
                         "name": prop(t.text_global("Identifier")),
-                        "type": prop(t.optional(t.component_external("interface", "Type"))),
+                        "type": prop(t.optional(t.component("Type Node Reference"))),
                         "expression": prop(t.component_cyclic("Expression")),
                     }))),
                     "expression": prop(t.component_cyclic("Expression")),
@@ -72,7 +88,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "deprecated function": tstate(t.group({
                     "expression": prop(t.component_cyclic("Expression")),
                     "temp has parameters": prop(t.boolean()),
-                    "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
+                    "temp resulting node": prop(t.optional(t.component("Type Node Reference"))),
                 })),
             })),
             "initialize": tstate(t.state_group({
@@ -148,19 +164,19 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "type": prop(t.state_group({
                     "boolean": tstate(t.group({
                         "source": prop(t.component_cyclic("Selection")),
-                        "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
+                        "temp resulting node": prop(t.optional(t.component("Type Node Reference"))),
                         "if false": prop(t.component_cyclic("Expression")),
                         "if true": prop(t.component_cyclic("Expression")),
                     })),
                     "optional": tstate(t.group({
                         "source": prop(t.component_cyclic("Selection")),
-                        "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
+                        "temp resulting node": prop(t.optional(t.component("Type Node Reference"))),
                         "if not set": prop(t.component_cyclic("Expression")),
                         "if set": prop(t.component_cyclic("Expression")),
                     })),
                     "state group": tstate(t.group({
                         "source": prop(t.component_cyclic("Selection")),
-                        "temp resulting node": prop(t.optional(t.component_external("interface", "Type"))),
+                        "temp resulting node": prop(t.optional(t.component("Type Node Reference"))),
                         "type": prop(t.state_group({
                             "partial": tstate(t.group({
                                 "cases": prop(t.dictionary(t.component_cyclic("Expression"))),

@@ -3,7 +3,7 @@ import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/source"
 
 import * as sh from "exupery/dist/shorthands/implementation"
 import * as sh_i from "exupery/dist/shorthands/interface"
@@ -18,7 +18,7 @@ export const Schema = (
         'imports': d_in.Imports,
         'constrained': boolean
     }
-): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+): d_out.Module_Set.D => {
     return sh.m.module(
         'serializer',
         op_flatten_dictionary(
@@ -44,7 +44,7 @@ export const Schema = (
         ),
         {},
         $.types.dictionary.__d_map(($, key) => sh.algorithm(
-            sh_i.t.component_imported("signatures", key, {}, []),
+            sh.type_reference("signatures", key),
             true,
             sh.e.call(
                 sh.s.from_variable_import(" i serialize", "Document", []),

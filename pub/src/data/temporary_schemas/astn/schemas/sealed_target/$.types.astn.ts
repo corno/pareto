@@ -24,10 +24,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             /**
              * verbose groups are always ordered
              */
-            "verbose group": tstate(t.list(t.group({
-                "key": prop(t.text_global("Text Value")),
-                "value": prop(t.component_cyclic("Value")),
-            }))),
+            "verbose group": tstate(t.dictionary(t.component_cyclic("Value"))),
             "text": tstate(t.group({
                 "value": prop(t.text_global("Text Value")),
                 "delimiter": prop(t.state_group({

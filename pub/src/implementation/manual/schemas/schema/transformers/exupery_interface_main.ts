@@ -2,7 +2,7 @@ import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/source"
 
 import { m } from "exupery/dist/shorthands/interface"
 
@@ -17,9 +17,6 @@ import * as t_unmarshall from "./exupery_interface_unmarshall"
 import * as t_serialize from "./exupery_interface_serialize"
 // import * as t_deserialize from "./exupery_interface_deserialize"
 
-import * as t_value_deserializers from "./exupery_interface_value_deserializers"
-import * as t_value_serializers from "./exupery_interface_value_serializers"
-
 
 // import * as operations from "pareto-standard-operations"
 
@@ -27,7 +24,7 @@ import * as t_value_serializers from "./exupery_interface_value_serializers"
 //     'filter dictionary': operations.pure.dictionary.filter
 // }
 
-export const Schema = ($: d_in.Schema): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+export const Schema = ($: d_in.Schema): d_out.Module_Set.D => {
     const schema = $
     const constrained: boolean = _p.sg($.complexity, ($) => {
         switch ($[0]) {
@@ -41,14 +38,14 @@ export const Schema = ($: d_in.Schema): d_out.Module_Set.D<_pi.Deprecated_Source
             "source.ts": t_types.Schema(
                 schema,
                 {
-                    'what to generate': ['source', null],
+                    'add location': false,
                     'imports': schema.imports,
                 }
             ),
             "target.ts": t_types.Schema(
                 schema,
                 {
-                    'what to generate': ['target', constrained],
+                    'add location': constrained,
                     'imports': schema.imports,
                 }
             ),
@@ -63,55 +60,55 @@ export const Schema = ($: d_in.Schema): d_out.Module_Set.D<_pi.Deprecated_Source
                 }
             }),
         })),
-        "migrate boilerplate.ts": t_migrate_boilerplate.Schema(
-            schema,
-            {
-                'imports': schema.imports,
-                'constrained': constrained
-            }
-        ),
-        "unmarshall.ts": t_unmarshall.Schema(
-            schema,
-            {
-                'imports': schema.imports,
-                'constrained': constrained
-            }
-        ),
-        "marshall.ts": t_marshall.Schema(
-            schema,
-            {
-                'imports': schema.imports,
-            }
-        ),
-        "serialize.ts": t_serialize.Schema(
-            schema,
-            {
-                'imports': schema.imports,
-            }
-        ),
+        // "migrate boilerplate.ts": t_migrate_boilerplate.Schema(
+        //     schema,
+        //     {
+        //         'imports': schema.imports,
+        //         'constrained': constrained
+        //     }
+        // ),
+        // "unmarshall.ts": t_unmarshall.Schema(
+        //     schema,
+        //     {
+        //         'imports': schema.imports,
+        //         'constrained': constrained
+        //     }
+        // ),
+        // "marshall.ts": t_marshall.Schema(
+        //     schema,
+        //     {
+        //         'imports': schema.imports,
+        //     }
+        // ),
+        // "serialize.ts": t_serialize.Schema(
+        //     schema,
+        //     {
+        //         'imports': schema.imports,
+        //     }
+        // ),
         // "deserialize.ts": t_deserialize.Schema(
         //     schema,
         //     {
         //         'imports': schema.imports,
         //     }
         // ),
-        "value serializers.ts": t_value_serializers.Schema(
-            schema,
-            {
-                'imports': schema.imports,
-            }
-        ),
-        "value deserializers.ts": t_value_deserializers.Schema(
-            schema,
-            {
-                'imports': schema.imports,
-            }
-        ),
+        // "value serializers.ts": t_value_serializers.Schema(
+        //     schema,
+        //     {
+        //         'imports': schema.imports,
+        //     }
+        // ),
+        // "value deserializers.ts": t_value_deserializers.Schema(
+        //     schema,
+        //     {
+        //         'imports': schema.imports,
+        //     }
+        // ),
 
     })
 }
 
-export const Schema_Tree = ($: d_in.Schema_Tree): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => _p.sg($, ($) => {
+export const Schema_Tree = ($: d_in.Schema_Tree): d_out.Module_Set.D => _p.sg($, ($) => {
     switch ($[0]) {
         case 'schema': return _p.ss($, ($) => Schema($))
         case 'set': return _p.ss($, ($) => Schemas($))
@@ -120,7 +117,7 @@ export const Schema_Tree = ($: d_in.Schema_Tree): d_out.Module_Set.D<_pi.Depreca
 })
 
 
-export const Schemas = ($: d_in.Schemas): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => m.set($.dictionary.__d_map(($) => _p.sg($, ($) => {
+export const Schemas = ($: d_in.Schemas): d_out.Module_Set.D => m.set($.dictionary.__d_map(($) => _p.sg($, ($) => {
     switch ($[0]) {
         case 'schema': return _p.ss($, ($) => Schema($))
         case 'set': return _p.ss($, ($) => Schemas($))

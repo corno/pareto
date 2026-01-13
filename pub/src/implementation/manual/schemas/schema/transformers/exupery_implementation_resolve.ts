@@ -3,8 +3,8 @@ import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/target"
-import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/target"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/source"
+import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/source"
 
 import * as sh from "exupery/dist/shorthands/implementation"
 import * as sh_i from "exupery/dist/shorthands/interface"
@@ -30,7 +30,7 @@ export const Resolvers = (
         'path': _pi.List<string>,
         'imports': d_in.Imports
     }
-): d_out.Module_Set.D<_pi.Deprecated_Source_Location> => {
+): d_out.Module_Set.D => {
     return sh.m.module(
         'refiner',
         op_flatten_dictionary(
@@ -58,9 +58,7 @@ export const Resolvers = (
         {},
         op_pad_dictionary_identifiers(
             $.dictionary.__d_map(($, key) => sh.algorithm(
-                sh_i.t.component_imported("signatures", key, {
-                    // "Source": t.component_imported("generic", "Location Info", {}, []),
-                }, []),
+                sh.type_reference("signatures", key),
                 true,
                 sh.e.block(
                     [],
@@ -97,9 +95,9 @@ export const Resolvers = (
 export const Possible_Value_Selection = (
     $: d_in.Possible_Value_Selection,
     $p: {
-        'tail': () => _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>>
+        'tail': () => _pi.List<d_out.Selection.tail.L>
     },
-): d_out.Selection<_pi.Deprecated_Source_Location> => {
+): d_out.Selection => {
     return _p.sg($, ($) => {
         switch ($[0]) {
             case 'parameter': return _p.ss($, ($) => sh.s.from_variable(
@@ -130,7 +128,7 @@ export const Possible_Value_Selection = (
 export const Optional_Value_Initialization = (
     $: d_in.Optional_Value_Initialization,
     $p: null,
-): d_out.Expression<_pi.Deprecated_Source_Location> => _p.sg($, ($) => {
+): d_out.Expression => _p.sg($, ($) => {
     switch ($[0]) {
         case 'not set': return _p.ss($, ($) => sh.e.not_set())
         case 'selection': return _p.ss($, ($) => sh.e.select_deprecated(Possible_Value_Selection($, { 'tail': () => _p.list.literal([]) })))
@@ -142,13 +140,13 @@ export const Optional_Value_Initialization = (
 export const Guaranteed_Value_Selection = (
     $: d_in.Guaranteed_Value_Selection,
     $p: {
-        'tail': () => _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>>
+        'tail': () => _pi.List<d_out.Selection.tail.L>
     },
-): d_out.Selection<_pi.Deprecated_Source_Location> => {
-    const tail = (): _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => _p.list.nested_literal([
+): d_out.Selection => {
+    const tail = (): _pi.List<d_out.Selection.tail.L> => _p.list.nested_literal([
         _p.list.flatten(
             $.tail.path,
-            ($) => _p.sg($, ($): _pi.List<d_out.Selection.tail.L<_pi.Deprecated_Source_Location>> => {
+            ($) => _p.sg($, ($): _pi.List<d_out.Selection.tail.L> => {
                 switch ($[0]) {
                     case 'component': return _p.ss($, ($) => _p.list.literal([]))
                     case 'group': return _p.ss($, ($) => _p.list.literal([$.key]))
@@ -224,7 +222,7 @@ export const Lookup_Selection = (
     $p: {
 
     },
-): d_out.Selection<_pi.Deprecated_Source_Location> => _p.sg($.type, ($) => {
+): d_out.Selection => _p.sg($.type, ($) => {
     switch ($[0]) {
         case 'dictionary': return _p.ss($, ($) => sh.s.call(
             sh.s.from_variable_import(" i generic", "dictionary to lookup", []),
@@ -257,9 +255,9 @@ export const Lookup_Selection = (
 export const Option_Constraints = (
     $: d_in.Option_Constraints,
     $p: {
-        sub: () => d_out.Expression<_pi.Deprecated_Source_Location>
+        sub: () => d_out.Expression
     },
-): d_out.Expression<_pi.Deprecated_Source_Location> => sh.e.block(
+): d_out.Expression => sh.e.block(
     [],
     op_pad_dictionary_identifiers($, { 'prefix': "c ", 'suffix': "" }).__d_map(($) => sh.variable(null, _p.sg($, ($) => {
         switch ($[0]) {
@@ -279,14 +277,14 @@ export const Node_Resolver = (
     $: d_in.Node_Resolver,
     $p: {
         'temp type': string
-        'temp subselection': _pi.List<d_out_interface.Type.SG.component.sub_selection.L<_pi.Deprecated_Source_Location>> //can be removed when exupery has type inference
+        'temp subselection': _pi.List<d_out_interface.Type.reference.sub_selection.L> //can be removed when exupery has type inference
     },
-): d_out.Expression<_pi.Deprecated_Source_Location> => _p.sg($, ($) => {
+): d_out.Expression => _p.sg($, ($) => {
     switch ($[0]) {
         case 'number': return _p.ss($, ($) => sh.e.select_from_context_deprecated([]))
         case 'boolean': return _p.ss($, ($) => sh.e.select_from_context_deprecated([]))
         case 'nothing': return _p.ss($, ($) => sh.e.null_())
-        case 'reference': return _p.ss($, ($) => sh.e.select_deprecated(_p.sg($.type, ($): d_out.Selection<_pi.Deprecated_Source_Location> => {
+        case 'reference': return _p.ss($, ($) => sh.e.select_deprecated(_p.sg($.type, ($): d_out.Selection => {
             switch ($[0]) {
                 case 'derived': return _p.ss($, ($) => Guaranteed_Value_Selection($.value, { 'tail': () => _p.list.literal([]) }))
                 case 'selected': return _p.ss($, ($) => {
@@ -433,10 +431,9 @@ export const Node_Resolver = (
         case 'group': return _p.ss($, ($) => sh.e.block(
             $['ordered list'].__l_map(($) => sh.temp_ordered_variable(
                 `p ${$.key}`,
-                sh_i.t.component_imported(
+                sh.type_node_reference(
                     "out",
                     $p['temp type'],
-                    {},
                     _p.list.nested_literal([
                         $p['temp subselection'],
                         [
@@ -520,10 +517,9 @@ export const Node_Resolver = (
                     )
                 }
             ))),
-            sh_i.t.component_imported(
+            sh.type_node_reference(
                 "out",
                 $p['temp type'],
-                {},
                 $p['temp subselection'],
             ),
         ))

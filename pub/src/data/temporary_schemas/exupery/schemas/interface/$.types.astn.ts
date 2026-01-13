@@ -20,13 +20,9 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             "set": tstate(t.component_cyclic("Module Set")),
         }))),
 
-        "Type Parameters": type(t.dictionary(t.nothing())),
-
         "Module": type(t.group({
             "imports": prop(t.component("Imports")),
-            "type parameters": prop(t.component("Type Parameters")),
             "data types": prop(t.dictionary(t.group({
-                "deprecated parameters": prop(t.component("Type Parameters")),
                 "type": prop(t.component_cyclic("Type")),
             }))),
         })),
@@ -41,24 +37,12 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "sibling": tstate(t.text_global("TBD")),
             })),
             "tail": prop(t.list(t.text_global("TBD"))),
-            "type arguments": prop(t.component("Type Arguments")),
         }))),
 
-        "Type Arguments": type(t.dictionary(t.component_cyclic("Type"))),
-
-        "Type Parameter Selection": type(t.group({
-            "location": prop(t.state_group({
-                "module": tstate(t.nothing()),
-                "type": tstate(t.nothing()),
-                "function": tstate(t.nothing()),
-            })),
-            "parameter": prop(t.text_global("TBD")),
-        })),
-
         "Type": type(t.state_group({
+            "deprecated circular dependent": tstate(t.component_cyclic("Type")),
             "deprecated function": tstate(t.group({
                 "result": prop(t.component_cyclic("Type")),
-                "type parameters": prop(t.component("Type Parameters")),
                 "context": prop(t.component_cyclic("Type")),
                 "type": prop(t.state_group({
                     "transformer": tstate(t.group({
@@ -69,8 +53,15 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                     }))
                 })),
                 "parameters": prop(t.optional(t.dictionary(t.component_cyclic("Type")))),
+                "lookups": prop(t.optional(t.dictionary(t.state_group({
+                    "acyclic": tstate(t.component_cyclic("Type")),
+                    "cyclic": tstate(t.component_cyclic("Type")),
+                    "stack": tstate(t.component_cyclic("Type")),
+                })))),
             })),
-            "deprecated parameter": tstate(t.component("Type Parameter Selection")),
+
+
+            
 
             "boolean": tstate(t.nothing()),
             "component": tstate(t.group({
@@ -79,18 +70,13 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                         "import": prop(t.text_global("TBD")),
                         "type": prop(t.text_global("TBD")),
                     })),
-                    "sibling": tstate(t.text_global("TBD")),
+                    "sibling": tstate(t.group({
+                        "sibling": prop(t.text_global("TBD")),
+                        "circular dependent": prop(t.boolean()),
+                    })),
+
                 })),
-                "type arguments": prop(t.component("Type Arguments")),
-                "sub selection": prop(t.list(t.state_group({
-                    "dictionary": tstate(t.nothing()),
-                    "group": tstate(t.text_global("TBD")),
-                    "list": tstate(t.nothing()),
-                    "optional": tstate(t.nothing()),
-                    "state group": tstate(t.text_global("TBD")),
-                }))),
             })),
-            "circular dependent": tstate(t.component_cyclic("Type")),
             "dictionary": tstate(t.component_cyclic("Type")),
             "group": tstate(t.dictionary(t.component_cyclic("Type"))),
             "list": tstate(t.component_cyclic("Type")),
@@ -103,6 +89,22 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "approximation": tstate(t.nothing()),
             })),
             "optional": tstate(t.component_cyclic("Type")),
+            "reference": tstate(t.group({
+                "location": prop(t.state_group({
+                    "import": tstate(t.group({
+                        "import": prop(t.text_global("TBD")),
+                        "type": prop(t.text_global("TBD")),
+                    })),
+                    "sibling": tstate(t.text_global("TBD")),
+                })),
+                "sub selection": prop(t.list(t.state_group({
+                    "dictionary": tstate(t.nothing()),
+                    "group": tstate(t.text_global("TBD")),
+                    "list": tstate(t.nothing()),
+                    "optional": tstate(t.nothing()),
+                    "state group": tstate(t.text_global("TBD")),
+                }))),
+            })),
             "state group": tstate(t.dictionary(t.component_cyclic("Type"))),
             "text": tstate(t.nothing()),
         })),

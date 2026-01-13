@@ -10,13 +10,9 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
             "set": state(r.component("Module Set", {}, {})),
         }))),
 
-        "Type Parameters": resolver(r.dictionary(r.nothing())),
-
         "Module": resolver(r.group({
             "imports": r.component("Imports", {}, {}),
-            "type parameters": r.component("Type Parameters", {}, {}),
             "data types": r.dictionary(r.group({
-                "deprecated parameters": r.component("Type Parameters", {}, {}),
                 "type": r.component("Type", {}, {}),
             })),
         })),
@@ -31,44 +27,12 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                 "sibling": state(r.text()),
             }),
             "tail": r.list(r.text()),
-            "type arguments": r.component("Type Arguments", {}, {}),
         }))),
 
-        "Type Arguments": resolver(r.dictionary(r.component("Type", {}, {}))),
-
-        "Type Parameter Selection": resolver(r.group({
-            "location": r.state_group({
-                "module": state(r.nothing()),
-                "type": state(r.nothing()),
-                "function": state(r.nothing()),
-            }),
-            "parameter": r.text(),
-        })),
-
         "Type": resolver(r.state_group({
-            "boolean": state(r.nothing()),
-            "component": state(r.group({
-                "location": r.state_group({
-                    "import": state(r.group({
-                        "import": r.text(),
-                        "type": r.text(),
-                    })),
-                    "sibling": state(r.text()),
-                }),
-                "type arguments": r.component("Type Arguments", {}, {}),
-                "sub selection": r.list(r.state_group({
-                    "dictionary": state(r.nothing()),
-                    "group": state(r.text()),
-                    "list": state(r.nothing()),
-                    "optional": state(r.nothing()),
-                    "state group": state(r.text()),
-                })),
-            })),
-            "circular dependent": state(r.component("Type", {}, {})),
-            "dictionary": state(r.component("Type", {}, {})),
+            "deprecated circular dependent": state(r.component("Type", {}, {})),
             "deprecated function": state(r.group({
                 "result": r.component("Type", {}, {}),
-                "type parameters": r.component("Type Parameters", {}, {}),
                 "context": r.component("Type", {}, {}),
                 "type": r.state_group({
                     "transformer": state(r.group({
@@ -78,7 +42,27 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                     })),
                 }),
                 "parameters": r.optional(r.dictionary(r.component("Type", {}, {}))),
+                "lookups": r.optional(r.dictionary(r.state_group({
+                    "acyclic": state(r.component("Type", {}, {})),
+                    "cyclic": state(r.component("Type", {}, {})),
+                    "stack": state(r.component("Type", {}, {})),
+                }))),
             })),
+
+            "boolean": state(r.nothing()),
+            "component": state(r.group({
+                "location": r.state_group({
+                    "import": state(r.group({
+                        "import": r.text(),
+                        "type": r.text(),
+                    })),
+                    "sibling": state(r.group({
+                        "sibling": r.text(),
+                        "circular dependent": r.boolean(),
+                    })),
+                }),
+            })),
+            "dictionary": state(r.component("Type", {}, {})),
             "group": state(r.dictionary(r.component("Type", {}, {}))),
             "list": state(r.component("Type", {}, {})),
             "nothing": state(r.nothing()),
@@ -91,7 +75,22 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                 "approximation": state(r.nothing()),
             })),
             "optional": state(r.component("Type", {}, {})),
-            "deprecated parameter": state(r.component("Type Parameter Selection", {}, {})),
+            "reference": state(r.group({
+                "location": r.state_group({
+                    "import": state(r.group({
+                        "import": r.text(),
+                        "type": r.text(),
+                    })),
+                    "sibling": state(r.text()),
+                }),
+                "sub selection": r.list(r.state_group({
+                    "dictionary": state(r.nothing()),
+                    "group": state(r.text()),
+                    "list": state(r.nothing()),
+                    "optional": state(r.nothing()),
+                    "state group": state(r.text()),
+                })),
+            })),
             "state group": state(r.dictionary(r.component("Type", {}, {}))),
             "text": state(r.nothing()),
         })),
