@@ -20,13 +20,11 @@ export const Schema = (
             [
                 "target",
             ],
-            {},
         ),
         "vd": sh.import_.sibling(
             "value deserializers",
             [
             ],
-            {},
         ),
     },
     $.types.dictionary.__d_map(($, key) => sh.type(sh.t.deprecated_refiner(

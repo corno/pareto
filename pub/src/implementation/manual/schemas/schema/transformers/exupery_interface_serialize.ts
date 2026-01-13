@@ -22,13 +22,6 @@ export const Schema = (
                 [
                     "source",
                 ],
-                {},
-            ),
-            "vs": sh.import_.sibling(
-                "value serializers",
-                [
-                ],
-                {},
             ),
         },
         $.types.dictionary.__d_map(($, key) => sh.type(sh.t.deprecated_transformer(

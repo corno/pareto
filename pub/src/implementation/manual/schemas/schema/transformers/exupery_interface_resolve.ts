@@ -14,9 +14,9 @@ export const Signatures = (
 ): d_out.Module_Set.D => {
     return sh.m.module(
         {
-            "resolve": sh.import_.external("pareto-core-internals", ["dist", "algorithm types", "refiner", "resolve"], {}),
-            "resolved": sh.import_.sibling("source", [], {}),
-            "unresolved": sh.import_.sibling("target", [], {}),
+            "resolve": sh.import_.external("pareto-core-internals", ["dist", "algorithm types", "refiner", "resolve"]),
+            "resolved": sh.import_.sibling("source", []),
+            "unresolved": sh.import_.sibling("target", []),
         },
         $.dictionary.__d_map(($, key) => sh.type(sh.t.deprecated_refiner(
             sh.t.component_imported("unresolved", key),

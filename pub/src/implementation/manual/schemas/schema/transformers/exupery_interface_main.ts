@@ -60,13 +60,13 @@ export const Schema = ($: d_in.Schema): d_out.Module_Set.D => {
                 }
             }),
         })),
-        // "migrate boilerplate.ts": t_migrate_boilerplate.Schema(
-        //     schema,
-        //     {
-        //         'imports': schema.imports,
-        //         'constrained': constrained
-        //     }
-        // ),
+        "migrate boilerplate.ts": t_migrate_boilerplate.Schema(
+            schema,
+            {
+                'imports': schema.imports,
+                'constrained': constrained
+            }
+        ),
         // "unmarshall.ts": t_unmarshall.Schema(
         //     schema,
         //     {
@@ -74,36 +74,25 @@ export const Schema = ($: d_in.Schema): d_out.Module_Set.D => {
         //         'constrained': constrained
         //     }
         // ),
-        // "marshall.ts": t_marshall.Schema(
-        //     schema,
-        //     {
-        //         'imports': schema.imports,
-        //     }
-        // ),
-        // "serialize.ts": t_serialize.Schema(
-        //     schema,
-        //     {
-        //         'imports': schema.imports,
-        //     }
-        // ),
+        "marshall.ts": t_marshall.Schema(
+            schema,
+            {
+                'imports': schema.imports,
+            }
+        ),
+        "serialize.ts": t_serialize.Schema(
+            schema,
+            {
+                'imports': schema.imports,
+            }
+        ),
         // "deserialize.ts": t_deserialize.Schema(
         //     schema,
         //     {
         //         'imports': schema.imports,
         //     }
         // ),
-        // "value serializers.ts": t_value_serializers.Schema(
-        //     schema,
-        //     {
-        //         'imports': schema.imports,
-        //     }
-        // ),
-        // "value deserializers.ts": t_value_deserializers.Schema(
-        //     schema,
-        //     {
-        //         'imports': schema.imports,
-        //     }
-        // ),
+
 
     })
 }

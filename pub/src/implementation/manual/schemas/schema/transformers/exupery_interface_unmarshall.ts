@@ -22,7 +22,6 @@ export const Schema = (
                 [
                     "target",
                 ],
-                {},
             ),
             "in": sh.import_.ancestor(
                 2,
@@ -30,13 +29,11 @@ export const Schema = (
                 [
                     "astn source"
                 ],
-                {},
             ),
             "vd": sh.import_.sibling(
                 "value deserializers",
                 [
                 ],
-                {},
             ),
         },
         $.types.dictionary.__d_map(($, key) => sh.type(sh.t.deprecated_refiner(

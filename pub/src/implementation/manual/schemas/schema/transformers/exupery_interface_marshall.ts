@@ -15,26 +15,24 @@ export const Schema = (
     }
 ): d_out.Module_Set.D => sh.m.module(
     {
-        "out": sh.import_.ancestor(
-            2,
-            "core",
+        "out": sh.import_.external(
+            "astn",
             [
-                "astn target"
+                "dist",
+                "interface",
+                "generated",
+                "pareto",
+                "schemas",
+                "sealed target",
+                "data types",
+                "target",
             ],
-            {},
         ),
         "in": sh.import_.sibling(
             "data types",
             [
                 "source",
             ],
-            {},
-        ),
-        "vs": sh.import_.sibling(
-            "value serializers",
-            [
-            ],
-            {},
         ),
     },
     $.types.dictionary.__d_map(($, key) => sh.type(sh.t.deprecated_transformer(

@@ -36,19 +36,19 @@ export const Resolvers = (
         op_flatten_dictionary(
             _p.dictionary.literal({
                 "": _p.dictionary.literal({
-                    "generic": sh_i.import_.external("pareto-core-internals", ["dist", "algorithm types", "refiner", "resolve"], {}),
+                    "generic": sh_i.import_.external("pareto-core-internals", ["dist", "algorithm types", "refiner", "resolve"]),
                     "out": sh_i.import_.ancestor(5, "interface", _p.list.nested_literal([
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _p.list.literal(["data types", "source"]),
-                    ]), {}),
+                    ])),
                     "signatures": sh_i.import_.ancestor(5, "interface", _p.list.nested_literal([
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _p.list.literal(["data types", "resolve"]),
-                    ]), {}),
+                    ])),
                 }),
-                "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["resolve"], {}))
+                "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["resolve"]))
             }),
             {
                 'separator': "",

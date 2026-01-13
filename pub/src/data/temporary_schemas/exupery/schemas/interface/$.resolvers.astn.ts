@@ -30,7 +30,6 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
         }))),
 
         "Type": resolver(r.state_group({
-            "deprecated circular dependent": state(r.component("Type", {}, {})),
             "deprecated function": state(r.group({
                 "result": r.component("Type", {}, {}),
                 "context": r.component("Type", {}, {}),
@@ -39,14 +38,14 @@ export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
                     })),
                     "refiner": state(r.group({
                         "error": r.optional(r.component("Type", {}, {})),
+                        "lookups": r.optional(r.dictionary(r.state_group({
+                            "acyclic": state(r.component("Type", {}, {})),
+                            "cyclic": state(r.component("Type", {}, {})),
+                            "stack": state(r.component("Type", {}, {})),
+                        }))),
                     })),
                 }),
                 "parameters": r.optional(r.dictionary(r.component("Type", {}, {}))),
-                "lookups": r.optional(r.dictionary(r.state_group({
-                    "acyclic": state(r.component("Type", {}, {})),
-                    "cyclic": state(r.component("Type", {}, {})),
-                    "stack": state(r.component("Type", {}, {})),
-                }))),
             })),
 
             "boolean": state(r.nothing()),

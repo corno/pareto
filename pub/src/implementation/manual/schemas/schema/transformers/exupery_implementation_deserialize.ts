@@ -28,14 +28,14 @@ export const Schema = (
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _p.list.literal(["deserialize"]),
-                    ]), {}),
+                    ])),
                     "out": sh_i.import_.ancestor(5, "interface", _p.list.nested_literal([
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _p.list.literal(["data types", "target"]),
-                    ]), {}),
+                    ])),
                 }),
-                "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["deserialize"], {}))
+                "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["deserialize"]))
             }),
             {
                 'separator': "",

@@ -40,7 +40,6 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
         }))),
 
         "Type": type(t.state_group({
-            "deprecated circular dependent": tstate(t.component_cyclic("Type")),
             "deprecated function": tstate(t.group({
                 "result": prop(t.component_cyclic("Type")),
                 "context": prop(t.component_cyclic("Type")),
@@ -49,19 +48,18 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                     })),
                     "refiner": tstate(t.group({
                         "error": prop(t.optional(t.component_cyclic("Type"))),
-
+                        "lookups": prop(t.optional(t.dictionary(t.state_group({
+                            "acyclic": tstate(t.component_cyclic("Type")),
+                            "cyclic": tstate(t.component_cyclic("Type")),
+                            "stack": tstate(t.component_cyclic("Type")),
+                        })))),
                     }))
                 })),
                 "parameters": prop(t.optional(t.dictionary(t.component_cyclic("Type")))),
-                "lookups": prop(t.optional(t.dictionary(t.state_group({
-                    "acyclic": tstate(t.component_cyclic("Type")),
-                    "cyclic": tstate(t.component_cyclic("Type")),
-                    "stack": tstate(t.component_cyclic("Type")),
-                })))),
             })),
 
 
-            
+
 
             "boolean": tstate(t.nothing()),
             "component": tstate(t.group({

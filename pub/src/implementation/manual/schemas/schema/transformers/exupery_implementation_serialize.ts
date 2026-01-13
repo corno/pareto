@@ -28,14 +28,14 @@ export const Schema = (
                         _p.list.literal(["generated", "pareto", "schemas"]),
                         $p.path,
                         _p.list.literal(["serialize"])
-                    ]), {}),
+                    ])),
                     "serialize": sh_i.import_.ancestor(2, "generic", _p.list.nested_literal([
                         _p.list.literal(["serialize"]),
-                    ]), {}),
+                    ])),
                     "marshall": sh_i.import_.sibling("marshall", _p.list.nested_literal([
-                    ]), {}),
+                    ])),
                 }),
-                "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["serialize"], {}))
+                "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["serialize"]))
             }),
             {
                 'separator': "",

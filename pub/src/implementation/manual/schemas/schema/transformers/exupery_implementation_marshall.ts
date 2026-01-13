@@ -28,10 +28,10 @@ export const Schema = (
                     _p.list.literal(["generated", "pareto", "schemas"]),
                     $p.path,
                     _p.list.literal(["marshall"])
-                ]), {}),
-                "out": sh_i.import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn target"], {}),
+                ])),
+                "out": sh_i.import_.ancestor(5, "interface", ["generated", "pareto", "core", "astn target"]),
             }),
-            "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["marshall"], {}))
+            "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["marshall"]))
         }),
         {
             'separator': "",

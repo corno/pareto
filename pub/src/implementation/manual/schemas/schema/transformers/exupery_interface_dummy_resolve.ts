@@ -14,9 +14,9 @@ export const Signatures = (
 ): d_out.Module_Set.D => {
     return m.module(
         {
-            "resolve": import_.external("pareto-core-internals", ["dist", "algorithm types", "refiner", "resolve"], {}),
-            "resolved": import_.sibling("source", [], {}),
-            "unresolved": import_.sibling("target", [], {}),
+            "resolve": import_.external("pareto-core-internals", ["dist", "algorithm types", "refiner", "resolve"]),
+            "resolved": import_.sibling("source", []),
+            "unresolved": import_.sibling("target", []),
         },
         {},
     )

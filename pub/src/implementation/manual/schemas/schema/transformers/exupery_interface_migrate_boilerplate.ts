@@ -21,14 +21,12 @@ export const Schema = (
             [
                 "target",
             ],
-            {},
         ),
         "in": sh.import_.sibling(
             "data types",
             [
                 "source",
             ],
-            {},
         )
     },
     $.types.dictionary.__d_map(

@@ -32,9 +32,6 @@ export const Schema = (
                     [
                         "location",
                     ],
-                    {
-
-                    },
                 )
             }),
             "imports ": _p.deprecated_cc($, ($) => {
@@ -46,7 +43,6 @@ export const Schema = (
                         "data types",
                         "source",
                     ],
-                    _p.dictionary.literal({}),
                 ))
             }),
         }),
