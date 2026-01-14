@@ -30,11 +30,11 @@ export const Schema_Tree = (
                 return m.set(
                     _p.dictionary.filter(
                         _p.dictionary.literal<_pi.Optional_Value<d_out.Module_Set.D>>({
-                            // "migration boilerplate.ts": pa.set(_migration_boilerplate.Types($.types, {
-                            //     'key': key,
-                            //     'imports': $.imports,
-                            //     'constrained': $.complexity[0] === 'constrained'
-                            // })),
+                            "migration boilerplate.ts": _p.optional.set(t_migration_boilerplate.Schema($, {
+                                'path': $p.path,
+                                'imports': $.imports,
+                                'constrained': $.complexity[0] === 'constrained'
+                            })),
 
                             // "resolve.ts": _p.sg($.complexity, ($) => {
                             //     switch ($[0]) {

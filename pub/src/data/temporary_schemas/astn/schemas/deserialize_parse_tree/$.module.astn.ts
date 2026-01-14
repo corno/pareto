@@ -10,7 +10,7 @@ import { $ as globals } from "./$.globals.astn"
 
 export const $: g_.Schemas.D<_pi.Deprecated_Source_Location> = schema_(
     {
-        "parse tree": import_("authoring parse tree"),
+        "parse tree": import_("parse tree"),
         "token": import_("token"),
     },
     globals,

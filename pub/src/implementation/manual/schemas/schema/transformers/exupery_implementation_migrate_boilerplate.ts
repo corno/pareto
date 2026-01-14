@@ -12,46 +12,61 @@ import * as sh_i from "exupery/dist/shorthands/interface"
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 
 
-export const Types = (
-    $: d_in.Types,
+export const Schema = (
+    $: d_in.Schema,
     $p: {
-        'key': string,
+        'path': _pi.List<string>,
         'imports': d_in.Imports,
         'constrained': boolean
     }
-): d_out.Module_Set.D => {
-    return sh.m.module(
-        'refiner',
-        op_flatten_dictionary(
-            _p.dictionary.literal({
-                "": _p.dictionary.literal({
-                    "signatures": sh_i.import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, "migration boilerplate"]),
-                    "out": sh_i.import_.ancestor(5, "interface", ["generated", "pareto", "schemas", $p.key, 
-                        $p.constrained ? "unresolved" : "unconstrained"], ),
-                }),
-                "r ": $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["migration boilerplate"]))
-            }),
-            {
-                'separator': "",
-            },
-            () => _p.unreachable_code_path(),
+): d_out.Module_Set.D => sh.m.module(
+    'transformer',
+    _p.dictionary.literal({
+        "signatures": sh_i.import_.ancestor(
+            3, //5,
+            "interface",
+            _p.list.nested_literal([
+                _p.list.literal([
+                    // "generated",
+                    // "pareto",
+                    "schemas"
+                ]),
+                $p.path,
+                _p.list.literal(["marshall"])
+            ])
         ),
-        {},
-        $.dictionary.__d_map(($, key) => sh.algorithm(
-            sh.type_reference("signatures", key),
-            false,
-            false,
-            false,
-            Type_Node(
-                $.node,
-                {
-                    'type': key,
-                    'subselection': _p.list.literal([])
-                }
-            ),
-        )),
-    )
-}
+        "out": sh_i.import_.ancestor(
+            3, //5,
+            "interface",
+            _p.list.nested_literal([
+                _p.list.literal([
+                    // "generated",
+                    // "pareto",
+                    "schemas"
+                ]),
+                $p.path,
+                _p.list.literal([
+                    "data types",
+                    "target",
+                ])
+            ])
+        )
+    }),
+    $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["marshall"])),
+    $.types.dictionary.__d_map(($, key) => sh.algorithm(
+        sh.type_reference("signatures", key),
+        false,
+        false,
+        false,
+        Type_Node(
+            $.node,
+            {
+                'type': key,
+                'subselection': _p.list.literal([])
+            }
+        ),
+    )),
+)
 
 export const Type_Node = (
     $: d_in.Type_Node,
@@ -62,21 +77,11 @@ export const Type_Node = (
 ): d_out.Expression => {
     return _p.sg($, ($) => {
         switch ($[0]) {
-            case 'number': return _p.ss($, ($) => sh.e.select_from_context_deprecated([]))
             case 'boolean': return _p.ss($, ($) => sh.e.select_from_context_deprecated([]))
-            case 'nothing': return _p.ss($, ($) => sh.e.null_())
-            case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
-                switch ($[0]) {
-                    case 'derived': return _p.ss($, ($) => sh.e.null_())
-                    case 'selected': return _p.ss($, ($) => sh.e.select_from_context_deprecated(["key"]))
-                    default: return _p.au($[0])
-                }
-            }))
-            case 'text': return _p.ss($, ($) => sh.e.select_from_context_deprecated([]))
             case 'component': return _p.ss($, ($) => sh.e.call(
                 _p.sg($, ($) => {
                     switch ($[0]) {
-                        case 'external': return _p.ss($, ($) => sh.s.from_variable_import(` i r ${$.import.key}`, $.type.key, []))
+                        case 'external': return _p.ss($, ($) => sh.s.from_variable_import(`${$.import.key}`, $.type.key, []))
                         case 'internal': return _p.ss($, ($) => sh.s.from_variable($.key, []))
                         case 'internal cyclic': return _p.ss($, ($) => sh.s.from_variable($.key, []))
                         default: return _p.au($[0])
@@ -84,7 +89,6 @@ export const Type_Node = (
                 }),
                 sh.e.select_from_context_deprecated([]),
                 false,
-                _p.dictionary.literal({}),
             ))
             case 'dictionary': return _p.ss($, ($) => sh.e.dictionary_map(
                 $.ordered ? sh.s.from_context(["dictionary"]) : sh.s.from_context([]),
@@ -131,6 +135,8 @@ export const Type_Node = (
                     }
                 )
             ))
+            case 'nothing': return _p.ss($, ($) => sh.e.null_())
+            case 'number': return _p.ss($, ($) => sh.e.select_from_context_deprecated([]))
             case 'optional': return _p.ss($, ($) => sh.e.optional_map(
                 sh.s.from_context([]),
                 Type_Node(
@@ -146,6 +152,13 @@ export const Type_Node = (
                     }
                 )
             ))
+            case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
+                switch ($[0]) {
+                    case 'derived': return _p.ss($, ($) => sh.e.null_())
+                    case 'selected': return _p.ss($, ($) => sh.e.select_from_context_deprecated(["key"]))
+                    default: return _p.au($[0])
+                }
+            }))
             case 'state group': return _p.ss($, ($) => sh.e.decide_state_group(
                 sh.s.from_context([]),
                 $.__d_map(($, key) => sh.e.case_(key, Type_Node(
@@ -166,7 +179,7 @@ export const Type_Node = (
                     $p.subselection,
                 ),
             ))
-            // case 'type parameter': return pa.ss($, ($) => _pdev.implement_me("xx"))
+            case 'text': return _p.ss($, ($) => sh.e.select_from_context_deprecated([]))
             default: return _p.au($[0])
         }
     })

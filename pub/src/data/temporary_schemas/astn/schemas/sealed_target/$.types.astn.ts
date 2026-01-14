@@ -18,7 +18,18 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
         "Value": type(t.state_group({
             "list": tstate(t.list(t.component_cyclic("Value"))),
             "dictionary": tstate(t.dictionary(t.component_cyclic("Value"))),
-            "verbose group": tstate(t.dictionary(t.component_cyclic("Value"))),
+            "group": tstate(t.state_group({
+                "verbose": tstate(t.dictionary(t.component_cyclic("Value"))),
+            })),
+            "nothing": tstate(t.nothing()),
+            "optional": tstate(t.state_group({
+                "not set": tstate(t.nothing()),
+                "set": tstate(t.component_cyclic("Value")),
+            })),
+            "state group": tstate(t.group({
+                "state": prop(t.text_global("Text Value")),
+                "value": prop(t.component_cyclic("Value"))
+            })),
             "text": tstate(t.group({
                 "value": prop(t.text_global("Text Value")),
                 "delimiter": prop(t.state_group({
@@ -27,15 +38,6 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                     "backtick": tstate(t.nothing()),
                 })),
             })),
-            "nothing": tstate(t.nothing()),
-            "optional": tstate(t.state_group({
-                "not set": tstate(t.nothing()),
-                "set": tstate(t.component_cyclic("Value")),
-            })),
-            "state": tstate(t.group({
-                "state": prop(t.text_global("Text Value")),
-                "value": prop(t.component_cyclic("Value"))
-            }))
         })),
     }
 )

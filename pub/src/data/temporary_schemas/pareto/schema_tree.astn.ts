@@ -8,7 +8,7 @@ import { $ as x_schema } from "./schemas/schema/$.module.astn"
 import { $ as x_unmarshall_errors } from "./schemas/unmarshall_errors/$.module.astn"
 import { $ as x_unmarshall_result } from "./schemas/unmarshall_result/$.module.astn"
 import { $ as x_astn_schema } from "../astn/schemas/astn_schema/$.module.astn"
-import { $ as x_astn_parse_tree } from "../astn/schemas/authoring_parse_tree/$.module.astn"
+import { $ as x_astn_parse_tree } from "../astn/schemas/parse_tree/$.module.astn"
 import { $ as x_astn_token } from "../astn/schemas/token/$.module.astn"
 
 

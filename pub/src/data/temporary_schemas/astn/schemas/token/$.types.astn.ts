@@ -21,38 +21,44 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             "end": prop(t.component("Location")),
         })),
 
-        "Token Type": type(t.state_group({
-            "{": tstate(t.nothing()), //open dictionary
-            "}": tstate(t.nothing()), //close dictionary
-            "[": tstate(t.nothing()), //open list
-            "]": tstate(t.nothing()), //close list
-            "(": tstate(t.nothing()), //open verbose group
-            ")": tstate(t.nothing()), //close verbose group
-            "<": tstate(t.nothing()), //open terse group
-            ">": tstate(t.nothing()), //close terse group
-
-            "!": tstate(t.nothing()), //header
-            "@": tstate(t.nothing()), //include
-            "~": tstate(t.nothing()), //nothing / not set
-            "*": tstate(t.nothing()), //set
-            ":": tstate(t.nothing()), //colon
-            "|": tstate(t.nothing()), //state
-            "#": tstate(t.nothing()), //missing data
-
-            "string": tstate(t.group({
-                "value": prop(t.component("Delimited String")),
-                "type": prop(t.component("String Type")),
-            })),
-        })),
-
-        "Delimited String": type(t.text_local(text('single line'))),
-
         "Annotated Token": type(t.group({
             "start": prop(t.component("Location")),
             "type": prop(t.component("Token Type")),
             "end": prop(t.component("Location")),
             "trailing trivia": prop(t.component("Trivia")),
         })),
+
+        "Token Type": type(t.state_group({
+            "!": tstate(t.nothing()), //header
+
+            "@": tstate(t.nothing()), //include
+            ":": tstate(t.nothing()), //colon
+            "#": tstate(t.nothing()), //missing data
+
+            //concrete values
+            "{": tstate(t.nothing()), //dictionary open
+            "}": tstate(t.nothing()), //dictionary close
+
+            "[": tstate(t.nothing()), //list open
+            "]": tstate(t.nothing()), //list close
+
+            "(": tstate(t.nothing()), //verbose group open
+            ")": tstate(t.nothing()), //verbose group close
+            "<": tstate(t.nothing()), //concise group open
+            ">": tstate(t.nothing()), //concise group close
+
+            "~": tstate(t.nothing()), //nothing / not set
+            "*": tstate(t.nothing()), //set
+
+            "|": tstate(t.nothing()), //state group
+
+            "text": tstate(t.group({
+                "value": prop(t.component("Delimited Text")),
+                "type": prop(t.component("Text Type")),
+            })),
+        })),
+
+        "Delimited Text": type(t.text_local(text('single line'))),
 
         "Whitespace": type(t.group({
             "range": prop(t.component("Range")),
@@ -77,7 +83,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             }))),
         })),
 
-        "String Type": type(t.state_group({
+        "Text Type": type(t.state_group({
             "quoted": tstate(t.nothing()),
             "apostrophed": tstate(t.nothing()),
             "undelimited": tstate(t.nothing()),
