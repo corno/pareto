@@ -10,7 +10,7 @@ import * as sh from "exupery/dist/shorthands/interface"
 import { $$ as op_flatten_dictionary } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 
 const location = sh.t.component_imported(
-    `location  `,
+    ` location`,
     "Location",
 )
 
@@ -20,42 +20,69 @@ export const Schema = (
     $: d_in.Schema,
     $p: {
         'imports': d_in.Imports,
-        'add location': boolean,
+        'depth': number,
+        'type':
+        | ['unconstrained', null]
+        | ['unresolved', null]
+        | ['resolved', null]
     }
-): d_out.Module_Set.D => sh.m.module(
-    op_flatten_dictionary(
-        _p.dictionary.literal({
-            "location  ": _p.dictionary.literal({
-                "": sh.import_.ancestor(
-                    3,
-                    "core",
-                    [
-                        "location",
-                    ],
-                )
+): d_out.Module_Set.D => {
+    return sh.m.module(
+        op_flatten_dictionary(
+            _p.dictionary.literal({
+                " location": _p.dictionary.literal({
+                    "": sh.import_.ancestor(
+                        $p.depth + 2,
+                        "core",
+                        [
+                            "location",
+                        ],
+                    )
+                }),
+                " imports ": _p.deprecated_cc($, ($) => {
+                    // const types = $p['what to generate']
+                    return $p.imports.__d_map(($) => sh.import_.ancestor(
+                        $p.depth + 1 + $['schema set child']['up steps'],
+                        $['schema set child'].key,
+                        _p.sg($p.type, ($) => {
+                            switch ($[0]) {
+                                case 'unconstrained': return _p.ss($, ($) => [
+                                    "data",
+                                ])
+                                case 'unresolved': return _p.ss($, ($) => [
+                                    "data",
+                                    "unresolved",
+                                ])
+                                case 'resolved': return _p.ss($, ($) => [
+                                    "data",
+                                    "resolved",
+                                ])
+                                default: return _p.au($[0])
+                            }
+                        }),
+                    ))
+                }),
             }),
-            "imports ": _p.deprecated_cc($, ($) => {
-                // const types = $p['what to generate']
-                return $p.imports.__d_map(($) => sh.import_.ancestor(
-                    2 + $['schema set child']['up steps'],
-                    $['schema set child'].key,
-                    [
-                        "data types",
-                        "source",
-                    ],
-                ))
-            }),
-        }),
-        {
-            'separator': "",
-        },
-        () => _p.unreachable_code_path(),
-    ),
-    $.types.dictionary.__d_map(($) => sh.type.data(Type_Node(
-        $.node,
-        $p
-    ))),
-)
+            {
+                'separator': "",
+            },
+            () => _p.unreachable_code_path(),
+        ),
+        $.types.dictionary.__d_map(($) => sh.type.data(Type_Node(
+            $.node,
+            {
+                'add location': _p.sg($p.type, ($) => {
+                    switch ($[0]) {
+                        case 'unconstrained': return _p.ss($, ($) => false)
+                        case 'unresolved': return _p.ss($, ($) => true)
+                        case 'resolved': return _p.ss($, ($) => false)
+                        default: return _p.au($[0])
+                    }
+                }),
+            }
+        ))),
+    )
+}
 
 export const Type_Node = (
     $: d_in.Type_Node,
@@ -68,7 +95,7 @@ export const Type_Node = (
         case 'component': return _p.ss($, ($) => _p.sg($, ($) => {
             switch ($[0]) {
                 case 'external': return _p.ss($, ($) => sh.t.component_imported(
-                    `imports ${$.import.key}`,
+                    ` imports ${$.import.key}`,
                     $.type.key,
                 ))
                 case 'internal': return _p.ss($, ($) => sh.t.component_sibling(

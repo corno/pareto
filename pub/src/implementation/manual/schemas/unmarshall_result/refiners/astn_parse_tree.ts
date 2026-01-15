@@ -3,7 +3,7 @@ import * as _pi from 'pareto-core-interface'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_definition from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as d_in from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
+import * as d_in from "astn/dist/interface/generated/pareto/schemas/parse_tree/data"
 import * as d_in_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
 import * as d_out from "../../../../../interface/to_be_generated/temp_unmashall_result"
 
@@ -31,7 +31,7 @@ export const Optional_Node = (
 )
 
 export const Node_Type = (
-    $: d_in.Concrete_Value,
+    $: d_in.Value._type.concrete,
     $p: {
         'definition': d_definition.Type_Node,
         'range': d_in_token.Range,
@@ -41,30 +41,6 @@ export const Node_Type = (
     const data = $
     return _p.sg($p.definition, ($): d_out.Node_Type => {
         switch ($[0]) {
-            case 'number': return _p.ss($, ($): d_out.Node_Type => {
-                return ['number', {
-                    'definition': $,
-                    'found value type': _p.sg(data, ($) => {
-                        switch ($[0]) {
-                            case 'text': return _p.ss($, ($) => ['valid', {
-                                'value': $,
-                                'range': $.range,
-                                'correct string type': _p.sg($.type, ($) => {
-                                    switch ($[0]) {
-                                        case 'quoted': return true
-                                        case 'apostrophed': return false
-                                        case 'undelimited': return true
-                                        case 'backticked': return false
-                                        default: return _p.au($[0])
-                                    }
-                                })
-                            }])
-                            // case 'not set': return pa.ss($, () => ['invalid', data.location])
-                            default: return ['invalid', $p.range]
-                        }
-                    })
-                }]
-            })
             case 'boolean': return _p.ss($, ($): d_out.Node_Type => {
                 return ['boolean', {
                     'definition': $,
@@ -82,51 +58,6 @@ export const Node_Type = (
                                         default: return _p.au($[0])
                                     }
                                 })
-                            }])
-                            // case 'not set': return pa.ss($, () => ['invalid', data.location])
-                            default: return ['invalid', $p.range]
-                        }
-                    })
-                }]
-            })
-            case 'list': return _p.ss($, ($) => {
-                const prop_def = $.node
-                return ['list', {
-                    'definition': $,
-                    'found value type': _p.sg(data, ($) => {
-                        switch ($[0]) {
-                            case 'ordered collection': return _p.ss($, ($) => {
-                                return ['valid', {
-                                    'value': $,
-                                    'elements': _pdev.implement_me("list elements deserialization") //TODO
-                                }]
-                            })
-                            default: return ['invalid', $p.range]
-
-                        }
-                    })
-                }]
-            })
-            case 'nothing': return _p.ss($, ($): d_out.Node_Type => {
-                return ['nothing', {
-                    'definition': $,
-                    'found value type': _p.sg(data, ($) => {
-                        switch ($[0]) {
-                            case 'not set': return _p.ss($, ($) => ['valid', {
-                                'value': $,
-                            }])
-                            default: return ['invalid', $p.range]
-                        }
-                    })
-                }]
-            })
-            case 'reference': return _p.ss($, ($): d_out.Node_Type => {
-                return ['reference', {
-                    'definition': $,
-                    'found value type': _p.sg(data, ($) => {
-                        switch ($[0]) {
-                            case 'text': return _p.ss($, ($) => ['valid', {
-                                'value': $,
                             }])
                             // case 'not set': return pa.ss($, () => ['invalid', data.location])
                             default: return ['invalid', $p.range]
@@ -156,16 +87,10 @@ export const Node_Type = (
                     'definition': $,
                     'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
-                            case 'indexed collection': return _p.ss($, ($) => {
+                            case 'dictionary': return _p.ss($, ($) => {
                                 return ['valid', {
                                     'value': $,
-                                    'entries': op_group(_p.sg($, ($): d_in.Key_Value_Pairs => {
-                                        switch ($[0]) {
-                                            case 'dictionary': return _p.ss($, ($) => $.entries)
-                                            case 'verbose group': return _p.ss($, ($) => $.entries)
-                                            default: return _p.au($[0])
-                                        }
-                                    }).__l_map(($) => {
+                                    'entries': op_group($.entries.__l_map(($) => {
                                         return {
                                             'key': $.key.value,
                                             'value': $
@@ -243,99 +168,154 @@ export const Node_Type = (
                         const value = $
                         return _p.sg($, ($) => {
                             switch ($[0]) {
-                                case 'indexed collection': return _p.ss($, ($): d_out.Group_Found_Value_Type => {
-                                    const entries = op_group(_p.sg($, ($): d_in.Key_Value_Pairs => {
-                                        switch ($[0]) {
-                                            case 'dictionary': return _p.ss($, ($) => $.entries)
-                                            case 'verbose group': return _p.ss($, ($) => $.entries)
-                                            default: return _p.au($[0])
-                                        }
-                                    }).__l_map(($) => {
-                                        return {
-                                            'key': $.key.value,
-                                            'value': $
-                                        }
-                                    }))
-                                    const range: d_in_token.Range = _p.sg($, ($) => {
-                                        switch ($[0]) {
-                                            case 'dictionary': return _p.ss($, ($) => $['{'].range)
-                                            case 'verbose group': return _p.ss($, ($) => $['('].range)
-                                            default: return _p.au($[0])
-                                        }
-                                    })
-                                    const op_dictionary_merge = <Main, Supporting>(
-                                        $: _pi.Dictionary<Main>,
-                                        $p: { 'supporting dictionary': _pi.Dictionary<Supporting> }
-                                    ): _pi.Dictionary<{
-                                        'context': Main
-                                        'supporting': _pi.Optional_Value<Supporting>
-                                    }> => $.__d_map(($, key) => ({
-                                        'context': $,
-                                        'supporting': $p['supporting dictionary'].__get_possible_entry(
-                                            key,
-                                        ),
-                                    }))
-                                    return ['valid', ['indexed', {
-                                        'value': $,
-                                        'content': {
-                                            'superfluous entries': _p.dictionary.filter(
-                                                op_dictionary_merge(
-                                                    entries,
-                                                    {
-                                                        'supporting dictionary': group_def.dictionary
-                                                    }
-                                                ), ($) => {
-                                                    return $.supporting.__decide( //drop all the ones for which there is a definition
-                                                        ($) => _p.optional.not_set(),
-                                                        () => _p.optional.set($.context)
-                                                    )
-                                                }
-                                            ).__d_map(
-                                                ($) => $.__l_map(
-                                                    ($) => $.key.range
-                                                )
-                                            ), //select the locations
-                                            'properties': op_dictionary_merge(
-                                                group_def.dictionary,
-                                                {
-                                                    'supporting dictionary': entries
-                                                }
-                                            ).__d_map(($) => {
-                                                const prop_def = $.context
-                                                return $.supporting.__decide(
-                                                    ($): d_out.Property => op_expect_exactly_one_element($).__decide(
-                                                        ($): d_out.Property => ['unique', {
-                                                            'node': Optional_Node(
-                                                                $.value.__o_map(
-                                                                    ($) => $.value,
-                                                                ),
-                                                                {
-                                                                    'definition': prop_def.node,
-                                                                },
-                                                            ),
-                                                            'key': $.key
-                                                        }],
-                                                        (): d_out.Property => ['multiple', $.__l_map(($): d_out.Entry_Data => ({
-                                                            'node': Optional_Node(
-                                                                $.value.__o_map(
-                                                                    ($) => $.value,
-                                                                ),
-                                                                {
-                                                                    'definition': prop_def.node,
-                                                                },
-                                                            ),
-                                                            'key': $.key,
-                                                        }))]
-                                                    ),
-                                                    (): d_out.Property => ['missing', range]
-                                                )
-                                            })
-                                        }
-                                    }]]
-                                })
+                                // case 'group': return _p.ss($, ($): d_out.Group_Found_Value_Type => {
+                                //     const entries = op_group(_p.sg($, ($): d_in.Key_Value_Pairs => {
+                                //         switch ($[0]) {
+                                //             case 'dictionary': return _p.ss($, ($) => $.entries)
+                                //             case 'verbose group': return _p.ss($, ($) => $.entries)
+                                //             default: return _p.au($[0])
+                                //         }
+                                //     }).__l_map(($) => {
+                                //         return {
+                                //             'key': $.key.value,
+                                //             'value': $
+                                //         }
+                                //     }))
+                                //     const range: d_in_token.Range = _p.sg($, ($) => {
+                                //         switch ($[0]) {
+                                //             case 'dictionary': return _p.ss($, ($) => $['{'].range)
+                                //             case 'verbose group': return _p.ss($, ($) => $['('].range)
+                                //             default: return _p.au($[0])
+                                //         }
+                                //     })
+                                //     const op_dictionary_merge = <Main, Supporting>(
+                                //         $: _pi.Dictionary<Main>,
+                                //         $p: { 'supporting dictionary': _pi.Dictionary<Supporting> }
+                                //     ): _pi.Dictionary<{
+                                //         'context': Main
+                                //         'supporting': _pi.Optional_Value<Supporting>
+                                //     }> => $.__d_map(($, key) => ({
+                                //         'context': $,
+                                //         'supporting': $p['supporting dictionary'].__get_possible_entry(
+                                //             key,
+                                //         ),
+                                //     }))
+                                //     return ['valid', ['verbose', {
+                                //         'value': $,
+                                //         'content': {
+                                //             'superfluous entries': _p.dictionary.filter(
+                                //                 op_dictionary_merge(
+                                //                     entries,
+                                //                     {
+                                //                         'supporting dictionary': group_def.dictionary
+                                //                     }
+                                //                 ), ($) => {
+                                //                     return $.supporting.__decide( //drop all the ones for which there is a definition
+                                //                         ($) => _p.optional.not_set(),
+                                //                         () => _p.optional.set($.context)
+                                //                     )
+                                //                 }
+                                //             ).__d_map(
+                                //                 ($) => $.__l_map(
+                                //                     ($) => $.key.range
+                                //                 )
+                                //             ), //select the locations
+                                //             'properties': op_dictionary_merge(
+                                //                 group_def.dictionary,
+                                //                 {
+                                //                     'supporting dictionary': entries
+                                //                 }
+                                //             ).__d_map(($) => {
+                                //                 const prop_def = $.context
+                                //                 return $.supporting.__decide(
+                                //                     ($): d_out.Property => op_expect_exactly_one_element($).__decide(
+                                //                         ($): d_out.Property => ['unique', {
+                                //                             'node': Optional_Node(
+                                //                                 $.value.__o_map(
+                                //                                     ($) => $.value,
+                                //                                 ),
+                                //                                 {
+                                //                                     'definition': prop_def.node,
+                                //                                 },
+                                //                             ),
+                                //                             'key': $.key
+                                //                         }],
+                                //                         (): d_out.Property => ['multiple', $.__l_map(($): d_out.Entry_Data => ({
+                                //                             'node': Optional_Node(
+                                //                                 $.value.__o_map(
+                                //                                     ($) => $.value,
+                                //                                 ),
+                                //                                 {
+                                //                                     'definition': prop_def.node,
+                                //                                 },
+                                //                             ),
+                                //                             'key': $.key,
+                                //                         }))]
+                                //                     ),
+                                //                     (): d_out.Property => ['missing', range]
+                                //                 )
+                                //             })
+                                //         }
+                                //     }]]
+                                // })
                                 default: return ['invalid', $p.range]
                             }
                         })
+                    })
+                }]
+            })
+            case 'list': return _p.ss($, ($) => {
+                const prop_def = $.node
+                return ['list', {
+                    'definition': $,
+                    'found value type': _p.sg(data, ($) => {
+                        switch ($[0]) {
+                            case 'list': return _p.ss($, ($) => {
+                                return ['valid', {
+                                    'value': $,
+                                    'elements': _pdev.implement_me("list elements deserialization") //TODO
+                                }]
+                            })
+                            default: return ['invalid', $p.range]
+
+                        }
+                    })
+                }]
+            })
+            case 'nothing': return _p.ss($, ($): d_out.Node_Type => {
+                return ['nothing', {
+                    'definition': $,
+                    'found value type': _p.sg(data, ($) => {
+                        switch ($[0]) {
+                            case 'nothing': return _p.ss($, ($) => ['valid', {
+                                'value': $,
+                            }])
+                            default: return ['invalid', $p.range]
+                        }
+                    })
+                }]
+            })
+            case 'number': return _p.ss($, ($): d_out.Node_Type => {
+                return ['number', {
+                    'definition': $,
+                    'found value type': _p.sg(data, ($) => {
+                        switch ($[0]) {
+                            case 'text': return _p.ss($, ($) => ['valid', {
+                                'value': $,
+                                'range': $.range,
+                                'correct string type': _p.sg($.type, ($) => {
+                                    switch ($[0]) {
+                                        case 'quoted': return true
+                                        case 'apostrophed': return false
+                                        case 'undelimited': return true
+                                        case 'backticked': return false
+                                        default: return _p.au($[0])
+                                    }
+                                })
+                            }])
+                            // case 'not set': return pa.ss($, () => ['invalid', data.location])
+                            default: return ['invalid', $p.range]
+                        }
                     })
                 }]
             })
@@ -345,18 +325,37 @@ export const Node_Type = (
                     'definition': $,
                     'found value type': _p.sg(data, ($) => {
                         switch ($[0]) {
-                            case 'not set': return _p.ss($, ($) => ['valid', ['not set', {
+                            case 'nothing': return _p.ss($, ($) => ['valid', ['not set', {
                                 'value': $,
                             }]])
-                            case 'set optional value': return _p.ss($, ($) => ['valid', ['set', {
+                            case 'optional': return _p.ss($, ($) => _p.sg($, ($) => {
+                                switch ($[0]) {
+                                    case 'set': return _p.ss($, ($) => ['valid', ['set', {
+                                        'value': $,
+                                        'child node': Node(
+                                            $.value,
+                                            {
+                                                'definition': def,
+                                            }
+                                        )
+                                    }]])
+                                    default: return _p.au($[0])
+                                }
+                            }))
+                            default: return ['invalid', $p.range]
+                        }
+                    })
+                }]
+            })
+            case 'reference': return _p.ss($, ($): d_out.Node_Type => {
+                return ['reference', {
+                    'definition': $,
+                    'found value type': _p.sg(data, ($) => {
+                        switch ($[0]) {
+                            case 'text': return _p.ss($, ($) => ['valid', {
                                 'value': $,
-                                'child node': Node(
-                                    $.value,
-                                    {
-                                        'definition': def,
-                                    }
-                                )
-                            }]])
+                            }])
+                            // case 'nothing': return pa.ss($, () => ['invalid', data.location])
                             default: return ['invalid', $p.range]
                         }
                     })
@@ -364,18 +363,18 @@ export const Node_Type = (
             })
             case 'state group': return _p.ss($, ($): d_out.Node_Type => {
                 const def = $
-                return ['state', {
+                return ['state group', {
                     'definition': $,
-                    'found value type': _p.sg(data, ($): d_out.Node_Type_SG_State_found_value_type => {
+                    'found value type': _p.sg(data, ($): d_out.State_found_value_type => {
                         switch ($[0]) {
-                            case 'state': return _p.ss($, ($): d_out.Node_Type_SG_State_found_value_type => {
+                            case 'state group': return _p.ss($, ($): d_out.State_found_value_type => {
                                 const tv = $
                                 return ['valid', {
                                     'value type': ['state', {
-                                        'value substatus': _p.sg($.status, ($): d_out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
+                                        'value substatus': _p.sg($.status, ($): d_out.State_found_value__typevalid_value__typeSG_state_value_substatus => {
                                             switch ($[0]) {
                                                 case 'missing data': return _p.ss($, ($) => ['missing data', $['#']])
-                                                case 'set': return _p.ss($, ($): d_out.Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus => {
+                                                case 'set': return _p.ss($, ($): d_out.State_found_value__typevalid_value__typeSG_state_value_substatus => {
                                                     const state = $.state
                                                     const value = $.value
                                                     return ['set', {

@@ -16,16 +16,20 @@ export const Schema = (
 ): d_out.Module_Set.D => sh.m.module(
     {
         "out": sh.import_.sibling(
-            "data types",
-            [
-                "target",
-            ],
+            "data",
+            $p.constrained
+                ? [
+                    "unresolved",
+                ]
+                : [],
         ),
         "in": sh.import_.sibling(
-            "data types",
-            [
-                "source",
-            ],
+            "data",
+            $p.constrained
+                ? [
+                    "resolved",
+                ]
+                : [],
         )
     },
     $.types.dictionary.__d_map(

@@ -25,6 +25,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                 "dictionary": tstate(t.dictionary(t.component_cyclic("Value"))),
             })),
             "number": tstate(t.state_group({
+                //depending on the source, one needs to be chosen.
                 "integer": tstate(t.number_local(n.integer())),
                 "float": tstate(t.number_local(n.approximation(16))),
             })),
@@ -32,5 +33,6 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
             "boolean": tstate(t.boolean()),
             "null": tstate(t.nothing()),
         })),
+        
     }
 )

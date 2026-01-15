@@ -4,14 +4,15 @@ import * as _pi from 'pareto-core-interface'
 
 import * as g_ from "../../interface/generated/pareto/schemas/module/data_types/target"
 
-import { $ as m_accounting_ruwe_data } from "./accounting_ruwe_data/module.astn"
-import { $ as m_antlr } from "./antlr/module.astn"
+// import { $ as m_accounting_ruwe_data } from "./accounting_ruwe_data/module.astn"
+// import { $ as m_antlr } from "./antlr/module.astn"
 import { $ as m_astn } from "./astn/module.astn"
-import { $ as m_astn_to_xml } from "./astn-to-xml/module.astn"
+import { $ as m_astn_core } from "./astn-core/module.astn"
+// import { $ as m_astn_to_xml } from "./astn-to-xml/module.astn"
 import { $ as m_exupery } from "./exupery/module.astn"
 import { $ as m_pareto_resources } from "./pareto-resources/module.astn"
-import { $ as m_git } from "./git/module.astn"
-import { $ as m_json_to_astn } from "./json-to-astn/module.astn"
+// import { $ as m_git } from "./git/module.astn"
+// import { $ as m_json_to_astn } from "./json-to-astn/module.astn"
 import { $ as m_pareto } from "./pareto/module.astn"
 import { $ as m_pareto_boekhouding } from "./pareto-boekhouding/module.astn"
 import { $ as m_development_tools } from "./pareto-development-tools/module.astn"
@@ -42,6 +43,10 @@ export const $ = _p.dictionary.literal<Module>({
     "astn": {
         'target path': `../astn`,
         'module': m_astn,
+    },
+    "astn-core": {
+        'target path': `../astn-core`,
+        'module': m_astn_core,
     },
     "astn-to-xml": {
         'target path': `../astn-to-xml`,

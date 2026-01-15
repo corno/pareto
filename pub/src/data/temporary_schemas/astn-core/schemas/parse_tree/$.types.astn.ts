@@ -53,7 +53,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                     "nothing": tstate(t.group({
                         "~": prop(t.component("Structural Token")),
                     })),
-                    "optional value": tstate(t.state_group({
+                    "optional": tstate(t.state_group({
                         "set": tstate(t.group({
                             "*": prop(t.component("Structural Token")),
                             "value": prop(t.component_cyclic("Value")),

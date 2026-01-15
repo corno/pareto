@@ -89,23 +89,11 @@ export const Node = (
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($) => _p.sg($, ($) => {
                         switch ($[0]) {
-                            case 'ordered': return _p.ss($, ($) => Group_Content($.content, {
-                                'group range': _p.sg($.value, ($) => {
-                                    switch ($[0]) {
-                                        case 'concise group': return _p.ss($, ($) => $['<'].range)
-                                        case 'list': return _p.ss($, ($) => $['['].range)
-                                        default: return _p.au($[0])
-                                    }
-                                })
+                            case 'concise': return _p.ss($, ($) => Group_Content($.content, {
+                                'group range': $.value['<'].range
                             }))
-                            case 'indexed': return _p.ss($, ($) => Group_Content($.content, {
-                                'group range': _p.sg($.value, ($) => {
-                                    switch ($[0]) {
-                                        case 'verbose group': return _p.ss($, ($) => $['('].range)
-                                        case 'dictionary': return _p.ss($, ($) => $['{'].range)
-                                        default: return _p.au($[0])
-                                    }
-                                })
+                            case 'verbose': return _p.ss($, ($) => Group_Content($.content, {
+                                'group range': $.value['('].range
                             }))
 
                             default: return _p.au($[0])
@@ -246,7 +234,6 @@ export const Node = (
             case 'component': return _p.ss($, ($) => {
                 return Node($.node, $p)
             })
-            case 'type parameter': return _p.ss($, ($) => _pdev.implement_me("xx"))
             case 'optional': return _p.ss($, ($) => _p.sg($['found value type'], ($) => {
                 switch ($[0]) {
                     case 'valid': return _p.ss($, ($): d_out.Errors => _p.sg($, ($) => {
@@ -267,7 +254,7 @@ export const Node = (
                     default: return _p.au($[0])
                 }
             }))
-            case 'state': return _p.ss($, ($) => {
+            case 'state group': return _p.ss($, ($) => {
                 const sg_def = $.definition
                 return _p.sg($['found value type'], ($): d_out.Errors => {
                     switch ($[0]) {

@@ -1,7 +1,7 @@
 import * as _pi from 'pareto-core-interface'
 
 import * as d_astn_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
-import * as d_astn_ast from "astn/dist/interface/generated/pareto/schemas/authoring_parse_tree/data_types/target"
+import * as d_astn_ast from "astn/dist/interface/generated/pareto/schemas/parse_tree/data"
 
 import * as d_schema from "../generated/pareto/schemas/schema/data_types/source"
 
@@ -10,7 +10,7 @@ export type Document = {
 }
 
 export type Entry_Data = {
-    'key': d_astn_ast.String
+    'key': d_astn_ast.Text
     'node': Optional_Node
 }
 
@@ -32,22 +32,111 @@ export type Node = {
 }
 
 export type Node_Type =
-    | ['number', Number]
     | ['boolean', Boolean]
-    | ['list', List]
-    | ['nothing', Nothing]
-    | ['reference', Reference]
     | ['component', Component]
     | ['dictionary', Dictionary]
     | ['group', Group]
+    | ['list', List]
+    | ['nothing', Nothing]
+    | ['number', Number]
     | ['optional', Optional]
-    | ['state', Node_Type_SG_State]
+    | ['reference', Reference]
+    | ['state group', State_Group]
     | ['text', Text]
-    | ['type parameter', string]
 
-export type Node_Type_SG_State = {
+
+export type Boolean = {
+    'definition': d_schema.Type_Node.SG._boolean
+    'found value type':
+    | ['valid', {
+        'value': d_astn_ast.Value._type.concrete.text
+        'range': d_astn_token.Range
+        'correct string type': boolean
+    }]
+    | ['invalid', d_astn_token.Range]
+}
+
+export type Component = {
+    'definition': d_schema.Type_Node.SG.component
+    'node': Node
+}
+
+export type Dictionary = {
+    'definition': d_schema.Type_Node.SG.dictionary
+    'found value type':
+    | ['valid', {
+        'value': d_astn_ast.Value._type.concrete.dictionary
+        'entries': _pi.Dictionary<Entry>
+    }]
+    | ['invalid', d_astn_token.Range]
+}
+
+export type Group = {
+    'definition': d_schema.Type_Node.SG.group
+    'found value type': Group_Found_Value_Type
+}
+
+export type Group_Found_Value_Type =
+    | ['valid', Group_Type]
+    | ['invalid', d_astn_token.Range]
+
+export type Group_Type =
+    | ['verbose', Group_Verbose]
+    | ['concise', Group_Concise]
+
+export type Group_Concise = {
+    'value': d_astn_ast.Value._type.concrete.group.concise
+    'content': Group_Content
+}
+
+export type Group_Verbose = {
+    'value': d_astn_ast.Value._type.concrete.group.verbose
+    'content': Group_Content
+}
+
+export type Group_Content = {
+    'properties': _pi.Dictionary<Property>
+    'superfluous entries': _pi.Dictionary<_pi.List<d_astn_token.Range>>
+
+}
+
+export type List = {
+    'definition': d_schema.Type_Node.SG.list
+    'found value type':
+    | ['valid', {
+        'value': d_astn_ast.Value._type.concrete.list
+        'elements': _pi.List<Node>
+    }]
+    | ['invalid', d_astn_token.Range]
+}
+
+export type Optional = {
+    'definition': d_schema.Type_Node.SG.optional
+    'found value type':
+    | ['valid',
+        | ['set', {
+            'value': d_astn_ast.Value._type.concrete.optional._set
+            'child node': Node
+        }]
+        | ['not set', {
+            'value': d_astn_ast.Value._type.concrete.nothing
+        }]
+    ]
+    | ['invalid', d_astn_token.Range]
+}
+
+export type Reference = {
+    'definition': d_schema.Type_Node.SG.reference
+    'found value type':
+    | ['valid', {
+        'value': d_astn_ast.Value._type.concrete.text
+    }] //FIXME
+    | ['invalid', d_astn_token.Range]
+}
+
+export type State_Group = {
     'definition': d_schema.Type_Node.SG.state_group
-    'found value type': Node_Type_SG_State_found_value_type
+    'found value type': State_found_value_type
 }
 
 export type State_Definition_Found = {
@@ -55,22 +144,22 @@ export type State_Definition_Found = {
     'node': Node
 }
 
-export type Node_Type_SG_State_found_value_type_valid_value_type_SG_state = {
-    'value substatus': Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus
+export type State_found_value__typevalid_value__typeSG_state = {
+    'value substatus': State_found_value__typevalid_value__typeSG_state_value_substatus
 }
 
-export type Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus =
+export type State_found_value__typevalid_value__typeSG_state_value_substatus =
     | ['missing data', d_astn_ast.Structural_Token]
-    | ['set', Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus_SG_set]
+    | ['set', State_found_value__typevalid_value__typeSG_state_value_substatus_SG_set]
 
-export type Node_Type_SG_State_found_value_type_valid_value_type_SG_state_value_substatus_SG_set = {
-    'value': d_astn_ast.Concrete_Value.SG.state.status.SG._set
+export type State_found_value__typevalid_value__typeSG_state_value_substatus_SG_set = {
+    'value': d_astn_ast.Value._type.concrete.state_group.status._set
     'found state definition': _pi.Optional_Value<State_Definition_Found>
 }
 
-export type Node_Type_SG_State_found_value_type_valid = {
+export type State_found_value__typevalid = {
     'value type':
-    | ['state', Node_Type_SG_State_found_value_type_valid_value_type_SG_state]
+    | ['state', State_found_value__typevalid_value__typeSG_state]
     // | ['polyfill', { -> [ "state_name", ... ]
     //     'xx': {
     //         'node': Node,
@@ -79,8 +168,8 @@ export type Node_Type_SG_State_found_value_type_valid = {
     // }]
 }
 
-export type Node_Type_SG_State_found_value_type =
-    | ['valid', Node_Type_SG_State_found_value_type_valid]
+export type State_found_value_type =
+    | ['valid', State_found_value__typevalid]
     | ['invalid', d_astn_token.Range]
 
 // export type State_Error =
@@ -94,59 +183,12 @@ export type Node_Type_SG_State_found_value_type =
 //         'expected': pt.Dictionary<null>
 //     }]
 
-export type Optional = {
-    'definition': d_schema.Type_Node.SG.optional
-    'found value type':
-    | ['valid',
-        | ['set', {
-            'value': d_astn_ast.Concrete_Value.SG.set_optional_value
-            'child node': Node
-        }]
-        | ['not set', {
-            'value': d_astn_ast.Concrete_Value.SG.not_set
-        }]
-    ]
-    | ['invalid', d_astn_token.Range]
-}
-export type List = {
-    'definition': d_schema.Type_Node.SG.list
-    'found value type':
-    | ['valid', {
-        'value': d_astn_ast.Concrete_Value.SG.ordered_collection
-        'elements': _pi.List<Node>
-    }]
-    | ['invalid', d_astn_token.Range]
-}
 
-export type Reference = {
-    'definition': d_schema.Type_Node.SG.reference
-    'found value type':
-    | ['valid', {
-        'value': d_astn_ast.Concrete_Value.SG.text
-    }] //FIXME
-    | ['invalid', d_astn_token.Range]
-}
-
-export type Component = {
-    'definition': d_schema.Type_Node.SG.component
-    'node': Node
-}
-
-export type Boolean = {
-    'definition': d_schema.Type_Node.SG._boolean
-    'found value type':
-    | ['valid', {
-        'value': d_astn_ast.Concrete_Value.SG.text
-        'range': d_astn_token.Range
-        'correct string type': boolean
-    }]
-    | ['invalid', d_astn_token.Range]
-}
 export type Nothing = {
     'definition': d_schema.Type_Node.SG.nothing
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Concrete_Value.SG.not_set
+        'value': d_astn_ast.Value._type.concrete.nothing
     }]
     | ['invalid', d_astn_token.Range]
 }
@@ -155,7 +197,7 @@ export type Text = {
     'definition': d_schema.Type_Node.SG.text
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Concrete_Value.SG.text
+        'value': d_astn_ast.Value._type.concrete.text
     }]
     | ['invalid', d_astn_token.Range]
 }
@@ -164,19 +206,9 @@ export type Number = {
     'definition': d_schema.Type_Node.SG._number
     'found value type':
     | ['valid', {
-        'value': d_astn_ast.Concrete_Value.SG.text
+        'value': d_astn_ast.Value._type.concrete.text
         'range': d_astn_token.Range
         'correct string type': boolean
-    }]
-    | ['invalid', d_astn_token.Range]
-}
-
-export type Dictionary = {
-    'definition': d_schema.Type_Node.SG.dictionary
-    'found value type':
-    | ['valid', {
-        'value': d_astn_ast.Concrete_Value.SG.indexed_collection
-        'entries': _pi.Dictionary<Entry>
     }]
     | ['invalid', d_astn_token.Range]
 }
@@ -184,32 +216,3 @@ export type Dictionary = {
 export type Entry =
     | ['unique', Optional_Node]
     | ['multiple', _pi.List<Entry_Data>]
-
-export type Group = {
-    'definition': d_schema.Type_Node.SG.group
-    'found value type': Group_Found_Value_Type
-}
-
-export type Group_Found_Value_Type =
-    | ['valid', Group_Type]
-    | ['invalid', d_astn_token.Range]
-
-export type Group_Type =
-    | ['indexed', Indexed_Group]
-    | ['ordered', Ordered_Group]
-
-export type Ordered_Group = {
-    'value': d_astn_ast.Concrete_Value.SG.ordered_collection
-    'content': Group_Content
-}
-
-export type Indexed_Group = {
-    'value': d_astn_ast.Concrete_Value.SG.indexed_collection
-    'content': Group_Content
-}
-
-export type Group_Content = {
-    'properties': _pi.Dictionary<Property>
-    'superfluous entries': _pi.Dictionary<_pi.List<d_astn_token.Range>>
-
-}

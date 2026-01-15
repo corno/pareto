@@ -31,7 +31,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
                     "type": prop(t.state_group({
                         "dictionary": tstate(t.dictionary(t.optional(t.component_cyclic("Value")))),
                         "group": tstate(t.state_group({
-                            "group": tstate(t.list(t.component_cyclic("Value"))),
+                            "concise": tstate(t.list(t.component_cyclic("Value"))),
                             "verbose": tstate(t.dictionary(t.optional(t.component_cyclic("Value")))),
                         })),
                         "list": tstate(t.list(t.component_cyclic("Value"))),

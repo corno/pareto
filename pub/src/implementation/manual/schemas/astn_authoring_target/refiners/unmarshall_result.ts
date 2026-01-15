@@ -15,36 +15,34 @@ export const Node = (
     return {
         'type': _p.sg($.type, ($) => {
             switch ($[0]) {
-                case 'number': return _p.ss($, ($): d_out.Value._type => _p.sg($['found value type'], ($) => {
-                    switch ($[0]) {
-                        case 'valid': return _p.ss($, ($) => ['text', {
-                            'value': $.value.value,
-                            'delimiter': ['none', null],
-
-                        }])
-                        case 'invalid': return _p.ss($, ($) => abort(null))
-                        default: return _p.au($[0])
-                    }
-                }))
                 case 'boolean': return _p.ss($, ($): d_out.Value._type => ['text', {
                     'value': "FIXME_BOOLEAN",
                     'delimiter': ['none', null],
 
                 }])
+                case 'component': return _pdev.implement_me("xx")
+                case 'dictionary': return _pdev.implement_me("xx")
+                case 'group': return _pdev.implement_me("xx")
+                case 'list': return _pdev.implement_me("xx")
                 case 'nothing': return _p.ss($, ($) => ['nothing', null])
+                case 'number': return _p.ss($, ($): d_out.Value._type => _p.sg($['found value type'], ($) => {
+                    switch ($[0]) {
+                        case 'valid': return _p.ss($, ($) => ['text', {
+                            'value': $.value.value,
+                            'delimiter': ['none', null],
+                        }])
+                        case 'invalid': return _p.ss($, ($) => abort(null))
+                        default: return _p.au($[0])
+                    }
+                }))
+                case 'optional': return _pdev.implement_me("xx")
+                case 'reference': return _pdev.implement_me("xx")
+                case 'state group': return _pdev.implement_me("xx")
                 case 'text': return _p.ss($, ($): d_out.Value._type => ['text', {
                     'value': "FIXME_TEXT",
                     'delimiter': ['none', null],
 
                 }])
-                case 'type parameter': return _pdev.implement_me("xx")
-                case 'list': return _pdev.implement_me("xx")
-                case 'reference': return _pdev.implement_me("xx")
-                case 'component': return _pdev.implement_me("xx")
-                case 'dictionary': return _pdev.implement_me("xx")
-                case 'group': return _pdev.implement_me("xx")
-                case 'optional': return _pdev.implement_me("xx")
-                case 'state': return _pdev.implement_me("xx")
                 default: return _p.au($[0])
             }
         })

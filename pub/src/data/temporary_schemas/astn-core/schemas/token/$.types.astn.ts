@@ -96,6 +96,7 @@ export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
         })),
 
         "Relative Location": type(t.group({
+            "uri": prop(t.text_local(text('single line'))),
             "line": prop(t.number_local(n.natural())),
             "column": prop(t.number_local(n.natural())), //this value takes the width of a tab into account, if you don't want that, configure the tab width to be 1
         })),

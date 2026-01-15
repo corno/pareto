@@ -15,8 +15,8 @@ export const Signatures = (
     return sh.m.module(
         {
             "resolve": sh.import_.external("pareto-core-internals", ["dist", "algorithm types", "refiner", "resolve"]),
-            "resolved": sh.import_.sibling("source", []),
-            "unresolved": sh.import_.sibling("target", []),
+            "resolved": sh.import_.sibling("data", ["resolved"]),
+            "unresolved": sh.import_.sibling("data", ["unresolved"]),
         },
         $.dictionary.__d_map(
             ($, key) => sh.type.refiner(

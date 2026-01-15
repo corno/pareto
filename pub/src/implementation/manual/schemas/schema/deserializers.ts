@@ -2,19 +2,17 @@ import * as _p from 'pareto-core-deserializer'
 import * as _pi from 'pareto-core-interface'
 import * as _pdev from 'pareto-core-dev'
 import * as _p_temp from 'pareto-core-transformer'
-import { location_to_string } from 'pareto-core-internals/dist/misc/location_to_string'
 
 //data types
 import * as d_schema from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
-import * as d_parse_result from "astn-sealed/dist/interface/to_be_generated/parse_astn_source"
 import * as d_deserialize_schema from "../../../../interface/to_be_generated/deserialize_schema"
 
 //dependencies
 import * as r_pareto_schema from "../../../temp/resolvers/schema"
 
-import * as u_pareto_schema from "../../../generated/pareto/schemas/schema/unmarshall"
+// import * as u_pareto_schema from "../../../generated/pareto/schemas/schema/unmarshall"
 
-import * as ds_astn_source from "astn-sealed/dist/implementation/schemas/astn_source/deserializers"
+import * as ds_astn_source from "astn/dist/implementation/manual/schemas/authoring_parse_tree/deserializers"
 
 
 
@@ -46,28 +44,30 @@ export const temp_pop_first_element = <T>($: _pi.List<T>): _pi.Optional_Value<El
 export const $: _pi.Deserializer_With_Parameters<d_schema.Type, d_deserialize_schema.Error, { 'uri': string }> = ($, abort, $p) => {
 
 
+
     const x = ds_astn_source.Document(
         $,
         ($) => abort(['parse error', $]),
         {
             'tab size': 4,
-            'uri': $p.uri
+            //'uri': $p.uri
         },
     )
 
     const resolved_schema_schema = r_pareto_schema.Type_Specification(
-        u_pareto_schema.Type_Specification(
-            x.content, //if this goes wrong, the ast schema for astn and in 'generated' differ. Copy the astn one to generated
-            {
-                'value deserializers': {
-                    'boolean': ($) => $ === "true",
-                    'default number': () => 0,
-                    'custom numbers': null
-                }
-            }
-        ),
+        _pdev.implement_me("XX"),
+        // u_pareto_schema.Type_Specification(
+        //     x.content,
+        //     {
+        //         'value deserializers': {
+        //             'boolean': ($) => $ === "true",
+        //             'default number': () => 0,
+        //             'custom numbers': null
+        //         }
+        //     }
+        // ),
         {
-            'location 2 string': ($) => `${$.start.relative.line}:${$.start.relative.column}`,
+            'location 2 string': ($) => _pdev.implement_me("XX2"), //`${$.start.relative.line}:${$.start.relative.column}`,
             'parameters': {
                 'lookups': null,
                 'values': null,
