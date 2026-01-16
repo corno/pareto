@@ -1,1344 +1,621 @@
+
 import * as _pi from "pareto-core-interface"
+
+import * as i_out from "./data/unresolved"
+
+import * as i_in from "./data/resolved"
+
+export namespace Text_Type_ {
     
-    import * as _i_out from "./data_types/target"
-    import * as _i_in from "./data_types/source"
-    
-    // **** TYPES
-    
-    export type _T_Text_Type = (
-        $$_: _i_in._T_Text_Type,
-        $$_p: null,
-    ) => _i_out._T_Text_Type<null>
-    
-    export type _T_Number_Type = (
-        $$_: _i_in._T_Number_Type,
-        $$_p: null,
-    ) => _i_out._T_Number_Type<null>
-    
-    export type _T_Globals = (
-        $$_: _i_in._T_Globals,
-        $$_p: null,
-    ) => _i_out._T_Globals<null>
-    
-    export type _T_Presence = (
-        $$_: _i_in._T_Presence,
-        $$_p: null,
-    ) => _i_out._T_Presence<null>
-    
-    export type _T_Type_Parameters = (
-        $$_: _i_in._T_Type_Parameters,
-        $$_p: null,
-    ) => _i_out._T_Type_Parameters<null>
-    
-    export type _T_Type = (
-        $$_: _i_in._T_Type,
-        $$_p: null,
-    ) => _i_out._T_Type<null>
-    
-    export type _T_Types = (
-        $$_: _i_in._T_Types,
-        $$_p: null,
-    ) => _i_out._T_Types<null>
-    
-    export type _T_Dictionary = (
-        $$_: _i_in._T_Dictionary,
-        $$_p: null,
-    ) => _i_out._T_Dictionary<null>
-    
-    export type _T_Signatures = (
-        $$_: _i_in._T_Signatures,
-        $$_p: null,
-    ) => _i_out._T_Signatures<null>
-    
-    export type _T_Resolvers = (
-        $$_: _i_in._T_Resolvers,
-        $$_p: null,
-    ) => _i_out._T_Resolvers<null>
-    
-    export type _T_Resolve_Logic = (
-        $$_: _i_in._T_Resolve_Logic,
-        $$_p: null,
-    ) => _i_out._T_Resolve_Logic<null>
-    
-    export type _T_Group = (
-        $$_: _i_in._T_Group,
-        $$_p: null,
-    ) => _i_out._T_Group<null>
-    
-    export type _T_Schema = (
-        $$_: _i_in._T_Schema,
-        $$_p: null,
-    ) => _i_out._T_Schema<null>
-    
-    export type _T_Schema_Tree = (
-        $$_: _i_in._T_Schema_Tree,
-        $$_p: null,
-    ) => _i_out._T_Schema_Tree<null>
-    
-    export type _T_Schemas = (
-        $$_: _i_in._T_Schemas,
-        $$_p: null,
-    ) => _i_out._T_Schemas<null>
-    
-    export type _T_Imports = (
-        $$_: _i_in._T_Imports,
-        $$_p: null,
-    ) => _i_out._T_Imports<null>
-    
-    export type _T_Type_Node = (
-        $$_: _i_in._T_Type_Node,
-        $$_p: null,
-    ) => _i_out._T_Type_Node<null>
-    
-    export type _T_Type_Reference = (
-        $$_: _i_in._T_Type_Reference,
-        $$_p: null,
-    ) => _i_out._T_Type_Reference<null>
-    
-    export type _T_Type_Node_Reference = (
-        $$_: _i_in._T_Type_Node_Reference,
-        $$_p: null,
-    ) => _i_out._T_Type_Node_Reference<null>
-    
-    export type _T_Signature_Parameters = (
-        $$_: _i_in._T_Signature_Parameters,
-        $$_p: null,
-    ) => _i_out._T_Signature_Parameters<null>
+    export type I = i_in.Text_Type
     
-    export type _T_Signature = (
-        $$_: _i_in._T_Signature,
-        $$_p: null,
-    ) => _i_out._T_Signature<null>
+    export type O = i_out.Text_Type
     
-    export type _T_Relative_Value_Selection = (
-        $$_: _i_in._T_Relative_Value_Selection,
-        $$_p: null,
-    ) => _i_out._T_Relative_Value_Selection<null>
-    
-    export type _T_Lookup_Selection = (
-        $$_: _i_in._T_Lookup_Selection,
-        $$_p: null,
-    ) => _i_out._T_Lookup_Selection<null>
+    export namespace P {
+        
+    }
     
-    export type _T_Constraint = (
-        $$_: _i_in._T_Constraint,
-        $$_p: null,
-    ) => _i_out._T_Constraint<null>
+}
+
+export type Text_Type_ = (
+    $$_: Text_Type_.I,
+) => Text_Type_.O
+
+export namespace Number_Type_ {
     
-    export type _T_Option_Constraints = (
-        $$_: _i_in._T_Option_Constraints,
-        $$_p: null,
-    ) => _i_out._T_Option_Constraints<null>
+    export type I = i_in.Number_Type
     
-    export type _T_Property_Constraints = (
-        $$_: _i_in._T_Property_Constraints,
-        $$_p: null,
-    ) => _i_out._T_Property_Constraints<null>
+    export type O = i_out.Number_Type
     
-    export type _T_Reference_To_Property_Constraint = (
-        $$_: _i_in._T_Reference_To_Property_Constraint,
-        $$_p: null,
-    ) => _i_out._T_Reference_To_Property_Constraint<null>
+    export namespace P {
+        
+    }
     
-    export type _T_Property_Constraint = (
-        $$_: _i_in._T_Property_Constraint,
-        $$_p: null,
-    ) => _i_out._T_Property_Constraint<null>
+}
+
+export type Number_Type_ = (
+    $$_: Number_Type_.I,
+) => Number_Type_.O
+
+export namespace Globals_ {
     
-    export type _T_Optional_Value_Initialization = (
-        $$_: _i_in._T_Optional_Value_Initialization,
-        $$_p: null,
-    ) => _i_out._T_Optional_Value_Initialization<null>
+    export type I = i_in.Globals
     
-    export type _T_Node_Resolver_Group = (
-        $$_: _i_in._T_Node_Resolver_Group,
-        $$_p: null,
-    ) => _i_out._T_Node_Resolver_Group<null>
+    export type O = i_out.Globals
     
-    export type _T_Node_Resolver_List_Result = (
-        $$_: _i_in._T_Node_Resolver_List_Result,
-        $$_p: null,
-    ) => _i_out._T_Node_Resolver_List_Result<null>
+    export namespace P {
+        
+    }
     
-    export type _T_Benchmark = (
-        $$_: _i_in._T_Benchmark,
-        $$_p: null,
-    ) => _i_out._T_Benchmark<null>
+}
+
+export type Globals_ = (
+    $$_: Globals_.I,
+) => Globals_.O
+
+export namespace Type_Parameters_ {
     
-    export type _T_Type_Specification = (
-        $$_: _i_in._T_Type_Specification,
-        $$_p: null,
-    ) => _i_out._T_Type_Specification<null>
+    export type I = i_in.Type_Parameters
     
-    export type _T_Node_Resolver = (
-        $$_: _i_in._T_Node_Resolver,
-        $$_p: null,
-    ) => _i_out._T_Node_Resolver<null>
+    export type O = i_out.Type_Parameters
     
-    export type _T_Guaranteed_Value_Selection = (
-        $$_: _i_in._T_Guaranteed_Value_Selection,
-        $$_p: null,
-    ) => _i_out._T_Guaranteed_Value_Selection<null>
+    export namespace P {
+        
+    }
     
-    export type _T_Possible_Value_Selection = (
-        $$_: _i_in._T_Possible_Value_Selection,
-        $$_p: null,
-    ) => _i_out._T_Possible_Value_Selection<null>
+}
+
+export type Type_Parameters_ = (
+    $$_: Type_Parameters_.I,
+) => Type_Parameters_.O
+
+export namespace Type_ {
     
-    // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
+    export type I = i_in.Type
     
-    export type Text_Type = _T_Text_Type
+    export type O = i_out.Type
     
-    export type Number_Type = _T_Number_Type
+    export namespace P {
+        
+    }
     
-    export type Globals = _T_Globals
+}
+
+export type Type_ = (
+    $$_: Type_.I,
+) => Type_.O
+
+export namespace Types_ {
     
-    export type Presence = _T_Presence
+    export type I = i_in.Types
     
-    export type Type_Parameters = _T_Type_Parameters
+    export type O = i_out.Types
     
-    export type Type = _T_Type
+    export namespace P {
+        
+    }
     
-    export type Types = _T_Types
+}
+
+export type Types_ = (
+    $$_: Types_.I,
+) => Types_.O
+
+export namespace Resolve_Logic_ {
     
-    export type Dictionary = _T_Dictionary
+    export type I = i_in.Resolve_Logic
     
-    export type Signatures = _T_Signatures
+    export type O = i_out.Resolve_Logic
     
-    export type Resolvers = _T_Resolvers
+    export namespace P {
+        
+    }
     
-    export type Resolve_Logic = _T_Resolve_Logic
+}
+
+export type Resolve_Logic_ = (
+    $$_: Resolve_Logic_.I,
+) => Resolve_Logic_.O
+
+export namespace Schema_ {
     
-    export type Group = _T_Group
+    export type I = i_in.Schema
     
-    export type Schema = _T_Schema
+    export type O = i_out.Schema
     
-    export type Schema_Tree = _T_Schema_Tree
+    export namespace P {
+        
+    }
     
-    export type Schemas = _T_Schemas
+}
+
+export type Schema_ = (
+    $$_: Schema_.I,
+) => Schema_.O
+
+export namespace Schema_Tree_ {
     
-    export type Imports = _T_Imports
+    export type I = i_in.Schema_Tree
     
-    export type Type_Node = _T_Type_Node
+    export type O = i_out.Schema_Tree
     
-    export type Type_Reference = _T_Type_Reference
+    export namespace P {
+        
+    }
     
-    export type Type_Node_Reference = _T_Type_Node_Reference
+}
+
+export type Schema_Tree_ = (
+    $$_: Schema_Tree_.I,
+) => Schema_Tree_.O
+
+export namespace Type_Specification_ {
     
-    export type Signature_Parameters = _T_Signature_Parameters
+    export type I = i_in.Type_Specification
     
-    export type Signature = _T_Signature
+    export type O = i_out.Type_Specification
     
-    export type Relative_Value_Selection = _T_Relative_Value_Selection
+    export namespace P {
+        
+    }
     
-    export type Lookup_Selection = _T_Lookup_Selection
+}
+
+export type Type_Specification_ = (
+    $$_: Type_Specification_.I,
+) => Type_Specification_.O
+
+export namespace Schemas_ {
     
-    export type Constraint = _T_Constraint
+    export type I = i_in.Schemas
     
-    export type Option_Constraints = _T_Option_Constraints
+    export type O = i_out.Schemas
     
-    export type Property_Constraints = _T_Property_Constraints
+    export namespace P {
+        
+    }
     
-    export type Reference_To_Property_Constraint = _T_Reference_To_Property_Constraint
+}
+
+export type Schemas_ = (
+    $$_: Schemas_.I,
+) => Schemas_.O
+
+export namespace Imports_ {
     
-    export type Property_Constraint = _T_Property_Constraint
+    export type I = i_in.Imports
     
-    export type Optional_Value_Initialization = _T_Optional_Value_Initialization
+    export type O = i_out.Imports
     
-    export type Node_Resolver_Group = _T_Node_Resolver_Group
+    export namespace P {
+        
+    }
     
-    export type Node_Resolver_List_Result = _T_Node_Resolver_List_Result
+}
+
+export type Imports_ = (
+    $$_: Imports_.I,
+) => Imports_.O
+
+export namespace Presence_ {
     
-    export type Benchmark = _T_Benchmark
+    export type I = i_in.Presence
     
-    export type Type_Specification = _T_Type_Specification
+    export type O = i_out.Presence
     
-    export type Node_Resolver = _T_Node_Resolver
+    export namespace P {
+        
+    }
     
-    export type Guaranteed_Value_Selection = _T_Guaranteed_Value_Selection
+}
+
+export type Presence_ = (
+    $$_: Presence_.I,
+) => Presence_.O
+
+export namespace Dictionary_ {
     
-    export type Possible_Value_Selection = _T_Possible_Value_Selection
+    export type I = i_in.Dictionary
     
-    // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
+    export type O = i_out.Dictionary
     
-    export namespace _T_Text_Type {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Text_Type
+    export namespace P {
         
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Text_Type<null>
     }
     
-    export namespace _T_Number_Type {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Number_Type
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Number_Type<null>
-    }
+}
+
+export type Dictionary_ = (
+    $$_: Dictionary_.I,
+) => Dictionary_.O
+
+export namespace Signatures_ {
     
-    export namespace _T_Globals {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Globals
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Globals<null>
-    }
+    export type I = i_in.Signatures
     
-    export namespace _T_Presence {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Presence
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Presence<null>
-    }
+    export type O = i_out.Signatures
     
-    export namespace _T_Type_Parameters {
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Type_Parameters
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Type_Parameters<null>
     }
     
-    export namespace _T_Type {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Type
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Type<null>
-    }
+}
+
+export type Signatures_ = (
+    $$_: Signatures_.I,
+) => Signatures_.O
+
+export namespace Resolvers_ {
     
-    export namespace _T_Types {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Types
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Types<null>
-    }
+    export type I = i_in.Resolvers
     
-    export namespace _T_Dictionary {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Dictionary
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Dictionary<null>
-    }
+    export type O = i_out.Resolvers
     
-    export namespace _T_Signatures {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Signatures
-        
-        export namespace PARAMS {
-        }
+    export namespace P {
         
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Signatures<null>
     }
     
-    export namespace _T_Resolvers {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Resolvers
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Resolvers<null>
-    }
+}
+
+export type Resolvers_ = (
+    $$_: Resolvers_.I,
+) => Resolvers_.O
+
+export namespace Group_ {
     
-    export namespace _T_Resolve_Logic {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Resolve_Logic
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Resolve_Logic<null>
-    }
+    export type I = i_in.Group
     
-    export namespace _T_Group {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Group
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Group<null>
-    }
+    export type O = i_out.Group
     
-    export namespace _T_Schema {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Schema
-        
-        export namespace PARAMS {
-        }
+    export namespace P {
         
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Schema<null>
     }
     
-    export namespace _T_Schema_Tree {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Schema_Tree
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Schema_Tree<null>
-    }
+}
+
+export type Group_ = (
+    $$_: Group_.I,
+) => Group_.O
+
+export namespace Type_Node_ {
     
-    export namespace _T_Schemas {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Schemas
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Schemas<null>
-    }
+    export type I = i_in.Type_Node
     
-    export namespace _T_Imports {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Imports
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Imports<null>
-    }
+    export type O = i_out.Type_Node
     
-    export namespace _T_Type_Node {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Type_Node
+    export namespace P {
         
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Type_Node<null>
     }
     
-    export namespace _T_Type_Reference {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Type_Reference
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Type_Reference<null>
-    }
+}
+
+export type Type_Node_ = (
+    $$_: Type_Node_.I,
+) => Type_Node_.O
+
+export namespace Type_Reference_ {
     
-    export namespace _T_Type_Node_Reference {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Type_Node_Reference
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Type_Node_Reference<null>
-    }
+    export type I = i_in.Type_Reference
     
-    export namespace _T_Signature_Parameters {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Signature_Parameters
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Signature_Parameters<null>
-    }
+    export type O = i_out.Type_Reference
     
-    export namespace _T_Signature {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Signature
+    export namespace P {
         
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Signature<null>
     }
     
-    export namespace _T_Relative_Value_Selection {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Relative_Value_Selection
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Relative_Value_Selection<null>
-    }
+}
+
+export type Type_Reference_ = (
+    $$_: Type_Reference_.I,
+) => Type_Reference_.O
+
+export namespace Type_Node_Reference_ {
     
-    export namespace _T_Lookup_Selection {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Lookup_Selection
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Lookup_Selection<null>
-    }
+    export type I = i_in.Type_Node_Reference
     
-    export namespace _T_Constraint {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Constraint
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Constraint<null>
-    }
+    export type O = i_out.Type_Node_Reference
     
-    export namespace _T_Option_Constraints {
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Option_Constraints
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Option_Constraints<null>
     }
     
-    export namespace _T_Property_Constraints {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Property_Constraints
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Property_Constraints<null>
-    }
+}
+
+export type Type_Node_Reference_ = (
+    $$_: Type_Node_Reference_.I,
+) => Type_Node_Reference_.O
+
+export namespace Signature_Parameters_ {
     
-    export namespace _T_Reference_To_Property_Constraint {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Reference_To_Property_Constraint
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Reference_To_Property_Constraint<null>
-    }
+    export type I = i_in.Signature_Parameters
     
-    export namespace _T_Property_Constraint {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Property_Constraint
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Property_Constraint<null>
-    }
+    export type O = i_out.Signature_Parameters
     
-    export namespace _T_Optional_Value_Initialization {
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Optional_Value_Initialization
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Optional_Value_Initialization<null>
     }
     
-    export namespace _T_Node_Resolver_Group {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Node_Resolver_Group
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Node_Resolver_Group<null>
-    }
+}
+
+export type Signature_Parameters_ = (
+    $$_: Signature_Parameters_.I,
+) => Signature_Parameters_.O
+
+export namespace Signature_ {
     
-    export namespace _T_Node_Resolver_List_Result {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Node_Resolver_List_Result
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Node_Resolver_List_Result<null>
-    }
+    export type I = i_in.Signature
     
-    export namespace _T_Benchmark {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Benchmark
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Benchmark<null>
-    }
+    export type O = i_out.Signature
     
-    export namespace _T_Type_Specification {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Type_Specification
+    export namespace P {
         
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Type_Specification<null>
     }
     
-    export namespace _T_Node_Resolver {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Node_Resolver
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Node_Resolver<null>
-    }
+}
+
+export type Signature_ = (
+    $$_: Signature_.I,
+) => Signature_.O
+
+export namespace Relative_Value_Selection_ {
     
-    export namespace _T_Guaranteed_Value_Selection {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Guaranteed_Value_Selection
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Guaranteed_Value_Selection<null>
-    }
+    export type I = i_in.Relative_Value_Selection
     
-    export namespace _T_Possible_Value_Selection {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Possible_Value_Selection
-        
-        export namespace PARAMS {
-        }
+    export type O = i_out.Relative_Value_Selection
+    
+    export namespace P {
         
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Possible_Value_Selection<null>
     }
     
-    // *** ALIASES FOR NESTED TYPES
+}
+
+export type Relative_Value_Selection_ = (
+    $$_: Relative_Value_Selection_.I,
+) => Relative_Value_Selection_.O
+
+export namespace Lookup_Selection_ {
     
-    export namespace Text_Type {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Text_Type
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Text_Type<null>
-    }
+    export type I = i_in.Lookup_Selection
     
-    export namespace Number_Type {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Number_Type
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Number_Type<null>
-    }
+    export type O = i_out.Lookup_Selection
     
-    export namespace Globals {
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Globals
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Globals<null>
     }
     
-    export namespace Presence {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Presence
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Presence<null>
-    }
+}
+
+export type Lookup_Selection_ = (
+    $$_: Lookup_Selection_.I,
+) => Lookup_Selection_.O
+
+export namespace Constraint_ {
     
-    export namespace Type_Parameters {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Type_Parameters
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Type_Parameters<null>
-    }
+    export type I = i_in.Constraint
     
-    export namespace Type {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Type
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Type<null>
-    }
+    export type O = i_out.Constraint
     
-    export namespace Types {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Types
+    export namespace P {
         
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Types<null>
     }
     
-    export namespace Dictionary {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Dictionary
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Dictionary<null>
-    }
+}
+
+export type Constraint_ = (
+    $$_: Constraint_.I,
+) => Constraint_.O
+
+export namespace Option_Constraints_ {
     
-    export namespace Signatures {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Signatures
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Signatures<null>
-    }
+    export type I = i_in.Option_Constraints
     
-    export namespace Resolvers {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Resolvers
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Resolvers<null>
-    }
+    export type O = i_out.Option_Constraints
     
-    export namespace Resolve_Logic {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Resolve_Logic
+    export namespace P {
         
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Resolve_Logic<null>
     }
     
-    export namespace Group {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Group
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Group<null>
-    }
+}
+
+export type Option_Constraints_ = (
+    $$_: Option_Constraints_.I,
+) => Option_Constraints_.O
+
+export namespace Property_Constraints_ {
     
-    export namespace Schema {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Schema
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Schema<null>
-    }
+    export type I = i_in.Property_Constraints
     
-    export namespace Schema_Tree {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Schema_Tree
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Schema_Tree<null>
-    }
+    export type O = i_out.Property_Constraints
     
-    export namespace Schemas {
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Schemas
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Schemas<null>
     }
     
-    export namespace Imports {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Imports
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Imports<null>
-    }
+}
+
+export type Property_Constraints_ = (
+    $$_: Property_Constraints_.I,
+) => Property_Constraints_.O
+
+export namespace Reference_To_Property_Constraint_ {
     
-    export namespace Type_Node {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Type_Node
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Type_Node<null>
-    }
+    export type I = i_in.Reference_To_Property_Constraint
     
-    export namespace Type_Reference {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Type_Reference
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Type_Reference<null>
-    }
+    export type O = i_out.Reference_To_Property_Constraint
     
-    export namespace Type_Node_Reference {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Type_Node_Reference
-        
-        export namespace PARAMS {
-        }
+    export namespace P {
         
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Type_Node_Reference<null>
     }
     
-    export namespace Signature_Parameters {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Signature_Parameters
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Signature_Parameters<null>
-    }
+}
+
+export type Reference_To_Property_Constraint_ = (
+    $$_: Reference_To_Property_Constraint_.I,
+) => Reference_To_Property_Constraint_.O
+
+export namespace Property_Constraint_ {
     
-    export namespace Signature {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Signature
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Signature<null>
-    }
+    export type I = i_in.Property_Constraint
     
-    export namespace Relative_Value_Selection {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Relative_Value_Selection
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Relative_Value_Selection<null>
-    }
+    export type O = i_out.Property_Constraint
     
-    export namespace Lookup_Selection {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Lookup_Selection
-        
-        export namespace PARAMS {
-        }
+    export namespace P {
         
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Lookup_Selection<null>
     }
     
-    export namespace Constraint {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Constraint
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Constraint<null>
-    }
+}
+
+export type Property_Constraint_ = (
+    $$_: Property_Constraint_.I,
+) => Property_Constraint_.O
+
+export namespace Optional_Value_Initialization_ {
     
-    export namespace Option_Constraints {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Option_Constraints
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Option_Constraints<null>
-    }
+    export type I = i_in.Optional_Value_Initialization
     
-    export namespace Property_Constraints {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Property_Constraints
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Property_Constraints<null>
-    }
+    export type O = i_out.Optional_Value_Initialization
     
-    export namespace Reference_To_Property_Constraint {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Reference_To_Property_Constraint
+    export namespace P {
         
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Reference_To_Property_Constraint<null>
     }
     
-    export namespace Property_Constraint {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Property_Constraint
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Property_Constraint<null>
-    }
+}
+
+export type Optional_Value_Initialization_ = (
+    $$_: Optional_Value_Initialization_.I,
+) => Optional_Value_Initialization_.O
+
+export namespace Node_Resolver_Group_ {
     
-    export namespace Optional_Value_Initialization {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Optional_Value_Initialization
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Optional_Value_Initialization<null>
-    }
+    export type I = i_in.Node_Resolver_Group
     
-    export namespace Node_Resolver_Group {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Node_Resolver_Group
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Node_Resolver_Group<null>
-    }
+    export type O = i_out.Node_Resolver_Group
     
-    export namespace Node_Resolver_List_Result {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Node_Resolver_List_Result
+    export namespace P {
         
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Node_Resolver_List_Result<null>
     }
     
-    export namespace Benchmark {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Benchmark
-        
-        export namespace PARAMS {
-        }
+}
+
+export type Node_Resolver_Group_ = (
+    $$_: Node_Resolver_Group_.I,
+) => Node_Resolver_Group_.O
+
+export namespace Node_Resolver_List_Result_ {
+    
+    export type I = i_in.Node_Resolver_List_Result
+    
+    export type O = i_out.Node_Resolver_List_Result
+    
+    export namespace P {
         
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Benchmark<null>
     }
     
-    export namespace Type_Specification {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Type_Specification
-        
-        export namespace PARAMS {
-        }
+}
+
+export type Node_Resolver_List_Result_ = (
+    $$_: Node_Resolver_List_Result_.I,
+) => Node_Resolver_List_Result_.O
+
+export namespace Benchmark_ {
+    
+    export type I = i_in.Benchmark
+    
+    export type O = i_out.Benchmark
+    
+    export namespace P {
         
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Type_Specification<null>
     }
     
-    export namespace Node_Resolver {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Node_Resolver
-        
-        export namespace PARAMS {
-        }
+}
+
+export type Benchmark_ = (
+    $$_: Benchmark_.I,
+) => Benchmark_.O
+
+export namespace Node_Resolver_ {
+    
+    export type I = i_in.Node_Resolver
+    
+    export type O = i_out.Node_Resolver
+    
+    export namespace P {
         
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Node_Resolver<null>
     }
     
-    export namespace Guaranteed_Value_Selection {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Guaranteed_Value_Selection
-        
-        export namespace PARAMS {
-        }
+}
+
+export type Node_Resolver_ = (
+    $$_: Node_Resolver_.I,
+) => Node_Resolver_.O
+
+export namespace Guaranteed_Value_Selection_ {
+    
+    export type I = i_in.Guaranteed_Value_Selection
+    
+    export type O = i_out.Guaranteed_Value_Selection
+    
+    export namespace P {
         
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Guaranteed_Value_Selection<null>
     }
     
-    export namespace Possible_Value_Selection {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Possible_Value_Selection
-        
-        export namespace PARAMS {
-        }
+}
+
+export type Guaranteed_Value_Selection_ = (
+    $$_: Guaranteed_Value_Selection_.I,
+) => Guaranteed_Value_Selection_.O
+
+export namespace Possible_Value_Selection_ {
+    
+    export type I = i_in.Possible_Value_Selection
+    
+    export type O = i_out.Possible_Value_Selection
+    
+    export namespace P {
         
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Possible_Value_Selection<null>
     }
+    
+}
+
+export type Possible_Value_Selection_ = (
+    $$_: Possible_Value_Selection_.I,
+) => Possible_Value_Selection_.O
+
+export { 
+    Text_Type_ as Text_Type, 
+    Number_Type_ as Number_Type, 
+    Globals_ as Globals, 
+    Type_Parameters_ as Type_Parameters, 
+    Type_ as Type, 
+    Types_ as Types, 
+    Resolve_Logic_ as Resolve_Logic, 
+    Schema_ as Schema, 
+    Schema_Tree_ as Schema_Tree, 
+    Type_Specification_ as Type_Specification, 
+    Schemas_ as Schemas, 
+    Imports_ as Imports, 
+    Presence_ as Presence, 
+    Dictionary_ as Dictionary, 
+    Signatures_ as Signatures, 
+    Resolvers_ as Resolvers, 
+    Group_ as Group, 
+    Type_Node_ as Type_Node, 
+    Type_Reference_ as Type_Reference, 
+    Type_Node_Reference_ as Type_Node_Reference, 
+    Signature_Parameters_ as Signature_Parameters, 
+    Signature_ as Signature, 
+    Relative_Value_Selection_ as Relative_Value_Selection, 
+    Lookup_Selection_ as Lookup_Selection, 
+    Constraint_ as Constraint, 
+    Option_Constraints_ as Option_Constraints, 
+    Property_Constraints_ as Property_Constraints, 
+    Reference_To_Property_Constraint_ as Reference_To_Property_Constraint, 
+    Property_Constraint_ as Property_Constraint, 
+    Optional_Value_Initialization_ as Optional_Value_Initialization, 
+    Node_Resolver_Group_ as Node_Resolver_Group, 
+    Node_Resolver_List_Result_ as Node_Resolver_List_Result, 
+    Benchmark_ as Benchmark, 
+    Node_Resolver_ as Node_Resolver, 
+    Guaranteed_Value_Selection_ as Guaranteed_Value_Selection, 
+    Possible_Value_Selection_ as Possible_Value_Selection, 
+}

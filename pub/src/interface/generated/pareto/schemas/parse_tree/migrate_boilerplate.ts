@@ -1,292 +1,128 @@
+
 import * as _pi from "pareto-core-interface"
+
+import * as i_out from "./data"
+
+import * as i_in from "./data"
+
+export namespace Structural_Token_ {
     
-    import * as _i_out from "./data_types/target"
-    import * as _i_in from "./data_types/source"
+    export type I = i_in.Structural_Token
     
-    // **** TYPES
+    export type O = i_out.Structural_Token
     
-    export type _T_Structural_Token = (
-        $$_: _i_in._T_Structural_Token,
-        $$_p: null,
-    ) => _i_out._T_Structural_Token
-    
-    export type _T_String = (
-        $$_: _i_in._T_String,
-        $$_p: null,
-    ) => _i_out._T_String
-    
-    export type _T_Key_Value_Pairs = (
-        $$_: _i_in._T_Key_Value_Pairs,
-        $$_p: null,
-    ) => _i_out._T_Key_Value_Pairs
-    
-    export type _T_Elements = (
-        $$_: _i_in._T_Elements,
-        $$_p: null,
-    ) => _i_out._T_Elements
-    
-    export type _T_Concrete_Value = (
-        $$_: _i_in._T_Concrete_Value,
-        $$_p: null,
-    ) => _i_out._T_Concrete_Value
-    
-    export type _T_Value = (
-        $$_: _i_in._T_Value,
-        $$_p: null,
-    ) => _i_out._T_Value
-    
-    export type _T_Content = (
-        $$_: _i_in._T_Content,
-        $$_p: null,
-    ) => _i_out._T_Content
-    
-    export type _T_Document = (
-        $$_: _i_in._T_Document,
-        $$_p: null,
-    ) => _i_out._T_Document
-    
-    // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
-    
-    export type Structural_Token = _T_Structural_Token
-    
-    export type String = _T_String
-    
-    export type Key_Value_Pairs = _T_Key_Value_Pairs
-    
-    export type Elements = _T_Elements
-    
-    export type Concrete_Value = _T_Concrete_Value
-    
-    export type Value = _T_Value
-    
-    export type Content = _T_Content
-    
-    export type Document = _T_Document
-    
-    // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
-    
-    export namespace _T_Structural_Token {
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Structural_Token
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Structural_Token
     }
     
-    export namespace _T_String {
+}
+
+export type Structural_Token_ = (
+    $$_: Structural_Token_.I,
+) => Structural_Token_.O
+
+export namespace Text_ {
+    
+    export type I = i_in.Text
+    
+    export type O = i_out.Text
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_String
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_String
     }
     
-    export namespace _T_Key_Value_Pairs {
+}
+
+export type Text_ = (
+    $$_: Text_.I,
+) => Text_.O
+
+export namespace Key_Value_Pairs_ {
+    
+    export type I = i_in.Key_Value_Pairs
+    
+    export type O = i_out.Key_Value_Pairs
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Key_Value_Pairs
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Key_Value_Pairs
     }
     
-    export namespace _T_Elements {
+}
+
+export type Key_Value_Pairs_ = (
+    $$_: Key_Value_Pairs_.I,
+) => Key_Value_Pairs_.O
+
+export namespace Elements_ {
+    
+    export type I = i_in.Elements
+    
+    export type O = i_out.Elements
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Elements
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Elements
     }
     
-    export namespace _T_Concrete_Value {
+}
+
+export type Elements_ = (
+    $$_: Elements_.I,
+) => Elements_.O
+
+export namespace Value_ {
+    
+    export type I = i_in.Value
+    
+    export type O = i_out.Value
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Concrete_Value
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Concrete_Value
     }
     
-    export namespace _T_Value {
+}
+
+export type Value_ = (
+    $$_: Value_.I,
+) => Value_.O
+
+export namespace Content_ {
+    
+    export type I = i_in.Content
+    
+    export type O = i_out.Content
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Value
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Value
     }
     
-    export namespace _T_Content {
+}
+
+export type Content_ = (
+    $$_: Content_.I,
+) => Content_.O
+
+export namespace Document_ {
+    
+    export type I = i_in.Document
+    
+    export type O = i_out.Document
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Content
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Content
     }
     
-    export namespace _T_Document {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Document
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Document
-    }
-    
-    // *** ALIASES FOR NESTED TYPES
-    
-    export namespace Structural_Token {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Structural_Token
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Structural_Token
-    }
-    
-    export namespace String {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_String
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_String
-    }
-    
-    export namespace Key_Value_Pairs {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Key_Value_Pairs
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Key_Value_Pairs
-    }
-    
-    export namespace Elements {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Elements
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Elements
-    }
-    
-    export namespace Concrete_Value {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Concrete_Value
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Concrete_Value
-    }
-    
-    export namespace Value {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Value
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Value
-    }
-    
-    export namespace Content {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Content
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Content
-    }
-    
-    export namespace Document {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Document
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Document
-    }
+}
+
+export type Document_ = (
+    $$_: Document_.I,
+) => Document_.O
+
+export { 
+    Structural_Token_ as Structural_Token, 
+    Text_ as Text, 
+    Key_Value_Pairs_ as Key_Value_Pairs, 
+    Elements_ as Elements, 
+    Value_ as Value, 
+    Content_ as Content, 
+    Document_ as Document, 
+}

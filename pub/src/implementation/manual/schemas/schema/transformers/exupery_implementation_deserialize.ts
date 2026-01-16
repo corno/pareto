@@ -2,7 +2,7 @@ import * as _pi from 'pareto-core-interface'
 import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data/resolved"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/source"
 import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/source"
 
@@ -43,7 +43,7 @@ export const Schema = (
             () => _p.unreachable_code_path(),
         ),
         {},
-        $.types.dictionary.__d_map(($, key) => sh.algorithm(
+        $.types.__d_map(($, key) => sh.algorithm(
             sh.type_reference("signatures", key),
             false,
             false,

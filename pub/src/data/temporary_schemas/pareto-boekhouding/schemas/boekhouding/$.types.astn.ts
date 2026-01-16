@@ -8,9 +8,9 @@ import {
     prop,
     tstate,
 } from "../../../../../shorthands/schema"
-import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
+import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data/unresolved"
 
-export const $: g_.Types<_pi.Deprecated_Source_Location> = types(
+export const $: g_.Types = types(
     {
         "Fiscaal": type(t.group({
             "Balans Hoofdcategorieen": prop(t.dictionary(t.group({

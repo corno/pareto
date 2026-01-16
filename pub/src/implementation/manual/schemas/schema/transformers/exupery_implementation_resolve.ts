@@ -2,7 +2,7 @@ import * as _pi from 'pareto-core-interface'
 import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data/resolved"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/source"
 import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/source"
 
@@ -57,7 +57,7 @@ export const Resolvers = (
         ),
         {},
         op_pad_dictionary_identifiers(
-            $.dictionary.__d_map(($, key) => sh.algorithm(
+            $.__d_map(($, key) => sh.algorithm(
                 sh.type_reference("signatures", key),
                 true,
                 true,
@@ -426,28 +426,28 @@ export const Node_Resolver = (
             )
         ))
         case 'group': return _p.ss($, ($) => sh.e.block(
-            $['ordered list'].__l_map(($) => sh.temp_ordered_variable(
-                `p ${$.key}`,
+            $.__to_list(($, key) => sh.temp_ordered_variable(
+                `p ${key}`,
                 sh.type_node_reference(
                     "out",
                     $p['temp type'],
                     _p.list.nested_literal([
                         $p['temp subselection'],
                         [
-                            sh_i.sub.group($.key)
+                            sh_i.sub.group(key)
                         ]
                     ]),
                 ),
                 sh.e.change_context(
-                    sh.s.from_context([$.key]),
+                    sh.s.from_context([key]),
                     Node_Resolver(
-                        $.value.resolver,
+                        $.resolver,
                         {
                             'temp type': $p['temp type'],
                             'temp subselection': _p.list.nested_literal([
                                 $p['temp subselection'],
                                 [
-                                    sh_i.sub.group($.key)
+                                    sh_i.sub.group(key)
                                 ]
                             ]),
                         }
@@ -455,7 +455,7 @@ export const Node_Resolver = (
                 )
             )),
             {},
-            sh.e.group($.dictionary.__d_map(($, key) => sh.e.select_from_variable_deprecated(`p ${key}`, [])))
+            sh.e.group($.__d_map(($, key) => sh.e.select_from_variable_deprecated(`p ${key}`, [])))
         ))
         case 'list': return _p.ss($, ($) => sh.e.list_map(
             sh.s.from_context(["list"]),

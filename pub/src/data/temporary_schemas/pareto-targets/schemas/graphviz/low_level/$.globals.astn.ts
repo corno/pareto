@@ -5,9 +5,10 @@ import {
     n,
     text,
 } from "../../../../../../shorthands/schema"
-import * as g_ from "../../../../../../interface/generated/pareto/schemas/schema/data_types/target"
+import * as g_ from "../../../../../../interface/generated/pareto/schemas/schema/data/unresolved"
 
-export const $: g_.Globals<_pi.Deprecated_Source_Location> = globals(
+export const $: g_.Globals = globals(
+
          'unconstrained',
     {
         "id": text('single line'),

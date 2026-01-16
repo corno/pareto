@@ -2,7 +2,7 @@ import * as _pi from 'pareto-core-interface'
 import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data/resolved"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/source"
 import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/source"
 
@@ -50,7 +50,7 @@ export const Schema = (
         ),
     }),
     $p.imports.__d_map(($, key) => sh_i.import_.ancestor(1, $['schema set child'].key, ["marshall"])),
-    $.types.dictionary.__d_map(($, key) => sh.algorithm(
+    $.types.__d_map(($, key) => sh.algorithm(
         sh.type_reference("signatures", key),
         false,
         false,
@@ -121,7 +121,7 @@ export const Type_Node = (
             ))
             case 'group': return _p.ss($, ($) => sh.e.tagged_union(
                 "verbose group",
-                sh.e.dictionary_literal($.dictionary.__d_map(($, key) => sh.e.change_context(
+                sh.e.dictionary_literal($.__d_map(($, key) => sh.e.change_context(
                     sh.s.from_context([key]),
                     Type_Node(
                         $.node,

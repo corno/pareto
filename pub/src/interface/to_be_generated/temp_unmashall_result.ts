@@ -1,9 +1,9 @@
 import * as _pi from 'pareto-core-interface'
 
-import * as d_astn_token from "astn/dist/interface/generated/pareto/schemas/token/data_types/target"
+import * as d_astn_token from "astn/dist/interface/generated/pareto/schemas/token/data"
 import * as d_astn_ast from "astn/dist/interface/generated/pareto/schemas/parse_tree/data"
 
-import * as d_schema from "../generated/pareto/schemas/schema/data_types/source"
+import * as d_schema from "../generated/pareto/schemas/schema/data/resolved"
 
 export type Document = {
     'content': Node
@@ -46,7 +46,7 @@ export type Node_Type =
 
 
 export type Boolean = {
-    'definition': d_schema.Type_Node.SG._boolean
+    'definition': d_schema.Type_Node._boolean
     'found value type':
     | ['valid', {
         'value': d_astn_ast.Value._type.concrete.text
@@ -57,12 +57,12 @@ export type Boolean = {
 }
 
 export type Component = {
-    'definition': d_schema.Type_Node.SG.component
+    'definition': d_schema.Type_Node.component
     'node': Node
 }
 
 export type Dictionary = {
-    'definition': d_schema.Type_Node.SG.dictionary
+    'definition': d_schema.Type_Node.dictionary
     'found value type':
     | ['valid', {
         'value': d_astn_ast.Value._type.concrete.dictionary
@@ -72,7 +72,7 @@ export type Dictionary = {
 }
 
 export type Group = {
-    'definition': d_schema.Type_Node.SG.group
+    'definition': d_schema.Type_Node.group
     'found value type': Group_Found_Value_Type
 }
 
@@ -101,7 +101,7 @@ export type Group_Content = {
 }
 
 export type List = {
-    'definition': d_schema.Type_Node.SG.list
+    'definition': d_schema.Type_Node.list
     'found value type':
     | ['valid', {
         'value': d_astn_ast.Value._type.concrete.list
@@ -111,7 +111,7 @@ export type List = {
 }
 
 export type Optional = {
-    'definition': d_schema.Type_Node.SG.optional
+    'definition': d_schema.Type_Node.optional
     'found value type':
     | ['valid',
         | ['set', {
@@ -126,7 +126,7 @@ export type Optional = {
 }
 
 export type Reference = {
-    'definition': d_schema.Type_Node.SG.reference
+    'definition': d_schema.Type_Node.reference
     'found value type':
     | ['valid', {
         'value': d_astn_ast.Value._type.concrete.text
@@ -135,12 +135,12 @@ export type Reference = {
 }
 
 export type State_Group = {
-    'definition': d_schema.Type_Node.SG.state_group
+    'definition': d_schema.Type_Node.state_group
     'found value type': State_found_value_type
 }
 
 export type State_Definition_Found = {
-    'definition': d_schema.Type_Node.SG.state_group.D
+    'definition': d_schema.Type_Node.state_group.D
     'node': Node
 }
 
@@ -185,7 +185,7 @@ export type State_found_value_type =
 
 
 export type Nothing = {
-    'definition': d_schema.Type_Node.SG.nothing
+    'definition': d_schema.Type_Node.nothing
     'found value type':
     | ['valid', {
         'value': d_astn_ast.Value._type.concrete.nothing
@@ -194,7 +194,7 @@ export type Nothing = {
 }
 
 export type Text = {
-    'definition': d_schema.Type_Node.SG.text
+    'definition': d_schema.Type_Node.text
     'found value type':
     | ['valid', {
         'value': d_astn_ast.Value._type.concrete.text
@@ -203,7 +203,7 @@ export type Text = {
 }
 
 export type Number = {
-    'definition': d_schema.Type_Node.SG._number
+    'definition': d_schema.Type_Node._number
     'found value type':
     | ['valid', {
         'value': d_astn_ast.Value._type.concrete.text

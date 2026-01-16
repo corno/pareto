@@ -4,7 +4,7 @@ import * as _pdev from 'pareto-core-dev'
 import * as _p_temp from 'pareto-core-transformer'
 
 //data types
-import * as d_schema from "../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_schema from "../../../../interface/generated/pareto/schemas/schema/data/unresolved"
 import * as d_deserialize_schema from "../../../../interface/to_be_generated/deserialize_schema"
 
 //dependencies
@@ -12,7 +12,7 @@ import * as r_pareto_schema from "../../../temp/resolvers/schema"
 
 // import * as u_pareto_schema from "../../../generated/pareto/schemas/schema/unmarshall"
 
-import * as ds_astn_source from "astn/dist/implementation/manual/schemas/authoring_parse_tree/deserializers"
+import * as ds_astn_source from "astn-core/dist/implementation/manual/schemas/parse_tree/deserializers"
 
 
 
@@ -50,7 +50,7 @@ export const $: _pi.Deserializer_With_Parameters<d_schema.Type, d_deserialize_sc
         ($) => abort(['parse error', $]),
         {
             'tab size': 4,
-            //'uri': $p.uri
+            'uri': $p.uri
         },
     )
 

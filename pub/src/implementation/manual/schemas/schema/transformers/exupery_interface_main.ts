@@ -1,7 +1,7 @@
 import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data/resolved"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/source"
 
 import { m } from "exupery/dist/shorthands/interface"
@@ -115,7 +115,7 @@ export const Schema_Tree = ($: d_in.Schema_Tree): d_out.Module_Set.D => _p.sg($,
 })
 
 
-export const Schemas = ($: d_in.Schemas): d_out.Module_Set.D => m.set($.dictionary.__d_map(($) => _p.sg($, ($) => {
+export const Schemas = ($: d_in.Schemas): d_out.Module_Set.D => m.set($.__d_map(($) => _p.sg($, ($) => {
     switch ($[0]) {
         case 'schema': return _p.ss($, ($) => Schema($))
         case 'set': return _p.ss($, ($) => Schemas($))

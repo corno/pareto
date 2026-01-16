@@ -3,8 +3,8 @@ import { location_to_string } from 'pareto-core-internals/dist/misc/location_to_
 
 //FIXME, this one should be moved to pareto-targets
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/module/data_types/source"
-import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/module/data"
+import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data"
 
 //transformations
 import * as t_pareto_to_exupery_implementation from "./exupery_implementation"

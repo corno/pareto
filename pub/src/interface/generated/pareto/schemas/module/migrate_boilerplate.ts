@@ -1,86 +1,43 @@
+
 import * as _pi from "pareto-core-interface"
+
+import * as i_out from "./data/unresolved"
+
+import * as i_in from "./data/resolved"
+
+export namespace Operations_ {
     
-    import * as _i_out from "./data_types/target"
-    import * as _i_in from "./data_types/source"
+    export type I = i_in.Operations
     
-    // **** TYPES
+    export type O = i_out.Operations
     
-    export type _T_Operations = (
-        $$_: _i_in._T_Operations,
-        $$_p: null,
-    ) => _i_out._T_Operations<null>
-    
-    export type _T_Module = (
-        $$_: _i_in._T_Module,
-        $$_p: null,
-    ) => _i_out._T_Module<null>
-    
-    // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
-    
-    export type Operations = _T_Operations
-    
-    export type Module = _T_Module
-    
-    // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
-    
-    export namespace _T_Operations {
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Operations
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Operations<null>
     }
     
-    export namespace _T_Module {
+}
+
+export type Operations_ = (
+    $$_: Operations_.I,
+) => Operations_.O
+
+export namespace Module_ {
+    
+    export type I = i_in.Module
+    
+    export type O = i_out.Module
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Module
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Module<null>
     }
     
-    // *** ALIASES FOR NESTED TYPES
-    
-    export namespace Operations {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Operations
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Operations<null>
-    }
-    
-    export namespace Module {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Module
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-            export type annotation = null
-        }
-        export type RESULT = _i_out._T_Module<null>
-    }
+}
+
+export type Module_ = (
+    $$_: Module_.I,
+) => Module_.O
+
+export { 
+    Operations_ as Operations, 
+    Module_ as Module, 
+}

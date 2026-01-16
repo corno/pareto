@@ -1,362 +1,179 @@
+
 import * as _pi from "pareto-core-interface"
+
+import * as i_out from "./data"
+
+import * as i_in from "./data"
+
+export namespace Relative_Location_ {
     
-    import * as _i_out from "./data_types/target"
-    import * as _i_in from "./data_types/source"
+    export type I = i_in.Relative_Location
     
-    // **** TYPES
+    export type O = i_out.Relative_Location
     
-    export type _T_Relative_Location = (
-        $$_: _i_in._T_Relative_Location,
-        $$_p: null,
-    ) => _i_out._T_Relative_Location
-    
-    export type _T_Location = (
-        $$_: _i_in._T_Location,
-        $$_p: null,
-    ) => _i_out._T_Location
-    
-    export type _T_Range = (
-        $$_: _i_in._T_Range,
-        $$_p: null,
-    ) => _i_out._T_Range
-    
-    export type _T_Whitespace = (
-        $$_: _i_in._T_Whitespace,
-        $$_p: null,
-    ) => _i_out._T_Whitespace
-    
-    export type _T_Trivia = (
-        $$_: _i_in._T_Trivia,
-        $$_p: null,
-    ) => _i_out._T_Trivia
-    
-    export type _T_Delimited_String = (
-        $$_: _i_in._T_Delimited_String,
-        $$_p: null,
-    ) => _i_out._T_Delimited_String
-    
-    export type _T_String_Type = (
-        $$_: _i_in._T_String_Type,
-        $$_p: null,
-    ) => _i_out._T_String_Type
-    
-    export type _T_Token_Type = (
-        $$_: _i_in._T_Token_Type,
-        $$_p: null,
-    ) => _i_out._T_Token_Type
-    
-    export type _T_Annotated_Token = (
-        $$_: _i_in._T_Annotated_Token,
-        $$_p: null,
-    ) => _i_out._T_Annotated_Token
-    
-    export type _T_Tokenizer_Result = (
-        $$_: _i_in._T_Tokenizer_Result,
-        $$_p: null,
-    ) => _i_out._T_Tokenizer_Result
-    
-    // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
-    
-    export type Relative_Location = _T_Relative_Location
-    
-    export type Location = _T_Location
-    
-    export type Range = _T_Range
-    
-    export type Whitespace = _T_Whitespace
-    
-    export type Trivia = _T_Trivia
-    
-    export type Delimited_String = _T_Delimited_String
-    
-    export type String_Type = _T_String_Type
-    
-    export type Token_Type = _T_Token_Type
-    
-    export type Annotated_Token = _T_Annotated_Token
-    
-    export type Tokenizer_Result = _T_Tokenizer_Result
-    
-    // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
-    
-    export namespace _T_Relative_Location {
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Relative_Location
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Relative_Location
     }
     
-    export namespace _T_Location {
+}
+
+export type Relative_Location_ = (
+    $$_: Relative_Location_.I,
+) => Relative_Location_.O
+
+export namespace Location_ {
+    
+    export type I = i_in.Location
+    
+    export type O = i_out.Location
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Location
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Location
     }
     
-    export namespace _T_Range {
+}
+
+export type Location_ = (
+    $$_: Location_.I,
+) => Location_.O
+
+export namespace Range_ {
+    
+    export type I = i_in.Range
+    
+    export type O = i_out.Range
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Range
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Range
     }
     
-    export namespace _T_Whitespace {
+}
+
+export type Range_ = (
+    $$_: Range_.I,
+) => Range_.O
+
+export namespace Whitespace_ {
+    
+    export type I = i_in.Whitespace
+    
+    export type O = i_out.Whitespace
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Whitespace
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Whitespace
     }
     
-    export namespace _T_Trivia {
+}
+
+export type Whitespace_ = (
+    $$_: Whitespace_.I,
+) => Whitespace_.O
+
+export namespace Trivia_ {
+    
+    export type I = i_in.Trivia
+    
+    export type O = i_out.Trivia
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Trivia
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Trivia
     }
     
-    export namespace _T_Delimited_String {
+}
+
+export type Trivia_ = (
+    $$_: Trivia_.I,
+) => Trivia_.O
+
+export namespace Delimited_Text_ {
+    
+    export type I = i_in.Delimited_Text
+    
+    export type O = i_out.Delimited_Text
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Delimited_String
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Delimited_String
     }
     
-    export namespace _T_String_Type {
+}
+
+export type Delimited_Text_ = (
+    $$_: Delimited_Text_.I,
+) => Delimited_Text_.O
+
+export namespace Text_Type_ {
+    
+    export type I = i_in.Text_Type
+    
+    export type O = i_out.Text_Type
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_String_Type
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_String_Type
     }
     
-    export namespace _T_Token_Type {
+}
+
+export type Text_Type_ = (
+    $$_: Text_Type_.I,
+) => Text_Type_.O
+
+export namespace Token_Type_ {
+    
+    export type I = i_in.Token_Type
+    
+    export type O = i_out.Token_Type
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Token_Type
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Token_Type
     }
     
-    export namespace _T_Annotated_Token {
+}
+
+export type Token_Type_ = (
+    $$_: Token_Type_.I,
+) => Token_Type_.O
+
+export namespace Annotated_Token_ {
+    
+    export type I = i_in.Annotated_Token
+    
+    export type O = i_out.Annotated_Token
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Annotated_Token
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Annotated_Token
     }
     
-    export namespace _T_Tokenizer_Result {
+}
+
+export type Annotated_Token_ = (
+    $$_: Annotated_Token_.I,
+) => Annotated_Token_.O
+
+export namespace Tokenizer_Result_ {
+    
+    export type I = i_in.Tokenizer_Result
+    
+    export type O = i_out.Tokenizer_Result
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Tokenizer_Result
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Tokenizer_Result
     }
     
-    // *** ALIASES FOR NESTED TYPES
-    
-    export namespace Relative_Location {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Relative_Location
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Relative_Location
-    }
-    
-    export namespace Location {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Location
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Location
-    }
-    
-    export namespace Range {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Range
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Range
-    }
-    
-    export namespace Whitespace {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Whitespace
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Whitespace
-    }
-    
-    export namespace Trivia {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Trivia
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Trivia
-    }
-    
-    export namespace Delimited_String {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Delimited_String
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Delimited_String
-    }
-    
-    export namespace String_Type {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_String_Type
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_String_Type
-    }
-    
-    export namespace Token_Type {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Token_Type
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Token_Type
-    }
-    
-    export namespace Annotated_Token {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Annotated_Token
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Annotated_Token
-    }
-    
-    export namespace Tokenizer_Result {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Tokenizer_Result
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Tokenizer_Result
-    }
+}
+
+export type Tokenizer_Result_ = (
+    $$_: Tokenizer_Result_.I,
+) => Tokenizer_Result_.O
+
+export { 
+    Relative_Location_ as Relative_Location, 
+    Location_ as Location, 
+    Range_ as Range, 
+    Whitespace_ as Whitespace, 
+    Trivia_ as Trivia, 
+    Delimited_Text_ as Delimited_Text, 
+    Text_Type_ as Text_Type, 
+    Token_Type_ as Token_Type, 
+    Annotated_Token_ as Annotated_Token, 
+    Tokenizer_Result_ as Tokenizer_Result, 
+}

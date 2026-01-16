@@ -3,9 +3,9 @@ import * as _pi from 'pareto-core-interface'
 import {
     resolvers, r, resolver, state, state_constrained, al, ls, av, gvs, vst, oc,
 } from "../../../../../shorthands/schema"
-import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
+import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data/unresolved"
 
-export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
+export const $: g_.Resolvers = resolvers(
     {
         "Fiscaal": resolver(r.group({
             "Balans Hoofdcategorieen": r.dictionary(r.group({

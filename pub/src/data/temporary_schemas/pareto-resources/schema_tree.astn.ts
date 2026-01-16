@@ -1,7 +1,7 @@
 import * as _pi from 'pareto-core-interface'
 
 import { st } from "../../../shorthands/schema"
-import * as g_ from "../../../interface/generated/pareto/schemas/schema/data_types/target"
+import * as g_ from "../../../interface/generated/pareto/schemas/schema/data/unresolved"
 
 import { $ as m_copy } from "./schemas/copy/$.module.astn"
 import { $ as m_execute_any_command_executable } from "./schemas/execute_any_command_executable/$.module.astn"
@@ -24,7 +24,7 @@ import { $ as m_write_file } from "./schemas/write_file/$.module.astn"
 import { $ as m_write_to_stderr } from "./schemas/write_to_stderr/$.module.astn"
 import { $ as m_write_to_stdout } from "./schemas/write_to_stdout/$.module.astn"
 
-export const $: g_.Schema_Tree<_pi.Deprecated_Source_Location> = st.set({
+export const $: g_.Schema_Tree = st.set({
     "copy": m_copy,
     "execute any command executable": m_execute_any_command_executable,
     "execute any query executable": m_execute_any_query_executable,

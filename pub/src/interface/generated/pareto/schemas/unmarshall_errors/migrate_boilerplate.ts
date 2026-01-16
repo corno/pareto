@@ -1,152 +1,77 @@
+
 import * as _pi from "pareto-core-interface"
+
+import * as i_out from "./data"
+
+import * as i_in from "./data"
+
+export namespace Relative_Location_ {
     
-    import * as _i_out from "./data_types/target"
-    import * as _i_in from "./data_types/source"
+    export type I = i_in.Relative_Location
     
-    // **** TYPES
+    export type O = i_out.Relative_Location
     
-    export type _T_Relative_Location = (
-        $$_: _i_in._T_Relative_Location,
-        $$_p: null,
-    ) => _i_out._T_Relative_Location
-    
-    export type _T_Location = (
-        $$_: _i_in._T_Location,
-        $$_p: null,
-    ) => _i_out._T_Location
-    
-    export type _T_Range = (
-        $$_: _i_in._T_Range,
-        $$_p: null,
-    ) => _i_out._T_Range
-    
-    export type _T_Errors = (
-        $$_: _i_in._T_Errors,
-        $$_p: null,
-    ) => _i_out._T_Errors
-    
-    // **** FRIENDLY NAMES FOR THE GLOBAL TYPES
-    
-    export type Relative_Location = _T_Relative_Location
-    
-    export type Location = _T_Location
-    
-    export type Range = _T_Range
-    
-    export type Errors = _T_Errors
-    
-    // **** ALIASES FOR NESTED TYPE WITH PREFIXED ROOT NAMES
-    
-    export namespace _T_Relative_Location {
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Relative_Location
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Relative_Location
     }
     
-    export namespace _T_Location {
+}
+
+export type Relative_Location_ = (
+    $$_: Relative_Location_.I,
+) => Relative_Location_.O
+
+export namespace Location_ {
+    
+    export type I = i_in.Location
+    
+    export type O = i_out.Location
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Location
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Location
     }
     
-    export namespace _T_Range {
+}
+
+export type Location_ = (
+    $$_: Location_.I,
+) => Location_.O
+
+export namespace Range_ {
+    
+    export type I = i_in.Range
+    
+    export type O = i_out.Range
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Range
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Range
     }
     
-    export namespace _T_Errors {
+}
+
+export type Range_ = (
+    $$_: Range_.I,
+) => Range_.O
+
+export namespace Errors_ {
+    
+    export type I = i_in.Errors
+    
+    export type O = i_out.Errors
+    
+    export namespace P {
         
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Errors
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Errors
     }
     
-    // *** ALIASES FOR NESTED TYPES
-    
-    export namespace Relative_Location {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Relative_Location
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Relative_Location
-    }
-    
-    export namespace Location {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Location
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Location
-    }
-    
-    export namespace Range {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Range
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Range
-    }
-    
-    export namespace Errors {
-        
-        export namespace CONTEXT {
-        }
-        export type CONTEXT = _i_in._T_Errors
-        
-        export namespace PARAMS {
-        }
-        
-        export namespace RESULT {
-        }
-        export type RESULT = _i_out._T_Errors
-    }
+}
+
+export type Errors_ = (
+    $$_: Errors_.I,
+) => Errors_.O
+
+export { 
+    Relative_Location_ as Relative_Location, 
+    Location_ as Location, 
+    Range_ as Range, 
+    Errors_ as Errors, 
+}

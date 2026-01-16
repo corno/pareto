@@ -3,7 +3,7 @@ import * as _p from 'pareto-core-refiner'
 import * as _i_generic from 'pareto-core-internals/dist/algorithm_types/refiner/resolve'
 import * as d_signatures from "../../../interface/generated/pareto/schemas/module/data_types/resolve"
 
-import * as d_out from "../../../interface/generated/pareto/schemas/module/data_types/source"
+import * as d_out from "../../../interface/generated/pareto/schemas/module/data"
 
 import * as _i_r_schema from "./schema"
 

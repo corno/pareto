@@ -2,7 +2,7 @@ import * as _p from 'pareto-core-shorthands/dist/unconstrained' //should be unre
 
 import * as _pi from 'pareto-core-interface'
 
-import * as g_ from "../../interface/generated/pareto/schemas/module/data_types/target"
+import * as g_ from "../../interface/generated/pareto/schemas/module/data/unresolved"
 
 // import { $ as m_accounting_ruwe_data } from "./accounting_ruwe_data/module.astn"
 // import { $ as m_antlr } from "./antlr/module.astn"
@@ -28,18 +28,18 @@ import { $ as m_pareto_vscode_backend } from "./pareto-vscode-backend/module.ast
 
 export type Module = {
     'target path': string,
-    'module': g_.Module<_pi.Deprecated_Source_Location>
+    'module': g_.Module
 }
 
 export const $ = _p.dictionary.literal<Module>({
-    "accounting_ruwe_data": {
-        'target path': `../../../pareto-rosetta/accounting_ruwe_data`,
-        'module': m_accounting_ruwe_data,
-    },
-    "antlr": {
-        'target path': `../../../pareto-rosetta/antlr`,
-        'module': m_antlr,
-    },
+    // "accounting_ruwe_data": {
+    //     'target path': `../../../pareto-rosetta/accounting_ruwe_data`,
+    //     'module': m_accounting_ruwe_data,
+    // },
+    // "antlr": {
+    //     'target path': `../../../pareto-rosetta/antlr`,
+    //     'module': m_antlr,
+    // },
     "astn": {
         'target path': `../astn`,
         'module': m_astn,
@@ -48,10 +48,10 @@ export const $ = _p.dictionary.literal<Module>({
         'target path': `../astn-core`,
         'module': m_astn_core,
     },
-    "astn-to-xml": {
-        'target path': `../astn-to-xml`,
-        'module': m_astn_to_xml,
-    },
+    // "astn-to-xml": {
+    //     'target path': `../astn-to-xml`,
+    //     'module': m_astn_to_xml,
+    // },
     "exupery": {
         'target path': `../exupery`,
         'module': m_exupery,
@@ -60,14 +60,14 @@ export const $ = _p.dictionary.literal<Module>({
         'target path': `../pareto-resources`,
         'module': m_pareto_resources,
     },
-    "json-to-astn": {
-        'target path': `../../../pareto-rosetta/json-to-astn`,
-        'module': m_json_to_astn,
-    },
-    "git": {
-        'target path': `../git`,
-        'module': m_git,
-    },
+    // "json-to-astn": {
+    //     'target path': `../../../pareto-rosetta/json-to-astn`,
+    //     'module': m_json_to_astn,
+    // },
+    // "git": {
+    //     'target path': `../git`,
+    //     'module': m_git,
+    // },
     "pareto": {
         'target path': `../pareto`,
         'module': m_pareto,

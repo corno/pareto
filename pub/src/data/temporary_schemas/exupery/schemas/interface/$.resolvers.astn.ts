@@ -1,9 +1,9 @@
 import * as _pi from 'pareto-core-interface'
 
 import { resolvers, r, resolver, sig, state } from "../../../../../shorthands/schema"
-import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
+import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data/unresolved"
 
-export const $: g_.Resolvers<_pi.Deprecated_Source_Location> = resolvers(
+export const $: g_.Resolvers = resolvers(
     {
         "Module Set": resolver(r.dictionary(r.state_group({
             "module": state(r.component("Module", {}, {})),

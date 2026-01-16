@@ -11,14 +11,14 @@ import {
     tstate,
 
 } from "../../../../../shorthands/schema"
-import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data_types/target"
+import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/data/unresolved"
 
 /**
  * dit schema gebruik ik voor het parsen van de oude boekhoudingen.
  * Het enige verschil met de normale alan_light is het ontbreken van de key van de collection
  * In deze versie werd de data nog als objecten opgeslagen ipv arrays
  */
-export const $: g_.Types<_pi.Deprecated_Source_Location>  = types(
+export const $: g_.Types  = types(
     {
         "Path": type(t.group({
             "up steps": prop(t.list(t.group({}))),

@@ -2,7 +2,7 @@ import * as _pdev from 'pareto-core-dev'
 import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data_types/source"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data/resolved"
 import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/source"
 
 import * as sh from "exupery/dist/shorthands/interface"
@@ -19,7 +19,7 @@ export const Schema = (
             ],
         ),
     },
-    $.types.dictionary.__d_map(($, key) => sh.type.refiner(
+    $.types.__d_map(($, key) => sh.type.refiner(
         sh.t.text(),
         sh.t.component_imported(
             "out",

@@ -1,8 +1,8 @@
 import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/unmarshall_errors/data_types/target"
-import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data_types/target"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/unmarshall_errors/data"
+import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
@@ -38,7 +38,7 @@ export const Errors = (
 }
 
 export const Error_Type_Error = (
-    $: d_in.Errors.L._type.SG.error,
+    $: d_in.Errors.L._type.error,
 ): d_out.Block_Part => _p.sg($, ($) => {
     switch ($[0]) {
         case 'duplicate property': return _p.ss($, ($) => sh.b.snippet(`Duplicate property "${$.name}"`))
@@ -69,7 +69,7 @@ export const Error_Type_Error = (
 })
 
 export const Error_Type_Warning = (
-    $: d_in.Errors.L._type.SG.warning,
+    $: d_in.Errors.L._type.warning,
 ): d_out.Block_Part => _p.sg($, ($) => {
     switch ($[0]) {
         case 'expected apostrophed string': return _p.ss($, ($) => sh.b.snippet(`Expected apostrophed string`))
