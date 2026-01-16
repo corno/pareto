@@ -5,7 +5,6 @@ import * as g_ from "../../../interface/generated/pareto/schemas/schema/data/unr
 
 
 import { $ as x_alan_light_oldstyle } from "./schemas/alan_light_oldstyle/$.module.astn"
-import { $ as x_builder_configuration } from "./schemas/builder_configuration/$.module.astn"
 import { $ as x_csv } from "./schemas/csv/$.module.astn"
 import { $ as x_html } from "./schemas/html/$.module.astn"
 import { $ as x_json_schema } from "./schemas/json_schema/$.module.astn"
