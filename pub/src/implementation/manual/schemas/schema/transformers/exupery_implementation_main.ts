@@ -2,8 +2,8 @@ import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data/resolved"
-import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/source"
-import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data_types/source"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data"
+import * as d_out_interface from "exupery/dist/interface/generated/pareto/schemas/interface/data"
 
 import { m, } from "exupery/dist/shorthands/implementation"
 

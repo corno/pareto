@@ -3,7 +3,7 @@ import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data/resolved"
-import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data_types/source"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/implementation/data"
 
 import * as sh from "exupery/dist/shorthands/implementation"
 import * as sh_i from "exupery/dist/shorthands/interface"
