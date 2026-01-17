@@ -1,337 +1,207 @@
-# Pareto
+# Exupery
 
-A TypeScript library for the Pareto programming language - a functional programming language focused on type safety, immutability, and elegant data transformation.
+A TypeScript library for the Exupery programming language - a functional programming language designed for type-safe data transformation and code generation.
 
-[![npm version](https://img.shields.io/npm/v/pareto?color=blue&style=flat-square)](https://www.npmjs.com/package/pareto)
+[![npm version](https://img.shields.io/npm/v/exupery?color=blue&style=flat-square)](https://www.npmjs.com/package/exupery)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green?style=flat-square)](LICENSE)
 
 ## Overview
 
-Pareto is a functional programming language that emphasizes type safety, immutability, and powerful data transformation capabilities. It provides a comprehensive foundation for building robust data processing pipelines, code generators, and domain-specific language tools.
+Exupery is a functional programming language that focuses on type safety, immutability, and powerful data transformation capabilities. It provides a robust foundation for building complex data processing pipelines and code generation tools.
 
 ## Installation
 
 ```bash
-npm install pareto
+npm install exupery
 ```
-
-## Core Philosophy
-
-Pareto follows the **Pareto Principle** in language design - focusing on the 20% of features that provide 80% of the value:
-
-- **🎯 Type Safety First**: Everything is statically typed with full TypeScript integration
-- **🔒 Immutability**: All data structures are immutable by default
-- **⚡ Functional Purity**: Pure functions and predictable transformations
-- **🏗️ Composability**: Small, reusable components that combine elegantly
-- **📊 Data-Oriented**: Designed around transforming and manipulating structured data
 
 ## Key Features
 
-### Type System
-- **Strong static typing** with full TypeScript integration
-- **Algebraic data types** with union types and pattern matching
-- **Generic programming** with flexible type parameters
-- **Compile-time safety** to catch errors early
-
-### Data Structures
-- **Immutable collections**: Lists, dictionaries, and sets
-- **Tagged unions**: Type-safe discriminated unions
-- **Optional values**: Explicit handling of missing data
-- **Result types**: Elegant error handling without exceptions
-
-### Transformations
-- **Schema-driven transformations**: Convert between different data formats
-- **Code generation**: Generate source code from specifications
-- **Data validation**: Robust validation with detailed error reporting
-- **Template processing**: Flexible templating system
+- **🎯 Type Safety**: Full static typing with TypeScript integration
+- **⚡ Functional Programming**: Immutable data structures and pure functions
+- **🔄 Data Transformation**: Powerful APIs for data manipulation and conversion
+- **🛠️ Code Generation**: Built-in support for generating source code
+- **📦 Modular Design**: Component-based architecture with clear separation of concerns
 
 ## Architecture
 
-Pareto is built on several foundational concepts:
-
-### Schemas and Types
-Define the structure of your data with precision:
-
-```typescript
-import * as pareto from 'pareto'
-
-// Define a schema
-const UserSchema = pareto.schema.object({
-    'id': pareto.schema.string(),
-    'name': pareto.schema.string(),
-    'email': pareto.schema.optional(pareto.schema.string()),
-    'roles': pareto.schema.array(pareto.schema.string())
-})
-
-type User = pareto.TypeOf<typeof UserSchema>
-```
+Exupery is built on several core concepts:
 
 ### Transformations
-Type-safe data transformations:
+Convert data from one format to another while maintaining type safety:
 
 ```typescript
-// Transform user data to different format
-const transformToDisplay = pareto.transform.create(
-    UserSchema,
-    DisplaySchema,
-    (user) => ({
-        'display_name': user.name,
-        'contact': user.email.transform(
-            (email) => `Email: ${email}`,
-            () => 'No contact info'
-        ),
-        'permissions': user.roles.join(', ')
-    })
-)
+import * as exupery from 'exupery'
+
+// Transform TypeScript AST to formatted source code
+const sourceCode = transformToTypeScript(ast, {
+    'indentation': '    ',
+    'line ending': '\n'
+})
 ```
 
 ### Operations
-Functional operations on collections:
+Reusable functions for common data operations:
 
 ```typescript
-import * as ops from 'pareto/operations'
+// Dictionary operations
+const processedData = dictionary.map(inputData, (value, key) => {
+    return transformValue(value)
+})
 
-// Process collections functionally
-const processUsers = (users: User[]) => {
-    return ops.list.pipe(users)
-        .filter(user => user.roles.includes('admin'))
-        .map(user => transformToDisplay(user))
-        .sortBy(user => user.display_name)
-        .value()
-}
+// List operations
+const filteredItems = list.filter(items, (item) => {
+    return item.isValid
+})
+```
+
+### Procedures
+Higher-level functions that orchestrate complex workflows:
+
+```typescript
+// Generate complete project structure
+const generateProject = procedure.create((config) => {
+    return {
+        'files': generateFiles(config),
+        'directories': createDirectories(config),
+        'dependencies': resolveDependencies(config)
+    }
+})
 ```
 
 ## Core Modules
 
-### Data Types
-- **Primitives**: String, number, boolean, null handling
-- **Collections**: Immutable lists, dictionaries, sets
-- **Unions**: Tagged unions and pattern matching
-- **Options**: Optional value handling
-
 ### Transformations
-- **Schema transformation**: Convert between different schemas
-- **Code generation**: Generate TypeScript, JavaScript, and other languages
-- **Serialization**: JSON, ASTN, and custom format support
-- **Validation**: Schema-based validation with detailed errors
+- **TypeScript Light**: Generate clean TypeScript code
+- **Interface**: Transform between different interface representations
+- **Implementation**: Convert specifications to concrete implementations
 
 ### Operations
-- **List operations**: Map, filter, reduce, sort, group
-- **Dictionary operations**: Key-value manipulation and transformation
-- **String operations**: Text processing and formatting
-- **Validation operations**: Data validation and error collection
+- **Dictionary**: Key-value data manipulation
+- **List**: Array processing and transformation
+- **String**: Text processing utilities
+- **Validation**: Data validation and error handling
+
+### Generated Code
+- **Interfaces**: Type definitions and contracts
+- **Implementations**: Concrete realizations of interfaces
+- **Utilities**: Helper functions and common patterns
 
 ## Usage Examples
 
-### Basic Data Processing
+### Basic Data Transformation
 
 ```typescript
-import * as pareto from 'pareto'
+import * as exupery from 'exupery'
 
-// Define and validate data
-const userData = pareto.validate(rawData, UserSchema)
-
-if (userData.success) {
-    const processedUsers = pareto.operations.list.map(
-        userData.data,
-        (user) => ({
-            ...user,
-            normalized_email: user.email?.toLowerCase()
-        })
-    )
-} else {
-    console.error('Validation failed:', userData.errors)
-}
-```
-
-### Schema Transformation
-
-```typescript
-// Define source and target schemas
-const APIUserSchema = pareto.schema.object({
-    'user_id': pareto.schema.string(),
-    'full_name': pareto.schema.string(),
-    'email_address': pareto.schema.optional(pareto.schema.string())
+// Transform a data structure
+const result = exupery.transform.process(inputData, {
+    'target_format': 'typescript',
+    'options': {
+        'strict_mode': true,
+        'include_types': true
+    }
 })
-
-const DBUserSchema = pareto.schema.object({
-    'id': pareto.schema.string(),
-    'name': pareto.schema.string(),
-    'email': pareto.schema.optional(pareto.schema.string())
-})
-
-// Create transformation
-const apiToDbTransform = pareto.transform.create(
-    APIUserSchema,
-    DBUserSchema,
-    (apiUser) => ({
-        'id': apiUser.user_id,
-        'name': apiUser.full_name,
-        'email': apiUser.email_address
-    })
-)
 ```
 
 ### Code Generation
 
 ```typescript
-import * as codegen from 'pareto/codegen'
+import * as typescript from 'exupery/transformations/typescript_light'
 
-// Generate TypeScript interfaces from schemas
-const generateInterface = (schema: pareto.Schema, name: string) => {
-    return codegen.typescript.interface({
-        'name': name,
-        'properties': schema.properties,
-        'export': true
-    })
-}
-
-const userInterface = generateInterface(UserSchema, 'User')
-// Output: "export interface User { id: string; name: string; ... }"
+// Generate TypeScript interface
+const interfaceCode = typescript.Interface({
+    'name': 'UserData',
+    'properties': {
+        'id': { 'type': 'string', 'optional': false },
+        'name': { 'type': 'string', 'optional': false },
+        'email': { 'type': 'string', 'optional': true }
+    }
+})
 ```
 
 ### Error Handling
 
 ```typescript
-// Pareto uses Result types instead of exceptions
-const processUserSafely = (userData: unknown): pareto.Result<ProcessedUser, ValidationError> => {
-    return pareto.chain(
-        pareto.validate(userData, UserSchema),
-        (user) => pareto.chain(
-            validateBusinessRules(user),
-            (validUser) => pareto.success(transformUser(validUser))
-        )
-    )
-}
+import * as validation from 'exupery/operations/validation'
 
-// Handle results
-const result = processUserSafely(rawData)
-result.match(
-    (processedUser) => console.log('Success:', processedUser),
-    (error) => console.error('Failed:', error.message)
-)
+const result = validation.validateStructure(data, schema)
+
+if (result.success) {
+    console.log('Data is valid:', result.data)
+} else {
+    console.error('Validation failed:', result.errors)
+}
 ```
 
-## Integration with Ecosystem
+## Integration with Other Libraries
 
-Pareto works seamlessly with other libraries:
+Exupery works seamlessly with other libraries in the ecosystem:
 
-### ASTN Integration
+- **ASTN**: Parse and generate ASTN (Abstract Syntax Tree Notation) files
+- **Pareto Fountain Pen**: Generate formatted text output with proper indentation
+- **Pareto Standard Operations**: Common functional programming operations
+
 ```typescript
 import * as astn from 'astn'
-import * as pareto from 'pareto'
-
-// Parse ASTN and validate with Pareto schema
-const astData = astn.parse(source)
-const validatedData = pareto.validate(astData, ConfigSchema)
-```
-
-### Fountain Pen Integration
-```typescript
 import * as fountainPen from 'pareto-fountain-pen'
-import * as pareto from 'pareto'
+import * as exupery from 'exupery'
 
-// Generate formatted output
-const output = pareto.transform.apply(
-    data,
-    pareto.transform.toFountainPen(template)
-)
-```
-
-## Advanced Features
-
-### Pattern Matching
-```typescript
-// Type-safe pattern matching on tagged unions
-const StatusSchema = pareto.schema.union([
-    pareto.schema.literal('pending'),
-    pareto.schema.literal('completed'),
-    pareto.schema.literal('failed')
-])
-
-const handleStatus = (status: pareto.TypeOf<typeof StatusSchema>) => {
-    return pareto.match(status, {
-        'pending': () => 'Processing...',
-        'completed': () => 'Done!',
-        'failed': () => 'Error occurred'
-    })
-}
-```
-
-### Generic Operations
-```typescript
-// Create reusable generic transformations
-const createMapper = <T, U>(transform: (item: T) => U) => {
-    return (items: pareto.List<T>): pareto.List<U> => {
-        return pareto.operations.list.map(items, transform)
-    }
-}
-
-const stringLengthMapper = createMapper((str: string) => str.length)
-```
-
-### Custom Validators
-```typescript
-// Create custom validation logic
-const EmailSchema = pareto.schema.string().refine(
-    (email) => email.includes('@'),
-    { message: 'Must be a valid email address' }
-)
-
-const PositiveNumberSchema = pareto.schema.number().refine(
-    (num) => num > 0,
-    { message: 'Must be positive' }
-)
+// Complete workflow: ASTN → Transform → Output
+const source = astn.parse(astSource)
+const transformed = exupery.transform(source, options)
+const output = fountainPen.generate(transformed)
 ```
 
 ## API Reference
 
 ### Core Types
-- `Schema<T>`: Schema definition for type T
-- `Transform<TInput, TOutput>`: Type-safe transformation
-- `Result<TSuccess, TError>`: Result type for error handling
-- `Optional<T>`: Optional value container
-- `List<T>`: Immutable list type
-- `Dictionary<T>`: Immutable key-value mapping
+
+- `Transform<TInput, TOutput>`: Type-safe transformation function
+- `Operation<T>`: Reusable operation on data of type T
+- `Procedure<TConfig, TResult>`: Higher-level workflow function
+- `ValidationResult<T>`: Result of validation with success/error states
 
 ### Main Functions
-- `pareto.schema.*`: Schema definition functions
-- `pareto.validate(data, schema)`: Validate data against schema
-- `pareto.transform.*`: Data transformation utilities
-- `pareto.operations.*`: Functional operations on collections
+
+- `transform.apply<T, U>(data: T, transformer: Transform<T, U>): U`
+- `operation.map<T, U>(items: T[], op: Operation<T, U>): U[]`
+- `procedure.execute<T, U>(config: T, proc: Procedure<T, U>): U`
 
 ## TypeScript Integration
 
-Full TypeScript support with:
-- **Type inference**: Automatic type derivation from schemas
-- **Compile-time validation**: Catch type errors during development
-- **Generic programming**: Flexible, reusable type-safe components
-- **Strict null checking**: Explicit handling of optional values
+Exupery provides full TypeScript support with:
 
-## Performance
+- **Strict typing**: All APIs are fully typed
+- **Type inference**: Automatic type derivation where possible
+- **Generic support**: Flexible type parameters for reusable components
+- **Compile-time safety**: Catch errors during development
 
-Pareto is designed for performance:
-- **Lazy evaluation**: Computations only performed when needed
-- **Structural sharing**: Efficient immutable data structures
-- **Optimized operations**: Fast implementations of common operations
-- **Tree shaking**: Only bundle the parts you use
+```typescript
+// Types are automatically inferred
+const result = exupery.transform.apply(
+    inputData,      // Type: InputSchema
+    transformer     // Type: Transform<InputSchema, OutputSchema>
+)
+// result is automatically typed as OutputSchema
+```
 
 ## Contributing
 
-Contributions are welcome! Please:
+This library is part of the Pareto ecosystem. Contributions should:
 
-1. Follow functional programming principles
-2. Maintain type safety throughout
+1. Maintain type safety throughout
+2. Follow functional programming principles
 3. Include comprehensive tests
 4. Update documentation for new features
-5. Follow the established code style
 
 ## Dependencies
 
-- `astn`: ASTN parsing and formatting
-- `exupery`: Core functional programming utilities
-- `exupery-core-*`: Core algorithms and data structures
+- `exupery-core-alg`: Core algorithms and data structures
+- `exupery-core-bin`: Binary operations and utilities
+- `exupery-core-data`: Data type definitions and interfaces
+- `exupery-core-dev`: Development tools and helpers
 - `pareto-fountain-pen`: Text generation and formatting
 - `pareto-standard-operations`: Standard functional operations
 
@@ -341,8 +211,8 @@ Apache 2.0 License - see [LICENSE](LICENSE) file for details.
 
 ## Version
 
-Current version: **0.76.66**
+Current version: **0.1.25**
 
 ---
 
-*The functional programming language for type-safe data transformation*
+*Part of the Pareto ecosystem for functional programming and code generation*
