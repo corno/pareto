@@ -10,10 +10,8 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 export const $: g_.Resolvers = resolvers(
     {
         "Type": resolver(r.group({
-            "type parameters": r.component("Type Parameters", {}, {}),
             "node": r.component("Type Node", {
                 "globals": av.parameter("globals"),
-                "type parameters": av.required(gvs.sibling("type parameters", [])),
                 "imports": av.parameter("imports"),
             }, {
                 "noncircular sibling types": al.parameter(("noncircular sibling types")),
@@ -94,7 +92,6 @@ export const $: g_.Resolvers = resolvers(
             "node": r.component("Type Node",
                 {
                     "globals": av.parameter("globals"),
-                    "type parameters": av.parameter("type parameters"),
                     "imports": av.parameter("imports"),
                 },
                 {
@@ -108,7 +105,6 @@ export const $: g_.Resolvers = resolvers(
             "node": r.component("Type Node",
                 {
                     "globals": av.parameter("globals"),
-                    "type parameters": av.parameter("type parameters"),
                     "imports": av.parameter("imports"),
                 },
                 {
@@ -132,7 +128,6 @@ export const $: g_.Resolvers = resolvers(
             "dictionary": state(r.component("Dictionary",
                 {
                     "globals": av.parameter("globals"),
-                    "type parameters": av.parameter("type parameters"),
                     "imports": av.parameter("imports"),
                 },
                 {
@@ -143,7 +138,6 @@ export const $: g_.Resolvers = resolvers(
             "group": state(r.component("Group",
                 {
                     "globals": av.parameter("globals"),
-                    "type parameters": av.parameter("type parameters"),
                     "imports": av.parameter("imports"),
                 },
                 {
@@ -186,7 +180,6 @@ export const $: g_.Resolvers = resolvers(
                 "global": state_constrained({ "globals": oc.assert_set(pvs.parameter("globals")) }, r.reference(gvs.dictionary(gvs.option_constraint("globals", [vst.group("text types")])))),
                 "local": state(r.component("Text Type", {}, {})),
             })),
-            // "type parameter": state(r.reference(gvs.dictionary(gvs.parameter("type parameters", [])))),
         })),
 
         "Type Parameters": resolver(r.dictionary(r.nothing())),

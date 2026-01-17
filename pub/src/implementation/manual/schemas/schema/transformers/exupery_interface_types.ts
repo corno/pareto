@@ -3,7 +3,7 @@ import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data/resolved"
-import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data"
+import * as d_out from "exupery/dist/interface/generated/pareto/schemas/interface/data/resolved"
 
 import * as sh from "exupery/dist/shorthands/interface"
 
@@ -68,7 +68,7 @@ export const Schema = (
             },
             () => _p.unreachable_code_path(),
         ),
-        $.types.dictionary.__d_map(($) => sh.type.data(Type_Node(
+        $.types.__d_map(($) => sh.type.data(Type_Node(
             $.node,
             {
                 'add location': _p.sg($p.type, ($) => {
@@ -125,7 +125,7 @@ export const Type_Node = (
                 $p
             ))
         )
-        case 'group': return _p.ss($, ($) => sh.t.group($.dictionary.__d_map(($, key) => Type_Node(
+        case 'group': return _p.ss($, ($) => sh.t.group($.__d_map(($, key) => Type_Node(
             $.node,
             {
                 'add location': $p['add location'],
@@ -168,7 +168,8 @@ export const Type_Node = (
                         : Type_Node_Reference(
                             referent,
                             {
-                                'tail': Type_Node_Reference__tail(referent.tail)
+                                'tail': Type_Node_Reference__tail(referent.tail),
+                                'circular_dependent': false,
                             }
                         )
                     )
@@ -187,7 +188,15 @@ export const Type_Node = (
                                             [
                                                 sh.sub.dictionary(),
                                             ]
-                                        ])
+                                        ]),
+                                        'circular_dependent': _p.sg($.dependency, ($) => {
+                                            switch ($[0]) {
+                                                case 'acyclic': return _p.ss($, ($) => false)
+                                                case 'cyclic': return _p.ss($, ($) => true)
+                                                case 'stack': return _p.ss($, ($) => false)
+                                                default: return _p.au($[0])
+                                            }
+                                        }),
                                     }
                                 )
                                 return temp_tnr
@@ -236,7 +245,8 @@ const Type_Node_Reference__tail = (
 export const Type_Node_Reference = (
     $: d_in.Type_Node_Reference,
     $p: {
-        'tail': _pi.List<d_out.Type.reference.sub_selection.L>
+        'tail': _pi.List<d_out.Type.reference.sub_selection.L>,
+        circular_dependent: boolean,
     }
 
 ): d_out.Type => _p.sg($['type location'].location, ($) => {
@@ -249,6 +259,7 @@ export const Type_Node_Reference = (
         ))
         case 'internal': return _p.ss($, ($) => sh.t.reference_sibling(
             $.key,
+            $p.circular_dependent,
             $p.tail,
         ))
         default: return _p.au($[0])

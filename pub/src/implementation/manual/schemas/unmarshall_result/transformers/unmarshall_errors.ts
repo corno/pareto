@@ -2,7 +2,7 @@ import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_in from "../../../../../interface/to_be_generated/temp_unmashall_result"
-import * as d_in_token from "astn/dist/interface/generated/pareto/schemas/token/data"
+import * as d_in_token from "astn-core/dist/interface/generated/pareto/schemas/token/data"
 import * as d_out from "../../../../../interface/generated/pareto/schemas/unmarshall_errors/data"
 
 export const Optional_Node = (

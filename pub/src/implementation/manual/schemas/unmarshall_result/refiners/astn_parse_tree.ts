@@ -2,9 +2,9 @@ import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 import * as _pdev from 'pareto-core-dev'
 
-import * as d_definition from "../../../../../interface/generated/pareto/schemas/schema/data"
-import * as d_in from "astn/dist/interface/generated/pareto/schemas/parse_tree/data"
-import * as d_in_token from "astn/dist/interface/generated/pareto/schemas/token/data"
+import * as d_definition from "../../../../../interface/generated/pareto/schemas/schema/data/resolved"
+import * as d_in from "astn-core/dist/interface/generated/pareto/schemas/parse_tree/data"
+import * as d_in_token from "astn-core/dist/interface/generated/pareto/schemas/token/data"
 import * as d_out from "../../../../../interface/to_be_generated/temp_unmashall_result"
 
 import * as t_ast_to_range from "astn/dist/implementation/manual/schemas/parse_tree/transformers/token"

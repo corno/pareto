@@ -7,7 +7,6 @@ import * as g_ from "../../../../../interface/generated/pareto/schemas/schema/da
 
 export const $: g_.Resolve_Logic.signatures = signatures(
     {
-        "Type Parameters": sig.local({}, {}),
         "Presence": sig.local({}, {}),
         "Number Type": sig.local({}, {}),
         "Text Type": sig.local({}, {}),
@@ -16,7 +15,6 @@ export const $: g_.Resolve_Logic.signatures = signatures(
         "Group": sig.local(
             {
                 "globals": value_parameter("Globals", 'optional'),
-                "type parameters": value_parameter("Type Parameters"),
                 "imports": value_parameter("Imports", 'optional'),
             },
             {
@@ -28,7 +26,6 @@ export const $: g_.Resolve_Logic.signatures = signatures(
         "Dictionary": sig.local(
             {
                 "globals": value_parameter("Globals", 'optional'),
-                "type parameters": value_parameter("Type Parameters"),
                 "imports": value_parameter("Imports", 'optional'),
             },
             {
@@ -40,7 +37,6 @@ export const $: g_.Resolve_Logic.signatures = signatures(
         "Type Node": sig.local(
             {
                 "globals": value_parameter("Globals", 'optional'),
-                "type parameters": value_parameter("Type Parameters"),
                 "imports": value_parameter("Imports", 'optional'),
             },
             {

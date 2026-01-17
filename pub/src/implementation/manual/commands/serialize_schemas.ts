@@ -1,6 +1,5 @@
 //core
 import * as _p from 'pareto-core-command'
-import { location_to_string } from 'pareto-core-internals/dist/misc/location_to_string'
 
 import * as signatures from "../../../interface/signatures"
 

@@ -1,7 +1,7 @@
 import * as _pi from 'pareto-core-interface'
 
-import * as d_astn_token from "astn/dist/interface/generated/pareto/schemas/token/data"
-import * as d_astn_ast from "astn/dist/interface/generated/pareto/schemas/parse_tree/data"
+import * as d_astn_token from "astn-core/dist/interface/generated/pareto/schemas/token/data"
+import * as d_astn_ast from "astn-core/dist/interface/generated/pareto/schemas/parse_tree/data"
 
 import * as d_schema from "../generated/pareto/schemas/schema/data/resolved"
 

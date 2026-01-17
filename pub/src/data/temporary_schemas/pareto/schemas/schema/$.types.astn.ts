@@ -113,11 +113,8 @@ export const $: g_.Types = types(
         })),
 
         "Type": type(t.group({
-            "type parameters": prop(t.component("Type Parameters")),
             "node": prop(t.component_cyclic("Type Node"))
         })),
-
-        "Type Parameters": type(t.dictionary(t.nothing())),
 
         //FIXME: inline
         "Presence": type(t.state_group({
@@ -321,7 +318,6 @@ export const $: g_.Types = types(
                 "global": tstate(t.reference("Globals", [tr.g("text types")])),
                 "local": tstate(t.component("Text Type")),
             })),
-            //"type parameter": t.reference("Type Parameters", []),
         })),
 
         "Node Resolver": type(t.state_group({

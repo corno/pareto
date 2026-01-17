@@ -4,7 +4,7 @@ import * as _pdev from 'pareto-core-dev'
 import * as _p_temp from 'pareto-core-transformer'
 
 //data types
-import * as d_schema from "../../../../interface/generated/pareto/schemas/schema/data/unresolved"
+import * as d_schema from "../../../../interface/generated/pareto/schemas/schema/data/resolved"
 import * as d_deserialize_schema from "../../../../interface/to_be_generated/deserialize_schema"
 
 //dependencies
@@ -86,7 +86,7 @@ export const $: _pi.Deserializer_With_Parameters<d_schema.Type, d_deserialize_sc
                     switch ($[0]) {
 
                         case 'schema': return _p_temp.ss($, ($) => _pdev.implement_me(`(FIXME: make this a reference) the selected tree is a schema, not a set, can't do this step: ${split.element} `))
-                        case 'set': return _p_temp.ss($, ($) => $.dictionary.__get_possible_entry(split.element).__decide(
+                        case 'set': return _p_temp.ss($, ($) => $.__get_possible_entry(split.element).__decide(
                             ($) => temp_find_schema($, split.rest),
                             () => _pdev.implement_me(`(FIXME: make this a reference) schema not found: ${split.element}`)
                         ))
@@ -105,10 +105,10 @@ export const $: _pi.Deserializer_With_Parameters<d_schema.Type, d_deserialize_sc
     }
     const schema = temp_find_schema(resolved_schema_schema.schema, resolved_schema_schema['schema path'])
 
-    const type = schema.types.dictionary.__get_possible_entry(resolved_schema_schema.type).__decide(
+    const type = schema.types.__get_possible_entry(resolved_schema_schema.type).__decide(
         ($) => $,
         () => {
-            schema.types.dictionary.__d_map(($, key) => {
+            schema.types.__d_map(($, key) => {
                 _pdev.log_debug_message(`available type: ${key}`, () => { })
             })
             _pdev.implement_me(`(FIXME: make this a reference) root type ${resolved_schema_schema.type} not found`)

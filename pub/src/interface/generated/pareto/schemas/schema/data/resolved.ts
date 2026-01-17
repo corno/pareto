@@ -410,7 +410,7 @@ export namespace Type_Node_ {
         }
         
         export type internal_cyclic = {
-            readonly 'entry': internal_cyclic.entry
+            readonly 'entry': _pi.Circular_Dependency<internal_cyclic.entry>
             readonly 'key': internal_cyclic.key
         }
         

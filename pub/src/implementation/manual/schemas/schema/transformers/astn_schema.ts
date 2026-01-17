@@ -11,14 +11,14 @@ import {
 import { $$ as op_flatten_dictionaries } from "pareto-standard-operations/dist/implementation/operations/pure/dictionary/flatten"
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/schema/data/resolved"
-import * as d_out from "../../../../../interface/generated/pareto/schemas/astn_schema/data"
+import * as d_out from "../../../../../interface/generated/pareto/schemas/astn_schema/data/unresolved"
 
 export const Schema: _pi.Transformer<d_in.Schema, d_out.Schema> = (
     $
 ) => ({
     'globals': Globals($.globals),
     'imports': Imports($.imports),
-    'types': wrap_dictionary($.types.dictionary.__d_map(($) => Type($))),
+    'types': wrap_dictionary($.types.__d_map(($) => Type($))),
 })
 
 export const Globals: _pi.Transformer<d_in.Globals, d_out.Globals> = (
@@ -58,9 +58,9 @@ export const Type: _pi.Transformer<d_in.Type, d_out.Type> = (
 
 export const Type_Node: _pi.Transformer<d_in.Type_Node, d_out.Type_Node> = (
     $
-) => wrap_state_group(_p.sg($, ($): d_out.Type_Node.SG => {
+) => wrap_state_group(_p.sg($, ($): d_out.Type_Node => {
     switch ($[0]) {
-        case 'number': return _p.ss($, ($): d_out.Type_Node.SG => ['text', wrap_state_group(_p.sg($, ($): d_out.Type_Node.SG.text.SG => {
+        case 'number': return _p.ss($, ($): d_out.Type_Node => ['text', wrap_state_group(_p.sg($, ($): d_out.Type_Node.text => {
             switch ($[0]) {
                 case 'global': return _p.ss($, ($) => ['global', wrap_reference("n" + $.key)])
                 case 'local': return _p.ss($, ($) => ['local', {
@@ -69,7 +69,7 @@ export const Type_Node: _pi.Transformer<d_in.Type_Node, d_out.Type_Node> = (
                 default: return _p.au($[0])
             }
         }))]) //FIXME
-        case 'boolean': return _p.ss($, ($) => ['text', wrap_state_group<d_out.Type_Node.SG.text.SG>(['local', {
+        case 'boolean': return _p.ss($, ($) => ['text', wrap_state_group<d_out.Type_Node.text>(['local', {
             'type': wrap_state_group(['single line', null])
         }])])
         case 'list': return _p.ss($, ($) => ['list', {
@@ -79,13 +79,13 @@ export const Type_Node: _pi.Transformer<d_in.Type_Node, d_out.Type_Node> = (
         case 'reference': return _p.ss($, ($) => _p.sg($.type, ($) => {
             switch ($[0]) {
                 case 'derived': return _p.ss($, ($) => ['nothing', null])
-                case 'selected': return _p.ss($, ($) => ['text', wrap_state_group<d_out.Type_Node.SG.text.SG>(['local', {
+                case 'selected': return _p.ss($, ($) => ['text', wrap_state_group<d_out.Type_Node.text>(['local', {
                     'type': wrap_state_group(['single line', null])
                 }])])
                 default: return _p.au($[0])
             }
         }))
-        case 'component': return _p.ss($, ($) => ['component', wrap_state_group(_p.sg($, ($): d_out.Type_Node.SG.component.SG => {
+        case 'component': return _p.ss($, ($) => ['component', wrap_state_group(_p.sg($, ($): d_out.Type_Node.component => {
             switch ($[0]) {
                 case 'external': return _p.ss($, ($) => ['external', {
                     'import': wrap_reference($.import.key),
@@ -103,7 +103,7 @@ export const Type_Node: _pi.Transformer<d_in.Type_Node, d_out.Type_Node> = (
         case 'group': return _p.ss($, ($) => ['group', wrap_dictionary($.dictionary.__d_map(($) => Type_Node($.node)))])
         case 'optional': return _p.ss($, ($) => ['optional', Type_Node($)])
         case 'state group': return _p.ss($, ($) => ['state group', wrap_dictionary($.__d_map(($) => Type_Node($.node)))])
-        case 'text': return _p.ss($, ($) => ['text', wrap_state_group(_p.sg($, ($): d_out.Type_Node.SG.text.SG => {
+        case 'text': return _p.ss($, ($) => ['text', wrap_state_group(_p.sg($, ($): d_out.Type_Node.text => {
             switch ($[0]) {
                 case 'global': return _p.ss($, ($) => ['global', wrap_reference("t" + $.key)])
                 case 'local': return _p.ss($, ($) => ['local', Text_Type($)])

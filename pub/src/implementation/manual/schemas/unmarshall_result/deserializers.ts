@@ -3,7 +3,7 @@ import * as _pi from 'pareto-core-interface'
 
 
 import * as d_load_pareto_document from "../../../../interface/to_be_generated/load_pareto_document"
-import * as d_parse_tree from "astn/dist/interface/generated/pareto/schemas/parse_tree/data"
+import * as d_parse_tree from "astn-core/dist/interface/generated/pareto/schemas/parse_tree/data"
 
 import * as d_schema from "../../../../interface/generated/pareto/schemas/schema/data/resolved"
 
@@ -30,7 +30,7 @@ import * as api from "../../../../interface/to_be_generated/load_pareto_document
 
 import * as tu_dynamic_unmarshall from "./refiners/astn_parse_tree"
 
-import * as r_parse from "astn/dist/implementation/manual/schemas/parse_tree/deserializers"
+import * as r_parse from "astn-core/dist/implementation/manual/schemas/parse_tree/deserializers"
 
 import { $ as load_schema } from "../schema/deserializers"
 

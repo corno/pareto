@@ -1,5 +1,4 @@
 import * as _p from 'pareto-core-command'
-import { location_to_string } from 'pareto-core-internals/dist/misc/location_to_string'
 
 import * as signatures from "../../../interface/signatures"
 
@@ -78,7 +77,7 @@ export const $$: signatures.commands.compile_temp_schemas = _p.command_procedure
                                             'lookups': null,
                                             'values': null,
                                         },
-                                        'location 2 string': location_to_string
+                                        'location 2 string': () => "XX" //location_to_string
                                     }
                                 ),
                             ),
@@ -102,7 +101,7 @@ export const $$: signatures.commands.compile_temp_schemas = _p.command_procedure
                                             'lookups': null,
                                             'values': null,
                                         },
-                                        'location 2 string': location_to_string
+                                        'location 2 string': () => "XX" //location_to_string
                                     }
                                 ),
                             ),

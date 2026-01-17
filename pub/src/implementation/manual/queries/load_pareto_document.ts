@@ -28,6 +28,7 @@ export const $$: signatures.queries.load_pareto_document = _p.query_function(($p
             $p.content,
             ($)=> abort(['deserialize', $]),
             {
+                'instance path': s_path.Node_Path($p['file path']),
                 'schema content': $,
                 'schema path': schema_path_text,
             },

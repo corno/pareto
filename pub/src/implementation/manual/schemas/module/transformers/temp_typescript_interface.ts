@@ -1,10 +1,9 @@
 import * as _p from 'pareto-core-transformer'
-import { location_to_string } from 'pareto-core-internals/dist/misc/location_to_string'
 
 //FIXME, this one should be moved to pareto-targets
 
-import * as d_in_s from "../../../../../interface/generated/pareto/schemas/schema/data"
-import * as d_in from "../../../../../interface/generated/pareto/schemas/module/data"
+import * as d_in_s from "../../../../../interface/generated/pareto/schemas/schema/data/resolved"
+import * as d_in from "../../../../../interface/generated/pareto/schemas/module/data/resolved"
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data"
 
 //transformations
