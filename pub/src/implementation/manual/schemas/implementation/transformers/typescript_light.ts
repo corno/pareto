@@ -1,16 +1,15 @@
 import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 
+//data types
 import * as d_in from "../../../../../interface/generated/pareto/schemas/implementation/data/resolved"
 import * as d_out from "../../../../../interface/generated/pareto/schemas/typescript_light/data"
 
-
-import * as t_inf_2_tl from "../../interface/transformers/typescript_light"
-import * as t_tl_2_fp from "../../typescript_light/transformers/fountain_pen_block"
-
-
+//shorthands
 import * as sh from "../../../../../shorthands/typescript_light"
 
+//dependencies
+import * as t_tl_2_fp from "../../typescript_light/transformers/fountain_pen_block"
 import { $$ as s_list_of_texts } from "pareto-standard-operations/dist/implementation/temp_serializers/schemas/list_of_texts"
 import { $$ as s_apostrophed } from "../../../primitives/text/serializers/apostrophed_string"
 import { $$ as s_quoted } from "../../../primitives/text/serializers/quoted_string"
@@ -21,6 +20,42 @@ import { $$ as s_file_name } from "../../../primitives/text/serializers/filename
 import { $$ as s_identifier } from "../../../primitives/text/serializers/identifier"
 import { $$ as s_scientific_notation } from "pareto-standard-operations/dist/implementation/manual/primitives/approximate_number/serializers/scientific_notation"
 import { $$ as s_decimal } from "pareto-standard-operations/dist/implementation/manual/primitives/integer/serializers/decimal"
+
+
+export const temp_fp_line_list = (
+    $: _pi.List<d_out.Block_Part_>,
+    if_empty: d_out.Block_Part_,
+    prefix: d_out.Block_Part_,
+    suffix: d_out.Block_Part_,
+    add_commas: boolean
+): d_out.Block_Part_ => {
+
+    if ($.__get_number_of_elements() === 0) {
+        return if_empty
+    } else {
+        let is_first = true
+        const x: d_out.Block_Part_ = sh.b.sub([
+            prefix,
+            sh.b.sub($.__l_map(($): d_out.Block_Part_ => {
+
+                const out = sh.b.sub([
+                    is_first ?
+                        sh.b.nothing()
+                        : add_commas
+                            ? sh.b.snippet(", ")
+                            : sh.b.nothing()
+                    ,
+                    $,
+                ])
+                is_first = false
+                return out
+            })),
+            suffix,
+        ])
+        return x
+    }
+
+}
 
 export const Module_Set = (
     $: d_in.Module_Set,
@@ -137,42 +172,62 @@ export const Module_Set = (
 }
 
 
-export const line_dictionary = (
-    $: _pi.Dictionary<d_out.Block_Part_>,
-    if_empty: d_out.Block_Part_,
-    prefix: d_out.Block_Part_,
-    suffix: d_out.Block_Part_,
-    add_commas: boolean
-): d_out.Block_Part_ => {
-    let is_empty = true
-    $.__d_map(($) => {
-        is_empty = false
-    })
-    if (is_empty) {
-        return if_empty
-    } else {
-        let is_first = true
-        const x: d_out.Block_Part_ = sh.b.sub([
-            prefix,
-            sh.b.sub(_p.list.from_dictionary($, ($): d_out.Block_Part_ => {
 
-                const out = sh.b.sub([
-                    is_first ?
-                        sh.b.nothing()
-                        : add_commas
-                            ? sh.b.snippet(", ")
-                            : sh.b.nothing()
-                    ,
-                    $,
-                ])
-                is_first = false
-                return out
-            })),
-            suffix,
-        ])
-        return x
+
+export const Identifier = (
+    $: _pi.List<string>
+): string => {
+    return s_list_of_texts($)
+}
+
+export const Type_Reference = (
+    $: d_in.Type_Reference,
+): d_out.Type => {
+    return sh.t.type_reference(
+        Identifier(_p.list.literal(["t ", $.import])),
+        _p.list.literal([
+            Identifier(_p.list.literal([$.type]))
+        ]),
+        []
+    )
+}
+
+export const Type_Node_Reference = (
+    $: d_in.Type_Node_Reference,
+): d_out.Type => {
+    return sh.t.type_reference(
+        Identifier(_p.list.literal(["t ", $.type.import])),
+        //tail
+        _p.list.nested_literal<string>([
+            _p.list.literal([
+                Identifier(_p.list.literal([$.type.type]))
+            ]),
+            _p.list.flatten(
+                $['sub selection'],
+                ($) => _p.sg($, ($): _pi.List<string> => {
+                    switch ($[0]) {
+                        case 'dictionary': return _p.ss($, ($) => _p.list.literal(["D"]))
+                        case 'group': return _p.ss($, ($) => _p.list.literal([$]))
+                        case 'list': return _p.ss($, ($) => _p.list.literal(["L"]))
+                        case 'optional': return _p.ss($, ($) => _p.list.literal(["O"]))
+                        case 'state group': return _p.ss($, ($) => _p.list.literal([$]))
+                        default: return _p.au($[0])
+                    }
+                }),
+            ),
+        ]),
+        //type arguments
+        []
+    )
+}
+
+export const String_Literal = (
+    $: string,
+    $p: {
+        'delimiter': "quote" | "apostrophe"
     }
-
+): d_out.Block_Part_ => {
+    return sh.b.snippet($p.delimiter === "quote" ? s_quoted($) : s_apostrophed($))
 }
 
 export const Expression = (
@@ -378,8 +433,8 @@ export const Expression = (
                                 default: return _p.au($[0])
                             }
                         }))
-                        case 'group': return _p.ss($, ($) => line_dictionary(
-                            $.__d_map(($, key) => sh.b.indent([
+                        case 'group': return _p.ss($, ($) => temp_fp_line_list(
+                            $.__to_list(($, key) => sh.b.indent([
                                 sh.g.nested_block([
                                     String_Literal(key, { 'delimiter': "apostrophe" }),
                                     sh.b.snippet(": "),
@@ -587,64 +642,6 @@ export const Expression = (
         }
     })
 }
-
-
-export const Identifier = (
-    $: _pi.List<string>
-): string => {
-    return s_list_of_texts($)
-}
-
-export const Type_Reference = (
-    $: d_in.Type_Reference,
-): d_out.Type => {
-    return sh.t.type_reference(
-        Identifier(_p.list.literal(["t ", $.import])),
-        _p.list.literal([
-            Identifier(_p.list.literal([$.type]))
-        ]),
-        []
-    )
-}
-
-export const Type_Node_Reference = (
-    $: d_in.Type_Node_Reference,
-): d_out.Type => {
-    return sh.t.type_reference(
-        Identifier(_p.list.literal(["t ", $.type.import])),
-        //tail
-        _p.list.nested_literal<string>([
-            _p.list.literal([
-                Identifier(_p.list.literal([$.type.type]))
-            ]),
-            _p.list.flatten(
-                $['sub selection'],
-                ($) => _p.sg($, ($): _pi.List<string> => {
-                    switch ($[0]) {
-                        case 'dictionary': return _p.ss($, ($) => _p.list.literal(["D"]))
-                        case 'group': return _p.ss($, ($) => _p.list.literal([$]))
-                        case 'list': return _p.ss($, ($) => _p.list.literal(["L"]))
-                        case 'optional': return _p.ss($, ($) => _p.list.literal(["O"]))
-                        case 'state group': return _p.ss($, ($) => _p.list.literal([$]))
-                        default: return _p.au($[0])
-                    }
-                }),
-            ),
-        ]),
-        //type arguments
-        []
-    )
-}
-
-export const String_Literal = (
-    $: string,
-    $p: {
-        'delimiter': "quote" | "apostrophe"
-    }
-): d_out.Block_Part_ => {
-    return sh.b.snippet($p.delimiter === "quote" ? s_quoted($) : s_apostrophed($))
-}
-
 
 export const Selection = (
     $: d_in.Selection,
