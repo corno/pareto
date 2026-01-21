@@ -2,7 +2,7 @@ import * as _p from 'pareto-core-shorthands/dist/unconstrained'
 
 import * as _pi from 'pareto-core-interface'
 
-import * as d_target from "../interface/generated/pareto/schemas/typescript_light/data"
+import * as d_target from "../../../interface/generated/pareto/schemas/typescript_light/data"
 
 export namespace g {
 

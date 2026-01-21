@@ -8,7 +8,7 @@ import * as d_out from "../../../../../interface/generated/pareto/schemas/typesc
 import * as t_interface_to_typescript_temp from "../../interface/transformers/typescript_light"
 import * as t_implementation_to_typescript_temp from "../../implementation/transformers/typescript_light"
 
-import * as sh from "../../../../../shorthands/typescript_light"
+import * as sh from "../../../../../modules/typescript_light/shorthands/typescript_light"
 
 // import * as signatures from "../interface/signatures"
 

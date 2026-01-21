@@ -1,25 +1,43 @@
 import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
+import * as _ps from 'pareto-core-serializer'
 
 //data types
 import * as d_in from "../../../../../interface/generated/pareto/schemas/implementation/data/resolved"
 import * as d_out from "../../../../../interface/generated/pareto/schemas/typescript_light/data"
 
 //shorthands
-import * as sh from "../../../../../shorthands/typescript_light"
+import * as sh from "../../../../../modules/typescript_light/shorthands/typescript_light"
 
 //dependencies
-import * as t_tl_2_fp from "../../typescript_light/transformers/fountain_pen_block"
-import { $$ as s_list_of_texts } from "pareto-standard-operations/dist/implementation/temp_serializers/schemas/list_of_texts"
-import { $$ as s_apostrophed } from "../../../primitives/text/serializers/apostrophed_string"
-import { $$ as s_quoted } from "../../../primitives/text/serializers/quoted_string"
-import { $$ as s_backticked } from "../../../primitives/text/serializers/backticked_string"
+import * as t_tl_2_fp from "../../../../../modules/typescript_light/implementation/manual/schemas/typescript_light/transformers/fountain_pen_block"
+import { $$ as s_apostrophed } from "../../../../../modules/typescript_light/implementation/manual/primitives/text/serializers/apostrophed_string"
+import { $$ as s_quoted } from "../../../../../modules/typescript_light/implementation/manual/primitives/text/serializers/quoted_string"
+import { $$ as s_backticked } from "../../../../../modules/typescript_light/implementation/manual/primitives/text/serializers/backticked_string"
 
-import { $$ as s_repeated } from "pareto-standard-operations/dist/implementation/manual/primitives/text/serializers/repeated"
 import { $$ as s_file_name } from "../../../primitives/text/serializers/filename"
-import { $$ as s_identifier } from "../../../primitives/text/serializers/identifier"
-import { $$ as s_scientific_notation } from "pareto-standard-operations/dist/implementation/manual/primitives/approximate_number/serializers/scientific_notation"
-import { $$ as s_decimal } from "pareto-standard-operations/dist/implementation/manual/primitives/integer/serializers/decimal"
+
+import { $$ as s_identifier } from "../../../../../modules/typescript_light/implementation/manual/primitives/text/serializers/identifier"
+import { $$ as s_number_default } from "../../../../../modules/typescript_light/implementation/manual/primitives/approximate_number/serializers/default"
+
+const join = ($: _pi.List<string>): string => {
+    let out = ""
+    $.__for_each(($) => {
+        out += $
+    })
+    return out
+}
+
+const s_repeated: _pi.Text_Serializer_With_Parameters<{ 'count': number }> = ($, $p) => _ps.text.deprecated_build(($i) => {
+    for (let i = 0; i < $p.count; i++) {
+        $i['add snippet']($)
+    }
+})
+const s_list_of_texts: _pi.Serializer<_pi.List<string>> = ($) => _ps.text.deprecated_build(($i) => {
+    $.__for_each(($) => {
+        $i['add snippet']($)
+    })
+})
 
 
 export const temp_fp_line_list = (
@@ -103,7 +121,7 @@ export const Module_Set = (
                     _p.list.from_dictionary(
                         $['type imports'],
                         ($, key) => sh.s.import_namespace(
-                            s_identifier(["t ", key]),
+                            s_identifier(join(_p.list.literal(["t ", key]))),
                             _p.sg($.type, ($): string => {
                                 switch ($[0]) {
                                     case 'external': return _p.ss($, ($) => valid_file_name($))
@@ -120,7 +138,7 @@ export const Module_Set = (
                     _p.list.from_dictionary(
                         $['variable imports'],
                         ($, key) => sh.s.import_namespace(
-                            s_identifier(["v ", key]),
+                            s_identifier(join(_p.list.literal(["v ", key]))),
                             _p.sg($.type, ($): string => {
                                 switch ($[0]) {
                                     case 'external': return _p.ss($, ($) => valid_file_name($))
@@ -140,7 +158,7 @@ export const Module_Set = (
                                 sh.g.nested_block([
                                     sh.b.snippet("export "),
                                     sh.b.snippet("const "),
-                                    sh.b.snippet(s_identifier([key])),
+                                    sh.b.snippet(s_identifier(key)),
                                     sh.b.sub([
                                         sh.b.snippet(": "),
                                         t_tl_2_fp.Type(
@@ -475,19 +493,19 @@ export const Expression = (
                             switch ($[0]) {
                                 case 'approximation': return _p.ss($, ($) => _p.sg($, ($) => {
                                     switch ($[0]) {
-                                        case 'literal': return _p.ss($, ($) => sh.b.snippet(s_scientific_notation($, { 'digits': 10 })))
+                                        case 'literal': return _p.ss($, ($) => sh.b.snippet(s_number_default($)))
                                         default: return _p.au($[0])
                                     }
                                 }))
                                 case 'integer': return _p.ss($, ($) => _p.sg($, ($) => {
                                     switch ($[0]) {
-                                        case 'literal': return _p.ss($, ($) => sh.b.snippet(s_decimal($)))
+                                        case 'literal': return _p.ss($, ($) => sh.b.snippet(s_number_default($)))
                                         default: return _p.au($[0])
                                     }
                                 }))
                                 case 'natural': return _p.ss($, ($) => _p.sg($, ($) => {
                                     switch ($[0]) {
-                                        case 'literal': return _p.ss($, ($) => sh.b.snippet(s_decimal($)))
+                                        case 'literal': return _p.ss($, ($) => sh.b.snippet(s_number_default($)))
                                         default: return _p.au($[0])
                                     }
                                 }))
@@ -561,7 +579,7 @@ export const Expression = (
                             //temp variables
                             sh.g.sub($['temp ordered variables'].__l_map(($) => sh.g.nested_block([
                                 sh.b.snippet("const "),
-                                sh.b.snippet(s_identifier([$.name])),
+                                sh.b.snippet(s_identifier($.name)),
                                 $.type.__decide(
                                     ($) => sh.b.sub([
                                         sh.b.snippet(": "),
@@ -580,7 +598,7 @@ export const Expression = (
                             sh.g.sub(_p.list.from_dictionary($.variables, ($, key) => sh.g.sub([
                                 sh.g.nested_block([
                                     sh.b.snippet("const "),
-                                    sh.b.snippet(s_identifier([key])),
+                                    sh.b.snippet(s_identifier(key)),
                                     $.type.__decide(
                                         ($) => sh.b.sub([
                                             sh.b.snippet(": "),
@@ -687,18 +705,18 @@ export const Selection = (
                     ]),
                     sh.b.snippet(")"),
                 ]))
-                case 'argument': return _p.ss($, ($) => sh.b.snippet(s_identifier(["FOOO FIX ARGUMENT"])))
+                case 'argument': return _p.ss($, ($) => sh.b.snippet(s_identifier("FOOO FIX ARGUMENT")))
                 case 'context': return _p.ss($, ($) => sh.b.snippet("$"))
-                case 'variable': return _p.ss($, ($) => sh.b.snippet(s_identifier([$])))
+                case 'variable': return _p.ss($, ($) => sh.b.snippet(s_identifier($)))
                 case 'parameter': return _p.ss($, ($) => sh.b.sub([
                     sh.b.snippet("$p["),
                     String_Literal($, { 'delimiter': "apostrophe" }),
                     sh.b.snippet("]"),
                 ]))
                 case 'imported variable': return _p.ss($, ($) => sh.b.sub([
-                    sh.b.snippet(s_identifier(["v ", $.import])),
+                    sh.b.snippet(s_identifier(join(_p.list.literal(["v ", $.import])))),
                     sh.b.snippet("."),
-                    sh.b.snippet(s_identifier([$.variable])),
+                    sh.b.snippet(s_identifier($.variable)),
                 ]))
                 default: return _p.au($[0])
             }

@@ -4,12 +4,8 @@ import * as _p_transformer from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
 
-import { $$ as s_list_of_texts } from "pareto-standard-operations/dist/implementation/temp_serializers/schemas/list_of_texts"
-import { $$ as s_decimal } from "pareto-standard-operations/dist/implementation/manual/primitives/integer/serializers/decimal"
-
-
-export const $$ = ($: string[]): string => {
-    const the_string = s_list_of_texts(_p_transformer.list.literal($))
+export const $$ = ($: string): string => {
+    const the_string = $
     if (the_string === "") {
         return "_empty"
     }
@@ -175,7 +171,7 @@ export const $$ = ($: string[]): string => {
                     case 124: consume_and_add("$vb_"); break; // Vertical Bar (|)
                     case 125: consume_and_add("$cc_"); break; // Close Curly Brace (})
                     case 126: consume_and_add("$ti_"); break; // Tilde (~)
-                    default: _pdev.implement_me(`unhandled character: \"${s_decimal(current_character)}\"`);
+                    default: _pdev.implement_me(`unhandled character: \"${current_character}\"`);
                 }
             }
         }

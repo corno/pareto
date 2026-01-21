@@ -1,17 +1,27 @@
 import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
 import * as _pdev from 'pareto-core-dev'
+import * as _ps from 'pareto-core-serializer'
 
 import * as d_in from "../../../../../interface/generated/pareto/schemas/interface/data/resolved"
 import * as d_out from "../../../../../interface/generated/pareto/schemas/typescript_light/data"
 
 //dependencies
-import { $$ as s_repeated } from "pareto-standard-operations/dist/implementation/manual/primitives/text/serializers/repeated"
-import { $$ as s_list_of_texts } from "pareto-standard-operations/dist/implementation/temp_serializers/schemas/list_of_texts"
 import { $$ as s_file_name } from "../../../primitives/text/serializers/filename"
 
+const s_repeated: _pi.Text_Serializer_With_Parameters<{ 'count': number }> = ($, $p) => _ps.text.deprecated_build(($i) => {
+    for (let i = 0; i < $p.count; i++) {
+        $i['add snippet']($)
+    }
+})
+const s_list_of_texts: _pi.Serializer<_pi.List<string>> = ($) => _ps.text.deprecated_build(($i) => {
+    $.__for_each(($) => {
+        $i['add snippet']($)
+    })
+})
+
 //shorthands
-import * as sh from "../../../../../shorthands/typescript_light"
+import * as sh from "../../../../../modules/typescript_light/shorthands/typescript_light"
 
 
 export const Module_Set = ($: d_in.Module_Set): d_out.Directory => {

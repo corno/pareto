@@ -2,13 +2,13 @@ import * as _p from 'pareto-core-transformer'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data"
-import * as d_in from "../../../../../interface/generated/pareto/schemas/typescript_light/data"
+import * as d_in from "../../../../../../../interface/generated/pareto/schemas/typescript_light/data"
 
 import { $$ as s_identifier } from "../../../primitives/text/serializers/identifier"
 import { $$ as op_enrich_list_elements_with_position_information } from "pareto-fountain-pen/dist/implementation/temp/enrich_with_position_information"
 import { $$ as s_apostrophed } from "../../../primitives/text/serializers/apostrophed_string"
 import { $$ as s_quoted } from "../../../primitives/text/serializers/quoted_string"
-import { $$ as s_scientific_notation } from "pareto-standard-operations/dist/implementation/manual/primitives/approximate_number/serializers/scientific_notation"
+import { $$ as s_number_default } from "../../../primitives/approximate_number/serializers/default"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
@@ -66,7 +66,7 @@ export const Block_Part = (
 export const Identifier = (
     $: string //FIX should have been a schema type
 ): d_out.Block_Part => {
-    return sh.b.snippet(s_identifier([$]))
+    return sh.b.snippet(s_identifier($))
 }
 
 export const String_Literal = (
@@ -288,7 +288,7 @@ export const Expression = (
         ]))
         case 'false': return _p.ss($, ($) => sh.b.snippet("false"))
         case 'null': return _p.ss($, ($) => sh.b.snippet("null"))
-        case 'number literal': return _p.ss($, ($) => sh.b.snippet(s_scientific_notation($, { 'digits': 10 })))
+        case 'number literal': return _p.ss($, ($) => sh.b.snippet(s_number_default($)))
         case 'object literal': return _p.ss($, ($) => sh.b.sub([
             sh.b.snippet("{"),
             sh.b.indent([
