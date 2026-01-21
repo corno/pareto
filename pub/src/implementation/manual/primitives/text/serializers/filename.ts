@@ -1,11 +1,13 @@
-import * as _p from 'pareto-core-serializer'
+import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
+import * as _ps from 'pareto-core-serializer'
+import * as _pd from 'pareto-core-deserializer'
 
 export type Signature = _pi.Text_Serializer
 
 export const $$: Signature = ($) => {
-    return _p.text.deprecated_build(($i) => {
-        _p.list.from_text($, ($) => $).__for_each(($) => {
+    return _ps.text.deprecated_build(($i) => {
+        _pd.list.from_text($, ($) => $).__for_each(($) => {
             if ($ === 36) { // $
                 $i['add character'](36) //dollar
                 $i['add character'](36) //dollar

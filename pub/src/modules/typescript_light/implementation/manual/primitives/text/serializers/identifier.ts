@@ -1,5 +1,6 @@
 import * as _p from 'pareto-core-serializer'
 import * as _p_transformer from 'pareto-core-transformer'
+import * as _pd from 'pareto-core-deserializer'
 
 import * as _pdev from 'pareto-core-dev'
 
@@ -90,7 +91,7 @@ export const $$ = ($: string): string => {
     }
 
     return _p.text.deprecated_build(($i) => {
-        const characters = _p.list.from_text(the_string, ($) => $)
+        const characters = _pd.list.from_text(the_string, ($) => $)
         const length = characters.__get_number_of_elements()
 
         let position = 0

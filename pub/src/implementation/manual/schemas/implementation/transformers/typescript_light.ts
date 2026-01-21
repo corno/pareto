@@ -93,7 +93,7 @@ export const Module_Set = (
                     return s_file_name($)
                 }
 
-                const y: d_out.Statements = _p.list.nested_literal([
+                const y: d_out.Statements = _p.list.nested_literal_old([
                     [
                         sh.s.import_namespace(
                             ` p`,
@@ -216,7 +216,7 @@ export const Type_Node_Reference = (
     return sh.t.type_reference(
         Identifier(_p.list.literal(["t ", $.type.import])),
         //tail
-        _p.list.nested_literal<string>([
+        _p.list.nested_literal_old<string>([
             _p.list.literal([
                 Identifier(_p.list.literal([$.type.type]))
             ]),

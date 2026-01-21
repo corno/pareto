@@ -1,8 +1,9 @@
-import * as _p from 'pareto-core-serializer'
+import * as _p from 'pareto-core-transformer'
 import * as _pi from 'pareto-core-interface'
+import * as _ps from 'pareto-core-serializer'
 
 export const $$: _pi.Number_Serializer = ($) => {
-    return _p.text.deprecated_build(($i) => {
+    return _ps.text.deprecated_build(($i) => {
         const fixme_digits = 16 // Number of significant digits to serialize
         // Handle special case for zero in scientific notation
         if ($ === 0) {
