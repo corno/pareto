@@ -11,12 +11,12 @@ import { $$ as s_file_name } from "../../../primitives/text/serializers/filename
 
 const s_repeated: _pi.Text_Serializer_With_Parameters<{ 'count': number }> = ($, $p) => _ps.text.deprecated_build(($i) => {
     for (let i = 0; i < $p.count; i++) {
-        $i['add snippet']($)
+        $i.add_snippet($)
     }
 })
 const s_list_of_texts: _pi.Serializer<_pi.List<string>> = ($) => _ps.text.deprecated_build(($i) => {
     $.__for_each(($) => {
-        $i['add snippet']($)
+        $i.add_snippet($)
     })
 })
 

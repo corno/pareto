@@ -85,8 +85,8 @@ export const $$ = ($: string): string => {
         () => false,
     )) {
         return _p.text.deprecated_build(($i) => {
-            $i['add snippet'](the_string)
-            $i['add character'](95) //_
+            $i.add_snippet(the_string)
+            $i.add_character(95) //_
         })
     }
 
@@ -121,8 +121,8 @@ export const $$ = ($: string): string => {
                 if (current_character >= 48 && current_character <= 57) {
                     //begins with 0-9
 
-                    $i['add character'](95) //_
-                    $i['add character'](current_character)
+                    $i.add_character(95) //_
+                    $i.add_character(current_character)
                 }
             }
             if (false
@@ -131,12 +131,12 @@ export const $$ = ($: string): string => {
                 || (current_character >= 97 && current_character <= 122)//a-z
             ) {
                 //normal character
-                $i['add character'](current_character)
+                $i.add_character(current_character)
                 consume_character()
             } else {
                 const consume_and_add = ($: string) => {
                     consume_character()
-                    $i['add snippet']($)
+                    $i.add_snippet($)
                 }
                 switch (current_character) {
                     case 32: consume_and_add("_"); break; // Space

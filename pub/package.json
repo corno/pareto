@@ -10,6 +10,6 @@
   "dependencies": {
     "astn-core": "^0.5.4",
     "pareto-core-dev": "^0.12.3",
-    "pareto-fountain-pen": "^0.4.3"
+    "pareto-fountain-pen": "^0.4.4"
   }
 }

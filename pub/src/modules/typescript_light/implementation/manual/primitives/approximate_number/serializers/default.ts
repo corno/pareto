@@ -7,28 +7,28 @@ export const $$: _pi.Number_Serializer = ($) => {
         const fixme_digits = 16 // Number of significant digits to serialize
         // Handle special case for zero in scientific notation
         if ($ === 0) {
-            $i['add character'](48) // '0'
+            $i.add_character(48) // '0'
 
             // Add decimal point if we have more than 1 digit
             //FIXME: do this only when the number is not an integer number
-            $i['add character'](46) // '.'
+            $i.add_character(46) // '.'
 
             // Add the required number of zeros after decimal point
             for (let i = 0; i < 16; i++) {
-                $i['add character'](48) // '0'
+                $i.add_character(48) // '0'
             }
 
 
             // Add exponent part for zero: e+0
-            $i['add character'](101) // 'e'
-            $i['add character'](43)  // '+'
-            $i['add character'](48)  // '0'
+            $i.add_character(101) // 'e'
+            $i.add_character(43)  // '+'
+            $i.add_character(48)  // '0'
             return
         }
 
         // Handle negative numbers
         if ($ < 0) {
-            $i['add character'](45) // '-'
+            $i.add_character(45) // '-'
             $ = -$
         }
 
@@ -75,11 +75,11 @@ export const $$: _pi.Number_Serializer = ($) => {
             ($) => $,
             () => _p.unreachable_code_path() // index cannot be out of bounds
         )
-        $i['add character'](48 + first_digit) // First digit
+        $i.add_character(48 + first_digit) // First digit
 
         // Add decimal point if we have more digits
         if (fixme_digits > 1 && digits.__get_number_of_elements() > 1) {
-            $i['add character'](46) // '.'
+            $i.add_character(46) // '.'
 
             // Add remaining digits in reverse order
             for (let j = digits.__get_number_of_elements() - 2; j >= 0; j--) {
@@ -87,17 +87,17 @@ export const $$: _pi.Number_Serializer = ($) => {
                     ($) => $,
                     () => _p.unreachable_code_path() // index cannot be out of bounds
                 )
-                $i['add character'](48 + digit)
+                $i.add_character(48 + digit)
             }
         }
 
         // Add exponent part
-        $i['add character'](101) // 'e'
+        $i.add_character(101) // 'e'
         if (exponent < 0) {
-            $i['add character'](45) // '-'
+            $i.add_character(45) // '-'
             exponent = -exponent
         } else {
-            $i['add character'](43) // '+'
+            $i.add_character(43) // '+'
         }
 
         // Convert exponent to string
@@ -119,7 +119,7 @@ export const $$: _pi.Number_Serializer = ($) => {
                 ($) => $,
                 () => _p.unreachable_code_path() // index cannot be out of bounds
             )
-            $i['add character'](48 + digit)
+            $i.add_character(48 + digit)
         }
     })
 }
