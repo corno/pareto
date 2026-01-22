@@ -1,6 +1,6 @@
-import * as _p from 'pareto-core-transformer'
-import * as _pi from 'pareto-core-interface'
-import * as _ps from 'pareto-core-serializer'
+import * as _p from 'pareto-core/dist/transformer'
+import * as _pi from 'pareto-core/dist/interface'
+import * as _ps from 'pareto-core/dist/serializer'
 
 //data types
 import * as d_in from "../../../../../interface/generated/pareto/schemas/implementation/data/resolved"

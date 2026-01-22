@@ -1,5 +1,5 @@
 import * as _p from 'pareto-core-shorthands/dist/unconstrained'
-import * as _pi from 'pareto-core-interface'
+import * as _pi from 'pareto-core/dist/interface'
 
 import * as d_target from "../interface/generated/pareto/schemas/implementation/data/resolved" //THIS IS NOT CORRECT! It should be unresolved
 

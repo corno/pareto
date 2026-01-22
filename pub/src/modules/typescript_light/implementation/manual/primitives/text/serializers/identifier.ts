@@ -1,6 +1,6 @@
-import * as _p from 'pareto-core-serializer'
-import * as _p_transformer from 'pareto-core-transformer'
-import * as _pd from 'pareto-core-deserializer'
+import * as _p from 'pareto-core/dist/serializer'
+import * as _p_transformer from 'pareto-core/dist/transformer'
+import * as _pd from 'pareto-core/dist/deserializer'
 
 import * as _pdev from 'pareto-core-dev'
 

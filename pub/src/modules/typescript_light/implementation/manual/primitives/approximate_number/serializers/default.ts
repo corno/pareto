@@ -1,6 +1,6 @@
-import * as _p from 'pareto-core-transformer'
-import * as _pi from 'pareto-core-interface'
-import * as _ps from 'pareto-core-serializer'
+import * as _p from 'pareto-core/dist/transformer'
+import * as _pi from 'pareto-core/dist/interface'
+import * as _ps from 'pareto-core/dist/serializer'
 
 export const $$: _pi.Number_Serializer = ($) => {
     return _ps.text.deprecated_build(($i) => {
