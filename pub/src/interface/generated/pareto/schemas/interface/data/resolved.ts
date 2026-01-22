@@ -7,7 +7,7 @@ export namespace Imports_ {
     
     export namespace D {
         
-        export namespace _type {
+        export namespace type_ {
             
             export type external = string
             
@@ -28,10 +28,10 @@ export namespace Imports_ {
             
         }
         
-        export type _type = 
-            | readonly ['external', _type.external]
-            | readonly ['ancestor', _type.ancestor]
-            | readonly ['sibling', _type.sibling]
+        export type type_ = 
+            | readonly ['external', type_.external]
+            | readonly ['ancestor', type_.ancestor]
+            | readonly ['sibling', type_.sibling]
         
         export namespace tail {
             
@@ -44,7 +44,7 @@ export namespace Imports_ {
     }
     
     export type D = {
-        readonly 'type': D._type
+        readonly 'type': D.type_
         readonly 'tail': D.tail
     }
     
@@ -68,7 +68,7 @@ export namespace Module_ {
                 
                 export type context = Type_
                 
-                export namespace _type {
+                export namespace type_ {
                     
                     export namespace transformer {
                         
@@ -122,9 +122,9 @@ export namespace Module_ {
                     
                 }
                 
-                export type _type = 
-                    | readonly ['transformer', _type.transformer]
-                    | readonly ['refiner', _type.refiner]
+                export type type_ = 
+                    | readonly ['transformer', type_.transformer]
+                    | readonly ['refiner', type_.refiner]
                 
                 export namespace parameters {
                     
@@ -145,7 +145,7 @@ export namespace Module_ {
             export type algorithm = {
                 readonly 'result': algorithm.result
                 readonly 'context': algorithm.context
-                readonly 'type': algorithm._type
+                readonly 'type': algorithm.type_
                 readonly 'parameters': algorithm.parameters
             }
             
@@ -170,15 +170,15 @@ export namespace Module_Set_ {
     
     export namespace D {
         
-        export type _module = Module_
+        export type module_ = Module_
         
-        export type _set = Module_Set_
+        export type set_ = Module_Set_
         
     }
     
     export type D = 
-        | readonly ['module', D._module]
-        | readonly ['set', D._set]
+        | readonly ['module', D.module_]
+        | readonly ['set', D.set_]
     
 }
 
@@ -186,23 +186,23 @@ export type Module_Set_ = _pi.Dictionary<Module_Set_.D>
 
 export namespace Type_ {
     
-    export type _boolean = null
+    export type boolean_ = null
     
     export namespace component {
         
         export namespace location {
             
-            export namespace _import {
+            export namespace import_ {
                 
-                export type _import = string
+                export type import_ = string
                 
-                export type _type = string
+                export type type_ = string
                 
             }
             
-            export type _import = {
-                readonly 'import': _import._import
-                readonly 'type': _import._type
+            export type import_ = {
+                readonly 'import': import_.import_
+                readonly 'type': import_.type_
             }
             
             export type sibling = string
@@ -210,7 +210,7 @@ export namespace Type_ {
         }
         
         export type location = 
-            | readonly ['import', location._import]
+            | readonly ['import', location.import_]
             | readonly ['sibling', location.sibling]
         
     }
@@ -233,7 +233,7 @@ export namespace Type_ {
     
     export type nothing = null
     
-    export namespace _number {
+    export namespace number_ {
         
         export namespace exact {
             
@@ -251,9 +251,9 @@ export namespace Type_ {
         
     }
     
-    export type _number = 
-        | readonly ['exact', _number.exact]
-        | readonly ['approximation', _number.approximation]
+    export type number_ = 
+        | readonly ['exact', number_.exact]
+        | readonly ['approximation', number_.approximation]
     
     export type optional = Type_
     
@@ -261,17 +261,17 @@ export namespace Type_ {
         
         export namespace location {
             
-            export namespace _import {
+            export namespace import_ {
                 
-                export type _import = string
+                export type import_ = string
                 
-                export type _type = string
+                export type type_ = string
                 
             }
             
-            export type _import = {
-                readonly 'import': _import._import
-                readonly 'type': _import._type
+            export type import_ = {
+                readonly 'import': import_.import_
+                readonly 'type': import_.type_
             }
             
             export namespace sibling {
@@ -290,7 +290,7 @@ export namespace Type_ {
         }
         
         export type location = 
-            | readonly ['import', location._import]
+            | readonly ['import', location.import_]
             | readonly ['sibling', location.sibling]
         
         export namespace sub_selection {
@@ -340,13 +340,13 @@ export namespace Type_ {
 }
 
 export type Type_ = 
-    | readonly ['boolean', Type_._boolean]
+    | readonly ['boolean', Type_.boolean_]
     | readonly ['component', Type_.component]
     | readonly ['dictionary', Type_.dictionary]
     | readonly ['group', Type_.group]
     | readonly ['list', Type_.list]
     | readonly ['nothing', Type_.nothing]
-    | readonly ['number', Type_._number]
+    | readonly ['number', Type_.number_]
     | readonly ['optional', Type_.optional]
     | readonly ['reference', Type_.reference]
     | readonly ['state group', Type_.state_group]

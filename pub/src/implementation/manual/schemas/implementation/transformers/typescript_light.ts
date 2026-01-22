@@ -667,9 +667,9 @@ export const Selection = (
     return sh.b.sub([
         _p.sg($.start, ($) => {
             switch ($[0]) {
-                case 'implement me': return _p.ss($, ($) => sh.b.snippet("_pdev.implement_me(\"marker tbd\")"))
 
                 case 'abort deprecated': return _p.ss($, ($) => sh.b.snippet("_p.fixme_abort('ABORT SELECTION')"))
+                case 'argument': return _p.ss($, ($) => sh.b.snippet(s_identifier("FOOO FIX ARGUMENT")))
 
                 case 'call': return _p.ss($, ($) => sh.b.sub([
                     Selection($.source),
@@ -705,19 +705,25 @@ export const Selection = (
                     ]),
                     sh.b.snippet(")"),
                 ]))
-                case 'argument': return _p.ss($, ($) => sh.b.snippet(s_identifier("FOOO FIX ARGUMENT")))
                 case 'context': return _p.ss($, ($) => sh.b.snippet("$"))
-                case 'variable': return _p.ss($, ($) => sh.b.snippet(s_identifier($)))
+                case 'entry': return _p.ss($, ($) => sh.b.snippet("FIXME_ENTRY"))
+                case 'implement me': return _p.ss($, ($) => sh.b.snippet("_pdev.implement_me(\"marker tbd\")"))
                 case 'parameter': return _p.ss($, ($) => sh.b.sub([
                     sh.b.snippet("$p["),
                     String_Literal($, { 'delimiter': "apostrophe" }),
                     sh.b.snippet("]"),
                 ]))
-                case 'imported variable': return _p.ss($, ($) => sh.b.sub([
-                    sh.b.snippet(s_identifier(join(_p.list.literal(["v ", $.import])))),
-                    sh.b.snippet("."),
-                    sh.b.snippet(s_identifier($.variable)),
-                ]))
+                case 'variable': return _p.ss($, ($) => _p.sg($, ($) => {
+                    switch ($[0]) {
+                        case 'local': return _p.ss($, ($) => sh.b.snippet(s_identifier($)))
+                        case 'imported': return _p.ss($, ($) => sh.b.sub([
+                            sh.b.snippet(s_identifier(join(_p.list.literal(["v ", $.import])))),
+                            sh.b.snippet("."),
+                            sh.b.snippet(s_identifier($.variable)),
+                        ]))
+                        default: return _p.au($[0])
+                    }
+                }))
                 default: return _p.au($[0])
             }
         }),

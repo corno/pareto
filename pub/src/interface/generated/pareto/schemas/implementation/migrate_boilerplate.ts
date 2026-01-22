@@ -85,6 +85,22 @@ export type Expression_ = (
     $$_: Expression_.I,
 ) => Expression_.O
 
+export namespace Abort_Expression_ {
+    
+    export type I = i_in.Abort_Expression
+    
+    export type O = i_out.Abort_Expression
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Abort_Expression_ = (
+    $$_: Abort_Expression_.I,
+) => Abort_Expression_.O
+
 export namespace Selection_ {
     
     export type I = i_in.Selection
@@ -107,5 +123,6 @@ export {
     Module_Set_ as Module_Set, 
     Type_Node_Reference_ as Type_Node_Reference, 
     Expression_ as Expression, 
+    Abort_Expression_ as Abort_Expression, 
     Selection_ as Selection, 
 }

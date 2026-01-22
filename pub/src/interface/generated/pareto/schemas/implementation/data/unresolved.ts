@@ -7,20 +7,20 @@ import * as i__imports_interface from "../../interface/data/unresolved"
 
 export namespace Type_Reference_ {
     
-    export type _import = string
+    export type import_ = string
     
-    export type _type = string
+    export type type_ = string
     
 }
 
 export type Type_Reference_ = {
-    readonly 'import': Type_Reference_._import
-    readonly 'type': Type_Reference_._type
+    readonly 'import': Type_Reference_.import_
+    readonly 'type': Type_Reference_.type_
 }
 
 export namespace Module_ {
     
-    export namespace _type {
+    export namespace type_ {
         
         export type location = i__location.Location
         
@@ -44,9 +44,9 @@ export namespace Module_ {
         
     }
     
-    export type _type = {
-        readonly 'location': _type.location
-        readonly 'state group': _type.state_group
+    export type type_ = {
+        readonly 'location': type_.location
+        readonly 'state group': type_.state_group
     }
     
     export type type_imports = i__imports_interface.Imports
@@ -93,7 +93,7 @@ export namespace Module_ {
                         readonly 'list': tail.list
                     }
                     
-                    export namespace _type {
+                    export namespace type_ {
                         
                         export type location = i__location.Location
                         
@@ -125,16 +125,16 @@ export namespace Module_ {
                         
                     }
                     
-                    export type _type = {
-                        readonly 'location': _type.location
-                        readonly 'state group': _type.state_group
+                    export type type_ = {
+                        readonly 'location': type_.location
+                        readonly 'state group': type_.state_group
                     }
                     
                 }
                 
                 export type entry = {
                     readonly 'tail': entry.tail
-                    readonly 'type': entry._type
+                    readonly 'type': entry.type_
                 }
                 
             }
@@ -167,7 +167,7 @@ export namespace Module_ {
                 
                 export namespace entry {
                     
-                    export type _type = Type_Reference_
+                    export type type_ = Type_Reference_
                     
                     export type expression = Expression_
                     
@@ -180,7 +180,7 @@ export namespace Module_ {
                 }
                 
                 export type entry = {
-                    readonly 'type': entry._type
+                    readonly 'type': entry.type_
                     readonly 'expression': entry.expression
                     readonly 'temp has error': entry.temp_has_error
                     readonly 'temp has lookups': entry.temp_has_lookups
@@ -208,7 +208,7 @@ export namespace Module_ {
 }
 
 export type Module_ = {
-    readonly 'type': Module_._type
+    readonly 'type': Module_.type_
     readonly 'type imports': Module_.type_imports
     readonly 'variable imports': Module_.variable_imports
     readonly 'algorithms': Module_.algorithms
@@ -230,15 +230,15 @@ export namespace Module_Set_ {
                 
                 export namespace state_group {
                     
-                    export type _module = Module_
+                    export type module_ = Module_
                     
-                    export type _set = Module_Set_
+                    export type set_ = Module_Set_
                     
                 }
                 
                 export type state_group = 
-                    | readonly ['module', state_group._module]
-                    | readonly ['set', state_group._set]
+                    | readonly ['module', state_group.module_]
+                    | readonly ['set', state_group.set_]
                 
             }
             
@@ -267,7 +267,7 @@ export type Module_Set_ = {
 
 export namespace Type_Node_Reference_ {
     
-    export type _type = Type_Reference_
+    export type type_ = Type_Reference_
     
     export namespace sub_selection {
         
@@ -332,7 +332,7 @@ export namespace Type_Node_Reference_ {
 }
 
 export type Type_Node_Reference_ = {
-    readonly 'type': Type_Node_Reference_._type
+    readonly 'type': Type_Node_Reference_.type_
     readonly 'sub selection': Type_Node_Reference_.sub_selection
 }
 
@@ -364,20 +364,20 @@ export namespace Expression_ {
                                 
                                 export namespace entry {
                                     
-                                    export namespace _type {
+                                    export namespace type_ {
                                         
                                         export type O = Type_Node_Reference_
                                         
                                     }
                                     
-                                    export type _type = _pi.Optional_Value<_type.O>
+                                    export type type_ = _pi.Optional_Value<type_.O>
                                     
                                     export type expression = Expression_
                                     
                                 }
                                 
                                 export type entry = {
-                                    readonly 'type': entry._type
+                                    readonly 'type': entry.type_
                                     readonly 'expression': entry.expression
                                 }
                                 
@@ -413,13 +413,13 @@ export namespace Expression_ {
                                     
                                     export type name = string
                                     
-                                    export namespace _type {
+                                    export namespace type_ {
                                         
                                         export type O = Type_Node_Reference_
                                         
                                     }
                                     
-                                    export type _type = _pi.Optional_Value<_type.O>
+                                    export type type_ = _pi.Optional_Value<type_.O>
                                     
                                     export type expression = Expression_
                                     
@@ -427,7 +427,7 @@ export namespace Expression_ {
                                 
                                 export type element = {
                                     readonly 'name': element.name
-                                    readonly 'type': element._type
+                                    readonly 'type': element.type_
                                     readonly 'expression': element.expression
                                 }
                                 
@@ -524,7 +524,7 @@ export namespace Expression_ {
             
             export namespace state_group {
                 
-                export namespace _boolean {
+                export namespace boolean_ {
                     
                     export type location = i__location.Location
                     
@@ -536,15 +536,15 @@ export namespace Expression_ {
                             
                             export namespace state_group {
                                 
-                                export type _false = null
+                                export type false_ = null
                                 
-                                export type _true = null
+                                export type true_ = null
                                 
                             }
                             
                             export type state_group = 
-                                | readonly ['false', state_group._false]
-                                | readonly ['true', state_group._true]
+                                | readonly ['false', state_group.false_]
+                                | readonly ['true', state_group.true_]
                             
                         }
                         
@@ -563,9 +563,9 @@ export namespace Expression_ {
                     
                 }
                 
-                export type _boolean = {
-                    readonly 'location': _boolean.location
-                    readonly 'state group': _boolean.state_group
+                export type boolean_ = {
+                    readonly 'location': boolean_.location
+                    readonly 'state group': boolean_.state_group
                 }
                 
                 export namespace component {
@@ -580,7 +580,7 @@ export namespace Expression_ {
                             
                             export type context = Expression_
                             
-                            export namespace _arguments {
+                            export namespace arguments_ {
                                 
                                 export namespace O {
                                     
@@ -614,7 +614,7 @@ export namespace Expression_ {
                                 
                             }
                             
-                            export type _arguments = _pi.Optional_Value<_arguments.O>
+                            export type arguments_ = _pi.Optional_Value<arguments_.O>
                             
                             export type abort = boolean
                             
@@ -623,7 +623,7 @@ export namespace Expression_ {
                         export type call = {
                             readonly 'source': call.source
                             readonly 'context': call.context
-                            readonly 'arguments': call._arguments
+                            readonly 'arguments': call.arguments_
                             readonly 'abort': call.abort
                         }
                         
@@ -795,7 +795,7 @@ export namespace Expression_ {
                 
                 export type nothing = null
                 
-                export namespace _number {
+                export namespace number_ {
                     
                     export type location = i__location.Location
                     
@@ -870,9 +870,9 @@ export namespace Expression_ {
                     
                 }
                 
-                export type _number = {
-                    readonly 'location': _number.location
-                    readonly 'state group': _number.state_group
+                export type number_ = {
+                    readonly 'location': number_.location
+                    readonly 'state group': number_.state_group
                 }
                 
                 export namespace optional {
@@ -889,13 +889,13 @@ export namespace Expression_ {
                                 
                                 export type not_set = null
                                 
-                                export type _set = Expression_
+                                export type set_ = Expression_
                                 
                             }
                             
                             export type state_group = 
                                 | readonly ['not set', state_group.not_set]
-                                | readonly ['set', state_group._set]
+                                | readonly ['set', state_group.set_]
                             
                         }
                         
@@ -1016,13 +1016,13 @@ export namespace Expression_ {
             }
             
             export type state_group = 
-                | readonly ['boolean', state_group._boolean]
+                | readonly ['boolean', state_group.boolean_]
                 | readonly ['component', state_group.component]
                 | readonly ['dictionary', state_group.dictionary]
                 | readonly ['group', state_group.group]
                 | readonly ['list', state_group.list]
                 | readonly ['nothing', state_group.nothing]
-                | readonly ['number', state_group._number]
+                | readonly ['number', state_group.number_]
                 | readonly ['optional', state_group.optional]
                 | readonly ['state group', state_group.state_group]
                 | readonly ['text', state_group.text]
@@ -1036,13 +1036,13 @@ export namespace Expression_ {
         
         export namespace decide {
             
-            export namespace _type {
+            export namespace type_ {
                 
                 export type location = i__location.Location
                 
                 export namespace state_group {
                     
-                    export namespace _boolean {
+                    export namespace boolean_ {
                         
                         export type source = Selection_
                         
@@ -1060,11 +1060,11 @@ export namespace Expression_ {
                         
                     }
                     
-                    export type _boolean = {
-                        readonly 'source': _boolean.source
-                        readonly 'temp resulting node': _boolean.temp_resulting_node
-                        readonly 'if false': _boolean.if_false
-                        readonly 'if true': _boolean.if_true
+                    export type boolean_ = {
+                        readonly 'source': boolean_.source
+                        readonly 'temp resulting node': boolean_.temp_resulting_node
+                        readonly 'if false': boolean_.if_false
+                        readonly 'if true': boolean_.if_true
                     }
                     
                     export namespace optional {
@@ -1104,7 +1104,7 @@ export namespace Expression_ {
                         
                         export type temp_resulting_node = _pi.Optional_Value<temp_resulting_node.O>
                         
-                        export namespace _type {
+                        export namespace type_ {
                             
                             export type location = i__location.Location
                             
@@ -1142,13 +1142,13 @@ export namespace Expression_ {
                                         readonly 'dictionary': cases.dictionary
                                     }
                                     
-                                    export type _default = Expression_
+                                    export type default_ = Expression_
                                     
                                 }
                                 
                                 export type partial = {
                                     readonly 'cases': partial.cases
-                                    readonly 'default': partial._default
+                                    readonly 'default': partial.default_
                                 }
                                 
                                 export namespace full {
@@ -1197,9 +1197,9 @@ export namespace Expression_ {
                             
                         }
                         
-                        export type _type = {
-                            readonly 'location': _type.location
-                            readonly 'state group': _type.state_group
+                        export type type_ = {
+                            readonly 'location': type_.location
+                            readonly 'state group': type_.state_group
                         }
                         
                     }
@@ -1207,27 +1207,27 @@ export namespace Expression_ {
                     export type state_group = {
                         readonly 'source': state_group.source
                         readonly 'temp resulting node': state_group.temp_resulting_node
-                        readonly 'type': state_group._type
+                        readonly 'type': state_group.type_
                     }
                     
                 }
                 
                 export type state_group = 
-                    | readonly ['boolean', state_group._boolean]
+                    | readonly ['boolean', state_group.boolean_]
                     | readonly ['optional', state_group.optional]
                     | readonly ['state group', state_group.state_group]
                 
             }
             
-            export type _type = {
-                readonly 'location': _type.location
-                readonly 'state group': _type.state_group
+            export type type_ = {
+                readonly 'location': type_.location
+                readonly 'state group': type_.state_group
             }
             
         }
         
         export type decide = {
-            readonly 'type': decide._type
+            readonly 'type': decide.type_
         }
         
     }
@@ -1244,6 +1244,29 @@ export type Expression_ = {
     readonly 'state group': Expression_.state_group
 }
 
+export namespace Abort_Expression_ {
+    
+    export type location = i__location.Location
+    
+    export namespace state_group {
+        
+        export type current = null
+        
+        export type new_ = Expression_
+        
+    }
+    
+    export type state_group = 
+        | readonly ['current', state_group.current]
+        | readonly ['new', state_group.new_]
+    
+}
+
+export type Abort_Expression_ = {
+    readonly 'location': Abort_Expression_.location
+    readonly 'state group': Abort_Expression_.state_group
+}
+
 export namespace Selection_ {
     
     export namespace start {
@@ -1256,13 +1279,15 @@ export namespace Selection_ {
             
             export type abort_deprecated = null
             
+            export type argument = string
+            
             export namespace call {
                 
                 export type source = Selection_
                 
                 export type context = Selection_
                 
-                export namespace _arguments {
+                export namespace arguments_ {
                     
                     export namespace O {
                         
@@ -1296,48 +1321,81 @@ export namespace Selection_ {
                     
                 }
                 
-                export type _arguments = _pi.Optional_Value<_arguments.O>
+                export type arguments_ = _pi.Optional_Value<arguments_.O>
                 
             }
             
             export type call = {
                 readonly 'source': call.source
                 readonly 'context': call.context
-                readonly 'arguments': call._arguments
+                readonly 'arguments': call.arguments_
             }
-            
-            export type argument = string
             
             export type context = null
             
-            export type variable = string
+            export namespace entry {
+                
+                export type dictionary = Selection_
+                
+                export type key = Selection_
+                
+                export type abort_handler = Abort_Expression_
+                
+            }
+            
+            export type entry = {
+                readonly 'dictionary': entry.dictionary
+                readonly 'key': entry.key
+                readonly 'abort handler': entry.abort_handler
+            }
+            
+            export namespace variable {
+                
+                export type location = i__location.Location
+                
+                export namespace state_group {
+                    
+                    export type local = string
+                    
+                    export namespace imported {
+                        
+                        export type import_ = string
+                        
+                        export type variable = string
+                        
+                    }
+                    
+                    export type imported = {
+                        readonly 'import': imported.import_
+                        readonly 'variable': imported.variable
+                    }
+                    
+                }
+                
+                export type state_group = 
+                    | readonly ['local', state_group.local]
+                    | readonly ['imported', state_group.imported]
+                
+            }
+            
+            export type variable = {
+                readonly 'location': variable.location
+                readonly 'state group': variable.state_group
+            }
             
             export type parameter = string
-            
-            export namespace imported_variable {
-                
-                export type _import = string
-                
-                export type variable = string
-                
-            }
-            
-            export type imported_variable = {
-                readonly 'import': imported_variable._import
-                readonly 'variable': imported_variable.variable
-            }
             
         }
         
         export type state_group = 
             | readonly ['implement me', state_group.implement_me]
             | readonly ['abort deprecated', state_group.abort_deprecated]
-            | readonly ['call', state_group.call]
             | readonly ['argument', state_group.argument]
+            | readonly ['call', state_group.call]
             | readonly ['context', state_group.context]
+            | readonly ['entry', state_group.entry]
             | readonly ['variable', state_group.variable]
             | readonly ['parameter', state_group.parameter]
-            | readonly ['imported variable', state_group.imported_variable]
         
     }
     
@@ -1389,5 +1447,6 @@ export {
     Module_Set_ as Module_Set, 
     Type_Node_Reference_ as Type_Node_Reference, 
     Expression_ as Expression, 
+    Abort_Expression_ as Abort_Expression, 
     Selection_ as Selection, 
 }

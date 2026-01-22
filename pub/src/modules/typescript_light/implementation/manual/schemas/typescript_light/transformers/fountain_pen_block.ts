@@ -87,6 +87,14 @@ export const Statements = (
     _p.sg($, ($): d_out.Group_Part => {
         switch ($[0]) {
             case 'raw': return _p.ss($, ($) => sh.g.sub(Group($)))
+
+            case 'block': return _p.ss($, ($) => sh.g.nested_block([
+                sh.b.snippet("{"),
+                sh.b.indent([
+                    Statements($, $p),
+                ]),
+                sh.b.snippet("}"),
+            ]))
             case 'export': return _p.ss($, ($) => sh.g.sub([
                 sh.g.simple_block(``),
                 sh.g.nested_block([
@@ -123,6 +131,9 @@ export const Statements = (
                         }),
                     ])
                 ])
+            ]))
+            case 'expression': return _p.ss($, ($) => sh.g.nested_block([
+                Expression($, $p)
             ]))
             case 'import': return _p.ss($, ($) => sh.g.sub([
                 sh.g.simple_block(``),
@@ -173,6 +184,36 @@ export const Statements = (
                     ]),
                     sh.b.snippet("}"),
                 ])])
+            ]))
+            case 'return': return _p.ss($, ($) => sh.g.nested_block([
+                sh.b.snippet(`return `),
+                $.__decide(
+                    ($) => Expression($, $p),
+                    () => sh.b.nothing(),
+                )
+            ]))
+            case 'switch': return _p.ss($, ($) => sh.g.nested_block([
+                sh.b.snippet("switch ("),
+                Expression($.expression, $p),
+                sh.b.snippet(") {"),
+                sh.b.indent([
+                    sh.g.list($.clauses.__l_map(($) => sh.g.nested_block([
+                        _p.sg($.type, ($) => {
+                            switch ($[0]) {
+                                case 'case': return _p.ss($, ($) => sh.b.sub([
+                                    sh.b.snippet("case "),
+                                    Expression($, $p),
+                                    sh.b.snippet(":"),
+                                ]))
+                                case 'default': return _p.ss($, ($) => sh.b.snippet("default:"))
+                                default: return _p.au($[0])
+                            }
+                        }),
+                        sh.b.indent([
+                            Statements($.statements, $p)
+                        ]),
+                    ]))),
+                ])
             ]))
             case 'type alias declaration': return _p.ss($, ($) => sh.g.sub([
                 sh.g.simple_block(``),
@@ -227,6 +268,12 @@ export const Expression = (
     switch ($[0]) {
         case 'raw': return _p.ss($, ($) => sh.b.sub([$]))
 
+
+        case 'assignment': return _p.ss($, ($) => sh.b.sub([
+            Expression($.left, $p),
+            sh.b.snippet(" = "),
+            Expression($.right, $p),
+        ]))
         case 'array literal': return _p.ss($, ($) => sh.b.sub([
             sh.b.snippet("["),
             sh.b.indent([
@@ -286,7 +333,46 @@ export const Expression = (
             ]),
             sh.b.snippet(")"),
         ]))
+        case 'compare': return _p.ss($, ($) => sh.b.sub([
+            Expression($.left, $p),
+            sh.b.snippet(` `),
+            _p.sg($.operator, ($) => {
+                switch ($[0]) {
+                    case 'loosely equal': return _p.ss($, ($) => sh.b.snippet(`==`))
+                    case 'strictly equal': return _p.ss($, ($) => sh.b.snippet(`===`))
+                    case 'loosely not equal': return _p.ss($, ($) => sh.b.snippet(`!=`))
+                    case 'strictly not equal': return _p.ss($, ($) => sh.b.snippet(`!==`))
+                    case 'smaller than': return _p.ss($, ($) => sh.b.snippet(`<`))
+                    case 'smaller than or equal': return _p.ss($, ($) => sh.b.snippet(`<=`))
+                    case 'greater than': return _p.ss($, ($) => sh.b.snippet(`>`))
+                    case 'greater than or equal': return _p.ss($, ($) => sh.b.snippet(`>=`))
+                    default: return _p.au($[0])
+                }
+            }),
+            sh.b.snippet(` `),
+            Expression($.right, $p),
+        ]))
+        case 'conditional': return _p.ss($, ($) => sh.b.sub([
+            Expression($.condition, $p),
+            sh.b.indent([
+                sh.g.nested_block([
+                    sh.b.snippet("? "),
+                    Expression($['if true'], $p),
+                ]),
+                sh.g.nested_block([
+                    sh.b.snippet(": "),
+                    Expression($['if false'], $p),
+                ]),
+            ]),
+        ]))
+        case 'element access': return _p.ss($, ($) => sh.b.sub([
+            Expression($.collection, $p),
+            sh.b.snippet("["),
+            Expression($.index, $p),
+            sh.b.snippet("]"),
+        ]))
         case 'false': return _p.ss($, ($) => sh.b.snippet("false"))
+        case 'identifier': return _p.ss($, ($) => Identifier($))
         case 'null': return _p.ss($, ($) => sh.b.snippet("null"))
         case 'number literal': return _p.ss($, ($) => sh.b.snippet(s_number_default($)))
         case 'object literal': return _p.ss($, ($) => sh.b.sub([
@@ -300,6 +386,16 @@ export const Expression = (
                 ]))),
             ]),
             sh.b.snippet("}"),
+        ]))
+        case 'parenthesized': return _p.ss($, ($) => sh.b.sub([
+            sh.b.snippet("("),
+            Expression($, $p),
+            sh.b.snippet(")"),
+        ]))
+        case 'property access': return _p.ss($, ($) => sh.b.sub([
+            Expression($.object, $p),
+            sh.b.snippet("."),
+            Identifier($.property),
         ]))
         case 'string literal': return _p.ss($, ($) => sh.b.sub([
             sh.b.snippet($['delimiter'][0] === "quote" ? s_quoted($['value']) : s_apostrophed($['value']))
@@ -323,7 +419,7 @@ export const Type = (
                 : sh.b.sub([
                     sh.b.snippet("<"),
                     sh.b.sub(op_enrich_list_elements_with_position_information($['type parameters']).__l_map(($) => sh.b.sub([
-                        Identifier($.value),
+                        Type($.value, $p),
                         $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
                     ]))),
                     sh.b.snippet(">"),

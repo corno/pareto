@@ -15,7 +15,7 @@ export namespace Imports_ {
             
             export namespace entry {
                 
-                export namespace _type {
+                export namespace type_ {
                     
                     export type location = i__location.Location
                     
@@ -47,9 +47,9 @@ export namespace Imports_ {
                     
                 }
                 
-                export type _type = {
-                    readonly 'location': _type.location
-                    readonly 'state group': _type.state_group
+                export type type_ = {
+                    readonly 'location': type_.location
+                    readonly 'state group': type_.state_group
                 }
                 
                 export namespace tail {
@@ -85,7 +85,7 @@ export namespace Imports_ {
             }
             
             export type entry = {
-                readonly 'type': entry._type
+                readonly 'type': entry.type_
                 readonly 'tail': entry.tail
             }
             
@@ -135,7 +135,7 @@ export namespace Module_ {
                             
                             export type context = Type_
                             
-                            export namespace _type {
+                            export namespace type_ {
                                 
                                 export type location = i__location.Location
                                 
@@ -232,9 +232,9 @@ export namespace Module_ {
                                 
                             }
                             
-                            export type _type = {
-                                readonly 'location': _type.location
-                                readonly 'state group': _type.state_group
+                            export type type_ = {
+                                readonly 'location': type_.location
+                                readonly 'state group': type_.state_group
                             }
                             
                             export namespace parameters {
@@ -278,7 +278,7 @@ export namespace Module_ {
                         export type algorithm = {
                             readonly 'result': algorithm.result
                             readonly 'context': algorithm.context
-                            readonly 'type': algorithm._type
+                            readonly 'type': algorithm.type_
                             readonly 'parameters': algorithm.parameters
                         }
                         
@@ -336,15 +336,15 @@ export namespace Module_Set_ {
                 
                 export namespace state_group {
                     
-                    export type _module = Module_
+                    export type module_ = Module_
                     
-                    export type _set = Module_Set_
+                    export type set_ = Module_Set_
                     
                 }
                 
                 export type state_group = 
-                    | readonly ['module', state_group._module]
-                    | readonly ['set', state_group._set]
+                    | readonly ['module', state_group.module_]
+                    | readonly ['set', state_group.set_]
                 
             }
             
@@ -377,7 +377,7 @@ export namespace Type_ {
     
     export namespace state_group {
         
-        export type _boolean = null
+        export type boolean_ = null
         
         export namespace component {
             
@@ -387,17 +387,17 @@ export namespace Type_ {
                 
                 export namespace state_group {
                     
-                    export namespace _import {
+                    export namespace import_ {
                         
-                        export type _import = string
+                        export type import_ = string
                         
-                        export type _type = string
+                        export type type_ = string
                         
                     }
                     
-                    export type _import = {
-                        readonly 'import': _import._import
-                        readonly 'type': _import._type
+                    export type import_ = {
+                        readonly 'import': import_.import_
+                        readonly 'type': import_.type_
                     }
                     
                     export type sibling = string
@@ -405,7 +405,7 @@ export namespace Type_ {
                 }
                 
                 export type state_group = 
-                    | readonly ['import', state_group._import]
+                    | readonly ['import', state_group.import_]
                     | readonly ['sibling', state_group.sibling]
                 
             }
@@ -457,7 +457,7 @@ export namespace Type_ {
         
         export type nothing = null
         
-        export namespace _number {
+        export namespace number_ {
             
             export type location = i__location.Location
             
@@ -496,9 +496,9 @@ export namespace Type_ {
             
         }
         
-        export type _number = {
-            readonly 'location': _number.location
-            readonly 'state group': _number.state_group
+        export type number_ = {
+            readonly 'location': number_.location
+            readonly 'state group': number_.state_group
         }
         
         export type optional = Type_
@@ -511,17 +511,17 @@ export namespace Type_ {
                 
                 export namespace state_group {
                     
-                    export namespace _import {
+                    export namespace import_ {
                         
-                        export type _import = string
+                        export type import_ = string
                         
-                        export type _type = string
+                        export type type_ = string
                         
                     }
                     
-                    export type _import = {
-                        readonly 'import': _import._import
-                        readonly 'type': _import._type
+                    export type import_ = {
+                        readonly 'import': import_.import_
+                        readonly 'type': import_.type_
                     }
                     
                     export namespace sibling {
@@ -540,7 +540,7 @@ export namespace Type_ {
                 }
                 
                 export type state_group = 
-                    | readonly ['import', state_group._import]
+                    | readonly ['import', state_group.import_]
                     | readonly ['sibling', state_group.sibling]
                 
             }
@@ -652,13 +652,13 @@ export namespace Type_ {
     }
     
     export type state_group = 
-        | readonly ['boolean', state_group._boolean]
+        | readonly ['boolean', state_group.boolean_]
         | readonly ['component', state_group.component]
         | readonly ['dictionary', state_group.dictionary]
         | readonly ['group', state_group.group]
         | readonly ['list', state_group.list]
         | readonly ['nothing', state_group.nothing]
-        | readonly ['number', state_group._number]
+        | readonly ['number', state_group.number_]
         | readonly ['optional', state_group.optional]
         | readonly ['reference', state_group.reference]
         | readonly ['state group', state_group.state_group]

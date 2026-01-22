@@ -84,14 +84,14 @@ export namespace sub {
 
 export const acyclic_lookup = (
     type: d_out.Type,
-): d_out.Module.types.D.algorithm._type.refiner.lookups.O.D => ['acyclic', type]
+): d_out.Module.types.D.algorithm.type_.refiner.lookups.O.D => ['acyclic', type]
 
 export const cyclic_lookup = (
     type: d_out.Type,
-): d_out.Module.types.D.algorithm._type.refiner.lookups.O.D => ['cyclic', type]
+): d_out.Module.types.D.algorithm.type_.refiner.lookups.O.D => ['cyclic', type]
 export const stack_lookup = (
     type: d_out.Type,
-): d_out.Module.types.D.algorithm._type.refiner.lookups.O.D => ['stack', type]
+): d_out.Module.types.D.algorithm.type_.refiner.lookups.O.D => ['stack', type]
 
 export namespace t {
 
@@ -108,7 +108,7 @@ export namespace t {
     //     }])
     // }
 
-    // export const deprecated_parameter_type = (
+    // export const deprecated_parametertype_ = (
     //     parameter: string,
     // ): d_out.Type => {
     //     return wrap_state_group(['deprecated parameter', {
@@ -254,7 +254,7 @@ export namespace type {
         context: d_out.Type,
         result: d_out.Type,
         error: null | d_out.Type,
-        lookups: null | _p.Raw_Or_Normal_Dictionary<d_out.Module.types.D.algorithm._type.refiner.lookups.O.D>,
+        lookups: null | _p.Raw_Or_Normal_Dictionary<d_out.Module.types.D.algorithm.type_.refiner.lookups.O.D>,
         parameters: null | _p.Raw_Or_Normal_Dictionary<d_out.Type>,
     ): d_out.Module.types.D => {
         return wrap_state_group(['algorithm', {

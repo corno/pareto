@@ -153,9 +153,9 @@ export namespace e {
         source: d_target.Selection,
         context: d_target.Expression,
         abort: boolean,
-        arguments_?: _p.Raw_Or_Normal_Dictionary<d_target.Expression.initialize.component.call._arguments.O.D>,
+        arguments_?: _p.Raw_Or_Normal_Dictionary<d_target.Expression.initialize.component.call.arguments_.O.D>,
     ): d_target.Expression => {
-        const args: d_target.Expression.initialize.component.call._arguments = arguments_ === undefined ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(arguments_))
+        const args: d_target.Expression.initialize.component.call.arguments_ = arguments_ === undefined ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(arguments_))
         return wrap_state_group(['initialize', wrap_state_group(['component', wrap_state_group(['call', {
             'source': source,
             'context': context,
@@ -273,7 +273,7 @@ export namespace e {
         variable: string,
         tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
     ): d_target.Expression => wrap_state_group(['special', wrap_state_group(['selection deprecated', {
-        'start': wrap_state_group(['variable', variable]),
+        'start': wrap_state_group(['variable', wrap_state_group(['local', variable])]),
         'tail': _p.list.literal(tail),
     }])])
 
@@ -299,7 +299,7 @@ export namespace e {
 
     export const decide_state_group = (
         source: d_target.Selection,
-        cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide._type.state_group._type.full.cases.D>,
+        cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide.type_.state_group.type_.full.cases.D>,
         resulting_type?: null | d_target.Type_Node_Reference,
     ): d_target.Expression => wrap_state_group(['decide', {
         'type': wrap_state_group(['state group', {
@@ -313,7 +313,7 @@ export namespace e {
 
     export const decide_state_group_partial = (
         source: d_target.Selection,
-        cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide._type.state_group._type.partial.cases.D>,
+        cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide.type_.state_group.type_.partial.cases.D>,
         default_: d_target.Expression,
         resulting_type?: null | d_target.Type_Node_Reference,
     ): d_target.Expression => wrap_state_group(['decide', {
@@ -342,7 +342,7 @@ export namespace e {
         variable: string,
         tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
     ): d_target.Expression => wrap_state_group(['special', wrap_state_group(['selection deprecated', {
-        'start': wrap_state_group(['variable', variable]),
+        'start': wrap_state_group(['variable', wrap_state_group(['local', variable])]),
         'tail': _p.list.literal(tail),
     }])])
 
@@ -358,7 +358,7 @@ export namespace s {
     export const call = (
         source: d_target.Selection,
         context: d_target.Selection,
-        arguments_: _p.Raw_Or_Normal_Dictionary<d_target.Selection.start.call._arguments.O.D>,
+        arguments_: _p.Raw_Or_Normal_Dictionary<d_target.Selection.start.call.arguments_.O.D>,
         tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
     ): d_target.Selection => ({
         'start': wrap_state_group(['call', {
@@ -387,7 +387,7 @@ export namespace s {
         tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
 
     ): d_target.Selection => ({
-        'start': wrap_state_group(['variable', name]),
+        'start': wrap_state_group(['variable', wrap_state_group(['local', name])]),
         'tail': _p.list.literal(tail),
     })
 
@@ -406,10 +406,10 @@ export namespace s {
         tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
 
     ): d_target.Selection => ({
-        'start': wrap_state_group(['imported variable', {
+        'start': wrap_state_group(['variable', wrap_state_group(['imported', {
             'import': imp,
             'variable': variable,
-        }]),
+        }])]),
         'tail': _p.list.literal(tail),
     })
 

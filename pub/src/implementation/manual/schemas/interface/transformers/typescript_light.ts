@@ -166,8 +166,8 @@ export const Module_Set = ($: d_in.Module_Set): d_out.Directory => {
 
                                                 _p.sg($.type, ($) => {
                                                     switch ($[0]) {
-                                                        case 'transformer': return _p.ss($, ($): d_out.Type._function.parameters => _p.list.literal([]))
-                                                        case 'refiner': return _p.ss($, ($): d_out.Type._function.parameters => _p.list.nested_literal_old([
+                                                        case 'transformer': return _p.ss($, ($): d_out.Type.function_.parameters => _p.list.literal([]))
+                                                        case 'refiner': return _p.ss($, ($): d_out.Type.function_.parameters => _p.list.nested_literal_old([
 
                                                             $.error.__decide(
                                                                 ($) => [

@@ -5,38 +5,6 @@ import * as i_out from "./data"
 
 import * as i_in from "./data"
 
-export namespace String_Literal_ {
-    
-    export type I = i_in.String_Literal
-    
-    export type O = i_out.String_Literal
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type String_Literal_ = (
-    $$_: String_Literal_.I,
-) => String_Literal_.O
-
-export namespace Type_ {
-    
-    export type I = i_in.Type
-    
-    export type O = i_out.Type
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Type_ = (
-    $$_: Type_.I,
-) => Type_.O
-
 export namespace Block_Part_ {
     
     export type I = i_in.Block_Part
@@ -52,22 +20,6 @@ export namespace Block_Part_ {
 export type Block_Part_ = (
     $$_: Block_Part_.I,
 ) => Block_Part_.O
-
-export namespace Expression_ {
-    
-    export type I = i_in.Expression
-    
-    export type O = i_out.Expression
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Expression_ = (
-    $$_: Expression_.I,
-) => Expression_.O
 
 export namespace Block_ {
     
@@ -117,6 +69,70 @@ export type Group_ = (
     $$_: Group_.I,
 ) => Group_.O
 
+export namespace Identifier_ {
+    
+    export type I = i_in.Identifier
+    
+    export type O = i_out.Identifier
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Identifier_ = (
+    $$_: Identifier_.I,
+) => Identifier_.O
+
+export namespace String_Literal_ {
+    
+    export type I = i_in.String_Literal
+    
+    export type O = i_out.String_Literal
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type String_Literal_ = (
+    $$_: String_Literal_.I,
+) => String_Literal_.O
+
+export namespace Type_ {
+    
+    export type I = i_in.Type
+    
+    export type O = i_out.Type
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Type_ = (
+    $$_: Type_.I,
+) => Type_.O
+
+export namespace Expression_ {
+    
+    export type I = i_in.Expression
+    
+    export type O = i_out.Expression
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Expression_ = (
+    $$_: Expression_.I,
+) => Expression_.O
+
 export namespace Statements_ {
     
     export type I = i_in.Statements
@@ -150,13 +166,14 @@ export type Directory_ = (
 ) => Directory_.O
 
 export { 
-    String_Literal_ as String_Literal, 
-    Type_ as Type, 
     Block_Part_ as Block_Part, 
-    Expression_ as Expression, 
     Block_ as Block, 
     Group_Part_ as Group_Part, 
     Group_ as Group, 
+    Identifier_ as Identifier, 
+    String_Literal_ as String_Literal, 
+    Type_ as Type, 
+    Expression_ as Expression, 
     Statements_ as Statements, 
     Directory_ as Directory, 
 }

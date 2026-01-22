@@ -3,185 +3,6 @@ import * as _pi from "pareto-core/dist/interface"
 
 import * as i__location from "../../core/location"
 
-export namespace String_Literal_ {
-    
-    export namespace delimiter {
-        
-        export type quote = null
-        
-        export type apostrophe = null
-        
-    }
-    
-    export type delimiter = 
-        | readonly ['quote', delimiter.quote]
-        | readonly ['apostrophe', delimiter.apostrophe]
-    
-    export type value = string
-    
-}
-
-export type String_Literal_ = {
-    readonly 'delimiter': String_Literal_.delimiter
-    readonly 'value': String_Literal_.value
-}
-
-export namespace Type_ {
-    
-    export type _boolean = null
-    
-    export namespace _function {
-        
-        export namespace type_parameters {
-            
-            export type L = string
-            
-        }
-        
-        export type type_parameters = _pi.List<type_parameters.L>
-        
-        export namespace parameters {
-            
-            export namespace L {
-                
-                export type name = string
-                
-                export namespace _type {
-                    
-                    export type O = Type_
-                    
-                }
-                
-                export type _type = _pi.Optional_Value<_type.O>
-                
-            }
-            
-            export type L = {
-                readonly 'name': L.name
-                readonly 'type': L._type
-            }
-            
-        }
-        
-        export type parameters = _pi.List<parameters.L>
-        
-        export type _return = Type_
-        
-    }
-    
-    export type _function = {
-        readonly 'type parameters': _function.type_parameters
-        readonly 'parameters': _function.parameters
-        readonly 'return': _function._return
-    }
-    
-    export type literal_type = String_Literal_
-    
-    export type _null = null
-    
-    export type _number = null
-    
-    export type _string = null
-    
-    export namespace tuple {
-        
-        export type readonly = boolean
-        
-        export namespace elements {
-            
-            export type L = Type_
-            
-        }
-        
-        export type elements = _pi.List<elements.L>
-        
-    }
-    
-    export type tuple = {
-        readonly 'readonly': tuple.readonly
-        readonly 'elements': tuple.elements
-    }
-    
-    export namespace type_literal {
-        
-        export namespace properties {
-            
-            export namespace D {
-                
-                export type readonly = boolean
-                
-                export type _type = Type_
-                
-            }
-            
-            export type D = {
-                readonly 'readonly': D.readonly
-                readonly 'type': D._type
-            }
-            
-        }
-        
-        export type properties = _pi.Dictionary<properties.D>
-        
-    }
-    
-    export type type_literal = {
-        readonly 'properties': type_literal.properties
-    }
-    
-    export namespace type_reference {
-        
-        export type start = string
-        
-        export namespace tail {
-            
-            export type L = string
-            
-        }
-        
-        export type tail = _pi.List<tail.L>
-        
-        export namespace type_arguments {
-            
-            export type L = Type_
-            
-        }
-        
-        export type type_arguments = _pi.List<type_arguments.L>
-        
-    }
-    
-    export type type_reference = {
-        readonly 'start': type_reference.start
-        readonly 'tail': type_reference.tail
-        readonly 'type arguments': type_reference.type_arguments
-    }
-    
-    export namespace union {
-        
-        export type L = Type_
-        
-    }
-    
-    export type union = _pi.List<union.L>
-    
-    export type _void = null
-    
-}
-
-export type Type_ = 
-    | readonly ['boolean', Type_._boolean]
-    | readonly ['function', Type_._function]
-    | readonly ['literal type', Type_.literal_type]
-    | readonly ['null', Type_._null]
-    | readonly ['number', Type_._number]
-    | readonly ['string', Type_._string]
-    | readonly ['tuple', Type_.tuple]
-    | readonly ['type literal', Type_.type_literal]
-    | readonly ['type reference', Type_.type_reference]
-    | readonly ['union', Type_.union]
-    | readonly ['void', Type_._void]
-
 export namespace Block_Part_ {
     
     export type snippet = string
@@ -208,132 +29,6 @@ export type Block_Part_ =
     | readonly ['sub block', Block_Part_.sub_block]
     | readonly ['optional', Block_Part_.optional]
     | readonly ['nothing', Block_Part_.nothing]
-
-export namespace Expression_ {
-    
-    export type raw = Block_Part_
-    
-    export type number_literal = number
-    
-    export type _true = null
-    
-    export type _false = null
-    
-    export type _null = null
-    
-    export type string_literal = String_Literal_
-    
-    export namespace object_literal {
-        
-        export namespace properties {
-            
-            export type D = Expression_
-            
-        }
-        
-        export type properties = _pi.Dictionary<properties.D>
-        
-    }
-    
-    export type object_literal = {
-        readonly 'properties': object_literal.properties
-    }
-    
-    export namespace array_literal {
-        
-        export type L = Expression_
-        
-    }
-    
-    export type array_literal = _pi.List<array_literal.L>
-    
-    export namespace arrow_function {
-        
-        export namespace parameters {
-            
-            export namespace L {
-                
-                export type name = string
-                
-                export namespace _type {
-                    
-                    export type O = Type_
-                    
-                }
-                
-                export type _type = _pi.Optional_Value<_type.O>
-                
-            }
-            
-            export type L = {
-                readonly 'name': L.name
-                readonly 'type': L._type
-            }
-            
-        }
-        
-        export type parameters = _pi.List<parameters.L>
-        
-        export namespace return_type {
-            
-            export type O = Type_
-            
-        }
-        
-        export type return_type = _pi.Optional_Value<return_type.O>
-        
-        export namespace _type {
-            
-            export type block = Statements_
-            
-            export type expression = Expression_
-            
-        }
-        
-        export type _type = 
-            | readonly ['block', _type.block]
-            | readonly ['expression', _type.expression]
-        
-    }
-    
-    export type arrow_function = {
-        readonly 'parameters': arrow_function.parameters
-        readonly 'return type': arrow_function.return_type
-        readonly 'type': arrow_function._type
-    }
-    
-    export namespace call {
-        
-        export type function_selection = Expression_
-        
-        export namespace _arguments {
-            
-            export type L = Expression_
-            
-        }
-        
-        export type _arguments = _pi.List<_arguments.L>
-        
-    }
-    
-    export type call = {
-        readonly 'function selection': call.function_selection
-        readonly 'arguments': call._arguments
-    }
-    
-}
-
-export type Expression_ = 
-    | readonly ['raw', Expression_.raw]
-    | readonly ['number literal', Expression_.number_literal]
-    | readonly ['true', Expression_._true]
-    | readonly ['false', Expression_._false]
-    | readonly ['null', Expression_._null]
-    | readonly ['string literal', Expression_.string_literal]
-    | readonly ['object literal', Expression_.object_literal]
-    | readonly ['array literal', Expression_.array_literal]
-    | readonly ['arrow function', Expression_.arrow_function]
-    | readonly ['call', Expression_.call]
 
 export namespace Block_ {
     
@@ -378,15 +73,495 @@ export namespace Group_ {
 
 export type Group_ = _pi.List<Group_.L>
 
+export type Identifier_ = string
+
+export namespace String_Literal_ {
+    
+    export namespace delimiter {
+        
+        export type quote = null
+        
+        export type apostrophe = null
+        
+    }
+    
+    export type delimiter = 
+        | readonly ['quote', delimiter.quote]
+        | readonly ['apostrophe', delimiter.apostrophe]
+    
+    export type value = string
+    
+}
+
+export type String_Literal_ = {
+    readonly 'delimiter': String_Literal_.delimiter
+    readonly 'value': String_Literal_.value
+}
+
+export namespace Type_ {
+    
+    export type boolean_ = null
+    
+    export namespace function_ {
+        
+        export namespace type_parameters {
+            
+            export type L = Type_
+            
+        }
+        
+        export type type_parameters = _pi.List<type_parameters.L>
+        
+        export namespace parameters {
+            
+            export namespace L {
+                
+                export type name = Identifier_
+                
+                export namespace type_ {
+                    
+                    export type O = Type_
+                    
+                }
+                
+                export type type_ = _pi.Optional_Value<type_.O>
+                
+            }
+            
+            export type L = {
+                readonly 'name': L.name
+                readonly 'type': L.type_
+            }
+            
+        }
+        
+        export type parameters = _pi.List<parameters.L>
+        
+        export type return_ = Type_
+        
+    }
+    
+    export type function_ = {
+        readonly 'type parameters': function_.type_parameters
+        readonly 'parameters': function_.parameters
+        readonly 'return': function_.return_
+    }
+    
+    export type literal_type = String_Literal_
+    
+    export type null_ = null
+    
+    export type number_ = null
+    
+    export type string_ = null
+    
+    export namespace tuple {
+        
+        export type readonly = boolean
+        
+        export namespace elements {
+            
+            export type L = Type_
+            
+        }
+        
+        export type elements = _pi.List<elements.L>
+        
+    }
+    
+    export type tuple = {
+        readonly 'readonly': tuple.readonly
+        readonly 'elements': tuple.elements
+    }
+    
+    export namespace type_literal {
+        
+        export namespace properties {
+            
+            export namespace D {
+                
+                export type readonly = boolean
+                
+                export type type_ = Type_
+                
+            }
+            
+            export type D = {
+                readonly 'readonly': D.readonly
+                readonly 'type': D.type_
+            }
+            
+        }
+        
+        export type properties = _pi.Dictionary<properties.D>
+        
+    }
+    
+    export type type_literal = {
+        readonly 'properties': type_literal.properties
+    }
+    
+    export namespace type_reference {
+        
+        export type start = Identifier_
+        
+        export namespace tail {
+            
+            export type L = Identifier_
+            
+        }
+        
+        export type tail = _pi.List<tail.L>
+        
+        export namespace type_arguments {
+            
+            export type L = Type_
+            
+        }
+        
+        export type type_arguments = _pi.List<type_arguments.L>
+        
+    }
+    
+    export type type_reference = {
+        readonly 'start': type_reference.start
+        readonly 'tail': type_reference.tail
+        readonly 'type arguments': type_reference.type_arguments
+    }
+    
+    export namespace union {
+        
+        export type L = Type_
+        
+    }
+    
+    export type union = _pi.List<union.L>
+    
+    export type void_ = null
+    
+}
+
+export type Type_ = 
+    | readonly ['boolean', Type_.boolean_]
+    | readonly ['function', Type_.function_]
+    | readonly ['literal type', Type_.literal_type]
+    | readonly ['null', Type_.null_]
+    | readonly ['number', Type_.number_]
+    | readonly ['string', Type_.string_]
+    | readonly ['tuple', Type_.tuple]
+    | readonly ['type literal', Type_.type_literal]
+    | readonly ['type reference', Type_.type_reference]
+    | readonly ['union', Type_.union]
+    | readonly ['void', Type_.void_]
+
+export namespace Expression_ {
+    
+    export type raw = Block_Part_
+    
+    export namespace array_literal {
+        
+        export type L = Expression_
+        
+    }
+    
+    export type array_literal = _pi.List<array_literal.L>
+    
+    export namespace arrow_function {
+        
+        export namespace parameters {
+            
+            export namespace L {
+                
+                export type name = Identifier_
+                
+                export namespace type_ {
+                    
+                    export type O = Type_
+                    
+                }
+                
+                export type type_ = _pi.Optional_Value<type_.O>
+                
+            }
+            
+            export type L = {
+                readonly 'name': L.name
+                readonly 'type': L.type_
+            }
+            
+        }
+        
+        export type parameters = _pi.List<parameters.L>
+        
+        export namespace return_type {
+            
+            export type O = Type_
+            
+        }
+        
+        export type return_type = _pi.Optional_Value<return_type.O>
+        
+        export namespace type_ {
+            
+            export type block = Statements_
+            
+            export type expression = Expression_
+            
+        }
+        
+        export type type_ = 
+            | readonly ['block', type_.block]
+            | readonly ['expression', type_.expression]
+        
+    }
+    
+    export type arrow_function = {
+        readonly 'parameters': arrow_function.parameters
+        readonly 'return type': arrow_function.return_type
+        readonly 'type': arrow_function.type_
+    }
+    
+    export namespace assignment {
+        
+        export type left = Expression_
+        
+        export type right = Expression_
+        
+    }
+    
+    export type assignment = {
+        readonly 'left': assignment.left
+        readonly 'right': assignment.right
+    }
+    
+    export namespace call {
+        
+        export type function_selection = Expression_
+        
+        export namespace arguments_ {
+            
+            export type L = Expression_
+            
+        }
+        
+        export type arguments_ = _pi.List<arguments_.L>
+        
+    }
+    
+    export type call = {
+        readonly 'function selection': call.function_selection
+        readonly 'arguments': call.arguments_
+    }
+    
+    export namespace compare {
+        
+        export type left = Expression_
+        
+        export namespace operator {
+            
+            export type loosely_equal = null
+            
+            export type strictly_equal = null
+            
+            export type loosely_not_equal = null
+            
+            export type strictly_not_equal = null
+            
+            export type smaller_than = null
+            
+            export type smaller_than_or_equal = null
+            
+            export type greater_than = null
+            
+            export type greater_than_or_equal = null
+            
+        }
+        
+        export type operator = 
+            | readonly ['loosely equal', operator.loosely_equal]
+            | readonly ['strictly equal', operator.strictly_equal]
+            | readonly ['loosely not equal', operator.loosely_not_equal]
+            | readonly ['strictly not equal', operator.strictly_not_equal]
+            | readonly ['smaller than', operator.smaller_than]
+            | readonly ['smaller than or equal', operator.smaller_than_or_equal]
+            | readonly ['greater than', operator.greater_than]
+            | readonly ['greater than or equal', operator.greater_than_or_equal]
+        
+        export type right = Expression_
+        
+    }
+    
+    export type compare = {
+        readonly 'left': compare.left
+        readonly 'operator': compare.operator
+        readonly 'right': compare.right
+    }
+    
+    export namespace conditional {
+        
+        export type condition = Expression_
+        
+        export type if_true = Expression_
+        
+        export type if_false = Expression_
+        
+    }
+    
+    export type conditional = {
+        readonly 'condition': conditional.condition
+        readonly 'if true': conditional.if_true
+        readonly 'if false': conditional.if_false
+    }
+    
+    export namespace element_access {
+        
+        export type collection = Expression_
+        
+        export type index = Expression_
+        
+    }
+    
+    export type element_access = {
+        readonly 'collection': element_access.collection
+        readonly 'index': element_access.index
+    }
+    
+    export type identifier = Identifier_
+    
+    export type false_ = null
+    
+    export type null_ = null
+    
+    export type number_literal = number
+    
+    export namespace object_literal {
+        
+        export namespace properties {
+            
+            export type D = Expression_
+            
+        }
+        
+        export type properties = _pi.Dictionary<properties.D>
+        
+    }
+    
+    export type object_literal = {
+        readonly 'properties': object_literal.properties
+    }
+    
+    export type parenthesized = Expression_
+    
+    export namespace property_access {
+        
+        export type object_ = Expression_
+        
+        export type property = Identifier_
+        
+    }
+    
+    export type property_access = {
+        readonly 'object': property_access.object_
+        readonly 'property': property_access.property
+    }
+    
+    export type string_literal = String_Literal_
+    
+    export type true_ = null
+    
+}
+
+export type Expression_ = 
+    | readonly ['raw', Expression_.raw]
+    | readonly ['array literal', Expression_.array_literal]
+    | readonly ['arrow function', Expression_.arrow_function]
+    | readonly ['assignment', Expression_.assignment]
+    | readonly ['call', Expression_.call]
+    | readonly ['compare', Expression_.compare]
+    | readonly ['conditional', Expression_.conditional]
+    | readonly ['element access', Expression_.element_access]
+    | readonly ['identifier', Expression_.identifier]
+    | readonly ['false', Expression_.false_]
+    | readonly ['null', Expression_.null_]
+    | readonly ['number literal', Expression_.number_literal]
+    | readonly ['object literal', Expression_.object_literal]
+    | readonly ['parenthesized', Expression_.parenthesized]
+    | readonly ['property access', Expression_.property_access]
+    | readonly ['string literal', Expression_.string_literal]
+    | readonly ['true', Expression_.true_]
+
 export namespace Statements_ {
     
     export namespace L {
         
-        export namespace _import {
+        export type raw = Group_
+        
+        export type block = Statements_
+        
+        export namespace export_ {
             
-            export namespace _type {
+            export namespace type_ {
                 
-                export type namespace = string
+                export namespace named_exports {
+                    
+                    export namespace specifiers {
+                        
+                        export namespace L {
+                            
+                            export type name = Identifier_
+                            
+                            export namespace as_ {
+                                
+                                export type O = Identifier_
+                                
+                            }
+                            
+                            export type as_ = _pi.Optional_Value<as_.O>
+                            
+                        }
+                        
+                        export type L = {
+                            readonly 'name': L.name
+                            readonly 'as': L.as_
+                        }
+                        
+                    }
+                    
+                    export type specifiers = _pi.List<specifiers.L>
+                    
+                    export namespace from_ {
+                        
+                        export type O = Identifier_
+                        
+                    }
+                    
+                    export type from_ = _pi.Optional_Value<from_.O>
+                    
+                }
+                
+                export type named_exports = {
+                    readonly 'specifiers': named_exports.specifiers
+                    readonly 'from': named_exports.from_
+                }
+                
+            }
+            
+            export type type_ = 
+                | readonly ['named exports', type_.named_exports]
+            
+        }
+        
+        export type export_ = {
+            readonly 'type': export_.type_
+        }
+        
+        export type expression = Expression_
+        
+        export namespace import_ {
+            
+            export namespace type_ {
+                
+                export type namespace = Identifier_
                 
                 export namespace named {
                     
@@ -394,21 +569,21 @@ export namespace Statements_ {
                         
                         export namespace L {
                             
-                            export type name = string
+                            export type name = Identifier_
                             
-                            export namespace _as {
+                            export namespace as_ {
                                 
-                                export type O = string
+                                export type O = Identifier_
                                 
                             }
                             
-                            export type _as = _pi.Optional_Value<_as.O>
+                            export type as_ = _pi.Optional_Value<as_.O>
                             
                         }
                         
                         export type L = {
                             readonly 'name': L.name
-                            readonly 'as': L._as
+                            readonly 'as': L.as_
                         }
                         
                     }
@@ -423,132 +598,123 @@ export namespace Statements_ {
                 
             }
             
-            export type _type = 
-                | readonly ['namespace', _type.namespace]
-                | readonly ['named', _type.named]
+            export type type_ = 
+                | readonly ['namespace', type_.namespace]
+                | readonly ['named', type_.named]
             
-            export type _from = string
-            
-        }
-        
-        export type _import = {
-            readonly 'type': _import._type
-            readonly 'from': _import._from
-        }
-        
-        export namespace _export {
-            
-            export namespace _type {
-                
-                export namespace named_exports {
-                    
-                    export namespace specifiers {
-                        
-                        export namespace L {
-                            
-                            export type name = string
-                            
-                            export namespace _as {
-                                
-                                export type O = string
-                                
-                            }
-                            
-                            export type _as = _pi.Optional_Value<_as.O>
-                            
-                        }
-                        
-                        export type L = {
-                            readonly 'name': L.name
-                            readonly 'as': L._as
-                        }
-                        
-                    }
-                    
-                    export type specifiers = _pi.List<specifiers.L>
-                    
-                    export namespace _from {
-                        
-                        export type O = string
-                        
-                    }
-                    
-                    export type _from = _pi.Optional_Value<_from.O>
-                    
-                }
-                
-                export type named_exports = {
-                    readonly 'specifiers': named_exports.specifiers
-                    readonly 'from': named_exports._from
-                }
-                
-            }
-            
-            export type _type = 
-                | readonly ['named exports', _type.named_exports]
+            export type from_ = Identifier_
             
         }
         
-        export type _export = {
-            readonly 'type': _export._type
+        export type import_ = {
+            readonly 'type': import_.type_
+            readonly 'from': import_.from_
         }
         
         export namespace module_declaration {
             
-            export type _export = boolean
+            export type export_ = boolean
             
-            export type name = string
+            export type name = Identifier_
             
             export type block = Statements_
             
         }
         
         export type module_declaration = {
-            readonly 'export': module_declaration._export
+            readonly 'export': module_declaration.export_
             readonly 'name': module_declaration.name
             readonly 'block': module_declaration.block
         }
         
+        export namespace return_ {
+            
+            export type O = Expression_
+            
+        }
+        
+        export type return_ = _pi.Optional_Value<return_.O>
+        
+        export namespace switch_ {
+            
+            export type expression = Expression_
+            
+            export namespace clauses {
+                
+                export namespace L {
+                    
+                    export namespace type_ {
+                        
+                        export type case_ = Expression_
+                        
+                        export type default_ = null
+                        
+                    }
+                    
+                    export type type_ = 
+                        | readonly ['case', type_.case_]
+                        | readonly ['default', type_.default_]
+                    
+                    export type statements = Statements_
+                    
+                }
+                
+                export type L = {
+                    readonly 'type': L.type_
+                    readonly 'statements': L.statements
+                }
+                
+            }
+            
+            export type clauses = _pi.List<clauses.L>
+            
+        }
+        
+        export type switch_ = {
+            readonly 'expression': switch_.expression
+            readonly 'clauses': switch_.clauses
+        }
+        
         export namespace type_alias_declaration {
             
-            export type _export = boolean
+            export type export_ = boolean
             
-            export type name = string
+            export type name = Identifier_
             
             export namespace parameters {
                 
-                export type L = string
+                export type L = Identifier_
                 
             }
             
             export type parameters = _pi.List<parameters.L>
             
-            export type _type = Type_
+            export type type_ = Type_
             
         }
         
         export type type_alias_declaration = {
-            readonly 'export': type_alias_declaration._export
+            readonly 'export': type_alias_declaration.export_
             readonly 'name': type_alias_declaration.name
             readonly 'parameters': type_alias_declaration.parameters
-            readonly 'type': type_alias_declaration._type
+            readonly 'type': type_alias_declaration.type_
         }
         
         export namespace variable {
             
-            export type _export = boolean
+            export type export_ = boolean
             
-            export type _const = boolean
+            export type const_ = boolean
             
-            export type name = string
+            export type name = Identifier_
             
-            export namespace _type {
+            export namespace type_ {
                 
                 export type O = Type_
                 
             }
             
-            export type _type = _pi.Optional_Value<_type.O>
+            export type type_ = _pi.Optional_Value<type_.O>
             
             export namespace expression {
                 
@@ -561,24 +727,26 @@ export namespace Statements_ {
         }
         
         export type variable = {
-            readonly 'export': variable._export
-            readonly 'const': variable._const
+            readonly 'export': variable.export_
+            readonly 'const': variable.const_
             readonly 'name': variable.name
-            readonly 'type': variable._type
+            readonly 'type': variable.type_
             readonly 'expression': variable.expression
         }
-        
-        export type raw = Group_
         
     }
     
     export type L = 
-        | readonly ['import', L._import]
-        | readonly ['export', L._export]
+        | readonly ['raw', L.raw]
+        | readonly ['block', L.block]
+        | readonly ['export', L.export_]
+        | readonly ['expression', L.expression]
+        | readonly ['import', L.import_]
         | readonly ['module declaration', L.module_declaration]
+        | readonly ['return', L.return_]
+        | readonly ['switch', L.switch_]
         | readonly ['type alias declaration', L.type_alias_declaration]
         | readonly ['variable', L.variable]
-        | readonly ['raw', L.raw]
     
 }
 
@@ -611,13 +779,14 @@ export namespace Directory_ {
 export type Directory_ = _pi.Dictionary<Directory_.D>
 
 export { 
-    String_Literal_ as String_Literal, 
-    Type_ as Type, 
     Block_Part_ as Block_Part, 
-    Expression_ as Expression, 
     Block_ as Block, 
     Group_Part_ as Group_Part, 
     Group_ as Group, 
+    Identifier_ as Identifier, 
+    String_Literal_ as String_Literal, 
+    Type_ as Type, 
+    Expression_ as Expression, 
     Statements_ as Statements, 
     Directory_ as Directory, 
 }

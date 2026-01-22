@@ -48,7 +48,7 @@ export namespace n {
 export const specifier = (
     name: string,
     as: null | string,
-): d_target.Statements_.L._export._type.named_exports.specifiers.L => {
+): d_target.Statements_.L.export_.type_.named_exports.specifiers.L => {
     return {
         'name': name,
         'as': as === null ? _p.optional.not_set() : _p.optional.set(as),
@@ -66,7 +66,7 @@ export namespace s {
     }]
 
     export const export_ = (
-        specifiers: _p.Raw_Or_Normal_List<d_target.Statements_.L._export._type.named_exports.specifiers.L>,
+        specifiers: _p.Raw_Or_Normal_List<d_target.Statements_.L.export_.type_.named_exports.specifiers.L>,
         from: null | string,
     ): d_target.Statements_.L => ['export', {
         'type': ['named exports', {
@@ -134,7 +134,7 @@ export const group = (Group_Parts: _p.Raw_Or_Normal_List<d_target.Group_.L>): d_
 export const parameter = (
     name: string,
     type: d_target.Type | null,
-): d_target.Type._function.parameters.L => {
+): d_target.Type.function_.parameters.L => {
     return {
         'name': name,
         'type': type === null
@@ -158,8 +158,8 @@ export namespace t {
         return ['boolean', null]
     }
     export const function_ = (
-        type_parameters: _p.Raw_Or_Normal_List<string>,
-        parameters: _p.Raw_Or_Normal_List<d_target.Type._function.parameters.L>,
+        type_parameters: _p.Raw_Or_Normal_List<d_target.Type>,
+        parameters: _p.Raw_Or_Normal_List<d_target.Type.function_.parameters.L>,
         return_: d_target.Type,
     ): d_target.Type => {
         return ['function', {
@@ -244,14 +244,14 @@ export namespace e {
     ): d_target.Expression_ => {
         return ['array literal', _p.list.literal(elements)]
     }
-    // export const arrow_function = (
-    //     parameters: unresolved.Expression_.arrow_function.parameters.L[],
-    //     return_type: unresolved.Type | null,
-    //     //type: unresolved.Expression_.arrow_function.type,
+    // export const arrowfunction_ = (
+    //     parameters: unresolved.Expression_.arrowfunction_.parameters.L[],
+    //     returntype_: unresolved.Type | null,
+    //     //type: unresolved.Expression_.arrowfunction_.type,
     // ): unresolved.Expression_ => {
     //     return ['arrow function', {
     //         'parameters': pd.a(parameters),
-    //         'return type': return_type,
+    //         'return type': returntype_,
     //         'type': type
     //     }]
     // }
