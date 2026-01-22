@@ -8,10 +8,12 @@ export const $$ = (
 ): string => _ps.text.deprecated_build(($i) => {
         _pd.list.from_text($, ($) => $).__for_each(($) => {
             switch ($) {
-                case 0x2F: // slash (\/)
-                    $i.add_character(0x5C) // \
-                    $i.add_character(0x2F) // /
-                    break
+
+                //don't escape slashes, they are used in URLs and file paths
+                // case 0x2F: // slash (\/)
+                //     $i.add_character(0x5C) // \
+                //     $i.add_character(0x2F) // /
+                //     break
                 case 0x22: // " (\")
                     $i.add_character(0x5C) // \
                     $i.add_character(0x22) // "

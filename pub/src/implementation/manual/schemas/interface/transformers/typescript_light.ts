@@ -34,7 +34,7 @@ export const Module_Set = ($: d_in.Module_Set): d_out.Directory => {
                 }
                 return sh.n.file(_p.list.nested_literal_old<d_out.Statements_.L>([
                     [
-                        sh.s.import_namespace(" pi", "pareto-core-interface"),
+                        sh.s.import_namespace(" pi", "pareto-core/dist/interface"),
                     ],
 
                     _p.list.from_dictionary($.imports, ($, key): d_out.Statements_.L => sh.s.import_namespace(
