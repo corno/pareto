@@ -159,7 +159,7 @@ export const Module_Set = ($: d_in.Module_Set): d_out.Directory => {
                                             _p.list.nested_literal_old([
                                                 [
                                                     sh.parameter(
-                                                        "$",
+                                                        "context",
                                                         sh.t.type_reference(name, ["I"], []),
                                                     ),
                                                 ],
@@ -173,8 +173,15 @@ export const Module_Set = ($: d_in.Module_Set): d_out.Directory => {
                                                                 ($) => [
 
                                                                     sh.parameter(
-                                                                        "$error",
-                                                                        sh.t.type_reference(name, ["E"], []),
+                                                                        "abort",
+                                                                        sh.t.type_reference(
+                                                                            " pi",
+                                                                            ["Abort"],
+                                                                            [
+                                                                               sh.t.type_reference(name, ["E"], []),
+                                                                            ]
+                                                                        ),
+                                                                        
                                                                     ),
                                                                 ],
                                                                 () => []
@@ -184,7 +191,7 @@ export const Module_Set = ($: d_in.Module_Set): d_out.Directory => {
                                                                 ($) => [
 
                                                                     sh.parameter(
-                                                                        "$lookups",
+                                                                        "lookups",
                                                                         sh.t.type_literal(
                                                                             $.__d_map(($, key) => sh.tl_propery(
                                                                                 true,
@@ -219,7 +226,7 @@ export const Module_Set = ($: d_in.Module_Set): d_out.Directory => {
                                                     ($) => _p.list.literal([
 
                                                         sh.parameter(
-                                                            "$p",
+                                                            "parameters",
                                                             sh.t.type_literal(
                                                                 $.__d_map(($, key) => ({
                                                                     'readonly': true,
