@@ -1,6 +1,6 @@
 {
   "name": "pareto",
-  "version": "0.80.3",
+  "version": "0.80.4",
   "description": "A library for the Pareto programming Language",
   "main": "./dist/index.js",
   "types": "dist/index.d.ts",
