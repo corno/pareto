@@ -1,7 +1,7 @@
 import * as _p from 'pareto-core-shorthands/dist/unconstrained'
 import * as _pi from 'pareto-core/dist/interface'
 
-import * as d_out from "../interface/generated/pareto/schemas/interface/data/resolved"
+import * as d_out from "../interface/generated/liana/schemas/interface/data/resolved"
 
 
 const wrap_state_group = <T>(value: T): T => {

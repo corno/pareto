@@ -3,8 +3,8 @@ import * as _pi from 'pareto-core/dist/interface'
 import * as _pdev from 'pareto-core-dev'
 import * as _ps from 'pareto-core/dist/serializer'
 
-import * as d_in from "../../../../../interface/generated/pareto/schemas/interface/data/resolved"
-import * as d_out from "../../../../../interface/generated/pareto/schemas/typescript_light/data"
+import * as d_in from "../../../../../interface/generated/liana/schemas/interface/data/resolved"
+import * as d_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
 
 //dependencies
 import { $$ as s_file_name } from "../../../primitives/text/serializers/filename"

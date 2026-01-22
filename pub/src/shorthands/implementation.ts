@@ -1,9 +1,9 @@
 import * as _p from 'pareto-core-shorthands/dist/unconstrained'
 import * as _pi from 'pareto-core/dist/interface'
 
-import * as d_target from "../interface/generated/pareto/schemas/implementation/data/resolved" //THIS IS NOT CORRECT! It should be unresolved
+import * as d_target from "../interface/generated/liana/schemas/implementation/data/resolved" //THIS IS NOT CORRECT! It should be unresolved
 
-import * as d_target_interface from "../interface/generated/pareto/schemas/interface/data/resolved"
+import * as d_target_interface from "../interface/generated/liana/schemas/interface/data/resolved"
 
 
 const wrap_state_group = <T>(value: T): T => {

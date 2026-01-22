@@ -1,9 +1,9 @@
 import * as _p from 'pareto-core/dist/transformer'
 
-import * as s_in_inf from "../../../../../interface/generated/pareto/schemas/interface/data/resolved"
-import * as s_in_imp from "../../../../../interface/generated/pareto/schemas/implementation/data/resolved"
+import * as s_in_inf from "../../../../../interface/generated/liana/schemas/interface/data/resolved"
+import * as s_in_imp from "../../../../../interface/generated/liana/schemas/implementation/data/resolved"
 
-import * as d_out from "../../../../../interface/generated/pareto/schemas/typescript_light/data"
+import * as d_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
 
 import * as t_interface_to_typescript_temp from "../../interface/transformers/typescript_light"
 import * as t_implementation_to_typescript_temp from "../../implementation/transformers/typescript_light"

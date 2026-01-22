@@ -1,8 +1,8 @@
 import * as _p from 'pareto-core/dist/transformer'
 import * as _pdev from 'pareto-core-dev'
 
-import * as d_out from "pareto-fountain-pen/dist/interface/generated/pareto/schemas/block/data"
-import * as d_in from "../../../../../../../interface/generated/pareto/schemas/typescript_light/data"
+import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
+import * as d_in from "../../../../../../../interface/generated/liana/schemas/typescript_light/data"
 
 import { $$ as s_identifier } from "../../../primitives/text/serializers/identifier"
 import { $$ as op_enrich_list_elements_with_position_information } from "pareto-fountain-pen/dist/implementation/temp/enrich_with_position_information"

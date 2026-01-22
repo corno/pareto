@@ -1,10 +1,12 @@
 import * as _p from 'pareto-core/dist/transformer'
 import * as _pi from 'pareto-core/dist/interface'
 import * as _ps from 'pareto-core/dist/serializer'
+import * as _pdev from 'pareto-core-dev'
 
 //data types
-import * as d_in from "../../../../../interface/generated/pareto/schemas/implementation/data/resolved"
-import * as d_out from "../../../../../interface/generated/pareto/schemas/typescript_light/data"
+import * as d_in from "../../../../../interface/generated/liana/schemas/implementation/data/resolved"
+import * as d_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
+import * as d_fp_block from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
 
 //shorthands
 import * as sh from "../../../../../modules/typescript_light/shorthands/typescript_light"
@@ -19,6 +21,40 @@ import { $$ as s_file_name } from "../../../primitives/text/serializers/filename
 
 import { $$ as s_identifier } from "../../../../../modules/typescript_light/implementation/manual/primitives/text/serializers/identifier"
 import { $$ as s_number_default } from "../../../../../modules/typescript_light/implementation/manual/primitives/approximate_number/serializers/default"
+
+namespace fp_to_temp_fp {
+
+    export const Block = ($: d_fp_block.Block): d_out.Block => $.__l_map(($) => Block_Part($))
+
+    export const Block_Part = ($: d_fp_block.Block_Part_): d_out.Block_Part_ => _p.sg($, ($): d_out.Block_Part_ => {
+        switch ($[0]) {
+            case 'snippet': return _p.ss($, ($) => ['snippet', $])
+            case 'indent': return _p.ss($, ($) => ['indent', Group($)])
+            case 'sub block': return _p.ss($, ($) => ['sub block', $.__l_map(($) => Block_Part($))])
+            case 'optional': return _p.ss($, ($) => ['optional', $.__o_map(($) => Block_Part($))])
+            case 'nothing': return _p.ss($, ($) => ['nothing', null])
+            case 'rich list': return _p.ss($, ($) => _pdev.implement_me("RL"))
+            default: return _p.au($[0])
+        }
+    })
+
+    export const Group = ($: d_fp_block.Group): d_out.Group => $.__l_map(($) => Group_Part($))
+
+    export const Group_Part = ($: d_fp_block.Group_Part_): d_out.Group_Part_ => _p.sg($, ($): d_out.Group_Part_ => {
+        switch ($[0]) {
+            case 'block': return _p.ss($, ($) => ['block', $])
+            case 'nested block': return _p.ss($, ($) => ['nested block', Block($)])
+            case 'sub group': return _p.ss($, ($) => ['sub group',Group($)])
+            case 'optional': return _p.ss($, ($) => ['optional', $.__o_map(($) => Group_Part($))])
+            case 'nothing': return _p.ss($, ($) => ['nothing', null])
+            case 'rich list': return _p.ss($, ($) => _pdev.implement_me("RL"))
+            default: return _p.au($[0])
+        }
+    })
+
+
+}
+
 
 const join = ($: _pi.List<string>): string => {
     let out = ""
@@ -121,7 +157,7 @@ export const Module_Set = (
                     _p.list.from_dictionary(
                         $['type imports'],
                         ($, key) => sh.s.import_namespace(
-                            s_identifier(join(_p.list.literal(["t ", key]))),
+                            join(_p.list.literal(["t ", key])),
                             _p.sg($.type, ($): string => {
                                 switch ($[0]) {
                                     case 'external': return _p.ss($, ($) => valid_file_name($))
@@ -138,7 +174,7 @@ export const Module_Set = (
                     _p.list.from_dictionary(
                         $['variable imports'],
                         ($, key) => sh.s.import_namespace(
-                            s_identifier(join(_p.list.literal(["v ", key]))),
+                            join(_p.list.literal(["v ", key])),
                             _p.sg($.type, ($): string => {
                                 switch ($[0]) {
                                     case 'external': return _p.ss($, ($) => valid_file_name($))
@@ -161,12 +197,12 @@ export const Module_Set = (
                                     sh.b.snippet(s_identifier(key)),
                                     sh.b.sub([
                                         sh.b.snippet(": "),
-                                        t_tl_2_fp.Type(
+                                        fp_to_temp_fp.Block_Part(t_tl_2_fp.Type(
                                             Type_Reference($.type,),
                                             {
                                                 'replace empty type literals by null': true
                                             }
-                                        ),
+                                        )),
                                     ]),
                                     sh.b.snippet(" = "),
                                     sh.b.snippet("($"),
@@ -281,12 +317,12 @@ export const Expression = (
                                         $['temp resulting node'].__decide(
                                             ($) => sh.b.sub([
                                                 sh.b.snippet(": "),
-                                                t_tl_2_fp.Type(
+                                                fp_to_temp_fp.Block_Part(t_tl_2_fp.Type(
                                                     Type_Node_Reference($,),
                                                     {
                                                         'replace empty type literals by null': true
                                                     }
-                                                ),
+                                                )),
                                             ]),
                                             () => sh.b.nothing()
                                         ),
@@ -309,12 +345,12 @@ export const Expression = (
                                 $['temp resulting node'].__decide(
                                     ($) => sh.b.sub([
                                         sh.b.snippet(": "),
-                                        t_tl_2_fp.Type(
+                                        fp_to_temp_fp.Block_Part(t_tl_2_fp.Type(
                                             Type_Node_Reference($,),
                                             {
                                                 'replace empty type literals by null': true
                                             }
-                                        ),
+                                        )),
                                     ]),
                                     () => sh.b.nothing()
                                 ),
@@ -583,12 +619,12 @@ export const Expression = (
                                 $.type.__decide(
                                     ($) => sh.b.sub([
                                         sh.b.snippet(": "),
-                                        t_tl_2_fp.Type(
+                                        fp_to_temp_fp.Block_Part(t_tl_2_fp.Type(
                                             Type_Node_Reference($),
                                             {
                                                 'replace empty type literals by null': true
                                             }
-                                        ),
+                                        )),
                                     ]),
                                     () => sh.b.nothing()
                                 ),
@@ -602,12 +638,12 @@ export const Expression = (
                                     $.type.__decide(
                                         ($) => sh.b.sub([
                                             sh.b.snippet(": "),
-                                            t_tl_2_fp.Type(
+                                            fp_to_temp_fp.Block_Part(t_tl_2_fp.Type(
                                                 Type_Node_Reference($),
                                                 {
                                                     'replace empty type literals by null': true
                                                 }
-                                            ),
+                                            )),
                                         ]),
                                         () => sh.b.nothing()
                                     ),
@@ -637,12 +673,12 @@ export const Expression = (
                         $['temp resulting node'].__decide(
                             ($) => sh.b.sub([
                                 sh.b.snippet(": "),
-                                t_tl_2_fp.Type(
+                                fp_to_temp_fp.Block_Part(t_tl_2_fp.Type(
                                     Type_Node_Reference($,),
                                     {
                                         'replace empty type literals by null': true
                                     }
-                                ),
+                                )),
                             ]),
                             () => sh.b.nothing()
                         ),
