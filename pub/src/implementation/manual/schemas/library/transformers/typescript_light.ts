@@ -19,17 +19,17 @@ export type Temp_Library = {
 
 export const Temp_Library = (
     $: Temp_Library,
-    $p: {
-        'phase': 'development' | 'production'
-    }
+    // $p: {
+    //     'phase': 'development' | 'production'
+    // }
 ): d_out.Directory => {
     return _p.dictionary.literal<d_out.Directory.D>({
         "interface": sh.n.directory(t_interface_to_typescript_temp.Module_Set($.interface)),
         "implementation": sh.n.directory(t_implementation_to_typescript_temp.Module_Set(
             $.implementation,
-            {
-                'phase': $p.phase,
-            }
+            // {
+            //     'phase': $p.phase,
+            // }
         )),
         //FIX: "generic"
     })

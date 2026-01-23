@@ -113,14 +113,14 @@ export const temp_fp_line_list = (
 
 export const Module_Set = (
     $: d_in.Module_Set,
-    $p: {
-        'phase': 'development' | 'production',
-        // 'algorithm type': 
-        // | ['tranformer', null]
-        // | ['refiner', null]
-        // | ['serializer', null]
-        // | ['deserializer', null]
-    }
+    // $p: {
+    //     // 'phase': 'development' | 'production',
+    //     // 'algorithm type': 
+    //     // | ['tranformer', null]
+    //     // | ['refiner', null]
+    //     // | ['serializer', null]
+    //     // | ['deserializer', null]
+    // }
 ): d_out.Directory => {
     return $.__d_map(($, key) => _p.sg($, ($) => {
         switch ($[0]) {
@@ -146,14 +146,14 @@ export const Module_Set = (
 
 
                     ],
-                    $p.phase === 'development'
-                        ? [
-                            sh.s.import_namespace(
-                                ` pdev`,
-                                `pareto-core-dev`
-                            )
-                        ]
-                        : undefined,
+                    // $p.phase === 'development'
+                    //     ? [
+                    //         sh.s.import_namespace(
+                    //             ` pdev`,
+                    //             `pareto-core-dev`
+                    //         )
+                    //     ]
+                    //     : undefined,
                     _p.list.from_dictionary(
                         $['type imports'],
                         ($, key) => sh.s.import_namespace(
@@ -219,7 +219,7 @@ export const Module_Set = (
 
                 return sh.n.file(y)
             })
-            case 'set': return _p.ss($, ($) => ['directory', Module_Set($, $p)])
+            case 'set': return _p.ss($, ($) => ['directory', Module_Set($)])
             default: return _p.au($[0])
         }
     }))
