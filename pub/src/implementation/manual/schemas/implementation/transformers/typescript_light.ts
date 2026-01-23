@@ -7,6 +7,7 @@ import * as _pdev from 'pareto-core-dev'
 import * as d_in from "../../../../../interface/generated/liana/schemas/implementation/data/resolved"
 import * as d_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
 import * as d_fp_block from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
+import * as d_pareto_to_typescript from "../../../../../interface/to_be_generated/pareto_to_typescript"
 
 //shorthands
 import * as sh from "../../../../../modules/typescript_light/shorthands/typescript_light"
@@ -44,7 +45,7 @@ namespace fp_to_temp_fp {
         switch ($[0]) {
             case 'block': return _p.ss($, ($) => ['block', $])
             case 'nested block': return _p.ss($, ($) => ['nested block', Block($)])
-            case 'sub group': return _p.ss($, ($) => ['sub group',Group($)])
+            case 'sub group': return _p.ss($, ($) => ['sub group', Group($)])
             case 'optional': return _p.ss($, ($) => ['optional', $.__o_map(($) => Group_Part($))])
             case 'nothing': return _p.ss($, ($) => ['nothing', null])
             case 'rich list': return _p.ss($, ($) => _pdev.implement_me("RL"))
@@ -111,8 +112,36 @@ export const temp_fp_line_list = (
 
 }
 
+const temp_rename = (
+    $: d_in.Module_Set,
+    abort: _pi.Abort<d_pareto_to_typescript.Error>
+): d_in.Module_Set => {
+    const renamed: { [key: string]: d_in.Module_Set.D } = {}
+    $.__d_map(($, key) => {
+        const new_key: string = _p.sg($, ($) => {
+            switch ($[0]) {
+                case 'module': return _p.ss($, ($) => key + `.ts`)
+                case 'set': return _p.ss($, ($) => {
+                    const ends_with_ts = ($s: string): boolean => {
+                        return false //implement properly later
+                    }
+                    if (ends_with_ts(key)) {
+                        abort(['directory name ending with ts', { 'directory name': key }])
+                    }
+                    return key
+                })
+                default: return _p.au($[0])
+            }
+        })
+        renamed[new_key] = $
+    })
+    return _p.dictionary.literal(renamed)
+}
+
+
 export const Module_Set = (
     $: d_in.Module_Set,
+    abort: _pi.Abort<d_pareto_to_typescript.Error>
     // $p: {
     //     // 'phase': 'development' | 'production',
     //     // 'algorithm type': 
@@ -122,7 +151,7 @@ export const Module_Set = (
     //     // | ['deserializer', null]
     // }
 ): d_out.Directory => {
-    return $.__d_map(($, key) => _p.sg($, ($) => {
+    return temp_rename($, abort).__d_map(($, key) => _p.sg($, ($) => {
         switch ($[0]) {
             case 'module': return _p.ss($, ($): d_out.Directory.D => {
                 const valid_file_name = ($: string): string => {
@@ -219,7 +248,7 @@ export const Module_Set = (
 
                 return sh.n.file(y)
             })
-            case 'set': return _p.ss($, ($) => ['directory', Module_Set($)])
+            case 'set': return _p.ss($, ($) => ['directory', Module_Set($, abort)])
             default: return _p.au($[0])
         }
     }))
