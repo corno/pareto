@@ -133,7 +133,7 @@ export const Module_Set = (
                     [
                         sh.s.import_namespace(
                             ` p`,
-                            `pareto-core-` + _p.sg($.type, ($) => {
+                            `pareto-core/dist/` + _p.sg($.type, ($) => {
                                 switch ($[0]) {
                                     case 'serializer': return _p.ss($, ($) => `serializer`)
                                     case 'deserializer': return _p.ss($, ($) => `deserializer`)

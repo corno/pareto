@@ -18,7 +18,7 @@ export namespace Type_Reference_ {
 }
 
 export type Type_Reference_ = (
-    $$_: Type_Reference_.I,
+    context: Type_Reference_.I,
 ) => Type_Reference_.O
 
 export namespace Module_ {
@@ -34,7 +34,7 @@ export namespace Module_ {
 }
 
 export type Module_ = (
-    $$_: Module_.I,
+    context: Module_.I,
 ) => Module_.O
 
 export namespace Module_Set_ {
@@ -50,7 +50,7 @@ export namespace Module_Set_ {
 }
 
 export type Module_Set_ = (
-    $$_: Module_Set_.I,
+    context: Module_Set_.I,
 ) => Module_Set_.O
 
 export namespace Type_Node_Reference_ {
@@ -66,7 +66,7 @@ export namespace Type_Node_Reference_ {
 }
 
 export type Type_Node_Reference_ = (
-    $$_: Type_Node_Reference_.I,
+    context: Type_Node_Reference_.I,
 ) => Type_Node_Reference_.O
 
 export namespace Expression_ {
@@ -82,7 +82,7 @@ export namespace Expression_ {
 }
 
 export type Expression_ = (
-    $$_: Expression_.I,
+    context: Expression_.I,
 ) => Expression_.O
 
 export namespace Abort_Expression_ {
@@ -98,7 +98,7 @@ export namespace Abort_Expression_ {
 }
 
 export type Abort_Expression_ = (
-    $$_: Abort_Expression_.I,
+    context: Abort_Expression_.I,
 ) => Abort_Expression_.O
 
 export namespace Selection_ {
@@ -114,7 +114,7 @@ export namespace Selection_ {
 }
 
 export type Selection_ = (
-    $$_: Selection_.I,
+    context: Selection_.I,
 ) => Selection_.O
 
 export { 

@@ -18,7 +18,7 @@ export namespace Block_Part_ {
 }
 
 export type Block_Part_ = (
-    $$_: Block_Part_.I,
+    context: Block_Part_.I,
 ) => Block_Part_.O
 
 export namespace Block_ {
@@ -34,7 +34,7 @@ export namespace Block_ {
 }
 
 export type Block_ = (
-    $$_: Block_.I,
+    context: Block_.I,
 ) => Block_.O
 
 export namespace Group_Part_ {
@@ -50,7 +50,7 @@ export namespace Group_Part_ {
 }
 
 export type Group_Part_ = (
-    $$_: Group_Part_.I,
+    context: Group_Part_.I,
 ) => Group_Part_.O
 
 export namespace Group_ {
@@ -66,7 +66,7 @@ export namespace Group_ {
 }
 
 export type Group_ = (
-    $$_: Group_.I,
+    context: Group_.I,
 ) => Group_.O
 
 export namespace Identifier_ {
@@ -82,7 +82,7 @@ export namespace Identifier_ {
 }
 
 export type Identifier_ = (
-    $$_: Identifier_.I,
+    context: Identifier_.I,
 ) => Identifier_.O
 
 export namespace String_Literal_ {
@@ -98,7 +98,7 @@ export namespace String_Literal_ {
 }
 
 export type String_Literal_ = (
-    $$_: String_Literal_.I,
+    context: String_Literal_.I,
 ) => String_Literal_.O
 
 export namespace Type_ {
@@ -114,7 +114,7 @@ export namespace Type_ {
 }
 
 export type Type_ = (
-    $$_: Type_.I,
+    context: Type_.I,
 ) => Type_.O
 
 export namespace Expression_ {
@@ -130,7 +130,7 @@ export namespace Expression_ {
 }
 
 export type Expression_ = (
-    $$_: Expression_.I,
+    context: Expression_.I,
 ) => Expression_.O
 
 export namespace Statements_ {
@@ -146,7 +146,7 @@ export namespace Statements_ {
 }
 
 export type Statements_ = (
-    $$_: Statements_.I,
+    context: Statements_.I,
 ) => Statements_.O
 
 export namespace Directory_ {
@@ -162,7 +162,7 @@ export namespace Directory_ {
 }
 
 export type Directory_ = (
-    $$_: Directory_.I,
+    context: Directory_.I,
 ) => Directory_.O
 
 export { 

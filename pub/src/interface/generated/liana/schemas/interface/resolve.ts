@@ -1,6 +1,8 @@
 
 import * as _pi from "pareto-core/dist/interface"
 
+import * as i_generic from "../../generic/resolve"
+
 import * as i_resolved from "./data/resolved"
 
 import * as i_unresolved from "./data/unresolved"
@@ -11,6 +13,8 @@ export namespace Module_ {
     
     export type O = i_resolved.Module
     
+    export type E = i_generic.Error
+    
     export namespace P {
         
     }
@@ -18,9 +22,10 @@ export namespace Module_ {
 }
 
 export type Module_ = (
-    $$_: Module_.I,
-    $$_lookups: null,
-    $$_p: null,
+    context: Module_.I,
+    abort: _pi.Abort<Module_.E>,
+    lookups: null,
+    parameters: null,
 ) => Module_.O
 
 export namespace Module_Set_ {
@@ -29,6 +34,8 @@ export namespace Module_Set_ {
     
     export type O = i_resolved.Module_Set
     
+    export type E = i_generic.Error
+    
     export namespace P {
         
     }
@@ -36,9 +43,10 @@ export namespace Module_Set_ {
 }
 
 export type Module_Set_ = (
-    $$_: Module_Set_.I,
-    $$_lookups: null,
-    $$_p: null,
+    context: Module_Set_.I,
+    abort: _pi.Abort<Module_Set_.E>,
+    lookups: null,
+    parameters: null,
 ) => Module_Set_.O
 
 export namespace Imports_ {
@@ -47,6 +55,8 @@ export namespace Imports_ {
     
     export type O = i_resolved.Imports
     
+    export type E = i_generic.Error
+    
     export namespace P {
         
     }
@@ -54,9 +64,10 @@ export namespace Imports_ {
 }
 
 export type Imports_ = (
-    $$_: Imports_.I,
-    $$_lookups: null,
-    $$_p: null,
+    context: Imports_.I,
+    abort: _pi.Abort<Imports_.E>,
+    lookups: null,
+    parameters: null,
 ) => Imports_.O
 
 export namespace Type_ {
@@ -65,6 +76,8 @@ export namespace Type_ {
     
     export type O = i_resolved.Type
     
+    export type E = i_generic.Error
+    
     export namespace P {
         
     }
@@ -72,9 +85,10 @@ export namespace Type_ {
 }
 
 export type Type_ = (
-    $$_: Type_.I,
-    $$_lookups: null,
-    $$_p: null,
+    context: Type_.I,
+    abort: _pi.Abort<Type_.E>,
+    lookups: null,
+    parameters: null,
 ) => Type_.O
 
 export { 

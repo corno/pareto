@@ -18,7 +18,7 @@ export namespace Imports_ {
 }
 
 export type Imports_ = (
-    $$_: Imports_.I,
+    context: Imports_.I,
 ) => Imports_.O
 
 export namespace Module_ {
@@ -34,7 +34,7 @@ export namespace Module_ {
 }
 
 export type Module_ = (
-    $$_: Module_.I,
+    context: Module_.I,
 ) => Module_.O
 
 export namespace Module_Set_ {
@@ -50,7 +50,7 @@ export namespace Module_Set_ {
 }
 
 export type Module_Set_ = (
-    $$_: Module_Set_.I,
+    context: Module_Set_.I,
 ) => Module_Set_.O
 
 export namespace Type_ {
@@ -66,7 +66,7 @@ export namespace Type_ {
 }
 
 export type Type_ = (
-    $$_: Type_.I,
+    context: Type_.I,
 ) => Type_.O
 
 export { 

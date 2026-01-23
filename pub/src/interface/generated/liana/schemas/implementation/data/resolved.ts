@@ -97,7 +97,7 @@ export namespace Module_ {
             
             export type expression = Expression_
             
-            export type temp_has_error = boolean
+            export type temp_has_abort = boolean
             
             export type temp_has_lookups = boolean
             
@@ -108,7 +108,7 @@ export namespace Module_ {
         export type D = {
             readonly 'type': D.type_
             readonly 'expression': D.expression
-            readonly 'temp has error': D.temp_has_error
+            readonly 'temp has abort': D.temp_has_abort
             readonly 'temp has lookups': D.temp_has_lookups
             readonly 'temp has parameters': D.temp_has_parameters
         }

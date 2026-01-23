@@ -1,6 +1,8 @@
 
 import * as _pi from "pareto-core/dist/interface"
 
+import * as i_generic from "../../generic/resolve"
+
 import * as i_resolved from "./data/resolved"
 
 import * as i_unresolved from "./data/unresolved"
@@ -11,6 +13,8 @@ export namespace Abort_Expression_ {
     
     export type O = i_resolved.Abort_Expression
     
+    export type E = i_generic.Error
+    
     export namespace P {
         
     }
@@ -18,9 +22,10 @@ export namespace Abort_Expression_ {
 }
 
 export type Abort_Expression_ = (
-    $$_: Abort_Expression_.I,
-    $$_lookups: null,
-    $$_p: null,
+    context: Abort_Expression_.I,
+    abort: _pi.Abort<Abort_Expression_.E>,
+    lookups: null,
+    parameters: null,
 ) => Abort_Expression_.O
 
 export namespace Module_Set_ {
@@ -29,6 +34,8 @@ export namespace Module_Set_ {
     
     export type O = i_resolved.Module_Set
     
+    export type E = i_generic.Error
+    
     export namespace P {
         
     }
@@ -36,9 +43,10 @@ export namespace Module_Set_ {
 }
 
 export type Module_Set_ = (
-    $$_: Module_Set_.I,
-    $$_lookups: null,
-    $$_p: null,
+    context: Module_Set_.I,
+    abort: _pi.Abort<Module_Set_.E>,
+    lookups: null,
+    parameters: null,
 ) => Module_Set_.O
 
 export namespace Module_ {
@@ -47,6 +55,8 @@ export namespace Module_ {
     
     export type O = i_resolved.Module
     
+    export type E = i_generic.Error
+    
     export namespace P {
         
     }
@@ -54,9 +64,10 @@ export namespace Module_ {
 }
 
 export type Module_ = (
-    $$_: Module_.I,
-    $$_lookups: null,
-    $$_p: null,
+    context: Module_.I,
+    abort: _pi.Abort<Module_.E>,
+    lookups: null,
+    parameters: null,
 ) => Module_.O
 
 export namespace Type_Reference_ {
@@ -65,6 +76,8 @@ export namespace Type_Reference_ {
     
     export type O = i_resolved.Type_Reference
     
+    export type E = i_generic.Error
+    
     export namespace P {
         
     }
@@ -72,9 +85,10 @@ export namespace Type_Reference_ {
 }
 
 export type Type_Reference_ = (
-    $$_: Type_Reference_.I,
-    $$_lookups: null,
-    $$_p: null,
+    context: Type_Reference_.I,
+    abort: _pi.Abort<Type_Reference_.E>,
+    lookups: null,
+    parameters: null,
 ) => Type_Reference_.O
 
 export namespace Type_Node_Reference_ {
@@ -83,6 +97,8 @@ export namespace Type_Node_Reference_ {
     
     export type O = i_resolved.Type_Node_Reference
     
+    export type E = i_generic.Error
+    
     export namespace P {
         
     }
@@ -90,9 +106,10 @@ export namespace Type_Node_Reference_ {
 }
 
 export type Type_Node_Reference_ = (
-    $$_: Type_Node_Reference_.I,
-    $$_lookups: null,
-    $$_p: null,
+    context: Type_Node_Reference_.I,
+    abort: _pi.Abort<Type_Node_Reference_.E>,
+    lookups: null,
+    parameters: null,
 ) => Type_Node_Reference_.O
 
 export namespace Expression_ {
@@ -101,6 +118,8 @@ export namespace Expression_ {
     
     export type O = i_resolved.Expression
     
+    export type E = i_generic.Error
+    
     export namespace P {
         
     }
@@ -108,9 +127,10 @@ export namespace Expression_ {
 }
 
 export type Expression_ = (
-    $$_: Expression_.I,
-    $$_lookups: null,
-    $$_p: null,
+    context: Expression_.I,
+    abort: _pi.Abort<Expression_.E>,
+    lookups: null,
+    parameters: null,
 ) => Expression_.O
 
 export namespace Selection_ {
@@ -119,6 +139,8 @@ export namespace Selection_ {
     
     export type O = i_resolved.Selection
     
+    export type E = i_generic.Error
+    
     export namespace P {
         
     }
@@ -126,9 +148,10 @@ export namespace Selection_ {
 }
 
 export type Selection_ = (
-    $$_: Selection_.I,
-    $$_lookups: null,
-    $$_p: null,
+    context: Selection_.I,
+    abort: _pi.Abort<Selection_.E>,
+    lookups: null,
+    parameters: null,
 ) => Selection_.O
 
 export { 

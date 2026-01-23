@@ -94,7 +94,7 @@ export namespace m {
 
 export const algorithm = (
     type: d_target.Type_Reference,
-    has_error: boolean,
+    has_abort: boolean,
     has_lookups: boolean,
     has_parameters: boolean,
     expression: d_target.Expression,
@@ -103,7 +103,7 @@ export const algorithm = (
     return {
         'type': type,
         'expression': expression,
-        'temp has error': has_error,
+        'temp has abort': has_abort,
         'temp has lookups': has_lookups,
         'temp has parameters': has_parameters,
     }
