@@ -464,57 +464,53 @@ export const Type_Node = (
                 sh.s.type_alias(
                     true,
                     $p.name,
-                    _p.list.literal([]), _p.decide.state($, ($) => {
-                        switch ($[0]) {
-                            case 'cyclic': return _p.ss($, ($) => sh.t.type_reference(
-                                " pi",
-                                ["Circular Reference"],
-                                [sh.t.type_reference(
-                                    Identifier(_p.list.literal([$.sibling, " "])),
-                                    [],
-                                    []
-                                )]
-                            ))
-                            case 'acyclic': return _p.ss($, ($) => sh.t.type_reference(
+                    _p.list.literal([]),
+                    _p.deprecated_cc($, ($) => {
+                        const foo = sh.t.type_reference(
 
-                                //start
-                                _p.decide.state($.location, ($): string => {
+                            //start
+                            _p.decide.state($.location, ($): string => {
+                                switch ($[0]) {
+                                    case 'import': return _p.ss($, ($) => Identifier(_p.list.literal(["i ", $.import])))
+                                    case 'local': return _p.ss($, ($) => Identifier(_p.list.literal([$, " "])))
+                                    default: return _p.au($[0])
+                                }
+                            }),
+                            //tail
+                            _p.list.nested_literal_old<string>([
+                                _p.decide.state($.location, ($) => {
                                     switch ($[0]) {
-                                        case 'import': return _p.ss($, ($) => Identifier(_p.list.literal(["i ", $.import])))
-                                        case 'local': return _p.ss($, ($) => Identifier(_p.list.literal([$, " "])))
+                                        case 'import': return _p.ss($, ($) => _p.list.literal([
+                                            Identifier(_p.list.literal([$.type, " "]))
+                                        ]))
+                                        case 'local': return _p.ss($, ($) => _p.list.literal([]))
                                         default: return _p.au($[0])
                                     }
                                 }),
-                                //tail
-                                _p.list.nested_literal_old<string>([
-                                    _p.decide.state($.location, ($) => {
+                                _p.list.flatten(
+                                    $['sub selection'],
+                                    ($) => _p.decide.state($, ($): _pi.List<string> => {
                                         switch ($[0]) {
-                                            case 'import': return _p.ss($, ($) => _p.list.literal([
-                                                Identifier(_p.list.literal([$.type, " "]))
-                                            ]))
-                                            case 'local': return _p.ss($, ($) => _p.list.literal([]))
+                                            case 'dictionary': return _p.ss($, ($) => _p.list.literal(["D"]))
+                                            case 'group': return _p.ss($, ($) => _p.list.literal([$]))
+                                            case 'list': return _p.ss($, ($) => _p.list.literal(["L"]))
+                                            case 'optional': return _p.ss($, ($) => _p.list.literal(["O"]))
+                                            case 'state': return _p.ss($, ($) => _p.list.literal([$]))
                                             default: return _p.au($[0])
                                         }
                                     }),
-                                    _p.list.flatten(
-                                        $['sub selection'],
-                                        ($) => _p.decide.state($, ($): _pi.List<string> => {
-                                            switch ($[0]) {
-                                                case 'dictionary': return _p.ss($, ($) => _p.list.literal(["D"]))
-                                                case 'group': return _p.ss($, ($) => _p.list.literal([$]))
-                                                case 'list': return _p.ss($, ($) => _p.list.literal(["L"]))
-                                                case 'optional': return _p.ss($, ($) => _p.list.literal(["O"]))
-                                                case 'state': return _p.ss($, ($) => _p.list.literal([$]))
-                                                default: return _p.au($[0])
-                                            }
-                                        }),
-                                    ),
-                                ]),
-                                []
-                            ))
-                            default: return _p.au($[0])
-                        }
-                    }),
+                                ),
+                            ]),
+                            []
+                        )
+                        return $.cyclic
+                            ? sh.t.type_reference(
+                                " pi",
+                                ["Circular Dependency"],
+                                [foo]
+                            )
+                            : foo
+                    })
 
                 )
             ]))

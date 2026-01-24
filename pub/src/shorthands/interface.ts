@@ -63,22 +63,22 @@ export namespace import_ {
 }
 
 export namespace sub {
-    export const dictionary = (): d_out.Type_Node.reference.acyclic.sub_selection.L => {
+    export const dictionary = (): d_out.Type_Node.reference.sub_selection.L => {
         return wrap_state(['dictionary', null])
     }
 
-    export const list = (): d_out.Type_Node.reference.acyclic.sub_selection.L => {
+    export const list = (): d_out.Type_Node.reference.sub_selection.L => {
         return wrap_state(['list', null])
     }
-    export const state = (name: string): d_out.Type_Node.reference.acyclic.sub_selection.L => {
+    export const state = (name: string): d_out.Type_Node.reference.sub_selection.L => {
         return wrap_state(['state', name])
     }
     export const group = (
         name: string,
-    ): d_out.Type_Node.reference.acyclic.sub_selection.L => {
+    ): d_out.Type_Node.reference.sub_selection.L => {
         return wrap_state(['group', name])
     }
-    export const optional = (): d_out.Type_Node.reference.acyclic.sub_selection.L => wrap_state(['optional', null])
+    export const optional = (): d_out.Type_Node.reference.sub_selection.L => wrap_state(['optional', null])
 }
 
 
@@ -159,38 +159,53 @@ export namespace t {
         return wrap_state(['optional', type])
     }
 
-    export const reference_sibling = (
-        sibling: string,
-        sub_selection: _p.Raw_Or_Normal_List<d_out.Type_Node.reference.acyclic.sub_selection.L>,
+
+    export const reference = (
+        location: d_out.Type_Reference,
+        sub_selection: _p.Raw_Or_Normal_List<d_out.Type_Node.reference.sub_selection.L>,
+        cyclic?: 'cyclic' | 'acyclic'
     ): d_out.Type_Node => {
-        return wrap_state(['reference', ['acyclic', {
-            'location': wrap_state(['local', sibling]),
-            'sub selection': _p.list.literal(sub_selection)
-        }]])
+        return wrap_state(['reference', {
+            'location': location,
+            'sub selection': _p.list.literal(sub_selection),
+            'cyclic': cyclic === undefined
+             ? false 
+             : cyclic === 'cyclic' ? true : false,
+        }])
     }
 
-    export const reference_sibling_cyclic = (
-        sibling: string,
-    ): d_out.Type_Node => {
-        return wrap_state(['reference', ['cyclic', {
-            'sibling': sibling
-        }]])
-    }
+    // export const reference_sibling = (
+    //     sibling: string,
+    //     sub_selection: _p.Raw_Or_Normal_List<d_out.Type_Node.reference.acyclic.sub_selection.L>,
+    // ): d_out.Type_Node => {
+    //     return wrap_state(['reference', ['acyclic', {
+    //         'location': wrap_state(['local', sibling]),
+    //         'sub selection': _p.list.literal(sub_selection)
+    //     }]])
+    // }
 
-    export const reference_imported = (
-        imp: string,
-        type: string,
-        sub_selection: _p.Raw_Or_Normal_List<d_out.Type_Node.reference.acyclic.sub_selection.L>,
-    ): d_out.Type_Node => {
-        return wrap_state(['reference', ['acyclic', {
-            'location': wrap_state(['import', {
-                'import': imp,
-                'type': type,
-            }]),
-            'sub selection': _p.list.literal(sub_selection)
+    // export const reference_sibling_cyclic = (
+    //     sibling: string,
+    // ): d_out.Type_Node => {
+    //     return wrap_state(['reference', ['cyclic', {
+    //         'sibling': sibling
+    //     }]])
+    // }
 
-        }]])
-    }
+    // export const reference_imported = (
+    //     imp: string,
+    //     type: string,
+    //     sub_selection: _p.Raw_Or_Normal_List<d_out.Type_Node.reference.acyclic.sub_selection.L>,
+    // ): d_out.Type_Node => {
+    //     return wrap_state(['reference', ['acyclic', {
+    //         'location': wrap_state(['import', {
+    //             'import': imp,
+    //             'type': type,
+    //         }]),
+    //         'sub selection': _p.list.literal(sub_selection)
+
+    //     }]])
+    // }
 
     export const state = (
         states: _p.Raw_Or_Normal_Dictionary<d_out.Type_Node>
@@ -244,4 +259,20 @@ export namespace type {
             }]),
         }])
     }
+}
+
+export namespace tr {
+
+    export const local = (
+        sibling: string,
+    ): d_out.Type_Reference => ['local', sibling]
+
+    export const imported = (
+        imp: string,
+        type: string,
+    ): d_out.Type_Reference => ['import', {
+        'import': imp,
+        'type': type,
+    }]
+
 }
