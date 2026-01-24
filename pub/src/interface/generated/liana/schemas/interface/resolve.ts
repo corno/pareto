@@ -70,11 +70,11 @@ export type Imports_ = (
     parameters: null,
 ) => Imports_.O
 
-export namespace Type_ {
+export namespace Type_Node_ {
     
-    export type I = i_unresolved.Type
+    export type I = i_unresolved.Type_Node
     
-    export type O = i_resolved.Type
+    export type O = i_resolved.Type_Node
     
     export type E = i_generic.Error
     
@@ -84,16 +84,16 @@ export namespace Type_ {
     
 }
 
-export type Type_ = (
-    context: Type_.I,
-    abort: _pi.Abort<Type_.E>,
+export type Type_Node_ = (
+    context: Type_Node_.I,
+    abort: _pi.Abort<Type_Node_.E>,
     lookups: null,
     parameters: null,
-) => Type_.O
+) => Type_Node_.O
 
 export { 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
     Imports_ as Imports, 
-    Type_ as Type, 
+    Type_Node_ as Type_Node, 
 }

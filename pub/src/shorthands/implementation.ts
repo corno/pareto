@@ -9,6 +9,27 @@ import * as d_target_interface from "../interface/generated/liana/schemas/interf
 const wrap_state_group = <T>(value: T): T => {
     return value
 }
+
+
+export namespace sub {
+    export const dictionary = (): d_target.Type_Node_Reference.sub_selection.L => {
+        return wrap_state_group(['dictionary', null])
+    }
+
+    export const list = (): d_target.Type_Node_Reference.sub_selection.L => {
+        return wrap_state_group(['list', null])
+    }
+    export const state = (name: string): d_target.Type_Node_Reference.sub_selection.L => {
+        return wrap_state_group(['state group', name])
+    }
+    export const group = (
+        name: string,
+    ): d_target.Type_Node_Reference.sub_selection.L => {
+        return wrap_state_group(['group', name])
+    }
+    export const optional = (): d_target.Type_Node_Reference.sub_selection.L => wrap_state_group(['optional', null])
+}
+
 export namespace vi {
 
     export const external = (

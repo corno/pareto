@@ -86,7 +86,7 @@ export const Module_Set = (
                         _p.list.from_dictionary($['types'], ($, key): d_out.Statements => _p.sg($, ($) => {
                             const name = key + ` `
                             switch ($[0]) {
-                                case 'data': return _p.ss($, ($) => Type(
+                                case 'data': return _p.ss($, ($) => Type_Node(
                                     $,
                                     {
                                         'name': name,
@@ -99,13 +99,13 @@ export const Module_Set = (
                                         true,
                                         name,
                                         _p.list.nested_literal_old<d_out.Statements_.L>([
-                                            Type(
+                                            Type_Node(
                                                 $.context,
                                                 {
                                                     'name': "I",
                                                 }
                                             ),
-                                            Type(
+                                            Type_Node(
                                                 $.result,
                                                 {
                                                     'name': "O",
@@ -118,7 +118,7 @@ export const Module_Set = (
 
                                                         $.error.__decide<d_out.Statements>(
                                                             ($) => {
-                                                                return Type(
+                                                                return Type_Node(
                                                                     $,
                                                                     {
                                                                         'name': "E",
@@ -137,7 +137,7 @@ export const Module_Set = (
                                                                     ($, key) => sh.s.namespace(
                                                                         true,
                                                                         "L",
-                                                                        Type(
+                                                                        Type_Node(
                                                                             _p.sg($, ($) => {
                                                                                 switch ($[0]) {
                                                                                     case 'acyclic': return _p.ss($, ($) => $)
@@ -167,7 +167,7 @@ export const Module_Set = (
                                                     "P",
                                                     $.parameters.__decide(
                                                         ($) => _p.list.flatten(
-                                                            _p.list.from_dictionary($, ($, key) => Type(
+                                                            _p.list.from_dictionary($, ($, key) => Type_Node(
                                                                 $,
                                                                 {
                                                                     'name': key,
@@ -306,8 +306,8 @@ export const Identifier = (
     return s_list_of_texts($)
 }
 
-export const Type = (
-    $: d_in.Type,
+export const Type_Node = (
+    $: d_in.Type_Node,
     $p: {
         'name': string
     }
@@ -341,7 +341,7 @@ export const Type = (
                                 ]),
                                 []
                             ))
-                            case 'sibling': return _p.ss($, ($) => sh.t.type_reference(
+                            case 'local': return _p.ss($, ($) => sh.t.type_reference(
                                 Identifier(_p.list.literal([$, " "])),
                                 //tail
                                 _p.list.nested_literal_old<string>([]),
@@ -357,7 +357,7 @@ export const Type = (
                     true,
                     $p.name,
                     _p.list.nested_literal_old<d_out.Statements_.L>([
-                        Type(
+                        Type_Node(
                             $,
                             {
                                 'name': "D",
@@ -382,7 +382,7 @@ export const Type = (
                         _p.list.flatten(
                             _p.list.from_dictionary(
                                 $,
-                                ($, key) => Type(
+                                ($, key) => Type_Node(
                                     $,
                                     {
                                         'name': key,
@@ -405,7 +405,7 @@ export const Type = (
                     true,
                     $p.name,
                     _p.list.nested_literal_old<d_out.Statements_.L>([
-                        Type(
+                        Type_Node(
                             $,
                             {
                                 'name': "L",
@@ -443,7 +443,7 @@ export const Type = (
                     true,
                     $p.name,
                     _p.list.nested_literal_old<d_out.Statements_.L>([
-                        Type(
+                        Type_Node(
                             $,
                             {
                                 'name': "O",
@@ -464,65 +464,61 @@ export const Type = (
                 sh.s.type_alias(
                     true,
                     $p.name,
-                    _p.list.literal([]),
-                    sh.t.type_reference(
-                        //start
-                        _p.sg($.location, ($): string => {
-                            switch ($[0]) {
-                                case 'import': return _p.ss($, ($) => Identifier(_p.list.literal(["i ", $.import])))
-                                case 'sibling': return _p.ss($, ($) => Identifier(_p.list.literal([$.sibling, " "]))) //FIXME circular dependency!
-                                // $['circular dependent']
-                                // ? sh.t.type_reference(
-                                //     " pi",
-                                //     ["Circular Dependency"],
-                                //     [
-                                //         sh.t.type_reference(
-                                //             Identifier(_p.list.literal([$, " "])),
-                                //             //tail
-                                //             _p.list.nested_literal_old<string>([]),
-                                //             []
-                                //         )
-                                //     ]
-                                // )
-                                // : sh.t.type_reference(
-                                //     Identifier(_p.list.literal([$, " "])),
-                                //     //tail
-                                //     _p.list.nested_literal_old<string>([]),
-                                //     []
-                                // ))
-                                default: return _p.au($[0])
-                            }
-                        }),
-                        //tail
-                        _p.list.nested_literal_old<string>([
-                            _p.sg($.location, ($) => {
-                                switch ($[0]) {
-                                    case 'import': return _p.ss($, ($) => _p.list.literal([
-                                        Identifier(_p.list.literal([$.type, " "]))
-                                    ]))
-                                    case 'sibling': return _p.ss($, ($) => _p.list.literal([]))
-                                    default: return _p.au($[0])
-                                }
-                            }),
-                            _p.list.flatten(
-                                $['sub selection'],
-                                ($) => _p.sg($, ($): _pi.List<string> => {
+                    _p.list.literal([]), _p.decide.state_group($, ($) => {
+                        switch ($[0]) {
+                            case 'cyclic': return _p.ss($, ($) => sh.t.type_reference(
+                                " pi",
+                                ["Circular Reference"],
+                                [sh.t.type_reference(
+                                    Identifier(_p.list.literal([$.sibling, " "])),
+                                    [],
+                                    []
+                                )]
+                            ))
+                            case 'acyclic': return _p.ss($, ($) => sh.t.type_reference(
+
+                                //start
+                                _p.sg($.location, ($): string => {
                                     switch ($[0]) {
-                                        case 'dictionary': return _p.ss($, ($) => _p.list.literal(["D"]))
-                                        case 'group': return _p.ss($, ($) => _p.list.literal([$]))
-                                        case 'list': return _p.ss($, ($) => _p.list.literal(["L"]))
-                                        case 'optional': return _p.ss($, ($) => _p.list.literal(["O"]))
-                                        case 'state group': return _p.ss($, ($) => _p.list.literal([$]))
+                                        case 'import': return _p.ss($, ($) => Identifier(_p.list.literal(["i ", $.import])))
+                                        case 'local': return _p.ss($, ($) => Identifier(_p.list.literal([$, " "])))
                                         default: return _p.au($[0])
                                     }
                                 }),
-                            ),
-                        ]),
-                        []
-                    )
+                                //tail
+                                _p.list.nested_literal_old<string>([
+                                    _p.sg($.location, ($) => {
+                                        switch ($[0]) {
+                                            case 'import': return _p.ss($, ($) => _p.list.literal([
+                                                Identifier(_p.list.literal([$.type, " "]))
+                                            ]))
+                                            case 'local': return _p.ss($, ($) => _p.list.literal([]))
+                                            default: return _p.au($[0])
+                                        }
+                                    }),
+                                    _p.list.flatten(
+                                        $['sub selection'],
+                                        ($) => _p.sg($, ($): _pi.List<string> => {
+                                            switch ($[0]) {
+                                                case 'dictionary': return _p.ss($, ($) => _p.list.literal(["D"]))
+                                                case 'group': return _p.ss($, ($) => _p.list.literal([$]))
+                                                case 'list': return _p.ss($, ($) => _p.list.literal(["L"]))
+                                                case 'optional': return _p.ss($, ($) => _p.list.literal(["O"]))
+                                                case 'state': return _p.ss($, ($) => _p.list.literal([$]))
+                                                default: return _p.au($[0])
+                                            }
+                                        }),
+                                    ),
+                                ]),
+                                []
+                            ))
+                            default: return _p.au($[0])
+                        }
+                    }),
+
                 )
             ]))
-            case 'state group': return _p.ss($, ($) => _p.list.nested_literal_old([
+            case 'state': return _p.ss($, ($) => _p.list.nested_literal_old([
                 [
                     sh.s.namespace(
                         true,
@@ -530,7 +526,7 @@ export const Type = (
                         _p.list.flatten(
                             _p.list.from_dictionary(
                                 $,
-                                ($, key) => Type(
+                                ($, key) => Type_Node(
                                     $,
                                     {
                                         'name': key,
