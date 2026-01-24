@@ -4,7 +4,7 @@ import * as _pi from 'pareto-core/dist/interface'
 import * as d_out from "../interface/generated/liana/schemas/interface/data/resolved"
 
 
-const wrap_state_group = <T>(value: T): T => {
+const wrap_state = <T>(value: T): T => {
     return value
 }
 export namespace m {
@@ -12,14 +12,14 @@ export namespace m {
     export const set = (
         entries: _p.Raw_Or_Normal_Dictionary<d_out.Module_Set.D>
     ): d_out.Module_Set.D => {
-        return wrap_state_group(['set', _p.dictionary.literal(entries)])
+        return wrap_state(['set', _p.dictionary.literal(entries)])
     }
 
     export const module = (
         imports: _p.Raw_Or_Normal_Dictionary<d_out.Imports.D>,
         types: _p.Raw_Or_Normal_Dictionary<d_out.Module.types.D>,
     ): d_out.Module_Set.D => {
-        return wrap_state_group(['module', {
+        return wrap_state(['module', {
             'imports': _p.dictionary.literal(imports),
             'types': _p.dictionary.literal(types),
         }])
@@ -33,7 +33,7 @@ export namespace import_ {
         tail: _p.Raw_Or_Normal_List<string>,
     ): d_out.Imports.D => {
         return {
-            'type': wrap_state_group(['external', key]),
+            'type': wrap_state(['external', key]),
             'tail': _p.list.literal(tail),
         }
     }
@@ -43,7 +43,7 @@ export namespace import_ {
         tail: _p.Raw_Or_Normal_List<string>,
     ): d_out.Imports.D => {
         return {
-            'type': wrap_state_group(['sibling', key]),
+            'type': wrap_state(['sibling', key]),
             'tail': _p.list.literal(tail),
         }
     }
@@ -53,7 +53,7 @@ export namespace import_ {
         tail: _p.Raw_Or_Normal_List<string>,
     ): d_out.Imports.D => {
         return {
-            'type': wrap_state_group(['ancestor', {
+            'type': wrap_state(['ancestor', {
                 'number of steps': number_of_steps,
                 'dependency': key,
             }]),
@@ -64,21 +64,21 @@ export namespace import_ {
 
 export namespace sub {
     export const dictionary = (): d_out.Type_Node.reference.acyclic.sub_selection.L => {
-        return wrap_state_group(['dictionary', null])
+        return wrap_state(['dictionary', null])
     }
 
     export const list = (): d_out.Type_Node.reference.acyclic.sub_selection.L => {
-        return wrap_state_group(['list', null])
+        return wrap_state(['list', null])
     }
     export const state = (name: string): d_out.Type_Node.reference.acyclic.sub_selection.L => {
-        return wrap_state_group(['state', name])
+        return wrap_state(['state', name])
     }
     export const group = (
         name: string,
     ): d_out.Type_Node.reference.acyclic.sub_selection.L => {
-        return wrap_state_group(['group', name])
+        return wrap_state(['group', name])
     }
-    export const optional = (): d_out.Type_Node.reference.acyclic.sub_selection.L => wrap_state_group(['optional', null])
+    export const optional = (): d_out.Type_Node.reference.acyclic.sub_selection.L => wrap_state(['optional', null])
 }
 
 
@@ -96,41 +96,14 @@ export const stack_lookup = (
 export namespace t {
 
     export const boolean = (): d_out.Type_Node => {
-        return wrap_state_group(['boolean', null])
+        return wrap_state(['boolean', null])
     }
-
-    // export const deprecated_parameter_module = (
-    //     parameter: string,
-    // ): d_out.Type_Node => {
-    //     return wrap_state_group(['deprecated parameter', {
-    //         'location': wrap_state_group(['module', null]),
-    //         'parameter': parameter,
-    //     }])
-    // }
-
-    // export const deprecated_parametertype_ = (
-    //     parameter: string,
-    // ): d_out.Type_Node => {
-    //     return wrap_state_group(['deprecated parameter', {
-    //         'location': wrap_state_group(['type', null]),
-    //         'parameter': parameter,
-    //     }])
-    // }
-
-    // export const deprecated_parameter_function = (
-    //     parameter: string,
-    // ): d_out.Type_Node => {
-    //     return wrap_state_group(['deprecated parameter', {
-    //         'location': wrap_state_group(['function', null]),
-    //         'parameter': parameter,
-    //     }])
-    // }
 
     export const component_sibling = (
         sibling: string,
     ): d_out.Type_Node => {
-        return wrap_state_group(['component', {
-            'location': wrap_state_group(['local', sibling])
+        return wrap_state(['component', {
+            'location': wrap_state(['local', sibling])
         }])
     }
 
@@ -138,8 +111,8 @@ export namespace t {
         imp: string,
         type: string,
     ): d_out.Type_Node => {
-        return wrap_state_group(['component', {
-            'location': wrap_state_group(['import', {
+        return wrap_state(['component', {
+            'location': wrap_state(['import', {
                 'import': imp,
                 'type': type,
             }]),
@@ -149,49 +122,49 @@ export namespace t {
     export const dictionary = (
         type: d_out.Type_Node
     ): d_out.Type_Node => {
-        return wrap_state_group(['dictionary', type])
+        return wrap_state(['dictionary', type])
     }
 
     export const group = (
         properties: _p.Raw_Or_Normal_Dictionary<d_out.Type_Node>
     ): d_out.Type_Node => {
-        return wrap_state_group(['group', _p.dictionary.literal(properties)])
+        return wrap_state(['group', _p.dictionary.literal(properties)])
     }
 
     export const list = (
         type: d_out.Type_Node
     ): d_out.Type_Node => {
-        return wrap_state_group(['list', type])
+        return wrap_state(['list', type])
     }
 
     export const nothing = (): d_out.Type_Node => {
-        return wrap_state_group(['nothing', null])
+        return wrap_state(['nothing', null])
     }
 
     export const number_approximation = (): d_out.Type_Node => {
-        return wrap_state_group(['number', wrap_state_group(['approximation', null])])
+        return wrap_state(['number', wrap_state(['approximation', null])])
     }
 
     export const integer = (): d_out.Type_Node => {
-        return wrap_state_group(['number', wrap_state_group(['exact', wrap_state_group(['integer', null])])])
+        return wrap_state(['number', wrap_state(['exact', wrap_state(['integer', null])])])
     }
 
     export const natural = (): d_out.Type_Node => {
-        return wrap_state_group(['number', wrap_state_group(['exact', wrap_state_group(['natural', null])])])
+        return wrap_state(['number', wrap_state(['exact', wrap_state(['natural', null])])])
     }
 
     export const optional = (
         type: d_out.Type_Node
     ): d_out.Type_Node => {
-        return wrap_state_group(['optional', type])
+        return wrap_state(['optional', type])
     }
 
     export const reference_sibling = (
         sibling: string,
         sub_selection: _p.Raw_Or_Normal_List<d_out.Type_Node.reference.acyclic.sub_selection.L>,
     ): d_out.Type_Node => {
-        return wrap_state_group(['reference', ['acyclic', {
-            'location': wrap_state_group(['local', sibling]),
+        return wrap_state(['reference', ['acyclic', {
+            'location': wrap_state(['local', sibling]),
             'sub selection': _p.list.literal(sub_selection)
         }]])
     }
@@ -199,7 +172,7 @@ export namespace t {
     export const reference_sibling_cyclic = (
         sibling: string,
     ): d_out.Type_Node => {
-        return wrap_state_group(['reference', ['cyclic', {
+        return wrap_state(['reference', ['cyclic', {
             'sibling': sibling
         }]])
     }
@@ -209,8 +182,8 @@ export namespace t {
         type: string,
         sub_selection: _p.Raw_Or_Normal_List<d_out.Type_Node.reference.acyclic.sub_selection.L>,
     ): d_out.Type_Node => {
-        return wrap_state_group(['reference', ['acyclic', {
-            'location': wrap_state_group(['import', {
+        return wrap_state(['reference', ['acyclic', {
+            'location': wrap_state(['import', {
                 'import': imp,
                 'type': type,
             }]),
@@ -222,11 +195,11 @@ export namespace t {
     export const state = (
         states: _p.Raw_Or_Normal_Dictionary<d_out.Type_Node>
     ): d_out.Type_Node => {
-        return wrap_state_group(['state', _p.dictionary.literal(states)])
+        return wrap_state(['state', _p.dictionary.literal(states)])
     }
 
     export const text = (): d_out.Type_Node => {
-        return wrap_state_group(['text', null])
+        return wrap_state(['text', null])
     }
 
 }
@@ -245,10 +218,10 @@ export namespace type {
         result: d_out.Type_Node,
         parameters: null | _p.Raw_Or_Normal_Dictionary<d_out.Type_Node>,
     ): d_out.Module.types.D => {
-        return wrap_state_group(['algorithm', {
+        return wrap_state(['algorithm', {
             'context': context,
             'result': result,
-            'type': wrap_state_group(['transformer', null]),
+            'type': wrap_state(['transformer', null]),
             'parameters': parameters === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(parameters)),
             'lookups': _p.optional.not_set(),
         }])
@@ -261,11 +234,11 @@ export namespace type {
         lookups: null | _p.Raw_Or_Normal_Dictionary<d_out.Module.types.D.algorithm.type_.refiner.lookups.O.D>,
         parameters: null | _p.Raw_Or_Normal_Dictionary<d_out.Type_Node>,
     ): d_out.Module.types.D => {
-        return wrap_state_group(['algorithm', {
+        return wrap_state(['algorithm', {
             'context': context,
             'parameters': parameters === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(parameters)),
             'result': result,
-            'type': wrap_state_group(['refiner', {
+            'type': wrap_state(['refiner', {
                 'error': error === null ? _p.optional.not_set() : _p.optional.set(error),
                 'lookups': lookups === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(lookups)),
             }]),
