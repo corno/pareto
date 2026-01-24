@@ -31,7 +31,7 @@ const temp_rename = (
 ): d_in.Module_Set => {
     const renamed: { [key: string]: d_in.Module_Set.D } = {}
     $.__d_map(($, key) => {
-        const new_key: string = _p.sg($, ($) => {
+        const new_key: string = _p.decide.state($, ($) => {
             switch ($[0]) {
                 case 'module': return _p.ss($, ($) => key + `.ts`)
                 case 'set': return _p.ss($, ($) => {
@@ -56,7 +56,7 @@ export const Module_Set = (
     $: d_in.Module_Set,
     abort: _pi.Abort<d_pareto_to_typescript.Error>
 ): d_out.Directory => {
-    return temp_rename($, abort).__d_map(($) => _p.sg($, ($) => {
+    return temp_rename($, abort).__d_map(($) => _p.decide.state($, ($) => {
         switch ($[0]) {
             case 'module': return _p.ss($, ($) => {
 
@@ -70,7 +70,7 @@ export const Module_Set = (
 
                     _p.list.from_dictionary($.imports, ($, key): d_out.Statements_.L => sh.s.import_namespace(
                         `i ${key}`,
-                        _p.sg($.type, ($): string => {
+                        _p.decide.state($.type, ($): string => {
                             switch ($[0]) {
                                 case 'external': return _p.ss($, ($) => valid_file_name($))
                                 case 'ancestor': return _p.ss($, ($) => `${s_repeated("../", { 'count': $['number of steps'] })}${valid_file_name($.dependency)}`)
@@ -83,7 +83,7 @@ export const Module_Set = (
                     )),
 
                     _p.list.flatten(
-                        _p.list.from_dictionary($['types'], ($, key): d_out.Statements => _p.sg($, ($) => {
+                        _p.list.from_dictionary($['types'], ($, key): d_out.Statements => _p.decide.state($, ($) => {
                             const name = key + ` `
                             switch ($[0]) {
                                 case 'data': return _p.ss($, ($) => Type_Node(
@@ -111,7 +111,7 @@ export const Module_Set = (
                                                     'name': "O",
                                                 }
                                             ),
-                                            _p.sg($.type, ($): d_out.Statements => {
+                                            _p.decide.state($.type, ($): d_out.Statements => {
                                                 switch ($[0]) {
                                                     case 'transformer': return _p.ss($, ($) => _p.list.literal([]))
                                                     case 'refiner': return _p.ss($, ($): d_out.Statements => _p.list.nested_literal_old<d_out.Statements.L>([
@@ -138,7 +138,7 @@ export const Module_Set = (
                                                                         true,
                                                                         "L",
                                                                         Type_Node(
-                                                                            _p.sg($, ($) => {
+                                                                            _p.decide.state($, ($) => {
                                                                                 switch ($[0]) {
                                                                                     case 'acyclic': return _p.ss($, ($) => $)
                                                                                     case 'cyclic': return _p.ss($, ($) => $)
@@ -195,7 +195,7 @@ export const Module_Set = (
                                                     ),
                                                 ],
 
-                                                _p.sg($.type, ($) => {
+                                                _p.decide.state($.type, ($) => {
                                                     switch ($[0]) {
                                                         case 'transformer': return _p.ss($, ($): d_out.Type.function_.parameters => _p.list.literal([]))
                                                         case 'refiner': return _p.ss($, ($): d_out.Type.function_.parameters => _p.list.nested_literal_old([
@@ -229,7 +229,7 @@ export const Module_Set = (
                                                                                 sh.t.type_reference(
                                                                                     " pi",
                                                                                     [
-                                                                                        _p.sg($, ($) => {
+                                                                                        _p.decide.state($, ($) => {
                                                                                             switch ($[0]) {
                                                                                                 case 'acyclic': return _p.ss($, ($) => "Acyclic Lookup")
                                                                                                 case 'cyclic': return _p.ss($, ($) => "Cyclic Lookup")
@@ -312,7 +312,7 @@ export const Type_Node = (
         'name': string
     }
 ): d_out.Statements => {
-    return _p.sg($, ($): d_out.Statements => {
+    return _p.decide.state($, ($): d_out.Statements => {
         switch ($[0]) {
 
 
@@ -330,7 +330,7 @@ export const Type_Node = (
                     true,
                     $p.name,
                     _p.list.literal([]),
-                    _p.sg($.location, ($) => {
+                    _p.decide.state($.location, ($) => {
                         switch ($[0]) {
                             case 'import': return _p.ss($, ($) => sh.t.type_reference(
                                 Identifier(_p.list.literal(["i ", $.import])),
@@ -464,7 +464,7 @@ export const Type_Node = (
                 sh.s.type_alias(
                     true,
                     $p.name,
-                    _p.list.literal([]), _p.decide.state_group($, ($) => {
+                    _p.list.literal([]), _p.decide.state($, ($) => {
                         switch ($[0]) {
                             case 'cyclic': return _p.ss($, ($) => sh.t.type_reference(
                                 " pi",
@@ -478,7 +478,7 @@ export const Type_Node = (
                             case 'acyclic': return _p.ss($, ($) => sh.t.type_reference(
 
                                 //start
-                                _p.sg($.location, ($): string => {
+                                _p.decide.state($.location, ($): string => {
                                     switch ($[0]) {
                                         case 'import': return _p.ss($, ($) => Identifier(_p.list.literal(["i ", $.import])))
                                         case 'local': return _p.ss($, ($) => Identifier(_p.list.literal([$, " "])))
@@ -487,7 +487,7 @@ export const Type_Node = (
                                 }),
                                 //tail
                                 _p.list.nested_literal_old<string>([
-                                    _p.sg($.location, ($) => {
+                                    _p.decide.state($.location, ($) => {
                                         switch ($[0]) {
                                             case 'import': return _p.ss($, ($) => _p.list.literal([
                                                 Identifier(_p.list.literal([$.type, " "]))
@@ -498,7 +498,7 @@ export const Type_Node = (
                                     }),
                                     _p.list.flatten(
                                         $['sub selection'],
-                                        ($) => _p.sg($, ($): _pi.List<string> => {
+                                        ($) => _p.decide.state($, ($): _pi.List<string> => {
                                             switch ($[0]) {
                                                 case 'dictionary': return _p.ss($, ($) => _p.list.literal(["D"]))
                                                 case 'group': return _p.ss($, ($) => _p.list.literal([$]))

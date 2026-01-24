@@ -14,7 +14,7 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
 
 export const Directory = ($: d_in.Directory): d_out.Directory => {
-    return $.__d_map(($, key) => _p.sg($, ($) => {
+    return $.__d_map(($, key) => _p.decide.state($, ($) => {
         switch ($[0]) {
             case 'file': return _p.ss($, ($) => ['file', sh.group([
                 Statements($['statements'], { 'replace empty type literals by null': true })
@@ -30,7 +30,7 @@ export const Group = ($: d_in.Group_): d_out.Group => {
 }
 
 export const Group_Part = ($: d_in.Group_Part_): d_out.Group_Part => {
-    return _p.sg($, ($): d_out.Group_Part => {
+    return _p.decide.state($, ($): d_out.Group_Part => {
         switch ($[0]) {
             case 'block': return _p.ss($, ($) => ['block', $])
             case 'nothing': return _p.ss($, ($) => ['nothing', null])
@@ -51,7 +51,7 @@ export const Block = (
 export const Block_Part = (
     $: d_in.Block_Part_
 ): d_out.Block_Part => {
-    return _p.sg($, ($): d_out.Block_Part => {
+    return _p.decide.state($, ($): d_out.Block_Part => {
         switch ($[0]) {
             case 'snippet': return _p.ss($, ($) => sh.b.snippet($))
             case 'nothing': return _p.ss($, ($) => ['nothing', null])
@@ -84,7 +84,7 @@ export const Statements = (
         'replace empty type literals by null': boolean
     }
 ): d_out.Group_Part => sh.g.sub($.__l_map(($) =>
-    _p.sg($, ($): d_out.Group_Part => {
+    _p.decide.state($, ($): d_out.Group_Part => {
         switch ($[0]) {
             case 'raw': return _p.ss($, ($) => sh.g.sub(Group($)))
 
@@ -100,7 +100,7 @@ export const Statements = (
                 sh.g.nested_block([
                     sh.b.sub([
                         sh.b.snippet("export "),
-                        _p.sg($.type, ($) => {
+                        _p.decide.state($.type, ($) => {
                             switch ($[0]) {
                                 case 'named exports': return _p.ss($, ($) => sh.b.sub([
                                     sh.b.snippet("{ "),
@@ -140,7 +140,7 @@ export const Statements = (
                 sh.g.nested_block([
                     sh.b.sub([
                         sh.b.snippet("import "),
-                        _p.sg($.type, ($) => {
+                        _p.decide.state($.type, ($) => {
                             switch ($[0]) {
                                 case 'named': return _p.ss($, ($) => sh.b.sub([
                                     sh.b.snippet("{ "),
@@ -198,7 +198,7 @@ export const Statements = (
                 sh.b.snippet(") {"),
                 sh.b.indent([
                     sh.g.list($.clauses.__l_map(($) => sh.g.nested_block([
-                        _p.sg($.type, ($) => {
+                        _p.decide.state($.type, ($) => {
                             switch ($[0]) {
                                 case 'case': return _p.ss($, ($) => sh.b.sub([
                                     sh.b.snippet("case "),
@@ -264,7 +264,7 @@ export const Expression = (
     $p: {
         'replace empty type literals by null': boolean
     }
-): d_out.Block_Part => _p.sg($, ($) => {
+): d_out.Block_Part => _p.decide.state($, ($) => {
     switch ($[0]) {
         case 'raw': return _p.ss($, ($) => sh.b.sub([$]))
 
@@ -308,7 +308,7 @@ export const Expression = (
                 () => sh.b.nothing(),
             ),
             sh.b.snippet(" => "),
-            _p.sg($.type, ($) => {
+            _p.decide.state($.type, ($) => {
                 switch ($[0]) {
                     case 'block': return _p.ss($, ($) => sh.b.sub([
                         sh.b.snippet("{"),
@@ -336,7 +336,7 @@ export const Expression = (
         case 'compare': return _p.ss($, ($) => sh.b.sub([
             Expression($.left, $p),
             sh.b.snippet(` `),
-            _p.sg($.operator, ($) => {
+            _p.decide.state($.operator, ($) => {
                 switch ($[0]) {
                     case 'loosely equal': return _p.ss($, ($) => sh.b.snippet(`==`))
                     case 'strictly equal': return _p.ss($, ($) => sh.b.snippet(`===`))
@@ -410,7 +410,7 @@ export const Type = (
     $p: {
         'replace empty type literals by null': boolean
     }
-): d_out.Block_Part => _p.sg($, ($) => {
+): d_out.Block_Part => _p.decide.state($, ($) => {
     switch ($[0]) {
         case 'boolean': return _p.ss($, ($) => sh.b.snippet("boolean"))
         case 'function': return _p.ss($, ($) => sh.b.sub([

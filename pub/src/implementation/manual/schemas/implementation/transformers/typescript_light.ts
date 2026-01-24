@@ -27,7 +27,7 @@ namespace fp_to_temp_fp {
 
     export const Block = ($: d_fp_block.Block): d_out.Block => $.__l_map(($) => Block_Part($))
 
-    export const Block_Part = ($: d_fp_block.Block_Part_): d_out.Block_Part_ => _p.sg($, ($): d_out.Block_Part_ => {
+    export const Block_Part = ($: d_fp_block.Block_Part_): d_out.Block_Part_ => _p.decide.state($, ($): d_out.Block_Part_ => {
         switch ($[0]) {
             case 'snippet': return _p.ss($, ($) => ['snippet', $])
             case 'indent': return _p.ss($, ($) => ['indent', Group($)])
@@ -41,7 +41,7 @@ namespace fp_to_temp_fp {
 
     export const Group = ($: d_fp_block.Group): d_out.Group => $.__l_map(($) => Group_Part($))
 
-    export const Group_Part = ($: d_fp_block.Group_Part_): d_out.Group_Part_ => _p.sg($, ($): d_out.Group_Part_ => {
+    export const Group_Part = ($: d_fp_block.Group_Part_): d_out.Group_Part_ => _p.decide.state($, ($): d_out.Group_Part_ => {
         switch ($[0]) {
             case 'block': return _p.ss($, ($) => ['block', $])
             case 'nested block': return _p.ss($, ($) => ['nested block', Block($)])
@@ -118,7 +118,7 @@ const temp_rename = (
 ): d_in.Module_Set => {
     const renamed: { [key: string]: d_in.Module_Set.D } = {}
     $.__d_map(($, key) => {
-        const new_key: string = _p.sg($, ($) => {
+        const new_key: string = _p.decide.state($, ($) => {
             switch ($[0]) {
                 case 'module': return _p.ss($, ($) => key + `.ts`)
                 case 'set': return _p.ss($, ($) => {
@@ -151,7 +151,7 @@ export const Module_Set = (
     //     // | ['deserializer', null]
     // }
 ): d_out.Directory => {
-    return temp_rename($, abort).__d_map(($, key) => _p.sg($, ($) => {
+    return temp_rename($, abort).__d_map(($, key) => _p.decide.state($, ($) => {
         switch ($[0]) {
             case 'module': return _p.ss($, ($): d_out.Directory.D => {
                 const valid_file_name = ($: string): string => {
@@ -162,7 +162,7 @@ export const Module_Set = (
                     [
                         sh.s.import_namespace(
                             ` p`,
-                            `pareto-core/dist/` + _p.sg($.type, ($) => {
+                            `pareto-core/dist/` + _p.decide.state($.type, ($) => {
                                 switch ($[0]) {
                                     case 'serializer': return _p.ss($, ($) => `serializer`)
                                     case 'deserializer': return _p.ss($, ($) => `deserializer`)
@@ -187,7 +187,7 @@ export const Module_Set = (
                         $['type imports'],
                         ($, key) => sh.s.import_namespace(
                             join(_p.list.literal(["t ", key])),
-                            _p.sg($.type, ($): string => {
+                            _p.decide.state($.type, ($): string => {
                                 switch ($[0]) {
                                     case 'external': return _p.ss($, ($) => valid_file_name($))
                                     case 'ancestor': return _p.ss($, ($) => `${s_repeated("../", { 'count': $['number of steps'] })}${valid_file_name($.dependency)}`)
@@ -204,7 +204,7 @@ export const Module_Set = (
                         $['variable imports'],
                         ($, key) => sh.s.import_namespace(
                             join(_p.list.literal(["v ", key])),
-                            _p.sg($.type, ($): string => {
+                            _p.decide.state($.type, ($): string => {
                                 switch ($[0]) {
                                     case 'external': return _p.ss($, ($) => valid_file_name($))
                                     case 'ancestor': return _p.ss($, ($) => `${s_repeated("../", { 'count': $['number of steps'] })}${valid_file_name($.dependency)}`)
@@ -287,7 +287,7 @@ export const Type_Node_Reference = (
             ]),
             _p.list.flatten(
                 $['sub selection'],
-                ($) => _p.sg($, ($): _pi.List<string> => {
+                ($) => _p.decide.state($, ($): _pi.List<string> => {
                     switch ($[0]) {
                         case 'dictionary': return _p.ss($, ($) => _p.list.literal(["D"]))
                         case 'group': return _p.ss($, ($) => _p.list.literal([$]))
@@ -316,12 +316,12 @@ export const String_Literal = (
 export const Expression = (
     $: d_in.Expression
 ): d_out.Block_Part_ => {
-    return _p.sg($, ($) => {
+    return _p.decide.state($, ($) => {
         switch ($[0]) {
 
             case 'decide': return _p.ss($, ($) => {
                 return sh.b.sub([
-                    _p.sg($.type, ($) => {
+                    _p.decide.state($.type, ($) => {
                         switch ($[0]) {
                             case 'boolean': return _p.ss($, ($) => sh.b.sub([
                                 Selection($.source),
@@ -386,7 +386,7 @@ export const Expression = (
                                 sh.b.snippet(" => {"),
                                 sh.b.indent([
                                     sh.g.nested_block([
-                                        _p.sg($.type, ($) => {
+                                        _p.decide.state($.type, ($) => {
                                             switch ($[0]) {
                                                 case 'full': return _p.ss($, ($) => sh.b.sub([
                                                     sh.b.snippet("switch ($[0]) {"),
@@ -437,11 +437,11 @@ export const Expression = (
             })
 
             case 'initialize': return _p.ss($, ($) => sh.b.sub([
-                _p.sg($, ($): d_out.Block_Part_ => {
+                _p.decide.state($, ($): d_out.Block_Part_ => {
                     switch ($[0]) {
-                        case 'boolean': return _p.ss($, ($) => _p.sg($, ($) => {
+                        case 'boolean': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'literal': return _p.ss($, ($) => _p.sg($, ($) => {
+                                case 'literal': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                     switch ($[0]) {
                                         case 'true': return sh.b.snippet("true")
                                         case 'false': return sh.b.snippet("false")
@@ -452,7 +452,7 @@ export const Expression = (
                                 default: return _p.au($[0])
                             }
                         }))
-                        case 'component': return _p.ss($, ($) => _p.sg($, ($) => {
+                        case 'component': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
 
                                 case 'call': return _p.ss($, ($) => sh.b.sub([
@@ -492,7 +492,7 @@ export const Expression = (
                                 default: return _p.au($[0])
                             }
                         }))
-                        case 'dictionary': return _p.ss($, ($) => _p.sg($, ($) => {
+                        case 'dictionary': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'literal': return _p.ss($, ($) => sh.b.sub([
                                     sh.b.snippet("_p.dictionary.literal({"),
@@ -531,7 +531,7 @@ export const Expression = (
                             false
                         ))
 
-                        case 'list': return _p.ss($, ($) => _p.sg($, ($) => {
+                        case 'list': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'literal': return _p.ss($, ($) => sh.b.sub([
                                     sh.b.snippet("_p.list.literal(["),
@@ -554,21 +554,21 @@ export const Expression = (
                             }
                         }))
                         case 'nothing': return _p.ss($, ($) => sh.b.snippet("null"))
-                        case 'number': return _p.ss($, ($) => _p.sg($, ($) => {
+                        case 'number': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'approximation': return _p.ss($, ($) => _p.sg($, ($) => {
+                                case 'approximation': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                     switch ($[0]) {
                                         case 'literal': return _p.ss($, ($) => sh.b.snippet(s_number_default($)))
                                         default: return _p.au($[0])
                                     }
                                 }))
-                                case 'integer': return _p.ss($, ($) => _p.sg($, ($) => {
+                                case 'integer': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                     switch ($[0]) {
                                         case 'literal': return _p.ss($, ($) => sh.b.snippet(s_number_default($)))
                                         default: return _p.au($[0])
                                     }
                                 }))
-                                case 'natural': return _p.ss($, ($) => _p.sg($, ($) => {
+                                case 'natural': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                     switch ($[0]) {
                                         case 'literal': return _p.ss($, ($) => sh.b.snippet(s_number_default($)))
                                         default: return _p.au($[0])
@@ -577,9 +577,9 @@ export const Expression = (
                                 default: return _p.au($[0])
                             }
                         }))
-                        case 'optional': return _p.ss($, ($) => _p.sg($, ($) => {
+                        case 'optional': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'literal': return _p.ss($, ($) => _p.sg($, ($) => {
+                                case 'literal': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                     switch ($[0]) {
                                         case 'not set': return sh.b.snippet("_p.optional.not_set()")
                                         case 'set': return _p.ss($, ($) => sh.b.sub([
@@ -599,7 +599,7 @@ export const Expression = (
                                 default: return _p.au($[0])
                             }
                         }))
-                        case 'state group': return _p.ss($, ($) => _p.sg($, ($) => {
+                        case 'state group': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'literal': return _p.ss($, ($) => sh.b.sub([
                                     sh.b.snippet("["),
@@ -611,11 +611,11 @@ export const Expression = (
                                 default: return _p.au($[0])
                             }
                         }))
-                        case 'text': return _p.ss($, ($) => _p.sg($, ($) => {
+                        case 'text': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'literal': return _p.ss($, ($) => {
                                     const value = $.value
-                                    return _p.sg($.delimiter, ($) => {
+                                    return _p.decide.state($.delimiter, ($) => {
                                         switch ($[0]) {
                                             case 'quote': return _p.ss($, ($) => String_Literal(value, { 'delimiter': "quote" }))
                                             case 'backtick': return _p.ss($, ($) => sh.b.snippet(s_backticked(value)))
@@ -630,7 +630,7 @@ export const Expression = (
                     }
                 })
             ]))
-            case 'special': return _p.ss($, ($) => _p.sg($, ($) => {
+            case 'special': return _p.ss($, ($) => _p.decide.state($, ($) => {
                 switch ($[0]) {
                     case 'abort': return _p.ss($, ($) => sh.b.sub([
                         sh.b.snippet("abort("),
@@ -730,7 +730,7 @@ export const Selection = (
     $: d_in.Selection,
 ): d_out.Block_Part_ => {
     return sh.b.sub([
-        _p.sg($.start, ($) => {
+        _p.decide.state($.start, ($) => {
             switch ($[0]) {
 
                 case 'abort deprecated': return _p.ss($, ($) => sh.b.snippet("_p.fixme_abort('ABORT SELECTION')"))
@@ -778,7 +778,7 @@ export const Selection = (
                     String_Literal($, { 'delimiter': "apostrophe" }),
                     sh.b.snippet("]"),
                 ]))
-                case 'variable': return _p.ss($, ($) => _p.sg($, ($) => {
+                case 'variable': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {
                         case 'local': return _p.ss($, ($) => sh.b.snippet(s_identifier($)))
                         case 'imported': return _p.ss($, ($) => sh.b.sub([
