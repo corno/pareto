@@ -20,7 +20,7 @@ export namespace sub {
         return wrap_state_group(['list', null])
     }
     export const state = (name: string): d_target.Type_Node_Reference.sub_selection.L => {
-        return wrap_state_group(['state group', name])
+        return wrap_state_group(['state', name])
     }
     export const group = (
         name: string,
@@ -185,11 +185,11 @@ export namespace e {
         }])])])
     }
 
-    export const case_ = (
+    export const state_literal = (
         name: string,
         value: d_target.Expression
-    ): d_target.Expression => wrap_state_group(['initialize', wrap_state_group(['state group', wrap_state_group(['literal', {
-        'state': name,
+    ): d_target.Expression => wrap_state_group(['initialize', wrap_state_group(['state', wrap_state_group(['literal', {
+        'option': name,
         'value': value,
     }])])])
 
@@ -320,10 +320,10 @@ export namespace e {
 
     export const decide_state_group = (
         source: d_target.Selection,
-        cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide.type_.state_group.type_.full.cases.D>,
+        cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide.type_.state.type_.full.cases.D>,
         resulting_type?: null | d_target.Type_Node_Reference,
     ): d_target.Expression => wrap_state_group(['decide', {
-        'type': wrap_state_group(['state group', {
+        'type': wrap_state_group(['state', {
             'source': source,
             'temp resulting node': (resulting_type === null || resulting_type === undefined) ? _p.optional.not_set() : _p.optional.set(resulting_type),
             'type': wrap_state_group(['full', {
@@ -334,11 +334,11 @@ export namespace e {
 
     export const decide_state_group_partial = (
         source: d_target.Selection,
-        cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide.type_.state_group.type_.partial.cases.D>,
+        cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide.type_.state.type_.partial.cases.D>,
         default_: d_target.Expression,
         resulting_type?: null | d_target.Type_Node_Reference,
     ): d_target.Expression => wrap_state_group(['decide', {
-        'type': wrap_state_group(['state group', {
+        'type': wrap_state_group(['state', {
             'source': source,
             'temp resulting node': (resulting_type === null || resulting_type === undefined) ? _p.optional.not_set() : _p.optional.set(resulting_type),
             'type': wrap_state_group(['partial', {
@@ -347,15 +347,6 @@ export namespace e {
             }])
         }])
     }])
-
-
-    export const tagged_union = (
-        state: string,
-        value: d_target.Expression
-    ): d_target.Expression => wrap_state_group(['initialize', wrap_state_group(['state group', wrap_state_group(['literal', {
-        'state': state,
-        'value': value,
-    }])])])
 
     export const true_ = (): d_target.Expression => wrap_state_group(['initialize', wrap_state_group(['boolean', wrap_state_group(['literal', wrap_state_group(['true', null])])])])
 

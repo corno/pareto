@@ -19,7 +19,7 @@ export namespace Imports_ {
                     
                     export type location = i__location.Location
                     
-                    export namespace state_group {
+                    export namespace state {
                         
                         export type external = string
                         
@@ -40,16 +40,16 @@ export namespace Imports_ {
                         
                     }
                     
-                    export type state_group = 
-                        | readonly ['external', state_group.external]
-                        | readonly ['ancestor', state_group.ancestor]
-                        | readonly ['sibling', state_group.sibling]
+                    export type state = 
+                        | readonly ['external', state.external]
+                        | readonly ['ancestor', state.ancestor]
+                        | readonly ['sibling', state.sibling]
                     
                 }
                 
                 export type type_ = {
                     readonly 'location': type_.location
-                    readonly 'state group': type_.state_group
+                    readonly 'state': type_.state
                 }
                 
                 export namespace tail {
@@ -125,7 +125,7 @@ export namespace Module_ {
                     
                     export type location = i__location.Location
                     
-                    export namespace state_group {
+                    export namespace state {
                         
                         export type data = Type_Node_
                         
@@ -139,7 +139,7 @@ export namespace Module_ {
                                 
                                 export type location = i__location.Location
                                 
-                                export namespace state_group {
+                                export namespace state {
                                     
                                     export namespace transformer {
                                         
@@ -173,7 +173,7 @@ export namespace Module_ {
                                                             
                                                             export type location = i__location.Location
                                                             
-                                                            export namespace state_group {
+                                                            export namespace state {
                                                                 
                                                                 export type acyclic = Type_Node_
                                                                 
@@ -183,16 +183,16 @@ export namespace Module_ {
                                                                 
                                                             }
                                                             
-                                                            export type state_group = 
-                                                                | readonly ['acyclic', state_group.acyclic]
-                                                                | readonly ['cyclic', state_group.cyclic]
-                                                                | readonly ['stack', state_group.stack]
+                                                            export type state = 
+                                                                | readonly ['acyclic', state.acyclic]
+                                                                | readonly ['cyclic', state.cyclic]
+                                                                | readonly ['stack', state.stack]
                                                             
                                                         }
                                                         
                                                         export type entry = {
                                                             readonly 'location': entry.location
-                                                            readonly 'state group': entry.state_group
+                                                            readonly 'state': entry.state
                                                         }
                                                         
                                                     }
@@ -226,15 +226,15 @@ export namespace Module_ {
                                     
                                 }
                                 
-                                export type state_group = 
-                                    | readonly ['transformer', state_group.transformer]
-                                    | readonly ['refiner', state_group.refiner]
+                                export type state = 
+                                    | readonly ['transformer', state.transformer]
+                                    | readonly ['refiner', state.refiner]
                                 
                             }
                             
                             export type type_ = {
                                 readonly 'location': type_.location
-                                readonly 'state group': type_.state_group
+                                readonly 'state': type_.state
                             }
                             
                             export namespace parameters {
@@ -284,15 +284,15 @@ export namespace Module_ {
                         
                     }
                     
-                    export type state_group = 
-                        | readonly ['data', state_group.data]
-                        | readonly ['algorithm', state_group.algorithm]
+                    export type state = 
+                        | readonly ['data', state.data]
+                        | readonly ['algorithm', state.algorithm]
                     
                 }
                 
                 export type entry = {
                     readonly 'location': entry.location
-                    readonly 'state group': entry.state_group
+                    readonly 'state': entry.state
                 }
                 
             }
@@ -334,7 +334,7 @@ export namespace Module_Set_ {
                 
                 export type location = i__location.Location
                 
-                export namespace state_group {
+                export namespace state {
                     
                     export type module_ = Module_
                     
@@ -342,15 +342,15 @@ export namespace Module_Set_ {
                     
                 }
                 
-                export type state_group = 
-                    | readonly ['module', state_group.module_]
-                    | readonly ['set', state_group.set_]
+                export type state = 
+                    | readonly ['module', state.module_]
+                    | readonly ['set', state.set_]
                 
             }
             
             export type entry = {
                 readonly 'location': entry.location
-                readonly 'state group': entry.state_group
+                readonly 'state': entry.state
             }
             
         }
@@ -375,7 +375,7 @@ export namespace Type_Node_ {
     
     export type location = i__location.Location
     
-    export namespace state_group {
+    export namespace state {
         
         export type boolean_ = null
         
@@ -385,7 +385,7 @@ export namespace Type_Node_ {
                 
                 export type location = i__location.Location
                 
-                export namespace state_group {
+                export namespace state {
                     
                     export namespace import_ {
                         
@@ -404,15 +404,15 @@ export namespace Type_Node_ {
                     
                 }
                 
-                export type state_group = 
-                    | readonly ['import', state_group.import_]
-                    | readonly ['local', state_group.local]
+                export type state = 
+                    | readonly ['import', state.import_]
+                    | readonly ['local', state.local]
                 
             }
             
             export type location = {
                 readonly 'location': location.location
-                readonly 'state group': location.state_group
+                readonly 'state': location.state
             }
             
         }
@@ -461,13 +461,13 @@ export namespace Type_Node_ {
             
             export type location = i__location.Location
             
-            export namespace state_group {
+            export namespace state {
                 
                 export namespace exact {
                     
                     export type location = i__location.Location
                     
-                    export namespace state_group {
+                    export namespace state {
                         
                         export type natural = null
                         
@@ -475,30 +475,30 @@ export namespace Type_Node_ {
                         
                     }
                     
-                    export type state_group = 
-                        | readonly ['natural', state_group.natural]
-                        | readonly ['integer', state_group.integer]
+                    export type state = 
+                        | readonly ['natural', state.natural]
+                        | readonly ['integer', state.integer]
                     
                 }
                 
                 export type exact = {
                     readonly 'location': exact.location
-                    readonly 'state group': exact.state_group
+                    readonly 'state': exact.state
                 }
                 
                 export type approximation = null
                 
             }
             
-            export type state_group = 
-                | readonly ['exact', state_group.exact]
-                | readonly ['approximation', state_group.approximation]
+            export type state = 
+                | readonly ['exact', state.exact]
+                | readonly ['approximation', state.approximation]
             
         }
         
         export type number_ = {
             readonly 'location': number_.location
-            readonly 'state group': number_.state_group
+            readonly 'state': number_.state
         }
         
         export type optional = Type_Node_
@@ -507,7 +507,7 @@ export namespace Type_Node_ {
             
             export type location = i__location.Location
             
-            export namespace state_group {
+            export namespace state {
                 
                 export namespace cyclic {
                     
@@ -525,7 +525,7 @@ export namespace Type_Node_ {
                         
                         export type location = i__location.Location
                         
-                        export namespace state_group {
+                        export namespace state {
                             
                             export namespace import_ {
                                 
@@ -544,15 +544,15 @@ export namespace Type_Node_ {
                             
                         }
                         
-                        export type state_group = 
-                            | readonly ['import', state_group.import_]
-                            | readonly ['local', state_group.local]
+                        export type state = 
+                            | readonly ['import', state.import_]
+                            | readonly ['local', state.local]
                         
                     }
                     
                     export type location = {
                         readonly 'location': location.location
-                        readonly 'state group': location.state_group
+                        readonly 'state': location.state
                     }
                     
                     export namespace sub_selection {
@@ -569,7 +569,7 @@ export namespace Type_Node_ {
                                     
                                     export type location = i__location.Location
                                     
-                                    export namespace state_group {
+                                    export namespace state {
                                         
                                         export type dictionary = null
                                         
@@ -583,18 +583,18 @@ export namespace Type_Node_ {
                                         
                                     }
                                     
-                                    export type state_group = 
-                                        | readonly ['dictionary', state_group.dictionary]
-                                        | readonly ['group', state_group.group]
-                                        | readonly ['list', state_group.list]
-                                        | readonly ['optional', state_group.optional]
-                                        | readonly ['state', state_group.state]
+                                    export type state = 
+                                        | readonly ['dictionary', state.dictionary]
+                                        | readonly ['group', state.group]
+                                        | readonly ['list', state.list]
+                                        | readonly ['optional', state.optional]
+                                        | readonly ['state', state.state]
                                     
                                 }
                                 
                                 export type element = {
                                     readonly 'location': element.location
-                                    readonly 'state group': element.state_group
+                                    readonly 'state': element.state
                                 }
                                 
                             }
@@ -624,15 +624,15 @@ export namespace Type_Node_ {
                 
             }
             
-            export type state_group = 
-                | readonly ['cyclic', state_group.cyclic]
-                | readonly ['acyclic', state_group.acyclic]
+            export type state = 
+                | readonly ['cyclic', state.cyclic]
+                | readonly ['acyclic', state.acyclic]
             
         }
         
         export type reference = {
             readonly 'location': reference.location
-            readonly 'state group': reference.state_group
+            readonly 'state': reference.state
         }
         
         export namespace state {
@@ -669,24 +669,24 @@ export namespace Type_Node_ {
         
     }
     
-    export type state_group = 
-        | readonly ['boolean', state_group.boolean_]
-        | readonly ['component', state_group.component]
-        | readonly ['dictionary', state_group.dictionary]
-        | readonly ['group', state_group.group]
-        | readonly ['list', state_group.list]
-        | readonly ['nothing', state_group.nothing]
-        | readonly ['number', state_group.number_]
-        | readonly ['optional', state_group.optional]
-        | readonly ['reference', state_group.reference]
-        | readonly ['state', state_group.state]
-        | readonly ['text', state_group.text]
+    export type state = 
+        | readonly ['boolean', state.boolean_]
+        | readonly ['component', state.component]
+        | readonly ['dictionary', state.dictionary]
+        | readonly ['group', state.group]
+        | readonly ['list', state.list]
+        | readonly ['nothing', state.nothing]
+        | readonly ['number', state.number_]
+        | readonly ['optional', state.optional]
+        | readonly ['reference', state.reference]
+        | readonly ['state', state.state]
+        | readonly ['text', state.text]
     
 }
 
 export type Type_Node_ = {
     readonly 'location': Type_Node_.location
-    readonly 'state group': Type_Node_.state_group
+    readonly 'state': Type_Node_.state
 }
 
 export { 

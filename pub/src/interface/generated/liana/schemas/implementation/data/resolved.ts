@@ -160,7 +160,7 @@ export namespace Type_Node_Reference_ {
             
             export type optional = null
             
-            export type state_group = string
+            export type state = string
             
         }
         
@@ -169,7 +169,7 @@ export namespace Type_Node_Reference_ {
             | readonly ['group', L.group]
             | readonly ['list', L.list]
             | readonly ['optional', L.optional]
-            | readonly ['state group', L.state_group]
+            | readonly ['state', L.state]
         
     }
     
@@ -504,25 +504,25 @@ export namespace Expression_ {
             | readonly ['literal', optional.literal]
             | readonly ['map', optional.map]
         
-        export namespace state_group {
+        export namespace state {
             
             export namespace literal {
                 
-                export type state = string
+                export type option = string
                 
                 export type value = Expression_
                 
             }
             
             export type literal = {
-                readonly 'state': literal.state
+                readonly 'option': literal.option
                 readonly 'value': literal.value
             }
             
         }
         
-        export type state_group = 
-            | readonly ['literal', state_group.literal]
+        export type state = 
+            | readonly ['literal', state.literal]
         
         export namespace text {
             
@@ -565,7 +565,7 @@ export namespace Expression_ {
         | readonly ['nothing', initialize.nothing]
         | readonly ['number', initialize.number_]
         | readonly ['optional', initialize.optional]
-        | readonly ['state group', initialize.state_group]
+        | readonly ['state', initialize.state]
         | readonly ['text', initialize.text]
     
     export namespace decide {
@@ -622,7 +622,7 @@ export namespace Expression_ {
                 readonly 'if set': optional.if_set
             }
             
-            export namespace state_group {
+            export namespace state {
                 
                 export type source = Selection_
                 
@@ -679,10 +679,10 @@ export namespace Expression_ {
                 
             }
             
-            export type state_group = {
-                readonly 'source': state_group.source
-                readonly 'temp resulting node': state_group.temp_resulting_node
-                readonly 'type': state_group.type_
+            export type state = {
+                readonly 'source': state.source
+                readonly 'temp resulting node': state.temp_resulting_node
+                readonly 'type': state.type_
             }
             
         }
@@ -690,7 +690,7 @@ export namespace Expression_ {
         export type type_ = 
             | readonly ['boolean', type_.boolean_]
             | readonly ['optional', type_.optional]
-            | readonly ['state group', type_.state_group]
+            | readonly ['state', type_.state]
         
     }
     

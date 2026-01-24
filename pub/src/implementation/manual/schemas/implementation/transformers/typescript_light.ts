@@ -293,7 +293,7 @@ export const Type_Node_Reference = (
                         case 'group': return _p.ss($, ($) => _p.list.literal([$]))
                         case 'list': return _p.ss($, ($) => _p.list.literal(["L"]))
                         case 'optional': return _p.ss($, ($) => _p.list.literal(["O"]))
-                        case 'state group': return _p.ss($, ($) => _p.list.literal([$]))
+                        case 'state': return _p.ss($, ($) => _p.list.literal([$]))
                         default: return _p.au($[0])
                     }
                 }),
@@ -367,7 +367,7 @@ export const Expression = (
                                 sh.b.snippet(")"),
                             ]))
 
-                            case 'state group': return _p.ss($, ($) => sh.b.sub([
+                            case 'state': return _p.ss($, ($) => sh.b.sub([
                                 sh.b.snippet("_p.deprecated_cc("),
                                 Selection($.source),
                                 sh.b.snippet(", ($)"),
@@ -599,11 +599,11 @@ export const Expression = (
                                 default: return _p.au($[0])
                             }
                         }))
-                        case 'state group': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                        case 'state': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'literal': return _p.ss($, ($) => sh.b.sub([
                                     sh.b.snippet("["),
-                                    String_Literal($.state, { 'delimiter': "apostrophe" }),
+                                    String_Literal($.option, { 'delimiter': "apostrophe" }),
                                     sh.b.snippet(", "),
                                     Expression($.value),
                                     sh.b.snippet("]"),
