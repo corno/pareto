@@ -368,7 +368,7 @@ export const Expression = (
                             ]))
 
                             case 'state': return _p.ss($, ($) => sh.b.sub([
-                                sh.b.snippet("_p.deprecated_cc("),
+                                sh.b.snippet("_p.decide.state("),
                                 Selection($.source),
                                 sh.b.snippet(", ($)"),
                                 $['temp resulting node'].__decide(
