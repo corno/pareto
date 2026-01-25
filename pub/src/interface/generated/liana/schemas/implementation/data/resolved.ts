@@ -272,28 +272,6 @@ export namespace Expression_ {
         
         export type unreachable = null
         
-        export namespace deprecated_function {
-            
-            export type expression = Expression_
-            
-            export type temp_has_parameters = boolean
-            
-            export namespace temp_resulting_node {
-                
-                export type O = Type_Node_Reference_
-                
-            }
-            
-            export type temp_resulting_node = _pi.Optional_Value<temp_resulting_node.O>
-            
-        }
-        
-        export type deprecated_function = {
-            readonly 'expression': deprecated_function.expression
-            readonly 'temp has parameters': deprecated_function.temp_has_parameters
-            readonly 'temp resulting node': deprecated_function.temp_resulting_node
-        }
-        
     }
     
     export type special = 
@@ -303,7 +281,6 @@ export namespace Expression_ {
         | readonly ['implement me', special.implement_me]
         | readonly ['selection deprecated', special.selection_deprecated]
         | readonly ['unreachable', special.unreachable]
-        | readonly ['deprecated function', special.deprecated_function]
     
     export namespace initialize {
         

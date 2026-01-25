@@ -75,6 +75,31 @@ export type Group_ = _pi.List<Group_.L>
 
 export type Identifier_ = string
 
+export namespace Function_Parameters_ {
+    
+    export namespace L {
+        
+        export type name = Identifier_
+        
+        export namespace type_ {
+            
+            export type O = Type_
+            
+        }
+        
+        export type type_ = _pi.Optional_Value<type_.O>
+        
+    }
+    
+    export type L = {
+        readonly 'name': L.name
+        readonly 'type': L.type_
+    }
+    
+}
+
+export type Function_Parameters_ = _pi.List<Function_Parameters_.L>
+
 export namespace String_Literal_ {
     
     export namespace delimiter {
@@ -112,30 +137,7 @@ export namespace Type_ {
         
         export type type_parameters = _pi.List<type_parameters.L>
         
-        export namespace parameters {
-            
-            export namespace L {
-                
-                export type name = Identifier_
-                
-                export namespace type_ {
-                    
-                    export type O = Type_
-                    
-                }
-                
-                export type type_ = _pi.Optional_Value<type_.O>
-                
-            }
-            
-            export type L = {
-                readonly 'name': L.name
-                readonly 'type': L.type_
-            }
-            
-        }
-        
-        export type parameters = _pi.List<parameters.L>
+        export type parameters = Function_Parameters_
         
         export type return_ = Type_
         
@@ -268,30 +270,7 @@ export namespace Expression_ {
     
     export namespace arrow_function {
         
-        export namespace parameters {
-            
-            export namespace L {
-                
-                export type name = Identifier_
-                
-                export namespace type_ {
-                    
-                    export type O = Type_
-                    
-                }
-                
-                export type type_ = _pi.Optional_Value<type_.O>
-                
-            }
-            
-            export type L = {
-                readonly 'name': L.name
-                readonly 'type': L.type_
-            }
-            
-        }
-        
-        export type parameters = _pi.List<parameters.L>
+        export type parameters = Function_Parameters_
         
         export namespace return_type {
             
@@ -301,7 +280,7 @@ export namespace Expression_ {
         
         export type return_type = _pi.Optional_Value<return_type.O>
         
-        export namespace type_ {
+        export namespace body {
             
             export type block = Statements_
             
@@ -309,16 +288,16 @@ export namespace Expression_ {
             
         }
         
-        export type type_ = 
-            | readonly ['block', type_.block]
-            | readonly ['expression', type_.expression]
+        export type body = 
+            | readonly ['block', body.block]
+            | readonly ['expression', body.expression]
         
     }
     
     export type arrow_function = {
         readonly 'parameters': arrow_function.parameters
         readonly 'return type': arrow_function.return_type
-        readonly 'type': arrow_function.type_
+        readonly 'body': arrow_function.body
     }
     
     export namespace assignment {
@@ -469,6 +448,29 @@ export namespace Expression_ {
     
     export type true_ = null
     
+    export namespace unary_operation {
+        
+        export namespace operator {
+            
+            export type negation = null
+            
+            export type logical_not = null
+            
+        }
+        
+        export type operator = 
+            | readonly ['negation', operator.negation]
+            | readonly ['logical not', operator.logical_not]
+        
+        export type operand = Expression_
+        
+    }
+    
+    export type unary_operation = {
+        readonly 'operator': unary_operation.operator
+        readonly 'operand': unary_operation.operand
+    }
+    
 }
 
 export type Expression_ = 
@@ -489,6 +491,7 @@ export type Expression_ =
     | readonly ['property access', Expression_.property_access]
     | readonly ['string literal', Expression_.string_literal]
     | readonly ['true', Expression_.true_]
+    | readonly ['unary operation', Expression_.unary_operation]
 
 export namespace Statements_ {
     
@@ -784,6 +787,7 @@ export {
     Group_Part_ as Group_Part, 
     Group_ as Group, 
     Identifier_ as Identifier, 
+    Function_Parameters_ as Function_Parameters, 
     String_Literal_ as String_Literal, 
     Type_ as Type, 
     Expression_ as Expression, 

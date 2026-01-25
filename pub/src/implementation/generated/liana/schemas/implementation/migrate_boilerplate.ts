@@ -255,15 +255,6 @@ export const Expression: t_signatures.Expression = ($) => ({
                             $
                         )])
                         case 'unreachable': return _p.ss($, ($) => ['unreachable', null])
-                        case 'deprecated function': return _p.ss($, ($) => ['deprecated function', ({
-                            'expression': _p.deprecated_cc($['expression'], ($) => Expression(
-                                $
-                            )),
-                            'temp has parameters': _p.deprecated_cc($['temp has parameters'], ($) => $),
-                            'temp resulting node': _p.deprecated_cc($['temp resulting node'], ($) => $.__o_map(($) => Type_Node_Reference(
-                                $
-                            ))),
-                        })])
                         default: return _p.au($[0])
                     }
                 }),

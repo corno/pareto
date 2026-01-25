@@ -7,7 +7,7 @@ import * as d_in from "../../../../../../../interface/generated/liana/schemas/ty
 import { $$ as op_enrich_list_elements_with_position_information } from "pareto-fountain-pen/dist/implementation/temp/enrich_with_position_information"
 import { $$ as s_apostrophed } from "../../../primitives/text/serializers/apostrophed_string"
 import { $$ as s_quoted } from "../../../primitives/text/serializers/quoted_string"
-import { $$ as s_number_default } from "../../../primitives/approximate_number/serializers/default"
+import { $$ as s_number_default } from "../../../primitives/integer/serializers/decimal"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
@@ -132,7 +132,13 @@ export const Statements = (
                 ])
             ]))
             case 'expression': return _p.ss($, ($) => sh.g.nested_block([
-                Expression($, $p)
+                Expression(
+                    $,
+                    {
+                        'replace empty type literals by null': $p['replace empty type literals by null'],
+                        'object literal needs parentheses': true,
+                    }
+                )
             ]))
             case 'import': return _p.ss($, ($) => sh.g.sub([
                 sh.g.simple_block(``),
@@ -187,13 +193,25 @@ export const Statements = (
             case 'return': return _p.ss($, ($) => sh.g.nested_block([
                 sh.b.snippet(`return `),
                 $.__decide(
-                    ($) => Expression($, $p),
+                    ($) => Expression(
+                        $,
+                        {
+                            'replace empty type literals by null': $p['replace empty type literals by null'],
+                            'object literal needs parentheses': false,
+                        }
+                    ),
                     () => sh.b.nothing(),
                 )
             ]))
             case 'switch': return _p.ss($, ($) => sh.g.nested_block([
                 sh.b.snippet("switch ("),
-                Expression($.expression, $p),
+                Expression(
+                    $.expression,
+                    {
+                        'replace empty type literals by null': $p['replace empty type literals by null'],
+                        'object literal needs parentheses': false,
+                    }
+                ),
                 sh.b.snippet(") {"),
                 sh.b.indent([
                     sh.g.list($.clauses.__l_map(($) => sh.g.nested_block([
@@ -201,7 +219,13 @@ export const Statements = (
                             switch ($[0]) {
                                 case 'case': return _p.ss($, ($) => sh.b.sub([
                                     sh.b.snippet("case "),
-                                    Expression($, $p),
+                                    Expression(
+                                        $,
+                                        {
+                                            'replace empty type literals by null': $p['replace empty type literals by null'],
+                                            'object literal needs parentheses': true,
+                                        }
+                                    ),
                                     sh.b.snippet(":"),
                                 ]))
                                 case 'default': return _p.ss($, ($) => sh.b.snippet("default:"))
@@ -212,7 +236,8 @@ export const Statements = (
                             Statements($.statements, $p)
                         ]),
                     ]))),
-                ])
+                ]),
+                sh.b.snippet("}"),
             ]))
             case 'type alias declaration': return _p.ss($, ($) => sh.g.sub([
                 sh.g.simple_block(``),
@@ -247,8 +272,14 @@ export const Statements = (
                 ),
                 $.expression.__decide(
                     ($) => sh.b.sub([
-                        sh.b.snippet("= "),
-                        Expression($, $p)
+                        sh.b.snippet(" = "),
+                        Expression(
+                            $,
+                            {
+                                'replace empty type literals by null': $p['replace empty type literals by null'],
+                                'object literal needs parentheses': true,
+                            }
+                        )
                     ]),
                     () => sh.b.nothing(),
                 ),
@@ -262,6 +293,7 @@ export const Expression = (
     $: d_in.Expression_,
     $p: {
         'replace empty type literals by null': boolean
+        'object literal needs parentheses': boolean
     }
 ): d_out.Block_Part => _p.decide.state($, ($) => {
     switch ($[0]) {
@@ -275,29 +307,25 @@ export const Expression = (
         ]))
         case 'array literal': return _p.ss($, ($) => sh.b.sub([
             sh.b.snippet("["),
-            sh.b.indent([
-                sh.g.sub(op_enrich_list_elements_with_position_information($).__l_map(($) => sh.g.nested_block([
-                    Expression($.value, $p),
-                    $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
-                ]))),
-            ]),
+            sh.b.sub(op_enrich_list_elements_with_position_information($).__l_map(($) => sh.b.sub([
+                Expression($.value, $p),
+                $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
+            ]))),
             sh.b.snippet("]"),
         ]))
         case 'arrow function': return _p.ss($, ($) => sh.b.sub([
             sh.b.snippet("("),
-            sh.b.indent([
-                sh.g.sub($.parameters.__l_map(($) => sh.g.nested_block([
-                    Identifier($.name),
-                    $.type.__decide(
-                        ($) => sh.b.sub([
-                            sh.b.snippet(": "),
-                            Type($, $p)
-                        ]),
-                        () => sh.b.nothing(),
-                    ),
-                    sh.b.snippet(",")
-                ]))),
-            ]),
+            sh.b.sub($.parameters.__l_map(($) => sh.b.sub([
+                Identifier($.name),
+                $.type.__decide(
+                    ($) => sh.b.sub([
+                        sh.b.snippet(": "),
+                        Type($, $p)
+                    ]),
+                    () => sh.b.nothing(),
+                ),
+                sh.b.snippet(",")
+            ]))),
             sh.b.snippet(")"),
             $['return type'].__decide(
                 ($) => sh.b.sub([
@@ -307,7 +335,7 @@ export const Expression = (
                 () => sh.b.nothing(),
             ),
             sh.b.snippet(" => "),
-            _p.decide.state($.type, ($) => {
+            _p.decide.state($.body, ($) => {
                 switch ($[0]) {
                     case 'block': return _p.ss($, ($) => sh.b.sub([
                         sh.b.snippet("{"),
@@ -316,7 +344,13 @@ export const Expression = (
                         ]),
                         sh.b.snippet("}"),
                     ]))
-                    case 'expression': return _p.ss($, ($) => Expression($, $p))
+                    case 'expression': return _p.ss($, ($) => Expression(
+                        $,
+                        {
+                            'object literal needs parentheses': true,
+                            'replace empty type literals by null': $p['replace empty type literals by null'],
+                        }
+                    ))
                     default: return _p.au($[0])
                 }
             }),
@@ -324,12 +358,10 @@ export const Expression = (
         case 'call': return _p.ss($, ($) => sh.b.sub([
             Expression($['function selection'], $p),
             sh.b.snippet("("),
-            sh.b.indent([
-                sh.g.sub(op_enrich_list_elements_with_position_information($['arguments']).__l_map(($) => sh.g.nested_block([
-                    Expression($.value, $p),
-                    $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
-                ]))),
-            ]),
+            sh.b.sub(op_enrich_list_elements_with_position_information($['arguments']).__l_map(($) => sh.b.sub([
+                Expression($.value, $p),
+                $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
+            ]))),
             sh.b.snippet(")"),
         ]))
         case 'compare': return _p.ss($, ($) => sh.b.sub([
@@ -375,6 +407,9 @@ export const Expression = (
         case 'null': return _p.ss($, ($) => sh.b.snippet("null"))
         case 'number literal': return _p.ss($, ($) => sh.b.snippet(s_number_default($)))
         case 'object literal': return _p.ss($, ($) => sh.b.sub([
+            $p['object literal needs parentheses']
+                ? sh.b.snippet("(")
+                : sh.b.nothing(),
             sh.b.snippet("{"),
             sh.b.indent([
                 sh.g.sub(_p.list.from_dictionary($.properties, ($, key) => sh.g.nested_block([
@@ -385,6 +420,9 @@ export const Expression = (
                 ]))),
             ]),
             sh.b.snippet("}"),
+            $p['object literal needs parentheses']
+                ? sh.b.snippet(")")
+                : sh.b.nothing(),
         ]))
         case 'parenthesized': return _p.ss($, ($) => sh.b.sub([
             sh.b.snippet("("),
@@ -400,6 +438,19 @@ export const Expression = (
             sh.b.snippet($['delimiter'][0] === "quote" ? s_quoted($['value']) : s_apostrophed($['value']))
         ]))
         case 'true': return _p.ss($, ($) => sh.b.snippet("true"))
+        case 'unary operation': return _p.ss($, ($) => {
+            const operand = $.operand
+            return sh.b.sub([
+                _p.decide.state($.operator, ($) => {
+                    switch ($[0]) {
+                        case 'negation': return _p.ss($, ($) => sh.b.snippet(`-`))
+                        case 'logical not': return _p.ss($, ($) => sh.b.snippet(`!`))
+                        default: return _p.au($[0])
+                    }
+                }),
+                Expression(operand, $p)
+            ])
+        })
         default: return _p.au($[0])
     }
 })

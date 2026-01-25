@@ -8,6 +8,14 @@ import * as d_target from "../../../interface/generated/liana/schemas/typescript
 import { $$ as temp_s_identifier } from "../implementation/manual/primitives/text/serializers/identifier"
 
 
+export const identifier = (
+    name: string,
+    escape: 'escape' | 'raw'
+): d_target.Identifier => escape === 'escape'
+        ? temp_s_identifier(name)
+        : name
+
+
 export namespace g {
 
     export const simple_line = (block: string): d_target.Group_Part_ => ['block', block]
@@ -41,7 +49,7 @@ export namespace n {
         children: _p.Raw_Or_Normal_Dictionary<d_target.Directory.D>,
     ): d_target.Directory.D => ['directory', _p.dictionary.literal(children)]
 
-    export const file = (statements: _p.Raw_Or_Normal_List<d_target.Statements_.L>): d_target.Directory.D => {
+    export const file = (statements: _p.Raw_Or_Normal_List<d_target.Statements.L>): d_target.Directory.D => {
         return ['file', {
             'statements': _p.list.literal(statements),
         }]
@@ -52,41 +60,74 @@ export namespace n {
 export const specifier = (
     name: string,
     as: null | string,
-): d_target.Statements_.L.export_.type_.named_exports.specifiers.L => {
+): d_target.Statements.L.export_.type_.named_exports.specifiers.L => {
     return {
         'name': temp_s_identifier(name),
         'as': as === null ? _p.optional.not_set() : _p.optional.set(temp_s_identifier(as)),
     }
 }
 
+
+export namespace sw {
+
+    export const case_ = (
+        expression: d_target.Expression,
+        statements: _p.Raw_Or_Normal_List<d_target.Statements.L>,
+    ): d_target.Statements.L.switch_.clauses.L => ({
+        'type': ['case', expression],
+        'statements': _p.list.literal(statements),
+    })
+
+    export const default_ = (
+        statements: _p.Raw_Or_Normal_List<d_target.Statements.L>,
+    ): d_target.Statements.L.switch_.clauses.L => ({
+        'type': ['default', null],
+        'statements': _p.list.literal(statements),
+    })
+}
+
 export namespace s {
 
-    export const raw = ($: d_target.Group_): d_target.Statements_.L => ['raw', $]
+    export const raw = ($: d_target.Group_): d_target.Statements.L => ['raw', $]
 
-    export const import_namespace = (name: string, from: string): d_target.Statements_.L => ['import', {
-        'type': ['namespace', temp_s_identifier(name)],
-        'from': from,
-
-    }]
+    export const block = (statements: _p.Raw_Or_Normal_List<d_target.Statements.L>): d_target.Statements.L => ['block', _p.list.literal(statements)]
 
     export const export_ = (
-        specifiers: _p.Raw_Or_Normal_List<d_target.Statements_.L.export_.type_.named_exports.specifiers.L>,
+        specifiers: _p.Raw_Or_Normal_List<d_target.Statements.L.export_.type_.named_exports.specifiers.L>,
         from: null | string,
-    ): d_target.Statements_.L => ['export', {
+    ): d_target.Statements.L => ['export', {
         'type': ['named exports', {
             'specifiers': _p.list.literal(specifiers),
             'from': from === null ? _p.optional.not_set() : _p.optional.set(from),
         }],
     }]
 
+    export const expression = (expression: d_target.Expression): d_target.Statements.L => ['expression', expression]
+
+    export const import_namespace = (name: string, from: string): d_target.Statements.L => ['import', {
+        'type': ['namespace', temp_s_identifier(name)],
+        'from': from,
+
+    }]
+
     export const namespace = (
         export_: boolean,
         name: string,
-        block: _p.Raw_Or_Normal_List<d_target.Statements_.L>,
-    ): d_target.Statements_.L => ['module declaration', {
+        block: _p.Raw_Or_Normal_List<d_target.Statements.L>,
+    ): d_target.Statements.L => ['module declaration', {
         'export': export_,
         'name': temp_s_identifier(name),
         'block': _p.list.literal(block),
+    }]
+
+    export const return_ = (expression: null | d_target.Expression): d_target.Statements.L => ['return', expression === null ? _p.optional.not_set() : _p.optional.set(expression)]
+
+    export const switch_ = (
+        expression: d_target.Expression,
+        clauses: _p.Raw_Or_Normal_List<d_target.Statements.L.switch_.clauses.L>,
+    ): d_target.Statements.L => ['switch', {
+        'expression': expression,
+        'clauses': _p.list.literal(clauses),
     }]
 
     export const type_alias = (
@@ -94,7 +135,7 @@ export namespace s {
         name: string,
         parameters: _p.Raw_Or_Normal_List<string>,
         type: d_target.Type,
-    ): d_target.Statements_.L => ['type alias declaration', {
+    ): d_target.Statements.L => ['type alias declaration', {
         'export': export_,
         'name': temp_s_identifier(name),
         'parameters': _p.list.literal(parameters).__l_map(($) => temp_s_identifier($)),
@@ -107,7 +148,7 @@ export namespace s {
         name: string,
         type: null | d_target.Type,
         expression: null | d_target.Expression,
-    ): d_target.Statements_.L => ['variable', {
+    ): d_target.Statements.L => ['variable', {
         'export': export_,
         'const': const_,
         'name': temp_s_identifier(name),
@@ -138,7 +179,7 @@ export const group = (Group_Parts: _p.Raw_Or_Normal_List<d_target.Group_.L>): d_
 export const parameter = (
     name: string,
     type: d_target.Type | null,
-): d_target.Type.function_.parameters.L => {
+): d_target.Function_Parameters.L => {
     return {
         'name': name,
         'type': type === null
@@ -163,7 +204,7 @@ export namespace t {
     }
     export const function_ = (
         type_parameters: _p.Raw_Or_Normal_List<d_target.Type>,
-        parameters: _p.Raw_Or_Normal_List<d_target.Type.function_.parameters.L>,
+        parameters: _p.Raw_Or_Normal_List<d_target.Function_Parameters.L>,
         return_: d_target.Type,
     ): d_target.Type => {
         return ['function', {
@@ -223,8 +264,6 @@ export namespace t {
 }
 
 
-
-
 export namespace e {
 
     export const raw = (expression: d_target.Block_Part_): d_target.Expression => ['raw', expression]
@@ -233,14 +272,24 @@ export namespace e {
         elements: _p.Raw_Or_Normal_List<d_target.Expression>
     ): d_target.Expression => ['array literal', _p.list.literal(elements)]
 
-    export const arrow_function = (
-        parameters: _p.Raw_Or_Normal_List<d_target.Expression.arrow_function.parameters.L>,
+    export const arrow_function_with_expression = (
+        parameters: _p.Raw_Or_Normal_List<d_target.Function_Parameters.L>,
         return_type: null | d_target.Type,
-        type: d_target.Expression.arrow_function.type_,
+        expression: d_target.Expression,
     ): d_target.Expression => ['arrow function', {
         'parameters': _p.list.literal(parameters),
         'return type': return_type === null ? _p.optional.not_set() : _p.optional.set(return_type),
-        'type': type,
+        'body': ['expression', expression],
+    }]
+
+    export const arrow_function_with_block = (
+        parameters: _p.Raw_Or_Normal_List<d_target.Function_Parameters.L>,
+        return_type: null | d_target.Type,
+        block: _p.Raw_Or_Normal_List<d_target.Statements.L>,
+    ): d_target.Expression => ['arrow function', {
+        'parameters': _p.list.literal(parameters),
+        'return type': return_type === null ? _p.optional.not_set() : _p.optional.set(return_type),
+        'body': ['block', _p.list.literal(block)],
     }]
 
     export const assignment = (
@@ -266,7 +315,7 @@ export namespace e {
         right: d_target.Expression,
     ): d_target.Expression => ['compare', {
         'left': left,
-        'operator': (() => {
+        'operator': ((): d_target.Expression.compare.operator => {
             switch (operator) {
                 case 'loosely equal': return ['loosely equal', null]
                 case 'strictly equal': return ['strictly equal', null]
@@ -308,7 +357,20 @@ export namespace e {
     ): d_target.Expression => ['identifier', escape === 'escape'
         ? temp_s_identifier(name)
         : name
-    ]
+        ]
+
+    export const not = (
+        operand: d_target.Expression,
+    ): d_target.Expression => ['unary operation', {
+        'operator': ['logical not', null],
+        'operand': operand,
+    }]
+    export const negate = (
+        operand: d_target.Expression,
+    ): d_target.Expression => ['unary operation', {
+        'operator': ['negation', null],
+        'operand': operand,
+    }]
 
     export const null_ = (): d_target.Expression => ['null', null]
 
@@ -337,5 +399,5 @@ export namespace e {
     }]
 
     export const true_ = (): d_target.Expression => ['true', null]
-    
+
 }

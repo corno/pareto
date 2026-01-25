@@ -43,6 +43,14 @@ export const Group: t_signatures.Group = ($) => $.__l_map(($) => Group_Part(
     $
 ))
 export const Identifier: t_signatures.Identifier = ($) => $
+export const Function_Parameters: t_signatures.Function_Parameters = ($) => $.__l_map(($) => ({
+    'name': _p.deprecated_cc($['name'], ($) => Identifier(
+        $
+    )),
+    'type': _p.deprecated_cc($['type'], ($) => $.__o_map(($) => Type(
+        $
+    ))),
+}))
 export const String_Literal: t_signatures.String_Literal = ($) => ({
     'delimiter': _p.deprecated_cc($['delimiter'], ($) => _p.deprecated_cc($, ($): t_out.String_Literal.delimiter => {
         switch ($[0]) {
@@ -60,14 +68,9 @@ export const Type: t_signatures.Type = ($) => _p.deprecated_cc($, ($): t_out.Typ
             'type parameters': _p.deprecated_cc($['type parameters'], ($) => $.__l_map(($) => Type(
                 $
             ))),
-            'parameters': _p.deprecated_cc($['parameters'], ($) => $.__l_map(($) => ({
-                'name': _p.deprecated_cc($['name'], ($) => Identifier(
-                    $
-                )),
-                'type': _p.deprecated_cc($['type'], ($) => $.__o_map(($) => Type(
-                    $
-                ))),
-            }))),
+            'parameters': _p.deprecated_cc($['parameters'], ($) => Function_Parameters(
+                $
+            )),
             'return': _p.deprecated_cc($['return'], ($) => Type(
                 $
             )),
@@ -119,18 +122,13 @@ export const Expression: t_signatures.Expression = ($) => _p.deprecated_cc($, ($
             $
         ))])
         case 'arrow function': return _p.ss($, ($) => ['arrow function', ({
-            'parameters': _p.deprecated_cc($['parameters'], ($) => $.__l_map(($) => ({
-                'name': _p.deprecated_cc($['name'], ($) => Identifier(
-                    $
-                )),
-                'type': _p.deprecated_cc($['type'], ($) => $.__o_map(($) => Type(
-                    $
-                ))),
-            }))),
+            'parameters': _p.deprecated_cc($['parameters'], ($) => Function_Parameters(
+                $
+            )),
             'return type': _p.deprecated_cc($['return type'], ($) => $.__o_map(($) => Type(
                 $
             ))),
-            'type': _p.deprecated_cc($['type'], ($) => _p.deprecated_cc($, ($): t_out.Expression.arrow_function.type_ => {
+            'body': _p.deprecated_cc($['body'], ($) => _p.deprecated_cc($, ($): t_out.Expression.arrow_function.body => {
                 switch ($[0]) {
                     case 'block': return _p.ss($, ($) => ['block', Statements(
                         $
@@ -224,6 +222,18 @@ export const Expression: t_signatures.Expression = ($) => _p.deprecated_cc($, ($
             $
         )])
         case 'true': return _p.ss($, ($) => ['true', null])
+        case 'unary operation': return _p.ss($, ($) => ['unary operation', ({
+            'operator': _p.deprecated_cc($['operator'], ($) => _p.deprecated_cc($, ($): t_out.Expression.unary_operation.operator => {
+                switch ($[0]) {
+                    case 'negation': return _p.ss($, ($) => ['negation', null])
+                    case 'logical not': return _p.ss($, ($) => ['logical not', null])
+                    default: return _p.au($[0])
+                }
+            })),
+            'operand': _p.deprecated_cc($['operand'], ($) => Expression(
+                $
+            )),
+        })])
         default: return _p.au($[0])
     }
 })

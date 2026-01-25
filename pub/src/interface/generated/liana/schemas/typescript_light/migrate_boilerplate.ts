@@ -85,6 +85,22 @@ export type Identifier_ = (
     context: Identifier_.I,
 ) => Identifier_.O
 
+export namespace Function_Parameters_ {
+    
+    export type I = i_in.Function_Parameters
+    
+    export type O = i_out.Function_Parameters
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Function_Parameters_ = (
+    context: Function_Parameters_.I,
+) => Function_Parameters_.O
+
 export namespace String_Literal_ {
     
     export type I = i_in.String_Literal
@@ -171,6 +187,7 @@ export {
     Group_Part_ as Group_Part, 
     Group_ as Group, 
     Identifier_ as Identifier, 
+    Function_Parameters_ as Function_Parameters, 
     String_Literal_ as String_Literal, 
     Type_ as Type, 
     Expression_ as Expression, 
