@@ -324,7 +324,7 @@ export const Expression = (
                     _p.decide.state($.type, ($) => {
                         switch ($[0]) {
                             case 'boolean': return _p.ss($, ($) => sh.b.sub([
-                                Selection($.source),
+                                Selection_Old($.source),
                                 sh.b.indent([
                                     sh.g.nested_block([
                                         sh.b.snippet("? "),
@@ -338,7 +338,7 @@ export const Expression = (
                             ]))
 
                             case 'optional': return _p.ss($, ($) => sh.b.sub([
-                                Selection($.source),
+                                Selection_Old($.source),
                                 sh.b.snippet(".__decide("),
                                 sh.b.indent([
                                     sh.g.nested_block([
@@ -368,8 +368,8 @@ export const Expression = (
                             ]))
 
                             case 'state': return _p.ss($, ($) => sh.b.sub([
-                                sh.b.snippet("_p.decide.state("),
-                                Selection($.source),
+                                sh.b.snippet("_p.deprecated_cc("),
+                                Selection_Old($.source),
                                 sh.b.snippet(", ($)"),
                                 $['temp resulting node'].__decide(
                                     ($) => sh.b.sub([
@@ -456,7 +456,7 @@ export const Expression = (
                             switch ($[0]) {
 
                                 case 'call': return _p.ss($, ($) => sh.b.sub([
-                                    Selection($.source),
+                                    Selection_Old($.source),
                                     sh.b.snippet("("),
                                     sh.b.indent([
                                         sh.g.nested_block([
@@ -508,7 +508,7 @@ export const Expression = (
                                     sh.b.snippet("})"),
                                 ]))
                                 case 'map': return _p.ss($, ($) => sh.b.sub([
-                                    Selection($.source),
+                                    Selection_Old($.source),
                                     sh.b.snippet(".__d_map(($) => "),
                                     Expression($['entry handler']),
                                     sh.b.snippet(")"),
@@ -545,7 +545,7 @@ export const Expression = (
                                     sh.b.snippet("])"),
                                 ]))
                                 case 'map': return _p.ss($, ($) => sh.b.sub([
-                                    Selection($.source),
+                                    Selection_Old($.source),
                                     sh.b.snippet(".__l_map(($) => "),
                                     Expression($['element handler']),
                                     sh.b.snippet(")"),
@@ -591,7 +591,7 @@ export const Expression = (
                                     }
                                 }))
                                 case 'map': return _p.ss($, ($) => sh.b.sub([
-                                    Selection($.source),
+                                    Selection_Old($.source),
                                     sh.b.snippet(".__o_map(($) => "),
                                     Expression($['set handler']),
                                     sh.b.snippet(")"),
@@ -690,7 +690,7 @@ export const Expression = (
                     ]))
                     case 'change context': return _p.ss($, ($) => sh.b.sub([
                         sh.b.snippet("_p.deprecated_cc("),
-                        Selection($['new context']),
+                        Selection_Old($['new context']),
                         sh.b.snippet(", ($) => "),
                         Expression($.expression),
                         sh.b.snippet(")"),
@@ -715,7 +715,7 @@ export const Expression = (
                         Expression($.expression),
                     ]))
                     case 'implement me': return _p.ss($, ($) => sh.b.snippet("_pdev.implement_me(\"marker tbd\")"))
-                    case 'selection deprecated': return _p.ss($, ($) => Selection($))
+                    case 'selection deprecated': return _p.ss($, ($) => Selection_Old($))
                     case 'unreachable': return _p.ss($, ($) => sh.b.snippet("_p.unreachable_code_path()"))
 
                     default: return _p.au($[0])
@@ -726,76 +726,111 @@ export const Expression = (
     })
 }
 
+
+export const reduce = <Element, Result_Type>(
+    $: _pi.List<Element>,
+    initial_state: Result_Type,
+    update_state: (
+        value: Element,
+        current: Result_Type
+    ) => Result_Type,
+): Result_Type => {
+    let current_state = initial_state
+    $.__for_each(($) => {
+        current_state = update_state($, current_state)
+    })
+    return current_state
+}
+
 export const Selection = (
     $: d_in.Selection,
-): d_out.Block_Part_ => {
-    return sh.b.sub([
+): d_out.Expression => {
+    return reduce(
+        $.tail,
         _p.decide.state($.start, ($) => {
             switch ($[0]) {
-
-                case 'abort deprecated': return _p.ss($, ($) => sh.b.snippet("_p.fixme_abort('ABORT SELECTION')"))
-                case 'argument': return _p.ss($, ($) => sh.b.snippet(s_identifier("FOOO FIX ARGUMENT")))
-
-                case 'call': return _p.ss($, ($) => sh.b.sub([
+                case 'implement me': return _p.ss($, ($) => sh.e.call(
+                    sh.e.property_access(
+                        sh.e.identifier("_pdev", 'raw'),
+                        "implement_me",
+                        'raw'
+                    ),
+                    [
+                        sh.e.string_literal("marker tbd", "apostrophe")
+                    ]
+                ))
+                case 'abort deprecated': return _p.ss($, ($) => sh.e.call(
+                    sh.e.property_access(
+                        sh.e.identifier("_p", 'raw'),
+                        "fixme_abort",
+                        'raw'
+                    ),
+                    [
+                        sh.e.string_literal("ABORT SELECTION", "apostrophe")
+                    ]
+                ))
+                case 'argument': return _p.ss($, ($) => sh.e.identifier("FIXME ARGUMENT", 'raw'))
+                case 'call': return _p.ss($, ($) => sh.e.call(
                     Selection($.source),
-                    sh.b.snippet("("),
-                    sh.b.indent([
-                        sh.g.nested_block([
-                            Selection($.context), $.arguments.__decide(
-                                ($) => sh.b.snippet(","),
-                                () => sh.b.nothing()
-                            ),
-                        ]),
+                    _p.list.nested_literal_old([
+                        [
+                            Selection($.context),
+                        ],
                         $.arguments.__decide(
-                            ($) => sh.g.nested_block([
-                                _p.boolean.dictionary_is_empty($)
-                                    ? sh.b.snippet("null")
-                                    : sh.b.sub([
-                                        sh.b.snippet("{"),
-                                        sh.b.indent([
-                                            sh.g.sub(_p.list.from_dictionary($, ($, key) => sh.g.sub([
-                                                sh.g.nested_block([
-                                                    String_Literal(key, { 'delimiter': "apostrophe" }),
-                                                    sh.b.snippet(": "),
-                                                    Expression($),
-                                                    sh.b.snippet(","),
-                                                ]),
-                                            ]))),
-                                        ]),
-                                        sh.b.snippet("}")
-                                    ]),
-                            ]),
-                            () => sh.g.nothing()
+                            ($) => _p.boolean.dictionary_is_empty($)
+                                ? [
+                                    sh.e.null_(),
+                                ]
+                                : [
+                                    sh.e.object_literal(
+                                        $.__d_map(($) => sh.e.raw(Expression($)))
+                                    )
+                                ],
+                            () => []
                         ),
                     ]),
-                    sh.b.snippet(")"),
-                ]))
-                case 'context': return _p.ss($, ($) => sh.b.snippet("$"))
-                case 'entry': return _p.ss($, ($) => sh.b.snippet("FIXME_ENTRY"))
-                case 'implement me': return _p.ss($, ($) => sh.b.snippet("_pdev.implement_me(\"marker tbd\")"))
-                case 'parameter': return _p.ss($, ($) => sh.b.sub([
-                    sh.b.snippet("$p["),
-                    String_Literal($, { 'delimiter': "apostrophe" }),
-                    sh.b.snippet("]"),
-                ]))
+
+                ))
+                case 'context': return _p.ss($, ($) => sh.e.identifier("$", 'raw'))
+                case 'entry': return _p.ss($, ($) => sh.e.identifier("FIXME_ENTRY", 'raw'))
                 case 'variable': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {
-                        case 'local': return _p.ss($, ($) => sh.b.snippet(s_identifier($)))
-                        case 'imported': return _p.ss($, ($) => sh.b.sub([
-                            sh.b.snippet(s_identifier(join(_p.list.literal(["v ", $.import])))),
-                            sh.b.snippet("."),
-                            sh.b.snippet(s_identifier($.variable)),
-                        ]))
+                        case 'local': return _p.ss($, ($) => sh.e.identifier($, 'escape'))
+                        case 'imported': return _p.ss($, ($) => sh.e.property_access(
+                            sh.e.identifier(join(_p.list.literal(["v ", $.import])), 'escape'),
+                            $.variable,
+                            'escape'
+                        ))
                         default: return _p.au($[0])
                     }
                 }))
+                case 'parameter': return _p.ss($, ($) => sh.e.element_access(
+                    sh.e.identifier("$p", 'raw'),
+                    sh.e.string_literal($, 'apostrophe')
+                ))
                 default: return _p.au($[0])
             }
         }),
-        sh.b.sub($.tail.__l_map(($) => sh.b.sub([
-            sh.b.snippet("["),
-            String_Literal($, { 'delimiter': "apostrophe" }),
-            sh.b.snippet("]"),
-        ]))),
+        ($, current_expression) => {
+            return sh.e.element_access(
+                current_expression,
+                sh.e.string_literal($, 'apostrophe')
+            )
+        }
+    )
+}
+
+export const Selection_Old = (
+    $: d_in.Selection,
+): d_out.Block_Part_ => {
+    return sh.b.sub([
+        fp_to_temp_fp.Block_Part(
+            t_tl_2_fp.Expression(
+                Selection($),
+                {
+                    'replace empty type literals by null': true
+                }
+            ),
+        )
     ])
 }

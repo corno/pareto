@@ -4,7 +4,6 @@ import * as _pdev from 'pareto-core-dev'
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
 import * as d_in from "../../../../../../../interface/generated/liana/schemas/typescript_light/data"
 
-import { $$ as s_identifier } from "../../../primitives/text/serializers/identifier"
 import { $$ as op_enrich_list_elements_with_position_information } from "pareto-fountain-pen/dist/implementation/temp/enrich_with_position_information"
 import { $$ as s_apostrophed } from "../../../primitives/text/serializers/apostrophed_string"
 import { $$ as s_quoted } from "../../../primitives/text/serializers/quoted_string"
@@ -66,7 +65,7 @@ export const Block_Part = (
 export const Identifier = (
     $: string //FIX should have been a schema type
 ): d_out.Block_Part => {
-    return sh.b.snippet(s_identifier($))
+    return sh.b.snippet($)
 }
 
 export const String_Literal = (
