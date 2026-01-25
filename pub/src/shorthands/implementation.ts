@@ -310,7 +310,7 @@ export namespace e {
         value: d_target.Expression
     ): d_target.Expression => wrap_state(['initialize', wrap_state(['optional', wrap_state(['literal', wrap_state(['set', value])])])])
 
-    export const string = (
+    export const text_literal = (
         value: string,
         delimiter: 'quote' | 'backtick'
     ): d_target.Expression => wrap_state(['initialize', wrap_state(['text', wrap_state(['literal', {
