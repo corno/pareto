@@ -243,7 +243,7 @@ export namespace e {
         properties: _p.Raw_Or_Normal_Dictionary<d_target.Expression>
     ): d_target.Expression => wrap_state(['initialize', wrap_state(['group', _p.dictionary.literal(properties)])])
 
-    export const implement_me = (): d_target.Expression => wrap_state(['special', wrap_state(['implement me', null])])
+    export const implement_me = (description: string): d_target.Expression => wrap_state(['special', wrap_state(['implement me', description])])
     export const unreachable = (): d_target.Expression => wrap_state(['special', wrap_state(['unreachable', null])])
 
     export const integer = (
@@ -362,8 +362,8 @@ export namespace e {
 
 export namespace s {
 
-    export const implement_me = (): d_target.Selection => ({
-        'start': wrap_state(['implement me', null]),
+    export const implement_me = (description: string): d_target.Selection => ({
+        'start': wrap_state(['implement me', description]),
         'tail': _p.list.literal([])
     })
 

@@ -245,7 +245,7 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                     'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
                                 })])
                             case 'implement me':
-                                return _p.ss($, ($,) => ['implement me', null])
+                                return _p.ss($, ($,) => ['implement me', $])
                             case 'selection deprecated':
                                 return _p.ss($, ($,) => ['selection deprecated', Selection($)])
                             case 'unreachable':
@@ -696,7 +696,7 @@ export const Selection: t_signatures.Selection = ($,) => ({
         'state': _p.decide.state($, ($,): t_out.Selection.start.state => {
             switch ($[0]) {
                 case 'implement me':
-                    return _p.ss($, ($,) => ['implement me', null])
+                    return _p.ss($, ($,) => ['implement me', $])
                 case 'abort deprecated':
                     return _p.ss($, ($,) => ['abort deprecated', null])
                 case 'argument':

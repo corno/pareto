@@ -6,7 +6,6 @@ import * as _pdev from 'pareto-core-dev'
 //data types
 import * as d_in from "../../../../../interface/generated/liana/schemas/implementation/data/resolved"
 import * as d_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
-import * as d_fp_block from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
 import * as d_pareto_to_typescript from "../../../../../interface/to_be_generated/pareto_to_typescript"
 
 //shorthands
@@ -584,7 +583,7 @@ export const Expression = (
                         'raw'
                     ),
                     [
-                        sh.e.string_literal("FIXME IMPLEMENTME", 'quote')
+                        sh.e.string_literal($, 'quote')
                     ]
                 ))
                 case 'selection deprecated': return _p.ss($, ($) => Selection($))
@@ -634,7 +633,7 @@ export const Selection = (
                         'raw'
                     ),
                     [
-                        sh.e.string_literal("marker tbd", "apostrophe")
+                        sh.e.string_literal($, "apostrophe")
                     ]
                 ))
                 case 'abort deprecated': return _p.ss($, ($) => sh.e.call(

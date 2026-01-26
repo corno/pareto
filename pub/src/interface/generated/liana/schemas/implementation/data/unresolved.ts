@@ -472,7 +472,7 @@ export namespace Expression_ {
                     readonly 'expression': change_context.expression
                 }
                 
-                export type implement_me = null
+                export type implement_me = string
                 
                 export type selection_deprecated = Selection_
                 
@@ -1252,7 +1252,7 @@ export namespace Selection_ {
         
         export namespace state {
             
-            export type implement_me = null
+            export type implement_me = string
             
             export type abort_deprecated = null
             
