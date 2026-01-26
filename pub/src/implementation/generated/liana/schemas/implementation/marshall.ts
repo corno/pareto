@@ -25,22 +25,22 @@ export const Module: t_signatures.Module = ($,) => ['group', ['verbose', _p.dict
         switch ($[0]) {
             case 'serializer':
                 return _p.ss($, ($,) => ({
-                    'option': "serializer",
+                    'option': 'serializer',
                     'value': ['nothing', null],
                 }))
             case 'deserializer':
                 return _p.ss($, ($,) => ({
-                    'option': "deserializer",
+                    'option': 'deserializer',
                     'value': ['nothing', null],
                 }))
             case 'transformer':
                 return _p.ss($, ($,) => ({
-                    'option': "transformer",
+                    'option': 'transformer',
                     'value': ['nothing', null],
                 }))
             case 'refiner':
                 return _p.ss($, ($,) => ({
-                    'option': "refiner",
+                    'option': 'refiner',
                     'value': ['nothing', null],
                 }))
             default:
@@ -57,7 +57,7 @@ export const Module: t_signatures.Module = ($,) => ['group', ['verbose', _p.dict
             switch ($[0]) {
                 case 'ancestor':
                     return _p.ss($, ($,) => ({
-                        'option': "ancestor",
+                        'option': 'ancestor',
                         'value': ['group', ['verbose', _p.dictionary.literal(({
                             'dependency': _p.deprecated_cc($['dependency'], ($,) => ['text', ({
                                 'delimiter': ['quote', null],
@@ -71,7 +71,7 @@ export const Module: t_signatures.Module = ($,) => ['group', ['verbose', _p.dict
                     }))
                 case 'external':
                     return _p.ss($, ($,) => ({
-                        'option': "external",
+                        'option': 'external',
                         'value': ['text', ({
                             'delimiter': ['quote', null],
                             'value': $,
@@ -79,7 +79,7 @@ export const Module: t_signatures.Module = ($,) => ['group', ['verbose', _p.dict
                     }))
                 case 'sibling':
                     return _p.ss($, ($,) => ({
-                        'option': "sibling",
+                        'option': 'sibling',
                         'value': ['text', ({
                             'delimiter': ['quote', null],
                             'value': $,
@@ -111,12 +111,12 @@ export const Module_Set: t_signatures.Module_Set = ($,) => ['dictionary', $.__d_
     switch ($[0]) {
         case 'module':
             return _p.ss($, ($,) => ({
-                'option': "module",
+                'option': 'module',
                 'value': Module($),
             }))
         case 'set':
             return _p.ss($, ($,) => ({
-                'option': "set",
+                'option': 'set',
                 'value': Module_Set($),
             }))
         default:
@@ -129,12 +129,12 @@ export const Type_Node_Reference: t_signatures.Type_Node_Reference = ($,) => ['g
         switch ($[0]) {
             case 'dictionary':
                 return _p.ss($, ($,) => ({
-                    'option': "dictionary",
+                    'option': 'dictionary',
                     'value': ['nothing', null],
                 }))
             case 'group':
                 return _p.ss($, ($,) => ({
-                    'option': "group",
+                    'option': 'group',
                     'value': ['text', ({
                         'delimiter': ['quote', null],
                         'value': $,
@@ -142,17 +142,17 @@ export const Type_Node_Reference: t_signatures.Type_Node_Reference = ($,) => ['g
                 }))
             case 'list':
                 return _p.ss($, ($,) => ({
-                    'option': "list",
+                    'option': 'list',
                     'value': ['nothing', null],
                 }))
             case 'optional':
                 return _p.ss($, ($,) => ({
-                    'option': "optional",
+                    'option': 'optional',
                     'value': ['nothing', null],
                 }))
             case 'state':
                 return _p.ss($, ($,) => ({
-                    'option': "state",
+                    'option': 'state',
                     'value': ['text', ({
                         'delimiter': ['quote', null],
                         'value': $,
@@ -167,17 +167,17 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
     switch ($[0]) {
         case 'special':
             return _p.ss($, ($,) => ({
-                'option': "special",
+                'option': 'special',
                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                     switch ($[0]) {
                         case 'abort':
                             return _p.ss($, ($,) => ({
-                                'option': "abort",
+                                'option': 'abort',
                                 'value': Expression($),
                             }))
                         case 'block':
                             return _p.ss($, ($,) => ({
-                                'option': "block",
+                                'option': 'block',
                                 'value': ['group', ['verbose', _p.dictionary.literal(({
                                     'variables': _p.deprecated_cc($['variables'], ($,) => ['dictionary', $.__d_map(($,key,) => ['group', ['verbose', _p.dictionary.literal(({
                                         'type': _p.deprecated_cc($['type'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
@@ -196,7 +196,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                             }))
                         case 'change context':
                             return _p.ss($, ($,) => ({
-                                'option': "change context",
+                                'option': 'change context',
                                 'value': ['group', ['verbose', _p.dictionary.literal(({
                                     'new context': _p.deprecated_cc($['new context'], ($,) => Selection($)),
                                     'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
@@ -204,7 +204,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                             }))
                         case 'implement me':
                             return _p.ss($, ($,) => ({
-                                'option': "implement me",
+                                'option': 'implement me',
                                 'value': ['text', ({
                                     'delimiter': ['quote', null],
                                     'value': $,
@@ -212,12 +212,12 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                             }))
                         case 'selection deprecated':
                             return _p.ss($, ($,) => ({
-                                'option': "selection deprecated",
+                                'option': 'selection deprecated',
                                 'value': Selection($),
                             }))
                         case 'unreachable':
                             return _p.ss($, ($,) => ({
-                                'option': "unreachable",
+                                'option': 'unreachable',
                                 'value': ['nothing', null],
                             }))
                         default:
@@ -227,27 +227,27 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
             }))
         case 'initialize':
             return _p.ss($, ($,) => ({
-                'option': "initialize",
+                'option': 'initialize',
                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                     switch ($[0]) {
                         case 'boolean':
                             return _p.ss($, ($,) => ({
-                                'option': "boolean",
+                                'option': 'boolean',
                                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                     switch ($[0]) {
                                         case 'literal':
                                             return _p.ss($, ($,) => ({
-                                                'option': "literal",
+                                                'option': 'literal',
                                                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                                     switch ($[0]) {
                                                         case 'false':
                                                             return _p.ss($, ($,) => ({
-                                                                'option': "false",
+                                                                'option': 'false',
                                                                 'value': ['nothing', null],
                                                             }))
                                                         case 'true':
                                                             return _p.ss($, ($,) => ({
-                                                                'option': "true",
+                                                                'option': 'true',
                                                                 'value': ['nothing', null],
                                                             }))
                                                         default:
@@ -257,7 +257,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                             }))
                                         case 'not':
                                             return _p.ss($, ($,) => ({
-                                                'option': "not",
+                                                'option': 'not',
                                                 'value': Selection($),
                                             }))
                                         default:
@@ -267,12 +267,12 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                             }))
                         case 'component':
                             return _p.ss($, ($,) => ({
-                                'option': "component",
+                                'option': 'component',
                                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                     switch ($[0]) {
                                         case 'call':
                                             return _p.ss($, ($,) => ({
-                                                'option': "call",
+                                                'option': 'call',
                                                 'value': ['group', ['verbose', _p.dictionary.literal(({
                                                     'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
                                                     'context': _p.deprecated_cc($['context'], ($,) => Expression($)),
@@ -290,17 +290,17 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                             }))
                         case 'dictionary':
                             return _p.ss($, ($,) => ({
-                                'option': "dictionary",
+                                'option': 'dictionary',
                                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                     switch ($[0]) {
                                         case 'literal':
                                             return _p.ss($, ($,) => ({
-                                                'option': "literal",
+                                                'option': 'literal',
                                                 'value': ['dictionary', $.__d_map(($,key,) => Expression($))],
                                             }))
                                         case 'map':
                                             return _p.ss($, ($,) => ({
-                                                'option': "map",
+                                                'option': 'map',
                                                 'value': ['group', ['verbose', _p.dictionary.literal(({
                                                     'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
                                                     'entry handler': _p.deprecated_cc($['entry handler'], ($,) => Expression($)),
@@ -313,22 +313,22 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                             }))
                         case 'group':
                             return _p.ss($, ($,) => ({
-                                'option': "group",
+                                'option': 'group',
                                 'value': ['dictionary', $.__d_map(($,key,) => Expression($))],
                             }))
                         case 'list':
                             return _p.ss($, ($,) => ({
-                                'option': "list",
+                                'option': 'list',
                                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                     switch ($[0]) {
                                         case 'literal':
                                             return _p.ss($, ($,) => ({
-                                                'option': "literal",
+                                                'option': 'literal',
                                                 'value': ['list', $.__l_map(($,) => Expression($))],
                                             }))
                                         case 'map':
                                             return _p.ss($, ($,) => ({
-                                                'option': "map",
+                                                'option': 'map',
                                                 'value': ['group', ['verbose', _p.dictionary.literal(({
                                                     'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
                                                     'element handler': _p.deprecated_cc($['element handler'], ($,) => Expression($)),
@@ -341,22 +341,22 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                             }))
                         case 'nothing':
                             return _p.ss($, ($,) => ({
-                                'option': "nothing",
+                                'option': 'nothing',
                                 'value': ['nothing', null],
                             }))
                         case 'number':
                             return _p.ss($, ($,) => ({
-                                'option': "number",
+                                'option': 'number',
                                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                     switch ($[0]) {
                                         case 'approximation':
                                             return _p.ss($, ($,) => ({
-                                                'option': "approximation",
+                                                'option': 'approximation',
                                                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                                     switch ($[0]) {
                                                         case 'literal':
                                                             return _p.ss($, ($,) => ({
-                                                                'option': "literal",
+                                                                'option': 'literal',
                                                                 'value': ['text', ({
                                                                     'delimiter': ['none', null],
                                                                     'value': v_serialize_number.serialize($),
@@ -369,12 +369,12 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                             }))
                                         case 'integer':
                                             return _p.ss($, ($,) => ({
-                                                'option': "integer",
+                                                'option': 'integer',
                                                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                                     switch ($[0]) {
                                                         case 'literal':
                                                             return _p.ss($, ($,) => ({
-                                                                'option': "literal",
+                                                                'option': 'literal',
                                                                 'value': ['text', ({
                                                                     'delimiter': ['none', null],
                                                                     'value': v_serialize_number.serialize($),
@@ -387,12 +387,12 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                             }))
                                         case 'natural':
                                             return _p.ss($, ($,) => ({
-                                                'option': "natural",
+                                                'option': 'natural',
                                                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                                     switch ($[0]) {
                                                         case 'literal':
                                                             return _p.ss($, ($,) => ({
-                                                                'option': "literal",
+                                                                'option': 'literal',
                                                                 'value': ['text', ({
                                                                     'delimiter': ['none', null],
                                                                     'value': v_serialize_number.serialize($),
@@ -410,22 +410,22 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                             }))
                         case 'optional':
                             return _p.ss($, ($,) => ({
-                                'option': "optional",
+                                'option': 'optional',
                                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                     switch ($[0]) {
                                         case 'literal':
                                             return _p.ss($, ($,) => ({
-                                                'option': "literal",
+                                                'option': 'literal',
                                                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                                     switch ($[0]) {
                                                         case 'not set':
                                                             return _p.ss($, ($,) => ({
-                                                                'option': "not set",
+                                                                'option': 'not set',
                                                                 'value': ['nothing', null],
                                                             }))
                                                         case 'set':
                                                             return _p.ss($, ($,) => ({
-                                                                'option': "set",
+                                                                'option': 'set',
                                                                 'value': Expression($),
                                                             }))
                                                         default:
@@ -435,7 +435,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                             }))
                                         case 'map':
                                             return _p.ss($, ($,) => ({
-                                                'option': "map",
+                                                'option': 'map',
                                                 'value': ['group', ['verbose', _p.dictionary.literal(({
                                                     'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
                                                     'set handler': _p.deprecated_cc($['set handler'], ($,) => Expression($)),
@@ -448,12 +448,12 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                             }))
                         case 'state':
                             return _p.ss($, ($,) => ({
-                                'option': "state",
+                                'option': 'state',
                                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                     switch ($[0]) {
                                         case 'literal':
                                             return _p.ss($, ($,) => ({
-                                                'option': "literal",
+                                                'option': 'literal',
                                                 'value': ['group', ['verbose', _p.dictionary.literal(({
                                                     'option': _p.deprecated_cc($['option'], ($,) => ['text', ({
                                                         'delimiter': ['quote', null],
@@ -469,23 +469,23 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                             }))
                         case 'text':
                             return _p.ss($, ($,) => ({
-                                'option': "text",
+                                'option': 'text',
                                 'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                     switch ($[0]) {
                                         case 'literal':
                                             return _p.ss($, ($,) => ({
-                                                'option': "literal",
+                                                'option': 'literal',
                                                 'value': ['group', ['verbose', _p.dictionary.literal(({
                                                     'type': _p.deprecated_cc($['type'], ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                                         switch ($[0]) {
                                                             case 'identifier':
                                                                 return _p.ss($, ($,) => ({
-                                                                    'option': "identifier",
+                                                                    'option': 'identifier',
                                                                     'value': ['nothing', null],
                                                                 }))
                                                             case 'freeform':
                                                                 return _p.ss($, ($,) => ({
-                                                                    'option': "freeform",
+                                                                    'option': 'freeform',
                                                                     'value': ['nothing', null],
                                                                 }))
                                                             default:
@@ -510,13 +510,13 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
             }))
         case 'decide':
             return _p.ss($, ($,) => ({
-                'option': "decide",
+                'option': 'decide',
                 'value': ['group', ['verbose', _p.dictionary.literal(({
                     'type': _p.deprecated_cc($['type'], ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
                         switch ($[0]) {
                             case 'boolean':
                                 return _p.ss($, ($,) => ({
-                                    'option': "boolean",
+                                    'option': 'boolean',
                                     'value': ['group', ['verbose', _p.dictionary.literal(({
                                         'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
                                         'temp resulting node': _p.deprecated_cc($['temp resulting node'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
@@ -526,7 +526,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                 }))
                             case 'optional':
                                 return _p.ss($, ($,) => ({
-                                    'option': "optional",
+                                    'option': 'optional',
                                     'value': ['group', ['verbose', _p.dictionary.literal(({
                                         'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
                                         'temp resulting node': _p.deprecated_cc($['temp resulting node'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
@@ -536,7 +536,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                 }))
                             case 'state':
                                 return _p.ss($, ($,) => ({
-                                    'option': "state",
+                                    'option': 'state',
                                     'value': ['group', ['verbose', _p.dictionary.literal(({
                                         'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
                                         'temp resulting node': _p.deprecated_cc($['temp resulting node'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
@@ -544,7 +544,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                             switch ($[0]) {
                                                 case 'partial':
                                                     return _p.ss($, ($,) => ({
-                                                        'option': "partial",
+                                                        'option': 'partial',
                                                         'value': ['group', ['verbose', _p.dictionary.literal(({
                                                             'cases': _p.deprecated_cc($['cases'], ($,) => ['dictionary', $.__d_map(($,key,) => Expression($))]),
                                                             'default': _p.deprecated_cc($['default'], ($,) => Expression($)),
@@ -552,7 +552,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                                     }))
                                                 case 'full':
                                                     return _p.ss($, ($,) => ({
-                                                        'option': "full",
+                                                        'option': 'full',
                                                         'value': ['group', ['verbose', _p.dictionary.literal(({
                                                             'cases': _p.deprecated_cc($['cases'], ($,) => ['dictionary', $.__d_map(($,key,) => Expression($))]),
                                                         }))]],
@@ -577,12 +577,12 @@ export const Abort_Expression: t_signatures.Abort_Expression = ($,) => ['state',
     switch ($[0]) {
         case 'current':
             return _p.ss($, ($,) => ({
-                'option': "current",
+                'option': 'current',
                 'value': ['nothing', null],
             }))
         case 'new':
             return _p.ss($, ($,) => ({
-                'option': "new",
+                'option': 'new',
                 'value': Expression($),
             }))
         default:
@@ -594,7 +594,7 @@ export const Selection: t_signatures.Selection = ($,) => ['group', ['verbose', _
         switch ($[0]) {
             case 'implement me':
                 return _p.ss($, ($,) => ({
-                    'option': "implement me",
+                    'option': 'implement me',
                     'value': ['text', ({
                         'delimiter': ['quote', null],
                         'value': $,
@@ -602,12 +602,12 @@ export const Selection: t_signatures.Selection = ($,) => ['group', ['verbose', _
                 }))
             case 'abort deprecated':
                 return _p.ss($, ($,) => ({
-                    'option': "abort deprecated",
+                    'option': 'abort deprecated',
                     'value': ['nothing', null],
                 }))
             case 'argument':
                 return _p.ss($, ($,) => ({
-                    'option': "argument",
+                    'option': 'argument',
                     'value': ['text', ({
                         'delimiter': ['quote', null],
                         'value': $,
@@ -615,7 +615,7 @@ export const Selection: t_signatures.Selection = ($,) => ['group', ['verbose', _
                 }))
             case 'call':
                 return _p.ss($, ($,) => ({
-                    'option': "call",
+                    'option': 'call',
                     'value': ['group', ['verbose', _p.dictionary.literal(({
                         'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
                         'context': _p.deprecated_cc($['context'], ($,) => Selection($)),
@@ -624,12 +624,12 @@ export const Selection: t_signatures.Selection = ($,) => ['group', ['verbose', _
                 }))
             case 'context':
                 return _p.ss($, ($,) => ({
-                    'option': "context",
+                    'option': 'context',
                     'value': ['nothing', null],
                 }))
             case 'entry':
                 return _p.ss($, ($,) => ({
-                    'option': "entry",
+                    'option': 'entry',
                     'value': ['group', ['verbose', _p.dictionary.literal(({
                         'dictionary': _p.deprecated_cc($['dictionary'], ($,) => Selection($)),
                         'key': _p.deprecated_cc($['key'], ($,) => Selection($)),
@@ -638,12 +638,12 @@ export const Selection: t_signatures.Selection = ($,) => ['group', ['verbose', _
                 }))
             case 'variable':
                 return _p.ss($, ($,) => ({
-                    'option': "variable",
+                    'option': 'variable',
                     'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
                         switch ($[0]) {
                             case 'local':
                                 return _p.ss($, ($,) => ({
-                                    'option': "local",
+                                    'option': 'local',
                                     'value': ['text', ({
                                         'delimiter': ['quote', null],
                                         'value': $,
@@ -651,7 +651,7 @@ export const Selection: t_signatures.Selection = ($,) => ['group', ['verbose', _
                                 }))
                             case 'imported':
                                 return _p.ss($, ($,) => ({
-                                    'option': "imported",
+                                    'option': 'imported',
                                     'value': ['group', ['verbose', _p.dictionary.literal(({
                                         'import': _p.deprecated_cc($['import'], ($,) => ['text', ({
                                             'delimiter': ['quote', null],
@@ -670,7 +670,7 @@ export const Selection: t_signatures.Selection = ($,) => ['group', ['verbose', _
                 }))
             case 'parameter':
                 return _p.ss($, ($,) => ({
-                    'option': "parameter",
+                    'option': 'parameter',
                     'value': ['text', ({
                         'delimiter': ['quote', null],
                         'value': $,
