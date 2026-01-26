@@ -24,9 +24,9 @@ export const Directory = ($: d_in.Directory): d_out.Directory => {
 }
 
 export const Identifier = (
-    $: string //FIX should have been a schema type
+    $: d_in.Identifier
 ): d_out.Block_Part => {
-    return sh.b.snippet($)
+    return sh.b.snippet($.value)
 }
 
 export const String_Literal = (

@@ -416,7 +416,6 @@ export namespace s {
         imp: string,
         variable: string,
         tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
-
     ): d_target.Selection => ({
         'start': wrap_state(['variable', wrap_state(['imported', {
             'import': imp,

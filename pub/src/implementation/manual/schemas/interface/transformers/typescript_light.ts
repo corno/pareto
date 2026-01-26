@@ -65,11 +65,11 @@ export const Module_Set = (
                 }
                 return sh.n.file(_p.list.nested_literal_old<d_out.Statements_.L>([
                     [
-                        sh.s.import_namespace(" pi", "pareto-core/dist/interface"),
+                        sh.s.import_namespace(sh.identifier_raw("_pi"), "pareto-core/dist/interface"),
                     ],
 
                     _p.list.from_dictionary($.imports, ($, key): d_out.Statements_.L => sh.s.import_namespace(
-                        `i ${key}`,
+                        sh.identifier_escaped(`i ${key}`),
                         _p.decide.state($.type, ($): string => {
                             switch ($[0]) {
                                 case 'external': return _p.ss($, ($) => valid_file_name($))
@@ -97,7 +97,7 @@ export const Module_Set = (
                                 case 'algorithm': return _p.ss($, ($): d_out.Statements_ => _p.list.literal([
                                     sh.s.namespace(
                                         true,
-                                        name,
+                                        sh.identifier_escaped(name),
                                         _p.list.nested_literal_old<d_out.Statements_.L>([
                                             Type_Node(
                                                 $.context,
@@ -136,7 +136,7 @@ export const Module_Set = (
                                                                     $,
                                                                     ($, key) => sh.s.namespace(
                                                                         true,
-                                                                        "L",
+                                                                        sh.identifier_raw("L"),
                                                                         Type_Node(
                                                                             _p.decide.state($, ($) => {
                                                                                 switch ($[0]) {
@@ -164,7 +164,7 @@ export const Module_Set = (
                                             [
                                                 sh.s.namespace(
                                                     true,
-                                                    "P",
+                                                    sh.identifier_raw("P"),
                                                     $.parameters.__decide(
                                                         ($) => _p.list.flatten(
                                                             _p.list.from_dictionary($, ($, key) => Type_Node(
@@ -183,15 +183,15 @@ export const Module_Set = (
                                     ),
                                     sh.s.type_alias(
                                         true,
-                                        name,
+                                        sh.identifier_escaped(name),
                                         [],
                                         sh.t.function_(
                                             [],
                                             _p.list.nested_literal_old([
                                                 [
                                                     sh.parameter(
-                                                        "context",
-                                                        sh.t.type_reference(name, ["I"], []),
+                                                        sh.identifier_raw("context"),
+                                                        sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("I")], []),
                                                     ),
                                                 ],
 
@@ -204,12 +204,12 @@ export const Module_Set = (
                                                                 ($) => [
 
                                                                     sh.parameter(
-                                                                        "abort",
+                                                                        sh.identifier_raw("abort"),
                                                                         sh.t.type_reference(
-                                                                            " pi",
-                                                                            ["Abort"],
+                                                                            sh.identifier_raw("_pi"),
+                                                                            [sh.identifier_raw("Abort")],
                                                                             [
-                                                                                sh.t.type_reference(name, ["E"], []),
+                                                                                sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("E")], []),
                                                                             ]
                                                                         ),
 
@@ -222,24 +222,24 @@ export const Module_Set = (
                                                                 ($) => [
 
                                                                     sh.parameter(
-                                                                        "lookups",
+                                                                        sh.identifier_raw("lookups"),
                                                                         sh.t.type_literal(
                                                                             $.__d_map(($, key) => sh.tl_propery(
                                                                                 true,
                                                                                 sh.t.type_reference(
-                                                                                    " pi",
+                                                                                    sh.identifier_raw("_pi"),
                                                                                     [
-                                                                                        _p.decide.state($, ($) => {
+                                                                                        sh.identifier_raw(_p.decide.state($, ($) => {
                                                                                             switch ($[0]) {
-                                                                                                case 'acyclic': return _p.ss($, ($) => "Acyclic Lookup")
-                                                                                                case 'cyclic': return _p.ss($, ($) => "Cyclic Lookup")
-                                                                                                case 'stack': return _p.ss($, ($) => "Stack Lookup")
+                                                                                                case 'acyclic': return _p.ss($, ($) => "Acyclic_Lookup")
+                                                                                                case 'cyclic': return _p.ss($, ($) => "Cyclic_Lookup")
+                                                                                                case 'stack': return _p.ss($, ($) => "Stack_Lookup")
                                                                                                 default: return _p.au($[0])
                                                                                             }
-                                                                                        })
+                                                                                        }))
                                                                                     ],
                                                                                     [
-                                                                                        sh.t.type_reference(name, ["L", key], [])
+                                                                                        sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("L"), sh.identifier_escaped(key)], [])
                                                                                     ]
                                                                                 )
                                                                             ))
@@ -257,11 +257,11 @@ export const Module_Set = (
                                                     ($) => _p.list.literal([
 
                                                         sh.parameter(
-                                                            "parameters",
+                                                            sh.identifier_raw("parameters"),
                                                             sh.t.type_literal(
                                                                 $.__d_map(($, key) => ({
                                                                     'readonly': true,
-                                                                    'type': sh.t.type_reference(name, ["P", key], []),
+                                                                    'type': sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("P"), sh.identifier_escaped(key)], []),
                                                                 })),
                                                             )
                                                         ),
@@ -270,7 +270,7 @@ export const Module_Set = (
                                                     () => _p.list.literal([])
                                                 ),
                                             ]),
-                                            sh.t.type_reference(name, ["O"], []),
+                                            sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("O")], []),
                                         )
                                     )
                                 ]))
@@ -284,7 +284,7 @@ export const Module_Set = (
                         sh.s.export_(
                             _p.list.from_dictionary(
                                 $['types'],
-                                ($, key) => sh.specifier(key + ` `, key)
+                                ($, key) => sh.specifier(sh.identifier_escaped(key + ` `), sh.identifier_escaped(key))
                             ),
                             null,
                         )
@@ -297,13 +297,6 @@ export const Module_Set = (
             default: return _p.au($[0])
         }
     }))
-}
-
-
-export const Identifier = (
-    $: _pi.List<string>
-): string => {
-    return s_list_of_texts($)
 }
 
 export const Type_Node = (
@@ -320,7 +313,7 @@ export const Type_Node = (
             case 'boolean': return _p.ss($, ($) => _p.list.literal([
                 sh.s.type_alias(
                     true,
-                    $p.name,
+                    sh.identifier_escaped($p.name),
                     _p.list.literal([]),
                     sh.t.boolean()
                 )
@@ -328,23 +321,23 @@ export const Type_Node = (
             case 'component': return _p.ss($, ($) => _p.list.literal([
                 sh.s.type_alias(
                     true,
-                    $p.name,
+                    sh.identifier_escaped($p.name),
                     _p.list.literal([]),
                     _p.decide.state($.location, ($) => {
                         switch ($[0]) {
                             case 'import': return _p.ss($, ($) => sh.t.type_reference(
-                                Identifier(_p.list.literal(["i ", $.import])),
-                                _p.list.nested_literal_old<string>([
+                                sh.identifier_escaped("i " + $.import),
+                                _p.list.nested_literal_old([
                                     [
-                                        Identifier(_p.list.literal([$.type]))
+                                        sh.identifier_escaped($.type)
                                     ],
                                 ]),
                                 []
                             ))
                             case 'local': return _p.ss($, ($) => sh.t.type_reference(
-                                Identifier(_p.list.literal([$, " "])),
+                                sh.identifier_escaped($ + " "),
                                 //tail
-                                _p.list.nested_literal_old<string>([]),
+                                _p.list.nested_literal_old([]),
                                 []
                             ))
                             default: return _p.au($[0])
@@ -355,7 +348,7 @@ export const Type_Node = (
             case 'dictionary': return _p.ss($, ($) => _p.list.literal([
                 sh.s.namespace(
                     true,
-                    $p.name,
+                    sh.identifier_escaped($p.name),
                     _p.list.nested_literal_old<d_out.Statements_.L>([
                         Type_Node(
                             $,
@@ -367,10 +360,10 @@ export const Type_Node = (
                 ),
                 sh.s.type_alias(
                     true,
-                    $p.name,
+                    sh.identifier_escaped($p.name),
                     _p.list.literal([]),
-                    sh.t.type_reference(" pi", ["Dictionary"], [
-                        sh.t.type_reference($p.name, ["D"], [])
+                    sh.t.type_reference(sh.identifier_raw("_pi"), [sh.identifier_raw("Dictionary")], [
+                        sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_raw("D")], [])
                     ])
                 )
             ]))
@@ -378,7 +371,7 @@ export const Type_Node = (
                 [
                     sh.s.namespace(
                         true,
-                        $p.name,
+                        sh.identifier_escaped($p.name),
                         _p.list.flatten(
                             _p.list.from_dictionary(
                                 $,
@@ -394,16 +387,16 @@ export const Type_Node = (
                     ),
                     sh.s.type_alias(
                         true,
-                        $p.name,
+                        sh.identifier_escaped($p.name),
                         _p.list.literal([]),
-                        sh.t.type_literal($.__d_map(($, key) => sh.tl_propery(true, sh.t.type_reference($p.name, [key], []))))
+                        sh.t.type_literal($.__d_map(($, key) => sh.tl_propery(true, sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(key)], []))))
                     )
                 ]
             ]))
             case 'list': return _p.ss($, ($) => _p.list.literal([
                 sh.s.namespace(
                     true,
-                    $p.name,
+                    sh.identifier_escaped($p.name),
                     _p.list.nested_literal_old<d_out.Statements_.L>([
                         Type_Node(
                             $,
@@ -415,17 +408,17 @@ export const Type_Node = (
                 ),
                 sh.s.type_alias(
                     true,
-                    $p.name,
+                    sh.identifier_escaped($p.name),
                     _p.list.literal([]),
-                    sh.t.type_reference(" pi", ["List"], [
-                        sh.t.type_reference($p.name, ["L"], [])
+                    sh.t.type_reference(sh.identifier_raw("_pi"), [sh.identifier_raw("List")], [
+                        sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_raw("L")], [])
                     ])
                 )
             ]))
             case 'nothing': return _p.ss($, ($) => _p.list.literal([
                 sh.s.type_alias(
                     true,
-                    $p.name,
+                    sh.identifier_escaped($p.name),
                     _p.list.literal([]),
                     sh.t.null_()
                 )
@@ -433,7 +426,7 @@ export const Type_Node = (
             case 'number': return _p.ss($, ($) => _p.list.literal([
                 sh.s.type_alias(
                     true,
-                    $p.name,
+                    sh.identifier_escaped($p.name),
                     _p.list.literal([]),
                     sh.t.number()
                 )
@@ -441,7 +434,7 @@ export const Type_Node = (
             case 'optional': return _p.ss($, ($) => _p.list.literal([
                 sh.s.namespace(
                     true,
-                    $p.name,
+                    sh.identifier_escaped($p.name),
                     _p.list.nested_literal_old<d_out.Statements_.L>([
                         Type_Node(
                             $,
@@ -453,35 +446,35 @@ export const Type_Node = (
                 ),
                 sh.s.type_alias(
                     true,
-                    $p.name,
+                    sh.identifier_escaped($p.name),
                     _p.list.literal([]),
-                    sh.t.type_reference(" pi", ["Optional Value"], [
-                        sh.t.type_reference($p.name, ["O"], [])
+                    sh.t.type_reference(sh.identifier_raw("_pi"), [sh.identifier_raw("Optional_Value")], [
+                        sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_raw("O")], [])
                     ])
                 )
             ]))
             case 'reference': return _p.ss($, ($) => _p.list.literal([
                 sh.s.type_alias(
                     true,
-                    $p.name,
+                    sh.identifier_escaped($p.name),
                     _p.list.literal([]),
                     _p.deprecated_cc($, ($) => {
                         const foo = sh.t.type_reference(
 
                             //start
-                            _p.decide.state($.location, ($): string => {
+                            _p.decide.state($.location, ($) => {
                                 switch ($[0]) {
-                                    case 'import': return _p.ss($, ($) => Identifier(_p.list.literal(["i ", $.import])))
-                                    case 'local': return _p.ss($, ($) => Identifier(_p.list.literal([$, " "])))
+                                    case 'import': return _p.ss($, ($) => sh.identifier_escaped("i " + $.import))
+                                    case 'local': return _p.ss($, ($) => sh.identifier_escaped($ + " "))
                                     default: return _p.au($[0])
                                 }
                             }),
                             //tail
-                            _p.list.nested_literal_old<string>([
+                            _p.list.nested_literal_old([
                                 _p.decide.state($.location, ($) => {
                                     switch ($[0]) {
                                         case 'import': return _p.ss($, ($) => _p.list.literal([
-                                            Identifier(_p.list.literal([$.type, " "]))
+                                            sh.identifier_escaped($.type + " ")
                                         ]))
                                         case 'local': return _p.ss($, ($) => _p.list.literal([]))
                                         default: return _p.au($[0])
@@ -489,13 +482,13 @@ export const Type_Node = (
                                 }),
                                 _p.list.flatten(
                                     $['sub selection'],
-                                    ($) => _p.decide.state($, ($): _pi.List<string> => {
+                                    ($) => _p.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'dictionary': return _p.ss($, ($) => _p.list.literal(["D"]))
-                                            case 'group': return _p.ss($, ($) => _p.list.literal([$]))
-                                            case 'list': return _p.ss($, ($) => _p.list.literal(["L"]))
-                                            case 'optional': return _p.ss($, ($) => _p.list.literal(["O"]))
-                                            case 'state': return _p.ss($, ($) => _p.list.literal([$]))
+                                            case 'dictionary': return _p.ss($, ($) => _p.list.literal([sh.identifier_raw("D")]))
+                                            case 'group': return _p.ss($, ($) => _p.list.literal([sh.identifier_escaped($)]))
+                                            case 'list': return _p.ss($, ($) => _p.list.literal([sh.identifier_raw("L")]))
+                                            case 'optional': return _p.ss($, ($) => _p.list.literal([sh.identifier_raw("O")]))
+                                            case 'state': return _p.ss($, ($) => _p.list.literal([sh.identifier_escaped($)]))
                                             default: return _p.au($[0])
                                         }
                                     }),
@@ -505,8 +498,8 @@ export const Type_Node = (
                         )
                         return $.cyclic
                             ? sh.t.type_reference(
-                                " pi",
-                                ["Circular Dependency"],
+                                sh.identifier_raw("_pi"),
+                                [sh.identifier_raw("Circular_Dependency")],
                                 [foo]
                             )
                             : foo
@@ -518,7 +511,7 @@ export const Type_Node = (
                 [
                     sh.s.namespace(
                         true,
-                        $p.name,
+                        sh.identifier_escaped($p.name),
                         _p.list.flatten(
                             _p.list.from_dictionary(
                                 $,
@@ -534,13 +527,13 @@ export const Type_Node = (
                     ),
                     sh.s.type_alias(
                         true,
-                        $p.name,
+                        sh.identifier_escaped($p.name),
                         _p.list.literal([]),
                         sh.t.union(
                             $.__to_list(
                                 ($, key) => sh.t.tuple('readonly', [
                                     sh.t.literal_type(key, 'apostrophe'),
-                                    sh.t.type_reference($p.name, [key], [])
+                                    sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(key)], [])
                                 ])
                             )
                         )
@@ -550,7 +543,7 @@ export const Type_Node = (
             case 'text': return _p.ss($, ($) => _p.list.literal([
                 sh.s.type_alias(
                     true,
-                    $p.name,
+                    sh.identifier_escaped($p.name),
                     _p.list.literal([]),
                     sh.t.string()
                 )

@@ -8,12 +8,17 @@ import * as d_target from "../../../interface/generated/liana/schemas/typescript
 import { $$ as temp_s_identifier } from "../implementation/manual/primitives/text/serializers/identifier"
 
 
-export const identifier = (
+export const identifier_raw = (
     name: string,
-    escape: 'escape' | 'raw'
-): d_target.Identifier => escape === 'escape'
-        ? temp_s_identifier(name)
-        : name
+): d_target.Identifier => ({
+    'value': name
+})
+
+export const identifier_escaped = (
+    name: string,
+): d_target.Identifier => ({
+    'value': temp_s_identifier(name)
+})
 
 
 export namespace n {
@@ -31,12 +36,12 @@ export namespace n {
 }
 
 export const specifier = (
-    name: string,
-    as: null | string,
+    name: d_target.Identifier,
+    as: null | d_target.Identifier,
 ): d_target.Statements.L.export_.type_.named_exports.specifiers.L => {
     return {
-        'name': temp_s_identifier(name),
-        'as': as === null ? _p.optional.not_set() : _p.optional.set(temp_s_identifier(as)),
+        'name': name,
+        'as': as === null ? _p.optional.not_set() : _p.optional.set(as),
     }
 }
 
@@ -75,19 +80,19 @@ export namespace s {
 
     export const expression = (expression: d_target.Expression): d_target.Statements.L => ['expression', expression]
 
-    export const import_namespace = (name: string, from: string): d_target.Statements.L => ['import', {
-        'type': ['namespace', temp_s_identifier(name)],
+    export const import_namespace = (name: d_target.Identifier, from: string): d_target.Statements.L => ['import', {
+        'type': ['namespace', name],
         'from': from,
 
     }]
 
     export const namespace = (
         export_: boolean,
-        name: string,
+        name: d_target.Identifier,
         block: _p.Raw_Or_Normal_List<d_target.Statements.L>,
     ): d_target.Statements.L => ['module declaration', {
         'export': export_,
-        'name': temp_s_identifier(name),
+        'name': name,
         'block': _p.list.literal(block),
     }]
 
@@ -103,26 +108,26 @@ export namespace s {
 
     export const type_alias = (
         export_: boolean,
-        name: string,
-        parameters: _p.Raw_Or_Normal_List<string>,
+        name: d_target.Identifier,
+        parameters: _p.Raw_Or_Normal_List<d_target.Identifier>,
         type: d_target.Type,
     ): d_target.Statements.L => ['type alias declaration', {
         'export': export_,
-        'name': temp_s_identifier(name),
-        'parameters': _p.list.literal(parameters).__l_map(($) => temp_s_identifier($)),
+        'name': name,
+        'parameters': _p.list.literal(parameters),
         'type': type,
     }]
 
     export const variable = (
         export_: boolean,
         const_: boolean,
-        name: string,
+        name: d_target.Identifier,
         type: null | d_target.Type,
         expression: null | d_target.Expression,
     ): d_target.Statements.L => ['variable', {
         'export': export_,
         'const': const_,
-        'name': temp_s_identifier(name),
+        'name': name,
         'type': type === null ? _p.optional.not_set() : _p.optional.set(type),
         'expression': expression === null ? _p.optional.not_set() : _p.optional.set(expression),
     }]
@@ -130,7 +135,7 @@ export namespace s {
 }
 
 export const parameter = (
-    name: string,
+    name: d_target.Identifier,
     type: d_target.Type | null,
 ): d_target.Function_Parameters.L => {
     return {
@@ -198,13 +203,13 @@ export namespace t {
 
 
     export const type_reference = (
-        start: string,
-        tail: _p.Raw_Or_Normal_List<string>,
+        start: d_target.Identifier,
+        tail: _p.Raw_Or_Normal_List<d_target.Identifier>,
         type_arguments: _p.Raw_Or_Normal_List<d_target.Type>,
     ): d_target.Type => {
         return ['type reference', {
-            'start': temp_s_identifier(start),
-            'tail': _p.list.literal(tail).__l_map(($) => temp_s_identifier($)),
+            'start': start,
+            'tail': _p.list.literal(tail),
             'type arguments': _p.list.literal(type_arguments),
         }]
     }
@@ -302,13 +307,16 @@ export namespace e {
 
     export const false_ = (): d_target.Expression => ['false', null]
 
-    export const identifier = (
+    export const identifier_raw = (
         name: string,
-        escape: 'escape' | 'raw'
-    ): d_target.Expression => ['identifier', escape === 'escape'
-        ? temp_s_identifier(name)
-        : name
-        ]
+    ): d_target.Expression => ['identifier', {
+        'value': name,
+    }]
+    export const identifier_escaped = (
+        name: string,
+    ): d_target.Expression => ['identifier', {
+        'value': temp_s_identifier(name),
+    }]
 
     export const not = (
         operand: d_target.Expression,
@@ -335,13 +343,10 @@ export namespace e {
 
     export const property_access = (
         object: d_target.Expression,
-        property: string,
-        escape: 'escape' | 'raw'
+        property: d_target.Identifier,
     ): d_target.Expression => ['property access', {
         'object': object,
-        'property': escape === 'escape'
-            ? temp_s_identifier(property)
-            : property,
+        'property': property,
     }]
 
     export const string_literal = (value: string, delimiter: 'apostrophe' | 'quote'): d_target.Expression => ['string literal', {

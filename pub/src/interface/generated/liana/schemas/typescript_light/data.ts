@@ -3,7 +3,15 @@ import * as _pi from "pareto-core/dist/interface"
 
 import * as i__location from "../../generic/location"
 
-export type Identifier_ = string
+export namespace Identifier_ {
+    
+    export type value = string
+    
+}
+
+export type Identifier_ = {
+    readonly 'value': Identifier_.value
+}
 
 export namespace Function_Parameters_ {
     
@@ -459,7 +467,7 @@ export namespace Statements_ {
                     
                     export namespace from_ {
                         
-                        export type O = Identifier_
+                        export type O = string
                         
                     }
                     
@@ -530,7 +538,7 @@ export namespace Statements_ {
                 | readonly ['namespace', type_.namespace]
                 | readonly ['named', type_.named]
             
-            export type from_ = Identifier_
+            export type from_ = string
             
         }
         

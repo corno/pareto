@@ -4,7 +4,9 @@ import * as _p from "pareto-core/dist/transformer"
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/typescript_light/migrate_boilerplate"
 
 import * as t_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
-export const Identifier: t_signatures.Identifier = ($,) => $
+export const Identifier: t_signatures.Identifier = ($,) => ({
+    'value': _p.deprecated_cc($['value'], ($,) => $),
+})
 export const Function_Parameters: t_signatures.Function_Parameters = ($,) => $.__l_map(($,) => ({
     'name': _p.deprecated_cc($['name'], ($,) => Identifier($)),
     'type': _p.deprecated_cc($['type'], ($,) => $.__o_map(($,) => Type($))),
@@ -188,7 +190,7 @@ export const Statements: t_signatures.Statements = ($,) => $.__l_map(($,) => _p.
                                     'name': _p.deprecated_cc($['name'], ($,) => Identifier($)),
                                     'as': _p.deprecated_cc($['as'], ($,) => $.__o_map(($,) => Identifier($))),
                                 }))),
-                                'from': _p.deprecated_cc($['from'], ($,) => $.__o_map(($,) => Identifier($))),
+                                'from': _p.deprecated_cc($['from'], ($,) => $.__o_map(($,) => $)),
                             })])
                         default:
                             return _p.au($[0])
@@ -214,7 +216,7 @@ export const Statements: t_signatures.Statements = ($,) => $.__l_map(($,) => _p.
                             return _p.au($[0])
                     }
                 })),
-                'from': _p.deprecated_cc($['from'], ($,) => Identifier($)),
+                'from': _p.deprecated_cc($['from'], ($,) => $),
             })])
         case 'module declaration':
             return _p.ss($, ($,) => ['module declaration', ({
