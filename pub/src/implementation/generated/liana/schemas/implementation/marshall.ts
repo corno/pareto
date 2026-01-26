@@ -64,7 +64,7 @@ export const Module: t_signatures.Module = ($,) => ['group', ['verbose', _p.dict
                                 'value': $,
                             })]),
                             'number of steps': _p.deprecated_cc($['number of steps'], ($,) => ['text', ({
-                                'delimiter': ['backtick', null],
+                                'delimiter': ['none', null],
                                 'value': v_serialize_number.serialize($),
                             })]),
                         }))]],
@@ -94,15 +94,15 @@ export const Module: t_signatures.Module = ($,) => ['group', ['verbose', _p.dict
         'type': _p.deprecated_cc($['type'], ($,) => Type_Reference($)),
         'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
         'temp has abort': _p.deprecated_cc($['temp has abort'], ($,) => ['text', ({
-            'delimiter': ['backtick', null],
+            'delimiter': ['none', null],
             'value': v_serialize_boolean.serialize($),
         })]),
         'temp has lookups': _p.deprecated_cc($['temp has lookups'], ($,) => ['text', ({
-            'delimiter': ['backtick', null],
+            'delimiter': ['none', null],
             'value': v_serialize_boolean.serialize($),
         })]),
         'temp has parameters': _p.deprecated_cc($['temp has parameters'], ($,) => ['text', ({
-            'delimiter': ['backtick', null],
+            'delimiter': ['none', null],
             'value': v_serialize_boolean.serialize($),
         })]),
     }))]])]),
@@ -278,7 +278,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                                     'context': _p.deprecated_cc($['context'], ($,) => Expression($)),
                                                     'arguments': _p.deprecated_cc($['arguments'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', ['dictionary', $.__d_map(($,key,) => Expression($))]], () => ['not set', null])]),
                                                     'abort': _p.deprecated_cc($['abort'], ($,) => ['text', ({
-                                                        'delimiter': ['backtick', null],
+                                                        'delimiter': ['none', null],
                                                         'value': v_serialize_boolean.serialize($),
                                                     })]),
                                                 }))]],
@@ -358,7 +358,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                                             return _p.ss($, ($,) => ({
                                                                 'option': "literal",
                                                                 'value': ['text', ({
-                                                                    'delimiter': ['backtick', null],
+                                                                    'delimiter': ['none', null],
                                                                     'value': v_serialize_number.serialize($),
                                                                 })],
                                                             }))
@@ -376,7 +376,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                                             return _p.ss($, ($,) => ({
                                                                 'option': "literal",
                                                                 'value': ['text', ({
-                                                                    'delimiter': ['backtick', null],
+                                                                    'delimiter': ['none', null],
                                                                     'value': v_serialize_number.serialize($),
                                                                 })],
                                                             }))
@@ -394,7 +394,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                                             return _p.ss($, ($,) => ({
                                                                 'option': "literal",
                                                                 'value': ['text', ({
-                                                                    'delimiter': ['backtick', null],
+                                                                    'delimiter': ['none', null],
                                                                     'value': v_serialize_number.serialize($),
                                                                 })],
                                                             }))
@@ -476,16 +476,16 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                             return _p.ss($, ($,) => ({
                                                 'option': "literal",
                                                 'value': ['group', ['verbose', _p.dictionary.literal(({
-                                                    'delimiter': _p.deprecated_cc($['delimiter'], ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                                    'type': _p.deprecated_cc($['type'], ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                                         switch ($[0]) {
-                                                            case 'backtick':
+                                                            case 'identifier':
                                                                 return _p.ss($, ($,) => ({
-                                                                    'option': "backtick",
+                                                                    'option': "identifier",
                                                                     'value': ['nothing', null],
                                                                 }))
-                                                            case 'quote':
+                                                            case 'freeform':
                                                                 return _p.ss($, ($,) => ({
-                                                                    'option': "quote",
+                                                                    'option': "freeform",
                                                                     'value': ['nothing', null],
                                                                 }))
                                                             default:

@@ -946,27 +946,27 @@ export namespace Expression_ {
                         
                         export namespace literal {
                             
-                            export namespace delimiter {
+                            export namespace type_ {
                                 
                                 export type location = i__location.Location
                                 
                                 export namespace state {
                                     
-                                    export type backtick = null
+                                    export type identifier = null
                                     
-                                    export type quote = null
+                                    export type freeform = null
                                     
                                 }
                                 
                                 export type state = 
-                                    | readonly ['backtick', state.backtick]
-                                    | readonly ['quote', state.quote]
+                                    | readonly ['identifier', state.identifier]
+                                    | readonly ['freeform', state.freeform]
                                 
                             }
                             
-                            export type delimiter = {
-                                readonly 'location': delimiter.location
-                                readonly 'state': delimiter.state
+                            export type type_ = {
+                                readonly 'location': type_.location
+                                readonly 'state': type_.state
                             }
                             
                             export type value = string
@@ -974,7 +974,7 @@ export namespace Expression_ {
                         }
                         
                         export type literal = {
-                            readonly 'delimiter': literal.delimiter
+                            readonly 'type': literal.type_
                             readonly 'value': literal.value
                         }
                         

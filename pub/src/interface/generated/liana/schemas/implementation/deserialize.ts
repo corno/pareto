@@ -1,6 +1,8 @@
 
 import * as _pi from "pareto-core/dist/interface"
 
+import * as i_generic from "../../generic/deserialize"
+
 import * as i_out from "./data/unresolved"
 
 export namespace Type_Reference_ {
@@ -8,6 +10,8 @@ export namespace Type_Reference_ {
     export type I = string
     
     export type O = i_out.Type_Reference
+    
+    export type E = i_generic.Error
     
     export namespace P {
         
@@ -17,6 +21,7 @@ export namespace Type_Reference_ {
 
 export type Type_Reference_ = (
     context: Type_Reference_.I,
+    abort: _pi.Abort<Type_Reference_.E>,
 ) => Type_Reference_.O
 
 export namespace Module_ {
@@ -24,6 +29,8 @@ export namespace Module_ {
     export type I = string
     
     export type O = i_out.Module
+    
+    export type E = i_generic.Error
     
     export namespace P {
         
@@ -33,6 +40,7 @@ export namespace Module_ {
 
 export type Module_ = (
     context: Module_.I,
+    abort: _pi.Abort<Module_.E>,
 ) => Module_.O
 
 export namespace Module_Set_ {
@@ -40,6 +48,8 @@ export namespace Module_Set_ {
     export type I = string
     
     export type O = i_out.Module_Set
+    
+    export type E = i_generic.Error
     
     export namespace P {
         
@@ -49,6 +59,7 @@ export namespace Module_Set_ {
 
 export type Module_Set_ = (
     context: Module_Set_.I,
+    abort: _pi.Abort<Module_Set_.E>,
 ) => Module_Set_.O
 
 export namespace Type_Node_Reference_ {
@@ -56,6 +67,8 @@ export namespace Type_Node_Reference_ {
     export type I = string
     
     export type O = i_out.Type_Node_Reference
+    
+    export type E = i_generic.Error
     
     export namespace P {
         
@@ -65,6 +78,7 @@ export namespace Type_Node_Reference_ {
 
 export type Type_Node_Reference_ = (
     context: Type_Node_Reference_.I,
+    abort: _pi.Abort<Type_Node_Reference_.E>,
 ) => Type_Node_Reference_.O
 
 export namespace Expression_ {
@@ -72,6 +86,8 @@ export namespace Expression_ {
     export type I = string
     
     export type O = i_out.Expression
+    
+    export type E = i_generic.Error
     
     export namespace P {
         
@@ -81,6 +97,7 @@ export namespace Expression_ {
 
 export type Expression_ = (
     context: Expression_.I,
+    abort: _pi.Abort<Expression_.E>,
 ) => Expression_.O
 
 export namespace Abort_Expression_ {
@@ -88,6 +105,8 @@ export namespace Abort_Expression_ {
     export type I = string
     
     export type O = i_out.Abort_Expression
+    
+    export type E = i_generic.Error
     
     export namespace P {
         
@@ -97,6 +116,7 @@ export namespace Abort_Expression_ {
 
 export type Abort_Expression_ = (
     context: Abort_Expression_.I,
+    abort: _pi.Abort<Abort_Expression_.E>,
 ) => Abort_Expression_.O
 
 export namespace Selection_ {
@@ -104,6 +124,8 @@ export namespace Selection_ {
     export type I = string
     
     export type O = i_out.Selection
+    
+    export type E = i_generic.Error
     
     export namespace P {
         
@@ -113,6 +135,7 @@ export namespace Selection_ {
 
 export type Selection_ = (
     context: Selection_.I,
+    abort: _pi.Abort<Selection_.E>,
 ) => Selection_.O
 
 export { 

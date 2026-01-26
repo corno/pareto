@@ -81,7 +81,7 @@ export const Type: t_signatures.Type = ($,) => ['state', _p.decide.state($, ($,)
                 'option': "tuple",
                 'value': ['group', ['verbose', _p.dictionary.literal(({
                     'readonly': _p.deprecated_cc($['readonly'], ($,) => ['text', ({
-                        'delimiter': ['backtick', null],
+                        'delimiter': ['none', null],
                         'value': v_serialize_boolean.serialize($),
                     })]),
                     'elements': _p.deprecated_cc($['elements'], ($,) => ['list', $.__l_map(($,) => Type($))]),
@@ -93,7 +93,7 @@ export const Type: t_signatures.Type = ($,) => ['state', _p.decide.state($, ($,)
                 'value': ['group', ['verbose', _p.dictionary.literal(({
                     'properties': _p.deprecated_cc($['properties'], ($,) => ['dictionary', $.__d_map(($,key,) => ['group', ['verbose', _p.dictionary.literal(({
                         'readonly': _p.deprecated_cc($['readonly'], ($,) => ['text', ({
-                            'delimiter': ['backtick', null],
+                            'delimiter': ['none', null],
                             'value': v_serialize_boolean.serialize($),
                         })]),
                         'type': _p.deprecated_cc($['type'], ($,) => Type($)),
@@ -260,7 +260,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
             return _p.ss($, ($,) => ({
                 'option': "number literal",
                 'value': ['text', ({
-                    'delimiter': ['backtick', null],
+                    'delimiter': ['none', null],
                     'value': v_serialize_number.serialize($),
                 })],
             }))
@@ -395,7 +395,7 @@ export const Statements: t_signatures.Statements = ($,) => ['list', $.__l_map(($
                 'option': "module declaration",
                 'value': ['group', ['verbose', _p.dictionary.literal(({
                     'export': _p.deprecated_cc($['export'], ($,) => ['text', ({
-                        'delimiter': ['backtick', null],
+                        'delimiter': ['none', null],
                         'value': v_serialize_boolean.serialize($),
                     })]),
                     'name': _p.deprecated_cc($['name'], ($,) => Identifier($)),
@@ -438,7 +438,7 @@ export const Statements: t_signatures.Statements = ($,) => ['list', $.__l_map(($
                 'option': "type alias declaration",
                 'value': ['group', ['verbose', _p.dictionary.literal(({
                     'export': _p.deprecated_cc($['export'], ($,) => ['text', ({
-                        'delimiter': ['backtick', null],
+                        'delimiter': ['none', null],
                         'value': v_serialize_boolean.serialize($),
                     })]),
                     'name': _p.deprecated_cc($['name'], ($,) => Identifier($)),
@@ -451,11 +451,11 @@ export const Statements: t_signatures.Statements = ($,) => ['list', $.__l_map(($
                 'option': "variable",
                 'value': ['group', ['verbose', _p.dictionary.literal(({
                     'export': _p.deprecated_cc($['export'], ($,) => ['text', ({
-                        'delimiter': ['backtick', null],
+                        'delimiter': ['none', null],
                         'value': v_serialize_boolean.serialize($),
                     })]),
                     'const': _p.deprecated_cc($['const'], ($,) => ['text', ({
-                        'delimiter': ['backtick', null],
+                        'delimiter': ['none', null],
                         'value': v_serialize_boolean.serialize($),
                     })]),
                     'name': _p.deprecated_cc($['name'], ($,) => Identifier($)),

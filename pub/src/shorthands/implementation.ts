@@ -312,9 +312,9 @@ export namespace e {
 
     export const text_literal = (
         value: string,
-        delimiter: 'quote' | 'backtick'
+        type: 'identifier' | 'freeform'
     ): d_target.Expression => wrap_state(['initialize', wrap_state(['text', wrap_state(['literal', {
-        'delimiter': ((): d_target.Expression.initialize.text.literal.delimiter => delimiter === 'quote' ? wrap_state(['quote', null]) : wrap_state(['backtick', null]))(),
+        'type': ((): d_target.Expression.initialize.text.literal.type_ => type === 'identifier' ? wrap_state(['identifier', null]) : wrap_state(['freeform', null]))(),
         'value': value,
     }])])])
 

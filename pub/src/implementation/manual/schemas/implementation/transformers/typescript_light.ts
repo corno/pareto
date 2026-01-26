@@ -508,10 +508,10 @@ export const Expression = (
                 }))
                 case 'text': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {
-                        case 'literal': return _p.ss($, ($) => sh.e.string_literal($.value, _p.decide.state($.delimiter, ($) => {
+                        case 'literal': return _p.ss($, ($) => sh.e.string_literal($.value, _p.decide.state($.type, ($) => {
                             switch ($[0]) {
-                                case 'quote': return _p.ss($, ($) => 'quote')
-                                case 'backtick': return _p.ss($, ($) => 'quote')
+                                case 'freeform': return _p.ss($, ($) => 'quote')
+                                case 'identifier': return _p.ss($, ($) => 'apostrophe')
                                 default: return _p.au($[0])
                             }
                         })))
@@ -577,7 +577,7 @@ export const Expression = (
                         sh.identifier_raw("unreachable_code_path")
                     ),
                     [
-                        sh.e.string_literal("UNREACHABLE", 'quote')
+                        //sh.e.string_literal("UNREACHABLE", 'quote')
                     ]
                 ))
                 default: return _p.au($[0])

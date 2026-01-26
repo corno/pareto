@@ -550,18 +550,18 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                         switch ($[0]) {
                                             case 'literal':
                                                 return _p.ss($, ($,) => ['literal', ({
-                                                    'delimiter': _p.deprecated_cc($['delimiter'], ($,) => ({
+                                                    'type': _p.deprecated_cc($['type'], ($,) => ({
                                                         'location': ({
                                                             'file': "implement me",
                                                             'line': 42,
                                                             'column': 42,
                                                         }),
-                                                        'state': _p.decide.state($, ($,): t_out.Expression.state.initialize.state.text.state.literal.delimiter.state => {
+                                                        'state': _p.decide.state($, ($,): t_out.Expression.state.initialize.state.text.state.literal.type_.state => {
                                                             switch ($[0]) {
-                                                                case 'backtick':
-                                                                    return _p.ss($, ($,) => ['backtick', null])
-                                                                case 'quote':
-                                                                    return _p.ss($, ($,) => ['quote', null])
+                                                                case 'identifier':
+                                                                    return _p.ss($, ($,) => ['identifier', null])
+                                                                case 'freeform':
+                                                                    return _p.ss($, ($,) => ['freeform', null])
                                                                 default:
                                                                     return _p.au($[0])
                                                             }

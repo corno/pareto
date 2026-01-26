@@ -24,7 +24,7 @@ export const Imports: t_signatures.Imports = ($,) => ['dictionary', $.__d_map(($
                     'option': "ancestor",
                     'value': ['group', ['verbose', _p.dictionary.literal(({
                         'number of steps': _p.deprecated_cc($['number of steps'], ($,) => ['text', ({
-                            'delimiter': ['backtick', null],
+                            'delimiter': ['none', null],
                             'value': v_serialize_number.serialize($),
                         })]),
                         'dependency': _p.deprecated_cc($['dependency'], ($,) => ['text', ({
@@ -274,7 +274,7 @@ export const Type_Node: t_signatures.Type_Node = ($,) => ['state', _p.decide.sta
                         }
                     })])]),
                     'cyclic': _p.deprecated_cc($['cyclic'], ($,) => ['text', ({
-                        'delimiter': ['backtick', null],
+                        'delimiter': ['none', null],
                         'value': v_serialize_boolean.serialize($),
                     })]),
                 }))]],

@@ -505,24 +505,24 @@ export namespace Expression_ {
             
             export namespace literal {
                 
-                export namespace delimiter {
+                export namespace type_ {
                     
-                    export type backtick = null
+                    export type identifier = null
                     
-                    export type quote = null
+                    export type freeform = null
                     
                 }
                 
-                export type delimiter = 
-                    | readonly ['backtick', delimiter.backtick]
-                    | readonly ['quote', delimiter.quote]
+                export type type_ = 
+                    | readonly ['identifier', type_.identifier]
+                    | readonly ['freeform', type_.freeform]
                 
                 export type value = string
                 
             }
             
             export type literal = {
-                readonly 'delimiter': literal.delimiter
+                readonly 'type': literal.type_
                 readonly 'value': literal.value
             }
             
