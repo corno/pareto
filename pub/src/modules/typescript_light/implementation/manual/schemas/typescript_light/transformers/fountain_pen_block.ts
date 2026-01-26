@@ -11,7 +11,6 @@ import { $$ as s_number_default } from "../../../primitives/integer/serializers/
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
-
 export const Directory = ($: d_in.Directory): d_out.Directory => {
     return $.__d_map(($, key) => _p.decide.state($, ($) => {
         switch ($[0]) {
@@ -22,44 +21,6 @@ export const Directory = ($: d_in.Directory): d_out.Directory => {
             default: return _p.au($[0])
         }
     }))
-}
-
-export const Group = ($: d_in.Group_): d_out.Group => {
-    return $.__l_map(($) => Group_Part($))
-}
-
-export const Group_Part = ($: d_in.Group_Part_): d_out.Group_Part => {
-    return _p.decide.state($, ($): d_out.Group_Part => {
-        switch ($[0]) {
-            case 'block': return _p.ss($, ($) => ['block', $])
-            case 'nothing': return _p.ss($, ($) => ['nothing', null])
-            case 'optional': return _p.ss($, ($) => ['optional', $.__o_map(($) => Group_Part($))])
-            case 'nested block': return _p.ss($, ($) => ['nested block', Block($)])
-            case 'sub group': return _p.ss($, ($) => ['sub group', Group($)])
-            default: return _p.au($[0])
-        }
-    })
-}
-
-export const Block = (
-    $: d_in.Block_
-): d_out.Block => {
-    return $.__l_map(($) => Block_Part($))
-}
-
-export const Block_Part = (
-    $: d_in.Block_Part_
-): d_out.Block_Part => {
-    return _p.decide.state($, ($): d_out.Block_Part => {
-        switch ($[0]) {
-            case 'snippet': return _p.ss($, ($) => sh.b.snippet($))
-            case 'nothing': return _p.ss($, ($) => ['nothing', null])
-            case 'optional': return _p.ss($, ($) => ['optional', $.__o_map(($): d_out.Block_Part => Block_Part($))])
-            case 'indent': return _p.ss($, ($) => ['indent', Group($)])
-            case 'sub block': return _p.ss($, ($) => ['sub block', Block($)])
-            default: return _p.au($[0])
-        }
-    })
 }
 
 export const Identifier = (
@@ -85,8 +46,6 @@ export const Statements = (
 ): d_out.Group_Part => sh.g.sub($.__l_map(($) =>
     _p.decide.state($, ($): d_out.Group_Part => {
         switch ($[0]) {
-            case 'raw': return _p.ss($, ($) => sh.g.sub(Group($)))
-
             case 'block': return _p.ss($, ($) => sh.g.nested_block([
                 sh.b.snippet("{"),
                 sh.b.indent([
@@ -297,9 +256,6 @@ export const Expression = (
     }
 ): d_out.Block_Part => _p.decide.state($, ($) => {
     switch ($[0]) {
-        case 'raw': return _p.ss($, ($) => sh.b.sub([$]))
-
-
         case 'assignment': return _p.ss($, ($) => sh.b.sub([
             Expression($.left, $p),
             sh.b.snippet(" = "),

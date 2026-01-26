@@ -16,33 +16,6 @@ export const identifier = (
         : name
 
 
-export namespace g {
-
-    export const simple_line = (block: string): d_target.Group_Part_ => ['block', block]
-
-    export const nested_block = (snippets: _p.Raw_Or_Normal_List<d_target.Block_.L>): d_target.Group_Part_ => ['nested block', _p.list.literal(snippets)]
-
-    export const sub = (group_parts: _p.Raw_Or_Normal_List<d_target.Group_.L>): d_target.Group_Part_ => ['sub group', _p.list.literal(group_parts)]
-
-    export const nothing = (): d_target.Group_Part_ => ['nothing', null]
-
-    export const optional = (Group_Part_: _pi.Optional_Value<d_target.Group_.L>): d_target.Group_Part_ => ['optional', Group_Part_]
-
-}
-
-export namespace b {
-
-    export const indent = (blocks: _p.Raw_Or_Normal_List<d_target.Group_.L>): d_target.Block_Part_ => ['indent', _p.list.literal(blocks)]
-
-    export const snippet = (snippet: string): d_target.Block_Part_ => ['snippet', snippet]
-
-    export const sub = (Block_Parts: _p.Raw_Or_Normal_List<d_target.Block_.L>): d_target.Block_Part_ => ['sub block', _p.list.literal(Block_Parts)]
-    export const nothing = (): d_target.Block_Part_ => ['nothing', null]
-
-    export const optional = (Block_Part_: _pi.Optional_Value<d_target.Block_.L>): d_target.Block_Part_ => ['optional', Block_Part_]
-
-}
-
 export namespace n {
 
     export const directory = (
@@ -87,8 +60,6 @@ export namespace sw {
 }
 
 export namespace s {
-
-    export const raw = ($: d_target.Group_): d_target.Statements.L => ['raw', $]
 
     export const block = (statements: _p.Raw_Or_Normal_List<d_target.Statements.L>): d_target.Statements.L => ['block', _p.list.literal(statements)]
 
@@ -157,24 +128,6 @@ export namespace s {
     }]
 
 }
-
-// export namespace n {
-
-//     export const file = (
-//         block: _target.Group_
-//     ): _target.Node => ['file', block]
-
-//     export const directory = (
-//         children: _psh.Raw_Or_Normal_Dictionary<_target.Node>,
-//     ): _target.Node => ['directory', _psh.dictionary.literal(children)]
-// }
-
-// export const directory = (
-//     children: _psh.Raw_Or_Normal_Dictionary<_target.Node>,
-// ): _target.Directory => _psh.dictionary.literal(children)
-
-export const group = (Group_Parts: _p.Raw_Or_Normal_List<d_target.Group_.L>): d_target.Group_ => _p.list.literal(Group_Parts)
-
 
 export const parameter = (
     name: string,
@@ -265,8 +218,6 @@ export namespace t {
 
 
 export namespace e {
-
-    export const raw = (expression: d_target.Block_Part_): d_target.Expression => ['raw', expression]
 
     export const array_literal = (
         elements: _p.Raw_Or_Normal_List<d_target.Expression>

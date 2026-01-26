@@ -4,40 +4,6 @@ import * as _p from "pareto-core/dist/transformer"
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/typescript_light/migrate_boilerplate"
 
 import * as t_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
-export const Block_Part: t_signatures.Block_Part = ($,) => _p.decide.state($, ($,): t_out.Block_Part => {
-    switch ($[0]) {
-        case 'snippet':
-            return _p.ss($, ($,) => ['snippet', $])
-        case 'indent':
-            return _p.ss($, ($,) => ['indent', Group($)])
-        case 'sub block':
-            return _p.ss($, ($,) => ['sub block', Block($)])
-        case 'optional':
-            return _p.ss($, ($,) => ['optional', $.__o_map(($,) => Block_Part($))])
-        case 'nothing':
-            return _p.ss($, ($,) => ['nothing', null])
-        default:
-            return _p.au($[0])
-    }
-})
-export const Block: t_signatures.Block = ($,) => $.__l_map(($,) => Block_Part($))
-export const Group_Part: t_signatures.Group_Part = ($,) => _p.decide.state($, ($,): t_out.Group_Part => {
-    switch ($[0]) {
-        case 'nested block':
-            return _p.ss($, ($,) => ['nested block', Block($)])
-        case 'block':
-            return _p.ss($, ($,) => ['block', $])
-        case 'sub group':
-            return _p.ss($, ($,) => ['sub group', Group($)])
-        case 'optional':
-            return _p.ss($, ($,) => ['optional', $.__o_map(($,) => Group_Part($))])
-        case 'nothing':
-            return _p.ss($, ($,) => ['nothing', null])
-        default:
-            return _p.au($[0])
-    }
-})
-export const Group: t_signatures.Group = ($,) => $.__l_map(($,) => Group_Part($))
 export const Identifier: t_signatures.Identifier = ($,) => $
 export const Function_Parameters: t_signatures.Function_Parameters = ($,) => $.__l_map(($,) => ({
     'name': _p.deprecated_cc($['name'], ($,) => Identifier($)),
@@ -102,8 +68,6 @@ export const Type: t_signatures.Type = ($,) => _p.decide.state($, ($,): t_out.Ty
 })
 export const Expression: t_signatures.Expression = ($,) => _p.decide.state($, ($,): t_out.Expression => {
     switch ($[0]) {
-        case 'raw':
-            return _p.ss($, ($,) => ['raw', Block_Part($)])
         case 'array literal':
             return _p.ss($, ($,) => ['array literal', $.__l_map(($,) => Expression($))])
         case 'arrow function':
@@ -212,8 +176,6 @@ export const Expression: t_signatures.Expression = ($,) => _p.decide.state($, ($
 })
 export const Statements: t_signatures.Statements = ($,) => $.__l_map(($,) => _p.decide.state($, ($,): t_out.Statements.L => {
     switch ($[0]) {
-        case 'raw':
-            return _p.ss($, ($,) => ['raw', Group($)])
         case 'block':
             return _p.ss($, ($,) => ['block', Statements($)])
         case 'export':

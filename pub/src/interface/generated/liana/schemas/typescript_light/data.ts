@@ -3,76 +3,6 @@ import * as _pi from "pareto-core/dist/interface"
 
 import * as i__location from "../../generic/location"
 
-export namespace Block_Part_ {
-    
-    export type snippet = string
-    
-    export type indent = Group_
-    
-    export type sub_block = Block_
-    
-    export namespace optional {
-        
-        export type O = Block_Part_
-        
-    }
-    
-    export type optional = _pi.Optional_Value<optional.O>
-    
-    export type nothing = null
-    
-}
-
-export type Block_Part_ = 
-    | readonly ['snippet', Block_Part_.snippet]
-    | readonly ['indent', Block_Part_.indent]
-    | readonly ['sub block', Block_Part_.sub_block]
-    | readonly ['optional', Block_Part_.optional]
-    | readonly ['nothing', Block_Part_.nothing]
-
-export namespace Block_ {
-    
-    export type L = Block_Part_
-    
-}
-
-export type Block_ = _pi.List<Block_.L>
-
-export namespace Group_Part_ {
-    
-    export type nested_block = Block_
-    
-    export type block = string
-    
-    export type sub_group = Group_
-    
-    export namespace optional {
-        
-        export type O = Group_Part_
-        
-    }
-    
-    export type optional = _pi.Optional_Value<optional.O>
-    
-    export type nothing = null
-    
-}
-
-export type Group_Part_ = 
-    | readonly ['nested block', Group_Part_.nested_block]
-    | readonly ['block', Group_Part_.block]
-    | readonly ['sub group', Group_Part_.sub_group]
-    | readonly ['optional', Group_Part_.optional]
-    | readonly ['nothing', Group_Part_.nothing]
-
-export namespace Group_ {
-    
-    export type L = Group_Part_
-    
-}
-
-export type Group_ = _pi.List<Group_.L>
-
 export type Identifier_ = string
 
 export namespace Function_Parameters_ {
@@ -257,8 +187,6 @@ export type Type_ =
     | readonly ['void', Type_.void_]
 
 export namespace Expression_ {
-    
-    export type raw = Block_Part_
     
     export namespace array_literal {
         
@@ -474,7 +402,6 @@ export namespace Expression_ {
 }
 
 export type Expression_ = 
-    | readonly ['raw', Expression_.raw]
     | readonly ['array literal', Expression_.array_literal]
     | readonly ['arrow function', Expression_.arrow_function]
     | readonly ['assignment', Expression_.assignment]
@@ -496,8 +423,6 @@ export type Expression_ =
 export namespace Statements_ {
     
     export namespace L {
-        
-        export type raw = Group_
         
         export type block = Statements_
         
@@ -740,7 +665,6 @@ export namespace Statements_ {
     }
     
     export type L = 
-        | readonly ['raw', L.raw]
         | readonly ['block', L.block]
         | readonly ['export', L.export_]
         | readonly ['expression', L.expression]
@@ -782,10 +706,6 @@ export namespace Directory_ {
 export type Directory_ = _pi.Dictionary<Directory_.D>
 
 export { 
-    Block_Part_ as Block_Part, 
-    Block_ as Block, 
-    Group_Part_ as Group_Part, 
-    Group_ as Group, 
     Identifier_ as Identifier, 
     Function_Parameters_ as Function_Parameters, 
     String_Literal_ as String_Literal, 

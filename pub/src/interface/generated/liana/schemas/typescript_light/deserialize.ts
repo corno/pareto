@@ -3,70 +3,6 @@ import * as _pi from "pareto-core/dist/interface"
 
 import * as i_out from "./data"
 
-export namespace Block_Part_ {
-    
-    export type I = string
-    
-    export type O = i_out.Block_Part
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Block_Part_ = (
-    context: Block_Part_.I,
-) => Block_Part_.O
-
-export namespace Block_ {
-    
-    export type I = string
-    
-    export type O = i_out.Block
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Block_ = (
-    context: Block_.I,
-) => Block_.O
-
-export namespace Group_Part_ {
-    
-    export type I = string
-    
-    export type O = i_out.Group_Part
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Group_Part_ = (
-    context: Group_Part_.I,
-) => Group_Part_.O
-
-export namespace Group_ {
-    
-    export type I = string
-    
-    export type O = i_out.Group
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Group_ = (
-    context: Group_.I,
-) => Group_.O
-
 export namespace Identifier_ {
     
     export type I = string
@@ -180,10 +116,6 @@ export type Directory_ = (
 ) => Directory_.O
 
 export { 
-    Block_Part_ as Block_Part, 
-    Block_ as Block, 
-    Group_Part_ as Group_Part, 
-    Group_ as Group, 
     Identifier_ as Identifier, 
     Function_Parameters_ as Function_Parameters, 
     String_Literal_ as String_Literal, 
