@@ -210,13 +210,19 @@ export const Expression = (
                     Expression($['if false']),
                 ))
                 case 'optional': return _p.ss($, ($) => sh.e.call(
-                    Selection($.source),
+                    sh.e.property_access(
+                        Selection($.source),
+                        sh.identifier_raw("__decide"),
+                    ),
                     [
                         sh.e.arrow_function_with_expression(
                             [
                                 sh.parameter(sh.identifier_raw("$"), null)
                             ],
-                            null,
+                            $['temp resulting node'].__decide(
+                                ($) => Type_Node_Reference($),
+                                () => null
+                            ),
                             Expression($['if set']),
 
                         ),
@@ -224,7 +230,7 @@ export const Expression = (
                             [
                             ],
                             null,
-                            Expression($['if set']),
+                            Expression($['if not set']),
 
                         ),
                     ]
