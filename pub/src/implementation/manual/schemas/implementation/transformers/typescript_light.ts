@@ -428,7 +428,7 @@ export const Expression = (
                                         sh.parameter(sh.identifier_raw("$"), null)
                                     ],
                                     null,
-                                    Expression($['element handler'])
+                                    Expression($['item handler'])
                                 )
                             ]
                         ))

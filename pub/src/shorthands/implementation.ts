@@ -167,7 +167,7 @@ export namespace e {
         element_handler: d_target.Expression
     ): d_target.Expression => wrap_state(['initialize', wrap_state(['list', wrap_state(['map', {
         'source': source,
-        'element handler': element_handler
+        'item handler': element_handler
     }])])])
 
     export const call = (

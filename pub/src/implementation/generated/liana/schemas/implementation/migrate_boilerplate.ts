@@ -412,7 +412,7 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                             case 'map':
                                                 return _p.ss($, ($,) => ['map', ({
                                                     'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
-                                                    'element handler': _p.deprecated_cc($['element handler'], ($,) => Expression($)),
+                                                    'item handler': _p.deprecated_cc($['item handler'], ($,) => Expression($)),
                                                 })])
                                             default:
                                                 return _p.au($[0])
@@ -726,7 +726,7 @@ export const Selection: t_signatures.Selection = ($,) => ({
                 case 'entry':
                     return _p.ss($, ($,) => ['entry', ({
                         'dictionary': _p.deprecated_cc($['dictionary'], ($,) => Selection($)),
-                        'key': _p.deprecated_cc($['key'], ($,) => Selection($)),
+                        'id': _p.deprecated_cc($['id'], ($,) => Selection($)),
                         'abort handler': _p.deprecated_cc($['abort handler'], ($,) => Abort_Expression($)),
                     })])
                 case 'variable':

@@ -748,13 +748,13 @@ export namespace Expression_ {
                             
                             export type source = Selection_
                             
-                            export type element_handler = Expression_
+                            export type item_handler = Expression_
                             
                         }
                         
                         export type map = {
                             readonly 'source': map.source
-                            readonly 'element handler': map.element_handler
+                            readonly 'item handler': map.item_handler
                         }
                         
                     }
@@ -1314,7 +1314,7 @@ export namespace Selection_ {
                 
                 export type dictionary = Selection_
                 
-                export type key = Selection_
+                export type id = Selection_
                 
                 export type abort_handler = Abort_Expression_
                 
@@ -1322,7 +1322,7 @@ export namespace Selection_ {
             
             export type entry = {
                 readonly 'dictionary': entry.dictionary
-                readonly 'key': entry.key
+                readonly 'id': entry.id
                 readonly 'abort handler': entry.abort_handler
             }
             

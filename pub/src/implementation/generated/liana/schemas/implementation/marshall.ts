@@ -331,7 +331,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                                 'option': 'map',
                                                 'value': ['group', ['verbose', _p.dictionary.literal(({
                                                     'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
-                                                    'element handler': _p.deprecated_cc($['element handler'], ($,) => Expression($)),
+                                                    'item handler': _p.deprecated_cc($['item handler'], ($,) => Expression($)),
                                                 }))]],
                                             }))
                                         default:
@@ -632,7 +632,7 @@ export const Selection: t_signatures.Selection = ($,) => ['group', ['verbose', _
                     'option': 'entry',
                     'value': ['group', ['verbose', _p.dictionary.literal(({
                         'dictionary': _p.deprecated_cc($['dictionary'], ($,) => Selection($)),
-                        'key': _p.deprecated_cc($['key'], ($,) => Selection($)),
+                        'id': _p.deprecated_cc($['id'], ($,) => Selection($)),
                         'abort handler': _p.deprecated_cc($['abort handler'], ($,) => Abort_Expression($)),
                     }))]],
                 }))
