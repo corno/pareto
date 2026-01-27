@@ -73,13 +73,13 @@ export namespace Module_ {
                                 
                                 export type location = i__location.Location
                                 
-                                export type element = string
+                                export type item = string
                                 
                             }
                             
                             export type L = {
                                 readonly 'location': L.location
-                                readonly 'element': L.element
+                                readonly 'item': L.item
                             }
                             
                         }
@@ -279,7 +279,7 @@ export namespace Type_Node_Reference_ {
                 
                 export type location = i__location.Location
                 
-                export namespace element {
+                export namespace item {
                     
                     export type location = i__location.Location
                     
@@ -306,16 +306,16 @@ export namespace Type_Node_Reference_ {
                     
                 }
                 
-                export type element = {
-                    readonly 'location': element.location
-                    readonly 'state': element.state
+                export type item = {
+                    readonly 'location': item.location
+                    readonly 'state': item.state
                 }
                 
             }
             
             export type L = {
                 readonly 'location': L.location
-                readonly 'element': L.element
+                readonly 'item': L.item
             }
             
         }
@@ -409,7 +409,7 @@ export namespace Expression_ {
                                 
                                 export type location = i__location.Location
                                 
-                                export namespace element {
+                                export namespace item {
                                     
                                     export type name = string
                                     
@@ -425,17 +425,17 @@ export namespace Expression_ {
                                     
                                 }
                                 
-                                export type element = {
-                                    readonly 'name': element.name
-                                    readonly 'type': element.type_
-                                    readonly 'expression': element.expression
+                                export type item = {
+                                    readonly 'name': item.name
+                                    readonly 'type': item.type_
+                                    readonly 'expression': item.expression
                                 }
                                 
                             }
                             
                             export type L = {
                                 readonly 'location': L.location
-                                readonly 'element': L.element
+                                readonly 'item': L.item
                             }
                             
                         }
@@ -724,13 +724,13 @@ export namespace Expression_ {
                                     
                                     export type location = i__location.Location
                                     
-                                    export type element = Expression_
+                                    export type item = Expression_
                                     
                                 }
                                 
                                 export type L = {
                                     readonly 'location': L.location
-                                    readonly 'element': L.element
+                                    readonly 'item': L.item
                                 }
                                 
                             }
@@ -1391,13 +1391,13 @@ export namespace Selection_ {
                 
                 export type location = i__location.Location
                 
-                export type element = string
+                export type item = string
                 
             }
             
             export type L = {
                 readonly 'location': L.location
-                readonly 'element': L.element
+                readonly 'item': L.item
             }
             
         }

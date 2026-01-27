@@ -41,7 +41,7 @@ export const Imports: t_signatures.Imports = ($,) => ({
                     'column': 42,
                 }),
                 'list': $.__l_map(($,) => ({
-                    'element': $,
+                    'item': $,
                     'location': ({
                         'file': "implement me",
                         'line': 42,
@@ -294,13 +294,13 @@ export const Type_Node: t_signatures.Type_Node = ($,) => ({
                             'column': 42,
                         }),
                         'list': $.__l_map(($,) => ({
-                            'element': ({
+                            'item': ({
                                 'location': ({
                                     'file': "implement me",
                                     'line': 42,
                                     'column': 42,
                                 }),
-                                'state': _p.decide.state($, ($,): t_out.Type_Node.state.reference.sub_selection.list.L.element.state => {
+                                'state': _p.decide.state($, ($,): t_out.Type_Node.state.reference.sub_selection.list.L.item.state => {
                                     switch ($[0]) {
                                         case 'dictionary':
                                             return _p.ss($, ($,) => ['dictionary', null])

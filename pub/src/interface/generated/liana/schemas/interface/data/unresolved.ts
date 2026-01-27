@@ -62,13 +62,13 @@ export namespace Imports_ {
                             
                             export type location = i__location.Location
                             
-                            export type element = string
+                            export type item = string
                             
                         }
                         
                         export type L = {
                             readonly 'location': L.location
-                            readonly 'element': L.element
+                            readonly 'item': L.item
                         }
                         
                     }
@@ -519,7 +519,7 @@ export namespace Type_Node_ {
                         
                         export type location = i__location.Location
                         
-                        export namespace element {
+                        export namespace item {
                             
                             export type location = i__location.Location
                             
@@ -546,16 +546,16 @@ export namespace Type_Node_ {
                             
                         }
                         
-                        export type element = {
-                            readonly 'location': element.location
-                            readonly 'state': element.state
+                        export type item = {
+                            readonly 'location': item.location
+                            readonly 'state': item.state
                         }
                         
                     }
                     
                     export type L = {
                         readonly 'location': L.location
-                        readonly 'element': L.element
+                        readonly 'item': L.item
                     }
                     
                 }

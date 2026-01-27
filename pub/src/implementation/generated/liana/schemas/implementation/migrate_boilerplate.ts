@@ -48,7 +48,7 @@ export const Module: t_signatures.Module = ($,) => ({
                         'column': 42,
                     }),
                     'list': $.__l_map(($,) => ({
-                        'element': $,
+                        'item': $,
                         'location': ({
                             'file': "implement me",
                             'line': 42,
@@ -148,13 +148,13 @@ export const Type_Node_Reference: t_signatures.Type_Node_Reference = ($,) => ({
             'column': 42,
         }),
         'list': $.__l_map(($,) => ({
-            'element': ({
+            'item': ({
                 'location': ({
                     'file': "implement me",
                     'line': 42,
                     'column': 42,
                 }),
-                'state': _p.decide.state($, ($,): t_out.Type_Node_Reference.sub_selection.list.L.element.state => {
+                'state': _p.decide.state($, ($,): t_out.Type_Node_Reference.sub_selection.list.L.item.state => {
                     switch ($[0]) {
                         case 'dictionary':
                             return _p.ss($, ($,) => ['dictionary', null])
@@ -225,7 +225,7 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                             'column': 42,
                                         }),
                                         'list': $.__l_map(($,) => ({
-                                            'element': ({
+                                            'item': ({
                                                 'name': _p.deprecated_cc($['name'], ($,) => $),
                                                 'type': _p.deprecated_cc($['type'], ($,) => $.__o_map(($,) => Type_Node_Reference($))),
                                                 'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
@@ -401,7 +401,7 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                                         'column': 42,
                                                     }),
                                                     'list': $.__l_map(($,) => ({
-                                                        'element': Expression($),
+                                                        'item': Expression($),
                                                         'location': ({
                                                             'file': "implement me",
                                                             'line': 42,
@@ -764,7 +764,7 @@ export const Selection: t_signatures.Selection = ($,) => ({
             'column': 42,
         }),
         'list': $.__l_map(($,) => ({
-            'element': $,
+            'item': $,
             'location': ({
                 'file': "implement me",
                 'line': 42,
