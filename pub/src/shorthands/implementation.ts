@@ -265,13 +265,13 @@ export namespace e {
         source: d_target.Selection,
         if_set: d_target.Expression,
         if_not_set: d_target.Expression,
-        resulting_type: d_target.Type_Node_Reference,
+        resulting_type?: d_target.Type_Node_Reference,
     ): d_target.Expression => wrap_state(['decide', {
         'type': wrap_state(['optional', {
             'source': source,
             'if set': if_set,
             'if not set': if_not_set,
-            'temp resulting node': _p.optional.set(resulting_type),
+            'temp resulting node': _p.optional.literal(resulting_type),
 
         }])
     }])

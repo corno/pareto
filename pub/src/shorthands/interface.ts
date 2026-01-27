@@ -162,22 +162,14 @@ export namespace t {
     export const reference = (
         location: d_out.Type_Reference,
         sub_selection: _p.Raw_Or_Normal_List<d_out.Type_Node.reference.sub_selection.L>,
+        cyclic?: 'cyclic' | 'acyclic'
     ): d_out.Type_Node => {
         return wrap_state(['reference', {
             'location': location,
             'sub selection': _p.list.literal(sub_selection),
-            'cyclic': false,
-        }])
-    }
-
-    export const reference_cyclic = (
-        location: d_out.Type_Reference,
-        sub_selection: _p.Raw_Or_Normal_List<d_out.Type_Node.reference.sub_selection.L>,
-    ): d_out.Type_Node => {
-        return wrap_state(['reference', {
-            'location': location,
-            'sub selection': _p.list.literal(sub_selection),
-            'cyclic': true
+            'cyclic': cyclic === undefined
+             ? false 
+             : cyclic === 'cyclic' ? true : false,
         }])
     }
 
