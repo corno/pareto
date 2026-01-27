@@ -174,13 +174,12 @@ export namespace e {
         source: d_target.Selection,
         context: d_target.Expression,
         abort: boolean,
-        arguments_?: _p.Raw_Or_Normal_Dictionary<d_target.Expression.initialize.component.call.arguments_.O.D>,
+        arguments_: _p.Raw_Or_Normal_Dictionary<d_target.Expression.initialize.component.call.arguments_.O.D>,
     ): d_target.Expression => {
-        const args: d_target.Expression.initialize.component.call.arguments_ = arguments_ === undefined ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(arguments_))
         return wrap_state(['initialize', wrap_state(['component', wrap_state(['call', {
             'source': source,
             'context': context,
-            'arguments': args,
+            'arguments': _p.optional.literal(_p.dictionary.literal(arguments_)),
             'abort': abort,
         }])])])
     }
@@ -266,15 +265,13 @@ export namespace e {
         source: d_target.Selection,
         if_set: d_target.Expression,
         if_not_set: d_target.Expression,
-        resulting_type?: d_target.Type_Node_Reference,
+        resulting_type: d_target.Type_Node_Reference,
     ): d_target.Expression => wrap_state(['decide', {
         'type': wrap_state(['optional', {
             'source': source,
             'if set': if_set,
             'if not set': if_not_set,
-            'temp resulting node': (resulting_type !== undefined)
-                ? _p.optional.set(resulting_type)
-                : _p.optional.not_set<d_target.Type_Node_Reference>(),
+            'temp resulting node': _p.optional.set(resulting_type),
 
         }])
     }])
