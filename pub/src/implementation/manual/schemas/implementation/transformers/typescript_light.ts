@@ -38,19 +38,19 @@ const temp_rename = (
     $: d_in.Module_Set,
     abort: _pi.Abort<d_pareto_to_typescript.Error>
 ): d_in.Module_Set => {
-    const renamed: { [key: string]: d_in.Module_Set.D } = {}
-    $.__d_map(($, key) => {
+    const renamed: { [id: string]: d_in.Module_Set.D } = {}
+    $.__d_map(($, id) => {
         const new_key: string = _p.decide.state($, ($) => {
             switch ($[0]) {
-                case 'module': return _p.ss($, ($) => key + `.ts`)
+                case 'module': return _p.ss($, ($) => id + `.ts`)
                 case 'set': return _p.ss($, ($) => {
                     const ends_with_ts = ($s: string): boolean => {
                         return false //implement properly later
                     }
-                    if (ends_with_ts(key)) {
-                        abort(['directory name ending with ts', { 'directory name': key }])
+                    if (ends_with_ts(id)) {
+                        abort(['directory name ending with ts', { 'directory name': id }])
                     }
-                    return key
+                    return id
                 })
                 default: return _p.au($[0])
             }
@@ -65,7 +65,7 @@ export const Module_Set = (
     $: d_in.Module_Set,
     abort: _pi.Abort<d_pareto_to_typescript.Error>
 ): d_out.Directory => {
-    return temp_rename($, abort).__d_map(($, key) => _p.decide.state($, ($) => {
+    return temp_rename($, abort).__d_map(($, id) => _p.decide.state($, ($) => {
         switch ($[0]) {
             case 'module': return _p.ss($, ($): d_out.Directory.D => {
                 const valid_file_name = ($: string): string => {
@@ -91,8 +91,8 @@ export const Module_Set = (
                     ],
                     _p.list.from_dictionary(
                         $['type imports'],
-                        ($, key) => sh.s.import_namespace(
-                            sh.identifier_escaped(join(_p.list.literal(["t ", key]))),
+                        ($, id) => sh.s.import_namespace(
+                            sh.identifier_escaped(join(_p.list.literal(["t ", id]))),
                             _p.decide.state($.type, ($): string => {
                                 switch ($[0]) {
                                     case 'external': return _p.ss($, ($) => valid_file_name($))
@@ -108,8 +108,8 @@ export const Module_Set = (
                     ),
                     _p.list.from_dictionary(
                         $['variable imports'],
-                        ($, key) => sh.s.import_namespace(
-                            sh.identifier_escaped(join(_p.list.literal(["v ", key]))),
+                        ($, id) => sh.s.import_namespace(
+                            sh.identifier_escaped(join(_p.list.literal(["v ", id]))),
                             _p.decide.state($.type, ($): string => {
                                 switch ($[0]) {
                                     case 'external': return _p.ss($, ($) => valid_file_name($))
@@ -125,10 +125,10 @@ export const Module_Set = (
                     ),
                     _p.list.from_dictionary(
                         $.algorithms,
-                        ($, key): d_out.Statements.L => sh.s.variable(
+                        ($, id): d_out.Statements.L => sh.s.variable(
                             true,
                             true,
-                            sh.identifier_escaped(key),
+                            sh.identifier_escaped(id),
                             Type_Reference($.type),
                             sh.e.arrow_function_with_expression(
                                 _p.list.nested_literal_old([
@@ -267,8 +267,8 @@ export const Expression = (
                                                 default: return _p.au($[0])
                                             }
                                         }).__to_list(
-                                            ($, key) => sh.sw.case_(
-                                                sh.e.string_literal(key, 'apostrophe'),
+                                            ($, id) => sh.sw.case_(
+                                                sh.e.string_literal(id, 'apostrophe'),
                                                 [
                                                     sh.s.return_(sh.e.call(
                                                         sh.e.property_access(
@@ -377,7 +377,7 @@ export const Expression = (
                                 sh.identifier_raw("literal"),
                             ),
                             [
-                                sh.e.object_literal($.__d_map(($, key) => Expression($)))
+                                sh.e.object_literal($.__d_map(($, id) => Expression($)))
                             ]
                         ))
                         case 'map': return _p.ss($, ($) => sh.e.call(
@@ -401,7 +401,7 @@ export const Expression = (
                 }))
                 case 'group': return _p.ss($, ($) => $.__get_number_of_entries() === 0
                     ? sh.e.null_()
-                    : sh.e.object_literal($.__d_map(($, key) => Expression($)))
+                    : sh.e.object_literal($.__d_map(($, id) => Expression($)))
                 )
                 case 'list': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {

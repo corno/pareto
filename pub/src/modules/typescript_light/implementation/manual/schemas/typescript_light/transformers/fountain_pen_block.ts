@@ -12,7 +12,7 @@ import { $$ as s_number_default } from "../../../primitives/integer/serializers/
 import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 
 export const Directory = ($: d_in.Directory): d_out.Directory => {
-    return $.__d_map(($, key) => _p.decide.state($, ($) => {
+    return $.__d_map(($, id) => _p.decide.state($, ($) => {
         switch ($[0]) {
             case 'file': return _p.ss($, ($) => ['file', sh.group([
                 Statements($['statements'], { 'replace empty type literals by null': true })
@@ -368,8 +368,8 @@ export const Expression = (
                 : sh.b.nothing(),
             sh.b.snippet("{"),
             sh.b.indent([
-                sh.g.sub(_p.list.from_dictionary($.properties, ($, key) => sh.g.nested_block([
-                    String_Literal(key, { 'delimiter': "apostrophe" }),
+                sh.g.sub(_p.list.from_dictionary($.properties, ($, id) => sh.g.nested_block([
+                    String_Literal(id, { 'delimiter': "apostrophe" }),
                     sh.b.snippet(": "),
                     Expression($, $p),
                     sh.b.snippet(",")
@@ -466,10 +466,10 @@ export const Type = (
             : sh.b.sub([
                 sh.b.snippet("{"),
                 sh.b.indent([
-                    sh.g.sub(_p.list.from_dictionary($.properties, ($, key) => sh.g.sub([
+                    sh.g.sub(_p.list.from_dictionary($.properties, ($, id) => sh.g.sub([
                         sh.g.nested_block([
                             $['readonly'] ? sh.b.snippet("readonly ") : sh.b.nothing(),
-                            String_Literal(key, { 'delimiter': "apostrophe" }),
+                            String_Literal(id, { 'delimiter': "apostrophe" }),
                             sh.b.snippet(": "),
                             Type($.type, $p),
                         ])

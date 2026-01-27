@@ -29,19 +29,19 @@ const temp_rename = (
     $: d_in.Module_Set,
     abort: _pi.Abort<d_pareto_to_typescript.Error>
 ): d_in.Module_Set => {
-    const renamed: { [key: string]: d_in.Module_Set.D } = {}
-    $.__d_map(($, key) => {
+    const renamed: { [id: string]: d_in.Module_Set.D } = {}
+    $.__d_map(($, id) => {
         const new_key: string = _p.decide.state($, ($) => {
             switch ($[0]) {
-                case 'module': return _p.ss($, ($) => key + `.ts`)
+                case 'module': return _p.ss($, ($) => id + `.ts`)
                 case 'set': return _p.ss($, ($) => {
                     const ends_with_ts = ($s: string): boolean => {
                         return false //implement properly later
                     }
-                    if (ends_with_ts(key)) {
-                        abort(['directory name ending with ts', { 'directory name': key }])
+                    if (ends_with_ts(id)) {
+                        abort(['directory name ending with ts', { 'directory name': id }])
                     }
-                    return key
+                    return id
                 })
                 default: return _p.au($[0])
             }
@@ -68,8 +68,8 @@ export const Module_Set = (
                         sh.s.import_namespace(sh.identifier_raw("_pi"), "pareto-core/dist/interface"),
                     ],
 
-                    _p.list.from_dictionary($.imports, ($, key): d_out.Statements_.L => sh.s.import_namespace(
-                        sh.identifier_escaped(`i ${key}`),
+                    _p.list.from_dictionary($.imports, ($, id): d_out.Statements_.L => sh.s.import_namespace(
+                        sh.identifier_escaped(`i ${id}`),
                         _p.decide.state($.type, ($): string => {
                             switch ($[0]) {
                                 case 'external': return _p.ss($, ($) => valid_file_name($))
@@ -83,8 +83,8 @@ export const Module_Set = (
                     )),
 
                     _p.list.flatten(
-                        _p.list.from_dictionary($['types'], ($, key): d_out.Statements => _p.decide.state($, ($) => {
-                            const name = key + ` `
+                        _p.list.from_dictionary($['types'], ($, id): d_out.Statements => _p.decide.state($, ($) => {
+                            const name = id + ` `
                             switch ($[0]) {
                                 case 'data': return _p.ss($, ($) => Type_Node(
                                     $,
@@ -134,7 +134,7 @@ export const Module_Set = (
                                                             ($) => {
                                                                 return _p.list.from_dictionary(
                                                                     $,
-                                                                    ($, key) => sh.s.namespace(
+                                                                    ($, id) => sh.s.namespace(
                                                                         true,
                                                                         sh.identifier_raw("L"),
                                                                         Type_Node(
@@ -147,7 +147,7 @@ export const Module_Set = (
                                                                                 }
                                                                             }),
                                                                             {
-                                                                                'name': key,
+                                                                                'name': id,
                                                                             }
                                                                         )
                                                                     )
@@ -167,10 +167,10 @@ export const Module_Set = (
                                                     sh.identifier_raw("P"),
                                                     $.parameters.__decide(
                                                         ($) => _p.list.flatten(
-                                                            _p.list.from_dictionary($, ($, key) => Type_Node(
+                                                            _p.list.from_dictionary($, ($, id) => Type_Node(
                                                                 $,
                                                                 {
-                                                                    'name': key,
+                                                                    'name': id,
                                                                 }
                                                             )),
                                                             ($) => $
@@ -224,7 +224,7 @@ export const Module_Set = (
                                                                     sh.parameter(
                                                                         sh.identifier_raw("lookups"),
                                                                         sh.t.type_literal(
-                                                                            $.__d_map(($, key) => sh.tl_propery(
+                                                                            $.__d_map(($, id) => sh.tl_propery(
                                                                                 true,
                                                                                 sh.t.type_reference(
                                                                                     sh.identifier_raw("_pi"),
@@ -239,7 +239,7 @@ export const Module_Set = (
                                                                                         }))
                                                                                     ],
                                                                                     [
-                                                                                        sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("L"), sh.identifier_escaped(key)], [])
+                                                                                        sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("L"), sh.identifier_escaped(id)], [])
                                                                                     ]
                                                                                 )
                                                                             ))
@@ -259,9 +259,9 @@ export const Module_Set = (
                                                         sh.parameter(
                                                             sh.identifier_raw("parameters"),
                                                             sh.t.type_literal(
-                                                                $.__d_map(($, key) => ({
+                                                                $.__d_map(($, id) => ({
                                                                     'readonly': true,
-                                                                    'type': sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("P"), sh.identifier_escaped(key)], []),
+                                                                    'type': sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("P"), sh.identifier_escaped(id)], []),
                                                                 })),
                                                             )
                                                         ),
@@ -284,7 +284,7 @@ export const Module_Set = (
                         sh.s.export_(
                             _p.list.from_dictionary(
                                 $['types'],
-                                ($, key) => sh.specifier(sh.identifier_escaped(key + ` `), sh.identifier_escaped(key))
+                                ($, id) => sh.specifier(sh.identifier_escaped(id + ` `), sh.identifier_escaped(id))
                             ),
                             null,
                         )
@@ -375,10 +375,10 @@ export const Type_Node = (
                         _p.list.flatten(
                             _p.list.from_dictionary(
                                 $,
-                                ($, key) => Type_Node(
+                                ($, id) => Type_Node(
                                     $,
                                     {
-                                        'name': key,
+                                        'name': id,
                                     }
                                 )
                             ),
@@ -389,7 +389,7 @@ export const Type_Node = (
                         true,
                         sh.identifier_escaped($p.name),
                         _p.list.literal([]),
-                        sh.t.type_literal($.__d_map(($, key) => sh.tl_propery(true, sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(key)], []))))
+                        sh.t.type_literal($.__d_map(($, id) => sh.tl_propery(true, sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(id)], []))))
                     )
                 ]
             ]))
@@ -515,10 +515,10 @@ export const Type_Node = (
                         _p.list.flatten(
                             _p.list.from_dictionary(
                                 $,
-                                ($, key) => Type_Node(
+                                ($, id) => Type_Node(
                                     $,
                                     {
-                                        'name': key,
+                                        'name': id,
                                     }
                                 )
                             ),
@@ -531,9 +531,9 @@ export const Type_Node = (
                         _p.list.literal([]),
                         sh.t.union(
                             $.__to_list(
-                                ($, key) => sh.t.tuple('readonly', [
-                                    sh.t.literal_type(key, 'apostrophe'),
-                                    sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(key)], [])
+                                ($, id) => sh.t.tuple('readonly', [
+                                    sh.t.literal_type(id, 'apostrophe'),
+                                    sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(id)], [])
                                 ])
                             )
                         )
