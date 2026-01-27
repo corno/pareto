@@ -92,7 +92,7 @@ export const $$ = ($: string): string => {
 
     return _p.text.deprecated_build(($i) => {
         const characters = _pd.list.from_text(the_string, ($) => $)
-        const length = characters.__get_number_of_elements()
+        const length = characters.__get_number_of_items()
 
         let position = 0
 
@@ -104,7 +104,7 @@ export const $$ = ($: string): string => {
             if (position === length) {
                 return null
             }
-            return characters.__get_possible_element_at(position).__decide(
+            return characters.__get_possible_item_at(position).__decide(
                 ($) => $,
                 () => null
             )
