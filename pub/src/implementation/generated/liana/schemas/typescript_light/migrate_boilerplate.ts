@@ -49,7 +49,7 @@ export const Type: t_signatures.Type = ($,) => _p.decide.state($, ($,): t_out.Ty
             })])
         case 'type literal':
             return _p.ss($, ($,) => ['type literal', ({
-                'properties': _p.deprecated_cc($['properties'], ($,) => $.__d_map(($,key,) => ({
+                'properties': _p.deprecated_cc($['properties'], ($,) => $.__d_map(($,id,) => ({
                     'readonly': _p.deprecated_cc($['readonly'], ($,) => $),
                     'type': _p.deprecated_cc($['type'], ($,) => Type($)),
                 }))),
@@ -145,7 +145,7 @@ export const Expression: t_signatures.Expression = ($,) => _p.decide.state($, ($
             return _p.ss($, ($,) => ['number literal', $])
         case 'object literal':
             return _p.ss($, ($,) => ['object literal', ({
-                'properties': _p.deprecated_cc($['properties'], ($,) => $.__d_map(($,key,) => Expression($))),
+                'properties': _p.deprecated_cc($['properties'], ($,) => $.__d_map(($,id,) => Expression($))),
             })])
         case 'parenthesized':
             return _p.ss($, ($,) => ['parenthesized', Expression($)])
@@ -262,7 +262,7 @@ export const Statements: t_signatures.Statements = ($,) => $.__l_map(($,) => _p.
             return _p.au($[0])
     }
 }))
-export const Directory: t_signatures.Directory = ($,) => $.__d_map(($,key,) => _p.decide.state($, ($,): t_out.Directory.D => {
+export const Directory: t_signatures.Directory = ($,) => $.__d_map(($,id,) => _p.decide.state($, ($,): t_out.Directory.D => {
     switch ($[0]) {
         case 'file':
             return _p.ss($, ($,) => ['file', ({

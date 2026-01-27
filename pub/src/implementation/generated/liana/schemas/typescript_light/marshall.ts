@@ -91,7 +91,7 @@ export const Type: t_signatures.Type = ($,) => ['state', _p.decide.state($, ($,)
             return _p.ss($, ($,) => ({
                 'option': 'type literal',
                 'value': ['group', ['verbose', _p.dictionary.literal(({
-                    'properties': _p.deprecated_cc($['properties'], ($,) => ['dictionary', $.__d_map(($,key,) => ['group', ['verbose', _p.dictionary.literal(({
+                    'properties': _p.deprecated_cc($['properties'], ($,) => ['dictionary', $.__d_map(($,id,) => ['group', ['verbose', _p.dictionary.literal(({
                         'readonly': _p.deprecated_cc($['readonly'], ($,) => ['text', ({
                             'delimiter': ['none', null],
                             'value': v_serialize_boolean.serialize($),
@@ -268,7 +268,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
             return _p.ss($, ($,) => ({
                 'option': 'object literal',
                 'value': ['group', ['verbose', _p.dictionary.literal(({
-                    'properties': _p.deprecated_cc($['properties'], ($,) => ['dictionary', $.__d_map(($,key,) => Expression($))]),
+                    'properties': _p.deprecated_cc($['properties'], ($,) => ['dictionary', $.__d_map(($,id,) => Expression($))]),
                 }))]],
             }))
         case 'parenthesized':
@@ -467,7 +467,7 @@ export const Statements: t_signatures.Statements = ($,) => ['list', $.__l_map(($
             return _p.au($[0])
     }
 })])]
-export const Directory: t_signatures.Directory = ($,) => ['dictionary', $.__d_map(($,key,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
+export const Directory: t_signatures.Directory = ($,) => ['dictionary', $.__d_map(($,id,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
     switch ($[0]) {
         case 'file':
             return _p.ss($, ($,) => ({

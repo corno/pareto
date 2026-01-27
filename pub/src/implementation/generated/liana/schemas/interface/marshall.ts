@@ -8,7 +8,7 @@ import * as t_out from "astn-core/dist/interface/generated/liana/schemas/sealed_
 import * as v_serialize_number from "liana-core/dist/implementation/manual/primitives/integer/serializers/decimal"
 
 import * as v_serialize_boolean from "liana-core/dist/implementation/manual/primitives/boolean/serializers/true_false"
-export const Imports: t_signatures.Imports = ($,) => ['dictionary', $.__d_map(($,key,) => ['group', ['verbose', _p.dictionary.literal(({
+export const Imports: t_signatures.Imports = ($,) => ['dictionary', $.__d_map(($,id,) => ['group', ['verbose', _p.dictionary.literal(({
     'type': _p.deprecated_cc($['type'], ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
         switch ($[0]) {
             case 'external':
@@ -52,7 +52,7 @@ export const Imports: t_signatures.Imports = ($,) => ['dictionary', $.__d_map(($
 }))]])]
 export const Module: t_signatures.Module = ($,) => ['group', ['verbose', _p.dictionary.literal(({
     'imports': _p.deprecated_cc($['imports'], ($,) => Imports($)),
-    'types': _p.deprecated_cc($['types'], ($,) => ['dictionary', $.__d_map(($,key,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
+    'types': _p.deprecated_cc($['types'], ($,) => ['dictionary', $.__d_map(($,id,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
         switch ($[0]) {
             case 'data':
                 return _p.ss($, ($,) => ({
@@ -78,7 +78,7 @@ export const Module: t_signatures.Module = ($,) => ['group', ['verbose', _p.dict
                                         'option': 'refiner',
                                         'value': ['group', ['verbose', _p.dictionary.literal(({
                                             'error': _p.deprecated_cc($['error'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node($)], () => ['not set', null])]),
-                                            'lookups': _p.deprecated_cc($['lookups'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', ['dictionary', $.__d_map(($,key,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                            'lookups': _p.deprecated_cc($['lookups'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', ['dictionary', $.__d_map(($,id,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
                                                 switch ($[0]) {
                                                     case 'acyclic':
                                                         return _p.ss($, ($,) => ({
@@ -105,7 +105,7 @@ export const Module: t_signatures.Module = ($,) => ['group', ['verbose', _p.dict
                                     return _p.au($[0])
                             }
                         })]),
-                        'parameters': _p.deprecated_cc($['parameters'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', ['dictionary', $.__d_map(($,key,) => Type_Node($))]], () => ['not set', null])]),
+                        'parameters': _p.deprecated_cc($['parameters'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', ['dictionary', $.__d_map(($,id,) => Type_Node($))]], () => ['not set', null])]),
                     }))]],
                 }))
             default:
@@ -113,7 +113,7 @@ export const Module: t_signatures.Module = ($,) => ['group', ['verbose', _p.dict
         }
     })])]),
 }))]]
-export const Module_Set: t_signatures.Module_Set = ($,) => ['dictionary', $.__d_map(($,key,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
+export const Module_Set: t_signatures.Module_Set = ($,) => ['dictionary', $.__d_map(($,id,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
     switch ($[0]) {
         case 'module':
             return _p.ss($, ($,) => ({
@@ -179,7 +179,7 @@ export const Type_Node: t_signatures.Type_Node = ($,) => ['state', _p.decide.sta
         case 'group':
             return _p.ss($, ($,) => ({
                 'option': 'group',
-                'value': ['dictionary', $.__d_map(($,key,) => Type_Node($))],
+                'value': ['dictionary', $.__d_map(($,id,) => Type_Node($))],
             }))
         case 'list':
             return _p.ss($, ($,) => ({
@@ -282,7 +282,7 @@ export const Type_Node: t_signatures.Type_Node = ($,) => ['state', _p.decide.sta
         case 'state':
             return _p.ss($, ($,) => ({
                 'option': 'state',
-                'value': ['dictionary', $.__d_map(($,key,) => Type_Node($))],
+                'value': ['dictionary', $.__d_map(($,id,) => Type_Node($))],
             }))
         case 'text':
             return _p.ss($, ($,) => ({

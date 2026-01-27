@@ -39,7 +39,7 @@ export const Module: t_signatures.Module = ($,) => ({
             'line': 42,
             'column': 42,
         }),
-        'dictionary': $.__d_map(($,key,) => ({
+        'dictionary': $.__d_map(($,id,) => ({
             'entry': ({
                 'tail': _p.deprecated_cc($['tail'], ($,) => ({
                     'location': ({
@@ -92,7 +92,7 @@ export const Module: t_signatures.Module = ($,) => ({
             'line': 42,
             'column': 42,
         }),
-        'dictionary': $.__d_map(($,key,) => ({
+        'dictionary': $.__d_map(($,id,) => ({
             'entry': ({
                 'type': _p.deprecated_cc($['type'], ($,) => Type_Reference($)),
                 'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
@@ -114,7 +114,7 @@ export const Module_Set: t_signatures.Module_Set = ($,) => ({
         'line': 42,
         'column': 42,
     }),
-    'dictionary': $.__d_map(($,key,) => ({
+    'dictionary': $.__d_map(($,id,) => ({
         'entry': ({
             'location': ({
                 'file': "implement me",
@@ -206,7 +206,7 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                             'line': 42,
                                             'column': 42,
                                         }),
-                                        'dictionary': $.__d_map(($,key,) => ({
+                                        'dictionary': $.__d_map(($,id,) => ({
                                             'entry': ({
                                                 'type': _p.deprecated_cc($['type'], ($,) => $.__o_map(($,) => Type_Node_Reference($))),
                                                 'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
@@ -317,7 +317,7 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                                             'line': 42,
                                                             'column': 42,
                                                         }),
-                                                        'dictionary': $.__d_map(($,key,) => ({
+                                                        'dictionary': $.__d_map(($,id,) => ({
                                                             'entry': Expression($),
                                                             'location': ({
                                                                 'file': "implement me",
@@ -349,7 +349,7 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                                         'line': 42,
                                                         'column': 42,
                                                     }),
-                                                    'dictionary': $.__d_map(($,key,) => ({
+                                                    'dictionary': $.__d_map(($,id,) => ({
                                                         'entry': Expression($),
                                                         'location': ({
                                                             'file': "implement me",
@@ -375,7 +375,7 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                         'line': 42,
                                         'column': 42,
                                     }),
-                                    'dictionary': $.__d_map(($,key,) => ({
+                                    'dictionary': $.__d_map(($,id,) => ({
                                         'entry': Expression($),
                                         'location': ({
                                             'file': "implement me",
@@ -623,7 +623,7 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                                                     'line': 42,
                                                                     'column': 42,
                                                                 }),
-                                                                'dictionary': $.__d_map(($,key,) => ({
+                                                                'dictionary': $.__d_map(($,id,) => ({
                                                                     'entry': Expression($),
                                                                     'location': ({
                                                                         'file': "implement me",
@@ -642,7 +642,7 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                                                     'line': 42,
                                                                     'column': 42,
                                                                 }),
-                                                                'dictionary': $.__d_map(($,key,) => ({
+                                                                'dictionary': $.__d_map(($,id,) => ({
                                                                     'entry': Expression($),
                                                                     'location': ({
                                                                         'file': "implement me",
@@ -711,7 +711,7 @@ export const Selection: t_signatures.Selection = ($,) => ({
                                 'line': 42,
                                 'column': 42,
                             }),
-                            'dictionary': $.__d_map(($,key,) => ({
+                            'dictionary': $.__d_map(($,id,) => ({
                                 'entry': Expression($),
                                 'location': ({
                                     'file': "implement me",

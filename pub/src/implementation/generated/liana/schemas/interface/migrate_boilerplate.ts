@@ -10,7 +10,7 @@ export const Imports: t_signatures.Imports = ($,) => ({
         'line': 42,
         'column': 42,
     }),
-    'dictionary': $.__d_map(($,key,) => ({
+    'dictionary': $.__d_map(($,id,) => ({
         'entry': ({
             'type': _p.deprecated_cc($['type'], ($,) => ({
                 'location': ({
@@ -65,7 +65,7 @@ export const Module: t_signatures.Module = ($,) => ({
             'line': 42,
             'column': 42,
         }),
-        'dictionary': $.__d_map(($,key,) => ({
+        'dictionary': $.__d_map(($,id,) => ({
             'entry': ({
                 'location': ({
                     'file': "implement me",
@@ -99,7 +99,7 @@ export const Module: t_signatures.Module = ($,) => ({
                                                             'line': 42,
                                                             'column': 42,
                                                         }),
-                                                        'dictionary': $.__d_map(($,key,) => ({
+                                                        'dictionary': $.__d_map(($,id,) => ({
                                                             'entry': ({
                                                                 'location': ({
                                                                     'file': "implement me",
@@ -138,7 +138,7 @@ export const Module: t_signatures.Module = ($,) => ({
                                         'line': 42,
                                         'column': 42,
                                     }),
-                                    'dictionary': $.__d_map(($,key,) => ({
+                                    'dictionary': $.__d_map(($,id,) => ({
                                         'entry': Type_Node($),
                                         'location': ({
                                             'file': "implement me",
@@ -167,7 +167,7 @@ export const Module_Set: t_signatures.Module_Set = ($,) => ({
         'line': 42,
         'column': 42,
     }),
-    'dictionary': $.__d_map(($,key,) => ({
+    'dictionary': $.__d_map(($,id,) => ({
         'entry': ({
             'location': ({
                 'file': "implement me",
@@ -235,7 +235,7 @@ export const Type_Node: t_signatures.Type_Node = ($,) => ({
                         'line': 42,
                         'column': 42,
                     }),
-                    'dictionary': $.__d_map(($,key,) => ({
+                    'dictionary': $.__d_map(($,id,) => ({
                         'entry': Type_Node($),
                         'location': ({
                             'file': "implement me",
@@ -333,7 +333,7 @@ export const Type_Node: t_signatures.Type_Node = ($,) => ({
                         'line': 42,
                         'column': 42,
                     }),
-                    'dictionary': $.__d_map(($,key,) => ({
+                    'dictionary': $.__d_map(($,id,) => ({
                         'entry': Type_Node($),
                         'location': ({
                             'file': "implement me",

@@ -48,7 +48,7 @@ export const Module: t_signatures.Module = ($,) => ['group', ['verbose', _p.dict
         }
     })]),
     'type imports': _p.deprecated_cc($['type imports'], ($,) => v_external_interface.Imports($)),
-    'variable imports': _p.deprecated_cc($['variable imports'], ($,) => ['dictionary', $.__d_map(($,key,) => ['group', ['verbose', _p.dictionary.literal(({
+    'variable imports': _p.deprecated_cc($['variable imports'], ($,) => ['dictionary', $.__d_map(($,id,) => ['group', ['verbose', _p.dictionary.literal(({
         'tail': _p.deprecated_cc($['tail'], ($,) => ['list', $.__l_map(($,) => ['text', ({
             'delimiter': ['quote', null],
             'value': $,
@@ -90,7 +90,7 @@ export const Module: t_signatures.Module = ($,) => ['group', ['verbose', _p.dict
             }
         })]),
     }))]])]),
-    'algorithms': _p.deprecated_cc($['algorithms'], ($,) => ['dictionary', $.__d_map(($,key,) => ['group', ['verbose', _p.dictionary.literal(({
+    'algorithms': _p.deprecated_cc($['algorithms'], ($,) => ['dictionary', $.__d_map(($,id,) => ['group', ['verbose', _p.dictionary.literal(({
         'type': _p.deprecated_cc($['type'], ($,) => Type_Reference($)),
         'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
         'temp has abort': _p.deprecated_cc($['temp has abort'], ($,) => ['text', ({
@@ -107,7 +107,7 @@ export const Module: t_signatures.Module = ($,) => ['group', ['verbose', _p.dict
         })]),
     }))]])]),
 }))]]
-export const Module_Set: t_signatures.Module_Set = ($,) => ['dictionary', $.__d_map(($,key,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
+export const Module_Set: t_signatures.Module_Set = ($,) => ['dictionary', $.__d_map(($,id,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
     switch ($[0]) {
         case 'module':
             return _p.ss($, ($,) => ({
@@ -179,7 +179,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                             return _p.ss($, ($,) => ({
                                 'option': 'block',
                                 'value': ['group', ['verbose', _p.dictionary.literal(({
-                                    'variables': _p.deprecated_cc($['variables'], ($,) => ['dictionary', $.__d_map(($,key,) => ['group', ['verbose', _p.dictionary.literal(({
+                                    'variables': _p.deprecated_cc($['variables'], ($,) => ['dictionary', $.__d_map(($,id,) => ['group', ['verbose', _p.dictionary.literal(({
                                         'type': _p.deprecated_cc($['type'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
                                         'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
                                     }))]])]),
@@ -276,7 +276,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                                 'value': ['group', ['verbose', _p.dictionary.literal(({
                                                     'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
                                                     'context': _p.deprecated_cc($['context'], ($,) => Expression($)),
-                                                    'arguments': _p.deprecated_cc($['arguments'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', ['dictionary', $.__d_map(($,key,) => Expression($))]], () => ['not set', null])]),
+                                                    'arguments': _p.deprecated_cc($['arguments'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', ['dictionary', $.__d_map(($,id,) => Expression($))]], () => ['not set', null])]),
                                                     'abort': _p.deprecated_cc($['abort'], ($,) => ['text', ({
                                                         'delimiter': ['none', null],
                                                         'value': v_serialize_boolean.serialize($),
@@ -296,7 +296,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                         case 'literal':
                                             return _p.ss($, ($,) => ({
                                                 'option': 'literal',
-                                                'value': ['dictionary', $.__d_map(($,key,) => Expression($))],
+                                                'value': ['dictionary', $.__d_map(($,id,) => Expression($))],
                                             }))
                                         case 'map':
                                             return _p.ss($, ($,) => ({
@@ -314,7 +314,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                         case 'group':
                             return _p.ss($, ($,) => ({
                                 'option': 'group',
-                                'value': ['dictionary', $.__d_map(($,key,) => Expression($))],
+                                'value': ['dictionary', $.__d_map(($,id,) => Expression($))],
                             }))
                         case 'list':
                             return _p.ss($, ($,) => ({
@@ -546,7 +546,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                                     return _p.ss($, ($,) => ({
                                                         'option': 'partial',
                                                         'value': ['group', ['verbose', _p.dictionary.literal(({
-                                                            'cases': _p.deprecated_cc($['cases'], ($,) => ['dictionary', $.__d_map(($,key,) => Expression($))]),
+                                                            'cases': _p.deprecated_cc($['cases'], ($,) => ['dictionary', $.__d_map(($,id,) => Expression($))]),
                                                             'default': _p.deprecated_cc($['default'], ($,) => Expression($)),
                                                         }))]],
                                                     }))
@@ -554,7 +554,7 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                                     return _p.ss($, ($,) => ({
                                                         'option': 'full',
                                                         'value': ['group', ['verbose', _p.dictionary.literal(({
-                                                            'cases': _p.deprecated_cc($['cases'], ($,) => ['dictionary', $.__d_map(($,key,) => Expression($))]),
+                                                            'cases': _p.deprecated_cc($['cases'], ($,) => ['dictionary', $.__d_map(($,id,) => Expression($))]),
                                                         }))]],
                                                     }))
                                                 default:
@@ -619,7 +619,7 @@ export const Selection: t_signatures.Selection = ($,) => ['group', ['verbose', _
                     'value': ['group', ['verbose', _p.dictionary.literal(({
                         'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
                         'context': _p.deprecated_cc($['context'], ($,) => Selection($)),
-                        'arguments': _p.deprecated_cc($['arguments'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', ['dictionary', $.__d_map(($,key,) => Expression($))]], () => ['not set', null])]),
+                        'arguments': _p.deprecated_cc($['arguments'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', ['dictionary', $.__d_map(($,id,) => Expression($))]], () => ['not set', null])]),
                     }))]],
                 }))
             case 'context':
