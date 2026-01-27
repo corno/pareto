@@ -31,7 +31,7 @@ const temp_rename = (
 ): d_in.Module_Set => {
     const renamed: { [id: string]: d_in.Module_Set.D } = {}
     $.__d_map(($, id) => {
-        const new_key: string = _p.decide.state($, ($) => {
+        const new_id: string = _p.decide.state($, ($) => {
             switch ($[0]) {
                 case 'module': return _p.ss($, ($) => id + `.ts`)
                 case 'set': return _p.ss($, ($) => {
@@ -46,7 +46,7 @@ const temp_rename = (
                 default: return _p.au($[0])
             }
         })
-        renamed[new_key] = $
+        renamed[new_id] = $
     })
     return _p.dictionary.literal(renamed)
 }

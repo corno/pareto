@@ -40,7 +40,7 @@ const temp_rename = (
 ): d_in.Module_Set => {
     const renamed: { [id: string]: d_in.Module_Set.D } = {}
     $.__d_map(($, id) => {
-        const new_key: string = _p.decide.state($, ($) => {
+        const new_id: string = _p.decide.state($, ($) => {
             switch ($[0]) {
                 case 'module': return _p.ss($, ($) => id + `.ts`)
                 case 'set': return _p.ss($, ($) => {
@@ -55,7 +55,7 @@ const temp_rename = (
                 default: return _p.au($[0])
             }
         })
-        renamed[new_key] = $
+        renamed[new_id] = $
     })
     return _p.dictionary.literal(renamed)
 }
@@ -389,7 +389,7 @@ export const Expression = (
                                 sh.e.arrow_function_with_expression(
                                     [
                                         sh.parameter(sh.identifier_raw("$"), null),
-                                        sh.parameter(sh.identifier_raw("key"), null),
+                                        sh.parameter(sh.identifier_raw("id"), null),
                                     ],
                                     null,
                                     Expression($['entry handler'])
@@ -587,11 +587,11 @@ export const Expression = (
     }
 })
 
-export const reduce = <Element, Result_Type>(
-    $: _pi.List<Element>,
+export const reduce = <Item, Result_Type>(
+    $: _pi.List<Item>,
     initial_state: Result_Type,
     update_state: (
-        value: Element,
+        value: Item,
         current: Result_Type
     ) => Result_Type,
 ): Result_Type => {

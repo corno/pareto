@@ -33,29 +33,29 @@ export namespace sub {
 export namespace vi {
 
     export const external = (
-        key: string,
+        id: string,
         tail: _p.Raw_Or_Normal_List<string>,
     ): d_target.Module.variable_imports.D => ({
-        'type': wrap_state(['external', key]),
+        'type': wrap_state(['external', id]),
         'tail': _p.list.literal(tail),
     })
 
     export const sibling = (
-        key: string,
+        id: string,
         tail: _p.Raw_Or_Normal_List<string>,
     ): d_target.Module.variable_imports.D => ({
-        'type': wrap_state(['sibling', key]),
+        'type': wrap_state(['sibling', id]),
         'tail': _p.list.literal(tail),
     })
 
     export const ancestor = (
         number_of_steps: number,
-        key: string,
+        id: string,
         tail: _p.Raw_Or_Normal_List<string>,
     ): d_target.Module.variable_imports.D => ({
         'type': wrap_state(['ancestor', {
             'number of steps': number_of_steps,
-            'dependency': key,
+            'dependency': id,
         }]),
         'tail': _p.list.literal(tail),
     })

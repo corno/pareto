@@ -4,7 +4,7 @@ import * as _pdev from 'pareto-core-dev'
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
 import * as d_in from "../../../../../../../interface/generated/liana/schemas/typescript_light/data"
 
-import { $$ as op_enrich_list_elements_with_position_information } from "pareto-fountain-pen/dist/implementation/temp/enrich_with_position_information"
+import { $$ as op_enrich_list_items_with_position_information } from "pareto-fountain-pen/dist/implementation/temp/enrich_with_position_information"
 import { $$ as s_apostrophed } from "../../../primitives/text/serializers/apostrophed_string"
 import { $$ as s_quoted } from "../../../primitives/text/serializers/quoted_string"
 import { $$ as s_number_default } from "../../../primitives/integer/serializers/decimal"
@@ -208,7 +208,7 @@ export const Statements = (
                         ? sh.b.nothing()
                         : sh.b.sub([
                             sh.b.snippet("<"),
-                            sh.b.sub(op_enrich_list_elements_with_position_information($['parameters']).__l_map(($) => sh.b.sub([
+                            sh.b.sub(op_enrich_list_items_with_position_information($['parameters']).__l_map(($) => sh.b.sub([
                                 Identifier($.value),
                                 $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
                             ]))),
@@ -263,7 +263,7 @@ export const Expression = (
         ]))
         case 'array literal': return _p.ss($, ($) => sh.b.sub([
             sh.b.snippet("["),
-            sh.b.sub(op_enrich_list_elements_with_position_information($).__l_map(($) => sh.b.sub([
+            sh.b.sub(op_enrich_list_items_with_position_information($).__l_map(($) => sh.b.sub([
                 Expression($.value, $p),
                 $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
             ]))),
@@ -314,7 +314,7 @@ export const Expression = (
         case 'call': return _p.ss($, ($) => sh.b.sub([
             Expression($['function selection'], $p),
             sh.b.snippet("("),
-            sh.b.sub(op_enrich_list_elements_with_position_information($['arguments']).__l_map(($) => sh.b.sub([
+            sh.b.sub(op_enrich_list_items_with_position_information($['arguments']).__l_map(($) => sh.b.sub([
                 Expression($.value, $p),
                 $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
             ]))),
@@ -424,7 +424,7 @@ export const Type = (
                 ? sh.b.nothing()
                 : sh.b.sub([
                     sh.b.snippet("<"),
-                    sh.b.sub(op_enrich_list_elements_with_position_information($['type parameters']).__l_map(($) => sh.b.sub([
+                    sh.b.sub(op_enrich_list_items_with_position_information($['type parameters']).__l_map(($) => sh.b.sub([
                         Type($.value, $p),
                         $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
                     ]))),
@@ -453,7 +453,7 @@ export const Type = (
         case 'tuple': return _p.ss($, ($) => sh.b.sub([
             $.readonly ? sh.b.snippet("readonly ") : sh.b.nothing(),
             sh.b.snippet("["),
-            sh.b.sub(op_enrich_list_elements_with_position_information($['elements']).__l_map(($) => sh.b.sub([
+            sh.b.sub(op_enrich_list_items_with_position_information($['elements']).__l_map(($) => sh.b.sub([
                 Type($.value, $p),
                 $['is last']
                     ? sh.b.nothing()
@@ -488,7 +488,7 @@ export const Type = (
                 ? sh.b.nothing()
                 : sh.b.sub([
                     sh.b.snippet("<"),
-                    sh.b.sub(op_enrich_list_elements_with_position_information($['type arguments']).__l_map(($) => sh.b.sub([
+                    sh.b.sub(op_enrich_list_items_with_position_information($['type arguments']).__l_map(($) => sh.b.sub([
                         Type($['value'], $p),
                         $['is last'] ? sh.b.nothing() : sh.b.snippet(", "),
                     ]))),
