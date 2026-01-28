@@ -377,7 +377,7 @@ export namespace Selection_ {
                 
                 export type source = Selection_
                 
-                export type context = Selection_
+                export type context = Expression_
                 
                 export namespace arguments_ {
                     
@@ -539,157 +539,200 @@ export namespace Expression_ {
     
     export namespace state {
         
-        export namespace special {
+        export namespace decide {
             
-            export type location = i__location.Location
-            
-            export namespace state {
+            export namespace type_ {
                 
-                export type abort = Expression_
+                export type location = i__location.Location
                 
-                export namespace block {
+                export namespace state {
                     
-                    export namespace variables {
+                    export namespace boolean_ {
                         
-                        export type location = i__location.Location
+                        export type source = Selection_
                         
-                        export namespace dictionary {
+                        export namespace temp_resulting_node {
                             
-                            export namespace D {
-                                
-                                export type location = i__location.Location
-                                
-                                export namespace entry {
-                                    
-                                    export namespace type_ {
-                                        
-                                        export type O = Type_Node_Reference_
-                                        
-                                    }
-                                    
-                                    export type type_ = _pi.Optional_Value<type_.O>
-                                    
-                                    export type expression = Expression_
-                                    
-                                }
-                                
-                                export type entry = {
-                                    readonly 'type': entry.type_
-                                    readonly 'expression': entry.expression
-                                }
-                                
-                            }
-                            
-                            export type D = {
-                                readonly 'location': D.location
-                                readonly 'entry': D.entry
-                            }
+                            export type O = Type_Node_Reference_
                             
                         }
                         
-                        export type dictionary = _pi.Dictionary<dictionary.D>
+                        export type temp_resulting_node = _pi.Optional_Value<temp_resulting_node.O>
+                        
+                        export type if_false = Expression_
+                        
+                        export type if_true = Expression_
                         
                     }
                     
-                    export type variables = {
-                        readonly 'location': variables.location
-                        readonly 'dictionary': variables.dictionary
+                    export type boolean_ = {
+                        readonly 'source': boolean_.source
+                        readonly 'temp resulting node': boolean_.temp_resulting_node
+                        readonly 'if false': boolean_.if_false
+                        readonly 'if true': boolean_.if_true
                     }
                     
-                    export namespace temp_ordered_variables {
+                    export namespace optional {
                         
-                        export type location = i__location.Location
+                        export type source = Selection_
                         
-                        export namespace list {
+                        export namespace temp_resulting_node {
                             
-                            export namespace L {
-                                
-                                export type location = i__location.Location
-                                
-                                export namespace item {
-                                    
-                                    export type name = string
-                                    
-                                    export namespace type_ {
-                                        
-                                        export type O = Type_Node_Reference_
-                                        
-                                    }
-                                    
-                                    export type type_ = _pi.Optional_Value<type_.O>
-                                    
-                                    export type expression = Expression_
-                                    
-                                }
-                                
-                                export type item = {
-                                    readonly 'name': item.name
-                                    readonly 'type': item.type_
-                                    readonly 'expression': item.expression
-                                }
-                                
-                            }
-                            
-                            export type L = {
-                                readonly 'location': L.location
-                                readonly 'item': L.item
-                            }
+                            export type O = Type_Node_Reference_
                             
                         }
                         
-                        export type list = _pi.List<list.L>
+                        export type temp_resulting_node = _pi.Optional_Value<temp_resulting_node.O>
+                        
+                        export type if_not_set = Expression_
+                        
+                        export type if_set = Expression_
                         
                     }
                     
-                    export type temp_ordered_variables = {
-                        readonly 'location': temp_ordered_variables.location
-                        readonly 'list': temp_ordered_variables.list
+                    export type optional = {
+                        readonly 'source': optional.source
+                        readonly 'temp resulting node': optional.temp_resulting_node
+                        readonly 'if not set': optional.if_not_set
+                        readonly 'if set': optional.if_set
                     }
                     
-                    export type expression = Expression_
+                    export namespace state {
+                        
+                        export type source = Selection_
+                        
+                        export namespace temp_resulting_node {
+                            
+                            export type O = Type_Node_Reference_
+                            
+                        }
+                        
+                        export type temp_resulting_node = _pi.Optional_Value<temp_resulting_node.O>
+                        
+                        export namespace type_ {
+                            
+                            export type location = i__location.Location
+                            
+                            export namespace state {
+                                
+                                export namespace partial {
+                                    
+                                    export namespace cases {
+                                        
+                                        export type location = i__location.Location
+                                        
+                                        export namespace dictionary {
+                                            
+                                            export namespace D {
+                                                
+                                                export type location = i__location.Location
+                                                
+                                                export type entry = Expression_
+                                                
+                                            }
+                                            
+                                            export type D = {
+                                                readonly 'location': D.location
+                                                readonly 'entry': D.entry
+                                            }
+                                            
+                                        }
+                                        
+                                        export type dictionary = _pi.Dictionary<dictionary.D>
+                                        
+                                    }
+                                    
+                                    export type cases = {
+                                        readonly 'location': cases.location
+                                        readonly 'dictionary': cases.dictionary
+                                    }
+                                    
+                                    export type default_ = Expression_
+                                    
+                                }
+                                
+                                export type partial = {
+                                    readonly 'cases': partial.cases
+                                    readonly 'default': partial.default_
+                                }
+                                
+                                export namespace full {
+                                    
+                                    export namespace cases {
+                                        
+                                        export type location = i__location.Location
+                                        
+                                        export namespace dictionary {
+                                            
+                                            export namespace D {
+                                                
+                                                export type location = i__location.Location
+                                                
+                                                export type entry = Expression_
+                                                
+                                            }
+                                            
+                                            export type D = {
+                                                readonly 'location': D.location
+                                                readonly 'entry': D.entry
+                                            }
+                                            
+                                        }
+                                        
+                                        export type dictionary = _pi.Dictionary<dictionary.D>
+                                        
+                                    }
+                                    
+                                    export type cases = {
+                                        readonly 'location': cases.location
+                                        readonly 'dictionary': cases.dictionary
+                                    }
+                                    
+                                }
+                                
+                                export type full = {
+                                    readonly 'cases': full.cases
+                                }
+                                
+                            }
+                            
+                            export type state = 
+                                | readonly ['partial', state.partial]
+                                | readonly ['full', state.full]
+                            
+                        }
+                        
+                        export type type_ = {
+                            readonly 'location': type_.location
+                            readonly 'state': type_.state
+                        }
+                        
+                    }
+                    
+                    export type state = {
+                        readonly 'source': state.source
+                        readonly 'temp resulting node': state.temp_resulting_node
+                        readonly 'type': state.type_
+                    }
                     
                 }
                 
-                export type block = {
-                    readonly 'variables': block.variables
-                    readonly 'temp ordered variables': block.temp_ordered_variables
-                    readonly 'expression': block.expression
-                }
-                
-                export namespace change_context {
-                    
-                    export type new_context = Selection_
-                    
-                    export type expression = Expression_
-                    
-                }
-                
-                export type change_context = {
-                    readonly 'new context': change_context.new_context
-                    readonly 'expression': change_context.expression
-                }
-                
-                export type implement_me = string
-                
-                export type selection_deprecated = Selection_
-                
-                export type unreachable = null
+                export type state = 
+                    | readonly ['boolean', state.boolean_]
+                    | readonly ['optional', state.optional]
+                    | readonly ['state', state.state]
                 
             }
             
-            export type state = 
-                | readonly ['abort', state.abort]
-                | readonly ['block', state.block]
-                | readonly ['change context', state.change_context]
-                | readonly ['implement me', state.implement_me]
-                | readonly ['selection deprecated', state.selection_deprecated]
-                | readonly ['unreachable', state.unreachable]
+            export type type_ = {
+                readonly 'location': type_.location
+                readonly 'state': type_.state
+            }
             
         }
         
-        export type special = {
-            readonly 'location': special.location
-            readonly 'state': special.state
+        export type decide = {
+            readonly 'type': decide.type_
         }
         
         export namespace initialize {
@@ -729,14 +772,14 @@ export namespace Expression_ {
                         
                         export type not = Selection_
                         
-                        export type select = Selection_
+                        export type copy = Selection_
                         
                     }
                     
                     export type state = 
                         | readonly ['literal', state.literal]
                         | readonly ['not', state.not]
-                        | readonly ['select', state.select]
+                        | readonly ['copy', state.copy]
                     
                 }
                 
@@ -992,13 +1035,13 @@ export namespace Expression_ {
                                 
                                 export type literal = number
                                 
-                                export type select = Selection_
+                                export type copy = Selection_
                                 
                             }
                             
                             export type state = 
                                 | readonly ['literal', state.literal]
-                                | readonly ['select', state.select]
+                                | readonly ['copy', state.copy]
                             
                         }
                         
@@ -1015,13 +1058,13 @@ export namespace Expression_ {
                                 
                                 export type literal = number
                                 
-                                export type select = Selection_
+                                export type copy = Selection_
                                 
                             }
                             
                             export type state = 
                                 | readonly ['literal', state.literal]
-                                | readonly ['select', state.select]
+                                | readonly ['copy', state.copy]
                             
                         }
                         
@@ -1038,13 +1081,13 @@ export namespace Expression_ {
                                 
                                 export type literal = number
                                 
-                                export type select = Selection_
+                                export type copy = Selection_
                                 
                             }
                             
                             export type state = 
                                 | readonly ['literal', state.literal]
-                                | readonly ['select', state.select]
+                                | readonly ['copy', state.copy]
                             
                         }
                         
@@ -1193,13 +1236,13 @@ export namespace Expression_ {
                             readonly 'value': literal.value
                         }
                         
-                        export type select = Selection_
+                        export type copy = Selection_
                         
                     }
                     
                     export type state = 
                         | readonly ['literal', state.literal]
-                        | readonly ['select', state.select]
+                        | readonly ['copy', state.copy]
                     
                 }
                 
@@ -1229,208 +1272,165 @@ export namespace Expression_ {
             readonly 'state': initialize.state
         }
         
-        export namespace decide {
+        export namespace special {
             
-            export namespace type_ {
+            export type location = i__location.Location
+            
+            export namespace state {
                 
-                export type location = i__location.Location
+                export type abort = Expression_
                 
-                export namespace state {
+                export namespace block {
                     
-                    export namespace boolean_ {
+                    export namespace variables {
                         
-                        export type source = Selection_
+                        export type location = i__location.Location
                         
-                        export namespace temp_resulting_node {
+                        export namespace dictionary {
                             
-                            export type O = Type_Node_Reference_
-                            
-                        }
-                        
-                        export type temp_resulting_node = _pi.Optional_Value<temp_resulting_node.O>
-                        
-                        export type if_false = Expression_
-                        
-                        export type if_true = Expression_
-                        
-                    }
-                    
-                    export type boolean_ = {
-                        readonly 'source': boolean_.source
-                        readonly 'temp resulting node': boolean_.temp_resulting_node
-                        readonly 'if false': boolean_.if_false
-                        readonly 'if true': boolean_.if_true
-                    }
-                    
-                    export namespace optional {
-                        
-                        export type source = Selection_
-                        
-                        export namespace temp_resulting_node {
-                            
-                            export type O = Type_Node_Reference_
-                            
-                        }
-                        
-                        export type temp_resulting_node = _pi.Optional_Value<temp_resulting_node.O>
-                        
-                        export type if_not_set = Expression_
-                        
-                        export type if_set = Expression_
-                        
-                    }
-                    
-                    export type optional = {
-                        readonly 'source': optional.source
-                        readonly 'temp resulting node': optional.temp_resulting_node
-                        readonly 'if not set': optional.if_not_set
-                        readonly 'if set': optional.if_set
-                    }
-                    
-                    export namespace state {
-                        
-                        export type source = Selection_
-                        
-                        export namespace temp_resulting_node {
-                            
-                            export type O = Type_Node_Reference_
-                            
-                        }
-                        
-                        export type temp_resulting_node = _pi.Optional_Value<temp_resulting_node.O>
-                        
-                        export namespace type_ {
-                            
-                            export type location = i__location.Location
-                            
-                            export namespace state {
+                            export namespace D {
                                 
-                                export namespace partial {
+                                export type location = i__location.Location
+                                
+                                export namespace entry {
                                     
-                                    export namespace cases {
+                                    export namespace type_ {
                                         
-                                        export type location = i__location.Location
-                                        
-                                        export namespace dictionary {
-                                            
-                                            export namespace D {
-                                                
-                                                export type location = i__location.Location
-                                                
-                                                export type entry = Expression_
-                                                
-                                            }
-                                            
-                                            export type D = {
-                                                readonly 'location': D.location
-                                                readonly 'entry': D.entry
-                                            }
-                                            
-                                        }
-                                        
-                                        export type dictionary = _pi.Dictionary<dictionary.D>
+                                        export type O = Type_Node_Reference_
                                         
                                     }
                                     
-                                    export type cases = {
-                                        readonly 'location': cases.location
-                                        readonly 'dictionary': cases.dictionary
-                                    }
+                                    export type type_ = _pi.Optional_Value<type_.O>
                                     
-                                    export type default_ = Expression_
+                                    export type expression = Expression_
                                     
                                 }
                                 
-                                export type partial = {
-                                    readonly 'cases': partial.cases
-                                    readonly 'default': partial.default_
-                                }
-                                
-                                export namespace full {
-                                    
-                                    export namespace cases {
-                                        
-                                        export type location = i__location.Location
-                                        
-                                        export namespace dictionary {
-                                            
-                                            export namespace D {
-                                                
-                                                export type location = i__location.Location
-                                                
-                                                export type entry = Expression_
-                                                
-                                            }
-                                            
-                                            export type D = {
-                                                readonly 'location': D.location
-                                                readonly 'entry': D.entry
-                                            }
-                                            
-                                        }
-                                        
-                                        export type dictionary = _pi.Dictionary<dictionary.D>
-                                        
-                                    }
-                                    
-                                    export type cases = {
-                                        readonly 'location': cases.location
-                                        readonly 'dictionary': cases.dictionary
-                                    }
-                                    
-                                }
-                                
-                                export type full = {
-                                    readonly 'cases': full.cases
+                                export type entry = {
+                                    readonly 'type': entry.type_
+                                    readonly 'expression': entry.expression
                                 }
                                 
                             }
                             
-                            export type state = 
-                                | readonly ['partial', state.partial]
-                                | readonly ['full', state.full]
+                            export type D = {
+                                readonly 'location': D.location
+                                readonly 'entry': D.entry
+                            }
                             
                         }
                         
-                        export type type_ = {
-                            readonly 'location': type_.location
-                            readonly 'state': type_.state
-                        }
+                        export type dictionary = _pi.Dictionary<dictionary.D>
                         
                     }
                     
-                    export type state = {
-                        readonly 'source': state.source
-                        readonly 'temp resulting node': state.temp_resulting_node
-                        readonly 'type': state.type_
+                    export type variables = {
+                        readonly 'location': variables.location
+                        readonly 'dictionary': variables.dictionary
                     }
+                    
+                    export namespace temp_ordered_variables {
+                        
+                        export type location = i__location.Location
+                        
+                        export namespace list {
+                            
+                            export namespace L {
+                                
+                                export type location = i__location.Location
+                                
+                                export namespace item {
+                                    
+                                    export type name = string
+                                    
+                                    export namespace type_ {
+                                        
+                                        export type O = Type_Node_Reference_
+                                        
+                                    }
+                                    
+                                    export type type_ = _pi.Optional_Value<type_.O>
+                                    
+                                    export type expression = Expression_
+                                    
+                                }
+                                
+                                export type item = {
+                                    readonly 'name': item.name
+                                    readonly 'type': item.type_
+                                    readonly 'expression': item.expression
+                                }
+                                
+                            }
+                            
+                            export type L = {
+                                readonly 'location': L.location
+                                readonly 'item': L.item
+                            }
+                            
+                        }
+                        
+                        export type list = _pi.List<list.L>
+                        
+                    }
+                    
+                    export type temp_ordered_variables = {
+                        readonly 'location': temp_ordered_variables.location
+                        readonly 'list': temp_ordered_variables.list
+                    }
+                    
+                    export type expression = Expression_
                     
                 }
                 
-                export type state = 
-                    | readonly ['boolean', state.boolean_]
-                    | readonly ['optional', state.optional]
-                    | readonly ['state', state.state]
+                export type block = {
+                    readonly 'variables': block.variables
+                    readonly 'temp ordered variables': block.temp_ordered_variables
+                    readonly 'expression': block.expression
+                }
+                
+                export namespace change_context {
+                    
+                    export type new_context = Selection_
+                    
+                    export type expression = Expression_
+                    
+                }
+                
+                export type change_context = {
+                    readonly 'new context': change_context.new_context
+                    readonly 'expression': change_context.expression
+                }
+                
+                export type implement_me = string
+                
+                export type selection_deprecated = Selection_
+                
+                export type unreachable = null
                 
             }
             
-            export type type_ = {
-                readonly 'location': type_.location
-                readonly 'state': type_.state
-            }
+            export type state = 
+                | readonly ['abort', state.abort]
+                | readonly ['block', state.block]
+                | readonly ['change context', state.change_context]
+                | readonly ['implement me', state.implement_me]
+                | readonly ['selection deprecated', state.selection_deprecated]
+                | readonly ['unreachable', state.unreachable]
             
         }
         
-        export type decide = {
-            readonly 'type': decide.type_
+        export type special = {
+            readonly 'location': special.location
+            readonly 'state': special.state
         }
         
     }
     
     export type state = 
-        | readonly ['special', state.special]
-        | readonly ['initialize', state.initialize]
         | readonly ['decide', state.decide]
+        | readonly ['initialize', state.initialize]
+        | readonly ['special', state.special]
     
 }
 

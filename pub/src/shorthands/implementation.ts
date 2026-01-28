@@ -144,9 +144,9 @@ export namespace e {
 
         export const true_ = (): d_target.Expression => wrap_state(['initialize', wrap_state(['boolean', wrap_state(['literal', wrap_state(['true', null])])])])
 
-        export const select = (
+        export const copy = (
             selection: d_target.Selection
-        ): d_target.Expression => wrap_state(['initialize', wrap_state(['boolean', wrap_state(['select', selection])])])
+        ): d_target.Expression => wrap_state(['initialize', wrap_state(['boolean', wrap_state(['copy', selection])])])
 
     }
 
@@ -241,9 +241,25 @@ export namespace e {
             value: number
         ): d_target.Expression => wrap_state(['initialize', wrap_state(['number', wrap_state(['approximation', wrap_state(['literal', value])])])])
 
+        export const approximation_copy = (
+            source: d_target.Selection
+        ): d_target.Expression => wrap_state(['initialize', wrap_state(['number', wrap_state(['approximation', wrap_state(['copy', source])])])])
+
         export const integer_literal = (
             value: number
         ): d_target.Expression => wrap_state(['initialize', wrap_state(['number', wrap_state(['integer', wrap_state(['literal', value])])])])
+
+        export const integer_copy = (
+            source: d_target.Selection
+        ): d_target.Expression => wrap_state(['initialize', wrap_state(['number', wrap_state(['integer', wrap_state(['copy', source])])])])
+
+        export const natural_literal = (
+            value: number
+        ): d_target.Expression => wrap_state(['initialize', wrap_state(['number', wrap_state(['natural', wrap_state(['literal', value])])])])
+
+        export const natural_copy = (
+            source: d_target.Selection
+        ): d_target.Expression => wrap_state(['initialize', wrap_state(['number', wrap_state(['natural', wrap_state(['copy', source])])])])
 
     }
 
@@ -316,48 +332,9 @@ export namespace e {
 
     }
 
-    export const select_deprecated = (
+    export const select = (
         selection: d_target.Selection
     ): d_target.Expression => wrap_state(['special', wrap_state(['selection deprecated', selection])])
-
-    export const select_from_context_deprecated = (
-        tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
-    ): d_target.Expression => wrap_state(['special', wrap_state(['selection deprecated', {
-        'start': wrap_state(['context', null]),
-        'tail': _p.list.literal(tail),
-    }])])
-
-    export const select_from_variable_deprecated = (
-        variable: string,
-        tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
-    ): d_target.Expression => wrap_state(['special', wrap_state(['selection deprecated', {
-        'start': wrap_state(['variable', wrap_state(['local', variable])]),
-        'tail': _p.list.literal(tail),
-    }])])
-
-    export const select_from_parameter_deprecated = (
-        variable: string,
-        tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
-    ): d_target.Expression => wrap_state(['special', wrap_state(['selection deprecated', {
-        'start': wrap_state(['parameter', variable]),
-        'tail': _p.list.literal(tail),
-    }])])
-
-    export const select_from_argument_deprecated = (
-        argument: string,
-        tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
-    ): d_target.Expression => wrap_state(['special', wrap_state(['selection deprecated', {
-        'start': wrap_state(['argument', argument]),
-        'tail': _p.list.literal(tail),
-    }])])
-
-    // export const variable_selection_deprecated = (
-    //     variable: string,
-    //     tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
-    // ): d_target.Expression => wrap_state(['special', wrap_state(['selection deprecated', {
-    //     'start': wrap_state(['variable', wrap_state(['local', variable])]),
-    //     'tail': _p.list.literal(tail),
-    // }])])
 
     export namespace text {
 
@@ -369,9 +346,9 @@ export namespace e {
             'value': value,
         }])])])
 
-        export const select = (
+        export const copy = (
             selection: d_target.Selection
-        ): d_target.Expression => wrap_state(['initialize', wrap_state(['text', wrap_state(['select', selection])])])
+        ): d_target.Expression => wrap_state(['initialize', wrap_state(['text', wrap_state(['copy', selection])])])
 
     }
 
@@ -386,7 +363,20 @@ export namespace s {
 
     export const call = (
         source: d_target.Selection,
-        context: d_target.Selection,
+        context: d_target.Expression,
+        arguments_: _p.Raw_Or_Normal_Dictionary<d_target.Selection.start.call.arguments_.O.D>,
+    ): d_target.Selection => ({
+        'start': wrap_state(['call', {
+            'source': source,
+            'context': context,
+            'arguments': arguments_ === undefined ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(arguments_)),
+        }]),
+        'tail': _p.list.literal([]),
+    })
+
+    export const call_with_tail = (
+        source: d_target.Selection,
+        context: d_target.Expression,
         arguments_: _p.Raw_Or_Normal_Dictionary<d_target.Selection.start.call.arguments_.O.D>,
         tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
     ): d_target.Selection => ({

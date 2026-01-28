@@ -271,16 +271,16 @@ export const Expression = (
         ]))
         case 'arrow function': return _p.ss($, ($) => sh.b.sub([
             sh.b.snippet("("),
-            sh.b.sub($.parameters.__l_map(($) => sh.b.sub([
-                Identifier($.name),
-                $.type.__decide(
+            sh.b.sub(op_enrich_list_items_with_position_information($.parameters).__l_map(($) => sh.b.sub([
+                Identifier($.value.name),
+                $.value.type.__decide(
                     ($) => sh.b.sub([
                         sh.b.snippet(": "),
                         Type($, $p)
                     ]),
                     () => sh.b.nothing(),
                 ),
-                sh.b.snippet(",")
+                $['is last'] ? sh.b.nothing() : sh.b.snippet(",")
             ]))),
             sh.b.snippet(")"),
             $['return type'].__decide(
@@ -314,10 +314,12 @@ export const Expression = (
         case 'call': return _p.ss($, ($) => sh.b.sub([
             Expression($['function selection'], $p),
             sh.b.snippet("("),
-            sh.b.sub(op_enrich_list_items_with_position_information($['arguments']).__l_map(($) => sh.b.sub([
-                Expression($.value, $p),
-                $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
-            ]))),
+            sh.b.indent([
+                sh.g.sub(op_enrich_list_items_with_position_information($['arguments']).__l_map(($) => sh.g.nested_block([
+                    Expression($.value, $p),
+                    $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
+                ]))),
+            ]),
             sh.b.snippet(")"),
         ]))
         case 'compare': return _p.ss($, ($) => sh.b.sub([

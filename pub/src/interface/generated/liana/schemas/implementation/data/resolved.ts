@@ -208,7 +208,7 @@ export namespace Selection_ {
             
             export type source = Selection_
             
-            export type context = Selection_
+            export type context = Expression_
             
             export namespace arguments_ {
                 
@@ -303,388 +303,6 @@ export type Selection_ = {
 }
 
 export namespace Expression_ {
-    
-    export namespace special {
-        
-        export type abort = Expression_
-        
-        export namespace block {
-            
-            export namespace variables {
-                
-                export namespace D {
-                    
-                    export namespace type_ {
-                        
-                        export type O = Type_Node_Reference_
-                        
-                    }
-                    
-                    export type type_ = _pi.Optional_Value<type_.O>
-                    
-                    export type expression = Expression_
-                    
-                }
-                
-                export type D = {
-                    readonly 'type': D.type_
-                    readonly 'expression': D.expression
-                }
-                
-            }
-            
-            export type variables = _pi.Dictionary<variables.D>
-            
-            export namespace temp_ordered_variables {
-                
-                export namespace L {
-                    
-                    export type name = string
-                    
-                    export namespace type_ {
-                        
-                        export type O = Type_Node_Reference_
-                        
-                    }
-                    
-                    export type type_ = _pi.Optional_Value<type_.O>
-                    
-                    export type expression = Expression_
-                    
-                }
-                
-                export type L = {
-                    readonly 'name': L.name
-                    readonly 'type': L.type_
-                    readonly 'expression': L.expression
-                }
-                
-            }
-            
-            export type temp_ordered_variables = _pi.List<temp_ordered_variables.L>
-            
-            export type expression = Expression_
-            
-        }
-        
-        export type block = {
-            readonly 'variables': block.variables
-            readonly 'temp ordered variables': block.temp_ordered_variables
-            readonly 'expression': block.expression
-        }
-        
-        export namespace change_context {
-            
-            export type new_context = Selection_
-            
-            export type expression = Expression_
-            
-        }
-        
-        export type change_context = {
-            readonly 'new context': change_context.new_context
-            readonly 'expression': change_context.expression
-        }
-        
-        export type implement_me = string
-        
-        export type selection_deprecated = Selection_
-        
-        export type unreachable = null
-        
-    }
-    
-    export type special = 
-        | readonly ['abort', special.abort]
-        | readonly ['block', special.block]
-        | readonly ['change context', special.change_context]
-        | readonly ['implement me', special.implement_me]
-        | readonly ['selection deprecated', special.selection_deprecated]
-        | readonly ['unreachable', special.unreachable]
-    
-    export namespace initialize {
-        
-        export namespace boolean_ {
-            
-            export namespace literal {
-                
-                export type false_ = null
-                
-                export type true_ = null
-                
-            }
-            
-            export type literal = 
-                | readonly ['false', literal.false_]
-                | readonly ['true', literal.true_]
-            
-            export type not = Selection_
-            
-            export type select = Selection_
-            
-        }
-        
-        export type boolean_ = 
-            | readonly ['literal', boolean_.literal]
-            | readonly ['not', boolean_.not]
-            | readonly ['select', boolean_.select]
-        
-        export namespace component {
-            
-            export namespace call {
-                
-                export type source = Selection_
-                
-                export type context = Expression_
-                
-                export namespace abort {
-                    
-                    export type O = Expression_
-                    
-                }
-                
-                export type abort = _pi.Optional_Value<abort.O>
-                
-                export namespace arguments_ {
-                    
-                    export namespace O {
-                        
-                        export type D = Expression_
-                        
-                    }
-                    
-                    export type O = _pi.Dictionary<O.D>
-                    
-                }
-                
-                export type arguments_ = _pi.Optional_Value<arguments_.O>
-                
-            }
-            
-            export type call = {
-                readonly 'source': call.source
-                readonly 'context': call.context
-                readonly 'abort': call.abort
-                readonly 'arguments': call.arguments_
-            }
-            
-        }
-        
-        export type component = 
-            | readonly ['call', component.call]
-        
-        export namespace dictionary {
-            
-            export namespace literal {
-                
-                export type D = Expression_
-                
-            }
-            
-            export type literal = _pi.Dictionary<literal.D>
-            
-            export namespace map {
-                
-                export type source = Selection_
-                
-                export type entry_handler = Expression_
-                
-            }
-            
-            export type map = {
-                readonly 'source': map.source
-                readonly 'entry handler': map.entry_handler
-            }
-            
-        }
-        
-        export type dictionary = 
-            | readonly ['literal', dictionary.literal]
-            | readonly ['map', dictionary.map]
-        
-        export namespace group {
-            
-            export type D = Expression_
-            
-        }
-        
-        export type group = _pi.Dictionary<group.D>
-        
-        export namespace list {
-            
-            export namespace literal {
-                
-                export type L = Expression_
-                
-            }
-            
-            export type literal = _pi.List<literal.L>
-            
-            export namespace map {
-                
-                export type source = Selection_
-                
-                export type item_handler = Expression_
-                
-            }
-            
-            export type map = {
-                readonly 'source': map.source
-                readonly 'item handler': map.item_handler
-            }
-            
-        }
-        
-        export type list = 
-            | readonly ['literal', list.literal]
-            | readonly ['map', list.map]
-        
-        export type nothing = null
-        
-        export namespace number_ {
-            
-            export namespace approximation {
-                
-                export type literal = number
-                
-                export type select = Selection_
-                
-            }
-            
-            export type approximation = 
-                | readonly ['literal', approximation.literal]
-                | readonly ['select', approximation.select]
-            
-            export namespace integer {
-                
-                export type literal = number
-                
-                export type select = Selection_
-                
-            }
-            
-            export type integer = 
-                | readonly ['literal', integer.literal]
-                | readonly ['select', integer.select]
-            
-            export namespace natural {
-                
-                export type literal = number
-                
-                export type select = Selection_
-                
-            }
-            
-            export type natural = 
-                | readonly ['literal', natural.literal]
-                | readonly ['select', natural.select]
-            
-        }
-        
-        export type number_ = 
-            | readonly ['approximation', number_.approximation]
-            | readonly ['integer', number_.integer]
-            | readonly ['natural', number_.natural]
-        
-        export namespace optional {
-            
-            export namespace literal {
-                
-                export type not_set = null
-                
-                export type set_ = Expression_
-                
-            }
-            
-            export type literal = 
-                | readonly ['not set', literal.not_set]
-                | readonly ['set', literal.set_]
-            
-            export namespace map {
-                
-                export type source = Selection_
-                
-                export type set_handler = Expression_
-                
-            }
-            
-            export type map = {
-                readonly 'source': map.source
-                readonly 'set handler': map.set_handler
-            }
-            
-        }
-        
-        export type optional = 
-            | readonly ['literal', optional.literal]
-            | readonly ['map', optional.map]
-        
-        export namespace state {
-            
-            export namespace literal {
-                
-                export type option = string
-                
-                export type value = Expression_
-                
-            }
-            
-            export type literal = {
-                readonly 'option': literal.option
-                readonly 'value': literal.value
-            }
-            
-        }
-        
-        export type state = 
-            | readonly ['literal', state.literal]
-        
-        export namespace text {
-            
-            export namespace literal {
-                
-                export namespace type_ {
-                    
-                    export type identifier = null
-                    
-                    export type freeform = null
-                    
-                }
-                
-                export type type_ = 
-                    | readonly ['identifier', type_.identifier]
-                    | readonly ['freeform', type_.freeform]
-                
-                export type value = string
-                
-            }
-            
-            export type literal = {
-                readonly 'type': literal.type_
-                readonly 'value': literal.value
-            }
-            
-            export type select = Selection_
-            
-        }
-        
-        export type text = 
-            | readonly ['literal', text.literal]
-            | readonly ['select', text.select]
-        
-    }
-    
-    export type initialize = 
-        | readonly ['boolean', initialize.boolean_]
-        | readonly ['component', initialize.component]
-        | readonly ['dictionary', initialize.dictionary]
-        | readonly ['group', initialize.group]
-        | readonly ['list', initialize.list]
-        | readonly ['nothing', initialize.nothing]
-        | readonly ['number', initialize.number_]
-        | readonly ['optional', initialize.optional]
-        | readonly ['state', initialize.state]
-        | readonly ['text', initialize.text]
     
     export namespace decide {
         
@@ -816,12 +434,394 @@ export namespace Expression_ {
         readonly 'type': decide.type_
     }
     
+    export namespace initialize {
+        
+        export namespace boolean_ {
+            
+            export namespace literal {
+                
+                export type false_ = null
+                
+                export type true_ = null
+                
+            }
+            
+            export type literal = 
+                | readonly ['false', literal.false_]
+                | readonly ['true', literal.true_]
+            
+            export type not = Selection_
+            
+            export type copy = Selection_
+            
+        }
+        
+        export type boolean_ = 
+            | readonly ['literal', boolean_.literal]
+            | readonly ['not', boolean_.not]
+            | readonly ['copy', boolean_.copy]
+        
+        export namespace component {
+            
+            export namespace call {
+                
+                export type source = Selection_
+                
+                export type context = Expression_
+                
+                export namespace abort {
+                    
+                    export type O = Expression_
+                    
+                }
+                
+                export type abort = _pi.Optional_Value<abort.O>
+                
+                export namespace arguments_ {
+                    
+                    export namespace O {
+                        
+                        export type D = Expression_
+                        
+                    }
+                    
+                    export type O = _pi.Dictionary<O.D>
+                    
+                }
+                
+                export type arguments_ = _pi.Optional_Value<arguments_.O>
+                
+            }
+            
+            export type call = {
+                readonly 'source': call.source
+                readonly 'context': call.context
+                readonly 'abort': call.abort
+                readonly 'arguments': call.arguments_
+            }
+            
+        }
+        
+        export type component = 
+            | readonly ['call', component.call]
+        
+        export namespace dictionary {
+            
+            export namespace literal {
+                
+                export type D = Expression_
+                
+            }
+            
+            export type literal = _pi.Dictionary<literal.D>
+            
+            export namespace map {
+                
+                export type source = Selection_
+                
+                export type entry_handler = Expression_
+                
+            }
+            
+            export type map = {
+                readonly 'source': map.source
+                readonly 'entry handler': map.entry_handler
+            }
+            
+        }
+        
+        export type dictionary = 
+            | readonly ['literal', dictionary.literal]
+            | readonly ['map', dictionary.map]
+        
+        export namespace group {
+            
+            export type D = Expression_
+            
+        }
+        
+        export type group = _pi.Dictionary<group.D>
+        
+        export namespace list {
+            
+            export namespace literal {
+                
+                export type L = Expression_
+                
+            }
+            
+            export type literal = _pi.List<literal.L>
+            
+            export namespace map {
+                
+                export type source = Selection_
+                
+                export type item_handler = Expression_
+                
+            }
+            
+            export type map = {
+                readonly 'source': map.source
+                readonly 'item handler': map.item_handler
+            }
+            
+        }
+        
+        export type list = 
+            | readonly ['literal', list.literal]
+            | readonly ['map', list.map]
+        
+        export type nothing = null
+        
+        export namespace number_ {
+            
+            export namespace approximation {
+                
+                export type literal = number
+                
+                export type copy = Selection_
+                
+            }
+            
+            export type approximation = 
+                | readonly ['literal', approximation.literal]
+                | readonly ['copy', approximation.copy]
+            
+            export namespace integer {
+                
+                export type literal = number
+                
+                export type copy = Selection_
+                
+            }
+            
+            export type integer = 
+                | readonly ['literal', integer.literal]
+                | readonly ['copy', integer.copy]
+            
+            export namespace natural {
+                
+                export type literal = number
+                
+                export type copy = Selection_
+                
+            }
+            
+            export type natural = 
+                | readonly ['literal', natural.literal]
+                | readonly ['copy', natural.copy]
+            
+        }
+        
+        export type number_ = 
+            | readonly ['approximation', number_.approximation]
+            | readonly ['integer', number_.integer]
+            | readonly ['natural', number_.natural]
+        
+        export namespace optional {
+            
+            export namespace literal {
+                
+                export type not_set = null
+                
+                export type set_ = Expression_
+                
+            }
+            
+            export type literal = 
+                | readonly ['not set', literal.not_set]
+                | readonly ['set', literal.set_]
+            
+            export namespace map {
+                
+                export type source = Selection_
+                
+                export type set_handler = Expression_
+                
+            }
+            
+            export type map = {
+                readonly 'source': map.source
+                readonly 'set handler': map.set_handler
+            }
+            
+        }
+        
+        export type optional = 
+            | readonly ['literal', optional.literal]
+            | readonly ['map', optional.map]
+        
+        export namespace state {
+            
+            export namespace literal {
+                
+                export type option = string
+                
+                export type value = Expression_
+                
+            }
+            
+            export type literal = {
+                readonly 'option': literal.option
+                readonly 'value': literal.value
+            }
+            
+        }
+        
+        export type state = 
+            | readonly ['literal', state.literal]
+        
+        export namespace text {
+            
+            export namespace literal {
+                
+                export namespace type_ {
+                    
+                    export type identifier = null
+                    
+                    export type freeform = null
+                    
+                }
+                
+                export type type_ = 
+                    | readonly ['identifier', type_.identifier]
+                    | readonly ['freeform', type_.freeform]
+                
+                export type value = string
+                
+            }
+            
+            export type literal = {
+                readonly 'type': literal.type_
+                readonly 'value': literal.value
+            }
+            
+            export type copy = Selection_
+            
+        }
+        
+        export type text = 
+            | readonly ['literal', text.literal]
+            | readonly ['copy', text.copy]
+        
+    }
+    
+    export type initialize = 
+        | readonly ['boolean', initialize.boolean_]
+        | readonly ['component', initialize.component]
+        | readonly ['dictionary', initialize.dictionary]
+        | readonly ['group', initialize.group]
+        | readonly ['list', initialize.list]
+        | readonly ['nothing', initialize.nothing]
+        | readonly ['number', initialize.number_]
+        | readonly ['optional', initialize.optional]
+        | readonly ['state', initialize.state]
+        | readonly ['text', initialize.text]
+    
+    export namespace special {
+        
+        export type abort = Expression_
+        
+        export namespace block {
+            
+            export namespace variables {
+                
+                export namespace D {
+                    
+                    export namespace type_ {
+                        
+                        export type O = Type_Node_Reference_
+                        
+                    }
+                    
+                    export type type_ = _pi.Optional_Value<type_.O>
+                    
+                    export type expression = Expression_
+                    
+                }
+                
+                export type D = {
+                    readonly 'type': D.type_
+                    readonly 'expression': D.expression
+                }
+                
+            }
+            
+            export type variables = _pi.Dictionary<variables.D>
+            
+            export namespace temp_ordered_variables {
+                
+                export namespace L {
+                    
+                    export type name = string
+                    
+                    export namespace type_ {
+                        
+                        export type O = Type_Node_Reference_
+                        
+                    }
+                    
+                    export type type_ = _pi.Optional_Value<type_.O>
+                    
+                    export type expression = Expression_
+                    
+                }
+                
+                export type L = {
+                    readonly 'name': L.name
+                    readonly 'type': L.type_
+                    readonly 'expression': L.expression
+                }
+                
+            }
+            
+            export type temp_ordered_variables = _pi.List<temp_ordered_variables.L>
+            
+            export type expression = Expression_
+            
+        }
+        
+        export type block = {
+            readonly 'variables': block.variables
+            readonly 'temp ordered variables': block.temp_ordered_variables
+            readonly 'expression': block.expression
+        }
+        
+        export namespace change_context {
+            
+            export type new_context = Selection_
+            
+            export type expression = Expression_
+            
+        }
+        
+        export type change_context = {
+            readonly 'new context': change_context.new_context
+            readonly 'expression': change_context.expression
+        }
+        
+        export type implement_me = string
+        
+        export type selection_deprecated = Selection_
+        
+        export type unreachable = null
+        
+    }
+    
+    export type special = 
+        | readonly ['abort', special.abort]
+        | readonly ['block', special.block]
+        | readonly ['change context', special.change_context]
+        | readonly ['implement me', special.implement_me]
+        | readonly ['selection deprecated', special.selection_deprecated]
+        | readonly ['unreachable', special.unreachable]
+    
 }
 
 export type Expression_ = 
-    | readonly ['special', Expression_.special]
-    | readonly ['initialize', Expression_.initialize]
     | readonly ['decide', Expression_.decide]
+    | readonly ['initialize', Expression_.initialize]
+    | readonly ['special', Expression_.special]
 
 export { 
     Type_Reference_ as Type_Reference, 
