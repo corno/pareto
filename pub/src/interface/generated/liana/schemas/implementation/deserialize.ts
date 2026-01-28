@@ -113,33 +113,6 @@ export type Type_Node_Reference_ = (
     },
 ) => Type_Node_Reference_.O
 
-export namespace Expression_ {
-    
-    export type I = string
-    
-    export type O = i_out.Expression
-    
-    export type E = i_generic.Error
-    
-    export namespace P {
-        
-        export type document_resource_identifier = string
-        
-        export type indentation = number
-        
-    }
-    
-}
-
-export type Expression_ = (
-    context: Expression_.I,
-    abort: _pi.Abort<Expression_.E>,
-    parameters: {
-        readonly 'document resource identifier': Expression_.P.document_resource_identifier
-        readonly 'indentation': Expression_.P.indentation
-    },
-) => Expression_.O
-
 export namespace Abort_Expression_ {
     
     export type I = string
@@ -194,12 +167,39 @@ export type Selection_ = (
     },
 ) => Selection_.O
 
+export namespace Expression_ {
+    
+    export type I = string
+    
+    export type O = i_out.Expression
+    
+    export type E = i_generic.Error
+    
+    export namespace P {
+        
+        export type document_resource_identifier = string
+        
+        export type indentation = number
+        
+    }
+    
+}
+
+export type Expression_ = (
+    context: Expression_.I,
+    abort: _pi.Abort<Expression_.E>,
+    parameters: {
+        readonly 'document resource identifier': Expression_.P.document_resource_identifier
+        readonly 'indentation': Expression_.P.indentation
+    },
+) => Expression_.O
+
 export { 
     Type_Reference_ as Type_Reference, 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
     Type_Node_Reference_ as Type_Node_Reference, 
-    Expression_ as Expression, 
     Abort_Expression_ as Abort_Expression, 
     Selection_ as Selection, 
+    Expression_ as Expression, 
 }

@@ -182,6 +182,126 @@ export type Type_Node_Reference_ = {
     readonly 'sub selection': Type_Node_Reference_.sub_selection
 }
 
+export namespace Abort_Expression_ {
+    
+    export type current = null
+    
+    export type new_ = Expression_
+    
+}
+
+export type Abort_Expression_ = 
+    | readonly ['current', Abort_Expression_.current]
+    | readonly ['new', Abort_Expression_.new_]
+
+export namespace Selection_ {
+    
+    export namespace start {
+        
+        export type implement_me = string
+        
+        export type abort_deprecated = null
+        
+        export type argument = string
+        
+        export namespace call {
+            
+            export type source = Selection_
+            
+            export type context = Selection_
+            
+            export namespace arguments_ {
+                
+                export namespace O {
+                    
+                    export type D = Expression_
+                    
+                }
+                
+                export type O = _pi.Dictionary<O.D>
+                
+            }
+            
+            export type arguments_ = _pi.Optional_Value<arguments_.O>
+            
+        }
+        
+        export type call = {
+            readonly 'source': call.source
+            readonly 'context': call.context
+            readonly 'arguments': call.arguments_
+        }
+        
+        export type context = null
+        
+        export namespace entry {
+            
+            export type dictionary = Selection_
+            
+            export type id = Selection_
+            
+            export type abort_handler = Abort_Expression_
+            
+        }
+        
+        export type entry = {
+            readonly 'dictionary': entry.dictionary
+            readonly 'id': entry.id
+            readonly 'abort handler': entry.abort_handler
+        }
+        
+        export namespace variable {
+            
+            export type local = string
+            
+            export namespace imported {
+                
+                export type import_ = string
+                
+                export type variable = string
+                
+            }
+            
+            export type imported = {
+                readonly 'import': imported.import_
+                readonly 'variable': imported.variable
+            }
+            
+        }
+        
+        export type variable = 
+            | readonly ['local', variable.local]
+            | readonly ['imported', variable.imported]
+        
+        export type parameter = string
+        
+    }
+    
+    export type start = 
+        | readonly ['implement me', start.implement_me]
+        | readonly ['abort deprecated', start.abort_deprecated]
+        | readonly ['argument', start.argument]
+        | readonly ['call', start.call]
+        | readonly ['context', start.context]
+        | readonly ['entry', start.entry]
+        | readonly ['variable', start.variable]
+        | readonly ['parameter', start.parameter]
+    
+    export namespace tail {
+        
+        export type L = string
+        
+    }
+    
+    export type tail = _pi.List<tail.L>
+    
+}
+
+export type Selection_ = {
+    readonly 'start': Selection_.start
+    readonly 'tail': Selection_.tail
+}
+
 export namespace Expression_ {
     
     export namespace special {
@@ -300,11 +420,14 @@ export namespace Expression_ {
             
             export type not = Selection_
             
+            export type select = Selection_
+            
         }
         
         export type boolean_ = 
             | readonly ['literal', boolean_.literal]
             | readonly ['not', boolean_.not]
+            | readonly ['select', boolean_.select]
         
         export namespace component {
             
@@ -424,28 +547,37 @@ export namespace Expression_ {
                 
                 export type literal = number
                 
+                export type select = Selection_
+                
             }
             
             export type approximation = 
                 | readonly ['literal', approximation.literal]
+                | readonly ['select', approximation.select]
             
             export namespace integer {
                 
                 export type literal = number
                 
+                export type select = Selection_
+                
             }
             
             export type integer = 
                 | readonly ['literal', integer.literal]
+                | readonly ['select', integer.select]
             
             export namespace natural {
                 
                 export type literal = number
                 
+                export type select = Selection_
+                
             }
             
             export type natural = 
                 | readonly ['literal', natural.literal]
+                | readonly ['select', natural.select]
             
         }
         
@@ -532,10 +664,13 @@ export namespace Expression_ {
                 readonly 'value': literal.value
             }
             
+            export type select = Selection_
+            
         }
         
         export type text = 
             | readonly ['literal', text.literal]
+            | readonly ['select', text.select]
         
     }
     
@@ -688,132 +823,12 @@ export type Expression_ =
     | readonly ['initialize', Expression_.initialize]
     | readonly ['decide', Expression_.decide]
 
-export namespace Abort_Expression_ {
-    
-    export type current = null
-    
-    export type new_ = Expression_
-    
-}
-
-export type Abort_Expression_ = 
-    | readonly ['current', Abort_Expression_.current]
-    | readonly ['new', Abort_Expression_.new_]
-
-export namespace Selection_ {
-    
-    export namespace start {
-        
-        export type implement_me = string
-        
-        export type abort_deprecated = null
-        
-        export type argument = string
-        
-        export namespace call {
-            
-            export type source = Selection_
-            
-            export type context = Selection_
-            
-            export namespace arguments_ {
-                
-                export namespace O {
-                    
-                    export type D = Expression_
-                    
-                }
-                
-                export type O = _pi.Dictionary<O.D>
-                
-            }
-            
-            export type arguments_ = _pi.Optional_Value<arguments_.O>
-            
-        }
-        
-        export type call = {
-            readonly 'source': call.source
-            readonly 'context': call.context
-            readonly 'arguments': call.arguments_
-        }
-        
-        export type context = null
-        
-        export namespace entry {
-            
-            export type dictionary = Selection_
-            
-            export type id = Selection_
-            
-            export type abort_handler = Abort_Expression_
-            
-        }
-        
-        export type entry = {
-            readonly 'dictionary': entry.dictionary
-            readonly 'id': entry.id
-            readonly 'abort handler': entry.abort_handler
-        }
-        
-        export namespace variable {
-            
-            export type local = string
-            
-            export namespace imported {
-                
-                export type import_ = string
-                
-                export type variable = string
-                
-            }
-            
-            export type imported = {
-                readonly 'import': imported.import_
-                readonly 'variable': imported.variable
-            }
-            
-        }
-        
-        export type variable = 
-            | readonly ['local', variable.local]
-            | readonly ['imported', variable.imported]
-        
-        export type parameter = string
-        
-    }
-    
-    export type start = 
-        | readonly ['implement me', start.implement_me]
-        | readonly ['abort deprecated', start.abort_deprecated]
-        | readonly ['argument', start.argument]
-        | readonly ['call', start.call]
-        | readonly ['context', start.context]
-        | readonly ['entry', start.entry]
-        | readonly ['variable', start.variable]
-        | readonly ['parameter', start.parameter]
-    
-    export namespace tail {
-        
-        export type L = string
-        
-    }
-    
-    export type tail = _pi.List<tail.L>
-    
-}
-
-export type Selection_ = {
-    readonly 'start': Selection_.start
-    readonly 'tail': Selection_.tail
-}
-
 export { 
     Type_Reference_ as Type_Reference, 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
     Type_Node_Reference_ as Type_Node_Reference, 
-    Expression_ as Expression, 
     Abort_Expression_ as Abort_Expression, 
     Selection_ as Selection, 
+    Expression_ as Expression, 
 }

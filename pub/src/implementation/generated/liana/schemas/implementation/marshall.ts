@@ -163,413 +163,6 @@ export const Type_Node_Reference: t_signatures.Type_Node_Reference = ($,) => ['g
         }
     })])]),
 }))]]
-export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
-    switch ($[0]) {
-        case 'special':
-            return _p.ss($, ($,) => ({
-                'option': 'special',
-                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                    switch ($[0]) {
-                        case 'abort':
-                            return _p.ss($, ($,) => ({
-                                'option': 'abort',
-                                'value': Expression($),
-                            }))
-                        case 'block':
-                            return _p.ss($, ($,) => ({
-                                'option': 'block',
-                                'value': ['group', ['verbose', _p.dictionary.literal(({
-                                    'variables': _p.deprecated_cc($['variables'], ($,) => ['dictionary', $.__d_map(($,id,) => ['group', ['verbose', _p.dictionary.literal(({
-                                        'type': _p.deprecated_cc($['type'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
-                                        'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
-                                    }))]])]),
-                                    'temp ordered variables': _p.deprecated_cc($['temp ordered variables'], ($,) => ['list', $.__l_map(($,) => ['group', ['verbose', _p.dictionary.literal(({
-                                        'name': _p.deprecated_cc($['name'], ($,) => ['text', ({
-                                            'delimiter': ['quote', null],
-                                            'value': $,
-                                        })]),
-                                        'type': _p.deprecated_cc($['type'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
-                                        'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
-                                    }))]])]),
-                                    'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
-                                }))]],
-                            }))
-                        case 'change context':
-                            return _p.ss($, ($,) => ({
-                                'option': 'change context',
-                                'value': ['group', ['verbose', _p.dictionary.literal(({
-                                    'new context': _p.deprecated_cc($['new context'], ($,) => Selection($)),
-                                    'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
-                                }))]],
-                            }))
-                        case 'implement me':
-                            return _p.ss($, ($,) => ({
-                                'option': 'implement me',
-                                'value': ['text', ({
-                                    'delimiter': ['quote', null],
-                                    'value': $,
-                                })],
-                            }))
-                        case 'selection deprecated':
-                            return _p.ss($, ($,) => ({
-                                'option': 'selection deprecated',
-                                'value': Selection($),
-                            }))
-                        case 'unreachable':
-                            return _p.ss($, ($,) => ({
-                                'option': 'unreachable',
-                                'value': ['nothing', null],
-                            }))
-                        default:
-                            return _p.au($[0])
-                    }
-                })],
-            }))
-        case 'initialize':
-            return _p.ss($, ($,) => ({
-                'option': 'initialize',
-                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                    switch ($[0]) {
-                        case 'boolean':
-                            return _p.ss($, ($,) => ({
-                                'option': 'boolean',
-                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                    switch ($[0]) {
-                                        case 'literal':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'literal',
-                                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                                    switch ($[0]) {
-                                                        case 'false':
-                                                            return _p.ss($, ($,) => ({
-                                                                'option': 'false',
-                                                                'value': ['nothing', null],
-                                                            }))
-                                                        case 'true':
-                                                            return _p.ss($, ($,) => ({
-                                                                'option': 'true',
-                                                                'value': ['nothing', null],
-                                                            }))
-                                                        default:
-                                                            return _p.au($[0])
-                                                    }
-                                                })],
-                                            }))
-                                        case 'not':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'not',
-                                                'value': Selection($),
-                                            }))
-                                        default:
-                                            return _p.au($[0])
-                                    }
-                                })],
-                            }))
-                        case 'component':
-                            return _p.ss($, ($,) => ({
-                                'option': 'component',
-                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                    switch ($[0]) {
-                                        case 'call':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'call',
-                                                'value': ['group', ['verbose', _p.dictionary.literal(({
-                                                    'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
-                                                    'context': _p.deprecated_cc($['context'], ($,) => Expression($)),
-                                                    'abort': _p.deprecated_cc($['abort'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Expression($)], () => ['not set', null])]),
-                                                    'arguments': _p.deprecated_cc($['arguments'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', ['dictionary', $.__d_map(($,id,) => Expression($))]], () => ['not set', null])]),
-                                                }))]],
-                                            }))
-                                        default:
-                                            return _p.au($[0])
-                                    }
-                                })],
-                            }))
-                        case 'dictionary':
-                            return _p.ss($, ($,) => ({
-                                'option': 'dictionary',
-                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                    switch ($[0]) {
-                                        case 'literal':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'literal',
-                                                'value': ['dictionary', $.__d_map(($,id,) => Expression($))],
-                                            }))
-                                        case 'map':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'map',
-                                                'value': ['group', ['verbose', _p.dictionary.literal(({
-                                                    'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
-                                                    'entry handler': _p.deprecated_cc($['entry handler'], ($,) => Expression($)),
-                                                }))]],
-                                            }))
-                                        default:
-                                            return _p.au($[0])
-                                    }
-                                })],
-                            }))
-                        case 'group':
-                            return _p.ss($, ($,) => ({
-                                'option': 'group',
-                                'value': ['dictionary', $.__d_map(($,id,) => Expression($))],
-                            }))
-                        case 'list':
-                            return _p.ss($, ($,) => ({
-                                'option': 'list',
-                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                    switch ($[0]) {
-                                        case 'literal':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'literal',
-                                                'value': ['list', $.__l_map(($,) => Expression($))],
-                                            }))
-                                        case 'map':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'map',
-                                                'value': ['group', ['verbose', _p.dictionary.literal(({
-                                                    'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
-                                                    'item handler': _p.deprecated_cc($['item handler'], ($,) => Expression($)),
-                                                }))]],
-                                            }))
-                                        default:
-                                            return _p.au($[0])
-                                    }
-                                })],
-                            }))
-                        case 'nothing':
-                            return _p.ss($, ($,) => ({
-                                'option': 'nothing',
-                                'value': ['nothing', null],
-                            }))
-                        case 'number':
-                            return _p.ss($, ($,) => ({
-                                'option': 'number',
-                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                    switch ($[0]) {
-                                        case 'approximation':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'approximation',
-                                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                                    switch ($[0]) {
-                                                        case 'literal':
-                                                            return _p.ss($, ($,) => ({
-                                                                'option': 'literal',
-                                                                'value': ['text', ({
-                                                                    'delimiter': ['none', null],
-                                                                    'value': v_serialize_number.serialize($),
-                                                                })],
-                                                            }))
-                                                        default:
-                                                            return _p.au($[0])
-                                                    }
-                                                })],
-                                            }))
-                                        case 'integer':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'integer',
-                                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                                    switch ($[0]) {
-                                                        case 'literal':
-                                                            return _p.ss($, ($,) => ({
-                                                                'option': 'literal',
-                                                                'value': ['text', ({
-                                                                    'delimiter': ['none', null],
-                                                                    'value': v_serialize_number.serialize($),
-                                                                })],
-                                                            }))
-                                                        default:
-                                                            return _p.au($[0])
-                                                    }
-                                                })],
-                                            }))
-                                        case 'natural':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'natural',
-                                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                                    switch ($[0]) {
-                                                        case 'literal':
-                                                            return _p.ss($, ($,) => ({
-                                                                'option': 'literal',
-                                                                'value': ['text', ({
-                                                                    'delimiter': ['none', null],
-                                                                    'value': v_serialize_number.serialize($),
-                                                                })],
-                                                            }))
-                                                        default:
-                                                            return _p.au($[0])
-                                                    }
-                                                })],
-                                            }))
-                                        default:
-                                            return _p.au($[0])
-                                    }
-                                })],
-                            }))
-                        case 'optional':
-                            return _p.ss($, ($,) => ({
-                                'option': 'optional',
-                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                    switch ($[0]) {
-                                        case 'literal':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'literal',
-                                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                                    switch ($[0]) {
-                                                        case 'not set':
-                                                            return _p.ss($, ($,) => ({
-                                                                'option': 'not set',
-                                                                'value': ['nothing', null],
-                                                            }))
-                                                        case 'set':
-                                                            return _p.ss($, ($,) => ({
-                                                                'option': 'set',
-                                                                'value': Expression($),
-                                                            }))
-                                                        default:
-                                                            return _p.au($[0])
-                                                    }
-                                                })],
-                                            }))
-                                        case 'map':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'map',
-                                                'value': ['group', ['verbose', _p.dictionary.literal(({
-                                                    'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
-                                                    'set handler': _p.deprecated_cc($['set handler'], ($,) => Expression($)),
-                                                }))]],
-                                            }))
-                                        default:
-                                            return _p.au($[0])
-                                    }
-                                })],
-                            }))
-                        case 'state':
-                            return _p.ss($, ($,) => ({
-                                'option': 'state',
-                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                    switch ($[0]) {
-                                        case 'literal':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'literal',
-                                                'value': ['group', ['verbose', _p.dictionary.literal(({
-                                                    'option': _p.deprecated_cc($['option'], ($,) => ['text', ({
-                                                        'delimiter': ['quote', null],
-                                                        'value': $,
-                                                    })]),
-                                                    'value': _p.deprecated_cc($['value'], ($,) => Expression($)),
-                                                }))]],
-                                            }))
-                                        default:
-                                            return _p.au($[0])
-                                    }
-                                })],
-                            }))
-                        case 'text':
-                            return _p.ss($, ($,) => ({
-                                'option': 'text',
-                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                    switch ($[0]) {
-                                        case 'literal':
-                                            return _p.ss($, ($,) => ({
-                                                'option': 'literal',
-                                                'value': ['group', ['verbose', _p.dictionary.literal(({
-                                                    'type': _p.deprecated_cc($['type'], ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                                        switch ($[0]) {
-                                                            case 'identifier':
-                                                                return _p.ss($, ($,) => ({
-                                                                    'option': 'identifier',
-                                                                    'value': ['nothing', null],
-                                                                }))
-                                                            case 'freeform':
-                                                                return _p.ss($, ($,) => ({
-                                                                    'option': 'freeform',
-                                                                    'value': ['nothing', null],
-                                                                }))
-                                                            default:
-                                                                return _p.au($[0])
-                                                        }
-                                                    })]),
-                                                    'value': _p.deprecated_cc($['value'], ($,) => ['text', ({
-                                                        'delimiter': ['quote', null],
-                                                        'value': $,
-                                                    })]),
-                                                }))]],
-                                            }))
-                                        default:
-                                            return _p.au($[0])
-                                    }
-                                })],
-                            }))
-                        default:
-                            return _p.au($[0])
-                    }
-                })],
-            }))
-        case 'decide':
-            return _p.ss($, ($,) => ({
-                'option': 'decide',
-                'value': ['group', ['verbose', _p.dictionary.literal(({
-                    'type': _p.deprecated_cc($['type'], ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                        switch ($[0]) {
-                            case 'boolean':
-                                return _p.ss($, ($,) => ({
-                                    'option': 'boolean',
-                                    'value': ['group', ['verbose', _p.dictionary.literal(({
-                                        'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
-                                        'temp resulting node': _p.deprecated_cc($['temp resulting node'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
-                                        'if false': _p.deprecated_cc($['if false'], ($,) => Expression($)),
-                                        'if true': _p.deprecated_cc($['if true'], ($,) => Expression($)),
-                                    }))]],
-                                }))
-                            case 'optional':
-                                return _p.ss($, ($,) => ({
-                                    'option': 'optional',
-                                    'value': ['group', ['verbose', _p.dictionary.literal(({
-                                        'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
-                                        'temp resulting node': _p.deprecated_cc($['temp resulting node'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
-                                        'if not set': _p.deprecated_cc($['if not set'], ($,) => Expression($)),
-                                        'if set': _p.deprecated_cc($['if set'], ($,) => Expression($)),
-                                    }))]],
-                                }))
-                            case 'state':
-                                return _p.ss($, ($,) => ({
-                                    'option': 'state',
-                                    'value': ['group', ['verbose', _p.dictionary.literal(({
-                                        'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
-                                        'temp resulting node': _p.deprecated_cc($['temp resulting node'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
-                                        'type': _p.deprecated_cc($['type'], ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
-                                            switch ($[0]) {
-                                                case 'partial':
-                                                    return _p.ss($, ($,) => ({
-                                                        'option': 'partial',
-                                                        'value': ['group', ['verbose', _p.dictionary.literal(({
-                                                            'cases': _p.deprecated_cc($['cases'], ($,) => ['dictionary', $.__d_map(($,id,) => Expression($))]),
-                                                            'default': _p.deprecated_cc($['default'], ($,) => Expression($)),
-                                                        }))]],
-                                                    }))
-                                                case 'full':
-                                                    return _p.ss($, ($,) => ({
-                                                        'option': 'full',
-                                                        'value': ['group', ['verbose', _p.dictionary.literal(({
-                                                            'cases': _p.deprecated_cc($['cases'], ($,) => ['dictionary', $.__d_map(($,id,) => Expression($))]),
-                                                        }))]],
-                                                    }))
-                                                default:
-                                                    return _p.au($[0])
-                                            }
-                                        })]),
-                                    }))]],
-                                }))
-                            default:
-                                return _p.au($[0])
-                        }
-                    })]),
-                }))]],
-            }))
-        default:
-            return _p.au($[0])
-    }
-})]
 export const Abort_Expression: t_signatures.Abort_Expression = ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
     switch ($[0]) {
         case 'current':
@@ -682,3 +275,435 @@ export const Selection: t_signatures.Selection = ($,) => ['group', ['verbose', _
         'value': $,
     })])]),
 }))]]
+export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
+    switch ($[0]) {
+        case 'special':
+            return _p.ss($, ($,) => ({
+                'option': 'special',
+                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                    switch ($[0]) {
+                        case 'abort':
+                            return _p.ss($, ($,) => ({
+                                'option': 'abort',
+                                'value': Expression($),
+                            }))
+                        case 'block':
+                            return _p.ss($, ($,) => ({
+                                'option': 'block',
+                                'value': ['group', ['verbose', _p.dictionary.literal(({
+                                    'variables': _p.deprecated_cc($['variables'], ($,) => ['dictionary', $.__d_map(($,id,) => ['group', ['verbose', _p.dictionary.literal(({
+                                        'type': _p.deprecated_cc($['type'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
+                                        'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
+                                    }))]])]),
+                                    'temp ordered variables': _p.deprecated_cc($['temp ordered variables'], ($,) => ['list', $.__l_map(($,) => ['group', ['verbose', _p.dictionary.literal(({
+                                        'name': _p.deprecated_cc($['name'], ($,) => ['text', ({
+                                            'delimiter': ['quote', null],
+                                            'value': $,
+                                        })]),
+                                        'type': _p.deprecated_cc($['type'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
+                                        'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
+                                    }))]])]),
+                                    'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
+                                }))]],
+                            }))
+                        case 'change context':
+                            return _p.ss($, ($,) => ({
+                                'option': 'change context',
+                                'value': ['group', ['verbose', _p.dictionary.literal(({
+                                    'new context': _p.deprecated_cc($['new context'], ($,) => Selection($)),
+                                    'expression': _p.deprecated_cc($['expression'], ($,) => Expression($)),
+                                }))]],
+                            }))
+                        case 'implement me':
+                            return _p.ss($, ($,) => ({
+                                'option': 'implement me',
+                                'value': ['text', ({
+                                    'delimiter': ['quote', null],
+                                    'value': $,
+                                })],
+                            }))
+                        case 'selection deprecated':
+                            return _p.ss($, ($,) => ({
+                                'option': 'selection deprecated',
+                                'value': Selection($),
+                            }))
+                        case 'unreachable':
+                            return _p.ss($, ($,) => ({
+                                'option': 'unreachable',
+                                'value': ['nothing', null],
+                            }))
+                        default:
+                            return _p.au($[0])
+                    }
+                })],
+            }))
+        case 'initialize':
+            return _p.ss($, ($,) => ({
+                'option': 'initialize',
+                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                    switch ($[0]) {
+                        case 'boolean':
+                            return _p.ss($, ($,) => ({
+                                'option': 'boolean',
+                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                    switch ($[0]) {
+                                        case 'literal':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'literal',
+                                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                                    switch ($[0]) {
+                                                        case 'false':
+                                                            return _p.ss($, ($,) => ({
+                                                                'option': 'false',
+                                                                'value': ['nothing', null],
+                                                            }))
+                                                        case 'true':
+                                                            return _p.ss($, ($,) => ({
+                                                                'option': 'true',
+                                                                'value': ['nothing', null],
+                                                            }))
+                                                        default:
+                                                            return _p.au($[0])
+                                                    }
+                                                })],
+                                            }))
+                                        case 'not':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'not',
+                                                'value': Selection($),
+                                            }))
+                                        case 'select':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'select',
+                                                'value': Selection($),
+                                            }))
+                                        default:
+                                            return _p.au($[0])
+                                    }
+                                })],
+                            }))
+                        case 'component':
+                            return _p.ss($, ($,) => ({
+                                'option': 'component',
+                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                    switch ($[0]) {
+                                        case 'call':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'call',
+                                                'value': ['group', ['verbose', _p.dictionary.literal(({
+                                                    'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
+                                                    'context': _p.deprecated_cc($['context'], ($,) => Expression($)),
+                                                    'abort': _p.deprecated_cc($['abort'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Expression($)], () => ['not set', null])]),
+                                                    'arguments': _p.deprecated_cc($['arguments'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', ['dictionary', $.__d_map(($,id,) => Expression($))]], () => ['not set', null])]),
+                                                }))]],
+                                            }))
+                                        default:
+                                            return _p.au($[0])
+                                    }
+                                })],
+                            }))
+                        case 'dictionary':
+                            return _p.ss($, ($,) => ({
+                                'option': 'dictionary',
+                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                    switch ($[0]) {
+                                        case 'literal':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'literal',
+                                                'value': ['dictionary', $.__d_map(($,id,) => Expression($))],
+                                            }))
+                                        case 'map':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'map',
+                                                'value': ['group', ['verbose', _p.dictionary.literal(({
+                                                    'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
+                                                    'entry handler': _p.deprecated_cc($['entry handler'], ($,) => Expression($)),
+                                                }))]],
+                                            }))
+                                        default:
+                                            return _p.au($[0])
+                                    }
+                                })],
+                            }))
+                        case 'group':
+                            return _p.ss($, ($,) => ({
+                                'option': 'group',
+                                'value': ['dictionary', $.__d_map(($,id,) => Expression($))],
+                            }))
+                        case 'list':
+                            return _p.ss($, ($,) => ({
+                                'option': 'list',
+                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                    switch ($[0]) {
+                                        case 'literal':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'literal',
+                                                'value': ['list', $.__l_map(($,) => Expression($))],
+                                            }))
+                                        case 'map':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'map',
+                                                'value': ['group', ['verbose', _p.dictionary.literal(({
+                                                    'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
+                                                    'item handler': _p.deprecated_cc($['item handler'], ($,) => Expression($)),
+                                                }))]],
+                                            }))
+                                        default:
+                                            return _p.au($[0])
+                                    }
+                                })],
+                            }))
+                        case 'nothing':
+                            return _p.ss($, ($,) => ({
+                                'option': 'nothing',
+                                'value': ['nothing', null],
+                            }))
+                        case 'number':
+                            return _p.ss($, ($,) => ({
+                                'option': 'number',
+                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                    switch ($[0]) {
+                                        case 'approximation':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'approximation',
+                                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                                    switch ($[0]) {
+                                                        case 'literal':
+                                                            return _p.ss($, ($,) => ({
+                                                                'option': 'literal',
+                                                                'value': ['text', ({
+                                                                    'delimiter': ['none', null],
+                                                                    'value': v_serialize_number.serialize($),
+                                                                })],
+                                                            }))
+                                                        case 'select':
+                                                            return _p.ss($, ($,) => ({
+                                                                'option': 'select',
+                                                                'value': Selection($),
+                                                            }))
+                                                        default:
+                                                            return _p.au($[0])
+                                                    }
+                                                })],
+                                            }))
+                                        case 'integer':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'integer',
+                                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                                    switch ($[0]) {
+                                                        case 'literal':
+                                                            return _p.ss($, ($,) => ({
+                                                                'option': 'literal',
+                                                                'value': ['text', ({
+                                                                    'delimiter': ['none', null],
+                                                                    'value': v_serialize_number.serialize($),
+                                                                })],
+                                                            }))
+                                                        case 'select':
+                                                            return _p.ss($, ($,) => ({
+                                                                'option': 'select',
+                                                                'value': Selection($),
+                                                            }))
+                                                        default:
+                                                            return _p.au($[0])
+                                                    }
+                                                })],
+                                            }))
+                                        case 'natural':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'natural',
+                                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                                    switch ($[0]) {
+                                                        case 'literal':
+                                                            return _p.ss($, ($,) => ({
+                                                                'option': 'literal',
+                                                                'value': ['text', ({
+                                                                    'delimiter': ['none', null],
+                                                                    'value': v_serialize_number.serialize($),
+                                                                })],
+                                                            }))
+                                                        case 'select':
+                                                            return _p.ss($, ($,) => ({
+                                                                'option': 'select',
+                                                                'value': Selection($),
+                                                            }))
+                                                        default:
+                                                            return _p.au($[0])
+                                                    }
+                                                })],
+                                            }))
+                                        default:
+                                            return _p.au($[0])
+                                    }
+                                })],
+                            }))
+                        case 'optional':
+                            return _p.ss($, ($,) => ({
+                                'option': 'optional',
+                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                    switch ($[0]) {
+                                        case 'literal':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'literal',
+                                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                                    switch ($[0]) {
+                                                        case 'not set':
+                                                            return _p.ss($, ($,) => ({
+                                                                'option': 'not set',
+                                                                'value': ['nothing', null],
+                                                            }))
+                                                        case 'set':
+                                                            return _p.ss($, ($,) => ({
+                                                                'option': 'set',
+                                                                'value': Expression($),
+                                                            }))
+                                                        default:
+                                                            return _p.au($[0])
+                                                    }
+                                                })],
+                                            }))
+                                        case 'map':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'map',
+                                                'value': ['group', ['verbose', _p.dictionary.literal(({
+                                                    'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
+                                                    'set handler': _p.deprecated_cc($['set handler'], ($,) => Expression($)),
+                                                }))]],
+                                            }))
+                                        default:
+                                            return _p.au($[0])
+                                    }
+                                })],
+                            }))
+                        case 'state':
+                            return _p.ss($, ($,) => ({
+                                'option': 'state',
+                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                    switch ($[0]) {
+                                        case 'literal':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'literal',
+                                                'value': ['group', ['verbose', _p.dictionary.literal(({
+                                                    'option': _p.deprecated_cc($['option'], ($,) => ['text', ({
+                                                        'delimiter': ['quote', null],
+                                                        'value': $,
+                                                    })]),
+                                                    'value': _p.deprecated_cc($['value'], ($,) => Expression($)),
+                                                }))]],
+                                            }))
+                                        default:
+                                            return _p.au($[0])
+                                    }
+                                })],
+                            }))
+                        case 'text':
+                            return _p.ss($, ($,) => ({
+                                'option': 'text',
+                                'value': ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                    switch ($[0]) {
+                                        case 'literal':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'literal',
+                                                'value': ['group', ['verbose', _p.dictionary.literal(({
+                                                    'type': _p.deprecated_cc($['type'], ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                                        switch ($[0]) {
+                                                            case 'identifier':
+                                                                return _p.ss($, ($,) => ({
+                                                                    'option': 'identifier',
+                                                                    'value': ['nothing', null],
+                                                                }))
+                                                            case 'freeform':
+                                                                return _p.ss($, ($,) => ({
+                                                                    'option': 'freeform',
+                                                                    'value': ['nothing', null],
+                                                                }))
+                                                            default:
+                                                                return _p.au($[0])
+                                                        }
+                                                    })]),
+                                                    'value': _p.deprecated_cc($['value'], ($,) => ['text', ({
+                                                        'delimiter': ['quote', null],
+                                                        'value': $,
+                                                    })]),
+                                                }))]],
+                                            }))
+                                        case 'select':
+                                            return _p.ss($, ($,) => ({
+                                                'option': 'select',
+                                                'value': Selection($),
+                                            }))
+                                        default:
+                                            return _p.au($[0])
+                                    }
+                                })],
+                            }))
+                        default:
+                            return _p.au($[0])
+                    }
+                })],
+            }))
+        case 'decide':
+            return _p.ss($, ($,) => ({
+                'option': 'decide',
+                'value': ['group', ['verbose', _p.dictionary.literal(({
+                    'type': _p.deprecated_cc($['type'], ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                        switch ($[0]) {
+                            case 'boolean':
+                                return _p.ss($, ($,) => ({
+                                    'option': 'boolean',
+                                    'value': ['group', ['verbose', _p.dictionary.literal(({
+                                        'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
+                                        'temp resulting node': _p.deprecated_cc($['temp resulting node'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
+                                        'if false': _p.deprecated_cc($['if false'], ($,) => Expression($)),
+                                        'if true': _p.deprecated_cc($['if true'], ($,) => Expression($)),
+                                    }))]],
+                                }))
+                            case 'optional':
+                                return _p.ss($, ($,) => ({
+                                    'option': 'optional',
+                                    'value': ['group', ['verbose', _p.dictionary.literal(({
+                                        'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
+                                        'temp resulting node': _p.deprecated_cc($['temp resulting node'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
+                                        'if not set': _p.deprecated_cc($['if not set'], ($,) => Expression($)),
+                                        'if set': _p.deprecated_cc($['if set'], ($,) => Expression($)),
+                                    }))]],
+                                }))
+                            case 'state':
+                                return _p.ss($, ($,) => ({
+                                    'option': 'state',
+                                    'value': ['group', ['verbose', _p.dictionary.literal(({
+                                        'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
+                                        'temp resulting node': _p.deprecated_cc($['temp resulting node'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Type_Node_Reference($)], () => ['not set', null])]),
+                                        'type': _p.deprecated_cc($['type'], ($,) => ['state', _p.decide.state($, ($,): t_out.Value.state => {
+                                            switch ($[0]) {
+                                                case 'partial':
+                                                    return _p.ss($, ($,) => ({
+                                                        'option': 'partial',
+                                                        'value': ['group', ['verbose', _p.dictionary.literal(({
+                                                            'cases': _p.deprecated_cc($['cases'], ($,) => ['dictionary', $.__d_map(($,id,) => Expression($))]),
+                                                            'default': _p.deprecated_cc($['default'], ($,) => Expression($)),
+                                                        }))]],
+                                                    }))
+                                                case 'full':
+                                                    return _p.ss($, ($,) => ({
+                                                        'option': 'full',
+                                                        'value': ['group', ['verbose', _p.dictionary.literal(({
+                                                            'cases': _p.deprecated_cc($['cases'], ($,) => ['dictionary', $.__d_map(($,id,) => Expression($))]),
+                                                        }))]],
+                                                    }))
+                                                default:
+                                                    return _p.au($[0])
+                                            }
+                                        })]),
+                                    }))]],
+                                }))
+                            default:
+                                return _p.au($[0])
+                        }
+                    })]),
+                }))]],
+            }))
+        default:
+            return _p.au($[0])
+    }
+})]

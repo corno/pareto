@@ -333,6 +333,7 @@ export const Expression = (
                             }
                         }))
                         case 'not': return _p.ss($, ($) => sh.e.not(Selection($)))
+                        case 'select': return _p.ss($, ($) => Selection($))
                         default: return _p.au($[0])
                     }
                 }))
@@ -453,18 +454,21 @@ export const Expression = (
                         case 'approximation': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
+                                case 'select': return _p.ss($, ($) => Selection($))
                                 default: return _p.au($[0])
                             }
                         }))
                         case 'integer': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
+                                case 'select': return _p.ss($, ($) => Selection($))
                                 default: return _p.au($[0])
                             }
                         }))
                         case 'natural': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
+                        case 'select': return _p.ss($, ($) => Selection($))
                                 default: return _p.au($[0])
                             }
                         }))
@@ -527,6 +531,7 @@ export const Expression = (
                                 default: return _p.au($[0])
                             }
                         })))
+                        case 'select': return _p.ss($, ($) => Selection($))
                         default: return _p.au($[0])
                     }
                 }))

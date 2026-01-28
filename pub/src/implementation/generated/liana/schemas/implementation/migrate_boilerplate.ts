@@ -179,6 +179,110 @@ export const Type_Node_Reference: t_signatures.Type_Node_Reference = ($,) => ({
         })),
     })),
 })
+export const Abort_Expression: t_signatures.Abort_Expression = ($,) => ({
+    'location': ({
+        'file': "implement me",
+        'line': 42,
+        'column': 42,
+    }),
+    'state': _p.decide.state($, ($,): t_out.Abort_Expression.state => {
+        switch ($[0]) {
+            case 'current':
+                return _p.ss($, ($,) => ['current', null])
+            case 'new':
+                return _p.ss($, ($,) => ['new', Expression($)])
+            default:
+                return _p.au($[0])
+        }
+    }),
+})
+export const Selection: t_signatures.Selection = ($,) => ({
+    'start': _p.deprecated_cc($['start'], ($,) => ({
+        'location': ({
+            'file': "implement me",
+            'line': 42,
+            'column': 42,
+        }),
+        'state': _p.decide.state($, ($,): t_out.Selection.start.state => {
+            switch ($[0]) {
+                case 'implement me':
+                    return _p.ss($, ($,) => ['implement me', $])
+                case 'abort deprecated':
+                    return _p.ss($, ($,) => ['abort deprecated', null])
+                case 'argument':
+                    return _p.ss($, ($,) => ['argument', $])
+                case 'call':
+                    return _p.ss($, ($,) => ['call', ({
+                        'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
+                        'context': _p.deprecated_cc($['context'], ($,) => Selection($)),
+                        'arguments': _p.deprecated_cc($['arguments'], ($,) => $.__o_map(($,) => ({
+                            'location': ({
+                                'file': "implement me",
+                                'line': 42,
+                                'column': 42,
+                            }),
+                            'dictionary': $.__d_map(($,id,) => ({
+                                'entry': Expression($),
+                                'location': ({
+                                    'file': "implement me",
+                                    'line': 42,
+                                    'column': 42,
+                                }),
+                            })),
+                        }))),
+                    })])
+                case 'context':
+                    return _p.ss($, ($,) => ['context', null])
+                case 'entry':
+                    return _p.ss($, ($,) => ['entry', ({
+                        'dictionary': _p.deprecated_cc($['dictionary'], ($,) => Selection($)),
+                        'id': _p.deprecated_cc($['id'], ($,) => Selection($)),
+                        'abort handler': _p.deprecated_cc($['abort handler'], ($,) => Abort_Expression($)),
+                    })])
+                case 'variable':
+                    return _p.ss($, ($,) => ['variable', ({
+                        'location': ({
+                            'file': "implement me",
+                            'line': 42,
+                            'column': 42,
+                        }),
+                        'state': _p.decide.state($, ($,): t_out.Selection.start.state.variable.state => {
+                            switch ($[0]) {
+                                case 'local':
+                                    return _p.ss($, ($,) => ['local', $])
+                                case 'imported':
+                                    return _p.ss($, ($,) => ['imported', ({
+                                        'import': _p.deprecated_cc($['import'], ($,) => $),
+                                        'variable': _p.deprecated_cc($['variable'], ($,) => $),
+                                    })])
+                                default:
+                                    return _p.au($[0])
+                            }
+                        }),
+                    })])
+                case 'parameter':
+                    return _p.ss($, ($,) => ['parameter', $])
+                default:
+                    return _p.au($[0])
+            }
+        }),
+    })),
+    'tail': _p.deprecated_cc($['tail'], ($,) => ({
+        'location': ({
+            'file': "implement me",
+            'line': 42,
+            'column': 42,
+        }),
+        'list': $.__l_map(($,) => ({
+            'item': $,
+            'location': ({
+                'file': "implement me",
+                'line': 42,
+                'column': 42,
+            }),
+        })),
+    })),
+})
 export const Expression: t_signatures.Expression = ($,) => ({
     'location': ({
         'file': "implement me",
@@ -293,6 +397,8 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                                 })])
                                             case 'not':
                                                 return _p.ss($, ($,) => ['not', Selection($)])
+                                            case 'select':
+                                                return _p.ss($, ($,) => ['select', Selection($)])
                                             default:
                                                 return _p.au($[0])
                                         }
@@ -441,6 +547,8 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                                         switch ($[0]) {
                                                             case 'literal':
                                                                 return _p.ss($, ($,) => ['literal', $])
+                                                            case 'select':
+                                                                return _p.ss($, ($,) => ['select', Selection($)])
                                                             default:
                                                                 return _p.au($[0])
                                                         }
@@ -457,6 +565,8 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                                         switch ($[0]) {
                                                             case 'literal':
                                                                 return _p.ss($, ($,) => ['literal', $])
+                                                            case 'select':
+                                                                return _p.ss($, ($,) => ['select', Selection($)])
                                                             default:
                                                                 return _p.au($[0])
                                                         }
@@ -473,6 +583,8 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                                         switch ($[0]) {
                                                             case 'literal':
                                                                 return _p.ss($, ($,) => ['literal', $])
+                                                            case 'select':
+                                                                return _p.ss($, ($,) => ['select', Selection($)])
                                                             default:
                                                                 return _p.au($[0])
                                                         }
@@ -569,6 +681,8 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                                     })),
                                                     'value': _p.deprecated_cc($['value'], ($,) => $),
                                                 })])
+                                            case 'select':
+                                                return _p.ss($, ($,) => ['select', Selection($)])
                                             default:
                                                 return _p.au($[0])
                                         }
@@ -668,108 +782,4 @@ export const Expression: t_signatures.Expression = ($,) => ({
                 return _p.au($[0])
         }
     }),
-})
-export const Abort_Expression: t_signatures.Abort_Expression = ($,) => ({
-    'location': ({
-        'file': "implement me",
-        'line': 42,
-        'column': 42,
-    }),
-    'state': _p.decide.state($, ($,): t_out.Abort_Expression.state => {
-        switch ($[0]) {
-            case 'current':
-                return _p.ss($, ($,) => ['current', null])
-            case 'new':
-                return _p.ss($, ($,) => ['new', Expression($)])
-            default:
-                return _p.au($[0])
-        }
-    }),
-})
-export const Selection: t_signatures.Selection = ($,) => ({
-    'start': _p.deprecated_cc($['start'], ($,) => ({
-        'location': ({
-            'file': "implement me",
-            'line': 42,
-            'column': 42,
-        }),
-        'state': _p.decide.state($, ($,): t_out.Selection.start.state => {
-            switch ($[0]) {
-                case 'implement me':
-                    return _p.ss($, ($,) => ['implement me', $])
-                case 'abort deprecated':
-                    return _p.ss($, ($,) => ['abort deprecated', null])
-                case 'argument':
-                    return _p.ss($, ($,) => ['argument', $])
-                case 'call':
-                    return _p.ss($, ($,) => ['call', ({
-                        'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
-                        'context': _p.deprecated_cc($['context'], ($,) => Selection($)),
-                        'arguments': _p.deprecated_cc($['arguments'], ($,) => $.__o_map(($,) => ({
-                            'location': ({
-                                'file': "implement me",
-                                'line': 42,
-                                'column': 42,
-                            }),
-                            'dictionary': $.__d_map(($,id,) => ({
-                                'entry': Expression($),
-                                'location': ({
-                                    'file': "implement me",
-                                    'line': 42,
-                                    'column': 42,
-                                }),
-                            })),
-                        }))),
-                    })])
-                case 'context':
-                    return _p.ss($, ($,) => ['context', null])
-                case 'entry':
-                    return _p.ss($, ($,) => ['entry', ({
-                        'dictionary': _p.deprecated_cc($['dictionary'], ($,) => Selection($)),
-                        'id': _p.deprecated_cc($['id'], ($,) => Selection($)),
-                        'abort handler': _p.deprecated_cc($['abort handler'], ($,) => Abort_Expression($)),
-                    })])
-                case 'variable':
-                    return _p.ss($, ($,) => ['variable', ({
-                        'location': ({
-                            'file': "implement me",
-                            'line': 42,
-                            'column': 42,
-                        }),
-                        'state': _p.decide.state($, ($,): t_out.Selection.start.state.variable.state => {
-                            switch ($[0]) {
-                                case 'local':
-                                    return _p.ss($, ($,) => ['local', $])
-                                case 'imported':
-                                    return _p.ss($, ($,) => ['imported', ({
-                                        'import': _p.deprecated_cc($['import'], ($,) => $),
-                                        'variable': _p.deprecated_cc($['variable'], ($,) => $),
-                                    })])
-                                default:
-                                    return _p.au($[0])
-                            }
-                        }),
-                    })])
-                case 'parameter':
-                    return _p.ss($, ($,) => ['parameter', $])
-                default:
-                    return _p.au($[0])
-            }
-        }),
-    })),
-    'tail': _p.deprecated_cc($['tail'], ($,) => ({
-        'location': ({
-            'file': "implement me",
-            'line': 42,
-            'column': 42,
-        }),
-        'list': $.__l_map(($,) => ({
-            'item': $,
-            'location': ({
-                'file': "implement me",
-                'line': 42,
-                'column': 42,
-            }),
-        })),
-    })),
 })
