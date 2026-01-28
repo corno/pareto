@@ -173,14 +173,14 @@ export namespace e {
     export const call = (
         source: d_target.Selection,
         context: d_target.Expression,
-        abort: boolean,
-        arguments_: _p.Raw_Or_Normal_Dictionary<d_target.Expression.initialize.component.call.arguments_.O.D>,
+        abort: null | d_target.Expression,
+        arguments_: null | _p.Raw_Or_Normal_Dictionary<d_target.Expression.initialize.component.call.arguments_.O.D>,
     ): d_target.Expression => {
         return wrap_state(['initialize', wrap_state(['component', wrap_state(['call', {
             'source': source,
             'context': context,
-            'arguments': _p.optional.literal(_p.dictionary.literal(arguments_)),
-            'abort': abort,
+            'abort': abort === null ? _p.optional.not_set() : _p.optional.set(abort),
+            'arguments': arguments_ === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(arguments_)),
         }])])])
     }
 

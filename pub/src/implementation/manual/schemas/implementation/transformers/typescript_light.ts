@@ -344,11 +344,23 @@ export const Expression = (
                                 [
                                     Expression($.context),
                                 ],
-                                $.abort
-                                    ? [
-                                        sh.e.identifier_raw("abort")
-                                    ]
-                                    : [],
+                                $.abort.__decide(
+                                    ($) => [
+                                        sh.e.arrow_function_with_expression(
+                                            [
+                                                sh.parameter(sh.identifier_raw("$"), null)
+                                            ],
+                                            null,
+                                            sh.e.call(
+                                                sh.e.identifier_raw("abort"),
+                                                [
+                                                    Expression($)
+                                                ]
+                                            )
+                                        )
+                                    ],
+                                    () => []
+                                ),
                                 $.arguments.__decide(
                                     ($) => _p.boolean.dictionary_is_empty($)
                                         ? [

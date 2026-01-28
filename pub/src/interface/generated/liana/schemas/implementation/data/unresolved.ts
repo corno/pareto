@@ -557,6 +557,14 @@ export namespace Expression_ {
                             
                             export type context = Expression_
                             
+                            export namespace abort {
+                                
+                                export type O = Expression_
+                                
+                            }
+                            
+                            export type abort = _pi.Optional_Value<abort.O>
+                            
                             export namespace arguments_ {
                                 
                                 export namespace O {
@@ -593,15 +601,13 @@ export namespace Expression_ {
                             
                             export type arguments_ = _pi.Optional_Value<arguments_.O>
                             
-                            export type abort = boolean
-                            
                         }
                         
                         export type call = {
                             readonly 'source': call.source
                             readonly 'context': call.context
-                            readonly 'arguments': call.arguments_
                             readonly 'abort': call.abort
+                            readonly 'arguments': call.arguments_
                         }
                         
                     }

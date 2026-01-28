@@ -15,6 +15,10 @@ export namespace Type_Reference_ {
     
     export namespace P {
         
+        export type document_resource_identifier = string
+        
+        export type indentation = number
+        
     }
     
 }
@@ -22,6 +26,10 @@ export namespace Type_Reference_ {
 export type Type_Reference_ = (
     context: Type_Reference_.I,
     abort: _pi.Abort<Type_Reference_.E>,
+    parameters: {
+        readonly 'document resource identifier': Type_Reference_.P.document_resource_identifier
+        readonly 'indentation': Type_Reference_.P.indentation
+    },
 ) => Type_Reference_.O
 
 export namespace Module_ {
@@ -34,6 +42,10 @@ export namespace Module_ {
     
     export namespace P {
         
+        export type document_resource_identifier = string
+        
+        export type indentation = number
+        
     }
     
 }
@@ -41,6 +53,10 @@ export namespace Module_ {
 export type Module_ = (
     context: Module_.I,
     abort: _pi.Abort<Module_.E>,
+    parameters: {
+        readonly 'document resource identifier': Module_.P.document_resource_identifier
+        readonly 'indentation': Module_.P.indentation
+    },
 ) => Module_.O
 
 export namespace Module_Set_ {
@@ -53,6 +69,10 @@ export namespace Module_Set_ {
     
     export namespace P {
         
+        export type document_resource_identifier = string
+        
+        export type indentation = number
+        
     }
     
 }
@@ -60,6 +80,10 @@ export namespace Module_Set_ {
 export type Module_Set_ = (
     context: Module_Set_.I,
     abort: _pi.Abort<Module_Set_.E>,
+    parameters: {
+        readonly 'document resource identifier': Module_Set_.P.document_resource_identifier
+        readonly 'indentation': Module_Set_.P.indentation
+    },
 ) => Module_Set_.O
 
 export namespace Type_Node_Reference_ {
@@ -72,6 +96,10 @@ export namespace Type_Node_Reference_ {
     
     export namespace P {
         
+        export type document_resource_identifier = string
+        
+        export type indentation = number
+        
     }
     
 }
@@ -79,6 +107,10 @@ export namespace Type_Node_Reference_ {
 export type Type_Node_Reference_ = (
     context: Type_Node_Reference_.I,
     abort: _pi.Abort<Type_Node_Reference_.E>,
+    parameters: {
+        readonly 'document resource identifier': Type_Node_Reference_.P.document_resource_identifier
+        readonly 'indentation': Type_Node_Reference_.P.indentation
+    },
 ) => Type_Node_Reference_.O
 
 export namespace Expression_ {
@@ -91,6 +123,10 @@ export namespace Expression_ {
     
     export namespace P {
         
+        export type document_resource_identifier = string
+        
+        export type indentation = number
+        
     }
     
 }
@@ -98,6 +134,10 @@ export namespace Expression_ {
 export type Expression_ = (
     context: Expression_.I,
     abort: _pi.Abort<Expression_.E>,
+    parameters: {
+        readonly 'document resource identifier': Expression_.P.document_resource_identifier
+        readonly 'indentation': Expression_.P.indentation
+    },
 ) => Expression_.O
 
 export namespace Abort_Expression_ {
@@ -110,6 +150,10 @@ export namespace Abort_Expression_ {
     
     export namespace P {
         
+        export type document_resource_identifier = string
+        
+        export type indentation = number
+        
     }
     
 }
@@ -117,6 +161,10 @@ export namespace Abort_Expression_ {
 export type Abort_Expression_ = (
     context: Abort_Expression_.I,
     abort: _pi.Abort<Abort_Expression_.E>,
+    parameters: {
+        readonly 'document resource identifier': Abort_Expression_.P.document_resource_identifier
+        readonly 'indentation': Abort_Expression_.P.indentation
+    },
 ) => Abort_Expression_.O
 
 export namespace Selection_ {
@@ -129,6 +177,10 @@ export namespace Selection_ {
     
     export namespace P {
         
+        export type document_resource_identifier = string
+        
+        export type indentation = number
+        
     }
     
 }
@@ -136,6 +188,10 @@ export namespace Selection_ {
 export type Selection_ = (
     context: Selection_.I,
     abort: _pi.Abort<Selection_.E>,
+    parameters: {
+        readonly 'document resource identifier': Selection_.P.document_resource_identifier
+        readonly 'indentation': Selection_.P.indentation
+    },
 ) => Selection_.O
 
 export { 

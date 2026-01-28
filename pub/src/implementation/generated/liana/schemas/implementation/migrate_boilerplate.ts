@@ -311,6 +311,7 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                                 return _p.ss($, ($,) => ['call', ({
                                                     'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
                                                     'context': _p.deprecated_cc($['context'], ($,) => Expression($)),
+                                                    'abort': _p.deprecated_cc($['abort'], ($,) => $.__o_map(($,) => Expression($))),
                                                     'arguments': _p.deprecated_cc($['arguments'], ($,) => $.__o_map(($,) => ({
                                                         'location': ({
                                                             'file': "implement me",
@@ -326,7 +327,6 @@ export const Expression: t_signatures.Expression = ($,) => ({
                                                             }),
                                                         })),
                                                     }))),
-                                                    'abort': _p.deprecated_cc($['abort'], ($,) => $),
                                                 })])
                                             default:
                                                 return _p.au($[0])

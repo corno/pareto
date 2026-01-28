@@ -276,11 +276,8 @@ export const Expression: t_signatures.Expression = ($,) => ['state', _p.decide.s
                                                 'value': ['group', ['verbose', _p.dictionary.literal(({
                                                     'source': _p.deprecated_cc($['source'], ($,) => Selection($)),
                                                     'context': _p.deprecated_cc($['context'], ($,) => Expression($)),
+                                                    'abort': _p.deprecated_cc($['abort'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', Expression($)], () => ['not set', null])]),
                                                     'arguments': _p.deprecated_cc($['arguments'], ($,) => ['optional', $.__decide(($,): t_out.Value.optional => ['set', ['dictionary', $.__d_map(($,id,) => Expression($))]], () => ['not set', null])]),
-                                                    'abort': _p.deprecated_cc($['abort'], ($,) => ['text', ({
-                                                        'delimiter': ['none', null],
-                                                        'value': v_serialize_boolean.serialize($),
-                                                    })]),
                                                 }))]],
                                             }))
                                         default:
