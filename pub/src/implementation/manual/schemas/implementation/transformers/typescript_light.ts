@@ -353,7 +353,7 @@ export const Expression = (
                         Selection($.source),
                         sh.e.arrow_function_with_block(
                             [
-                                sh.parameter(sh.identifier_raw("$"), null)
+                                sh.parameter(sh.identifier_raw("$t"), null)
                             ],
                             $['temp resulting node'].__decide(
                                 ($) => Temp_Type_Node_Reference($),
@@ -361,58 +361,21 @@ export const Expression = (
                             ),
                             [
                                 sh.s.switch_(
-                                    sh.e.identifier_raw("$"),
+                                    sh.e.identifier_raw("$t"),
                                     _p.list.nested_literal_old([
-                                        // _p.decide.state($.type, ($): d_in.Expression.decide.type_.state.type_.partial.cases => {
-                                        //     switch ($[0]) {
-                                        //         case 'partial': return _p.ss($, ($) => $.cases)
-                                        //         case 'full': return _p.ss($, ($) => $.cases)
-                                        //         default: return _p.au($[0])
-                                        //     }
-                                        // }).__to_list(
-                                        //     ($, id) => sh.sw.case_(
-                                        //         sh.e.string_literal(id, 'apostrophe'),
-                                        //         [
-                                        //             sh.s.return_(sh.e.call(
-                                        //                 sh.e.property_access(
-                                        //                     sh.e.identifier_raw("_p"),
-                                        //                     sh.identifier_raw('ss'),
-                                        //                 ),
-                                        //                 [
-                                        //                     sh.e.identifier_raw("$"),
-                                        //                     sh.e.arrow_function_with_expression(
-                                        //                         [
-                                        //                             sh.parameter(sh.identifier_raw("$"), null)
-                                        //                         ],
-                                        //                         null,
-                                        //                         Expression($)
-                                        //                     )
-                                        //                 ]
-                                        //             ))
-                                        //         ]
-                                        //     )
-                                        // ),
+                                        $.cases.__to_list(
+                                            ($, id) => sh.sw.case_(
+                                                sh.e.string_literal(id, 'apostrophe'),
+                                                [
+                                                    sh.s.return_(Expression($))
+                                                ]
+                                            )
+                                        ),
+
                                         [
-                                            // sh.sw.default_([
-                                            //     sh.s.return_(_p.decide.state($.type, ($) => {
-                                            //         switch ($[0]) {
-                                            //             case 'partial': return _p.ss($, ($) => Expression($.default))
-                                            //             case 'full': return _p.ss($, ($) => sh.e.call(
-                                            //                 sh.e.property_access(
-                                            //                     sh.e.identifier_raw("_p"),
-                                            //                     sh.identifier_raw('au'),
-                                            //                 ),
-                                            //                 [
-                                            //                     sh.e.element_access(
-                                            //                         sh.e.identifier_raw("$"),
-                                            //                         sh.e.number_literal(0)
-                                            //                     )
-                                            //                 ]
-                                            //             ))
-                                            //             default: return _p.au($[0])
-                                            //         }
-                                            //     }))
-                                            // ])
+                                            sh.sw.default_([
+                                                sh.s.return_(Expression($.default))
+                                            ])
                                         ]
                                     ])
                                 )
