@@ -27,7 +27,9 @@ export namespace n {
         children: _p.Raw_Or_Normal_Dictionary<d_target.Directory.D>,
     ): d_target.Directory.D => ['directory', _p.dictionary.literal(children)]
 
-    export const file = (statements: _p.Raw_Or_Normal_List<d_target.Statements.L>): d_target.Directory.D => {
+    export const file = (
+        statements: _p.Raw_Or_Normal_List<d_target.Statements.L>
+    ): d_target.Directory.D => {
         return ['file', {
             'statements': _p.list.literal(statements),
         }]
@@ -66,7 +68,9 @@ export namespace sw {
 
 export namespace s {
 
-    export const block = (statements: _p.Raw_Or_Normal_List<d_target.Statements.L>): d_target.Statements.L => ['block', _p.list.literal(statements)]
+    export const block = (
+        statements: _p.Raw_Or_Normal_List<d_target.Statements.L>
+    ): d_target.Statements.L => ['block', _p.list.literal(statements)]
 
     export const export_ = (
         specifiers: _p.Raw_Or_Normal_List<d_target.Statements.L.export_.type_.named_exports.specifiers.L>,
@@ -78,9 +82,25 @@ export namespace s {
         }],
     }]
 
-    export const expression = (expression: d_target.Expression): d_target.Statements.L => ['expression', expression]
+    export const expression = (
+        expression: d_target.Expression
+    ): d_target.Statements.L => ['expression', expression]
 
-    export const import_namespace = (name: d_target.Identifier, from: string): d_target.Statements.L => ['import', {
+    export const import_named = (
+        specifiers: _p.Raw_Or_Normal_List<d_target.Statements.L.import_.type_.named.specifiers.L>,
+        from: string
+    ): d_target.Statements.L => ['import', {
+        'type': ['named', {
+            'specifiers': _p.list.literal(specifiers),
+        }],
+        'from': from,
+
+    }]
+
+    export const import_namespace = (
+        name: d_target.Identifier,
+        from: string
+    ): d_target.Statements.L => ['import', {
         'type': ['namespace', name],
         'from': from,
 
@@ -96,7 +116,9 @@ export namespace s {
         'block': _p.list.literal(block),
     }]
 
-    export const return_ = (expression: null | d_target.Expression): d_target.Statements.L => ['return', expression === null ? _p.optional.not_set() : _p.optional.set(expression)]
+    export const return_ = (
+        expression: null | d_target.Expression
+    ): d_target.Statements.L => ['return', expression === null ? _p.optional.not_set() : _p.optional.set(expression)]
 
     export const switch_ = (
         expression: d_target.Expression,
@@ -157,7 +179,9 @@ export const tl_propery = (
 }
 
 export namespace t {
-    export const boolean = (): d_target.Type => {
+    export const boolean = (
+
+    ): d_target.Type => {
         return ['boolean', null]
     }
     export const function_ = (
@@ -171,19 +195,28 @@ export namespace t {
             'return': return_,
         }]
     }
-    export const literal_type = (value: string, delimiter: 'apostrophe' | 'quote'): d_target.Type => {
+    export const literal_type = (
+        value: string,
+        delimiter: 'apostrophe' | 'quote'
+    ): d_target.Type => {
         return ['literal type', {
             'value': value,
             'delimiter': delimiter === 'apostrophe' ? ['apostrophe', null] : ['quote', null]
         }]
     }
-    export const null_ = (): d_target.Type => {
+    export const null_ = (
+
+    ): d_target.Type => {
         return ['null', null]
     }
-    export const number = (): d_target.Type => {
+    export const number = (
+
+    ): d_target.Type => {
         return ['number', null]
     }
-    export const string = (): d_target.Type => {
+    export const string = (
+
+    ): d_target.Type => {
         return ['string', null]
     }
     export const tuple = (
@@ -194,7 +227,9 @@ export namespace t {
             'elements': _p.list.literal(elements)
         }]
     }
-    export const type_literal = (properties: _p.Raw_Or_Normal_Dictionary<d_target.Type.type_literal.properties.D>): d_target.Type => {
+    export const type_literal = (
+        properties: _p.Raw_Or_Normal_Dictionary<d_target.Type.type_literal.properties.D>
+    ): d_target.Type => {
         return ['type literal', {
             'properties': _p.dictionary.literal(properties),
         }]
@@ -213,10 +248,14 @@ export namespace t {
             'type arguments': _p.list.literal(type_arguments),
         }]
     }
-    export const union = (cases: _p.Raw_Or_Normal_List<d_target.Type>): d_target.Type => {
+    export const union = (
+        cases: _p.Raw_Or_Normal_List<d_target.Type>
+    ): d_target.Type => {
         return ['union', _p.list.literal(cases)]
     }
-    export const void_ = (): d_target.Type => {
+    export const void_ = (
+
+    ): d_target.Type => {
         return ['void', null]
     }
 }
@@ -305,7 +344,9 @@ export namespace e {
         'index': index,
     }]
 
-    export const false_ = (): d_target.Expression => ['false', null]
+    export const false_ = (
+
+    ): d_target.Expression => ['false', null]
 
     export const identifier_raw = (
         name: string,
@@ -331,15 +372,23 @@ export namespace e {
         'operand': operand,
     }]
 
-    export const null_ = (): d_target.Expression => ['null', null]
+    export const null_ = (
 
-    export const number_literal = (value: number): d_target.Expression => ['number literal', value]
+    ): d_target.Expression => ['null', null]
 
-    export const object_literal = (properties: _p.Raw_Or_Normal_Dictionary<d_target.Expression.object_literal.properties.D>): d_target.Expression => ['object literal', {
+    export const number_literal = (
+        value: number
+    ): d_target.Expression => ['number literal', value]
+
+    export const object_literal = (
+        properties: _p.Raw_Or_Normal_Dictionary<d_target.Expression.object_literal.properties.D>
+    ): d_target.Expression => ['object literal', {
         'properties': _p.dictionary.literal(properties),
     }]
 
-    export const parenthesized = (expression: d_target.Expression): d_target.Expression => ['parenthesized', expression]
+    export const parenthesized = (
+        expression: d_target.Expression
+    ): d_target.Expression => ['parenthesized', expression]
 
     export const property_access = (
         object: d_target.Expression,
@@ -349,7 +398,10 @@ export namespace e {
         'property': property,
     }]
 
-    export const string_literal = (value: string, delimiter: 'apostrophe' | 'quote'): d_target.Expression => ['string literal', {
+    export const string_literal = (
+        value: string,
+        delimiter: 'apostrophe' | 'quote'
+    ): d_target.Expression => ['string literal', {
         'value': value,
         'delimiter': delimiter === 'apostrophe' ? ['apostrophe', null] : ['quote', null]
     }]

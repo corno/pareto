@@ -17,7 +17,7 @@ export namespace Type_Reference_ {
         
         export type document_resource_identifier = string
         
-        export type indentation = number
+        export type tab_size = number
         
     }
     
@@ -28,7 +28,7 @@ export type Type_Reference_ = (
     abort: _pi.Abort<Type_Reference_.E>,
     parameters: {
         readonly 'document resource identifier': Type_Reference_.P.document_resource_identifier
-        readonly 'indentation': Type_Reference_.P.indentation
+        readonly 'tab size': Type_Reference_.P.tab_size
     },
 ) => Type_Reference_.O
 
@@ -44,7 +44,7 @@ export namespace Module_ {
         
         export type document_resource_identifier = string
         
-        export type indentation = number
+        export type tab_size = number
         
     }
     
@@ -55,7 +55,7 @@ export type Module_ = (
     abort: _pi.Abort<Module_.E>,
     parameters: {
         readonly 'document resource identifier': Module_.P.document_resource_identifier
-        readonly 'indentation': Module_.P.indentation
+        readonly 'tab size': Module_.P.tab_size
     },
 ) => Module_.O
 
@@ -71,7 +71,7 @@ export namespace Module_Set_ {
         
         export type document_resource_identifier = string
         
-        export type indentation = number
+        export type tab_size = number
         
     }
     
@@ -82,7 +82,7 @@ export type Module_Set_ = (
     abort: _pi.Abort<Module_Set_.E>,
     parameters: {
         readonly 'document resource identifier': Module_Set_.P.document_resource_identifier
-        readonly 'indentation': Module_Set_.P.indentation
+        readonly 'tab size': Module_Set_.P.tab_size
     },
 ) => Module_Set_.O
 
@@ -98,7 +98,7 @@ export namespace Type_Node_Reference_ {
         
         export type document_resource_identifier = string
         
-        export type indentation = number
+        export type tab_size = number
         
     }
     
@@ -109,36 +109,9 @@ export type Type_Node_Reference_ = (
     abort: _pi.Abort<Type_Node_Reference_.E>,
     parameters: {
         readonly 'document resource identifier': Type_Node_Reference_.P.document_resource_identifier
-        readonly 'indentation': Type_Node_Reference_.P.indentation
+        readonly 'tab size': Type_Node_Reference_.P.tab_size
     },
 ) => Type_Node_Reference_.O
-
-export namespace Abort_Expression_ {
-    
-    export type I = string
-    
-    export type O = i_out.Abort_Expression
-    
-    export type E = i_generic.Error
-    
-    export namespace P {
-        
-        export type document_resource_identifier = string
-        
-        export type indentation = number
-        
-    }
-    
-}
-
-export type Abort_Expression_ = (
-    context: Abort_Expression_.I,
-    abort: _pi.Abort<Abort_Expression_.E>,
-    parameters: {
-        readonly 'document resource identifier': Abort_Expression_.P.document_resource_identifier
-        readonly 'indentation': Abort_Expression_.P.indentation
-    },
-) => Abort_Expression_.O
 
 export namespace Selection_ {
     
@@ -152,7 +125,7 @@ export namespace Selection_ {
         
         export type document_resource_identifier = string
         
-        export type indentation = number
+        export type tab_size = number
         
     }
     
@@ -163,7 +136,7 @@ export type Selection_ = (
     abort: _pi.Abort<Selection_.E>,
     parameters: {
         readonly 'document resource identifier': Selection_.P.document_resource_identifier
-        readonly 'indentation': Selection_.P.indentation
+        readonly 'tab size': Selection_.P.tab_size
     },
 ) => Selection_.O
 
@@ -179,7 +152,7 @@ export namespace Expression_ {
         
         export type document_resource_identifier = string
         
-        export type indentation = number
+        export type tab_size = number
         
     }
     
@@ -190,7 +163,7 @@ export type Expression_ = (
     abort: _pi.Abort<Expression_.E>,
     parameters: {
         readonly 'document resource identifier': Expression_.P.document_resource_identifier
-        readonly 'indentation': Expression_.P.indentation
+        readonly 'tab size': Expression_.P.tab_size
     },
 ) => Expression_.O
 
@@ -199,7 +172,6 @@ export {
     Module_ as Module, 
     Module_Set_ as Module_Set, 
     Type_Node_Reference_ as Type_Node_Reference, 
-    Abort_Expression_ as Abort_Expression, 
     Selection_ as Selection, 
     Expression_ as Expression, 
 }

@@ -67,22 +67,6 @@ export type Type_Node_Reference_ = (
     context: Type_Node_Reference_.I,
 ) => Type_Node_Reference_.O
 
-export namespace Abort_Expression_ {
-    
-    export type I = i_in.Abort_Expression
-    
-    export type O = string
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Abort_Expression_ = (
-    context: Abort_Expression_.I,
-) => Abort_Expression_.O
-
 export namespace Selection_ {
     
     export type I = i_in.Selection
@@ -120,7 +104,6 @@ export {
     Module_ as Module, 
     Module_Set_ as Module_Set, 
     Type_Node_Reference_ as Type_Node_Reference, 
-    Abort_Expression_ as Abort_Expression, 
     Selection_ as Selection, 
     Expression_ as Expression, 
 }

@@ -104,7 +104,7 @@ export const $$ = ($: string): string => {
             if (position === length) {
                 return null
             }
-            return characters.__get_possible_item_at(position).__decide(
+            return characters.__deprecated_get_possible_item_at(position).__decide(
                 ($) => $,
                 () => null
             )

@@ -2,6 +2,7 @@ import * as _p from 'pareto-core/dist/transformer'
 import * as _pi from 'pareto-core/dist/interface'
 import * as _pdev from 'pareto-core-dev'
 import * as _ps from 'pareto-core/dist/serializer'
+import { _p_cc } from 'pareto-core/dist/change_context'
 
 import * as d_in from "../../../../../interface/generated/liana/schemas/interface/data/resolved"
 import * as d_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
@@ -458,7 +459,7 @@ export const Type_Node = (
                     true,
                     sh.identifier_escaped($p.name),
                     _p.list.literal([]),
-                    _p.deprecated_cc($, ($) => {
+                    _p_cc($, ($) => {
                         const foo = sh.t.type_reference(
 
                             //start

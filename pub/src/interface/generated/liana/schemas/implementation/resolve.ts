@@ -7,27 +7,6 @@ import * as i_resolved from "./data/resolved"
 
 import * as i_unresolved from "./data/unresolved"
 
-export namespace Abort_Expression_ {
-    
-    export type I = i_unresolved.Abort_Expression
-    
-    export type O = i_resolved.Abort_Expression
-    
-    export type E = i_generic.Error
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Abort_Expression_ = (
-    context: Abort_Expression_.I,
-    abort: _pi.Abort<Abort_Expression_.E>,
-    lookups: null,
-    parameters: null,
-) => Abort_Expression_.O
-
 export namespace Module_Set_ {
     
     export type I = i_unresolved.Module_Set
@@ -155,7 +134,6 @@ export type Selection_ = (
 ) => Selection_.O
 
 export { 
-    Abort_Expression_ as Abort_Expression, 
     Module_Set_ as Module_Set, 
     Module_ as Module, 
     Type_Reference_ as Type_Reference, 

@@ -150,22 +150,6 @@ export namespace e {
 
     }
 
-    export namespace component {
-
-        export const call = (
-            source: d_target.Selection,
-            context: d_target.Expression,
-            abort: null | d_target.Expression,
-            arguments_: null | _p.Raw_Or_Normal_Dictionary<d_target.Expression.initialize.component.call.arguments_.O.D>,
-        ): d_target.Expression => wrap_state(['initialize', wrap_state(['component', wrap_state(['call', {
-            'source': source,
-            'context': context,
-            'abort': abort === null ? _p.optional.not_set() : _p.optional.set(abort),
-            'arguments': arguments_ === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(arguments_)),
-        }])])])
-
-    }
-
     export namespace list {
 
         export const literal = (
@@ -178,18 +162,6 @@ export namespace e {
         ): d_target.Expression => wrap_state(['initialize', wrap_state(['list', wrap_state(['map', {
             'source': source,
             'item handler': element_handler
-        }])])])
-
-    }
-
-    export namespace state {
-
-        export const literal = (
-            name: string,
-            value: d_target.Expression
-        ): d_target.Expression => wrap_state(['initialize', wrap_state(['state', wrap_state(['literal', {
-            'option': name,
-            'value': value,
         }])])])
 
     }
@@ -334,7 +306,19 @@ export namespace e {
 
     export const select = (
         selection: d_target.Selection
-    ): d_target.Expression => wrap_state(['special', wrap_state(['selection deprecated', selection])])
+    ): d_target.Expression => wrap_state(['special', wrap_state(['select', selection])])
+
+    export namespace state {
+
+        export const literal = (
+            option: string,
+            value: d_target.Expression
+        ): d_target.Expression => wrap_state(['initialize', wrap_state(['state', wrap_state(['literal', {
+            'option': option,
+            'value': value,
+        }])])])
+
+    }
 
     export namespace text {
 
@@ -356,88 +340,73 @@ export namespace e {
 
 export namespace s {
 
-    export const implement_me = (description: string): d_target.Selection => ({
-        'start': wrap_state(['implement me', description]),
-        'tail': _p.list.literal([])
-    })
+    export const implement_me = (description: string): d_target.Selection => wrap_state(['implement me', description])
 
     export const call = (
         source: d_target.Selection,
         context: d_target.Expression,
-        arguments_: _p.Raw_Or_Normal_Dictionary<d_target.Selection.start.call.arguments_.O.D>,
-    ): d_target.Selection => ({
+        abort: null | d_target.Expression,
+        arguments_: null | _p.Raw_Or_Normal_Dictionary<d_target.Selection.regular.start.call.arguments_.O.D>,
+        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
+    ): d_target.Selection => wrap_state(['regular', {
         'start': wrap_state(['call', {
             'source': source,
             'context': context,
-            'arguments': arguments_ === undefined ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(arguments_)),
-        }]),
-        'tail': _p.list.literal([]),
-    })
-
-    export const call_with_tail = (
-        source: d_target.Selection,
-        context: d_target.Expression,
-        arguments_: _p.Raw_Or_Normal_Dictionary<d_target.Selection.start.call.arguments_.O.D>,
-        tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
-    ): d_target.Selection => ({
-        'start': wrap_state(['call', {
-            'source': source,
-            'context': context,
-            'arguments': arguments_ === undefined ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(arguments_)),
+            'abort': abort === null ? _p.optional.not_set() : _p.optional.set(abort),
+            'arguments': arguments_ === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(arguments_)),
         }]),
         'tail': _p.list.literal(tail),
-    })
-
-    export const abort_deprecated = (
-    ): d_target.Selection => ({
-        'start': wrap_state(['abort deprecated', null]),
-        'tail': _p.list.literal([]),
-    })
+    }])
 
     export const from_context = (
-        tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
-    ): d_target.Selection => ({
+        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
+    ): d_target.Selection => wrap_state(['regular', {
         'start': wrap_state(['context', null]),
         'tail': _p.list.literal(tail),
-    })
+    }])
+
+    export const from_entry = (
+        dictionary: d_target.Selection,
+        id: d_target.Expression,
+        abort_handler: d_target.Expression,
+        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
+    ): d_target.Selection => wrap_state(['regular', {
+        'start': wrap_state<d_target.Selection.regular.start>(['entry', {
+            'dictionary': dictionary,
+            'id': id,
+            'abort handler': abort_handler
+        }]),
+        'tail': _p.list.literal(tail),
+    }])
 
     export const from_variable = (
         name: string,
-        tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
+        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
 
-    ): d_target.Selection => ({
+    ): d_target.Selection => wrap_state(['regular', {
         'start': wrap_state(['variable', wrap_state(['local', name])]),
         'tail': _p.list.literal(tail),
-    })
+    }])
 
     export const from_parameter = (
         name: string,
-        tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
+        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
 
-    ): d_target.Selection => ({
+    ): d_target.Selection => wrap_state(['regular', {
         'start': wrap_state(['parameter', name]),
         'tail': _p.list.literal(tail),
-    })
+    }])
 
     export const from_variable_import = (
         imp: string,
         variable: string,
-        tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
-    ): d_target.Selection => ({
+        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
+    ): d_target.Selection => wrap_state(['regular', {
         'start': wrap_state(['variable', wrap_state(['imported', {
             'import': imp,
             'variable': variable,
         }])]),
         'tail': _p.list.literal(tail),
-    })
-
-    export const from_argument = (
-        name: string,
-        tail: _p.Raw_Or_Normal_List<d_target.Selection.tail.L>
-
-    ): d_target.Selection => ({
-        'start': wrap_state(['argument', name]),
-        'tail': _p.list.literal(tail),
-    })
+    }])
 
 }
