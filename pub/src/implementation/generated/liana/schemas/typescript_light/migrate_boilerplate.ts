@@ -78,7 +78,7 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
             case 'function':
                 return _p.ss(
                     $,
-                    ($) => ['function', ({
+                    ($) => ['function', {
                         'type parameters': _p_cc(
                             $['type parameters'],
                             ($) => $.__l_map(
@@ -99,7 +99,7 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
                                 $
                             )
                         ),
-                    })]
+                    }]
                 )
             case 'literal type':
                 return _p.ss(
@@ -126,7 +126,7 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
             case 'tuple':
                 return _p.ss(
                     $,
-                    ($) => ['tuple', ({
+                    ($) => ['tuple', {
                         'readonly': _p_cc(
                             $['readonly'],
                             ($) => $
@@ -139,12 +139,12 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
                                 )
                             )
                         ),
-                    })]
+                    }]
                 )
             case 'type literal':
                 return _p.ss(
                     $,
-                    ($) => ['type literal', ({
+                    ($) => ['type literal', {
                         'properties': _p_cc(
                             $['properties'],
                             ($) => $.__d_map(
@@ -162,12 +162,12 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
                                 })
                             )
                         ),
-                    })]
+                    }]
                 )
             case 'type reference':
                 return _p.ss(
                     $,
-                    ($) => ['type reference', ({
+                    ($) => ['type reference', {
                         'start': _p_cc(
                             $['start'],
                             ($) => Identifier(
@@ -190,7 +190,7 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
                                 )
                             )
                         ),
-                    })]
+                    }]
                 )
             case 'union':
                 return _p.ss(
@@ -230,7 +230,7 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
             case 'arrow function':
                 return _p.ss(
                     $,
-                    ($) => ['arrow function', ({
+                    ($) => ['arrow function', {
                         'parameters': _p_cc(
                             $['parameters'],
                             ($) => Function_Parameters(
@@ -273,12 +273,12 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                                 }
                             )
                         ),
-                    })]
+                    }]
                 )
             case 'assignment':
                 return _p.ss(
                     $,
-                    ($) => ['assignment', ({
+                    ($) => ['assignment', {
                         'left': _p_cc(
                             $['left'],
                             ($) => Expression(
@@ -291,12 +291,12 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                                 $
                             )
                         ),
-                    })]
+                    }]
                 )
             case 'call':
                 return _p.ss(
                     $,
-                    ($) => ['call', ({
+                    ($) => ['call', {
                         'function selection': _p_cc(
                             $['function selection'],
                             ($) => Expression(
@@ -311,12 +311,12 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                                 )
                             )
                         ),
-                    })]
+                    }]
                 )
             case 'compare':
                 return _p.ss(
                     $,
-                    ($) => ['compare', ({
+                    ($) => ['compare', {
                         'left': _p_cc(
                             $['left'],
                             ($) => Expression(
@@ -383,12 +383,12 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                                 $
                             )
                         ),
-                    })]
+                    }]
                 )
             case 'conditional':
                 return _p.ss(
                     $,
-                    ($) => ['conditional', ({
+                    ($) => ['conditional', {
                         'condition': _p_cc(
                             $['condition'],
                             ($) => Expression(
@@ -407,12 +407,12 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                                 $
                             )
                         ),
-                    })]
+                    }]
                 )
             case 'element access':
                 return _p.ss(
                     $,
-                    ($) => ['element access', ({
+                    ($) => ['element access', {
                         'collection': _p_cc(
                             $['collection'],
                             ($) => Expression(
@@ -425,7 +425,7 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                                 $
                             )
                         ),
-                    })]
+                    }]
                 )
             case 'identifier':
                 return _p.ss(
@@ -452,7 +452,7 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
             case 'object literal':
                 return _p.ss(
                     $,
-                    ($) => ['object literal', ({
+                    ($) => ['object literal', {
                         'properties': _p_cc(
                             $['properties'],
                             ($) => $.__d_map(
@@ -461,7 +461,7 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                                 )
                             )
                         ),
-                    })]
+                    }]
                 )
             case 'parenthesized':
                 return _p.ss(
@@ -473,7 +473,7 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
             case 'property access':
                 return _p.ss(
                     $,
-                    ($) => ['property access', ({
+                    ($) => ['property access', {
                         'object': _p_cc(
                             $['object'],
                             ($) => Expression(
@@ -486,7 +486,7 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                                 $
                             )
                         ),
-                    })]
+                    }]
                 )
             case 'string literal':
                 return _p.ss(
@@ -503,7 +503,7 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
             case 'unary operation':
                 return _p.ss(
                     $,
-                    ($) => ['unary operation', ({
+                    ($) => ['unary operation', {
                         'operator': _p_cc(
                             $['operator'],
                             ($) => _p.decide.state(
@@ -534,7 +534,7 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                                 $
                             )
                         ),
-                    })]
+                    }]
                 )
             default:
                 return _p.au(
@@ -559,7 +559,7 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                 case 'export':
                     return _p.ss(
                         $,
-                        ($) => ['export', ({
+                        ($) => ['export', {
                             'type': _p_cc(
                                 $['type'],
                                 ($) => _p.decide.state(
@@ -569,7 +569,7 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                                             case 'named exports':
                                                 return _p.ss(
                                                     $,
-                                                    ($) => ['named exports', ({
+                                                    ($) => ['named exports', {
                                                         'specifiers': _p_cc(
                                                             $['specifiers'],
                                                             ($) => $.__l_map(
@@ -597,7 +597,7 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                                                                 ($) => $
                                                             )
                                                         ),
-                                                    })]
+                                                    }]
                                                 )
                                             default:
                                                 return _p.au(
@@ -607,7 +607,7 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                                     }
                                 )
                             ),
-                        })]
+                        }]
                     )
                 case 'expression':
                     return _p.ss(
@@ -619,7 +619,7 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                 case 'import':
                     return _p.ss(
                         $,
-                        ($) => ['import', ({
+                        ($) => ['import', {
                             'type': _p_cc(
                                 $['type'],
                                 ($) => _p.decide.state(
@@ -636,7 +636,7 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                                             case 'named':
                                                 return _p.ss(
                                                     $,
-                                                    ($) => ['named', ({
+                                                    ($) => ['named', {
                                                         'specifiers': _p_cc(
                                                             $['specifiers'],
                                                             ($) => $.__l_map(
@@ -658,7 +658,7 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                                                                 })
                                                             )
                                                         ),
-                                                    })]
+                                                    }]
                                                 )
                                             default:
                                                 return _p.au(
@@ -672,12 +672,12 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                                 $['from'],
                                 ($) => $
                             ),
-                        })]
+                        }]
                     )
                 case 'module declaration':
                     return _p.ss(
                         $,
-                        ($) => ['module declaration', ({
+                        ($) => ['module declaration', {
                             'export': _p_cc(
                                 $['export'],
                                 ($) => $
@@ -694,7 +694,7 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                                     $
                                 )
                             ),
-                        })]
+                        }]
                     )
                 case 'return':
                     return _p.ss(
@@ -708,7 +708,7 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                 case 'switch':
                     return _p.ss(
                         $,
-                        ($) => ['switch', ({
+                        ($) => ['switch', {
                             'expression': _p_cc(
                                 $['expression'],
                                 ($) => Expression(
@@ -754,12 +754,12 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                                     })
                                 )
                             ),
-                        })]
+                        }]
                     )
                 case 'type alias declaration':
                     return _p.ss(
                         $,
-                        ($) => ['type alias declaration', ({
+                        ($) => ['type alias declaration', {
                             'export': _p_cc(
                                 $['export'],
                                 ($) => $
@@ -784,12 +784,12 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                                     $
                                 )
                             ),
-                        })]
+                        }]
                     )
                 case 'variable':
                     return _p.ss(
                         $,
-                        ($) => ['variable', ({
+                        ($) => ['variable', {
                             'export': _p_cc(
                                 $['export'],
                                 ($) => $
@@ -820,7 +820,7 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                                     )
                                 )
                             ),
-                        })]
+                        }]
                     )
                 default:
                     return _p.au(
@@ -839,14 +839,14 @@ export const Directory: t_signatures.Directory = ($) => $.__d_map(
                 case 'file':
                     return _p.ss(
                         $,
-                        ($) => ['file', ({
+                        ($) => ['file', {
                             'statements': _p_cc(
                                 $['statements'],
                                 ($) => Statements(
                                     $
                                 )
                             ),
-                        })]
+                        }]
                     )
                 case 'directory':
                     return _p.ss(

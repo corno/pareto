@@ -15,7 +15,7 @@ import * as v_serialize_boolean from "liana-core/dist/implementation/manual/prim
 
 export const Imports: t_signatures.Imports = ($) => ['dictionary', $.__d_map(
     ($, id) => ['group', ['verbose', _p.dictionary.literal(
-        ({
+        {
             'type': _p_cc(
                 $['type'],
                 ($) => ['state', _p.decide.state(
@@ -27,10 +27,10 @@ export const Imports: t_signatures.Imports = ($) => ['dictionary', $.__d_map(
                                     $,
                                     ($) => ({
                                         'option': 'external',
-                                        'value': ['text', ({
+                                        'value': ['text', {
                                             'delimiter': ['quote', null],
                                             'value': $,
-                                        })],
+                                        }],
                                     })
                                 )
                             case 'ancestor':
@@ -39,24 +39,24 @@ export const Imports: t_signatures.Imports = ($) => ['dictionary', $.__d_map(
                                     ($) => ({
                                         'option': 'ancestor',
                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                            ({
+                                            {
                                                 'number of steps': _p_cc(
                                                     $['number of steps'],
-                                                    ($) => ['text', ({
+                                                    ($) => ['text', {
                                                         'delimiter': ['none', null],
                                                         'value': v_serialize_number.serialize(
                                                             $
                                                         ),
-                                                    })]
+                                                    }]
                                                 ),
                                                 'dependency': _p_cc(
                                                     $['dependency'],
-                                                    ($) => ['text', ({
+                                                    ($) => ['text', {
                                                         'delimiter': ['quote', null],
                                                         'value': $,
-                                                    })]
+                                                    }]
                                                 ),
-                                            })
+                                            }
                                         )]],
                                     })
                                 )
@@ -65,10 +65,10 @@ export const Imports: t_signatures.Imports = ($) => ['dictionary', $.__d_map(
                                     $,
                                     ($) => ({
                                         'option': 'sibling',
-                                        'value': ['text', ({
+                                        'value': ['text', {
                                             'delimiter': ['quote', null],
                                             'value': $,
-                                        })],
+                                        }],
                                     })
                                 )
                             default:
@@ -82,18 +82,18 @@ export const Imports: t_signatures.Imports = ($) => ['dictionary', $.__d_map(
             'tail': _p_cc(
                 $['tail'],
                 ($) => ['list', $.__l_map(
-                    ($) => ['text', ({
+                    ($) => ['text', {
                         'delimiter': ['quote', null],
                         'value': $,
-                    })]
+                    }]
                 )]
             ),
-        })
+        }
     )]]
 )]
 
 export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dictionary.literal(
-    ({
+    {
         'imports': _p_cc(
             $['imports'],
             ($) => Imports(
@@ -123,7 +123,7 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                     ($) => ({
                                         'option': 'algorithm',
                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                            ({
+                                            {
                                                 'result': _p_cc(
                                                     $['result'],
                                                     ($) => Type_Node(
@@ -148,8 +148,8 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                                         ($) => ({
                                                                             'option': 'transformer',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                ({
-                                                                                })
+                                                                                {
+                                                                                }
                                                                             )]],
                                                                         })
                                                                     )
@@ -159,7 +159,7 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                                         ($) => ({
                                                                             'option': 'refiner',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                ({
+                                                                                {
                                                                                     'error': _p_cc(
                                                                                         $['error'],
                                                                                         ($) => ['optional', $.__decide(
@@ -218,7 +218,7 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                                                             () => ['not set', null]
                                                                                         )]
                                                                                     ),
-                                                                                })
+                                                                                }
                                                                             )]],
                                                                         })
                                                                     )
@@ -241,7 +241,7 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                         () => ['not set', null]
                                                     )]
                                                 ),
-                                            })
+                                            }
                                         )]],
                                     })
                                 )
@@ -254,7 +254,7 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                 )]
             )]
         ),
-    })
+    }
 )]]
 
 export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', $.__d_map(
@@ -301,22 +301,22 @@ export const Type_Reference: t_signatures.Type_Reference = ($) => ['state', _p.d
                     ($) => ({
                         'option': 'import',
                         'value': ['group', ['verbose', _p.dictionary.literal(
-                            ({
+                            {
                                 'import': _p_cc(
                                     $['import'],
-                                    ($) => ['text', ({
+                                    ($) => ['text', {
                                         'delimiter': ['quote', null],
                                         'value': $,
-                                    })]
+                                    }]
                                 ),
                                 'type': _p_cc(
                                     $['type'],
-                                    ($) => ['text', ({
+                                    ($) => ['text', {
                                         'delimiter': ['quote', null],
                                         'value': $,
-                                    })]
+                                    }]
                                 ),
-                            })
+                            }
                         )]],
                     })
                 )
@@ -325,10 +325,10 @@ export const Type_Reference: t_signatures.Type_Reference = ($) => ['state', _p.d
                     $,
                     ($) => ({
                         'option': 'local',
-                        'value': ['text', ({
+                        'value': ['text', {
                             'delimiter': ['quote', null],
                             'value': $,
-                        })],
+                        }],
                     })
                 )
             default:
@@ -357,14 +357,14 @@ export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.stat
                     ($) => ({
                         'option': 'component',
                         'value': ['group', ['verbose', _p.dictionary.literal(
-                            ({
+                            {
                                 'location': _p_cc(
                                     $['location'],
                                     ($) => Type_Reference(
                                         $
                                     )
                                 ),
-                            })
+                            }
                         )]],
                     })
                 )
@@ -484,7 +484,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.stat
                     ($) => ({
                         'option': 'reference',
                         'value': ['group', ['verbose', _p.dictionary.literal(
-                            ({
+                            {
                                 'location': _p_cc(
                                     $['location'],
                                     ($) => Type_Reference(
@@ -511,10 +511,10 @@ export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.stat
                                                             $,
                                                             ($) => ({
                                                                 'option': 'group',
-                                                                'value': ['text', ({
+                                                                'value': ['text', {
                                                                     'delimiter': ['quote', null],
                                                                     'value': $,
-                                                                })],
+                                                                }],
                                                             })
                                                         )
                                                     case 'list':
@@ -538,10 +538,10 @@ export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.stat
                                                             $,
                                                             ($) => ({
                                                                 'option': 'state',
-                                                                'value': ['text', ({
+                                                                'value': ['text', {
                                                                     'delimiter': ['quote', null],
                                                                     'value': $,
-                                                                })],
+                                                                }],
                                                             })
                                                         )
                                                     default:
@@ -555,14 +555,14 @@ export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.stat
                                 ),
                                 'cyclic': _p_cc(
                                     $['cyclic'],
-                                    ($) => ['text', ({
+                                    ($) => ['text', {
                                         'delimiter': ['none', null],
                                         'value': v_serialize_boolean.serialize(
                                             $
                                         ),
-                                    })]
+                                    }]
                                 ),
-                            })
+                            }
                         )]],
                     })
                 )

@@ -238,7 +238,7 @@ export const Statements = (
                                 $,
                                 {
                                     'replace empty type literals by null': $p['replace empty type literals by null'],
-                                    'object literal needs parentheses': true,
+                                    'object literal needs parentheses': false,
                                 }
                             )
                         ]),
@@ -262,12 +262,18 @@ export const Expression = (
         case 'assignment': return _p.ss($, ($) => sh.b.sub([
             Expression($.left, $p),
             sh.b.snippet(" = "),
-            Expression($.right, $p),
+            Expression($.right, {
+                'object literal needs parentheses': false,
+                'replace empty type literals by null': $p['replace empty type literals by null'],
+            }),
         ]))
         case 'array literal': return _p.ss($, ($) => sh.b.sub([
             sh.b.snippet("["),
             sh.b.sub(op_enrich_list_items_with_position_information($).__l_map(($) => sh.b.sub([
-                Expression($.value, $p),
+                Expression($.value, {
+                    'object literal needs parentheses': false,
+                    'replace empty type literals by null': $p['replace empty type literals by null'],
+                }),
                 $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
             ]))),
             sh.b.snippet("]"),
@@ -319,7 +325,13 @@ export const Expression = (
             sh.b.snippet("("),
             sh.b.indent([
                 sh.g.sub(op_enrich_list_items_with_position_information($['arguments']).__l_map(($) => sh.g.nested_block([
-                    Expression($.value, $p),
+                    Expression(
+                        $.value,
+                        {
+                            'object literal needs parentheses': false,
+                            'replace empty type literals by null': $p['replace empty type literals by null'],
+                        }
+                    ),
                     $['is last'] ? sh.b.nothing() : sh.b.snippet(",")
                 ]))),
             ]),
@@ -342,18 +354,29 @@ export const Expression = (
                 }
             }),
             sh.b.snippet(` `),
-            Expression($.right, $p),
+            Expression($.right, {
+                'object literal needs parentheses': false,
+                'replace empty type literals by null': $p['replace empty type literals by null'],
+            }),
         ]))
         case 'conditional': return _p.ss($, ($) => sh.b.sub([
             Expression($.condition, $p),
             sh.b.indent([
                 sh.g.nested_block([
                     sh.b.snippet("? "),
-                    Expression($['if true'], $p),
+                    Expression($['if true'],
+                        {
+                            'replace empty type literals by null': $p['replace empty type literals by null'],
+                            'object literal needs parentheses': false,
+                        }
+                    ),
                 ]),
                 sh.g.nested_block([
                     sh.b.snippet(": "),
-                    Expression($['if false'], $p),
+                    Expression($['if false'], {
+                        'replace empty type literals by null': $p['replace empty type literals by null'],
+                        'object literal needs parentheses': false,
+                    }),
                 ]),
             ]),
         ]))
@@ -376,7 +399,13 @@ export const Expression = (
                 sh.g.sub(_p.list.from_dictionary($.properties, ($, id) => sh.g.nested_block([
                     String_Literal(id, { 'delimiter': "apostrophe" }),
                     sh.b.snippet(": "),
-                    Expression($, $p),
+                    Expression(
+                        $,
+                        {
+                            'object literal needs parentheses': false,
+                            'replace empty type literals by null': $p['replace empty type literals by null'],
+                        }
+                    ),
                     sh.b.snippet(",")
                 ]))),
             ]),
@@ -387,7 +416,10 @@ export const Expression = (
         ]))
         case 'parenthesized': return _p.ss($, ($) => sh.b.sub([
             sh.b.snippet("("),
-            Expression($, $p),
+            Expression($, {
+                'replace empty type literals by null': $p['replace empty type literals by null'],
+                'object literal needs parentheses': false,
+            }),
             sh.b.snippet(")"),
         ]))
         case 'property access': return _p.ss($, ($) => sh.b.sub([

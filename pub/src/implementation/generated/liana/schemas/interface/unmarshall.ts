@@ -765,7 +765,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
                             'location': v_parse_tree_to_location.Value(
                                 $
                             )['start']['relative'],
-                            'state': ['group', ({
+                            'state': ['group', {
                                 'location': v_parse_tree_to_location.Value(
                                     $
                                 )['start']['relative'],
@@ -787,7 +787,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
                                         ),
                                     })
                                 ),
-                            })],
+                            }],
                         })
                     )
                 case 'list':
@@ -1114,7 +1114,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
                             'location': v_parse_tree_to_location.Value(
                                 $
                             )['start']['relative'],
-                            'state': ['state', ({
+                            'state': ['state', {
                                 'location': v_parse_tree_to_location.Value(
                                     $
                                 )['start']['relative'],
@@ -1136,7 +1136,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
                                         ),
                                     })
                                 ),
-                            })],
+                            }],
                         })
                     )
                 case 'text':

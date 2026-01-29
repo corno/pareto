@@ -2341,7 +2341,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                     'location': v_parse_tree_to_location.Value(
                                                                                         $
                                                                                     )['start']['relative'],
-                                                                                    'state': ['literal', ({
+                                                                                    'state': ['literal', {
                                                                                         'location': v_parse_tree_to_location.Value(
                                                                                             $
                                                                                         )['start']['relative'],
@@ -2363,7 +2363,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                                 ),
                                                                                             })
                                                                                         ),
-                                                                                    })],
+                                                                                    }],
                                                                                 })
                                                                             )
                                                                         case 'map':
@@ -2477,7 +2477,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                         'location': v_parse_tree_to_location.Value(
                                                             $
                                                         )['start']['relative'],
-                                                        'state': ['group', ({
+                                                        'state': ['group', {
                                                             'location': v_parse_tree_to_location.Value(
                                                                 $
                                                             )['start']['relative'],
@@ -2499,7 +2499,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                     ),
                                                                 })
                                                             ),
-                                                        })],
+                                                        }],
                                                     })
                                                 )
                                             case 'list':
@@ -2621,7 +2621,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                     'location': v_parse_tree_to_location.Value(
                                                                                         $
                                                                                     )['start']['relative'],
-                                                                                    'state': ['literal', ({
+                                                                                    'state': ['literal', {
                                                                                         'location': v_parse_tree_to_location.Value(
                                                                                             $
                                                                                         )['start']['relative'],
@@ -2643,7 +2643,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                                 ),
                                                                                             })
                                                                                         ),
-                                                                                    })],
+                                                                                    }],
                                                                                 })
                                                                             )
                                                                         case 'map':

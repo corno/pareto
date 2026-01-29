@@ -15,10 +15,10 @@ export const Module: t_signatures.Module = ($, abort, $p) => v_unmarshall.Module
         ($) => abort(
             ['tbd', null]
         ),
-        ({
+        {
             'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
-        })
+        }
     )['content'],
     ($) => abort(
         ['tbd', null]
@@ -31,10 +31,10 @@ export const Module_Set: t_signatures.Module_Set = ($, abort, $p) => v_unmarshal
         ($) => abort(
             ['tbd', null]
         ),
-        ({
+        {
             'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
-        })
+        }
     )['content'],
     ($) => abort(
         ['tbd', null]
@@ -47,10 +47,10 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
         ($) => abort(
             ['tbd', null]
         ),
-        ({
+        {
             'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
-        })
+        }
     )['content'],
     ($) => abort(
         ['tbd', null]
@@ -63,10 +63,10 @@ export const Selection: t_signatures.Selection = ($, abort, $p) => v_unmarshall.
         ($) => abort(
             ['tbd', null]
         ),
-        ({
+        {
             'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
-        })
+        }
     )['content'],
     ($) => abort(
         ['tbd', null]
@@ -79,10 +79,10 @@ export const Expression: t_signatures.Expression = ($, abort, $p) => v_unmarshal
         ($) => abort(
             ['tbd', null]
         ),
-        ({
+        {
             'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
-        })
+        }
     )['content'],
     ($) => abort(
         ['tbd', null]

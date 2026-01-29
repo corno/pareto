@@ -16,7 +16,7 @@ import * as v_serialize_boolean from "liana-core/dist/implementation/manual/prim
 import * as v_external_interface from "../interface/marshall"
 
 export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dictionary.literal(
-    ({
+    {
         'type': _p_cc(
             $['type'],
             ($) => ['state', _p.decide.state(
@@ -66,53 +66,53 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
         'specials': _p_cc(
             $['specials'],
             ($) => ['group', ['verbose', _p.dictionary.literal(
-                ({
+                {
                     'abort': _p_cc(
                         $['abort'],
-                        ($) => ['text', ({
+                        ($) => ['text', {
                             'delimiter': ['none', null],
                             'value': v_serialize_boolean.serialize(
                                 $
                             ),
-                        })]
+                        }]
                     ),
                     'change context': _p_cc(
                         $['change context'],
-                        ($) => ['text', ({
+                        ($) => ['text', {
                             'delimiter': ['none', null],
                             'value': v_serialize_boolean.serialize(
                                 $
                             ),
-                        })]
+                        }]
                     ),
                     'implement me': _p_cc(
                         $['implement me'],
-                        ($) => ['text', ({
+                        ($) => ['text', {
                             'delimiter': ['none', null],
                             'value': v_serialize_boolean.serialize(
                                 $
                             ),
-                        })]
+                        }]
                     ),
                     'iterate': _p_cc(
                         $['iterate'],
-                        ($) => ['text', ({
+                        ($) => ['text', {
                             'delimiter': ['none', null],
                             'value': v_serialize_boolean.serialize(
                                 $
                             ),
-                        })]
+                        }]
                     ),
                     'unreachable code path': _p_cc(
                         $['unreachable code path'],
-                        ($) => ['text', ({
+                        ($) => ['text', {
                             'delimiter': ['none', null],
                             'value': v_serialize_boolean.serialize(
                                 $
                             ),
-                        })]
+                        }]
                     ),
-                })
+                }
             )]]
         ),
         'type imports': _p_cc(
@@ -125,14 +125,14 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
             $['variable imports'],
             ($) => ['dictionary', $.__d_map(
                 ($, id) => ['group', ['verbose', _p.dictionary.literal(
-                    ({
+                    {
                         'tail': _p_cc(
                             $['tail'],
                             ($) => ['list', $.__l_map(
-                                ($) => ['text', ({
+                                ($) => ['text', {
                                     'delimiter': ['quote', null],
                                     'value': $,
-                                })]
+                                }]
                             )]
                         ),
                         'type': _p_cc(
@@ -147,24 +147,24 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                 ($) => ({
                                                     'option': 'ancestor',
                                                     'value': ['group', ['verbose', _p.dictionary.literal(
-                                                        ({
+                                                        {
                                                             'dependency': _p_cc(
                                                                 $['dependency'],
-                                                                ($) => ['text', ({
+                                                                ($) => ['text', {
                                                                     'delimiter': ['quote', null],
                                                                     'value': $,
-                                                                })]
+                                                                }]
                                                             ),
                                                             'number of steps': _p_cc(
                                                                 $['number of steps'],
-                                                                ($) => ['text', ({
+                                                                ($) => ['text', {
                                                                     'delimiter': ['none', null],
                                                                     'value': v_serialize_number.serialize(
                                                                         $
                                                                     ),
-                                                                })]
+                                                                }]
                                                             ),
-                                                        })
+                                                        }
                                                     )]],
                                                 })
                                             )
@@ -173,10 +173,10 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                 $,
                                                 ($) => ({
                                                     'option': 'external',
-                                                    'value': ['text', ({
+                                                    'value': ['text', {
                                                         'delimiter': ['quote', null],
                                                         'value': $,
-                                                    })],
+                                                    }],
                                                 })
                                             )
                                         case 'sibling':
@@ -184,10 +184,10 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                 $,
                                                 ($) => ({
                                                     'option': 'sibling',
-                                                    'value': ['text', ({
+                                                    'value': ['text', {
                                                         'delimiter': ['quote', null],
                                                         'value': $,
-                                                    })],
+                                                    }],
                                                 })
                                             )
                                         default:
@@ -198,7 +198,7 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                 }
                             )]
                         ),
-                    })
+                    }
                 )]]
             )]
         ),
@@ -206,26 +206,26 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
             $['algorithms'],
             ($) => ['dictionary', $.__d_map(
                 ($, id) => ['group', ['verbose', _p.dictionary.literal(
-                    ({
+                    {
                         'type': _p_cc(
                             $['type'],
                             ($) => ['group', ['verbose', _p.dictionary.literal(
-                                ({
+                                {
                                     'import': _p_cc(
                                         $['import'],
-                                        ($) => ['text', ({
+                                        ($) => ['text', {
                                             'delimiter': ['quote', null],
                                             'value': $,
-                                        })]
+                                        }]
                                     ),
                                     'type': _p_cc(
                                         $['type'],
-                                        ($) => ['text', ({
+                                        ($) => ['text', {
                                             'delimiter': ['quote', null],
                                             'value': $,
-                                        })]
+                                        }]
                                     ),
-                                })
+                                }
                             )]]
                         ),
                         'expression': _p_cc(
@@ -236,36 +236,36 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                         ),
                         'temp has abort': _p_cc(
                             $['temp has abort'],
-                            ($) => ['text', ({
+                            ($) => ['text', {
                                 'delimiter': ['none', null],
                                 'value': v_serialize_boolean.serialize(
                                     $
                                 ),
-                            })]
+                            }]
                         ),
                         'temp has lookups': _p_cc(
                             $['temp has lookups'],
-                            ($) => ['text', ({
+                            ($) => ['text', {
                                 'delimiter': ['none', null],
                                 'value': v_serialize_boolean.serialize(
                                     $
                                 ),
-                            })]
+                            }]
                         ),
                         'temp has parameters': _p_cc(
                             $['temp has parameters'],
-                            ($) => ['text', ({
+                            ($) => ['text', {
                                 'delimiter': ['none', null],
                                 'value': v_serialize_boolean.serialize(
                                     $
                                 ),
-                            })]
+                            }]
                         ),
-                    })
+                    }
                 )]]
             )]
         ),
-    })
+    }
 )]]
 
 export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', $.__d_map(
@@ -303,26 +303,26 @@ export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', $.__d_m
 )]
 
 export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = ($) => ['group', ['verbose', _p.dictionary.literal(
-    ({
+    {
         'type': _p_cc(
             $['type'],
             ($) => ['group', ['verbose', _p.dictionary.literal(
-                ({
+                {
                     'import': _p_cc(
                         $['import'],
-                        ($) => ['text', ({
+                        ($) => ['text', {
                             'delimiter': ['quote', null],
                             'value': $,
-                        })]
+                        }]
                     ),
                     'type': _p_cc(
                         $['type'],
-                        ($) => ['text', ({
+                        ($) => ['text', {
                             'delimiter': ['quote', null],
                             'value': $,
-                        })]
+                        }]
                     ),
-                })
+                }
             )]]
         ),
         'sub selection': _p_cc(
@@ -345,10 +345,10 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
                                     $,
                                     ($) => ({
                                         'option': 'group',
-                                        'value': ['text', ({
+                                        'value': ['text', {
                                             'delimiter': ['quote', null],
                                             'value': $,
-                                        })],
+                                        }],
                                     })
                                 )
                             case 'list':
@@ -372,10 +372,10 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
                                     $,
                                     ($) => ({
                                         'option': 'state',
-                                        'value': ['text', ({
+                                        'value': ['text', {
                                             'delimiter': ['quote', null],
                                             'value': $,
-                                        })],
+                                        }],
                                     })
                                 )
                             default:
@@ -387,7 +387,7 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
                 )]
             )]
         ),
-    })
+    }
 )]]
 
 export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.state(
@@ -399,10 +399,10 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                     $,
                     ($) => ({
                         'option': 'implement me',
-                        'value': ['text', ({
+                        'value': ['text', {
                             'delimiter': ['quote', null],
                             'value': $,
-                        })],
+                        }],
                     })
                 )
             case 'regular':
@@ -411,7 +411,7 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                     ($) => ({
                         'option': 'regular',
                         'value': ['group', ['verbose', _p.dictionary.literal(
-                            ({
+                            {
                                 'start': _p_cc(
                                     $['start'],
                                     ($) => ['state', _p.decide.state(
@@ -424,7 +424,7 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                         ($) => ({
                                                             'option': 'call',
                                                             'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                ({
+                                                                {
                                                                     'source': _p_cc(
                                                                         $['source'],
                                                                         ($) => Selection(
@@ -457,7 +457,7 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                             () => ['not set', null]
                                                                         )]
                                                                     ),
-                                                                })
+                                                                }
                                                             )]],
                                                         })
                                                     )
@@ -475,7 +475,7 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                         ($) => ({
                                                             'option': 'entry',
                                                             'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                ({
+                                                                {
                                                                     'dictionary': _p_cc(
                                                                         $['dictionary'],
                                                                         ($) => Selection(
@@ -494,7 +494,7 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                             $
                                                                         )
                                                                     ),
-                                                                })
+                                                                }
                                                             )]],
                                                         })
                                                     )
@@ -512,10 +512,10 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                                 $,
                                                                                 ($) => ({
                                                                                     'option': 'local',
-                                                                                    'value': ['text', ({
+                                                                                    'value': ['text', {
                                                                                         'delimiter': ['quote', null],
                                                                                         'value': $,
-                                                                                    })],
+                                                                                    }],
                                                                                 })
                                                                             )
                                                                         case 'imported':
@@ -524,22 +524,22 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                                 ($) => ({
                                                                                     'option': 'imported',
                                                                                     'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                        ({
+                                                                                        {
                                                                                             'import': _p_cc(
                                                                                                 $['import'],
-                                                                                                ($) => ['text', ({
+                                                                                                ($) => ['text', {
                                                                                                     'delimiter': ['quote', null],
                                                                                                     'value': $,
-                                                                                                })]
+                                                                                                }]
                                                                                             ),
                                                                                             'variable': _p_cc(
                                                                                                 $['variable'],
-                                                                                                ($) => ['text', ({
+                                                                                                ($) => ['text', {
                                                                                                     'delimiter': ['quote', null],
                                                                                                     'value': $,
-                                                                                                })]
+                                                                                                }]
                                                                                             ),
-                                                                                        })
+                                                                                        }
                                                                                     )]],
                                                                                 })
                                                                             )
@@ -557,10 +557,10 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                         $,
                                                         ($) => ({
                                                             'option': 'parameter',
-                                                            'value': ['text', ({
+                                                            'value': ['text', {
                                                                 'delimiter': ['quote', null],
                                                                 'value': $,
-                                                            })],
+                                                            }],
                                                         })
                                                     )
                                                 default:
@@ -574,13 +574,13 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                 'tail': _p_cc(
                                     $['tail'],
                                     ($) => ['list', $.__l_map(
-                                        ($) => ['text', ({
+                                        ($) => ['text', {
                                             'delimiter': ['quote', null],
                                             'value': $,
-                                        })]
+                                        }]
                                     )]
                                 ),
-                            })
+                            }
                         )]],
                     })
                 )
@@ -602,7 +602,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                     ($) => ({
                         'option': 'decide',
                         'value': ['group', ['verbose', _p.dictionary.literal(
-                            ({
+                            {
                                 'type': _p_cc(
                                     $['type'],
                                     ($) => ['state', _p.decide.state(
@@ -615,7 +615,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                         ($) => ({
                                                             'option': 'boolean',
                                                             'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                ({
+                                                                {
                                                                     'source': _p_cc(
                                                                         $['source'],
                                                                         ($) => Selection(
@@ -643,7 +643,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                             $
                                                                         )
                                                                     ),
-                                                                })
+                                                                }
                                                             )]],
                                                         })
                                                     )
@@ -662,7 +662,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                 ($) => ({
                                                                                     'option': 'has entries',
                                                                                     'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                        ({
+                                                                                        {
                                                                                             'dictionary': _p_cc(
                                                                                                 $['dictionary'],
                                                                                                 ($) => Selection(
@@ -681,7 +681,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                                     $
                                                                                                 )
                                                                                             ),
-                                                                                        })
+                                                                                        }
                                                                                     )]],
                                                                                 })
                                                                             )
@@ -709,7 +709,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                 ($) => ({
                                                                                     'option': 'has first item',
                                                                                     'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                        ({
+                                                                                        {
                                                                                             'list': _p_cc(
                                                                                                 $['list'],
                                                                                                 ($) => Selection(
@@ -728,7 +728,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                                     $
                                                                                                 )
                                                                                             ),
-                                                                                        })
+                                                                                        }
                                                                                     )]],
                                                                                 })
                                                                             )
@@ -738,7 +738,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                 ($) => ({
                                                                                     'option': 'has last item',
                                                                                     'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                        ({
+                                                                                        {
                                                                                             'list': _p_cc(
                                                                                                 $['list'],
                                                                                                 ($) => Selection(
@@ -757,7 +757,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                                     $
                                                                                                 )
                                                                                             ),
-                                                                                        })
+                                                                                        }
                                                                                     )]],
                                                                                 })
                                                                             )
@@ -767,7 +767,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                 ($) => ({
                                                                                     'option': 'has items',
                                                                                     'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                        ({
+                                                                                        {
                                                                                             'list': _p_cc(
                                                                                                 $['list'],
                                                                                                 ($) => Selection(
@@ -786,7 +786,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                                     $
                                                                                                 )
                                                                                             ),
-                                                                                        })
+                                                                                        }
                                                                                     )]],
                                                                                 })
                                                                             )
@@ -805,7 +805,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                         ($) => ({
                                                             'option': 'optional',
                                                             'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                ({
+                                                                {
                                                                     'source': _p_cc(
                                                                         $['source'],
                                                                         ($) => Selection(
@@ -833,7 +833,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                             $
                                                                         )
                                                                     ),
-                                                                })
+                                                                }
                                                             )]],
                                                         })
                                                     )
@@ -843,7 +843,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                         ($) => ({
                                                             'option': 'state',
                                                             'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                ({
+                                                                {
                                                                     'source': _p_cc(
                                                                         $['source'],
                                                                         ($) => Selection(
@@ -871,7 +871,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                             ($) => ({
                                                                                                 'option': 'partial',
                                                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                                    ({
+                                                                                                    {
                                                                                                         'options': _p_cc(
                                                                                                             $['options'],
                                                                                                             ($) => ['dictionary', $.__d_map(
@@ -886,7 +886,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                                                 $
                                                                                                             )
                                                                                                         ),
-                                                                                                    })
+                                                                                                    }
                                                                                                 )]],
                                                                                             })
                                                                                         )
@@ -896,7 +896,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                             ($) => ({
                                                                                                 'option': 'full',
                                                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                                    ({
+                                                                                                    {
                                                                                                         'options': _p_cc(
                                                                                                             $['options'],
                                                                                                             ($) => ['dictionary', $.__d_map(
@@ -905,7 +905,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                                                 )
                                                                                                             )]
                                                                                                         ),
-                                                                                                    })
+                                                                                                    }
                                                                                                 )]],
                                                                                             })
                                                                                         )
@@ -917,7 +917,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                             }
                                                                         )]
                                                                     ),
-                                                                })
+                                                                }
                                                             )]],
                                                         })
                                                     )
@@ -927,7 +927,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                         ($) => ({
                                                             'option': 'text',
                                                             'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                ({
+                                                                {
                                                                     'source': _p_cc(
                                                                         $['source'],
                                                                         ($) => Selection(
@@ -957,7 +957,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                             $
                                                                         )
                                                                     ),
-                                                                })
+                                                                }
                                                             )]],
                                                         })
                                                     )
@@ -969,7 +969,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                         }
                                     )]
                                 ),
-                            })
+                            }
                         )]],
                     })
                 )
@@ -1089,7 +1089,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'filter',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'source': _p_cc(
                                                                                     $['source'],
                                                                                     ($) => Selection(
@@ -1102,7 +1102,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                         $
                                                                                     )
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1112,7 +1112,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'from list',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'source': _p_cc(
                                                                                     $['source'],
                                                                                     ($) => Selection(
@@ -1137,7 +1137,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                         $
                                                                                     )
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1159,7 +1159,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'map',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'source': _p_cc(
                                                                                     $['source'],
                                                                                     ($) => Selection(
@@ -1172,7 +1172,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                         $
                                                                                     )
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1182,7 +1182,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'resolve',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'source': _p_cc(
                                                                                     $['source'],
                                                                                     ($) => Selection(
@@ -1195,7 +1195,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                         $
                                                                                     )
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1235,7 +1235,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'filter',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'source': _p_cc(
                                                                                     $['source'],
                                                                                     ($) => Selection(
@@ -1248,7 +1248,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                         $
                                                                                     )
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1258,7 +1258,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'from dictionary',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'source': _p_cc(
                                                                                     $['source'],
                                                                                     ($) => Selection(
@@ -1271,7 +1271,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                         $
                                                                                     )
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1293,7 +1293,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'map',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'source': _p_cc(
                                                                                     $['source'],
                                                                                     ($) => Selection(
@@ -1306,7 +1306,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                         $
                                                                                     )
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1316,7 +1316,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'map with state',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'source': _p_cc(
                                                                                     $['source'],
                                                                                     ($) => Selection(
@@ -1347,7 +1347,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                         $
                                                                                     )
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1357,7 +1357,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'reduce',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'source': _p_cc(
                                                                                     $['source'],
                                                                                     ($) => Selection(
@@ -1376,7 +1376,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                         $
                                                                                     )
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1386,14 +1386,14 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'reverse',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'source': _p_cc(
                                                                                     $['source'],
                                                                                     ($) => Selection(
                                                                                         $
                                                                                     )
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1437,12 +1437,12 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'literal',
-                                                                                                'value': ['text', ({
+                                                                                                'value': ['text', {
                                                                                                     'delimiter': ['none', null],
                                                                                                     'value': v_serialize_number.serialize(
                                                                                                         $
                                                                                                     ),
-                                                                                                })],
+                                                                                                }],
                                                                                             })
                                                                                         )
                                                                                     case 'copy':
@@ -1489,7 +1489,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                             ($) => ({
                                                                                                 'option': 'divide',
                                                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                                    ({
+                                                                                                    {
                                                                                                         'divident': _p_cc(
                                                                                                             $['divident'],
                                                                                                             ($) => Selection(
@@ -1508,7 +1508,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                                                 $
                                                                                                             )
                                                                                                         ),
-                                                                                                    })
+                                                                                                    }
                                                                                                 )]],
                                                                                             })
                                                                                         )
@@ -1517,12 +1517,12 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'literal',
-                                                                                                'value': ['text', ({
+                                                                                                'value': ['text', {
                                                                                                     'delimiter': ['none', null],
                                                                                                     'value': v_serialize_number.serialize(
                                                                                                         $
                                                                                                     ),
-                                                                                                })],
+                                                                                                }],
                                                                                             })
                                                                                         )
                                                                                     default:
@@ -1548,12 +1548,12 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                             $,
                                                                                             ($) => ({
                                                                                                 'option': 'literal',
-                                                                                                'value': ['text', ({
+                                                                                                'value': ['text', {
                                                                                                     'delimiter': ['none', null],
                                                                                                     'value': v_serialize_number.serialize(
                                                                                                         $
                                                                                                     ),
-                                                                                                })],
+                                                                                                }],
                                                                                             })
                                                                                         )
                                                                                     case 'copy':
@@ -1572,14 +1572,14 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                             ($) => ({
                                                                                                 'option': 'number of dictionary entries',
                                                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                                    ({
+                                                                                                    {
                                                                                                         'dictionary': _p_cc(
                                                                                                             $['dictionary'],
                                                                                                             ($) => Selection(
                                                                                                                 $
                                                                                                             )
                                                                                                         ),
-                                                                                                    })
+                                                                                                    }
                                                                                                 )]],
                                                                                             })
                                                                                         )
@@ -1589,14 +1589,14 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                             ($) => ({
                                                                                                 'option': 'number of list items',
                                                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                                    ({
+                                                                                                    {
                                                                                                         'list': _p_cc(
                                                                                                             $['list'],
                                                                                                             ($) => Selection(
                                                                                                                 $
                                                                                                             )
                                                                                                         ),
-                                                                                                    })
+                                                                                                    }
                                                                                                 )]],
                                                                                             })
                                                                                         )
@@ -1649,7 +1649,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'from boolean',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'source': _p_cc(
                                                                                     $['source'],
                                                                                     ($) => Selection(
@@ -1662,7 +1662,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                         $
                                                                                     )
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1708,7 +1708,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'map',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'source': _p_cc(
                                                                                     $['source'],
                                                                                     ($) => Selection(
@@ -1721,7 +1721,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                         $
                                                                                     )
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1749,13 +1749,13 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'literal',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'option': _p_cc(
                                                                                     $['option'],
-                                                                                    ($) => ['text', ({
+                                                                                    ($) => ['text', {
                                                                                         'delimiter': ['quote', null],
                                                                                         'value': $,
-                                                                                    })]
+                                                                                    }]
                                                                                 ),
                                                                                 'value': _p_cc(
                                                                                     $['value'],
@@ -1763,7 +1763,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                         $
                                                                                     )
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1801,7 +1801,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ($) => ({
                                                                         'option': 'literal',
                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                            ({
+                                                                            {
                                                                                 'type': _p_cc(
                                                                                     $['type'],
                                                                                     ($) => ['state', _p.decide.state(
@@ -1834,12 +1834,12 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                 ),
                                                                                 'value': _p_cc(
                                                                                     $['value'],
-                                                                                    ($) => ['text', ({
+                                                                                    ($) => ['text', {
                                                                                         'delimiter': ['quote', null],
                                                                                         'value': $,
-                                                                                    })]
+                                                                                    }]
                                                                                 ),
-                                                                            })
+                                                                            }
                                                                         )]],
                                                                     })
                                                                 )
@@ -1904,7 +1904,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                             ($) => ({
                                                 'option': 'assert',
                                                 'value': ['group', ['verbose', _p.dictionary.literal(
-                                                    ({
+                                                    {
                                                         'tester': _p_cc(
                                                             $['tester'],
                                                             ($) => Expression(
@@ -1917,7 +1917,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                 $
                                                             )
                                                         ),
-                                                    })
+                                                    }
                                                 )]],
                                             })
                                         )
@@ -1927,12 +1927,12 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                             ($) => ({
                                                 'option': 'block',
                                                 'value': ['group', ['verbose', _p.dictionary.literal(
-                                                    ({
+                                                    {
                                                         'variables': _p_cc(
                                                             $['variables'],
                                                             ($) => ['dictionary', $.__d_map(
                                                                 ($, id) => ['group', ['verbose', _p.dictionary.literal(
-                                                                    ({
+                                                                    {
                                                                         'type': _p_cc(
                                                                             $['type'],
                                                                             ($) => ['optional', $.__decide(
@@ -1948,7 +1948,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                 $
                                                                             )
                                                                         ),
-                                                                    })
+                                                                    }
                                                                 )]]
                                                             )]
                                                         ),
@@ -1956,13 +1956,13 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                             $['temp ordered variables'],
                                                             ($) => ['list', $.__l_map(
                                                                 ($) => ['group', ['verbose', _p.dictionary.literal(
-                                                                    ({
+                                                                    {
                                                                         'name': _p_cc(
                                                                             $['name'],
-                                                                            ($) => ['text', ({
+                                                                            ($) => ['text', {
                                                                                 'delimiter': ['quote', null],
                                                                                 'value': $,
-                                                                            })]
+                                                                            }]
                                                                         ),
                                                                         'type': _p_cc(
                                                                             $['type'],
@@ -1979,7 +1979,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                 $
                                                                             )
                                                                         ),
-                                                                    })
+                                                                    }
                                                                 )]]
                                                             )]
                                                         ),
@@ -1989,7 +1989,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                 $
                                                             )
                                                         ),
-                                                    })
+                                                    }
                                                 )]],
                                             })
                                         )
@@ -1999,7 +1999,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                             ($) => ({
                                                 'option': 'change context',
                                                 'value': ['group', ['verbose', _p.dictionary.literal(
-                                                    ({
+                                                    {
                                                         'new context': _p_cc(
                                                             $['new context'],
                                                             ($) => Selection(
@@ -2012,7 +2012,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                 $
                                                             )
                                                         ),
-                                                    })
+                                                    }
                                                 )]],
                                             })
                                         )
@@ -2021,10 +2021,10 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                             $,
                                             ($) => ({
                                                 'option': 'implement me',
-                                                'value': ['text', ({
+                                                'value': ['text', {
                                                     'delimiter': ['quote', null],
                                                     'value': $,
-                                                })],
+                                                }],
                                             })
                                         )
                                     case 'iterate':
@@ -2033,7 +2033,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                             ($) => ({
                                                 'option': 'iterate',
                                                 'value': ['group', ['verbose', _p.dictionary.literal(
-                                                    ({
+                                                    {
                                                         'list': _p_cc(
                                                             $['list'],
                                                             ($) => Selection(
@@ -2046,7 +2046,7 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                 $
                                                             )
                                                         ),
-                                                    })
+                                                    }
                                                 )]],
                                             })
                                         )
