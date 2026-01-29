@@ -77,6 +77,11 @@ export namespace m {
 
     export const module = (
         type: 'serializer' | 'deserializer' | 'transformer' | 'refiner',
+        abort: boolean,
+        change_context: boolean,
+        implement_me: boolean,
+        iterate: boolean,
+        unreachable_code_path: boolean,
         type_imports: _p.Raw_Or_Normal_Dictionary<d_target_interface.Imports.D>,
         variable_imports: _p.Raw_Or_Normal_Dictionary<d_target.Module.variable_imports.D>,
         algorithms: _p.Raw_Or_Normal_Dictionary<d_target.Module.algorithms.D>,
@@ -87,6 +92,13 @@ export namespace m {
                     type === 'transformer' ? ['transformer', null] :
                         ['refiner', null]
         ),
+        'specials': {
+            'abort': abort,
+            'change context': change_context,
+            'implement me': implement_me,
+            'iterate': iterate,
+            'unreachable code path': unreachable_code_path,
+        },
         'type imports': _p.dictionary.literal(type_imports),
         'variable imports': _p.dictionary.literal(variable_imports),
         'algorithms': _p.dictionary.literal(algorithms),
@@ -132,6 +144,10 @@ export const temp_ordered_variable = (
 
 export namespace e {
 
+    export const abort = (
+        expression: d_target.Expression
+    ): d_target.Expression => wrap_state(['special', wrap_state(['abort', expression])])
+
     export namespace boolean {
 
         export const false_ = (): d_target.Expression => wrap_state(['initialize', wrap_state(['boolean', wrap_state(['literal', wrap_state(['false', null])])])])
@@ -141,22 +157,6 @@ export namespace e {
         export const copy = (
             selection: d_target.Selection
         ): d_target.Expression => wrap_state(['initialize', wrap_state(['boolean', wrap_state(['copy', selection])])])
-
-    }
-
-    export namespace list {
-
-        export const literal = (
-            elements: _p.Raw_Or_Normal_List<d_target.Expression>
-        ): d_target.Expression => wrap_state(['initialize', wrap_state(['list', wrap_state(['literal', _p.list.literal(elements)])])])
-
-        export const map = (
-            source: d_target.Selection,
-            element_handler: d_target.Expression
-        ): d_target.Expression => wrap_state(['initialize', wrap_state(['list', wrap_state(['map', {
-            'source': source,
-            'item handler': element_handler
-        }])])])
 
     }
 
@@ -177,6 +177,69 @@ export namespace e {
         'variables': _p.dictionary.literal(variables),
         'expression': expression
     }])])
+
+    export namespace decide {
+
+        export const optional = (
+            source: d_target.Selection,
+            if_set: d_target.Expression,
+            if_not_set: d_target.Expression,
+            resulting_type: d_target.Temp_Type_Node_Reference,
+        ): d_target.Expression => wrap_state(['decide', {
+            'type': wrap_state(['optional', {
+                'source': source,
+                'if set': if_set,
+                'if not set': if_not_set,
+                'temp resulting node': _p.optional.literal(resulting_type),
+
+            }])
+        }])
+
+        export const state = (
+            source: d_target.Selection,
+            cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide.type_.state.type_.full.options.D>,
+            resulting_type: null | d_target.Temp_Type_Node_Reference,
+        ): d_target.Expression => wrap_state(['decide', {
+            'type': wrap_state(['state', {
+                'source': source,
+                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? _p.optional.not_set() : _p.optional.set(resulting_type),
+                'type': wrap_state(['full', {
+                    'options': _p.dictionary.literal(cases),
+                }])
+            }])
+        }])
+
+        export const state_partial = (
+            source: d_target.Selection,
+            cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide.type_.state.type_.partial.options.D>,
+            default_: d_target.Expression,
+            resulting_type: null | d_target.Temp_Type_Node_Reference,
+        ): d_target.Expression => wrap_state(['decide', {
+            'type': wrap_state(['state', {
+                'source': source,
+                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? _p.optional.not_set() : _p.optional.set(resulting_type),
+                'type': wrap_state(['partial', {
+                    'options': _p.dictionary.literal(cases),
+                    'default': default_
+                }])
+            }])
+        }])
+
+        export const text = (
+            source: d_target.Selection,
+            cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide.type_.text.cases.D>,
+            default_: d_target.Expression,
+            resulting_type: null | d_target.Temp_Type_Node_Reference,
+        ): d_target.Expression => wrap_state(['decide', {
+            'type': wrap_state(['text', {
+                'source': source,
+                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? _p.optional.not_set() : _p.optional.set(resulting_type),
+                'cases': _p.dictionary.literal(cases),
+                'default': default_
+            }])
+        }])
+
+    }
 
     export namespace dictionary {
 
@@ -199,7 +262,25 @@ export namespace e {
     ): d_target.Expression => wrap_state(['initialize', wrap_state(['group', _p.dictionary.literal(properties)])])
 
     export const implement_me = (description: string): d_target.Expression => wrap_state(['special', wrap_state(['implement me', description])])
-    export const unreachable = (): d_target.Expression => wrap_state(['special', wrap_state(['unreachable', null])])
+
+
+    export namespace list {
+
+        export const literal = (
+            elements: _p.Raw_Or_Normal_List<d_target.Expression>
+        ): d_target.Expression => wrap_state(['initialize', wrap_state(['list', wrap_state(['literal', _p.list.literal(elements)])])])
+
+        export const map = (
+            source: d_target.Selection,
+            element_handler: d_target.Expression
+        ): d_target.Expression => wrap_state(['initialize', wrap_state(['list', wrap_state(['map', {
+            'source': source,
+            'item handler': element_handler
+        }])])])
+
+    }
+
+    export const nothing = (): d_target.Expression => wrap_state(['initialize', wrap_state(['nothing', null])])
 
     export namespace number {
 
@@ -229,8 +310,6 @@ export namespace e {
 
     }
 
-    export const nothing = (): d_target.Expression => wrap_state(['initialize', wrap_state(['nothing', null])])
-
     export namespace optional {
 
         export const not_set = (): d_target.Expression => wrap_state(['initialize', wrap_state(['optional', wrap_state(['literal', wrap_state(['not set', null])])])])
@@ -246,55 +325,6 @@ export namespace e {
         export const set = (
             value: d_target.Expression
         ): d_target.Expression => wrap_state(['initialize', wrap_state(['optional', wrap_state(['literal', wrap_state(['set', value])])])])
-
-    }
-
-    export namespace decide {
-
-        export const optional = (
-            source: d_target.Selection,
-            if_set: d_target.Expression,
-            if_not_set: d_target.Expression,
-            resulting_type?: d_target.Temp_Type_Node_Reference,
-        ): d_target.Expression => wrap_state(['decide', {
-            'type': wrap_state(['optional', {
-                'source': source,
-                'if set': if_set,
-                'if not set': if_not_set,
-                'temp resulting node': _p.optional.literal(resulting_type),
-
-            }])
-        }])
-
-        export const state = (
-            source: d_target.Selection,
-            cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide.type_.state.type_.full.cases.D>,
-            resulting_type?: null | d_target.Temp_Type_Node_Reference,
-        ): d_target.Expression => wrap_state(['decide', {
-            'type': wrap_state(['state', {
-                'source': source,
-                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? _p.optional.not_set() : _p.optional.set(resulting_type),
-                'type': wrap_state(['full', {
-                    'cases': _p.dictionary.literal(cases),
-                }])
-            }])
-        }])
-
-        export const state_partial = (
-            source: d_target.Selection,
-            cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide.type_.state.type_.partial.cases.D>,
-            default_: d_target.Expression,
-            resulting_type?: null | d_target.Temp_Type_Node_Reference,
-        ): d_target.Expression => wrap_state(['decide', {
-            'type': wrap_state(['state', {
-                'source': source,
-                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? _p.optional.not_set() : _p.optional.set(resulting_type),
-                'type': wrap_state(['partial', {
-                    'cases': _p.dictionary.literal(cases),
-                    'default': default_
-                }])
-            }])
-        }])
 
     }
 
@@ -329,6 +359,8 @@ export namespace e {
         ): d_target.Expression => wrap_state(['initialize', wrap_state(['text', wrap_state(['copy', selection])])])
 
     }
+
+    export const unreachable = (): d_target.Expression => wrap_state(['special', wrap_state(['unreachable', null])])
 
 }
 

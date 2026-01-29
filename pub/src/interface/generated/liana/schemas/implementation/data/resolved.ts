@@ -23,6 +23,28 @@ export namespace Module_ {
         | readonly ['transformer', type_.transformer]
         | readonly ['refiner', type_.refiner]
     
+    export namespace specials {
+        
+        export type abort = boolean
+        
+        export type change_context = boolean
+        
+        export type implement_me = boolean
+        
+        export type iterate = boolean
+        
+        export type unreachable_code_path = boolean
+        
+    }
+    
+    export type specials = {
+        readonly 'abort': specials.abort
+        readonly 'change context': specials.change_context
+        readonly 'implement me': specials.implement_me
+        readonly 'iterate': specials.iterate
+        readonly 'unreachable code path': specials.unreachable_code_path
+    }
+    
     export type type_imports = i__imports_interface.Imports
     
     export namespace variable_imports {
@@ -117,6 +139,7 @@ export namespace Module_ {
 
 export type Module_ = {
     readonly 'type': Module_.type_
+    readonly 'specials': Module_.specials
     readonly 'type imports': Module_.type_imports
     readonly 'variable imports': Module_.variable_imports
     readonly 'algorithms': Module_.algorithms
@@ -459,37 +482,37 @@ export namespace Expression_ {
                     
                     export namespace partial {
                         
-                        export namespace cases {
+                        export namespace options {
                             
                             export type D = Expression_
                             
                         }
                         
-                        export type cases = _pi.Dictionary<cases.D>
+                        export type options = _pi.Dictionary<options.D>
                         
                         export type default_ = Expression_
                         
                     }
                     
                     export type partial = {
-                        readonly 'cases': partial.cases
+                        readonly 'options': partial.options
                         readonly 'default': partial.default_
                     }
                     
                     export namespace full {
                         
-                        export namespace cases {
+                        export namespace options {
                             
                             export type D = Expression_
                             
                         }
                         
-                        export type cases = _pi.Dictionary<cases.D>
+                        export type options = _pi.Dictionary<options.D>
                         
                     }
                     
                     export type full = {
-                        readonly 'cases': full.cases
+                        readonly 'options': full.options
                     }
                     
                 }

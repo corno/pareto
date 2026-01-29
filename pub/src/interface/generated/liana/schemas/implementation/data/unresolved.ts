@@ -36,6 +36,28 @@ export namespace Module_ {
         readonly 'state': type_.state
     }
     
+    export namespace specials {
+        
+        export type abort = boolean
+        
+        export type change_context = boolean
+        
+        export type implement_me = boolean
+        
+        export type iterate = boolean
+        
+        export type unreachable_code_path = boolean
+        
+    }
+    
+    export type specials = {
+        readonly 'abort': specials.abort
+        readonly 'change context': specials.change_context
+        readonly 'implement me': specials.implement_me
+        readonly 'iterate': specials.iterate
+        readonly 'unreachable code path': specials.unreachable_code_path
+    }
+    
     export type type_imports = i__imports_interface.Imports
     
     export namespace variable_imports {
@@ -207,6 +229,7 @@ export namespace Module_ {
 
 export type Module_ = {
     readonly 'type': Module_.type_
+    readonly 'specials': Module_.specials
     readonly 'type imports': Module_.type_imports
     readonly 'variable imports': Module_.variable_imports
     readonly 'algorithms': Module_.algorithms
@@ -726,7 +749,7 @@ export namespace Expression_ {
                                 
                                 export namespace partial {
                                     
-                                    export namespace cases {
+                                    export namespace options {
                                         
                                         export type location = i__location.Relative_Location
                                         
@@ -751,9 +774,9 @@ export namespace Expression_ {
                                         
                                     }
                                     
-                                    export type cases = {
-                                        readonly 'location': cases.location
-                                        readonly 'dictionary': cases.dictionary
+                                    export type options = {
+                                        readonly 'location': options.location
+                                        readonly 'dictionary': options.dictionary
                                     }
                                     
                                     export type default_ = Expression_
@@ -761,13 +784,13 @@ export namespace Expression_ {
                                 }
                                 
                                 export type partial = {
-                                    readonly 'cases': partial.cases
+                                    readonly 'options': partial.options
                                     readonly 'default': partial.default_
                                 }
                                 
                                 export namespace full {
                                     
-                                    export namespace cases {
+                                    export namespace options {
                                         
                                         export type location = i__location.Relative_Location
                                         
@@ -792,15 +815,15 @@ export namespace Expression_ {
                                         
                                     }
                                     
-                                    export type cases = {
-                                        readonly 'location': cases.location
-                                        readonly 'dictionary': cases.dictionary
+                                    export type options = {
+                                        readonly 'location': options.location
+                                        readonly 'dictionary': options.dictionary
                                     }
                                     
                                 }
                                 
                                 export type full = {
-                                    readonly 'cases': full.cases
+                                    readonly 'options': full.options
                                 }
                                 
                             }

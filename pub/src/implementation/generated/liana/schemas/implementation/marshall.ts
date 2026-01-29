@@ -67,6 +67,58 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                 }
             )]
         ),
+        'specials': _p_cc(
+            $['specials'],
+            ($) => ['group', ['verbose', _p.dictionary.literal(
+                ({
+                    'abort': _p_cc(
+                        $['abort'],
+                        ($) => ['text', ({
+                            'delimiter': ['none', null],
+                            'value': v_serialize_boolean.serialize(
+                                $
+                            ),
+                        })]
+                    ),
+                    'change context': _p_cc(
+                        $['change context'],
+                        ($) => ['text', ({
+                            'delimiter': ['none', null],
+                            'value': v_serialize_boolean.serialize(
+                                $
+                            ),
+                        })]
+                    ),
+                    'implement me': _p_cc(
+                        $['implement me'],
+                        ($) => ['text', ({
+                            'delimiter': ['none', null],
+                            'value': v_serialize_boolean.serialize(
+                                $
+                            ),
+                        })]
+                    ),
+                    'iterate': _p_cc(
+                        $['iterate'],
+                        ($) => ['text', ({
+                            'delimiter': ['none', null],
+                            'value': v_serialize_boolean.serialize(
+                                $
+                            ),
+                        })]
+                    ),
+                    'unreachable code path': _p_cc(
+                        $['unreachable code path'],
+                        ($) => ['text', ({
+                            'delimiter': ['none', null],
+                            'value': v_serialize_boolean.serialize(
+                                $
+                            ),
+                        })]
+                    ),
+                })
+            )]]
+        ),
         'type imports': _p_cc(
             $['type imports'],
             ($) => v_external_interface.Imports(
@@ -824,8 +876,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                                 'option': 'partial',
                                                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                                     ({
-                                                                                                        'cases': _p_cc(
-                                                                                                            $['cases'],
+                                                                                                        'options': _p_cc(
+                                                                                                            $['options'],
                                                                                                             ($) => ['dictionary', $.__d_map(
                                                                                                                 ($, id) => Expression(
                                                                                                                     $
@@ -849,8 +901,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                                 'option': 'full',
                                                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                                     ({
-                                                                                                        'cases': _p_cc(
-                                                                                                            $['cases'],
+                                                                                                        'options': _p_cc(
+                                                                                                            $['options'],
                                                                                                             ($) => ['dictionary', $.__d_map(
                                                                                                                 ($, id) => Expression(
                                                                                                                     $

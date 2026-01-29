@@ -57,6 +57,31 @@ export const Module: t_signatures.Module = ($) => ({
             ),
         })
     ),
+    'specials': _p_cc(
+        $['specials'],
+        ($) => ({
+            'abort': _p_cc(
+                $['abort'],
+                ($) => $
+            ),
+            'change context': _p_cc(
+                $['change context'],
+                ($) => $
+            ),
+            'implement me': _p_cc(
+                $['implement me'],
+                ($) => $
+            ),
+            'iterate': _p_cc(
+                $['iterate'],
+                ($) => $
+            ),
+            'unreachable code path': _p_cc(
+                $['unreachable code path'],
+                ($) => $
+            ),
+        })
+    ),
     'type imports': _p_cc(
         $['type imports'],
         ($) => v_interface.Imports(
@@ -790,8 +815,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                     return _p.ss(
                                                                                         $,
                                                                                         ($) => ['partial', ({
-                                                                                            'cases': _p_cc(
-                                                                                                $['cases'],
+                                                                                            'options': _p_cc(
+                                                                                                $['options'],
                                                                                                 ($) => ({
                                                                                                     'location': ({
                                                                                                         'document resource identifier': "implement me",
@@ -824,8 +849,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                     return _p.ss(
                                                                                         $,
                                                                                         ($) => ['full', ({
-                                                                                            'cases': _p_cc(
-                                                                                                $['cases'],
+                                                                                            'options': _p_cc(
+                                                                                                $['options'],
                                                                                                 ($) => ({
                                                                                                     'location': ({
                                                                                                         'document resource identifier': "implement me",

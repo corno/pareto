@@ -86,27 +86,31 @@ export const Module_Set = (
                                 }
                             })
                         ),
-                        sh.s.import_named(
+                    ],
+                    $.specials['unreachable code path']
+                        ? [sh.s.import_named(
                             [
                                 sh.specifier(sh.identifier_raw("_p_unreachable_code_path"), null),
                             ],
                             `pareto-core/dist/unreachable_code_path`
-                        ),
-                        // sh.s.import_named(
-                        //     [
-                        //         sh.specifier(sh.identifier_raw("_p_iterate"), null),
-                        //     ],
-                        //     `pareto-core/dist/iterate`
-                        // ),
-                        sh.s.import_named(
+                        )]
+                        : [],
+                    $.specials['change context']
+                        ? [sh.s.import_named(
                             [
                                 sh.specifier(sh.identifier_raw("_p_cc"), null),
                             ],
                             `pareto-core/dist/change_context`
-                        ),
-
-
-                    ],
+                        )]
+                        : [],
+                    $.specials['iterate']
+                        ? [sh.s.import_named(
+                            [
+                                sh.specifier(sh.identifier_raw("_p_cc"), null),
+                            ],
+                            `pareto-core/dist/iterate`
+                        )]
+                        : [],
                     _p.list.from_dictionary(
                         $['type imports'],
                         ($, id) => sh.s.import_namespace(
@@ -283,10 +287,10 @@ export const Expression = (
                                         sh.e.number_literal(0)
                                     ),
                                     _p.list.nested_literal_old([
-                                        _p.decide.state($.type, ($): d_in.Expression.decide.type_.state.type_.partial.cases => {
+                                        _p.decide.state($.type, ($): d_in.Expression.decide.type_.state.type_.partial.options => {
                                             switch ($[0]) {
-                                                case 'partial': return _p.ss($, ($) => $.cases)
-                                                case 'full': return _p.ss($, ($) => $.cases)
+                                                case 'partial': return _p.ss($, ($) => $.options)
+                                                case 'full': return _p.ss($, ($) => $.options)
                                                 default: return _p.au($[0])
                                             }
                                         }).__to_list(
