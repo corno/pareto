@@ -147,7 +147,13 @@ export const Module_Set = (
                             true,
                             true,
                             sh.identifier_escaped(id),
-                            Type_Reference($.type),
+                            sh.t.type_reference(
+                                sh.identifier_escaped("t " + $.type.import),
+                                _p.list.literal([
+                                    sh.identifier_escaped($.type.type)
+                                ]),
+                                []
+                            ),
                             sh.e.arrow_function_with_expression(
                                 _p.list.nested_literal_old([
                                     [
@@ -184,21 +190,8 @@ export const Module_Set = (
     }))
 }
 
-
-export const Type_Reference = (
-    $: d_in.Type_Reference,
-): d_out.Type => {
-    return sh.t.type_reference(
-        sh.identifier_escaped("t " + $.import),
-        _p.list.literal([
-            sh.identifier_escaped($.type)
-        ]),
-        []
-    )
-}
-
-export const Type_Node_Reference = (
-    $: d_in.Type_Node_Reference,
+export const Temp_Type_Node_Reference = (
+    $: d_in.Temp_Type_Node_Reference,
 ): d_out.Type => {
     return sh.t.type_reference(
         sh.identifier_escaped("t " + $.type.import),
@@ -237,6 +230,8 @@ export const Expression = (
                     Expression($['if true']),
                     Expression($['if false']),
                 ))
+                case 'dictionary': return _p.ss($, ($) => _pdev.implement_me("X3"))
+                case 'list': return _p.ss($, ($) => _pdev.implement_me("X4"))
                 case 'optional': return _p.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         Selection($.source),
@@ -248,7 +243,7 @@ export const Expression = (
                                 sh.parameter(sh.identifier_raw("$"), null)
                             ],
                             $['temp resulting node'].__decide(
-                                ($) => Type_Node_Reference($),
+                                ($) => Temp_Type_Node_Reference($),
                                 () => null
                             ),
                             Expression($['if set']),
@@ -278,7 +273,7 @@ export const Expression = (
                                 sh.parameter(sh.identifier_raw("$"), null)
                             ],
                             $['temp resulting node'].__decide(
-                                ($) => Type_Node_Reference($),
+                                ($) => Temp_Type_Node_Reference($),
                                 () => null
                             ),
                             [
@@ -361,7 +356,7 @@ export const Expression = (
                                 sh.parameter(sh.identifier_raw("$"), null)
                             ],
                             $['temp resulting node'].__decide(
-                                ($) => Type_Node_Reference($),
+                                ($) => Temp_Type_Node_Reference($),
                                 () => null
                             ),
                             [
@@ -433,6 +428,8 @@ export const Expression = (
             switch ($[0]) {
                 case 'boolean': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {
+                        case 'dictionary is empty': return _p.ss($, ($) => _pdev.implement_me("X1"))
+                        case 'list is empty': return _p.ss($, ($) => _pdev.implement_me("X2"))
                         case 'literal': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'false': return _p.ss($, ($) => sh.e.false_())
@@ -447,6 +444,8 @@ export const Expression = (
                 }))
                 case 'dictionary': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {
+                        case 'filter': return _p.ss($, ($) => _pdev.implement_me("X5"))
+                        case 'from list': return _p.ss($, ($) => _pdev.implement_me("X6"))
                         case 'literal': return _p.ss($, ($) => sh.e.call(
                             sh.e.property_access(
                                 sh.e.property_access(
@@ -475,6 +474,7 @@ export const Expression = (
                                 )
                             ]
                         ))
+                        case 'resolve': return _p.ss($, ($) => _pdev.implement_me("X7"))
                         default: return _p.au($[0])
                     }
                 }))
@@ -484,6 +484,8 @@ export const Expression = (
                 )
                 case 'list': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {
+                        case 'filter': return _p.ss($, ($) => _pdev.implement_me("X8"))
+                        case 'from dictionary': return _p.ss($, ($) => _pdev.implement_me("X9"))
                         case 'literal': return _p.ss($, ($) => sh.e.call(
                             sh.e.property_access(
                                 sh.e.property_access(
@@ -511,6 +513,9 @@ export const Expression = (
                                 )
                             ]
                         ))
+                        case 'map with state': return _p.ss($, ($) => _pdev.implement_me("X10"))
+                        case 'reduce': return _p.ss($, ($) => _pdev.implement_me("X11"))
+                        case 'reverse': return _p.ss($, ($) => _pdev.implement_me("X12"))
                         default: return _p.au($[0])
                     }
                 }))
@@ -526,15 +531,20 @@ export const Expression = (
                         }))
                         case 'integer': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
                                 case 'copy': return _p.ss($, ($) => Selection($))
+                                case 'divide': return _p.ss($, ($) => _pdev.implement_me("X17"))
+                                case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
                                 default: return _p.au($[0])
                             }
                         }))
                         case 'natural': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
                                 case 'copy': return _p.ss($, ($) => Selection($))
+                                case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
+                                case 'number of dictionary entries': return _p.ss($, ($) => _pdev.implement_me("X13"))
+                                case 'number of list items': return _p.ss($, ($) => _pdev.implement_me("X14"))
+                                case 'source column': return _p.ss($, ($) => _pdev.implement_me("X15"))
+                                case 'source line': return _p.ss($, ($) => _pdev.implement_me("X16"))
                                 default: return _p.au($[0])
                             }
                         }))
@@ -543,6 +553,7 @@ export const Expression = (
                 }))
                 case 'optional': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {
+                        case 'from boolean': return _p.ss($, ($) => _pdev.implement_me("X18"))
                         case 'literal': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'not set': return _p.ss($, ($) => sh.e.call(
@@ -590,6 +601,7 @@ export const Expression = (
                 }))
                 case 'text': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {
+                        case 'copy': return _p.ss($, ($) => Selection($))
                         case 'literal': return _p.ss($, ($) => sh.e.string_literal($.value, _p.decide.state($.type, ($) => {
                             switch ($[0]) {
                                 case 'freeform': return _p.ss($, ($) => 'quote')
@@ -597,15 +609,17 @@ export const Expression = (
                                 default: return _p.au($[0])
                             }
                         })))
-                        case 'copy': return _p.ss($, ($) => Selection($))
+                        case 'source document': return _p.ss($, ($) => _pdev.implement_me("X20"))
                         default: return _p.au($[0])
                     }
                 }))
                 default: return _p.au($[0])
             }
         }))
+        case 'select': return _p.ss($, ($) => Selection($))
         case 'special': return _p.ss($, ($) => _p.decide.state($, ($) => {
             switch ($[0]) {
+                case 'assert': return _p.ss($, ($) => _pdev.implement_me("X22"))
                 case 'abort': return _p.ss($, ($) => sh.e.call(
                     sh.e.identifier_raw("abort"),
                     [
@@ -647,7 +661,7 @@ export const Expression = (
                         sh.e.string_literal($, 'quote')
                     ]
                 ))
-                case 'select': return _p.ss($, ($) => Selection($))
+                case 'iterate': return _p.ss($, ($) => _pdev.implement_me("X23"))
                 case 'unreachable': return _p.ss($, ($) => sh.e.call(
                     sh.e.identifier_raw("_p_unreachable_code_path"),
                     [
@@ -693,7 +707,6 @@ export const Selection = (
             $.tail,
             _p.decide.state($.start, ($) => {
                 switch ($[0]) {
-                    case 'argument': return _p.ss($, ($) => sh.e.identifier_raw("FIXME ARGUMENT"))
                     case 'call': return _p.ss($, ($) => sh.e.call(
                         Selection($.source),
                         _p.list.nested_literal_old([

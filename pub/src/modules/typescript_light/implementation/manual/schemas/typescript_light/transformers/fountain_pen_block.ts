@@ -107,7 +107,7 @@ export const Statements = (
                         _p.decide.state($.type, ($) => {
                             switch ($[0]) {
                                 case 'named': return _p.ss($, ($) => sh.b.sub([
-                                    sh.b.snippet("{ "),
+                                    sh.b.snippet("{"),
                                     sh.b.indent([
                                         sh.g.list($.specifiers.__l_map(($) => sh.g.nested_block([
                                             Identifier($.name),
@@ -118,7 +118,7 @@ export const Statements = (
                                                 ]),
                                                 () => sh.b.nothing(),
                                             ),
-                                            sh.b.snippet(", ")
+                                            sh.b.snippet(",")
                                         ]))),
                                     ]),
                                     sh.b.snippet("}"),
@@ -218,31 +218,34 @@ export const Statements = (
                     Type($['type'], $p),
                 ])])
             ]))
-            case 'variable': return _p.ss($, ($) => sh.g.nested_block([sh.b.sub([
-                $.export ? sh.b.snippet("export ") : sh.b.nothing(),
-                $.const ? sh.b.snippet("const ") : sh.b.snippet("let "),
-                Identifier($['name']),
-                $.type.__decide(
-                    ($) => sh.b.sub([
-                        sh.b.snippet(": "),
-                        Type($, $p)
-                    ]),
-                    () => sh.b.nothing(),
-                ),
-                $.expression.__decide(
-                    ($) => sh.b.sub([
-                        sh.b.snippet(" = "),
-                        Expression(
-                            $,
-                            {
-                                'replace empty type literals by null': $p['replace empty type literals by null'],
-                                'object literal needs parentheses': true,
-                            }
-                        )
-                    ]),
-                    () => sh.b.nothing(),
-                ),
-            ])]))
+            case 'variable': return _p.ss($, ($) => sh.g.sub([
+                sh.g.simple_block(``),
+                sh.g.nested_block([sh.b.sub([
+                    $.export ? sh.b.snippet("export ") : sh.b.nothing(),
+                    $.const ? sh.b.snippet("const ") : sh.b.snippet("let "),
+                    Identifier($['name']),
+                    $.type.__decide(
+                        ($) => sh.b.sub([
+                            sh.b.snippet(": "),
+                            Type($, $p)
+                        ]),
+                        () => sh.b.nothing(),
+                    ),
+                    $.expression.__decide(
+                        ($) => sh.b.sub([
+                            sh.b.snippet(" = "),
+                            Expression(
+                                $,
+                                {
+                                    'replace empty type literals by null': $p['replace empty type literals by null'],
+                                    'object literal needs parentheses': true,
+                                }
+                            )
+                        ]),
+                        () => sh.b.nothing(),
+                    ),
+                ])])
+            ]))
             default: return _p.au($[0])
         }
     })
@@ -280,7 +283,7 @@ export const Expression = (
                     ]),
                     () => sh.b.nothing(),
                 ),
-                $['is last'] ? sh.b.nothing() : sh.b.snippet(",")
+                $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
             ]))),
             sh.b.snippet(")"),
             $['return type'].__decide(
@@ -317,7 +320,7 @@ export const Expression = (
             sh.b.indent([
                 sh.g.sub(op_enrich_list_items_with_position_information($['arguments']).__l_map(($) => sh.g.nested_block([
                     Expression($.value, $p),
-                    $['is last'] ? sh.b.nothing() : sh.b.snippet(", ")
+                    $['is last'] ? sh.b.nothing() : sh.b.snippet(",")
                 ]))),
             ]),
             sh.b.snippet(")"),

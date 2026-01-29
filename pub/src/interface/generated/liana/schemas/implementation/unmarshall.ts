@@ -7,25 +7,6 @@ import * as i_out from "./data/unresolved"
 
 import * as i_in from "astn-core/dist/interface/generated/liana/schemas/parse_tree/data"
 
-export namespace Type_Reference_ {
-    
-    export type I = i_in.Value
-    
-    export type O = i_out.Type_Reference
-    
-    export type E = i_generic.Error
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Type_Reference_ = (
-    context: Type_Reference_.I,
-    abort: _pi.Abort<Type_Reference_.E>,
-) => Type_Reference_.O
-
 export namespace Module_ {
     
     export type I = i_in.Value
@@ -64,11 +45,11 @@ export type Module_Set_ = (
     abort: _pi.Abort<Module_Set_.E>,
 ) => Module_Set_.O
 
-export namespace Type_Node_Reference_ {
+export namespace Temp_Type_Node_Reference_ {
     
     export type I = i_in.Value
     
-    export type O = i_out.Type_Node_Reference
+    export type O = i_out.Temp_Type_Node_Reference
     
     export type E = i_generic.Error
     
@@ -78,10 +59,10 @@ export namespace Type_Node_Reference_ {
     
 }
 
-export type Type_Node_Reference_ = (
-    context: Type_Node_Reference_.I,
-    abort: _pi.Abort<Type_Node_Reference_.E>,
-) => Type_Node_Reference_.O
+export type Temp_Type_Node_Reference_ = (
+    context: Temp_Type_Node_Reference_.I,
+    abort: _pi.Abort<Temp_Type_Node_Reference_.E>,
+) => Temp_Type_Node_Reference_.O
 
 export namespace Selection_ {
     
@@ -122,10 +103,9 @@ export type Expression_ = (
 ) => Expression_.O
 
 export { 
-    Type_Reference_ as Type_Reference, 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
-    Type_Node_Reference_ as Type_Node_Reference, 
+    Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
     Selection_ as Selection, 
     Expression_ as Expression, 
 }

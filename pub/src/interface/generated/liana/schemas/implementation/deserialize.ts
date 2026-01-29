@@ -5,33 +5,6 @@ import * as i_generic from "../../generic/deserialize"
 
 import * as i_out from "./data/unresolved"
 
-export namespace Type_Reference_ {
-    
-    export type I = string
-    
-    export type O = i_out.Type_Reference
-    
-    export type E = i_generic.Error
-    
-    export namespace P {
-        
-        export type document_resource_identifier = string
-        
-        export type tab_size = number
-        
-    }
-    
-}
-
-export type Type_Reference_ = (
-    context: Type_Reference_.I,
-    abort: _pi.Abort<Type_Reference_.E>,
-    parameters: {
-        readonly 'document resource identifier': Type_Reference_.P.document_resource_identifier
-        readonly 'tab size': Type_Reference_.P.tab_size
-    },
-) => Type_Reference_.O
-
 export namespace Module_ {
     
     export type I = string
@@ -86,11 +59,11 @@ export type Module_Set_ = (
     },
 ) => Module_Set_.O
 
-export namespace Type_Node_Reference_ {
+export namespace Temp_Type_Node_Reference_ {
     
     export type I = string
     
-    export type O = i_out.Type_Node_Reference
+    export type O = i_out.Temp_Type_Node_Reference
     
     export type E = i_generic.Error
     
@@ -104,14 +77,14 @@ export namespace Type_Node_Reference_ {
     
 }
 
-export type Type_Node_Reference_ = (
-    context: Type_Node_Reference_.I,
-    abort: _pi.Abort<Type_Node_Reference_.E>,
+export type Temp_Type_Node_Reference_ = (
+    context: Temp_Type_Node_Reference_.I,
+    abort: _pi.Abort<Temp_Type_Node_Reference_.E>,
     parameters: {
-        readonly 'document resource identifier': Type_Node_Reference_.P.document_resource_identifier
-        readonly 'tab size': Type_Node_Reference_.P.tab_size
+        readonly 'document resource identifier': Temp_Type_Node_Reference_.P.document_resource_identifier
+        readonly 'tab size': Temp_Type_Node_Reference_.P.tab_size
     },
-) => Type_Node_Reference_.O
+) => Temp_Type_Node_Reference_.O
 
 export namespace Selection_ {
     
@@ -168,10 +141,9 @@ export type Expression_ = (
 ) => Expression_.O
 
 export { 
-    Type_Reference_ as Type_Reference, 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
-    Type_Node_Reference_ as Type_Node_Reference, 
+    Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
     Selection_ as Selection, 
     Expression_ as Expression, 
 }

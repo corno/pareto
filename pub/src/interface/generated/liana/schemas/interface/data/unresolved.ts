@@ -1,23 +1,23 @@
 
 import * as _pi from "pareto-core/dist/interface"
 
-import * as i__location from "../../../generic/location"
+import * as i__location from "astn-core/dist/interface/generated/liana/schemas/location/data"
 
 export namespace Imports_ {
     
-    export type location = i__location.Location
+    export type location = i__location.Relative_Location
     
     export namespace dictionary {
         
         export namespace D {
             
-            export type location = i__location.Location
+            export type location = i__location.Relative_Location
             
             export namespace entry {
                 
                 export namespace type_ {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export namespace state {
                         
@@ -54,13 +54,13 @@ export namespace Imports_ {
                 
                 export namespace tail {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export namespace list {
                         
                         export namespace L {
                             
-                            export type location = i__location.Location
+                            export type location = i__location.Relative_Location
                             
                             export type item = string
                             
@@ -113,17 +113,17 @@ export namespace Module_ {
     
     export namespace types {
         
-        export type location = i__location.Location
+        export type location = i__location.Relative_Location
         
         export namespace dictionary {
             
             export namespace D {
                 
-                export type location = i__location.Location
+                export type location = i__location.Relative_Location
                 
                 export namespace entry {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export namespace state {
                         
@@ -137,7 +137,7 @@ export namespace Module_ {
                             
                             export namespace type_ {
                                 
-                                export type location = i__location.Location
+                                export type location = i__location.Relative_Location
                                 
                                 export namespace state {
                                     
@@ -161,17 +161,17 @@ export namespace Module_ {
                                             
                                             export namespace O {
                                                 
-                                                export type location = i__location.Location
+                                                export type location = i__location.Relative_Location
                                                 
                                                 export namespace dictionary {
                                                     
                                                     export namespace D {
                                                         
-                                                        export type location = i__location.Location
+                                                        export type location = i__location.Relative_Location
                                                         
                                                         export namespace entry {
                                                             
-                                                            export type location = i__location.Location
+                                                            export type location = i__location.Relative_Location
                                                             
                                                             export namespace state {
                                                                 
@@ -241,13 +241,13 @@ export namespace Module_ {
                                 
                                 export namespace O {
                                     
-                                    export type location = i__location.Location
+                                    export type location = i__location.Relative_Location
                                     
                                     export namespace dictionary {
                                         
                                         export namespace D {
                                             
-                                            export type location = i__location.Location
+                                            export type location = i__location.Relative_Location
                                             
                                             export type entry = Type_Node_
                                             
@@ -322,17 +322,17 @@ export type Module_ = {
 
 export namespace Module_Set_ {
     
-    export type location = i__location.Location
+    export type location = i__location.Relative_Location
     
     export namespace dictionary {
         
         export namespace D {
             
-            export type location = i__location.Location
+            export type location = i__location.Relative_Location
             
             export namespace entry {
                 
-                export type location = i__location.Location
+                export type location = i__location.Relative_Location
                 
                 export namespace state {
                     
@@ -373,7 +373,7 @@ export type Module_Set_ = {
 
 export namespace Type_Reference_ {
     
-    export type location = i__location.Location
+    export type location = i__location.Relative_Location
     
     export namespace state {
         
@@ -407,7 +407,7 @@ export type Type_Reference_ = {
 
 export namespace Type_Node_ {
     
-    export type location = i__location.Location
+    export type location = i__location.Relative_Location
     
     export namespace state {
         
@@ -427,13 +427,13 @@ export namespace Type_Node_ {
         
         export namespace group {
             
-            export type location = i__location.Location
+            export type location = i__location.Relative_Location
             
             export namespace dictionary {
                 
                 export namespace D {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export type entry = Type_Node_
                     
@@ -461,13 +461,13 @@ export namespace Type_Node_ {
         
         export namespace number_ {
             
-            export type location = i__location.Location
+            export type location = i__location.Relative_Location
             
             export namespace state {
                 
                 export namespace exact {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export namespace state {
                         
@@ -511,17 +511,17 @@ export namespace Type_Node_ {
             
             export namespace sub_selection {
                 
-                export type location = i__location.Location
+                export type location = i__location.Relative_Location
                 
                 export namespace list {
                     
                     export namespace L {
                         
-                        export type location = i__location.Location
+                        export type location = i__location.Relative_Location
                         
                         export namespace item {
                             
-                            export type location = i__location.Location
+                            export type location = i__location.Relative_Location
                             
                             export namespace state {
                                 
@@ -581,13 +581,13 @@ export namespace Type_Node_ {
         
         export namespace state {
             
-            export type location = i__location.Location
+            export type location = i__location.Relative_Location
             
             export namespace dictionary {
                 
                 export namespace D {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export type entry = Type_Node_
                     

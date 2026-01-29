@@ -1,28 +1,15 @@
 
 import * as _pi from "pareto-core/dist/interface"
 
-import * as i__location from "../../../generic/location"
+import * as i__location from "astn-core/dist/interface/generated/liana/schemas/location/data"
 
 import * as i__imports_interface from "../../interface/data/unresolved"
-
-export namespace Type_Reference_ {
-    
-    export type import_ = string
-    
-    export type type_ = string
-    
-}
-
-export type Type_Reference_ = {
-    readonly 'import': Type_Reference_.import_
-    readonly 'type': Type_Reference_.type_
-}
 
 export namespace Module_ {
     
     export namespace type_ {
         
-        export type location = i__location.Location
+        export type location = i__location.Relative_Location
         
         export namespace state {
             
@@ -53,25 +40,25 @@ export namespace Module_ {
     
     export namespace variable_imports {
         
-        export type location = i__location.Location
+        export type location = i__location.Relative_Location
         
         export namespace dictionary {
             
             export namespace D {
                 
-                export type location = i__location.Location
+                export type location = i__location.Relative_Location
                 
                 export namespace entry {
                     
                     export namespace tail {
                         
-                        export type location = i__location.Location
+                        export type location = i__location.Relative_Location
                         
                         export namespace list {
                             
                             export namespace L {
                                 
-                                export type location = i__location.Location
+                                export type location = i__location.Relative_Location
                                 
                                 export type item = string
                                 
@@ -95,7 +82,7 @@ export namespace Module_ {
                     
                     export namespace type_ {
                         
-                        export type location = i__location.Location
+                        export type location = i__location.Relative_Location
                         
                         export namespace state {
                             
@@ -157,17 +144,28 @@ export namespace Module_ {
     
     export namespace algorithms {
         
-        export type location = i__location.Location
+        export type location = i__location.Relative_Location
         
         export namespace dictionary {
             
             export namespace D {
                 
-                export type location = i__location.Location
+                export type location = i__location.Relative_Location
                 
                 export namespace entry {
                     
-                    export type type_ = Type_Reference_
+                    export namespace type_ {
+                        
+                        export type import_ = string
+                        
+                        export type type_ = string
+                        
+                    }
+                    
+                    export type type_ = {
+                        readonly 'import': type_.import_
+                        readonly 'type': type_.type_
+                    }
                     
                     export type expression = Expression_
                     
@@ -216,17 +214,17 @@ export type Module_ = {
 
 export namespace Module_Set_ {
     
-    export type location = i__location.Location
+    export type location = i__location.Relative_Location
     
     export namespace dictionary {
         
         export namespace D {
             
-            export type location = i__location.Location
+            export type location = i__location.Relative_Location
             
             export namespace entry {
                 
-                export type location = i__location.Location
+                export type location = i__location.Relative_Location
                 
                 export namespace state {
                     
@@ -265,23 +263,34 @@ export type Module_Set_ = {
     readonly 'dictionary': Module_Set_.dictionary
 }
 
-export namespace Type_Node_Reference_ {
+export namespace Temp_Type_Node_Reference_ {
     
-    export type type_ = Type_Reference_
+    export namespace type_ {
+        
+        export type import_ = string
+        
+        export type type_ = string
+        
+    }
+    
+    export type type_ = {
+        readonly 'import': type_.import_
+        readonly 'type': type_.type_
+    }
     
     export namespace sub_selection {
         
-        export type location = i__location.Location
+        export type location = i__location.Relative_Location
         
         export namespace list {
             
             export namespace L {
                 
-                export type location = i__location.Location
+                export type location = i__location.Relative_Location
                 
                 export namespace item {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export namespace state {
                         
@@ -331,14 +340,14 @@ export namespace Type_Node_Reference_ {
     
 }
 
-export type Type_Node_Reference_ = {
-    readonly 'type': Type_Node_Reference_.type_
-    readonly 'sub selection': Type_Node_Reference_.sub_selection
+export type Temp_Type_Node_Reference_ = {
+    readonly 'type': Temp_Type_Node_Reference_.type_
+    readonly 'sub selection': Temp_Type_Node_Reference_.sub_selection
 }
 
 export namespace Selection_ {
     
-    export type location = i__location.Location
+    export type location = i__location.Relative_Location
     
     export namespace state {
         
@@ -348,11 +357,9 @@ export namespace Selection_ {
             
             export namespace start {
                 
-                export type location = i__location.Location
+                export type location = i__location.Relative_Location
                 
                 export namespace state {
-                    
-                    export type argument = string
                     
                     export namespace call {
                         
@@ -372,13 +379,13 @@ export namespace Selection_ {
                             
                             export namespace O {
                                 
-                                export type location = i__location.Location
+                                export type location = i__location.Relative_Location
                                 
                                 export namespace dictionary {
                                     
                                     export namespace D {
                                         
-                                        export type location = i__location.Location
+                                        export type location = i__location.Relative_Location
                                         
                                         export type entry = Expression_
                                         
@@ -433,7 +440,7 @@ export namespace Selection_ {
                     
                     export namespace variable {
                         
-                        export type location = i__location.Location
+                        export type location = i__location.Relative_Location
                         
                         export namespace state {
                             
@@ -470,7 +477,6 @@ export namespace Selection_ {
                 }
                 
                 export type state = 
-                    | readonly ['argument', state.argument]
                     | readonly ['call', state.call]
                     | readonly ['context', state.context]
                     | readonly ['entry', state.entry]
@@ -486,13 +492,13 @@ export namespace Selection_ {
             
             export namespace tail {
                 
-                export type location = i__location.Location
+                export type location = i__location.Relative_Location
                 
                 export namespace list {
                     
                     export namespace L {
                         
-                        export type location = i__location.Location
+                        export type location = i__location.Relative_Location
                         
                         export type item = string
                         
@@ -536,7 +542,7 @@ export type Selection_ = {
 
 export namespace Expression_ {
     
-    export type location = i__location.Location
+    export type location = i__location.Relative_Location
     
     export namespace state {
         
@@ -544,7 +550,7 @@ export namespace Expression_ {
             
             export namespace type_ {
                 
-                export type location = i__location.Location
+                export type location = i__location.Relative_Location
                 
                 export namespace state {
                     
@@ -554,7 +560,7 @@ export namespace Expression_ {
                         
                         export namespace temp_resulting_node {
                             
-                            export type O = Type_Node_Reference_
+                            export type O = Temp_Type_Node_Reference_
                             
                         }
                         
@@ -573,13 +579,115 @@ export namespace Expression_ {
                         readonly 'if true': boolean_.if_true
                     }
                     
+                    export namespace dictionary {
+                        
+                        export type location = i__location.Relative_Location
+                        
+                        export namespace state {
+                            
+                            export namespace has_entries {
+                                
+                                export type dictionary = Selection_
+                                
+                                export type if_true = Expression_
+                                
+                                export type if_false = Expression_
+                                
+                            }
+                            
+                            export type has_entries = {
+                                readonly 'dictionary': has_entries.dictionary
+                                readonly 'if true': has_entries.if_true
+                                readonly 'if false': has_entries.if_false
+                            }
+                            
+                        }
+                        
+                        export type state = 
+                            | readonly ['has entries', state.has_entries]
+                        
+                    }
+                    
+                    export type dictionary = {
+                        readonly 'location': dictionary.location
+                        readonly 'state': dictionary.state
+                    }
+                    
+                    export namespace list {
+                        
+                        export type location = i__location.Relative_Location
+                        
+                        export namespace state {
+                            
+                            export namespace has_first_item {
+                                
+                                export type list = Selection_
+                                
+                                export type if_true = Expression_
+                                
+                                export type if_false = Expression_
+                                
+                            }
+                            
+                            export type has_first_item = {
+                                readonly 'list': has_first_item.list
+                                readonly 'if true': has_first_item.if_true
+                                readonly 'if false': has_first_item.if_false
+                            }
+                            
+                            export namespace has_last_item {
+                                
+                                export type list = Selection_
+                                
+                                export type if_true = Expression_
+                                
+                                export type if_false = Expression_
+                                
+                            }
+                            
+                            export type has_last_item = {
+                                readonly 'list': has_last_item.list
+                                readonly 'if true': has_last_item.if_true
+                                readonly 'if false': has_last_item.if_false
+                            }
+                            
+                            export namespace has_items {
+                                
+                                export type list = Selection_
+                                
+                                export type if_true = Expression_
+                                
+                                export type if_false = Expression_
+                                
+                            }
+                            
+                            export type has_items = {
+                                readonly 'list': has_items.list
+                                readonly 'if true': has_items.if_true
+                                readonly 'if false': has_items.if_false
+                            }
+                            
+                        }
+                        
+                        export type state = 
+                            | readonly ['has first item', state.has_first_item]
+                            | readonly ['has last item', state.has_last_item]
+                            | readonly ['has items', state.has_items]
+                        
+                    }
+                    
+                    export type list = {
+                        readonly 'location': list.location
+                        readonly 'state': list.state
+                    }
+                    
                     export namespace optional {
                         
                         export type source = Selection_
                         
                         export namespace temp_resulting_node {
                             
-                            export type O = Type_Node_Reference_
+                            export type O = Temp_Type_Node_Reference_
                             
                         }
                         
@@ -604,7 +712,7 @@ export namespace Expression_ {
                         
                         export namespace temp_resulting_node {
                             
-                            export type O = Type_Node_Reference_
+                            export type O = Temp_Type_Node_Reference_
                             
                         }
                         
@@ -612,7 +720,7 @@ export namespace Expression_ {
                         
                         export namespace type_ {
                             
-                            export type location = i__location.Location
+                            export type location = i__location.Relative_Location
                             
                             export namespace state {
                                 
@@ -620,13 +728,13 @@ export namespace Expression_ {
                                     
                                     export namespace cases {
                                         
-                                        export type location = i__location.Location
+                                        export type location = i__location.Relative_Location
                                         
                                         export namespace dictionary {
                                             
                                             export namespace D {
                                                 
-                                                export type location = i__location.Location
+                                                export type location = i__location.Relative_Location
                                                 
                                                 export type entry = Expression_
                                                 
@@ -661,13 +769,13 @@ export namespace Expression_ {
                                     
                                     export namespace cases {
                                         
-                                        export type location = i__location.Location
+                                        export type location = i__location.Relative_Location
                                         
                                         export namespace dictionary {
                                             
                                             export namespace D {
                                                 
-                                                export type location = i__location.Location
+                                                export type location = i__location.Relative_Location
                                                 
                                                 export type entry = Expression_
                                                 
@@ -722,7 +830,7 @@ export namespace Expression_ {
                         
                         export namespace temp_resulting_node {
                             
-                            export type O = Type_Node_Reference_
+                            export type O = Temp_Type_Node_Reference_
                             
                         }
                         
@@ -730,13 +838,13 @@ export namespace Expression_ {
                         
                         export namespace cases {
                             
-                            export type location = i__location.Location
+                            export type location = i__location.Relative_Location
                             
                             export namespace dictionary {
                                 
                                 export namespace D {
                                     
-                                    export type location = i__location.Location
+                                    export type location = i__location.Relative_Location
                                     
                                     export type entry = Expression_
                                     
@@ -773,6 +881,8 @@ export namespace Expression_ {
                 
                 export type state = 
                     | readonly ['boolean', state.boolean_]
+                    | readonly ['dictionary', state.dictionary]
+                    | readonly ['list', state.list]
                     | readonly ['optional', state.optional]
                     | readonly ['state', state.state]
                     | readonly ['text', state.text]
@@ -792,19 +902,19 @@ export namespace Expression_ {
         
         export namespace initialize {
             
-            export type location = i__location.Location
+            export type location = i__location.Relative_Location
             
             export namespace state {
                 
                 export namespace boolean_ {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export namespace state {
                         
                         export namespace literal {
                             
-                            export type location = i__location.Location
+                            export type location = i__location.Relative_Location
                             
                             export namespace state {
                                 
@@ -829,12 +939,18 @@ export namespace Expression_ {
                         
                         export type copy = Selection_
                         
+                        export type dictionary_is_empty = Selection_
+                        
+                        export type list_is_empty = Selection_
+                        
                     }
                     
                     export type state = 
                         | readonly ['literal', state.literal]
                         | readonly ['not', state.not]
                         | readonly ['copy', state.copy]
+                        | readonly ['dictionary is empty', state.dictionary_is_empty]
+                        | readonly ['list is empty', state.list_is_empty]
                     
                 }
                 
@@ -845,19 +961,51 @@ export namespace Expression_ {
                 
                 export namespace dictionary {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export namespace state {
                         
+                        export namespace filter {
+                            
+                            export type source = Selection_
+                            
+                            export type entry_handler = Expression_
+                            
+                        }
+                        
+                        export type filter = {
+                            readonly 'source': filter.source
+                            readonly 'entry handler': filter.entry_handler
+                        }
+                        
+                        export namespace from_list {
+                            
+                            export type source = Selection_
+                            
+                            export type get_id = Expression_
+                            
+                            export type get_entry = Expression_
+                            
+                            export type abort = Expression_
+                            
+                        }
+                        
+                        export type from_list = {
+                            readonly 'source': from_list.source
+                            readonly 'get id': from_list.get_id
+                            readonly 'get entry': from_list.get_entry
+                            readonly 'abort': from_list.abort
+                        }
+                        
                         export namespace literal {
                             
-                            export type location = i__location.Location
+                            export type location = i__location.Relative_Location
                             
                             export namespace dictionary {
                                 
                                 export namespace D {
                                     
-                                    export type location = i__location.Location
+                                    export type location = i__location.Relative_Location
                                     
                                     export type entry = Expression_
                                     
@@ -892,11 +1040,27 @@ export namespace Expression_ {
                             readonly 'entry handler': map.entry_handler
                         }
                         
+                        export namespace resolve {
+                            
+                            export type source = Selection_
+                            
+                            export type entry_handler = Expression_
+                            
+                        }
+                        
+                        export type resolve = {
+                            readonly 'source': resolve.source
+                            readonly 'entry handler': resolve.entry_handler
+                        }
+                        
                     }
                     
                     export type state = 
+                        | readonly ['filter', state.filter]
+                        | readonly ['from list', state.from_list]
                         | readonly ['literal', state.literal]
                         | readonly ['map', state.map]
+                        | readonly ['resolve', state.resolve]
                     
                 }
                 
@@ -907,13 +1071,13 @@ export namespace Expression_ {
                 
                 export namespace group {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export namespace dictionary {
                         
                         export namespace D {
                             
-                            export type location = i__location.Location
+                            export type location = i__location.Relative_Location
                             
                             export type entry = Expression_
                             
@@ -937,19 +1101,45 @@ export namespace Expression_ {
                 
                 export namespace list {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export namespace state {
                         
+                        export namespace filter {
+                            
+                            export type source = Selection_
+                            
+                            export type entry_handler = Expression_
+                            
+                        }
+                        
+                        export type filter = {
+                            readonly 'source': filter.source
+                            readonly 'entry handler': filter.entry_handler
+                        }
+                        
+                        export namespace from_dictionary {
+                            
+                            export type source = Selection_
+                            
+                            export type get_item = Expression_
+                            
+                        }
+                        
+                        export type from_dictionary = {
+                            readonly 'source': from_dictionary.source
+                            readonly 'get item': from_dictionary.get_item
+                        }
+                        
                         export namespace literal {
                             
-                            export type location = i__location.Location
+                            export type location = i__location.Relative_Location
                             
                             export namespace list {
                                 
                                 export namespace L {
                                     
-                                    export type location = i__location.Location
+                                    export type location = i__location.Relative_Location
                                     
                                     export type item = Expression_
                                     
@@ -984,11 +1174,64 @@ export namespace Expression_ {
                             readonly 'item handler': map.item_handler
                         }
                         
+                        export namespace map_with_state {
+                            
+                            export type source = Selection_
+                            
+                            export type initial_state = Expression_
+                            
+                            export type item_handler = Expression_
+                            
+                            export type update_state = Expression_
+                            
+                            export type wrap_up = Expression_
+                            
+                        }
+                        
+                        export type map_with_state = {
+                            readonly 'source': map_with_state.source
+                            readonly 'initial state': map_with_state.initial_state
+                            readonly 'item handler': map_with_state.item_handler
+                            readonly 'update state': map_with_state.update_state
+                            readonly 'wrap up': map_with_state.wrap_up
+                        }
+                        
+                        export namespace reduce {
+                            
+                            export type source = Selection_
+                            
+                            export type initial_state = Expression_
+                            
+                            export type item_handler = Expression_
+                            
+                        }
+                        
+                        export type reduce = {
+                            readonly 'source': reduce.source
+                            readonly 'initial state': reduce.initial_state
+                            readonly 'item handler': reduce.item_handler
+                        }
+                        
+                        export namespace reverse {
+                            
+                            export type source = Selection_
+                            
+                        }
+                        
+                        export type reverse = {
+                            readonly 'source': reverse.source
+                        }
+                        
                     }
                     
                     export type state = 
+                        | readonly ['filter', state.filter]
+                        | readonly ['from dictionary', state.from_dictionary]
                         | readonly ['literal', state.literal]
                         | readonly ['map', state.map]
+                        | readonly ['map with state', state.map_with_state]
+                        | readonly ['reduce', state.reduce]
+                        | readonly ['reverse', state.reverse]
                     
                 }
                 
@@ -1001,13 +1244,13 @@ export namespace Expression_ {
                 
                 export namespace number_ {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export namespace state {
                         
                         export namespace approximation {
                             
-                            export type location = i__location.Location
+                            export type location = i__location.Relative_Location
                             
                             export namespace state {
                                 
@@ -1030,19 +1273,36 @@ export namespace Expression_ {
                         
                         export namespace integer {
                             
-                            export type location = i__location.Location
+                            export type location = i__location.Relative_Location
                             
                             export namespace state {
                                 
-                                export type literal = number
-                                
                                 export type copy = Selection_
+                                
+                                export namespace divide {
+                                    
+                                    export type divident = Selection_
+                                    
+                                    export type divisor = Selection_
+                                    
+                                    export type abort = Expression_
+                                    
+                                }
+                                
+                                export type divide = {
+                                    readonly 'divident': divide.divident
+                                    readonly 'divisor': divide.divisor
+                                    readonly 'abort': divide.abort
+                                }
+                                
+                                export type literal = number
                                 
                             }
                             
                             export type state = 
-                                | readonly ['literal', state.literal]
                                 | readonly ['copy', state.copy]
+                                | readonly ['divide', state.divide]
+                                | readonly ['literal', state.literal]
                             
                         }
                         
@@ -1053,7 +1313,7 @@ export namespace Expression_ {
                         
                         export namespace natural {
                             
-                            export type location = i__location.Location
+                            export type location = i__location.Relative_Location
                             
                             export namespace state {
                                 
@@ -1061,11 +1321,39 @@ export namespace Expression_ {
                                 
                                 export type copy = Selection_
                                 
+                                export namespace number_of_dictionary_entries {
+                                    
+                                    export type dictionary = Selection_
+                                    
+                                }
+                                
+                                export type number_of_dictionary_entries = {
+                                    readonly 'dictionary': number_of_dictionary_entries.dictionary
+                                }
+                                
+                                export namespace number_of_list_items {
+                                    
+                                    export type list = Selection_
+                                    
+                                }
+                                
+                                export type number_of_list_items = {
+                                    readonly 'list': number_of_list_items.list
+                                }
+                                
+                                export type source_column = null
+                                
+                                export type source_line = null
+                                
                             }
                             
                             export type state = 
                                 | readonly ['literal', state.literal]
                                 | readonly ['copy', state.copy]
+                                | readonly ['number of dictionary entries', state.number_of_dictionary_entries]
+                                | readonly ['number of list items', state.number_of_list_items]
+                                | readonly ['source column', state.source_column]
+                                | readonly ['source line', state.source_line]
                             
                         }
                         
@@ -1090,13 +1378,26 @@ export namespace Expression_ {
                 
                 export namespace optional {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export namespace state {
                         
+                        export namespace from_boolean {
+                            
+                            export type source = Selection_
+                            
+                            export type get_set = Expression_
+                            
+                        }
+                        
+                        export type from_boolean = {
+                            readonly 'source': from_boolean.source
+                            readonly 'get set': from_boolean.get_set
+                        }
+                        
                         export namespace literal {
                             
-                            export type location = i__location.Location
+                            export type location = i__location.Relative_Location
                             
                             export namespace state {
                                 
@@ -1133,6 +1434,7 @@ export namespace Expression_ {
                     }
                     
                     export type state = 
+                        | readonly ['from boolean', state.from_boolean]
                         | readonly ['literal', state.literal]
                         | readonly ['map', state.map]
                     
@@ -1145,7 +1447,7 @@ export namespace Expression_ {
                 
                 export namespace state {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export namespace state {
                         
@@ -1176,15 +1478,17 @@ export namespace Expression_ {
                 
                 export namespace text {
                     
-                    export type location = i__location.Location
+                    export type location = i__location.Relative_Location
                     
                     export namespace state {
+                        
+                        export type copy = Selection_
                         
                         export namespace literal {
                             
                             export namespace type_ {
                                 
-                                export type location = i__location.Location
+                                export type location = i__location.Relative_Location
                                 
                                 export namespace state {
                                     
@@ -1214,13 +1518,14 @@ export namespace Expression_ {
                             readonly 'value': literal.value
                         }
                         
-                        export type copy = Selection_
+                        export type source_document = null
                         
                     }
                     
                     export type state = 
-                        | readonly ['literal', state.literal]
                         | readonly ['copy', state.copy]
+                        | readonly ['literal', state.literal]
+                        | readonly ['source document', state.source_document]
                     
                 }
                 
@@ -1249,31 +1554,46 @@ export namespace Expression_ {
             readonly 'state': initialize.state
         }
         
+        export type select = Selection_
+        
         export namespace special {
             
-            export type location = i__location.Location
+            export type location = i__location.Relative_Location
             
             export namespace state {
                 
                 export type abort = Expression_
                 
+                export namespace assert {
+                    
+                    export type tester = Expression_
+                    
+                    export type normal_flow = Expression_
+                    
+                }
+                
+                export type assert = {
+                    readonly 'tester': assert.tester
+                    readonly 'normal flow': assert.normal_flow
+                }
+                
                 export namespace block {
                     
                     export namespace variables {
                         
-                        export type location = i__location.Location
+                        export type location = i__location.Relative_Location
                         
                         export namespace dictionary {
                             
                             export namespace D {
                                 
-                                export type location = i__location.Location
+                                export type location = i__location.Relative_Location
                                 
                                 export namespace entry {
                                     
                                     export namespace type_ {
                                         
-                                        export type O = Type_Node_Reference_
+                                        export type O = Temp_Type_Node_Reference_
                                         
                                     }
                                     
@@ -1308,13 +1628,13 @@ export namespace Expression_ {
                     
                     export namespace temp_ordered_variables {
                         
-                        export type location = i__location.Location
+                        export type location = i__location.Relative_Location
                         
                         export namespace list {
                             
                             export namespace L {
                                 
-                                export type location = i__location.Location
+                                export type location = i__location.Relative_Location
                                 
                                 export namespace item {
                                     
@@ -1322,7 +1642,7 @@ export namespace Expression_ {
                                     
                                     export namespace type_ {
                                         
-                                        export type O = Type_Node_Reference_
+                                        export type O = Temp_Type_Node_Reference_
                                         
                                     }
                                     
@@ -1381,7 +1701,18 @@ export namespace Expression_ {
                 
                 export type implement_me = string
                 
-                export type select = Selection_
+                export namespace iterate {
+                    
+                    export type list = Selection_
+                    
+                    export type handler = Expression_
+                    
+                }
+                
+                export type iterate = {
+                    readonly 'list': iterate.list
+                    readonly 'handler': iterate.handler
+                }
                 
                 export type unreachable = null
                 
@@ -1389,10 +1720,11 @@ export namespace Expression_ {
             
             export type state = 
                 | readonly ['abort', state.abort]
+                | readonly ['assert', state.assert]
                 | readonly ['block', state.block]
                 | readonly ['change context', state.change_context]
                 | readonly ['implement me', state.implement_me]
-                | readonly ['select', state.select]
+                | readonly ['iterate', state.iterate]
                 | readonly ['unreachable', state.unreachable]
             
         }
@@ -1407,6 +1739,7 @@ export namespace Expression_ {
     export type state = 
         | readonly ['decide', state.decide]
         | readonly ['initialize', state.initialize]
+        | readonly ['select', state.select]
         | readonly ['special', state.special]
     
 }
@@ -1417,10 +1750,9 @@ export type Expression_ = {
 }
 
 export { 
-    Type_Reference_ as Type_Reference, 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
-    Type_Node_Reference_ as Type_Node_Reference, 
+    Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
     Selection_ as Selection, 
     Expression_ as Expression, 
 }

@@ -10,19 +10,19 @@ const wrap_state = <T>(value: T): T => value
 
 
 export namespace sub {
-    export const dictionary = (): d_target.Type_Node_Reference.sub_selection.L => wrap_state(['dictionary', null])
+    export const dictionary = (): d_target.Temp_Type_Node_Reference.sub_selection.L => wrap_state(['dictionary', null])
 
-    export const list = (): d_target.Type_Node_Reference.sub_selection.L => wrap_state(['list', null])
+    export const list = (): d_target.Temp_Type_Node_Reference.sub_selection.L => wrap_state(['list', null])
 
     export const state = (
         name: string
-    ): d_target.Type_Node_Reference.sub_selection.L => wrap_state(['state', name])
+    ): d_target.Temp_Type_Node_Reference.sub_selection.L => wrap_state(['state', name])
 
     export const group = (
         name: string,
-    ): d_target.Type_Node_Reference.sub_selection.L => wrap_state(['group', name])
+    ): d_target.Temp_Type_Node_Reference.sub_selection.L => wrap_state(['group', name])
 
-    export const optional = (): d_target.Type_Node_Reference.sub_selection.L => wrap_state(['optional', null])
+    export const optional = (): d_target.Temp_Type_Node_Reference.sub_selection.L => wrap_state(['optional', null])
 }
 
 export namespace vi {
@@ -56,21 +56,11 @@ export namespace vi {
     })
 }
 
-
-
-export const type_reference = (
-    imp: string,
-    type: string,
-): d_target.Type_Reference => ({
-    'import': imp,
-    'type': type,
-})
-
 export const type_node_reference = (
     imp: string,
     type: string,
-    sub_selection: _p.Raw_Or_Normal_List<d_target.Type_Node_Reference.sub_selection.L>,
-): d_target.Type_Node_Reference => ({
+    sub_selection: _p.Raw_Or_Normal_List<d_target.Temp_Type_Node_Reference.sub_selection.L>,
+): d_target.Temp_Type_Node_Reference => ({
     'type': {
         'import': imp,
         'type': type,
@@ -105,13 +95,17 @@ export namespace m {
 }
 
 export const algorithm = (
-    type: d_target.Type_Reference,
+    imp: string,
+    type: string,
     has_abort: boolean,
     has_lookups: boolean,
     has_parameters: boolean,
     expression: d_target.Expression,
 ): d_target.Module.algorithms.D => ({
-    'type': type,
+    'type': {
+        'import': imp,
+        'type': type,
+    },
     'expression': expression,
     'temp has abort': has_abort,
     'temp has lookups': has_lookups,
@@ -119,7 +113,7 @@ export const algorithm = (
 })
 
 export const variable = (
-    type: null | d_target.Type_Node_Reference,
+    type: null | d_target.Temp_Type_Node_Reference,
     expression: d_target.Expression,
 ): d_target.Expression.special.block.variables.D => ({
     'type': type === null ? _p.optional.not_set() : _p.optional.set(type),
@@ -128,7 +122,7 @@ export const variable = (
 
 export const temp_ordered_variable = (
     name: string,
-    type: null | d_target.Type_Node_Reference,
+    type: null | d_target.Temp_Type_Node_Reference,
     expression: d_target.Expression,
 ): d_target.Expression.special.block.temp_ordered_variables.L => ({
     'name': name,
@@ -261,7 +255,7 @@ export namespace e {
             source: d_target.Selection,
             if_set: d_target.Expression,
             if_not_set: d_target.Expression,
-            resulting_type?: d_target.Type_Node_Reference,
+            resulting_type?: d_target.Temp_Type_Node_Reference,
         ): d_target.Expression => wrap_state(['decide', {
             'type': wrap_state(['optional', {
                 'source': source,
@@ -275,7 +269,7 @@ export namespace e {
         export const state = (
             source: d_target.Selection,
             cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide.type_.state.type_.full.cases.D>,
-            resulting_type?: null | d_target.Type_Node_Reference,
+            resulting_type?: null | d_target.Temp_Type_Node_Reference,
         ): d_target.Expression => wrap_state(['decide', {
             'type': wrap_state(['state', {
                 'source': source,
@@ -290,7 +284,7 @@ export namespace e {
             source: d_target.Selection,
             cases: _p.Raw_Or_Normal_Dictionary<d_target.Expression.decide.type_.state.type_.partial.cases.D>,
             default_: d_target.Expression,
-            resulting_type?: null | d_target.Type_Node_Reference,
+            resulting_type?: null | d_target.Temp_Type_Node_Reference,
         ): d_target.Expression => wrap_state(['decide', {
             'type': wrap_state(['state', {
                 'source': source,
@@ -306,7 +300,7 @@ export namespace e {
 
     export const select = (
         selection: d_target.Selection
-    ): d_target.Expression => wrap_state(['special', wrap_state(['select', selection])])
+    ): d_target.Expression => wrap_state(['select', selection])
 
     export namespace state {
 

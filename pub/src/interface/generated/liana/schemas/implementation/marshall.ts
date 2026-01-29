@@ -5,22 +5,6 @@ import * as i_out from "astn-core/dist/interface/generated/liana/schemas/sealed_
 
 import * as i_in from "./data/resolved"
 
-export namespace Type_Reference_ {
-    
-    export type I = i_in.Type_Reference
-    
-    export type O = i_out.Value
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Type_Reference_ = (
-    context: Type_Reference_.I,
-) => Type_Reference_.O
-
 export namespace Module_ {
     
     export type I = i_in.Module
@@ -53,9 +37,9 @@ export type Module_Set_ = (
     context: Module_Set_.I,
 ) => Module_Set_.O
 
-export namespace Type_Node_Reference_ {
+export namespace Temp_Type_Node_Reference_ {
     
-    export type I = i_in.Type_Node_Reference
+    export type I = i_in.Temp_Type_Node_Reference
     
     export type O = i_out.Value
     
@@ -65,9 +49,9 @@ export namespace Type_Node_Reference_ {
     
 }
 
-export type Type_Node_Reference_ = (
-    context: Type_Node_Reference_.I,
-) => Type_Node_Reference_.O
+export type Temp_Type_Node_Reference_ = (
+    context: Temp_Type_Node_Reference_.I,
+) => Temp_Type_Node_Reference_.O
 
 export namespace Selection_ {
     
@@ -102,10 +86,9 @@ export type Expression_ = (
 ) => Expression_.O
 
 export { 
-    Type_Reference_ as Type_Reference, 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
-    Type_Node_Reference_ as Type_Node_Reference, 
+    Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
     Selection_ as Selection, 
     Expression_ as Expression, 
 }
