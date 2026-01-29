@@ -257,9 +257,17 @@ export namespace e {
 
     }
 
-    export const group = (
-        properties: _p.Raw_Or_Normal_Dictionary<d_target.Expression>
-    ): d_target.Expression => wrap_state(['initialize', wrap_state(['group', _p.dictionary.literal(properties)])])
+    export namespace group {
+
+        export const literal = (
+            properties: _p.Raw_Or_Normal_Dictionary<d_target.Expression>
+        ): d_target.Expression => wrap_state(['initialize', wrap_state(['group', wrap_state(['literal', _p.dictionary.literal(properties)])])])
+
+        export const resolve = (
+            properties: _p.Raw_Or_Normal_Dictionary<d_target.Expression>
+        ): d_target.Expression => wrap_state(['initialize', wrap_state(['group', wrap_state(['resolve', _p.dictionary.literal(properties)])])])
+
+    }
 
     export const implement_me = (description: string): d_target.Expression => wrap_state(['special', wrap_state(['implement me', description])])
 

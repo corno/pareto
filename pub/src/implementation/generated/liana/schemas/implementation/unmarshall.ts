@@ -2477,29 +2477,89 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                         'location': v_parse_tree_to_location.Value(
                                                             $
                                                         )['start']['relative'],
-                                                        'state': ['group', {
-                                                            'location': v_parse_tree_to_location.Value(
-                                                                $
-                                                            )['start']['relative'],
-                                                            'dictionary': v_unmarshalled_from_parse_tree.Dictionary(
+                                                        'state': ['group', _p_cc(
+                                                            v_unmarshalled_from_parse_tree.State(
                                                                 $,
                                                                 ($) => abort(
-                                                                    ['expected a dictionary', null]
+                                                                    ['expected a state', null]
                                                                 )
-                                                            ).__d_map(
-                                                                ($, id) => ({
-                                                                    'location': v_parse_tree_to_location.Value(
-                                                                        $
-                                                                    )['start']['relative'],
-                                                                    'entry': Expression(
-                                                                        $,
-                                                                        ($) => abort(
-                                                                            $
-                                                                        )
-                                                                    ),
-                                                                })
                                                             ),
-                                                        }],
+                                                            ($) => _p.decide.text(
+                                                                $['option']['value'],
+                                                                ($t): t_out.Expression.state.initialize.state.group => {
+                                                                    switch ($t) {
+                                                                        case 'literal':
+                                                                            return _p_cc(
+                                                                                $['value'],
+                                                                                ($) => ({
+                                                                                    'location': v_parse_tree_to_location.Value(
+                                                                                        $
+                                                                                    )['start']['relative'],
+                                                                                    'state': ['literal', {
+                                                                                        'location': v_parse_tree_to_location.Value(
+                                                                                            $
+                                                                                        )['start']['relative'],
+                                                                                        'dictionary': v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                            $,
+                                                                                            ($) => abort(
+                                                                                                ['expected a dictionary', null]
+                                                                                            )
+                                                                                        ).__d_map(
+                                                                                            ($, id) => ({
+                                                                                                'location': v_parse_tree_to_location.Value(
+                                                                                                    $
+                                                                                                )['start']['relative'],
+                                                                                                'entry': Expression(
+                                                                                                    $,
+                                                                                                    ($) => abort(
+                                                                                                        $
+                                                                                                    )
+                                                                                                ),
+                                                                                            })
+                                                                                        ),
+                                                                                    }],
+                                                                                })
+                                                                            )
+                                                                        case 'resolve':
+                                                                            return _p_cc(
+                                                                                $['value'],
+                                                                                ($) => ({
+                                                                                    'location': v_parse_tree_to_location.Value(
+                                                                                        $
+                                                                                    )['start']['relative'],
+                                                                                    'state': ['resolve', {
+                                                                                        'location': v_parse_tree_to_location.Value(
+                                                                                            $
+                                                                                        )['start']['relative'],
+                                                                                        'dictionary': v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                            $,
+                                                                                            ($) => abort(
+                                                                                                ['expected a dictionary', null]
+                                                                                            )
+                                                                                        ).__d_map(
+                                                                                            ($, id) => ({
+                                                                                                'location': v_parse_tree_to_location.Value(
+                                                                                                    $
+                                                                                                )['start']['relative'],
+                                                                                                'entry': Expression(
+                                                                                                    $,
+                                                                                                    ($) => abort(
+                                                                                                        $
+                                                                                                    )
+                                                                                                ),
+                                                                                            })
+                                                                                        ),
+                                                                                    }],
+                                                                                })
+                                                                            )
+                                                                        default:
+                                                                            return abort(
+                                                                                ['unknown option', $['option']['value']]
+                                                                            )
+                                                                    }
+                                                                }
+                                                            )
+                                                        )],
                                                     })
                                                 )
                                             case 'list':

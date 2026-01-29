@@ -1172,17 +1172,62 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'dictionary': $.__d_map(
-                                                        ($, id) => ({
-                                                            'entry': Expression(
-                                                                $
-                                                            ),
-                                                            'location': {
-                                                                'document resource identifier': "implement me",
-                                                                'line': 42,
-                                                                'column': 42,
-                                                            },
-                                                        })
+                                                    'state': _p.decide.state(
+                                                        $,
+                                                        ($): t_out.Expression.state.initialize.state.group.state => {
+                                                            switch ($[0]) {
+                                                                case 'literal':
+                                                                    return _p.ss(
+                                                                        $,
+                                                                        ($) => ['literal', {
+                                                                            'location': {
+                                                                                'document resource identifier': "implement me",
+                                                                                'line': 42,
+                                                                                'column': 42,
+                                                                            },
+                                                                            'dictionary': $.__d_map(
+                                                                                ($, id) => ({
+                                                                                    'entry': Expression(
+                                                                                        $
+                                                                                    ),
+                                                                                    'location': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                })
+                                                                            ),
+                                                                        }]
+                                                                    )
+                                                                case 'resolve':
+                                                                    return _p.ss(
+                                                                        $,
+                                                                        ($) => ['resolve', {
+                                                                            'location': {
+                                                                                'document resource identifier': "implement me",
+                                                                                'line': 42,
+                                                                                'column': 42,
+                                                                            },
+                                                                            'dictionary': $.__d_map(
+                                                                                ($, id) => ({
+                                                                                    'entry': Expression(
+                                                                                        $
+                                                                                    ),
+                                                                                    'location': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                })
+                                                                            ),
+                                                                        }]
+                                                                    )
+                                                                default:
+                                                                    return _p.au(
+                                                                        $[0]
+                                                                    )
+                                                            }
+                                                        }
                                                     ),
                                                 }]
                                             )

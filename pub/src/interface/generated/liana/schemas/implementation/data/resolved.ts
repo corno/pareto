@@ -688,11 +688,27 @@ export namespace Expression_ {
         
         export namespace group {
             
-            export type D = Expression_
+            export namespace literal {
+                
+                export type D = Expression_
+                
+            }
+            
+            export type literal = _pi.Dictionary<literal.D>
+            
+            export namespace resolve {
+                
+                export type D = Expression_
+                
+            }
+            
+            export type resolve = _pi.Dictionary<resolve.D>
             
         }
         
-        export type group = _pi.Dictionary<group.D>
+        export type group = 
+            | readonly ['literal', group.literal]
+            | readonly ['resolve', group.resolve]
         
         export namespace list {
             

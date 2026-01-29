@@ -445,10 +445,19 @@ export const Expression = (
                         default: return _p.au($[0])
                     }
                 }))
-                case 'group': return _p.ss($, ($) => $.__get_number_of_entries() === 0
-                    ? sh.e.null_()
-                    : sh.e.object_literal($.__d_map(($, id) => Expression($)))
-                )
+                case 'group': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                    switch ($[0]) {
+                        case 'literal': return _p.ss($, ($) => $.__get_number_of_entries() === 0
+                            ? sh.e.null_()
+                            : sh.e.object_literal($.__d_map(($, id) => Expression($)))
+                        )
+                        case 'resolve': return _p.ss($, ($) => $.__get_number_of_entries() === 0
+                            ? sh.e.null_()
+                            : sh.e.object_literal($.__d_map(($, id) => Expression($))) // create a block, all the properties should be variables
+                        )
+                        default: return _p.au($[0])
+                    }
+                }))
                 case 'list': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {
                         case 'filter': return _p.ss($, ($) => _pdev.implement_me("X8"))

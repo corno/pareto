@@ -1096,30 +1096,79 @@ export namespace Expression_ {
                     
                     export type location = i__location.Relative_Location
                     
-                    export namespace dictionary {
+                    export namespace state {
                         
-                        export namespace D {
+                        export namespace literal {
                             
                             export type location = i__location.Relative_Location
                             
-                            export type entry = Expression_
+                            export namespace dictionary {
+                                
+                                export namespace D {
+                                    
+                                    export type location = i__location.Relative_Location
+                                    
+                                    export type entry = Expression_
+                                    
+                                }
+                                
+                                export type D = {
+                                    readonly 'location': D.location
+                                    readonly 'entry': D.entry
+                                }
+                                
+                            }
+                            
+                            export type dictionary = _pi.Dictionary<dictionary.D>
                             
                         }
                         
-                        export type D = {
-                            readonly 'location': D.location
-                            readonly 'entry': D.entry
+                        export type literal = {
+                            readonly 'location': literal.location
+                            readonly 'dictionary': literal.dictionary
+                        }
+                        
+                        export namespace resolve {
+                            
+                            export type location = i__location.Relative_Location
+                            
+                            export namespace dictionary {
+                                
+                                export namespace D {
+                                    
+                                    export type location = i__location.Relative_Location
+                                    
+                                    export type entry = Expression_
+                                    
+                                }
+                                
+                                export type D = {
+                                    readonly 'location': D.location
+                                    readonly 'entry': D.entry
+                                }
+                                
+                            }
+                            
+                            export type dictionary = _pi.Dictionary<dictionary.D>
+                            
+                        }
+                        
+                        export type resolve = {
+                            readonly 'location': resolve.location
+                            readonly 'dictionary': resolve.dictionary
                         }
                         
                     }
                     
-                    export type dictionary = _pi.Dictionary<dictionary.D>
+                    export type state = 
+                        | readonly ['literal', state.literal]
+                        | readonly ['resolve', state.resolve]
                     
                 }
                 
                 export type group = {
                     readonly 'location': group.location
-                    readonly 'dictionary': group.dictionary
+                    readonly 'state': group.state
                 }
                 
                 export namespace list {

@@ -1213,10 +1213,40 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                             $,
                                             ($) => ({
                                                 'option': 'group',
-                                                'value': ['dictionary', $.__d_map(
-                                                    ($, id) => Expression(
-                                                        $
-                                                    )
+                                                'value': ['state', _p.decide.state(
+                                                    $,
+                                                    ($): t_out.Value.state => {
+                                                        switch ($[0]) {
+                                                            case 'literal':
+                                                                return _p.ss(
+                                                                    $,
+                                                                    ($) => ({
+                                                                        'option': 'literal',
+                                                                        'value': ['dictionary', $.__d_map(
+                                                                            ($, id) => Expression(
+                                                                                $
+                                                                            )
+                                                                        )],
+                                                                    })
+                                                                )
+                                                            case 'resolve':
+                                                                return _p.ss(
+                                                                    $,
+                                                                    ($) => ({
+                                                                        'option': 'resolve',
+                                                                        'value': ['dictionary', $.__d_map(
+                                                                            ($, id) => Expression(
+                                                                                $
+                                                                            )
+                                                                        )],
+                                                                    })
+                                                                )
+                                                            default:
+                                                                return _p.au(
+                                                                    $[0]
+                                                                )
+                                                        }
+                                                    }
                                                 )],
                                             })
                                         )
