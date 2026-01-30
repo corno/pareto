@@ -124,24 +124,6 @@ export const algorithm = (
     'temp has parameters': has_parameters,
 })
 
-export const variable = (
-    type: null | d_target.Temp_Type_Node_Reference,
-    expression: d_target.Expression,
-): d_target.Expression.special.block.variables.D => ({
-    'type': type === null ? _p.optional.not_set() : _p.optional.set(type),
-    'expression': expression,
-})
-
-export const temp_ordered_variable = (
-    name: string,
-    type: null | d_target.Temp_Type_Node_Reference,
-    expression: d_target.Expression,
-): d_target.Expression.special.block.temp_ordered_variables.L => ({
-    'name': name,
-    'type': type === null ? _p.optional.not_set() : _p.optional.set(type),
-    'expression': expression,
-})
-
 export namespace e {
 
     export const abort = (
@@ -165,16 +147,6 @@ export namespace e {
         expression: d_target.Expression
     ): d_target.Expression => wrap_state(['special', wrap_state(['change context', {
         'new context': new_context,
-        'expression': expression
-    }])])
-
-    export const block = (
-        ordered_variables: _p.Raw_Or_Normal_List<d_target.Expression.special.block.temp_ordered_variables.L>,
-        variables: _p.Raw_Or_Normal_Dictionary<d_target.Expression.special.block.variables.D>,
-        expression: d_target.Expression
-    ): d_target.Expression => wrap_state(['special', wrap_state(['block', {
-        'temp ordered variables': _p.list.literal(ordered_variables),
-        'variables': _p.dictionary.literal(variables),
         'expression': expression
     }])])
 
@@ -421,12 +393,28 @@ export namespace arguments_ {
 
 }
 
+export namespace call {
+
+    export const local = (
+        algorithm: string
+    ): d_target.Selection.regular.start.call.source => wrap_state(['local', algorithm])
+
+    export const external = (
+        imp: string,
+        variable: string
+    ): d_target.Selection.regular.start.call.source => wrap_state(['imported', {
+        'import': imp,
+        'variable': variable,
+    }])
+
+}
+
 export namespace s {
 
     export const implement_me = (description: string): d_target.Selection => wrap_state(['implement me', description])
 
     export const call = (
-        source: d_target.Selection,
+        source: d_target.Selection.regular.start.call.source,
         context: d_target.Expression,
         abort: null | d_target.Expression,
         lookups: d_target.Selection.regular.start.call.lookups,
@@ -463,16 +451,7 @@ export namespace s {
         }]),
         'tail': _p.list.literal(tail),
     }])
-
-    export const from_variable = (
-        name: string,
-        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
-
-    ): d_target.Selection => wrap_state(['regular', {
-        'start': wrap_state(['variable', wrap_state(['local', name])]),
-        'tail': _p.list.literal(tail),
-    }])
-
+    
     export const from_parameter = (
         name: string,
         tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
@@ -482,17 +461,6 @@ export namespace s {
         'tail': _p.list.literal(tail),
     }])
 
-    export const from_variable_import = (
-        imp: string,
-        variable: string,
-        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
-    ): d_target.Selection => wrap_state(['regular', {
-        'start': wrap_state(['variable', wrap_state(['imported', {
-            'import': imp,
-            'variable': variable,
-        }])]),
-        'tail': _p.list.literal(tail),
-    }])
 
 }
 

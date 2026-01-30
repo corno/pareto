@@ -709,19 +709,6 @@ export const Expression = (
                         Expression($)
                     ]
                 ))
-                case 'block': return _p.ss($, ($) => sh.e.call(
-                    sh.e.identifier_raw("_p_deprecated_block"),
-                    [
-                        Expression($.expression),
-                        sh.e.arrow_function_with_expression(
-                            [
-                                sh.parameter(sh.identifier_raw("$"), null)
-                            ],
-                            null,
-                            Expression($.expression)
-                        )
-                    ]
-                ))
                 case 'change context': return _p.ss($, ($) => sh.e.call(
                     sh.e.identifier_raw("_p_cc"),
                     [
@@ -791,7 +778,16 @@ export const Selection = (
             _p.decide.state($.start, ($) => {
                 switch ($[0]) {
                     case 'call': return _p.ss($, ($) => sh.e.call(
-                        Selection($.source),
+                        _p.decide.state($.source, ($) => {
+                            switch ($[0]) {
+                                case 'local': return _p.ss($, ($) => sh.e.identifier_escaped($))
+                                case 'imported': return _p.ss($, ($) => sh.e.property_access(
+                                    sh.e.identifier_escaped(join(_p.list.literal(["v ", $.import]))),
+                                    sh.identifier_escaped($.variable)
+                                ))
+                                default: return _p.au($[0])
+                            }
+                        }),
                         _p.list.nested_literal_old([
                             [
                                 Expression($.context),

@@ -432,9 +432,53 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                 {
                                                                     'source': _p_cc(
                                                                         $['source'],
-                                                                        ($) => Selection(
-                                                                            $
-                                                                        )
+                                                                        ($) => ['state', _p.decide.state(
+                                                                            $,
+                                                                            ($): t_out.Value.state => {
+                                                                                switch ($[0]) {
+                                                                                    case 'local':
+                                                                                        return _p.ss(
+                                                                                            $,
+                                                                                            ($) => ({
+                                                                                                'option': 'local',
+                                                                                                'value': ['text', {
+                                                                                                    'delimiter': ['quote', null],
+                                                                                                    'value': $,
+                                                                                                }],
+                                                                                            })
+                                                                                        )
+                                                                                    case 'imported':
+                                                                                        return _p.ss(
+                                                                                            $,
+                                                                                            ($) => ({
+                                                                                                'option': 'imported',
+                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                    {
+                                                                                                        'import': _p_cc(
+                                                                                                            $['import'],
+                                                                                                            ($) => ['text', {
+                                                                                                                'delimiter': ['quote', null],
+                                                                                                                'value': $,
+                                                                                                            }]
+                                                                                                        ),
+                                                                                                        'variable': _p_cc(
+                                                                                                            $['variable'],
+                                                                                                            ($) => ['text', {
+                                                                                                                'delimiter': ['quote', null],
+                                                                                                                'value': $,
+                                                                                                            }]
+                                                                                                        ),
+                                                                                                    }
+                                                                                                )]],
+                                                                                            })
+                                                                                        )
+                                                                                    default:
+                                                                                        return _p.au(
+                                                                                            $[0]
+                                                                                        )
+                                                                                }
+                                                                            }
+                                                                        )]
                                                                     ),
                                                                     'context': _p_cc(
                                                                         $['context'],
@@ -2034,82 +2078,6 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                         ),
                                                         'normal flow': _p_cc(
                                                             $['normal flow'],
-                                                            ($) => Expression(
-                                                                $
-                                                            )
-                                                        ),
-                                                    }
-                                                )]],
-                                            })
-                                        )
-                                    case 'block':
-                                        return _p.ss(
-                                            $,
-                                            ($) => ({
-                                                'option': 'block',
-                                                'value': ['group', ['verbose', _p.dictionary.literal(
-                                                    {
-                                                        'variables': _p_cc(
-                                                            $['variables'],
-                                                            ($) => ['dictionary', _p.dictionary.map(
-                                                                $,
-                                                                ($, id) => ['group', ['verbose', _p.dictionary.literal(
-                                                                    {
-                                                                        'type': _p_cc(
-                                                                            $['type'],
-                                                                            ($) => ['optional', _p.decide.optional(
-                                                                                $,
-                                                                                ($): t_out.Value.optional => ['set', Temp_Type_Node_Reference(
-                                                                                    $
-                                                                                )],
-                                                                                () => ['not set', null]
-                                                                            )]
-                                                                        ),
-                                                                        'expression': _p_cc(
-                                                                            $['expression'],
-                                                                            ($) => Expression(
-                                                                                $
-                                                                            )
-                                                                        ),
-                                                                    }
-                                                                )]]
-                                                            )]
-                                                        ),
-                                                        'temp ordered variables': _p_cc(
-                                                            $['temp ordered variables'],
-                                                            ($) => ['list', _p.list.map(
-                                                                $,
-                                                                ($) => ['group', ['verbose', _p.dictionary.literal(
-                                                                    {
-                                                                        'name': _p_cc(
-                                                                            $['name'],
-                                                                            ($) => ['text', {
-                                                                                'delimiter': ['quote', null],
-                                                                                'value': $,
-                                                                            }]
-                                                                        ),
-                                                                        'type': _p_cc(
-                                                                            $['type'],
-                                                                            ($) => ['optional', _p.decide.optional(
-                                                                                $,
-                                                                                ($): t_out.Value.optional => ['set', Temp_Type_Node_Reference(
-                                                                                    $
-                                                                                )],
-                                                                                () => ['not set', null]
-                                                                            )]
-                                                                        ),
-                                                                        'expression': _p_cc(
-                                                                            $['expression'],
-                                                                            ($) => Expression(
-                                                                                $
-                                                                            )
-                                                                        ),
-                                                                    }
-                                                                )]]
-                                                            )]
-                                                        ),
-                                                        'expression': _p_cc(
-                                                            $['expression'],
                                                             ($) => Expression(
                                                                 $
                                                             )

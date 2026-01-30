@@ -393,9 +393,43 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                         ($) => ['call', {
                                                             'source': _p_cc(
                                                                 $['source'],
-                                                                ($) => Selection(
-                                                                    $
-                                                                )
+                                                                ($) => ({
+                                                                    'l location': {
+                                                                        'document resource identifier': "implement me",
+                                                                        'line': 42,
+                                                                        'column': 42,
+                                                                    },
+                                                                    'l state': _p.decide.state(
+                                                                        $,
+                                                                        ($): t_out.Selection.l_state.regular.start.l_state.call.source.l_state => {
+                                                                            switch ($[0]) {
+                                                                                case 'local':
+                                                                                    return _p.ss(
+                                                                                        $,
+                                                                                        ($) => ['local', $]
+                                                                                    )
+                                                                                case 'imported':
+                                                                                    return _p.ss(
+                                                                                        $,
+                                                                                        ($) => ['imported', {
+                                                                                            'import': _p_cc(
+                                                                                                $['import'],
+                                                                                                ($) => $
+                                                                                            ),
+                                                                                            'variable': _p_cc(
+                                                                                                $['variable'],
+                                                                                                ($) => $
+                                                                                            ),
+                                                                                        }]
+                                                                                    )
+                                                                                default:
+                                                                                    return _p.au(
+                                                                                        $[0]
+                                                                                    )
+                                                                            }
+                                                                        }
+                                                                    ),
+                                                                })
                                                             ),
                                                             'context': _p_cc(
                                                                 $['context'],
@@ -1948,96 +1982,6 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     ),
                                                     'normal flow': _p_cc(
                                                         $['normal flow'],
-                                                        ($) => Expression(
-                                                            $
-                                                        )
-                                                    ),
-                                                }]
-                                            )
-                                        case 'block':
-                                            return _p.ss(
-                                                $,
-                                                ($) => ['block', {
-                                                    'variables': _p_cc(
-                                                        $['variables'],
-                                                        ($) => ({
-                                                            'l location': {
-                                                                'document resource identifier': "implement me",
-                                                                'line': 42,
-                                                                'column': 42,
-                                                            },
-                                                            'l dictionary': _p.dictionary.map(
-                                                                $,
-                                                                ($, id) => ({
-                                                                    'l entry': {
-                                                                        'type': _p_cc(
-                                                                            $['type'],
-                                                                            ($) => _p.optional.map(
-                                                                                $,
-                                                                                ($) => Temp_Type_Node_Reference(
-                                                                                    $
-                                                                                )
-                                                                            )
-                                                                        ),
-                                                                        'expression': _p_cc(
-                                                                            $['expression'],
-                                                                            ($) => Expression(
-                                                                                $
-                                                                            )
-                                                                        ),
-                                                                    },
-                                                                    'l location': {
-                                                                        'document resource identifier': "implement me",
-                                                                        'line': 42,
-                                                                        'column': 42,
-                                                                    },
-                                                                })
-                                                            ),
-                                                        })
-                                                    ),
-                                                    'temp ordered variables': _p_cc(
-                                                        $['temp ordered variables'],
-                                                        ($) => ({
-                                                            'l location': {
-                                                                'document resource identifier': "implement me",
-                                                                'line': 42,
-                                                                'column': 42,
-                                                            },
-                                                            'l list': _p.list.map(
-                                                                $,
-                                                                ($) => ({
-                                                                    'l item': {
-                                                                        'name': _p_cc(
-                                                                            $['name'],
-                                                                            ($) => $
-                                                                        ),
-                                                                        'type': _p_cc(
-                                                                            $['type'],
-                                                                            ($) => _p.optional.map(
-                                                                                $,
-                                                                                ($) => Temp_Type_Node_Reference(
-                                                                                    $
-                                                                                )
-                                                                            )
-                                                                        ),
-                                                                        'expression': _p_cc(
-                                                                            $['expression'],
-                                                                            ($) => Expression(
-                                                                                $
-                                                                            )
-                                                                        ),
-                                                                    },
-                                                                    'l location': {
-                                                                        'document resource identifier': "implement me",
-                                                                        'line': 42,
-                                                                        'column': 42,
-                                                                    },
-                                                                })
-                                                            ),
-                                                        })
-                                                    ),
-                                                    'expression': _p_cc(
-                                                        $['expression'],
                                                         ($) => Expression(
                                                             $
                                                         )

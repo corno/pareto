@@ -222,7 +222,28 @@ export namespace Selection_ {
             
             export namespace call {
                 
-                export type source = Selection_
+                export namespace source {
+                    
+                    export type local = string
+                    
+                    export namespace imported {
+                        
+                        export type import_ = string
+                        
+                        export type variable = string
+                        
+                    }
+                    
+                    export type imported = {
+                        readonly 'import': imported.import_
+                        readonly 'variable': imported.variable
+                    }
+                    
+                }
+                
+                export type source = 
+                    | readonly ['local', source.local]
+                    | readonly ['imported', source.imported]
                 
                 export type context = Expression_
                 
@@ -1083,71 +1104,6 @@ export namespace Expression_ {
             readonly 'normal flow': assert.normal_flow
         }
         
-        export namespace block {
-            
-            export namespace variables {
-                
-                export namespace D {
-                    
-                    export namespace type_ {
-                        
-                        export type O = Temp_Type_Node_Reference_
-                        
-                    }
-                    
-                    export type type_ = _pi.Optional_Value<type_.O>
-                    
-                    export type expression = Expression_
-                    
-                }
-                
-                export type D = {
-                    readonly 'type': D.type_
-                    readonly 'expression': D.expression
-                }
-                
-            }
-            
-            export type variables = _pi.Dictionary<variables.D>
-            
-            export namespace temp_ordered_variables {
-                
-                export namespace L {
-                    
-                    export type name = string
-                    
-                    export namespace type_ {
-                        
-                        export type O = Temp_Type_Node_Reference_
-                        
-                    }
-                    
-                    export type type_ = _pi.Optional_Value<type_.O>
-                    
-                    export type expression = Expression_
-                    
-                }
-                
-                export type L = {
-                    readonly 'name': L.name
-                    readonly 'type': L.type_
-                    readonly 'expression': L.expression
-                }
-                
-            }
-            
-            export type temp_ordered_variables = _pi.List<temp_ordered_variables.L>
-            
-            export type expression = Expression_
-            
-        }
-        
-        export type block = {
-            readonly 'variables': block.variables
-            readonly 'temp ordered variables': block.temp_ordered_variables
-            readonly 'expression': block.expression
-        }
-        
         export namespace change_context {
             
             export type new_context = Selection_
@@ -1183,7 +1139,6 @@ export namespace Expression_ {
     export type special = 
         | readonly ['abort', special.abort]
         | readonly ['assert', special.assert]
-        | readonly ['block', special.block]
         | readonly ['change context', special.change_context]
         | readonly ['implement me', special.implement_me]
         | readonly ['iterate', special.iterate]

@@ -386,7 +386,39 @@ export namespace Selection_ {
                     
                     export namespace call {
                         
-                        export type source = Selection_
+                        export namespace source {
+                            
+                            export type l_location = i__location.Relative_Location
+                            
+                            export namespace l_state {
+                                
+                                export type local = string
+                                
+                                export namespace imported {
+                                    
+                                    export type import_ = string
+                                    
+                                    export type variable = string
+                                    
+                                }
+                                
+                                export type imported = {
+                                    readonly 'import': imported.import_
+                                    readonly 'variable': imported.variable
+                                }
+                                
+                            }
+                            
+                            export type l_state = 
+                                | readonly ['local', l_state.local]
+                                | readonly ['imported', l_state.imported]
+                            
+                        }
+                        
+                        export type source = {
+                            readonly 'l location': source.l_location
+                            readonly 'l state': source.l_state
+                        }
                         
                         export type context = Expression_
                         
@@ -1731,115 +1763,6 @@ export namespace Expression_ {
                     readonly 'normal flow': assert.normal_flow
                 }
                 
-                export namespace block {
-                    
-                    export namespace variables {
-                        
-                        export type l_location = i__location.Relative_Location
-                        
-                        export namespace l_dictionary {
-                            
-                            export namespace D {
-                                
-                                export type l_location = i__location.Relative_Location
-                                
-                                export namespace l_entry {
-                                    
-                                    export namespace type_ {
-                                        
-                                        export type O = Temp_Type_Node_Reference_
-                                        
-                                    }
-                                    
-                                    export type type_ = _pi.Optional_Value<type_.O>
-                                    
-                                    export type expression = Expression_
-                                    
-                                }
-                                
-                                export type l_entry = {
-                                    readonly 'type': l_entry.type_
-                                    readonly 'expression': l_entry.expression
-                                }
-                                
-                            }
-                            
-                            export type D = {
-                                readonly 'l location': D.l_location
-                                readonly 'l entry': D.l_entry
-                            }
-                            
-                        }
-                        
-                        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
-                        
-                    }
-                    
-                    export type variables = {
-                        readonly 'l location': variables.l_location
-                        readonly 'l dictionary': variables.l_dictionary
-                    }
-                    
-                    export namespace temp_ordered_variables {
-                        
-                        export type l_location = i__location.Relative_Location
-                        
-                        export namespace l_list {
-                            
-                            export namespace L {
-                                
-                                export type l_location = i__location.Relative_Location
-                                
-                                export namespace l_item {
-                                    
-                                    export type name = string
-                                    
-                                    export namespace type_ {
-                                        
-                                        export type O = Temp_Type_Node_Reference_
-                                        
-                                    }
-                                    
-                                    export type type_ = _pi.Optional_Value<type_.O>
-                                    
-                                    export type expression = Expression_
-                                    
-                                }
-                                
-                                export type l_item = {
-                                    readonly 'name': l_item.name
-                                    readonly 'type': l_item.type_
-                                    readonly 'expression': l_item.expression
-                                }
-                                
-                            }
-                            
-                            export type L = {
-                                readonly 'l location': L.l_location
-                                readonly 'l item': L.l_item
-                            }
-                            
-                        }
-                        
-                        export type l_list = _pi.List<l_list.L>
-                        
-                    }
-                    
-                    export type temp_ordered_variables = {
-                        readonly 'l location': temp_ordered_variables.l_location
-                        readonly 'l list': temp_ordered_variables.l_list
-                    }
-                    
-                    export type expression = Expression_
-                    
-                }
-                
-                export type block = {
-                    readonly 'variables': block.variables
-                    readonly 'temp ordered variables': block.temp_ordered_variables
-                    readonly 'expression': block.expression
-                }
-                
                 export namespace change_context {
                     
                     export type new_context = Selection_
@@ -1875,7 +1798,6 @@ export namespace Expression_ {
             export type l_state = 
                 | readonly ['abort', l_state.abort]
                 | readonly ['assert', l_state.assert]
-                | readonly ['block', l_state.block]
                 | readonly ['change context', l_state.change_context]
                 | readonly ['implement me', l_state.implement_me]
                 | readonly ['iterate', l_state.iterate]

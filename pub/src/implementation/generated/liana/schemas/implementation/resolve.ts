@@ -2147,127 +2147,6 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                             }
                                         )]
                                     )
-                                case 'block':
-                                    return _p.ss(
-                                        $,
-                                        ($) => ['block', _p.group.resolve(
-                                            () => {
-                                                
-                                                const prop_variables = _p_cc(
-                                                    $['variables'],
-                                                    ($) => _p.dictionary.resolve(
-                                                        $['l dictionary'],
-                                                        ($, id, $a, $c): t_out.Expression.special.block.variables.D => _p_cc(
-                                                            $['l entry'],
-                                                            ($) => _p.group.resolve(
-                                                                () => {
-                                                                    
-                                                                    const prop_type = _p_cc(
-                                                                        $['type'],
-                                                                        ($) => _p.optional.map(
-                                                                            $,
-                                                                            ($) => Temp_Type_Node_Reference(
-                                                                                $,
-                                                                                ($) => abort(
-                                                                                    $
-                                                                                ),
-                                                                                null,
-                                                                                null
-                                                                            )
-                                                                        )
-                                                                    )
-                                                                    
-                                                                    const prop_expression = _p_cc(
-                                                                        $['expression'],
-                                                                        ($) => Expression(
-                                                                            $,
-                                                                            ($) => abort(
-                                                                                $
-                                                                            ),
-                                                                            null,
-                                                                            null
-                                                                        )
-                                                                    )
-                                                                    return {
-                                                                        'type': prop_type,
-                                                                        'expression': prop_expression,
-                                                                    }
-                                                                }
-                                                            )
-                                                        )
-                                                    )
-                                                )
-                                                
-                                                const prop_temp_ordered_variables = _p_cc(
-                                                    $['temp ordered variables'],
-                                                    ($) => _p.list.map(
-                                                        $['l list'],
-                                                        ($) => _p_cc(
-                                                            $['l item'],
-                                                            ($) => _p.group.resolve(
-                                                                () => {
-                                                                    
-                                                                    const prop_name = _p_cc(
-                                                                        $['name'],
-                                                                        ($) => $
-                                                                    )
-                                                                    
-                                                                    const prop_type = _p_cc(
-                                                                        $['type'],
-                                                                        ($) => _p.optional.map(
-                                                                            $,
-                                                                            ($) => Temp_Type_Node_Reference(
-                                                                                $,
-                                                                                ($) => abort(
-                                                                                    $
-                                                                                ),
-                                                                                null,
-                                                                                null
-                                                                            )
-                                                                        )
-                                                                    )
-                                                                    
-                                                                    const prop_expression = _p_cc(
-                                                                        $['expression'],
-                                                                        ($) => Expression(
-                                                                            $,
-                                                                            ($) => abort(
-                                                                                $
-                                                                            ),
-                                                                            null,
-                                                                            null
-                                                                        )
-                                                                    )
-                                                                    return {
-                                                                        'name': prop_name,
-                                                                        'type': prop_type,
-                                                                        'expression': prop_expression,
-                                                                    }
-                                                                }
-                                                            )
-                                                        )
-                                                    )
-                                                )
-                                                
-                                                const prop_expression = _p_cc(
-                                                    $['expression'],
-                                                    ($) => Expression(
-                                                        $,
-                                                        ($) => abort(
-                                                            $
-                                                        ),
-                                                        null,
-                                                        null
-                                                    )
-                                                )
-                                                return {
-                                                    'variables': prop_variables,
-                                                    'temp ordered variables': prop_temp_ordered_variables,
-                                                    'expression': prop_expression,
-                                                }
-                                            }
-                                        )]
-                                    )
                                 case 'change context':
                                     return _p.ss(
                                         $,
@@ -2395,13 +2274,43 @@ export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide
                                                             
                                                             const prop_source = _p_cc(
                                                                 $['source'],
-                                                                ($) => Selection(
-                                                                    $,
-                                                                    ($) => abort(
-                                                                        $
-                                                                    ),
-                                                                    null,
-                                                                    null
+                                                                ($) => _p.decide.state(
+                                                                    $['l state'],
+                                                                    ($): t_out.Selection.regular.start.call.source => {
+                                                                        switch ($[0]) {
+                                                                            case 'local':
+                                                                                return _p.ss(
+                                                                                    $,
+                                                                                    ($) => ['local', $]
+                                                                                )
+                                                                            case 'imported':
+                                                                                return _p.ss(
+                                                                                    $,
+                                                                                    ($) => ['imported', _p.group.resolve(
+                                                                                        () => {
+                                                                                            
+                                                                                            const prop_import = _p_cc(
+                                                                                                $['import'],
+                                                                                                ($) => $
+                                                                                            )
+                                                                                            
+                                                                                            const prop_variable = _p_cc(
+                                                                                                $['variable'],
+                                                                                                ($) => $
+                                                                                            )
+                                                                                            return {
+                                                                                                'import': prop_import,
+                                                                                                'variable': prop_variable,
+                                                                                            }
+                                                                                        }
+                                                                                    )]
+                                                                                )
+                                                                            default:
+                                                                                return _p.au(
+                                                                                    $[0]
+                                                                                )
+                                                                        }
+                                                                    }
                                                                 )
                                                             )
                                                             
