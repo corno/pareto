@@ -2,10 +2,6 @@
 import * as _p from "pareto-core/dist/refiner"
 
 import {
-    _p_unreachable_code_path,
-} from "pareto-core/dist/unreachable_code_path"
-
-import {
     _p_cc,
 } from "pareto-core/dist/change_context"
 
@@ -2491,47 +2487,20 @@ export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide
                                                     $,
                                                     ($) => ['parameter', $]
                                                 )
-                                            case 'variable':
+                                            case 'parent sibling':
                                                 return _p.ss(
                                                     $,
-                                                    ($) => ['variable', _p.decide.state(
-                                                        $['l state'],
-                                                        ($): t_out.Selection.regular.start.variable => {
-                                                            switch ($[0]) {
-                                                                case 'local':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ['local', $]
-                                                                    )
-                                                                case 'imported':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ['imported', _p.group.resolve(
-                                                                            () => {
-                                                                                
-                                                                                const prop_import = _p_cc(
-                                                                                    $['import'],
-                                                                                    ($) => $
-                                                                                )
-                                                                                
-                                                                                const prop_variable = _p_cc(
-                                                                                    $['variable'],
-                                                                                    ($) => $
-                                                                                )
-                                                                                return {
-                                                                                    'import': prop_import,
-                                                                                    'variable': prop_variable,
-                                                                                }
-                                                                            }
-                                                                        )]
-                                                                    )
-                                                                default:
-                                                                    return _p.au(
-                                                                        $[0]
-                                                                    )
-                                                            }
-                                                        }
-                                                    )]
+                                                    ($) => ['parent sibling', $]
+                                                )
+                                            case 'sibling':
+                                                return _p.ss(
+                                                    $,
+                                                    ($) => ['sibling', $]
+                                                )
+                                            case 'state':
+                                                return _p.ss(
+                                                    $,
+                                                    ($) => ['state', null]
                                                 )
                                             default:
                                                 return _p.au(

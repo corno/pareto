@@ -572,41 +572,13 @@ export namespace Selection_ {
                         readonly 'abort handler': entry.abort_handler
                     }
                     
-                    export namespace variable {
-                        
-                        export type l_location = i__location.Relative_Location
-                        
-                        export namespace l_state {
-                            
-                            export type local = string
-                            
-                            export namespace imported {
-                                
-                                export type import_ = string
-                                
-                                export type variable = string
-                                
-                            }
-                            
-                            export type imported = {
-                                readonly 'import': imported.import_
-                                readonly 'variable': imported.variable
-                            }
-                            
-                        }
-                        
-                        export type l_state = 
-                            | readonly ['local', l_state.local]
-                            | readonly ['imported', l_state.imported]
-                        
-                    }
-                    
-                    export type variable = {
-                        readonly 'l location': variable.l_location
-                        readonly 'l state': variable.l_state
-                    }
-                    
                     export type parameter = string
+                    
+                    export type parent_sibling = string
+                    
+                    export type sibling = string
+                    
+                    export type state = null
                     
                 }
                 
@@ -614,8 +586,10 @@ export namespace Selection_ {
                     | readonly ['call', l_state.call]
                     | readonly ['context', l_state.context]
                     | readonly ['entry', l_state.entry]
-                    | readonly ['variable', l_state.variable]
                     | readonly ['parameter', l_state.parameter]
+                    | readonly ['parent sibling', l_state.parent_sibling]
+                    | readonly ['sibling', l_state.sibling]
+                    | readonly ['state', l_state.state]
                 
             }
             

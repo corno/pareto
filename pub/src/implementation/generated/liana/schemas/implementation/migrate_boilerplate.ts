@@ -583,51 +583,25 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                             ),
                                                         }]
                                                     )
-                                                case 'variable':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ['variable', {
-                                                            'l location': {
-                                                                'document resource identifier': "implement me",
-                                                                'line': 42,
-                                                                'column': 42,
-                                                            },
-                                                            'l state': _p.decide.state(
-                                                                $,
-                                                                ($): t_out.Selection.l_state.regular.start.l_state.variable.l_state => {
-                                                                    switch ($[0]) {
-                                                                        case 'local':
-                                                                            return _p.ss(
-                                                                                $,
-                                                                                ($) => ['local', $]
-                                                                            )
-                                                                        case 'imported':
-                                                                            return _p.ss(
-                                                                                $,
-                                                                                ($) => ['imported', {
-                                                                                    'import': _p_cc(
-                                                                                        $['import'],
-                                                                                        ($) => $
-                                                                                    ),
-                                                                                    'variable': _p_cc(
-                                                                                        $['variable'],
-                                                                                        ($) => $
-                                                                                    ),
-                                                                                }]
-                                                                            )
-                                                                        default:
-                                                                            return _p.au(
-                                                                                $[0]
-                                                                            )
-                                                                    }
-                                                                }
-                                                            ),
-                                                        }]
-                                                    )
                                                 case 'parameter':
                                                     return _p.ss(
                                                         $,
                                                         ($) => ['parameter', $]
+                                                    )
+                                                case 'parent sibling':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['parent sibling', $]
+                                                    )
+                                                case 'sibling':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['sibling', $]
+                                                    )
+                                                case 'state':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['state', null]
                                                     )
                                                 default:
                                                     return _p.au(

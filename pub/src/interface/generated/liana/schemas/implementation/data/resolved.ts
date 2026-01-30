@@ -331,30 +331,13 @@ export namespace Selection_ {
                 readonly 'abort handler': entry.abort_handler
             }
             
-            export namespace variable {
-                
-                export type local = string
-                
-                export namespace imported {
-                    
-                    export type import_ = string
-                    
-                    export type variable = string
-                    
-                }
-                
-                export type imported = {
-                    readonly 'import': imported.import_
-                    readonly 'variable': imported.variable
-                }
-                
-            }
-            
-            export type variable = 
-                | readonly ['local', variable.local]
-                | readonly ['imported', variable.imported]
-            
             export type parameter = string
+            
+            export type parent_sibling = string
+            
+            export type sibling = string
+            
+            export type state = null
             
         }
         
@@ -362,8 +345,10 @@ export namespace Selection_ {
             | readonly ['call', start.call]
             | readonly ['context', start.context]
             | readonly ['entry', start.entry]
-            | readonly ['variable', start.variable]
             | readonly ['parameter', start.parameter]
+            | readonly ['parent sibling', start.parent_sibling]
+            | readonly ['sibling', start.sibling]
+            | readonly ['state', start.state]
         
         export namespace tail {
             

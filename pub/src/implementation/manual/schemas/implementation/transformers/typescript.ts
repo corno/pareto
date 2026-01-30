@@ -636,16 +636,26 @@ export const Expression = (
                         case 'literal': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'not set': return _p.ss($, ($) => sh.e.call(
-                                    sh.e.identifier_raw("_p"),
+                                    sh.e.property_access(
+                                        sh.e.property_access(
+                                            sh.e.identifier_raw("_p"),
+                                            sh.identifier_raw("optional"),
+                                        ),
+                                        sh.identifier_raw("not_set"),
+                                    ),
                                     [
-                                        sh.e.string_literal("IMPLEMENT OPTIONAL", 'quote')
                                     ]
                                 ))
                                 case 'set': return _p.ss($, ($) => sh.e.call(
-                                    sh.e.identifier_raw("_p"),
+                                    sh.e.property_access(
+                                        sh.e.property_access(
+                                            sh.e.identifier_raw("_p"),
+                                            sh.identifier_raw("optional"),
+                                        ),
+                                        sh.identifier_raw("set"),
+                                    ),
                                     [
-                                        sh.e.string_literal("IMPLEMENT OPTIONAL", 'quote')
-
+                                        Expression($),
                                     ]
                                 ))
                                 default: return _p.au($[0])
@@ -877,20 +887,13 @@ export const Selection = (
                             )
                         ]
                     ))
-                    case 'variable': return _p.ss($, ($) => _p.decide.state($, ($) => {
-                        switch ($[0]) {
-                            case 'local': return _p.ss($, ($) => sh.e.identifier_escaped($))
-                            case 'imported': return _p.ss($, ($) => sh.e.property_access(
-                                sh.e.identifier_escaped(join(_p.list.literal(["v ", $.import]))),
-                                sh.identifier_escaped($.variable)
-                            ))
-                            default: return _p.au($[0])
-                        }
-                    }))
                     case 'parameter': return _p.ss($, ($) => sh.e.element_access(
                         sh.e.identifier_raw("$p"),
                         sh.e.string_literal($, 'apostrophe')
                     ))
+                    case 'parent sibling': return _p.ss($, ($) => sh.e.identifier_escaped("parent.prop " + $))
+                    case 'sibling': return _p.ss($, ($) => sh.e.identifier_escaped("prop " + $))
+                    case 'state':return _p.ss($, ($) => sh.e.identifier_raw("state"))
                     default: return _p.au($[0])
                 }
             }),

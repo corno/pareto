@@ -431,14 +431,14 @@ export namespace s {
         'tail': _p.list.literal(tail),
     }])
 
-    export const from_context = (
+    export const context = (
         tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
     ): d_target.Selection => wrap_state(['regular', {
         'start': wrap_state(['context', null]),
         'tail': _p.list.literal(tail),
     }])
 
-    export const from_entry = (
+    export const entry = (
         dictionary: d_target.Selection,
         id: d_target.Expression,
         abort_handler: d_target.Expression,
@@ -452,12 +452,35 @@ export namespace s {
         'tail': _p.list.literal(tail),
     }])
     
-    export const from_parameter = (
+    export const parameter = (
         name: string,
         tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
 
     ): d_target.Selection => wrap_state(['regular', {
         'start': wrap_state(['parameter', name]),
+        'tail': _p.list.literal(tail),
+    }])
+
+    export const parent_sibling = (
+        name: string,
+        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
+    ): d_target.Selection => wrap_state(['regular', {
+        'start': wrap_state(['parent sibling', name]),
+        'tail': _p.list.literal(tail),
+    }])
+
+    export const sibling = (
+        name: string,
+        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
+    ): d_target.Selection => wrap_state(['regular', {
+        'start': wrap_state(['sibling', name]),
+        'tail': _p.list.literal(tail),
+    }])
+
+    export const state = (
+        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
+    ): d_target.Selection => wrap_state(['regular', {
+        'start': wrap_state(['state', null]),
         'tail': _p.list.literal(tail),
     }])
 

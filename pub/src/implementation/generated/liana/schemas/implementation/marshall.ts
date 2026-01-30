@@ -615,60 +615,6 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                             )]],
                                                         })
                                                     )
-                                                case 'variable':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ({
-                                                            'option': 'variable',
-                                                            'value': ['state', _p.decide.state(
-                                                                $,
-                                                                ($): t_out.Value.state => {
-                                                                    switch ($[0]) {
-                                                                        case 'local':
-                                                                            return _p.ss(
-                                                                                $,
-                                                                                ($) => ({
-                                                                                    'option': 'local',
-                                                                                    'value': ['text', {
-                                                                                        'delimiter': ['quote', null],
-                                                                                        'value': $,
-                                                                                    }],
-                                                                                })
-                                                                            )
-                                                                        case 'imported':
-                                                                            return _p.ss(
-                                                                                $,
-                                                                                ($) => ({
-                                                                                    'option': 'imported',
-                                                                                    'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                        {
-                                                                                            'import': _p_cc(
-                                                                                                $['import'],
-                                                                                                ($) => ['text', {
-                                                                                                    'delimiter': ['quote', null],
-                                                                                                    'value': $,
-                                                                                                }]
-                                                                                            ),
-                                                                                            'variable': _p_cc(
-                                                                                                $['variable'],
-                                                                                                ($) => ['text', {
-                                                                                                    'delimiter': ['quote', null],
-                                                                                                    'value': $,
-                                                                                                }]
-                                                                                            ),
-                                                                                        }
-                                                                                    )]],
-                                                                                })
-                                                                            )
-                                                                        default:
-                                                                            return _p.au(
-                                                                                $[0]
-                                                                            )
-                                                                    }
-                                                                }
-                                                            )],
-                                                        })
-                                                    )
                                                 case 'parameter':
                                                     return _p.ss(
                                                         $,
@@ -678,6 +624,36 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                 'delimiter': ['quote', null],
                                                                 'value': $,
                                                             }],
+                                                        })
+                                                    )
+                                                case 'parent sibling':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'parent sibling',
+                                                            'value': ['text', {
+                                                                'delimiter': ['quote', null],
+                                                                'value': $,
+                                                            }],
+                                                        })
+                                                    )
+                                                case 'sibling':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'sibling',
+                                                            'value': ['text', {
+                                                                'delimiter': ['quote', null],
+                                                                'value': $,
+                                                            }],
+                                                        })
+                                                    )
+                                                case 'state':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'state',
+                                                            'value': ['nothing', null],
                                                         })
                                                     )
                                                 default:
