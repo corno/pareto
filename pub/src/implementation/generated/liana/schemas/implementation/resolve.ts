@@ -2433,10 +2433,10 @@ export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide
                                                     $,
                                                     ($) => ['context', null]
                                                 )
-                                            case 'entry':
+                                            case 'dictionary entry':
                                                 return _p.ss(
                                                     $,
-                                                    ($) => ['entry', _p.group.resolve(
+                                                    ($) => ['dictionary entry', _p.group.resolve(
                                                         () => {
                                                             
                                                             const prop_dictionary = _p_cc(
@@ -2476,6 +2476,55 @@ export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide
                                                             )
                                                             return {
                                                                 'dictionary': prop_dictionary,
+                                                                'id': prop_id,
+                                                                'abort handler': prop_abort_handler,
+                                                            }
+                                                        }
+                                                    )]
+                                                )
+                                            case 'lookup entry':
+                                                return _p.ss(
+                                                    $,
+                                                    ($) => ['lookup entry', _p.group.resolve(
+                                                        () => {
+                                                            
+                                                            const prop_lookup = _p_cc(
+                                                                $['lookup'],
+                                                                ($) => Lookup_Selection(
+                                                                    $,
+                                                                    ($) => abort(
+                                                                        $
+                                                                    ),
+                                                                    null,
+                                                                    null
+                                                                )
+                                                            )
+                                                            
+                                                            const prop_id = _p_cc(
+                                                                $['id'],
+                                                                ($) => Expression(
+                                                                    $,
+                                                                    ($) => abort(
+                                                                        $
+                                                                    ),
+                                                                    null,
+                                                                    null
+                                                                )
+                                                            )
+                                                            
+                                                            const prop_abort_handler = _p_cc(
+                                                                $['abort handler'],
+                                                                ($) => Expression(
+                                                                    $,
+                                                                    ($) => abort(
+                                                                        $
+                                                                    ),
+                                                                    null,
+                                                                    null
+                                                                )
+                                                            )
+                                                            return {
+                                                                'lookup': prop_lookup,
                                                                 'id': prop_id,
                                                                 'abort handler': prop_abort_handler,
                                                             }

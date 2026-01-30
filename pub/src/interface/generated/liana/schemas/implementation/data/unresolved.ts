@@ -556,7 +556,7 @@ export namespace Selection_ {
                     
                     export type context = null
                     
-                    export namespace entry {
+                    export namespace dictionary_entry {
                         
                         export type dictionary = Selection_
                         
@@ -566,10 +566,26 @@ export namespace Selection_ {
                         
                     }
                     
-                    export type entry = {
-                        readonly 'dictionary': entry.dictionary
-                        readonly 'id': entry.id
-                        readonly 'abort handler': entry.abort_handler
+                    export type dictionary_entry = {
+                        readonly 'dictionary': dictionary_entry.dictionary
+                        readonly 'id': dictionary_entry.id
+                        readonly 'abort handler': dictionary_entry.abort_handler
+                    }
+                    
+                    export namespace lookup_entry {
+                        
+                        export type lookup = Lookup_Selection_
+                        
+                        export type id = Expression_
+                        
+                        export type abort_handler = Expression_
+                        
+                    }
+                    
+                    export type lookup_entry = {
+                        readonly 'lookup': lookup_entry.lookup
+                        readonly 'id': lookup_entry.id
+                        readonly 'abort handler': lookup_entry.abort_handler
                     }
                     
                     export type parameter = string
@@ -585,7 +601,8 @@ export namespace Selection_ {
                 export type l_state = 
                     | readonly ['call', l_state.call]
                     | readonly ['context', l_state.context]
-                    | readonly ['entry', l_state.entry]
+                    | readonly ['dictionary entry', l_state.dictionary_entry]
+                    | readonly ['lookup entry', l_state.lookup_entry]
                     | readonly ['parameter', l_state.parameter]
                     | readonly ['parent sibling', l_state.parent_sibling]
                     | readonly ['sibling', l_state.sibling]

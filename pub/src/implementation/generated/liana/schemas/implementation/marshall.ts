@@ -586,16 +586,45 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                             'value': ['nothing', null],
                                                         })
                                                     )
-                                                case 'entry':
+                                                case 'dictionary entry':
                                                     return _p.ss(
                                                         $,
                                                         ($) => ({
-                                                            'option': 'entry',
+                                                            'option': 'dictionary entry',
                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                 {
                                                                     'dictionary': _p_cc(
                                                                         $['dictionary'],
                                                                         ($) => Selection(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'id': _p_cc(
+                                                                        $['id'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'abort handler': _p_cc(
+                                                                        $['abort handler'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                }
+                                                            )]],
+                                                        })
+                                                    )
+                                                case 'lookup entry':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'lookup entry',
+                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                {
+                                                                    'lookup': _p_cc(
+                                                                        $['lookup'],
+                                                                        ($) => Lookup_Selection(
                                                                             $
                                                                         )
                                                                     ),

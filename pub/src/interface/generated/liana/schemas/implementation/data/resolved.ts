@@ -315,7 +315,7 @@ export namespace Selection_ {
             
             export type context = null
             
-            export namespace entry {
+            export namespace dictionary_entry {
                 
                 export type dictionary = Selection_
                 
@@ -325,10 +325,26 @@ export namespace Selection_ {
                 
             }
             
-            export type entry = {
-                readonly 'dictionary': entry.dictionary
-                readonly 'id': entry.id
-                readonly 'abort handler': entry.abort_handler
+            export type dictionary_entry = {
+                readonly 'dictionary': dictionary_entry.dictionary
+                readonly 'id': dictionary_entry.id
+                readonly 'abort handler': dictionary_entry.abort_handler
+            }
+            
+            export namespace lookup_entry {
+                
+                export type lookup = Lookup_Selection_
+                
+                export type id = Expression_
+                
+                export type abort_handler = Expression_
+                
+            }
+            
+            export type lookup_entry = {
+                readonly 'lookup': lookup_entry.lookup
+                readonly 'id': lookup_entry.id
+                readonly 'abort handler': lookup_entry.abort_handler
             }
             
             export type parameter = string
@@ -344,7 +360,8 @@ export namespace Selection_ {
         export type start = 
             | readonly ['call', start.call]
             | readonly ['context', start.context]
-            | readonly ['entry', start.entry]
+            | readonly ['dictionary entry', start.dictionary_entry]
+            | readonly ['lookup entry', start.lookup_entry]
             | readonly ['parameter', start.parameter]
             | readonly ['parent sibling', start.parent_sibling]
             | readonly ['sibling', start.sibling]

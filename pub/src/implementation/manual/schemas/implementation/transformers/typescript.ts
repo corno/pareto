@@ -780,7 +780,7 @@ export const Selection = (
                 sh.identifier_raw("implement_me")
             ),
             [
-                sh.e.string_literal($, "apostrophe")
+                sh.e.string_literal($, 'quote')
             ]
         ))
         case 'regular': return _p.ss($, ($) => reduce(
@@ -863,9 +863,33 @@ export const Selection = (
 
                     ))
                     case 'context': return _p.ss($, ($) => sh.e.identifier_raw("$"))
-                    case 'entry': return _p.ss($, ($) => sh.e.call(
+                    case 'dictionary entry': return _p.ss($, ($) => sh.e.call(
                         sh.e.property_access(
                             Selection($.dictionary),
+                            sh.identifier_raw("__get_entry")
+                        ),
+                        [
+                            Expression($.id),
+                            sh.e.arrow_function_with_expression(
+                                [
+                                    sh.parameter(
+                                        sh.identifier_raw("$"),
+                                        null,
+                                    )
+                                ],
+                                null,
+                                sh.e.call(
+                                    sh.e.identifier_raw("abort"),
+                                    [
+                                        Expression($['abort handler'])
+                                    ]
+                                )
+                            )
+                        ]
+                    ))
+                    case 'lookup entry': return _p.ss($, ($) => sh.e.call(
+                        sh.e.property_access(
+                            Lookup_Selection($.lookup),
                             sh.identifier_raw("__get_entry")
                         ),
                         [
@@ -918,7 +942,7 @@ export const Lookup_Selection = (
                 sh.identifier_raw("implement_me")
             ),
             [
-                sh.e.string_literal($, "apostrophe")
+                sh.e.string_literal($, 'quote')
             ]
         ))
         case 'from resolved dictionary': return _p.ss($, ($) => sh.e.identifier_raw("FIX!!"))

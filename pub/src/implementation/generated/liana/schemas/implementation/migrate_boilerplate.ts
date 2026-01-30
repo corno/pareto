@@ -559,13 +559,37 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                         $,
                                                         ($) => ['context', null]
                                                     )
-                                                case 'entry':
+                                                case 'dictionary entry':
                                                     return _p.ss(
                                                         $,
-                                                        ($) => ['entry', {
+                                                        ($) => ['dictionary entry', {
                                                             'dictionary': _p_cc(
                                                                 $['dictionary'],
                                                                 ($) => Selection(
+                                                                    $
+                                                                )
+                                                            ),
+                                                            'id': _p_cc(
+                                                                $['id'],
+                                                                ($) => Expression(
+                                                                    $
+                                                                )
+                                                            ),
+                                                            'abort handler': _p_cc(
+                                                                $['abort handler'],
+                                                                ($) => Expression(
+                                                                    $
+                                                                )
+                                                            ),
+                                                        }]
+                                                    )
+                                                case 'lookup entry':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['lookup entry', {
+                                                            'lookup': _p_cc(
+                                                                $['lookup'],
+                                                                ($) => Lookup_Selection(
                                                                     $
                                                                 )
                                                             ),

@@ -438,14 +438,28 @@ export namespace s {
         'tail': _p.list.literal(tail),
     }])
 
-    export const entry = (
+    export const dictionary_entry = (
         dictionary: d_target.Selection,
         id: d_target.Expression,
         abort_handler: d_target.Expression,
         tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
     ): d_target.Selection => wrap_state(['regular', {
-        'start': wrap_state<d_target.Selection.regular.start>(['entry', {
+        'start': wrap_state<d_target.Selection.regular.start>(['dictionary entry', {
             'dictionary': dictionary,
+            'id': id,
+            'abort handler': abort_handler
+        }]),
+        'tail': _p.list.literal(tail),
+    }])
+
+    export const lookup_entry = (
+        lookup: d_target.Lookup_Selection,
+        id: d_target.Expression,
+        abort_handler: d_target.Expression,
+        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
+    ): d_target.Selection => wrap_state(['regular', {
+        'start': wrap_state<d_target.Selection.regular.start>(['lookup entry', {
+            'lookup': lookup,
             'id': id,
             'abort handler': abort_handler
         }]),
