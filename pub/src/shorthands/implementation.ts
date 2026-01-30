@@ -255,6 +255,16 @@ export namespace e {
             'entry handler': entry_handler
         }])])])
 
+        export const resolve = (
+            source: d_target.Selection,
+            entry_handler: d_target.Expression,
+            temp_resulting_entry_node: d_target.Temp_Type_Node_Reference,
+        ): d_target.Expression => wrap_state(['initialize', wrap_state(['dictionary', wrap_state(['resolve', {
+            'source': source,
+            'entry handler': entry_handler,
+            'temp resulting entry node': temp_resulting_entry_node,
+        }])])])
+
     }
 
     export namespace group {

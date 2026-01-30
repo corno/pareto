@@ -123,12 +123,14 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
         ),
         'variable imports': _p_cc(
             $['variable imports'],
-            ($) => ['dictionary', $.__d_map(
+            ($) => ['dictionary', _p.dictionary.map(
+                $,
                 ($, id) => ['group', ['verbose', _p.dictionary.literal(
                     {
                         'tail': _p_cc(
                             $['tail'],
-                            ($) => ['list', $.__l_map(
+                            ($) => ['list', _p.list.map(
+                                $,
                                 ($) => ['text', {
                                     'delimiter': ['quote', null],
                                     'value': $,
@@ -204,7 +206,8 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
         ),
         'algorithms': _p_cc(
             $['algorithms'],
-            ($) => ['dictionary', $.__d_map(
+            ($) => ['dictionary', _p.dictionary.map(
+                $,
                 ($, id) => ['group', ['verbose', _p.dictionary.literal(
                     {
                         'type': _p_cc(
@@ -268,7 +271,8 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
     }
 )]]
 
-export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', $.__d_map(
+export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', _p.dictionary.map(
+    $,
     ($, id) => ['state', _p.decide.state(
         $,
         ($): t_out.Value.state => {
@@ -327,7 +331,8 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
         ),
         'sub selection': _p_cc(
             $['sub selection'],
-            ($) => ['list', $.__l_map(
+            ($) => ['list', _p.list.map(
+                $,
                 ($) => ['state', _p.decide.state(
                     $,
                     ($): t_out.Value.state => {
@@ -439,7 +444,8 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                     ),
                                                                     'abort': _p_cc(
                                                                         $['abort'],
-                                                                        ($) => ['optional', $.__decide(
+                                                                        ($) => ['optional', _p.decide.optional(
+                                                                            $,
                                                                             ($): t_out.Value.optional => ['set', Expression(
                                                                                 $
                                                                             )],
@@ -448,7 +454,8 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                     ),
                                                                     'lookups': _p_cc(
                                                                         $['lookups'],
-                                                                        ($) => ['optional', $.__decide(
+                                                                        ($) => ['optional', _p.decide.optional(
+                                                                            $,
                                                                             ($): t_out.Value.optional => ['set', ['state', _p.decide.state(
                                                                                 $,
                                                                                 ($): t_out.Value.state => {
@@ -458,7 +465,8 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                                                 $,
                                                                                                 ($) => ({
                                                                                                     'option': 'initialize',
-                                                                                                    'value': ['dictionary', $.__d_map(
+                                                                                                    'value': ['dictionary', _p.dictionary.map(
+                                                                                                        $,
                                                                                                         ($, id) => Lookup_Selection(
                                                                                                             $
                                                                                                         )
@@ -485,7 +493,8 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                     ),
                                                                     'arguments': _p_cc(
                                                                         $['arguments'],
-                                                                        ($) => ['optional', $.__decide(
+                                                                        ($) => ['optional', _p.decide.optional(
+                                                                            $,
                                                                             ($): t_out.Value.optional => ['set', ['state', _p.decide.state(
                                                                                 $,
                                                                                 ($): t_out.Value.state => {
@@ -495,7 +504,8 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                                                 $,
                                                                                                 ($) => ({
                                                                                                     'option': 'initialize',
-                                                                                                    'value': ['dictionary', $.__d_map(
+                                                                                                    'value': ['dictionary', _p.dictionary.map(
+                                                                                                        $,
                                                                                                         ($, id) => Expression(
                                                                                                             $
                                                                                                         )
@@ -636,7 +646,8 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                 ),
                                 'tail': _p_cc(
                                     $['tail'],
-                                    ($) => ['list', $.__l_map(
+                                    ($) => ['list', _p.list.map(
+                                        $,
                                         ($) => ['text', {
                                             'delimiter': ['quote', null],
                                             'value': $,
@@ -687,7 +698,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ),
                                                                     'temp resulting node': _p_cc(
                                                                         $['temp resulting node'],
-                                                                        ($) => ['optional', $.__decide(
+                                                                        ($) => ['optional', _p.decide.optional(
+                                                                            $,
                                                                             ($): t_out.Value.optional => ['set', Temp_Type_Node_Reference(
                                                                                 $
                                                                             )],
@@ -877,7 +889,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ),
                                                                     'temp resulting node': _p_cc(
                                                                         $['temp resulting node'],
-                                                                        ($) => ['optional', $.__decide(
+                                                                        ($) => ['optional', _p.decide.optional(
+                                                                            $,
                                                                             ($): t_out.Value.optional => ['set', Temp_Type_Node_Reference(
                                                                                 $
                                                                             )],
@@ -915,7 +928,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ),
                                                                     'temp resulting node': _p_cc(
                                                                         $['temp resulting node'],
-                                                                        ($) => ['optional', $.__decide(
+                                                                        ($) => ['optional', _p.decide.optional(
+                                                                            $,
                                                                             ($): t_out.Value.optional => ['set', Temp_Type_Node_Reference(
                                                                                 $
                                                                             )],
@@ -937,7 +951,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                                     {
                                                                                                         'options': _p_cc(
                                                                                                             $['options'],
-                                                                                                            ($) => ['dictionary', $.__d_map(
+                                                                                                            ($) => ['dictionary', _p.dictionary.map(
+                                                                                                                $,
                                                                                                                 ($, id) => Expression(
                                                                                                                     $
                                                                                                                 )
@@ -962,7 +977,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                                     {
                                                                                                         'options': _p_cc(
                                                                                                             $['options'],
-                                                                                                            ($) => ['dictionary', $.__d_map(
+                                                                                                            ($) => ['dictionary', _p.dictionary.map(
+                                                                                                                $,
                                                                                                                 ($, id) => Expression(
                                                                                                                     $
                                                                                                                 )
@@ -999,7 +1015,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ),
                                                                     'temp resulting node': _p_cc(
                                                                         $['temp resulting node'],
-                                                                        ($) => ['optional', $.__decide(
+                                                                        ($) => ['optional', _p.decide.optional(
+                                                                            $,
                                                                             ($): t_out.Value.optional => ['set', Temp_Type_Node_Reference(
                                                                                 $
                                                                             )],
@@ -1008,7 +1025,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     ),
                                                                     'cases': _p_cc(
                                                                         $['cases'],
-                                                                        ($) => ['dictionary', $.__d_map(
+                                                                        ($) => ['dictionary', _p.dictionary.map(
+                                                                            $,
                                                                             ($, id) => Expression(
                                                                                 $
                                                                             )
@@ -1209,7 +1227,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
-                                                                        'value': ['dictionary', $.__d_map(
+                                                                        'value': ['dictionary', _p.dictionary.map(
+                                                                            $,
                                                                             ($, id) => Expression(
                                                                                 $
                                                                             )
@@ -1258,6 +1277,12 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                         $
                                                                                     )
                                                                                 ),
+                                                                                'temp resulting entry node': _p_cc(
+                                                                                    $['temp resulting entry node'],
+                                                                                    ($) => Temp_Type_Node_Reference(
+                                                                                        $
+                                                                                    )
+                                                                                ),
                                                                             }
                                                                         )]],
                                                                     })
@@ -1285,7 +1310,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
-                                                                        'value': ['dictionary', $.__d_map(
+                                                                        'value': ['dictionary', _p.dictionary.map(
+                                                                            $,
                                                                             ($, id) => Expression(
                                                                                 $
                                                                             )
@@ -1297,7 +1323,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'resolve',
-                                                                        'value': ['dictionary', $.__d_map(
+                                                                        'value': ['dictionary', _p.dictionary.map(
+                                                                            $,
                                                                             ($, id) => Expression(
                                                                                 $
                                                                             )
@@ -1373,7 +1400,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                     $,
                                                                     ($) => ({
                                                                         'option': 'literal',
-                                                                        'value': ['list', $.__l_map(
+                                                                        'value': ['list', _p.list.map(
+                                                                            $,
                                                                             ($) => Expression(
                                                                                 $
                                                                             )
@@ -2023,12 +2051,14 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                     {
                                                         'variables': _p_cc(
                                                             $['variables'],
-                                                            ($) => ['dictionary', $.__d_map(
+                                                            ($) => ['dictionary', _p.dictionary.map(
+                                                                $,
                                                                 ($, id) => ['group', ['verbose', _p.dictionary.literal(
                                                                     {
                                                                         'type': _p_cc(
                                                                             $['type'],
-                                                                            ($) => ['optional', $.__decide(
+                                                                            ($) => ['optional', _p.decide.optional(
+                                                                                $,
                                                                                 ($): t_out.Value.optional => ['set', Temp_Type_Node_Reference(
                                                                                     $
                                                                                 )],
@@ -2047,7 +2077,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                         ),
                                                         'temp ordered variables': _p_cc(
                                                             $['temp ordered variables'],
-                                                            ($) => ['list', $.__l_map(
+                                                            ($) => ['list', _p.list.map(
+                                                                $,
                                                                 ($) => ['group', ['verbose', _p.dictionary.literal(
                                                                     {
                                                                         'name': _p_cc(
@@ -2059,7 +2090,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                         ),
                                                                         'type': _p_cc(
                                                                             $['type'],
-                                                                            ($) => ['optional', $.__decide(
+                                                                            ($) => ['optional', _p.decide.optional(
+                                                                                $,
                                                                                 ($): t_out.Value.optional => ['set', Temp_Type_Node_Reference(
                                                                                     $
                                                                                 )],

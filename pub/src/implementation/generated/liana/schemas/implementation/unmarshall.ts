@@ -254,12 +254,13 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                 'l location': v_parse_tree_to_location.Value(
                     $
                 )['start']['relative'],
-                'l dictionary': v_unmarshalled_from_parse_tree.Dictionary(
-                    $,
-                    ($) => abort(
-                        ['expected a dictionary', null]
-                    )
-                ).__d_map(
+                'l dictionary': _p.dictionary.map(
+                    v_unmarshalled_from_parse_tree.Dictionary(
+                        $,
+                        ($) => abort(
+                            ['expected a dictionary', null]
+                        )
+                    ),
                     ($, id) => ({
                         'l location': v_parse_tree_to_location.Value(
                             $
@@ -283,12 +284,13 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                                         'l location': v_parse_tree_to_location.Value(
                                             $
                                         )['start']['relative'],
-                                        'l list': v_unmarshalled_from_parse_tree.List(
-                                            $,
-                                            ($) => abort(
-                                                ['expected a list', null]
-                                            )
-                                        ).__l_map(
+                                        'l list': _p.list.map(
+                                            v_unmarshalled_from_parse_tree.List(
+                                                $,
+                                                ($) => abort(
+                                                    ['expected a list', null]
+                                                )
+                                            ),
                                             ($) => ({
                                                 'l location': v_parse_tree_to_location.Value(
                                                     $
@@ -429,12 +431,13 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                 'l location': v_parse_tree_to_location.Value(
                     $
                 )['start']['relative'],
-                'l dictionary': v_unmarshalled_from_parse_tree.Dictionary(
-                    $,
-                    ($) => abort(
-                        ['expected a dictionary', null]
-                    )
-                ).__d_map(
+                'l dictionary': _p.dictionary.map(
+                    v_unmarshalled_from_parse_tree.Dictionary(
+                        $,
+                        ($) => abort(
+                            ['expected a dictionary', null]
+                        )
+                    ),
                     ($, id) => ({
                         'l location': v_parse_tree_to_location.Value(
                             $
@@ -577,12 +580,13 @@ export const Module_Set: t_signatures.Module_Set = ($, abort) => ({
     'l location': v_parse_tree_to_location.Value(
         $
     )['start']['relative'],
-    'l dictionary': v_unmarshalled_from_parse_tree.Dictionary(
-        $,
-        ($) => abort(
-            ['expected a dictionary', null]
-        )
-    ).__d_map(
+    'l dictionary': _p.dictionary.map(
+        v_unmarshalled_from_parse_tree.Dictionary(
+            $,
+            ($) => abort(
+                ['expected a dictionary', null]
+            )
+        ),
         ($, id) => ({
             'l location': v_parse_tree_to_location.Value(
                 $
@@ -705,12 +709,13 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
                 'l location': v_parse_tree_to_location.Value(
                     $
                 )['start']['relative'],
-                'l list': v_unmarshalled_from_parse_tree.List(
-                    $,
-                    ($) => abort(
-                        ['expected a list', null]
-                    )
-                ).__l_map(
+                'l list': _p.list.map(
+                    v_unmarshalled_from_parse_tree.List(
+                        $,
+                        ($) => abort(
+                            ['expected a list', null]
+                        )
+                    ),
                     ($) => ({
                         'l location': v_parse_tree_to_location.Value(
                             $
@@ -925,12 +930,13 @@ export const Selection: t_signatures.Selection = ($, abort) => _p_cc(
                                                                                         ['no such entry', "abort"]
                                                                                     )
                                                                                 ),
-                                                                                ($) => v_unmarshalled_from_parse_tree.Optional(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        ['expected an optional', null]
-                                                                                    )
-                                                                                ).__o_map(
+                                                                                ($) => _p.optional.map(
+                                                                                    v_unmarshalled_from_parse_tree.Optional(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            ['expected an optional', null]
+                                                                                        )
+                                                                                    ),
                                                                                     ($) => Expression(
                                                                                         $,
                                                                                         ($) => abort(
@@ -946,12 +952,13 @@ export const Selection: t_signatures.Selection = ($, abort) => _p_cc(
                                                                                         ['no such entry', "lookups"]
                                                                                     )
                                                                                 ),
-                                                                                ($) => v_unmarshalled_from_parse_tree.Optional(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        ['expected an optional', null]
-                                                                                    )
-                                                                                ).__o_map(
+                                                                                ($) => _p.optional.map(
+                                                                                    v_unmarshalled_from_parse_tree.Optional(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            ['expected an optional', null]
+                                                                                        )
+                                                                                    ),
                                                                                     ($) => _p_cc(
                                                                                         v_unmarshalled_from_parse_tree.State(
                                                                                             $,
@@ -974,12 +981,13 @@ export const Selection: t_signatures.Selection = ($, abort) => _p_cc(
                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                         $
                                                                                                                     )['start']['relative'],
-                                                                                                                    'l dictionary': v_unmarshalled_from_parse_tree.Dictionary(
-                                                                                                                        $,
-                                                                                                                        ($) => abort(
-                                                                                                                            ['expected a dictionary', null]
-                                                                                                                        )
-                                                                                                                    ).__d_map(
+                                                                                                                    'l dictionary': _p.dictionary.map(
+                                                                                                                        v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                                                            $,
+                                                                                                                            ($) => abort(
+                                                                                                                                ['expected a dictionary', null]
+                                                                                                                            )
+                                                                                                                        ),
                                                                                                                         ($, id) => ({
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $
@@ -1027,12 +1035,13 @@ export const Selection: t_signatures.Selection = ($, abort) => _p_cc(
                                                                                         ['no such entry', "arguments"]
                                                                                     )
                                                                                 ),
-                                                                                ($) => v_unmarshalled_from_parse_tree.Optional(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        ['expected an optional', null]
-                                                                                    )
-                                                                                ).__o_map(
+                                                                                ($) => _p.optional.map(
+                                                                                    v_unmarshalled_from_parse_tree.Optional(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            ['expected an optional', null]
+                                                                                        )
+                                                                                    ),
                                                                                     ($) => _p_cc(
                                                                                         v_unmarshalled_from_parse_tree.State(
                                                                                             $,
@@ -1055,12 +1064,13 @@ export const Selection: t_signatures.Selection = ($, abort) => _p_cc(
                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                         $
                                                                                                                     )['start']['relative'],
-                                                                                                                    'l dictionary': v_unmarshalled_from_parse_tree.Dictionary(
-                                                                                                                        $,
-                                                                                                                        ($) => abort(
-                                                                                                                            ['expected a dictionary', null]
-                                                                                                                        )
-                                                                                                                    ).__d_map(
+                                                                                                                    'l dictionary': _p.dictionary.map(
+                                                                                                                        v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                                                            $,
+                                                                                                                            ($) => abort(
+                                                                                                                                ['expected a dictionary', null]
+                                                                                                                            )
+                                                                                                                        ),
                                                                                                                         ($, id) => ({
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $
@@ -1306,12 +1316,13 @@ export const Selection: t_signatures.Selection = ($, abort) => _p_cc(
                                             'l location': v_parse_tree_to_location.Value(
                                                 $
                                             )['start']['relative'],
-                                            'l list': v_unmarshalled_from_parse_tree.List(
-                                                $,
-                                                ($) => abort(
-                                                    ['expected a list', null]
-                                                )
-                                            ).__l_map(
+                                            'l list': _p.list.map(
+                                                v_unmarshalled_from_parse_tree.List(
+                                                    $,
+                                                    ($) => abort(
+                                                        ['expected a list', null]
+                                                    )
+                                                ),
                                                 ($) => ({
                                                     'l location': v_parse_tree_to_location.Value(
                                                         $
@@ -1419,12 +1430,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                         ['no such entry', "temp resulting node"]
                                                                                     )
                                                                                 ),
-                                                                                ($) => v_unmarshalled_from_parse_tree.Optional(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        ['expected an optional', null]
-                                                                                    )
-                                                                                ).__o_map(
+                                                                                ($) => _p.optional.map(
+                                                                                    v_unmarshalled_from_parse_tree.Optional(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            ['expected an optional', null]
+                                                                                        )
+                                                                                    ),
                                                                                     ($) => Temp_Type_Node_Reference(
                                                                                         $,
                                                                                         ($) => abort(
@@ -1801,12 +1813,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                         ['no such entry', "temp resulting node"]
                                                                                     )
                                                                                 ),
-                                                                                ($) => v_unmarshalled_from_parse_tree.Optional(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        ['expected an optional', null]
-                                                                                    )
-                                                                                ).__o_map(
+                                                                                ($) => _p.optional.map(
+                                                                                    v_unmarshalled_from_parse_tree.Optional(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            ['expected an optional', null]
+                                                                                        )
+                                                                                    ),
                                                                                     ($) => Temp_Type_Node_Reference(
                                                                                         $,
                                                                                         ($) => abort(
@@ -1883,12 +1896,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                         ['no such entry', "temp resulting node"]
                                                                                     )
                                                                                 ),
-                                                                                ($) => v_unmarshalled_from_parse_tree.Optional(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        ['expected an optional', null]
-                                                                                    )
-                                                                                ).__o_map(
+                                                                                ($) => _p.optional.map(
+                                                                                    v_unmarshalled_from_parse_tree.Optional(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            ['expected an optional', null]
+                                                                                        )
+                                                                                    ),
                                                                                     ($) => Temp_Type_Node_Reference(
                                                                                         $,
                                                                                         ($) => abort(
@@ -1941,12 +1955,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $
                                                                                                                             )['start']['relative'],
-                                                                                                                            'l dictionary': v_unmarshalled_from_parse_tree.Dictionary(
-                                                                                                                                $,
-                                                                                                                                ($) => abort(
-                                                                                                                                    ['expected a dictionary', null]
-                                                                                                                                )
-                                                                                                                            ).__d_map(
+                                                                                                                            'l dictionary': _p.dictionary.map(
+                                                                                                                                v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                                                                    $,
+                                                                                                                                    ($) => abort(
+                                                                                                                                        ['expected a dictionary', null]
+                                                                                                                                    )
+                                                                                                                                ),
                                                                                                                                 ($, id) => ({
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $
@@ -2005,12 +2020,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $
                                                                                                                             )['start']['relative'],
-                                                                                                                            'l dictionary': v_unmarshalled_from_parse_tree.Dictionary(
-                                                                                                                                $,
-                                                                                                                                ($) => abort(
-                                                                                                                                    ['expected a dictionary', null]
-                                                                                                                                )
-                                                                                                                            ).__d_map(
+                                                                                                                            'l dictionary': _p.dictionary.map(
+                                                                                                                                v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                                                                    $,
+                                                                                                                                    ($) => abort(
+                                                                                                                                        ['expected a dictionary', null]
+                                                                                                                                    )
+                                                                                                                                ),
                                                                                                                                 ($, id) => ({
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $
@@ -2078,12 +2094,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                         ['no such entry', "temp resulting node"]
                                                                                     )
                                                                                 ),
-                                                                                ($) => v_unmarshalled_from_parse_tree.Optional(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        ['expected an optional', null]
-                                                                                    )
-                                                                                ).__o_map(
+                                                                                ($) => _p.optional.map(
+                                                                                    v_unmarshalled_from_parse_tree.Optional(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            ['expected an optional', null]
+                                                                                        )
+                                                                                    ),
                                                                                     ($) => Temp_Type_Node_Reference(
                                                                                         $,
                                                                                         ($) => abort(
@@ -2103,12 +2120,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $
                                                                                     )['start']['relative'],
-                                                                                    'l dictionary': v_unmarshalled_from_parse_tree.Dictionary(
-                                                                                        $,
-                                                                                        ($) => abort(
-                                                                                            ['expected a dictionary', null]
-                                                                                        )
-                                                                                    ).__d_map(
+                                                                                    'l dictionary': _p.dictionary.map(
+                                                                                        v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                            $,
+                                                                                            ($) => abort(
+                                                                                                ['expected a dictionary', null]
+                                                                                            )
+                                                                                        ),
                                                                                         ($, id) => ({
                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                 $
@@ -2469,12 +2487,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                             $
                                                                                         )['start']['relative'],
-                                                                                        'l dictionary': v_unmarshalled_from_parse_tree.Dictionary(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                ['expected a dictionary', null]
-                                                                                            )
-                                                                                        ).__d_map(
+                                                                                        'l dictionary': _p.dictionary.map(
+                                                                                            v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                                $,
+                                                                                                ($) => abort(
+                                                                                                    ['expected a dictionary', null]
+                                                                                                )
+                                                                                            ),
                                                                                             ($, id) => ({
                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                     $
@@ -2580,6 +2599,20 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                                     )
                                                                                                 )
                                                                                             ),
+                                                                                            'temp resulting entry node': _p_cc(
+                                                                                                $.__get_entry(
+                                                                                                    'temp resulting entry node',
+                                                                                                    ($) => abort(
+                                                                                                        ['no such entry', "temp resulting entry node"]
+                                                                                                    )
+                                                                                                ),
+                                                                                                ($) => Temp_Type_Node_Reference(
+                                                                                                    $,
+                                                                                                    ($) => abort(
+                                                                                                        $
+                                                                                                    )
+                                                                                                )
+                                                                                            ),
                                                                                         })
                                                                                     )],
                                                                                 })
@@ -2623,12 +2656,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                             $
                                                                                         )['start']['relative'],
-                                                                                        'l dictionary': v_unmarshalled_from_parse_tree.Dictionary(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                ['expected a dictionary', null]
-                                                                                            )
-                                                                                        ).__d_map(
+                                                                                        'l dictionary': _p.dictionary.map(
+                                                                                            v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                                $,
+                                                                                                ($) => abort(
+                                                                                                    ['expected a dictionary', null]
+                                                                                                )
+                                                                                            ),
                                                                                             ($, id) => ({
                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                     $
@@ -2655,12 +2689,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                             $
                                                                                         )['start']['relative'],
-                                                                                        'l dictionary': v_unmarshalled_from_parse_tree.Dictionary(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                ['expected a dictionary', null]
-                                                                                            )
-                                                                                        ).__d_map(
+                                                                                        'l dictionary': _p.dictionary.map(
+                                                                                            v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                                $,
+                                                                                                ($) => abort(
+                                                                                                    ['expected a dictionary', null]
+                                                                                                )
+                                                                                            ),
                                                                                             ($, id) => ({
                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                     $
@@ -2809,12 +2844,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                             $
                                                                                         )['start']['relative'],
-                                                                                        'l list': v_unmarshalled_from_parse_tree.List(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                ['expected a list', null]
-                                                                                            )
-                                                                                        ).__l_map(
+                                                                                        'l list': _p.list.map(
+                                                                                            v_unmarshalled_from_parse_tree.List(
+                                                                                                $,
+                                                                                                ($) => abort(
+                                                                                                    ['expected a list', null]
+                                                                                                )
+                                                                                            ),
                                                                                             ($) => ({
                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                     $
@@ -3993,12 +4029,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                         'l location': v_parse_tree_to_location.Value(
                                                                             $
                                                                         )['start']['relative'],
-                                                                        'l dictionary': v_unmarshalled_from_parse_tree.Dictionary(
-                                                                            $,
-                                                                            ($) => abort(
-                                                                                ['expected a dictionary', null]
-                                                                            )
-                                                                        ).__d_map(
+                                                                        'l dictionary': _p.dictionary.map(
+                                                                            v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                $,
+                                                                                ($) => abort(
+                                                                                    ['expected a dictionary', null]
+                                                                                )
+                                                                            ),
                                                                             ($, id) => ({
                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                     $
@@ -4018,12 +4055,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                                     ['no such entry', "type"]
                                                                                                 )
                                                                                             ),
-                                                                                            ($) => v_unmarshalled_from_parse_tree.Optional(
-                                                                                                $,
-                                                                                                ($) => abort(
-                                                                                                    ['expected an optional', null]
-                                                                                                )
-                                                                                            ).__o_map(
+                                                                                            ($) => _p.optional.map(
+                                                                                                v_unmarshalled_from_parse_tree.Optional(
+                                                                                                    $,
+                                                                                                    ($) => abort(
+                                                                                                        ['expected an optional', null]
+                                                                                                    )
+                                                                                                ),
                                                                                                 ($) => Temp_Type_Node_Reference(
                                                                                                     $,
                                                                                                     ($) => abort(
@@ -4063,12 +4101,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                         'l location': v_parse_tree_to_location.Value(
                                                                             $
                                                                         )['start']['relative'],
-                                                                        'l list': v_unmarshalled_from_parse_tree.List(
-                                                                            $,
-                                                                            ($) => abort(
-                                                                                ['expected a list', null]
-                                                                            )
-                                                                        ).__l_map(
+                                                                        'l list': _p.list.map(
+                                                                            v_unmarshalled_from_parse_tree.List(
+                                                                                $,
+                                                                                ($) => abort(
+                                                                                    ['expected a list', null]
+                                                                                )
+                                                                            ),
                                                                             ($) => ({
                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                     $
@@ -4102,12 +4141,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                                                                     ['no such entry', "type"]
                                                                                                 )
                                                                                             ),
-                                                                                            ($) => v_unmarshalled_from_parse_tree.Optional(
-                                                                                                $,
-                                                                                                ($) => abort(
-                                                                                                    ['expected an optional', null]
-                                                                                                )
-                                                                                            ).__o_map(
+                                                                                            ($) => _p.optional.map(
+                                                                                                v_unmarshalled_from_parse_tree.Optional(
+                                                                                                    $,
+                                                                                                    ($) => abort(
+                                                                                                        ['expected an optional', null]
+                                                                                                    )
+                                                                                                ),
                                                                                                 ($) => Temp_Type_Node_Reference(
                                                                                                     $,
                                                                                                     ($) => abort(

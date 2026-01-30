@@ -1148,11 +1148,14 @@ export namespace Expression_ {
                             
                             export type entry_handler = Expression_
                             
+                            export type temp_resulting_entry_node = Temp_Type_Node_Reference_
+                            
                         }
                         
                         export type resolve = {
                             readonly 'source': resolve.source
                             readonly 'entry handler': resolve.entry_handler
+                            readonly 'temp resulting entry node': resolve.temp_resulting_entry_node
                         }
                         
                     }

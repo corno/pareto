@@ -92,7 +92,8 @@ export const Module: t_signatures.Module = ($) => ({
                 'line': 42,
                 'column': 42,
             },
-            'l dictionary': $.__d_map(
+            'l dictionary': _p.dictionary.map(
+                $,
                 ($, id) => ({
                     'l entry': {
                         'tail': _p_cc(
@@ -103,7 +104,8 @@ export const Module: t_signatures.Module = ($) => ({
                                     'line': 42,
                                     'column': 42,
                                 },
-                                'l list': $.__l_map(
+                                'l list': _p.list.map(
+                                    $,
                                     ($) => ({
                                         'l item': $,
                                         'l location': {
@@ -178,7 +180,8 @@ export const Module: t_signatures.Module = ($) => ({
                 'line': 42,
                 'column': 42,
             },
-            'l dictionary': $.__d_map(
+            'l dictionary': _p.dictionary.map(
+                $,
                 ($, id) => ({
                     'l entry': {
                         'type': _p_cc(
@@ -230,7 +233,8 @@ export const Module_Set: t_signatures.Module_Set = ($) => ({
         'line': 42,
         'column': 42,
     },
-    'l dictionary': $.__d_map(
+    'l dictionary': _p.dictionary.map(
+        $,
         ($, id) => ({
             'l entry': {
                 'l location': {
@@ -295,7 +299,8 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
                 'line': 42,
                 'column': 42,
             },
-            'l list': $.__l_map(
+            'l list': _p.list.map(
+                $,
                 ($) => ({
                     'l item': {
                         'l location': {
@@ -400,7 +405,8 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                             ),
                                                             'abort': _p_cc(
                                                                 $['abort'],
-                                                                ($) => $.__o_map(
+                                                                ($) => _p.optional.map(
+                                                                    $,
                                                                     ($) => Expression(
                                                                         $
                                                                     )
@@ -408,7 +414,8 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                             ),
                                                             'lookups': _p_cc(
                                                                 $['lookups'],
-                                                                ($) => $.__o_map(
+                                                                ($) => _p.optional.map(
+                                                                    $,
                                                                     ($) => ({
                                                                         'l location': {
                                                                             'document resource identifier': "implement me",
@@ -428,7 +435,8 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                                                                     'line': 42,
                                                                                                     'column': 42,
                                                                                                 },
-                                                                                                'l dictionary': $.__d_map(
+                                                                                                'l dictionary': _p.dictionary.map(
+                                                                                                    $,
                                                                                                     ($, id) => ({
                                                                                                         'l entry': Lookup_Selection(
                                                                                                             $
@@ -459,7 +467,8 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                             ),
                                                             'arguments': _p_cc(
                                                                 $['arguments'],
-                                                                ($) => $.__o_map(
+                                                                ($) => _p.optional.map(
+                                                                    $,
                                                                     ($) => ({
                                                                         'l location': {
                                                                             'document resource identifier': "implement me",
@@ -479,7 +488,8 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                                                                     'line': 42,
                                                                                                     'column': 42,
                                                                                                 },
-                                                                                                'l dictionary': $.__d_map(
+                                                                                                'l dictionary': _p.dictionary.map(
+                                                                                                    $,
                                                                                                     ($, id) => ({
                                                                                                         'l entry': Expression(
                                                                                                             $
@@ -602,7 +612,8 @@ export const Selection: t_signatures.Selection = ($) => ({
                                         'line': 42,
                                         'column': 42,
                                     },
-                                    'l list': $.__l_map(
+                                    'l list': _p.list.map(
+                                        $,
                                         ($) => ({
                                             'l item': $,
                                             'l location': {
@@ -663,7 +674,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                             ),
                                                             'temp resulting node': _p_cc(
                                                                 $['temp resulting node'],
-                                                                ($) => $.__o_map(
+                                                                ($) => _p.optional.map(
+                                                                    $,
                                                                     ($) => Temp_Type_Node_Reference(
                                                                         $
                                                                     )
@@ -835,7 +847,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                             ),
                                                             'temp resulting node': _p_cc(
                                                                 $['temp resulting node'],
-                                                                ($) => $.__o_map(
+                                                                ($) => _p.optional.map(
+                                                                    $,
                                                                     ($) => Temp_Type_Node_Reference(
                                                                         $
                                                                     )
@@ -867,7 +880,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                             ),
                                                             'temp resulting node': _p_cc(
                                                                 $['temp resulting node'],
-                                                                ($) => $.__o_map(
+                                                                ($) => _p.optional.map(
+                                                                    $,
                                                                     ($) => Temp_Type_Node_Reference(
                                                                         $
                                                                     )
@@ -897,7 +911,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                         'line': 42,
                                                                                                         'column': 42,
                                                                                                     },
-                                                                                                    'l dictionary': $.__d_map(
+                                                                                                    'l dictionary': _p.dictionary.map(
+                                                                                                        $,
                                                                                                         ($, id) => ({
                                                                                                             'l entry': Expression(
                                                                                                                 $
@@ -931,7 +946,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                         'line': 42,
                                                                                                         'column': 42,
                                                                                                     },
-                                                                                                    'l dictionary': $.__d_map(
+                                                                                                    'l dictionary': _p.dictionary.map(
+                                                                                                        $,
                                                                                                         ($, id) => ({
                                                                                                             'l entry': Expression(
                                                                                                                 $
@@ -970,7 +986,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                             ),
                                                             'temp resulting node': _p_cc(
                                                                 $['temp resulting node'],
-                                                                ($) => $.__o_map(
+                                                                ($) => _p.optional.map(
+                                                                    $,
                                                                     ($) => Temp_Type_Node_Reference(
                                                                         $
                                                                     )
@@ -984,7 +1001,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                         'line': 42,
                                                                         'column': 42,
                                                                     },
-                                                                    'l dictionary': $.__d_map(
+                                                                    'l dictionary': _p.dictionary.map(
+                                                                        $,
                                                                         ($, id) => ({
                                                                             'l entry': Expression(
                                                                                 $
@@ -1182,7 +1200,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'l dictionary': $.__d_map(
+                                                                            'l dictionary': _p.dictionary.map(
+                                                                                $,
                                                                                 ($, id) => ({
                                                                                     'l entry': Expression(
                                                                                         $
@@ -1230,6 +1249,12 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                     $
                                                                                 )
                                                                             ),
+                                                                            'temp resulting entry node': _p_cc(
+                                                                                $['temp resulting entry node'],
+                                                                                ($) => Temp_Type_Node_Reference(
+                                                                                    $
+                                                                                )
+                                                                            ),
                                                                         }]
                                                                     )
                                                                 default:
@@ -1263,7 +1288,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'l dictionary': $.__d_map(
+                                                                            'l dictionary': _p.dictionary.map(
+                                                                                $,
                                                                                 ($, id) => ({
                                                                                     'l entry': Expression(
                                                                                         $
@@ -1286,7 +1312,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'l dictionary': $.__d_map(
+                                                                            'l dictionary': _p.dictionary.map(
+                                                                                $,
                                                                                 ($, id) => ({
                                                                                     'l entry': Expression(
                                                                                         $
@@ -1367,7 +1394,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'l list': $.__l_map(
+                                                                            'l list': _p.list.map(
+                                                                                $,
                                                                                 ($) => ({
                                                                                     'l item': Expression(
                                                                                         $
@@ -1938,12 +1966,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
-                                                            'l dictionary': $.__d_map(
+                                                            'l dictionary': _p.dictionary.map(
+                                                                $,
                                                                 ($, id) => ({
                                                                     'l entry': {
                                                                         'type': _p_cc(
                                                                             $['type'],
-                                                                            ($) => $.__o_map(
+                                                                            ($) => _p.optional.map(
+                                                                                $,
                                                                                 ($) => Temp_Type_Node_Reference(
                                                                                     $
                                                                                 )
@@ -1973,7 +2003,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
-                                                            'l list': $.__l_map(
+                                                            'l list': _p.list.map(
+                                                                $,
                                                                 ($) => ({
                                                                     'l item': {
                                                                         'name': _p_cc(
@@ -1982,7 +2013,8 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                         ),
                                                                         'type': _p_cc(
                                                                             $['type'],
-                                                                            ($) => $.__o_map(
+                                                                            ($) => _p.optional.map(
+                                                                                $,
                                                                                 ($) => Temp_Type_Node_Reference(
                                                                                     $
                                                                                 )

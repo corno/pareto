@@ -15,7 +15,13 @@ import * as t_out from "../../../../../interface/generated/liana/schemas/interfa
 
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/interface/resolve"
 
-export const Module_Set: t_signatures.Module_Set = ($, abort, $l, $p) => _p_unreachable_code_path(
+export const Module_Set: t_signatures.Module_Set = ($, abort, $l, $p) => _p.dictionary.resolve(
+    $['l dictionary'],
+    ($, id, $a, $c): t_out.Module_Set.D => _p_cc(
+        $['l entry'],
+        ($) => _p_unreachable_code_path(
+        )
+    )
 )
 
 export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolve(
@@ -35,7 +41,13 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
         
         const prop_types = _p_cc(
             $['types'],
-            ($) => _p_unreachable_code_path(
+            ($) => _p.dictionary.resolve(
+                $['l dictionary'],
+                ($, id, $a, $c): t_out.Module.types.D => _p_cc(
+                    $['l entry'],
+                    ($) => _p_unreachable_code_path(
+                    )
+                )
             )
         )
         return {
@@ -45,7 +57,31 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
     }
 )
 
-export const Imports: t_signatures.Imports = ($, abort, $l, $p) => _p_unreachable_code_path(
+export const Imports: t_signatures.Imports = ($, abort, $l, $p) => _p.dictionary.resolve(
+    $['l dictionary'],
+    ($, id, $a, $c): t_out.Imports.D => _p_cc(
+        $['l entry'],
+        ($) => _p.group.resolve(
+            () => {
+                
+                const prop_type = _p_cc(
+                    $['type'],
+                    ($) => _p_unreachable_code_path(
+                    )
+                )
+                
+                const prop_tail = _p_cc(
+                    $['tail'],
+                    ($) => _p_unreachable_code_path(
+                    )
+                )
+                return {
+                    'type': prop_type,
+                    'tail': prop_tail,
+                }
+            }
+        )
+    )
 )
 
 export const Type_Node: t_signatures.Type_Node = ($, abort, $l, $p) => _p_unreachable_code_path(

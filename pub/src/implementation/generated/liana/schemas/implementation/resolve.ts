@@ -17,7 +17,13 @@ import * as t_signatures from "../../../../../interface/generated/liana/schemas/
 
 import * as v_external_interface from "../interface/resolve"
 
-export const Module_Set: t_signatures.Module_Set = ($, abort, $l, $p) => _p_unreachable_code_path(
+export const Module_Set: t_signatures.Module_Set = ($, abort, $l, $p) => _p.dictionary.resolve(
+    $['l dictionary'],
+    ($, id, $a, $c): t_out.Module_Set.D => _p_cc(
+        $['l entry'],
+        ($) => _p_unreachable_code_path(
+        )
+    )
 )
 
 export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolve(
@@ -83,13 +89,101 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
         
         const prop_variable_imports = _p_cc(
             $['variable imports'],
-            ($) => _p_unreachable_code_path(
+            ($) => _p.dictionary.resolve(
+                $['l dictionary'],
+                ($, id, $a, $c): t_out.Module.variable_imports.D => _p_cc(
+                    $['l entry'],
+                    ($) => _p.group.resolve(
+                        () => {
+                            
+                            const prop_tail = _p_cc(
+                                $['tail'],
+                                ($) => _p_unreachable_code_path(
+                                )
+                            )
+                            
+                            const prop_type = _p_cc(
+                                $['type'],
+                                ($) => _p_unreachable_code_path(
+                                )
+                            )
+                            return {
+                                'tail': prop_tail,
+                                'type': prop_type,
+                            }
+                        }
+                    )
+                )
             )
         )
         
         const prop_algorithms = _p_cc(
             $['algorithms'],
-            ($) => _p_unreachable_code_path(
+            ($) => _p.dictionary.resolve(
+                $['l dictionary'],
+                ($, id, $a, $c): t_out.Module.algorithms.D => _p_cc(
+                    $['l entry'],
+                    ($) => _p.group.resolve(
+                        () => {
+                            
+                            const prop_type = _p_cc(
+                                $['type'],
+                                ($) => _p.group.resolve(
+                                    () => {
+                                        
+                                        const prop_import = _p_cc(
+                                            $['import'],
+                                            ($) => $
+                                        )
+                                        
+                                        const prop_type = _p_cc(
+                                            $['type'],
+                                            ($) => $
+                                        )
+                                        return {
+                                            'import': prop_import,
+                                            'type': prop_type,
+                                        }
+                                    }
+                                )
+                            )
+                            
+                            const prop_expression = _p_cc(
+                                $['expression'],
+                                ($) => Expression(
+                                    $,
+                                    ($) => abort(
+                                        $
+                                    ),
+                                    null,
+                                    null
+                                )
+                            )
+                            
+                            const prop_temp_has_abort = _p_cc(
+                                $['temp has abort'],
+                                ($) => $
+                            )
+                            
+                            const prop_temp_has_lookups = _p_cc(
+                                $['temp has lookups'],
+                                ($) => $
+                            )
+                            
+                            const prop_temp_has_parameters = _p_cc(
+                                $['temp has parameters'],
+                                ($) => $
+                            )
+                            return {
+                                'type': prop_type,
+                                'expression': prop_expression,
+                                'temp has abort': prop_temp_has_abort,
+                                'temp has lookups': prop_temp_has_lookups,
+                                'temp has parameters': prop_temp_has_parameters,
+                            }
+                        }
+                    )
+                )
             )
         )
         return {

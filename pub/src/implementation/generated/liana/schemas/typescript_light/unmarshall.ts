@@ -42,12 +42,13 @@ export const Identifier: t_signatures.Identifier = ($, abort) => _p_cc(
     })
 )
 
-export const Function_Parameters: t_signatures.Function_Parameters = ($, abort) => v_unmarshalled_from_parse_tree.List(
-    $,
-    ($) => abort(
-        ['expected a list', null]
-    )
-).__l_map(
+export const Function_Parameters: t_signatures.Function_Parameters = ($, abort) => _p.list.map(
+    v_unmarshalled_from_parse_tree.List(
+        $,
+        ($) => abort(
+            ['expected a list', null]
+        )
+    ),
     ($) => _p_cc(
         v_unmarshalled_from_parse_tree.Group(
             $,
@@ -77,12 +78,13 @@ export const Function_Parameters: t_signatures.Function_Parameters = ($, abort) 
                         ['no such entry', "type"]
                     )
                 ),
-                ($) => v_unmarshalled_from_parse_tree.Optional(
-                    $,
-                    ($) => abort(
-                        ['expected an optional', null]
-                    )
-                ).__o_map(
+                ($) => _p.optional.map(
+                    v_unmarshalled_from_parse_tree.Optional(
+                        $,
+                        ($) => abort(
+                            ['expected an optional', null]
+                        )
+                    ),
                     ($) => Type(
                         $,
                         ($) => abort(
@@ -206,12 +208,13 @@ export const Type: t_signatures.Type = ($, abort) => _p_cc(
                                             ['no such entry', "type parameters"]
                                         )
                                     ),
-                                    ($) => v_unmarshalled_from_parse_tree.List(
-                                        $,
-                                        ($) => abort(
-                                            ['expected a list', null]
-                                        )
-                                    ).__l_map(
+                                    ($) => _p.list.map(
+                                        v_unmarshalled_from_parse_tree.List(
+                                            $,
+                                            ($) => abort(
+                                                ['expected a list', null]
+                                            )
+                                        ),
                                         ($) => Type(
                                             $,
                                             ($) => abort(
@@ -328,12 +331,13 @@ export const Type: t_signatures.Type = ($, abort) => _p_cc(
                                             ['no such entry', "elements"]
                                         )
                                     ),
-                                    ($) => v_unmarshalled_from_parse_tree.List(
-                                        $,
-                                        ($) => abort(
-                                            ['expected a list', null]
-                                        )
-                                    ).__l_map(
+                                    ($) => _p.list.map(
+                                        v_unmarshalled_from_parse_tree.List(
+                                            $,
+                                            ($) => abort(
+                                                ['expected a list', null]
+                                            )
+                                        ),
                                         ($) => Type(
                                             $,
                                             ($) => abort(
@@ -363,12 +367,13 @@ export const Type: t_signatures.Type = ($, abort) => _p_cc(
                                             ['no such entry', "properties"]
                                         )
                                     ),
-                                    ($) => v_unmarshalled_from_parse_tree.Dictionary(
-                                        $,
-                                        ($) => abort(
-                                            ['expected a dictionary', null]
-                                        )
-                                    ).__d_map(
+                                    ($) => _p.dictionary.map(
+                                        v_unmarshalled_from_parse_tree.Dictionary(
+                                            $,
+                                            ($) => abort(
+                                                ['expected a dictionary', null]
+                                            )
+                                        ),
                                         ($, id) => _p_cc(
                                             v_unmarshalled_from_parse_tree.Group(
                                                 $,
@@ -449,12 +454,13 @@ export const Type: t_signatures.Type = ($, abort) => _p_cc(
                                             ['no such entry', "tail"]
                                         )
                                     ),
-                                    ($) => v_unmarshalled_from_parse_tree.List(
-                                        $,
-                                        ($) => abort(
-                                            ['expected a list', null]
-                                        )
-                                    ).__l_map(
+                                    ($) => _p.list.map(
+                                        v_unmarshalled_from_parse_tree.List(
+                                            $,
+                                            ($) => abort(
+                                                ['expected a list', null]
+                                            )
+                                        ),
                                         ($) => Identifier(
                                             $,
                                             ($) => abort(
@@ -470,12 +476,13 @@ export const Type: t_signatures.Type = ($, abort) => _p_cc(
                                             ['no such entry', "type arguments"]
                                         )
                                     ),
-                                    ($) => v_unmarshalled_from_parse_tree.List(
-                                        $,
-                                        ($) => abort(
-                                            ['expected a list', null]
-                                        )
-                                    ).__l_map(
+                                    ($) => _p.list.map(
+                                        v_unmarshalled_from_parse_tree.List(
+                                            $,
+                                            ($) => abort(
+                                                ['expected a list', null]
+                                            )
+                                        ),
                                         ($) => Type(
                                             $,
                                             ($) => abort(
@@ -490,12 +497,13 @@ export const Type: t_signatures.Type = ($, abort) => _p_cc(
                 case 'union':
                     return _p_cc(
                         $['value'],
-                        ($) => ['union', v_unmarshalled_from_parse_tree.List(
-                            $,
-                            ($) => abort(
-                                ['expected a list', null]
-                            )
-                        ).__l_map(
+                        ($) => ['union', _p.list.map(
+                            v_unmarshalled_from_parse_tree.List(
+                                $,
+                                ($) => abort(
+                                    ['expected a list', null]
+                                )
+                            ),
                             ($) => Type(
                                 $,
                                 ($) => abort(
@@ -537,12 +545,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                 case 'array literal':
                     return _p_cc(
                         $['value'],
-                        ($) => ['array literal', v_unmarshalled_from_parse_tree.List(
-                            $,
-                            ($) => abort(
-                                ['expected a list', null]
-                            )
-                        ).__l_map(
+                        ($) => ['array literal', _p.list.map(
+                            v_unmarshalled_from_parse_tree.List(
+                                $,
+                                ($) => abort(
+                                    ['expected a list', null]
+                                )
+                            ),
                             ($) => Expression(
                                 $,
                                 ($) => abort(
@@ -583,12 +592,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                             ['no such entry', "return type"]
                                         )
                                     ),
-                                    ($) => v_unmarshalled_from_parse_tree.Optional(
-                                        $,
-                                        ($) => abort(
-                                            ['expected an optional', null]
-                                        )
-                                    ).__o_map(
+                                    ($) => _p.optional.map(
+                                        v_unmarshalled_from_parse_tree.Optional(
+                                            $,
+                                            ($) => abort(
+                                                ['expected an optional', null]
+                                            )
+                                        ),
                                         ($) => Type(
                                             $,
                                             ($) => abort(
@@ -721,12 +731,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                             ['no such entry', "arguments"]
                                         )
                                     ),
-                                    ($) => v_unmarshalled_from_parse_tree.List(
-                                        $,
-                                        ($) => abort(
-                                            ['expected a list', null]
-                                        )
-                                    ).__l_map(
+                                    ($) => _p.list.map(
+                                        v_unmarshalled_from_parse_tree.List(
+                                            $,
+                                            ($) => abort(
+                                                ['expected a list', null]
+                                            )
+                                        ),
                                         ($) => Expression(
                                             $,
                                             ($) => abort(
@@ -1048,12 +1059,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                             ['no such entry', "properties"]
                                         )
                                     ),
-                                    ($) => v_unmarshalled_from_parse_tree.Dictionary(
-                                        $,
-                                        ($) => abort(
-                                            ['expected a dictionary', null]
-                                        )
-                                    ).__d_map(
+                                    ($) => _p.dictionary.map(
+                                        v_unmarshalled_from_parse_tree.Dictionary(
+                                            $,
+                                            ($) => abort(
+                                                ['expected a dictionary', null]
+                                            )
+                                        ),
                                         ($, id) => Expression(
                                             $,
                                             ($) => abort(
@@ -1221,12 +1233,13 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
     )
 )
 
-export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_from_parse_tree.List(
-    $,
-    ($) => abort(
-        ['expected a list', null]
-    )
-).__l_map(
+export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
+    v_unmarshalled_from_parse_tree.List(
+        $,
+        ($) => abort(
+            ['expected a list', null]
+        )
+    ),
     ($) => _p_cc(
         v_unmarshalled_from_parse_tree.State(
             $,
@@ -1295,12 +1308,13 @@ export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_
                                                                                     ['no such entry', "specifiers"]
                                                                                 )
                                                                             ),
-                                                                            ($) => v_unmarshalled_from_parse_tree.List(
-                                                                                $,
-                                                                                ($) => abort(
-                                                                                    ['expected a list', null]
-                                                                                )
-                                                                            ).__l_map(
+                                                                            ($) => _p.list.map(
+                                                                                v_unmarshalled_from_parse_tree.List(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        ['expected a list', null]
+                                                                                    )
+                                                                                ),
                                                                                 ($) => _p_cc(
                                                                                     v_unmarshalled_from_parse_tree.Group(
                                                                                         $,
@@ -1330,12 +1344,13 @@ export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_
                                                                                                     ['no such entry', "as"]
                                                                                                 )
                                                                                             ),
-                                                                                            ($) => v_unmarshalled_from_parse_tree.Optional(
-                                                                                                $,
-                                                                                                ($) => abort(
-                                                                                                    ['expected an optional', null]
-                                                                                                )
-                                                                                            ).__o_map(
+                                                                                            ($) => _p.optional.map(
+                                                                                                v_unmarshalled_from_parse_tree.Optional(
+                                                                                                    $,
+                                                                                                    ($) => abort(
+                                                                                                        ['expected an optional', null]
+                                                                                                    )
+                                                                                                ),
                                                                                                 ($) => Identifier(
                                                                                                     $,
                                                                                                     ($) => abort(
@@ -1355,12 +1370,13 @@ export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_
                                                                                     ['no such entry', "from"]
                                                                                 )
                                                                             ),
-                                                                            ($) => v_unmarshalled_from_parse_tree.Optional(
-                                                                                $,
-                                                                                ($) => abort(
-                                                                                    ['expected an optional', null]
-                                                                                )
-                                                                            ).__o_map(
+                                                                            ($) => _p.optional.map(
+                                                                                v_unmarshalled_from_parse_tree.Optional(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        ['expected an optional', null]
+                                                                                    )
+                                                                                ),
                                                                                 ($) => v_unmarshalled_from_parse_tree.Text(
                                                                                     $,
                                                                                     ($) => abort(
@@ -1451,12 +1467,13 @@ export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_
                                                                                     ['no such entry', "specifiers"]
                                                                                 )
                                                                             ),
-                                                                            ($) => v_unmarshalled_from_parse_tree.List(
-                                                                                $,
-                                                                                ($) => abort(
-                                                                                    ['expected a list', null]
-                                                                                )
-                                                                            ).__l_map(
+                                                                            ($) => _p.list.map(
+                                                                                v_unmarshalled_from_parse_tree.List(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        ['expected a list', null]
+                                                                                    )
+                                                                                ),
                                                                                 ($) => _p_cc(
                                                                                     v_unmarshalled_from_parse_tree.Group(
                                                                                         $,
@@ -1486,12 +1503,13 @@ export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_
                                                                                                     ['no such entry', "as"]
                                                                                                 )
                                                                                             ),
-                                                                                            ($) => v_unmarshalled_from_parse_tree.Optional(
-                                                                                                $,
-                                                                                                ($) => abort(
-                                                                                                    ['expected an optional', null]
-                                                                                                )
-                                                                                            ).__o_map(
+                                                                                            ($) => _p.optional.map(
+                                                                                                v_unmarshalled_from_parse_tree.Optional(
+                                                                                                    $,
+                                                                                                    ($) => abort(
+                                                                                                        ['expected an optional', null]
+                                                                                                    )
+                                                                                                ),
                                                                                                 ($) => Identifier(
                                                                                                     $,
                                                                                                     ($) => abort(
@@ -1597,12 +1615,13 @@ export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_
                     case 'return':
                         return _p_cc(
                             $['value'],
-                            ($) => ['return', v_unmarshalled_from_parse_tree.Optional(
-                                $,
-                                ($) => abort(
-                                    ['expected an optional', null]
-                                )
-                            ).__o_map(
+                            ($) => ['return', _p.optional.map(
+                                v_unmarshalled_from_parse_tree.Optional(
+                                    $,
+                                    ($) => abort(
+                                        ['expected an optional', null]
+                                    )
+                                ),
                                 ($) => Expression(
                                     $,
                                     ($) => abort(
@@ -1643,12 +1662,13 @@ export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_
                                                 ['no such entry', "clauses"]
                                             )
                                         ),
-                                        ($) => v_unmarshalled_from_parse_tree.List(
-                                            $,
-                                            ($) => abort(
-                                                ['expected a list', null]
-                                            )
-                                        ).__l_map(
+                                        ($) => _p.list.map(
+                                            v_unmarshalled_from_parse_tree.List(
+                                                $,
+                                                ($) => abort(
+                                                    ['expected a list', null]
+                                                )
+                                            ),
                                             ($) => _p_cc(
                                                 v_unmarshalled_from_parse_tree.Group(
                                                     $,
@@ -1776,12 +1796,13 @@ export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_
                                                 ['no such entry', "parameters"]
                                             )
                                         ),
-                                        ($) => v_unmarshalled_from_parse_tree.List(
-                                            $,
-                                            ($) => abort(
-                                                ['expected a list', null]
-                                            )
-                                        ).__l_map(
+                                        ($) => _p.list.map(
+                                            v_unmarshalled_from_parse_tree.List(
+                                                $,
+                                                ($) => abort(
+                                                    ['expected a list', null]
+                                                )
+                                            ),
                                             ($) => Identifier(
                                                 $,
                                                 ($) => abort(
@@ -1877,12 +1898,13 @@ export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_
                                                 ['no such entry', "type"]
                                             )
                                         ),
-                                        ($) => v_unmarshalled_from_parse_tree.Optional(
-                                            $,
-                                            ($) => abort(
-                                                ['expected an optional', null]
-                                            )
-                                        ).__o_map(
+                                        ($) => _p.optional.map(
+                                            v_unmarshalled_from_parse_tree.Optional(
+                                                $,
+                                                ($) => abort(
+                                                    ['expected an optional', null]
+                                                )
+                                            ),
                                             ($) => Type(
                                                 $,
                                                 ($) => abort(
@@ -1898,12 +1920,13 @@ export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_
                                                 ['no such entry', "expression"]
                                             )
                                         ),
-                                        ($) => v_unmarshalled_from_parse_tree.Optional(
-                                            $,
-                                            ($) => abort(
-                                                ['expected an optional', null]
-                                            )
-                                        ).__o_map(
+                                        ($) => _p.optional.map(
+                                            v_unmarshalled_from_parse_tree.Optional(
+                                                $,
+                                                ($) => abort(
+                                                    ['expected an optional', null]
+                                                )
+                                            ),
                                             ($) => Expression(
                                                 $,
                                                 ($) => abort(
@@ -1925,12 +1948,13 @@ export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_
     )
 )
 
-export const Directory: t_signatures.Directory = ($, abort) => v_unmarshalled_from_parse_tree.Dictionary(
-    $,
-    ($) => abort(
-        ['expected a dictionary', null]
-    )
-).__d_map(
+export const Directory: t_signatures.Directory = ($, abort) => _p.dictionary.map(
+    v_unmarshalled_from_parse_tree.Dictionary(
+        $,
+        ($) => abort(
+            ['expected a dictionary', null]
+        )
+    ),
     ($, id) => _p_cc(
         v_unmarshalled_from_parse_tree.State(
             $,

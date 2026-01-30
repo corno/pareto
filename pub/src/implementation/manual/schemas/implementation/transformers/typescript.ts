@@ -244,10 +244,14 @@ export const Expression = (
                 case 'list': return _p.ss($, ($) => _pdev.implement_me("X4"))
                 case 'optional': return _p.ss($, ($) => sh.e.call(
                     sh.e.property_access(
-                        Selection($.source),
-                        sh.identifier_raw("__decide"),
+                        sh.e.property_access(
+                            sh.e.identifier_raw("_p"),
+                            sh.identifier_raw("decide"),
+                        ),
+                        sh.identifier_raw("optional"),
                     ),
                     [
+                        Selection($.source),
                         sh.e.arrow_function_with_expression(
                             [
                                 sh.parameter(sh.identifier_raw("$"), null)
@@ -433,10 +437,14 @@ export const Expression = (
                         ))
                         case 'map': return _p.ss($, ($) => sh.e.call(
                             sh.e.property_access(
-                                Selection($.source),
-                                sh.identifier_raw("__d_map"),
+                                sh.e.property_access(
+                                    sh.e.identifier_raw("_p"),
+                                    sh.identifier_raw("dictionary"),
+                                ),
+                                sh.identifier_raw("map"),
                             ),
                             [
+                                Selection($.source),
                                 sh.e.arrow_function_with_expression(
                                     [
                                         sh.parameter(sh.identifier_raw("$"), null),
@@ -447,7 +455,28 @@ export const Expression = (
                                 )
                             ]
                         ))
-                        case 'resolve': return _p.ss($, ($) => _pdev.implement_me("X7"))
+                        case 'resolve': return _p.ss($, ($) => sh.e.call(
+                            sh.e.property_access(
+                                sh.e.property_access(
+                                    sh.e.identifier_raw("_p"),
+                                    sh.identifier_raw("dictionary"),
+                                ),
+                                sh.identifier_raw("resolve"),
+                            ),
+                            [
+                                Selection($.source),
+                                sh.e.arrow_function_with_expression(
+                                    [
+                                        sh.parameter(sh.identifier_raw("$"), null),
+                                        sh.parameter(sh.identifier_raw("id"), null),
+                                        sh.parameter(sh.identifier_raw("$a"), null),
+                                        sh.parameter(sh.identifier_raw("$c"), null),
+                                    ],
+                                    Temp_Type_Node_Reference($['temp resulting entry node']),
+                                    Expression($['entry handler'])
+                                )
+                            ]
+                        ))
                         default: return _p.au($[0])
                     }
                 }))
@@ -511,10 +540,14 @@ export const Expression = (
                         ))
                         case 'map': return _p.ss($, ($) => sh.e.call(
                             sh.e.property_access(
-                                Selection($.source),
-                                sh.identifier_raw("__l_map"),
+                                sh.e.property_access(
+                                    sh.e.identifier_raw("_p"),
+                                    sh.identifier_raw("list"),
+                                ),
+                                sh.identifier_raw("map"),
                             ),
                             [
+                                Selection($.source),
                                 sh.e.arrow_function_with_expression(
                                     [
                                         sh.parameter(sh.identifier_raw("$"), null)
@@ -585,10 +618,14 @@ export const Expression = (
                         }))
                         case 'map': return _p.ss($, ($) => sh.e.call(
                             sh.e.property_access(
-                                Selection($.source),
-                                sh.identifier_raw("__o_map"),
+                                sh.e.property_access(
+                                    sh.e.identifier_raw("_p"),
+                                    sh.identifier_raw("optional"),
+                                ),
+                                sh.identifier_raw("map"),
                             ),
                             [
+                                Selection($.source),
                                 sh.e.arrow_function_with_expression(
                                     [
                                         sh.parameter(sh.identifier_raw("$"), null)

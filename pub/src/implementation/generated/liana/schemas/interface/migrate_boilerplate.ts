@@ -15,7 +15,8 @@ export const Imports: t_signatures.Imports = ($) => ({
         'line': 42,
         'column': 42,
     },
-    'l dictionary': $.__d_map(
+    'l dictionary': _p.dictionary.map(
+        $,
         ($, id) => ({
             'l entry': {
                 'type': _p_cc(
@@ -71,7 +72,8 @@ export const Imports: t_signatures.Imports = ($) => ({
                             'line': 42,
                             'column': 42,
                         },
-                        'l list': $.__l_map(
+                        'l list': _p.list.map(
+                            $,
                             ($) => ({
                                 'l item': $,
                                 'l location': {
@@ -108,7 +110,8 @@ export const Module: t_signatures.Module = ($) => ({
                 'line': 42,
                 'column': 42,
             },
-            'l dictionary': $.__d_map(
+            'l dictionary': _p.dictionary.map(
+                $,
                 ($, id) => ({
                     'l entry': {
                         'l location': {
@@ -166,7 +169,8 @@ export const Module: t_signatures.Module = ($) => ({
                                                                             ($) => ['refiner', {
                                                                                 'error': _p_cc(
                                                                                     $['error'],
-                                                                                    ($) => $.__o_map(
+                                                                                    ($) => _p.optional.map(
+                                                                                        $,
                                                                                         ($) => Type_Node(
                                                                                             $
                                                                                         )
@@ -174,14 +178,16 @@ export const Module: t_signatures.Module = ($) => ({
                                                                                 ),
                                                                                 'lookups': _p_cc(
                                                                                     $['lookups'],
-                                                                                    ($) => $.__o_map(
+                                                                                    ($) => _p.optional.map(
+                                                                                        $,
                                                                                         ($) => ({
                                                                                             'l location': {
                                                                                                 'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
-                                                                                            'l dictionary': $.__d_map(
+                                                                                            'l dictionary': _p.dictionary.map(
+                                                                                                $,
                                                                                                 ($, id) => ({
                                                                                                     'l entry': {
                                                                                                         'l location': {
@@ -245,14 +251,16 @@ export const Module: t_signatures.Module = ($) => ({
                                                 ),
                                                 'parameters': _p_cc(
                                                     $['parameters'],
-                                                    ($) => $.__o_map(
+                                                    ($) => _p.optional.map(
+                                                        $,
                                                         ($) => ({
                                                             'l location': {
                                                                 'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
-                                                            'l dictionary': $.__d_map(
+                                                            'l dictionary': _p.dictionary.map(
+                                                                $,
                                                                 ($, id) => ({
                                                                     'l entry': Type_Node(
                                                                         $
@@ -294,7 +302,8 @@ export const Module_Set: t_signatures.Module_Set = ($) => ({
         'line': 42,
         'column': 42,
     },
-    'l dictionary': $.__d_map(
+    'l dictionary': _p.dictionary.map(
+        $,
         ($, id) => ({
             'l entry': {
                 'l location': {
@@ -418,7 +427,8 @@ export const Type_Node: t_signatures.Type_Node = ($) => ({
                                 'line': 42,
                                 'column': 42,
                             },
-                            'l dictionary': $.__d_map(
+                            'l dictionary': _p.dictionary.map(
+                                $,
                                 ($, id) => ({
                                     'l entry': Type_Node(
                                         $
@@ -528,7 +538,8 @@ export const Type_Node: t_signatures.Type_Node = ($) => ({
                                         'line': 42,
                                         'column': 42,
                                     },
-                                    'l list': $.__l_map(
+                                    'l list': _p.list.map(
+                                        $,
                                         ($) => ({
                                             'l item': {
                                                 'l location': {
@@ -597,7 +608,8 @@ export const Type_Node: t_signatures.Type_Node = ($) => ({
                                 'line': 42,
                                 'column': 42,
                             },
-                            'l dictionary': $.__d_map(
+                            'l dictionary': _p.dictionary.map(
+                                $,
                                 ($, id) => ({
                                     'l entry': Type_Node(
                                         $

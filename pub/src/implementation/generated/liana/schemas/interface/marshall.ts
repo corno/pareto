@@ -13,7 +13,8 @@ import * as v_serialize_number from "liana-core/dist/implementation/manual/primi
 
 import * as v_serialize_boolean from "liana-core/dist/implementation/manual/primitives/boolean/serializers/true_false"
 
-export const Imports: t_signatures.Imports = ($) => ['dictionary', $.__d_map(
+export const Imports: t_signatures.Imports = ($) => ['dictionary', _p.dictionary.map(
+    $,
     ($, id) => ['group', ['verbose', _p.dictionary.literal(
         {
             'type': _p_cc(
@@ -81,7 +82,8 @@ export const Imports: t_signatures.Imports = ($) => ['dictionary', $.__d_map(
             ),
             'tail': _p_cc(
                 $['tail'],
-                ($) => ['list', $.__l_map(
+                ($) => ['list', _p.list.map(
+                    $,
                     ($) => ['text', {
                         'delimiter': ['quote', null],
                         'value': $,
@@ -102,7 +104,8 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
         ),
         'types': _p_cc(
             $['types'],
-            ($) => ['dictionary', $.__d_map(
+            ($) => ['dictionary', _p.dictionary.map(
+                $,
                 ($, id) => ['state', _p.decide.state(
                     $,
                     ($): t_out.Value.state => {
@@ -162,7 +165,8 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                                                 {
                                                                                     'error': _p_cc(
                                                                                         $['error'],
-                                                                                        ($) => ['optional', $.__decide(
+                                                                                        ($) => ['optional', _p.decide.optional(
+                                                                                            $,
                                                                                             ($): t_out.Value.optional => ['set', Type_Node(
                                                                                                 $
                                                                                             )],
@@ -171,8 +175,10 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                                                     ),
                                                                                     'lookups': _p_cc(
                                                                                         $['lookups'],
-                                                                                        ($) => ['optional', $.__decide(
-                                                                                            ($): t_out.Value.optional => ['set', ['dictionary', $.__d_map(
+                                                                                        ($) => ['optional', _p.decide.optional(
+                                                                                            $,
+                                                                                            ($): t_out.Value.optional => ['set', ['dictionary', _p.dictionary.map(
+                                                                                                $,
                                                                                                 ($, id) => ['state', _p.decide.state(
                                                                                                     $,
                                                                                                     ($): t_out.Value.state => {
@@ -232,8 +238,10 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                 ),
                                                 'parameters': _p_cc(
                                                     $['parameters'],
-                                                    ($) => ['optional', $.__decide(
-                                                        ($): t_out.Value.optional => ['set', ['dictionary', $.__d_map(
+                                                    ($) => ['optional', _p.decide.optional(
+                                                        $,
+                                                        ($): t_out.Value.optional => ['set', ['dictionary', _p.dictionary.map(
+                                                            $,
                                                             ($, id) => Type_Node(
                                                                 $
                                                             )
@@ -257,7 +265,8 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
     }
 )]]
 
-export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', $.__d_map(
+export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', _p.dictionary.map(
+    $,
     ($, id) => ['state', _p.decide.state(
         $,
         ($): t_out.Value.state => {
@@ -383,7 +392,8 @@ export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.stat
                     $,
                     ($) => ({
                         'option': 'group',
-                        'value': ['dictionary', $.__d_map(
+                        'value': ['dictionary', _p.dictionary.map(
+                            $,
                             ($, id) => Type_Node(
                                 $
                             )
@@ -493,7 +503,8 @@ export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.stat
                                 ),
                                 'sub selection': _p_cc(
                                     $['sub selection'],
-                                    ($) => ['list', $.__l_map(
+                                    ($) => ['list', _p.list.map(
+                                        $,
                                         ($) => ['state', _p.decide.state(
                                             $,
                                             ($): t_out.Value.state => {
@@ -571,7 +582,8 @@ export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.stat
                     $,
                     ($) => ({
                         'option': 'state',
-                        'value': ['dictionary', $.__d_map(
+                        'value': ['dictionary', _p.dictionary.map(
+                            $,
                             ($, id) => Type_Node(
                                 $
                             )

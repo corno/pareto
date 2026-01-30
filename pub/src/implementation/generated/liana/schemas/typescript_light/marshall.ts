@@ -25,7 +25,8 @@ export const Identifier: t_signatures.Identifier = ($) => ['group', ['verbose', 
     }
 )]]
 
-export const Function_Parameters: t_signatures.Function_Parameters = ($) => ['list', $.__l_map(
+export const Function_Parameters: t_signatures.Function_Parameters = ($) => ['list', _p.list.map(
+    $,
     ($) => ['group', ['verbose', _p.dictionary.literal(
         {
             'name': _p_cc(
@@ -36,7 +37,8 @@ export const Function_Parameters: t_signatures.Function_Parameters = ($) => ['li
             ),
             'type': _p_cc(
                 $['type'],
-                ($) => ['optional', $.__decide(
+                ($) => ['optional', _p.decide.optional(
+                    $,
                     ($): t_out.Value.optional => ['set', Type(
                         $
                     )],
@@ -110,7 +112,8 @@ export const Type: t_signatures.Type = ($) => ['state', _p.decide.state(
                             {
                                 'type parameters': _p_cc(
                                     $['type parameters'],
-                                    ($) => ['list', $.__l_map(
+                                    ($) => ['list', _p.list.map(
+                                        $,
                                         ($) => Type(
                                             $
                                         )
@@ -184,7 +187,8 @@ export const Type: t_signatures.Type = ($) => ['state', _p.decide.state(
                                 ),
                                 'elements': _p_cc(
                                     $['elements'],
-                                    ($) => ['list', $.__l_map(
+                                    ($) => ['list', _p.list.map(
+                                        $,
                                         ($) => Type(
                                             $
                                         )
@@ -203,7 +207,8 @@ export const Type: t_signatures.Type = ($) => ['state', _p.decide.state(
                             {
                                 'properties': _p_cc(
                                     $['properties'],
-                                    ($) => ['dictionary', $.__d_map(
+                                    ($) => ['dictionary', _p.dictionary.map(
+                                        $,
                                         ($, id) => ['group', ['verbose', _p.dictionary.literal(
                                             {
                                                 'readonly': _p_cc(
@@ -244,7 +249,8 @@ export const Type: t_signatures.Type = ($) => ['state', _p.decide.state(
                                 ),
                                 'tail': _p_cc(
                                     $['tail'],
-                                    ($) => ['list', $.__l_map(
+                                    ($) => ['list', _p.list.map(
+                                        $,
                                         ($) => Identifier(
                                             $
                                         )
@@ -252,7 +258,8 @@ export const Type: t_signatures.Type = ($) => ['state', _p.decide.state(
                                 ),
                                 'type arguments': _p_cc(
                                     $['type arguments'],
-                                    ($) => ['list', $.__l_map(
+                                    ($) => ['list', _p.list.map(
+                                        $,
                                         ($) => Type(
                                             $
                                         )
@@ -267,7 +274,8 @@ export const Type: t_signatures.Type = ($) => ['state', _p.decide.state(
                     $,
                     ($) => ({
                         'option': 'union',
-                        'value': ['list', $.__l_map(
+                        'value': ['list', _p.list.map(
+                            $,
                             ($) => Type(
                                 $
                             )
@@ -299,7 +307,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                     $,
                     ($) => ({
                         'option': 'array literal',
-                        'value': ['list', $.__l_map(
+                        'value': ['list', _p.list.map(
+                            $,
                             ($) => Expression(
                                 $
                             )
@@ -321,7 +330,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                 ),
                                 'return type': _p_cc(
                                     $['return type'],
-                                    ($) => ['optional', $.__decide(
+                                    ($) => ['optional', _p.decide.optional(
+                                        $,
                                         ($): t_out.Value.optional => ['set', Type(
                                             $
                                         )],
@@ -404,7 +414,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                 ),
                                 'arguments': _p_cc(
                                     $['arguments'],
-                                    ($) => ['list', $.__l_map(
+                                    ($) => ['list', _p.list.map(
+                                        $,
                                         ($) => Expression(
                                             $
                                         )
@@ -615,7 +626,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                             {
                                 'properties': _p_cc(
                                     $['properties'],
-                                    ($) => ['dictionary', $.__d_map(
+                                    ($) => ['dictionary', _p.dictionary.map(
+                                        $,
                                         ($, id) => Expression(
                                             $
                                         )
@@ -731,7 +743,8 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
     }
 )]
 
-export const Statements: t_signatures.Statements = ($) => ['list', $.__l_map(
+export const Statements: t_signatures.Statements = ($) => ['list', _p.list.map(
+    $,
     ($) => ['state', _p.decide.state(
         $,
         ($): t_out.Value.state => {
@@ -768,7 +781,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', $.__l_map(
                                                                     {
                                                                         'specifiers': _p_cc(
                                                                             $['specifiers'],
-                                                                            ($) => ['list', $.__l_map(
+                                                                            ($) => ['list', _p.list.map(
+                                                                                $,
                                                                                 ($) => ['group', ['verbose', _p.dictionary.literal(
                                                                                     {
                                                                                         'name': _p_cc(
@@ -779,7 +793,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', $.__l_map(
                                                                                         ),
                                                                                         'as': _p_cc(
                                                                                             $['as'],
-                                                                                            ($) => ['optional', $.__decide(
+                                                                                            ($) => ['optional', _p.decide.optional(
+                                                                                                $,
                                                                                                 ($): t_out.Value.optional => ['set', Identifier(
                                                                                                     $
                                                                                                 )],
@@ -792,7 +807,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', $.__l_map(
                                                                         ),
                                                                         'from': _p_cc(
                                                                             $['from'],
-                                                                            ($) => ['optional', $.__decide(
+                                                                            ($) => ['optional', _p.decide.optional(
+                                                                                $,
                                                                                 ($): t_out.Value.optional => ['set', ['text', {
                                                                                     'delimiter': ['quote', null],
                                                                                     'value': $,
@@ -858,7 +874,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', $.__l_map(
                                                                     {
                                                                         'specifiers': _p_cc(
                                                                             $['specifiers'],
-                                                                            ($) => ['list', $.__l_map(
+                                                                            ($) => ['list', _p.list.map(
+                                                                                $,
                                                                                 ($) => ['group', ['verbose', _p.dictionary.literal(
                                                                                     {
                                                                                         'name': _p_cc(
@@ -869,7 +886,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', $.__l_map(
                                                                                         ),
                                                                                         'as': _p_cc(
                                                                                             $['as'],
-                                                                                            ($) => ['optional', $.__decide(
+                                                                                            ($) => ['optional', _p.decide.optional(
+                                                                                                $,
                                                                                                 ($): t_out.Value.optional => ['set', Identifier(
                                                                                                     $
                                                                                                 )],
@@ -940,7 +958,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', $.__l_map(
                         $,
                         ($) => ({
                             'option': 'return',
-                            'value': ['optional', $.__decide(
+                            'value': ['optional', _p.decide.optional(
+                                $,
                                 ($): t_out.Value.optional => ['set', Expression(
                                     $
                                 )],
@@ -963,7 +982,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', $.__l_map(
                                     ),
                                     'clauses': _p_cc(
                                         $['clauses'],
-                                        ($) => ['list', $.__l_map(
+                                        ($) => ['list', _p.list.map(
+                                            $,
                                             ($) => ['group', ['verbose', _p.dictionary.literal(
                                                 {
                                                     'type': _p_cc(
@@ -1036,7 +1056,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', $.__l_map(
                                     ),
                                     'parameters': _p_cc(
                                         $['parameters'],
-                                        ($) => ['list', $.__l_map(
+                                        ($) => ['list', _p.list.map(
+                                            $,
                                             ($) => Identifier(
                                                 $
                                             )
@@ -1085,7 +1106,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', $.__l_map(
                                     ),
                                     'type': _p_cc(
                                         $['type'],
-                                        ($) => ['optional', $.__decide(
+                                        ($) => ['optional', _p.decide.optional(
+                                            $,
                                             ($): t_out.Value.optional => ['set', Type(
                                                 $
                                             )],
@@ -1094,7 +1116,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', $.__l_map(
                                     ),
                                     'expression': _p_cc(
                                         $['expression'],
-                                        ($) => ['optional', $.__decide(
+                                        ($) => ['optional', _p.decide.optional(
+                                            $,
                                             ($): t_out.Value.optional => ['set', Expression(
                                                 $
                                             )],
@@ -1114,7 +1137,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', $.__l_map(
     )]
 )]
 
-export const Directory: t_signatures.Directory = ($) => ['dictionary', $.__d_map(
+export const Directory: t_signatures.Directory = ($) => ['dictionary', _p.dictionary.map(
+    $,
     ($, id) => ['state', _p.decide.state(
         $,
         ($): t_out.Value.state => {
