@@ -296,6 +296,20 @@ export namespace e {
             'item handler': element_handler
         }])])])
 
+        export const map_with_state = (
+            source: d_target.Selection,
+            initial_state: d_target.Expression,
+            element_handler: d_target.Expression,
+            update_state: d_target.Expression,
+            wrap_up: d_target.Expression,
+        ): d_target.Expression => wrap_state(['initialize', wrap_state(['list', wrap_state(['map with state', {
+            'source': source,
+            'initial state': initial_state,
+            'item handler': element_handler,
+            'update state': update_state,
+            'wrap up': wrap_up,
+        }])])])
+
     }
 
     export const nothing = (): d_target.Expression => wrap_state(['initialize', wrap_state(['nothing', null])])

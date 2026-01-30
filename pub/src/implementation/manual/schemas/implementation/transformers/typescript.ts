@@ -557,7 +557,42 @@ export const Expression = (
                                 )
                             ]
                         ))
-                        case 'map with state': return _p.ss($, ($) => _pdev.implement_me("X10"))
+                        case 'map with state': return _p.ss($, ($) => sh.e.call(
+                            sh.e.property_access(
+                                sh.e.property_access(
+                                    sh.e.identifier_raw("_p"),
+                                    sh.identifier_raw("list"),
+                                ),
+                                sh.identifier_raw("map_with_state"),
+                            ),
+                            [
+                                Selection($.source),
+                                Expression($['initial state']),
+                                sh.e.arrow_function_with_expression(
+                                    [
+                                        sh.parameter(sh.identifier_raw("$"), null)
+                                    ],
+                                    null,
+                                    Expression($['item handler'])
+                                ),
+                                sh.e.arrow_function_with_expression(
+                                    [
+                                        sh.parameter(sh.identifier_raw("$"), null),
+                                        sh.parameter(sh.identifier_raw("state"), null),
+                                    ],
+                                    null,
+                                    Expression($['update state'])
+                                ),
+                                sh.e.arrow_function_with_expression(
+                                    [
+                                        sh.parameter(sh.identifier_raw("$"), null),
+                                        sh.parameter(sh.identifier_raw("state"), null),
+                                    ],
+                                    null,
+                                    Expression($['wrap up'])
+                                ),
+                            ]
+                        ))
                         case 'reduce': return _p.ss($, ($) => _pdev.implement_me("X11"))
                         case 'reverse': return _p.ss($, ($) => _pdev.implement_me("X12"))
                         default: return _p.au($[0])
