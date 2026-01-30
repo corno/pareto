@@ -14,11 +14,11 @@ import * as t_signatures from "../../../../../interface/generated/liana/schemas/
 import * as v_external_interface from "../interface/resolve"
 
 export const Module_Set: t_signatures.Module_Set = ($, abort, $l, $p) => _p.dictionary.resolve(
-    $['l dictionary'],
+    $['l value'],
     ($, id, $a, $c): t_out.Module_Set.D => _p_cc(
         $['l entry'],
         ($) => _p.decide.state(
-            $['l state'],
+            $['l value'],
             ($): t_out.Module_Set.D => {
                 switch ($[0]) {
                     case 'module':
@@ -61,7 +61,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
         const prop_type = _p_cc(
             $['type'],
             ($) => _p.decide.state(
-                $['l state'],
+                $['l value'],
                 ($): t_out.Module.type_ => {
                     switch ($[0]) {
                         case 'serializer':
@@ -148,7 +148,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
         const prop_variable_imports = _p_cc(
             $['variable imports'],
             ($) => _p.dictionary.resolve(
-                $['l dictionary'],
+                $['l value'],
                 ($, id, $a, $c): t_out.Module.variable_imports.D => _p_cc(
                     $['l entry'],
                     ($) => _p.group.resolve(
@@ -157,7 +157,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                             const prop_tail = _p_cc(
                                 $['tail'],
                                 ($) => _p.list.map(
-                                    $['l list'],
+                                    $['l value'],
                                     ($) => _p_cc(
                                         $['l item'],
                                         ($) => $
@@ -168,7 +168,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                             const prop_type = _p_cc(
                                 $['type'],
                                 ($) => _p.decide.state(
-                                    $['l state'],
+                                    $['l value'],
                                     ($): t_out.Module.variable_imports.D.type_ => {
                                         switch ($[0]) {
                                             case 'ancestor':
@@ -224,7 +224,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
         const prop_algorithms = _p_cc(
             $['algorithms'],
             ($) => _p.dictionary.resolve(
-                $['l dictionary'],
+                $['l value'],
                 ($, id, $a, $c): t_out.Module.algorithms.D => _p_cc(
                     $['l entry'],
                     ($) => _p.group.resolve(
@@ -328,11 +328,11 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
         const prop_sub_selection = _p_cc(
             $['sub selection'],
             ($) => _p.list.map(
-                $['l list'],
+                $['l value'],
                 ($) => _p_cc(
                     $['l item'],
                     ($) => _p.decide.state(
-                        $['l state'],
+                        $['l value'],
                         ($): t_out.Temp_Type_Node_Reference.sub_selection.L => {
                             switch ($[0]) {
                                 case 'dictionary':
@@ -378,7 +378,7 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
 )
 
 export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.decide.state(
-    $['l state'],
+    $['l value'],
     ($): t_out.Expression => {
         switch ($[0]) {
             case 'decide':
@@ -390,7 +390,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                             const prop_type = _p_cc(
                                 $['type'],
                                 ($) => _p.decide.state(
-                                    $['l state'],
+                                    $['l value'],
                                     ($): t_out.Expression.decide.type_ => {
                                         switch ($[0]) {
                                             case 'boolean':
@@ -462,7 +462,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                 return _p.ss(
                                                     $,
                                                     ($) => ['dictionary', _p.decide.state(
-                                                        $['l state'],
+                                                        $['l value'],
                                                         ($): t_out.Expression.decide.type_.dictionary => {
                                                             switch ($[0]) {
                                                                 case 'has entries':
@@ -526,7 +526,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                 return _p.ss(
                                                     $,
                                                     ($) => ['list', _p.decide.state(
-                                                        $['l state'],
+                                                        $['l value'],
                                                         ($): t_out.Expression.decide.type_.list => {
                                                             switch ($[0]) {
                                                                 case 'has first item':
@@ -785,7 +785,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                             const prop_type = _p_cc(
                                                                 $['type'],
                                                                 ($) => _p.decide.state(
-                                                                    $['l state'],
+                                                                    $['l value'],
                                                                     ($): t_out.Expression.decide.type_.state.type_ => {
                                                                         switch ($[0]) {
                                                                             case 'partial':
@@ -797,7 +797,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                                                             const prop_options = _p_cc(
                                                                                                 $['options'],
                                                                                                 ($) => _p.dictionary.resolve(
-                                                                                                    $['l dictionary'],
+                                                                                                    $['l value'],
                                                                                                     ($, id, $a, $c): t_out.Expression.decide.type_.state.type_.partial.options.D => _p_cc(
                                                                                                         $['l entry'],
                                                                                                         ($) => Expression(
@@ -839,7 +839,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                                                             const prop_options = _p_cc(
                                                                                                 $['options'],
                                                                                                 ($) => _p.dictionary.resolve(
-                                                                                                    $['l dictionary'],
+                                                                                                    $['l value'],
                                                                                                     ($, id, $a, $c): t_out.Expression.decide.type_.state.type_.full.options.D => _p_cc(
                                                                                                         $['l entry'],
                                                                                                         ($) => Expression(
@@ -911,7 +911,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                             const prop_cases = _p_cc(
                                                                 $['cases'],
                                                                 ($) => _p.dictionary.resolve(
-                                                                    $['l dictionary'],
+                                                                    $['l value'],
                                                                     ($, id, $a, $c): t_out.Expression.decide.type_.text.cases.D => _p_cc(
                                                                         $['l entry'],
                                                                         ($) => Expression(
@@ -964,21 +964,21 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                 return _p.ss(
                     $,
                     ($) => ['initialize', _p.decide.state(
-                        $['l state'],
+                        $['l value'],
                         ($): t_out.Expression.initialize => {
                             switch ($[0]) {
                                 case 'boolean':
                                     return _p.ss(
                                         $,
                                         ($) => ['boolean', _p.decide.state(
-                                            $['l state'],
+                                            $['l value'],
                                             ($): t_out.Expression.initialize.boolean_ => {
                                                 switch ($[0]) {
                                                     case 'literal':
                                                         return _p.ss(
                                                             $,
                                                             ($) => ['literal', _p.decide.state(
-                                                                $['l state'],
+                                                                $['l value'],
                                                                 ($): t_out.Expression.initialize.boolean_.literal => {
                                                                     switch ($[0]) {
                                                                         case 'false':
@@ -1059,7 +1059,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                     return _p.ss(
                                         $,
                                         ($) => ['dictionary', _p.decide.state(
-                                            $['l state'],
+                                            $['l value'],
                                             ($): t_out.Expression.initialize.dictionary => {
                                                 switch ($[0]) {
                                                     case 'filter':
@@ -1164,7 +1164,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                         return _p.ss(
                                                             $,
                                                             ($) => ['literal', _p.dictionary.resolve(
-                                                                $['l dictionary'],
+                                                                $['l value'],
                                                                 ($, id, $a, $c): t_out.Expression.initialize.dictionary.literal.D => _p_cc(
                                                                     $['l entry'],
                                                                     ($) => Expression(
@@ -1275,14 +1275,14 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                     return _p.ss(
                                         $,
                                         ($) => ['group', _p.decide.state(
-                                            $['l state'],
+                                            $['l value'],
                                             ($): t_out.Expression.initialize.group => {
                                                 switch ($[0]) {
                                                     case 'literal':
                                                         return _p.ss(
                                                             $,
                                                             ($) => ['literal', _p.dictionary.resolve(
-                                                                $['l dictionary'],
+                                                                $['l value'],
                                                                 ($, id, $a, $c): t_out.Expression.initialize.group.literal.D => _p_cc(
                                                                     $['l entry'],
                                                                     ($) => Expression(
@@ -1300,7 +1300,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                         return _p.ss(
                                                             $,
                                                             ($) => ['resolve', _p.dictionary.resolve(
-                                                                $['l dictionary'],
+                                                                $['l value'],
                                                                 ($, id, $a, $c): t_out.Expression.initialize.group.resolve.D => _p_cc(
                                                                     $['l entry'],
                                                                     ($) => Expression(
@@ -1326,7 +1326,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                     return _p.ss(
                                         $,
                                         ($) => ['list', _p.decide.state(
-                                            $['l state'],
+                                            $['l value'],
                                             ($): t_out.Expression.initialize.list => {
                                                 switch ($[0]) {
                                                     case 'filter':
@@ -1405,7 +1405,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                         return _p.ss(
                                                             $,
                                                             ($) => ['literal', _p.list.map(
-                                                                $['l list'],
+                                                                $['l value'],
                                                                 ($) => _p_cc(
                                                                     $['l item'],
                                                                     ($) => Expression(
@@ -1619,14 +1619,14 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                     return _p.ss(
                                         $,
                                         ($) => ['number', _p.decide.state(
-                                            $['l state'],
+                                            $['l value'],
                                             ($): t_out.Expression.initialize.number_ => {
                                                 switch ($[0]) {
                                                     case 'approximation':
                                                         return _p.ss(
                                                             $,
                                                             ($) => ['approximation', _p.decide.state(
-                                                                $['l state'],
+                                                                $['l value'],
                                                                 ($): t_out.Expression.initialize.number_.approximation => {
                                                                     switch ($[0]) {
                                                                         case 'copy':
@@ -1658,7 +1658,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                         return _p.ss(
                                                             $,
                                                             ($) => ['integer', _p.decide.state(
-                                                                $['l state'],
+                                                                $['l value'],
                                                                 ($): t_out.Expression.initialize.number_.integer => {
                                                                     switch ($[0]) {
                                                                         case 'copy':
@@ -1739,7 +1739,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                         return _p.ss(
                                                             $,
                                                             ($) => ['natural', _p.decide.state(
-                                                                $['l state'],
+                                                                $['l value'],
                                                                 ($): t_out.Expression.initialize.number_.natural => {
                                                                     switch ($[0]) {
                                                                         case 'copy':
@@ -1835,7 +1835,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                     return _p.ss(
                                         $,
                                         ($) => ['optional', _p.decide.state(
-                                            $['l state'],
+                                            $['l value'],
                                             ($): t_out.Expression.initialize.optional => {
                                                 switch ($[0]) {
                                                     case 'from boolean':
@@ -1878,7 +1878,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                         return _p.ss(
                                                             $,
                                                             ($) => ['literal', _p.decide.state(
-                                                                $['l state'],
+                                                                $['l value'],
                                                                 ($): t_out.Expression.initialize.optional.literal => {
                                                                     switch ($[0]) {
                                                                         case 'not set':
@@ -1954,7 +1954,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                     return _p.ss(
                                         $,
                                         ($) => ['state', _p.decide.state(
-                                            $['l state'],
+                                            $['l value'],
                                             ($): t_out.Expression.initialize.state => {
                                                 switch ($[0]) {
                                                     case 'literal':
@@ -1998,7 +1998,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                     return _p.ss(
                                         $,
                                         ($) => ['text', _p.decide.state(
-                                            $['l state'],
+                                            $['l value'],
                                             ($): t_out.Expression.initialize.text => {
                                                 switch ($[0]) {
                                                     case 'copy':
@@ -2022,7 +2022,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                                     const prop_type = _p_cc(
                                                                         $['type'],
                                                                         ($) => _p.decide.state(
-                                                                            $['l state'],
+                                                                            $['l value'],
                                                                             ($): t_out.Expression.initialize.text.literal.type_ => {
                                                                                 switch ($[0]) {
                                                                                     case 'identifier':
@@ -2092,7 +2092,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                 return _p.ss(
                     $,
                     ($) => ['special', _p.decide.state(
-                        $['l state'],
+                        $['l value'],
                         ($): t_out.Expression.special => {
                             switch ($[0]) {
                                 case 'abort':
@@ -2242,7 +2242,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
 )
 
 export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide.state(
-    $['l state'],
+    $['l value'],
     ($): t_out.Selection => {
         switch ($[0]) {
             case 'implement me':
@@ -2259,7 +2259,7 @@ export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide
                             const prop_start = _p_cc(
                                 $['start'],
                                 ($) => _p.decide.state(
-                                    $['l state'],
+                                    $['l value'],
                                     ($): t_out.Selection.regular.start => {
                                         switch ($[0]) {
                                             case 'call':
@@ -2271,7 +2271,7 @@ export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide
                                                             const prop_source = _p_cc(
                                                                 $['source'],
                                                                 ($) => _p.decide.state(
-                                                                    $['l state'],
+                                                                    $['l value'],
                                                                     ($): t_out.Selection.regular.start.call.source => {
                                                                         switch ($[0]) {
                                                                             case 'local':
@@ -2342,14 +2342,14 @@ export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide
                                                                 ($) => _p.optional.map(
                                                                     $,
                                                                     ($) => _p.decide.state(
-                                                                        $['l state'],
+                                                                        $['l value'],
                                                                         ($): t_out.Selection.regular.start.call.lookups.O => {
                                                                             switch ($[0]) {
                                                                                 case 'initialize':
                                                                                     return _p.ss(
                                                                                         $,
                                                                                         ($) => ['initialize', _p.dictionary.resolve(
-                                                                                            $['l dictionary'],
+                                                                                            $['l value'],
                                                                                             ($, id, $a, $c): t_out.Selection.regular.start.call.lookups.O.initialize.D => _p_cc(
                                                                                                 $['l entry'],
                                                                                                 ($) => Lookup_Selection(
@@ -2383,14 +2383,14 @@ export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide
                                                                 ($) => _p.optional.map(
                                                                     $,
                                                                     ($) => _p.decide.state(
-                                                                        $['l state'],
+                                                                        $['l value'],
                                                                         ($): t_out.Selection.regular.start.call.arguments_.O => {
                                                                             switch ($[0]) {
                                                                                 case 'initialize':
                                                                                     return _p.ss(
                                                                                         $,
                                                                                         ($) => ['initialize', _p.dictionary.resolve(
-                                                                                            $['l dictionary'],
+                                                                                            $['l value'],
                                                                                             ($, id, $a, $c): t_out.Selection.regular.start.call.arguments_.O.initialize.D => _p_cc(
                                                                                                 $['l entry'],
                                                                                                 ($) => Expression(
@@ -2563,7 +2563,7 @@ export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide
                             const prop_tail = _p_cc(
                                 $['tail'],
                                 ($) => _p.list.map(
-                                    $['l list'],
+                                    $['l value'],
                                     ($) => _p_cc(
                                         $['l item'],
                                         ($) => $
@@ -2586,7 +2586,7 @@ export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide
 )
 
 export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort, $l, $p) => _p.decide.state(
-    $['l state'],
+    $['l value'],
     ($): t_out.Lookup_Selection => {
         switch ($[0]) {
             case 'implement me':
