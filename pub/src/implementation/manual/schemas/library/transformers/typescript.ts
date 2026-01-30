@@ -7,8 +7,8 @@ import * as d_in_imp from "../../../../../interface/generated/liana/schemas/impl
 import * as d_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
 import * as d_pareto_to_typescript from "../../../../../interface/to_be_generated/pareto_to_typescript"
 
-import * as t_interface_to_typescript_temp from "../../interface/transformers/typescript_light"
-import * as t_implementation_to_typescript_temp from "../../implementation/transformers/typescript_light"
+import * as t_interface_to_typescript_temp from "../../interface/transformers/typescript"
+import * as t_implementation_to_typescript_temp from "../../implementation/transformers/typescript"
 
 import * as sh from "../../../../../modules/typescript_light/shorthands/typescript_light"
 

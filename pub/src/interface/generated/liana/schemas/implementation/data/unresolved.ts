@@ -404,30 +404,51 @@ export namespace Selection_ {
                                 
                                 export type l_location = i__location.Relative_Location
                                 
-                                export namespace l_dictionary {
+                                export namespace l_state {
                                     
-                                    export namespace D {
+                                    export namespace initialize {
                                         
                                         export type l_location = i__location.Relative_Location
                                         
-                                        export type l_entry = Lookup_Selection_
+                                        export namespace l_dictionary {
+                                            
+                                            export namespace D {
+                                                
+                                                export type l_location = i__location.Relative_Location
+                                                
+                                                export type l_entry = Lookup_Selection_
+                                                
+                                            }
+                                            
+                                            export type D = {
+                                                readonly 'l location': D.l_location
+                                                readonly 'l entry': D.l_entry
+                                            }
+                                            
+                                        }
+                                        
+                                        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
                                         
                                     }
                                     
-                                    export type D = {
-                                        readonly 'l location': D.l_location
-                                        readonly 'l entry': D.l_entry
+                                    export type initialize = {
+                                        readonly 'l location': initialize.l_location
+                                        readonly 'l dictionary': initialize.l_dictionary
                                     }
+                                    
+                                    export type pass_through = null
                                     
                                 }
                                 
-                                export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                                export type l_state = 
+                                    | readonly ['initialize', l_state.initialize]
+                                    | readonly ['pass through', l_state.pass_through]
                                 
                             }
                             
                             export type O = {
                                 readonly 'l location': O.l_location
-                                readonly 'l dictionary': O.l_dictionary
+                                readonly 'l state': O.l_state
                             }
                             
                         }
@@ -440,30 +461,51 @@ export namespace Selection_ {
                                 
                                 export type l_location = i__location.Relative_Location
                                 
-                                export namespace l_dictionary {
+                                export namespace l_state {
                                     
-                                    export namespace D {
+                                    export namespace initialize {
                                         
                                         export type l_location = i__location.Relative_Location
                                         
-                                        export type l_entry = Expression_
+                                        export namespace l_dictionary {
+                                            
+                                            export namespace D {
+                                                
+                                                export type l_location = i__location.Relative_Location
+                                                
+                                                export type l_entry = Expression_
+                                                
+                                            }
+                                            
+                                            export type D = {
+                                                readonly 'l location': D.l_location
+                                                readonly 'l entry': D.l_entry
+                                            }
+                                            
+                                        }
+                                        
+                                        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
                                         
                                     }
                                     
-                                    export type D = {
-                                        readonly 'l location': D.l_location
-                                        readonly 'l entry': D.l_entry
+                                    export type initialize = {
+                                        readonly 'l location': initialize.l_location
+                                        readonly 'l dictionary': initialize.l_dictionary
                                     }
+                                    
+                                    export type pass_through = null
                                     
                                 }
                                 
-                                export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                                export type l_state = 
+                                    | readonly ['initialize', l_state.initialize]
+                                    | readonly ['pass through', l_state.pass_through]
                                 
                             }
                             
                             export type O = {
                                 readonly 'l location': O.l_location
-                                readonly 'l dictionary': O.l_dictionary
+                                readonly 'l state': O.l_state
                             }
                             
                         }

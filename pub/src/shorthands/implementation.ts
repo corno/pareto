@@ -372,6 +372,31 @@ export namespace e {
 
 }
 
+export namespace lookups {
+
+    export const pass_through = (): d_target.Selection.regular.start.call.lookups => _p.optional.set(wrap_state(['pass through', null]))
+
+    export const initialize = (
+        entries: _p.Raw_Or_Normal_Dictionary<d_target.Selection.regular.start.call.lookups.O.initialize.D>
+    ): d_target.Selection.regular.start.call.lookups => _p.optional.set(wrap_state(['initialize', _p.dictionary.literal(entries)]))
+
+    export const not_set = (): d_target.Selection.regular.start.call.lookups => _p.optional.not_set()
+
+}
+
+
+export namespace arguments_ {
+
+    export const pass_through = (): d_target.Selection.regular.start.call.arguments_ => _p.optional.set(wrap_state(['pass through', null]))
+
+    export const initialize = (
+        entries: _p.Raw_Or_Normal_Dictionary<d_target.Selection.regular.start.call.arguments_.O.initialize.D>
+    ): d_target.Selection.regular.start.call.arguments_ => _p.optional.set(wrap_state(['initialize', _p.dictionary.literal(entries)]))
+
+    export const not_set = (): d_target.Selection.regular.start.call.arguments_ => _p.optional.not_set()
+
+}
+
 export namespace s {
 
     export const implement_me = (description: string): d_target.Selection => wrap_state(['implement me', description])
@@ -380,16 +405,16 @@ export namespace s {
         source: d_target.Selection,
         context: d_target.Expression,
         abort: null | d_target.Expression,
-        lookups: null | _p.Raw_Or_Normal_Dictionary<d_target.Selection.regular.start.call.lookups.O.D>,
-        arguments_: null | _p.Raw_Or_Normal_Dictionary<d_target.Selection.regular.start.call.arguments_.O.D>,
+        lookups: d_target.Selection.regular.start.call.lookups,
+        arguments_: d_target.Selection.regular.start.call.arguments_,
         tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
     ): d_target.Selection => wrap_state(['regular', {
         'start': wrap_state(['call', {
             'source': source,
             'context': context,
             'abort': abort === null ? _p.optional.not_set() : _p.optional.set(abort),
-            'lookups': lookups === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(lookups)),
-            'arguments': arguments_ === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(arguments_)),
+            'lookups': lookups,
+            'arguments': arguments_,
         }]),
         'tail': _p.list.literal(tail),
     }])

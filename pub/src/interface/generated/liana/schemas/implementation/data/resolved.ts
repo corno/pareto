@@ -238,11 +238,21 @@ export namespace Selection_ {
                     
                     export namespace O {
                         
-                        export type D = Lookup_Selection_
+                        export namespace initialize {
+                            
+                            export type D = Lookup_Selection_
+                            
+                        }
+                        
+                        export type initialize = _pi.Dictionary<initialize.D>
+                        
+                        export type pass_through = null
                         
                     }
                     
-                    export type O = _pi.Dictionary<O.D>
+                    export type O = 
+                        | readonly ['initialize', O.initialize]
+                        | readonly ['pass through', O.pass_through]
                     
                 }
                 
@@ -252,11 +262,21 @@ export namespace Selection_ {
                     
                     export namespace O {
                         
-                        export type D = Expression_
+                        export namespace initialize {
+                            
+                            export type D = Expression_
+                            
+                        }
+                        
+                        export type initialize = _pi.Dictionary<initialize.D>
+                        
+                        export type pass_through = null
                         
                     }
                     
-                    export type O = _pi.Dictionary<O.D>
+                    export type O = 
+                        | readonly ['initialize', O.initialize]
+                        | readonly ['pass through', O.pass_through]
                     
                 }
                 

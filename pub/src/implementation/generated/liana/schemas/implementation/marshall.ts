@@ -449,10 +449,36 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                     'lookups': _p_cc(
                                                                         $['lookups'],
                                                                         ($) => ['optional', $.__decide(
-                                                                            ($): t_out.Value.optional => ['set', ['dictionary', $.__d_map(
-                                                                                ($, id) => Lookup_Selection(
-                                                                                    $
-                                                                                )
+                                                                            ($): t_out.Value.optional => ['set', ['state', _p.decide.state(
+                                                                                $,
+                                                                                ($): t_out.Value.state => {
+                                                                                    switch ($[0]) {
+                                                                                        case 'initialize':
+                                                                                            return _p.ss(
+                                                                                                $,
+                                                                                                ($) => ({
+                                                                                                    'option': 'initialize',
+                                                                                                    'value': ['dictionary', $.__d_map(
+                                                                                                        ($, id) => Lookup_Selection(
+                                                                                                            $
+                                                                                                        )
+                                                                                                    )],
+                                                                                                })
+                                                                                            )
+                                                                                        case 'pass through':
+                                                                                            return _p.ss(
+                                                                                                $,
+                                                                                                ($) => ({
+                                                                                                    'option': 'pass through',
+                                                                                                    'value': ['nothing', null],
+                                                                                                })
+                                                                                            )
+                                                                                        default:
+                                                                                            return _p.au(
+                                                                                                $[0]
+                                                                                            )
+                                                                                    }
+                                                                                }
                                                                             )]],
                                                                             () => ['not set', null]
                                                                         )]
@@ -460,10 +486,36 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                     'arguments': _p_cc(
                                                                         $['arguments'],
                                                                         ($) => ['optional', $.__decide(
-                                                                            ($): t_out.Value.optional => ['set', ['dictionary', $.__d_map(
-                                                                                ($, id) => Expression(
-                                                                                    $
-                                                                                )
+                                                                            ($): t_out.Value.optional => ['set', ['state', _p.decide.state(
+                                                                                $,
+                                                                                ($): t_out.Value.state => {
+                                                                                    switch ($[0]) {
+                                                                                        case 'initialize':
+                                                                                            return _p.ss(
+                                                                                                $,
+                                                                                                ($) => ({
+                                                                                                    'option': 'initialize',
+                                                                                                    'value': ['dictionary', $.__d_map(
+                                                                                                        ($, id) => Expression(
+                                                                                                            $
+                                                                                                        )
+                                                                                                    )],
+                                                                                                })
+                                                                                            )
+                                                                                        case 'pass through':
+                                                                                            return _p.ss(
+                                                                                                $,
+                                                                                                ($) => ({
+                                                                                                    'option': 'pass through',
+                                                                                                    'value': ['nothing', null],
+                                                                                                })
+                                                                                            )
+                                                                                        default:
+                                                                                            return _p.au(
+                                                                                                $[0]
+                                                                                            )
+                                                                                    }
+                                                                                }
                                                                             )]],
                                                                             () => ['not set', null]
                                                                         )]

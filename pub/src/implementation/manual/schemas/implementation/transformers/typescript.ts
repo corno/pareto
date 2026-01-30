@@ -742,27 +742,43 @@ export const Selection = (
                                 () => []
                             ),
                             $.lookups.__decide(
-                                ($) => _p.boolean.dictionary_is_empty($)
-                                    ? [
-                                        sh.e.null_(),
-                                    ]
-                                    : [
-                                        sh.e.object_literal(
-                                            $.__d_map(($) => Lookup_Selection($))
-                                        )
-                                    ],
+                                ($) => _p.decide.state($, ($) => {
+                                    switch ($[0]) {
+                                        case 'initialize': return _p.ss($, ($) => _p.boolean.dictionary_is_empty($)
+                                            ? [
+                                                sh.e.null_(),
+                                            ]
+                                            : [
+                                                sh.e.object_literal(
+                                                    $.__d_map(($) => Lookup_Selection($))
+                                                )
+                                            ])
+                                        case 'pass through': return _p.ss($, ($) => [
+                                            sh.e.identifier_raw("$l")
+                                        ])
+                                        default: return _p.au($[0])
+                                    }
+                                }),
                                 () => []
                             ),
                             $.arguments.__decide(
-                                ($) => _p.boolean.dictionary_is_empty($)
-                                    ? [
-                                        sh.e.null_(),
-                                    ]
-                                    : [
-                                        sh.e.object_literal(
-                                            $.__d_map(($) => Expression($))
-                                        )
-                                    ],
+                                ($) => _p.decide.state($, ($) => {
+                                    switch ($[0]) {
+                                        case 'initialize': return _p.ss($, ($) => _p.boolean.dictionary_is_empty($)
+                                            ? [
+                                                sh.e.null_(),
+                                            ]
+                                            : [
+                                                sh.e.object_literal(
+                                                    $.__d_map(($) => Expression($))
+                                                )
+                                            ])
+                                        case 'pass through': return _p.ss($, ($) => [
+                                            sh.e.identifier_raw("$p")
+                                        ])
+                                        default: return _p.au($[0])
+                                    }
+                                }),
                                 () => []
                             ),
                         ]),

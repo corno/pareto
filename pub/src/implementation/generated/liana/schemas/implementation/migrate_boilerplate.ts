@@ -415,17 +415,44 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                                             'line': 42,
                                                                             'column': 42,
                                                                         },
-                                                                        'l dictionary': $.__d_map(
-                                                                            ($, id) => ({
-                                                                                'l entry': Lookup_Selection(
-                                                                                    $
-                                                                                ),
-                                                                                'l location': {
-                                                                                    'document resource identifier': "implement me",
-                                                                                    'line': 42,
-                                                                                    'column': 42,
-                                                                                },
-                                                                            })
+                                                                        'l state': _p.decide.state(
+                                                                            $,
+                                                                            ($): t_out.Selection.l_state.regular.start.l_state.call.lookups.O.l_state => {
+                                                                                switch ($[0]) {
+                                                                                    case 'initialize':
+                                                                                        return _p.ss(
+                                                                                            $,
+                                                                                            ($) => ['initialize', {
+                                                                                                'l location': {
+                                                                                                    'document resource identifier': "implement me",
+                                                                                                    'line': 42,
+                                                                                                    'column': 42,
+                                                                                                },
+                                                                                                'l dictionary': $.__d_map(
+                                                                                                    ($, id) => ({
+                                                                                                        'l entry': Lookup_Selection(
+                                                                                                            $
+                                                                                                        ),
+                                                                                                        'l location': {
+                                                                                                            'document resource identifier': "implement me",
+                                                                                                            'line': 42,
+                                                                                                            'column': 42,
+                                                                                                        },
+                                                                                                    })
+                                                                                                ),
+                                                                                            }]
+                                                                                        )
+                                                                                    case 'pass through':
+                                                                                        return _p.ss(
+                                                                                            $,
+                                                                                            ($) => ['pass through', null]
+                                                                                        )
+                                                                                    default:
+                                                                                        return _p.au(
+                                                                                            $[0]
+                                                                                        )
+                                                                                }
+                                                                            }
                                                                         ),
                                                                     })
                                                                 )
@@ -439,17 +466,44 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                                             'line': 42,
                                                                             'column': 42,
                                                                         },
-                                                                        'l dictionary': $.__d_map(
-                                                                            ($, id) => ({
-                                                                                'l entry': Expression(
-                                                                                    $
-                                                                                ),
-                                                                                'l location': {
-                                                                                    'document resource identifier': "implement me",
-                                                                                    'line': 42,
-                                                                                    'column': 42,
-                                                                                },
-                                                                            })
+                                                                        'l state': _p.decide.state(
+                                                                            $,
+                                                                            ($): t_out.Selection.l_state.regular.start.l_state.call.arguments_.O.l_state => {
+                                                                                switch ($[0]) {
+                                                                                    case 'initialize':
+                                                                                        return _p.ss(
+                                                                                            $,
+                                                                                            ($) => ['initialize', {
+                                                                                                'l location': {
+                                                                                                    'document resource identifier': "implement me",
+                                                                                                    'line': 42,
+                                                                                                    'column': 42,
+                                                                                                },
+                                                                                                'l dictionary': $.__d_map(
+                                                                                                    ($, id) => ({
+                                                                                                        'l entry': Expression(
+                                                                                                            $
+                                                                                                        ),
+                                                                                                        'l location': {
+                                                                                                            'document resource identifier': "implement me",
+                                                                                                            'line': 42,
+                                                                                                            'column': 42,
+                                                                                                        },
+                                                                                                    })
+                                                                                                ),
+                                                                                            }]
+                                                                                        )
+                                                                                    case 'pass through':
+                                                                                        return _p.ss(
+                                                                                            $,
+                                                                                            ($) => ['pass through', null]
+                                                                                        )
+                                                                                    default:
+                                                                                        return _p.au(
+                                                                                            $[0]
+                                                                                        )
+                                                                                }
+                                                                            }
                                                                         ),
                                                                     })
                                                                 )
