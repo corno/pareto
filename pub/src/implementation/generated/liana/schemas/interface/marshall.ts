@@ -300,7 +300,7 @@ export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', _p.dict
     )]
 )]
 
-export const Type_Reference: t_signatures.Type_Reference = ($) => ['state', _p.decide.state(
+export const Module_Reference: t_signatures.Module_Reference = ($) => ['state', _p.decide.state(
     $,
     ($): t_out.Value.state => {
         switch ($[0]) {
@@ -369,7 +369,7 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                             {
                                 'location': _p_cc(
                                     $['location'],
-                                    ($) => Type_Reference(
+                                    ($) => Module_Reference(
                                         $
                                     )
                                 ),
@@ -497,7 +497,7 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                             {
                                 'location': _p_cc(
                                     $['location'],
-                                    ($) => Type_Reference(
+                                    ($) => Module_Reference(
                                         $
                                     )
                                 ),

@@ -160,7 +160,7 @@ export namespace t {
     }
 
     export const reference = (
-        location: d_out.Type_Reference,
+        location: d_out.Module_Reference,
         sub_selection: _p.Raw_Or_Normal_List<d_out.Value.reference.sub_selection.L>,
         cyclic?: 'cyclic' | 'acyclic'
     ): d_out.Value => {
@@ -260,16 +260,16 @@ export namespace type {
     }
 }
 
-export namespace tr {
+export namespace mr {
 
     export const local = (
         sibling: string,
-    ): d_out.Type_Reference => ['local', sibling]
+    ): d_out.Module_Reference => ['local', sibling]
 
     export const imported = (
         imp: string,
         type: string,
-    ): d_out.Type_Reference => ['import', {
+    ): d_out.Module_Reference => ['import', {
         'import': imp,
         'type': type,
     }]

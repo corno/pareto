@@ -55,7 +55,7 @@ export const Module_Set: t_signatures.Module_Set = ($, abort, $p) => v_unmarshal
     )
 )
 
-export const Type_Reference: t_signatures.Type_Reference = ($, abort, $p) => v_unmarshall.Type_Reference(
+export const Module_Reference: t_signatures.Module_Reference = ($, abort, $p) => v_unmarshall.Module_Reference(
     v_deserialize.Document(
         $,
         ($) => abort(

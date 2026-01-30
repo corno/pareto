@@ -25,8 +25,8 @@ export const Module_Set: t_signatures.Module_Set = ($) => v_serialize.Document(
     )
 )
 
-export const Type_Reference: t_signatures.Type_Reference = ($) => v_serialize.Document(
-    v_marshall.Type_Reference(
+export const Module_Reference: t_signatures.Module_Reference = ($) => v_serialize.Document(
+    v_marshall.Module_Reference(
         $
     )
 )

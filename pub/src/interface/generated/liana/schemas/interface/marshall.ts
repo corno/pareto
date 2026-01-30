@@ -53,9 +53,9 @@ export type Module_Set_ = (
     context: Module_Set_.I,
 ) => Module_Set_.O
 
-export namespace Type_Reference_ {
+export namespace Module_Reference_ {
     
-    export type I = i_in.Type_Reference
+    export type I = i_in.Module_Reference
     
     export type O = i_out.Value
     
@@ -65,9 +65,9 @@ export namespace Type_Reference_ {
     
 }
 
-export type Type_Reference_ = (
-    context: Type_Reference_.I,
-) => Type_Reference_.O
+export type Module_Reference_ = (
+    context: Module_Reference_.I,
+) => Module_Reference_.O
 
 export namespace Value_ {
     
@@ -89,6 +89,6 @@ export {
     Imports_ as Imports, 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
-    Type_Reference_ as Type_Reference, 
+    Module_Reference_ as Module_Reference, 
     Value_ as Value, 
 }

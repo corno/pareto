@@ -611,7 +611,7 @@ export const Module_Set: t_signatures.Module_Set = ($, abort) => ({
     ),
 })
 
-export const Type_Reference: t_signatures.Type_Reference = ($, abort) => _p_cc(
+export const Module_Reference: t_signatures.Module_Reference = ($, abort) => _p_cc(
     v_unmarshalled_from_parse_tree.State(
         $,
         ($) => abort(
@@ -620,7 +620,7 @@ export const Type_Reference: t_signatures.Type_Reference = ($, abort) => _p_cc(
     ),
     ($) => _p.decide.text(
         $['option']['value'],
-        ($t): t_out.Type_Reference => {
+        ($t): t_out.Module_Reference => {
             switch ($t) {
                 case 'import':
                     return _p_cc(
@@ -741,7 +741,7 @@ export const Value: t_signatures.Value = ($, abort) => _p_cc(
                                                 ['no such entry', "location"]
                                             )
                                         ),
-                                        ($) => Type_Reference(
+                                        ($) => Module_Reference(
                                             $,
                                             ($) => abort(
                                                 $
@@ -968,7 +968,7 @@ export const Value: t_signatures.Value = ($, abort) => _p_cc(
                                                 ['no such entry', "location"]
                                             )
                                         ),
-                                        ($) => Type_Reference(
+                                        ($) => Module_Reference(
                                             $,
                                             ($) => abort(
                                                 $

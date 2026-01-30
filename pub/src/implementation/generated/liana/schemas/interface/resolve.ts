@@ -363,7 +363,7 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p.decide.state(
                             
                             const prop_location = _p_cc(
                                 $['location'],
-                                ($) => Type_Reference(
+                                ($) => Module_Reference(
                                     $,
                                     ($) => abort(
                                         $
@@ -490,7 +490,7 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p.decide.state(
                             
                             const prop_location = _p_cc(
                                 $['location'],
-                                ($) => Type_Reference(
+                                ($) => Module_Reference(
                                     $,
                                     ($) => abort(
                                         $
@@ -589,9 +589,9 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p.decide.state(
     }
 )
 
-export const Type_Reference: t_signatures.Type_Reference = ($, abort, $l, $p) => _p.decide.state(
+export const Module_Reference: t_signatures.Module_Reference = ($, abort, $l, $p) => _p.decide.state(
     $['l state'],
-    ($): t_out.Type_Reference => {
+    ($): t_out.Module_Reference => {
         switch ($[0]) {
             case 'import':
                 return _p.ss(

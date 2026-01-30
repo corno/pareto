@@ -346,7 +346,7 @@ export const Module_Set: t_signatures.Module_Set = ($) => ({
     ),
 })
 
-export const Type_Reference: t_signatures.Type_Reference = ($) => ({
+export const Module_Reference: t_signatures.Module_Reference = ($) => ({
     'l location': {
         'document resource identifier': "implement me",
         'line': 42,
@@ -354,7 +354,7 @@ export const Type_Reference: t_signatures.Type_Reference = ($) => ({
     },
     'l state': _p.decide.state(
         $,
-        ($): t_out.Type_Reference.l_state => {
+        ($): t_out.Module_Reference.l_state => {
             switch ($[0]) {
                 case 'import':
                     return _p.ss(
@@ -405,7 +405,7 @@ export const Value: t_signatures.Value = ($) => ({
                         ($) => ['component', {
                             'location': _p_cc(
                                 $['location'],
-                                ($) => Type_Reference(
+                                ($) => Module_Reference(
                                     $
                                 )
                             ),
@@ -526,7 +526,7 @@ export const Value: t_signatures.Value = ($) => ({
                         ($) => ['reference', {
                             'location': _p_cc(
                                 $['location'],
-                                ($) => Type_Reference(
+                                ($) => Module_Reference(
                                     $
                                 )
                             ),

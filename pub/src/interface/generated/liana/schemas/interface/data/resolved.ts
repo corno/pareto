@@ -182,7 +182,7 @@ export namespace Module_Set_ {
 
 export type Module_Set_ = _pi.Dictionary<Module_Set_.D>
 
-export namespace Type_Reference_ {
+export namespace Module_Reference_ {
     
     export namespace import_ {
         
@@ -201,9 +201,9 @@ export namespace Type_Reference_ {
     
 }
 
-export type Type_Reference_ = 
-    | readonly ['import', Type_Reference_.import_]
-    | readonly ['local', Type_Reference_.local]
+export type Module_Reference_ = 
+    | readonly ['import', Module_Reference_.import_]
+    | readonly ['local', Module_Reference_.local]
 
 export namespace Value_ {
     
@@ -211,7 +211,7 @@ export namespace Value_ {
     
     export namespace component {
         
-        export type location = Type_Reference_
+        export type location = Module_Reference_
         
     }
     
@@ -259,7 +259,7 @@ export namespace Value_ {
     
     export namespace reference {
         
-        export type location = Type_Reference_
+        export type location = Module_Reference_
         
         export namespace sub_selection {
             
@@ -327,6 +327,6 @@ export {
     Imports_ as Imports, 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
-    Type_Reference_ as Type_Reference, 
+    Module_Reference_ as Module_Reference, 
     Value_ as Value, 
 }
