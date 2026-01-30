@@ -406,6 +406,30 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                                     )
                                                                 )
                                                             ),
+                                                            'lookups': _p_cc(
+                                                                $['lookups'],
+                                                                ($) => $.__o_map(
+                                                                    ($) => ({
+                                                                        'l location': {
+                                                                            'document resource identifier': "implement me",
+                                                                            'line': 42,
+                                                                            'column': 42,
+                                                                        },
+                                                                        'l dictionary': $.__d_map(
+                                                                            ($, id) => ({
+                                                                                'l entry': Lookup_Selection(
+                                                                                    $
+                                                                                ),
+                                                                                'l location': {
+                                                                                    'document resource identifier': "implement me",
+                                                                                    'line': 42,
+                                                                                    'column': 42,
+                                                                                },
+                                                                            })
+                                                                        ),
+                                                                    })
+                                                                )
+                                                            ),
                                                             'arguments': _p_cc(
                                                                 $['arguments'],
                                                                 ($) => $.__o_map(
@@ -1988,6 +2012,57 @@ export const Expression: t_signatures.Expression = ($) => ({
                                 }
                             ),
                         }]
+                    )
+                default:
+                    return _p.au(
+                        $[0]
+                    )
+            }
+        }
+    ),
+})
+
+export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => ({
+    'l location': {
+        'document resource identifier': "implement me",
+        'line': 42,
+        'column': 42,
+    },
+    'l state': _p.decide.state(
+        $,
+        ($): t_out.Lookup_Selection.l_state => {
+            switch ($[0]) {
+                case 'implement me':
+                    return _p.ss(
+                        $,
+                        ($) => ['implement me', $]
+                    )
+                case 'from resolved dictionary':
+                    return _p.ss(
+                        $,
+                        ($) => ['from resolved dictionary', Selection(
+                            $
+                        )]
+                    )
+                case 'from siblings':
+                    return _p.ss(
+                        $,
+                        ($) => ['from siblings', {
+                            'cycles allowed': _p_cc(
+                                $['cycles allowed'],
+                                ($) => $
+                            ),
+                        }]
+                    )
+                case 'from parameter':
+                    return _p.ss(
+                        $,
+                        ($) => ['from parameter', $]
+                    )
+                case 'not set':
+                    return _p.ss(
+                        $,
+                        ($) => ['not set', null]
                     )
                 default:
                     return _p.au(

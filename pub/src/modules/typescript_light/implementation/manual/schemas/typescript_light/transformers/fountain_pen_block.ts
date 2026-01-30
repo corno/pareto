@@ -39,19 +39,24 @@ export const String_Literal = (
 }
 
 export const Statements = (
-    $: d_in.Statements_,
+    $: d_in.Statements,
     $p: {
         'replace empty type literals by null': boolean
     }
 ): d_out.Group_Part => sh.g.sub($.__l_map(($) =>
     _p.decide.state($, ($): d_out.Group_Part => {
         switch ($[0]) {
-            case 'block': return _p.ss($, ($) => sh.g.nested_block([
-                sh.b.snippet("{"),
-                sh.b.indent([
-                    Statements($, $p),
-                ]),
-                sh.b.snippet("}"),
+            case 'block': return _p.ss($, ($) => sh.g.sub([
+                sh.g.simple_block(``),
+                sh.g.nested_block([
+                    sh.b.sub([
+                        sh.b.snippet("{"),
+                        sh.b.indent([
+                            Statements($, $p),
+                        ]),
+                        sh.b.snippet("}"),
+                    ])
+                ])
             ]))
             case 'export': return _p.ss($, ($) => sh.g.sub([
                 sh.g.simple_block(``),
@@ -141,12 +146,15 @@ export const Statements = (
                     $.export ? sh.b.snippet("export ") : sh.b.nothing(),
                     sh.b.snippet("namespace "),
                     Identifier($['name']),
-                    sh.b.snippet(" {"),
-                    sh.b.indent([
-                        Statements($['block'], $p),
-                        sh.g.simple_block(``)
-                    ]),
-                    sh.b.snippet("}"),
+                    sh.b.snippet(" "),
+                    sh.b.sub([
+                        sh.b.snippet("{"),
+                        sh.b.indent([
+                            Statements($.block, $p),
+                            sh.g.simple_block(``),
+                        ]),
+                        sh.b.snippet("}"),
+                    ])
                 ])])
             ]))
             case 'return': return _p.ss($, ($) => sh.g.nested_block([

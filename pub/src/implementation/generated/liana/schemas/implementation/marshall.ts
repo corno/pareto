@@ -446,6 +446,17 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                             () => ['not set', null]
                                                                         )]
                                                                     ),
+                                                                    'lookups': _p_cc(
+                                                                        $['lookups'],
+                                                                        ($) => ['optional', $.__decide(
+                                                                            ($): t_out.Value.optional => ['set', ['dictionary', $.__d_map(
+                                                                                ($, id) => Lookup_Selection(
+                                                                                    $
+                                                                                )
+                                                                            )]],
+                                                                            () => ['not set', null]
+                                                                        )]
+                                                                    ),
                                                                     'arguments': _p_cc(
                                                                         $['arguments'],
                                                                         ($) => ['optional', $.__decide(
@@ -2095,6 +2106,78 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                 }
                             }
                         )],
+                    })
+                )
+            default:
+                return _p.au(
+                    $[0]
+                )
+        }
+    }
+)]
+
+export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => ['state', _p.decide.state(
+    $,
+    ($): t_out.Value.state => {
+        switch ($[0]) {
+            case 'implement me':
+                return _p.ss(
+                    $,
+                    ($) => ({
+                        'option': 'implement me',
+                        'value': ['text', {
+                            'delimiter': ['quote', null],
+                            'value': $,
+                        }],
+                    })
+                )
+            case 'from resolved dictionary':
+                return _p.ss(
+                    $,
+                    ($) => ({
+                        'option': 'from resolved dictionary',
+                        'value': Selection(
+                            $
+                        ),
+                    })
+                )
+            case 'from siblings':
+                return _p.ss(
+                    $,
+                    ($) => ({
+                        'option': 'from siblings',
+                        'value': ['group', ['verbose', _p.dictionary.literal(
+                            {
+                                'cycles allowed': _p_cc(
+                                    $['cycles allowed'],
+                                    ($) => ['text', {
+                                        'delimiter': ['none', null],
+                                        'value': v_serialize_boolean.serialize(
+                                            $
+                                        ),
+                                    }]
+                                ),
+                            }
+                        )]],
+                    })
+                )
+            case 'from parameter':
+                return _p.ss(
+                    $,
+                    ($) => ({
+                        'option': 'from parameter',
+                        'value': ['text', {
+                            'delimiter': ['quote', null],
+                            'value': $,
+                        }],
+                    })
+                )
+            case 'not set':
+                return _p.ss(
+                    $,
+                    ($) => ({
+                        'option': 'not set',
+                        'value': ['nothing', null],
                     })
                 )
             default:

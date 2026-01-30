@@ -398,6 +398,42 @@ export namespace Selection_ {
                         
                         export type abort = _pi.Optional_Value<abort.O>
                         
+                        export namespace lookups {
+                            
+                            export namespace O {
+                                
+                                export type l_location = i__location.Relative_Location
+                                
+                                export namespace l_dictionary {
+                                    
+                                    export namespace D {
+                                        
+                                        export type l_location = i__location.Relative_Location
+                                        
+                                        export type l_entry = Lookup_Selection_
+                                        
+                                    }
+                                    
+                                    export type D = {
+                                        readonly 'l location': D.l_location
+                                        readonly 'l entry': D.l_entry
+                                    }
+                                    
+                                }
+                                
+                                export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                                
+                            }
+                            
+                            export type O = {
+                                readonly 'l location': O.l_location
+                                readonly 'l dictionary': O.l_dictionary
+                            }
+                            
+                        }
+                        
+                        export type lookups = _pi.Optional_Value<lookups.O>
+                        
                         export namespace arguments_ {
                             
                             export namespace O {
@@ -440,6 +476,7 @@ export namespace Selection_ {
                         readonly 'source': call.source
                         readonly 'context': call.context
                         readonly 'abort': call.abort
+                        readonly 'lookups': call.lookups
                         readonly 'arguments': call.arguments_
                     }
                     
@@ -1821,10 +1858,51 @@ export type Expression_ = {
     readonly 'l state': Expression_.l_state
 }
 
+export namespace Lookup_Selection_ {
+    
+    export type l_location = i__location.Relative_Location
+    
+    export namespace l_state {
+        
+        export type implement_me = string
+        
+        export type from_resolved_dictionary = Selection_
+        
+        export namespace from_siblings {
+            
+            export type cycles_allowed = boolean
+            
+        }
+        
+        export type from_siblings = {
+            readonly 'cycles allowed': from_siblings.cycles_allowed
+        }
+        
+        export type from_parameter = string
+        
+        export type not_set = null
+        
+    }
+    
+    export type l_state = 
+        | readonly ['implement me', l_state.implement_me]
+        | readonly ['from resolved dictionary', l_state.from_resolved_dictionary]
+        | readonly ['from siblings', l_state.from_siblings]
+        | readonly ['from parameter', l_state.from_parameter]
+        | readonly ['not set', l_state.not_set]
+    
+}
+
+export type Lookup_Selection_ = {
+    readonly 'l location': Lookup_Selection_.l_location
+    readonly 'l state': Lookup_Selection_.l_state
+}
+
 export { 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
     Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
     Selection_ as Selection, 
     Expression_ as Expression, 
+    Lookup_Selection_ as Lookup_Selection, 
 }

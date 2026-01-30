@@ -234,6 +234,20 @@ export namespace Selection_ {
                 
                 export type abort = _pi.Optional_Value<abort.O>
                 
+                export namespace lookups {
+                    
+                    export namespace O {
+                        
+                        export type D = Lookup_Selection_
+                        
+                    }
+                    
+                    export type O = _pi.Dictionary<O.D>
+                    
+                }
+                
+                export type lookups = _pi.Optional_Value<lookups.O>
+                
                 export namespace arguments_ {
                     
                     export namespace O {
@@ -254,6 +268,7 @@ export namespace Selection_ {
                 readonly 'source': call.source
                 readonly 'context': call.context
                 readonly 'abort': call.abort
+                readonly 'lookups': call.lookups
                 readonly 'arguments': call.arguments_
             }
             
@@ -1159,10 +1174,40 @@ export type Expression_ =
     | readonly ['select', Expression_.select]
     | readonly ['special', Expression_.special]
 
+export namespace Lookup_Selection_ {
+    
+    export type implement_me = string
+    
+    export type from_resolved_dictionary = Selection_
+    
+    export namespace from_siblings {
+        
+        export type cycles_allowed = boolean
+        
+    }
+    
+    export type from_siblings = {
+        readonly 'cycles allowed': from_siblings.cycles_allowed
+    }
+    
+    export type from_parameter = string
+    
+    export type not_set = null
+    
+}
+
+export type Lookup_Selection_ = 
+    | readonly ['implement me', Lookup_Selection_.implement_me]
+    | readonly ['from resolved dictionary', Lookup_Selection_.from_resolved_dictionary]
+    | readonly ['from siblings', Lookup_Selection_.from_siblings]
+    | readonly ['from parameter', Lookup_Selection_.from_parameter]
+    | readonly ['not set', Lookup_Selection_.not_set]
+
 export { 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
     Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
     Selection_ as Selection, 
     Expression_ as Expression, 
+    Lookup_Selection_ as Lookup_Selection, 
 }

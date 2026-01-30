@@ -48,3 +48,9 @@ export const Directory: t_signatures.Directory = ($) => v_serialize.Document(
         $
     )
 )
+
+export const Block: t_signatures.Block = ($) => v_serialize.Document(
+    v_marshall.Block(
+        $
+    )
+)

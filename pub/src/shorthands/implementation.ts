@@ -380,6 +380,7 @@ export namespace s {
         source: d_target.Selection,
         context: d_target.Expression,
         abort: null | d_target.Expression,
+        lookups: null | _p.Raw_Or_Normal_Dictionary<d_target.Selection.regular.start.call.lookups.O.D>,
         arguments_: null | _p.Raw_Or_Normal_Dictionary<d_target.Selection.regular.start.call.arguments_.O.D>,
         tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
     ): d_target.Selection => wrap_state(['regular', {
@@ -387,6 +388,7 @@ export namespace s {
             'source': source,
             'context': context,
             'abort': abort === null ? _p.optional.not_set() : _p.optional.set(abort),
+            'lookups': lookups === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(lookups)),
             'arguments': arguments_ === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(arguments_)),
         }]),
         'tail': _p.list.literal(tail),
@@ -442,5 +444,11 @@ export namespace s {
         }])]),
         'tail': _p.list.literal(tail),
     }])
+
+}
+
+export namespace ls {
+
+    export const implement_me = (description: string): d_target.Lookup_Selection => wrap_state(['implement me', description])
 
 }

@@ -618,7 +618,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                                     case 'block':
                                                         return _p_cc(
                                                             $['value'],
-                                                            ($) => ['block', Statements(
+                                                            ($) => ['block', Block(
                                                                 $,
                                                                 ($) => abort(
                                                                     $
@@ -1241,7 +1241,7 @@ export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_
                     case 'block':
                         return _p_cc(
                             $['value'],
-                            ($) => ['block', Statements(
+                            ($) => ['block', Block(
                                 $,
                                 ($) => abort(
                                     $
@@ -1584,7 +1584,7 @@ export const Statements: t_signatures.Statements = ($, abort) => v_unmarshalled_
                                                 ['no such entry', "block"]
                                             )
                                         ),
-                                        ($) => Statements(
+                                        ($) => Block(
                                             $,
                                             ($) => abort(
                                                 $
@@ -1987,5 +1987,12 @@ export const Directory: t_signatures.Directory = ($, abort) => v_unmarshalled_fr
                 }
             }
         )
+    )
+)
+
+export const Block: t_signatures.Block = ($, abort) => Statements(
+    $,
+    ($) => abort(
+        $
     )
 )

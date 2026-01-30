@@ -85,10 +85,27 @@ export type Expression_ = (
     context: Expression_.I,
 ) => Expression_.O
 
+export namespace Lookup_Selection_ {
+    
+    export type I = i_in.Lookup_Selection
+    
+    export type O = i_out.Value
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Lookup_Selection_ = (
+    context: Lookup_Selection_.I,
+) => Lookup_Selection_.O
+
 export { 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
     Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
     Selection_ as Selection, 
     Expression_ as Expression, 
+    Lookup_Selection_ as Lookup_Selection, 
 }

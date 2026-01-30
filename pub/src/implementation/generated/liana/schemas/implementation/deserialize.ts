@@ -88,3 +88,19 @@ export const Expression: t_signatures.Expression = ($, abort, $p) => v_unmarshal
         ['tbd', null]
     )
 )
+
+export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort, $p) => v_unmarshall.Lookup_Selection(
+    v_deserialize.Document(
+        $,
+        ($) => abort(
+            ['tbd', null]
+        ),
+        {
+            'document resource identifier': $p['document resource identifier'],
+            'tab size': $p['tab size'],
+        }
+    )['content'],
+    ($) => abort(
+        ['tbd', null]
+    )
+)

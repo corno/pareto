@@ -118,3 +118,19 @@ export const Directory: t_signatures.Directory = ($, abort, $p) => v_unmarshall.
         ['tbd', null]
     )
 )
+
+export const Block: t_signatures.Block = ($, abort, $p) => v_unmarshall.Block(
+    v_deserialize.Document(
+        $,
+        ($) => abort(
+            ['tbd', null]
+        ),
+        {
+            'document resource identifier': $p['document resource identifier'],
+            'tab size': $p['tab size'],
+        }
+    )['content'],
+    ($) => abort(
+        ['tbd', null]
+    )
+)

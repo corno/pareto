@@ -103,6 +103,12 @@ export const Module_Set = (
                             `pareto-core/dist/change_context`
                         )]
                         : [],
+                    $.specials['implement me']
+                        ? [sh.s.import_namespace(
+                            sh.identifier_raw("_pdev"),
+                            `pareto-core-dev`
+                        )]
+                        : [],
                     $.specials['iterate']
                         ? [sh.s.import_named(
                             [
@@ -659,7 +665,7 @@ export const Expression = (
                 ))
                 case 'implement me': return _p.ss($, ($) => sh.e.call(
                     sh.e.property_access(
-                        sh.e.identifier_raw("pdev"),
+                        sh.e.identifier_raw("_pdev"),
                         sh.identifier_raw("implement_me")
                     ),
                     [
@@ -735,6 +741,18 @@ export const Selection = (
                                 ],
                                 () => []
                             ),
+                            $.lookups.__decide(
+                                ($) => _p.boolean.dictionary_is_empty($)
+                                    ? [
+                                        sh.e.null_(),
+                                    ]
+                                    : [
+                                        sh.e.object_literal(
+                                            $.__d_map(($) => Lookup_Selection($))
+                                        )
+                                    ],
+                                () => []
+                            ),
                             $.arguments.__decide(
                                 ($) => _p.boolean.dictionary_is_empty($)
                                     ? [
@@ -799,6 +817,31 @@ export const Selection = (
                 )
             }
         ))
+        default: return _p.au($[0])
+    }
+})
+
+export const Lookup_Selection = (
+    $: d_in.Lookup_Selection,
+): d_out.Expression => _p.decide.state($, ($) => {
+    switch ($[0]) {
+        case 'implement me': return _p.ss($, ($) => sh.e.call(
+            sh.e.property_access(
+                sh.e.identifier_raw("_pdev"),
+                sh.identifier_raw("implement_me")
+            ),
+            [
+                sh.e.string_literal($, "apostrophe")
+            ]
+        ))
+        case 'from resolved dictionary': return _p.ss($, ($) => sh.e.identifier_raw("FIX!!"))
+        case 'from siblings': return _p.ss($, ($) => _p.decide.boolean(
+            $['cycles allowed'],
+            () => sh.e.identifier_raw("$c"),
+            () => sh.e.identifier_raw("$a"),
+        ))
+        case 'from parameter': return _p.ss($, ($) => sh.e.identifier_raw("FIX!!"))
+        case 'not set': return _p.ss($, ($) => sh.e.identifier_raw("FIX!!"))
         default: return _p.au($[0])
     }
 })

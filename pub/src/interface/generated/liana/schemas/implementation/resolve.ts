@@ -112,10 +112,32 @@ export type Selection_ = (
     parameters: null,
 ) => Selection_.O
 
+export namespace Lookup_Selection_ {
+    
+    export type I = i_unresolved.Lookup_Selection
+    
+    export type O = i_resolved.Lookup_Selection
+    
+    export type E = i_generic.Error
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Lookup_Selection_ = (
+    context: Lookup_Selection_.I,
+    abort: _pi.Abort<Lookup_Selection_.E>,
+    lookups: null,
+    parameters: null,
+) => Lookup_Selection_.O
+
 export { 
     Module_Set_ as Module_Set, 
     Module_ as Module, 
     Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
     Expression_ as Expression, 
     Selection_ as Selection, 
+    Lookup_Selection_ as Lookup_Selection, 
 }

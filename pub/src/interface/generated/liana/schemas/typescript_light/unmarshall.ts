@@ -140,6 +140,25 @@ export type Directory_ = (
     abort: _pi.Abort<Directory_.E>,
 ) => Directory_.O
 
+export namespace Block_ {
+    
+    export type I = i_in.Value
+    
+    export type O = i_out.Block
+    
+    export type E = i_generic.Error
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Block_ = (
+    context: Block_.I,
+    abort: _pi.Abort<Block_.E>,
+) => Block_.O
+
 export { 
     Identifier_ as Identifier, 
     Function_Parameters_ as Function_Parameters, 
@@ -148,4 +167,5 @@ export {
     Expression_ as Expression, 
     Statements_ as Statements, 
     Directory_ as Directory, 
+    Block_ as Block, 
 }

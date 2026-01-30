@@ -9,11 +9,13 @@ import {
     _p_cc,
 } from "pareto-core/dist/change_context"
 
+import * as _pdev from "pareto-core-dev"
+
 import * as t_out from "../../../../../interface/generated/liana/schemas/implementation/data/resolved"
 
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/implementation/resolve"
 
-import * as t_externalinterface from "../interface/resolve"
+import * as v_external_interface from "../interface/resolve"
 
 export const Module_Set: t_signatures.Module_Set = ($, abort, $l, $p) => _p_unreachable_code_path(
 )
@@ -69,7 +71,13 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
         
         const prop_type_imports = _p_cc(
             $['type imports'],
-            ($) => _p_unreachable_code_path(
+            ($) => v_external_interface.Imports(
+                $,
+                ($) => abort(
+                    $
+                ),
+                null,
+                null
             )
         )
         
@@ -135,4 +143,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_unre
 )
 
 export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p_unreachable_code_path(
+)
+
+export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort, $l, $p) => _p_unreachable_code_path(
 )

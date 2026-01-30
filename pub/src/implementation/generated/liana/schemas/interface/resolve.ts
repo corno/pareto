@@ -9,6 +9,8 @@ import {
     _p_cc,
 } from "pareto-core/dist/change_context"
 
+import * as _pdev from "pareto-core-dev"
+
 import * as t_out from "../../../../../interface/generated/liana/schemas/interface/data/resolved"
 
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/interface/resolve"
@@ -21,7 +23,13 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
         
         const prop_imports = _p_cc(
             $['imports'],
-            ($) => _p_unreachable_code_path(
+            ($) => Imports(
+                $,
+                ($) => abort(
+                    $
+                ),
+                null,
+                null
             )
         )
         

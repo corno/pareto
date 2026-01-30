@@ -38,3 +38,9 @@ export const Expression: t_signatures.Expression = ($) => v_serialize.Document(
         $
     )
 )
+
+export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => v_serialize.Document(
+    v_marshall.Lookup_Selection(
+        $
+    )
+)

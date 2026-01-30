@@ -254,7 +254,7 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
                                         case 'block':
                                             return _p.ss(
                                                 $,
-                                                ($) => ['block', Statements(
+                                                ($) => ['block', Block(
                                                     $
                                                 )]
                                             )
@@ -552,7 +552,7 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                 case 'block':
                     return _p.ss(
                         $,
-                        ($) => ['block', Statements(
+                        ($) => ['block', Block(
                             $
                         )]
                     )
@@ -690,7 +690,7 @@ export const Statements: t_signatures.Statements = ($) => $.__l_map(
                             ),
                             'block': _p_cc(
                                 $['block'],
-                                ($) => Statements(
+                                ($) => Block(
                                     $
                                 )
                             ),
@@ -862,4 +862,8 @@ export const Directory: t_signatures.Directory = ($) => $.__d_map(
             }
         }
     )
+)
+
+export const Block: t_signatures.Block = ($) => Statements(
+    $
 )

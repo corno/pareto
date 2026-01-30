@@ -216,7 +216,7 @@ export namespace Expression_ {
         
         export namespace body {
             
-            export type block = Statements_
+            export type block = Block_
             
             export type expression = Expression_
             
@@ -430,7 +430,7 @@ export namespace Statements_ {
     
     export namespace L {
         
-        export type block = Statements_
+        export type block = Block_
         
         export namespace export_ {
             
@@ -551,7 +551,7 @@ export namespace Statements_ {
             
             export type name = Identifier_
             
-            export type block = Statements_
+            export type block = Block_
             
         }
         
@@ -711,6 +711,8 @@ export namespace Directory_ {
 
 export type Directory_ = _pi.Dictionary<Directory_.D>
 
+export type Block_ = Statements_
+
 export { 
     Identifier_ as Identifier, 
     Function_Parameters_ as Function_Parameters, 
@@ -719,4 +721,5 @@ export {
     Expression_ as Expression, 
     Statements_ as Statements, 
     Directory_ as Directory, 
+    Block_ as Block, 
 }
