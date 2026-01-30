@@ -15,14 +15,14 @@ export const Module: t_signatures.Module = ($) => ({
     'type': _p_cc(
         $['type'],
         ($) => ({
-            'location': {
+            'l location': {
                 'document resource identifier': "implement me",
                 'line': 42,
                 'column': 42,
             },
-            'state': _p.decide.state(
+            'l state': _p.decide.state(
                 $,
-                ($): t_out.Module.type_.state => {
+                ($): t_out.Module.type_.l_state => {
                     switch ($[0]) {
                         case 'serializer':
                             return _p.ss(
@@ -87,26 +87,26 @@ export const Module: t_signatures.Module = ($) => ({
     'variable imports': _p_cc(
         $['variable imports'],
         ($) => ({
-            'location': {
+            'l location': {
                 'document resource identifier': "implement me",
                 'line': 42,
                 'column': 42,
             },
-            'dictionary': $.__d_map(
+            'l dictionary': $.__d_map(
                 ($, id) => ({
-                    'entry': {
+                    'l entry': {
                         'tail': _p_cc(
                             $['tail'],
                             ($) => ({
-                                'location': {
+                                'l location': {
                                     'document resource identifier': "implement me",
                                     'line': 42,
                                     'column': 42,
                                 },
-                                'list': $.__l_map(
+                                'l list': $.__l_map(
                                     ($) => ({
-                                        'item': $,
-                                        'location': {
+                                        'l item': $,
+                                        'l location': {
                                             'document resource identifier': "implement me",
                                             'line': 42,
                                             'column': 42,
@@ -118,14 +118,14 @@ export const Module: t_signatures.Module = ($) => ({
                         'type': _p_cc(
                             $['type'],
                             ($) => ({
-                                'location': {
+                                'l location': {
                                     'document resource identifier': "implement me",
                                     'line': 42,
                                     'column': 42,
                                 },
-                                'state': _p.decide.state(
+                                'l state': _p.decide.state(
                                     $,
-                                    ($): t_out.Module.variable_imports.dictionary.D.entry.type_.state => {
+                                    ($): t_out.Module.variable_imports.l_dictionary.D.l_entry.type_.l_state => {
                                         switch ($[0]) {
                                             case 'ancestor':
                                                 return _p.ss(
@@ -161,7 +161,7 @@ export const Module: t_signatures.Module = ($) => ({
                             })
                         ),
                     },
-                    'location': {
+                    'l location': {
                         'document resource identifier': "implement me",
                         'line': 42,
                         'column': 42,
@@ -173,14 +173,14 @@ export const Module: t_signatures.Module = ($) => ({
     'algorithms': _p_cc(
         $['algorithms'],
         ($) => ({
-            'location': {
+            'l location': {
                 'document resource identifier': "implement me",
                 'line': 42,
                 'column': 42,
             },
-            'dictionary': $.__d_map(
+            'l dictionary': $.__d_map(
                 ($, id) => ({
-                    'entry': {
+                    'l entry': {
                         'type': _p_cc(
                             $['type'],
                             ($) => ({
@@ -213,7 +213,7 @@ export const Module: t_signatures.Module = ($) => ({
                             ($) => $
                         ),
                     },
-                    'location': {
+                    'l location': {
                         'document resource identifier': "implement me",
                         'line': 42,
                         'column': 42,
@@ -225,22 +225,22 @@ export const Module: t_signatures.Module = ($) => ({
 })
 
 export const Module_Set: t_signatures.Module_Set = ($) => ({
-    'location': {
+    'l location': {
         'document resource identifier': "implement me",
         'line': 42,
         'column': 42,
     },
-    'dictionary': $.__d_map(
+    'l dictionary': $.__d_map(
         ($, id) => ({
-            'entry': {
-                'location': {
+            'l entry': {
+                'l location': {
                     'document resource identifier': "implement me",
                     'line': 42,
                     'column': 42,
                 },
-                'state': _p.decide.state(
+                'l state': _p.decide.state(
                     $,
-                    ($): t_out.Module_Set.dictionary.D.entry.state => {
+                    ($): t_out.Module_Set.l_dictionary.D.l_entry.l_state => {
                         switch ($[0]) {
                             case 'module':
                                 return _p.ss(
@@ -264,7 +264,7 @@ export const Module_Set: t_signatures.Module_Set = ($) => ({
                     }
                 ),
             },
-            'location': {
+            'l location': {
                 'document resource identifier': "implement me",
                 'line': 42,
                 'column': 42,
@@ -290,22 +290,22 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
     'sub selection': _p_cc(
         $['sub selection'],
         ($) => ({
-            'location': {
+            'l location': {
                 'document resource identifier': "implement me",
                 'line': 42,
                 'column': 42,
             },
-            'list': $.__l_map(
+            'l list': $.__l_map(
                 ($) => ({
-                    'item': {
-                        'location': {
+                    'l item': {
+                        'l location': {
                             'document resource identifier': "implement me",
                             'line': 42,
                             'column': 42,
                         },
-                        'state': _p.decide.state(
+                        'l state': _p.decide.state(
                             $,
-                            ($): t_out.Temp_Type_Node_Reference.sub_selection.list.L.item.state => {
+                            ($): t_out.Temp_Type_Node_Reference.sub_selection.l_list.L.l_item.l_state => {
                                 switch ($[0]) {
                                     case 'dictionary':
                                         return _p.ss(
@@ -340,7 +340,7 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
                             }
                         ),
                     },
-                    'location': {
+                    'l location': {
                         'document resource identifier': "implement me",
                         'line': 42,
                         'column': 42,
@@ -352,14 +352,14 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
 })
 
 export const Selection: t_signatures.Selection = ($) => ({
-    'location': {
+    'l location': {
         'document resource identifier': "implement me",
         'line': 42,
         'column': 42,
     },
-    'state': _p.decide.state(
+    'l state': _p.decide.state(
         $,
-        ($): t_out.Selection.state => {
+        ($): t_out.Selection.l_state => {
             switch ($[0]) {
                 case 'implement me':
                     return _p.ss(
@@ -373,14 +373,14 @@ export const Selection: t_signatures.Selection = ($) => ({
                             'start': _p_cc(
                                 $['start'],
                                 ($) => ({
-                                    'location': {
+                                    'l location': {
                                         'document resource identifier': "implement me",
                                         'line': 42,
                                         'column': 42,
                                     },
-                                    'state': _p.decide.state(
+                                    'l state': _p.decide.state(
                                         $,
-                                        ($): t_out.Selection.state.regular.start.state => {
+                                        ($): t_out.Selection.l_state.regular.start.l_state => {
                                             switch ($[0]) {
                                                 case 'call':
                                                     return _p.ss(
@@ -410,17 +410,17 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                                 $['arguments'],
                                                                 ($) => $.__o_map(
                                                                     ($) => ({
-                                                                        'location': {
+                                                                        'l location': {
                                                                             'document resource identifier': "implement me",
                                                                             'line': 42,
                                                                             'column': 42,
                                                                         },
-                                                                        'dictionary': $.__d_map(
+                                                                        'l dictionary': $.__d_map(
                                                                             ($, id) => ({
-                                                                                'entry': Expression(
+                                                                                'l entry': Expression(
                                                                                     $
                                                                                 ),
-                                                                                'location': {
+                                                                                'l location': {
                                                                                     'document resource identifier': "implement me",
                                                                                     'line': 42,
                                                                                     'column': 42,
@@ -465,14 +465,14 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                     return _p.ss(
                                                         $,
                                                         ($) => ['variable', {
-                                                            'location': {
+                                                            'l location': {
                                                                 'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
-                                                            'state': _p.decide.state(
+                                                            'l state': _p.decide.state(
                                                                 $,
-                                                                ($): t_out.Selection.state.regular.start.state.variable.state => {
+                                                                ($): t_out.Selection.l_state.regular.start.l_state.variable.l_state => {
                                                                     switch ($[0]) {
                                                                         case 'local':
                                                                             return _p.ss(
@@ -519,15 +519,15 @@ export const Selection: t_signatures.Selection = ($) => ({
                             'tail': _p_cc(
                                 $['tail'],
                                 ($) => ({
-                                    'location': {
+                                    'l location': {
                                         'document resource identifier': "implement me",
                                         'line': 42,
                                         'column': 42,
                                     },
-                                    'list': $.__l_map(
+                                    'l list': $.__l_map(
                                         ($) => ({
-                                            'item': $,
-                                            'location': {
+                                            'l item': $,
+                                            'l location': {
                                                 'document resource identifier': "implement me",
                                                 'line': 42,
                                                 'column': 42,
@@ -548,14 +548,14 @@ export const Selection: t_signatures.Selection = ($) => ({
 })
 
 export const Expression: t_signatures.Expression = ($) => ({
-    'location': {
+    'l location': {
         'document resource identifier': "implement me",
         'line': 42,
         'column': 42,
     },
-    'state': _p.decide.state(
+    'l state': _p.decide.state(
         $,
-        ($): t_out.Expression.state => {
+        ($): t_out.Expression.l_state => {
             switch ($[0]) {
                 case 'decide':
                     return _p.ss(
@@ -564,14 +564,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                             'type': _p_cc(
                                 $['type'],
                                 ($) => ({
-                                    'location': {
+                                    'l location': {
                                         'document resource identifier': "implement me",
                                         'line': 42,
                                         'column': 42,
                                     },
-                                    'state': _p.decide.state(
+                                    'l state': _p.decide.state(
                                         $,
-                                        ($): t_out.Expression.state.decide.type_.state => {
+                                        ($): t_out.Expression.l_state.decide.type_.l_state => {
                                             switch ($[0]) {
                                                 case 'boolean':
                                                     return _p.ss(
@@ -609,14 +609,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     return _p.ss(
                                                         $,
                                                         ($) => ['dictionary', {
-                                                            'location': {
+                                                            'l location': {
                                                                 'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
-                                                            'state': _p.decide.state(
+                                                            'l state': _p.decide.state(
                                                                 $,
-                                                                ($): t_out.Expression.state.decide.type_.state.dictionary.state => {
+                                                                ($): t_out.Expression.l_state.decide.type_.l_state.dictionary.l_state => {
                                                                     switch ($[0]) {
                                                                         case 'has entries':
                                                                             return _p.ss(
@@ -655,14 +655,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     return _p.ss(
                                                         $,
                                                         ($) => ['list', {
-                                                            'location': {
+                                                            'l location': {
                                                                 'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
-                                                            'state': _p.decide.state(
+                                                            'l state': _p.decide.state(
                                                                 $,
-                                                                ($): t_out.Expression.state.decide.type_.state.list.state => {
+                                                                ($): t_out.Expression.l_state.decide.type_.l_state.list.l_state => {
                                                                     switch ($[0]) {
                                                                         case 'has first item':
                                                                             return _p.ss(
@@ -798,14 +798,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                             'type': _p_cc(
                                                                 $['type'],
                                                                 ($) => ({
-                                                                    'location': {
+                                                                    'l location': {
                                                                         'document resource identifier': "implement me",
                                                                         'line': 42,
                                                                         'column': 42,
                                                                     },
-                                                                    'state': _p.decide.state(
+                                                                    'l state': _p.decide.state(
                                                                         $,
-                                                                        ($): t_out.Expression.state.decide.type_.state.state.type_.state => {
+                                                                        ($): t_out.Expression.l_state.decide.type_.l_state.state.type_.l_state => {
                                                                             switch ($[0]) {
                                                                                 case 'partial':
                                                                                     return _p.ss(
@@ -814,17 +814,17 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                             'options': _p_cc(
                                                                                                 $['options'],
                                                                                                 ($) => ({
-                                                                                                    'location': {
+                                                                                                    'l location': {
                                                                                                         'document resource identifier': "implement me",
                                                                                                         'line': 42,
                                                                                                         'column': 42,
                                                                                                     },
-                                                                                                    'dictionary': $.__d_map(
+                                                                                                    'l dictionary': $.__d_map(
                                                                                                         ($, id) => ({
-                                                                                                            'entry': Expression(
+                                                                                                            'l entry': Expression(
                                                                                                                 $
                                                                                                             ),
-                                                                                                            'location': {
+                                                                                                            'l location': {
                                                                                                                 'document resource identifier': "implement me",
                                                                                                                 'line': 42,
                                                                                                                 'column': 42,
@@ -848,17 +848,17 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                             'options': _p_cc(
                                                                                                 $['options'],
                                                                                                 ($) => ({
-                                                                                                    'location': {
+                                                                                                    'l location': {
                                                                                                         'document resource identifier': "implement me",
                                                                                                         'line': 42,
                                                                                                         'column': 42,
                                                                                                     },
-                                                                                                    'dictionary': $.__d_map(
+                                                                                                    'l dictionary': $.__d_map(
                                                                                                         ($, id) => ({
-                                                                                                            'entry': Expression(
+                                                                                                            'l entry': Expression(
                                                                                                                 $
                                                                                                             ),
-                                                                                                            'location': {
+                                                                                                            'l location': {
                                                                                                                 'document resource identifier': "implement me",
                                                                                                                 'line': 42,
                                                                                                                 'column': 42,
@@ -901,17 +901,17 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                             'cases': _p_cc(
                                                                 $['cases'],
                                                                 ($) => ({
-                                                                    'location': {
+                                                                    'l location': {
                                                                         'document resource identifier': "implement me",
                                                                         'line': 42,
                                                                         'column': 42,
                                                                     },
-                                                                    'dictionary': $.__d_map(
+                                                                    'l dictionary': $.__d_map(
                                                                         ($, id) => ({
-                                                                            'entry': Expression(
+                                                                            'l entry': Expression(
                                                                                 $
                                                                             ),
-                                                                            'location': {
+                                                                            'l location': {
                                                                                 'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
@@ -943,40 +943,40 @@ export const Expression: t_signatures.Expression = ($) => ({
                     return _p.ss(
                         $,
                         ($) => ['initialize', {
-                            'location': {
+                            'l location': {
                                 'document resource identifier': "implement me",
                                 'line': 42,
                                 'column': 42,
                             },
-                            'state': _p.decide.state(
+                            'l state': _p.decide.state(
                                 $,
-                                ($): t_out.Expression.state.initialize.state => {
+                                ($): t_out.Expression.l_state.initialize.l_state => {
                                     switch ($[0]) {
                                         case 'boolean':
                                             return _p.ss(
                                                 $,
                                                 ($) => ['boolean', {
-                                                    'location': {
+                                                    'l location': {
                                                         'document resource identifier': "implement me",
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'state': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.state.initialize.state.boolean_.state => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.boolean_.l_state => {
                                                             switch ($[0]) {
                                                                 case 'literal':
                                                                     return _p.ss(
                                                                         $,
                                                                         ($) => ['literal', {
-                                                                            'location': {
+                                                                            'l location': {
                                                                                 'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'state': _p.decide.state(
+                                                                            'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.state.initialize.state.boolean_.state.literal.state => {
+                                                                                ($): t_out.Expression.l_state.initialize.l_state.boolean_.l_state.literal.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'false':
                                                                                             return _p.ss(
@@ -1038,14 +1038,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                             return _p.ss(
                                                 $,
                                                 ($) => ['dictionary', {
-                                                    'location': {
+                                                    'l location': {
                                                         'document resource identifier': "implement me",
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'state': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.state.initialize.state.dictionary.state => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.dictionary.l_state => {
                                                             switch ($[0]) {
                                                                 case 'filter':
                                                                     return _p.ss(
@@ -1099,17 +1099,17 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                     return _p.ss(
                                                                         $,
                                                                         ($) => ['literal', {
-                                                                            'location': {
+                                                                            'l location': {
                                                                                 'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'dictionary': $.__d_map(
+                                                                            'l dictionary': $.__d_map(
                                                                                 ($, id) => ({
-                                                                                    'entry': Expression(
+                                                                                    'l entry': Expression(
                                                                                         $
                                                                                     ),
-                                                                                    'location': {
+                                                                                    'l location': {
                                                                                         'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
@@ -1167,30 +1167,30 @@ export const Expression: t_signatures.Expression = ($) => ({
                                             return _p.ss(
                                                 $,
                                                 ($) => ['group', {
-                                                    'location': {
+                                                    'l location': {
                                                         'document resource identifier': "implement me",
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'state': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.state.initialize.state.group.state => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.group.l_state => {
                                                             switch ($[0]) {
                                                                 case 'literal':
                                                                     return _p.ss(
                                                                         $,
                                                                         ($) => ['literal', {
-                                                                            'location': {
+                                                                            'l location': {
                                                                                 'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'dictionary': $.__d_map(
+                                                                            'l dictionary': $.__d_map(
                                                                                 ($, id) => ({
-                                                                                    'entry': Expression(
+                                                                                    'l entry': Expression(
                                                                                         $
                                                                                     ),
-                                                                                    'location': {
+                                                                                    'l location': {
                                                                                         'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
@@ -1203,17 +1203,17 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                     return _p.ss(
                                                                         $,
                                                                         ($) => ['resolve', {
-                                                                            'location': {
+                                                                            'l location': {
                                                                                 'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'dictionary': $.__d_map(
+                                                                            'l dictionary': $.__d_map(
                                                                                 ($, id) => ({
-                                                                                    'entry': Expression(
+                                                                                    'l entry': Expression(
                                                                                         $
                                                                                     ),
-                                                                                    'location': {
+                                                                                    'l location': {
                                                                                         'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
@@ -1235,14 +1235,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                             return _p.ss(
                                                 $,
                                                 ($) => ['list', {
-                                                    'location': {
+                                                    'l location': {
                                                         'document resource identifier': "implement me",
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'state': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.state.initialize.state.list.state => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.list.l_state => {
                                                             switch ($[0]) {
                                                                 case 'filter':
                                                                     return _p.ss(
@@ -1284,17 +1284,17 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                     return _p.ss(
                                                                         $,
                                                                         ($) => ['literal', {
-                                                                            'location': {
+                                                                            'l location': {
                                                                                 'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'list': $.__l_map(
+                                                                            'l list': $.__l_map(
                                                                                 ($) => ({
-                                                                                    'item': Expression(
+                                                                                    'l item': Expression(
                                                                                         $
                                                                                     ),
-                                                                                    'location': {
+                                                                                    'l location': {
                                                                                         'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
@@ -1411,27 +1411,27 @@ export const Expression: t_signatures.Expression = ($) => ({
                                             return _p.ss(
                                                 $,
                                                 ($) => ['number', {
-                                                    'location': {
+                                                    'l location': {
                                                         'document resource identifier': "implement me",
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'state': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.state.initialize.state.number_.state => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.number_.l_state => {
                                                             switch ($[0]) {
                                                                 case 'approximation':
                                                                     return _p.ss(
                                                                         $,
                                                                         ($) => ['approximation', {
-                                                                            'location': {
+                                                                            'l location': {
                                                                                 'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'state': _p.decide.state(
+                                                                            'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.state.initialize.state.number_.state.approximation.state => {
+                                                                                ($): t_out.Expression.l_state.initialize.l_state.number_.l_state.approximation.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'literal':
                                                                                             return _p.ss(
@@ -1458,14 +1458,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                     return _p.ss(
                                                                         $,
                                                                         ($) => ['integer', {
-                                                                            'location': {
+                                                                            'l location': {
                                                                                 'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'state': _p.decide.state(
+                                                                            'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.state.initialize.state.number_.state.integer.state => {
+                                                                                ($): t_out.Expression.l_state.initialize.l_state.number_.l_state.integer.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'copy':
                                                                                             return _p.ss(
@@ -1516,14 +1516,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                     return _p.ss(
                                                                         $,
                                                                         ($) => ['natural', {
-                                                                            'location': {
+                                                                            'l location': {
                                                                                 'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'state': _p.decide.state(
+                                                                            'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.state.initialize.state.number_.state.natural.state => {
+                                                                                ($): t_out.Expression.l_state.initialize.l_state.number_.l_state.natural.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'literal':
                                                                                             return _p.ss(
@@ -1593,14 +1593,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                             return _p.ss(
                                                 $,
                                                 ($) => ['optional', {
-                                                    'location': {
+                                                    'l location': {
                                                         'document resource identifier': "implement me",
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'state': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.state.initialize.state.optional.state => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.optional.l_state => {
                                                             switch ($[0]) {
                                                                 case 'from boolean':
                                                                     return _p.ss(
@@ -1624,14 +1624,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                     return _p.ss(
                                                                         $,
                                                                         ($) => ['literal', {
-                                                                            'location': {
+                                                                            'l location': {
                                                                                 'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'state': _p.decide.state(
+                                                                            'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.state.initialize.state.optional.state.literal.state => {
+                                                                                ($): t_out.Expression.l_state.initialize.l_state.optional.l_state.literal.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'not set':
                                                                                             return _p.ss(
@@ -1685,14 +1685,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                             return _p.ss(
                                                 $,
                                                 ($) => ['state', {
-                                                    'location': {
+                                                    'l location': {
                                                         'document resource identifier': "implement me",
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'state': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.state.initialize.state.state.state => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.state.l_state => {
                                                             switch ($[0]) {
                                                                 case 'literal':
                                                                     return _p.ss(
@@ -1723,14 +1723,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                             return _p.ss(
                                                 $,
                                                 ($) => ['text', {
-                                                    'location': {
+                                                    'l location': {
                                                         'document resource identifier': "implement me",
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'state': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.state.initialize.state.text.state => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.text.l_state => {
                                                             switch ($[0]) {
                                                                 case 'copy':
                                                                     return _p.ss(
@@ -1746,14 +1746,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             'type': _p_cc(
                                                                                 $['type'],
                                                                                 ($) => ({
-                                                                                    'location': {
+                                                                                    'l location': {
                                                                                         'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
-                                                                                    'state': _p.decide.state(
+                                                                                    'l state': _p.decide.state(
                                                                                         $,
-                                                                                        ($): t_out.Expression.state.initialize.state.text.state.literal.type_.state => {
+                                                                                        ($): t_out.Expression.l_state.initialize.l_state.text.l_state.literal.type_.l_state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'identifier':
                                                                                                     return _p.ss(
@@ -1814,14 +1814,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                     return _p.ss(
                         $,
                         ($) => ['special', {
-                            'location': {
+                            'l location': {
                                 'document resource identifier': "implement me",
                                 'line': 42,
                                 'column': 42,
                             },
-                            'state': _p.decide.state(
+                            'l state': _p.decide.state(
                                 $,
-                                ($): t_out.Expression.state.special.state => {
+                                ($): t_out.Expression.l_state.special.l_state => {
                                     switch ($[0]) {
                                         case 'abort':
                                             return _p.ss(
@@ -1855,14 +1855,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     'variables': _p_cc(
                                                         $['variables'],
                                                         ($) => ({
-                                                            'location': {
+                                                            'l location': {
                                                                 'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
-                                                            'dictionary': $.__d_map(
+                                                            'l dictionary': $.__d_map(
                                                                 ($, id) => ({
-                                                                    'entry': {
+                                                                    'l entry': {
                                                                         'type': _p_cc(
                                                                             $['type'],
                                                                             ($) => $.__o_map(
@@ -1878,7 +1878,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             )
                                                                         ),
                                                                     },
-                                                                    'location': {
+                                                                    'l location': {
                                                                         'document resource identifier': "implement me",
                                                                         'line': 42,
                                                                         'column': 42,
@@ -1890,14 +1890,14 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     'temp ordered variables': _p_cc(
                                                         $['temp ordered variables'],
                                                         ($) => ({
-                                                            'location': {
+                                                            'l location': {
                                                                 'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
-                                                            'list': $.__l_map(
+                                                            'l list': $.__l_map(
                                                                 ($) => ({
-                                                                    'item': {
+                                                                    'l item': {
                                                                         'name': _p_cc(
                                                                             $['name'],
                                                                             ($) => $
@@ -1917,7 +1917,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             )
                                                                         ),
                                                                     },
-                                                                    'location': {
+                                                                    'l location': {
                                                                         'document resource identifier': "implement me",
                                                                         'line': 42,
                                                                         'column': 42,
