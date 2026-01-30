@@ -87,7 +87,7 @@ export const Module_Set = (
                         _p.list.from_dictionary($['types'], ($, id): d_out.Statements => _p.decide.state($, ($) => {
                             const name = id + ` `
                             switch ($[0]) {
-                                case 'data': return _p.ss($, ($) => Type_Node(
+                                case 'data': return _p.ss($, ($) => Value(
                                     $,
                                     {
                                         'name': name,
@@ -100,13 +100,13 @@ export const Module_Set = (
                                         true,
                                         sh.identifier_escaped(name),
                                         _p.list.nested_literal_old<d_out.Statements_.L>([
-                                            Type_Node(
+                                            Value(
                                                 $.context,
                                                 {
                                                     'name': "I",
                                                 }
                                             ),
-                                            Type_Node(
+                                            Value(
                                                 $.result,
                                                 {
                                                     'name': "O",
@@ -119,7 +119,7 @@ export const Module_Set = (
 
                                                         $.error.__decide<d_out.Statements>(
                                                             ($) => {
-                                                                return Type_Node(
+                                                                return Value(
                                                                     $,
                                                                     {
                                                                         'name': "E",
@@ -138,7 +138,7 @@ export const Module_Set = (
                                                                     ($, id) => sh.s.namespace(
                                                                         true,
                                                                         sh.identifier_raw("L"),
-                                                                        Type_Node(
+                                                                        Value(
                                                                             _p.decide.state($, ($) => {
                                                                                 switch ($[0]) {
                                                                                     case 'acyclic': return _p.ss($, ($) => $)
@@ -168,7 +168,7 @@ export const Module_Set = (
                                                     sh.identifier_raw("P"),
                                                     $.parameters.__decide(
                                                         ($) => _p.list.flatten(
-                                                            _p.list.from_dictionary($, ($, id) => Type_Node(
+                                                            _p.list.from_dictionary($, ($, id) => Value(
                                                                 $,
                                                                 {
                                                                     'name': id,
@@ -300,8 +300,8 @@ export const Module_Set = (
     }))
 }
 
-export const Type_Node = (
-    $: d_in.Type_Node,
+export const Value = (
+    $: d_in.Value,
     $p: {
         'name': string
     }
@@ -351,7 +351,7 @@ export const Type_Node = (
                     true,
                     sh.identifier_escaped($p.name),
                     _p.list.nested_literal_old<d_out.Statements_.L>([
-                        Type_Node(
+                        Value(
                             $,
                             {
                                 'name': "D",
@@ -376,7 +376,7 @@ export const Type_Node = (
                         _p.list.flatten(
                             _p.list.from_dictionary(
                                 $,
-                                ($, id) => Type_Node(
+                                ($, id) => Value(
                                     $,
                                     {
                                         'name': id,
@@ -399,7 +399,7 @@ export const Type_Node = (
                     true,
                     sh.identifier_escaped($p.name),
                     _p.list.nested_literal_old<d_out.Statements_.L>([
-                        Type_Node(
+                        Value(
                             $,
                             {
                                 'name': "L",
@@ -437,7 +437,7 @@ export const Type_Node = (
                     true,
                     sh.identifier_escaped($p.name),
                     _p.list.nested_literal_old<d_out.Statements_.L>([
-                        Type_Node(
+                        Value(
                             $,
                             {
                                 'name': "O",
@@ -516,7 +516,7 @@ export const Type_Node = (
                         _p.list.flatten(
                             _p.list.from_dictionary(
                                 $,
-                                ($, id) => Type_Node(
+                                ($, id) => Value(
                                     $,
                                     {
                                         'name': id,

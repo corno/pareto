@@ -31,8 +31,8 @@ export const Type_Reference: t_signatures.Type_Reference = ($) => v_serialize.Do
     )
 )
 
-export const Type_Node: t_signatures.Type_Node = ($) => v_serialize.Document(
-    v_marshall.Type_Node(
+export const Value: t_signatures.Value = ($) => v_serialize.Document(
+    v_marshall.Value(
         $
     )
 )

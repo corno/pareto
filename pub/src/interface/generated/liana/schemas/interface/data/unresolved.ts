@@ -127,13 +127,13 @@ export namespace Module_ {
                     
                     export namespace l_state {
                         
-                        export type data = Type_Node_
+                        export type data = Value_
                         
                         export namespace algorithm {
                             
-                            export type result = Type_Node_
+                            export type result = Value_
                             
-                            export type context = Type_Node_
+                            export type context = Value_
                             
                             export namespace type_ {
                                 
@@ -151,7 +151,7 @@ export namespace Module_ {
                                         
                                         export namespace error {
                                             
-                                            export type O = Type_Node_
+                                            export type O = Value_
                                             
                                         }
                                         
@@ -175,11 +175,11 @@ export namespace Module_ {
                                                             
                                                             export namespace l_state {
                                                                 
-                                                                export type acyclic = Type_Node_
+                                                                export type acyclic = Value_
                                                                 
-                                                                export type cyclic = Type_Node_
+                                                                export type cyclic = Value_
                                                                 
-                                                                export type stack = Type_Node_
+                                                                export type stack = Value_
                                                                 
                                                             }
                                                             
@@ -249,7 +249,7 @@ export namespace Module_ {
                                             
                                             export type l_location = i__location.Relative_Location
                                             
-                                            export type l_entry = Type_Node_
+                                            export type l_entry = Value_
                                             
                                         }
                                         
@@ -405,7 +405,7 @@ export type Type_Reference_ = {
     readonly 'l state': Type_Reference_.l_state
 }
 
-export namespace Type_Node_ {
+export namespace Value_ {
     
     export type l_location = i__location.Relative_Location
     
@@ -423,7 +423,7 @@ export namespace Type_Node_ {
             readonly 'location': component.location
         }
         
-        export type dictionary = Type_Node_
+        export type dictionary = Value_
         
         export namespace group {
             
@@ -435,7 +435,7 @@ export namespace Type_Node_ {
                     
                     export type l_location = i__location.Relative_Location
                     
-                    export type l_entry = Type_Node_
+                    export type l_entry = Value_
                     
                 }
                 
@@ -455,7 +455,7 @@ export namespace Type_Node_ {
             readonly 'l dictionary': group.l_dictionary
         }
         
-        export type list = Type_Node_
+        export type list = Value_
         
         export type nothing = null
         
@@ -503,7 +503,7 @@ export namespace Type_Node_ {
             readonly 'l state': number_.l_state
         }
         
-        export type optional = Type_Node_
+        export type optional = Value_
         
         export namespace reference {
             
@@ -589,7 +589,7 @@ export namespace Type_Node_ {
                     
                     export type l_location = i__location.Relative_Location
                     
-                    export type l_entry = Type_Node_
+                    export type l_entry = Value_
                     
                 }
                 
@@ -628,9 +628,9 @@ export namespace Type_Node_ {
     
 }
 
-export type Type_Node_ = {
-    readonly 'l location': Type_Node_.l_location
-    readonly 'l state': Type_Node_.l_state
+export type Value_ = {
+    readonly 'l location': Value_.l_location
+    readonly 'l state': Value_.l_state
 }
 
 export { 
@@ -638,5 +638,5 @@ export {
     Module_ as Module, 
     Module_Set_ as Module_Set, 
     Type_Reference_ as Type_Reference, 
-    Type_Node_ as Type_Node, 
+    Value_ as Value, 
 }

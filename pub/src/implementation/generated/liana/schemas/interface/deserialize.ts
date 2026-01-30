@@ -71,7 +71,7 @@ export const Type_Reference: t_signatures.Type_Reference = ($, abort, $p) => v_u
     )
 )
 
-export const Type_Node: t_signatures.Type_Node = ($, abort, $p) => v_unmarshall.Type_Node(
+export const Value: t_signatures.Value = ($, abort, $p) => v_unmarshall.Value(
     v_deserialize.Document(
         $,
         ($) => abort(

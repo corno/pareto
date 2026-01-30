@@ -58,13 +58,13 @@ export namespace Module_ {
         
         export namespace D {
             
-            export type data = Type_Node_
+            export type data = Value_
             
             export namespace algorithm {
                 
-                export type result = Type_Node_
+                export type result = Value_
                 
-                export type context = Type_Node_
+                export type context = Value_
                 
                 export namespace type_ {
                     
@@ -78,7 +78,7 @@ export namespace Module_ {
                         
                         export namespace error {
                             
-                            export type O = Type_Node_
+                            export type O = Value_
                             
                         }
                         
@@ -90,11 +90,11 @@ export namespace Module_ {
                                 
                                 export namespace D {
                                     
-                                    export type acyclic = Type_Node_
+                                    export type acyclic = Value_
                                     
-                                    export type cyclic = Type_Node_
+                                    export type cyclic = Value_
                                     
-                                    export type stack = Type_Node_
+                                    export type stack = Value_
                                     
                                 }
                                 
@@ -128,7 +128,7 @@ export namespace Module_ {
                     
                     export namespace O {
                         
-                        export type D = Type_Node_
+                        export type D = Value_
                         
                     }
                     
@@ -205,7 +205,7 @@ export type Type_Reference_ =
     | readonly ['import', Type_Reference_.import_]
     | readonly ['local', Type_Reference_.local]
 
-export namespace Type_Node_ {
+export namespace Value_ {
     
     export type boolean_ = null
     
@@ -219,17 +219,17 @@ export namespace Type_Node_ {
         readonly 'location': component.location
     }
     
-    export type dictionary = Type_Node_
+    export type dictionary = Value_
     
     export namespace group {
         
-        export type D = Type_Node_
+        export type D = Value_
         
     }
     
     export type group = _pi.Dictionary<group.D>
     
-    export type list = Type_Node_
+    export type list = Value_
     
     export type nothing = null
     
@@ -255,7 +255,7 @@ export namespace Type_Node_ {
         | readonly ['exact', number_.exact]
         | readonly ['approximation', number_.approximation]
     
-    export type optional = Type_Node_
+    export type optional = Value_
     
     export namespace reference {
         
@@ -300,7 +300,7 @@ export namespace Type_Node_ {
     
     export namespace state {
         
-        export type D = Type_Node_
+        export type D = Value_
         
     }
     
@@ -310,23 +310,23 @@ export namespace Type_Node_ {
     
 }
 
-export type Type_Node_ = 
-    | readonly ['boolean', Type_Node_.boolean_]
-    | readonly ['component', Type_Node_.component]
-    | readonly ['dictionary', Type_Node_.dictionary]
-    | readonly ['group', Type_Node_.group]
-    | readonly ['list', Type_Node_.list]
-    | readonly ['nothing', Type_Node_.nothing]
-    | readonly ['number', Type_Node_.number_]
-    | readonly ['optional', Type_Node_.optional]
-    | readonly ['reference', Type_Node_.reference]
-    | readonly ['state', Type_Node_.state]
-    | readonly ['text', Type_Node_.text]
+export type Value_ = 
+    | readonly ['boolean', Value_.boolean_]
+    | readonly ['component', Value_.component]
+    | readonly ['dictionary', Value_.dictionary]
+    | readonly ['group', Value_.group]
+    | readonly ['list', Value_.list]
+    | readonly ['nothing', Value_.nothing]
+    | readonly ['number', Value_.number_]
+    | readonly ['optional', Value_.optional]
+    | readonly ['reference', Value_.reference]
+    | readonly ['state', Value_.state]
+    | readonly ['text', Value_.text]
 
 export { 
     Imports_ as Imports, 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
     Type_Reference_ as Type_Reference, 
-    Type_Node_ as Type_Node, 
+    Value_ as Value, 
 }

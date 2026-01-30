@@ -126,7 +126,7 @@ export const Module: t_signatures.Module = ($) => ({
                                     case 'data':
                                         return _p.ss(
                                             $,
-                                            ($) => ['data', Type_Node(
+                                            ($) => ['data', Value(
                                                 $
                                             )]
                                         )
@@ -136,13 +136,13 @@ export const Module: t_signatures.Module = ($) => ({
                                             ($) => ['algorithm', {
                                                 'result': _p_cc(
                                                     $['result'],
-                                                    ($) => Type_Node(
+                                                    ($) => Value(
                                                         $
                                                     )
                                                 ),
                                                 'context': _p_cc(
                                                     $['context'],
-                                                    ($) => Type_Node(
+                                                    ($) => Value(
                                                         $
                                                     )
                                                 ),
@@ -171,7 +171,7 @@ export const Module: t_signatures.Module = ($) => ({
                                                                                     $['error'],
                                                                                     ($) => _p.optional.map(
                                                                                         $,
-                                                                                        ($) => Type_Node(
+                                                                                        ($) => Value(
                                                                                             $
                                                                                         )
                                                                                     )
@@ -202,21 +202,21 @@ export const Module: t_signatures.Module = ($) => ({
                                                                                                                     case 'acyclic':
                                                                                                                         return _p.ss(
                                                                                                                             $,
-                                                                                                                            ($) => ['acyclic', Type_Node(
+                                                                                                                            ($) => ['acyclic', Value(
                                                                                                                                 $
                                                                                                                             )]
                                                                                                                         )
                                                                                                                     case 'cyclic':
                                                                                                                         return _p.ss(
                                                                                                                             $,
-                                                                                                                            ($) => ['cyclic', Type_Node(
+                                                                                                                            ($) => ['cyclic', Value(
                                                                                                                                 $
                                                                                                                             )]
                                                                                                                         )
                                                                                                                     case 'stack':
                                                                                                                         return _p.ss(
                                                                                                                             $,
-                                                                                                                            ($) => ['stack', Type_Node(
+                                                                                                                            ($) => ['stack', Value(
                                                                                                                                 $
                                                                                                                             )]
                                                                                                                         )
@@ -262,7 +262,7 @@ export const Module: t_signatures.Module = ($) => ({
                                                             'l dictionary': _p.dictionary.map(
                                                                 $,
                                                                 ($, id) => ({
-                                                                    'l entry': Type_Node(
+                                                                    'l entry': Value(
                                                                         $
                                                                     ),
                                                                     'l location': {
@@ -384,7 +384,7 @@ export const Type_Reference: t_signatures.Type_Reference = ($) => ({
     ),
 })
 
-export const Type_Node: t_signatures.Type_Node = ($) => ({
+export const Value: t_signatures.Value = ($) => ({
     'l location': {
         'document resource identifier': "implement me",
         'line': 42,
@@ -392,7 +392,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ({
     },
     'l state': _p.decide.state(
         $,
-        ($): t_out.Type_Node.l_state => {
+        ($): t_out.Value.l_state => {
             switch ($[0]) {
                 case 'boolean':
                     return _p.ss(
@@ -414,7 +414,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ({
                 case 'dictionary':
                     return _p.ss(
                         $,
-                        ($) => ['dictionary', Type_Node(
+                        ($) => ['dictionary', Value(
                             $
                         )]
                     )
@@ -430,7 +430,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ({
                             'l dictionary': _p.dictionary.map(
                                 $,
                                 ($, id) => ({
-                                    'l entry': Type_Node(
+                                    'l entry': Value(
                                         $
                                     ),
                                     'l location': {
@@ -445,7 +445,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ({
                 case 'list':
                     return _p.ss(
                         $,
-                        ($) => ['list', Type_Node(
+                        ($) => ['list', Value(
                             $
                         )]
                     )
@@ -465,7 +465,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ({
                             },
                             'l state': _p.decide.state(
                                 $,
-                                ($): t_out.Type_Node.l_state.number_.l_state => {
+                                ($): t_out.Value.l_state.number_.l_state => {
                                     switch ($[0]) {
                                         case 'exact':
                                             return _p.ss(
@@ -478,7 +478,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ({
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Type_Node.l_state.number_.l_state.exact.l_state => {
+                                                        ($): t_out.Value.l_state.number_.l_state.exact.l_state => {
                                                             switch ($[0]) {
                                                                 case 'natural':
                                                                     return _p.ss(
@@ -516,7 +516,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ({
                 case 'optional':
                     return _p.ss(
                         $,
-                        ($) => ['optional', Type_Node(
+                        ($) => ['optional', Value(
                             $
                         )]
                     )
@@ -549,7 +549,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ({
                                                 },
                                                 'l state': _p.decide.state(
                                                     $,
-                                                    ($): t_out.Type_Node.l_state.reference.sub_selection.l_list.L.l_item.l_state => {
+                                                    ($): t_out.Value.l_state.reference.sub_selection.l_list.L.l_item.l_state => {
                                                         switch ($[0]) {
                                                             case 'dictionary':
                                                                 return _p.ss(
@@ -611,7 +611,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ({
                             'l dictionary': _p.dictionary.map(
                                 $,
                                 ($, id) => ({
-                                    'l entry': Type_Node(
+                                    'l entry': Value(
                                         $
                                     ),
                                     'l location': {

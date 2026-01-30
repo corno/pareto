@@ -81,7 +81,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                                 case 'data':
                                     return _p.ss(
                                         $,
-                                        ($) => ['data', Type_Node(
+                                        ($) => ['data', Value(
                                             $,
                                             ($) => abort(
                                                 $
@@ -98,7 +98,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                                                 
                                                 const prop_result = _p_cc(
                                                     $['result'],
-                                                    ($) => Type_Node(
+                                                    ($) => Value(
                                                         $,
                                                         ($) => abort(
                                                             $
@@ -110,7 +110,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                                                 
                                                 const prop_context = _p_cc(
                                                     $['context'],
-                                                    ($) => Type_Node(
+                                                    ($) => Value(
                                                         $,
                                                         ($) => abort(
                                                             $
@@ -141,7 +141,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                                                                                     $['error'],
                                                                                     ($) => _p.optional.map(
                                                                                         $,
-                                                                                        ($) => Type_Node(
+                                                                                        ($) => Value(
                                                                                             $,
                                                                                             ($) => abort(
                                                                                                 $
@@ -167,7 +167,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                                                                                                             case 'acyclic':
                                                                                                                 return _p.ss(
                                                                                                                     $,
-                                                                                                                    ($) => ['acyclic', Type_Node(
+                                                                                                                    ($) => ['acyclic', Value(
                                                                                                                         $,
                                                                                                                         ($) => abort(
                                                                                                                             $
@@ -179,7 +179,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                                                                                                             case 'cyclic':
                                                                                                                 return _p.ss(
                                                                                                                     $,
-                                                                                                                    ($) => ['cyclic', Type_Node(
+                                                                                                                    ($) => ['cyclic', Value(
                                                                                                                         $,
                                                                                                                         ($) => abort(
                                                                                                                             $
@@ -191,7 +191,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                                                                                                             case 'stack':
                                                                                                                 return _p.ss(
                                                                                                                     $,
-                                                                                                                    ($) => ['stack', Type_Node(
+                                                                                                                    ($) => ['stack', Value(
                                                                                                                         $,
                                                                                                                         ($) => abort(
                                                                                                                             $
@@ -235,7 +235,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                                                             $['l dictionary'],
                                                             ($, id, $a, $c): t_out.Module.types.D.algorithm.parameters.O.D => _p_cc(
                                                                 $['l entry'],
-                                                                ($) => Type_Node(
+                                                                ($) => Value(
                                                                     $,
                                                                     ($) => abort(
                                                                         $
@@ -346,9 +346,9 @@ export const Imports: t_signatures.Imports = ($, abort, $l, $p) => _p.dictionary
     )
 )
 
-export const Type_Node: t_signatures.Type_Node = ($, abort, $l, $p) => _p.decide.state(
+export const Value: t_signatures.Value = ($, abort, $l, $p) => _p.decide.state(
     $['l state'],
-    ($): t_out.Type_Node => {
+    ($): t_out.Value => {
         switch ($[0]) {
             case 'boolean':
                 return _p.ss(
@@ -381,7 +381,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort, $l, $p) => _p.decide
             case 'dictionary':
                 return _p.ss(
                     $,
-                    ($) => ['dictionary', Type_Node(
+                    ($) => ['dictionary', Value(
                         $,
                         ($) => abort(
                             $
@@ -395,9 +395,9 @@ export const Type_Node: t_signatures.Type_Node = ($, abort, $l, $p) => _p.decide
                     $,
                     ($) => ['group', _p.dictionary.resolve(
                         $['l dictionary'],
-                        ($, id, $a, $c): t_out.Type_Node.group.D => _p_cc(
+                        ($, id, $a, $c): t_out.Value.group.D => _p_cc(
                             $['l entry'],
-                            ($) => Type_Node(
+                            ($) => Value(
                                 $,
                                 ($) => abort(
                                     $
@@ -411,7 +411,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort, $l, $p) => _p.decide
             case 'list':
                 return _p.ss(
                     $,
-                    ($) => ['list', Type_Node(
+                    ($) => ['list', Value(
                         $,
                         ($) => abort(
                             $
@@ -430,14 +430,14 @@ export const Type_Node: t_signatures.Type_Node = ($, abort, $l, $p) => _p.decide
                     $,
                     ($) => ['number', _p.decide.state(
                         $['l state'],
-                        ($): t_out.Type_Node.number_ => {
+                        ($): t_out.Value.number_ => {
                             switch ($[0]) {
                                 case 'exact':
                                     return _p.ss(
                                         $,
                                         ($) => ['exact', _p.decide.state(
                                             $['l state'],
-                                            ($): t_out.Type_Node.number_.exact => {
+                                            ($): t_out.Value.number_.exact => {
                                                 switch ($[0]) {
                                                     case 'natural':
                                                         return _p.ss(
@@ -473,7 +473,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort, $l, $p) => _p.decide
             case 'optional':
                 return _p.ss(
                     $,
-                    ($) => ['optional', Type_Node(
+                    ($) => ['optional', Value(
                         $,
                         ($) => abort(
                             $
@@ -508,7 +508,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort, $l, $p) => _p.decide
                                         $['l item'],
                                         ($) => _p.decide.state(
                                             $['l state'],
-                                            ($): t_out.Type_Node.reference.sub_selection.L => {
+                                            ($): t_out.Value.reference.sub_selection.L => {
                                                 switch ($[0]) {
                                                     case 'dictionary':
                                                         return _p.ss(
@@ -563,9 +563,9 @@ export const Type_Node: t_signatures.Type_Node = ($, abort, $l, $p) => _p.decide
                     $,
                     ($) => ['state', _p.dictionary.resolve(
                         $['l dictionary'],
-                        ($, id, $a, $c): t_out.Type_Node.state.D => _p_cc(
+                        ($, id, $a, $c): t_out.Value.state.D => _p_cc(
                             $['l entry'],
-                            ($) => Type_Node(
+                            ($) => Value(
                                 $,
                                 ($) => abort(
                                     $

@@ -70,11 +70,11 @@ export type Imports_ = (
     parameters: null,
 ) => Imports_.O
 
-export namespace Type_Node_ {
+export namespace Value_ {
     
-    export type I = i_unresolved.Type_Node
+    export type I = i_unresolved.Value
     
-    export type O = i_resolved.Type_Node
+    export type O = i_resolved.Value
     
     export type E = i_generic.Error
     
@@ -84,12 +84,12 @@ export namespace Type_Node_ {
     
 }
 
-export type Type_Node_ = (
-    context: Type_Node_.I,
-    abort: _pi.Abort<Type_Node_.E>,
+export type Value_ = (
+    context: Value_.I,
+    abort: _pi.Abort<Value_.E>,
     lookups: null,
     parameters: null,
-) => Type_Node_.O
+) => Value_.O
 
 export namespace Type_Reference_ {
     
@@ -116,6 +116,6 @@ export {
     Module_ as Module, 
     Module_Set_ as Module_Set, 
     Imports_ as Imports, 
-    Type_Node_ as Type_Node, 
+    Value_ as Value, 
     Type_Reference_ as Type_Reference, 
 }

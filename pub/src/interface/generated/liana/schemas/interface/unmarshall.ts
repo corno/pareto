@@ -83,11 +83,11 @@ export type Type_Reference_ = (
     abort: _pi.Abort<Type_Reference_.E>,
 ) => Type_Reference_.O
 
-export namespace Type_Node_ {
+export namespace Value_ {
     
     export type I = i_in.Value
     
-    export type O = i_out.Type_Node
+    export type O = i_out.Value
     
     export type E = i_generic.Error
     
@@ -97,15 +97,15 @@ export namespace Type_Node_ {
     
 }
 
-export type Type_Node_ = (
-    context: Type_Node_.I,
-    abort: _pi.Abort<Type_Node_.E>,
-) => Type_Node_.O
+export type Value_ = (
+    context: Value_.I,
+    abort: _pi.Abort<Value_.E>,
+) => Value_.O
 
 export { 
     Imports_ as Imports, 
     Module_ as Module, 
     Module_Set_ as Module_Set, 
     Type_Reference_ as Type_Reference, 
-    Type_Node_ as Type_Node, 
+    Value_ as Value, 
 }

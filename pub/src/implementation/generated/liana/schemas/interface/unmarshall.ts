@@ -249,7 +249,7 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                                                     'l location': v_parse_tree_to_location.Value(
                                                         $
                                                     )['start']['relative'],
-                                                    'l state': ['data', Type_Node(
+                                                    'l state': ['data', Value(
                                                         $,
                                                         ($) => abort(
                                                             $
@@ -279,7 +279,7 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                                                                         ['no such entry', "result"]
                                                                     )
                                                                 ),
-                                                                ($) => Type_Node(
+                                                                ($) => Value(
                                                                     $,
                                                                     ($) => abort(
                                                                         $
@@ -293,7 +293,7 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                                                                         ['no such entry', "context"]
                                                                     )
                                                                 ),
-                                                                ($) => Type_Node(
+                                                                ($) => Value(
                                                                     $,
                                                                     ($) => abort(
                                                                         $
@@ -365,7 +365,7 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                                                                                                                     ['expected an optional', null]
                                                                                                                 )
                                                                                                             ),
-                                                                                                            ($) => Type_Node(
+                                                                                                            ($) => Value(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $
@@ -420,7 +420,7 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                                         $
                                                                                                                                                     )['start']['relative'],
-                                                                                                                                                    'l state': ['acyclic', Type_Node(
+                                                                                                                                                    'l state': ['acyclic', Value(
                                                                                                                                                         $,
                                                                                                                                                         ($) => abort(
                                                                                                                                                             $
@@ -435,7 +435,7 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                                         $
                                                                                                                                                     )['start']['relative'],
-                                                                                                                                                    'l state': ['cyclic', Type_Node(
+                                                                                                                                                    'l state': ['cyclic', Value(
                                                                                                                                                         $,
                                                                                                                                                         ($) => abort(
                                                                                                                                                             $
@@ -450,7 +450,7 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                                         $
                                                                                                                                                     )['start']['relative'],
-                                                                                                                                                    'l state': ['stack', Type_Node(
+                                                                                                                                                    'l state': ['stack', Value(
                                                                                                                                                         $,
                                                                                                                                                         ($) => abort(
                                                                                                                                                             $
@@ -513,7 +513,7 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                     $
                                                                                 )['start']['relative'],
-                                                                                'l entry': Type_Node(
+                                                                                'l entry': Value(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $
@@ -693,7 +693,7 @@ export const Type_Reference: t_signatures.Type_Reference = ($, abort) => _p_cc(
     )
 )
 
-export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
+export const Value: t_signatures.Value = ($, abort) => _p_cc(
     v_unmarshalled_from_parse_tree.State(
         $,
         ($) => abort(
@@ -702,7 +702,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
     ),
     ($) => _p.decide.text(
         $['option']['value'],
-        ($t): t_out.Type_Node => {
+        ($t): t_out.Value => {
             switch ($t) {
                 case 'boolean':
                     return _p_cc(
@@ -759,7 +759,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
                             'l location': v_parse_tree_to_location.Value(
                                 $
                             )['start']['relative'],
-                            'l state': ['dictionary', Type_Node(
+                            'l state': ['dictionary', Value(
                                 $,
                                 ($) => abort(
                                     $
@@ -789,7 +789,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
                                         'l location': v_parse_tree_to_location.Value(
                                             $
                                         )['start']['relative'],
-                                        'l entry': Type_Node(
+                                        'l entry': Value(
                                             $,
                                             ($) => abort(
                                                 $
@@ -807,7 +807,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
                             'l location': v_parse_tree_to_location.Value(
                                 $
                             )['start']['relative'],
-                            'l state': ['list', Type_Node(
+                            'l state': ['list', Value(
                                 $,
                                 ($) => abort(
                                     $
@@ -846,7 +846,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
                                 ),
                                 ($) => _p.decide.text(
                                     $['option']['value'],
-                                    ($t): t_out.Type_Node.l_state.number_ => {
+                                    ($t): t_out.Value.l_state.number_ => {
                                         switch ($t) {
                                             case 'exact':
                                                 return _p_cc(
@@ -864,7 +864,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
                                                             ),
                                                             ($) => _p.decide.text(
                                                                 $['option']['value'],
-                                                                ($t): t_out.Type_Node.l_state.number_.l_state.exact => {
+                                                                ($t): t_out.Value.l_state.number_.l_state.exact => {
                                                                     switch ($t) {
                                                                         case 'natural':
                                                                             return _p_cc(
@@ -938,7 +938,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
                             'l location': v_parse_tree_to_location.Value(
                                 $
                             )['start']['relative'],
-                            'l state': ['optional', Type_Node(
+                            'l state': ['optional', Value(
                                 $,
                                 ($) => abort(
                                     $
@@ -1006,7 +1006,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
                                                         ),
                                                         ($) => _p.decide.text(
                                                             $['option']['value'],
-                                                            ($t): t_out.Type_Node.l_state.reference.sub_selection.l_list.L.l_item => {
+                                                            ($t): t_out.Value.l_state.reference.sub_selection.l_list.L.l_item => {
                                                                 switch ($t) {
                                                                     case 'dictionary':
                                                                         return _p_cc(
@@ -1140,7 +1140,7 @@ export const Type_Node: t_signatures.Type_Node = ($, abort) => _p_cc(
                                         'l location': v_parse_tree_to_location.Value(
                                             $
                                         )['start']['relative'],
-                                        'l entry': Type_Node(
+                                        'l entry': Value(
                                             $,
                                             ($) => abort(
                                                 $

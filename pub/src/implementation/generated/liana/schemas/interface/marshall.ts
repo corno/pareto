@@ -115,7 +115,7 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                     $,
                                     ($) => ({
                                         'option': 'data',
-                                        'value': Type_Node(
+                                        'value': Value(
                                             $
                                         ),
                                     })
@@ -129,13 +129,13 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                             {
                                                 'result': _p_cc(
                                                     $['result'],
-                                                    ($) => Type_Node(
+                                                    ($) => Value(
                                                         $
                                                     )
                                                 ),
                                                 'context': _p_cc(
                                                     $['context'],
-                                                    ($) => Type_Node(
+                                                    ($) => Value(
                                                         $
                                                     )
                                                 ),
@@ -167,7 +167,7 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                                                         $['error'],
                                                                                         ($) => ['optional', _p.decide.optional(
                                                                                             $,
-                                                                                            ($): t_out.Value.optional => ['set', Type_Node(
+                                                                                            ($): t_out.Value.optional => ['set', Value(
                                                                                                 $
                                                                                             )],
                                                                                             () => ['not set', null]
@@ -188,7 +188,7 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                                                                                     $,
                                                                                                                     ($) => ({
                                                                                                                         'option': 'acyclic',
-                                                                                                                        'value': Type_Node(
+                                                                                                                        'value': Value(
                                                                                                                             $
                                                                                                                         ),
                                                                                                                     })
@@ -198,7 +198,7 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                                                                                     $,
                                                                                                                     ($) => ({
                                                                                                                         'option': 'cyclic',
-                                                                                                                        'value': Type_Node(
+                                                                                                                        'value': Value(
                                                                                                                             $
                                                                                                                         ),
                                                                                                                     })
@@ -208,7 +208,7 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                                                                                     $,
                                                                                                                     ($) => ({
                                                                                                                         'option': 'stack',
-                                                                                                                        'value': Type_Node(
+                                                                                                                        'value': Value(
                                                                                                                             $
                                                                                                                         ),
                                                                                                                     })
@@ -242,7 +242,7 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                                                         $,
                                                         ($): t_out.Value.optional => ['set', ['dictionary', _p.dictionary.map(
                                                             $,
-                                                            ($, id) => Type_Node(
+                                                            ($, id) => Value(
                                                                 $
                                                             )
                                                         )]],
@@ -348,7 +348,7 @@ export const Type_Reference: t_signatures.Type_Reference = ($) => ['state', _p.d
     }
 )]
 
-export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.state(
+export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
     $,
     ($): t_out.Value.state => {
         switch ($[0]) {
@@ -382,7 +382,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.stat
                     $,
                     ($) => ({
                         'option': 'dictionary',
-                        'value': Type_Node(
+                        'value': Value(
                             $
                         ),
                     })
@@ -394,7 +394,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.stat
                         'option': 'group',
                         'value': ['dictionary', _p.dictionary.map(
                             $,
-                            ($, id) => Type_Node(
+                            ($, id) => Value(
                                 $
                             )
                         )],
@@ -405,7 +405,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.stat
                     $,
                     ($) => ({
                         'option': 'list',
-                        'value': Type_Node(
+                        'value': Value(
                             $
                         ),
                     })
@@ -483,7 +483,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.stat
                     $,
                     ($) => ({
                         'option': 'optional',
-                        'value': Type_Node(
+                        'value': Value(
                             $
                         ),
                     })
@@ -584,7 +584,7 @@ export const Type_Node: t_signatures.Type_Node = ($) => ['state', _p.decide.stat
                         'option': 'state',
                         'value': ['dictionary', _p.dictionary.map(
                             $,
-                            ($, id) => Type_Node(
+                            ($, id) => Value(
                                 $
                             )
                         )],
