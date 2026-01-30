@@ -20,9 +20,9 @@ export const Module: t_signatures.Module = ($) => ({
                 'line': 42,
                 'column': 42,
             },
-            'l value': _p.decide.state(
+            'l state': _p.decide.state(
                 $,
-                ($): t_out.Module.type_.l_value => {
+                ($): t_out.Module.type_.l_state => {
                     switch ($[0]) {
                         case 'serializer':
                             return _p.ss(
@@ -92,7 +92,7 @@ export const Module: t_signatures.Module = ($) => ({
                 'line': 42,
                 'column': 42,
             },
-            'l value': _p.dictionary.map(
+            'l dictionary': _p.dictionary.map(
                 $,
                 ($, id) => ({
                     'l entry': {
@@ -104,7 +104,7 @@ export const Module: t_signatures.Module = ($) => ({
                                     'line': 42,
                                     'column': 42,
                                 },
-                                'l value': _p.list.map(
+                                'l list': _p.list.map(
                                     $,
                                     ($) => ({
                                         'l item': $,
@@ -125,9 +125,9 @@ export const Module: t_signatures.Module = ($) => ({
                                     'line': 42,
                                     'column': 42,
                                 },
-                                'l value': _p.decide.state(
+                                'l state': _p.decide.state(
                                     $,
-                                    ($): t_out.Module.variable_imports.l_value.D.l_entry.type_.l_value => {
+                                    ($): t_out.Module.variable_imports.l_dictionary.D.l_entry.type_.l_state => {
                                         switch ($[0]) {
                                             case 'ancestor':
                                                 return _p.ss(
@@ -180,7 +180,7 @@ export const Module: t_signatures.Module = ($) => ({
                 'line': 42,
                 'column': 42,
             },
-            'l value': _p.dictionary.map(
+            'l dictionary': _p.dictionary.map(
                 $,
                 ($, id) => ({
                     'l entry': {
@@ -233,7 +233,7 @@ export const Module_Set: t_signatures.Module_Set = ($) => ({
         'line': 42,
         'column': 42,
     },
-    'l value': _p.dictionary.map(
+    'l dictionary': _p.dictionary.map(
         $,
         ($, id) => ({
             'l entry': {
@@ -242,9 +242,9 @@ export const Module_Set: t_signatures.Module_Set = ($) => ({
                     'line': 42,
                     'column': 42,
                 },
-                'l value': _p.decide.state(
+                'l state': _p.decide.state(
                     $,
-                    ($): t_out.Module_Set.l_value.D.l_entry.l_value => {
+                    ($): t_out.Module_Set.l_dictionary.D.l_entry.l_state => {
                         switch ($[0]) {
                             case 'module':
                                 return _p.ss(
@@ -299,7 +299,7 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
                 'line': 42,
                 'column': 42,
             },
-            'l value': _p.list.map(
+            'l list': _p.list.map(
                 $,
                 ($) => ({
                     'l item': {
@@ -308,9 +308,9 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
                             'line': 42,
                             'column': 42,
                         },
-                        'l value': _p.decide.state(
+                        'l state': _p.decide.state(
                             $,
-                            ($): t_out.Temp_Type_Node_Reference.sub_selection.l_value.L.l_item.l_value => {
+                            ($): t_out.Temp_Type_Node_Reference.sub_selection.l_list.L.l_item.l_state => {
                                 switch ($[0]) {
                                     case 'dictionary':
                                         return _p.ss(
@@ -362,9 +362,9 @@ export const Selection: t_signatures.Selection = ($) => ({
         'line': 42,
         'column': 42,
     },
-    'l value': _p.decide.state(
+    'l state': _p.decide.state(
         $,
-        ($): t_out.Selection.l_value => {
+        ($): t_out.Selection.l_state => {
             switch ($[0]) {
                 case 'implement me':
                     return _p.ss(
@@ -383,9 +383,9 @@ export const Selection: t_signatures.Selection = ($) => ({
                                         'line': 42,
                                         'column': 42,
                                     },
-                                    'l value': _p.decide.state(
+                                    'l state': _p.decide.state(
                                         $,
-                                        ($): t_out.Selection.l_value.regular.start.l_value => {
+                                        ($): t_out.Selection.l_state.regular.start.l_state => {
                                             switch ($[0]) {
                                                 case 'call':
                                                     return _p.ss(
@@ -399,9 +399,9 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                                         'line': 42,
                                                                         'column': 42,
                                                                     },
-                                                                    'l value': _p.decide.state(
+                                                                    'l state': _p.decide.state(
                                                                         $,
-                                                                        ($): t_out.Selection.l_value.regular.start.l_value.call.source.l_value => {
+                                                                        ($): t_out.Selection.l_state.regular.start.l_state.call.source.l_state => {
                                                                             switch ($[0]) {
                                                                                 case 'local':
                                                                                     return _p.ss(
@@ -456,9 +456,9 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                                             'line': 42,
                                                                             'column': 42,
                                                                         },
-                                                                        'l value': _p.decide.state(
+                                                                        'l state': _p.decide.state(
                                                                             $,
-                                                                            ($): t_out.Selection.l_value.regular.start.l_value.call.lookups.O.l_value => {
+                                                                            ($): t_out.Selection.l_state.regular.start.l_state.call.lookups.O.l_state => {
                                                                                 switch ($[0]) {
                                                                                     case 'initialize':
                                                                                         return _p.ss(
@@ -469,7 +469,7 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                                                                     'line': 42,
                                                                                                     'column': 42,
                                                                                                 },
-                                                                                                'l value': _p.dictionary.map(
+                                                                                                'l dictionary': _p.dictionary.map(
                                                                                                     $,
                                                                                                     ($, id) => ({
                                                                                                         'l entry': Lookup_Selection(
@@ -509,9 +509,9 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                                             'line': 42,
                                                                             'column': 42,
                                                                         },
-                                                                        'l value': _p.decide.state(
+                                                                        'l state': _p.decide.state(
                                                                             $,
-                                                                            ($): t_out.Selection.l_value.regular.start.l_value.call.arguments_.O.l_value => {
+                                                                            ($): t_out.Selection.l_state.regular.start.l_state.call.arguments_.O.l_state => {
                                                                                 switch ($[0]) {
                                                                                     case 'initialize':
                                                                                         return _p.ss(
@@ -522,7 +522,7 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                                                                     'line': 42,
                                                                                                     'column': 42,
                                                                                                 },
-                                                                                                'l value': _p.dictionary.map(
+                                                                                                'l dictionary': _p.dictionary.map(
                                                                                                     $,
                                                                                                     ($, id) => ({
                                                                                                         'l entry': Expression(
@@ -644,7 +644,7 @@ export const Selection: t_signatures.Selection = ($) => ({
                                         'line': 42,
                                         'column': 42,
                                     },
-                                    'l value': _p.list.map(
+                                    'l list': _p.list.map(
                                         $,
                                         ($) => ({
                                             'l item': $,
@@ -674,9 +674,9 @@ export const Expression: t_signatures.Expression = ($) => ({
         'line': 42,
         'column': 42,
     },
-    'l value': _p.decide.state(
+    'l state': _p.decide.state(
         $,
-        ($): t_out.Expression.l_value => {
+        ($): t_out.Expression.l_state => {
             switch ($[0]) {
                 case 'decide':
                     return _p.ss(
@@ -690,9 +690,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                         'line': 42,
                                         'column': 42,
                                     },
-                                    'l value': _p.decide.state(
+                                    'l state': _p.decide.state(
                                         $,
-                                        ($): t_out.Expression.l_value.decide.type_.l_value => {
+                                        ($): t_out.Expression.l_state.decide.type_.l_state => {
                                             switch ($[0]) {
                                                 case 'boolean':
                                                     return _p.ss(
@@ -736,9 +736,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
-                                                            'l value': _p.decide.state(
+                                                            'l state': _p.decide.state(
                                                                 $,
-                                                                ($): t_out.Expression.l_value.decide.type_.l_value.dictionary.l_value => {
+                                                                ($): t_out.Expression.l_state.decide.type_.l_state.dictionary.l_state => {
                                                                     switch ($[0]) {
                                                                         case 'has entries':
                                                                             return _p.ss(
@@ -782,9 +782,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
-                                                            'l value': _p.decide.state(
+                                                            'l state': _p.decide.state(
                                                                 $,
-                                                                ($): t_out.Expression.l_value.decide.type_.l_value.list.l_value => {
+                                                                ($): t_out.Expression.l_state.decide.type_.l_state.list.l_state => {
                                                                     switch ($[0]) {
                                                                         case 'has first item':
                                                                             return _p.ss(
@@ -927,9 +927,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                         'line': 42,
                                                                         'column': 42,
                                                                     },
-                                                                    'l value': _p.decide.state(
+                                                                    'l state': _p.decide.state(
                                                                         $,
-                                                                        ($): t_out.Expression.l_value.decide.type_.l_value.state.type_.l_value => {
+                                                                        ($): t_out.Expression.l_state.decide.type_.l_state.state.type_.l_state => {
                                                                             switch ($[0]) {
                                                                                 case 'partial':
                                                                                     return _p.ss(
@@ -943,7 +943,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                         'line': 42,
                                                                                                         'column': 42,
                                                                                                     },
-                                                                                                    'l value': _p.dictionary.map(
+                                                                                                    'l dictionary': _p.dictionary.map(
                                                                                                         $,
                                                                                                         ($, id) => ({
                                                                                                             'l entry': Expression(
@@ -978,7 +978,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                         'line': 42,
                                                                                                         'column': 42,
                                                                                                     },
-                                                                                                    'l value': _p.dictionary.map(
+                                                                                                    'l dictionary': _p.dictionary.map(
                                                                                                         $,
                                                                                                         ($, id) => ({
                                                                                                             'l entry': Expression(
@@ -1033,7 +1033,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                         'line': 42,
                                                                         'column': 42,
                                                                     },
-                                                                    'l value': _p.dictionary.map(
+                                                                    'l dictionary': _p.dictionary.map(
                                                                         $,
                                                                         ($, id) => ({
                                                                             'l entry': Expression(
@@ -1076,9 +1076,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                 'line': 42,
                                 'column': 42,
                             },
-                            'l value': _p.decide.state(
+                            'l state': _p.decide.state(
                                 $,
-                                ($): t_out.Expression.l_value.initialize.l_value => {
+                                ($): t_out.Expression.l_state.initialize.l_state => {
                                     switch ($[0]) {
                                         case 'boolean':
                                             return _p.ss(
@@ -1089,9 +1089,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'l value': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_value.initialize.l_value.boolean_.l_value => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.boolean_.l_state => {
                                                             switch ($[0]) {
                                                                 case 'literal':
                                                                     return _p.ss(
@@ -1102,9 +1102,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'l value': _p.decide.state(
+                                                                            'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.l_value.initialize.l_value.boolean_.l_value.literal.l_value => {
+                                                                                ($): t_out.Expression.l_state.initialize.l_state.boolean_.l_state.literal.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'false':
                                                                                             return _p.ss(
@@ -1171,9 +1171,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'l value': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_value.initialize.l_value.dictionary.l_value => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.dictionary.l_state => {
                                                             switch ($[0]) {
                                                                 case 'filter':
                                                                     return _p.ss(
@@ -1232,7 +1232,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'l value': _p.dictionary.map(
+                                                                            'l dictionary': _p.dictionary.map(
                                                                                 $,
                                                                                 ($, id) => ({
                                                                                     'l entry': Expression(
@@ -1307,9 +1307,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'l value': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_value.initialize.l_value.group.l_value => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.group.l_state => {
                                                             switch ($[0]) {
                                                                 case 'literal':
                                                                     return _p.ss(
@@ -1320,7 +1320,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'l value': _p.dictionary.map(
+                                                                            'l dictionary': _p.dictionary.map(
                                                                                 $,
                                                                                 ($, id) => ({
                                                                                     'l entry': Expression(
@@ -1344,7 +1344,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'l value': _p.dictionary.map(
+                                                                            'l dictionary': _p.dictionary.map(
                                                                                 $,
                                                                                 ($, id) => ({
                                                                                     'l entry': Expression(
@@ -1377,9 +1377,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'l value': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_value.initialize.l_value.list.l_value => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.list.l_state => {
                                                             switch ($[0]) {
                                                                 case 'filter':
                                                                     return _p.ss(
@@ -1426,7 +1426,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'l value': _p.list.map(
+                                                                            'l list': _p.list.map(
                                                                                 $,
                                                                                 ($) => ({
                                                                                     'l item': Expression(
@@ -1554,9 +1554,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'l value': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_value.initialize.l_value.number_.l_value => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.number_.l_state => {
                                                             switch ($[0]) {
                                                                 case 'approximation':
                                                                     return _p.ss(
@@ -1567,9 +1567,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'l value': _p.decide.state(
+                                                                            'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.l_value.initialize.l_value.number_.l_value.approximation.l_value => {
+                                                                                ($): t_out.Expression.l_state.initialize.l_state.number_.l_state.approximation.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'literal':
                                                                                             return _p.ss(
@@ -1601,9 +1601,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'l value': _p.decide.state(
+                                                                            'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.l_value.initialize.l_value.number_.l_value.integer.l_value => {
+                                                                                ($): t_out.Expression.l_state.initialize.l_state.number_.l_state.integer.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'copy':
                                                                                             return _p.ss(
@@ -1659,9 +1659,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'l value': _p.decide.state(
+                                                                            'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.l_value.initialize.l_value.number_.l_value.natural.l_value => {
+                                                                                ($): t_out.Expression.l_state.initialize.l_state.number_.l_state.natural.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'literal':
                                                                                             return _p.ss(
@@ -1736,9 +1736,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'l value': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_value.initialize.l_value.optional.l_value => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.optional.l_state => {
                                                             switch ($[0]) {
                                                                 case 'from boolean':
                                                                     return _p.ss(
@@ -1767,9 +1767,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
-                                                                            'l value': _p.decide.state(
+                                                                            'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.l_value.initialize.l_value.optional.l_value.literal.l_value => {
+                                                                                ($): t_out.Expression.l_state.initialize.l_state.optional.l_state.literal.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'not set':
                                                                                             return _p.ss(
@@ -1828,9 +1828,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'l value': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_value.initialize.l_value.state.l_value => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.state.l_state => {
                                                             switch ($[0]) {
                                                                 case 'literal':
                                                                     return _p.ss(
@@ -1866,9 +1866,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                         'line': 42,
                                                         'column': 42,
                                                     },
-                                                    'l value': _p.decide.state(
+                                                    'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_value.initialize.l_value.text.l_value => {
+                                                        ($): t_out.Expression.l_state.initialize.l_state.text.l_state => {
                                                             switch ($[0]) {
                                                                 case 'copy':
                                                                     return _p.ss(
@@ -1889,9 +1889,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
-                                                                                    'l value': _p.decide.state(
+                                                                                    'l state': _p.decide.state(
                                                                                         $,
-                                                                                        ($): t_out.Expression.l_value.initialize.l_value.text.l_value.literal.type_.l_value => {
+                                                                                        ($): t_out.Expression.l_state.initialize.l_state.text.l_state.literal.type_.l_state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'identifier':
                                                                                                     return _p.ss(
@@ -1957,9 +1957,9 @@ export const Expression: t_signatures.Expression = ($) => ({
                                 'line': 42,
                                 'column': 42,
                             },
-                            'l value': _p.decide.state(
+                            'l state': _p.decide.state(
                                 $,
-                                ($): t_out.Expression.l_value.special.l_value => {
+                                ($): t_out.Expression.l_state.special.l_state => {
                                     switch ($[0]) {
                                         case 'abort':
                                             return _p.ss(
@@ -2056,9 +2056,9 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => ({
         'line': 42,
         'column': 42,
     },
-    'l value': _p.decide.state(
+    'l state': _p.decide.state(
         $,
-        ($): t_out.Lookup_Selection.l_value => {
+        ($): t_out.Lookup_Selection.l_state => {
             switch ($[0]) {
                 case 'implement me':
                     return _p.ss(

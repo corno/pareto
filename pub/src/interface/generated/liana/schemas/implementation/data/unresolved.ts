@@ -11,7 +11,7 @@ export namespace Module_ {
         
         export type l_location = i__location.Relative_Location
         
-        export namespace l_value {
+        export namespace l_state {
             
             export type serializer = null
             
@@ -23,17 +23,17 @@ export namespace Module_ {
             
         }
         
-        export type l_value = 
-            | readonly ['serializer', l_value.serializer]
-            | readonly ['deserializer', l_value.deserializer]
-            | readonly ['transformer', l_value.transformer]
-            | readonly ['refiner', l_value.refiner]
+        export type l_state = 
+            | readonly ['serializer', l_state.serializer]
+            | readonly ['deserializer', l_state.deserializer]
+            | readonly ['transformer', l_state.transformer]
+            | readonly ['refiner', l_state.refiner]
         
     }
     
     export type type_ = {
         readonly 'l location': type_.l_location
-        readonly 'l value': type_.l_value
+        readonly 'l state': type_.l_state
     }
     
     export namespace specials {
@@ -64,7 +64,7 @@ export namespace Module_ {
         
         export type l_location = i__location.Relative_Location
         
-        export namespace l_value {
+        export namespace l_dictionary {
             
             export namespace D {
                 
@@ -76,7 +76,7 @@ export namespace Module_ {
                         
                         export type l_location = i__location.Relative_Location
                         
-                        export namespace l_value {
+                        export namespace l_list {
                             
                             export namespace L {
                                 
@@ -93,20 +93,20 @@ export namespace Module_ {
                             
                         }
                         
-                        export type l_value = _pi.List<l_value.L>
+                        export type l_list = _pi.List<l_list.L>
                         
                     }
                     
                     export type tail = {
                         readonly 'l location': tail.l_location
-                        readonly 'l value': tail.l_value
+                        readonly 'l list': tail.l_list
                     }
                     
                     export namespace type_ {
                         
                         export type l_location = i__location.Relative_Location
                         
-                        export namespace l_value {
+                        export namespace l_state {
                             
                             export namespace ancestor {
                                 
@@ -127,16 +127,16 @@ export namespace Module_ {
                             
                         }
                         
-                        export type l_value = 
-                            | readonly ['ancestor', l_value.ancestor]
-                            | readonly ['external', l_value.external]
-                            | readonly ['sibling', l_value.sibling]
+                        export type l_state = 
+                            | readonly ['ancestor', l_state.ancestor]
+                            | readonly ['external', l_state.external]
+                            | readonly ['sibling', l_state.sibling]
                         
                     }
                     
                     export type type_ = {
                         readonly 'l location': type_.l_location
-                        readonly 'l value': type_.l_value
+                        readonly 'l state': type_.l_state
                     }
                     
                 }
@@ -155,20 +155,20 @@ export namespace Module_ {
             
         }
         
-        export type l_value = _pi.Dictionary<l_value.D>
+        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
         
     }
     
     export type variable_imports = {
         readonly 'l location': variable_imports.l_location
-        readonly 'l value': variable_imports.l_value
+        readonly 'l dictionary': variable_imports.l_dictionary
     }
     
     export namespace algorithms {
         
         export type l_location = i__location.Relative_Location
         
-        export namespace l_value {
+        export namespace l_dictionary {
             
             export namespace D {
                 
@@ -216,13 +216,13 @@ export namespace Module_ {
             
         }
         
-        export type l_value = _pi.Dictionary<l_value.D>
+        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
         
     }
     
     export type algorithms = {
         readonly 'l location': algorithms.l_location
-        readonly 'l value': algorithms.l_value
+        readonly 'l dictionary': algorithms.l_dictionary
     }
     
 }
@@ -239,7 +239,7 @@ export namespace Module_Set_ {
     
     export type l_location = i__location.Relative_Location
     
-    export namespace l_value {
+    export namespace l_dictionary {
         
         export namespace D {
             
@@ -249,7 +249,7 @@ export namespace Module_Set_ {
                 
                 export type l_location = i__location.Relative_Location
                 
-                export namespace l_value {
+                export namespace l_state {
                     
                     export type module_ = Module_
                     
@@ -257,15 +257,15 @@ export namespace Module_Set_ {
                     
                 }
                 
-                export type l_value = 
-                    | readonly ['module', l_value.module_]
-                    | readonly ['set', l_value.set_]
+                export type l_state = 
+                    | readonly ['module', l_state.module_]
+                    | readonly ['set', l_state.set_]
                 
             }
             
             export type l_entry = {
                 readonly 'l location': l_entry.l_location
-                readonly 'l value': l_entry.l_value
+                readonly 'l state': l_entry.l_state
             }
             
         }
@@ -277,13 +277,13 @@ export namespace Module_Set_ {
         
     }
     
-    export type l_value = _pi.Dictionary<l_value.D>
+    export type l_dictionary = _pi.Dictionary<l_dictionary.D>
     
 }
 
 export type Module_Set_ = {
     readonly 'l location': Module_Set_.l_location
-    readonly 'l value': Module_Set_.l_value
+    readonly 'l dictionary': Module_Set_.l_dictionary
 }
 
 export namespace Temp_Type_Node_Reference_ {
@@ -305,7 +305,7 @@ export namespace Temp_Type_Node_Reference_ {
         
         export type l_location = i__location.Relative_Location
         
-        export namespace l_value {
+        export namespace l_list {
             
             export namespace L {
                 
@@ -315,7 +315,7 @@ export namespace Temp_Type_Node_Reference_ {
                     
                     export type l_location = i__location.Relative_Location
                     
-                    export namespace l_value {
+                    export namespace l_state {
                         
                         export type dictionary = null
                         
@@ -329,18 +329,18 @@ export namespace Temp_Type_Node_Reference_ {
                         
                     }
                     
-                    export type l_value = 
-                        | readonly ['dictionary', l_value.dictionary]
-                        | readonly ['group', l_value.group]
-                        | readonly ['list', l_value.list]
-                        | readonly ['optional', l_value.optional]
-                        | readonly ['state', l_value.state]
+                    export type l_state = 
+                        | readonly ['dictionary', l_state.dictionary]
+                        | readonly ['group', l_state.group]
+                        | readonly ['list', l_state.list]
+                        | readonly ['optional', l_state.optional]
+                        | readonly ['state', l_state.state]
                     
                 }
                 
                 export type l_item = {
                     readonly 'l location': l_item.l_location
-                    readonly 'l value': l_item.l_value
+                    readonly 'l state': l_item.l_state
                 }
                 
             }
@@ -352,13 +352,13 @@ export namespace Temp_Type_Node_Reference_ {
             
         }
         
-        export type l_value = _pi.List<l_value.L>
+        export type l_list = _pi.List<l_list.L>
         
     }
     
     export type sub_selection = {
         readonly 'l location': sub_selection.l_location
-        readonly 'l value': sub_selection.l_value
+        readonly 'l list': sub_selection.l_list
     }
     
 }
@@ -372,7 +372,7 @@ export namespace Selection_ {
     
     export type l_location = i__location.Relative_Location
     
-    export namespace l_value {
+    export namespace l_state {
         
         export type implement_me = string
         
@@ -382,7 +382,7 @@ export namespace Selection_ {
                 
                 export type l_location = i__location.Relative_Location
                 
-                export namespace l_value {
+                export namespace l_state {
                     
                     export namespace call {
                         
@@ -390,7 +390,7 @@ export namespace Selection_ {
                             
                             export type l_location = i__location.Relative_Location
                             
-                            export namespace l_value {
+                            export namespace l_state {
                                 
                                 export type local = string
                                 
@@ -409,15 +409,15 @@ export namespace Selection_ {
                                 
                             }
                             
-                            export type l_value = 
-                                | readonly ['local', l_value.local]
-                                | readonly ['imported', l_value.imported]
+                            export type l_state = 
+                                | readonly ['local', l_state.local]
+                                | readonly ['imported', l_state.imported]
                             
                         }
                         
                         export type source = {
                             readonly 'l location': source.l_location
-                            readonly 'l value': source.l_value
+                            readonly 'l state': source.l_state
                         }
                         
                         export type context = Expression_
@@ -436,13 +436,13 @@ export namespace Selection_ {
                                 
                                 export type l_location = i__location.Relative_Location
                                 
-                                export namespace l_value {
+                                export namespace l_state {
                                     
                                     export namespace initialize {
                                         
                                         export type l_location = i__location.Relative_Location
                                         
-                                        export namespace l_value {
+                                        export namespace l_dictionary {
                                             
                                             export namespace D {
                                                 
@@ -459,28 +459,28 @@ export namespace Selection_ {
                                             
                                         }
                                         
-                                        export type l_value = _pi.Dictionary<l_value.D>
+                                        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
                                         
                                     }
                                     
                                     export type initialize = {
                                         readonly 'l location': initialize.l_location
-                                        readonly 'l value': initialize.l_value
+                                        readonly 'l dictionary': initialize.l_dictionary
                                     }
                                     
                                     export type pass_through = null
                                     
                                 }
                                 
-                                export type l_value = 
-                                    | readonly ['initialize', l_value.initialize]
-                                    | readonly ['pass through', l_value.pass_through]
+                                export type l_state = 
+                                    | readonly ['initialize', l_state.initialize]
+                                    | readonly ['pass through', l_state.pass_through]
                                 
                             }
                             
                             export type O = {
                                 readonly 'l location': O.l_location
-                                readonly 'l value': O.l_value
+                                readonly 'l state': O.l_state
                             }
                             
                         }
@@ -493,13 +493,13 @@ export namespace Selection_ {
                                 
                                 export type l_location = i__location.Relative_Location
                                 
-                                export namespace l_value {
+                                export namespace l_state {
                                     
                                     export namespace initialize {
                                         
                                         export type l_location = i__location.Relative_Location
                                         
-                                        export namespace l_value {
+                                        export namespace l_dictionary {
                                             
                                             export namespace D {
                                                 
@@ -516,28 +516,28 @@ export namespace Selection_ {
                                             
                                         }
                                         
-                                        export type l_value = _pi.Dictionary<l_value.D>
+                                        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
                                         
                                     }
                                     
                                     export type initialize = {
                                         readonly 'l location': initialize.l_location
-                                        readonly 'l value': initialize.l_value
+                                        readonly 'l dictionary': initialize.l_dictionary
                                     }
                                     
                                     export type pass_through = null
                                     
                                 }
                                 
-                                export type l_value = 
-                                    | readonly ['initialize', l_value.initialize]
-                                    | readonly ['pass through', l_value.pass_through]
+                                export type l_state = 
+                                    | readonly ['initialize', l_state.initialize]
+                                    | readonly ['pass through', l_state.pass_through]
                                 
                             }
                             
                             export type O = {
                                 readonly 'l location': O.l_location
-                                readonly 'l value': O.l_value
+                                readonly 'l state': O.l_state
                             }
                             
                         }
@@ -598,28 +598,28 @@ export namespace Selection_ {
                     
                 }
                 
-                export type l_value = 
-                    | readonly ['call', l_value.call]
-                    | readonly ['context', l_value.context]
-                    | readonly ['dictionary entry', l_value.dictionary_entry]
-                    | readonly ['lookup entry', l_value.lookup_entry]
-                    | readonly ['parameter', l_value.parameter]
-                    | readonly ['parent sibling', l_value.parent_sibling]
-                    | readonly ['sibling', l_value.sibling]
-                    | readonly ['state', l_value.state]
+                export type l_state = 
+                    | readonly ['call', l_state.call]
+                    | readonly ['context', l_state.context]
+                    | readonly ['dictionary entry', l_state.dictionary_entry]
+                    | readonly ['lookup entry', l_state.lookup_entry]
+                    | readonly ['parameter', l_state.parameter]
+                    | readonly ['parent sibling', l_state.parent_sibling]
+                    | readonly ['sibling', l_state.sibling]
+                    | readonly ['state', l_state.state]
                 
             }
             
             export type start = {
                 readonly 'l location': start.l_location
-                readonly 'l value': start.l_value
+                readonly 'l state': start.l_state
             }
             
             export namespace tail {
                 
                 export type l_location = i__location.Relative_Location
                 
-                export namespace l_value {
+                export namespace l_list {
                     
                     export namespace L {
                         
@@ -636,13 +636,13 @@ export namespace Selection_ {
                     
                 }
                 
-                export type l_value = _pi.List<l_value.L>
+                export type l_list = _pi.List<l_list.L>
                 
             }
             
             export type tail = {
                 readonly 'l location': tail.l_location
-                readonly 'l value': tail.l_value
+                readonly 'l list': tail.l_list
             }
             
         }
@@ -654,22 +654,22 @@ export namespace Selection_ {
         
     }
     
-    export type l_value = 
-        | readonly ['implement me', l_value.implement_me]
-        | readonly ['regular', l_value.regular]
+    export type l_state = 
+        | readonly ['implement me', l_state.implement_me]
+        | readonly ['regular', l_state.regular]
     
 }
 
 export type Selection_ = {
     readonly 'l location': Selection_.l_location
-    readonly 'l value': Selection_.l_value
+    readonly 'l state': Selection_.l_state
 }
 
 export namespace Expression_ {
     
     export type l_location = i__location.Relative_Location
     
-    export namespace l_value {
+    export namespace l_state {
         
         export namespace decide {
             
@@ -677,7 +677,7 @@ export namespace Expression_ {
                 
                 export type l_location = i__location.Relative_Location
                 
-                export namespace l_value {
+                export namespace l_state {
                     
                     export namespace boolean_ {
                         
@@ -708,7 +708,7 @@ export namespace Expression_ {
                         
                         export type l_location = i__location.Relative_Location
                         
-                        export namespace l_value {
+                        export namespace l_state {
                             
                             export namespace has_entries {
                                 
@@ -728,21 +728,21 @@ export namespace Expression_ {
                             
                         }
                         
-                        export type l_value = 
-                            | readonly ['has entries', l_value.has_entries]
+                        export type l_state = 
+                            | readonly ['has entries', l_state.has_entries]
                         
                     }
                     
                     export type dictionary = {
                         readonly 'l location': dictionary.l_location
-                        readonly 'l value': dictionary.l_value
+                        readonly 'l state': dictionary.l_state
                     }
                     
                     export namespace list {
                         
                         export type l_location = i__location.Relative_Location
                         
-                        export namespace l_value {
+                        export namespace l_state {
                             
                             export namespace has_first_item {
                                 
@@ -794,16 +794,16 @@ export namespace Expression_ {
                             
                         }
                         
-                        export type l_value = 
-                            | readonly ['has first item', l_value.has_first_item]
-                            | readonly ['has last item', l_value.has_last_item]
-                            | readonly ['has items', l_value.has_items]
+                        export type l_state = 
+                            | readonly ['has first item', l_state.has_first_item]
+                            | readonly ['has last item', l_state.has_last_item]
+                            | readonly ['has items', l_state.has_items]
                         
                     }
                     
                     export type list = {
                         readonly 'l location': list.l_location
-                        readonly 'l value': list.l_value
+                        readonly 'l state': list.l_state
                     }
                     
                     export namespace optional {
@@ -847,7 +847,7 @@ export namespace Expression_ {
                             
                             export type l_location = i__location.Relative_Location
                             
-                            export namespace l_value {
+                            export namespace l_state {
                                 
                                 export namespace partial {
                                     
@@ -855,7 +855,7 @@ export namespace Expression_ {
                                         
                                         export type l_location = i__location.Relative_Location
                                         
-                                        export namespace l_value {
+                                        export namespace l_dictionary {
                                             
                                             export namespace D {
                                                 
@@ -872,13 +872,13 @@ export namespace Expression_ {
                                             
                                         }
                                         
-                                        export type l_value = _pi.Dictionary<l_value.D>
+                                        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
                                         
                                     }
                                     
                                     export type options = {
                                         readonly 'l location': options.l_location
-                                        readonly 'l value': options.l_value
+                                        readonly 'l dictionary': options.l_dictionary
                                     }
                                     
                                     export type default_ = Expression_
@@ -896,7 +896,7 @@ export namespace Expression_ {
                                         
                                         export type l_location = i__location.Relative_Location
                                         
-                                        export namespace l_value {
+                                        export namespace l_dictionary {
                                             
                                             export namespace D {
                                                 
@@ -913,13 +913,13 @@ export namespace Expression_ {
                                             
                                         }
                                         
-                                        export type l_value = _pi.Dictionary<l_value.D>
+                                        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
                                         
                                     }
                                     
                                     export type options = {
                                         readonly 'l location': options.l_location
-                                        readonly 'l value': options.l_value
+                                        readonly 'l dictionary': options.l_dictionary
                                     }
                                     
                                 }
@@ -930,15 +930,15 @@ export namespace Expression_ {
                                 
                             }
                             
-                            export type l_value = 
-                                | readonly ['partial', l_value.partial]
-                                | readonly ['full', l_value.full]
+                            export type l_state = 
+                                | readonly ['partial', l_state.partial]
+                                | readonly ['full', l_state.full]
                             
                         }
                         
                         export type type_ = {
                             readonly 'l location': type_.l_location
-                            readonly 'l value': type_.l_value
+                            readonly 'l state': type_.l_state
                         }
                         
                     }
@@ -965,7 +965,7 @@ export namespace Expression_ {
                             
                             export type l_location = i__location.Relative_Location
                             
-                            export namespace l_value {
+                            export namespace l_dictionary {
                                 
                                 export namespace D {
                                     
@@ -982,13 +982,13 @@ export namespace Expression_ {
                                 
                             }
                             
-                            export type l_value = _pi.Dictionary<l_value.D>
+                            export type l_dictionary = _pi.Dictionary<l_dictionary.D>
                             
                         }
                         
                         export type cases = {
                             readonly 'l location': cases.l_location
-                            readonly 'l value': cases.l_value
+                            readonly 'l dictionary': cases.l_dictionary
                         }
                         
                         export type default_ = Expression_
@@ -1004,19 +1004,19 @@ export namespace Expression_ {
                     
                 }
                 
-                export type l_value = 
-                    | readonly ['boolean', l_value.boolean_]
-                    | readonly ['dictionary', l_value.dictionary]
-                    | readonly ['list', l_value.list]
-                    | readonly ['optional', l_value.optional]
-                    | readonly ['state', l_value.state]
-                    | readonly ['text', l_value.text]
+                export type l_state = 
+                    | readonly ['boolean', l_state.boolean_]
+                    | readonly ['dictionary', l_state.dictionary]
+                    | readonly ['list', l_state.list]
+                    | readonly ['optional', l_state.optional]
+                    | readonly ['state', l_state.state]
+                    | readonly ['text', l_state.text]
                 
             }
             
             export type type_ = {
                 readonly 'l location': type_.l_location
-                readonly 'l value': type_.l_value
+                readonly 'l state': type_.l_state
             }
             
         }
@@ -1029,19 +1029,19 @@ export namespace Expression_ {
             
             export type l_location = i__location.Relative_Location
             
-            export namespace l_value {
+            export namespace l_state {
                 
                 export namespace boolean_ {
                     
                     export type l_location = i__location.Relative_Location
                     
-                    export namespace l_value {
+                    export namespace l_state {
                         
                         export namespace literal {
                             
                             export type l_location = i__location.Relative_Location
                             
-                            export namespace l_value {
+                            export namespace l_state {
                                 
                                 export type false_ = null
                                 
@@ -1049,15 +1049,15 @@ export namespace Expression_ {
                                 
                             }
                             
-                            export type l_value = 
-                                | readonly ['false', l_value.false_]
-                                | readonly ['true', l_value.true_]
+                            export type l_state = 
+                                | readonly ['false', l_state.false_]
+                                | readonly ['true', l_state.true_]
                             
                         }
                         
                         export type literal = {
                             readonly 'l location': literal.l_location
-                            readonly 'l value': literal.l_value
+                            readonly 'l state': literal.l_state
                         }
                         
                         export type not = Selection_
@@ -1070,25 +1070,25 @@ export namespace Expression_ {
                         
                     }
                     
-                    export type l_value = 
-                        | readonly ['literal', l_value.literal]
-                        | readonly ['not', l_value.not]
-                        | readonly ['copy', l_value.copy]
-                        | readonly ['dictionary is empty', l_value.dictionary_is_empty]
-                        | readonly ['list is empty', l_value.list_is_empty]
+                    export type l_state = 
+                        | readonly ['literal', l_state.literal]
+                        | readonly ['not', l_state.not]
+                        | readonly ['copy', l_state.copy]
+                        | readonly ['dictionary is empty', l_state.dictionary_is_empty]
+                        | readonly ['list is empty', l_state.list_is_empty]
                     
                 }
                 
                 export type boolean_ = {
                     readonly 'l location': boolean_.l_location
-                    readonly 'l value': boolean_.l_value
+                    readonly 'l state': boolean_.l_state
                 }
                 
                 export namespace dictionary {
                     
                     export type l_location = i__location.Relative_Location
                     
-                    export namespace l_value {
+                    export namespace l_state {
                         
                         export namespace filter {
                             
@@ -1126,7 +1126,7 @@ export namespace Expression_ {
                             
                             export type l_location = i__location.Relative_Location
                             
-                            export namespace l_value {
+                            export namespace l_dictionary {
                                 
                                 export namespace D {
                                     
@@ -1143,13 +1143,13 @@ export namespace Expression_ {
                                 
                             }
                             
-                            export type l_value = _pi.Dictionary<l_value.D>
+                            export type l_dictionary = _pi.Dictionary<l_dictionary.D>
                             
                         }
                         
                         export type literal = {
                             readonly 'l location': literal.l_location
-                            readonly 'l value': literal.l_value
+                            readonly 'l dictionary': literal.l_dictionary
                         }
                         
                         export namespace map {
@@ -1183,31 +1183,31 @@ export namespace Expression_ {
                         
                     }
                     
-                    export type l_value = 
-                        | readonly ['filter', l_value.filter]
-                        | readonly ['from list', l_value.from_list]
-                        | readonly ['literal', l_value.literal]
-                        | readonly ['map', l_value.map]
-                        | readonly ['resolve', l_value.resolve]
+                    export type l_state = 
+                        | readonly ['filter', l_state.filter]
+                        | readonly ['from list', l_state.from_list]
+                        | readonly ['literal', l_state.literal]
+                        | readonly ['map', l_state.map]
+                        | readonly ['resolve', l_state.resolve]
                     
                 }
                 
                 export type dictionary = {
                     readonly 'l location': dictionary.l_location
-                    readonly 'l value': dictionary.l_value
+                    readonly 'l state': dictionary.l_state
                 }
                 
                 export namespace group {
                     
                     export type l_location = i__location.Relative_Location
                     
-                    export namespace l_value {
+                    export namespace l_state {
                         
                         export namespace literal {
                             
                             export type l_location = i__location.Relative_Location
                             
-                            export namespace l_value {
+                            export namespace l_dictionary {
                                 
                                 export namespace D {
                                     
@@ -1224,20 +1224,20 @@ export namespace Expression_ {
                                 
                             }
                             
-                            export type l_value = _pi.Dictionary<l_value.D>
+                            export type l_dictionary = _pi.Dictionary<l_dictionary.D>
                             
                         }
                         
                         export type literal = {
                             readonly 'l location': literal.l_location
-                            readonly 'l value': literal.l_value
+                            readonly 'l dictionary': literal.l_dictionary
                         }
                         
                         export namespace resolve {
                             
                             export type l_location = i__location.Relative_Location
                             
-                            export namespace l_value {
+                            export namespace l_dictionary {
                                 
                                 export namespace D {
                                     
@@ -1254,33 +1254,33 @@ export namespace Expression_ {
                                 
                             }
                             
-                            export type l_value = _pi.Dictionary<l_value.D>
+                            export type l_dictionary = _pi.Dictionary<l_dictionary.D>
                             
                         }
                         
                         export type resolve = {
                             readonly 'l location': resolve.l_location
-                            readonly 'l value': resolve.l_value
+                            readonly 'l dictionary': resolve.l_dictionary
                         }
                         
                     }
                     
-                    export type l_value = 
-                        | readonly ['literal', l_value.literal]
-                        | readonly ['resolve', l_value.resolve]
+                    export type l_state = 
+                        | readonly ['literal', l_state.literal]
+                        | readonly ['resolve', l_state.resolve]
                     
                 }
                 
                 export type group = {
                     readonly 'l location': group.l_location
-                    readonly 'l value': group.l_value
+                    readonly 'l state': group.l_state
                 }
                 
                 export namespace list {
                     
                     export type l_location = i__location.Relative_Location
                     
-                    export namespace l_value {
+                    export namespace l_state {
                         
                         export namespace filter {
                             
@@ -1312,7 +1312,7 @@ export namespace Expression_ {
                             
                             export type l_location = i__location.Relative_Location
                             
-                            export namespace l_value {
+                            export namespace l_list {
                                 
                                 export namespace L {
                                     
@@ -1329,13 +1329,13 @@ export namespace Expression_ {
                                 
                             }
                             
-                            export type l_value = _pi.List<l_value.L>
+                            export type l_list = _pi.List<l_list.L>
                             
                         }
                         
                         export type literal = {
                             readonly 'l location': literal.l_location
-                            readonly 'l value': literal.l_value
+                            readonly 'l list': literal.l_list
                         }
                         
                         export namespace map {
@@ -1401,20 +1401,20 @@ export namespace Expression_ {
                         
                     }
                     
-                    export type l_value = 
-                        | readonly ['filter', l_value.filter]
-                        | readonly ['from dictionary', l_value.from_dictionary]
-                        | readonly ['literal', l_value.literal]
-                        | readonly ['map', l_value.map]
-                        | readonly ['map with state', l_value.map_with_state]
-                        | readonly ['reduce', l_value.reduce]
-                        | readonly ['reverse', l_value.reverse]
+                    export type l_state = 
+                        | readonly ['filter', l_state.filter]
+                        | readonly ['from dictionary', l_state.from_dictionary]
+                        | readonly ['literal', l_state.literal]
+                        | readonly ['map', l_state.map]
+                        | readonly ['map with state', l_state.map_with_state]
+                        | readonly ['reduce', l_state.reduce]
+                        | readonly ['reverse', l_state.reverse]
                     
                 }
                 
                 export type list = {
                     readonly 'l location': list.l_location
-                    readonly 'l value': list.l_value
+                    readonly 'l state': list.l_state
                 }
                 
                 export type nothing = null
@@ -1423,13 +1423,13 @@ export namespace Expression_ {
                     
                     export type l_location = i__location.Relative_Location
                     
-                    export namespace l_value {
+                    export namespace l_state {
                         
                         export namespace approximation {
                             
                             export type l_location = i__location.Relative_Location
                             
-                            export namespace l_value {
+                            export namespace l_state {
                                 
                                 export type literal = number
                                 
@@ -1437,22 +1437,22 @@ export namespace Expression_ {
                                 
                             }
                             
-                            export type l_value = 
-                                | readonly ['literal', l_value.literal]
-                                | readonly ['copy', l_value.copy]
+                            export type l_state = 
+                                | readonly ['literal', l_state.literal]
+                                | readonly ['copy', l_state.copy]
                             
                         }
                         
                         export type approximation = {
                             readonly 'l location': approximation.l_location
-                            readonly 'l value': approximation.l_value
+                            readonly 'l state': approximation.l_state
                         }
                         
                         export namespace integer {
                             
                             export type l_location = i__location.Relative_Location
                             
-                            export namespace l_value {
+                            export namespace l_state {
                                 
                                 export type copy = Selection_
                                 
@@ -1476,23 +1476,23 @@ export namespace Expression_ {
                                 
                             }
                             
-                            export type l_value = 
-                                | readonly ['copy', l_value.copy]
-                                | readonly ['divide', l_value.divide]
-                                | readonly ['literal', l_value.literal]
+                            export type l_state = 
+                                | readonly ['copy', l_state.copy]
+                                | readonly ['divide', l_state.divide]
+                                | readonly ['literal', l_state.literal]
                             
                         }
                         
                         export type integer = {
                             readonly 'l location': integer.l_location
-                            readonly 'l value': integer.l_value
+                            readonly 'l state': integer.l_state
                         }
                         
                         export namespace natural {
                             
                             export type l_location = i__location.Relative_Location
                             
-                            export namespace l_value {
+                            export namespace l_state {
                                 
                                 export type literal = number
                                 
@@ -1524,40 +1524,40 @@ export namespace Expression_ {
                                 
                             }
                             
-                            export type l_value = 
-                                | readonly ['literal', l_value.literal]
-                                | readonly ['copy', l_value.copy]
-                                | readonly ['number of dictionary entries', l_value.number_of_dictionary_entries]
-                                | readonly ['number of list items', l_value.number_of_list_items]
-                                | readonly ['source column', l_value.source_column]
-                                | readonly ['source line', l_value.source_line]
+                            export type l_state = 
+                                | readonly ['literal', l_state.literal]
+                                | readonly ['copy', l_state.copy]
+                                | readonly ['number of dictionary entries', l_state.number_of_dictionary_entries]
+                                | readonly ['number of list items', l_state.number_of_list_items]
+                                | readonly ['source column', l_state.source_column]
+                                | readonly ['source line', l_state.source_line]
                             
                         }
                         
                         export type natural = {
                             readonly 'l location': natural.l_location
-                            readonly 'l value': natural.l_value
+                            readonly 'l state': natural.l_state
                         }
                         
                     }
                     
-                    export type l_value = 
-                        | readonly ['approximation', l_value.approximation]
-                        | readonly ['integer', l_value.integer]
-                        | readonly ['natural', l_value.natural]
+                    export type l_state = 
+                        | readonly ['approximation', l_state.approximation]
+                        | readonly ['integer', l_state.integer]
+                        | readonly ['natural', l_state.natural]
                     
                 }
                 
                 export type number_ = {
                     readonly 'l location': number_.l_location
-                    readonly 'l value': number_.l_value
+                    readonly 'l state': number_.l_state
                 }
                 
                 export namespace optional {
                     
                     export type l_location = i__location.Relative_Location
                     
-                    export namespace l_value {
+                    export namespace l_state {
                         
                         export namespace from_boolean {
                             
@@ -1576,7 +1576,7 @@ export namespace Expression_ {
                             
                             export type l_location = i__location.Relative_Location
                             
-                            export namespace l_value {
+                            export namespace l_state {
                                 
                                 export type not_set = null
                                 
@@ -1584,15 +1584,15 @@ export namespace Expression_ {
                                 
                             }
                             
-                            export type l_value = 
-                                | readonly ['not set', l_value.not_set]
-                                | readonly ['set', l_value.set_]
+                            export type l_state = 
+                                | readonly ['not set', l_state.not_set]
+                                | readonly ['set', l_state.set_]
                             
                         }
                         
                         export type literal = {
                             readonly 'l location': literal.l_location
-                            readonly 'l value': literal.l_value
+                            readonly 'l state': literal.l_state
                         }
                         
                         export namespace map {
@@ -1610,23 +1610,23 @@ export namespace Expression_ {
                         
                     }
                     
-                    export type l_value = 
-                        | readonly ['from boolean', l_value.from_boolean]
-                        | readonly ['literal', l_value.literal]
-                        | readonly ['map', l_value.map]
+                    export type l_state = 
+                        | readonly ['from boolean', l_state.from_boolean]
+                        | readonly ['literal', l_state.literal]
+                        | readonly ['map', l_state.map]
                     
                 }
                 
                 export type optional = {
                     readonly 'l location': optional.l_location
-                    readonly 'l value': optional.l_value
+                    readonly 'l state': optional.l_state
                 }
                 
                 export namespace state {
                     
                     export type l_location = i__location.Relative_Location
                     
-                    export namespace l_value {
+                    export namespace l_state {
                         
                         export namespace literal {
                             
@@ -1643,21 +1643,21 @@ export namespace Expression_ {
                         
                     }
                     
-                    export type l_value = 
-                        | readonly ['literal', l_value.literal]
+                    export type l_state = 
+                        | readonly ['literal', l_state.literal]
                     
                 }
                 
                 export type state = {
                     readonly 'l location': state.l_location
-                    readonly 'l value': state.l_value
+                    readonly 'l state': state.l_state
                 }
                 
                 export namespace text {
                     
                     export type l_location = i__location.Relative_Location
                     
-                    export namespace l_value {
+                    export namespace l_state {
                         
                         export type copy = Selection_
                         
@@ -1667,7 +1667,7 @@ export namespace Expression_ {
                                 
                                 export type l_location = i__location.Relative_Location
                                 
-                                export namespace l_value {
+                                export namespace l_state {
                                     
                                     export type identifier = null
                                     
@@ -1675,15 +1675,15 @@ export namespace Expression_ {
                                     
                                 }
                                 
-                                export type l_value = 
-                                    | readonly ['identifier', l_value.identifier]
-                                    | readonly ['freeform', l_value.freeform]
+                                export type l_state = 
+                                    | readonly ['identifier', l_state.identifier]
+                                    | readonly ['freeform', l_state.freeform]
                                 
                             }
                             
                             export type type_ = {
                                 readonly 'l location': type_.l_location
-                                readonly 'l value': type_.l_value
+                                readonly 'l state': type_.l_state
                             }
                             
                             export type value = string
@@ -1699,36 +1699,36 @@ export namespace Expression_ {
                         
                     }
                     
-                    export type l_value = 
-                        | readonly ['copy', l_value.copy]
-                        | readonly ['literal', l_value.literal]
-                        | readonly ['source document', l_value.source_document]
+                    export type l_state = 
+                        | readonly ['copy', l_state.copy]
+                        | readonly ['literal', l_state.literal]
+                        | readonly ['source document', l_state.source_document]
                     
                 }
                 
                 export type text = {
                     readonly 'l location': text.l_location
-                    readonly 'l value': text.l_value
+                    readonly 'l state': text.l_state
                 }
                 
             }
             
-            export type l_value = 
-                | readonly ['boolean', l_value.boolean_]
-                | readonly ['dictionary', l_value.dictionary]
-                | readonly ['group', l_value.group]
-                | readonly ['list', l_value.list]
-                | readonly ['nothing', l_value.nothing]
-                | readonly ['number', l_value.number_]
-                | readonly ['optional', l_value.optional]
-                | readonly ['state', l_value.state]
-                | readonly ['text', l_value.text]
+            export type l_state = 
+                | readonly ['boolean', l_state.boolean_]
+                | readonly ['dictionary', l_state.dictionary]
+                | readonly ['group', l_state.group]
+                | readonly ['list', l_state.list]
+                | readonly ['nothing', l_state.nothing]
+                | readonly ['number', l_state.number_]
+                | readonly ['optional', l_state.optional]
+                | readonly ['state', l_state.state]
+                | readonly ['text', l_state.text]
             
         }
         
         export type initialize = {
             readonly 'l location': initialize.l_location
-            readonly 'l value': initialize.l_value
+            readonly 'l state': initialize.l_state
         }
         
         export type select = Selection_
@@ -1737,7 +1737,7 @@ export namespace Expression_ {
             
             export type l_location = i__location.Relative_Location
             
-            export namespace l_value {
+            export namespace l_state {
                 
                 export type abort = Expression_
                 
@@ -1786,41 +1786,41 @@ export namespace Expression_ {
                 
             }
             
-            export type l_value = 
-                | readonly ['abort', l_value.abort]
-                | readonly ['assert', l_value.assert]
-                | readonly ['change context', l_value.change_context]
-                | readonly ['implement me', l_value.implement_me]
-                | readonly ['iterate', l_value.iterate]
-                | readonly ['unreachable', l_value.unreachable]
+            export type l_state = 
+                | readonly ['abort', l_state.abort]
+                | readonly ['assert', l_state.assert]
+                | readonly ['change context', l_state.change_context]
+                | readonly ['implement me', l_state.implement_me]
+                | readonly ['iterate', l_state.iterate]
+                | readonly ['unreachable', l_state.unreachable]
             
         }
         
         export type special = {
             readonly 'l location': special.l_location
-            readonly 'l value': special.l_value
+            readonly 'l state': special.l_state
         }
         
     }
     
-    export type l_value = 
-        | readonly ['decide', l_value.decide]
-        | readonly ['initialize', l_value.initialize]
-        | readonly ['select', l_value.select]
-        | readonly ['special', l_value.special]
+    export type l_state = 
+        | readonly ['decide', l_state.decide]
+        | readonly ['initialize', l_state.initialize]
+        | readonly ['select', l_state.select]
+        | readonly ['special', l_state.special]
     
 }
 
 export type Expression_ = {
     readonly 'l location': Expression_.l_location
-    readonly 'l value': Expression_.l_value
+    readonly 'l state': Expression_.l_state
 }
 
 export namespace Lookup_Selection_ {
     
     export type l_location = i__location.Relative_Location
     
-    export namespace l_value {
+    export namespace l_state {
         
         export type implement_me = string
         
@@ -1842,18 +1842,18 @@ export namespace Lookup_Selection_ {
         
     }
     
-    export type l_value = 
-        | readonly ['implement me', l_value.implement_me]
-        | readonly ['from resolved dictionary', l_value.from_resolved_dictionary]
-        | readonly ['from siblings', l_value.from_siblings]
-        | readonly ['from parameter', l_value.from_parameter]
-        | readonly ['not set', l_value.not_set]
+    export type l_state = 
+        | readonly ['implement me', l_state.implement_me]
+        | readonly ['from resolved dictionary', l_state.from_resolved_dictionary]
+        | readonly ['from siblings', l_state.from_siblings]
+        | readonly ['from parameter', l_state.from_parameter]
+        | readonly ['not set', l_state.not_set]
     
 }
 
 export type Lookup_Selection_ = {
     readonly 'l location': Lookup_Selection_.l_location
-    readonly 'l value': Lookup_Selection_.l_value
+    readonly 'l state': Lookup_Selection_.l_state
 }
 
 export { 
