@@ -453,7 +453,36 @@ export const Expression = (
                         )
                         case 'resolve': return _p.ss($, ($) => $.__get_number_of_entries() === 0
                             ? sh.e.null_()
-                            : sh.e.object_literal($.__d_map(($, id) => Expression($))) // create a block, all the properties should be variables
+                            : sh.e.call(
+                                sh.e.property_access(
+                                    sh.e.property_access(
+                                        sh.e.identifier_raw("_p"),
+                                        sh.identifier_raw("group"),
+                                    ),
+                                    sh.identifier_raw("resolve"),
+                                ),
+                                [
+                                    sh.e.arrow_function_with_block(
+                                        [],
+                                        null,
+                                        _p.list.nested_literal_old([
+                                            $.__to_list(($, id) => sh.s.variable(
+                                                false,
+                                                true,
+                                                sh.identifier_escaped("prop " + id),
+                                                null,
+                                                Expression($)
+                                            )),
+                                            [
+                                                sh.s.return_(sh.e.object_literal(
+                                                    $.__d_map(($, id) => sh.e.identifier_escaped("prop " + id))
+                                                ))
+                                            ]
+
+                                        ])
+                                    )
+                                ]
+                            )
                         )
                         default: return _p.au($[0])
                     }
