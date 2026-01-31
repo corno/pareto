@@ -2071,10 +2071,10 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                             ),
                                                         }]
                                                     )
-                                                case 'lookup depth':
+                                                case 'lookup entry depth':
                                                     return _p.ss(
                                                         $,
-                                                        ($) => ['lookup depth', {
+                                                        ($) => ['lookup entry depth', {
                                                             'lookup': _p_cc(
                                                                 $['lookup'],
                                                                 ($) => Lookup_Selection(

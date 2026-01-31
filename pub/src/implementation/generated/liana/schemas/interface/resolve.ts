@@ -21,39 +21,45 @@ export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => _p.di
     $['l dictionary'],
     ($, id, $a, $c): t_out.Package_Set.D => _p_cc(
         $['l entry'],
-        ($) => _p.decide.state(
-            $['l state'],
-            ($): t_out.Package_Set.D => {
-                switch ($[0]) {
-                    case 'package':
-                        return _p.ss(
-                            $,
-                            ($) => ['package', Package(
-                                $,
-                                ($) => abort(
-                                    $
-                                ),
-                                null,
-                                null
-                            )]
-                        )
-                    case 'set':
-                        return _p.ss(
-                            $,
-                            ($) => ['set', Package_Set(
-                                $,
-                                ($) => abort(
-                                    $
-                                ),
-                                null,
-                                null
-                            )]
-                        )
-                    default:
-                        return _p.au(
-                            $[0]
-                        )
-                }
+        ($) => _p_deprecated_block(
+            () => {
+                
+                const var_location = $['l location']
+                return _p.decide.state(
+                    $['l state'],
+                    ($): t_out.Package_Set.D => {
+                        switch ($[0]) {
+                            case 'package':
+                                return _p.ss(
+                                    $,
+                                    ($) => ['package', Package(
+                                        $,
+                                        ($) => abort(
+                                            $
+                                        ),
+                                        null,
+                                        null
+                                    )]
+                                )
+                            case 'set':
+                                return _p.ss(
+                                    $,
+                                    ($) => ['set', Package_Set(
+                                        $,
+                                        ($) => abort(
+                                            $
+                                        ),
+                                        null,
+                                        null
+                                    )]
+                                )
+                            default:
+                                return _p.au(
+                                    $[0]
+                                )
+                        }
+                    }
+                )
             }
         )
     )
@@ -80,193 +86,211 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.reso
                 $['l dictionary'],
                 ($, id, $a, $c): t_out.Package.types.D => _p_cc(
                     $['l entry'],
-                    ($) => _p.decide.state(
-                        $['l state'],
-                        ($): t_out.Package.types.D => {
-                            switch ($[0]) {
-                                case 'data':
-                                    return _p.ss(
-                                        $,
-                                        ($) => ['data', Value(
-                                            $,
-                                            ($) => abort(
-                                                $
-                                            ),
-                                            null,
-                                            null
-                                        )]
-                                    )
-                                case 'algorithm':
-                                    return _p.ss(
-                                        $,
-                                        ($) => ['algorithm', _p.group.resolve(
-                                            () => {
-                                                
-                                                const prop_result = _p_cc(
-                                                    $['result'],
-                                                    ($) => Value(
-                                                        $,
-                                                        ($) => abort(
-                                                            $
-                                                        ),
-                                                        null,
-                                                        null
-                                                    )
-                                                )
-                                                
-                                                const prop_context = _p_cc(
-                                                    $['context'],
-                                                    ($) => Value(
-                                                        $,
-                                                        ($) => abort(
-                                                            $
-                                                        ),
-                                                        null,
-                                                        null
-                                                    )
-                                                )
-                                                
-                                                const prop_type = _p_cc(
-                                                    $['type'],
-                                                    ($) => _p.decide.state(
-                                                        $['l state'],
-                                                        ($): t_out.Package.types.D.algorithm.type_ => {
-                                                            switch ($[0]) {
-                                                                case 'transformer':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ['transformer', null]
-                                                                    )
-                                                                case 'refiner':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ['refiner', _p.group.resolve(
-                                                                            () => {
-                                                                                
-                                                                                const prop_error = _p_cc(
-                                                                                    $['error'],
-                                                                                    ($) => _p.optional.map(
+                    ($) => _p_deprecated_block(
+                        () => {
+                            
+                            const var_location = $['l location']
+                            return _p.decide.state(
+                                $['l state'],
+                                ($): t_out.Package.types.D => {
+                                    switch ($[0]) {
+                                        case 'data':
+                                            return _p.ss(
+                                                $,
+                                                ($) => ['data', Value(
+                                                    $,
+                                                    ($) => abort(
+                                                        $
+                                                    ),
+                                                    null,
+                                                    null
+                                                )]
+                                            )
+                                        case 'algorithm':
+                                            return _p.ss(
+                                                $,
+                                                ($) => ['algorithm', _p.group.resolve(
+                                                    () => {
+                                                        
+                                                        const prop_result = _p_cc(
+                                                            $['result'],
+                                                            ($) => Value(
+                                                                $,
+                                                                ($) => abort(
+                                                                    $
+                                                                ),
+                                                                null,
+                                                                null
+                                                            )
+                                                        )
+                                                        
+                                                        const prop_context = _p_cc(
+                                                            $['context'],
+                                                            ($) => Value(
+                                                                $,
+                                                                ($) => abort(
+                                                                    $
+                                                                ),
+                                                                null,
+                                                                null
+                                                            )
+                                                        )
+                                                        
+                                                        const prop_type = _p_cc(
+                                                            $['type'],
+                                                            ($) => _p_deprecated_block(
+                                                                () => {
+                                                                    
+                                                                    const var_location = $['l location']
+                                                                    return _p.decide.state(
+                                                                        $['l state'],
+                                                                        ($): t_out.Package.types.D.algorithm.type_ => {
+                                                                            switch ($[0]) {
+                                                                                case 'transformer':
+                                                                                    return _p.ss(
                                                                                         $,
-                                                                                        ($) => Value(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                $
-                                                                                            ),
-                                                                                            null,
-                                                                                            null
-                                                                                        )
+                                                                                        ($) => ['transformer', null]
                                                                                     )
-                                                                                )
-                                                                                
-                                                                                const prop_lookups = _p_cc(
-                                                                                    $['lookups'],
-                                                                                    ($) => _p.optional.map(
+                                                                                case 'refiner':
+                                                                                    return _p.ss(
                                                                                         $,
-                                                                                        ($) => _p.dictionary.resolve(
-                                                                                            $['l dictionary'],
-                                                                                            ($, id, $a, $c): t_out.Package.types.D.algorithm.type_.refiner.lookups.O.D => _p_cc(
-                                                                                                $['l entry'],
-                                                                                                ($) => _p.decide.state(
-                                                                                                    $['l state'],
-                                                                                                    ($): t_out.Package.types.D.algorithm.type_.refiner.lookups.O.D => {
-                                                                                                        switch ($[0]) {
-                                                                                                            case 'acyclic':
-                                                                                                                return _p.ss(
-                                                                                                                    $,
-                                                                                                                    ($) => ['acyclic', Value(
-                                                                                                                        $,
-                                                                                                                        ($) => abort(
-                                                                                                                            $
-                                                                                                                        ),
-                                                                                                                        null,
-                                                                                                                        null
-                                                                                                                    )]
-                                                                                                                )
-                                                                                                            case 'cyclic':
-                                                                                                                return _p.ss(
-                                                                                                                    $,
-                                                                                                                    ($) => ['cyclic', Value(
-                                                                                                                        $,
-                                                                                                                        ($) => abort(
-                                                                                                                            $
-                                                                                                                        ),
-                                                                                                                        null,
-                                                                                                                        null
-                                                                                                                    )]
-                                                                                                                )
-                                                                                                            case 'stack':
-                                                                                                                return _p.ss(
-                                                                                                                    $,
-                                                                                                                    ($) => ['stack', Value(
-                                                                                                                        $,
-                                                                                                                        ($) => abort(
-                                                                                                                            $
-                                                                                                                        ),
-                                                                                                                        null,
-                                                                                                                        null
-                                                                                                                    )]
-                                                                                                                )
-                                                                                                            default:
-                                                                                                                return _p.au(
-                                                                                                                    $[0]
-                                                                                                                )
-                                                                                                        }
-                                                                                                    }
+                                                                                        ($) => ['refiner', _p.group.resolve(
+                                                                                            () => {
+                                                                                                
+                                                                                                const prop_error = _p_cc(
+                                                                                                    $['error'],
+                                                                                                    ($) => _p.optional.map(
+                                                                                                        $,
+                                                                                                        ($) => Value(
+                                                                                                            $,
+                                                                                                            ($) => abort(
+                                                                                                                $
+                                                                                                            ),
+                                                                                                            null,
+                                                                                                            null
+                                                                                                        )
+                                                                                                    )
                                                                                                 )
-                                                                                            )
-                                                                                        )
+                                                                                                
+                                                                                                const prop_lookups = _p_cc(
+                                                                                                    $['lookups'],
+                                                                                                    ($) => _p.optional.map(
+                                                                                                        $,
+                                                                                                        ($) => _p.dictionary.resolve(
+                                                                                                            $['l dictionary'],
+                                                                                                            ($, id, $a, $c): t_out.Package.types.D.algorithm.type_.refiner.lookups.O.D => _p_cc(
+                                                                                                                $['l entry'],
+                                                                                                                ($) => _p_deprecated_block(
+                                                                                                                    () => {
+                                                                                                                        
+                                                                                                                        const var_location = $['l location']
+                                                                                                                        return _p.decide.state(
+                                                                                                                            $['l state'],
+                                                                                                                            ($): t_out.Package.types.D.algorithm.type_.refiner.lookups.O.D => {
+                                                                                                                                switch ($[0]) {
+                                                                                                                                    case 'acyclic':
+                                                                                                                                        return _p.ss(
+                                                                                                                                            $,
+                                                                                                                                            ($) => ['acyclic', Value(
+                                                                                                                                                $,
+                                                                                                                                                ($) => abort(
+                                                                                                                                                    $
+                                                                                                                                                ),
+                                                                                                                                                null,
+                                                                                                                                                null
+                                                                                                                                            )]
+                                                                                                                                        )
+                                                                                                                                    case 'cyclic':
+                                                                                                                                        return _p.ss(
+                                                                                                                                            $,
+                                                                                                                                            ($) => ['cyclic', Value(
+                                                                                                                                                $,
+                                                                                                                                                ($) => abort(
+                                                                                                                                                    $
+                                                                                                                                                ),
+                                                                                                                                                null,
+                                                                                                                                                null
+                                                                                                                                            )]
+                                                                                                                                        )
+                                                                                                                                    case 'stack':
+                                                                                                                                        return _p.ss(
+                                                                                                                                            $,
+                                                                                                                                            ($) => ['stack', Value(
+                                                                                                                                                $,
+                                                                                                                                                ($) => abort(
+                                                                                                                                                    $
+                                                                                                                                                ),
+                                                                                                                                                null,
+                                                                                                                                                null
+                                                                                                                                            )]
+                                                                                                                                        )
+                                                                                                                                    default:
+                                                                                                                                        return _p.au(
+                                                                                                                                            $[0]
+                                                                                                                                        )
+                                                                                                                                }
+                                                                                                                            }
+                                                                                                                        )
+                                                                                                                    }
+                                                                                                                )
+                                                                                                            )
+                                                                                                        )
+                                                                                                    )
+                                                                                                )
+                                                                                                return {
+                                                                                                    'error': prop_error,
+                                                                                                    'lookups': prop_lookups,
+                                                                                                }
+                                                                                            }
+                                                                                        )]
                                                                                     )
-                                                                                )
-                                                                                return {
-                                                                                    'error': prop_error,
-                                                                                    'lookups': prop_lookups,
-                                                                                }
+                                                                                default:
+                                                                                    return _p.au(
+                                                                                        $[0]
+                                                                                    )
                                                                             }
-                                                                        )]
+                                                                        }
                                                                     )
-                                                                default:
-                                                                    return _p.au(
-                                                                        $[0]
+                                                                }
+                                                            )
+                                                        )
+                                                        
+                                                        const prop_parameters = _p_cc(
+                                                            $['parameters'],
+                                                            ($) => _p.optional.map(
+                                                                $,
+                                                                ($) => _p.dictionary.resolve(
+                                                                    $['l dictionary'],
+                                                                    ($, id, $a, $c): t_out.Package.types.D.algorithm.parameters.O.D => _p_cc(
+                                                                        $['l entry'],
+                                                                        ($) => Value(
+                                                                            $,
+                                                                            ($) => abort(
+                                                                                $
+                                                                            ),
+                                                                            null,
+                                                                            null
+                                                                        )
                                                                     )
-                                                            }
-                                                        }
-                                                    )
-                                                )
-                                                
-                                                const prop_parameters = _p_cc(
-                                                    $['parameters'],
-                                                    ($) => _p.optional.map(
-                                                        $,
-                                                        ($) => _p.dictionary.resolve(
-                                                            $['l dictionary'],
-                                                            ($, id, $a, $c): t_out.Package.types.D.algorithm.parameters.O.D => _p_cc(
-                                                                $['l entry'],
-                                                                ($) => Value(
-                                                                    $,
-                                                                    ($) => abort(
-                                                                        $
-                                                                    ),
-                                                                    null,
-                                                                    null
                                                                 )
                                                             )
                                                         )
-                                                    )
-                                                )
-                                                return {
-                                                    'result': prop_result,
-                                                    'context': prop_context,
-                                                    'type': prop_type,
-                                                    'parameters': prop_parameters,
-                                                }
-                                            }
-                                        )]
-                                    )
-                                default:
-                                    return _p.au(
-                                        $[0]
-                                    )
-                            }
+                                                        return {
+                                                            'result': prop_result,
+                                                            'context': prop_context,
+                                                            'type': prop_type,
+                                                            'parameters': prop_parameters,
+                                                        }
+                                                    }
+                                                )]
+                                            )
+                                        default:
+                                            return _p.au(
+                                                $[0]
+                                            )
+                                    }
+                                }
+                            )
                         }
                     )
                 )
@@ -288,47 +312,53 @@ export const Imports: t_signatures.Imports = ($, abort, $l, $p) => _p.dictionary
                 
                 const prop_type = _p_cc(
                     $['type'],
-                    ($) => _p.decide.state(
-                        $['l state'],
-                        ($): t_out.Imports.D.type_ => {
-                            switch ($[0]) {
-                                case 'external':
-                                    return _p.ss(
-                                        $,
-                                        ($) => ['external', $]
-                                    )
-                                case 'ancestor':
-                                    return _p.ss(
-                                        $,
-                                        ($) => ['ancestor', _p.group.resolve(
-                                            () => {
-                                                
-                                                const prop_number_of_steps = _p_cc(
-                                                    $['number of steps'],
-                                                    ($) => $
-                                                )
-                                                
-                                                const prop_dependency = _p_cc(
-                                                    $['dependency'],
-                                                    ($) => $
-                                                )
-                                                return {
-                                                    'number of steps': prop_number_of_steps,
-                                                    'dependency': prop_dependency,
-                                                }
-                                            }
-                                        )]
-                                    )
-                                case 'sibling':
-                                    return _p.ss(
-                                        $,
-                                        ($) => ['sibling', $]
-                                    )
-                                default:
-                                    return _p.au(
-                                        $[0]
-                                    )
-                            }
+                    ($) => _p_deprecated_block(
+                        () => {
+                            
+                            const var_location = $['l location']
+                            return _p.decide.state(
+                                $['l state'],
+                                ($): t_out.Imports.D.type_ => {
+                                    switch ($[0]) {
+                                        case 'external':
+                                            return _p.ss(
+                                                $,
+                                                ($) => ['external', $]
+                                            )
+                                        case 'ancestor':
+                                            return _p.ss(
+                                                $,
+                                                ($) => ['ancestor', _p.group.resolve(
+                                                    () => {
+                                                        
+                                                        const prop_number_of_steps = _p_cc(
+                                                            $['number of steps'],
+                                                            ($) => $
+                                                        )
+                                                        
+                                                        const prop_dependency = _p_cc(
+                                                            $['dependency'],
+                                                            ($) => $
+                                                        )
+                                                        return {
+                                                            'number of steps': prop_number_of_steps,
+                                                            'dependency': prop_dependency,
+                                                        }
+                                                    }
+                                                )]
+                                            )
+                                        case 'sibling':
+                                            return _p.ss(
+                                                $,
+                                                ($) => ['sibling', $]
+                                            )
+                                        default:
+                                            return _p.au(
+                                                $[0]
+                                            )
+                                    }
+                                }
+                            )
                         }
                     )
                 )
@@ -352,284 +382,314 @@ export const Imports: t_signatures.Imports = ($, abort, $l, $p) => _p.dictionary
     )
 )
 
-export const Value: t_signatures.Value = ($, abort, $l, $p) => _p.decide.state(
-    $['l state'],
-    ($): t_out.Value => {
-        switch ($[0]) {
-            case 'boolean':
-                return _p.ss(
-                    $,
-                    ($) => ['boolean', null]
-                )
-            case 'component':
-                return _p.ss(
-                    $,
-                    ($) => ['component', _p.group.resolve(
-                        () => {
-                            
-                            const prop_location = _p_cc(
-                                $['location'],
-                                ($) => Module_Reference(
-                                    $,
-                                    ($) => abort(
-                                        $
-                                    ),
-                                    null,
-                                    null
-                                )
-                            )
-                            return {
-                                'location': prop_location,
-                            }
-                        }
-                    )]
-                )
-            case 'dictionary':
-                return _p.ss(
-                    $,
-                    ($) => ['dictionary', Value(
-                        $,
-                        ($) => abort(
-                            $
-                        ),
-                        null,
-                        null
-                    )]
-                )
-            case 'group':
-                return _p.ss(
-                    $,
-                    ($) => ['group', _p.dictionary.resolve(
-                        $['l dictionary'],
-                        ($, id, $a, $c): t_out.Value.group.D => _p_cc(
-                            $['l entry'],
-                            ($) => Value(
-                                $,
-                                ($) => abort(
-                                    $
-                                ),
-                                null,
-                                null
-                            )
+export const Value: t_signatures.Value = ($, abort, $l, $p) => _p_deprecated_block(
+    () => {
+        
+        const var_location = $['l location']
+        return _p.decide.state(
+            $['l state'],
+            ($): t_out.Value => {
+                switch ($[0]) {
+                    case 'boolean':
+                        return _p.ss(
+                            $,
+                            ($) => ['boolean', null]
                         )
-                    )]
-                )
-            case 'list':
-                return _p.ss(
-                    $,
-                    ($) => ['list', Value(
-                        $,
-                        ($) => abort(
-                            $
-                        ),
-                        null,
-                        null
-                    )]
-                )
-            case 'nothing':
-                return _p.ss(
-                    $,
-                    ($) => ['nothing', null]
-                )
-            case 'number':
-                return _p.ss(
-                    $,
-                    ($) => ['number', _p.decide.state(
-                        $['l state'],
-                        ($): t_out.Value.number_ => {
-                            switch ($[0]) {
-                                case 'exact':
-                                    return _p.ss(
-                                        $,
-                                        ($) => ['exact', _p.decide.state(
-                                            $['l state'],
-                                            ($): t_out.Value.number_.exact => {
-                                                switch ($[0]) {
-                                                    case 'natural':
-                                                        return _p.ss(
-                                                            $,
-                                                            ($) => ['natural', null]
-                                                        )
-                                                    case 'integer':
-                                                        return _p.ss(
-                                                            $,
-                                                            ($) => ['integer', null]
-                                                        )
-                                                    default:
-                                                        return _p.au(
-                                                            $[0]
-                                                        )
-                                                }
-                                            }
-                                        )]
-                                    )
-                                case 'approximation':
-                                    return _p.ss(
-                                        $,
-                                        ($) => ['approximation', null]
-                                    )
-                                default:
-                                    return _p.au(
-                                        $[0]
-                                    )
-                            }
-                        }
-                    )]
-                )
-            case 'optional':
-                return _p.ss(
-                    $,
-                    ($) => ['optional', Value(
-                        $,
-                        ($) => abort(
-                            $
-                        ),
-                        null,
-                        null
-                    )]
-                )
-            case 'reference':
-                return _p.ss(
-                    $,
-                    ($) => ['reference', _p.group.resolve(
-                        () => {
-                            
-                            const prop_location = _p_cc(
-                                $['location'],
-                                ($) => Module_Reference(
-                                    $,
-                                    ($) => abort(
-                                        $
-                                    ),
-                                    null,
-                                    null
-                                )
-                            )
-                            
-                            const prop_sub_selection = _p_cc(
-                                $['sub selection'],
-                                ($) => _p.list.map(
-                                    $['l list'],
-                                    ($) => _p_cc(
-                                        $['l item'],
-                                        ($) => _p.decide.state(
-                                            $['l state'],
-                                            ($): t_out.Value.reference.sub_selection.L => {
-                                                switch ($[0]) {
-                                                    case 'dictionary':
-                                                        return _p.ss(
-                                                            $,
-                                                            ($) => ['dictionary', null]
-                                                        )
-                                                    case 'group':
-                                                        return _p.ss(
-                                                            $,
-                                                            ($) => ['group', $]
-                                                        )
-                                                    case 'list':
-                                                        return _p.ss(
-                                                            $,
-                                                            ($) => ['list', null]
-                                                        )
-                                                    case 'optional':
-                                                        return _p.ss(
-                                                            $,
-                                                            ($) => ['optional', null]
-                                                        )
-                                                    case 'state':
-                                                        return _p.ss(
-                                                            $,
-                                                            ($) => ['state', $]
-                                                        )
-                                                    default:
-                                                        return _p.au(
-                                                            $[0]
-                                                        )
-                                                }
-                                            }
+                    case 'component':
+                        return _p.ss(
+                            $,
+                            ($) => ['component', _p.group.resolve(
+                                () => {
+                                    
+                                    const prop_location = _p_cc(
+                                        $['location'],
+                                        ($) => Module_Reference(
+                                            $,
+                                            ($) => abort(
+                                                $
+                                            ),
+                                            null,
+                                            null
                                         )
                                     )
-                                )
-                            )
-                            
-                            const prop_cyclic = _p_cc(
-                                $['cyclic'],
-                                ($) => $
-                            )
-                            return {
-                                'location': prop_location,
-                                'sub selection': prop_sub_selection,
-                                'cyclic': prop_cyclic,
-                            }
-                        }
-                    )]
-                )
-            case 'state':
-                return _p.ss(
-                    $,
-                    ($) => ['state', _p.dictionary.resolve(
-                        $['l dictionary'],
-                        ($, id, $a, $c): t_out.Value.state.D => _p_cc(
-                            $['l entry'],
-                            ($) => Value(
+                                    return {
+                                        'location': prop_location,
+                                    }
+                                }
+                            )]
+                        )
+                    case 'dictionary':
+                        return _p.ss(
+                            $,
+                            ($) => ['dictionary', Value(
                                 $,
                                 ($) => abort(
                                     $
                                 ),
                                 null,
                                 null
-                            )
+                            )]
                         )
-                    )]
-                )
-            case 'text':
-                return _p.ss(
-                    $,
-                    ($) => ['text', null]
-                )
-            default:
-                return _p.au(
-                    $[0]
-                )
-        }
+                    case 'group':
+                        return _p.ss(
+                            $,
+                            ($) => ['group', _p.dictionary.resolve(
+                                $['l dictionary'],
+                                ($, id, $a, $c): t_out.Value.group.D => _p_cc(
+                                    $['l entry'],
+                                    ($) => Value(
+                                        $,
+                                        ($) => abort(
+                                            $
+                                        ),
+                                        null,
+                                        null
+                                    )
+                                )
+                            )]
+                        )
+                    case 'list':
+                        return _p.ss(
+                            $,
+                            ($) => ['list', Value(
+                                $,
+                                ($) => abort(
+                                    $
+                                ),
+                                null,
+                                null
+                            )]
+                        )
+                    case 'nothing':
+                        return _p.ss(
+                            $,
+                            ($) => ['nothing', null]
+                        )
+                    case 'number':
+                        return _p.ss(
+                            $,
+                            ($) => ['number', _p_deprecated_block(
+                                () => {
+                                    
+                                    const var_location = $['l location']
+                                    return _p.decide.state(
+                                        $['l state'],
+                                        ($): t_out.Value.number_ => {
+                                            switch ($[0]) {
+                                                case 'exact':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['exact', _p_deprecated_block(
+                                                            () => {
+                                                                
+                                                                const var_location = $['l location']
+                                                                return _p.decide.state(
+                                                                    $['l state'],
+                                                                    ($): t_out.Value.number_.exact => {
+                                                                        switch ($[0]) {
+                                                                            case 'natural':
+                                                                                return _p.ss(
+                                                                                    $,
+                                                                                    ($) => ['natural', null]
+                                                                                )
+                                                                            case 'integer':
+                                                                                return _p.ss(
+                                                                                    $,
+                                                                                    ($) => ['integer', null]
+                                                                                )
+                                                                            default:
+                                                                                return _p.au(
+                                                                                    $[0]
+                                                                                )
+                                                                        }
+                                                                    }
+                                                                )
+                                                            }
+                                                        )]
+                                                    )
+                                                case 'approximation':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['approximation', null]
+                                                    )
+                                                default:
+                                                    return _p.au(
+                                                        $[0]
+                                                    )
+                                            }
+                                        }
+                                    )
+                                }
+                            )]
+                        )
+                    case 'optional':
+                        return _p.ss(
+                            $,
+                            ($) => ['optional', Value(
+                                $,
+                                ($) => abort(
+                                    $
+                                ),
+                                null,
+                                null
+                            )]
+                        )
+                    case 'reference':
+                        return _p.ss(
+                            $,
+                            ($) => ['reference', _p.group.resolve(
+                                () => {
+                                    
+                                    const prop_location = _p_cc(
+                                        $['location'],
+                                        ($) => Module_Reference(
+                                            $,
+                                            ($) => abort(
+                                                $
+                                            ),
+                                            null,
+                                            null
+                                        )
+                                    )
+                                    
+                                    const prop_sub_selection = _p_cc(
+                                        $['sub selection'],
+                                        ($) => _p.list.map(
+                                            $['l list'],
+                                            ($) => _p_cc(
+                                                $['l item'],
+                                                ($) => _p_deprecated_block(
+                                                    () => {
+                                                        
+                                                        const var_location = $['l location']
+                                                        return _p.decide.state(
+                                                            $['l state'],
+                                                            ($): t_out.Value.reference.sub_selection.L => {
+                                                                switch ($[0]) {
+                                                                    case 'dictionary':
+                                                                        return _p.ss(
+                                                                            $,
+                                                                            ($) => ['dictionary', null]
+                                                                        )
+                                                                    case 'group':
+                                                                        return _p.ss(
+                                                                            $,
+                                                                            ($) => ['group', $]
+                                                                        )
+                                                                    case 'list':
+                                                                        return _p.ss(
+                                                                            $,
+                                                                            ($) => ['list', null]
+                                                                        )
+                                                                    case 'optional':
+                                                                        return _p.ss(
+                                                                            $,
+                                                                            ($) => ['optional', null]
+                                                                        )
+                                                                    case 'state':
+                                                                        return _p.ss(
+                                                                            $,
+                                                                            ($) => ['state', $]
+                                                                        )
+                                                                    default:
+                                                                        return _p.au(
+                                                                            $[0]
+                                                                        )
+                                                                }
+                                                            }
+                                                        )
+                                                    }
+                                                )
+                                            )
+                                        )
+                                    )
+                                    
+                                    const prop_cyclic = _p_cc(
+                                        $['cyclic'],
+                                        ($) => $
+                                    )
+                                    return {
+                                        'location': prop_location,
+                                        'sub selection': prop_sub_selection,
+                                        'cyclic': prop_cyclic,
+                                    }
+                                }
+                            )]
+                        )
+                    case 'state':
+                        return _p.ss(
+                            $,
+                            ($) => ['state', _p.dictionary.resolve(
+                                $['l dictionary'],
+                                ($, id, $a, $c): t_out.Value.state.D => _p_cc(
+                                    $['l entry'],
+                                    ($) => Value(
+                                        $,
+                                        ($) => abort(
+                                            $
+                                        ),
+                                        null,
+                                        null
+                                    )
+                                )
+                            )]
+                        )
+                    case 'text':
+                        return _p.ss(
+                            $,
+                            ($) => ['text', null]
+                        )
+                    default:
+                        return _p.au(
+                            $[0]
+                        )
+                }
+            }
+        )
     }
 )
 
-export const Module_Reference: t_signatures.Module_Reference = ($, abort, $l, $p) => _p.decide.state(
-    $['l state'],
-    ($): t_out.Module_Reference => {
-        switch ($[0]) {
-            case 'import':
-                return _p.ss(
-                    $,
-                    ($) => ['import', _p.group.resolve(
-                        () => {
-                            
-                            const prop_import = _p_cc(
-                                $['import'],
-                                ($) => $
-                            )
-                            
-                            const prop_type = _p_cc(
-                                $['type'],
-                                ($) => $
-                            )
-                            return {
-                                'import': prop_import,
-                                'type': prop_type,
-                            }
-                        }
-                    )]
-                )
-            case 'local':
-                return _p.ss(
-                    $,
-                    ($) => ['local', $]
-                )
-            default:
-                return _p.au(
-                    $[0]
-                )
-        }
+export const Module_Reference: t_signatures.Module_Reference = ($, abort, $l, $p) => _p_deprecated_block(
+    () => {
+        
+        const var_location = $['l location']
+        return _p.decide.state(
+            $['l state'],
+            ($): t_out.Module_Reference => {
+                switch ($[0]) {
+                    case 'import':
+                        return _p.ss(
+                            $,
+                            ($) => ['import', _p.group.resolve(
+                                () => {
+                                    
+                                    const prop_import = _p_cc(
+                                        $['import'],
+                                        ($) => $
+                                    )
+                                    
+                                    const prop_type = _p_cc(
+                                        $['type'],
+                                        ($) => $
+                                    )
+                                    return {
+                                        'import': prop_import,
+                                        'type': prop_type,
+                                    }
+                                }
+                            )]
+                        )
+                    case 'local':
+                        return _p.ss(
+                            $,
+                            ($) => ['local', $]
+                        )
+                    default:
+                        return _p.au(
+                            $[0]
+                        )
+                }
+            }
+        )
     }
 )

@@ -2195,11 +2195,11 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                             )]],
                                                         })
                                                     )
-                                                case 'lookup depth':
+                                                case 'lookup entry depth':
                                                     return _p.ss(
                                                         $,
                                                         ($) => ({
-                                                            'option': 'lookup depth',
+                                                            'option': 'lookup entry depth',
                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                 {
                                                                     'lookup': _p_cc(

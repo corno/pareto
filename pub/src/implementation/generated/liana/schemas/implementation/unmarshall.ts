@@ -4333,14 +4333,14 @@ export const Selection: t_signatures.Selection = ($, abort) => _p_cc(
                                                                     )],
                                                                 })
                                                             )
-                                                        case 'lookup depth':
+                                                        case 'lookup entry depth':
                                                             return _p_cc(
                                                                 $['value'],
                                                                 ($) => ({
                                                                     'l location': v_parse_tree_to_location.Value(
                                                                         $
                                                                     )['start']['relative'],
-                                                                    'l state': ['lookup depth', _p_cc(
+                                                                    'l state': ['lookup entry depth', _p_cc(
                                                                         v_unmarshalled_from_parse_tree.Group(
                                                                             $,
                                                                             ($) => abort(

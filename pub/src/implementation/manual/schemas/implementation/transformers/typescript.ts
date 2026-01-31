@@ -975,7 +975,7 @@ export const Selection = (
                             }),
                         ]
                     ))
-                    case 'lookup depth': return _p.ss($, ($) => sh.e.call(
+                    case 'lookup entry depth': return _p.ss($, ($) => sh.e.call(
                         sh.e.property_access(
                             Lookup_Selection($.lookup),
                             sh.identifier_raw("get_entry_depth")

@@ -525,7 +525,7 @@ export namespace s {
         cycle_detected_handler: d_target.Expression,
         // tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
     ): d_target.Selection => wrap_state(['regular', {
-        'start': wrap_state<d_target.Selection.regular.start>(['lookup depth', {
+        'start': wrap_state<d_target.Selection.regular.start>(['lookup entry depth', {
             'lookup': lookup,
             'id': id,
             'abort handlers': {

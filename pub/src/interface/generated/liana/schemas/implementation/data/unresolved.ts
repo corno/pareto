@@ -1818,7 +1818,7 @@ export namespace Selection_ {
                         readonly 'abort handlers': lookup_entry.abort_handlers
                     }
                     
-                    export namespace lookup_depth {
+                    export namespace lookup_entry_depth {
                         
                         export type lookup = Lookup_Selection_
                         
@@ -1842,10 +1842,10 @@ export namespace Selection_ {
                         
                     }
                     
-                    export type lookup_depth = {
-                        readonly 'lookup': lookup_depth.lookup
-                        readonly 'id': lookup_depth.id
-                        readonly 'abort handlers': lookup_depth.abort_handlers
+                    export type lookup_entry_depth = {
+                        readonly 'lookup': lookup_entry_depth.lookup
+                        readonly 'id': lookup_entry_depth.id
+                        readonly 'abort handlers': lookup_entry_depth.abort_handlers
                     }
                     
                     export type parameter = string
@@ -1865,7 +1865,7 @@ export namespace Selection_ {
                     | readonly ['context', l_state.context]
                     | readonly ['dictionary entry', l_state.dictionary_entry]
                     | readonly ['lookup entry', l_state.lookup_entry]
-                    | readonly ['lookup depth', l_state.lookup_depth]
+                    | readonly ['lookup entry depth', l_state.lookup_entry_depth]
                     | readonly ['parameter', l_state.parameter]
                     | readonly ['parent sibling', l_state.parent_sibling]
                     | readonly ['sibling', l_state.sibling]
