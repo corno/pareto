@@ -7,6 +7,8 @@ import {
 
 import * as _pdev from "pareto-core-dev"
 
+import * as _p_ls from "pareto-core/dist/lookup_selection"
+
 import * as t_out from "../../../../../interface/generated/liana/schemas/implementation/data/resolved"
 
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/implementation/resolve"
@@ -122,12 +124,18 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                         $['unreachable code path'],
                         ($) => $
                     )
+                    
+                    const prop_lookups = _p_cc(
+                        $['lookups'],
+                        ($) => $
+                    )
                     return {
                         'abort': prop_abort,
                         'change context': prop_change_context,
                         'implement me': prop_implement_me,
                         'iterate': prop_iterate,
                         'unreachable code path': prop_unreachable_code_path,
+                        'lookups': prop_lookups,
                     }
                 }
             )
@@ -2594,43 +2602,128 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort, $l, $p
                     $,
                     ($) => ['implement me', $]
                 )
-            case 'from resolved dictionary':
-                return _p.ss(
-                    $,
-                    ($) => ['from resolved dictionary', Selection(
-                        $,
-                        ($) => abort(
-                            $
-                        ),
-                        null,
-                        null
-                    )]
-                )
-            case 'from siblings':
-                return _p.ss(
-                    $,
-                    ($) => ['from siblings', _p.group.resolve(
-                        () => {
-                            
-                            const prop_cycles_allowed = _p_cc(
-                                $['cycles allowed'],
-                                ($) => $
-                            )
-                            return {
-                                'cycles allowed': prop_cycles_allowed,
-                            }
-                        }
-                    )]
-                )
             case 'from parameter':
                 return _p.ss(
                     $,
                     ($) => ['from parameter', $]
                 )
-            case 'not set':
+            case 'acyclic':
                 return _p.ss(
                     $,
-                    ($) => ['not set', null]
+                    ($) => ['acyclic', _p.decide.state(
+                        $['l state'],
+                        ($): t_out.Lookup_Selection.acyclic => {
+                            switch ($[0]) {
+                                case 'not set':
+                                    return _p.ss(
+                                        $,
+                                        ($) => ['not set', null]
+                                    )
+                                case 'siblings':
+                                    return _p.ss(
+                                        $,
+                                        ($) => ['siblings', null]
+                                    )
+                                case 'resolved dictionary':
+                                    return _p.ss(
+                                        $,
+                                        ($) => ['resolved dictionary', Selection(
+                                            $,
+                                            ($) => abort(
+                                                $
+                                            ),
+                                            null,
+                                            null
+                                        )]
+                                    )
+                                default:
+                                    return _p.au(
+                                        $[0]
+                                    )
+                            }
+                        }
+                    )]
+                )
+            case 'cyclic':
+                return _p.ss(
+                    $,
+                    ($) => ['cyclic', _p.decide.state(
+                        $['l state'],
+                        ($): t_out.Lookup_Selection.cyclic => {
+                            switch ($[0]) {
+                                case 'not set':
+                                    return _p.ss(
+                                        $,
+                                        ($) => ['not set', null]
+                                    )
+                                case 'siblings':
+                                    return _p.ss(
+                                        $,
+                                        ($) => ['siblings', null]
+                                    )
+                                default:
+                                    return _p.au(
+                                        $[0]
+                                    )
+                            }
+                        }
+                    )]
+                )
+            case 'stack':
+                return _p.ss(
+                    $,
+                    ($) => ['stack', _p.decide.state(
+                        $['l state'],
+                        ($): t_out.Lookup_Selection.stack => {
+                            switch ($[0]) {
+                                case 'empty':
+                                    return _p.ss(
+                                        $,
+                                        ($) => ['empty', null]
+                                    )
+                                case 'push':
+                                    return _p.ss(
+                                        $,
+                                        ($) => ['push', _p.group.resolve(
+                                            () => {
+                                                
+                                                const prop_stack = _p_cc(
+                                                    $['stack'],
+                                                    ($) => Lookup_Selection(
+                                                        $,
+                                                        ($) => abort(
+                                                            $
+                                                        ),
+                                                        null,
+                                                        null
+                                                    )
+                                                )
+                                                
+                                                const prop_acyclic = _p_cc(
+                                                    $['acyclic'],
+                                                    ($) => Lookup_Selection(
+                                                        $,
+                                                        ($) => abort(
+                                                            $
+                                                        ),
+                                                        null,
+                                                        null
+                                                    )
+                                                )
+                                                return {
+                                                    'stack': prop_stack,
+                                                    'acyclic': prop_acyclic,
+                                                }
+                                            }
+                                        )]
+                                    )
+                                default:
+                                    return _p.au(
+                                        $[0]
+                                    )
+                            }
+                        }
+                    )]
                 )
             default:
                 return _p.au(

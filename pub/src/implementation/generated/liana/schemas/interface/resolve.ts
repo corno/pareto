@@ -7,6 +7,8 @@ import {
 
 import * as _pdev from "pareto-core-dev"
 
+import * as _p_ls from "pareto-core/dist/lookup_selection"
+
 import * as t_out from "../../../../../interface/generated/liana/schemas/interface/data/resolved"
 
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/interface/resolve"

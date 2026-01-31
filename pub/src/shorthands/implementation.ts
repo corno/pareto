@@ -82,6 +82,7 @@ export namespace m {
         implement_me: boolean,
         iterate: boolean,
         unreachable_code_path: boolean,
+        lookups: boolean,
         type_imports: _p.Raw_Or_Normal_Dictionary<d_target_interface.Imports.D>,
         variable_imports: _p.Raw_Or_Normal_Dictionary<d_target.Module.variable_imports.D>,
         algorithms: _p.Raw_Or_Normal_Dictionary<d_target.Module.algorithms.D>,
@@ -98,6 +99,7 @@ export namespace m {
             'implement me': implement_me,
             'iterate': iterate,
             'unreachable code path': unreachable_code_path,
+            'lookups': lookups,
         },
         'type imports': _p.dictionary.literal(type_imports),
         'variable imports': _p.dictionary.literal(variable_imports),
@@ -465,7 +467,7 @@ export namespace s {
         }]),
         'tail': _p.list.literal(tail),
     }])
-    
+
     export const parameter = (
         name: string,
         tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
@@ -504,5 +506,40 @@ export namespace s {
 export namespace ls {
 
     export const implement_me = (description: string): d_target.Lookup_Selection => wrap_state(['implement me', description])
+
+    export namespace stack {
+
+        export const empty = (): d_target.Lookup_Selection => wrap_state(['stack', wrap_state(['empty', null])])
+
+        export const push = (
+            stack: d_target.Lookup_Selection,
+            acyclic: d_target.Lookup_Selection,
+        ): d_target.Lookup_Selection => wrap_state(['stack', wrap_state(['push', {
+            'stack': stack,
+            'acyclic': acyclic,
+        }])])
+
+    }
+
+    export namespace acyclic {
+        export const not_set = (): d_target.Lookup_Selection => wrap_state(['acyclic', wrap_state(['not set', null])])
+
+        export const siblings = (): d_target.Lookup_Selection => wrap_state(['acyclic', wrap_state(['siblings', null])])
+
+        export const resolved_dictionary = (
+            dictionary_selection: d_target.Selection
+        ): d_target.Lookup_Selection => wrap_state(['acyclic', wrap_state(['resolved dictionary', dictionary_selection])])
+    }
+
+    export namespace cyclic {
+        export const not_set = (): d_target.Lookup_Selection => wrap_state(['cyclic', wrap_state(['not set', null])])
+
+        export const siblings = (): d_target.Lookup_Selection => wrap_state(['cyclic', wrap_state(['siblings', null])])
+    }
+
+    export const from_parameter = (
+        name: string
+    ): d_target.Lookup_Selection => wrap_state(['from parameter', name])
+
 
 }

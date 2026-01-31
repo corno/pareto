@@ -35,6 +35,8 @@ export namespace Module_ {
         
         export type unreachable_code_path = boolean
         
+        export type lookups = boolean
+        
     }
     
     export type specials = {
@@ -43,6 +45,7 @@ export namespace Module_ {
         readonly 'implement me': specials.implement_me
         readonly 'iterate': specials.iterate
         readonly 'unreachable code path': specials.unreachable_code_path
+        readonly 'lookups': specials.lookups
     }
     
     export type type_imports = i__imports_interface.Imports
@@ -1158,30 +1161,66 @@ export namespace Lookup_Selection_ {
     
     export type implement_me = string
     
-    export type from_resolved_dictionary = Selection_
-    
-    export namespace from_siblings {
-        
-        export type cycles_allowed = boolean
-        
-    }
-    
-    export type from_siblings = {
-        readonly 'cycles allowed': from_siblings.cycles_allowed
-    }
-    
     export type from_parameter = string
     
-    export type not_set = null
+    export namespace stack {
+        
+        export type empty = null
+        
+        export namespace push {
+            
+            export type stack = Lookup_Selection_
+            
+            export type acyclic = Lookup_Selection_
+            
+        }
+        
+        export type push = {
+            readonly 'stack': push.stack
+            readonly 'acyclic': push.acyclic
+        }
+        
+    }
+    
+    export type stack = 
+        | readonly ['empty', stack.empty]
+        | readonly ['push', stack.push]
+    
+    export namespace acyclic {
+        
+        export type not_set = null
+        
+        export type siblings = null
+        
+        export type resolved_dictionary = Selection_
+        
+    }
+    
+    export type acyclic = 
+        | readonly ['not set', acyclic.not_set]
+        | readonly ['siblings', acyclic.siblings]
+        | readonly ['resolved dictionary', acyclic.resolved_dictionary]
+    
+    export namespace cyclic {
+        
+        export type not_set = null
+        
+        export type siblings = null
+        
+    }
+    
+    export type cyclic = 
+        | readonly ['not set', cyclic.not_set]
+        | readonly ['siblings', cyclic.siblings]
     
 }
 
 export type Lookup_Selection_ = 
     | readonly ['implement me', Lookup_Selection_.implement_me]
-    | readonly ['from resolved dictionary', Lookup_Selection_.from_resolved_dictionary]
-    | readonly ['from siblings', Lookup_Selection_.from_siblings]
     | readonly ['from parameter', Lookup_Selection_.from_parameter]
-    | readonly ['not set', Lookup_Selection_.not_set]
+    | readonly ['stack', Lookup_Selection_.stack]
+    | readonly ['acyclic', Lookup_Selection_.acyclic]
+    | readonly ['cyclic', Lookup_Selection_.cyclic]
 
 export { 
     Module_ as Module, 

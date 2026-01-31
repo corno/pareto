@@ -48,6 +48,8 @@ export namespace Module_ {
         
         export type unreachable_code_path = boolean
         
+        export type lookups = boolean
+        
     }
     
     export type specials = {
@@ -56,6 +58,7 @@ export namespace Module_ {
         readonly 'implement me': specials.implement_me
         readonly 'iterate': specials.iterate
         readonly 'unreachable code path': specials.unreachable_code_path
+        readonly 'lookups': specials.lookups
     }
     
     export type type_imports = i__imports_interface.Imports
@@ -1824,30 +1827,99 @@ export namespace Lookup_Selection_ {
         
         export type implement_me = string
         
-        export type from_resolved_dictionary = Selection_
-        
-        export namespace from_siblings {
-            
-            export type cycles_allowed = boolean
-            
-        }
-        
-        export type from_siblings = {
-            readonly 'cycles allowed': from_siblings.cycles_allowed
-        }
-        
         export type from_parameter = string
         
-        export type not_set = null
+        export namespace stack {
+            
+            export type l_location = i__location.Relative_Location
+            
+            export namespace l_state {
+                
+                export type empty = null
+                
+                export namespace push {
+                    
+                    export type stack = Lookup_Selection_
+                    
+                    export type acyclic = Lookup_Selection_
+                    
+                }
+                
+                export type push = {
+                    readonly 'stack': push.stack
+                    readonly 'acyclic': push.acyclic
+                }
+                
+            }
+            
+            export type l_state = 
+                | readonly ['empty', l_state.empty]
+                | readonly ['push', l_state.push]
+            
+        }
+        
+        export type stack = {
+            readonly 'l location': stack.l_location
+            readonly 'l state': stack.l_state
+        }
+        
+        export namespace acyclic {
+            
+            export type l_location = i__location.Relative_Location
+            
+            export namespace l_state {
+                
+                export type not_set = null
+                
+                export type siblings = null
+                
+                export type resolved_dictionary = Selection_
+                
+            }
+            
+            export type l_state = 
+                | readonly ['not set', l_state.not_set]
+                | readonly ['siblings', l_state.siblings]
+                | readonly ['resolved dictionary', l_state.resolved_dictionary]
+            
+        }
+        
+        export type acyclic = {
+            readonly 'l location': acyclic.l_location
+            readonly 'l state': acyclic.l_state
+        }
+        
+        export namespace cyclic {
+            
+            export type l_location = i__location.Relative_Location
+            
+            export namespace l_state {
+                
+                export type not_set = null
+                
+                export type siblings = null
+                
+            }
+            
+            export type l_state = 
+                | readonly ['not set', l_state.not_set]
+                | readonly ['siblings', l_state.siblings]
+            
+        }
+        
+        export type cyclic = {
+            readonly 'l location': cyclic.l_location
+            readonly 'l state': cyclic.l_state
+        }
         
     }
     
     export type l_state = 
         | readonly ['implement me', l_state.implement_me]
-        | readonly ['from resolved dictionary', l_state.from_resolved_dictionary]
-        | readonly ['from siblings', l_state.from_siblings]
         | readonly ['from parameter', l_state.from_parameter]
-        | readonly ['not set', l_state.not_set]
+        | readonly ['stack', l_state.stack]
+        | readonly ['acyclic', l_state.acyclic]
+        | readonly ['cyclic', l_state.cyclic]
     
 }
 

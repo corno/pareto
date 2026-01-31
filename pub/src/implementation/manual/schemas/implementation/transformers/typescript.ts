@@ -109,6 +109,12 @@ export const Module_Set = (
                             `pareto-core-dev`
                         )]
                         : [],
+                    $.specials.lookups
+                        ? [sh.s.import_namespace(
+                            sh.identifier_raw("_p_ls"),
+                            `pareto-core/dist/lookup_selection`
+                        )]
+                        : [],
                     $.specials['iterate']
                         ? [sh.s.import_named(
                             [
@@ -917,7 +923,7 @@ export const Selection = (
                     ))
                     case 'parent sibling': return _p.ss($, ($) => sh.e.identifier_escaped("parent.prop " + $))
                     case 'sibling': return _p.ss($, ($) => sh.e.identifier_escaped("prop " + $))
-                    case 'state':return _p.ss($, ($) => sh.e.identifier_raw("state"))
+                    case 'state': return _p.ss($, ($) => sh.e.identifier_raw("state"))
                     default: return _p.au($[0])
                 }
             }),
@@ -945,14 +951,86 @@ export const Lookup_Selection = (
                 sh.e.string_literal($, 'quote')
             ]
         ))
-        case 'from resolved dictionary': return _p.ss($, ($) => sh.e.identifier_raw("FIX!!"))
-        case 'from siblings': return _p.ss($, ($) => _p.decide.boolean(
-            $['cycles allowed'],
-            () => sh.e.identifier_raw("$c"),
-            () => sh.e.identifier_raw("$a"),
+        case 'acyclic': return _p.ss($, ($) => _p.decide.state($, ($) => {
+            switch ($[0]) {
+                case 'not set': return _p.ss($, ($) => sh.e.call(
+                    sh.e.property_access(
+                        sh.e.property_access(
+                            sh.e.identifier_raw("_p_ls"),
+                            sh.identifier_raw("acyclic")
+                        ),
+                        sh.identifier_raw("not_set")
+                    ),
+                    [
+                    ]
+                ))
+                case 'siblings': return _p.ss($, ($) => sh.e.identifier_raw("$a"))
+                case 'resolved dictionary': return _p.ss($, ($) => sh.e.call(
+                    sh.e.property_access(
+                        sh.e.property_access(
+                            sh.e.identifier_raw("_p_ls"),
+                            sh.identifier_raw("acyclic")
+                        ),
+                        sh.identifier_raw("from_resolved_dictionary")
+                    ),
+                    [
+                        Selection($)
+                    ]
+                ))
+                default: return _p.au($[0])
+            }
+        }))
+        case 'from parameter': return _p.ss($, ($) => sh.e.element_access(
+            sh.e.identifier_raw("$l"),
+            sh.e.string_literal($, 'apostrophe')
         ))
-        case 'from parameter': return _p.ss($, ($) => sh.e.identifier_raw("FIX!!"))
-        case 'not set': return _p.ss($, ($) => sh.e.identifier_raw("FIX!!"))
+        case 'stack': return _p.ss($, ($) => _p.decide.state($, ($) => {
+            switch ($[0]) {
+                case 'empty': return _p.ss($, ($) => sh.e.call(
+                    sh.e.property_access(
+                        sh.e.property_access(
+                            sh.e.identifier_raw("_p_ls"),
+                            sh.identifier_raw("stack")
+                        ),
+                        sh.identifier_raw("empty")
+                    ),
+                    [
+                    ]
+                ))
+                case 'push': return _p.ss($, ($) => sh.e.call(
+                    sh.e.property_access(
+                        sh.e.property_access(
+                            sh.e.identifier_raw("_p_ls"),
+                            sh.identifier_raw("stack")
+                        ),
+                        sh.identifier_raw("push")
+                    ),
+                    [
+                        Lookup_Selection($.stack),
+                        Lookup_Selection($.acyclic)
+                    ]
+                ))
+                default: return _p.au($[0])
+            }
+        }))
+        case 'cyclic': return _p.ss($, ($) => _p.decide.state($, ($) => {
+            switch ($[0]) {
+                case 'not set': return _p.ss($, ($) => sh.e.call(
+                    sh.e.property_access(
+                        sh.e.property_access(
+                            sh.e.identifier_raw("_p_ls"),
+                            sh.identifier_raw("cyclic")
+                        ),
+                        sh.identifier_raw("not_set")
+                    ),
+                    [
+                    ]
+                ))
+                case 'siblings': return _p.ss($, ($) => sh.e.identifier_raw("$c"))
+                default: return _p.au($[0])
+            }
+        }))
+
         default: return _p.au($[0])
     }
 })

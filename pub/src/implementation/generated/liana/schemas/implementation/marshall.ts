@@ -112,6 +112,15 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                             ),
                         }]
                     ),
+                    'lookups': _p_cc(
+                        $['lookups'],
+                        ($) => ['text', {
+                            'delimiter': ['none', null],
+                            'value': v_serialize_boolean.serialize(
+                                $
+                            ),
+                        }]
+                    ),
                 }
             )]]
         ),
@@ -2188,36 +2197,6 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => ['state', 
                         }],
                     })
                 )
-            case 'from resolved dictionary':
-                return _p.ss(
-                    $,
-                    ($) => ({
-                        'option': 'from resolved dictionary',
-                        'value': Selection(
-                            $
-                        ),
-                    })
-                )
-            case 'from siblings':
-                return _p.ss(
-                    $,
-                    ($) => ({
-                        'option': 'from siblings',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
-                            {
-                                'cycles allowed': _p_cc(
-                                    $['cycles allowed'],
-                                    ($) => ['text', {
-                                        'delimiter': ['none', null],
-                                        'value': v_serialize_boolean.serialize(
-                                            $
-                                        ),
-                                    }]
-                                ),
-                            }
-                        )]],
-                    })
-                )
             case 'from parameter':
                 return _p.ss(
                     $,
@@ -2229,12 +2208,131 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => ['state', 
                         }],
                     })
                 )
-            case 'not set':
+            case 'stack':
                 return _p.ss(
                     $,
                     ($) => ({
-                        'option': 'not set',
-                        'value': ['nothing', null],
+                        'option': 'stack',
+                        'value': ['state', _p.decide.state(
+                            $,
+                            ($): t_out.Value.state => {
+                                switch ($[0]) {
+                                    case 'empty':
+                                        return _p.ss(
+                                            $,
+                                            ($) => ({
+                                                'option': 'empty',
+                                                'value': ['nothing', null],
+                                            })
+                                        )
+                                    case 'push':
+                                        return _p.ss(
+                                            $,
+                                            ($) => ({
+                                                'option': 'push',
+                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                    {
+                                                        'stack': _p_cc(
+                                                            $['stack'],
+                                                            ($) => Lookup_Selection(
+                                                                $
+                                                            )
+                                                        ),
+                                                        'acyclic': _p_cc(
+                                                            $['acyclic'],
+                                                            ($) => Lookup_Selection(
+                                                                $
+                                                            )
+                                                        ),
+                                                    }
+                                                )]],
+                                            })
+                                        )
+                                    default:
+                                        return _p.au(
+                                            $[0]
+                                        )
+                                }
+                            }
+                        )],
+                    })
+                )
+            case 'acyclic':
+                return _p.ss(
+                    $,
+                    ($) => ({
+                        'option': 'acyclic',
+                        'value': ['state', _p.decide.state(
+                            $,
+                            ($): t_out.Value.state => {
+                                switch ($[0]) {
+                                    case 'not set':
+                                        return _p.ss(
+                                            $,
+                                            ($) => ({
+                                                'option': 'not set',
+                                                'value': ['nothing', null],
+                                            })
+                                        )
+                                    case 'siblings':
+                                        return _p.ss(
+                                            $,
+                                            ($) => ({
+                                                'option': 'siblings',
+                                                'value': ['nothing', null],
+                                            })
+                                        )
+                                    case 'resolved dictionary':
+                                        return _p.ss(
+                                            $,
+                                            ($) => ({
+                                                'option': 'resolved dictionary',
+                                                'value': Selection(
+                                                    $
+                                                ),
+                                            })
+                                        )
+                                    default:
+                                        return _p.au(
+                                            $[0]
+                                        )
+                                }
+                            }
+                        )],
+                    })
+                )
+            case 'cyclic':
+                return _p.ss(
+                    $,
+                    ($) => ({
+                        'option': 'cyclic',
+                        'value': ['state', _p.decide.state(
+                            $,
+                            ($): t_out.Value.state => {
+                                switch ($[0]) {
+                                    case 'not set':
+                                        return _p.ss(
+                                            $,
+                                            ($) => ({
+                                                'option': 'not set',
+                                                'value': ['nothing', null],
+                                            })
+                                        )
+                                    case 'siblings':
+                                        return _p.ss(
+                                            $,
+                                            ($) => ({
+                                                'option': 'siblings',
+                                                'value': ['nothing', null],
+                                            })
+                                        )
+                                    default:
+                                        return _p.au(
+                                            $[0]
+                                        )
+                                }
+                            }
+                        )],
                     })
                 )
             default:
