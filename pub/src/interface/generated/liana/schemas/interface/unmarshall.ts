@@ -7,11 +7,11 @@ import * as i_out from "./data/unresolved"
 
 import * as i_in from "astn-core/dist/interface/generated/liana/schemas/parse_tree/data"
 
-export namespace Imports_ {
+export namespace Module_Set_ {
     
     export type I = i_in.Value
     
-    export type O = i_out.Imports
+    export type O = i_out.Module_Set
     
     export type E = i_generic.Error
     
@@ -21,10 +21,10 @@ export namespace Imports_ {
     
 }
 
-export type Imports_ = (
-    context: Imports_.I,
-    abort: _pi.Abort<Imports_.E>,
-) => Imports_.O
+export type Module_Set_ = (
+    context: Module_Set_.I,
+    abort: _pi.Abort<Module_Set_.E>,
+) => Module_Set_.O
 
 export namespace Module_ {
     
@@ -45,11 +45,11 @@ export type Module_ = (
     abort: _pi.Abort<Module_.E>,
 ) => Module_.O
 
-export namespace Module_Set_ {
+export namespace Imports_ {
     
     export type I = i_in.Value
     
-    export type O = i_out.Module_Set
+    export type O = i_out.Imports
     
     export type E = i_generic.Error
     
@@ -59,29 +59,10 @@ export namespace Module_Set_ {
     
 }
 
-export type Module_Set_ = (
-    context: Module_Set_.I,
-    abort: _pi.Abort<Module_Set_.E>,
-) => Module_Set_.O
-
-export namespace Module_Reference_ {
-    
-    export type I = i_in.Value
-    
-    export type O = i_out.Module_Reference
-    
-    export type E = i_generic.Error
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Module_Reference_ = (
-    context: Module_Reference_.I,
-    abort: _pi.Abort<Module_Reference_.E>,
-) => Module_Reference_.O
+export type Imports_ = (
+    context: Imports_.I,
+    abort: _pi.Abort<Imports_.E>,
+) => Imports_.O
 
 export namespace Value_ {
     
@@ -102,10 +83,29 @@ export type Value_ = (
     abort: _pi.Abort<Value_.E>,
 ) => Value_.O
 
+export namespace Module_Reference_ {
+    
+    export type I = i_in.Value
+    
+    export type O = i_out.Module_Reference
+    
+    export type E = i_generic.Error
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Module_Reference_ = (
+    context: Module_Reference_.I,
+    abort: _pi.Abort<Module_Reference_.E>,
+) => Module_Reference_.O
+
 export { 
-    Imports_ as Imports, 
-    Module_ as Module, 
     Module_Set_ as Module_Set, 
-    Module_Reference_ as Module_Reference, 
+    Module_ as Module, 
+    Imports_ as Imports, 
     Value_ as Value, 
+    Module_Reference_ as Module_Reference, 
 }

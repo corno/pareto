@@ -9,64 +9,341 @@ import * as t_signatures from "../../../../../interface/generated/liana/schemas/
 
 import * as t_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
 
-export const Identifier: t_signatures.Identifier = ($) => ({
-    'value': _p_cc(
-        $['value'],
-        ($) => $
-    ),
-})
-
-export const Function_Parameters: t_signatures.Function_Parameters = ($) => _p.list.map(
+export const Directory: t_signatures.Directory = ($) => _p.dictionary.map(
     $,
-    ($) => ({
-        'name': _p_cc(
-            $['name'],
-            ($) => Identifier(
-                $
-            )
-        ),
-        'type': _p_cc(
-            $['type'],
-            ($) => _p.optional.map(
-                $,
-                ($) => Type(
-                    $
-                )
-            )
-        ),
-    })
+    ($, id) => _p.decide.state(
+        $,
+        ($): t_out.Directory.D => {
+            switch ($[0]) {
+                case 'file':
+                    return _p.ss(
+                        $,
+                        ($) => ['file', {
+                            'statements': _p_cc(
+                                $['statements'],
+                                ($) => Statements(
+                                    $
+                                )
+                            ),
+                        }]
+                    )
+                case 'directory':
+                    return _p.ss(
+                        $,
+                        ($) => ['directory', Directory(
+                            $
+                        )]
+                    )
+                default:
+                    return _p.au(
+                        $[0]
+                    )
+            }
+        }
+    )
 )
 
-export const String_Literal: t_signatures.String_Literal = ($) => ({
-    'delimiter': _p_cc(
-        $['delimiter'],
-        ($) => _p.decide.state(
-            $,
-            ($): t_out.String_Literal.delimiter => {
-                switch ($[0]) {
-                    case 'quote':
-                        return _p.ss(
+export const Block: t_signatures.Block = ($) => Statements(
+    $
+)
+
+export const Statements: t_signatures.Statements = ($) => _p.list.map(
+    $,
+    ($) => _p.decide.state(
+        $,
+        ($): t_out.Statements.L => {
+            switch ($[0]) {
+                case 'block':
+                    return _p.ss(
+                        $,
+                        ($) => ['block', Block(
+                            $
+                        )]
+                    )
+                case 'export':
+                    return _p.ss(
+                        $,
+                        ($) => ['export', {
+                            'type': _p_cc(
+                                $['type'],
+                                ($) => _p.decide.state(
+                                    $,
+                                    ($): t_out.Statements.L.export_.type_ => {
+                                        switch ($[0]) {
+                                            case 'named exports':
+                                                return _p.ss(
+                                                    $,
+                                                    ($) => ['named exports', {
+                                                        'specifiers': _p_cc(
+                                                            $['specifiers'],
+                                                            ($) => _p.list.map(
+                                                                $,
+                                                                ($) => ({
+                                                                    'name': _p_cc(
+                                                                        $['name'],
+                                                                        ($) => Identifier(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'as': _p_cc(
+                                                                        $['as'],
+                                                                        ($) => _p.optional.map(
+                                                                            $,
+                                                                            ($) => Identifier(
+                                                                                $
+                                                                            )
+                                                                        )
+                                                                    ),
+                                                                })
+                                                            )
+                                                        ),
+                                                        'from': _p_cc(
+                                                            $['from'],
+                                                            ($) => _p.optional.map(
+                                                                $,
+                                                                ($) => $
+                                                            )
+                                                        ),
+                                                    }]
+                                                )
+                                            default:
+                                                return _p.au(
+                                                    $[0]
+                                                )
+                                        }
+                                    }
+                                )
+                            ),
+                        }]
+                    )
+                case 'expression':
+                    return _p.ss(
+                        $,
+                        ($) => ['expression', Expression(
+                            $
+                        )]
+                    )
+                case 'import':
+                    return _p.ss(
+                        $,
+                        ($) => ['import', {
+                            'type': _p_cc(
+                                $['type'],
+                                ($) => _p.decide.state(
+                                    $,
+                                    ($): t_out.Statements.L.import_.type_ => {
+                                        switch ($[0]) {
+                                            case 'namespace':
+                                                return _p.ss(
+                                                    $,
+                                                    ($) => ['namespace', Identifier(
+                                                        $
+                                                    )]
+                                                )
+                                            case 'named':
+                                                return _p.ss(
+                                                    $,
+                                                    ($) => ['named', {
+                                                        'specifiers': _p_cc(
+                                                            $['specifiers'],
+                                                            ($) => _p.list.map(
+                                                                $,
+                                                                ($) => ({
+                                                                    'name': _p_cc(
+                                                                        $['name'],
+                                                                        ($) => Identifier(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'as': _p_cc(
+                                                                        $['as'],
+                                                                        ($) => _p.optional.map(
+                                                                            $,
+                                                                            ($) => Identifier(
+                                                                                $
+                                                                            )
+                                                                        )
+                                                                    ),
+                                                                })
+                                                            )
+                                                        ),
+                                                    }]
+                                                )
+                                            default:
+                                                return _p.au(
+                                                    $[0]
+                                                )
+                                        }
+                                    }
+                                )
+                            ),
+                            'from': _p_cc(
+                                $['from'],
+                                ($) => $
+                            ),
+                        }]
+                    )
+                case 'module declaration':
+                    return _p.ss(
+                        $,
+                        ($) => ['module declaration', {
+                            'export': _p_cc(
+                                $['export'],
+                                ($) => $
+                            ),
+                            'name': _p_cc(
+                                $['name'],
+                                ($) => Identifier(
+                                    $
+                                )
+                            ),
+                            'block': _p_cc(
+                                $['block'],
+                                ($) => Block(
+                                    $
+                                )
+                            ),
+                        }]
+                    )
+                case 'return':
+                    return _p.ss(
+                        $,
+                        ($) => ['return', _p.optional.map(
                             $,
-                            ($) => ['quote', null]
-                        )
-                    case 'apostrophe':
-                        return _p.ss(
-                            $,
-                            ($) => ['apostrophe', null]
-                        )
-                    default:
-                        return _p.au(
-                            $[0]
-                        )
-                }
+                            ($) => Expression(
+                                $
+                            )
+                        )]
+                    )
+                case 'switch':
+                    return _p.ss(
+                        $,
+                        ($) => ['switch', {
+                            'expression': _p_cc(
+                                $['expression'],
+                                ($) => Expression(
+                                    $
+                                )
+                            ),
+                            'clauses': _p_cc(
+                                $['clauses'],
+                                ($) => _p.list.map(
+                                    $,
+                                    ($) => ({
+                                        'type': _p_cc(
+                                            $['type'],
+                                            ($) => _p.decide.state(
+                                                $,
+                                                ($): t_out.Statements.L.switch_.clauses.L.type_ => {
+                                                    switch ($[0]) {
+                                                        case 'case':
+                                                            return _p.ss(
+                                                                $,
+                                                                ($) => ['case', Expression(
+                                                                    $
+                                                                )]
+                                                            )
+                                                        case 'default':
+                                                            return _p.ss(
+                                                                $,
+                                                                ($) => ['default', null]
+                                                            )
+                                                        default:
+                                                            return _p.au(
+                                                                $[0]
+                                                            )
+                                                    }
+                                                }
+                                            )
+                                        ),
+                                        'statements': _p_cc(
+                                            $['statements'],
+                                            ($) => Statements(
+                                                $
+                                            )
+                                        ),
+                                    })
+                                )
+                            ),
+                        }]
+                    )
+                case 'type alias declaration':
+                    return _p.ss(
+                        $,
+                        ($) => ['type alias declaration', {
+                            'export': _p_cc(
+                                $['export'],
+                                ($) => $
+                            ),
+                            'name': _p_cc(
+                                $['name'],
+                                ($) => Identifier(
+                                    $
+                                )
+                            ),
+                            'parameters': _p_cc(
+                                $['parameters'],
+                                ($) => _p.list.map(
+                                    $,
+                                    ($) => Identifier(
+                                        $
+                                    )
+                                )
+                            ),
+                            'type': _p_cc(
+                                $['type'],
+                                ($) => Type(
+                                    $
+                                )
+                            ),
+                        }]
+                    )
+                case 'variable':
+                    return _p.ss(
+                        $,
+                        ($) => ['variable', {
+                            'export': _p_cc(
+                                $['export'],
+                                ($) => $
+                            ),
+                            'const': _p_cc(
+                                $['const'],
+                                ($) => $
+                            ),
+                            'name': _p_cc(
+                                $['name'],
+                                ($) => Identifier(
+                                    $
+                                )
+                            ),
+                            'type': _p_cc(
+                                $['type'],
+                                ($) => _p.optional.map(
+                                    $,
+                                    ($) => Type(
+                                        $
+                                    )
+                                )
+                            ),
+                            'expression': _p_cc(
+                                $['expression'],
+                                ($) => _p.optional.map(
+                                    $,
+                                    ($) => Expression(
+                                        $
+                                    )
+                                )
+                            ),
+                        }]
+                    )
+                default:
+                    return _p.au(
+                        $[0]
+                    )
             }
-        )
-    ),
-    'value': _p_cc(
-        $['value'],
-        ($) => $
-    ),
-})
+        }
+    )
+)
 
 export const Type: t_signatures.Type = ($) => _p.decide.state(
     $,
@@ -220,6 +497,27 @@ export const Type: t_signatures.Type = ($) => _p.decide.state(
                 )
         }
     }
+)
+
+export const Function_Parameters: t_signatures.Function_Parameters = ($) => _p.list.map(
+    $,
+    ($) => ({
+        'name': _p_cc(
+            $['name'],
+            ($) => Identifier(
+                $
+            )
+        ),
+        'type': _p_cc(
+            $['type'],
+            ($) => _p.optional.map(
+                $,
+                ($) => Type(
+                    $
+                )
+            )
+        ),
+    })
 )
 
 export const Expression: t_signatures.Expression = ($) => _p.decide.state(
@@ -556,338 +854,40 @@ export const Expression: t_signatures.Expression = ($) => _p.decide.state(
     }
 )
 
-export const Statements: t_signatures.Statements = ($) => _p.list.map(
-    $,
-    ($) => _p.decide.state(
-        $,
-        ($): t_out.Statements.L => {
-            switch ($[0]) {
-                case 'block':
-                    return _p.ss(
-                        $,
-                        ($) => ['block', Block(
-                            $
-                        )]
-                    )
-                case 'export':
-                    return _p.ss(
-                        $,
-                        ($) => ['export', {
-                            'type': _p_cc(
-                                $['type'],
-                                ($) => _p.decide.state(
-                                    $,
-                                    ($): t_out.Statements.L.export_.type_ => {
-                                        switch ($[0]) {
-                                            case 'named exports':
-                                                return _p.ss(
-                                                    $,
-                                                    ($) => ['named exports', {
-                                                        'specifiers': _p_cc(
-                                                            $['specifiers'],
-                                                            ($) => _p.list.map(
-                                                                $,
-                                                                ($) => ({
-                                                                    'name': _p_cc(
-                                                                        $['name'],
-                                                                        ($) => Identifier(
-                                                                            $
-                                                                        )
-                                                                    ),
-                                                                    'as': _p_cc(
-                                                                        $['as'],
-                                                                        ($) => _p.optional.map(
-                                                                            $,
-                                                                            ($) => Identifier(
-                                                                                $
-                                                                            )
-                                                                        )
-                                                                    ),
-                                                                })
-                                                            )
-                                                        ),
-                                                        'from': _p_cc(
-                                                            $['from'],
-                                                            ($) => _p.optional.map(
-                                                                $,
-                                                                ($) => $
-                                                            )
-                                                        ),
-                                                    }]
-                                                )
-                                            default:
-                                                return _p.au(
-                                                    $[0]
-                                                )
-                                        }
-                                    }
-                                )
-                            ),
-                        }]
-                    )
-                case 'expression':
-                    return _p.ss(
-                        $,
-                        ($) => ['expression', Expression(
-                            $
-                        )]
-                    )
-                case 'import':
-                    return _p.ss(
-                        $,
-                        ($) => ['import', {
-                            'type': _p_cc(
-                                $['type'],
-                                ($) => _p.decide.state(
-                                    $,
-                                    ($): t_out.Statements.L.import_.type_ => {
-                                        switch ($[0]) {
-                                            case 'namespace':
-                                                return _p.ss(
-                                                    $,
-                                                    ($) => ['namespace', Identifier(
-                                                        $
-                                                    )]
-                                                )
-                                            case 'named':
-                                                return _p.ss(
-                                                    $,
-                                                    ($) => ['named', {
-                                                        'specifiers': _p_cc(
-                                                            $['specifiers'],
-                                                            ($) => _p.list.map(
-                                                                $,
-                                                                ($) => ({
-                                                                    'name': _p_cc(
-                                                                        $['name'],
-                                                                        ($) => Identifier(
-                                                                            $
-                                                                        )
-                                                                    ),
-                                                                    'as': _p_cc(
-                                                                        $['as'],
-                                                                        ($) => _p.optional.map(
-                                                                            $,
-                                                                            ($) => Identifier(
-                                                                                $
-                                                                            )
-                                                                        )
-                                                                    ),
-                                                                })
-                                                            )
-                                                        ),
-                                                    }]
-                                                )
-                                            default:
-                                                return _p.au(
-                                                    $[0]
-                                                )
-                                        }
-                                    }
-                                )
-                            ),
-                            'from': _p_cc(
-                                $['from'],
-                                ($) => $
-                            ),
-                        }]
-                    )
-                case 'module declaration':
-                    return _p.ss(
-                        $,
-                        ($) => ['module declaration', {
-                            'export': _p_cc(
-                                $['export'],
-                                ($) => $
-                            ),
-                            'name': _p_cc(
-                                $['name'],
-                                ($) => Identifier(
-                                    $
-                                )
-                            ),
-                            'block': _p_cc(
-                                $['block'],
-                                ($) => Block(
-                                    $
-                                )
-                            ),
-                        }]
-                    )
-                case 'return':
-                    return _p.ss(
-                        $,
-                        ($) => ['return', _p.optional.map(
+export const String_Literal: t_signatures.String_Literal = ($) => ({
+    'delimiter': _p_cc(
+        $['delimiter'],
+        ($) => _p.decide.state(
+            $,
+            ($): t_out.String_Literal.delimiter => {
+                switch ($[0]) {
+                    case 'quote':
+                        return _p.ss(
                             $,
-                            ($) => Expression(
-                                $
-                            )
-                        )]
-                    )
-                case 'switch':
-                    return _p.ss(
-                        $,
-                        ($) => ['switch', {
-                            'expression': _p_cc(
-                                $['expression'],
-                                ($) => Expression(
-                                    $
-                                )
-                            ),
-                            'clauses': _p_cc(
-                                $['clauses'],
-                                ($) => _p.list.map(
-                                    $,
-                                    ($) => ({
-                                        'type': _p_cc(
-                                            $['type'],
-                                            ($) => _p.decide.state(
-                                                $,
-                                                ($): t_out.Statements.L.switch_.clauses.L.type_ => {
-                                                    switch ($[0]) {
-                                                        case 'case':
-                                                            return _p.ss(
-                                                                $,
-                                                                ($) => ['case', Expression(
-                                                                    $
-                                                                )]
-                                                            )
-                                                        case 'default':
-                                                            return _p.ss(
-                                                                $,
-                                                                ($) => ['default', null]
-                                                            )
-                                                        default:
-                                                            return _p.au(
-                                                                $[0]
-                                                            )
-                                                    }
-                                                }
-                                            )
-                                        ),
-                                        'statements': _p_cc(
-                                            $['statements'],
-                                            ($) => Statements(
-                                                $
-                                            )
-                                        ),
-                                    })
-                                )
-                            ),
-                        }]
-                    )
-                case 'type alias declaration':
-                    return _p.ss(
-                        $,
-                        ($) => ['type alias declaration', {
-                            'export': _p_cc(
-                                $['export'],
-                                ($) => $
-                            ),
-                            'name': _p_cc(
-                                $['name'],
-                                ($) => Identifier(
-                                    $
-                                )
-                            ),
-                            'parameters': _p_cc(
-                                $['parameters'],
-                                ($) => _p.list.map(
-                                    $,
-                                    ($) => Identifier(
-                                        $
-                                    )
-                                )
-                            ),
-                            'type': _p_cc(
-                                $['type'],
-                                ($) => Type(
-                                    $
-                                )
-                            ),
-                        }]
-                    )
-                case 'variable':
-                    return _p.ss(
-                        $,
-                        ($) => ['variable', {
-                            'export': _p_cc(
-                                $['export'],
-                                ($) => $
-                            ),
-                            'const': _p_cc(
-                                $['const'],
-                                ($) => $
-                            ),
-                            'name': _p_cc(
-                                $['name'],
-                                ($) => Identifier(
-                                    $
-                                )
-                            ),
-                            'type': _p_cc(
-                                $['type'],
-                                ($) => _p.optional.map(
-                                    $,
-                                    ($) => Type(
-                                        $
-                                    )
-                                )
-                            ),
-                            'expression': _p_cc(
-                                $['expression'],
-                                ($) => _p.optional.map(
-                                    $,
-                                    ($) => Expression(
-                                        $
-                                    )
-                                )
-                            ),
-                        }]
-                    )
-                default:
-                    return _p.au(
-                        $[0]
-                    )
+                            ($) => ['quote', null]
+                        )
+                    case 'apostrophe':
+                        return _p.ss(
+                            $,
+                            ($) => ['apostrophe', null]
+                        )
+                    default:
+                        return _p.au(
+                            $[0]
+                        )
+                }
             }
-        }
-    )
-)
+        )
+    ),
+    'value': _p_cc(
+        $['value'],
+        ($) => $
+    ),
+})
 
-export const Directory: t_signatures.Directory = ($) => _p.dictionary.map(
-    $,
-    ($, id) => _p.decide.state(
-        $,
-        ($): t_out.Directory.D => {
-            switch ($[0]) {
-                case 'file':
-                    return _p.ss(
-                        $,
-                        ($) => ['file', {
-                            'statements': _p_cc(
-                                $['statements'],
-                                ($) => Statements(
-                                    $
-                                )
-                            ),
-                        }]
-                    )
-                case 'directory':
-                    return _p.ss(
-                        $,
-                        ($) => ['directory', Directory(
-                            $
-                        )]
-                    )
-                default:
-                    return _p.au(
-                        $[0]
-                    )
-            }
-        }
-    )
-)
-
-export const Block: t_signatures.Block = ($) => Statements(
-    $
-)
+export const Identifier: t_signatures.Identifier = ($) => ({
+    'value': _p_cc(
+        $['value'],
+        ($) => $
+    ),
+})

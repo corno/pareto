@@ -21,6 +21,74 @@ import * as v_parse_tree_to_location from "astn-core/dist/implementation/manual/
 
 import * as v_external_interface from "../interface/unmarshall"
 
+export const Module_Set: t_signatures.Module_Set = ($, abort) => ({
+    'l location': v_parse_tree_to_location.Value(
+        $
+    )['start']['relative'],
+    'l dictionary': _p.dictionary.map(
+        v_unmarshalled_from_parse_tree.Dictionary(
+            $,
+            ($) => abort(
+                ['expected a dictionary', null]
+            )
+        ),
+        ($, id) => ({
+            'l location': v_parse_tree_to_location.Value(
+                $
+            )['start']['relative'],
+            'l entry': _p_cc(
+                v_unmarshalled_from_parse_tree.State(
+                    $,
+                    ($) => abort(
+                        ['expected a state', null]
+                    )
+                ),
+                ($) => _p.decide.text(
+                    $['option']['value'],
+                    ($t): t_out.Module_Set.l_dictionary.D.l_entry => {
+                        switch ($t) {
+                            case 'module':
+                                return _p_cc(
+                                    $['value'],
+                                    ($) => ({
+                                        'l location': v_parse_tree_to_location.Value(
+                                            $
+                                        )['start']['relative'],
+                                        'l state': ['module', Module(
+                                            $,
+                                            ($) => abort(
+                                                $
+                                            )
+                                        )],
+                                    })
+                                )
+                            case 'set':
+                                return _p_cc(
+                                    $['value'],
+                                    ($) => ({
+                                        'l location': v_parse_tree_to_location.Value(
+                                            $
+                                        )['start']['relative'],
+                                        'l state': ['set', Module_Set(
+                                            $,
+                                            ($) => abort(
+                                                $
+                                            )
+                                        )],
+                                    })
+                                )
+                            default:
+                                return abort(
+                                    ['unknown option', $['option']['value']]
+                                )
+                        }
+                    }
+                )
+            ),
+        })
+    ),
+})
+
 export const Module: t_signatures.Module = ($, abort) => _p_cc(
     v_unmarshalled_from_parse_tree.Group(
         $,
@@ -595,74 +663,6 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
     })
 )
 
-export const Module_Set: t_signatures.Module_Set = ($, abort) => ({
-    'l location': v_parse_tree_to_location.Value(
-        $
-    )['start']['relative'],
-    'l dictionary': _p.dictionary.map(
-        v_unmarshalled_from_parse_tree.Dictionary(
-            $,
-            ($) => abort(
-                ['expected a dictionary', null]
-            )
-        ),
-        ($, id) => ({
-            'l location': v_parse_tree_to_location.Value(
-                $
-            )['start']['relative'],
-            'l entry': _p_cc(
-                v_unmarshalled_from_parse_tree.State(
-                    $,
-                    ($) => abort(
-                        ['expected a state', null]
-                    )
-                ),
-                ($) => _p.decide.text(
-                    $['option']['value'],
-                    ($t): t_out.Module_Set.l_dictionary.D.l_entry => {
-                        switch ($t) {
-                            case 'module':
-                                return _p_cc(
-                                    $['value'],
-                                    ($) => ({
-                                        'l location': v_parse_tree_to_location.Value(
-                                            $
-                                        )['start']['relative'],
-                                        'l state': ['module', Module(
-                                            $,
-                                            ($) => abort(
-                                                $
-                                            )
-                                        )],
-                                    })
-                                )
-                            case 'set':
-                                return _p_cc(
-                                    $['value'],
-                                    ($) => ({
-                                        'l location': v_parse_tree_to_location.Value(
-                                            $
-                                        )['start']['relative'],
-                                        'l state': ['set', Module_Set(
-                                            $,
-                                            ($) => abort(
-                                                $
-                                            )
-                                        )],
-                                    })
-                                )
-                            default:
-                                return abort(
-                                    ['unknown option', $['option']['value']]
-                                )
-                        }
-                    }
-                )
-            ),
-        })
-    ),
-})
-
 export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = ($, abort) => _p_cc(
     v_unmarshalled_from_parse_tree.Group(
         $,
@@ -838,626 +838,6 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
             })
         ),
     })
-)
-
-export const Selection: t_signatures.Selection = ($, abort) => _p_cc(
-    v_unmarshalled_from_parse_tree.State(
-        $,
-        ($) => abort(
-            ['expected a state', null]
-        )
-    ),
-    ($) => _p.decide.text(
-        $['option']['value'],
-        ($t): t_out.Selection => {
-            switch ($t) {
-                case 'implement me':
-                    return _p_cc(
-                        $['value'],
-                        ($) => ({
-                            'l location': v_parse_tree_to_location.Value(
-                                $
-                            )['start']['relative'],
-                            'l state': ['implement me', v_unmarshalled_from_parse_tree.Text(
-                                $,
-                                ($) => abort(
-                                    ['expected a text', null]
-                                )
-                            )],
-                        })
-                    )
-                case 'regular':
-                    return _p_cc(
-                        $['value'],
-                        ($) => ({
-                            'l location': v_parse_tree_to_location.Value(
-                                $
-                            )['start']['relative'],
-                            'l state': ['regular', _p_cc(
-                                v_unmarshalled_from_parse_tree.Group(
-                                    $,
-                                    ($) => abort(
-                                        ['expected a group', null]
-                                    )
-                                ),
-                                ($) => ({
-                                    'start': _p_cc(
-                                        $.__get_entry(
-                                            'start',
-                                            ($) => abort(
-                                                ['no such entry', "start"]
-                                            )
-                                        ),
-                                        ($) => _p_cc(
-                                            v_unmarshalled_from_parse_tree.State(
-                                                $,
-                                                ($) => abort(
-                                                    ['expected a state', null]
-                                                )
-                                            ),
-                                            ($) => _p.decide.text(
-                                                $['option']['value'],
-                                                ($t): t_out.Selection.l_state.regular.start => {
-                                                    switch ($t) {
-                                                        case 'call':
-                                                            return _p_cc(
-                                                                $['value'],
-                                                                ($) => ({
-                                                                    'l location': v_parse_tree_to_location.Value(
-                                                                        $
-                                                                    )['start']['relative'],
-                                                                    'l state': ['call', _p_cc(
-                                                                        v_unmarshalled_from_parse_tree.Group(
-                                                                            $,
-                                                                            ($) => abort(
-                                                                                ['expected a group', null]
-                                                                            )
-                                                                        ),
-                                                                        ($) => ({
-                                                                            'source': _p_cc(
-                                                                                $.__get_entry(
-                                                                                    'source',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "source"]
-                                                                                    )
-                                                                                ),
-                                                                                ($) => _p_cc(
-                                                                                    v_unmarshalled_from_parse_tree.State(
-                                                                                        $,
-                                                                                        ($) => abort(
-                                                                                            ['expected a state', null]
-                                                                                        )
-                                                                                    ),
-                                                                                    ($) => _p.decide.text(
-                                                                                        $['option']['value'],
-                                                                                        ($t): t_out.Selection.l_state.regular.start.l_state.call.source => {
-                                                                                            switch ($t) {
-                                                                                                case 'local':
-                                                                                                    return _p_cc(
-                                                                                                        $['value'],
-                                                                                                        ($) => ({
-                                                                                                            'l location': v_parse_tree_to_location.Value(
-                                                                                                                $
-                                                                                                            )['start']['relative'],
-                                                                                                            'l state': ['local', v_unmarshalled_from_parse_tree.Text(
-                                                                                                                $,
-                                                                                                                ($) => abort(
-                                                                                                                    ['expected a text', null]
-                                                                                                                )
-                                                                                                            )],
-                                                                                                        })
-                                                                                                    )
-                                                                                                case 'imported':
-                                                                                                    return _p_cc(
-                                                                                                        $['value'],
-                                                                                                        ($) => ({
-                                                                                                            'l location': v_parse_tree_to_location.Value(
-                                                                                                                $
-                                                                                                            )['start']['relative'],
-                                                                                                            'l state': ['imported', _p_cc(
-                                                                                                                v_unmarshalled_from_parse_tree.Group(
-                                                                                                                    $,
-                                                                                                                    ($) => abort(
-                                                                                                                        ['expected a group', null]
-                                                                                                                    )
-                                                                                                                ),
-                                                                                                                ($) => ({
-                                                                                                                    'import': _p_cc(
-                                                                                                                        $.__get_entry(
-                                                                                                                            'import',
-                                                                                                                            ($) => abort(
-                                                                                                                                ['no such entry', "import"]
-                                                                                                                            )
-                                                                                                                        ),
-                                                                                                                        ($) => v_unmarshalled_from_parse_tree.Text(
-                                                                                                                            $,
-                                                                                                                            ($) => abort(
-                                                                                                                                ['expected a text', null]
-                                                                                                                            )
-                                                                                                                        )
-                                                                                                                    ),
-                                                                                                                    'variable': _p_cc(
-                                                                                                                        $.__get_entry(
-                                                                                                                            'variable',
-                                                                                                                            ($) => abort(
-                                                                                                                                ['no such entry', "variable"]
-                                                                                                                            )
-                                                                                                                        ),
-                                                                                                                        ($) => v_unmarshalled_from_parse_tree.Text(
-                                                                                                                            $,
-                                                                                                                            ($) => abort(
-                                                                                                                                ['expected a text', null]
-                                                                                                                            )
-                                                                                                                        )
-                                                                                                                    ),
-                                                                                                                })
-                                                                                                            )],
-                                                                                                        })
-                                                                                                    )
-                                                                                                default:
-                                                                                                    return abort(
-                                                                                                        ['unknown option', $['option']['value']]
-                                                                                                    )
-                                                                                            }
-                                                                                        }
-                                                                                    )
-                                                                                )
-                                                                            ),
-                                                                            'context': _p_cc(
-                                                                                $.__get_entry(
-                                                                                    'context',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "context"]
-                                                                                    )
-                                                                                ),
-                                                                                ($) => Expression(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $
-                                                                                    )
-                                                                                )
-                                                                            ),
-                                                                            'abort': _p_cc(
-                                                                                $.__get_entry(
-                                                                                    'abort',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "abort"]
-                                                                                    )
-                                                                                ),
-                                                                                ($) => _p.optional.map(
-                                                                                    v_unmarshalled_from_parse_tree.Optional(
-                                                                                        $,
-                                                                                        ($) => abort(
-                                                                                            ['expected an optional', null]
-                                                                                        )
-                                                                                    ),
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                        ($) => abort(
-                                                                                            $
-                                                                                        )
-                                                                                    )
-                                                                                )
-                                                                            ),
-                                                                            'lookups': _p_cc(
-                                                                                $.__get_entry(
-                                                                                    'lookups',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "lookups"]
-                                                                                    )
-                                                                                ),
-                                                                                ($) => _p.optional.map(
-                                                                                    v_unmarshalled_from_parse_tree.Optional(
-                                                                                        $,
-                                                                                        ($) => abort(
-                                                                                            ['expected an optional', null]
-                                                                                        )
-                                                                                    ),
-                                                                                    ($) => _p_cc(
-                                                                                        v_unmarshalled_from_parse_tree.State(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                ['expected a state', null]
-                                                                                            )
-                                                                                        ),
-                                                                                        ($) => _p.decide.text(
-                                                                                            $['option']['value'],
-                                                                                            ($t): t_out.Selection.l_state.regular.start.l_state.call.lookups.O => {
-                                                                                                switch ($t) {
-                                                                                                    case 'initialize':
-                                                                                                        return _p_cc(
-                                                                                                            $['value'],
-                                                                                                            ($) => ({
-                                                                                                                'l location': v_parse_tree_to_location.Value(
-                                                                                                                    $
-                                                                                                                )['start']['relative'],
-                                                                                                                'l state': ['initialize', {
-                                                                                                                    'l location': v_parse_tree_to_location.Value(
-                                                                                                                        $
-                                                                                                                    )['start']['relative'],
-                                                                                                                    'l dictionary': _p.dictionary.map(
-                                                                                                                        v_unmarshalled_from_parse_tree.Dictionary(
-                                                                                                                            $,
-                                                                                                                            ($) => abort(
-                                                                                                                                ['expected a dictionary', null]
-                                                                                                                            )
-                                                                                                                        ),
-                                                                                                                        ($, id) => ({
-                                                                                                                            'l location': v_parse_tree_to_location.Value(
-                                                                                                                                $
-                                                                                                                            )['start']['relative'],
-                                                                                                                            'l entry': Lookup_Selection(
-                                                                                                                                $,
-                                                                                                                                ($) => abort(
-                                                                                                                                    $
-                                                                                                                                )
-                                                                                                                            ),
-                                                                                                                        })
-                                                                                                                    ),
-                                                                                                                }],
-                                                                                                            })
-                                                                                                        )
-                                                                                                    case 'pass through':
-                                                                                                        return _p_cc(
-                                                                                                            $['value'],
-                                                                                                            ($) => ({
-                                                                                                                'l location': v_parse_tree_to_location.Value(
-                                                                                                                    $
-                                                                                                                )['start']['relative'],
-                                                                                                                'l state': ['pass through', v_unmarshalled_from_parse_tree.Nothing(
-                                                                                                                    $,
-                                                                                                                    ($) => abort(
-                                                                                                                        ['expected a nothing', null]
-                                                                                                                    )
-                                                                                                                )],
-                                                                                                            })
-                                                                                                        )
-                                                                                                    default:
-                                                                                                        return abort(
-                                                                                                            ['unknown option', $['option']['value']]
-                                                                                                        )
-                                                                                                }
-                                                                                            }
-                                                                                        )
-                                                                                    )
-                                                                                )
-                                                                            ),
-                                                                            'arguments': _p_cc(
-                                                                                $.__get_entry(
-                                                                                    'arguments',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "arguments"]
-                                                                                    )
-                                                                                ),
-                                                                                ($) => _p.optional.map(
-                                                                                    v_unmarshalled_from_parse_tree.Optional(
-                                                                                        $,
-                                                                                        ($) => abort(
-                                                                                            ['expected an optional', null]
-                                                                                        )
-                                                                                    ),
-                                                                                    ($) => _p_cc(
-                                                                                        v_unmarshalled_from_parse_tree.State(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                ['expected a state', null]
-                                                                                            )
-                                                                                        ),
-                                                                                        ($) => _p.decide.text(
-                                                                                            $['option']['value'],
-                                                                                            ($t): t_out.Selection.l_state.regular.start.l_state.call.arguments_.O => {
-                                                                                                switch ($t) {
-                                                                                                    case 'initialize':
-                                                                                                        return _p_cc(
-                                                                                                            $['value'],
-                                                                                                            ($) => ({
-                                                                                                                'l location': v_parse_tree_to_location.Value(
-                                                                                                                    $
-                                                                                                                )['start']['relative'],
-                                                                                                                'l state': ['initialize', {
-                                                                                                                    'l location': v_parse_tree_to_location.Value(
-                                                                                                                        $
-                                                                                                                    )['start']['relative'],
-                                                                                                                    'l dictionary': _p.dictionary.map(
-                                                                                                                        v_unmarshalled_from_parse_tree.Dictionary(
-                                                                                                                            $,
-                                                                                                                            ($) => abort(
-                                                                                                                                ['expected a dictionary', null]
-                                                                                                                            )
-                                                                                                                        ),
-                                                                                                                        ($, id) => ({
-                                                                                                                            'l location': v_parse_tree_to_location.Value(
-                                                                                                                                $
-                                                                                                                            )['start']['relative'],
-                                                                                                                            'l entry': Expression(
-                                                                                                                                $,
-                                                                                                                                ($) => abort(
-                                                                                                                                    $
-                                                                                                                                )
-                                                                                                                            ),
-                                                                                                                        })
-                                                                                                                    ),
-                                                                                                                }],
-                                                                                                            })
-                                                                                                        )
-                                                                                                    case 'pass through':
-                                                                                                        return _p_cc(
-                                                                                                            $['value'],
-                                                                                                            ($) => ({
-                                                                                                                'l location': v_parse_tree_to_location.Value(
-                                                                                                                    $
-                                                                                                                )['start']['relative'],
-                                                                                                                'l state': ['pass through', v_unmarshalled_from_parse_tree.Nothing(
-                                                                                                                    $,
-                                                                                                                    ($) => abort(
-                                                                                                                        ['expected a nothing', null]
-                                                                                                                    )
-                                                                                                                )],
-                                                                                                            })
-                                                                                                        )
-                                                                                                    default:
-                                                                                                        return abort(
-                                                                                                            ['unknown option', $['option']['value']]
-                                                                                                        )
-                                                                                                }
-                                                                                            }
-                                                                                        )
-                                                                                    )
-                                                                                )
-                                                                            ),
-                                                                        })
-                                                                    )],
-                                                                })
-                                                            )
-                                                        case 'context':
-                                                            return _p_cc(
-                                                                $['value'],
-                                                                ($) => ({
-                                                                    'l location': v_parse_tree_to_location.Value(
-                                                                        $
-                                                                    )['start']['relative'],
-                                                                    'l state': ['context', v_unmarshalled_from_parse_tree.Nothing(
-                                                                        $,
-                                                                        ($) => abort(
-                                                                            ['expected a nothing', null]
-                                                                        )
-                                                                    )],
-                                                                })
-                                                            )
-                                                        case 'dictionary entry':
-                                                            return _p_cc(
-                                                                $['value'],
-                                                                ($) => ({
-                                                                    'l location': v_parse_tree_to_location.Value(
-                                                                        $
-                                                                    )['start']['relative'],
-                                                                    'l state': ['dictionary entry', _p_cc(
-                                                                        v_unmarshalled_from_parse_tree.Group(
-                                                                            $,
-                                                                            ($) => abort(
-                                                                                ['expected a group', null]
-                                                                            )
-                                                                        ),
-                                                                        ($) => ({
-                                                                            'dictionary': _p_cc(
-                                                                                $.__get_entry(
-                                                                                    'dictionary',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "dictionary"]
-                                                                                    )
-                                                                                ),
-                                                                                ($) => Selection(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $
-                                                                                    )
-                                                                                )
-                                                                            ),
-                                                                            'id': _p_cc(
-                                                                                $.__get_entry(
-                                                                                    'id',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "id"]
-                                                                                    )
-                                                                                ),
-                                                                                ($) => Expression(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $
-                                                                                    )
-                                                                                )
-                                                                            ),
-                                                                            'abort handler': _p_cc(
-                                                                                $.__get_entry(
-                                                                                    'abort handler',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "abort handler"]
-                                                                                    )
-                                                                                ),
-                                                                                ($) => Expression(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $
-                                                                                    )
-                                                                                )
-                                                                            ),
-                                                                        })
-                                                                    )],
-                                                                })
-                                                            )
-                                                        case 'lookup entry':
-                                                            return _p_cc(
-                                                                $['value'],
-                                                                ($) => ({
-                                                                    'l location': v_parse_tree_to_location.Value(
-                                                                        $
-                                                                    )['start']['relative'],
-                                                                    'l state': ['lookup entry', _p_cc(
-                                                                        v_unmarshalled_from_parse_tree.Group(
-                                                                            $,
-                                                                            ($) => abort(
-                                                                                ['expected a group', null]
-                                                                            )
-                                                                        ),
-                                                                        ($) => ({
-                                                                            'lookup': _p_cc(
-                                                                                $.__get_entry(
-                                                                                    'lookup',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "lookup"]
-                                                                                    )
-                                                                                ),
-                                                                                ($) => Lookup_Selection(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $
-                                                                                    )
-                                                                                )
-                                                                            ),
-                                                                            'id': _p_cc(
-                                                                                $.__get_entry(
-                                                                                    'id',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "id"]
-                                                                                    )
-                                                                                ),
-                                                                                ($) => Expression(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $
-                                                                                    )
-                                                                                )
-                                                                            ),
-                                                                            'abort handler': _p_cc(
-                                                                                $.__get_entry(
-                                                                                    'abort handler',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "abort handler"]
-                                                                                    )
-                                                                                ),
-                                                                                ($) => Expression(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $
-                                                                                    )
-                                                                                )
-                                                                            ),
-                                                                        })
-                                                                    )],
-                                                                })
-                                                            )
-                                                        case 'parameter':
-                                                            return _p_cc(
-                                                                $['value'],
-                                                                ($) => ({
-                                                                    'l location': v_parse_tree_to_location.Value(
-                                                                        $
-                                                                    )['start']['relative'],
-                                                                    'l state': ['parameter', v_unmarshalled_from_parse_tree.Text(
-                                                                        $,
-                                                                        ($) => abort(
-                                                                            ['expected a text', null]
-                                                                        )
-                                                                    )],
-                                                                })
-                                                            )
-                                                        case 'parent sibling':
-                                                            return _p_cc(
-                                                                $['value'],
-                                                                ($) => ({
-                                                                    'l location': v_parse_tree_to_location.Value(
-                                                                        $
-                                                                    )['start']['relative'],
-                                                                    'l state': ['parent sibling', v_unmarshalled_from_parse_tree.Text(
-                                                                        $,
-                                                                        ($) => abort(
-                                                                            ['expected a text', null]
-                                                                        )
-                                                                    )],
-                                                                })
-                                                            )
-                                                        case 'sibling':
-                                                            return _p_cc(
-                                                                $['value'],
-                                                                ($) => ({
-                                                                    'l location': v_parse_tree_to_location.Value(
-                                                                        $
-                                                                    )['start']['relative'],
-                                                                    'l state': ['sibling', v_unmarshalled_from_parse_tree.Text(
-                                                                        $,
-                                                                        ($) => abort(
-                                                                            ['expected a text', null]
-                                                                        )
-                                                                    )],
-                                                                })
-                                                            )
-                                                        case 'state':
-                                                            return _p_cc(
-                                                                $['value'],
-                                                                ($) => ({
-                                                                    'l location': v_parse_tree_to_location.Value(
-                                                                        $
-                                                                    )['start']['relative'],
-                                                                    'l state': ['state', v_unmarshalled_from_parse_tree.Nothing(
-                                                                        $,
-                                                                        ($) => abort(
-                                                                            ['expected a nothing', null]
-                                                                        )
-                                                                    )],
-                                                                })
-                                                            )
-                                                        default:
-                                                            return abort(
-                                                                ['unknown option', $['option']['value']]
-                                                            )
-                                                    }
-                                                }
-                                            )
-                                        )
-                                    ),
-                                    'tail': _p_cc(
-                                        $.__get_entry(
-                                            'tail',
-                                            ($) => abort(
-                                                ['no such entry', "tail"]
-                                            )
-                                        ),
-                                        ($) => ({
-                                            'l location': v_parse_tree_to_location.Value(
-                                                $
-                                            )['start']['relative'],
-                                            'l list': _p.list.map(
-                                                v_unmarshalled_from_parse_tree.List(
-                                                    $,
-                                                    ($) => abort(
-                                                        ['expected a list', null]
-                                                    )
-                                                ),
-                                                ($) => ({
-                                                    'l location': v_parse_tree_to_location.Value(
-                                                        $
-                                                    )['start']['relative'],
-                                                    'l item': v_unmarshalled_from_parse_tree.Text(
-                                                        $,
-                                                        ($) => abort(
-                                                            ['expected a text', null]
-                                                        )
-                                                    ),
-                                                })
-                                            ),
-                                        })
-                                    ),
-                                })
-                            )],
-                        })
-                    )
-                default:
-                    return abort(
-                        ['unknown option', $['option']['value']]
-                    )
-            }
-        }
-    )
 )
 
 export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
@@ -4244,6 +3624,626 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_cc(
                                         }
                                     }
                                 )
+                            )],
+                        })
+                    )
+                default:
+                    return abort(
+                        ['unknown option', $['option']['value']]
+                    )
+            }
+        }
+    )
+)
+
+export const Selection: t_signatures.Selection = ($, abort) => _p_cc(
+    v_unmarshalled_from_parse_tree.State(
+        $,
+        ($) => abort(
+            ['expected a state', null]
+        )
+    ),
+    ($) => _p.decide.text(
+        $['option']['value'],
+        ($t): t_out.Selection => {
+            switch ($t) {
+                case 'implement me':
+                    return _p_cc(
+                        $['value'],
+                        ($) => ({
+                            'l location': v_parse_tree_to_location.Value(
+                                $
+                            )['start']['relative'],
+                            'l state': ['implement me', v_unmarshalled_from_parse_tree.Text(
+                                $,
+                                ($) => abort(
+                                    ['expected a text', null]
+                                )
+                            )],
+                        })
+                    )
+                case 'regular':
+                    return _p_cc(
+                        $['value'],
+                        ($) => ({
+                            'l location': v_parse_tree_to_location.Value(
+                                $
+                            )['start']['relative'],
+                            'l state': ['regular', _p_cc(
+                                v_unmarshalled_from_parse_tree.Group(
+                                    $,
+                                    ($) => abort(
+                                        ['expected a group', null]
+                                    )
+                                ),
+                                ($) => ({
+                                    'start': _p_cc(
+                                        $.__get_entry(
+                                            'start',
+                                            ($) => abort(
+                                                ['no such entry', "start"]
+                                            )
+                                        ),
+                                        ($) => _p_cc(
+                                            v_unmarshalled_from_parse_tree.State(
+                                                $,
+                                                ($) => abort(
+                                                    ['expected a state', null]
+                                                )
+                                            ),
+                                            ($) => _p.decide.text(
+                                                $['option']['value'],
+                                                ($t): t_out.Selection.l_state.regular.start => {
+                                                    switch ($t) {
+                                                        case 'call':
+                                                            return _p_cc(
+                                                                $['value'],
+                                                                ($) => ({
+                                                                    'l location': v_parse_tree_to_location.Value(
+                                                                        $
+                                                                    )['start']['relative'],
+                                                                    'l state': ['call', _p_cc(
+                                                                        v_unmarshalled_from_parse_tree.Group(
+                                                                            $,
+                                                                            ($) => abort(
+                                                                                ['expected a group', null]
+                                                                            )
+                                                                        ),
+                                                                        ($) => ({
+                                                                            'source': _p_cc(
+                                                                                $.__get_entry(
+                                                                                    'source',
+                                                                                    ($) => abort(
+                                                                                        ['no such entry', "source"]
+                                                                                    )
+                                                                                ),
+                                                                                ($) => _p_cc(
+                                                                                    v_unmarshalled_from_parse_tree.State(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            ['expected a state', null]
+                                                                                        )
+                                                                                    ),
+                                                                                    ($) => _p.decide.text(
+                                                                                        $['option']['value'],
+                                                                                        ($t): t_out.Selection.l_state.regular.start.l_state.call.source => {
+                                                                                            switch ($t) {
+                                                                                                case 'local':
+                                                                                                    return _p_cc(
+                                                                                                        $['value'],
+                                                                                                        ($) => ({
+                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                $
+                                                                                                            )['start']['relative'],
+                                                                                                            'l state': ['local', v_unmarshalled_from_parse_tree.Text(
+                                                                                                                $,
+                                                                                                                ($) => abort(
+                                                                                                                    ['expected a text', null]
+                                                                                                                )
+                                                                                                            )],
+                                                                                                        })
+                                                                                                    )
+                                                                                                case 'imported':
+                                                                                                    return _p_cc(
+                                                                                                        $['value'],
+                                                                                                        ($) => ({
+                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                $
+                                                                                                            )['start']['relative'],
+                                                                                                            'l state': ['imported', _p_cc(
+                                                                                                                v_unmarshalled_from_parse_tree.Group(
+                                                                                                                    $,
+                                                                                                                    ($) => abort(
+                                                                                                                        ['expected a group', null]
+                                                                                                                    )
+                                                                                                                ),
+                                                                                                                ($) => ({
+                                                                                                                    'import': _p_cc(
+                                                                                                                        $.__get_entry(
+                                                                                                                            'import',
+                                                                                                                            ($) => abort(
+                                                                                                                                ['no such entry', "import"]
+                                                                                                                            )
+                                                                                                                        ),
+                                                                                                                        ($) => v_unmarshalled_from_parse_tree.Text(
+                                                                                                                            $,
+                                                                                                                            ($) => abort(
+                                                                                                                                ['expected a text', null]
+                                                                                                                            )
+                                                                                                                        )
+                                                                                                                    ),
+                                                                                                                    'variable': _p_cc(
+                                                                                                                        $.__get_entry(
+                                                                                                                            'variable',
+                                                                                                                            ($) => abort(
+                                                                                                                                ['no such entry', "variable"]
+                                                                                                                            )
+                                                                                                                        ),
+                                                                                                                        ($) => v_unmarshalled_from_parse_tree.Text(
+                                                                                                                            $,
+                                                                                                                            ($) => abort(
+                                                                                                                                ['expected a text', null]
+                                                                                                                            )
+                                                                                                                        )
+                                                                                                                    ),
+                                                                                                                })
+                                                                                                            )],
+                                                                                                        })
+                                                                                                    )
+                                                                                                default:
+                                                                                                    return abort(
+                                                                                                        ['unknown option', $['option']['value']]
+                                                                                                    )
+                                                                                            }
+                                                                                        }
+                                                                                    )
+                                                                                )
+                                                                            ),
+                                                                            'context': _p_cc(
+                                                                                $.__get_entry(
+                                                                                    'context',
+                                                                                    ($) => abort(
+                                                                                        ['no such entry', "context"]
+                                                                                    )
+                                                                                ),
+                                                                                ($) => Expression(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        $
+                                                                                    )
+                                                                                )
+                                                                            ),
+                                                                            'abort': _p_cc(
+                                                                                $.__get_entry(
+                                                                                    'abort',
+                                                                                    ($) => abort(
+                                                                                        ['no such entry', "abort"]
+                                                                                    )
+                                                                                ),
+                                                                                ($) => _p.optional.map(
+                                                                                    v_unmarshalled_from_parse_tree.Optional(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            ['expected an optional', null]
+                                                                                        )
+                                                                                    ),
+                                                                                    ($) => Expression(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            $
+                                                                                        )
+                                                                                    )
+                                                                                )
+                                                                            ),
+                                                                            'lookups': _p_cc(
+                                                                                $.__get_entry(
+                                                                                    'lookups',
+                                                                                    ($) => abort(
+                                                                                        ['no such entry', "lookups"]
+                                                                                    )
+                                                                                ),
+                                                                                ($) => _p.optional.map(
+                                                                                    v_unmarshalled_from_parse_tree.Optional(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            ['expected an optional', null]
+                                                                                        )
+                                                                                    ),
+                                                                                    ($) => _p_cc(
+                                                                                        v_unmarshalled_from_parse_tree.State(
+                                                                                            $,
+                                                                                            ($) => abort(
+                                                                                                ['expected a state', null]
+                                                                                            )
+                                                                                        ),
+                                                                                        ($) => _p.decide.text(
+                                                                                            $['option']['value'],
+                                                                                            ($t): t_out.Selection.l_state.regular.start.l_state.call.lookups.O => {
+                                                                                                switch ($t) {
+                                                                                                    case 'initialize':
+                                                                                                        return _p_cc(
+                                                                                                            $['value'],
+                                                                                                            ($) => ({
+                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                    $
+                                                                                                                )['start']['relative'],
+                                                                                                                'l state': ['initialize', {
+                                                                                                                    'l location': v_parse_tree_to_location.Value(
+                                                                                                                        $
+                                                                                                                    )['start']['relative'],
+                                                                                                                    'l dictionary': _p.dictionary.map(
+                                                                                                                        v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                                                            $,
+                                                                                                                            ($) => abort(
+                                                                                                                                ['expected a dictionary', null]
+                                                                                                                            )
+                                                                                                                        ),
+                                                                                                                        ($, id) => ({
+                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                $
+                                                                                                                            )['start']['relative'],
+                                                                                                                            'l entry': Lookup_Selection(
+                                                                                                                                $,
+                                                                                                                                ($) => abort(
+                                                                                                                                    $
+                                                                                                                                )
+                                                                                                                            ),
+                                                                                                                        })
+                                                                                                                    ),
+                                                                                                                }],
+                                                                                                            })
+                                                                                                        )
+                                                                                                    case 'pass through':
+                                                                                                        return _p_cc(
+                                                                                                            $['value'],
+                                                                                                            ($) => ({
+                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                    $
+                                                                                                                )['start']['relative'],
+                                                                                                                'l state': ['pass through', v_unmarshalled_from_parse_tree.Nothing(
+                                                                                                                    $,
+                                                                                                                    ($) => abort(
+                                                                                                                        ['expected a nothing', null]
+                                                                                                                    )
+                                                                                                                )],
+                                                                                                            })
+                                                                                                        )
+                                                                                                    default:
+                                                                                                        return abort(
+                                                                                                            ['unknown option', $['option']['value']]
+                                                                                                        )
+                                                                                                }
+                                                                                            }
+                                                                                        )
+                                                                                    )
+                                                                                )
+                                                                            ),
+                                                                            'arguments': _p_cc(
+                                                                                $.__get_entry(
+                                                                                    'arguments',
+                                                                                    ($) => abort(
+                                                                                        ['no such entry', "arguments"]
+                                                                                    )
+                                                                                ),
+                                                                                ($) => _p.optional.map(
+                                                                                    v_unmarshalled_from_parse_tree.Optional(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            ['expected an optional', null]
+                                                                                        )
+                                                                                    ),
+                                                                                    ($) => _p_cc(
+                                                                                        v_unmarshalled_from_parse_tree.State(
+                                                                                            $,
+                                                                                            ($) => abort(
+                                                                                                ['expected a state', null]
+                                                                                            )
+                                                                                        ),
+                                                                                        ($) => _p.decide.text(
+                                                                                            $['option']['value'],
+                                                                                            ($t): t_out.Selection.l_state.regular.start.l_state.call.arguments_.O => {
+                                                                                                switch ($t) {
+                                                                                                    case 'initialize':
+                                                                                                        return _p_cc(
+                                                                                                            $['value'],
+                                                                                                            ($) => ({
+                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                    $
+                                                                                                                )['start']['relative'],
+                                                                                                                'l state': ['initialize', {
+                                                                                                                    'l location': v_parse_tree_to_location.Value(
+                                                                                                                        $
+                                                                                                                    )['start']['relative'],
+                                                                                                                    'l dictionary': _p.dictionary.map(
+                                                                                                                        v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                                                            $,
+                                                                                                                            ($) => abort(
+                                                                                                                                ['expected a dictionary', null]
+                                                                                                                            )
+                                                                                                                        ),
+                                                                                                                        ($, id) => ({
+                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                $
+                                                                                                                            )['start']['relative'],
+                                                                                                                            'l entry': Expression(
+                                                                                                                                $,
+                                                                                                                                ($) => abort(
+                                                                                                                                    $
+                                                                                                                                )
+                                                                                                                            ),
+                                                                                                                        })
+                                                                                                                    ),
+                                                                                                                }],
+                                                                                                            })
+                                                                                                        )
+                                                                                                    case 'pass through':
+                                                                                                        return _p_cc(
+                                                                                                            $['value'],
+                                                                                                            ($) => ({
+                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                    $
+                                                                                                                )['start']['relative'],
+                                                                                                                'l state': ['pass through', v_unmarshalled_from_parse_tree.Nothing(
+                                                                                                                    $,
+                                                                                                                    ($) => abort(
+                                                                                                                        ['expected a nothing', null]
+                                                                                                                    )
+                                                                                                                )],
+                                                                                                            })
+                                                                                                        )
+                                                                                                    default:
+                                                                                                        return abort(
+                                                                                                            ['unknown option', $['option']['value']]
+                                                                                                        )
+                                                                                                }
+                                                                                            }
+                                                                                        )
+                                                                                    )
+                                                                                )
+                                                                            ),
+                                                                        })
+                                                                    )],
+                                                                })
+                                                            )
+                                                        case 'context':
+                                                            return _p_cc(
+                                                                $['value'],
+                                                                ($) => ({
+                                                                    'l location': v_parse_tree_to_location.Value(
+                                                                        $
+                                                                    )['start']['relative'],
+                                                                    'l state': ['context', v_unmarshalled_from_parse_tree.Nothing(
+                                                                        $,
+                                                                        ($) => abort(
+                                                                            ['expected a nothing', null]
+                                                                        )
+                                                                    )],
+                                                                })
+                                                            )
+                                                        case 'dictionary entry':
+                                                            return _p_cc(
+                                                                $['value'],
+                                                                ($) => ({
+                                                                    'l location': v_parse_tree_to_location.Value(
+                                                                        $
+                                                                    )['start']['relative'],
+                                                                    'l state': ['dictionary entry', _p_cc(
+                                                                        v_unmarshalled_from_parse_tree.Group(
+                                                                            $,
+                                                                            ($) => abort(
+                                                                                ['expected a group', null]
+                                                                            )
+                                                                        ),
+                                                                        ($) => ({
+                                                                            'dictionary': _p_cc(
+                                                                                $.__get_entry(
+                                                                                    'dictionary',
+                                                                                    ($) => abort(
+                                                                                        ['no such entry', "dictionary"]
+                                                                                    )
+                                                                                ),
+                                                                                ($) => Selection(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        $
+                                                                                    )
+                                                                                )
+                                                                            ),
+                                                                            'id': _p_cc(
+                                                                                $.__get_entry(
+                                                                                    'id',
+                                                                                    ($) => abort(
+                                                                                        ['no such entry', "id"]
+                                                                                    )
+                                                                                ),
+                                                                                ($) => Expression(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        $
+                                                                                    )
+                                                                                )
+                                                                            ),
+                                                                            'abort handler': _p_cc(
+                                                                                $.__get_entry(
+                                                                                    'abort handler',
+                                                                                    ($) => abort(
+                                                                                        ['no such entry', "abort handler"]
+                                                                                    )
+                                                                                ),
+                                                                                ($) => Expression(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        $
+                                                                                    )
+                                                                                )
+                                                                            ),
+                                                                        })
+                                                                    )],
+                                                                })
+                                                            )
+                                                        case 'lookup entry':
+                                                            return _p_cc(
+                                                                $['value'],
+                                                                ($) => ({
+                                                                    'l location': v_parse_tree_to_location.Value(
+                                                                        $
+                                                                    )['start']['relative'],
+                                                                    'l state': ['lookup entry', _p_cc(
+                                                                        v_unmarshalled_from_parse_tree.Group(
+                                                                            $,
+                                                                            ($) => abort(
+                                                                                ['expected a group', null]
+                                                                            )
+                                                                        ),
+                                                                        ($) => ({
+                                                                            'lookup': _p_cc(
+                                                                                $.__get_entry(
+                                                                                    'lookup',
+                                                                                    ($) => abort(
+                                                                                        ['no such entry', "lookup"]
+                                                                                    )
+                                                                                ),
+                                                                                ($) => Lookup_Selection(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        $
+                                                                                    )
+                                                                                )
+                                                                            ),
+                                                                            'id': _p_cc(
+                                                                                $.__get_entry(
+                                                                                    'id',
+                                                                                    ($) => abort(
+                                                                                        ['no such entry', "id"]
+                                                                                    )
+                                                                                ),
+                                                                                ($) => Expression(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        $
+                                                                                    )
+                                                                                )
+                                                                            ),
+                                                                            'abort handler': _p_cc(
+                                                                                $.__get_entry(
+                                                                                    'abort handler',
+                                                                                    ($) => abort(
+                                                                                        ['no such entry', "abort handler"]
+                                                                                    )
+                                                                                ),
+                                                                                ($) => Expression(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        $
+                                                                                    )
+                                                                                )
+                                                                            ),
+                                                                        })
+                                                                    )],
+                                                                })
+                                                            )
+                                                        case 'parameter':
+                                                            return _p_cc(
+                                                                $['value'],
+                                                                ($) => ({
+                                                                    'l location': v_parse_tree_to_location.Value(
+                                                                        $
+                                                                    )['start']['relative'],
+                                                                    'l state': ['parameter', v_unmarshalled_from_parse_tree.Text(
+                                                                        $,
+                                                                        ($) => abort(
+                                                                            ['expected a text', null]
+                                                                        )
+                                                                    )],
+                                                                })
+                                                            )
+                                                        case 'parent sibling':
+                                                            return _p_cc(
+                                                                $['value'],
+                                                                ($) => ({
+                                                                    'l location': v_parse_tree_to_location.Value(
+                                                                        $
+                                                                    )['start']['relative'],
+                                                                    'l state': ['parent sibling', v_unmarshalled_from_parse_tree.Text(
+                                                                        $,
+                                                                        ($) => abort(
+                                                                            ['expected a text', null]
+                                                                        )
+                                                                    )],
+                                                                })
+                                                            )
+                                                        case 'sibling':
+                                                            return _p_cc(
+                                                                $['value'],
+                                                                ($) => ({
+                                                                    'l location': v_parse_tree_to_location.Value(
+                                                                        $
+                                                                    )['start']['relative'],
+                                                                    'l state': ['sibling', v_unmarshalled_from_parse_tree.Text(
+                                                                        $,
+                                                                        ($) => abort(
+                                                                            ['expected a text', null]
+                                                                        )
+                                                                    )],
+                                                                })
+                                                            )
+                                                        case 'state':
+                                                            return _p_cc(
+                                                                $['value'],
+                                                                ($) => ({
+                                                                    'l location': v_parse_tree_to_location.Value(
+                                                                        $
+                                                                    )['start']['relative'],
+                                                                    'l state': ['state', v_unmarshalled_from_parse_tree.Nothing(
+                                                                        $,
+                                                                        ($) => abort(
+                                                                            ['expected a nothing', null]
+                                                                        )
+                                                                    )],
+                                                                })
+                                                            )
+                                                        default:
+                                                            return abort(
+                                                                ['unknown option', $['option']['value']]
+                                                            )
+                                                    }
+                                                }
+                                            )
+                                        )
+                                    ),
+                                    'tail': _p_cc(
+                                        $.__get_entry(
+                                            'tail',
+                                            ($) => abort(
+                                                ['no such entry', "tail"]
+                                            )
+                                        ),
+                                        ($) => ({
+                                            'l location': v_parse_tree_to_location.Value(
+                                                $
+                                            )['start']['relative'],
+                                            'l list': _p.list.map(
+                                                v_unmarshalled_from_parse_tree.List(
+                                                    $,
+                                                    ($) => abort(
+                                                        ['expected a list', null]
+                                                    )
+                                                ),
+                                                ($) => ({
+                                                    'l location': v_parse_tree_to_location.Value(
+                                                        $
+                                                    )['start']['relative'],
+                                                    'l item': v_unmarshalled_from_parse_tree.Text(
+                                                        $,
+                                                        ($) => abort(
+                                                            ['expected a text', null]
+                                                        )
+                                                    ),
+                                                })
+                                            ),
+                                        })
+                                    ),
+                                })
                             )],
                         })
                     )

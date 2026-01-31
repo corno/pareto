@@ -15,6 +15,41 @@ import * as v_serialize_boolean from "liana-core/dist/implementation/manual/prim
 
 import * as v_external_interface from "../interface/marshall"
 
+export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', _p.dictionary.map(
+    $,
+    ($, id) => ['state', _p.decide.state(
+        $,
+        ($): t_out.Value.state => {
+            switch ($[0]) {
+                case 'module':
+                    return _p.ss(
+                        $,
+                        ($) => ({
+                            'option': 'module',
+                            'value': Module(
+                                $
+                            ),
+                        })
+                    )
+                case 'set':
+                    return _p.ss(
+                        $,
+                        ($) => ({
+                            'option': 'set',
+                            'value': Module_Set(
+                                $
+                            ),
+                        })
+                    )
+                default:
+                    return _p.au(
+                        $[0]
+                    )
+            }
+        }
+    )]
+)]
+
 export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dictionary.literal(
     {
         'type': _p_cc(
@@ -280,41 +315,6 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
     }
 )]]
 
-export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', _p.dictionary.map(
-    $,
-    ($, id) => ['state', _p.decide.state(
-        $,
-        ($): t_out.Value.state => {
-            switch ($[0]) {
-                case 'module':
-                    return _p.ss(
-                        $,
-                        ($) => ({
-                            'option': 'module',
-                            'value': Module(
-                                $
-                            ),
-                        })
-                    )
-                case 'set':
-                    return _p.ss(
-                        $,
-                        ($) => ({
-                            'option': 'set',
-                            'value': Module_Set(
-                                $
-                            ),
-                        })
-                    )
-                default:
-                    return _p.au(
-                        $[0]
-                    )
-            }
-        }
-    )]
-)]
-
 export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = ($) => ['group', ['verbose', _p.dictionary.literal(
     {
         'type': _p_cc(
@@ -403,326 +403,6 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
         ),
     }
 )]]
-
-export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.state(
-    $,
-    ($): t_out.Value.state => {
-        switch ($[0]) {
-            case 'implement me':
-                return _p.ss(
-                    $,
-                    ($) => ({
-                        'option': 'implement me',
-                        'value': ['text', {
-                            'delimiter': ['quote', null],
-                            'value': $,
-                        }],
-                    })
-                )
-            case 'regular':
-                return _p.ss(
-                    $,
-                    ($) => ({
-                        'option': 'regular',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
-                            {
-                                'start': _p_cc(
-                                    $['start'],
-                                    ($) => ['state', _p.decide.state(
-                                        $,
-                                        ($): t_out.Value.state => {
-                                            switch ($[0]) {
-                                                case 'call':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ({
-                                                            'option': 'call',
-                                                            'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                {
-                                                                    'source': _p_cc(
-                                                                        $['source'],
-                                                                        ($) => ['state', _p.decide.state(
-                                                                            $,
-                                                                            ($): t_out.Value.state => {
-                                                                                switch ($[0]) {
-                                                                                    case 'local':
-                                                                                        return _p.ss(
-                                                                                            $,
-                                                                                            ($) => ({
-                                                                                                'option': 'local',
-                                                                                                'value': ['text', {
-                                                                                                    'delimiter': ['quote', null],
-                                                                                                    'value': $,
-                                                                                                }],
-                                                                                            })
-                                                                                        )
-                                                                                    case 'imported':
-                                                                                        return _p.ss(
-                                                                                            $,
-                                                                                            ($) => ({
-                                                                                                'option': 'imported',
-                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                                    {
-                                                                                                        'import': _p_cc(
-                                                                                                            $['import'],
-                                                                                                            ($) => ['text', {
-                                                                                                                'delimiter': ['quote', null],
-                                                                                                                'value': $,
-                                                                                                            }]
-                                                                                                        ),
-                                                                                                        'variable': _p_cc(
-                                                                                                            $['variable'],
-                                                                                                            ($) => ['text', {
-                                                                                                                'delimiter': ['quote', null],
-                                                                                                                'value': $,
-                                                                                                            }]
-                                                                                                        ),
-                                                                                                    }
-                                                                                                )]],
-                                                                                            })
-                                                                                        )
-                                                                                    default:
-                                                                                        return _p.au(
-                                                                                            $[0]
-                                                                                        )
-                                                                                }
-                                                                            }
-                                                                        )]
-                                                                    ),
-                                                                    'context': _p_cc(
-                                                                        $['context'],
-                                                                        ($) => Expression(
-                                                                            $
-                                                                        )
-                                                                    ),
-                                                                    'abort': _p_cc(
-                                                                        $['abort'],
-                                                                        ($) => ['optional', _p.decide.optional(
-                                                                            $,
-                                                                            ($): t_out.Value.optional => ['set', Expression(
-                                                                                $
-                                                                            )],
-                                                                            () => ['not set', null]
-                                                                        )]
-                                                                    ),
-                                                                    'lookups': _p_cc(
-                                                                        $['lookups'],
-                                                                        ($) => ['optional', _p.decide.optional(
-                                                                            $,
-                                                                            ($): t_out.Value.optional => ['set', ['state', _p.decide.state(
-                                                                                $,
-                                                                                ($): t_out.Value.state => {
-                                                                                    switch ($[0]) {
-                                                                                        case 'initialize':
-                                                                                            return _p.ss(
-                                                                                                $,
-                                                                                                ($) => ({
-                                                                                                    'option': 'initialize',
-                                                                                                    'value': ['dictionary', _p.dictionary.map(
-                                                                                                        $,
-                                                                                                        ($, id) => Lookup_Selection(
-                                                                                                            $
-                                                                                                        )
-                                                                                                    )],
-                                                                                                })
-                                                                                            )
-                                                                                        case 'pass through':
-                                                                                            return _p.ss(
-                                                                                                $,
-                                                                                                ($) => ({
-                                                                                                    'option': 'pass through',
-                                                                                                    'value': ['nothing', null],
-                                                                                                })
-                                                                                            )
-                                                                                        default:
-                                                                                            return _p.au(
-                                                                                                $[0]
-                                                                                            )
-                                                                                    }
-                                                                                }
-                                                                            )]],
-                                                                            () => ['not set', null]
-                                                                        )]
-                                                                    ),
-                                                                    'arguments': _p_cc(
-                                                                        $['arguments'],
-                                                                        ($) => ['optional', _p.decide.optional(
-                                                                            $,
-                                                                            ($): t_out.Value.optional => ['set', ['state', _p.decide.state(
-                                                                                $,
-                                                                                ($): t_out.Value.state => {
-                                                                                    switch ($[0]) {
-                                                                                        case 'initialize':
-                                                                                            return _p.ss(
-                                                                                                $,
-                                                                                                ($) => ({
-                                                                                                    'option': 'initialize',
-                                                                                                    'value': ['dictionary', _p.dictionary.map(
-                                                                                                        $,
-                                                                                                        ($, id) => Expression(
-                                                                                                            $
-                                                                                                        )
-                                                                                                    )],
-                                                                                                })
-                                                                                            )
-                                                                                        case 'pass through':
-                                                                                            return _p.ss(
-                                                                                                $,
-                                                                                                ($) => ({
-                                                                                                    'option': 'pass through',
-                                                                                                    'value': ['nothing', null],
-                                                                                                })
-                                                                                            )
-                                                                                        default:
-                                                                                            return _p.au(
-                                                                                                $[0]
-                                                                                            )
-                                                                                    }
-                                                                                }
-                                                                            )]],
-                                                                            () => ['not set', null]
-                                                                        )]
-                                                                    ),
-                                                                }
-                                                            )]],
-                                                        })
-                                                    )
-                                                case 'context':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ({
-                                                            'option': 'context',
-                                                            'value': ['nothing', null],
-                                                        })
-                                                    )
-                                                case 'dictionary entry':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ({
-                                                            'option': 'dictionary entry',
-                                                            'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                {
-                                                                    'dictionary': _p_cc(
-                                                                        $['dictionary'],
-                                                                        ($) => Selection(
-                                                                            $
-                                                                        )
-                                                                    ),
-                                                                    'id': _p_cc(
-                                                                        $['id'],
-                                                                        ($) => Expression(
-                                                                            $
-                                                                        )
-                                                                    ),
-                                                                    'abort handler': _p_cc(
-                                                                        $['abort handler'],
-                                                                        ($) => Expression(
-                                                                            $
-                                                                        )
-                                                                    ),
-                                                                }
-                                                            )]],
-                                                        })
-                                                    )
-                                                case 'lookup entry':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ({
-                                                            'option': 'lookup entry',
-                                                            'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                {
-                                                                    'lookup': _p_cc(
-                                                                        $['lookup'],
-                                                                        ($) => Lookup_Selection(
-                                                                            $
-                                                                        )
-                                                                    ),
-                                                                    'id': _p_cc(
-                                                                        $['id'],
-                                                                        ($) => Expression(
-                                                                            $
-                                                                        )
-                                                                    ),
-                                                                    'abort handler': _p_cc(
-                                                                        $['abort handler'],
-                                                                        ($) => Expression(
-                                                                            $
-                                                                        )
-                                                                    ),
-                                                                }
-                                                            )]],
-                                                        })
-                                                    )
-                                                case 'parameter':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ({
-                                                            'option': 'parameter',
-                                                            'value': ['text', {
-                                                                'delimiter': ['quote', null],
-                                                                'value': $,
-                                                            }],
-                                                        })
-                                                    )
-                                                case 'parent sibling':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ({
-                                                            'option': 'parent sibling',
-                                                            'value': ['text', {
-                                                                'delimiter': ['quote', null],
-                                                                'value': $,
-                                                            }],
-                                                        })
-                                                    )
-                                                case 'sibling':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ({
-                                                            'option': 'sibling',
-                                                            'value': ['text', {
-                                                                'delimiter': ['quote', null],
-                                                                'value': $,
-                                                            }],
-                                                        })
-                                                    )
-                                                case 'state':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ({
-                                                            'option': 'state',
-                                                            'value': ['nothing', null],
-                                                        })
-                                                    )
-                                                default:
-                                                    return _p.au(
-                                                        $[0]
-                                                    )
-                                            }
-                                        }
-                                    )]
-                                ),
-                                'tail': _p_cc(
-                                    $['tail'],
-                                    ($) => ['list', _p.list.map(
-                                        $,
-                                        ($) => ['text', {
-                                            'delimiter': ['quote', null],
-                                            'value': $,
-                                        }]
-                                    )]
-                                ),
-                            }
-                        )]],
-                    })
-                )
-            default:
-                return _p.au(
-                    $[0]
-                )
-        }
-    }
-)]
 
 export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.state(
     $,
@@ -2172,6 +1852,326 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                 }
                             }
                         )],
+                    })
+                )
+            default:
+                return _p.au(
+                    $[0]
+                )
+        }
+    }
+)]
+
+export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.state(
+    $,
+    ($): t_out.Value.state => {
+        switch ($[0]) {
+            case 'implement me':
+                return _p.ss(
+                    $,
+                    ($) => ({
+                        'option': 'implement me',
+                        'value': ['text', {
+                            'delimiter': ['quote', null],
+                            'value': $,
+                        }],
+                    })
+                )
+            case 'regular':
+                return _p.ss(
+                    $,
+                    ($) => ({
+                        'option': 'regular',
+                        'value': ['group', ['verbose', _p.dictionary.literal(
+                            {
+                                'start': _p_cc(
+                                    $['start'],
+                                    ($) => ['state', _p.decide.state(
+                                        $,
+                                        ($): t_out.Value.state => {
+                                            switch ($[0]) {
+                                                case 'call':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'call',
+                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                {
+                                                                    'source': _p_cc(
+                                                                        $['source'],
+                                                                        ($) => ['state', _p.decide.state(
+                                                                            $,
+                                                                            ($): t_out.Value.state => {
+                                                                                switch ($[0]) {
+                                                                                    case 'local':
+                                                                                        return _p.ss(
+                                                                                            $,
+                                                                                            ($) => ({
+                                                                                                'option': 'local',
+                                                                                                'value': ['text', {
+                                                                                                    'delimiter': ['quote', null],
+                                                                                                    'value': $,
+                                                                                                }],
+                                                                                            })
+                                                                                        )
+                                                                                    case 'imported':
+                                                                                        return _p.ss(
+                                                                                            $,
+                                                                                            ($) => ({
+                                                                                                'option': 'imported',
+                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                    {
+                                                                                                        'import': _p_cc(
+                                                                                                            $['import'],
+                                                                                                            ($) => ['text', {
+                                                                                                                'delimiter': ['quote', null],
+                                                                                                                'value': $,
+                                                                                                            }]
+                                                                                                        ),
+                                                                                                        'variable': _p_cc(
+                                                                                                            $['variable'],
+                                                                                                            ($) => ['text', {
+                                                                                                                'delimiter': ['quote', null],
+                                                                                                                'value': $,
+                                                                                                            }]
+                                                                                                        ),
+                                                                                                    }
+                                                                                                )]],
+                                                                                            })
+                                                                                        )
+                                                                                    default:
+                                                                                        return _p.au(
+                                                                                            $[0]
+                                                                                        )
+                                                                                }
+                                                                            }
+                                                                        )]
+                                                                    ),
+                                                                    'context': _p_cc(
+                                                                        $['context'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'abort': _p_cc(
+                                                                        $['abort'],
+                                                                        ($) => ['optional', _p.decide.optional(
+                                                                            $,
+                                                                            ($): t_out.Value.optional => ['set', Expression(
+                                                                                $
+                                                                            )],
+                                                                            () => ['not set', null]
+                                                                        )]
+                                                                    ),
+                                                                    'lookups': _p_cc(
+                                                                        $['lookups'],
+                                                                        ($) => ['optional', _p.decide.optional(
+                                                                            $,
+                                                                            ($): t_out.Value.optional => ['set', ['state', _p.decide.state(
+                                                                                $,
+                                                                                ($): t_out.Value.state => {
+                                                                                    switch ($[0]) {
+                                                                                        case 'initialize':
+                                                                                            return _p.ss(
+                                                                                                $,
+                                                                                                ($) => ({
+                                                                                                    'option': 'initialize',
+                                                                                                    'value': ['dictionary', _p.dictionary.map(
+                                                                                                        $,
+                                                                                                        ($, id) => Lookup_Selection(
+                                                                                                            $
+                                                                                                        )
+                                                                                                    )],
+                                                                                                })
+                                                                                            )
+                                                                                        case 'pass through':
+                                                                                            return _p.ss(
+                                                                                                $,
+                                                                                                ($) => ({
+                                                                                                    'option': 'pass through',
+                                                                                                    'value': ['nothing', null],
+                                                                                                })
+                                                                                            )
+                                                                                        default:
+                                                                                            return _p.au(
+                                                                                                $[0]
+                                                                                            )
+                                                                                    }
+                                                                                }
+                                                                            )]],
+                                                                            () => ['not set', null]
+                                                                        )]
+                                                                    ),
+                                                                    'arguments': _p_cc(
+                                                                        $['arguments'],
+                                                                        ($) => ['optional', _p.decide.optional(
+                                                                            $,
+                                                                            ($): t_out.Value.optional => ['set', ['state', _p.decide.state(
+                                                                                $,
+                                                                                ($): t_out.Value.state => {
+                                                                                    switch ($[0]) {
+                                                                                        case 'initialize':
+                                                                                            return _p.ss(
+                                                                                                $,
+                                                                                                ($) => ({
+                                                                                                    'option': 'initialize',
+                                                                                                    'value': ['dictionary', _p.dictionary.map(
+                                                                                                        $,
+                                                                                                        ($, id) => Expression(
+                                                                                                            $
+                                                                                                        )
+                                                                                                    )],
+                                                                                                })
+                                                                                            )
+                                                                                        case 'pass through':
+                                                                                            return _p.ss(
+                                                                                                $,
+                                                                                                ($) => ({
+                                                                                                    'option': 'pass through',
+                                                                                                    'value': ['nothing', null],
+                                                                                                })
+                                                                                            )
+                                                                                        default:
+                                                                                            return _p.au(
+                                                                                                $[0]
+                                                                                            )
+                                                                                    }
+                                                                                }
+                                                                            )]],
+                                                                            () => ['not set', null]
+                                                                        )]
+                                                                    ),
+                                                                }
+                                                            )]],
+                                                        })
+                                                    )
+                                                case 'context':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'context',
+                                                            'value': ['nothing', null],
+                                                        })
+                                                    )
+                                                case 'dictionary entry':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'dictionary entry',
+                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                {
+                                                                    'dictionary': _p_cc(
+                                                                        $['dictionary'],
+                                                                        ($) => Selection(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'id': _p_cc(
+                                                                        $['id'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'abort handler': _p_cc(
+                                                                        $['abort handler'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                }
+                                                            )]],
+                                                        })
+                                                    )
+                                                case 'lookup entry':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'lookup entry',
+                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                {
+                                                                    'lookup': _p_cc(
+                                                                        $['lookup'],
+                                                                        ($) => Lookup_Selection(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'id': _p_cc(
+                                                                        $['id'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'abort handler': _p_cc(
+                                                                        $['abort handler'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                }
+                                                            )]],
+                                                        })
+                                                    )
+                                                case 'parameter':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'parameter',
+                                                            'value': ['text', {
+                                                                'delimiter': ['quote', null],
+                                                                'value': $,
+                                                            }],
+                                                        })
+                                                    )
+                                                case 'parent sibling':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'parent sibling',
+                                                            'value': ['text', {
+                                                                'delimiter': ['quote', null],
+                                                                'value': $,
+                                                            }],
+                                                        })
+                                                    )
+                                                case 'sibling':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'sibling',
+                                                            'value': ['text', {
+                                                                'delimiter': ['quote', null],
+                                                                'value': $,
+                                                            }],
+                                                        })
+                                                    )
+                                                case 'state':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'state',
+                                                            'value': ['nothing', null],
+                                                        })
+                                                    )
+                                                default:
+                                                    return _p.au(
+                                                        $[0]
+                                                    )
+                                            }
+                                        }
+                                    )]
+                                ),
+                                'tail': _p_cc(
+                                    $['tail'],
+                                    ($) => ['list', _p.list.map(
+                                        $,
+                                        ($) => ['text', {
+                                            'delimiter': ['quote', null],
+                                            'value': $,
+                                        }]
+                                    )]
+                                ),
+                            }
+                        )]],
                     })
                 )
             default:

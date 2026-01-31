@@ -3,7 +3,7 @@ import * as _pi from "pareto-core/dist/interface"
 
 import * as i__location from "astn-core/dist/interface/generated/liana/schemas/location/data"
 
-export namespace Imports_ {
+export namespace Module_Set_ {
     
     export type l_location = i__location.Relative_Location
     
@@ -15,78 +15,25 @@ export namespace Imports_ {
             
             export namespace l_entry {
                 
-                export namespace type_ {
+                export type l_location = i__location.Relative_Location
+                
+                export namespace l_state {
                     
-                    export type l_location = i__location.Relative_Location
+                    export type module_ = Module_
                     
-                    export namespace l_state {
-                        
-                        export type external = string
-                        
-                        export namespace ancestor {
-                            
-                            export type number_of_steps = number
-                            
-                            export type dependency = string
-                            
-                        }
-                        
-                        export type ancestor = {
-                            readonly 'number of steps': ancestor.number_of_steps
-                            readonly 'dependency': ancestor.dependency
-                        }
-                        
-                        export type sibling = string
-                        
-                    }
-                    
-                    export type l_state = 
-                        | readonly ['external', l_state.external]
-                        | readonly ['ancestor', l_state.ancestor]
-                        | readonly ['sibling', l_state.sibling]
+                    export type set_ = Module_Set_
                     
                 }
                 
-                export type type_ = {
-                    readonly 'l location': type_.l_location
-                    readonly 'l state': type_.l_state
-                }
-                
-                export namespace tail {
-                    
-                    export type l_location = i__location.Relative_Location
-                    
-                    export namespace l_list {
-                        
-                        export namespace L {
-                            
-                            export type l_location = i__location.Relative_Location
-                            
-                            export type l_item = string
-                            
-                        }
-                        
-                        export type L = {
-                            readonly 'l location': L.l_location
-                            readonly 'l item': L.l_item
-                        }
-                        
-                    }
-                    
-                    export type l_list = _pi.List<l_list.L>
-                    
-                }
-                
-                export type tail = {
-                    readonly 'l location': tail.l_location
-                    readonly 'l list': tail.l_list
-                }
+                export type l_state = 
+                    | readonly ['module', l_state.module_]
+                    | readonly ['set', l_state.set_]
                 
             }
             
             export type l_entry = {
-                readonly 'type': l_entry.type_
-                readonly 'tail': l_entry.tail
+                readonly 'l location': l_entry.l_location
+                readonly 'l state': l_entry.l_state
             }
             
         }
@@ -102,9 +49,9 @@ export namespace Imports_ {
     
 }
 
-export type Imports_ = {
-    readonly 'l location': Imports_.l_location
-    readonly 'l dictionary': Imports_.l_dictionary
+export type Module_Set_ = {
+    readonly 'l location': Module_Set_.l_location
+    readonly 'l dictionary': Module_Set_.l_dictionary
 }
 
 export namespace Module_ {
@@ -320,7 +267,7 @@ export type Module_ = {
     readonly 'types': Module_.types
 }
 
-export namespace Module_Set_ {
+export namespace Imports_ {
     
     export type l_location = i__location.Relative_Location
     
@@ -332,25 +279,78 @@ export namespace Module_Set_ {
             
             export namespace l_entry {
                 
-                export type l_location = i__location.Relative_Location
-                
-                export namespace l_state {
+                export namespace type_ {
                     
-                    export type module_ = Module_
+                    export type l_location = i__location.Relative_Location
                     
-                    export type set_ = Module_Set_
+                    export namespace l_state {
+                        
+                        export type external = string
+                        
+                        export namespace ancestor {
+                            
+                            export type number_of_steps = number
+                            
+                            export type dependency = string
+                            
+                        }
+                        
+                        export type ancestor = {
+                            readonly 'number of steps': ancestor.number_of_steps
+                            readonly 'dependency': ancestor.dependency
+                        }
+                        
+                        export type sibling = string
+                        
+                    }
+                    
+                    export type l_state = 
+                        | readonly ['external', l_state.external]
+                        | readonly ['ancestor', l_state.ancestor]
+                        | readonly ['sibling', l_state.sibling]
                     
                 }
                 
-                export type l_state = 
-                    | readonly ['module', l_state.module_]
-                    | readonly ['set', l_state.set_]
+                export type type_ = {
+                    readonly 'l location': type_.l_location
+                    readonly 'l state': type_.l_state
+                }
+                
+                export namespace tail {
+                    
+                    export type l_location = i__location.Relative_Location
+                    
+                    export namespace l_list {
+                        
+                        export namespace L {
+                            
+                            export type l_location = i__location.Relative_Location
+                            
+                            export type l_item = string
+                            
+                        }
+                        
+                        export type L = {
+                            readonly 'l location': L.l_location
+                            readonly 'l item': L.l_item
+                        }
+                        
+                    }
+                    
+                    export type l_list = _pi.List<l_list.L>
+                    
+                }
+                
+                export type tail = {
+                    readonly 'l location': tail.l_location
+                    readonly 'l list': tail.l_list
+                }
                 
             }
             
             export type l_entry = {
-                readonly 'l location': l_entry.l_location
-                readonly 'l state': l_entry.l_state
+                readonly 'type': l_entry.type_
+                readonly 'tail': l_entry.tail
             }
             
         }
@@ -366,43 +366,9 @@ export namespace Module_Set_ {
     
 }
 
-export type Module_Set_ = {
-    readonly 'l location': Module_Set_.l_location
-    readonly 'l dictionary': Module_Set_.l_dictionary
-}
-
-export namespace Module_Reference_ {
-    
-    export type l_location = i__location.Relative_Location
-    
-    export namespace l_state {
-        
-        export namespace import_ {
-            
-            export type import_ = string
-            
-            export type type_ = string
-            
-        }
-        
-        export type import_ = {
-            readonly 'import': import_.import_
-            readonly 'type': import_.type_
-        }
-        
-        export type local = string
-        
-    }
-    
-    export type l_state = 
-        | readonly ['import', l_state.import_]
-        | readonly ['local', l_state.local]
-    
-}
-
-export type Module_Reference_ = {
-    readonly 'l location': Module_Reference_.l_location
-    readonly 'l state': Module_Reference_.l_state
+export type Imports_ = {
+    readonly 'l location': Imports_.l_location
+    readonly 'l dictionary': Imports_.l_dictionary
 }
 
 export namespace Value_ {
@@ -633,10 +599,44 @@ export type Value_ = {
     readonly 'l state': Value_.l_state
 }
 
+export namespace Module_Reference_ {
+    
+    export type l_location = i__location.Relative_Location
+    
+    export namespace l_state {
+        
+        export namespace import_ {
+            
+            export type import_ = string
+            
+            export type type_ = string
+            
+        }
+        
+        export type import_ = {
+            readonly 'import': import_.import_
+            readonly 'type': import_.type_
+        }
+        
+        export type local = string
+        
+    }
+    
+    export type l_state = 
+        | readonly ['import', l_state.import_]
+        | readonly ['local', l_state.local]
+    
+}
+
+export type Module_Reference_ = {
+    readonly 'l location': Module_Reference_.l_location
+    readonly 'l state': Module_Reference_.l_state
+}
+
 export { 
-    Imports_ as Imports, 
-    Module_ as Module, 
     Module_Set_ as Module_Set, 
-    Module_Reference_ as Module_Reference, 
+    Module_ as Module, 
+    Imports_ as Imports, 
     Value_ as Value, 
+    Module_Reference_ as Module_Reference, 
 }

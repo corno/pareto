@@ -13,85 +13,39 @@ import * as v_serialize_number from "liana-core/dist/implementation/manual/primi
 
 import * as v_serialize_boolean from "liana-core/dist/implementation/manual/primitives/boolean/serializers/true_false"
 
-export const Imports: t_signatures.Imports = ($) => ['dictionary', _p.dictionary.map(
+export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', _p.dictionary.map(
     $,
-    ($, id) => ['group', ['verbose', _p.dictionary.literal(
-        {
-            'type': _p_cc(
-                $['type'],
-                ($) => ['state', _p.decide.state(
-                    $,
-                    ($): t_out.Value.state => {
-                        switch ($[0]) {
-                            case 'external':
-                                return _p.ss(
-                                    $,
-                                    ($) => ({
-                                        'option': 'external',
-                                        'value': ['text', {
-                                            'delimiter': ['quote', null],
-                                            'value': $,
-                                        }],
-                                    })
-                                )
-                            case 'ancestor':
-                                return _p.ss(
-                                    $,
-                                    ($) => ({
-                                        'option': 'ancestor',
-                                        'value': ['group', ['verbose', _p.dictionary.literal(
-                                            {
-                                                'number of steps': _p_cc(
-                                                    $['number of steps'],
-                                                    ($) => ['text', {
-                                                        'delimiter': ['none', null],
-                                                        'value': v_serialize_number.serialize(
-                                                            $
-                                                        ),
-                                                    }]
-                                                ),
-                                                'dependency': _p_cc(
-                                                    $['dependency'],
-                                                    ($) => ['text', {
-                                                        'delimiter': ['quote', null],
-                                                        'value': $,
-                                                    }]
-                                                ),
-                                            }
-                                        )]],
-                                    })
-                                )
-                            case 'sibling':
-                                return _p.ss(
-                                    $,
-                                    ($) => ({
-                                        'option': 'sibling',
-                                        'value': ['text', {
-                                            'delimiter': ['quote', null],
-                                            'value': $,
-                                        }],
-                                    })
-                                )
-                            default:
-                                return _p.au(
-                                    $[0]
-                                )
-                        }
-                    }
-                )]
-            ),
-            'tail': _p_cc(
-                $['tail'],
-                ($) => ['list', _p.list.map(
-                    $,
-                    ($) => ['text', {
-                        'delimiter': ['quote', null],
-                        'value': $,
-                    }]
-                )]
-            ),
+    ($, id) => ['state', _p.decide.state(
+        $,
+        ($): t_out.Value.state => {
+            switch ($[0]) {
+                case 'module':
+                    return _p.ss(
+                        $,
+                        ($) => ({
+                            'option': 'module',
+                            'value': Module(
+                                $
+                            ),
+                        })
+                    )
+                case 'set':
+                    return _p.ss(
+                        $,
+                        ($) => ({
+                            'option': 'set',
+                            'value': Module_Set(
+                                $
+                            ),
+                        })
+                    )
+                default:
+                    return _p.au(
+                        $[0]
+                    )
+            }
         }
-    )]]
+    )]
 )]
 
 export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dictionary.literal(
@@ -265,87 +219,85 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
     }
 )]]
 
-export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', _p.dictionary.map(
+export const Imports: t_signatures.Imports = ($) => ['dictionary', _p.dictionary.map(
     $,
-    ($, id) => ['state', _p.decide.state(
-        $,
-        ($): t_out.Value.state => {
-            switch ($[0]) {
-                case 'module':
-                    return _p.ss(
-                        $,
-                        ($) => ({
-                            'option': 'module',
-                            'value': Module(
-                                $
-                            ),
-                        })
-                    )
-                case 'set':
-                    return _p.ss(
-                        $,
-                        ($) => ({
-                            'option': 'set',
-                            'value': Module_Set(
-                                $
-                            ),
-                        })
-                    )
-                default:
-                    return _p.au(
-                        $[0]
-                    )
-            }
-        }
-    )]
-)]
-
-export const Module_Reference: t_signatures.Module_Reference = ($) => ['state', _p.decide.state(
-    $,
-    ($): t_out.Value.state => {
-        switch ($[0]) {
-            case 'import':
-                return _p.ss(
+    ($, id) => ['group', ['verbose', _p.dictionary.literal(
+        {
+            'type': _p_cc(
+                $['type'],
+                ($) => ['state', _p.decide.state(
                     $,
-                    ($) => ({
-                        'option': 'import',
-                        'value': ['group', ['verbose', _p.dictionary.literal(
-                            {
-                                'import': _p_cc(
-                                    $['import'],
-                                    ($) => ['text', {
-                                        'delimiter': ['quote', null],
-                                        'value': $,
-                                    }]
-                                ),
-                                'type': _p_cc(
-                                    $['type'],
-                                    ($) => ['text', {
-                                        'delimiter': ['quote', null],
-                                        'value': $,
-                                    }]
-                                ),
-                            }
-                        )]],
-                    })
-                )
-            case 'local':
-                return _p.ss(
+                    ($): t_out.Value.state => {
+                        switch ($[0]) {
+                            case 'external':
+                                return _p.ss(
+                                    $,
+                                    ($) => ({
+                                        'option': 'external',
+                                        'value': ['text', {
+                                            'delimiter': ['quote', null],
+                                            'value': $,
+                                        }],
+                                    })
+                                )
+                            case 'ancestor':
+                                return _p.ss(
+                                    $,
+                                    ($) => ({
+                                        'option': 'ancestor',
+                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                            {
+                                                'number of steps': _p_cc(
+                                                    $['number of steps'],
+                                                    ($) => ['text', {
+                                                        'delimiter': ['none', null],
+                                                        'value': v_serialize_number.serialize(
+                                                            $
+                                                        ),
+                                                    }]
+                                                ),
+                                                'dependency': _p_cc(
+                                                    $['dependency'],
+                                                    ($) => ['text', {
+                                                        'delimiter': ['quote', null],
+                                                        'value': $,
+                                                    }]
+                                                ),
+                                            }
+                                        )]],
+                                    })
+                                )
+                            case 'sibling':
+                                return _p.ss(
+                                    $,
+                                    ($) => ({
+                                        'option': 'sibling',
+                                        'value': ['text', {
+                                            'delimiter': ['quote', null],
+                                            'value': $,
+                                        }],
+                                    })
+                                )
+                            default:
+                                return _p.au(
+                                    $[0]
+                                )
+                        }
+                    }
+                )]
+            ),
+            'tail': _p_cc(
+                $['tail'],
+                ($) => ['list', _p.list.map(
                     $,
-                    ($) => ({
-                        'option': 'local',
-                        'value': ['text', {
-                            'delimiter': ['quote', null],
-                            'value': $,
-                        }],
-                    })
-                )
-            default:
-                return _p.au(
-                    $[0]
-                )
+                    ($) => ['text', {
+                        'delimiter': ['quote', null],
+                        'value': $,
+                    }]
+                )]
+            ),
         }
-    }
+    )]]
 )]
 
 export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
@@ -596,6 +548,54 @@ export const Value: t_signatures.Value = ($) => ['state', _p.decide.state(
                     ($) => ({
                         'option': 'text',
                         'value': ['nothing', null],
+                    })
+                )
+            default:
+                return _p.au(
+                    $[0]
+                )
+        }
+    }
+)]
+
+export const Module_Reference: t_signatures.Module_Reference = ($) => ['state', _p.decide.state(
+    $,
+    ($): t_out.Value.state => {
+        switch ($[0]) {
+            case 'import':
+                return _p.ss(
+                    $,
+                    ($) => ({
+                        'option': 'import',
+                        'value': ['group', ['verbose', _p.dictionary.literal(
+                            {
+                                'import': _p_cc(
+                                    $['import'],
+                                    ($) => ['text', {
+                                        'delimiter': ['quote', null],
+                                        'value': $,
+                                    }]
+                                ),
+                                'type': _p_cc(
+                                    $['type'],
+                                    ($) => ['text', {
+                                        'delimiter': ['quote', null],
+                                        'value': $,
+                                    }]
+                                ),
+                            }
+                        )]],
+                    })
+                )
+            case 'local':
+                return _p.ss(
+                    $,
+                    ($) => ({
+                        'option': 'local',
+                        'value': ['text', {
+                            'delimiter': ['quote', null],
+                            'value': $,
+                        }],
                     })
                 )
             default:

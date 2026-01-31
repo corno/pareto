@@ -9,7 +9,7 @@ import * as t_signatures from "../../../../../interface/generated/liana/schemas/
 
 import * as t_out from "../../../../../interface/generated/liana/schemas/interface/data/unresolved"
 
-export const Imports: t_signatures.Imports = ($) => ({
+export const Module_Set: t_signatures.Module_Set = ($) => ({
     'l location': {
         'document resource identifier': "implement me",
         'line': 42,
@@ -19,71 +19,35 @@ export const Imports: t_signatures.Imports = ($) => ({
         $,
         ($, id) => ({
             'l entry': {
-                'type': _p_cc(
-                    $['type'],
-                    ($) => ({
-                        'l location': {
-                            'document resource identifier': "implement me",
-                            'line': 42,
-                            'column': 42,
-                        },
-                        'l state': _p.decide.state(
-                            $,
-                            ($): t_out.Imports.l_dictionary.D.l_entry.type_.l_state => {
-                                switch ($[0]) {
-                                    case 'external':
-                                        return _p.ss(
-                                            $,
-                                            ($) => ['external', $]
-                                        )
-                                    case 'ancestor':
-                                        return _p.ss(
-                                            $,
-                                            ($) => ['ancestor', {
-                                                'number of steps': _p_cc(
-                                                    $['number of steps'],
-                                                    ($) => $
-                                                ),
-                                                'dependency': _p_cc(
-                                                    $['dependency'],
-                                                    ($) => $
-                                                ),
-                                            }]
-                                        )
-                                    case 'sibling':
-                                        return _p.ss(
-                                            $,
-                                            ($) => ['sibling', $]
-                                        )
-                                    default:
-                                        return _p.au(
-                                            $[0]
-                                        )
-                                }
-                            }
-                        ),
-                    })
-                ),
-                'tail': _p_cc(
-                    $['tail'],
-                    ($) => ({
-                        'l location': {
-                            'document resource identifier': "implement me",
-                            'line': 42,
-                            'column': 42,
-                        },
-                        'l list': _p.list.map(
-                            $,
-                            ($) => ({
-                                'l item': $,
-                                'l location': {
-                                    'document resource identifier': "implement me",
-                                    'line': 42,
-                                    'column': 42,
-                                },
-                            })
-                        ),
-                    })
+                'l location': {
+                    'document resource identifier': "implement me",
+                    'line': 42,
+                    'column': 42,
+                },
+                'l state': _p.decide.state(
+                    $,
+                    ($): t_out.Module_Set.l_dictionary.D.l_entry.l_state => {
+                        switch ($[0]) {
+                            case 'module':
+                                return _p.ss(
+                                    $,
+                                    ($) => ['module', Module(
+                                        $
+                                    )]
+                                )
+                            case 'set':
+                                return _p.ss(
+                                    $,
+                                    ($) => ['set', Module_Set(
+                                        $
+                                    )]
+                                )
+                            default:
+                                return _p.au(
+                                    $[0]
+                                )
+                        }
+                    }
                 ),
             },
             'l location': {
@@ -296,7 +260,7 @@ export const Module: t_signatures.Module = ($) => ({
     ),
 })
 
-export const Module_Set: t_signatures.Module_Set = ($) => ({
+export const Imports: t_signatures.Imports = ($) => ({
     'l location': {
         'document resource identifier': "implement me",
         'line': 42,
@@ -306,35 +270,71 @@ export const Module_Set: t_signatures.Module_Set = ($) => ({
         $,
         ($, id) => ({
             'l entry': {
-                'l location': {
-                    'document resource identifier': "implement me",
-                    'line': 42,
-                    'column': 42,
-                },
-                'l state': _p.decide.state(
-                    $,
-                    ($): t_out.Module_Set.l_dictionary.D.l_entry.l_state => {
-                        switch ($[0]) {
-                            case 'module':
-                                return _p.ss(
-                                    $,
-                                    ($) => ['module', Module(
-                                        $
-                                    )]
-                                )
-                            case 'set':
-                                return _p.ss(
-                                    $,
-                                    ($) => ['set', Module_Set(
-                                        $
-                                    )]
-                                )
-                            default:
-                                return _p.au(
-                                    $[0]
-                                )
-                        }
-                    }
+                'type': _p_cc(
+                    $['type'],
+                    ($) => ({
+                        'l location': {
+                            'document resource identifier': "implement me",
+                            'line': 42,
+                            'column': 42,
+                        },
+                        'l state': _p.decide.state(
+                            $,
+                            ($): t_out.Imports.l_dictionary.D.l_entry.type_.l_state => {
+                                switch ($[0]) {
+                                    case 'external':
+                                        return _p.ss(
+                                            $,
+                                            ($) => ['external', $]
+                                        )
+                                    case 'ancestor':
+                                        return _p.ss(
+                                            $,
+                                            ($) => ['ancestor', {
+                                                'number of steps': _p_cc(
+                                                    $['number of steps'],
+                                                    ($) => $
+                                                ),
+                                                'dependency': _p_cc(
+                                                    $['dependency'],
+                                                    ($) => $
+                                                ),
+                                            }]
+                                        )
+                                    case 'sibling':
+                                        return _p.ss(
+                                            $,
+                                            ($) => ['sibling', $]
+                                        )
+                                    default:
+                                        return _p.au(
+                                            $[0]
+                                        )
+                                }
+                            }
+                        ),
+                    })
+                ),
+                'tail': _p_cc(
+                    $['tail'],
+                    ($) => ({
+                        'l location': {
+                            'document resource identifier': "implement me",
+                            'line': 42,
+                            'column': 42,
+                        },
+                        'l list': _p.list.map(
+                            $,
+                            ($) => ({
+                                'l item': $,
+                                'l location': {
+                                    'document resource identifier': "implement me",
+                                    'line': 42,
+                                    'column': 42,
+                                },
+                            })
+                        ),
+                    })
                 ),
             },
             'l location': {
@@ -343,44 +343,6 @@ export const Module_Set: t_signatures.Module_Set = ($) => ({
                 'column': 42,
             },
         })
-    ),
-})
-
-export const Module_Reference: t_signatures.Module_Reference = ($) => ({
-    'l location': {
-        'document resource identifier': "implement me",
-        'line': 42,
-        'column': 42,
-    },
-    'l state': _p.decide.state(
-        $,
-        ($): t_out.Module_Reference.l_state => {
-            switch ($[0]) {
-                case 'import':
-                    return _p.ss(
-                        $,
-                        ($) => ['import', {
-                            'import': _p_cc(
-                                $['import'],
-                                ($) => $
-                            ),
-                            'type': _p_cc(
-                                $['type'],
-                                ($) => $
-                            ),
-                        }]
-                    )
-                case 'local':
-                    return _p.ss(
-                        $,
-                        ($) => ['local', $]
-                    )
-                default:
-                    return _p.au(
-                        $[0]
-                    )
-            }
-        }
     ),
 })
 
@@ -627,6 +589,44 @@ export const Value: t_signatures.Value = ($) => ({
                     return _p.ss(
                         $,
                         ($) => ['text', null]
+                    )
+                default:
+                    return _p.au(
+                        $[0]
+                    )
+            }
+        }
+    ),
+})
+
+export const Module_Reference: t_signatures.Module_Reference = ($) => ({
+    'l location': {
+        'document resource identifier': "implement me",
+        'line': 42,
+        'column': 42,
+    },
+    'l state': _p.decide.state(
+        $,
+        ($): t_out.Module_Reference.l_state => {
+            switch ($[0]) {
+                case 'import':
+                    return _p.ss(
+                        $,
+                        ($) => ['import', {
+                            'import': _p_cc(
+                                $['import'],
+                                ($) => $
+                            ),
+                            'type': _p_cc(
+                                $['type'],
+                                ($) => $
+                            ),
+                        }]
+                    )
+                case 'local':
+                    return _p.ss(
+                        $,
+                        ($) => ['local', $]
                     )
                 default:
                     return _p.au(

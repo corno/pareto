@@ -11,6 +11,56 @@ import * as t_out from "../../../../../interface/generated/liana/schemas/impleme
 
 import * as v_interface from "../interface/migrate_boilerplate"
 
+export const Module_Set: t_signatures.Module_Set = ($) => ({
+    'l location': {
+        'document resource identifier': "implement me",
+        'line': 42,
+        'column': 42,
+    },
+    'l dictionary': _p.dictionary.map(
+        $,
+        ($, id) => ({
+            'l entry': {
+                'l location': {
+                    'document resource identifier': "implement me",
+                    'line': 42,
+                    'column': 42,
+                },
+                'l state': _p.decide.state(
+                    $,
+                    ($): t_out.Module_Set.l_dictionary.D.l_entry.l_state => {
+                        switch ($[0]) {
+                            case 'module':
+                                return _p.ss(
+                                    $,
+                                    ($) => ['module', Module(
+                                        $
+                                    )]
+                                )
+                            case 'set':
+                                return _p.ss(
+                                    $,
+                                    ($) => ['set', Module_Set(
+                                        $
+                                    )]
+                                )
+                            default:
+                                return _p.au(
+                                    $[0]
+                                )
+                        }
+                    }
+                ),
+            },
+            'l location': {
+                'document resource identifier': "implement me",
+                'line': 42,
+                'column': 42,
+            },
+        })
+    ),
+})
+
 export const Module: t_signatures.Module = ($) => ({
     'type': _p_cc(
         $['type'],
@@ -231,56 +281,6 @@ export const Module: t_signatures.Module = ($) => ({
     ),
 })
 
-export const Module_Set: t_signatures.Module_Set = ($) => ({
-    'l location': {
-        'document resource identifier': "implement me",
-        'line': 42,
-        'column': 42,
-    },
-    'l dictionary': _p.dictionary.map(
-        $,
-        ($, id) => ({
-            'l entry': {
-                'l location': {
-                    'document resource identifier': "implement me",
-                    'line': 42,
-                    'column': 42,
-                },
-                'l state': _p.decide.state(
-                    $,
-                    ($): t_out.Module_Set.l_dictionary.D.l_entry.l_state => {
-                        switch ($[0]) {
-                            case 'module':
-                                return _p.ss(
-                                    $,
-                                    ($) => ['module', Module(
-                                        $
-                                    )]
-                                )
-                            case 'set':
-                                return _p.ss(
-                                    $,
-                                    ($) => ['set', Module_Set(
-                                        $
-                                    )]
-                                )
-                            default:
-                                return _p.au(
-                                    $[0]
-                                )
-                        }
-                    }
-                ),
-            },
-            'l location': {
-                'document resource identifier': "implement me",
-                'line': 42,
-                'column': 42,
-            },
-        })
-    ),
-})
-
 export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = ($) => ({
     'type': _p_cc(
         $['type'],
@@ -357,318 +357,6 @@ export const Temp_Type_Node_Reference: t_signatures.Temp_Type_Node_Reference = (
                 })
             ),
         })
-    ),
-})
-
-export const Selection: t_signatures.Selection = ($) => ({
-    'l location': {
-        'document resource identifier': "implement me",
-        'line': 42,
-        'column': 42,
-    },
-    'l state': _p.decide.state(
-        $,
-        ($): t_out.Selection.l_state => {
-            switch ($[0]) {
-                case 'implement me':
-                    return _p.ss(
-                        $,
-                        ($) => ['implement me', $]
-                    )
-                case 'regular':
-                    return _p.ss(
-                        $,
-                        ($) => ['regular', {
-                            'start': _p_cc(
-                                $['start'],
-                                ($) => ({
-                                    'l location': {
-                                        'document resource identifier': "implement me",
-                                        'line': 42,
-                                        'column': 42,
-                                    },
-                                    'l state': _p.decide.state(
-                                        $,
-                                        ($): t_out.Selection.l_state.regular.start.l_state => {
-                                            switch ($[0]) {
-                                                case 'call':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ['call', {
-                                                            'source': _p_cc(
-                                                                $['source'],
-                                                                ($) => ({
-                                                                    'l location': {
-                                                                        'document resource identifier': "implement me",
-                                                                        'line': 42,
-                                                                        'column': 42,
-                                                                    },
-                                                                    'l state': _p.decide.state(
-                                                                        $,
-                                                                        ($): t_out.Selection.l_state.regular.start.l_state.call.source.l_state => {
-                                                                            switch ($[0]) {
-                                                                                case 'local':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['local', $]
-                                                                                    )
-                                                                                case 'imported':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['imported', {
-                                                                                            'import': _p_cc(
-                                                                                                $['import'],
-                                                                                                ($) => $
-                                                                                            ),
-                                                                                            'variable': _p_cc(
-                                                                                                $['variable'],
-                                                                                                ($) => $
-                                                                                            ),
-                                                                                        }]
-                                                                                    )
-                                                                                default:
-                                                                                    return _p.au(
-                                                                                        $[0]
-                                                                                    )
-                                                                            }
-                                                                        }
-                                                                    ),
-                                                                })
-                                                            ),
-                                                            'context': _p_cc(
-                                                                $['context'],
-                                                                ($) => Expression(
-                                                                    $
-                                                                )
-                                                            ),
-                                                            'abort': _p_cc(
-                                                                $['abort'],
-                                                                ($) => _p.optional.map(
-                                                                    $,
-                                                                    ($) => Expression(
-                                                                        $
-                                                                    )
-                                                                )
-                                                            ),
-                                                            'lookups': _p_cc(
-                                                                $['lookups'],
-                                                                ($) => _p.optional.map(
-                                                                    $,
-                                                                    ($) => ({
-                                                                        'l location': {
-                                                                            'document resource identifier': "implement me",
-                                                                            'line': 42,
-                                                                            'column': 42,
-                                                                        },
-                                                                        'l state': _p.decide.state(
-                                                                            $,
-                                                                            ($): t_out.Selection.l_state.regular.start.l_state.call.lookups.O.l_state => {
-                                                                                switch ($[0]) {
-                                                                                    case 'initialize':
-                                                                                        return _p.ss(
-                                                                                            $,
-                                                                                            ($) => ['initialize', {
-                                                                                                'l location': {
-                                                                                                    'document resource identifier': "implement me",
-                                                                                                    'line': 42,
-                                                                                                    'column': 42,
-                                                                                                },
-                                                                                                'l dictionary': _p.dictionary.map(
-                                                                                                    $,
-                                                                                                    ($, id) => ({
-                                                                                                        'l entry': Lookup_Selection(
-                                                                                                            $
-                                                                                                        ),
-                                                                                                        'l location': {
-                                                                                                            'document resource identifier': "implement me",
-                                                                                                            'line': 42,
-                                                                                                            'column': 42,
-                                                                                                        },
-                                                                                                    })
-                                                                                                ),
-                                                                                            }]
-                                                                                        )
-                                                                                    case 'pass through':
-                                                                                        return _p.ss(
-                                                                                            $,
-                                                                                            ($) => ['pass through', null]
-                                                                                        )
-                                                                                    default:
-                                                                                        return _p.au(
-                                                                                            $[0]
-                                                                                        )
-                                                                                }
-                                                                            }
-                                                                        ),
-                                                                    })
-                                                                )
-                                                            ),
-                                                            'arguments': _p_cc(
-                                                                $['arguments'],
-                                                                ($) => _p.optional.map(
-                                                                    $,
-                                                                    ($) => ({
-                                                                        'l location': {
-                                                                            'document resource identifier': "implement me",
-                                                                            'line': 42,
-                                                                            'column': 42,
-                                                                        },
-                                                                        'l state': _p.decide.state(
-                                                                            $,
-                                                                            ($): t_out.Selection.l_state.regular.start.l_state.call.arguments_.O.l_state => {
-                                                                                switch ($[0]) {
-                                                                                    case 'initialize':
-                                                                                        return _p.ss(
-                                                                                            $,
-                                                                                            ($) => ['initialize', {
-                                                                                                'l location': {
-                                                                                                    'document resource identifier': "implement me",
-                                                                                                    'line': 42,
-                                                                                                    'column': 42,
-                                                                                                },
-                                                                                                'l dictionary': _p.dictionary.map(
-                                                                                                    $,
-                                                                                                    ($, id) => ({
-                                                                                                        'l entry': Expression(
-                                                                                                            $
-                                                                                                        ),
-                                                                                                        'l location': {
-                                                                                                            'document resource identifier': "implement me",
-                                                                                                            'line': 42,
-                                                                                                            'column': 42,
-                                                                                                        },
-                                                                                                    })
-                                                                                                ),
-                                                                                            }]
-                                                                                        )
-                                                                                    case 'pass through':
-                                                                                        return _p.ss(
-                                                                                            $,
-                                                                                            ($) => ['pass through', null]
-                                                                                        )
-                                                                                    default:
-                                                                                        return _p.au(
-                                                                                            $[0]
-                                                                                        )
-                                                                                }
-                                                                            }
-                                                                        ),
-                                                                    })
-                                                                )
-                                                            ),
-                                                        }]
-                                                    )
-                                                case 'context':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ['context', null]
-                                                    )
-                                                case 'dictionary entry':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ['dictionary entry', {
-                                                            'dictionary': _p_cc(
-                                                                $['dictionary'],
-                                                                ($) => Selection(
-                                                                    $
-                                                                )
-                                                            ),
-                                                            'id': _p_cc(
-                                                                $['id'],
-                                                                ($) => Expression(
-                                                                    $
-                                                                )
-                                                            ),
-                                                            'abort handler': _p_cc(
-                                                                $['abort handler'],
-                                                                ($) => Expression(
-                                                                    $
-                                                                )
-                                                            ),
-                                                        }]
-                                                    )
-                                                case 'lookup entry':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ['lookup entry', {
-                                                            'lookup': _p_cc(
-                                                                $['lookup'],
-                                                                ($) => Lookup_Selection(
-                                                                    $
-                                                                )
-                                                            ),
-                                                            'id': _p_cc(
-                                                                $['id'],
-                                                                ($) => Expression(
-                                                                    $
-                                                                )
-                                                            ),
-                                                            'abort handler': _p_cc(
-                                                                $['abort handler'],
-                                                                ($) => Expression(
-                                                                    $
-                                                                )
-                                                            ),
-                                                        }]
-                                                    )
-                                                case 'parameter':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ['parameter', $]
-                                                    )
-                                                case 'parent sibling':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ['parent sibling', $]
-                                                    )
-                                                case 'sibling':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ['sibling', $]
-                                                    )
-                                                case 'state':
-                                                    return _p.ss(
-                                                        $,
-                                                        ($) => ['state', null]
-                                                    )
-                                                default:
-                                                    return _p.au(
-                                                        $[0]
-                                                    )
-                                            }
-                                        }
-                                    ),
-                                })
-                            ),
-                            'tail': _p_cc(
-                                $['tail'],
-                                ($) => ({
-                                    'l location': {
-                                        'document resource identifier': "implement me",
-                                        'line': 42,
-                                        'column': 42,
-                                    },
-                                    'l list': _p.list.map(
-                                        $,
-                                        ($) => ({
-                                            'l item': $,
-                                            'l location': {
-                                                'document resource identifier': "implement me",
-                                                'line': 42,
-                                                'column': 42,
-                                            },
-                                        })
-                                    ),
-                                })
-                            ),
-                        }]
-                    )
-                default:
-                    return _p.au(
-                        $[0]
-                    )
-            }
-        }
     ),
 })
 
@@ -2042,6 +1730,318 @@ export const Expression: t_signatures.Expression = ($) => ({
                                             )
                                     }
                                 }
+                            ),
+                        }]
+                    )
+                default:
+                    return _p.au(
+                        $[0]
+                    )
+            }
+        }
+    ),
+})
+
+export const Selection: t_signatures.Selection = ($) => ({
+    'l location': {
+        'document resource identifier': "implement me",
+        'line': 42,
+        'column': 42,
+    },
+    'l state': _p.decide.state(
+        $,
+        ($): t_out.Selection.l_state => {
+            switch ($[0]) {
+                case 'implement me':
+                    return _p.ss(
+                        $,
+                        ($) => ['implement me', $]
+                    )
+                case 'regular':
+                    return _p.ss(
+                        $,
+                        ($) => ['regular', {
+                            'start': _p_cc(
+                                $['start'],
+                                ($) => ({
+                                    'l location': {
+                                        'document resource identifier': "implement me",
+                                        'line': 42,
+                                        'column': 42,
+                                    },
+                                    'l state': _p.decide.state(
+                                        $,
+                                        ($): t_out.Selection.l_state.regular.start.l_state => {
+                                            switch ($[0]) {
+                                                case 'call':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['call', {
+                                                            'source': _p_cc(
+                                                                $['source'],
+                                                                ($) => ({
+                                                                    'l location': {
+                                                                        'document resource identifier': "implement me",
+                                                                        'line': 42,
+                                                                        'column': 42,
+                                                                    },
+                                                                    'l state': _p.decide.state(
+                                                                        $,
+                                                                        ($): t_out.Selection.l_state.regular.start.l_state.call.source.l_state => {
+                                                                            switch ($[0]) {
+                                                                                case 'local':
+                                                                                    return _p.ss(
+                                                                                        $,
+                                                                                        ($) => ['local', $]
+                                                                                    )
+                                                                                case 'imported':
+                                                                                    return _p.ss(
+                                                                                        $,
+                                                                                        ($) => ['imported', {
+                                                                                            'import': _p_cc(
+                                                                                                $['import'],
+                                                                                                ($) => $
+                                                                                            ),
+                                                                                            'variable': _p_cc(
+                                                                                                $['variable'],
+                                                                                                ($) => $
+                                                                                            ),
+                                                                                        }]
+                                                                                    )
+                                                                                default:
+                                                                                    return _p.au(
+                                                                                        $[0]
+                                                                                    )
+                                                                            }
+                                                                        }
+                                                                    ),
+                                                                })
+                                                            ),
+                                                            'context': _p_cc(
+                                                                $['context'],
+                                                                ($) => Expression(
+                                                                    $
+                                                                )
+                                                            ),
+                                                            'abort': _p_cc(
+                                                                $['abort'],
+                                                                ($) => _p.optional.map(
+                                                                    $,
+                                                                    ($) => Expression(
+                                                                        $
+                                                                    )
+                                                                )
+                                                            ),
+                                                            'lookups': _p_cc(
+                                                                $['lookups'],
+                                                                ($) => _p.optional.map(
+                                                                    $,
+                                                                    ($) => ({
+                                                                        'l location': {
+                                                                            'document resource identifier': "implement me",
+                                                                            'line': 42,
+                                                                            'column': 42,
+                                                                        },
+                                                                        'l state': _p.decide.state(
+                                                                            $,
+                                                                            ($): t_out.Selection.l_state.regular.start.l_state.call.lookups.O.l_state => {
+                                                                                switch ($[0]) {
+                                                                                    case 'initialize':
+                                                                                        return _p.ss(
+                                                                                            $,
+                                                                                            ($) => ['initialize', {
+                                                                                                'l location': {
+                                                                                                    'document resource identifier': "implement me",
+                                                                                                    'line': 42,
+                                                                                                    'column': 42,
+                                                                                                },
+                                                                                                'l dictionary': _p.dictionary.map(
+                                                                                                    $,
+                                                                                                    ($, id) => ({
+                                                                                                        'l entry': Lookup_Selection(
+                                                                                                            $
+                                                                                                        ),
+                                                                                                        'l location': {
+                                                                                                            'document resource identifier': "implement me",
+                                                                                                            'line': 42,
+                                                                                                            'column': 42,
+                                                                                                        },
+                                                                                                    })
+                                                                                                ),
+                                                                                            }]
+                                                                                        )
+                                                                                    case 'pass through':
+                                                                                        return _p.ss(
+                                                                                            $,
+                                                                                            ($) => ['pass through', null]
+                                                                                        )
+                                                                                    default:
+                                                                                        return _p.au(
+                                                                                            $[0]
+                                                                                        )
+                                                                                }
+                                                                            }
+                                                                        ),
+                                                                    })
+                                                                )
+                                                            ),
+                                                            'arguments': _p_cc(
+                                                                $['arguments'],
+                                                                ($) => _p.optional.map(
+                                                                    $,
+                                                                    ($) => ({
+                                                                        'l location': {
+                                                                            'document resource identifier': "implement me",
+                                                                            'line': 42,
+                                                                            'column': 42,
+                                                                        },
+                                                                        'l state': _p.decide.state(
+                                                                            $,
+                                                                            ($): t_out.Selection.l_state.regular.start.l_state.call.arguments_.O.l_state => {
+                                                                                switch ($[0]) {
+                                                                                    case 'initialize':
+                                                                                        return _p.ss(
+                                                                                            $,
+                                                                                            ($) => ['initialize', {
+                                                                                                'l location': {
+                                                                                                    'document resource identifier': "implement me",
+                                                                                                    'line': 42,
+                                                                                                    'column': 42,
+                                                                                                },
+                                                                                                'l dictionary': _p.dictionary.map(
+                                                                                                    $,
+                                                                                                    ($, id) => ({
+                                                                                                        'l entry': Expression(
+                                                                                                            $
+                                                                                                        ),
+                                                                                                        'l location': {
+                                                                                                            'document resource identifier': "implement me",
+                                                                                                            'line': 42,
+                                                                                                            'column': 42,
+                                                                                                        },
+                                                                                                    })
+                                                                                                ),
+                                                                                            }]
+                                                                                        )
+                                                                                    case 'pass through':
+                                                                                        return _p.ss(
+                                                                                            $,
+                                                                                            ($) => ['pass through', null]
+                                                                                        )
+                                                                                    default:
+                                                                                        return _p.au(
+                                                                                            $[0]
+                                                                                        )
+                                                                                }
+                                                                            }
+                                                                        ),
+                                                                    })
+                                                                )
+                                                            ),
+                                                        }]
+                                                    )
+                                                case 'context':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['context', null]
+                                                    )
+                                                case 'dictionary entry':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['dictionary entry', {
+                                                            'dictionary': _p_cc(
+                                                                $['dictionary'],
+                                                                ($) => Selection(
+                                                                    $
+                                                                )
+                                                            ),
+                                                            'id': _p_cc(
+                                                                $['id'],
+                                                                ($) => Expression(
+                                                                    $
+                                                                )
+                                                            ),
+                                                            'abort handler': _p_cc(
+                                                                $['abort handler'],
+                                                                ($) => Expression(
+                                                                    $
+                                                                )
+                                                            ),
+                                                        }]
+                                                    )
+                                                case 'lookup entry':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['lookup entry', {
+                                                            'lookup': _p_cc(
+                                                                $['lookup'],
+                                                                ($) => Lookup_Selection(
+                                                                    $
+                                                                )
+                                                            ),
+                                                            'id': _p_cc(
+                                                                $['id'],
+                                                                ($) => Expression(
+                                                                    $
+                                                                )
+                                                            ),
+                                                            'abort handler': _p_cc(
+                                                                $['abort handler'],
+                                                                ($) => Expression(
+                                                                    $
+                                                                )
+                                                            ),
+                                                        }]
+                                                    )
+                                                case 'parameter':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['parameter', $]
+                                                    )
+                                                case 'parent sibling':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['parent sibling', $]
+                                                    )
+                                                case 'sibling':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['sibling', $]
+                                                    )
+                                                case 'state':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['state', null]
+                                                    )
+                                                default:
+                                                    return _p.au(
+                                                        $[0]
+                                                    )
+                                            }
+                                        }
+                                    ),
+                                })
+                            ),
+                            'tail': _p_cc(
+                                $['tail'],
+                                ($) => ({
+                                    'l location': {
+                                        'document resource identifier': "implement me",
+                                        'line': 42,
+                                        'column': 42,
+                                    },
+                                    'l list': _p.list.map(
+                                        $,
+                                        ($) => ({
+                                            'l item': $,
+                                            'l location': {
+                                                'document resource identifier': "implement me",
+                                                'line': 42,
+                                                'column': 42,
+                                            },
+                                        })
+                                    ),
+                                })
                             ),
                         }]
                     )

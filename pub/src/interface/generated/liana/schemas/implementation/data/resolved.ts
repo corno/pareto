@@ -3,6 +3,24 @@ import * as _pi from "pareto-core/dist/interface"
 
 import * as i__imports_interface from "../../interface/data/resolved"
 
+export namespace Module_Set_ {
+    
+    export namespace D {
+        
+        export type module_ = Module_
+        
+        export type set_ = Module_Set_
+        
+    }
+    
+    export type D = 
+        | readonly ['module', D.module_]
+        | readonly ['set', D.set_]
+    
+}
+
+export type Module_Set_ = _pi.Dictionary<Module_Set_.D>
+
 export namespace Module_ {
     
     export namespace type_ {
@@ -148,24 +166,6 @@ export type Module_ = {
     readonly 'algorithms': Module_.algorithms
 }
 
-export namespace Module_Set_ {
-    
-    export namespace D {
-        
-        export type module_ = Module_
-        
-        export type set_ = Module_Set_
-        
-    }
-    
-    export type D = 
-        | readonly ['module', D.module_]
-        | readonly ['set', D.set_]
-    
-}
-
-export type Module_Set_ = _pi.Dictionary<Module_Set_.D>
-
 export namespace Temp_Type_Node_Reference_ {
     
     export namespace type_ {
@@ -214,182 +214,6 @@ export type Temp_Type_Node_Reference_ = {
     readonly 'type': Temp_Type_Node_Reference_.type_
     readonly 'sub selection': Temp_Type_Node_Reference_.sub_selection
 }
-
-export namespace Selection_ {
-    
-    export type implement_me = string
-    
-    export namespace regular {
-        
-        export namespace start {
-            
-            export namespace call {
-                
-                export namespace source {
-                    
-                    export type local = string
-                    
-                    export namespace imported {
-                        
-                        export type import_ = string
-                        
-                        export type variable = string
-                        
-                    }
-                    
-                    export type imported = {
-                        readonly 'import': imported.import_
-                        readonly 'variable': imported.variable
-                    }
-                    
-                }
-                
-                export type source = 
-                    | readonly ['local', source.local]
-                    | readonly ['imported', source.imported]
-                
-                export type context = Expression_
-                
-                export namespace abort {
-                    
-                    export type O = Expression_
-                    
-                }
-                
-                export type abort = _pi.Optional_Value<abort.O>
-                
-                export namespace lookups {
-                    
-                    export namespace O {
-                        
-                        export namespace initialize {
-                            
-                            export type D = Lookup_Selection_
-                            
-                        }
-                        
-                        export type initialize = _pi.Dictionary<initialize.D>
-                        
-                        export type pass_through = null
-                        
-                    }
-                    
-                    export type O = 
-                        | readonly ['initialize', O.initialize]
-                        | readonly ['pass through', O.pass_through]
-                    
-                }
-                
-                export type lookups = _pi.Optional_Value<lookups.O>
-                
-                export namespace arguments_ {
-                    
-                    export namespace O {
-                        
-                        export namespace initialize {
-                            
-                            export type D = Expression_
-                            
-                        }
-                        
-                        export type initialize = _pi.Dictionary<initialize.D>
-                        
-                        export type pass_through = null
-                        
-                    }
-                    
-                    export type O = 
-                        | readonly ['initialize', O.initialize]
-                        | readonly ['pass through', O.pass_through]
-                    
-                }
-                
-                export type arguments_ = _pi.Optional_Value<arguments_.O>
-                
-            }
-            
-            export type call = {
-                readonly 'source': call.source
-                readonly 'context': call.context
-                readonly 'abort': call.abort
-                readonly 'lookups': call.lookups
-                readonly 'arguments': call.arguments_
-            }
-            
-            export type context = null
-            
-            export namespace dictionary_entry {
-                
-                export type dictionary = Selection_
-                
-                export type id = Expression_
-                
-                export type abort_handler = Expression_
-                
-            }
-            
-            export type dictionary_entry = {
-                readonly 'dictionary': dictionary_entry.dictionary
-                readonly 'id': dictionary_entry.id
-                readonly 'abort handler': dictionary_entry.abort_handler
-            }
-            
-            export namespace lookup_entry {
-                
-                export type lookup = Lookup_Selection_
-                
-                export type id = Expression_
-                
-                export type abort_handler = Expression_
-                
-            }
-            
-            export type lookup_entry = {
-                readonly 'lookup': lookup_entry.lookup
-                readonly 'id': lookup_entry.id
-                readonly 'abort handler': lookup_entry.abort_handler
-            }
-            
-            export type parameter = string
-            
-            export type parent_sibling = string
-            
-            export type sibling = string
-            
-            export type state = null
-            
-        }
-        
-        export type start = 
-            | readonly ['call', start.call]
-            | readonly ['context', start.context]
-            | readonly ['dictionary entry', start.dictionary_entry]
-            | readonly ['lookup entry', start.lookup_entry]
-            | readonly ['parameter', start.parameter]
-            | readonly ['parent sibling', start.parent_sibling]
-            | readonly ['sibling', start.sibling]
-            | readonly ['state', start.state]
-        
-        export namespace tail {
-            
-            export type L = string
-            
-        }
-        
-        export type tail = _pi.List<tail.L>
-        
-    }
-    
-    export type regular = {
-        readonly 'start': regular.start
-        readonly 'tail': regular.tail
-    }
-    
-}
-
-export type Selection_ = 
-    | readonly ['implement me', Selection_.implement_me]
-    | readonly ['regular', Selection_.regular]
 
 export namespace Expression_ {
     
@@ -1157,6 +981,182 @@ export type Expression_ =
     | readonly ['select', Expression_.select]
     | readonly ['special', Expression_.special]
 
+export namespace Selection_ {
+    
+    export type implement_me = string
+    
+    export namespace regular {
+        
+        export namespace start {
+            
+            export namespace call {
+                
+                export namespace source {
+                    
+                    export type local = string
+                    
+                    export namespace imported {
+                        
+                        export type import_ = string
+                        
+                        export type variable = string
+                        
+                    }
+                    
+                    export type imported = {
+                        readonly 'import': imported.import_
+                        readonly 'variable': imported.variable
+                    }
+                    
+                }
+                
+                export type source = 
+                    | readonly ['local', source.local]
+                    | readonly ['imported', source.imported]
+                
+                export type context = Expression_
+                
+                export namespace abort {
+                    
+                    export type O = Expression_
+                    
+                }
+                
+                export type abort = _pi.Optional_Value<abort.O>
+                
+                export namespace lookups {
+                    
+                    export namespace O {
+                        
+                        export namespace initialize {
+                            
+                            export type D = Lookup_Selection_
+                            
+                        }
+                        
+                        export type initialize = _pi.Dictionary<initialize.D>
+                        
+                        export type pass_through = null
+                        
+                    }
+                    
+                    export type O = 
+                        | readonly ['initialize', O.initialize]
+                        | readonly ['pass through', O.pass_through]
+                    
+                }
+                
+                export type lookups = _pi.Optional_Value<lookups.O>
+                
+                export namespace arguments_ {
+                    
+                    export namespace O {
+                        
+                        export namespace initialize {
+                            
+                            export type D = Expression_
+                            
+                        }
+                        
+                        export type initialize = _pi.Dictionary<initialize.D>
+                        
+                        export type pass_through = null
+                        
+                    }
+                    
+                    export type O = 
+                        | readonly ['initialize', O.initialize]
+                        | readonly ['pass through', O.pass_through]
+                    
+                }
+                
+                export type arguments_ = _pi.Optional_Value<arguments_.O>
+                
+            }
+            
+            export type call = {
+                readonly 'source': call.source
+                readonly 'context': call.context
+                readonly 'abort': call.abort
+                readonly 'lookups': call.lookups
+                readonly 'arguments': call.arguments_
+            }
+            
+            export type context = null
+            
+            export namespace dictionary_entry {
+                
+                export type dictionary = Selection_
+                
+                export type id = Expression_
+                
+                export type abort_handler = Expression_
+                
+            }
+            
+            export type dictionary_entry = {
+                readonly 'dictionary': dictionary_entry.dictionary
+                readonly 'id': dictionary_entry.id
+                readonly 'abort handler': dictionary_entry.abort_handler
+            }
+            
+            export namespace lookup_entry {
+                
+                export type lookup = Lookup_Selection_
+                
+                export type id = Expression_
+                
+                export type abort_handler = Expression_
+                
+            }
+            
+            export type lookup_entry = {
+                readonly 'lookup': lookup_entry.lookup
+                readonly 'id': lookup_entry.id
+                readonly 'abort handler': lookup_entry.abort_handler
+            }
+            
+            export type parameter = string
+            
+            export type parent_sibling = string
+            
+            export type sibling = string
+            
+            export type state = null
+            
+        }
+        
+        export type start = 
+            | readonly ['call', start.call]
+            | readonly ['context', start.context]
+            | readonly ['dictionary entry', start.dictionary_entry]
+            | readonly ['lookup entry', start.lookup_entry]
+            | readonly ['parameter', start.parameter]
+            | readonly ['parent sibling', start.parent_sibling]
+            | readonly ['sibling', start.sibling]
+            | readonly ['state', start.state]
+        
+        export namespace tail {
+            
+            export type L = string
+            
+        }
+        
+        export type tail = _pi.List<tail.L>
+        
+    }
+    
+    export type regular = {
+        readonly 'start': regular.start
+        readonly 'tail': regular.tail
+    }
+    
+}
+
+export type Selection_ = 
+    | readonly ['implement me', Selection_.implement_me]
+    | readonly ['regular', Selection_.regular]
+
 export namespace Lookup_Selection_ {
     
     export type implement_me = string
@@ -1223,10 +1223,10 @@ export type Lookup_Selection_ =
     | readonly ['cyclic', Lookup_Selection_.cyclic]
 
 export { 
-    Module_ as Module, 
     Module_Set_ as Module_Set, 
+    Module_ as Module, 
     Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
-    Selection_ as Selection, 
     Expression_ as Expression, 
+    Selection_ as Selection, 
     Lookup_Selection_ as Lookup_Selection, 
 }

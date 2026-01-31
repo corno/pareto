@@ -1,54 +1,23 @@
 
 import * as _pi from "pareto-core/dist/interface"
 
-export namespace Imports_ {
+export namespace Module_Set_ {
     
     export namespace D {
         
-        export namespace type_ {
-            
-            export type external = string
-            
-            export namespace ancestor {
-                
-                export type number_of_steps = number
-                
-                export type dependency = string
-                
-            }
-            
-            export type ancestor = {
-                readonly 'number of steps': ancestor.number_of_steps
-                readonly 'dependency': ancestor.dependency
-            }
-            
-            export type sibling = string
-            
-        }
+        export type module_ = Module_
         
-        export type type_ = 
-            | readonly ['external', type_.external]
-            | readonly ['ancestor', type_.ancestor]
-            | readonly ['sibling', type_.sibling]
-        
-        export namespace tail {
-            
-            export type L = string
-            
-        }
-        
-        export type tail = _pi.List<tail.L>
+        export type set_ = Module_Set_
         
     }
     
-    export type D = {
-        readonly 'type': D.type_
-        readonly 'tail': D.tail
-    }
+    export type D = 
+        | readonly ['module', D.module_]
+        | readonly ['set', D.set_]
     
 }
 
-export type Imports_ = _pi.Dictionary<Imports_.D>
+export type Module_Set_ = _pi.Dictionary<Module_Set_.D>
 
 export namespace Module_ {
     
@@ -164,46 +133,54 @@ export type Module_ = {
     readonly 'types': Module_.types
 }
 
-export namespace Module_Set_ {
+export namespace Imports_ {
     
     export namespace D {
         
-        export type module_ = Module_
+        export namespace type_ {
+            
+            export type external = string
+            
+            export namespace ancestor {
+                
+                export type number_of_steps = number
+                
+                export type dependency = string
+                
+            }
+            
+            export type ancestor = {
+                readonly 'number of steps': ancestor.number_of_steps
+                readonly 'dependency': ancestor.dependency
+            }
+            
+            export type sibling = string
+            
+        }
         
-        export type set_ = Module_Set_
+        export type type_ = 
+            | readonly ['external', type_.external]
+            | readonly ['ancestor', type_.ancestor]
+            | readonly ['sibling', type_.sibling]
+        
+        export namespace tail {
+            
+            export type L = string
+            
+        }
+        
+        export type tail = _pi.List<tail.L>
         
     }
     
-    export type D = 
-        | readonly ['module', D.module_]
-        | readonly ['set', D.set_]
+    export type D = {
+        readonly 'type': D.type_
+        readonly 'tail': D.tail
+    }
     
 }
 
-export type Module_Set_ = _pi.Dictionary<Module_Set_.D>
-
-export namespace Module_Reference_ {
-    
-    export namespace import_ {
-        
-        export type import_ = string
-        
-        export type type_ = string
-        
-    }
-    
-    export type import_ = {
-        readonly 'import': import_.import_
-        readonly 'type': import_.type_
-    }
-    
-    export type local = string
-    
-}
-
-export type Module_Reference_ = 
-    | readonly ['import', Module_Reference_.import_]
-    | readonly ['local', Module_Reference_.local]
+export type Imports_ = _pi.Dictionary<Imports_.D>
 
 export namespace Value_ {
     
@@ -323,10 +300,33 @@ export type Value_ =
     | readonly ['state', Value_.state]
     | readonly ['text', Value_.text]
 
+export namespace Module_Reference_ {
+    
+    export namespace import_ {
+        
+        export type import_ = string
+        
+        export type type_ = string
+        
+    }
+    
+    export type import_ = {
+        readonly 'import': import_.import_
+        readonly 'type': import_.type_
+    }
+    
+    export type local = string
+    
+}
+
+export type Module_Reference_ = 
+    | readonly ['import', Module_Reference_.import_]
+    | readonly ['local', Module_Reference_.local]
+
 export { 
-    Imports_ as Imports, 
-    Module_ as Module, 
     Module_Set_ as Module_Set, 
-    Module_Reference_ as Module_Reference, 
+    Module_ as Module, 
+    Imports_ as Imports, 
     Value_ as Value, 
+    Module_Reference_ as Module_Reference, 
 }

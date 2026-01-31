@@ -7,8 +7,8 @@ import * as v_serialize from "astn-core/dist/implementation/manual/schemas/seale
 
 import * as v_marshall from "./marshall"
 
-export const Imports: t_signatures.Imports = ($) => v_serialize.Document(
-    v_marshall.Imports(
+export const Module_Set: t_signatures.Module_Set = ($) => v_serialize.Document(
+    v_marshall.Module_Set(
         $
     )
 )
@@ -19,20 +19,20 @@ export const Module: t_signatures.Module = ($) => v_serialize.Document(
     )
 )
 
-export const Module_Set: t_signatures.Module_Set = ($) => v_serialize.Document(
-    v_marshall.Module_Set(
-        $
-    )
-)
-
-export const Module_Reference: t_signatures.Module_Reference = ($) => v_serialize.Document(
-    v_marshall.Module_Reference(
+export const Imports: t_signatures.Imports = ($) => v_serialize.Document(
+    v_marshall.Imports(
         $
     )
 )
 
 export const Value: t_signatures.Value = ($) => v_serialize.Document(
     v_marshall.Value(
+        $
+    )
+)
+
+export const Module_Reference: t_signatures.Module_Reference = ($) => v_serialize.Document(
+    v_marshall.Module_Reference(
         $
     )
 )

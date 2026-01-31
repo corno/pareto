@@ -3,9 +3,9 @@ import * as _pi from "pareto-core/dist/interface"
 
 import * as i_in from "./data/resolved"
 
-export namespace Imports_ {
+export namespace Module_Set_ {
     
-    export type I = i_in.Imports
+    export type I = i_in.Module_Set
     
     export type O = string
     
@@ -15,9 +15,9 @@ export namespace Imports_ {
     
 }
 
-export type Imports_ = (
-    context: Imports_.I,
-) => Imports_.O
+export type Module_Set_ = (
+    context: Module_Set_.I,
+) => Module_Set_.O
 
 export namespace Module_ {
     
@@ -35,25 +35,9 @@ export type Module_ = (
     context: Module_.I,
 ) => Module_.O
 
-export namespace Module_Set_ {
+export namespace Imports_ {
     
-    export type I = i_in.Module_Set
-    
-    export type O = string
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Module_Set_ = (
-    context: Module_Set_.I,
-) => Module_Set_.O
-
-export namespace Module_Reference_ {
-    
-    export type I = i_in.Module_Reference
+    export type I = i_in.Imports
     
     export type O = string
     
@@ -63,9 +47,9 @@ export namespace Module_Reference_ {
     
 }
 
-export type Module_Reference_ = (
-    context: Module_Reference_.I,
-) => Module_Reference_.O
+export type Imports_ = (
+    context: Imports_.I,
+) => Imports_.O
 
 export namespace Value_ {
     
@@ -83,10 +67,26 @@ export type Value_ = (
     context: Value_.I,
 ) => Value_.O
 
+export namespace Module_Reference_ {
+    
+    export type I = i_in.Module_Reference
+    
+    export type O = string
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Module_Reference_ = (
+    context: Module_Reference_.I,
+) => Module_Reference_.O
+
 export { 
-    Imports_ as Imports, 
-    Module_ as Module, 
     Module_Set_ as Module_Set, 
-    Module_Reference_ as Module_Reference, 
+    Module_ as Module, 
+    Imports_ as Imports, 
     Value_ as Value, 
+    Module_Reference_ as Module_Reference, 
 }
