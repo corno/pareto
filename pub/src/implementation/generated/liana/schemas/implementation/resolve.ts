@@ -2520,21 +2520,58 @@ export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide
                                                                 )
                                                             )
                                                             
-                                                            const prop_abort_handler = _p_cc(
-                                                                $['abort handler'],
-                                                                ($) => Expression(
-                                                                    $,
-                                                                    ($) => abort(
-                                                                        $
-                                                                    ),
-                                                                    null,
-                                                                    null
+                                                            const prop_abort_handlers = _p_cc(
+                                                                $['abort handlers'],
+                                                                ($) => _p.group.resolve(
+                                                                    () => {
+                                                                        
+                                                                        const prop_no_such_entry = _p_cc(
+                                                                            $['no such entry'],
+                                                                            ($) => Expression(
+                                                                                $,
+                                                                                ($) => abort(
+                                                                                    $
+                                                                                ),
+                                                                                null,
+                                                                                null
+                                                                            )
+                                                                        )
+                                                                        
+                                                                        const prop_no_context_lookup = _p_cc(
+                                                                            $['no context lookup'],
+                                                                            ($) => Expression(
+                                                                                $,
+                                                                                ($) => abort(
+                                                                                    $
+                                                                                ),
+                                                                                null,
+                                                                                null
+                                                                            )
+                                                                        )
+                                                                        
+                                                                        const prop_cycle_detected = _p_cc(
+                                                                            $['cycle detected'],
+                                                                            ($) => Expression(
+                                                                                $,
+                                                                                ($) => abort(
+                                                                                    $
+                                                                                ),
+                                                                                null,
+                                                                                null
+                                                                            )
+                                                                        )
+                                                                        return {
+                                                                            'no such entry': prop_no_such_entry,
+                                                                            'no context lookup': prop_no_context_lookup,
+                                                                            'cycle detected': prop_cycle_detected,
+                                                                        }
+                                                                    }
                                                                 )
                                                             )
                                                             return {
                                                                 'lookup': prop_lookup,
                                                                 'id': prop_id,
-                                                                'abort handler': prop_abort_handler,
+                                                                'abort handlers': prop_abort_handlers,
                                                             }
                                                         }
                                                     )]

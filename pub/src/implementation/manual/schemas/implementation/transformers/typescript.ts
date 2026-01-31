@@ -896,25 +896,42 @@ export const Selection = (
                     case 'lookup entry': return _p.ss($, ($) => sh.e.call(
                         sh.e.property_access(
                             Lookup_Selection($.lookup),
-                            sh.identifier_raw("__get_entry")
+                            sh.identifier_raw("get_entry")
                         ),
                         [
                             Expression($.id),
-                            sh.e.arrow_function_with_expression(
-                                [
-                                    sh.parameter(
-                                        sh.identifier_raw("$"),
-                                        null,
+                            sh.e.object_literal({
+                                "no_such_entry": sh.e.arrow_function_with_expression(
+                                    [],
+                                    null,
+                                    sh.e.call(
+                                        sh.e.identifier_raw("abort"),
+                                        [
+                                            Expression($['abort handlers']['no such entry'])
+                                        ]
                                     )
-                                ],
-                                null,
-                                sh.e.call(
-                                    sh.e.identifier_raw("abort"),
-                                    [
-                                        Expression($['abort handler'])
-                                    ]
-                                )
-                            )
+                                ),
+                                "no_context_lookup": sh.e.arrow_function_with_expression(
+                                    [],
+                                    null,
+                                    sh.e.call(
+                                        sh.e.identifier_raw("abort"),
+                                        [
+                                            Expression($['abort handlers']['no context lookup'])
+                                        ]
+                                    )
+                                ),
+                                "cycle_detected": sh.e.arrow_function_with_expression(
+                                    [],
+                                    null,
+                                    sh.e.call(
+                                        sh.e.identifier_raw("abort"),
+                                        [
+                                            Expression($['abort handlers']['cycle detected'])
+                                        ]
+                                    )
+                                ),
+                            }),
                         ]
                     ))
                     case 'parameter': return _p.ss($, ($) => sh.e.element_access(

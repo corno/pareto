@@ -1106,14 +1106,28 @@ export namespace Selection_ {
                 
                 export type id = Expression_
                 
-                export type abort_handler = Expression_
+                export namespace abort_handlers {
+                    
+                    export type no_such_entry = Expression_
+                    
+                    export type no_context_lookup = Expression_
+                    
+                    export type cycle_detected = Expression_
+                    
+                }
+                
+                export type abort_handlers = {
+                    readonly 'no such entry': abort_handlers.no_such_entry
+                    readonly 'no context lookup': abort_handlers.no_context_lookup
+                    readonly 'cycle detected': abort_handlers.cycle_detected
+                }
                 
             }
             
             export type lookup_entry = {
                 readonly 'lookup': lookup_entry.lookup
                 readonly 'id': lookup_entry.id
-                readonly 'abort handler': lookup_entry.abort_handler
+                readonly 'abort handlers': lookup_entry.abort_handlers
             }
             
             export type parameter = string

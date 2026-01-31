@@ -457,15 +457,21 @@ export namespace s {
     export const lookup_entry = (
         lookup: d_target.Lookup_Selection,
         id: d_target.Expression,
-        abort_handler: d_target.Expression,
-        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
+        no_such_entry_handler: d_target.Expression,
+        no_context_lookup_handler: d_target.Expression,
+        cycle_detected_handler: d_target.Expression,
+        // tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
     ): d_target.Selection => wrap_state(['regular', {
         'start': wrap_state<d_target.Selection.regular.start>(['lookup entry', {
             'lookup': lookup,
             'id': id,
-            'abort handler': abort_handler
+            'abort handlers': {
+                'no such entry': no_such_entry_handler,
+                'no context lookup': no_context_lookup_handler,
+                'cycle detected': cycle_detected_handler,
+            }
         }]),
-        'tail': _p.list.literal(tail),
+        'tail': _p.list.literal([]),
     }])
 
     export const parameter = (

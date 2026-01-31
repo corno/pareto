@@ -1985,11 +1985,28 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                                     $
                                                                 )
                                                             ),
-                                                            'abort handler': _p_cc(
-                                                                $['abort handler'],
-                                                                ($) => Expression(
-                                                                    $
-                                                                )
+                                                            'abort handlers': _p_cc(
+                                                                $['abort handlers'],
+                                                                ($) => ({
+                                                                    'no such entry': _p_cc(
+                                                                        $['no such entry'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'no context lookup': _p_cc(
+                                                                        $['no context lookup'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'cycle detected': _p_cc(
+                                                                        $['cycle detected'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                })
                                                             ),
                                                         }]
                                                     )

@@ -2101,11 +2101,30 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                                             $
                                                                         )
                                                                     ),
-                                                                    'abort handler': _p_cc(
-                                                                        $['abort handler'],
-                                                                        ($) => Expression(
-                                                                            $
-                                                                        )
+                                                                    'abort handlers': _p_cc(
+                                                                        $['abort handlers'],
+                                                                        ($) => ['group', ['verbose', _p.dictionary.literal(
+                                                                            {
+                                                                                'no such entry': _p_cc(
+                                                                                    $['no such entry'],
+                                                                                    ($) => Expression(
+                                                                                        $
+                                                                                    )
+                                                                                ),
+                                                                                'no context lookup': _p_cc(
+                                                                                    $['no context lookup'],
+                                                                                    ($) => Expression(
+                                                                                        $
+                                                                                    )
+                                                                                ),
+                                                                                'cycle detected': _p_cc(
+                                                                                    $['cycle detected'],
+                                                                                    ($) => Expression(
+                                                                                        $
+                                                                                    )
+                                                                                ),
+                                                                            }
+                                                                        )]]
                                                                     ),
                                                                 }
                                                             )]],

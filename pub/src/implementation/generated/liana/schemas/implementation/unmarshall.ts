@@ -4124,18 +4124,64 @@ export const Selection: t_signatures.Selection = ($, abort) => _p_cc(
                                                                                     )
                                                                                 )
                                                                             ),
-                                                                            'abort handler': _p_cc(
+                                                                            'abort handlers': _p_cc(
                                                                                 $.__get_entry(
-                                                                                    'abort handler',
+                                                                                    'abort handlers',
                                                                                     ($) => abort(
-                                                                                        ['no such entry', "abort handler"]
+                                                                                        ['no such entry', "abort handlers"]
                                                                                     )
                                                                                 ),
-                                                                                ($) => Expression(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $
-                                                                                    )
+                                                                                ($) => _p_cc(
+                                                                                    v_unmarshalled_from_parse_tree.Group(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            ['expected a group', null]
+                                                                                        )
+                                                                                    ),
+                                                                                    ($) => ({
+                                                                                        'no such entry': _p_cc(
+                                                                                            $.__get_entry(
+                                                                                                'no such entry',
+                                                                                                ($) => abort(
+                                                                                                    ['no such entry', "no such entry"]
+                                                                                                )
+                                                                                            ),
+                                                                                            ($) => Expression(
+                                                                                                $,
+                                                                                                ($) => abort(
+                                                                                                    $
+                                                                                                )
+                                                                                            )
+                                                                                        ),
+                                                                                        'no context lookup': _p_cc(
+                                                                                            $.__get_entry(
+                                                                                                'no context lookup',
+                                                                                                ($) => abort(
+                                                                                                    ['no such entry', "no context lookup"]
+                                                                                                )
+                                                                                            ),
+                                                                                            ($) => Expression(
+                                                                                                $,
+                                                                                                ($) => abort(
+                                                                                                    $
+                                                                                                )
+                                                                                            )
+                                                                                        ),
+                                                                                        'cycle detected': _p_cc(
+                                                                                            $.__get_entry(
+                                                                                                'cycle detected',
+                                                                                                ($) => abort(
+                                                                                                    ['no such entry', "cycle detected"]
+                                                                                                )
+                                                                                            ),
+                                                                                            ($) => Expression(
+                                                                                                $,
+                                                                                                ($) => abort(
+                                                                                                    $
+                                                                                                )
+                                                                                            )
+                                                                                        ),
+                                                                                    })
                                                                                 )
                                                                             ),
                                                                         })
