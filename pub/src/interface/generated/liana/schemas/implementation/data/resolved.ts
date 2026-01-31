@@ -3,25 +3,25 @@ import * as _pi from "pareto-core/dist/interface"
 
 import * as i__imports_interface from "../../interface/data/resolved"
 
-export namespace Module_Set_ {
+export namespace Package_Set_ {
     
     export namespace D {
         
-        export type module_ = Module_
+        export type package_ = Package_
         
-        export type set_ = Module_Set_
+        export type set_ = Package_Set_
         
     }
     
     export type D = 
-        | readonly ['module', D.module_]
+        | readonly ['package', D.package_]
         | readonly ['set', D.set_]
     
 }
 
-export type Module_Set_ = _pi.Dictionary<Module_Set_.D>
+export type Package_Set_ = _pi.Dictionary<Package_Set_.D>
 
-export namespace Module_ {
+export namespace Package_ {
     
     export namespace type_ {
         
@@ -51,9 +51,11 @@ export namespace Module_ {
         
         export type iterate = boolean
         
+        export type lookups = boolean
+        
         export type unreachable_code_path = boolean
         
-        export type lookups = boolean
+        export type variables = boolean
         
     }
     
@@ -62,8 +64,9 @@ export namespace Module_ {
         readonly 'change context': specials.change_context
         readonly 'implement me': specials.implement_me
         readonly 'iterate': specials.iterate
-        readonly 'unreachable code path': specials.unreachable_code_path
         readonly 'lookups': specials.lookups
+        readonly 'unreachable code path': specials.unreachable_code_path
+        readonly 'variables': specials.variables
     }
     
     export type type_imports = i__imports_interface.Imports
@@ -158,12 +161,12 @@ export namespace Module_ {
     
 }
 
-export type Module_ = {
-    readonly 'type': Module_.type_
-    readonly 'specials': Module_.specials
-    readonly 'type imports': Module_.type_imports
-    readonly 'variable imports': Module_.variable_imports
-    readonly 'algorithms': Module_.algorithms
+export type Package_ = {
+    readonly 'type': Package_.type_
+    readonly 'specials': Package_.specials
+    readonly 'type imports': Package_.type_imports
+    readonly 'variable imports': Package_.variable_imports
+    readonly 'algorithms': Package_.algorithms
 }
 
 export namespace Temp_Type_Node_Reference_ {
@@ -400,11 +403,28 @@ export namespace Expression_ {
                         readonly 'options': full.options
                     }
                     
+                    export namespace single {
+                        
+                        export type option = string
+                        
+                        export type if_true = Expression_
+                        
+                        export type if_false = Expression_
+                        
+                    }
+                    
+                    export type single = {
+                        readonly 'option': single.option
+                        readonly 'if true': single.if_true
+                        readonly 'if false': single.if_false
+                    }
+                    
                 }
                 
                 export type type_ = 
                     | readonly ['partial', type_.partial]
                     | readonly ['full', type_.full]
+                    | readonly ['single', type_.single]
                 
             }
             
@@ -946,6 +966,25 @@ export namespace Expression_ {
             readonly 'expression': change_context.expression
         }
         
+        export namespace variables {
+            
+            export namespace variables {
+                
+                export type D = Expression_
+                
+            }
+            
+            export type variables = _pi.Dictionary<variables.D>
+            
+            export type callback = Expression_
+            
+        }
+        
+        export type variables = {
+            readonly 'variables': variables.variables
+            readonly 'callback': variables.callback
+        }
+        
         export type implement_me = string
         
         export namespace iterate {
@@ -969,6 +1008,7 @@ export namespace Expression_ {
         | readonly ['abort', special.abort]
         | readonly ['assert', special.assert]
         | readonly ['change context', special.change_context]
+        | readonly ['variables', special.variables]
         | readonly ['implement me', special.implement_me]
         | readonly ['iterate', special.iterate]
         | readonly ['unreachable', special.unreachable]
@@ -1130,6 +1170,36 @@ export namespace Selection_ {
                 readonly 'abort handlers': lookup_entry.abort_handlers
             }
             
+            export namespace lookup_depth {
+                
+                export type lookup = Lookup_Selection_
+                
+                export type id = Expression_
+                
+                export namespace abort_handlers {
+                    
+                    export type no_such_entry = Expression_
+                    
+                    export type no_context_lookup = Expression_
+                    
+                    export type cycle_detected = Expression_
+                    
+                }
+                
+                export type abort_handlers = {
+                    readonly 'no such entry': abort_handlers.no_such_entry
+                    readonly 'no context lookup': abort_handlers.no_context_lookup
+                    readonly 'cycle detected': abort_handlers.cycle_detected
+                }
+                
+            }
+            
+            export type lookup_depth = {
+                readonly 'lookup': lookup_depth.lookup
+                readonly 'id': lookup_depth.id
+                readonly 'abort handlers': lookup_depth.abort_handlers
+            }
+            
             export type parameter = string
             
             export type parent_sibling = string
@@ -1138,6 +1208,8 @@ export namespace Selection_ {
             
             export type state = null
             
+            export type variable = string
+            
         }
         
         export type start = 
@@ -1145,10 +1217,12 @@ export namespace Selection_ {
             | readonly ['context', start.context]
             | readonly ['dictionary entry', start.dictionary_entry]
             | readonly ['lookup entry', start.lookup_entry]
+            | readonly ['lookup depth', start.lookup_depth]
             | readonly ['parameter', start.parameter]
             | readonly ['parent sibling', start.parent_sibling]
             | readonly ['sibling', start.sibling]
             | readonly ['state', start.state]
+            | readonly ['variable', start.variable]
         
         export namespace tail {
             
@@ -1237,8 +1311,8 @@ export type Lookup_Selection_ =
     | readonly ['cyclic', Lookup_Selection_.cyclic]
 
 export { 
-    Module_Set_ as Module_Set, 
-    Module_ as Module, 
+    Package_Set_ as Package_Set, 
+    Package_ as Package, 
     Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
     Expression_ as Expression, 
     Selection_ as Selection, 

@@ -3,7 +3,7 @@ import * as _pi from "pareto-core/dist/interface"
 
 import * as i__location from "astn-core/dist/interface/generated/liana/schemas/location/data"
 
-export namespace Module_Set_ {
+export namespace Package_Set_ {
     
     export type l_location = i__location.Relative_Location
     
@@ -19,14 +19,14 @@ export namespace Module_Set_ {
                 
                 export namespace l_state {
                     
-                    export type module_ = Module_
+                    export type package_ = Package_
                     
-                    export type set_ = Module_Set_
+                    export type set_ = Package_Set_
                     
                 }
                 
                 export type l_state = 
-                    | readonly ['module', l_state.module_]
+                    | readonly ['package', l_state.package_]
                     | readonly ['set', l_state.set_]
                 
             }
@@ -49,12 +49,12 @@ export namespace Module_Set_ {
     
 }
 
-export type Module_Set_ = {
-    readonly 'l location': Module_Set_.l_location
-    readonly 'l dictionary': Module_Set_.l_dictionary
+export type Package_Set_ = {
+    readonly 'l location': Package_Set_.l_location
+    readonly 'l dictionary': Package_Set_.l_dictionary
 }
 
-export namespace Module_ {
+export namespace Package_ {
     
     export type imports = Imports_
     
@@ -262,9 +262,9 @@ export namespace Module_ {
     
 }
 
-export type Module_ = {
-    readonly 'imports': Module_.imports
-    readonly 'types': Module_.types
+export type Package_ = {
+    readonly 'imports': Package_.imports
+    readonly 'types': Package_.types
 }
 
 export namespace Imports_ {
@@ -634,8 +634,8 @@ export type Module_Reference_ = {
 }
 
 export { 
-    Module_Set_ as Module_Set, 
-    Module_ as Module, 
+    Package_Set_ as Package_Set, 
+    Package_ as Package, 
     Imports_ as Imports, 
     Value_ as Value, 
     Module_Reference_ as Module_Reference, 

@@ -7,32 +7,11 @@ import * as i_resolved from "./data/resolved"
 
 import * as i_unresolved from "./data/unresolved"
 
-export namespace Module_Set_ {
+export namespace Package_Set_ {
     
-    export type I = i_unresolved.Module_Set
+    export type I = i_unresolved.Package_Set
     
-    export type O = i_resolved.Module_Set
-    
-    export type E = i_generic.Error
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Module_Set_ = (
-    context: Module_Set_.I,
-    abort: _pi.Abort<Module_Set_.E>,
-    lookups: null,
-    parameters: null,
-) => Module_Set_.O
-
-export namespace Module_ {
-    
-    export type I = i_unresolved.Module
-    
-    export type O = i_resolved.Module
+    export type O = i_resolved.Package_Set
     
     export type E = i_generic.Error
     
@@ -42,12 +21,33 @@ export namespace Module_ {
     
 }
 
-export type Module_ = (
-    context: Module_.I,
-    abort: _pi.Abort<Module_.E>,
+export type Package_Set_ = (
+    context: Package_Set_.I,
+    abort: _pi.Abort<Package_Set_.E>,
     lookups: null,
     parameters: null,
-) => Module_.O
+) => Package_Set_.O
+
+export namespace Package_ {
+    
+    export type I = i_unresolved.Package
+    
+    export type O = i_resolved.Package
+    
+    export type E = i_generic.Error
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Package_ = (
+    context: Package_.I,
+    abort: _pi.Abort<Package_.E>,
+    lookups: null,
+    parameters: null,
+) => Package_.O
 
 export namespace Temp_Type_Node_Reference_ {
     
@@ -134,8 +134,8 @@ export type Lookup_Selection_ = (
 ) => Lookup_Selection_.O
 
 export { 
-    Module_Set_ as Module_Set, 
-    Module_ as Module, 
+    Package_Set_ as Package_Set, 
+    Package_ as Package, 
     Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
     Expression_ as Expression, 
     Selection_ as Selection, 

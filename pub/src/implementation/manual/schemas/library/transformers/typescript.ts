@@ -15,8 +15,8 @@ import * as sh from "../../../../../modules/typescript_light/shorthands/typescri
 // import * as signatures from "../interface/signatures"
 
 export type Temp_Library = {
-    'interface': d_in_inf.Module_Set
-    'implementation': d_in_imp.Module_Set
+    'interface': d_in_inf.Package_Set
+    'implementation': d_in_imp.Package_Set
 }
 
 export const Temp_Library = (
@@ -27,11 +27,11 @@ export const Temp_Library = (
     // }
 ): d_out.Directory => {
     return _p.dictionary.literal<d_out.Directory.D>({
-        "interface": sh.n.directory(t_interface_to_typescript_temp.Module_Set(
+        "interface": sh.n.directory(t_interface_to_typescript_temp.Package_Set(
             $.interface,
             abort,
         )),
-        "implementation": sh.n.directory(t_implementation_to_typescript_temp.Module_Set(
+        "implementation": sh.n.directory(t_implementation_to_typescript_temp.Package_Set(
             $.implementation,
             abort,
             // {

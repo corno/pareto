@@ -11,7 +11,7 @@ import * as t_out from "../../../../../interface/generated/liana/schemas/impleme
 
 import * as v_interface from "../interface/migrate_boilerplate"
 
-export const Module_Set: t_signatures.Module_Set = ($) => ({
+export const Package_Set: t_signatures.Package_Set = ($) => ({
     'l location': {
         'document resource identifier': "implement me",
         'line': 42,
@@ -28,19 +28,19 @@ export const Module_Set: t_signatures.Module_Set = ($) => ({
                 },
                 'l state': _p.decide.state(
                     $,
-                    ($): t_out.Module_Set.l_dictionary.D.l_entry.l_state => {
+                    ($): t_out.Package_Set.l_dictionary.D.l_entry.l_state => {
                         switch ($[0]) {
-                            case 'module':
+                            case 'package':
                                 return _p.ss(
                                     $,
-                                    ($) => ['module', Module(
+                                    ($) => ['package', Package(
                                         $
                                     )]
                                 )
                             case 'set':
                                 return _p.ss(
                                     $,
-                                    ($) => ['set', Module_Set(
+                                    ($) => ['set', Package_Set(
                                         $
                                     )]
                                 )
@@ -61,7 +61,7 @@ export const Module_Set: t_signatures.Module_Set = ($) => ({
     ),
 })
 
-export const Module: t_signatures.Module = ($) => ({
+export const Package: t_signatures.Package = ($) => ({
     'type': _p_cc(
         $['type'],
         ($) => ({
@@ -72,7 +72,7 @@ export const Module: t_signatures.Module = ($) => ({
             },
             'l state': _p.decide.state(
                 $,
-                ($): t_out.Module.type_.l_state => {
+                ($): t_out.Package.type_.l_state => {
                     switch ($[0]) {
                         case 'serializer':
                             return _p.ss(
@@ -122,12 +122,16 @@ export const Module: t_signatures.Module = ($) => ({
                 $['iterate'],
                 ($) => $
             ),
+            'lookups': _p_cc(
+                $['lookups'],
+                ($) => $
+            ),
             'unreachable code path': _p_cc(
                 $['unreachable code path'],
                 ($) => $
             ),
-            'lookups': _p_cc(
-                $['lookups'],
+            'variables': _p_cc(
+                $['variables'],
                 ($) => $
             ),
         })
@@ -181,7 +185,7 @@ export const Module: t_signatures.Module = ($) => ({
                                 },
                                 'l state': _p.decide.state(
                                     $,
-                                    ($): t_out.Module.variable_imports.l_dictionary.D.l_entry.type_.l_state => {
+                                    ($): t_out.Package.variable_imports.l_dictionary.D.l_entry.type_.l_state => {
                                         switch ($[0]) {
                                             case 'ancestor':
                                                 return _p.ss(
@@ -684,6 +688,28 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                         })
                                                                                                     ),
                                                                                                 })
+                                                                                            ),
+                                                                                        }]
+                                                                                    )
+                                                                                case 'single':
+                                                                                    return _p.ss(
+                                                                                        $,
+                                                                                        ($) => ['single', {
+                                                                                            'option': _p_cc(
+                                                                                                $['option'],
+                                                                                                ($) => $
+                                                                                            ),
+                                                                                            'if true': _p_cc(
+                                                                                                $['if true'],
+                                                                                                ($) => Expression(
+                                                                                                    $
+                                                                                                )
+                                                                                            ),
+                                                                                            'if false': _p_cc(
+                                                                                                $['if false'],
+                                                                                                ($) => Expression(
+                                                                                                    $
+                                                                                                )
                                                                                             ),
                                                                                         }]
                                                                                     )
@@ -1696,6 +1722,41 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     ),
                                                 }]
                                             )
+                                        case 'variables':
+                                            return _p.ss(
+                                                $,
+                                                ($) => ['variables', {
+                                                    'variables': _p_cc(
+                                                        $['variables'],
+                                                        ($) => ({
+                                                            'l location': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                            'l dictionary': _p.dictionary.map(
+                                                                $,
+                                                                ($, id) => ({
+                                                                    'l entry': Expression(
+                                                                        $
+                                                                    ),
+                                                                    'l location': {
+                                                                        'document resource identifier': "implement me",
+                                                                        'line': 42,
+                                                                        'column': 42,
+                                                                    },
+                                                                })
+                                                            ),
+                                                        })
+                                                    ),
+                                                    'callback': _p_cc(
+                                                        $['callback'],
+                                                        ($) => Expression(
+                                                            $
+                                                        )
+                                                    ),
+                                                }]
+                                            )
                                         case 'implement me':
                                             return _p.ss(
                                                 $,
@@ -2010,6 +2071,47 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                             ),
                                                         }]
                                                     )
+                                                case 'lookup depth':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['lookup depth', {
+                                                            'lookup': _p_cc(
+                                                                $['lookup'],
+                                                                ($) => Lookup_Selection(
+                                                                    $
+                                                                )
+                                                            ),
+                                                            'id': _p_cc(
+                                                                $['id'],
+                                                                ($) => Expression(
+                                                                    $
+                                                                )
+                                                            ),
+                                                            'abort handlers': _p_cc(
+                                                                $['abort handlers'],
+                                                                ($) => ({
+                                                                    'no such entry': _p_cc(
+                                                                        $['no such entry'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'no context lookup': _p_cc(
+                                                                        $['no context lookup'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'cycle detected': _p_cc(
+                                                                        $['cycle detected'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                })
+                                                            ),
+                                                        }]
+                                                    )
                                                 case 'parameter':
                                                     return _p.ss(
                                                         $,
@@ -2029,6 +2131,11 @@ export const Selection: t_signatures.Selection = ($) => ({
                                                     return _p.ss(
                                                         $,
                                                         ($) => ['state', null]
+                                                    )
+                                                case 'variable':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ['variable', $]
                                                     )
                                                 default:
                                                     return _p.au(

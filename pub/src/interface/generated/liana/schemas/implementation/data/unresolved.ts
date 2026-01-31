@@ -5,7 +5,7 @@ import * as i__location from "astn-core/dist/interface/generated/liana/schemas/l
 
 import * as i__imports_interface from "../../interface/data/unresolved"
 
-export namespace Module_Set_ {
+export namespace Package_Set_ {
     
     export type l_location = i__location.Relative_Location
     
@@ -21,14 +21,14 @@ export namespace Module_Set_ {
                 
                 export namespace l_state {
                     
-                    export type module_ = Module_
+                    export type package_ = Package_
                     
-                    export type set_ = Module_Set_
+                    export type set_ = Package_Set_
                     
                 }
                 
                 export type l_state = 
-                    | readonly ['module', l_state.module_]
+                    | readonly ['package', l_state.package_]
                     | readonly ['set', l_state.set_]
                 
             }
@@ -51,12 +51,12 @@ export namespace Module_Set_ {
     
 }
 
-export type Module_Set_ = {
-    readonly 'l location': Module_Set_.l_location
-    readonly 'l dictionary': Module_Set_.l_dictionary
+export type Package_Set_ = {
+    readonly 'l location': Package_Set_.l_location
+    readonly 'l dictionary': Package_Set_.l_dictionary
 }
 
-export namespace Module_ {
+export namespace Package_ {
     
     export namespace type_ {
         
@@ -97,9 +97,11 @@ export namespace Module_ {
         
         export type iterate = boolean
         
+        export type lookups = boolean
+        
         export type unreachable_code_path = boolean
         
-        export type lookups = boolean
+        export type variables = boolean
         
     }
     
@@ -108,8 +110,9 @@ export namespace Module_ {
         readonly 'change context': specials.change_context
         readonly 'implement me': specials.implement_me
         readonly 'iterate': specials.iterate
-        readonly 'unreachable code path': specials.unreachable_code_path
         readonly 'lookups': specials.lookups
+        readonly 'unreachable code path': specials.unreachable_code_path
+        readonly 'variables': specials.variables
     }
     
     export type type_imports = i__imports_interface.Imports
@@ -281,12 +284,12 @@ export namespace Module_ {
     
 }
 
-export type Module_ = {
-    readonly 'type': Module_.type_
-    readonly 'specials': Module_.specials
-    readonly 'type imports': Module_.type_imports
-    readonly 'variable imports': Module_.variable_imports
-    readonly 'algorithms': Module_.algorithms
+export type Package_ = {
+    readonly 'type': Package_.type_
+    readonly 'specials': Package_.specials
+    readonly 'type imports': Package_.type_imports
+    readonly 'variable imports': Package_.variable_imports
+    readonly 'algorithms': Package_.algorithms
 }
 
 export namespace Temp_Type_Node_Reference_ {
@@ -634,11 +637,28 @@ export namespace Expression_ {
                                     readonly 'options': full.options
                                 }
                                 
+                                export namespace single {
+                                    
+                                    export type option = string
+                                    
+                                    export type if_true = Expression_
+                                    
+                                    export type if_false = Expression_
+                                    
+                                }
+                                
+                                export type single = {
+                                    readonly 'option': single.option
+                                    readonly 'if true': single.if_true
+                                    readonly 'if false': single.if_false
+                                }
+                                
                             }
                             
                             export type l_state = 
                                 | readonly ['partial', l_state.partial]
                                 | readonly ['full', l_state.full]
+                                | readonly ['single', l_state.single]
                             
                         }
                         
@@ -1473,6 +1493,47 @@ export namespace Expression_ {
                     readonly 'expression': change_context.expression
                 }
                 
+                export namespace variables {
+                    
+                    export namespace variables {
+                        
+                        export type l_location = i__location.Relative_Location
+                        
+                        export namespace l_dictionary {
+                            
+                            export namespace D {
+                                
+                                export type l_location = i__location.Relative_Location
+                                
+                                export type l_entry = Expression_
+                                
+                            }
+                            
+                            export type D = {
+                                readonly 'l location': D.l_location
+                                readonly 'l entry': D.l_entry
+                            }
+                            
+                        }
+                        
+                        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                        
+                    }
+                    
+                    export type variables = {
+                        readonly 'l location': variables.l_location
+                        readonly 'l dictionary': variables.l_dictionary
+                    }
+                    
+                    export type callback = Expression_
+                    
+                }
+                
+                export type variables = {
+                    readonly 'variables': variables.variables
+                    readonly 'callback': variables.callback
+                }
+                
                 export type implement_me = string
                 
                 export namespace iterate {
@@ -1496,6 +1557,7 @@ export namespace Expression_ {
                 | readonly ['abort', l_state.abort]
                 | readonly ['assert', l_state.assert]
                 | readonly ['change context', l_state.change_context]
+                | readonly ['variables', l_state.variables]
                 | readonly ['implement me', l_state.implement_me]
                 | readonly ['iterate', l_state.iterate]
                 | readonly ['unreachable', l_state.unreachable]
@@ -1756,6 +1818,36 @@ export namespace Selection_ {
                         readonly 'abort handlers': lookup_entry.abort_handlers
                     }
                     
+                    export namespace lookup_depth {
+                        
+                        export type lookup = Lookup_Selection_
+                        
+                        export type id = Expression_
+                        
+                        export namespace abort_handlers {
+                            
+                            export type no_such_entry = Expression_
+                            
+                            export type no_context_lookup = Expression_
+                            
+                            export type cycle_detected = Expression_
+                            
+                        }
+                        
+                        export type abort_handlers = {
+                            readonly 'no such entry': abort_handlers.no_such_entry
+                            readonly 'no context lookup': abort_handlers.no_context_lookup
+                            readonly 'cycle detected': abort_handlers.cycle_detected
+                        }
+                        
+                    }
+                    
+                    export type lookup_depth = {
+                        readonly 'lookup': lookup_depth.lookup
+                        readonly 'id': lookup_depth.id
+                        readonly 'abort handlers': lookup_depth.abort_handlers
+                    }
+                    
                     export type parameter = string
                     
                     export type parent_sibling = string
@@ -1764,6 +1856,8 @@ export namespace Selection_ {
                     
                     export type state = null
                     
+                    export type variable = string
+                    
                 }
                 
                 export type l_state = 
@@ -1771,10 +1865,12 @@ export namespace Selection_ {
                     | readonly ['context', l_state.context]
                     | readonly ['dictionary entry', l_state.dictionary_entry]
                     | readonly ['lookup entry', l_state.lookup_entry]
+                    | readonly ['lookup depth', l_state.lookup_depth]
                     | readonly ['parameter', l_state.parameter]
                     | readonly ['parent sibling', l_state.parent_sibling]
                     | readonly ['sibling', l_state.sibling]
                     | readonly ['state', l_state.state]
+                    | readonly ['variable', l_state.variable]
                 
             }
             
@@ -1943,8 +2039,8 @@ export type Lookup_Selection_ = {
 }
 
 export { 
-    Module_Set_ as Module_Set, 
-    Module_ as Module, 
+    Package_Set_ as Package_Set, 
+    Package_ as Package, 
     Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
     Expression_ as Expression, 
     Selection_ as Selection, 

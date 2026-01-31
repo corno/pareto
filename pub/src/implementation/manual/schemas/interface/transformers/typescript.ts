@@ -27,14 +27,14 @@ const s_list_of_texts: _pi.Serializer<_pi.List<string>> = ($) => _ps.text.deprec
 import * as sh from "../../../../../modules/typescript_light/shorthands/typescript_light"
 
 const temp_rename = (
-    $: d_in.Module_Set,
+    $: d_in.Package_Set,
     abort: _pi.Abort<d_pareto_to_typescript.Error>
-): d_in.Module_Set => {
-    const renamed: { [id: string]: d_in.Module_Set.D } = {}
+): d_in.Package_Set => {
+    const renamed: { [id: string]: d_in.Package_Set.D } = {}
     $.__d_map(($, id) => {
         const new_id: string = _p.decide.state($, ($) => {
             switch ($[0]) {
-                case 'module': return _p.ss($, ($) => id + `.ts`)
+                case 'package': return _p.ss($, ($) => id + `.ts`)
                 case 'set': return _p.ss($, ($) => {
                     const ends_with_ts = ($s: string): boolean => {
                         return false //implement properly later
@@ -53,13 +53,13 @@ const temp_rename = (
 }
 
 
-export const Module_Set = (
-    $: d_in.Module_Set,
+export const Package_Set = (
+    $: d_in.Package_Set,
     abort: _pi.Abort<d_pareto_to_typescript.Error>
 ): d_out.Directory => {
     return temp_rename($, abort).__d_map(($) => _p.decide.state($, ($) => {
         switch ($[0]) {
-            case 'module': return _p.ss($, ($) => {
+            case 'package': return _p.ss($, ($) => {
 
                 const valid_file_name = ($: string): string => {
                     return s_file_name($)
@@ -294,7 +294,7 @@ export const Module_Set = (
 
                 ]))
             })
-            case 'set': return _p.ss($, ($) => ['directory', Module_Set($, abort)])
+            case 'set': return _p.ss($, ($) => ['directory', Package_Set($, abort)])
             default: return _p.au($[0])
         }
     }))

@@ -9,24 +9,28 @@ import * as _pdev from "pareto-core-dev"
 
 import * as _p_ls from "pareto-core/dist/lookup_selection"
 
+import {
+    _p_deprecated_block,
+} from "pareto-core/dist/deprecated_block"
+
 import * as t_out from "../../../../../interface/generated/liana/schemas/implementation/data/resolved"
 
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/implementation/resolve"
 
 import * as v_external_interface from "../interface/resolve"
 
-export const Module_Set: t_signatures.Module_Set = ($, abort, $l, $p) => _p.dictionary.resolve(
+export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => _p.dictionary.resolve(
     $['l dictionary'],
-    ($, id, $a, $c): t_out.Module_Set.D => _p_cc(
+    ($, id, $a, $c): t_out.Package_Set.D => _p_cc(
         $['l entry'],
         ($) => _p.decide.state(
             $['l state'],
-            ($): t_out.Module_Set.D => {
+            ($): t_out.Package_Set.D => {
                 switch ($[0]) {
-                    case 'module':
+                    case 'package':
                         return _p.ss(
                             $,
-                            ($) => ['module', Module(
+                            ($) => ['package', Package(
                                 $,
                                 ($) => abort(
                                     $
@@ -38,7 +42,7 @@ export const Module_Set: t_signatures.Module_Set = ($, abort, $l, $p) => _p.dict
                     case 'set':
                         return _p.ss(
                             $,
-                            ($) => ['set', Module_Set(
+                            ($) => ['set', Package_Set(
                                 $,
                                 ($) => abort(
                                     $
@@ -57,14 +61,14 @@ export const Module_Set: t_signatures.Module_Set = ($, abort, $l, $p) => _p.dict
     )
 )
 
-export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolve(
+export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.resolve(
     () => {
         
         const prop_type = _p_cc(
             $['type'],
             ($) => _p.decide.state(
                 $['l state'],
-                ($): t_out.Module.type_ => {
+                ($): t_out.Package.type_ => {
                     switch ($[0]) {
                         case 'serializer':
                             return _p.ss(
@@ -120,13 +124,18 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                         ($) => $
                     )
                     
+                    const prop_lookups = _p_cc(
+                        $['lookups'],
+                        ($) => $
+                    )
+                    
                     const prop_unreachable_code_path = _p_cc(
                         $['unreachable code path'],
                         ($) => $
                     )
                     
-                    const prop_lookups = _p_cc(
-                        $['lookups'],
+                    const prop_variables = _p_cc(
+                        $['variables'],
                         ($) => $
                     )
                     return {
@@ -134,8 +143,9 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                         'change context': prop_change_context,
                         'implement me': prop_implement_me,
                         'iterate': prop_iterate,
-                        'unreachable code path': prop_unreachable_code_path,
                         'lookups': prop_lookups,
+                        'unreachable code path': prop_unreachable_code_path,
+                        'variables': prop_variables,
                     }
                 }
             )
@@ -157,7 +167,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
             $['variable imports'],
             ($) => _p.dictionary.resolve(
                 $['l dictionary'],
-                ($, id, $a, $c): t_out.Module.variable_imports.D => _p_cc(
+                ($, id, $a, $c): t_out.Package.variable_imports.D => _p_cc(
                     $['l entry'],
                     ($) => _p.group.resolve(
                         () => {
@@ -177,7 +187,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                                 $['type'],
                                 ($) => _p.decide.state(
                                     $['l state'],
-                                    ($): t_out.Module.variable_imports.D.type_ => {
+                                    ($): t_out.Package.variable_imports.D.type_ => {
                                         switch ($[0]) {
                                             case 'ancestor':
                                                 return _p.ss(
@@ -233,7 +243,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
             $['algorithms'],
             ($) => _p.dictionary.resolve(
                 $['l dictionary'],
-                ($, id, $a, $c): t_out.Module.algorithms.D => _p_cc(
+                ($, id, $a, $c): t_out.Package.algorithms.D => _p_cc(
                     $['l entry'],
                     ($) => _p.group.resolve(
                         () => {
@@ -863,6 +873,48 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                                                                             )
                                                                                             return {
                                                                                                 'options': prop_options,
+                                                                                            }
+                                                                                        }
+                                                                                    )]
+                                                                                )
+                                                                            case 'single':
+                                                                                return _p.ss(
+                                                                                    $,
+                                                                                    ($) => ['single', _p.group.resolve(
+                                                                                        () => {
+                                                                                            
+                                                                                            const prop_option = _p_cc(
+                                                                                                $['option'],
+                                                                                                ($) => $
+                                                                                            )
+                                                                                            
+                                                                                            const prop_if_true = _p_cc(
+                                                                                                $['if true'],
+                                                                                                ($) => Expression(
+                                                                                                    $,
+                                                                                                    ($) => abort(
+                                                                                                        $
+                                                                                                    ),
+                                                                                                    null,
+                                                                                                    null
+                                                                                                )
+                                                                                            )
+                                                                                            
+                                                                                            const prop_if_false = _p_cc(
+                                                                                                $['if false'],
+                                                                                                ($) => Expression(
+                                                                                                    $,
+                                                                                                    ($) => abort(
+                                                                                                        $
+                                                                                                    ),
+                                                                                                    null,
+                                                                                                    null
+                                                                                                )
+                                                                                            )
+                                                                                            return {
+                                                                                                'option': prop_option,
+                                                                                                'if true': prop_if_true,
+                                                                                                'if false': prop_if_false,
                                                                                             }
                                                                                         }
                                                                                     )]
@@ -2187,6 +2239,48 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p.deci
                                             }
                                         )]
                                     )
+                                case 'variables':
+                                    return _p.ss(
+                                        $,
+                                        ($) => ['variables', _p.group.resolve(
+                                            () => {
+                                                
+                                                const prop_variables = _p_cc(
+                                                    $['variables'],
+                                                    ($) => _p.dictionary.resolve(
+                                                        $['l dictionary'],
+                                                        ($, id, $a, $c): t_out.Expression.special.variables.variables.D => _p_cc(
+                                                            $['l entry'],
+                                                            ($) => Expression(
+                                                                $,
+                                                                ($) => abort(
+                                                                    $
+                                                                ),
+                                                                null,
+                                                                null
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                                
+                                                const prop_callback = _p_cc(
+                                                    $['callback'],
+                                                    ($) => Expression(
+                                                        $,
+                                                        ($) => abort(
+                                                            $
+                                                        ),
+                                                        null,
+                                                        null
+                                                    )
+                                                )
+                                                return {
+                                                    'variables': prop_variables,
+                                                    'callback': prop_callback,
+                                                }
+                                            }
+                                        )]
+                                    )
                                 case 'implement me':
                                     return _p.ss(
                                         $,
@@ -2576,6 +2670,92 @@ export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide
                                                         }
                                                     )]
                                                 )
+                                            case 'lookup depth':
+                                                return _p.ss(
+                                                    $,
+                                                    ($) => ['lookup depth', _p.group.resolve(
+                                                        () => {
+                                                            
+                                                            const prop_lookup = _p_cc(
+                                                                $['lookup'],
+                                                                ($) => Lookup_Selection(
+                                                                    $,
+                                                                    ($) => abort(
+                                                                        $
+                                                                    ),
+                                                                    null,
+                                                                    null
+                                                                )
+                                                            )
+                                                            
+                                                            const prop_id = _p_cc(
+                                                                $['id'],
+                                                                ($) => Expression(
+                                                                    $,
+                                                                    ($) => abort(
+                                                                        $
+                                                                    ),
+                                                                    null,
+                                                                    null
+                                                                )
+                                                            )
+                                                            
+                                                            const prop_abort_handlers = _p_cc(
+                                                                $['abort handlers'],
+                                                                ($) => _p.group.resolve(
+                                                                    () => {
+                                                                        
+                                                                        const prop_no_such_entry = _p_cc(
+                                                                            $['no such entry'],
+                                                                            ($) => Expression(
+                                                                                $,
+                                                                                ($) => abort(
+                                                                                    $
+                                                                                ),
+                                                                                null,
+                                                                                null
+                                                                            )
+                                                                        )
+                                                                        
+                                                                        const prop_no_context_lookup = _p_cc(
+                                                                            $['no context lookup'],
+                                                                            ($) => Expression(
+                                                                                $,
+                                                                                ($) => abort(
+                                                                                    $
+                                                                                ),
+                                                                                null,
+                                                                                null
+                                                                            )
+                                                                        )
+                                                                        
+                                                                        const prop_cycle_detected = _p_cc(
+                                                                            $['cycle detected'],
+                                                                            ($) => Expression(
+                                                                                $,
+                                                                                ($) => abort(
+                                                                                    $
+                                                                                ),
+                                                                                null,
+                                                                                null
+                                                                            )
+                                                                        )
+                                                                        return {
+                                                                            'no such entry': prop_no_such_entry,
+                                                                            'no context lookup': prop_no_context_lookup,
+                                                                            'cycle detected': prop_cycle_detected,
+                                                                        }
+                                                                    }
+                                                                )
+                                                            )
+                                                            return {
+                                                                'lookup': prop_lookup,
+                                                                'id': prop_id,
+                                                                'abort handlers': prop_abort_handlers,
+                                                            }
+                                                        }
+                                                    )]
+                                                )
                                             case 'parameter':
                                                 return _p.ss(
                                                     $,
@@ -2595,6 +2775,11 @@ export const Selection: t_signatures.Selection = ($, abort, $l, $p) => _p.decide
                                                 return _p.ss(
                                                     $,
                                                     ($) => ['state', null]
+                                                )
+                                            case 'variable':
+                                                return _p.ss(
+                                                    $,
+                                                    ($) => ['variable', $]
                                                 )
                                             default:
                                                 return _p.au(

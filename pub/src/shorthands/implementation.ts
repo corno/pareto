@@ -30,7 +30,7 @@ export namespace vi {
     export const external = (
         id: string,
         tail: _p.Raw_Or_Normal_List<string>,
-    ): d_target.Module.variable_imports.D => ({
+    ): d_target.Package.variable_imports.D => ({
         'type': wrap_state(['external', id]),
         'tail': _p.list.literal(tail),
     })
@@ -38,7 +38,7 @@ export namespace vi {
     export const sibling = (
         id: string,
         tail: _p.Raw_Or_Normal_List<string>,
-    ): d_target.Module.variable_imports.D => ({
+    ): d_target.Package.variable_imports.D => ({
         'type': wrap_state(['sibling', id]),
         'tail': _p.list.literal(tail),
     })
@@ -47,7 +47,7 @@ export namespace vi {
         number_of_steps: number,
         id: string,
         tail: _p.Raw_Or_Normal_List<string>,
-    ): d_target.Module.variable_imports.D => ({
+    ): d_target.Package.variable_imports.D => ({
         'type': wrap_state(['ancestor', {
             'number of steps': number_of_steps,
             'dependency': id,
@@ -72,39 +72,57 @@ export const type_node_reference = (
 export namespace m {
 
     export const set = (
-        entries: _p.Raw_Or_Normal_Dictionary<d_target.Module_Set.D>
-    ): d_target.Module_Set.D => wrap_state(['set', _p.dictionary.literal(entries)])
+        entries: _p.Raw_Or_Normal_Dictionary<d_target.Package_Set.D>
+    ): d_target.Package_Set.D => wrap_state(['set', _p.dictionary.literal(entries)])
 
-    export const module = (
+    export const package_ = (
         type: 'serializer' | 'deserializer' | 'transformer' | 'refiner',
-        abort: boolean,
-        change_context: boolean,
-        implement_me: boolean,
-        iterate: boolean,
-        unreachable_code_path: boolean,
-        lookups: boolean,
+        specials: _p.Raw_Or_Normal_List<
+            | 'abort'
+            | 'change context'
+            | 'implement me'
+            | 'iterate'
+            | 'unreachable code path'
+            | 'lookups'
+            | 'variables'
+        >,
         type_imports: _p.Raw_Or_Normal_Dictionary<d_target_interface.Imports.D>,
-        variable_imports: _p.Raw_Or_Normal_Dictionary<d_target.Module.variable_imports.D>,
-        algorithms: _p.Raw_Or_Normal_Dictionary<d_target.Module.algorithms.D>,
-    ): d_target.Module_Set.D => wrap_state(['module', {
-        'type': wrap_state(
-            type === 'serializer' ? ['serializer', null] :
-                type === 'deserializer' ? ['deserializer', null] :
-                    type === 'transformer' ? ['transformer', null] :
-                        ['refiner', null]
-        ),
-        'specials': {
-            'abort': abort,
-            'change context': change_context,
-            'implement me': implement_me,
-            'iterate': iterate,
-            'unreachable code path': unreachable_code_path,
-            'lookups': lookups,
-        },
-        'type imports': _p.dictionary.literal(type_imports),
-        'variable imports': _p.dictionary.literal(variable_imports),
-        'algorithms': _p.dictionary.literal(algorithms),
-    }])
+        variable_imports: _p.Raw_Or_Normal_Dictionary<d_target.Package.variable_imports.D>,
+        algorithms: _p.Raw_Or_Normal_Dictionary<d_target.Package.algorithms.D>,
+    ): d_target.Package_Set.D => {
+        const temp_specials = {
+            'abort': false,
+            'change context': false,
+            'implement me': false,
+            'iterate': false,
+            'unreachable code path': false,
+            'lookups': false,
+            'variables': false,
+        }
+        _p.list.literal(specials).__for_each(($) => {
+            switch ($) {
+                case 'abort': temp_specials['abort'] = true; break
+                case 'change context': temp_specials['change context'] = true; break
+                case 'implement me': temp_specials['implement me'] = true; break
+                case 'iterate': temp_specials['iterate'] = true; break
+                case 'unreachable code path': temp_specials['unreachable code path'] = true; break
+                case 'lookups': temp_specials['lookups'] = true; break
+                case 'variables': temp_specials['variables'] = true; break
+            }
+        })
+        return wrap_state(['package', {
+            'type': wrap_state(
+                type === 'serializer' ? ['serializer', null] :
+                    type === 'deserializer' ? ['deserializer', null] :
+                        type === 'transformer' ? ['transformer', null] :
+                            ['refiner', null]
+            ),
+            'specials': temp_specials,
+            'type imports': _p.dictionary.literal(type_imports),
+            'variable imports': _p.dictionary.literal(variable_imports),
+            'algorithms': _p.dictionary.literal(algorithms),
+        }])
+    }
 
 }
 
@@ -115,7 +133,7 @@ export const algorithm = (
     has_lookups: boolean,
     has_parameters: boolean,
     expression: d_target.Expression,
-): d_target.Module.algorithms.D => ({
+): d_target.Package.algorithms.D => ({
     'type': {
         'import': imp,
         'type': type,
@@ -158,7 +176,7 @@ export namespace e {
             source: d_target.Selection,
             if_set: d_target.Expression,
             if_not_set: d_target.Expression,
-            resulting_type: d_target.Temp_Type_Node_Reference,
+            resulting_type?: null | d_target.Temp_Type_Node_Reference,
         ): d_target.Expression => wrap_state(['decide', {
             'type': wrap_state(['optional', {
                 'source': source,
@@ -195,6 +213,24 @@ export namespace e {
                 'type': wrap_state(['partial', {
                     'options': _p.dictionary.literal(cases),
                     'default': default_
+                }])
+            }])
+        }])
+
+        export const state_single = (
+            source: d_target.Selection,
+            option: string,
+            if_true: d_target.Expression,
+            if_false: d_target.Expression,
+            resulting_type: null | d_target.Temp_Type_Node_Reference,
+        ): d_target.Expression => wrap_state(['decide', {
+            'type': wrap_state(['state', {
+                'source': source,
+                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? _p.optional.not_set() : _p.optional.set(resulting_type),
+                'type': wrap_state(['single', {
+                    'option': option,
+                    'if true': if_true,
+                    'if false': if_false,
                 }])
             }])
         }])
@@ -368,6 +404,13 @@ export namespace e {
 
     export const unreachable = (): d_target.Expression => wrap_state(['special', wrap_state(['unreachable', null])])
 
+    export const variables = (
+        variables: _p.Raw_Or_Normal_Dictionary<d_target.Expression.special.variables.variables.D>,
+        callback: d_target.Expression
+    ): d_target.Expression => wrap_state(['special', wrap_state(['variables', {
+        'variables': _p.dictionary.literal(variables),
+        'callback': callback
+    }])])
 }
 
 export namespace lookups {
@@ -474,6 +517,26 @@ export namespace s {
         'tail': _p.list.literal([]),
     }])
 
+    export const lookup_depth = (
+        lookup: d_target.Lookup_Selection,
+        id: d_target.Expression,
+        no_such_entry_handler: d_target.Expression,
+        no_context_lookup_handler: d_target.Expression,
+        cycle_detected_handler: d_target.Expression,
+        // tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
+    ): d_target.Selection => wrap_state(['regular', {
+        'start': wrap_state<d_target.Selection.regular.start>(['lookup depth', {
+            'lookup': lookup,
+            'id': id,
+            'abort handlers': {
+                'no such entry': no_such_entry_handler,
+                'no context lookup': no_context_lookup_handler,
+                'cycle detected': cycle_detected_handler,
+            }
+        }]),
+        'tail': _p.list.literal([]),
+    }])
+
     export const parameter = (
         name: string,
         tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
@@ -503,6 +566,14 @@ export namespace s {
         tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
     ): d_target.Selection => wrap_state(['regular', {
         'start': wrap_state(['state', null]),
+        'tail': _p.list.literal(tail),
+    }])
+
+    export const variable = (
+        name: string,
+        tail: _p.Raw_Or_Normal_List<d_target.Selection.regular.tail.L>
+    ): d_target.Selection => wrap_state(['regular', {
+        'start': wrap_state(['variable', name]),
         'tail': _p.list.literal(tail),
     }])
 

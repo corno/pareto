@@ -14,9 +14,9 @@ import * as t_typescript_light_to_fountain_pen_block from "../../../../../module
 // import * as r_pareto_implementation from "pareto/dist/implementation/generated/liana/schemas/implementation/resolve"
 
 
-export const Module_Set = ($: d_in.Module_Set): d_out.Directory => {
+export const Package_Set = ($: d_in.Package_Set): d_out.Directory => {
     return t_typescript_light_to_fountain_pen_block.Directory(
-        t_typescript.Module_Set(
+        t_typescript.Package_Set(
             $,
             ($) => _p.decide.state($, ($) => {
                 switch ($[0]) {

@@ -9,7 +9,7 @@ import * as t_signatures from "../../../../../interface/generated/liana/schemas/
 
 import * as t_out from "../../../../../interface/generated/liana/schemas/interface/data/unresolved"
 
-export const Module_Set: t_signatures.Module_Set = ($) => ({
+export const Package_Set: t_signatures.Package_Set = ($) => ({
     'l location': {
         'document resource identifier': "implement me",
         'line': 42,
@@ -26,19 +26,19 @@ export const Module_Set: t_signatures.Module_Set = ($) => ({
                 },
                 'l state': _p.decide.state(
                     $,
-                    ($): t_out.Module_Set.l_dictionary.D.l_entry.l_state => {
+                    ($): t_out.Package_Set.l_dictionary.D.l_entry.l_state => {
                         switch ($[0]) {
-                            case 'module':
+                            case 'package':
                                 return _p.ss(
                                     $,
-                                    ($) => ['module', Module(
+                                    ($) => ['package', Package(
                                         $
                                     )]
                                 )
                             case 'set':
                                 return _p.ss(
                                     $,
-                                    ($) => ['set', Module_Set(
+                                    ($) => ['set', Package_Set(
                                         $
                                     )]
                                 )
@@ -59,7 +59,7 @@ export const Module_Set: t_signatures.Module_Set = ($) => ({
     ),
 })
 
-export const Module: t_signatures.Module = ($) => ({
+export const Package: t_signatures.Package = ($) => ({
     'imports': _p_cc(
         $['imports'],
         ($) => Imports(
@@ -85,7 +85,7 @@ export const Module: t_signatures.Module = ($) => ({
                         },
                         'l state': _p.decide.state(
                             $,
-                            ($): t_out.Module.types.l_dictionary.D.l_entry.l_state => {
+                            ($): t_out.Package.types.l_dictionary.D.l_entry.l_state => {
                                 switch ($[0]) {
                                     case 'data':
                                         return _p.ss(
@@ -120,7 +120,7 @@ export const Module: t_signatures.Module = ($) => ({
                                                         },
                                                         'l state': _p.decide.state(
                                                             $,
-                                                            ($): t_out.Module.types.l_dictionary.D.l_entry.l_state.algorithm.type_.l_state => {
+                                                            ($): t_out.Package.types.l_dictionary.D.l_entry.l_state.algorithm.type_.l_state => {
                                                                 switch ($[0]) {
                                                                     case 'transformer':
                                                                         return _p.ss(
@@ -161,7 +161,7 @@ export const Module: t_signatures.Module = ($) => ({
                                                                                                         },
                                                                                                         'l state': _p.decide.state(
                                                                                                             $,
-                                                                                                            ($): t_out.Module.types.l_dictionary.D.l_entry.l_state.algorithm.type_.l_state.refiner.lookups.O.l_dictionary.D.l_entry.l_state => {
+                                                                                                            ($): t_out.Package.types.l_dictionary.D.l_entry.l_state.algorithm.type_.l_state.refiner.lookups.O.l_dictionary.D.l_entry.l_state => {
                                                                                                                 switch ($[0]) {
                                                                                                                     case 'acyclic':
                                                                                                                         return _p.ss(

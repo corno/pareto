@@ -5,11 +5,11 @@ import * as i_generic from "../../generic/deserialize"
 
 import * as i_out from "./data/unresolved"
 
-export namespace Module_Set_ {
+export namespace Package_Set_ {
     
     export type I = string
     
-    export type O = i_out.Module_Set
+    export type O = i_out.Package_Set
     
     export type E = i_generic.Error
     
@@ -23,20 +23,20 @@ export namespace Module_Set_ {
     
 }
 
-export type Module_Set_ = (
-    context: Module_Set_.I,
-    abort: _pi.Abort<Module_Set_.E>,
+export type Package_Set_ = (
+    context: Package_Set_.I,
+    abort: _pi.Abort<Package_Set_.E>,
     parameters: {
-        readonly 'document resource identifier': Module_Set_.P.document_resource_identifier
-        readonly 'tab size': Module_Set_.P.tab_size
+        readonly 'document resource identifier': Package_Set_.P.document_resource_identifier
+        readonly 'tab size': Package_Set_.P.tab_size
     },
-) => Module_Set_.O
+) => Package_Set_.O
 
-export namespace Module_ {
+export namespace Package_ {
     
     export type I = string
     
-    export type O = i_out.Module
+    export type O = i_out.Package
     
     export type E = i_generic.Error
     
@@ -50,14 +50,14 @@ export namespace Module_ {
     
 }
 
-export type Module_ = (
-    context: Module_.I,
-    abort: _pi.Abort<Module_.E>,
+export type Package_ = (
+    context: Package_.I,
+    abort: _pi.Abort<Package_.E>,
     parameters: {
-        readonly 'document resource identifier': Module_.P.document_resource_identifier
-        readonly 'tab size': Module_.P.tab_size
+        readonly 'document resource identifier': Package_.P.document_resource_identifier
+        readonly 'tab size': Package_.P.tab_size
     },
-) => Module_.O
+) => Package_.O
 
 export namespace Imports_ {
     
@@ -141,8 +141,8 @@ export type Module_Reference_ = (
 ) => Module_Reference_.O
 
 export { 
-    Module_Set_ as Module_Set, 
-    Module_ as Module, 
+    Package_Set_ as Package_Set, 
+    Package_ as Package, 
     Imports_ as Imports, 
     Value_ as Value, 
     Module_Reference_ as Module_Reference, 

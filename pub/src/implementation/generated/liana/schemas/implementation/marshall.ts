@@ -15,18 +15,18 @@ import * as v_serialize_boolean from "liana-core/dist/implementation/manual/prim
 
 import * as v_external_interface from "../interface/marshall"
 
-export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', _p.dictionary.map(
+export const Package_Set: t_signatures.Package_Set = ($) => ['dictionary', _p.dictionary.map(
     $,
     ($, id) => ['state', _p.decide.state(
         $,
         ($): t_out.Value.state => {
             switch ($[0]) {
-                case 'module':
+                case 'package':
                     return _p.ss(
                         $,
                         ($) => ({
-                            'option': 'module',
-                            'value': Module(
+                            'option': 'package',
+                            'value': Package(
                                 $
                             ),
                         })
@@ -36,7 +36,7 @@ export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', _p.dict
                         $,
                         ($) => ({
                             'option': 'set',
-                            'value': Module_Set(
+                            'value': Package_Set(
                                 $
                             ),
                         })
@@ -50,7 +50,7 @@ export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', _p.dict
     )]
 )]
 
-export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dictionary.literal(
+export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dictionary.literal(
     {
         'type': _p_cc(
             $['type'],
@@ -138,6 +138,15 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                             ),
                         }]
                     ),
+                    'lookups': _p_cc(
+                        $['lookups'],
+                        ($) => ['text', {
+                            'delimiter': ['none', null],
+                            'value': v_serialize_boolean.serialize(
+                                $
+                            ),
+                        }]
+                    ),
                     'unreachable code path': _p_cc(
                         $['unreachable code path'],
                         ($) => ['text', {
@@ -147,8 +156,8 @@ export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dicti
                             ),
                         }]
                     ),
-                    'lookups': _p_cc(
-                        $['lookups'],
+                    'variables': _p_cc(
+                        $['variables'],
                         ($) => ['text', {
                             'delimiter': ['none', null],
                             'value': v_serialize_boolean.serialize(
@@ -721,6 +730,36 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                                                                                     $
                                                                                                                 )
                                                                                                             )]
+                                                                                                        ),
+                                                                                                    }
+                                                                                                )]],
+                                                                                            })
+                                                                                        )
+                                                                                    case 'single':
+                                                                                        return _p.ss(
+                                                                                            $,
+                                                                                            ($) => ({
+                                                                                                'option': 'single',
+                                                                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                    {
+                                                                                                        'option': _p_cc(
+                                                                                                            $['option'],
+                                                                                                            ($) => ['text', {
+                                                                                                                'delimiter': ['quote', null],
+                                                                                                                'value': $,
+                                                                                                            }]
+                                                                                                        ),
+                                                                                                        'if true': _p_cc(
+                                                                                                            $['if true'],
+                                                                                                            ($) => Expression(
+                                                                                                                $
+                                                                                                            )
+                                                                                                        ),
+                                                                                                        'if false': _p_cc(
+                                                                                                            $['if false'],
+                                                                                                            ($) => Expression(
+                                                                                                                $
+                                                                                                            )
                                                                                                         ),
                                                                                                     }
                                                                                                 )]],
@@ -1803,6 +1842,32 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                                                 )]],
                                             })
                                         )
+                                    case 'variables':
+                                        return _p.ss(
+                                            $,
+                                            ($) => ({
+                                                'option': 'variables',
+                                                'value': ['group', ['verbose', _p.dictionary.literal(
+                                                    {
+                                                        'variables': _p_cc(
+                                                            $['variables'],
+                                                            ($) => ['dictionary', _p.dictionary.map(
+                                                                $,
+                                                                ($, id) => Expression(
+                                                                    $
+                                                                )
+                                                            )]
+                                                        ),
+                                                        'callback': _p_cc(
+                                                            $['callback'],
+                                                            ($) => Expression(
+                                                                $
+                                                            )
+                                                        ),
+                                                    }
+                                                )]],
+                                            })
+                                        )
                                     case 'implement me':
                                         return _p.ss(
                                             $,
@@ -2130,6 +2195,54 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                             )]],
                                                         })
                                                     )
+                                                case 'lookup depth':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'lookup depth',
+                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                {
+                                                                    'lookup': _p_cc(
+                                                                        $['lookup'],
+                                                                        ($) => Lookup_Selection(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'id': _p_cc(
+                                                                        $['id'],
+                                                                        ($) => Expression(
+                                                                            $
+                                                                        )
+                                                                    ),
+                                                                    'abort handlers': _p_cc(
+                                                                        $['abort handlers'],
+                                                                        ($) => ['group', ['verbose', _p.dictionary.literal(
+                                                                            {
+                                                                                'no such entry': _p_cc(
+                                                                                    $['no such entry'],
+                                                                                    ($) => Expression(
+                                                                                        $
+                                                                                    )
+                                                                                ),
+                                                                                'no context lookup': _p_cc(
+                                                                                    $['no context lookup'],
+                                                                                    ($) => Expression(
+                                                                                        $
+                                                                                    )
+                                                                                ),
+                                                                                'cycle detected': _p_cc(
+                                                                                    $['cycle detected'],
+                                                                                    ($) => Expression(
+                                                                                        $
+                                                                                    )
+                                                                                ),
+                                                                            }
+                                                                        )]]
+                                                                    ),
+                                                                }
+                                                            )]],
+                                                        })
+                                                    )
                                                 case 'parameter':
                                                     return _p.ss(
                                                         $,
@@ -2169,6 +2282,17 @@ export const Selection: t_signatures.Selection = ($) => ['state', _p.decide.stat
                                                         ($) => ({
                                                             'option': 'state',
                                                             'value': ['nothing', null],
+                                                        })
+                                                    )
+                                                case 'variable':
+                                                    return _p.ss(
+                                                        $,
+                                                        ($) => ({
+                                                            'option': 'variable',
+                                                            'value': ['text', {
+                                                                'delimiter': ['quote', null],
+                                                                'value': $,
+                                                            }],
                                                         })
                                                     )
                                                 default:

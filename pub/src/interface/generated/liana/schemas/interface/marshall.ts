@@ -5,25 +5,9 @@ import * as i_out from "astn-core/dist/interface/generated/liana/schemas/sealed_
 
 import * as i_in from "./data/resolved"
 
-export namespace Module_Set_ {
+export namespace Package_Set_ {
     
-    export type I = i_in.Module_Set
-    
-    export type O = i_out.Value
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Module_Set_ = (
-    context: Module_Set_.I,
-) => Module_Set_.O
-
-export namespace Module_ {
-    
-    export type I = i_in.Module
+    export type I = i_in.Package_Set
     
     export type O = i_out.Value
     
@@ -33,9 +17,25 @@ export namespace Module_ {
     
 }
 
-export type Module_ = (
-    context: Module_.I,
-) => Module_.O
+export type Package_Set_ = (
+    context: Package_Set_.I,
+) => Package_Set_.O
+
+export namespace Package_ {
+    
+    export type I = i_in.Package
+    
+    export type O = i_out.Value
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Package_ = (
+    context: Package_.I,
+) => Package_.O
 
 export namespace Imports_ {
     
@@ -86,8 +86,8 @@ export type Module_Reference_ = (
 ) => Module_Reference_.O
 
 export { 
-    Module_Set_ as Module_Set, 
-    Module_ as Module, 
+    Package_Set_ as Package_Set, 
+    Package_ as Package, 
     Imports_ as Imports, 
     Value_ as Value, 
     Module_Reference_ as Module_Reference, 

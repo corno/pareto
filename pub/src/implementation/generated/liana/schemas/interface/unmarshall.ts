@@ -17,7 +17,7 @@ import * as v_unmarshalled_from_parse_tree from "astn-core/dist/implementation/m
 
 import * as v_parse_tree_to_location from "astn-core/dist/implementation/manual/schemas/parse_tree/transformers/location"
 
-export const Module_Set: t_signatures.Module_Set = ($, abort) => ({
+export const Package_Set: t_signatures.Package_Set = ($, abort) => ({
     'l location': v_parse_tree_to_location.Value(
         $
     )['start']['relative'],
@@ -41,16 +41,16 @@ export const Module_Set: t_signatures.Module_Set = ($, abort) => ({
                 ),
                 ($) => _p.decide.text(
                     $['option']['value'],
-                    ($t): t_out.Module_Set.l_dictionary.D.l_entry => {
+                    ($t): t_out.Package_Set.l_dictionary.D.l_entry => {
                         switch ($t) {
-                            case 'module':
+                            case 'package':
                                 return _p_cc(
                                     $['value'],
                                     ($) => ({
                                         'l location': v_parse_tree_to_location.Value(
                                             $
                                         )['start']['relative'],
-                                        'l state': ['module', Module(
+                                        'l state': ['package', Package(
                                             $,
                                             ($) => abort(
                                                 $
@@ -65,7 +65,7 @@ export const Module_Set: t_signatures.Module_Set = ($, abort) => ({
                                         'l location': v_parse_tree_to_location.Value(
                                             $
                                         )['start']['relative'],
-                                        'l state': ['set', Module_Set(
+                                        'l state': ['set', Package_Set(
                                             $,
                                             ($) => abort(
                                                 $
@@ -85,7 +85,7 @@ export const Module_Set: t_signatures.Module_Set = ($, abort) => ({
     ),
 })
 
-export const Module: t_signatures.Module = ($, abort) => _p_cc(
+export const Package: t_signatures.Package = ($, abort) => _p_cc(
     v_unmarshalled_from_parse_tree.Group(
         $,
         ($) => abort(
@@ -138,7 +138,7 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                             ),
                             ($) => _p.decide.text(
                                 $['option']['value'],
-                                ($t): t_out.Module.types.l_dictionary.D.l_entry => {
+                                ($t): t_out.Package.types.l_dictionary.D.l_entry => {
                                     switch ($t) {
                                         case 'data':
                                             return _p_cc(
@@ -214,7 +214,7 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                                                                     ),
                                                                     ($) => _p.decide.text(
                                                                         $['option']['value'],
-                                                                        ($t): t_out.Module.types.l_dictionary.D.l_entry.l_state.algorithm.type_ => {
+                                                                        ($t): t_out.Package.types.l_dictionary.D.l_entry.l_state.algorithm.type_ => {
                                                                             switch ($t) {
                                                                                 case 'transformer':
                                                                                     return _p_cc(
@@ -309,7 +309,7 @@ export const Module: t_signatures.Module = ($, abort) => _p_cc(
                                                                                                                             ),
                                                                                                                             ($) => _p.decide.text(
                                                                                                                                 $['option']['value'],
-                                                                                                                                ($t): t_out.Module.types.l_dictionary.D.l_entry.l_state.algorithm.type_.l_state.refiner.lookups.O.l_dictionary.D.l_entry => {
+                                                                                                                                ($t): t_out.Package.types.l_dictionary.D.l_entry.l_state.algorithm.type_.l_state.refiner.lookups.O.l_dictionary.D.l_entry => {
                                                                                                                                     switch ($t) {
                                                                                                                                         case 'acyclic':
                                                                                                                                             return _p_cc(

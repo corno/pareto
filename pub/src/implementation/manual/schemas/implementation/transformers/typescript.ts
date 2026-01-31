@@ -35,14 +35,14 @@ const s_list_of_texts: _pi.Serializer<_pi.List<string>> = ($) => _ps.text.deprec
 
 
 const temp_rename = (
-    $: d_in.Module_Set,
+    $: d_in.Package_Set,
     abort: _pi.Abort<d_pareto_to_typescript.Error>
-): d_in.Module_Set => {
-    const renamed: { [id: string]: d_in.Module_Set.D } = {}
+): d_in.Package_Set => {
+    const renamed: { [id: string]: d_in.Package_Set.D } = {}
     $.__d_map(($, id) => {
         const new_id: string = _p.decide.state($, ($) => {
             switch ($[0]) {
-                case 'module': return _p.ss($, ($) => id + `.ts`)
+                case 'package': return _p.ss($, ($) => id + `.ts`)
                 case 'set': return _p.ss($, ($) => {
                     const ends_with_ts = ($s: string): boolean => {
                         return false //implement properly later
@@ -61,13 +61,13 @@ const temp_rename = (
 }
 
 
-export const Module_Set = (
-    $: d_in.Module_Set,
+export const Package_Set = (
+    $: d_in.Package_Set,
     abort: _pi.Abort<d_pareto_to_typescript.Error>
 ): d_out.Directory => {
     return temp_rename($, abort).__d_map(($, id) => _p.decide.state($, ($) => {
         switch ($[0]) {
-            case 'module': return _p.ss($, ($): d_out.Directory.D => {
+            case 'package': return _p.ss($, ($): d_out.Directory.D => {
                 const valid_file_name = ($: string): string => {
                     return s_file_name($)
                 }
@@ -87,14 +87,6 @@ export const Module_Set = (
                             })
                         ),
                     ],
-                    $.specials['unreachable code path']
-                        ? [sh.s.import_named(
-                            [
-                                sh.specifier(sh.identifier_raw("_p_unreachable_code_path"), null),
-                            ],
-                            `pareto-core/dist/unreachable_code_path`
-                        )]
-                        : [],
                     $.specials['change context']
                         ? [sh.s.import_named(
                             [
@@ -109,18 +101,34 @@ export const Module_Set = (
                             `pareto-core-dev`
                         )]
                         : [],
-                    $.specials.lookups
-                        ? [sh.s.import_namespace(
-                            sh.identifier_raw("_p_ls"),
-                            `pareto-core/dist/lookup_selection`
-                        )]
-                        : [],
                     $.specials['iterate']
                         ? [sh.s.import_named(
                             [
                                 sh.specifier(sh.identifier_raw("_p_cc"), null),
                             ],
                             `pareto-core/dist/iterate`
+                        )]
+                        : [],
+                    $.specials.lookups
+                        ? [sh.s.import_namespace(
+                            sh.identifier_raw("_p_ls"),
+                            `pareto-core/dist/lookup_selection`
+                        )]
+                        : [],
+                    $.specials['unreachable code path']
+                        ? [sh.s.import_named(
+                            [
+                                sh.specifier(sh.identifier_raw("_p_unreachable_code_path"), null),
+                            ],
+                            `pareto-core/dist/unreachable_code_path`
+                        )]
+                        : [],
+                    $.specials['variables']
+                        ? [sh.s.import_named(
+                            [
+                                sh.specifier(sh.identifier_raw("_p_deprecated_block"), null),
+                            ],
+                            `pareto-core/dist/deprecated_block`
                         )]
                         : [],
                     _p.list.from_dictionary(
@@ -200,7 +208,7 @@ export const Module_Set = (
 
                 return sh.n.file(y)
             })
-            case 'set': return _p.ss($, ($) => ['directory', Module_Set($, abort)])
+            case 'set': return _p.ss($, ($) => ['directory', Package_Set($, abort)])
             default: return _p.au($[0])
         }
     }))
@@ -307,6 +315,11 @@ export const Expression = (
                                             switch ($[0]) {
                                                 case 'partial': return _p.ss($, ($) => $.options)
                                                 case 'full': return _p.ss($, ($) => $.options)
+                                                case 'single': return _p.ss($, ($) => {
+                                                    const temp: { [id: string]: d_in.Expression.decide.type_.state.type_.partial.options.D } = {}
+                                                    temp[$.option] = $['if true']
+                                                    return _p.dictionary.literal(temp)
+                                                })
                                                 default: return _p.au($[0])
                                             }
                                         }).__to_list(
@@ -349,6 +362,7 @@ export const Expression = (
                                                                 )
                                                             ]
                                                         ))
+                                                        case 'single': return _p.ss($, ($) => Expression($['if false']))
                                                         default: return _p.au($[0])
                                                     }
                                                 }))
@@ -754,6 +768,33 @@ export const Expression = (
                         //sh.e.string_literal("UNREACHABLE", 'quote')
                     ]
                 ))
+                case 'variables': return _p.ss($, ($) => sh.e.call(
+                    sh.e.identifier_raw("_p_deprecated_block"),
+                    [
+                        sh.e.arrow_function_with_block(
+                            [
+                            ],
+                            null,
+                            _p.list.nested_literal_old([
+                                $.variables.__to_list(
+                                    ($, id) => sh.s.variable(
+                                        false,
+                                        true,
+                                        sh.identifier_escaped("var " + id),
+                                        null,
+                                        Expression($)
+                                    ),
+                                ),
+                                [
+                                    sh.s.return_(
+                                        Expression($.callback)
+                                    )
+                                ]
+
+                            ])
+                        )
+                    ]
+                ))
                 default: return _p.au($[0])
             }
         }))
@@ -934,6 +975,47 @@ export const Selection = (
                             }),
                         ]
                     ))
+                    case 'lookup depth': return _p.ss($, ($) => sh.e.call(
+                        sh.e.property_access(
+                            Lookup_Selection($.lookup),
+                            sh.identifier_raw("get_entry_depth")
+                        ),
+                        [
+                            Expression($.id),
+                            sh.e.object_literal({
+                                "no_such_entry": sh.e.arrow_function_with_expression(
+                                    [],
+                                    null,
+                                    sh.e.call(
+                                        sh.e.identifier_raw("abort"),
+                                        [
+                                            Expression($['abort handlers']['no such entry'])
+                                        ]
+                                    )
+                                ),
+                                "no_context_lookup": sh.e.arrow_function_with_expression(
+                                    [],
+                                    null,
+                                    sh.e.call(
+                                        sh.e.identifier_raw("abort"),
+                                        [
+                                            Expression($['abort handlers']['no context lookup'])
+                                        ]
+                                    )
+                                ),
+                                "cycle_detected": sh.e.arrow_function_with_expression(
+                                    [],
+                                    null,
+                                    sh.e.call(
+                                        sh.e.identifier_raw("abort"),
+                                        [
+                                            Expression($['abort handlers']['cycle detected'])
+                                        ]
+                                    )
+                                ),
+                            }),
+                        ]
+                    ))
                     case 'parameter': return _p.ss($, ($) => sh.e.element_access(
                         sh.e.identifier_raw("$p"),
                         sh.e.string_literal($, 'apostrophe')
@@ -941,6 +1023,7 @@ export const Selection = (
                     case 'parent sibling': return _p.ss($, ($) => sh.e.identifier_escaped("parent.prop " + $))
                     case 'sibling': return _p.ss($, ($) => sh.e.identifier_escaped("prop " + $))
                     case 'state': return _p.ss($, ($) => sh.e.identifier_raw("state"))
+                    case 'variable': return _p.ss($, ($) => sh.e.identifier_escaped("var " + $))
                     default: return _p.au($[0])
                 }
             }),

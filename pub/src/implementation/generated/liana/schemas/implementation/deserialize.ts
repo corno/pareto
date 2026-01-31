@@ -9,7 +9,7 @@ import * as v_unmarshall from "./unmarshall"
 
 import * as v_r_interface from "../interface/deserialize"
 
-export const Module_Set: t_signatures.Module_Set = ($, abort, $p) => v_unmarshall.Module_Set(
+export const Package_Set: t_signatures.Package_Set = ($, abort, $p) => v_unmarshall.Package_Set(
     v_deserialize.Document(
         $,
         ($) => abort(
@@ -25,7 +25,7 @@ export const Module_Set: t_signatures.Module_Set = ($, abort, $p) => v_unmarshal
     )
 )
 
-export const Module: t_signatures.Module = ($, abort, $p) => v_unmarshall.Module(
+export const Package: t_signatures.Package = ($, abort, $p) => v_unmarshall.Package(
     v_deserialize.Document(
         $,
         ($) => abort(

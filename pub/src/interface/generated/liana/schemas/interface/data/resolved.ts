@@ -1,25 +1,25 @@
 
 import * as _pi from "pareto-core/dist/interface"
 
-export namespace Module_Set_ {
+export namespace Package_Set_ {
     
     export namespace D {
         
-        export type module_ = Module_
+        export type package_ = Package_
         
-        export type set_ = Module_Set_
+        export type set_ = Package_Set_
         
     }
     
     export type D = 
-        | readonly ['module', D.module_]
+        | readonly ['package', D.package_]
         | readonly ['set', D.set_]
     
 }
 
-export type Module_Set_ = _pi.Dictionary<Module_Set_.D>
+export type Package_Set_ = _pi.Dictionary<Package_Set_.D>
 
-export namespace Module_ {
+export namespace Package_ {
     
     export type imports = Imports_
     
@@ -128,9 +128,9 @@ export namespace Module_ {
     
 }
 
-export type Module_ = {
-    readonly 'imports': Module_.imports
-    readonly 'types': Module_.types
+export type Package_ = {
+    readonly 'imports': Package_.imports
+    readonly 'types': Package_.types
 }
 
 export namespace Imports_ {
@@ -324,8 +324,8 @@ export type Module_Reference_ =
     | readonly ['local', Module_Reference_.local]
 
 export { 
-    Module_Set_ as Module_Set, 
-    Module_ as Module, 
+    Package_Set_ as Package_Set, 
+    Package_ as Package, 
     Imports_ as Imports, 
     Value_ as Value, 
     Module_Reference_ as Module_Reference, 

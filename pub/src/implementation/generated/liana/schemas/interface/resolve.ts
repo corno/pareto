@@ -9,22 +9,26 @@ import * as _pdev from "pareto-core-dev"
 
 import * as _p_ls from "pareto-core/dist/lookup_selection"
 
+import {
+    _p_deprecated_block,
+} from "pareto-core/dist/deprecated_block"
+
 import * as t_out from "../../../../../interface/generated/liana/schemas/interface/data/resolved"
 
 import * as t_signatures from "../../../../../interface/generated/liana/schemas/interface/resolve"
 
-export const Module_Set: t_signatures.Module_Set = ($, abort, $l, $p) => _p.dictionary.resolve(
+export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => _p.dictionary.resolve(
     $['l dictionary'],
-    ($, id, $a, $c): t_out.Module_Set.D => _p_cc(
+    ($, id, $a, $c): t_out.Package_Set.D => _p_cc(
         $['l entry'],
         ($) => _p.decide.state(
             $['l state'],
-            ($): t_out.Module_Set.D => {
+            ($): t_out.Package_Set.D => {
                 switch ($[0]) {
-                    case 'module':
+                    case 'package':
                         return _p.ss(
                             $,
-                            ($) => ['module', Module(
+                            ($) => ['package', Package(
                                 $,
                                 ($) => abort(
                                     $
@@ -36,7 +40,7 @@ export const Module_Set: t_signatures.Module_Set = ($, abort, $l, $p) => _p.dict
                     case 'set':
                         return _p.ss(
                             $,
-                            ($) => ['set', Module_Set(
+                            ($) => ['set', Package_Set(
                                 $,
                                 ($) => abort(
                                     $
@@ -55,7 +59,7 @@ export const Module_Set: t_signatures.Module_Set = ($, abort, $l, $p) => _p.dict
     )
 )
 
-export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolve(
+export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.resolve(
     () => {
         
         const prop_imports = _p_cc(
@@ -74,11 +78,11 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
             $['types'],
             ($) => _p.dictionary.resolve(
                 $['l dictionary'],
-                ($, id, $a, $c): t_out.Module.types.D => _p_cc(
+                ($, id, $a, $c): t_out.Package.types.D => _p_cc(
                     $['l entry'],
                     ($) => _p.decide.state(
                         $['l state'],
-                        ($): t_out.Module.types.D => {
+                        ($): t_out.Package.types.D => {
                             switch ($[0]) {
                                 case 'data':
                                     return _p.ss(
@@ -126,7 +130,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                                                     $['type'],
                                                     ($) => _p.decide.state(
                                                         $['l state'],
-                                                        ($): t_out.Module.types.D.algorithm.type_ => {
+                                                        ($): t_out.Package.types.D.algorithm.type_ => {
                                                             switch ($[0]) {
                                                                 case 'transformer':
                                                                     return _p.ss(
@@ -160,11 +164,11 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                                                                                         $,
                                                                                         ($) => _p.dictionary.resolve(
                                                                                             $['l dictionary'],
-                                                                                            ($, id, $a, $c): t_out.Module.types.D.algorithm.type_.refiner.lookups.O.D => _p_cc(
+                                                                                            ($, id, $a, $c): t_out.Package.types.D.algorithm.type_.refiner.lookups.O.D => _p_cc(
                                                                                                 $['l entry'],
                                                                                                 ($) => _p.decide.state(
                                                                                                     $['l state'],
-                                                                                                    ($): t_out.Module.types.D.algorithm.type_.refiner.lookups.O.D => {
+                                                                                                    ($): t_out.Package.types.D.algorithm.type_.refiner.lookups.O.D => {
                                                                                                         switch ($[0]) {
                                                                                                             case 'acyclic':
                                                                                                                 return _p.ss(
@@ -235,7 +239,7 @@ export const Module: t_signatures.Module = ($, abort, $l, $p) => _p.group.resolv
                                                         $,
                                                         ($) => _p.dictionary.resolve(
                                                             $['l dictionary'],
-                                                            ($, id, $a, $c): t_out.Module.types.D.algorithm.parameters.O.D => _p_cc(
+                                                            ($, id, $a, $c): t_out.Package.types.D.algorithm.parameters.O.D => _p_cc(
                                                                 $['l entry'],
                                                                 ($) => Value(
                                                                     $,

@@ -10,16 +10,16 @@ const wrap_state = <T>(value: T): T => {
 export namespace m {
 
     export const set = (
-        entries: _p.Raw_Or_Normal_Dictionary<d_out.Module_Set.D>
-    ): d_out.Module_Set.D => {
+        entries: _p.Raw_Or_Normal_Dictionary<d_out.Package_Set.D>
+    ): d_out.Package_Set.D => {
         return wrap_state(['set', _p.dictionary.literal(entries)])
     }
 
-    export const module = (
+    export const package_ = (
         imports: _p.Raw_Or_Normal_Dictionary<d_out.Imports.D>,
-        types: _p.Raw_Or_Normal_Dictionary<d_out.Module.types.D>,
-    ): d_out.Module_Set.D => {
-        return wrap_state(['module', {
+        types: _p.Raw_Or_Normal_Dictionary<d_out.Package.types.D>,
+    ): d_out.Package_Set.D => {
+        return wrap_state(['package', {
             'imports': _p.dictionary.literal(imports),
             'types': _p.dictionary.literal(types),
         }])
@@ -84,14 +84,14 @@ export namespace sub {
 
 export const acyclic_lookup = (
     type: d_out.Value,
-): d_out.Module.types.D.algorithm.type_.refiner.lookups.O.D => ['acyclic', type]
+): d_out.Package.types.D.algorithm.type_.refiner.lookups.O.D => ['acyclic', type]
 
 export const cyclic_lookup = (
     type: d_out.Value,
-): d_out.Module.types.D.algorithm.type_.refiner.lookups.O.D => ['cyclic', type]
+): d_out.Package.types.D.algorithm.type_.refiner.lookups.O.D => ['cyclic', type]
 export const stack_lookup = (
     type: d_out.Value,
-): d_out.Module.types.D.algorithm.type_.refiner.lookups.O.D => ['stack', type]
+): d_out.Package.types.D.algorithm.type_.refiner.lookups.O.D => ['stack', type]
 
 export namespace t {
 
@@ -222,7 +222,7 @@ export namespace type {
 
     export const data = (
         type: d_out.Value
-    ): d_out.Module.types.D => {
+    ): d_out.Package.types.D => {
         return ['data', type]
     }
 
@@ -231,7 +231,7 @@ export namespace type {
         context: d_out.Value,
         result: d_out.Value,
         parameters: null | _p.Raw_Or_Normal_Dictionary<d_out.Value>,
-    ): d_out.Module.types.D => {
+    ): d_out.Package.types.D => {
         return wrap_state(['algorithm', {
             'context': context,
             'result': result,
@@ -245,9 +245,9 @@ export namespace type {
         context: d_out.Value,
         result: d_out.Value,
         error: null | d_out.Value,
-        lookups: null | _p.Raw_Or_Normal_Dictionary<d_out.Module.types.D.algorithm.type_.refiner.lookups.O.D>,
+        lookups: null | _p.Raw_Or_Normal_Dictionary<d_out.Package.types.D.algorithm.type_.refiner.lookups.O.D>,
         parameters: null | _p.Raw_Or_Normal_Dictionary<d_out.Value>,
-    ): d_out.Module.types.D => {
+    ): d_out.Package.types.D => {
         return wrap_state(['algorithm', {
             'context': context,
             'parameters': parameters === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(parameters)),

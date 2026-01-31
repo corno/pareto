@@ -13,18 +13,18 @@ import * as v_serialize_number from "liana-core/dist/implementation/manual/primi
 
 import * as v_serialize_boolean from "liana-core/dist/implementation/manual/primitives/boolean/serializers/true_false"
 
-export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', _p.dictionary.map(
+export const Package_Set: t_signatures.Package_Set = ($) => ['dictionary', _p.dictionary.map(
     $,
     ($, id) => ['state', _p.decide.state(
         $,
         ($): t_out.Value.state => {
             switch ($[0]) {
-                case 'module':
+                case 'package':
                     return _p.ss(
                         $,
                         ($) => ({
-                            'option': 'module',
-                            'value': Module(
+                            'option': 'package',
+                            'value': Package(
                                 $
                             ),
                         })
@@ -34,7 +34,7 @@ export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', _p.dict
                         $,
                         ($) => ({
                             'option': 'set',
-                            'value': Module_Set(
+                            'value': Package_Set(
                                 $
                             ),
                         })
@@ -48,7 +48,7 @@ export const Module_Set: t_signatures.Module_Set = ($) => ['dictionary', _p.dict
     )]
 )]
 
-export const Module: t_signatures.Module = ($) => ['group', ['verbose', _p.dictionary.literal(
+export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dictionary.literal(
     {
         'imports': _p_cc(
             $['imports'],
