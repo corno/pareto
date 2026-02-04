@@ -1,14 +1,19 @@
-import * as _p from 'pareto-core/dist/serializer'
-import * as _p_transformer from 'pareto-core/dist/transformer'
-import * as _pd from 'pareto-core/dist/deserializer'
+import * as _p_transformer from 'pareto-core/dist/expression'
 
 import * as _pdev from 'pareto-core-dev'
+import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+
+//data types
+import * as d_out from "pareto-fountain-pen/dist/interface/to_be_generated/text"
 
 
-export const $$ = ($: string): string => {
+const temp_literal_to_text = ($: string): d_out.Text => _p_list_from_text($, ($) => $)
+
+export const $$ = ($: string): d_out.Text => {
     const the_string = $
     if (the_string === "") {
-        return "_empty"
+        return temp_literal_to_text("_empty")
     }
     const reserved_keywords = _p_transformer.dictionary.literal({
         //Reserved Words
@@ -84,14 +89,14 @@ export const $$ = ($: string): string => {
         () => true,
         () => false,
     )) {
-        return _p.text.deprecated_build(($i) => {
-            $i.add_snippet(the_string)
-            $i.add_character(95) //_
+        return _p_list_build_deprecated(($i) => {
+            $i['add list'](temp_literal_to_text(the_string))
+            $i['add item'](95) //_
         })
     }
 
-    return _p.text.deprecated_build(($i) => {
-        const characters = _pd.list.from_text(the_string, ($) => $)
+    return _p_list_build_deprecated(($i) => {
+        const characters = _p_list_from_text(the_string, ($) => $)
         const length = characters.__get_number_of_items()
 
         let position = 0
@@ -121,8 +126,8 @@ export const $$ = ($: string): string => {
                 if (current_character >= 48 && current_character <= 57) {
                     //begins with 0-9
 
-                    $i.add_character(95) //_
-                    $i.add_character(current_character)
+                    $i['add item'](95) //_
+                    $i['add item'](current_character)
                 }
             }
             if (false
@@ -131,12 +136,12 @@ export const $$ = ($: string): string => {
                 || (current_character >= 97 && current_character <= 122)//a-z
             ) {
                 //normal character
-                $i.add_character(current_character)
+                $i['add item'](current_character)
                 consume_character()
             } else {
                 const consume_and_add = ($: string) => {
                     consume_character()
-                    $i.add_snippet($)
+                    $i['add list'](temp_literal_to_text($))
                 }
                 switch (current_character) {
                     case 32: consume_and_add("_"); break; // Space

@@ -1,54 +1,71 @@
-import * as _p from 'pareto-core/dist/transformer'
+import * as _p from 'pareto-core/dist/expression'
 import * as _pi from 'pareto-core/dist/interface'
-import * as _ps from 'pareto-core/dist/serializer'
-import * as _pd from 'pareto-core/dist/deserializer'
+import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
+
+//data types
+import * as d_out from "pareto-fountain-pen/dist/interface/to_be_generated/text"
 
 export const $$ = (
     $: string,
-): string => _ps.text.deprecated_build(($i) => {
-        _pd.list.from_text($, ($) => $).__for_each(($) => {
+): d_out.Text => _p.list.flatten(
+    _p.list.map(
+        _p_list_from_text($, ($) => $),
+        ($): _pi.List<number> => {
             switch ($) {
-
-                //don't escape slashes, they are used in URLs and file paths
                 // case 0x2F: // slash (\/)
-                //     $i.add_character(0x5C) // \
-                //     $i.add_character(0x2F) // /
-                //     break
+                //     return _p.list.literal([
+                //         0x5c, // \
+                //         0x2f, // /
+                //     ])
                 case 0x22: // " (\")
-                    $i.add_character(0x5C) // \
-                    $i.add_character(0x22) // "
-                    break
+                    return _p.list.literal([
+                        0x5C, // \
+                        0x22, // "
+                    ])
                 case 0x5C: // \ (\\)
-                    $i.add_character(0x5C) // \
-                    $i.add_character(0x5C) // \
-                    break
+                    return _p.list.literal([
+                        0x5C, // \
+                        0x5C, // \
+                    ])
                 case 0x08: // backspace (\b)
-                    $i.add_character(0x5C) // \
-                    $i.add_character(0x62) // b
-                    break
+                    return _p.list.literal([
+                        0x5C, // \
+                        0x62, // b
+                    ])
                 case 0x0C: // form feed (\f)
-                    $i.add_character(0x5C) // \
-                    $i.add_character(0x66) // f
-                    break
+                    return _p.list.literal([
+                        0x5C, // \
+                        0x66, // f
+                    ])
                 case 0x0A: // line feed (\n)
-                    $i.add_character(0x5C) // \
-                    $i.add_character(0x6E) // n
-                    break
+                    return _p.list.literal([
+                        0x5C, // \
+                        0x6E, // n
+                    ])
                 case 0x0D: // carriage return (\r)
-                    $i.add_character(0x5C) // \
-                    $i.add_character(0x72) // r
-                    break
+                    return _p.list.literal([
+                        0x5C, // \
+                        0x72, // r
+                    ])
                 case 0x09: // horizontal tab (\t)
-                    $i.add_character(0x5C) // \
-                    $i.add_character(0x74) // t
-                    break
+                    return _p.list.literal([
+                        0x5C, // \
+                        0x74, // t
+                    ])
                 case 0x0B: // vertical tab (\v)
-                    $i.add_character(0x5C) // \
-                    $i.add_character(0x76) // v
-                    break
+                    return _p.list.literal([
+                        0x5C, // \
+                        0x76, // v
+                    ])
                 default: {
-                   $i.add_character($)
+                    return _p.list.literal([
+                        $,
+                    ])
                 }
             }
-        })
-    })
+        }
+    ),
+    ($) => $,
+)

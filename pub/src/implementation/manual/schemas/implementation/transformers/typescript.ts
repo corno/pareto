@@ -1,7 +1,8 @@
-import * as _p from 'pareto-core/dist/transformer'
+import * as _p from 'pareto-core/dist/expression'
 import * as _pi from 'pareto-core/dist/interface'
-import * as _ps from 'pareto-core/dist/serializer'
 import * as _pdev from 'pareto-core-dev'
+import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+import _text_from_list from 'pareto-core/dist/_p_text_from_list'
 
 //data types
 import * as d_in from "../../../../../interface/generated/liana/schemas/implementation/data/resolved"
@@ -13,26 +14,15 @@ import * as sh from "../../../../../modules/typescript_light/shorthands/typescri
 
 //dependencies
 import { $$ as s_file_name } from "../../../primitives/text/serializers/filename"
+import { temp_create_file_path } from '../../interface/transformers/typescript'
 
 const join = ($: _pi.List<string>): string => {
     let out = ""
-    $.__for_each(($) => {
+    $.__l_map(($) => {
         out += $
     })
     return out
 }
-
-const s_repeated: _pi.Text_Serializer_With_Parameters<{ 'count': number }> = ($, $p) => _ps.text.deprecated_build(($i) => {
-    for (let i = 0; i < $p.count; i++) {
-        $i.add_snippet($)
-    }
-})
-const s_list_of_texts: _pi.Serializer<_pi.List<string>> = ($) => _ps.text.deprecated_build(($i) => {
-    $.__for_each(($) => {
-        $i.add_snippet($)
-    })
-})
-
 
 const temp_rename = (
     $: d_in.Package_Set,
@@ -68,9 +58,6 @@ export const Package_Set = (
     return temp_rename($, abort).__d_map(($, id) => _p.decide.state($, ($) => {
         switch ($[0]) {
             case 'package': return _p.ss($, ($): d_out.Directory.D => {
-                const valid_file_name = ($: string): string => {
-                    return s_file_name($)
-                }
 
                 const y: d_out.Statements = _p.list.nested_literal_old([
                     [
@@ -90,7 +77,7 @@ export const Package_Set = (
                     $.specials['change context']
                         ? [sh.s.import_named(
                             [
-                                sh.specifier(sh.identifier_raw("_p_cc"), null),
+                                sh.specifier(sh.identifier_raw("_p_change_context"), null),
                             ],
                             `pareto-core/dist/change_context`
                         )]
@@ -104,7 +91,7 @@ export const Package_Set = (
                     $.specials['iterate']
                         ? [sh.s.import_named(
                             [
-                                sh.specifier(sh.identifier_raw("_p_cc"), null),
+                                sh.specifier(sh.identifier_raw("_p_change_context"), null),
                             ],
                             `pareto-core/dist/iterate`
                         )]
@@ -135,34 +122,14 @@ export const Package_Set = (
                         $['type imports'],
                         ($, id) => sh.s.import_namespace(
                             sh.identifier_escaped(join(_p.list.literal(["t ", id]))),
-                            _p.decide.state($.type, ($): string => {
-                                switch ($[0]) {
-                                    case 'external': return _p.ss($, ($) => valid_file_name($))
-                                    case 'ancestor': return _p.ss($, ($) => `${s_repeated("../", { 'count': $['number of steps'] })}${valid_file_name($.dependency)}`)
-                                    case 'sibling': return _p.ss($, ($) => `./${valid_file_name($)}`)
-                                    default: return _p.au($[0])
-                                }
-                            })
-                            + s_list_of_texts(
-                                $.tail.__l_map(($) => `/${valid_file_name($)}`),
-                            )
+                            temp_create_file_path($)
                         )
                     ),
                     _p.list.from_dictionary(
                         $['variable imports'],
                         ($, id) => sh.s.import_namespace(
                             sh.identifier_escaped(join(_p.list.literal(["v ", id]))),
-                            _p.decide.state($.type, ($): string => {
-                                switch ($[0]) {
-                                    case 'external': return _p.ss($, ($) => valid_file_name($))
-                                    case 'ancestor': return _p.ss($, ($) => `${s_repeated("../", { 'count': $['number of steps'] })}${valid_file_name($.dependency)}`)
-                                    case 'sibling': return _p.ss($, ($) => `./${valid_file_name($)}`)
-                                    default: return _p.au($[0])
-                                }
-                            })
-                            + s_list_of_texts(
-                                $.tail.__l_map(($) => `/${valid_file_name($)}`),
-                            )
+                            temp_create_file_path($)
                         )
                     ),
                     _p.list.from_dictionary(
@@ -740,7 +707,7 @@ export const Expression = (
                     ]
                 ))
                 case 'change context': return _p.ss($, ($) => sh.e.call(
-                    sh.e.identifier_raw("_p_cc"),
+                    sh.e.identifier_raw("_p_change_context"),
                     [
                         Selection($['new context']),
                         sh.e.arrow_function_with_expression(
@@ -811,7 +778,7 @@ export const reduce = <Item, Result_Type>(
     ) => Result_Type,
 ): Result_Type => {
     let current_state = initial_state
-    $.__for_each(($) => {
+    $.__l_map(($) => {
         current_state = update_state($, current_state)
     })
     return current_state

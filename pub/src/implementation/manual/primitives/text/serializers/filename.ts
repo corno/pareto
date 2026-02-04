@@ -1,24 +1,27 @@
-import * as _p from 'pareto-core/dist/transformer'
+import * as _p from 'pareto-core/dist/expression'
 import * as _pi from 'pareto-core/dist/interface'
-import * as _ps from 'pareto-core/dist/serializer'
-import * as _pd from 'pareto-core/dist/deserializer'
+import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 
-export type Signature = _pi.Text_Serializer
+//data types
+import * as d_out from "pareto-fountain-pen/dist/interface/to_be_generated/text"
+
+
+export type Signature = _pi.Transformer<string, d_out.Text>
 
 export const $$: Signature = ($) => {
-    return _ps.text.deprecated_build(($i) => {
-        _pd.list.from_text($, ($) => $).__for_each(($) => {
+    return _p_list_build_deprecated(($i) => {
+        _p_list_from_text($, ($) => $).__l_map(($) => {
             if ($ === 36) { // $
-                $i.add_character(36) //dollar
-                $i.add_character(36) //dollar
+                $i['add item'](36) //dollar
+                $i['add item'](36) //dollar
             } else if ($ === 95) { // _
-                $i.add_character(36) //dollar
-                $i.add_character(95) //underscore    
-
+                $i['add item'](36) //dollar
+                $i['add item'](95) //underscore    
             } else if ($ === 32) { // space
-                $i.add_character(95) //underscore    
+                $i['add item'](95) //underscore    
             } else {
-                $i.add_character($)
+                $i['add item']($)
             }
         })
     })

@@ -99,7 +99,7 @@ export namespace m {
             'lookups': false,
             'variables': false,
         }
-        _p.list.literal(specials).__for_each(($) => {
+        _p.list.literal(specials).__l_map(($) => {
             switch ($) {
                 case 'abort': temp_specials['abort'] = true; break
                 case 'change context': temp_specials['change context'] = true; break

@@ -1,35 +1,38 @@
-import * as _p from 'pareto-core/dist/transformer'
+import * as _p from 'pareto-core/dist/expression'
 import * as _pi from 'pareto-core/dist/interface'
-import * as _ps from 'pareto-core/dist/serializer'
-import { _p_unreachable_code_path } from 'pareto-core/dist/unreachable_code_path'
+import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
+import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 
-export const $$: _pi.Number_Serializer = ($) => {
-    return _ps.text.deprecated_build(($i) => {
+//data types
+import * as d_out from "pareto-fountain-pen/dist/interface/to_be_generated/text"
+
+export const $$: _pi.Transformer<number, d_out.Text> = ($) => {
+    return _p_list_build_deprecated(($i) => {
         const fixme_digits = 16 // Number of significant digits to serialize
         // Handle special case for zero in scientific notation
         if ($ === 0) {
-            $i.add_character(48) // '0'
+            $i['add item'](48) // '0'
 
             // Add decimal point if we have more than 1 digit
             //FIXME: do this only when the number is not an integer number
-            $i.add_character(46) // '.'
+            $i['add item'](46) // '.'
 
             // Add the required number of zeros after decimal point
             for (let i = 0; i < 16; i++) {
-                $i.add_character(48) // '0'
+                $i['add item'](48) // '0'
             }
 
 
             // Add exponent part for zero: e+0
-            $i.add_character(101) // 'e'
-            $i.add_character(43)  // '+'
-            $i.add_character(48)  // '0'
+            $i['add item'](101) // 'e'
+            $i['add item'](43)  // '+'
+            $i['add item'](48)  // '0'
             return
         }
 
         // Handle negative numbers
         if ($ < 0) {
-            $i.add_character(45) // '-'
+            $i['add item'](45) // '-'
             $ = -$
         }
 
@@ -60,7 +63,7 @@ export const $$: _pi.Number_Serializer = ($) => {
         const mantissa_scaled = _p.integer.divide(mantissa * scale_factor + 0.5, 1, () => _p_unreachable_code_path())
 
         // Convert mantissa to string
-        const digits = _p.list.deprecated_build<number>(($i) => {
+        const digits = _p_list_build_deprecated<number>(($i) => {
             let temp = mantissa_scaled
             // temp is always > 0 here since mantissa_scaled = integer_division(mantissa * scale_factor + 0.5, 1)
             // where mantissa >= 1.0 (normalized) and scale_factor >= 1, so result >= 1
@@ -76,11 +79,11 @@ export const $$: _pi.Number_Serializer = ($) => {
             ($) => $,
             () => _p_unreachable_code_path() // index cannot be out of bounds
         )
-        $i.add_character(48 + first_digit) // First digit
+        $i['add item'](48 + first_digit) // First digit
 
         // Add decimal point if we have more digits
         if (fixme_digits > 1 && digits.__get_number_of_items() > 1) {
-            $i.add_character(46) // '.'
+            $i['add item'](46) // '.'
 
             // Add remaining digits in reverse order
             for (let j = digits.__get_number_of_items() - 2; j >= 0; j--) {
@@ -88,21 +91,21 @@ export const $$: _pi.Number_Serializer = ($) => {
                     ($) => $,
                     () => _p_unreachable_code_path() // index cannot be out of bounds
                 )
-                $i.add_character(48 + digit)
+                $i['add item'](48 + digit)
             }
         }
 
         // Add exponent part
-        $i.add_character(101) // 'e'
+        $i['add item'](101) // 'e'
         if (exponent < 0) {
-            $i.add_character(45) // '-'
+            $i['add item'](45) // '-'
             exponent = -exponent
         } else {
-            $i.add_character(43) // '+'
+            $i['add item'](43) // '+'
         }
 
         // Convert exponent to string
-        const exp_digits = _p.list.deprecated_build<number>(($i) => {
+        const exp_digits = _p_list_build_deprecated<number>(($i) => {
             if (exponent === 0) {
                 $i['add item'](0)
             } else {
@@ -120,7 +123,7 @@ export const $$: _pi.Number_Serializer = ($) => {
                 ($) => $,
                 () => _p_unreachable_code_path() // index cannot be out of bounds
             )
-            $i.add_character(48 + digit)
+            $i['add item'](48 + digit)
         }
     })
 }

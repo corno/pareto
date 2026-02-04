@@ -8,9 +8,9 @@
     "dist"
   ],
   "dependencies": {
-    "astn-core": "^0.5.15",
-    "liana-core": "^0.0.3",
-    "pareto-core-dev": "^0.12.5",
-    "pareto-fountain-pen": "^0.4.10"
+    "astn-core": "^0.5.18",
+    "liana-core": "^0.0.5",
+    "pareto-core-dev": "^0.12.7",
+    "pareto-fountain-pen": "^0.4.15"
   }
 }

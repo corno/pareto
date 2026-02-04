@@ -1,14 +1,17 @@
-import * as _p from 'pareto-core/dist/transformer'
-import * as _ps from 'pareto-core/dist/serializer'
+import * as _p from 'pareto-core/dist/expression'
 import * as _pi from 'pareto-core/dist/interface'
-import { _p_unreachable_code_path } from 'pareto-core/dist/unreachable_code_path'
+import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
+import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 
-export const $$: _pi.Number_Serializer = ($) => _ps.text.deprecated_build(($i) => {
+//data types
+import * as d_out from "pareto-fountain-pen/dist/interface/to_be_generated/text"
+
+export const $$: _pi.Transformer<number, d_out.Text> = ($) => _p_list_build_deprecated(($i) => {
     if ($ < 0) {
-        $i.add_character(45) // '-'
+        $i['add item'](45) // '-'
         $ = -$
     }
-    const digits = _p.list.deprecated_build<number>(($i) => {
+    const digits = _p_list_build_deprecated<number>(($i) => {
         do {
             const digit = $ % 10
             $i['add item'](digit)
@@ -18,7 +21,7 @@ export const $$: _pi.Number_Serializer = ($) => _ps.text.deprecated_build(($i) =
     })
 
     for (let j = digits.__get_number_of_items() - 1; j >= 0; j--) {
-        $i.add_character(48 + digits.__deprecated_get_possible_item_at(j).__decide(
+        $i['add item'](48 + digits.__deprecated_get_possible_item_at(j).__decide(
             ($) => $,
             () => _p_unreachable_code_path() // index cannot be out of bounds
         ))

@@ -1,8 +1,9 @@
 import * as _p from 'pareto-core-shorthands/dist/unconstrained'
-import * as _pr from 'pareto-core/dist/refiner'
-
+import * as _pr from 'pareto-core/dist/expression'
 import * as _pi from 'pareto-core/dist/interface'
+import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
+//data types
 import * as d_target from "../../../interface/generated/liana/schemas/typescript_light/data"
 
 import { $$ as temp_s_identifier } from "../implementation/manual/primitives/text/serializers/identifier"
@@ -17,7 +18,7 @@ export const identifier_raw = (
 export const identifier_escaped = (
     name: string,
 ): d_target.Identifier => ({
-    'value': temp_s_identifier(name)
+    'value': _p_text_from_list(temp_s_identifier(name), ($) => $)
 })
 
 
@@ -356,7 +357,7 @@ export namespace e {
     export const identifier_escaped = (
         name: string,
     ): d_target.Expression => ['identifier', {
-        'value': temp_s_identifier(name),
+        'value': _p_text_from_list(temp_s_identifier(name), ($) => $),
     }]
 
     export const not = (

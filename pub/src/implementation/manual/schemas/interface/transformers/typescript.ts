@@ -1,8 +1,10 @@
-import * as _p from 'pareto-core/dist/transformer'
+import * as _p from 'pareto-core/dist/expression'
 import * as _pi from 'pareto-core/dist/interface'
 import * as _pdev from 'pareto-core-dev'
-import * as _ps from 'pareto-core/dist/serializer'
-import { _p_cc } from 'pareto-core/dist/change_context'
+import _p_change_context from 'pareto-core/dist/_p_change_context'
+import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
+import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 
 import * as d_in from "../../../../../interface/generated/liana/schemas/interface/data/resolved"
 import * as d_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
@@ -12,19 +14,46 @@ import * as d_pareto_to_typescript from "../../../../../interface/to_be_generate
 //dependencies
 import { $$ as s_file_name } from "../../../primitives/text/serializers/filename"
 
-const s_repeated: _pi.Text_Serializer_With_Parameters<{ 'count': number }> = ($, $p) => _ps.text.deprecated_build(($i) => {
-    for (let i = 0; i < $p.count; i++) {
-        $i.add_snippet($)
-    }
-})
-const s_list_of_texts: _pi.Serializer<_pi.List<string>> = ($) => _ps.text.deprecated_build(($i) => {
-    $.__for_each(($) => {
-        $i.add_snippet($)
-    })
-})
-
 //shorthands
 import * as sh from "../../../../../modules/typescript_light/shorthands/typescript_light"
+
+
+export const temp_create_file_path = ($: d_in.Imports.D): string => {
+    const valid_file_name = ($: string): string => {
+        return _p_text_from_list(
+            s_file_name($),
+            ($) => $
+        )
+    }
+    const do_tail = (): string => {
+        return _p_text_from_list(
+            _p.list.flatten(
+                $.tail.__l_map(($) => `/${valid_file_name($)}`),
+                ($) => _p_list_from_text($, ($) => $)
+            ),
+            ($) => $
+        )
+    }
+    return _p.decide.state($.type, ($): string => {
+        switch ($[0]) {
+            case 'external': return _p.ss($, ($) => valid_file_name($) + do_tail())
+            case 'ancestor': return _p.ss($, ($) => _p_text_from_list(
+                _p.list.flatten(
+                    _p.list.repeat(_p_list_from_text("../", ($) => $), $['number of steps']),
+                    ($) => $
+                ),
+                ($) => $
+            ) + valid_file_name($.dependency) + do_tail())
+            case 'sibling': return _p.ss($, ($) => `./${valid_file_name($)}` + do_tail())
+            default: return _p.au($[0])
+        }
+    })
+
+
+    //  + s_list_of_texts(
+    //     $.tail.__l_map(($) => `/${valid_file_name($)}`),
+    // )
+}
 
 const temp_rename = (
     $: d_in.Package_Set,
@@ -61,9 +90,6 @@ export const Package_Set = (
         switch ($[0]) {
             case 'package': return _p.ss($, ($) => {
 
-                const valid_file_name = ($: string): string => {
-                    return s_file_name($)
-                }
                 return sh.n.file(_p.list.nested_literal_old<d_out.Statements_.L>([
                     [
                         sh.s.import_namespace(sh.identifier_raw("_pi"), "pareto-core/dist/interface"),
@@ -71,16 +97,7 @@ export const Package_Set = (
 
                     _p.list.from_dictionary($.imports, ($, id): d_out.Statements_.L => sh.s.import_namespace(
                         sh.identifier_escaped(`i ${id}`),
-                        _p.decide.state($.type, ($): string => {
-                            switch ($[0]) {
-                                case 'external': return _p.ss($, ($) => valid_file_name($))
-                                case 'ancestor': return _p.ss($, ($) => `${s_repeated("../", { 'count': $['number of steps'] })}${valid_file_name($.dependency)}`)
-                                case 'sibling': return _p.ss($, ($) => `./${valid_file_name($)}`)
-                                default: return _p.au($[0])
-                            }
-                        }) + s_list_of_texts(
-                            $.tail.__l_map(($) => `/${valid_file_name($)}`),
-                        )
+                        temp_create_file_path($)
                     )),
 
                     _p.list.flatten(
@@ -232,9 +249,9 @@ export const Package_Set = (
                                                                                     [
                                                                                         sh.identifier_raw(_p.decide.state($, ($) => {
                                                                                             switch ($[0]) {
-                                                                                                case 'acyclic': return _p.ss($, ($) => "Acyclic_Lookup")
-                                                                                                case 'cyclic': return _p.ss($, ($) => "Cyclic_Lookup")
-                                                                                                case 'stack': return _p.ss($, ($) => "Stack_Lookup")
+                                                                                                case 'acyclic': return _p.ss($, ($) => "lookup.Acyclic")
+                                                                                                case 'cyclic': return _p.ss($, ($) => "lookup.Cyclic")
+                                                                                                case 'stack': return _p.ss($, ($) => "lookup.Stack")
                                                                                                 default: return _p.au($[0])
                                                                                             }
                                                                                         }))
@@ -459,7 +476,7 @@ export const Value = (
                     true,
                     sh.identifier_escaped($p.name),
                     _p.list.literal([]),
-                    _p_cc($, ($) => {
+                    _p_change_context($, ($) => {
                         const foo = sh.t.type_reference(
 
                             //start
