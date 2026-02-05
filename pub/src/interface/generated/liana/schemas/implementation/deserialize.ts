@@ -3,11 +3,13 @@
     
     import * as i_generic from "astn-core/dist/interface/to_be_generated/deserialize"
     
+    import * as i_in from "pareto-fountain-pen/dist/interface/to_be_generated/list_of_characters"
+    
     import * as i_out from "./data/unresolved"
     
     export namespace Package_Set_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.Package_Set
         
@@ -34,7 +36,7 @@
     
     export namespace Package_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.Package
         
@@ -61,7 +63,7 @@
     
     export namespace Temp_Value_Type_Specification_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.Temp_Value_Type_Specification
         
@@ -88,7 +90,7 @@
     
     export namespace Expression_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.Expression
         
@@ -115,7 +117,7 @@
     
     export namespace Value_Selection_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.Value_Selection
         
@@ -142,7 +144,7 @@
     
     export namespace Lookup_Selection_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.Lookup_Selection
         

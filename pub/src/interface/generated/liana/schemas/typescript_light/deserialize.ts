@@ -3,11 +3,13 @@
     
     import * as i_generic from "astn-core/dist/interface/to_be_generated/deserialize"
     
+    import * as i_in from "pareto-fountain-pen/dist/interface/to_be_generated/list_of_characters"
+    
     import * as i_out from "./data"
     
     export namespace Directory_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.Directory
         
@@ -34,7 +36,7 @@
     
     export namespace Block_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.Block
         
@@ -61,7 +63,7 @@
     
     export namespace Statements_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.Statements
         
@@ -88,7 +90,7 @@
     
     export namespace Type_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.Type
         
@@ -115,7 +117,7 @@
     
     export namespace Function_Parameters_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.Function_Parameters
         
@@ -142,7 +144,7 @@
     
     export namespace Expression_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.Expression
         
@@ -169,7 +171,7 @@
     
     export namespace String_Literal_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.String_Literal
         
@@ -196,7 +198,7 @@
     
     export namespace Identifier_ {
         
-        export type I = string
+        export type I = i_in.List_of_Characters
         
         export type O = i_out.Identifier
         
