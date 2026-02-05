@@ -35,6 +35,10 @@
             
             export type lookups = boolean
             
+            export type list_from_text = boolean
+            
+            export type text_from_list = boolean
+            
             export type unreachable_code_path = boolean
             
             export type variables = boolean
@@ -47,6 +51,8 @@
             readonly 'implement me': specials.implement_me
             readonly 'iterate': specials.iterate
             readonly 'lookups': specials.lookups
+            readonly 'list from text': specials.list_from_text
+            readonly 'text from list': specials.text_from_list
             readonly 'unreachable code path': specials.unreachable_code_path
             readonly 'variables': specials.variables
         }
@@ -1129,6 +1135,19 @@
                     readonly 'abort handler': dictionary_entry.abort_handler
                 }
                 
+                export namespace list_from_text {
+                    
+                    export type source = Expression_
+                    
+                    export type character_handler = Expression_
+                    
+                }
+                
+                export type list_from_text = {
+                    readonly 'source': list_from_text.source
+                    readonly 'character handler': list_from_text.character_handler
+                }
+                
                 export namespace lookup_entry {
                     
                     export type lookup = Lookup_Selection_
@@ -1197,6 +1216,19 @@
                 
                 export type state = null
                 
+                export namespace text_from_list {
+                    
+                    export type source = Expression_
+                    
+                    export type item_handler = Expression_
+                    
+                }
+                
+                export type text_from_list = {
+                    readonly 'source': text_from_list.source
+                    readonly 'item handler': text_from_list.item_handler
+                }
+                
                 export type variable = string
                 
             }
@@ -1205,12 +1237,14 @@
                 | readonly ['call', start.call]
                 | readonly ['context', start.context]
                 | readonly ['dictionary entry', start.dictionary_entry]
+                | readonly ['list from text', start.list_from_text]
                 | readonly ['lookup entry', start.lookup_entry]
                 | readonly ['lookup entry depth', start.lookup_entry_depth]
                 | readonly ['parameter', start.parameter]
                 | readonly ['parent sibling', start.parent_sibling]
                 | readonly ['sibling', start.sibling]
                 | readonly ['state', start.state]
+                | readonly ['text from list', start.text_from_list]
                 | readonly ['variable', start.variable]
             
             export namespace tail {

@@ -81,8 +81,10 @@ export namespace m {
             | 'change context'
             | 'implement me'
             | 'iterate'
-            | 'unreachable code path'
+            | 'list from text'
             | 'lookups'
+            | 'text from list'
+            | 'unreachable code path'
             | 'variables'
         >,
         type_imports: _p.Raw_Or_Normal_Dictionary<d_target_interface.Imports.D>,
@@ -94,8 +96,10 @@ export namespace m {
             'change context': false,
             'implement me': false,
             'iterate': false,
-            'unreachable code path': false,
             'lookups': false,
+            'list from text': false,
+            'text from list': false,
+            'unreachable code path': false,
             'variables': false,
         }
         _p.list.literal(specials).__l_map(($) => {
@@ -104,8 +108,10 @@ export namespace m {
                 case 'change context': temp_specials['change context'] = true; break
                 case 'implement me': temp_specials['implement me'] = true; break
                 case 'iterate': temp_specials['iterate'] = true; break
-                case 'unreachable code path': temp_specials['unreachable code path'] = true; break
+                case 'list from text': temp_specials['list from text'] = true; break
                 case 'lookups': temp_specials['lookups'] = true; break
+                case 'text from list': temp_specials['text from list'] = true; break
+                case 'unreachable code path': temp_specials['unreachable code path'] = true; break
                 case 'variables': temp_specials['variables'] = true; break
             }
         })
@@ -122,20 +128,35 @@ export namespace m {
 export const algorithm = (
     imp: string,
     type: string,
-    has_abort: boolean,
-    has_lookups: boolean,
-    has_parameters: boolean,
+    specials: _p.Raw_Or_Normal_List<
+        | 'abort'
+        | 'lookups'
+        | 'parameters'
+    >,
     expression: d_target.Expression,
-): d_target.Package.functions.D => ({
-    'type': {
-        'import': imp,
-        'type': type,
-    },
-    'expression': expression,
-    'temp has abort': has_abort,
-    'temp has lookups': has_lookups,
-    'temp has parameters': has_parameters,
-})
+): d_target.Package.functions.D => {
+    let has_abort = false
+    let has_lookups = false
+    let has_parameters = false
+    _p.list.literal(specials).__l_map(($) => {
+        switch ($) {
+            case 'abort': has_abort = true; break
+            case 'lookups': has_lookups = true; break
+            case 'parameters': has_parameters = true; break
+
+        }
+    })
+    return ({
+        'type': {
+            'import': imp,
+            'type': type,
+        },
+        'expression': expression,
+        'temp has abort': has_abort,
+        'temp has lookups': has_lookups,
+        'temp has parameters': has_parameters,
+    })
+}
 
 export namespace e {
 
@@ -492,6 +513,18 @@ export namespace s {
         'tail': _p.list.literal(tail),
     }])
 
+    export const list_from_text = (
+        source: d_target.Expression,
+        character_handler: d_target.Expression,
+        tail: _p.Raw_Or_Normal_List<d_target.Value_Selection.regular.tail.L>
+    ): d_target.Value_Selection => wrap_state(['regular', {
+        'start': wrap_state<d_target.Value_Selection.regular.start>(['list from text', {
+            'source': source,
+            'character handler': character_handler,
+        }]),
+        'tail': _p.list.literal(tail),
+    }])
+
     export const lookup_entry = (
         lookup: d_target.Lookup_Selection,
         id: d_target.Expression,
@@ -561,6 +594,18 @@ export namespace s {
         tail: _p.Raw_Or_Normal_List<d_target.Value_Selection.regular.tail.L>
     ): d_target.Value_Selection => wrap_state(['regular', {
         'start': wrap_state(['state', null]),
+        'tail': _p.list.literal(tail),
+    }])
+
+    export const text_from_list = (
+        source: d_target.Expression,
+        character_handler: d_target.Expression,
+        tail: _p.Raw_Or_Normal_List<d_target.Value_Selection.regular.tail.L>
+    ): d_target.Value_Selection => wrap_state(['regular', {
+        'start': wrap_state<d_target.Value_Selection.regular.start>(['text from list', {
+            'source': source,
+            'item handler': character_handler,
+        }]),
         'tail': _p.list.literal(tail),
     }])
 

@@ -83,6 +83,14 @@
                     $['lookups'],
                     ($) => $,
                 ),
+                'list from text': _p_change_context(
+                    $['list from text'],
+                    ($) => $,
+                ),
+                'text from list': _p_change_context(
+                    $['text from list'],
+                    ($) => $,
+                ),
                 'unreachable code path': _p_change_context(
                     $['unreachable code path'],
                     ($) => $,
@@ -1992,6 +2000,24 @@
                                                                 ),
                                                             }],
                                                         )
+                                                    case 'list from text':
+                                                        return _p.ss(
+                                                            $,
+                                                            ($) => ['list from text', {
+                                                                'source': _p_change_context(
+                                                                    $['source'],
+                                                                    ($) => Expression(
+                                                                        $,
+                                                                    ),
+                                                                ),
+                                                                'character handler': _p_change_context(
+                                                                    $['character handler'],
+                                                                    ($) => Expression(
+                                                                        $,
+                                                                    ),
+                                                                ),
+                                                            }],
+                                                        )
                                                     case 'lookup entry':
                                                         return _p.ss(
                                                             $,
@@ -2093,6 +2119,24 @@
                                                         return _p.ss(
                                                             $,
                                                             ($) => ['state', null],
+                                                        )
+                                                    case 'text from list':
+                                                        return _p.ss(
+                                                            $,
+                                                            ($) => ['text from list', {
+                                                                'source': _p_change_context(
+                                                                    $['source'],
+                                                                    ($) => Expression(
+                                                                        $,
+                                                                    ),
+                                                                ),
+                                                                'item handler': _p_change_context(
+                                                                    $['item handler'],
+                                                                    ($) => Expression(
+                                                                        $,
+                                                                    ),
+                                                                ),
+                                                            }],
                                                         )
                                                     case 'variable':
                                                         return _p.ss(

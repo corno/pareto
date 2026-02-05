@@ -86,10 +86,22 @@ export const Package_Set = (
                             `pareto-core/dist/iterate`
                         )]
                         : [],
+                    $.specials['list from text']
+                        ? [sh.s.import_default(
+                            sh.identifier_raw("_p_list_from_text"),
+                            `pareto-core/dist/_p_list_from_text`
+                        )]
+                        : [],
                     $.specials.lookups
                         ? [sh.s.import_namespace(
                             sh.identifier_raw("_p_ls"),
                             `pareto-core/dist/lookup_selection`
+                        )]
+                        : [],
+                    $.specials['text from list']
+                        ? [sh.s.import_default(
+                            sh.identifier_raw("_p_text_from_list"),
+                            `pareto-core/dist/_p_text_from_list`
                         )]
                         : [],
                     $.specials['unreachable code path']
@@ -891,6 +903,22 @@ export const Value_Selection = (
                             )
                         ]
                     ))
+                    case 'list from text': return _p.ss($, ($) => sh.e.call(
+                        sh.e.identifier_raw("_p_list_from_text"),
+                        [
+                            Expression($.source),
+                            sh.e.arrow_function_with_expression(
+                                [
+                                    sh.parameter(
+                                        sh.identifier_raw("$"),
+                                        null,
+                                    )
+                                ],
+                                null,
+                                Expression($['character handler'])
+                            )
+                        ]
+                    ))
                     case 'lookup entry': return _p.ss($, ($) => sh.e.call(
                         sh.e.property_access(
                             Lookup_Selection($.lookup),
@@ -980,6 +1008,22 @@ export const Value_Selection = (
                     case 'parent sibling': return _p.ss($, ($) => sh.e.identifier_escaped("parent.prop " + $))
                     case 'sibling': return _p.ss($, ($) => sh.e.identifier_escaped("prop " + $))
                     case 'state': return _p.ss($, ($) => sh.e.identifier_raw("state"))
+                    case 'text from list': return _p.ss($, ($) => sh.e.call(
+                        sh.e.identifier_raw("_p_text_from_list"),
+                        [
+                            Expression($.source),
+                            sh.e.arrow_function_with_expression(
+                                [
+                                    sh.parameter(
+                                        sh.identifier_raw("$"),
+                                        null,
+                                    )
+                                ],
+                                null,
+                                Expression($['item handler'])
+                            )
+                        ]
+                    ))
                     case 'variable': return _p.ss($, ($) => sh.e.identifier_escaped("var " + $))
                     default: return _p.au($[0])
                 }
