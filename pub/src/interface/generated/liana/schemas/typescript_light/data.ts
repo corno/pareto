@@ -98,6 +98,8 @@
                 
                 export namespace type_ {
                     
+                    export type default_ = Identifier_
+                    
                     export type namespace = Identifier_
                     
                     export namespace named {
@@ -136,6 +138,7 @@
                 }
                 
                 export type type_ = 
+                    | readonly ['default', type_.default_]
                     | readonly ['namespace', type_.namespace]
                     | readonly ['named', type_.named]
                 

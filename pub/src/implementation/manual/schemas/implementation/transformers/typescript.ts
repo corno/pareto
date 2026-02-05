@@ -67,11 +67,9 @@ export const Package_Set = (
                         ),
                     ],
                     $.specials['change context']
-                        ? [sh.s.import_named(
-                            [
-                                sh.specifier(sh.identifier_raw("_p_change_context"), null),
-                            ],
-                            `pareto-core/dist/change_context`
+                        ? [sh.s.import_default(
+                            sh.identifier_raw("_p_change_context"),
+                            `pareto-core/dist/_p_change_context`
                         )]
                         : [],
                     $.specials['implement me']

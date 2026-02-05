@@ -107,6 +107,15 @@ export namespace s {
 
     }]
 
+    export const import_default = (
+        name: d_target.Identifier,
+        from: string
+    ): d_target.Statements.L => ['import', {
+        'type': ['default', name],
+        'from': from,
+
+    }]
+
     export const namespace = (
         export_: boolean,
         name: d_target.Identifier,

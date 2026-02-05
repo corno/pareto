@@ -111,6 +111,9 @@ export const Statements = (
                         sh.ph.literal("import "),
                         _p.decide.state($.type, ($) => {
                             switch ($[0]) {
+                                case 'default': return _p.ss($, ($) => sh.ph.composed([
+                                    Identifier($),
+                                ]))
                                 case 'named': return _p.ss($, ($) => sh.ph.composed([
                                     sh.ph.literal("{"),
                                     sh.ph.indent(
@@ -158,53 +161,58 @@ export const Statements = (
                 ])])
             ]))
             case 'return': return _p.ss($, ($) => sh.pg.sentences([
-                sh.ph.literal("return "),
-                $.__decide(
-                    ($) => Expression(
-                        $,
+                sh.ph.composed([
+                    sh.ph.literal("return "),
+                    $.__decide(
+                        ($) => Expression(
+                            $,
+                            {
+                                'replace empty type literals by null': $p['replace empty type literals by null'],
+                                'object literal needs parentheses': false,
+                            }
+                        ),
+                        () => sh.ph.nothing(),
+                    )
+
+                ]),
+            ]))
+            case 'switch': return _p.ss($, ($) => sh.pg.sentences([
+                sh.ph.composed([
+                    sh.ph.literal("switch ("),
+                    Expression(
+                        $.expression,
                         {
                             'replace empty type literals by null': $p['replace empty type literals by null'],
                             'object literal needs parentheses': false,
                         }
                     ),
-                    () => sh.ph.nothing(),
-                )
-            ]))
-            case 'switch': return _p.ss($, ($) => sh.pg.sentences([
-                sh.ph.literal("switch ("),
-                Expression(
-                    $.expression,
-                    {
-                        'replace empty type literals by null': $p['replace empty type literals by null'],
-                        'object literal needs parentheses': false,
-                    }
-                ),
-                sh.ph.literal(") {"),
-                sh.ph.indent(sh.pg.sentences(
-                    $.clauses.__l_map(($) => sh.ph.composed([
-                        _p.decide.state($.type, ($) => {
-                            switch ($[0]) {
-                                case 'case': return _p.ss($, ($) => sh.ph.composed([
-                                    sh.ph.literal("case "),
-                                    Expression(
-                                        $,
-                                        {
-                                            'replace empty type literals by null': $p['replace empty type literals by null'],
-                                            'object literal needs parentheses': true,
-                                        }
-                                    ),
-                                    sh.ph.literal(":"),
-                                ]))
-                                case 'default': return _p.ss($, ($) => sh.ph.literal("default:"))
-                                default: return _p.au($[0])
-                            }
-                        }),
-                        sh.ph.indent(
-                            Statements($.statements, $p)
-                        ),
-                    ])),
-                )),
-                sh.ph.literal("}"),
+                    sh.ph.literal(") {"),
+                    sh.ph.indent(sh.pg.sentences(
+                        $.clauses.__l_map(($) => sh.ph.composed([
+                            _p.decide.state($.type, ($) => {
+                                switch ($[0]) {
+                                    case 'case': return _p.ss($, ($) => sh.ph.composed([
+                                        sh.ph.literal("case "),
+                                        Expression(
+                                            $,
+                                            {
+                                                'replace empty type literals by null': $p['replace empty type literals by null'],
+                                                'object literal needs parentheses': true,
+                                            }
+                                        ),
+                                        sh.ph.literal(":"),
+                                    ]))
+                                    case 'default': return _p.ss($, ($) => sh.ph.literal("default:"))
+                                    default: return _p.au($[0])
+                                }
+                            }),
+                            sh.ph.indent(
+                                Statements($.statements, $p)
+                            ),
+                        ])),
+                    )),
+                    sh.ph.literal("}"),
+                ]),
             ]))
             case 'type alias declaration': return _p.ss($, ($) => sh.pg.sentences([
                 sh.ph.literal(``),
