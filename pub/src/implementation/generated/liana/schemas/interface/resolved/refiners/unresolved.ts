@@ -5,7 +5,7 @@
     
     import * as _pdev from "pareto-core-dev"
     
-    import * as _p_ls from "pareto-core/dist/select_lookup"
+    import * as _p_sl from "pareto-core/dist/select_lookup"
     
     import _p_variables from "pareto-core/dist/_p_variables"
     
