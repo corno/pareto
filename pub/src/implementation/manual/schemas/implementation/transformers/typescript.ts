@@ -94,8 +94,8 @@ export const Package_Set = (
                         : [],
                     $.specials.lookups
                         ? [sh.s.import_namespace(
-                            sh.identifier_raw("_p_ls"),
-                            `pareto-core/dist/lookup_selection`
+                            sh.identifier_raw("_p_sl"),
+                            `pareto-core/dist/select_lookup`
                         )]
                         : [],
                     $.specials['text from list']
@@ -113,11 +113,9 @@ export const Package_Set = (
                         )]
                         : [],
                     $.specials['variables']
-                        ? [sh.s.import_named(
-                            [
-                                sh.specifier(sh.identifier_raw("_p_deprecated_block"), null),
-                            ],
-                            `pareto-core/dist/deprecated_block`
+                        ? [sh.s.import_default(
+                            sh.identifier_raw("_p_variables"),
+                            `pareto-core/dist/_p_variables`
                         )]
                         : [],
                     _p.list.from_dictionary(
@@ -738,7 +736,7 @@ export const Expression = (
                     ]
                 ))
                 case 'variables': return _p.ss($, ($) => sh.e.call(
-                    sh.e.identifier_raw("_p_deprecated_block"),
+                    sh.e.identifier_raw("_p_variables"),
                     [
                         sh.e.arrow_function_with_block(
                             [
@@ -1057,7 +1055,7 @@ export const Lookup_Selection = (
                 case 'not set': return _p.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
-                            sh.e.identifier_raw("_p_ls"),
+                            sh.e.identifier_raw("_p_sl"),
                             sh.identifier_raw("acyclic")
                         ),
                         sh.identifier_raw("not_set")
@@ -1069,7 +1067,7 @@ export const Lookup_Selection = (
                 case 'resolved dictionary': return _p.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
-                            sh.e.identifier_raw("_p_ls"),
+                            sh.e.identifier_raw("_p_sl"),
                             sh.identifier_raw("acyclic")
                         ),
                         sh.identifier_raw("from_resolved_dictionary")
@@ -1090,7 +1088,7 @@ export const Lookup_Selection = (
                 case 'empty': return _p.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
-                            sh.e.identifier_raw("_p_ls"),
+                            sh.e.identifier_raw("_p_sl"),
                             sh.identifier_raw("stack")
                         ),
                         sh.identifier_raw("empty")
@@ -1101,7 +1099,7 @@ export const Lookup_Selection = (
                 case 'push': return _p.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
-                            sh.e.identifier_raw("_p_ls"),
+                            sh.e.identifier_raw("_p_sl"),
                             sh.identifier_raw("stack")
                         ),
                         sh.identifier_raw("push")
@@ -1119,7 +1117,7 @@ export const Lookup_Selection = (
                 case 'not set': return _p.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
-                            sh.e.identifier_raw("_p_ls"),
+                            sh.e.identifier_raw("_p_sl"),
                             sh.identifier_raw("cyclic")
                         ),
                         sh.identifier_raw("not_set")
