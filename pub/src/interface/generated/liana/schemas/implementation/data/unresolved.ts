@@ -58,35 +58,6 @@ export type Package_Set_ = {
 
 export namespace Package_ {
     
-    export namespace type_ {
-        
-        export type l_location = i__location.Relative_Location
-        
-        export namespace l_state {
-            
-            export type serializer = null
-            
-            export type deserializer = null
-            
-            export type transformer = null
-            
-            export type refiner = null
-            
-        }
-        
-        export type l_state = 
-            | readonly ['serializer', l_state.serializer]
-            | readonly ['deserializer', l_state.deserializer]
-            | readonly ['transformer', l_state.transformer]
-            | readonly ['refiner', l_state.refiner]
-        
-    }
-    
-    export type type_ = {
-        readonly 'l location': type_.l_location
-        readonly 'l state': type_.l_state
-    }
-    
     export namespace specials {
         
         export type abort = boolean
@@ -221,7 +192,7 @@ export namespace Package_ {
         readonly 'l dictionary': variable_imports.l_dictionary
     }
     
-    export namespace algorithms {
+    export namespace functions {
         
         export type l_location = i__location.Relative_Location
         
@@ -277,22 +248,21 @@ export namespace Package_ {
         
     }
     
-    export type algorithms = {
-        readonly 'l location': algorithms.l_location
-        readonly 'l dictionary': algorithms.l_dictionary
+    export type functions = {
+        readonly 'l location': functions.l_location
+        readonly 'l dictionary': functions.l_dictionary
     }
     
 }
 
 export type Package_ = {
-    readonly 'type': Package_.type_
     readonly 'specials': Package_.specials
     readonly 'type imports': Package_.type_imports
     readonly 'variable imports': Package_.variable_imports
-    readonly 'algorithms': Package_.algorithms
+    readonly 'functions': Package_.functions
 }
 
-export namespace Temp_Type_Node_Reference_ {
+export namespace Temp_Value_Type_Specification_ {
     
     export namespace type_ {
         
@@ -369,9 +339,9 @@ export namespace Temp_Type_Node_Reference_ {
     
 }
 
-export type Temp_Type_Node_Reference_ = {
-    readonly 'type': Temp_Type_Node_Reference_.type_
-    readonly 'sub selection': Temp_Type_Node_Reference_.sub_selection
+export type Temp_Value_Type_Specification_ = {
+    readonly 'type': Temp_Value_Type_Specification_.type_
+    readonly 'sub selection': Temp_Value_Type_Specification_.sub_selection
 }
 
 export namespace Expression_ {
@@ -390,11 +360,11 @@ export namespace Expression_ {
                     
                     export namespace boolean_ {
                         
-                        export type source = Selection_
+                        export type source = Value_Selection_
                         
                         export namespace temp_resulting_node {
                             
-                            export type O = Temp_Type_Node_Reference_
+                            export type O = Temp_Value_Type_Specification_
                             
                         }
                         
@@ -421,7 +391,7 @@ export namespace Expression_ {
                             
                             export namespace has_entries {
                                 
-                                export type dictionary = Selection_
+                                export type dictionary = Value_Selection_
                                 
                                 export type if_true = Expression_
                                 
@@ -455,7 +425,7 @@ export namespace Expression_ {
                             
                             export namespace has_first_item {
                                 
-                                export type list = Selection_
+                                export type list = Value_Selection_
                                 
                                 export type if_true = Expression_
                                 
@@ -471,7 +441,7 @@ export namespace Expression_ {
                             
                             export namespace has_last_item {
                                 
-                                export type list = Selection_
+                                export type list = Value_Selection_
                                 
                                 export type if_true = Expression_
                                 
@@ -487,7 +457,7 @@ export namespace Expression_ {
                             
                             export namespace has_items {
                                 
-                                export type list = Selection_
+                                export type list = Value_Selection_
                                 
                                 export type if_true = Expression_
                                 
@@ -517,11 +487,11 @@ export namespace Expression_ {
                     
                     export namespace optional {
                         
-                        export type source = Selection_
+                        export type source = Value_Selection_
                         
                         export namespace temp_resulting_node {
                             
-                            export type O = Temp_Type_Node_Reference_
+                            export type O = Temp_Value_Type_Specification_
                             
                         }
                         
@@ -542,11 +512,11 @@ export namespace Expression_ {
                     
                     export namespace state {
                         
-                        export type source = Selection_
+                        export type source = Value_Selection_
                         
                         export namespace temp_resulting_node {
                             
-                            export type O = Temp_Type_Node_Reference_
+                            export type O = Temp_Value_Type_Specification_
                             
                         }
                         
@@ -677,11 +647,11 @@ export namespace Expression_ {
                     
                     export namespace text {
                         
-                        export type source = Selection_
+                        export type source = Value_Selection_
                         
                         export namespace temp_resulting_node {
                             
-                            export type O = Temp_Type_Node_Reference_
+                            export type O = Temp_Value_Type_Specification_
                             
                         }
                         
@@ -751,7 +721,7 @@ export namespace Expression_ {
             readonly 'type': decide.type_
         }
         
-        export namespace initialize {
+        export namespace assign {
             
             export type l_location = i__location.Relative_Location
             
@@ -786,13 +756,13 @@ export namespace Expression_ {
                             readonly 'l state': literal.l_state
                         }
                         
-                        export type not = Selection_
+                        export type not = Value_Selection_
                         
-                        export type copy = Selection_
+                        export type copy = Value_Selection_
                         
-                        export type dictionary_is_empty = Selection_
+                        export type dictionary_is_empty = Value_Selection_
                         
-                        export type list_is_empty = Selection_
+                        export type list_is_empty = Value_Selection_
                         
                     }
                     
@@ -818,7 +788,7 @@ export namespace Expression_ {
                         
                         export namespace filter {
                             
-                            export type source = Selection_
+                            export type source = Value_Selection_
                             
                             export type entry_handler = Expression_
                             
@@ -831,7 +801,7 @@ export namespace Expression_ {
                         
                         export namespace from_list {
                             
-                            export type source = Selection_
+                            export type source = Value_Selection_
                             
                             export type get_id = Expression_
                             
@@ -880,7 +850,7 @@ export namespace Expression_ {
                         
                         export namespace map {
                             
-                            export type source = Selection_
+                            export type source = Value_Selection_
                             
                             export type entry_handler = Expression_
                             
@@ -893,11 +863,11 @@ export namespace Expression_ {
                         
                         export namespace resolve {
                             
-                            export type source = Selection_
+                            export type source = Value_Selection_
                             
                             export type entry_handler = Expression_
                             
-                            export type temp_resulting_entry_node = Temp_Type_Node_Reference_
+                            export type temp_resulting_entry_node = Temp_Value_Type_Specification_
                             
                         }
                         
@@ -1010,7 +980,7 @@ export namespace Expression_ {
                         
                         export namespace filter {
                             
-                            export type source = Selection_
+                            export type source = Value_Selection_
                             
                             export type entry_handler = Expression_
                             
@@ -1023,7 +993,7 @@ export namespace Expression_ {
                         
                         export namespace from_dictionary {
                             
-                            export type source = Selection_
+                            export type source = Value_Selection_
                             
                             export type get_item = Expression_
                             
@@ -1066,7 +1036,7 @@ export namespace Expression_ {
                         
                         export namespace map {
                             
-                            export type source = Selection_
+                            export type source = Value_Selection_
                             
                             export type item_handler = Expression_
                             
@@ -1079,7 +1049,7 @@ export namespace Expression_ {
                         
                         export namespace map_with_state {
                             
-                            export type source = Selection_
+                            export type source = Value_Selection_
                             
                             export type initial_state = Expression_
                             
@@ -1101,7 +1071,7 @@ export namespace Expression_ {
                         
                         export namespace reduce {
                             
-                            export type source = Selection_
+                            export type source = Value_Selection_
                             
                             export type initial_state = Expression_
                             
@@ -1117,7 +1087,7 @@ export namespace Expression_ {
                         
                         export namespace reverse {
                             
-                            export type source = Selection_
+                            export type source = Value_Selection_
                             
                         }
                         
@@ -1159,7 +1129,7 @@ export namespace Expression_ {
                                 
                                 export type literal = number
                                 
-                                export type copy = Selection_
+                                export type copy = Value_Selection_
                                 
                             }
                             
@@ -1180,13 +1150,13 @@ export namespace Expression_ {
                             
                             export namespace l_state {
                                 
-                                export type copy = Selection_
+                                export type copy = Value_Selection_
                                 
                                 export namespace divide {
                                     
-                                    export type divident = Selection_
+                                    export type divident = Value_Selection_
                                     
-                                    export type divisor = Selection_
+                                    export type divisor = Value_Selection_
                                     
                                     export type abort = Expression_
                                     
@@ -1222,11 +1192,11 @@ export namespace Expression_ {
                                 
                                 export type literal = number
                                 
-                                export type copy = Selection_
+                                export type copy = Value_Selection_
                                 
                                 export namespace number_of_dictionary_entries {
                                     
-                                    export type dictionary = Selection_
+                                    export type dictionary = Value_Selection_
                                     
                                 }
                                 
@@ -1236,7 +1206,7 @@ export namespace Expression_ {
                                 
                                 export namespace number_of_list_items {
                                     
-                                    export type list = Selection_
+                                    export type list = Value_Selection_
                                     
                                 }
                                 
@@ -1287,7 +1257,7 @@ export namespace Expression_ {
                         
                         export namespace from_boolean {
                             
-                            export type source = Selection_
+                            export type source = Value_Selection_
                             
                             export type get_set = Expression_
                             
@@ -1323,7 +1293,7 @@ export namespace Expression_ {
                         
                         export namespace map {
                             
-                            export type source = Selection_
+                            export type source = Value_Selection_
                             
                             export type set_handler = Expression_
                             
@@ -1385,7 +1355,7 @@ export namespace Expression_ {
                     
                     export namespace l_state {
                         
-                        export type copy = Selection_
+                        export type copy = Value_Selection_
                         
                         export namespace literal {
                             
@@ -1452,12 +1422,12 @@ export namespace Expression_ {
             
         }
         
-        export type initialize = {
-            readonly 'l location': initialize.l_location
-            readonly 'l state': initialize.l_state
+        export type assign = {
+            readonly 'l location': assign.l_location
+            readonly 'l state': assign.l_state
         }
         
-        export type select = Selection_
+        export type select = Value_Selection_
         
         export namespace special {
             
@@ -1482,7 +1452,7 @@ export namespace Expression_ {
                 
                 export namespace change_context {
                     
-                    export type new_context = Selection_
+                    export type new_context = Value_Selection_
                     
                     export type expression = Expression_
                     
@@ -1538,7 +1508,7 @@ export namespace Expression_ {
                 
                 export namespace iterate {
                     
-                    export type list = Selection_
+                    export type list = Value_Selection_
                     
                     export type handler = Expression_
                     
@@ -1549,7 +1519,15 @@ export namespace Expression_ {
                     readonly 'handler': iterate.handler
                 }
                 
-                export type unreachable = null
+                export namespace unreachable {
+                    
+                    export type explanation = string
+                    
+                }
+                
+                export type unreachable = {
+                    readonly 'explanation': unreachable.explanation
+                }
                 
             }
             
@@ -1573,7 +1551,7 @@ export namespace Expression_ {
     
     export type l_state = 
         | readonly ['decide', l_state.decide]
-        | readonly ['initialize', l_state.initialize]
+        | readonly ['assign', l_state.assign]
         | readonly ['select', l_state.select]
         | readonly ['special', l_state.special]
     
@@ -1584,7 +1562,7 @@ export type Expression_ = {
     readonly 'l state': Expression_.l_state
 }
 
-export namespace Selection_ {
+export namespace Value_Selection_ {
     
     export type l_location = i__location.Relative_Location
     
@@ -1774,7 +1752,7 @@ export namespace Selection_ {
                     
                     export namespace dictionary_entry {
                         
-                        export type dictionary = Selection_
+                        export type dictionary = Value_Selection_
                         
                         export type id = Expression_
                         
@@ -1924,9 +1902,9 @@ export namespace Selection_ {
     
 }
 
-export type Selection_ = {
-    readonly 'l location': Selection_.l_location
-    readonly 'l state': Selection_.l_state
+export type Value_Selection_ = {
+    readonly 'l location': Value_Selection_.l_location
+    readonly 'l state': Value_Selection_.l_state
 }
 
 export namespace Lookup_Selection_ {
@@ -1983,7 +1961,7 @@ export namespace Lookup_Selection_ {
                 
                 export type siblings = null
                 
-                export type resolved_dictionary = Selection_
+                export type resolved_dictionary = Value_Selection_
                 
             }
             
@@ -2041,8 +2019,8 @@ export type Lookup_Selection_ = {
 export { 
     Package_Set_ as Package_Set, 
     Package_ as Package, 
-    Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
+    Temp_Value_Type_Specification_ as Temp_Value_Type_Specification, 
     Expression_ as Expression, 
-    Selection_ as Selection, 
+    Value_Selection_ as Value_Selection, 
     Lookup_Selection_ as Lookup_Selection, 
 }

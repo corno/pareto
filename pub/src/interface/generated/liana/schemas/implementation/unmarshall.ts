@@ -45,11 +45,11 @@ export type Package_ = (
     abort: _pi.Abort<Package_.E>,
 ) => Package_.O
 
-export namespace Temp_Type_Node_Reference_ {
+export namespace Temp_Value_Type_Specification_ {
     
     export type I = i_in.Value
     
-    export type O = i_out.Temp_Type_Node_Reference
+    export type O = i_out.Temp_Value_Type_Specification
     
     export type E = i_generic.Error
     
@@ -59,10 +59,10 @@ export namespace Temp_Type_Node_Reference_ {
     
 }
 
-export type Temp_Type_Node_Reference_ = (
-    context: Temp_Type_Node_Reference_.I,
-    abort: _pi.Abort<Temp_Type_Node_Reference_.E>,
-) => Temp_Type_Node_Reference_.O
+export type Temp_Value_Type_Specification_ = (
+    context: Temp_Value_Type_Specification_.I,
+    abort: _pi.Abort<Temp_Value_Type_Specification_.E>,
+) => Temp_Value_Type_Specification_.O
 
 export namespace Expression_ {
     
@@ -83,11 +83,11 @@ export type Expression_ = (
     abort: _pi.Abort<Expression_.E>,
 ) => Expression_.O
 
-export namespace Selection_ {
+export namespace Value_Selection_ {
     
     export type I = i_in.Value
     
-    export type O = i_out.Selection
+    export type O = i_out.Value_Selection
     
     export type E = i_generic.Error
     
@@ -97,10 +97,10 @@ export namespace Selection_ {
     
 }
 
-export type Selection_ = (
-    context: Selection_.I,
-    abort: _pi.Abort<Selection_.E>,
-) => Selection_.O
+export type Value_Selection_ = (
+    context: Value_Selection_.I,
+    abort: _pi.Abort<Value_Selection_.E>,
+) => Value_Selection_.O
 
 export namespace Lookup_Selection_ {
     
@@ -124,8 +124,8 @@ export type Lookup_Selection_ = (
 export { 
     Package_Set_ as Package_Set, 
     Package_ as Package, 
-    Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
+    Temp_Value_Type_Specification_ as Temp_Value_Type_Specification, 
     Expression_ as Expression, 
-    Selection_ as Selection, 
+    Value_Selection_ as Value_Selection, 
     Lookup_Selection_ as Lookup_Selection, 
 }

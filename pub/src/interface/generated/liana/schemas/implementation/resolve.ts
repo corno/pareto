@@ -49,11 +49,11 @@ export type Package_ = (
     parameters: null,
 ) => Package_.O
 
-export namespace Temp_Type_Node_Reference_ {
+export namespace Temp_Value_Type_Specification_ {
     
-    export type I = i_unresolved.Temp_Type_Node_Reference
+    export type I = i_unresolved.Temp_Value_Type_Specification
     
-    export type O = i_resolved.Temp_Type_Node_Reference
+    export type O = i_resolved.Temp_Value_Type_Specification
     
     export type E = i_generic.Error
     
@@ -63,12 +63,12 @@ export namespace Temp_Type_Node_Reference_ {
     
 }
 
-export type Temp_Type_Node_Reference_ = (
-    context: Temp_Type_Node_Reference_.I,
-    abort: _pi.Abort<Temp_Type_Node_Reference_.E>,
+export type Temp_Value_Type_Specification_ = (
+    context: Temp_Value_Type_Specification_.I,
+    abort: _pi.Abort<Temp_Value_Type_Specification_.E>,
     lookups: null,
     parameters: null,
-) => Temp_Type_Node_Reference_.O
+) => Temp_Value_Type_Specification_.O
 
 export namespace Expression_ {
     
@@ -91,11 +91,11 @@ export type Expression_ = (
     parameters: null,
 ) => Expression_.O
 
-export namespace Selection_ {
+export namespace Value_Selection_ {
     
-    export type I = i_unresolved.Selection
+    export type I = i_unresolved.Value_Selection
     
-    export type O = i_resolved.Selection
+    export type O = i_resolved.Value_Selection
     
     export type E = i_generic.Error
     
@@ -105,12 +105,12 @@ export namespace Selection_ {
     
 }
 
-export type Selection_ = (
-    context: Selection_.I,
-    abort: _pi.Abort<Selection_.E>,
+export type Value_Selection_ = (
+    context: Value_Selection_.I,
+    abort: _pi.Abort<Value_Selection_.E>,
     lookups: null,
     parameters: null,
-) => Selection_.O
+) => Value_Selection_.O
 
 export namespace Lookup_Selection_ {
     
@@ -136,8 +136,8 @@ export type Lookup_Selection_ = (
 export { 
     Package_Set_ as Package_Set, 
     Package_ as Package, 
-    Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
+    Temp_Value_Type_Specification_ as Temp_Value_Type_Specification, 
     Expression_ as Expression, 
-    Selection_ as Selection, 
+    Value_Selection_ as Value_Selection, 
     Lookup_Selection_ as Lookup_Selection, 
 }

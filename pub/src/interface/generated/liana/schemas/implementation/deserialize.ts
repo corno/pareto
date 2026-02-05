@@ -59,11 +59,11 @@ export type Package_ = (
     },
 ) => Package_.O
 
-export namespace Temp_Type_Node_Reference_ {
+export namespace Temp_Value_Type_Specification_ {
     
     export type I = string
     
-    export type O = i_out.Temp_Type_Node_Reference
+    export type O = i_out.Temp_Value_Type_Specification
     
     export type E = i_generic.Error
     
@@ -77,14 +77,14 @@ export namespace Temp_Type_Node_Reference_ {
     
 }
 
-export type Temp_Type_Node_Reference_ = (
-    context: Temp_Type_Node_Reference_.I,
-    abort: _pi.Abort<Temp_Type_Node_Reference_.E>,
+export type Temp_Value_Type_Specification_ = (
+    context: Temp_Value_Type_Specification_.I,
+    abort: _pi.Abort<Temp_Value_Type_Specification_.E>,
     parameters: {
-        readonly 'document resource identifier': Temp_Type_Node_Reference_.P.document_resource_identifier
-        readonly 'tab size': Temp_Type_Node_Reference_.P.tab_size
+        readonly 'document resource identifier': Temp_Value_Type_Specification_.P.document_resource_identifier
+        readonly 'tab size': Temp_Value_Type_Specification_.P.tab_size
     },
-) => Temp_Type_Node_Reference_.O
+) => Temp_Value_Type_Specification_.O
 
 export namespace Expression_ {
     
@@ -113,11 +113,11 @@ export type Expression_ = (
     },
 ) => Expression_.O
 
-export namespace Selection_ {
+export namespace Value_Selection_ {
     
     export type I = string
     
-    export type O = i_out.Selection
+    export type O = i_out.Value_Selection
     
     export type E = i_generic.Error
     
@@ -131,14 +131,14 @@ export namespace Selection_ {
     
 }
 
-export type Selection_ = (
-    context: Selection_.I,
-    abort: _pi.Abort<Selection_.E>,
+export type Value_Selection_ = (
+    context: Value_Selection_.I,
+    abort: _pi.Abort<Value_Selection_.E>,
     parameters: {
-        readonly 'document resource identifier': Selection_.P.document_resource_identifier
-        readonly 'tab size': Selection_.P.tab_size
+        readonly 'document resource identifier': Value_Selection_.P.document_resource_identifier
+        readonly 'tab size': Value_Selection_.P.tab_size
     },
-) => Selection_.O
+) => Value_Selection_.O
 
 export namespace Lookup_Selection_ {
     
@@ -170,8 +170,8 @@ export type Lookup_Selection_ = (
 export { 
     Package_Set_ as Package_Set, 
     Package_ as Package, 
-    Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
+    Temp_Value_Type_Specification_ as Temp_Value_Type_Specification, 
     Expression_ as Expression, 
-    Selection_ as Selection, 
+    Value_Selection_ as Value_Selection, 
     Lookup_Selection_ as Lookup_Selection, 
 }

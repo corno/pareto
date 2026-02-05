@@ -23,23 +23,25 @@ export namespace Package_ {
     
     export type imports = Imports_
     
-    export namespace types {
+    export namespace content {
         
-        export namespace D {
+        export namespace data_modules {
             
-            export type data = Value_
+            export type D = Value_
             
-            export namespace algorithm {
+        }
+        
+        export type data_modules = _pi.Dictionary<data_modules.D>
+        
+        export namespace functions {
+            
+            export namespace D {
                 
                 export type result = Value_
                 
                 export type context = Value_
                 
                 export namespace type_ {
-                    
-                    export namespace transformer {
-                        
-                    }
                     
                     export type transformer = null
                     
@@ -109,28 +111,28 @@ export namespace Package_ {
                 
             }
             
-            export type algorithm = {
-                readonly 'result': algorithm.result
-                readonly 'context': algorithm.context
-                readonly 'type': algorithm.type_
-                readonly 'parameters': algorithm.parameters
+            export type D = {
+                readonly 'result': D.result
+                readonly 'context': D.context
+                readonly 'type': D.type_
+                readonly 'parameters': D.parameters
             }
             
         }
         
-        export type D = 
-            | readonly ['data', D.data]
-            | readonly ['algorithm', D.algorithm]
+        export type functions = _pi.Dictionary<functions.D>
         
     }
     
-    export type types = _pi.Dictionary<types.D>
+    export type content = 
+        | readonly ['data modules', content.data_modules]
+        | readonly ['functions', content.functions]
     
 }
 
 export type Package_ = {
     readonly 'imports': Package_.imports
-    readonly 'types': Package_.types
+    readonly 'content': Package_.content
 }
 
 export namespace Imports_ {

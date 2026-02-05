@@ -15,13 +15,23 @@ export namespace m {
         return wrap_state(['set', _p.dictionary.literal(entries)])
     }
 
-    export const package_ = (
+    export const package_data = (
         imports: _p.Raw_Or_Normal_Dictionary<d_out.Imports.D>,
-        types: _p.Raw_Or_Normal_Dictionary<d_out.Package.types.D>,
+        types: _p.Raw_Or_Normal_Dictionary<d_out.Package.content.data_modules.D>,
     ): d_out.Package_Set.D => {
         return wrap_state(['package', {
             'imports': _p.dictionary.literal(imports),
-            'types': _p.dictionary.literal(types),
+            'content': wrap_state(['data modules', _p.dictionary.literal(types)]),
+        }])
+    }
+
+    export const package_functions = (
+        imports: _p.Raw_Or_Normal_Dictionary<d_out.Imports.D>,
+        types: _p.Raw_Or_Normal_Dictionary<d_out.Package.content.functions.D>,
+    ): d_out.Package_Set.D => {
+        return wrap_state(['package', {
+            'imports': _p.dictionary.literal(imports),
+            'content': wrap_state(['functions', _p.dictionary.literal(types)]),
         }])
     }
 
@@ -84,14 +94,14 @@ export namespace sub {
 
 export const acyclic_lookup = (
     type: d_out.Value,
-): d_out.Package.types.D.algorithm.type_.refiner.lookups.O.D => ['acyclic', type]
+): d_out.Package.content.functions.D.type_.refiner.lookups.O.D => ['acyclic', type]
 
 export const cyclic_lookup = (
     type: d_out.Value,
-): d_out.Package.types.D.algorithm.type_.refiner.lookups.O.D => ['cyclic', type]
+): d_out.Package.content.functions.D.type_.refiner.lookups.O.D => ['cyclic', type]
 export const stack_lookup = (
     type: d_out.Value,
-): d_out.Package.types.D.algorithm.type_.refiner.lookups.O.D => ['stack', type]
+): d_out.Package.content.functions.D.type_.refiner.lookups.O.D => ['stack', type]
 
 export namespace t {
 
@@ -168,8 +178,8 @@ export namespace t {
             'location': location,
             'sub selection': _p.list.literal(sub_selection),
             'cyclic': cyclic === undefined
-             ? false 
-             : cyclic === 'cyclic' ? true : false,
+                ? false
+                : cyclic === 'cyclic' ? true : false,
         }])
     }
 
@@ -222,8 +232,8 @@ export namespace type {
 
     export const data = (
         type: d_out.Value
-    ): d_out.Package.types.D => {
-        return ['data', type]
+    ): d_out.Package.content.data_modules.D => {
+        return type
     }
 
 
@@ -231,24 +241,23 @@ export namespace type {
         context: d_out.Value,
         result: d_out.Value,
         parameters: null | _p.Raw_Or_Normal_Dictionary<d_out.Value>,
-    ): d_out.Package.types.D => {
-        return wrap_state(['algorithm', {
+    ): d_out.Package.content.functions.D => {
+        return {
             'context': context,
             'result': result,
             'type': wrap_state(['transformer', null]),
             'parameters': parameters === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(parameters)),
-            'lookups': _p.optional.not_set(),
-        }])
+        }
     }
 
     export const refiner = (
         context: d_out.Value,
         result: d_out.Value,
         error: null | d_out.Value,
-        lookups: null | _p.Raw_Or_Normal_Dictionary<d_out.Package.types.D.algorithm.type_.refiner.lookups.O.D>,
+        lookups: null | _p.Raw_Or_Normal_Dictionary<d_out.Package.content.functions.D.type_.refiner.lookups.O.D>,
         parameters: null | _p.Raw_Or_Normal_Dictionary<d_out.Value>,
-    ): d_out.Package.types.D => {
-        return wrap_state(['algorithm', {
+    ): d_out.Package.content.functions.D => {
+        return {
             'context': context,
             'parameters': parameters === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(parameters)),
             'result': result,
@@ -256,7 +265,7 @@ export namespace type {
                 'error': error === null ? _p.optional.not_set() : _p.optional.set(error),
                 'lookups': lookups === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(lookups)),
             }]),
-        }])
+        }
     }
 }
 

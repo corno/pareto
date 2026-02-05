@@ -4,9 +4,9 @@ import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 
 //data types
-import * as d_out from "pareto-fountain-pen/dist/interface/to_be_generated/text"
+import * as d_out from "pareto-fountain-pen/dist/interface/to_be_generated/list_of_characters"
 
-export const $$: _pi.Transformer<number, d_out.Text> = ($) => _p_list_build_deprecated(($i) => {
+export const $$: _pi.Transformer<number, d_out.List_of_Characters> = ($) => _p_list_build_deprecated(($i) => {
     if ($ < 0) {
         $i['add item'](45) // '-'
         $ = -$

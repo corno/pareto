@@ -14,7 +14,7 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 export const Directory = ($: d_in.Directory): d_out.Directory => {
     return $.__d_map(($, id) => _p.decide.state($, ($) => {
         switch ($[0]) {
-            case 'file': return _p.ss($, ($) => ['file', sh.group([
+            case 'file': return _p.ss($, ($) => ['file', sh.pg.composed([
                 Statements($['statements'], { 'replace empty type literals by null': true })
             ])])
             case 'directory': return _p.ss($, ($) => ['directory', Directory($)])
@@ -25,8 +25,8 @@ export const Directory = ($: d_in.Directory): d_out.Directory => {
 
 export const Identifier = (
     $: d_in.Identifier
-): d_out.Block_Part => {
-    return sh.b.literal($.value)
+): d_out.Phrase => {
+    return sh.ph.literal($.value)
 }
 
 export const String_Literal = (
@@ -34,8 +34,8 @@ export const String_Literal = (
     $p: {
         'delimiter': "quote" | "apostrophe"
     }
-): d_out.Block_Part => {
-    return sh.b.text($p.delimiter === "quote" ? s_quoted($) : s_apostrophed($))
+): d_out.Phrase => {
+    return sh.ph.serialize($p.delimiter === "quote" ? s_quoted($) : s_apostrophed($))
 }
 
 export const Statements = (
@@ -43,50 +43,50 @@ export const Statements = (
     $p: {
         'replace empty type literals by null': boolean
     }
-): d_out.Group_Part => sh.g.sub($.__l_map(($) =>
-    _p.decide.state($, ($): d_out.Group_Part => {
+): d_out.Paragraph => sh.pg.composed($.__l_map(($) =>
+    _p.decide.state($, ($): d_out.Paragraph => {
         switch ($[0]) {
-            case 'block': return _p.ss($, ($) => sh.g.sub([
-                sh.g.simple_block(``),
-                sh.g.nested_block([
-                    sh.b.sub([
-                        sh.b.literal("{"),
-                        sh.b.indent([
+            case 'block': return _p.ss($, ($) => sh.pg.sentences([
+                sh.ph.literal(``),
+                sh.ph.composed([
+                    sh.ph.composed([
+                        sh.ph.literal("{"),
+                        sh.ph.indent(
                             Statements($, $p),
-                        ]),
-                        sh.b.literal("}"),
+                        ),
+                        sh.ph.literal("}"),
                     ])
                 ])
             ]))
-            case 'export': return _p.ss($, ($) => sh.g.sub([
-                sh.g.simple_block(``),
-                sh.g.nested_block([
-                    sh.b.sub([
-                        sh.b.literal("export "),
+            case 'export': return _p.ss($, ($) => sh.pg.sentences([
+                sh.ph.literal(``),
+                sh.ph.composed([
+                    sh.ph.composed([
+                        sh.ph.literal("export "),
                         _p.decide.state($.type, ($) => {
                             switch ($[0]) {
-                                case 'named exports': return _p.ss($, ($) => sh.b.sub([
-                                    sh.b.literal("{ "),
-                                    sh.b.indent([
-                                        sh.g.list($.specifiers.__l_map(($) => sh.g.nested_block([
+                                case 'named exports': return _p.ss($, ($) => sh.ph.composed([
+                                    sh.ph.literal("{ "),
+                                    sh.ph.indent(
+                                        sh.pg.sentences($.specifiers.__l_map(($) => sh.ph.composed([
                                             Identifier($.name),
                                             $.as.__decide(
-                                                ($) => sh.b.sub([
-                                                    sh.b.literal(" as "),
+                                                ($) => sh.ph.composed([
+                                                    sh.ph.literal(" as "),
                                                     Identifier($),
                                                 ]),
-                                                () => sh.b.nothing(),
+                                                () => sh.ph.nothing(),
                                             ),
-                                            sh.b.literal(", ")
+                                            sh.ph.literal(", ")
                                         ]))),
-                                    ]),
-                                    sh.b.literal("}"),
+                                    ),
+                                    sh.ph.literal("}"),
                                     $.from.__decide(
-                                        ($) => sh.b.sub([
-                                            sh.b.literal(" from "),
+                                        ($) => sh.ph.composed([
+                                            sh.ph.literal(" from "),
                                             String_Literal($, { 'delimiter': "quote" }),
                                         ]),
-                                        () => sh.b.nothing()
+                                        () => sh.ph.nothing()
                                     )
                                 ]))
                                 default: return _p.au($[0])
@@ -95,7 +95,7 @@ export const Statements = (
                     ])
                 ])
             ]))
-            case 'expression': return _p.ss($, ($) => sh.g.nested_block([
+            case 'expression': return _p.ss($, ($) => sh.pg.sentences([
                 Expression(
                     $,
                     {
@@ -104,61 +104,61 @@ export const Statements = (
                     }
                 )
             ]))
-            case 'import': return _p.ss($, ($) => sh.g.sub([
-                sh.g.simple_block(``),
-                sh.g.nested_block([
-                    sh.b.sub([
-                        sh.b.literal("import "),
+            case 'import': return _p.ss($, ($) => sh.pg.sentences([
+                sh.ph.literal(``),
+                sh.ph.composed([
+                    sh.ph.composed([
+                        sh.ph.literal("import "),
                         _p.decide.state($.type, ($) => {
                             switch ($[0]) {
-                                case 'named': return _p.ss($, ($) => sh.b.sub([
-                                    sh.b.literal("{"),
-                                    sh.b.indent([
-                                        sh.g.list($.specifiers.__l_map(($) => sh.g.nested_block([
+                                case 'named': return _p.ss($, ($) => sh.ph.composed([
+                                    sh.ph.literal("{"),
+                                    sh.ph.indent(
+                                        sh.pg.sentences($.specifiers.__l_map(($) => sh.ph.composed([
                                             Identifier($.name),
                                             $.as.__decide(
-                                                ($) => sh.b.sub([
-                                                    sh.b.literal(" as "),
+                                                ($) => sh.ph.composed([
+                                                    sh.ph.literal(" as "),
                                                     Identifier($),
                                                 ]),
-                                                () => sh.b.nothing(),
+                                                () => sh.ph.nothing(),
                                             ),
-                                            sh.b.literal(",")
+                                            sh.ph.literal(",")
                                         ]))),
-                                    ]),
-                                    sh.b.literal("}"),
+                                    ),
+                                    sh.ph.literal("}"),
                                 ]))
-                                case 'namespace': return _p.ss($, ($) => sh.b.sub([
-                                    sh.b.literal("* as "),
+                                case 'namespace': return _p.ss($, ($) => sh.ph.composed([
+                                    sh.ph.literal("* as "),
                                     Identifier($),
                                 ]))
                                 default: return _p.au($[0])
                             }
                         }),
-                        sh.b.literal(" from "),
+                        sh.ph.literal(" from "),
                         String_Literal($.from, { 'delimiter': "quote" }),
                     ])
                 ])
             ]))
-            case 'module declaration': return _p.ss($, ($) => sh.g.sub([
-                sh.g.simple_block(``),
-                sh.g.nested_block([sh.b.sub([
-                    $.export ? sh.b.literal("export ") : sh.b.nothing(),
-                    sh.b.literal("namespace "),
+            case 'module declaration': return _p.ss($, ($) => sh.pg.sentences([
+                sh.ph.literal(``),
+                sh.ph.composed([sh.ph.composed([
+                    $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
+                    sh.ph.literal("namespace "),
                     Identifier($['name']),
-                    sh.b.literal(" "),
-                    sh.b.sub([
-                        sh.b.literal("{"),
-                        sh.b.indent([
+                    sh.ph.literal(" "),
+                    sh.ph.composed([
+                        sh.ph.literal("{"),
+                        sh.ph.indent(sh.pg.composed([
                             Statements($.block, $p),
-                            sh.g.simple_block(``),
-                        ]),
-                        sh.b.literal("}"),
+                            sh.pg.single_line(``),
+                        ])),
+                        sh.ph.literal("}"),
                     ])
                 ])])
             ]))
-            case 'return': return _p.ss($, ($) => sh.g.nested_block([
-                sh.b.literal("return "),
+            case 'return': return _p.ss($, ($) => sh.pg.sentences([
+                sh.ph.literal("return "),
                 $.__decide(
                     ($) => Expression(
                         $,
@@ -167,11 +167,11 @@ export const Statements = (
                             'object literal needs parentheses': false,
                         }
                     ),
-                    () => sh.b.nothing(),
+                    () => sh.ph.nothing(),
                 )
             ]))
-            case 'switch': return _p.ss($, ($) => sh.g.nested_block([
-                sh.b.literal("switch ("),
+            case 'switch': return _p.ss($, ($) => sh.pg.sentences([
+                sh.ph.literal("switch ("),
                 Expression(
                     $.expression,
                     {
@@ -179,13 +179,13 @@ export const Statements = (
                         'object literal needs parentheses': false,
                     }
                 ),
-                sh.b.literal(") {"),
-                sh.b.indent([
-                    sh.g.list($.clauses.__l_map(($) => sh.g.nested_block([
+                sh.ph.literal(") {"),
+                sh.ph.indent(sh.pg.sentences(
+                    $.clauses.__l_map(($) => sh.ph.composed([
                         _p.decide.state($.type, ($) => {
                             switch ($[0]) {
-                                case 'case': return _p.ss($, ($) => sh.b.sub([
-                                    sh.b.literal("case "),
+                                case 'case': return _p.ss($, ($) => sh.ph.composed([
+                                    sh.ph.literal("case "),
                                     Expression(
                                         $,
                                         {
@@ -193,55 +193,55 @@ export const Statements = (
                                             'object literal needs parentheses': true,
                                         }
                                     ),
-                                    sh.b.literal(":"),
+                                    sh.ph.literal(":"),
                                 ]))
-                                case 'default': return _p.ss($, ($) => sh.b.literal("default:"))
+                                case 'default': return _p.ss($, ($) => sh.ph.literal("default:"))
                                 default: return _p.au($[0])
                             }
                         }),
-                        sh.b.indent([
+                        sh.ph.indent(
                             Statements($.statements, $p)
-                        ]),
-                    ]))),
-                ]),
-                sh.b.literal("}"),
+                        ),
+                    ])),
+                )),
+                sh.ph.literal("}"),
             ]))
-            case 'type alias declaration': return _p.ss($, ($) => sh.g.sub([
-                sh.g.simple_block(``),
-                sh.g.nested_block([sh.b.sub([
-                    $.export ? sh.b.literal("export ") : sh.b.nothing(),
-                    sh.b.literal("type "),
+            case 'type alias declaration': return _p.ss($, ($) => sh.pg.sentences([
+                sh.ph.literal(``),
+                sh.ph.composed([sh.ph.composed([
+                    $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
+                    sh.ph.literal("type "),
                     Identifier($['name']),
                     _p.boolean.list_is_empty($['parameters'])
-                        ? sh.b.nothing()
-                        : sh.b.sub([
-                            sh.b.literal("<"),
-                            sh.b.sub(op_enrich_list_items_with_position_information($['parameters']).__l_map(($) => sh.b.sub([
+                        ? sh.ph.nothing()
+                        : sh.ph.composed([
+                            sh.ph.literal("<"),
+                            sh.ph.composed(op_enrich_list_items_with_position_information($['parameters']).__l_map(($) => sh.ph.composed([
                                 Identifier($.value),
-                                $['is last'] ? sh.b.nothing() : sh.b.literal(", ")
+                                $['is last'] ? sh.ph.nothing() : sh.ph.literal(", ")
                             ]))),
-                            sh.b.literal(">"),
+                            sh.ph.literal(">"),
                         ]),
-                    sh.b.literal(" = "),
+                    sh.ph.literal(" = "),
                     Type($['type'], $p),
                 ])])
             ]))
-            case 'variable': return _p.ss($, ($) => sh.g.sub([
-                sh.g.simple_block(``),
-                sh.g.nested_block([sh.b.sub([
-                    $.export ? sh.b.literal("export ") : sh.b.nothing(),
-                    $.const ? sh.b.literal("const ") : sh.b.literal("let "),
+            case 'variable': return _p.ss($, ($) => sh.pg.sentences([
+                sh.ph.literal(``),
+                sh.ph.composed([sh.ph.composed([
+                    $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
+                    $.const ? sh.ph.literal("const ") : sh.ph.literal("let "),
                     Identifier($['name']),
                     $.type.__decide(
-                        ($) => sh.b.sub([
-                            sh.b.literal(": "),
+                        ($) => sh.ph.composed([
+                            sh.ph.literal(": "),
                             Type($, $p)
                         ]),
-                        () => sh.b.nothing(),
+                        () => sh.ph.nothing(),
                     ),
                     $.expression.__decide(
-                        ($) => sh.b.sub([
-                            sh.b.literal(" = "),
+                        ($) => sh.ph.composed([
+                            sh.ph.literal(" = "),
                             Expression(
                                 $,
                                 {
@@ -250,7 +250,7 @@ export const Statements = (
                                 }
                             )
                         ]),
-                        () => sh.b.nothing(),
+                        () => sh.ph.nothing(),
                     ),
                 ])])
             ]))
@@ -265,57 +265,57 @@ export const Expression = (
         'replace empty type literals by null': boolean
         'object literal needs parentheses': boolean
     }
-): d_out.Block_Part => _p.decide.state($, ($) => {
+): d_out.Phrase => _p.decide.state($, ($) => {
     switch ($[0]) {
-        case 'assignment': return _p.ss($, ($) => sh.b.sub([
+        case 'assignment': return _p.ss($, ($) => sh.ph.composed([
             Expression($.left, $p),
-            sh.b.literal(" = "),
+            sh.ph.literal(" = "),
             Expression($.right, {
                 'object literal needs parentheses': false,
                 'replace empty type literals by null': $p['replace empty type literals by null'],
             }),
         ]))
-        case 'array literal': return _p.ss($, ($) => sh.b.sub([
-            sh.b.literal("["),
-            sh.b.sub(op_enrich_list_items_with_position_information($).__l_map(($) => sh.b.sub([
+        case 'array literal': return _p.ss($, ($) => sh.ph.composed([
+            sh.ph.literal("["),
+            sh.ph.composed(op_enrich_list_items_with_position_information($).__l_map(($) => sh.ph.composed([
                 Expression($.value, {
                     'object literal needs parentheses': false,
                     'replace empty type literals by null': $p['replace empty type literals by null'],
                 }),
-                $['is last'] ? sh.b.nothing() : sh.b.literal(", ")
+                $['is last'] ? sh.ph.nothing() : sh.ph.literal(", ")
             ]))),
-            sh.b.literal("]"),
+            sh.ph.literal("]"),
         ]))
-        case 'arrow function': return _p.ss($, ($) => sh.b.sub([
-            sh.b.literal("("),
-            sh.b.sub(op_enrich_list_items_with_position_information($.parameters).__l_map(($) => sh.b.sub([
+        case 'arrow function': return _p.ss($, ($) => sh.ph.composed([
+            sh.ph.literal("("),
+            sh.ph.composed(op_enrich_list_items_with_position_information($.parameters).__l_map(($) => sh.ph.composed([
                 Identifier($.value.name),
                 $.value.type.__decide(
-                    ($) => sh.b.sub([
-                        sh.b.literal(": "),
+                    ($) => sh.ph.composed([
+                        sh.ph.literal(": "),
                         Type($, $p)
                     ]),
-                    () => sh.b.nothing(),
+                    () => sh.ph.nothing(),
                 ),
-                $['is last'] ? sh.b.nothing() : sh.b.literal(", ")
+                $['is last'] ? sh.ph.nothing() : sh.ph.literal(", ")
             ]))),
-            sh.b.literal(")"),
+            sh.ph.literal(")"),
             $['return type'].__decide(
-                ($) => sh.b.sub([
-                    sh.b.literal(": "),
+                ($) => sh.ph.composed([
+                    sh.ph.literal(": "),
                     Type($, $p)
                 ]),
-                () => sh.b.nothing(),
+                () => sh.ph.nothing(),
             ),
-            sh.b.literal(" => "),
+            sh.ph.literal(" => "),
             _p.decide.state($.body, ($) => {
                 switch ($[0]) {
-                    case 'block': return _p.ss($, ($) => sh.b.sub([
-                        sh.b.literal("{"),
-                        sh.b.indent([
+                    case 'block': return _p.ss($, ($) => sh.ph.composed([
+                        sh.ph.literal("{"),
+                        sh.ph.indent(
                             Statements($, $p),
-                        ]),
-                        sh.b.literal("}"),
+                        ),
+                        sh.ph.literal("}"),
                     ]))
                     case 'expression': return _p.ss($, ($) => Expression(
                         $,
@@ -328,85 +328,11 @@ export const Expression = (
                 }
             }),
         ]))
-        case 'call': return _p.ss($, ($) => sh.b.sub([
+        case 'call': return _p.ss($, ($) => sh.ph.composed([
             Expression($['function selection'], $p),
-            sh.b.literal("("),
-            sh.b.indent([
-                sh.g.sub(op_enrich_list_items_with_position_information($['arguments']).__l_map(($) => sh.g.nested_block([
-                    Expression(
-                        $.value,
-                        {
-                            'object literal needs parentheses': false,
-                            'replace empty type literals by null': $p['replace empty type literals by null'],
-                        }
-                    ),
-                    $['is last'] ? sh.b.nothing() : sh.b.literal(",")
-                ]))),
-            ]),
-            sh.b.literal(")"),
-        ]))
-        case 'compare': return _p.ss($, ($) => sh.b.sub([
-            Expression($.left, $p),
-            sh.b.literal(" "),
-            _p.decide.state($.operator, ($) => {
-                switch ($[0]) {
-                    case 'loosely equal': return _p.ss($, ($) => sh.b.literal("=="))
-                    case 'strictly equal': return _p.ss($, ($) => sh.b.literal("==="))
-                    case 'loosely not equal': return _p.ss($, ($) => sh.b.literal("!="))
-                    case 'strictly not equal': return _p.ss($, ($) => sh.b.literal("!=="))
-                    case 'smaller than': return _p.ss($, ($) => sh.b.literal("<"))
-                    case 'smaller than or equal': return _p.ss($, ($) => sh.b.literal("<="))
-                    case 'greater than': return _p.ss($, ($) => sh.b.literal(">"))
-                    case 'greater than or equal': return _p.ss($, ($) => sh.b.literal(">="))
-                    default: return _p.au($[0])
-                }
-            }),
-            sh.b.literal(" "),
-            Expression($.right, {
-                'object literal needs parentheses': false,
-                'replace empty type literals by null': $p['replace empty type literals by null'],
-            }),
-        ]))
-        case 'conditional': return _p.ss($, ($) => sh.b.sub([
-            Expression($.condition, $p),
-            sh.b.indent([
-                sh.g.nested_block([
-                    sh.b.literal("? "),
-                    Expression($['if true'],
-                        {
-                            'replace empty type literals by null': $p['replace empty type literals by null'],
-                            'object literal needs parentheses': false,
-                        }
-                    ),
-                ]),
-                sh.g.nested_block([
-                    sh.b.literal(": "),
-                    Expression($['if false'], {
-                        'replace empty type literals by null': $p['replace empty type literals by null'],
-                        'object literal needs parentheses': false,
-                    }),
-                ]),
-            ]),
-        ]))
-        case 'element access': return _p.ss($, ($) => sh.b.sub([
-            Expression($.collection, $p),
-            sh.b.literal("["),
-            Expression($.index, $p),
-            sh.b.literal("]"),
-        ]))
-        case 'false': return _p.ss($, ($) => sh.b.literal("false"))
-        case 'identifier': return _p.ss($, ($) => Identifier($))
-        case 'null': return _p.ss($, ($) => sh.b.literal("null"))
-        case 'number literal': return _p.ss($, ($) => sh.b.text(s_number_default($)))
-        case 'object literal': return _p.ss($, ($) => sh.b.sub([
-            $p['object literal needs parentheses']
-                ? sh.b.literal("(")
-                : sh.b.nothing(),
-            sh.b.literal("{"),
-            sh.b.indent([
-                sh.g.sub(_p.list.from_dictionary($.properties, ($, id) => sh.g.nested_block([
-                    String_Literal(id, { 'delimiter': "apostrophe" }),
-                    sh.b.literal(": "),
+            sh.ph.literal("("),
+            sh.ph.indent(
+                sh.pg.sentences($['arguments'].__l_map(($) => sh.ph.composed([
                     Expression(
                         $,
                         {
@@ -414,38 +340,112 @@ export const Expression = (
                             'replace empty type literals by null': $p['replace empty type literals by null'],
                         }
                     ),
-                    sh.b.literal(",")
-                ]))),
-            ]),
-            sh.b.literal("}"),
-            $p['object literal needs parentheses']
-                ? sh.b.literal(")")
-                : sh.b.nothing(),
+                    sh.ph.literal(",")
+                ])))
+            ),
+            sh.ph.literal(")"),
         ]))
-        case 'parenthesized': return _p.ss($, ($) => sh.b.sub([
-            sh.b.literal("("),
+        case 'compare': return _p.ss($, ($) => sh.ph.composed([
+            Expression($.left, $p),
+            sh.ph.literal(" "),
+            _p.decide.state($.operator, ($) => {
+                switch ($[0]) {
+                    case 'loosely equal': return _p.ss($, ($) => sh.ph.literal("=="))
+                    case 'strictly equal': return _p.ss($, ($) => sh.ph.literal("==="))
+                    case 'loosely not equal': return _p.ss($, ($) => sh.ph.literal("!="))
+                    case 'strictly not equal': return _p.ss($, ($) => sh.ph.literal("!=="))
+                    case 'smaller than': return _p.ss($, ($) => sh.ph.literal("<"))
+                    case 'smaller than or equal': return _p.ss($, ($) => sh.ph.literal("<="))
+                    case 'greater than': return _p.ss($, ($) => sh.ph.literal(">"))
+                    case 'greater than or equal': return _p.ss($, ($) => sh.ph.literal(">="))
+                    default: return _p.au($[0])
+                }
+            }),
+            sh.ph.literal(" "),
+            Expression($.right, {
+                'object literal needs parentheses': false,
+                'replace empty type literals by null': $p['replace empty type literals by null'],
+            }),
+        ]))
+        case 'conditional': return _p.ss($, ($) => sh.ph.composed([
+            Expression($.condition, $p),
+            sh.ph.indent(sh.pg.sentences([
+                sh.ph.composed([
+                    sh.ph.literal("? "),
+                    Expression($['if true'],
+                        {
+                            'replace empty type literals by null': $p['replace empty type literals by null'],
+                            'object literal needs parentheses': false,
+                        }
+                    ),
+                ]),
+                sh.ph.composed([
+                    sh.ph.literal(": "),
+                    Expression($['if false'], {
+                        'replace empty type literals by null': $p['replace empty type literals by null'],
+                        'object literal needs parentheses': false,
+                    }),
+                ]),
+            ])),
+        ]))
+        case 'element access': return _p.ss($, ($) => sh.ph.composed([
+            Expression($.collection, $p),
+            sh.ph.literal("["),
+            Expression($.index, $p),
+            sh.ph.literal("]"),
+        ]))
+        case 'false': return _p.ss($, ($) => sh.ph.literal("false"))
+        case 'identifier': return _p.ss($, ($) => Identifier($))
+        case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
+        case 'number literal': return _p.ss($, ($) => sh.ph.serialize(s_number_default($)))
+        case 'object literal': return _p.ss($, ($) => sh.ph.composed([
+            $p['object literal needs parentheses']
+                ? sh.ph.literal("(")
+                : sh.ph.nothing(),
+            sh.ph.literal("{"),
+            sh.ph.indent(
+                sh.pg.sentences(_p.list.from_dictionary($.properties, ($, id) => sh.ph.composed([
+                    String_Literal(id, { 'delimiter': "apostrophe" }),
+                    sh.ph.literal(": "),
+                    Expression(
+                        $,
+                        {
+                            'object literal needs parentheses': false,
+                            'replace empty type literals by null': $p['replace empty type literals by null'],
+                        }
+                    ),
+                    sh.ph.literal(",")
+                ]))),
+            ),
+            sh.ph.literal("}"),
+            $p['object literal needs parentheses']
+                ? sh.ph.literal(")")
+                : sh.ph.nothing(),
+        ]))
+        case 'parenthesized': return _p.ss($, ($) => sh.ph.composed([
+            sh.ph.literal("("),
             Expression($, {
                 'replace empty type literals by null': $p['replace empty type literals by null'],
                 'object literal needs parentheses': false,
             }),
-            sh.b.literal(")"),
+            sh.ph.literal(")"),
         ]))
-        case 'property access': return _p.ss($, ($) => sh.b.sub([
+        case 'property access': return _p.ss($, ($) => sh.ph.composed([
             Expression($.object, $p),
-            sh.b.literal("."),
+            sh.ph.literal("."),
             Identifier($.property),
         ]))
-        case 'string literal': return _p.ss($, ($) => sh.b.sub([
-            sh.b.text($['delimiter'][0] === "quote" ? s_quoted($['value']) : s_apostrophed($['value']))
+        case 'string literal': return _p.ss($, ($) => sh.ph.composed([
+            sh.ph.serialize($['delimiter'][0] === "quote" ? s_quoted($['value']) : s_apostrophed($['value']))
         ]))
-        case 'true': return _p.ss($, ($) => sh.b.literal("true"))
+        case 'true': return _p.ss($, ($) => sh.ph.literal("true"))
         case 'unary operation': return _p.ss($, ($) => {
             const operand = $.operand
-            return sh.b.sub([
+            return sh.ph.composed([
                 _p.decide.state($.operator, ($) => {
                     switch ($[0]) {
-                        case 'negation': return _p.ss($, ($) => sh.b.literal("-"))
-                        case 'logical not': return _p.ss($, ($) => sh.b.literal("!"))
+                        case 'negation': return _p.ss($, ($) => sh.ph.literal("-"))
+                        case 'logical not': return _p.ss($, ($) => sh.ph.literal("!"))
                         default: return _p.au($[0])
                     }
                 }),
@@ -461,92 +461,92 @@ export const Type = (
     $p: {
         'replace empty type literals by null': boolean
     }
-): d_out.Block_Part => _p.decide.state($, ($) => {
+): d_out.Phrase => _p.decide.state($, ($) => {
     switch ($[0]) {
-        case 'boolean': return _p.ss($, ($) => sh.b.literal("boolean"))
-        case 'function': return _p.ss($, ($) => sh.b.sub([
+        case 'boolean': return _p.ss($, ($) => sh.ph.literal("boolean"))
+        case 'function': return _p.ss($, ($) => sh.ph.composed([
             _p.boolean.list_is_empty($['type parameters'])
-                ? sh.b.nothing()
-                : sh.b.sub([
-                    sh.b.literal("<"),
-                    sh.b.sub(op_enrich_list_items_with_position_information($['type parameters']).__l_map(($) => sh.b.sub([
+                ? sh.ph.nothing()
+                : sh.ph.composed([
+                    sh.ph.literal("<"),
+                    sh.ph.composed(op_enrich_list_items_with_position_information($['type parameters']).__l_map(($) => sh.ph.composed([
                         Type($.value, $p),
-                        $['is last'] ? sh.b.nothing() : sh.b.literal(", ")
+                        $['is last'] ? sh.ph.nothing() : sh.ph.literal(", ")
                     ]))),
-                    sh.b.literal(">"),
-                ]), sh.b.literal("("),
-            sh.b.indent([
-                sh.g.sub($['parameters'].__l_map(($) => sh.g.nested_block([
+                    sh.ph.literal(">"),
+                ]), sh.ph.literal("("),
+            sh.ph.indent(
+                sh.pg.sentences($['parameters'].__l_map(($) => sh.ph.composed([
                     Identifier($.name),
                     $.type.__decide(
-                        ($) => sh.b.sub([
-                            sh.b.literal(": "),
+                        ($) => sh.ph.composed([
+                            sh.ph.literal(": "),
                             Type($, $p)
                         ]),
-                        () => sh.b.nothing(),
+                        () => sh.ph.nothing(),
                     ),
-                    sh.b.literal(",")
+                    sh.ph.literal(",")
                 ]))),
-            ]),
-            sh.b.literal(") => "),
+            ),
+            sh.ph.literal(") => "),
             Type($['return'], $p)
         ]))
         case 'literal type': return _p.ss($, ($) => String_Literal($.value, { 'delimiter': $.delimiter[0] })) //FIX, implement a switch for the delimiter
-        case 'null': return _p.ss($, ($) => sh.b.literal("null"))
-        case 'number': return _p.ss($, ($) => sh.b.literal("number"))
-        case 'string': return _p.ss($, ($) => sh.b.literal("string"))
-        case 'tuple': return _p.ss($, ($) => sh.b.sub([
-            $.readonly ? sh.b.literal("readonly ") : sh.b.nothing(),
-            sh.b.literal("["),
-            sh.b.sub(op_enrich_list_items_with_position_information($['elements']).__l_map(($) => sh.b.sub([
+        case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
+        case 'number': return _p.ss($, ($) => sh.ph.literal("number"))
+        case 'string': return _p.ss($, ($) => sh.ph.literal("string"))
+        case 'tuple': return _p.ss($, ($) => sh.ph.composed([
+            $.readonly ? sh.ph.literal("readonly ") : sh.ph.nothing(),
+            sh.ph.literal("["),
+            sh.ph.composed(op_enrich_list_items_with_position_information($['elements']).__l_map(($) => sh.ph.composed([
                 Type($.value, $p),
                 $['is last']
-                    ? sh.b.nothing()
-                    : sh.b.literal(", ")
+                    ? sh.ph.nothing()
+                    : sh.ph.literal(", ")
             ]))),
-            sh.b.literal("]"),
+            sh.ph.literal("]"),
         ]))
         case 'type literal': return _p.ss($, ($) => $p['replace empty type literals by null'] && _p.boolean.dictionary_is_empty($.properties)
-            ? sh.b.literal("null")
-            : sh.b.sub([
-                sh.b.literal("{"),
-                sh.b.indent([
-                    sh.g.sub(_p.list.from_dictionary($.properties, ($, id) => sh.g.sub([
-                        sh.g.nested_block([
-                            $['readonly'] ? sh.b.literal("readonly ") : sh.b.nothing(),
+            ? sh.ph.literal("null")
+            : sh.ph.composed([
+                sh.ph.literal("{"),
+                sh.ph.indent(
+                    sh.pg.sentences(_p.list.from_dictionary($.properties, ($, id) => sh.ph.composed([
+                        sh.ph.composed([
+                            $['readonly'] ? sh.ph.literal("readonly ") : sh.ph.nothing(),
                             String_Literal(id, { 'delimiter': "apostrophe" }),
-                            sh.b.literal(": "),
+                            sh.ph.literal(": "),
                             Type($.type, $p),
                         ])
                     ]))),
-                ]),
-                sh.b.literal("}")
+                ),
+                sh.ph.literal("}")
             ])
         )
-        case 'type reference': return _p.ss($, ($) => sh.b.sub([
+        case 'type reference': return _p.ss($, ($) => sh.ph.composed([
             Identifier($['start']),
-            sh.b.sub($['tail'].__l_map(($) => sh.b.sub([
-                sh.b.literal("."),
+            sh.ph.composed($['tail'].__l_map(($) => sh.ph.composed([
+                sh.ph.literal("."),
                 Identifier($),
             ]))),
             _p.boolean.list_is_empty($['type arguments'])
-                ? sh.b.nothing()
-                : sh.b.sub([
-                    sh.b.literal("<"),
-                    sh.b.sub(op_enrich_list_items_with_position_information($['type arguments']).__l_map(($) => sh.b.sub([
+                ? sh.ph.nothing()
+                : sh.ph.composed([
+                    sh.ph.literal("<"),
+                    sh.ph.composed(op_enrich_list_items_with_position_information($['type arguments']).__l_map(($) => sh.ph.composed([
                         Type($['value'], $p),
-                        $['is last'] ? sh.b.nothing() : sh.b.literal(", "),
+                        $['is last'] ? sh.ph.nothing() : sh.ph.literal(", "),
                     ]))),
-                    sh.b.literal(">"),
+                    sh.ph.literal(">"),
                 ]),
         ]))
-        case 'union': return _p.ss($, ($) => sh.b.indent([
-            sh.g.sub($.__l_map(($) => sh.g.nested_block([
-                sh.b.literal("| "),
+        case 'union': return _p.ss($, ($) => sh.ph.indent(
+            sh.pg.sentences($.__l_map(($) => sh.ph.composed([
+                sh.ph.literal("| "),
                 Type($, $p),
             ])))
-        ]))
-        case 'void': return _p.ss($, ($) => sh.b.literal("void"))
+        ))
+        case 'void': return _p.ss($, ($) => sh.ph.literal("void"))
         default: return _p.au($[0])
     }
 })

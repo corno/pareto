@@ -5,12 +5,12 @@ import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 
 //data types
-import * as d_out from "pareto-fountain-pen/dist/interface/to_be_generated/text"
+import * as d_out from "pareto-fountain-pen/dist/interface/to_be_generated/list_of_characters"
 
 
-const temp_literal_to_text = ($: string): d_out.Text => _p_list_from_text($, ($) => $)
+const temp_literal_to_text = ($: string): d_out.List_of_Characters => _p_list_from_text($, ($) => $)
 
-export const $$ = ($: string): d_out.Text => {
+export const $$ = ($: string): d_out.List_of_Characters => {
     const the_string = $
     if (the_string === "") {
         return temp_literal_to_text("_empty")

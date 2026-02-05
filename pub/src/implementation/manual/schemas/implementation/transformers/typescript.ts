@@ -63,15 +63,7 @@ export const Package_Set = (
                     [
                         sh.s.import_namespace(
                             sh.identifier_raw(`_p`),
-                            `pareto-core/dist/` + _p.decide.state($.type, ($) => {
-                                switch ($[0]) {
-                                    case 'serializer': return _p.ss($, ($) => `serializer`)
-                                    case 'deserializer': return _p.ss($, ($) => `deserializer`)
-                                    case 'transformer': return _p.ss($, ($) => `transformer`)
-                                    case 'refiner': return _p.ss($, ($) => `refiner`)
-                                    default: return _p.au($[0])
-                                }
-                            })
+                            `pareto-core/dist/expression`
                         ),
                     ],
                     $.specials['change context']
@@ -133,7 +125,7 @@ export const Package_Set = (
                         )
                     ),
                     _p.list.from_dictionary(
-                        $.algorithms,
+                        $.functions,
                         ($, id): d_out.Statements.L => sh.s.variable(
                             true,
                             true,
@@ -181,8 +173,8 @@ export const Package_Set = (
     }))
 }
 
-export const Temp_Type_Node_Reference = (
-    $: d_in.Temp_Type_Node_Reference,
+export const Temp_Value_Type_Specification = (
+    $: d_in.Temp_Value_Type_Specification,
 ): d_out.Type => {
     return sh.t.type_reference(
         sh.identifier_escaped("t " + $.type.import),
@@ -217,7 +209,7 @@ export const Expression = (
         case 'decide': return _p.ss($, ($) => _p.decide.state($.type, ($) => {
             switch ($[0]) {
                 case 'boolean': return _p.ss($, ($) => sh.e.conditional(
-                    Selection($.source),
+                    Value_Selection($.source),
                     Expression($['if true']),
                     Expression($['if false']),
                 ))
@@ -232,13 +224,13 @@ export const Expression = (
                         sh.identifier_raw("optional"),
                     ),
                     [
-                        Selection($.source),
+                        Value_Selection($.source),
                         sh.e.arrow_function_with_expression(
                             [
                                 sh.parameter(sh.identifier_raw("$"), null)
                             ],
                             $['temp resulting node'].__decide(
-                                ($) => Temp_Type_Node_Reference($),
+                                ($) => Temp_Value_Type_Specification($),
                                 () => null
                             ),
                             Expression($['if set']),
@@ -262,13 +254,13 @@ export const Expression = (
                         sh.identifier_raw("state"),
                     ),
                     [
-                        Selection($.source),
+                        Value_Selection($.source),
                         sh.e.arrow_function_with_block(
                             [
                                 sh.parameter(sh.identifier_raw("$"), null)
                             ],
                             $['temp resulting node'].__decide(
-                                ($) => Temp_Type_Node_Reference($),
+                                ($) => Temp_Value_Type_Specification($),
                                 () => null
                             ),
                             [
@@ -351,13 +343,13 @@ export const Expression = (
                         sh.identifier_raw("text"),
                     ),
                     [
-                        Selection($.source),
+                        Value_Selection($.source),
                         sh.e.arrow_function_with_block(
                             [
                                 sh.parameter(sh.identifier_raw("$t"), null)
                             ],
                             $['temp resulting node'].__decide(
-                                ($) => Temp_Type_Node_Reference($),
+                                ($) => Temp_Value_Type_Specification($),
                                 () => null
                             ),
                             [
@@ -388,7 +380,7 @@ export const Expression = (
                 default: return _p.au($[0])
             }
         }))
-        case 'initialize': return _p.ss($, ($) => _p.decide.state($, ($) => {
+        case 'assign': return _p.ss($, ($) => _p.decide.state($, ($) => {
             switch ($[0]) {
                 case 'boolean': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {
@@ -401,8 +393,8 @@ export const Expression = (
                                 default: return _p.au($[0])
                             }
                         }))
-                        case 'not': return _p.ss($, ($) => sh.e.not(Selection($)))
-                        case 'copy': return _p.ss($, ($) => Selection($))
+                        case 'not': return _p.ss($, ($) => sh.e.not(Value_Selection($)))
+                        case 'copy': return _p.ss($, ($) => Value_Selection($))
                         default: return _p.au($[0])
                     }
                 }))
@@ -431,7 +423,7 @@ export const Expression = (
                                 sh.identifier_raw("map"),
                             ),
                             [
-                                Selection($.source),
+                                Value_Selection($.source),
                                 sh.e.arrow_function_with_expression(
                                     [
                                         sh.parameter(sh.identifier_raw("$"), null),
@@ -451,7 +443,7 @@ export const Expression = (
                                 sh.identifier_raw("resolve"),
                             ),
                             [
-                                Selection($.source),
+                                Value_Selection($.source),
                                 sh.e.arrow_function_with_expression(
                                     [
                                         sh.parameter(sh.identifier_raw("$"), null),
@@ -459,7 +451,7 @@ export const Expression = (
                                         sh.parameter(sh.identifier_raw("$a"), null),
                                         sh.parameter(sh.identifier_raw("$c"), null),
                                     ],
-                                    Temp_Type_Node_Reference($['temp resulting entry node']),
+                                    Temp_Value_Type_Specification($['temp resulting entry node']),
                                     Expression($['entry handler'])
                                 )
                             ]
@@ -534,7 +526,7 @@ export const Expression = (
                                 sh.identifier_raw("map"),
                             ),
                             [
-                                Selection($.source),
+                                Value_Selection($.source),
                                 sh.e.arrow_function_with_expression(
                                     [
                                         sh.parameter(sh.identifier_raw("$"), null)
@@ -553,7 +545,7 @@ export const Expression = (
                                 sh.identifier_raw("map_with_state"),
                             ),
                             [
-                                Selection($.source),
+                                Value_Selection($.source),
                                 Expression($['initial state']),
                                 sh.e.arrow_function_with_expression(
                                     [
@@ -591,13 +583,13 @@ export const Expression = (
                         case 'approximation': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
-                                case 'copy': return _p.ss($, ($) => Selection($))
+                                case 'copy': return _p.ss($, ($) => Value_Selection($))
                                 default: return _p.au($[0])
                             }
                         }))
                         case 'integer': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'copy': return _p.ss($, ($) => Selection($))
+                                case 'copy': return _p.ss($, ($) => Value_Selection($))
                                 case 'divide': return _p.ss($, ($) => _pdev.implement_me("X17"))
                                 case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
                                 default: return _p.au($[0])
@@ -605,7 +597,7 @@ export const Expression = (
                         }))
                         case 'natural': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'copy': return _p.ss($, ($) => Selection($))
+                                case 'copy': return _p.ss($, ($) => Value_Selection($))
                                 case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
                                 case 'number of dictionary entries': return _p.ss($, ($) => _pdev.implement_me("X13"))
                                 case 'number of list items': return _p.ss($, ($) => _pdev.implement_me("X14"))
@@ -657,7 +649,7 @@ export const Expression = (
                                 sh.identifier_raw("map"),
                             ),
                             [
-                                Selection($.source),
+                                Value_Selection($.source),
                                 sh.e.arrow_function_with_expression(
                                     [
                                         sh.parameter(sh.identifier_raw("$"), null)
@@ -681,7 +673,7 @@ export const Expression = (
                 }))
                 case 'text': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {
-                        case 'copy': return _p.ss($, ($) => Selection($))
+                        case 'copy': return _p.ss($, ($) => Value_Selection($))
                         case 'literal': return _p.ss($, ($) => sh.e.string_literal($.value, _p.decide.state($.type, ($) => {
                             switch ($[0]) {
                                 case 'freeform': return _p.ss($, ($) => 'quote')
@@ -696,7 +688,7 @@ export const Expression = (
                 default: return _p.au($[0])
             }
         }))
-        case 'select': return _p.ss($, ($) => Selection($))
+        case 'select': return _p.ss($, ($) => Value_Selection($))
         case 'special': return _p.ss($, ($) => _p.decide.state($, ($) => {
             switch ($[0]) {
                 case 'assert': return _p.ss($, ($) => _pdev.implement_me("X22"))
@@ -709,7 +701,7 @@ export const Expression = (
                 case 'change context': return _p.ss($, ($) => sh.e.call(
                     sh.e.identifier_raw("_p_change_context"),
                     [
-                        Selection($['new context']),
+                        Value_Selection($['new context']),
                         sh.e.arrow_function_with_expression(
                             [
                                 sh.parameter(sh.identifier_raw("$"), null)
@@ -784,8 +776,8 @@ export const reduce = <Item, Result_Type>(
     return current_state
 }
 
-export const Selection = (
-    $: d_in.Selection,
+export const Value_Selection = (
+    $: d_in.Value_Selection,
 ): d_out.Expression => _p.decide.state($, ($) => {
     switch ($[0]) {
         case 'implement me': return _p.ss($, ($) => sh.e.call(
@@ -879,7 +871,7 @@ export const Selection = (
                     case 'context': return _p.ss($, ($) => sh.e.identifier_raw("$"))
                     case 'dictionary entry': return _p.ss($, ($) => sh.e.call(
                         sh.e.property_access(
-                            Selection($.dictionary),
+                            Value_Selection($.dictionary),
                             sh.identifier_raw("__get_entry")
                         ),
                         [
@@ -1041,7 +1033,7 @@ export const Lookup_Selection = (
                         sh.identifier_raw("from_resolved_dictionary")
                     ),
                     [
-                        Selection($)
+                        Value_Selection($)
                     ]
                 ))
                 default: return _p.au($[0])

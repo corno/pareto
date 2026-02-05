@@ -58,25 +58,53 @@ export namespace Package_ {
     
     export type imports = Imports_
     
-    export namespace types {
+    export namespace content {
         
         export type l_location = i__location.Relative_Location
         
-        export namespace l_dictionary {
+        export namespace l_state {
             
-            export namespace D {
+            export namespace data_modules {
                 
                 export type l_location = i__location.Relative_Location
                 
-                export namespace l_entry {
+                export namespace l_dictionary {
                     
-                    export type l_location = i__location.Relative_Location
+                    export namespace D {
+                        
+                        export type l_location = i__location.Relative_Location
+                        
+                        export type l_entry = Value_
+                        
+                    }
                     
-                    export namespace l_state {
+                    export type D = {
+                        readonly 'l location': D.l_location
+                        readonly 'l entry': D.l_entry
+                    }
+                    
+                }
+                
+                export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                
+            }
+            
+            export type data_modules = {
+                readonly 'l location': data_modules.l_location
+                readonly 'l dictionary': data_modules.l_dictionary
+            }
+            
+            export namespace functions {
+                
+                export type l_location = i__location.Relative_Location
+                
+                export namespace l_dictionary {
+                    
+                    export namespace D {
                         
-                        export type data = Value_
+                        export type l_location = i__location.Relative_Location
                         
-                        export namespace algorithm {
+                        export namespace l_entry {
                             
                             export type result = Value_
                             
@@ -87,10 +115,6 @@ export namespace Package_ {
                                 export type l_location = i__location.Relative_Location
                                 
                                 export namespace l_state {
-                                    
-                                    export namespace transformer {
-                                        
-                                    }
                                     
                                     export type transformer = null
                                     
@@ -222,49 +246,49 @@ export namespace Package_ {
                             
                         }
                         
-                        export type algorithm = {
-                            readonly 'result': algorithm.result
-                            readonly 'context': algorithm.context
-                            readonly 'type': algorithm.type_
-                            readonly 'parameters': algorithm.parameters
+                        export type l_entry = {
+                            readonly 'result': l_entry.result
+                            readonly 'context': l_entry.context
+                            readonly 'type': l_entry.type_
+                            readonly 'parameters': l_entry.parameters
                         }
                         
                     }
                     
-                    export type l_state = 
-                        | readonly ['data', l_state.data]
-                        | readonly ['algorithm', l_state.algorithm]
+                    export type D = {
+                        readonly 'l location': D.l_location
+                        readonly 'l entry': D.l_entry
+                    }
                     
                 }
                 
-                export type l_entry = {
-                    readonly 'l location': l_entry.l_location
-                    readonly 'l state': l_entry.l_state
-                }
+                export type l_dictionary = _pi.Dictionary<l_dictionary.D>
                 
             }
             
-            export type D = {
-                readonly 'l location': D.l_location
-                readonly 'l entry': D.l_entry
+            export type functions = {
+                readonly 'l location': functions.l_location
+                readonly 'l dictionary': functions.l_dictionary
             }
             
         }
         
-        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+        export type l_state = 
+            | readonly ['data modules', l_state.data_modules]
+            | readonly ['functions', l_state.functions]
         
     }
     
-    export type types = {
-        readonly 'l location': types.l_location
-        readonly 'l dictionary': types.l_dictionary
+    export type content = {
+        readonly 'l location': content.l_location
+        readonly 'l state': content.l_state
     }
     
 }
 
 export type Package_ = {
     readonly 'imports': Package_.imports
-    readonly 'types': Package_.types
+    readonly 'content': Package_.content
 }
 
 export namespace Imports_ {

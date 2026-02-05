@@ -37,9 +37,9 @@ export type Package_ = (
     context: Package_.I,
 ) => Package_.O
 
-export namespace Temp_Type_Node_Reference_ {
+export namespace Temp_Value_Type_Specification_ {
     
-    export type I = i_in.Temp_Type_Node_Reference
+    export type I = i_in.Temp_Value_Type_Specification
     
     export type O = i_out.Value
     
@@ -49,9 +49,9 @@ export namespace Temp_Type_Node_Reference_ {
     
 }
 
-export type Temp_Type_Node_Reference_ = (
-    context: Temp_Type_Node_Reference_.I,
-) => Temp_Type_Node_Reference_.O
+export type Temp_Value_Type_Specification_ = (
+    context: Temp_Value_Type_Specification_.I,
+) => Temp_Value_Type_Specification_.O
 
 export namespace Expression_ {
     
@@ -69,9 +69,9 @@ export type Expression_ = (
     context: Expression_.I,
 ) => Expression_.O
 
-export namespace Selection_ {
+export namespace Value_Selection_ {
     
-    export type I = i_in.Selection
+    export type I = i_in.Value_Selection
     
     export type O = i_out.Value
     
@@ -81,9 +81,9 @@ export namespace Selection_ {
     
 }
 
-export type Selection_ = (
-    context: Selection_.I,
-) => Selection_.O
+export type Value_Selection_ = (
+    context: Value_Selection_.I,
+) => Value_Selection_.O
 
 export namespace Lookup_Selection_ {
     
@@ -104,8 +104,8 @@ export type Lookup_Selection_ = (
 export { 
     Package_Set_ as Package_Set, 
     Package_ as Package, 
-    Temp_Type_Node_Reference_ as Temp_Type_Node_Reference, 
+    Temp_Value_Type_Specification_ as Temp_Value_Type_Specification, 
     Expression_ as Expression, 
-    Selection_ as Selection, 
+    Value_Selection_ as Value_Selection, 
     Lookup_Selection_ as Lookup_Selection, 
 }
