@@ -11,7 +11,7 @@
         v_deserialize.Document(
             $,
             ($) => abort(
-                ['tbd', null],
+                ['parse error', $]
             ),
             {
                 'document resource identifier': $p['document resource identifier'],
@@ -19,7 +19,7 @@
             },
         )['content'],
         ($) => abort(
-            ['tbd', null],
+            ['unmarshall error', $],
         ),
     )
     
@@ -27,7 +27,7 @@
         v_deserialize.Document(
             $,
             ($) => abort(
-                ['tbd', null],
+                ['parse error', $]
             ),
             {
                 'document resource identifier': $p['document resource identifier'],
@@ -35,7 +35,7 @@
             },
         )['content'],
         ($) => abort(
-            ['tbd', null],
+            ['unmarshall error', $],
         ),
     )
     
@@ -43,7 +43,7 @@
         v_deserialize.Document(
             $,
             ($) => abort(
-                ['tbd', null],
+                ['parse error', $]
             ),
             {
                 'document resource identifier': $p['document resource identifier'],
@@ -51,7 +51,7 @@
             },
         )['content'],
         ($) => abort(
-            ['tbd', null],
+            ['unmarshall error', $],
         ),
     )
     
@@ -59,7 +59,7 @@
         v_deserialize.Document(
             $,
             ($) => abort(
-                ['tbd', null],
+                ['parse error', $]
             ),
             {
                 'document resource identifier': $p['document resource identifier'],
@@ -67,7 +67,7 @@
             },
         )['content'],
         ($) => abort(
-            ['tbd', null],
+            ['unmarshall error', $],
         ),
     )
     
@@ -75,7 +75,7 @@
         v_deserialize.Document(
             $,
             ($) => abort(
-                ['tbd', null],
+                ['parse error', $]
             ),
             {
                 'document resource identifier': $p['document resource identifier'],
@@ -83,7 +83,7 @@
             },
         )['content'],
         ($) => abort(
-            ['tbd', null],
+            ['unmarshall error', $],
         ),
     )
     
@@ -91,7 +91,7 @@
         v_deserialize.Document(
             $,
             ($) => abort(
-                ['tbd', null],
+                ['parse error', $]
             ),
             {
                 'document resource identifier': $p['document resource identifier'],
@@ -99,6 +99,6 @@
             },
         )['content'],
         ($) => abort(
-            ['tbd', null],
+            ['unmarshall error', $],
         ),
     )

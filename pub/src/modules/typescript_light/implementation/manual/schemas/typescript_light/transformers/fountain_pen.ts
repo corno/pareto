@@ -4,7 +4,6 @@ import * as _pdev from 'pareto-core-dev'
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
 import * as d_in from "../../../../../../../interface/generated/liana/schemas/typescript_light/data"
 
-import { $$ as op_enrich_list_items_with_position_information } from "pareto-fountain-pen/dist/implementation/temp/enrich_with_position_information"
 import { $$ as s_apostrophed } from "../../../primitives/text/serializers/apostrophed_string"
 import { $$ as s_quoted } from "../../../primitives/text/serializers/quoted_string"
 import { $$ as s_number_default } from "../../../primitives/integer/serializers/decimal"
@@ -154,7 +153,9 @@ export const Statements = (
                         sh.ph.literal("{"),
                         sh.ph.indent(sh.pg.composed([
                             Statements($.block, $p),
-                            sh.pg.single_line(``),
+                            sh.pg.sentences([
+                                sh.ph.literal(``),
+                            ])
                         ])),
                         sh.ph.literal("}"),
                     ])
@@ -220,16 +221,13 @@ export const Statements = (
                     $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
                     sh.ph.literal("type "),
                     Identifier($['name']),
-                    _p.boolean.list_is_empty($['parameters'])
-                        ? sh.ph.nothing()
-                        : sh.ph.composed([
-                            sh.ph.literal("<"),
-                            sh.ph.composed(op_enrich_list_items_with_position_information($['parameters']).__l_map(($) => sh.ph.composed([
-                                Identifier($.value),
-                                $['is last'] ? sh.ph.nothing() : sh.ph.literal(", ")
-                            ]))),
-                            sh.ph.literal(">"),
-                        ]),
+                    sh.ph.rich(
+                        $['parameters'].__l_map(($) => Identifier($)),
+                        sh.ph.nothing(),
+                        sh.ph.literal("<"),
+                        sh.ph.literal(", "),
+                        sh.ph.literal(">"),
+                    ),
                     sh.ph.literal(" = "),
                     Type($['type'], $p),
                 ])])
@@ -285,28 +283,36 @@ export const Expression = (
         ]))
         case 'array literal': return _p.ss($, ($) => sh.ph.composed([
             sh.ph.literal("["),
-            sh.ph.composed(op_enrich_list_items_with_position_information($).__l_map(($) => sh.ph.composed([
-                Expression($.value, {
+            sh.ph.rich(
+                $.__l_map(($) => Expression($, {
                     'object literal needs parentheses': false,
                     'replace empty type literals by null': $p['replace empty type literals by null'],
-                }),
-                $['is last'] ? sh.ph.nothing() : sh.ph.literal(", ")
-            ]))),
+                })),
+                sh.ph.nothing(),
+                sh.ph.nothing(),
+                sh.ph.literal(", "),
+                sh.ph.nothing(),
+            ),
             sh.ph.literal("]"),
         ]))
         case 'arrow function': return _p.ss($, ($) => sh.ph.composed([
             sh.ph.literal("("),
-            sh.ph.composed(op_enrich_list_items_with_position_information($.parameters).__l_map(($) => sh.ph.composed([
-                Identifier($.value.name),
-                $.value.type.__decide(
-                    ($) => sh.ph.composed([
-                        sh.ph.literal(": "),
-                        Type($, $p)
-                    ]),
-                    () => sh.ph.nothing(),
-                ),
-                $['is last'] ? sh.ph.nothing() : sh.ph.literal(", ")
-            ]))),
+            sh.ph.rich(
+                $.parameters.__l_map(($) => sh.ph.composed([
+                    Identifier($.name),
+                    $.type.__decide(
+                        ($) => sh.ph.composed([
+                            sh.ph.literal(": "),
+                            Type($, $p)
+                        ]),
+                        () => sh.ph.nothing(),
+                    ),
+                ])),
+                sh.ph.nothing(),
+                sh.ph.nothing(),
+                sh.ph.literal(", "),
+                sh.ph.nothing(),
+            ),
             sh.ph.literal(")"),
             $['return type'].__decide(
                 ($) => sh.ph.composed([
@@ -473,16 +479,14 @@ export const Type = (
     switch ($[0]) {
         case 'boolean': return _p.ss($, ($) => sh.ph.literal("boolean"))
         case 'function': return _p.ss($, ($) => sh.ph.composed([
-            _p.boolean.list_is_empty($['type parameters'])
-                ? sh.ph.nothing()
-                : sh.ph.composed([
-                    sh.ph.literal("<"),
-                    sh.ph.composed(op_enrich_list_items_with_position_information($['type parameters']).__l_map(($) => sh.ph.composed([
-                        Type($.value, $p),
-                        $['is last'] ? sh.ph.nothing() : sh.ph.literal(", ")
-                    ]))),
-                    sh.ph.literal(">"),
-                ]), sh.ph.literal("("),
+            sh.ph.rich(
+                $['type parameters'].__l_map(($) => Type($, $p)),
+                sh.ph.nothing(),
+                sh.ph.literal("<"),
+                sh.ph.literal(", "),
+                sh.ph.literal(">"),
+            ),
+            sh.ph.literal("("),
             sh.ph.indent(
                 sh.pg.sentences($['parameters'].__l_map(($) => sh.ph.composed([
                     Identifier($.name),
@@ -506,12 +510,13 @@ export const Type = (
         case 'tuple': return _p.ss($, ($) => sh.ph.composed([
             $.readonly ? sh.ph.literal("readonly ") : sh.ph.nothing(),
             sh.ph.literal("["),
-            sh.ph.composed(op_enrich_list_items_with_position_information($['elements']).__l_map(($) => sh.ph.composed([
-                Type($.value, $p),
-                $['is last']
-                    ? sh.ph.nothing()
-                    : sh.ph.literal(", ")
-            ]))),
+            sh.ph.rich(
+                $.elements.__l_map(($) => Type($, $p)),
+                sh.ph.nothing(),
+                sh.ph.nothing(),
+                sh.ph.literal(", "),
+                sh.ph.nothing(),
+            ),
             sh.ph.literal("]"),
         ]))
         case 'type literal': return _p.ss($, ($) => $p['replace empty type literals by null'] && _p.boolean.dictionary_is_empty($.properties)
@@ -541,10 +546,13 @@ export const Type = (
                 ? sh.ph.nothing()
                 : sh.ph.composed([
                     sh.ph.literal("<"),
-                    sh.ph.composed(op_enrich_list_items_with_position_information($['type arguments']).__l_map(($) => sh.ph.composed([
-                        Type($['value'], $p),
-                        $['is last'] ? sh.ph.nothing() : sh.ph.literal(", "),
-                    ]))),
+                    sh.ph.rich(
+                        $['type arguments'].__l_map(($) => Type($, $p)),
+                        sh.ph.nothing(),
+                        sh.ph.nothing(),
+                        sh.ph.literal(", "),
+                        sh.ph.nothing(),
+                    ),
                     sh.ph.literal(">"),
                 ]),
         ]))
