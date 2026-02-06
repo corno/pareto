@@ -18,7 +18,10 @@ import { $$ as s_file_name } from "../../../primitives/text/serializers/filename
 import * as sh from "../../../../../modules/typescript_light/shorthands/typescript_light"
 
 
-export const temp_create_file_path = ($: d_in.Imports.D): string => {
+export const temp_create_file_path = (
+    $: d_in.Imports.D,
+    delimiter: 'apostrophe' | 'quote',
+): d_out.String_Literal => {
     const valid_file_name = ($: string): string => {
         return _p_text_from_list(
             s_file_name($),
@@ -34,20 +37,23 @@ export const temp_create_file_path = ($: d_in.Imports.D): string => {
             ($) => $
         )
     }
-    return _p.decide.state($.type, ($): string => {
-        switch ($[0]) {
-            case 'external': return _p.ss($, ($) => valid_file_name($) + do_tail())
-            case 'ancestor': return _p.ss($, ($) => _p_text_from_list(
-                _p.list.flatten(
-                    _p.list.repeat(_p_list_from_text("../", ($) => $), $['number of steps']),
+    return {
+        'value': _p.decide.state($.type, ($): string => {
+            switch ($[0]) {
+                case 'external': return _p.ss($, ($) => valid_file_name($) + do_tail())
+                case 'ancestor': return _p.ss($, ($) => _p_text_from_list(
+                    _p.list.flatten(
+                        _p.list.repeat(_p_list_from_text("../", ($) => $), $['number of steps']),
+                        ($) => $
+                    ),
                     ($) => $
-                ),
-                ($) => $
-            ) + valid_file_name($.dependency) + do_tail())
-            case 'sibling': return _p.ss($, ($) => `./${valid_file_name($)}` + do_tail())
-            default: return _p.au($[0])
-        }
-    })
+                ) + valid_file_name($.dependency) + do_tail())
+                case 'sibling': return _p.ss($, ($) => `./${valid_file_name($)}` + do_tail())
+                default: return _p.au($[0])
+            }
+        }),
+        'delimiter': delimiter === 'apostrophe' ? ['apostrophe', null] : ['quote', null]
+    }
 
 
     //  + s_list_of_texts(
@@ -92,12 +98,12 @@ export const Package_Set = (
 
                 return sh.n.file(_p.list.nested_literal_old<d_out.Statements_.L>([
                     [
-                        sh.s.import_namespace(sh.identifier_raw("_pi"), "pareto-core/dist/interface"),
+                        sh.s.import_namespace(sh.identifier_raw("_pi"), sh.string_literal("pareto-core/dist/interface", 'apostrophe')),
                     ],
 
                     _p.list.from_dictionary($.imports, ($, id): d_out.Statements_.L => sh.s.import_namespace(
                         sh.identifier_escaped(`i ${id}`),
-                        temp_create_file_path($)
+                        temp_create_file_path($, 'quote')
                     )),
 
                     _p.decide.state($.content, ($) => {
@@ -245,7 +251,9 @@ export const Package_Set = (
                                                                         sh.parameter(
                                                                             sh.identifier_raw("lookups"),
                                                                             sh.t.type_literal(
-                                                                                $.__d_map(($, id) => sh.tl_propery(
+                                                                                $.__to_list(($, id) => sh.tl_propery(
+                                                                                    id,
+                                                                                    'apostrophized string literal',
                                                                                     true,
                                                                                     sh.t.type_reference(
                                                                                         sh.identifier_raw("_pi"),
@@ -280,10 +288,12 @@ export const Package_Set = (
                                                             sh.parameter(
                                                                 sh.identifier_raw("parameters"),
                                                                 sh.t.type_literal(
-                                                                    $.__d_map(($, id) => ({
-                                                                        'readonly': true,
-                                                                        'type': sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("P"), sh.identifier_escaped(id)], []),
-                                                                    })),
+                                                                    $.__to_list(($, id) => sh.tl_propery(
+                                                                        id,
+                                                                        'apostrophized string literal',
+                                                                        true,
+                                                                        sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("P"), sh.identifier_escaped(id)], [])
+                                                                    )),
                                                                 )
                                                             ),
 
@@ -420,7 +430,12 @@ export const Value = (
                         true,
                         sh.identifier_escaped($p.name),
                         _p.list.literal([]),
-                        sh.t.type_literal($.__d_map(($, id) => sh.tl_propery(true, sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(id)], []))))
+                        sh.t.type_literal($.__to_list(($, id) => sh.tl_propery(
+                            id,
+                            'apostrophized string literal',
+                            true,
+                            sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(id)], [])
+                        )))
                     )
                 ]
             ]))
@@ -563,7 +578,7 @@ export const Value = (
                         sh.t.union(
                             $.__to_list(
                                 ($, id) => sh.t.tuple('readonly', [
-                                    sh.t.literal_type(id, 'apostrophe'),
+                                    sh.t.literal_type(sh.string_literal(id, 'apostrophe')),
                                     sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(id)], [])
                                 ])
                             )

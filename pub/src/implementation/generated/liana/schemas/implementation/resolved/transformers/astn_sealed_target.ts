@@ -1,9 +1,9 @@
     
-    import * as _p from "pareto-core/dist/expression"
+    import * as _p from 'pareto-core/dist/expression'
     
-    import _p_change_context from "pareto-core/dist/_p_change_context"
+    import _p_change_context from 'pareto-core/dist/_p_change_context'
     
-    import _p_text_from_list from "pareto-core/dist/_p_text_from_list"
+    import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
     
     import * as t_signatures from "../../../../../../../interface/generated/liana/schemas/implementation/marshall"
     
@@ -52,11 +52,11 @@
     
     export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dictionary.literal(
         {
-            'specials': _p_change_context(
+            "specials": _p_change_context(
                 $['specials'],
                 ($) => ['group', ['verbose', _p.dictionary.literal(
                     {
-                        'abort': _p_change_context(
+                        "abort": _p_change_context(
                             $['abort'],
                             ($) => ['text', {
                                 'delimiter': ['none', null],
@@ -68,7 +68,7 @@
                                 ),
                             }],
                         ),
-                        'change context': _p_change_context(
+                        "change context": _p_change_context(
                             $['change context'],
                             ($) => ['text', {
                                 'delimiter': ['none', null],
@@ -80,7 +80,7 @@
                                 ),
                             }],
                         ),
-                        'implement me': _p_change_context(
+                        "implement me": _p_change_context(
                             $['implement me'],
                             ($) => ['text', {
                                 'delimiter': ['none', null],
@@ -92,7 +92,7 @@
                                 ),
                             }],
                         ),
-                        'iterate': _p_change_context(
+                        "iterate": _p_change_context(
                             $['iterate'],
                             ($) => ['text', {
                                 'delimiter': ['none', null],
@@ -104,7 +104,7 @@
                                 ),
                             }],
                         ),
-                        'lookups': _p_change_context(
+                        "lookups": _p_change_context(
                             $['lookups'],
                             ($) => ['text', {
                                 'delimiter': ['none', null],
@@ -116,7 +116,7 @@
                                 ),
                             }],
                         ),
-                        'list from text': _p_change_context(
+                        "list from text": _p_change_context(
                             $['list from text'],
                             ($) => ['text', {
                                 'delimiter': ['none', null],
@@ -128,7 +128,7 @@
                                 ),
                             }],
                         ),
-                        'text from list': _p_change_context(
+                        "text from list": _p_change_context(
                             $['text from list'],
                             ($) => ['text', {
                                 'delimiter': ['none', null],
@@ -140,7 +140,7 @@
                                 ),
                             }],
                         ),
-                        'unreachable code path': _p_change_context(
+                        "unreachable code path": _p_change_context(
                             $['unreachable code path'],
                             ($) => ['text', {
                                 'delimiter': ['none', null],
@@ -152,7 +152,7 @@
                                 ),
                             }],
                         ),
-                        'variables': _p_change_context(
+                        "variables": _p_change_context(
                             $['variables'],
                             ($) => ['text', {
                                 'delimiter': ['none', null],
@@ -167,19 +167,19 @@
                     },
                 )]],
             ),
-            'type imports': _p_change_context(
+            "type imports": _p_change_context(
                 $['type imports'],
                 ($) => v_external_interface.Imports(
                     $,
                 ),
             ),
-            'variable imports': _p_change_context(
+            "variable imports": _p_change_context(
                 $['variable imports'],
                 ($) => ['dictionary', _p.dictionary.map(
                     $,
                     ($, id) => ['group', ['verbose', _p.dictionary.literal(
                         {
-                            'tail': _p_change_context(
+                            "tail": _p_change_context(
                                 $['tail'],
                                 ($) => ['list', _p.list.map(
                                     $,
@@ -189,7 +189,7 @@
                                     }],
                                 )],
                             ),
-                            'type': _p_change_context(
+                            "type": _p_change_context(
                                 $['type'],
                                 ($) => ['state', _p.decide.state(
                                     $,
@@ -202,14 +202,14 @@
                                                         'option': 'ancestor',
                                                         'value': ['group', ['verbose', _p.dictionary.literal(
                                                             {
-                                                                'dependency': _p_change_context(
+                                                                "dependency": _p_change_context(
                                                                     $['dependency'],
                                                                     ($) => ['text', {
                                                                         'delimiter': ['quote', null],
                                                                         'value': $,
                                                                     }],
                                                                 ),
-                                                                'number of steps': _p_change_context(
+                                                                "number of steps": _p_change_context(
                                                                     $['number of steps'],
                                                                     ($) => ['text', {
                                                                         'delimiter': ['none', null],
@@ -259,24 +259,24 @@
                     )]],
                 )],
             ),
-            'functions': _p_change_context(
+            "functions": _p_change_context(
                 $['functions'],
                 ($) => ['dictionary', _p.dictionary.map(
                     $,
                     ($, id) => ['group', ['verbose', _p.dictionary.literal(
                         {
-                            'type': _p_change_context(
+                            "type": _p_change_context(
                                 $['type'],
                                 ($) => ['group', ['verbose', _p.dictionary.literal(
                                     {
-                                        'import': _p_change_context(
+                                        "import": _p_change_context(
                                             $['import'],
                                             ($) => ['text', {
                                                 'delimiter': ['quote', null],
                                                 'value': $,
                                             }],
                                         ),
-                                        'type': _p_change_context(
+                                        "type": _p_change_context(
                                             $['type'],
                                             ($) => ['text', {
                                                 'delimiter': ['quote', null],
@@ -286,13 +286,13 @@
                                     },
                                 )]],
                             ),
-                            'expression': _p_change_context(
+                            "expression": _p_change_context(
                                 $['expression'],
                                 ($) => Expression(
                                     $,
                                 ),
                             ),
-                            'temp has abort': _p_change_context(
+                            "temp has abort": _p_change_context(
                                 $['temp has abort'],
                                 ($) => ['text', {
                                     'delimiter': ['none', null],
@@ -304,7 +304,7 @@
                                     ),
                                 }],
                             ),
-                            'temp has lookups': _p_change_context(
+                            "temp has lookups": _p_change_context(
                                 $['temp has lookups'],
                                 ($) => ['text', {
                                     'delimiter': ['none', null],
@@ -316,7 +316,7 @@
                                     ),
                                 }],
                             ),
-                            'temp has parameters': _p_change_context(
+                            "temp has parameters": _p_change_context(
                                 $['temp has parameters'],
                                 ($) => ['text', {
                                     'delimiter': ['none', null],
@@ -337,18 +337,18 @@
     
     export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specification = ($) => ['group', ['verbose', _p.dictionary.literal(
         {
-            'type': _p_change_context(
+            "type": _p_change_context(
                 $['type'],
                 ($) => ['group', ['verbose', _p.dictionary.literal(
                     {
-                        'import': _p_change_context(
+                        "import": _p_change_context(
                             $['import'],
                             ($) => ['text', {
                                 'delimiter': ['quote', null],
                                 'value': $,
                             }],
                         ),
-                        'type': _p_change_context(
+                        "type": _p_change_context(
                             $['type'],
                             ($) => ['text', {
                                 'delimiter': ['quote', null],
@@ -358,7 +358,7 @@
                     },
                 )]],
             ),
-            'sub selection': _p_change_context(
+            "sub selection": _p_change_context(
                 $['sub selection'],
                 ($) => ['list', _p.list.map(
                     $,
@@ -435,7 +435,7 @@
                             'option': 'decide',
                             'value': ['group', ['verbose', _p.dictionary.literal(
                                 {
-                                    'type': _p_change_context(
+                                    "type": _p_change_context(
                                         $['type'],
                                         ($) => ['state', _p.decide.state(
                                             $,
@@ -448,13 +448,13 @@
                                                                 'option': 'boolean',
                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
                                                                     {
-                                                                        'source': _p_change_context(
+                                                                        "source": _p_change_context(
                                                                             $['source'],
                                                                             ($) => Value_Selection(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'temp resulting node': _p_change_context(
+                                                                        "temp resulting node": _p_change_context(
                                                                             $['temp resulting node'],
                                                                             ($) => ['optional', _p.decide.optional(
                                                                                 $,
@@ -464,13 +464,13 @@
                                                                                 () => ['not set', null],
                                                                             )],
                                                                         ),
-                                                                        'if false': _p_change_context(
+                                                                        "if false": _p_change_context(
                                                                             $['if false'],
                                                                             ($) => Expression(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'if true': _p_change_context(
+                                                                        "if true": _p_change_context(
                                                                             $['if true'],
                                                                             ($) => Expression(
                                                                                 $,
@@ -496,19 +496,19 @@
                                                                                         'option': 'has entries',
                                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                             {
-                                                                                                'dictionary': _p_change_context(
+                                                                                                "dictionary": _p_change_context(
                                                                                                     $['dictionary'],
                                                                                                     ($) => Value_Selection(
                                                                                                         $,
                                                                                                     ),
                                                                                                 ),
-                                                                                                'if true': _p_change_context(
+                                                                                                "if true": _p_change_context(
                                                                                                     $['if true'],
                                                                                                     ($) => Expression(
                                                                                                         $,
                                                                                                     ),
                                                                                                 ),
-                                                                                                'if false': _p_change_context(
+                                                                                                "if false": _p_change_context(
                                                                                                     $['if false'],
                                                                                                     ($) => Expression(
                                                                                                         $,
@@ -543,19 +543,19 @@
                                                                                         'option': 'has first item',
                                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                             {
-                                                                                                'list': _p_change_context(
+                                                                                                "list": _p_change_context(
                                                                                                     $['list'],
                                                                                                     ($) => Value_Selection(
                                                                                                         $,
                                                                                                     ),
                                                                                                 ),
-                                                                                                'if true': _p_change_context(
+                                                                                                "if true": _p_change_context(
                                                                                                     $['if true'],
                                                                                                     ($) => Expression(
                                                                                                         $,
                                                                                                     ),
                                                                                                 ),
-                                                                                                'if false': _p_change_context(
+                                                                                                "if false": _p_change_context(
                                                                                                     $['if false'],
                                                                                                     ($) => Expression(
                                                                                                         $,
@@ -572,19 +572,19 @@
                                                                                         'option': 'has last item',
                                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                             {
-                                                                                                'list': _p_change_context(
+                                                                                                "list": _p_change_context(
                                                                                                     $['list'],
                                                                                                     ($) => Value_Selection(
                                                                                                         $,
                                                                                                     ),
                                                                                                 ),
-                                                                                                'if true': _p_change_context(
+                                                                                                "if true": _p_change_context(
                                                                                                     $['if true'],
                                                                                                     ($) => Expression(
                                                                                                         $,
                                                                                                     ),
                                                                                                 ),
-                                                                                                'if false': _p_change_context(
+                                                                                                "if false": _p_change_context(
                                                                                                     $['if false'],
                                                                                                     ($) => Expression(
                                                                                                         $,
@@ -601,19 +601,19 @@
                                                                                         'option': 'has items',
                                                                                         'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                             {
-                                                                                                'list': _p_change_context(
+                                                                                                "list": _p_change_context(
                                                                                                     $['list'],
                                                                                                     ($) => Value_Selection(
                                                                                                         $,
                                                                                                     ),
                                                                                                 ),
-                                                                                                'if true': _p_change_context(
+                                                                                                "if true": _p_change_context(
                                                                                                     $['if true'],
                                                                                                     ($) => Expression(
                                                                                                         $,
                                                                                                     ),
                                                                                                 ),
-                                                                                                'if false': _p_change_context(
+                                                                                                "if false": _p_change_context(
                                                                                                     $['if false'],
                                                                                                     ($) => Expression(
                                                                                                         $,
@@ -639,13 +639,13 @@
                                                                 'option': 'optional',
                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
                                                                     {
-                                                                        'source': _p_change_context(
+                                                                        "source": _p_change_context(
                                                                             $['source'],
                                                                             ($) => Value_Selection(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'temp resulting node': _p_change_context(
+                                                                        "temp resulting node": _p_change_context(
                                                                             $['temp resulting node'],
                                                                             ($) => ['optional', _p.decide.optional(
                                                                                 $,
@@ -655,13 +655,13 @@
                                                                                 () => ['not set', null],
                                                                             )],
                                                                         ),
-                                                                        'if not set': _p_change_context(
+                                                                        "if not set": _p_change_context(
                                                                             $['if not set'],
                                                                             ($) => Expression(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'if set': _p_change_context(
+                                                                        "if set": _p_change_context(
                                                                             $['if set'],
                                                                             ($) => Expression(
                                                                                 $,
@@ -678,13 +678,13 @@
                                                                 'option': 'state',
                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
                                                                     {
-                                                                        'source': _p_change_context(
+                                                                        "source": _p_change_context(
                                                                             $['source'],
                                                                             ($) => Value_Selection(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'temp resulting node': _p_change_context(
+                                                                        "temp resulting node": _p_change_context(
                                                                             $['temp resulting node'],
                                                                             ($) => ['optional', _p.decide.optional(
                                                                                 $,
@@ -694,7 +694,7 @@
                                                                                 () => ['not set', null],
                                                                             )],
                                                                         ),
-                                                                        'type': _p_change_context(
+                                                                        "type": _p_change_context(
                                                                             $['type'],
                                                                             ($) => ['state', _p.decide.state(
                                                                                 $,
@@ -707,7 +707,7 @@
                                                                                                     'option': 'partial',
                                                                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                                         {
-                                                                                                            'options': _p_change_context(
+                                                                                                            "options": _p_change_context(
                                                                                                                 $['options'],
                                                                                                                 ($) => ['dictionary', _p.dictionary.map(
                                                                                                                     $,
@@ -716,7 +716,7 @@
                                                                                                                     ),
                                                                                                                 )],
                                                                                                             ),
-                                                                                                            'default': _p_change_context(
+                                                                                                            "default": _p_change_context(
                                                                                                                 $['default'],
                                                                                                                 ($) => Expression(
                                                                                                                     $,
@@ -733,7 +733,7 @@
                                                                                                     'option': 'full',
                                                                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                                         {
-                                                                                                            'options': _p_change_context(
+                                                                                                            "options": _p_change_context(
                                                                                                                 $['options'],
                                                                                                                 ($) => ['dictionary', _p.dictionary.map(
                                                                                                                     $,
@@ -753,20 +753,20 @@
                                                                                                     'option': 'single',
                                                                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                                         {
-                                                                                                            'option': _p_change_context(
+                                                                                                            "option": _p_change_context(
                                                                                                                 $['option'],
                                                                                                                 ($) => ['text', {
                                                                                                                     'delimiter': ['quote', null],
                                                                                                                     'value': $,
                                                                                                                 }],
                                                                                                             ),
-                                                                                                            'if true': _p_change_context(
+                                                                                                            "if true": _p_change_context(
                                                                                                                 $['if true'],
                                                                                                                 ($) => Expression(
                                                                                                                     $,
                                                                                                                 ),
                                                                                                             ),
-                                                                                                            'if false': _p_change_context(
+                                                                                                            "if false": _p_change_context(
                                                                                                                 $['if false'],
                                                                                                                 ($) => Expression(
                                                                                                                     $,
@@ -795,13 +795,13 @@
                                                                 'option': 'text',
                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
                                                                     {
-                                                                        'source': _p_change_context(
+                                                                        "source": _p_change_context(
                                                                             $['source'],
                                                                             ($) => Value_Selection(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'temp resulting node': _p_change_context(
+                                                                        "temp resulting node": _p_change_context(
                                                                             $['temp resulting node'],
                                                                             ($) => ['optional', _p.decide.optional(
                                                                                 $,
@@ -811,7 +811,7 @@
                                                                                 () => ['not set', null],
                                                                             )],
                                                                         ),
-                                                                        'cases': _p_change_context(
+                                                                        "cases": _p_change_context(
                                                                             $['cases'],
                                                                             ($) => ['dictionary', _p.dictionary.map(
                                                                                 $,
@@ -820,7 +820,7 @@
                                                                                 ),
                                                                             )],
                                                                         ),
-                                                                        'default': _p_change_context(
+                                                                        "default": _p_change_context(
                                                                             $['default'],
                                                                             ($) => Expression(
                                                                                 $,
@@ -959,13 +959,13 @@
                                                                             'option': 'filter',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'source': _p_change_context(
+                                                                                    "source": _p_change_context(
                                                                                         $['source'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'entry handler': _p_change_context(
+                                                                                    "entry handler": _p_change_context(
                                                                                         $['entry handler'],
                                                                                         ($) => Expression(
                                                                                             $,
@@ -982,25 +982,25 @@
                                                                             'option': 'from list',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'source': _p_change_context(
+                                                                                    "source": _p_change_context(
                                                                                         $['source'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'get id': _p_change_context(
+                                                                                    "get id": _p_change_context(
                                                                                         $['get id'],
                                                                                         ($) => Expression(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'get entry': _p_change_context(
+                                                                                    "get entry": _p_change_context(
                                                                                         $['get entry'],
                                                                                         ($) => Expression(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'abort': _p_change_context(
+                                                                                    "abort": _p_change_context(
                                                                                         $['abort'],
                                                                                         ($) => Expression(
                                                                                             $,
@@ -1030,13 +1030,13 @@
                                                                             'option': 'map',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'source': _p_change_context(
+                                                                                    "source": _p_change_context(
                                                                                         $['source'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'entry handler': _p_change_context(
+                                                                                    "entry handler": _p_change_context(
                                                                                         $['entry handler'],
                                                                                         ($) => Expression(
                                                                                             $,
@@ -1053,19 +1053,19 @@
                                                                             'option': 'resolve',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'source': _p_change_context(
+                                                                                    "source": _p_change_context(
                                                                                         $['source'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'entry handler': _p_change_context(
+                                                                                    "entry handler": _p_change_context(
                                                                                         $['entry handler'],
                                                                                         ($) => Expression(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'temp resulting entry node': _p_change_context(
+                                                                                    "temp resulting entry node": _p_change_context(
                                                                                         $['temp resulting entry node'],
                                                                                         ($) => Temp_Value_Type_Specification(
                                                                                             $,
@@ -1144,13 +1144,13 @@
                                                                             'option': 'filter',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'source': _p_change_context(
+                                                                                    "source": _p_change_context(
                                                                                         $['source'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'entry handler': _p_change_context(
+                                                                                    "entry handler": _p_change_context(
                                                                                         $['entry handler'],
                                                                                         ($) => Expression(
                                                                                             $,
@@ -1167,13 +1167,13 @@
                                                                             'option': 'from dictionary',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'source': _p_change_context(
+                                                                                    "source": _p_change_context(
                                                                                         $['source'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'get item': _p_change_context(
+                                                                                    "get item": _p_change_context(
                                                                                         $['get item'],
                                                                                         ($) => Expression(
                                                                                             $,
@@ -1203,13 +1203,13 @@
                                                                             'option': 'map',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'source': _p_change_context(
+                                                                                    "source": _p_change_context(
                                                                                         $['source'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'item handler': _p_change_context(
+                                                                                    "item handler": _p_change_context(
                                                                                         $['item handler'],
                                                                                         ($) => Expression(
                                                                                             $,
@@ -1226,31 +1226,31 @@
                                                                             'option': 'map with state',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'source': _p_change_context(
+                                                                                    "source": _p_change_context(
                                                                                         $['source'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'initial state': _p_change_context(
+                                                                                    "initial state": _p_change_context(
                                                                                         $['initial state'],
                                                                                         ($) => Expression(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'item handler': _p_change_context(
+                                                                                    "item handler": _p_change_context(
                                                                                         $['item handler'],
                                                                                         ($) => Expression(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'update state': _p_change_context(
+                                                                                    "update state": _p_change_context(
                                                                                         $['update state'],
                                                                                         ($) => Expression(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'wrap up': _p_change_context(
+                                                                                    "wrap up": _p_change_context(
                                                                                         $['wrap up'],
                                                                                         ($) => Expression(
                                                                                             $,
@@ -1267,19 +1267,19 @@
                                                                             'option': 'reduce',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'source': _p_change_context(
+                                                                                    "source": _p_change_context(
                                                                                         $['source'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'initial state': _p_change_context(
+                                                                                    "initial state": _p_change_context(
                                                                                         $['initial state'],
                                                                                         ($) => Expression(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'item handler': _p_change_context(
+                                                                                    "item handler": _p_change_context(
                                                                                         $['item handler'],
                                                                                         ($) => Expression(
                                                                                             $,
@@ -1296,7 +1296,7 @@
                                                                             'option': 'reverse',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'source': _p_change_context(
+                                                                                    "source": _p_change_context(
                                                                                         $['source'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
@@ -1402,19 +1402,19 @@
                                                                                                     'option': 'divide',
                                                                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                                         {
-                                                                                                            'divident': _p_change_context(
+                                                                                                            "divident": _p_change_context(
                                                                                                                 $['divident'],
                                                                                                                 ($) => Value_Selection(
                                                                                                                     $,
                                                                                                                 ),
                                                                                                             ),
-                                                                                                            'divisor': _p_change_context(
+                                                                                                            "divisor": _p_change_context(
                                                                                                                 $['divisor'],
                                                                                                                 ($) => Value_Selection(
                                                                                                                     $,
                                                                                                                 ),
                                                                                                             ),
-                                                                                                            'abort': _p_change_context(
+                                                                                                            "abort": _p_change_context(
                                                                                                                 $['abort'],
                                                                                                                 ($) => Expression(
                                                                                                                     $,
@@ -1491,7 +1491,7 @@
                                                                                                     'option': 'number of dictionary entries',
                                                                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                                         {
-                                                                                                            'dictionary': _p_change_context(
+                                                                                                            "dictionary": _p_change_context(
                                                                                                                 $['dictionary'],
                                                                                                                 ($) => Value_Selection(
                                                                                                                     $,
@@ -1508,7 +1508,7 @@
                                                                                                     'option': 'number of list items',
                                                                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                                         {
-                                                                                                            'list': _p_change_context(
+                                                                                                            "list": _p_change_context(
                                                                                                                 $['list'],
                                                                                                                 ($) => Value_Selection(
                                                                                                                     $,
@@ -1568,13 +1568,13 @@
                                                                             'option': 'from boolean',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'source': _p_change_context(
+                                                                                    "source": _p_change_context(
                                                                                         $['source'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'get set': _p_change_context(
+                                                                                    "get set": _p_change_context(
                                                                                         $['get set'],
                                                                                         ($) => Expression(
                                                                                             $,
@@ -1627,13 +1627,13 @@
                                                                             'option': 'map',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'source': _p_change_context(
+                                                                                    "source": _p_change_context(
                                                                                         $['source'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'set handler': _p_change_context(
+                                                                                    "set handler": _p_change_context(
                                                                                         $['set handler'],
                                                                                         ($) => Expression(
                                                                                             $,
@@ -1668,14 +1668,14 @@
                                                                             'option': 'literal',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'option': _p_change_context(
+                                                                                    "option": _p_change_context(
                                                                                         $['option'],
                                                                                         ($) => ['text', {
                                                                                             'delimiter': ['quote', null],
                                                                                             'value': $,
                                                                                         }],
                                                                                     ),
-                                                                                    'value': _p_change_context(
+                                                                                    "value": _p_change_context(
                                                                                         $['value'],
                                                                                         ($) => Expression(
                                                                                             $,
@@ -1720,7 +1720,7 @@
                                                                             'option': 'literal',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'type': _p_change_context(
+                                                                                    "type": _p_change_context(
                                                                                         $['type'],
                                                                                         ($) => ['state', _p.decide.state(
                                                                                             $,
@@ -1750,7 +1750,7 @@
                                                                                             },
                                                                                         )],
                                                                                     ),
-                                                                                    'value': _p_change_context(
+                                                                                    "value": _p_change_context(
                                                                                         $['value'],
                                                                                         ($) => ['text', {
                                                                                             'delimiter': ['quote', null],
@@ -1823,13 +1823,13 @@
                                                     'option': 'assert',
                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                         {
-                                                            'tester': _p_change_context(
+                                                            "tester": _p_change_context(
                                                                 $['tester'],
                                                                 ($) => Expression(
                                                                     $,
                                                                 ),
                                                             ),
-                                                            'normal flow': _p_change_context(
+                                                            "normal flow": _p_change_context(
                                                                 $['normal flow'],
                                                                 ($) => Expression(
                                                                     $,
@@ -1846,13 +1846,13 @@
                                                     'option': 'change context',
                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                         {
-                                                            'new context': _p_change_context(
+                                                            "new context": _p_change_context(
                                                                 $['new context'],
                                                                 ($) => Value_Selection(
                                                                     $,
                                                                 ),
                                                             ),
-                                                            'expression': _p_change_context(
+                                                            "expression": _p_change_context(
                                                                 $['expression'],
                                                                 ($) => Expression(
                                                                     $,
@@ -1869,7 +1869,7 @@
                                                     'option': 'variables',
                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                         {
-                                                            'variables': _p_change_context(
+                                                            "variables": _p_change_context(
                                                                 $['variables'],
                                                                 ($) => ['dictionary', _p.dictionary.map(
                                                                     $,
@@ -1878,7 +1878,7 @@
                                                                     ),
                                                                 )],
                                                             ),
-                                                            'callback': _p_change_context(
+                                                            "callback": _p_change_context(
                                                                 $['callback'],
                                                                 ($) => Expression(
                                                                     $,
@@ -1906,13 +1906,13 @@
                                                     'option': 'iterate',
                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                         {
-                                                            'list': _p_change_context(
+                                                            "list": _p_change_context(
                                                                 $['list'],
                                                                 ($) => Value_Selection(
                                                                     $,
                                                                 ),
                                                             ),
-                                                            'handler': _p_change_context(
+                                                            "handler": _p_change_context(
                                                                 $['handler'],
                                                                 ($) => Expression(
                                                                     $,
@@ -1929,7 +1929,7 @@
                                                     'option': 'unreachable',
                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                         {
-                                                            'explanation': _p_change_context(
+                                                            "explanation": _p_change_context(
                                                                 $['explanation'],
                                                                 ($) => ['text', {
                                                                     'delimiter': ['quote', null],
@@ -1979,7 +1979,7 @@
                             'option': 'regular',
                             'value': ['group', ['verbose', _p.dictionary.literal(
                                 {
-                                    'start': _p_change_context(
+                                    "start": _p_change_context(
                                         $['start'],
                                         ($) => ['state', _p.decide.state(
                                             $,
@@ -1992,7 +1992,7 @@
                                                                 'option': 'call',
                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
                                                                     {
-                                                                        'source': _p_change_context(
+                                                                        "source": _p_change_context(
                                                                             $['source'],
                                                                             ($) => ['state', _p.decide.state(
                                                                                 $,
@@ -2016,14 +2016,14 @@
                                                                                                     'option': 'imported',
                                                                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                                         {
-                                                                                                            'import': _p_change_context(
+                                                                                                            "import": _p_change_context(
                                                                                                                 $['import'],
                                                                                                                 ($) => ['text', {
                                                                                                                     'delimiter': ['quote', null],
                                                                                                                     'value': $,
                                                                                                                 }],
                                                                                                             ),
-                                                                                                            'variable': _p_change_context(
+                                                                                                            "variable": _p_change_context(
                                                                                                                 $['variable'],
                                                                                                                 ($) => ['text', {
                                                                                                                     'delimiter': ['quote', null],
@@ -2042,13 +2042,13 @@
                                                                                 },
                                                                             )],
                                                                         ),
-                                                                        'context': _p_change_context(
+                                                                        "context": _p_change_context(
                                                                             $['context'],
                                                                             ($) => Expression(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'abort': _p_change_context(
+                                                                        "abort": _p_change_context(
                                                                             $['abort'],
                                                                             ($) => ['optional', _p.decide.optional(
                                                                                 $,
@@ -2058,7 +2058,7 @@
                                                                                 () => ['not set', null],
                                                                             )],
                                                                         ),
-                                                                        'lookups': _p_change_context(
+                                                                        "lookups": _p_change_context(
                                                                             $['lookups'],
                                                                             ($) => ['optional', _p.decide.optional(
                                                                                 $,
@@ -2097,7 +2097,7 @@
                                                                                 () => ['not set', null],
                                                                             )],
                                                                         ),
-                                                                        'arguments': _p_change_context(
+                                                                        "arguments": _p_change_context(
                                                                             $['arguments'],
                                                                             ($) => ['optional', _p.decide.optional(
                                                                                 $,
@@ -2155,19 +2155,19 @@
                                                                 'option': 'dictionary entry',
                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
                                                                     {
-                                                                        'dictionary': _p_change_context(
+                                                                        "dictionary": _p_change_context(
                                                                             $['dictionary'],
                                                                             ($) => Value_Selection(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'id': _p_change_context(
+                                                                        "id": _p_change_context(
                                                                             $['id'],
                                                                             ($) => Expression(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'abort handler': _p_change_context(
+                                                                        "abort handler": _p_change_context(
                                                                             $['abort handler'],
                                                                             ($) => Expression(
                                                                                 $,
@@ -2184,13 +2184,13 @@
                                                                 'option': 'list from text',
                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
                                                                     {
-                                                                        'source': _p_change_context(
+                                                                        "source": _p_change_context(
                                                                             $['source'],
                                                                             ($) => Expression(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'character handler': _p_change_context(
+                                                                        "character handler": _p_change_context(
                                                                             $['character handler'],
                                                                             ($) => Expression(
                                                                                 $,
@@ -2207,35 +2207,35 @@
                                                                 'option': 'lookup entry',
                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
                                                                     {
-                                                                        'lookup': _p_change_context(
+                                                                        "lookup": _p_change_context(
                                                                             $['lookup'],
                                                                             ($) => Lookup_Selection(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'id': _p_change_context(
+                                                                        "id": _p_change_context(
                                                                             $['id'],
                                                                             ($) => Expression(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'abort handlers': _p_change_context(
+                                                                        "abort handlers": _p_change_context(
                                                                             $['abort handlers'],
                                                                             ($) => ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'no such entry': _p_change_context(
+                                                                                    "no such entry": _p_change_context(
                                                                                         $['no such entry'],
                                                                                         ($) => Expression(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'no context lookup': _p_change_context(
+                                                                                    "no context lookup": _p_change_context(
                                                                                         $['no context lookup'],
                                                                                         ($) => Expression(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'cycle detected': _p_change_context(
+                                                                                    "cycle detected": _p_change_context(
                                                                                         $['cycle detected'],
                                                                                         ($) => Expression(
                                                                                             $,
@@ -2255,35 +2255,35 @@
                                                                 'option': 'lookup entry depth',
                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
                                                                     {
-                                                                        'lookup': _p_change_context(
+                                                                        "lookup": _p_change_context(
                                                                             $['lookup'],
                                                                             ($) => Lookup_Selection(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'id': _p_change_context(
+                                                                        "id": _p_change_context(
                                                                             $['id'],
                                                                             ($) => Expression(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'abort handlers': _p_change_context(
+                                                                        "abort handlers": _p_change_context(
                                                                             $['abort handlers'],
                                                                             ($) => ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    'no such entry': _p_change_context(
+                                                                                    "no such entry": _p_change_context(
                                                                                         $['no such entry'],
                                                                                         ($) => Expression(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'no context lookup': _p_change_context(
+                                                                                    "no context lookup": _p_change_context(
                                                                                         $['no context lookup'],
                                                                                         ($) => Expression(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    'cycle detected': _p_change_context(
+                                                                                    "cycle detected": _p_change_context(
                                                                                         $['cycle detected'],
                                                                                         ($) => Expression(
                                                                                             $,
@@ -2344,13 +2344,13 @@
                                                                 'option': 'text from list',
                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
                                                                     {
-                                                                        'source': _p_change_context(
+                                                                        "source": _p_change_context(
                                                                             $['source'],
                                                                             ($) => Expression(
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        'item handler': _p_change_context(
+                                                                        "item handler": _p_change_context(
                                                                             $['item handler'],
                                                                             ($) => Expression(
                                                                                 $,
@@ -2379,7 +2379,7 @@
                                             },
                                         )],
                                     ),
-                                    'tail': _p_change_context(
+                                    "tail": _p_change_context(
                                         $['tail'],
                                         ($) => ['list', _p.list.map(
                                             $,
@@ -2451,13 +2451,13 @@
                                                     'option': 'push',
                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                         {
-                                                            'stack': _p_change_context(
+                                                            "stack": _p_change_context(
                                                                 $['stack'],
                                                                 ($) => Lookup_Selection(
                                                                     $,
                                                                 ),
                                                             ),
-                                                            'acyclic': _p_change_context(
+                                                            "acyclic": _p_change_context(
                                                                 $['acyclic'],
                                                                 ($) => Lookup_Selection(
                                                                     $,

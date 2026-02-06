@@ -21,6 +21,14 @@ export const identifier_escaped = (
     'value': _p_text_from_list(temp_s_identifier(name), ($) => $)
 })
 
+export const string_literal = (
+    value: string,
+    delimiter: 'quote' | 'apostrophe'
+): d_target.String_Literal => ({
+    'value': value,
+    'delimiter': delimiter === 'quote' ? ['quote', null] : ['apostrophe', null],
+})
+
 
 export namespace n {
 
@@ -75,7 +83,7 @@ export namespace s {
 
     export const export_ = (
         specifiers: _p.Raw_Or_Normal_List<d_target.Statements.L.export_.type_.named_exports.specifiers.L>,
-        from: null | string,
+        from: null | d_target.String_Literal,
     ): d_target.Statements.L => ['export', {
         'type': ['named exports', {
             'specifiers': _p.list.literal(specifiers),
@@ -89,7 +97,7 @@ export namespace s {
 
     export const import_named = (
         specifiers: _p.Raw_Or_Normal_List<d_target.Statements.L.import_.type_.named.specifiers.L>,
-        from: string
+        from: d_target.String_Literal
     ): d_target.Statements.L => ['import', {
         'type': ['named', {
             'specifiers': _p.list.literal(specifiers),
@@ -100,7 +108,7 @@ export namespace s {
 
     export const import_namespace = (
         name: d_target.Identifier,
-        from: string
+        from: d_target.String_Literal
     ): d_target.Statements.L => ['import', {
         'type': ['namespace', name],
         'from': from,
@@ -109,7 +117,7 @@ export namespace s {
 
     export const import_default = (
         name: d_target.Identifier,
-        from: string
+        from: d_target.String_Literal
     ): d_target.Statements.L => ['import', {
         'type': ['default', name],
         'from': from,
@@ -179,12 +187,22 @@ export const parameter = (
 }
 
 export const tl_propery = (
+    key: string,
+    key_type: 'identifier' | 'quoted string literal' | 'apostrophized string literal',
     readonly: boolean,
     type: d_target.Type,
-): d_target.Type.type_literal.properties.D => {
+): d_target.Type.type_literal.properties.L => {
     return {
+        'key': key_type === 'identifier'
+            ? ['identifier', {
+                'value': key,
+            }]
+            : ['string literal', {
+                'value': key,
+                'delimiter': key_type === 'quoted string literal' ? ['quote', null] : ['apostrophe', null],
+            }],
         'readonly': readonly,
-        type: type,
+        'type': type,
     }
 }
 
@@ -206,13 +224,9 @@ export namespace t {
         }]
     }
     export const literal_type = (
-        value: string,
-        delimiter: 'apostrophe' | 'quote'
+        string_literal: d_target.String_Literal,
     ): d_target.Type => {
-        return ['literal type', {
-            'value': value,
-            'delimiter': delimiter === 'apostrophe' ? ['apostrophe', null] : ['quote', null]
-        }]
+        return ['literal type', string_literal]
     }
     export const null_ = (
 
@@ -238,10 +252,10 @@ export namespace t {
         }]
     }
     export const type_literal = (
-        properties: _p.Raw_Or_Normal_Dictionary<d_target.Type.type_literal.properties.D>
+        properties: _p.Raw_Or_Normal_List<d_target.Type.type_literal.properties.L>
     ): d_target.Type => {
         return ['type literal', {
-            'properties': _p.dictionary.literal(properties),
+            'properties': _p.list.literal(properties),
         }]
     }
 
@@ -391,9 +405,9 @@ export namespace e {
     ): d_target.Expression => ['number literal', value]
 
     export const object_literal = (
-        properties: _p.Raw_Or_Normal_Dictionary<d_target.Expression.object_literal.properties.D>
+        properties: _p.Raw_Or_Normal_List<d_target.Expression.object_literal.properties.L>
     ): d_target.Expression => ['object literal', {
-        'properties': _p.dictionary.literal(properties),
+        'properties': _p.list.literal(properties),
     }]
 
     export const parenthesized = (
@@ -409,13 +423,27 @@ export namespace e {
     }]
 
     export const string_literal = (
-        value: string,
-        delimiter: 'apostrophe' | 'quote'
-    ): d_target.Expression => ['string literal', {
-        'value': value,
-        'delimiter': delimiter === 'apostrophe' ? ['apostrophe', null] : ['quote', null]
-    }]
+        string_literal: d_target.String_Literal,
+    ): d_target.Expression => ['string literal', string_literal]
 
     export const true_ = (): d_target.Expression => ['true', null]
 
+}
+
+export const object_property = (
+    key: string,
+    key_type: 'identifier' | 'quoted string literal' | 'apostrophized string literal',
+    value: d_target.Expression,
+): d_target.Expression.object_literal.properties.L => {
+    return {
+        'key': key_type === 'identifier'
+            ? ['identifier', {
+                'value': key,
+            }]
+            : ['string literal', {
+                'value': key,
+                'delimiter': key_type === 'quoted string literal' ? ['quote', null] : ['apostrophe', null],
+            }],
+        'value': value,
+    }
 }

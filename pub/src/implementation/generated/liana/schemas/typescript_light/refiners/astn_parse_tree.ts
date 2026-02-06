@@ -1,9 +1,9 @@
     
-    import * as _p from "pareto-core/dist/expression"
+    import * as _p from 'pareto-core/dist/expression'
     
-    import _p_change_context from "pareto-core/dist/_p_change_context"
+    import _p_change_context from 'pareto-core/dist/_p_change_context'
     
-    import _p_list_from_text from "pareto-core/dist/_p_list_from_text"
+    import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
     
     import * as t_signatures from "../../../../../../interface/generated/liana/schemas/typescript_light/unmarshall"
     
@@ -234,10 +234,10 @@
                                                                                             ['expected an optional', null],
                                                                                         ),
                                                                                     ),
-                                                                                    ($) => v_unmarshalled_from_parse_tree.Text(
+                                                                                    ($) => String_Literal(
                                                                                         $,
                                                                                         ($) => abort(
-                                                                                            ['expected a text', null],
+                                                                                            $,
                                                                                         ),
                                                                                     ),
                                                                                 ),
@@ -408,10 +408,10 @@
                                                     ['no such entry', "from"],
                                                 ),
                                             ),
-                                            ($) => v_unmarshalled_from_parse_tree.Text(
+                                            ($) => String_Literal(
                                                 $,
                                                 ($) => abort(
-                                                    ['expected a text', null],
+                                                    $,
                                                 ),
                                             ),
                                         ),
@@ -1028,14 +1028,14 @@
                                                 ['no such entry', "properties"],
                                             ),
                                         ),
-                                        ($) => _p.dictionary.map(
-                                            v_unmarshalled_from_parse_tree.Dictionary(
+                                        ($) => _p.list.map(
+                                            v_unmarshalled_from_parse_tree.List(
                                                 $,
                                                 ($) => abort(
-                                                    ['expected a dictionary', null],
+                                                    ['expected a list', null],
                                                 ),
                                             ),
-                                            ($, id) => _p_change_context(
+                                            ($) => _p_change_context(
                                                 v_unmarshalled_from_parse_tree.Group(
                                                     $,
                                                     ($) => abort(
@@ -1043,6 +1043,53 @@
                                                     ),
                                                 ),
                                                 ($) => ({
+                                                    'key': _p_change_context(
+                                                        $.__get_entry(
+                                                            'key',
+                                                            ($) => abort(
+                                                                ['no such entry', "key"],
+                                                            ),
+                                                        ),
+                                                        ($) => _p_change_context(
+                                                            v_unmarshalled_from_parse_tree.State(
+                                                                $,
+                                                                ($) => abort(
+                                                                    ['expected a state', null],
+                                                                ),
+                                                            ),
+                                                            ($) => _p.decide.text(
+                                                                $['option']['value'],
+                                                                ($t): t_out.Type.type_literal.properties.L.key => {
+                                                                    switch ($t) {
+                                                                        case 'identifier':
+                                                                            return _p_change_context(
+                                                                                $['value'],
+                                                                                ($) => ['identifier', Identifier(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        $,
+                                                                                    ),
+                                                                                )],
+                                                                            )
+                                                                        case 'string literal':
+                                                                            return _p_change_context(
+                                                                                $['value'],
+                                                                                ($) => ['string literal', String_Literal(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        $,
+                                                                                    ),
+                                                                                )],
+                                                                            )
+                                                                        default:
+                                                                            return abort(
+                                                                                ['unknown option', $['option']['value']],
+                                                                            )
+                                                                    }
+                                                                },
+                                                            ),
+                                                        ),
+                                                    ),
                                                     'readonly': _p_change_context(
                                                         $.__get_entry(
                                                             'readonly',
@@ -1781,18 +1828,83 @@
                                                 ['no such entry', "properties"],
                                             ),
                                         ),
-                                        ($) => _p.dictionary.map(
-                                            v_unmarshalled_from_parse_tree.Dictionary(
+                                        ($) => _p.list.map(
+                                            v_unmarshalled_from_parse_tree.List(
                                                 $,
                                                 ($) => abort(
-                                                    ['expected a dictionary', null],
+                                                    ['expected a list', null],
                                                 ),
                                             ),
-                                            ($, id) => Expression(
-                                                $,
-                                                ($) => abort(
+                                            ($) => _p_change_context(
+                                                v_unmarshalled_from_parse_tree.Group(
                                                     $,
+                                                    ($) => abort(
+                                                        ['expected a group', null],
+                                                    ),
                                                 ),
+                                                ($) => ({
+                                                    'key': _p_change_context(
+                                                        $.__get_entry(
+                                                            'key',
+                                                            ($) => abort(
+                                                                ['no such entry', "key"],
+                                                            ),
+                                                        ),
+                                                        ($) => _p_change_context(
+                                                            v_unmarshalled_from_parse_tree.State(
+                                                                $,
+                                                                ($) => abort(
+                                                                    ['expected a state', null],
+                                                                ),
+                                                            ),
+                                                            ($) => _p.decide.text(
+                                                                $['option']['value'],
+                                                                ($t): t_out.Expression.object_literal.properties.L.key => {
+                                                                    switch ($t) {
+                                                                        case 'identifier':
+                                                                            return _p_change_context(
+                                                                                $['value'],
+                                                                                ($) => ['identifier', Identifier(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        $,
+                                                                                    ),
+                                                                                )],
+                                                                            )
+                                                                        case 'string literal':
+                                                                            return _p_change_context(
+                                                                                $['value'],
+                                                                                ($) => ['string literal', String_Literal(
+                                                                                    $,
+                                                                                    ($) => abort(
+                                                                                        $,
+                                                                                    ),
+                                                                                )],
+                                                                            )
+                                                                        default:
+                                                                            return abort(
+                                                                                ['unknown option', $['option']['value']],
+                                                                            )
+                                                                    }
+                                                                },
+                                                            ),
+                                                        ),
+                                                    ),
+                                                    'value': _p_change_context(
+                                                        $.__get_entry(
+                                                            'value',
+                                                            ($) => abort(
+                                                                ['no such entry', "value"],
+                                                            ),
+                                                        ),
+                                                        ($) => Expression(
+                                                            $,
+                                                            ($) => abort(
+                                                                $,
+                                                            ),
+                                                        ),
+                                                    ),
+                                                }),
                                             ),
                                         ),
                                     ),

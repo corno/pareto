@@ -1,9 +1,9 @@
     
-    import * as _p from "pareto-core/dist/expression"
+    import * as _p from 'pareto-core/dist/expression'
     
-    import _p_change_context from "pareto-core/dist/_p_change_context"
+    import _p_change_context from 'pareto-core/dist/_p_change_context'
     
-    import _p_text_from_list from "pareto-core/dist/_p_text_from_list"
+    import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
     
     import * as t_signatures from "../../../../../../../interface/generated/liana/schemas/interface/marshall"
     
@@ -50,13 +50,13 @@
     
     export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dictionary.literal(
         {
-            'imports': _p_change_context(
+            "imports": _p_change_context(
                 $['imports'],
                 ($) => Imports(
                     $,
                 ),
             ),
-            'content': _p_change_context(
+            "content": _p_change_context(
                 $['content'],
                 ($) => ['state', _p.decide.state(
                     $,
@@ -84,19 +84,19 @@
                                             $,
                                             ($, id) => ['group', ['verbose', _p.dictionary.literal(
                                                 {
-                                                    'result': _p_change_context(
+                                                    "result": _p_change_context(
                                                         $['result'],
                                                         ($) => Value(
                                                             $,
                                                         ),
                                                     ),
-                                                    'context': _p_change_context(
+                                                    "context": _p_change_context(
                                                         $['context'],
                                                         ($) => Value(
                                                             $,
                                                         ),
                                                     ),
-                                                    'type': _p_change_context(
+                                                    "type": _p_change_context(
                                                         $['type'],
                                                         ($) => ['state', _p.decide.state(
                                                             $,
@@ -117,7 +117,7 @@
                                                                                 'option': 'refiner',
                                                                                 'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                     {
-                                                                                        'error': _p_change_context(
+                                                                                        "error": _p_change_context(
                                                                                             $['error'],
                                                                                             ($) => ['optional', _p.decide.optional(
                                                                                                 $,
@@ -127,7 +127,7 @@
                                                                                                 () => ['not set', null],
                                                                                             )],
                                                                                         ),
-                                                                                        'lookups': _p_change_context(
+                                                                                        "lookups": _p_change_context(
                                                                                             $['lookups'],
                                                                                             ($) => ['optional', _p.decide.optional(
                                                                                                 $,
@@ -190,7 +190,7 @@
                                                             },
                                                         )],
                                                     ),
-                                                    'parameters': _p_change_context(
+                                                    "parameters": _p_change_context(
                                                         $['parameters'],
                                                         ($) => ['optional', _p.decide.optional(
                                                             $,
@@ -223,7 +223,7 @@
         $,
         ($, id) => ['group', ['verbose', _p.dictionary.literal(
             {
-                'type': _p_change_context(
+                "type": _p_change_context(
                     $['type'],
                     ($) => ['state', _p.decide.state(
                         $,
@@ -247,7 +247,7 @@
                                             'option': 'ancestor',
                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                 {
-                                                    'number of steps': _p_change_context(
+                                                    "number of steps": _p_change_context(
                                                         $['number of steps'],
                                                         ($) => ['text', {
                                                             'delimiter': ['none', null],
@@ -259,7 +259,7 @@
                                                             ),
                                                         }],
                                                     ),
-                                                    'dependency': _p_change_context(
+                                                    "dependency": _p_change_context(
                                                         $['dependency'],
                                                         ($) => ['text', {
                                                             'delimiter': ['quote', null],
@@ -289,7 +289,7 @@
                         },
                     )],
                 ),
-                'tail': _p_change_context(
+                "tail": _p_change_context(
                     $['tail'],
                     ($) => ['list', _p.list.map(
                         $,
@@ -322,7 +322,7 @@
                             'option': 'component',
                             'value': ['group', ['verbose', _p.dictionary.literal(
                                 {
-                                    'location': _p_change_context(
+                                    "location": _p_change_context(
                                         $['location'],
                                         ($) => Module_Reference(
                                             $,
@@ -450,13 +450,13 @@
                             'option': 'reference',
                             'value': ['group', ['verbose', _p.dictionary.literal(
                                 {
-                                    'location': _p_change_context(
+                                    "location": _p_change_context(
                                         $['location'],
                                         ($) => Module_Reference(
                                             $,
                                         ),
                                     ),
-                                    'sub selection': _p_change_context(
+                                    "sub selection": _p_change_context(
                                         $['sub selection'],
                                         ($) => ['list', _p.list.map(
                                             $,
@@ -519,7 +519,7 @@
                                             )],
                                         )],
                                     ),
-                                    'cyclic': _p_change_context(
+                                    "cyclic": _p_change_context(
                                         $['cyclic'],
                                         ($) => ['text', {
                                             'delimiter': ['none', null],
@@ -575,14 +575,14 @@
                             'option': 'import',
                             'value': ['group', ['verbose', _p.dictionary.literal(
                                 {
-                                    'import': _p_change_context(
+                                    "import": _p_change_context(
                                         $['import'],
                                         ($) => ['text', {
                                             'delimiter': ['quote', null],
                                             'value': $,
                                         }],
                                     ),
-                                    'type': _p_change_context(
+                                    "type": _p_change_context(
                                         $['type'],
                                         ($) => ['text', {
                                             'delimiter': ['quote', null],

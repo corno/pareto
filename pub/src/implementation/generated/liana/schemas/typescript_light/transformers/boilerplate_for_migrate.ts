@@ -1,7 +1,7 @@
     
-    import * as _p from "pareto-core/dist/expression"
+    import * as _p from 'pareto-core/dist/expression'
     
-    import _p_change_context from "pareto-core/dist/_p_change_context"
+    import _p_change_context from 'pareto-core/dist/_p_change_context'
     
     import * as t_signatures from "../../../../../../interface/generated/liana/schemas/typescript_light/boilerplate_for_migrate"
     
@@ -99,7 +99,9 @@
                                                                 $['from'],
                                                                 ($) => _p.optional.map(
                                                                     $,
-                                                                    ($) => $,
+                                                                    ($) => String_Literal(
+                                                                        $,
+                                                                    ),
                                                                 ),
                                                             ),
                                                         }],
@@ -184,7 +186,9 @@
                                 ),
                                 'from': _p_change_context(
                                     $['from'],
-                                    ($) => $,
+                                    ($) => String_Literal(
+                                        $,
+                                    ),
                                 ),
                             }],
                         )
@@ -433,9 +437,37 @@
                         ($) => ['type literal', {
                             'properties': _p_change_context(
                                 $['properties'],
-                                ($) => _p.dictionary.map(
+                                ($) => _p.list.map(
                                     $,
-                                    ($, id) => ({
+                                    ($) => ({
+                                        'key': _p_change_context(
+                                            $['key'],
+                                            ($) => _p.decide.state(
+                                                $,
+                                                ($): t_out.Type.type_literal.properties.L.key => {
+                                                    switch ($[0]) {
+                                                        case 'identifier':
+                                                            return _p.ss(
+                                                                $,
+                                                                ($) => ['identifier', Identifier(
+                                                                    $,
+                                                                )],
+                                                            )
+                                                        case 'string literal':
+                                                            return _p.ss(
+                                                                $,
+                                                                ($) => ['string literal', String_Literal(
+                                                                    $,
+                                                                )],
+                                                            )
+                                                        default:
+                                                            return _p.au(
+                                                                $[0],
+                                                            )
+                                                    }
+                                                },
+                                            ),
+                                        ),
                                         'readonly': _p_change_context(
                                             $['readonly'],
                                             ($) => $,
@@ -769,11 +801,44 @@
                         ($) => ['object literal', {
                             'properties': _p_change_context(
                                 $['properties'],
-                                ($) => _p.dictionary.map(
+                                ($) => _p.list.map(
                                     $,
-                                    ($, id) => Expression(
-                                        $,
-                                    ),
+                                    ($) => ({
+                                        'key': _p_change_context(
+                                            $['key'],
+                                            ($) => _p.decide.state(
+                                                $,
+                                                ($): t_out.Expression.object_literal.properties.L.key => {
+                                                    switch ($[0]) {
+                                                        case 'identifier':
+                                                            return _p.ss(
+                                                                $,
+                                                                ($) => ['identifier', Identifier(
+                                                                    $,
+                                                                )],
+                                                            )
+                                                        case 'string literal':
+                                                            return _p.ss(
+                                                                $,
+                                                                ($) => ['string literal', String_Literal(
+                                                                    $,
+                                                                )],
+                                                            )
+                                                        default:
+                                                            return _p.au(
+                                                                $[0],
+                                                            )
+                                                    }
+                                                },
+                                            ),
+                                        ),
+                                        'value': _p_change_context(
+                                            $['value'],
+                                            ($) => Expression(
+                                                $,
+                                            ),
+                                        ),
+                                    }),
                                 ),
                             ),
                         }],

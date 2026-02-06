@@ -1,5 +1,5 @@
     
-    import * as _pi from "pareto-core/dist/interface"
+    import * as _pi from 'pareto-core/dist/interface'
     
     export namespace Directory_ {
         
@@ -68,7 +68,7 @@
                         
                         export namespace from_ {
                             
-                            export type O = string
+                            export type O = String_Literal_
                             
                         }
                         
@@ -142,7 +142,7 @@
                     | readonly ['namespace', type_.namespace]
                     | readonly ['named', type_.named]
                 
-                export type from_ = string
+                export type from_ = String_Literal_
                 
             }
             
@@ -348,7 +348,19 @@
             
             export namespace properties {
                 
-                export namespace D {
+                export namespace L {
+                    
+                    export namespace key {
+                        
+                        export type identifier = Identifier_
+                        
+                        export type string_literal = String_Literal_
+                        
+                    }
+                    
+                    export type key = 
+                        | readonly ['identifier', key.identifier]
+                        | readonly ['string literal', key.string_literal]
                     
                     export type readonly = boolean
                     
@@ -356,14 +368,15 @@
                     
                 }
                 
-                export type D = {
-                    readonly 'readonly': D.readonly
-                    readonly 'type': D.type_
+                export type L = {
+                    readonly 'key': L.key
+                    readonly 'readonly': L.readonly
+                    readonly 'type': L.type_
                 }
                 
             }
             
-            export type properties = _pi.Dictionary<properties.D>
+            export type properties = _pi.List<properties.L>
             
         }
         
@@ -608,11 +621,32 @@
             
             export namespace properties {
                 
-                export type D = Expression_
+                export namespace L {
+                    
+                    export namespace key {
+                        
+                        export type identifier = Identifier_
+                        
+                        export type string_literal = String_Literal_
+                        
+                    }
+                    
+                    export type key = 
+                        | readonly ['identifier', key.identifier]
+                        | readonly ['string literal', key.string_literal]
+                    
+                    export type value = Expression_
+                    
+                }
+                
+                export type L = {
+                    readonly 'key': L.key
+                    readonly 'value': L.value
+                }
                 
             }
             
-            export type properties = _pi.Dictionary<properties.D>
+            export type properties = _pi.List<properties.L>
             
         }
         

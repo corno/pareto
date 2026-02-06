@@ -63,19 +63,19 @@ export const Package_Set = (
                     [
                         sh.s.import_namespace(
                             sh.identifier_raw(`_p`),
-                            `pareto-core/dist/expression`
+                            sh.string_literal(`pareto-core/dist/expression`, 'apostrophe')
                         ),
                     ],
                     $.specials['change context']
                         ? [sh.s.import_default(
                             sh.identifier_raw("_p_change_context"),
-                            `pareto-core/dist/_p_change_context`
+                            sh.string_literal(`pareto-core/dist/_p_change_context`, 'apostrophe')
                         )]
                         : [],
                     $.specials['implement me']
                         ? [sh.s.import_namespace(
                             sh.identifier_raw("_pdev"),
-                            `pareto-core-dev`
+                            sh.string_literal(`pareto-core-dev`, 'apostrophe')
                         )]
                         : [],
                     $.specials['iterate']
@@ -83,25 +83,25 @@ export const Package_Set = (
                             [
                                 sh.specifier(sh.identifier_raw("_p_change_context"), null),
                             ],
-                            `pareto-core/dist/iterate`
+                            sh.string_literal(`pareto-core/dist/iterate`, 'apostrophe')
                         )]
                         : [],
                     $.specials['list from text']
                         ? [sh.s.import_default(
                             sh.identifier_raw("_p_list_from_text"),
-                            `pareto-core/dist/_p_list_from_text`
+                            sh.string_literal(`pareto-core/dist/_p_list_from_text`, 'apostrophe')
                         )]
                         : [],
                     $.specials.lookups
                         ? [sh.s.import_namespace(
                             sh.identifier_raw("_p_sl"),
-                            `pareto-core/dist/select_lookup`
+                            sh.string_literal(`pareto-core/dist/select_lookup`, 'apostrophe')
                         )]
                         : [],
                     $.specials['text from list']
                         ? [sh.s.import_default(
                             sh.identifier_raw("_p_text_from_list"),
-                            `pareto-core/dist/_p_text_from_list`
+                            sh.string_literal(`pareto-core/dist/_p_text_from_list`, 'apostrophe')
                         )]
                         : [],
                     $.specials['unreachable code path']
@@ -109,27 +109,27 @@ export const Package_Set = (
                             [
                                 sh.specifier(sh.identifier_raw("_p_unreachable_code_path"), null),
                             ],
-                            `pareto-core/dist/unreachable_code_path`
+                            sh.string_literal(`pareto-core/dist/unreachable_code_path`, 'apostrophe')
                         )]
                         : [],
                     $.specials['variables']
                         ? [sh.s.import_default(
                             sh.identifier_raw("_p_variables"),
-                            `pareto-core/dist/_p_variables`
+                            sh.string_literal(`pareto-core/dist/_p_variables`, 'apostrophe')
                         )]
                         : [],
                     _p.list.from_dictionary(
                         $['type imports'],
                         ($, id) => sh.s.import_namespace(
                             sh.identifier_escaped(join(_p.list.literal(["t ", id]))),
-                            temp_create_file_path($)
+                            temp_create_file_path($, 'quote')
                         )
                     ),
                     _p.list.from_dictionary(
                         $['variable imports'],
                         ($, id) => sh.s.import_namespace(
                             sh.identifier_escaped(join(_p.list.literal(["v ", id]))),
-                            temp_create_file_path($)
+                            temp_create_file_path($, 'quote')
                         )
                     ),
                     _p.list.from_dictionary(
@@ -291,7 +291,7 @@ export const Expression = (
                                             }
                                         }).__to_list(
                                             ($, id) => sh.sw.case_(
-                                                sh.e.string_literal(id, 'apostrophe'),
+                                                sh.e.string_literal(sh.string_literal(id, 'apostrophe')),
                                                 [
                                                     sh.s.return_(sh.e.call(
                                                         sh.e.property_access(
@@ -366,7 +366,7 @@ export const Expression = (
                                     _p.list.nested_literal_old([
                                         $.cases.__to_list(
                                             ($, id) => sh.sw.case_(
-                                                sh.e.string_literal(id, 'apostrophe'),
+                                                sh.e.string_literal(sh.string_literal(id, 'apostrophe')),
                                                 [
                                                     sh.s.return_(Expression($))
                                                 ]
@@ -419,7 +419,11 @@ export const Expression = (
                                 sh.identifier_raw("literal"),
                             ),
                             [
-                                sh.e.object_literal($.__d_map(($, id) => Expression($)))
+                                sh.e.object_literal($.__to_list(($, id) => sh.object_property(
+                                    id,
+                                    'quoted string literal',
+                                    Expression($),
+                                )))
                             ]
                         ))
                         case 'map': return _p.ss($, ($) => sh.e.call(
@@ -471,7 +475,11 @@ export const Expression = (
                     switch ($[0]) {
                         case 'literal': return _p.ss($, ($) => $.__get_number_of_entries() === 0
                             ? sh.e.null_()
-                            : sh.e.object_literal($.__d_map(($, id) => Expression($)))
+                            : sh.e.object_literal($.__to_list(($, id) => sh.object_property(
+                                id,
+                                'apostrophized string literal',
+                                Expression($),
+                            )))
                         )
                         case 'resolve': return _p.ss($, ($) => $.__get_number_of_entries() === 0
                             ? sh.e.null_()
@@ -497,7 +505,11 @@ export const Expression = (
                                             )),
                                             [
                                                 sh.s.return_(sh.e.object_literal(
-                                                    $.__d_map(($, id) => sh.e.identifier_escaped("prop " + id))
+                                                    $.__to_list(($, id) => sh.object_property(
+                                                        id,
+                                                        'apostrophized string literal',
+                                                        sh.e.identifier_escaped("prop " + id)
+                                                    ))
                                                 ))
                                             ]
 
@@ -673,7 +685,7 @@ export const Expression = (
                 case 'state': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {
                         case 'literal': return _p.ss($, ($) => sh.e.array_literal([
-                            sh.e.string_literal($.option, 'apostrophe'),
+                            sh.e.string_literal(sh.string_literal($.option, 'apostrophe')),
                             Expression($.value)
                         ]))
                         default: return _p.au($[0])
@@ -682,13 +694,13 @@ export const Expression = (
                 case 'text': return _p.ss($, ($) => _p.decide.state($, ($) => {
                     switch ($[0]) {
                         case 'copy': return _p.ss($, ($) => Value_Selection($))
-                        case 'literal': return _p.ss($, ($) => sh.e.string_literal($.value, _p.decide.state($.type, ($) => {
+                        case 'literal': return _p.ss($, ($) => sh.e.string_literal(sh.string_literal($.value, _p.decide.state($.type, ($) => {
                             switch ($[0]) {
                                 case 'freeform': return _p.ss($, ($) => 'quote')
                                 case 'identifier': return _p.ss($, ($) => 'apostrophe')
                                 default: return _p.au($[0])
                             }
-                        })))
+                        }))))
                         case 'source document': return _p.ss($, ($) => _pdev.implement_me("X20"))
                         default: return _p.au($[0])
                     }
@@ -725,7 +737,7 @@ export const Expression = (
                         sh.identifier_raw("implement_me")
                     ),
                     [
-                        sh.e.string_literal($, 'quote')
+                        sh.e.string_literal(sh.string_literal($, 'quote'))
                     ]
                 ))
                 case 'iterate': return _p.ss($, ($) => _pdev.implement_me("X23"))
@@ -794,7 +806,7 @@ export const Value_Selection = (
                 sh.identifier_raw("implement_me")
             ),
             [
-                sh.e.string_literal($, 'quote')
+                sh.e.string_literal(sh.string_literal($, 'quote'))
             ]
         ))
         case 'regular': return _p.ss($, ($) => reduce(
@@ -842,7 +854,11 @@ export const Value_Selection = (
                                             ]
                                             : [
                                                 sh.e.object_literal(
-                                                    $.__d_map(($) => Lookup_Selection($))
+                                                    $.__to_list(($, id) => sh.object_property(
+                                                        id,
+                                                        'apostrophized string literal',
+                                                        Lookup_Selection($)
+                                                    ))
                                                 )
                                             ])
                                         case 'pass through': return _p.ss($, ($) => [
@@ -862,7 +878,11 @@ export const Value_Selection = (
                                             ]
                                             : [
                                                 sh.e.object_literal(
-                                                    $.__d_map(($) => Expression($))
+                                                    $.__to_list(($, id) => sh.object_property(
+                                                        id,
+                                                        'apostrophized string literal',
+                                                        Expression($)
+                                                    ))
                                                 )
                                             ])
                                         case 'pass through': return _p.ss($, ($) => [
@@ -924,38 +944,51 @@ export const Value_Selection = (
                         ),
                         [
                             Expression($.id),
-                            sh.e.object_literal({
-                                "no_such_entry": sh.e.arrow_function_with_expression(
-                                    [],
-                                    null,
-                                    sh.e.call(
-                                        sh.e.identifier_raw("abort"),
-                                        [
-                                            Expression($['abort handlers']['no such entry'])
-                                        ]
+                            sh.e.object_literal([
+
+                                sh.object_property(
+                                    "no_such_entry",
+                                    'identifier',
+                                    sh.e.arrow_function_with_expression(
+                                        [],
+                                        null,
+                                        sh.e.call(
+                                            sh.e.identifier_raw("abort"),
+                                            [
+                                                Expression($['abort handlers']['no such entry'])
+                                            ]
+                                        )
                                     )
                                 ),
-                                "no_context_lookup": sh.e.arrow_function_with_expression(
-                                    [],
-                                    null,
-                                    sh.e.call(
-                                        sh.e.identifier_raw("abort"),
-                                        [
-                                            Expression($['abort handlers']['no context lookup'])
-                                        ]
+                                sh.object_property(
+                                    "no_context_lookup",
+                                    'identifier',
+                                    sh.e.arrow_function_with_expression(
+                                        [],
+                                        null,
+                                        sh.e.call(
+                                            sh.e.identifier_raw("abort"),
+                                            [
+                                                Expression($['abort handlers']['no context lookup'])
+                                            ]
+                                        )
                                     )
                                 ),
-                                "cycle_detected": sh.e.arrow_function_with_expression(
-                                    [],
-                                    null,
-                                    sh.e.call(
-                                        sh.e.identifier_raw("abort"),
-                                        [
-                                            Expression($['abort handlers']['cycle detected'])
-                                        ]
+                                sh.object_property(
+                                    "cycle_detected",
+                                    'identifier',
+                                    sh.e.arrow_function_with_expression(
+                                        [],
+                                        null,
+                                        sh.e.call(
+                                            sh.e.identifier_raw("abort"),
+                                            [
+                                                Expression($['abort handlers']['cycle detected'])
+                                            ]
+                                        )
                                     )
                                 ),
-                            }),
+                            ]),
                         ]
                     ))
                     case 'lookup entry depth': return _p.ss($, ($) => sh.e.call(
@@ -965,43 +998,55 @@ export const Value_Selection = (
                         ),
                         [
                             Expression($.id),
-                            sh.e.object_literal({
-                                "no_such_entry": sh.e.arrow_function_with_expression(
-                                    [],
-                                    null,
-                                    sh.e.call(
-                                        sh.e.identifier_raw("abort"),
-                                        [
-                                            Expression($['abort handlers']['no such entry'])
-                                        ]
+                            sh.e.object_literal([
+                                sh.object_property(
+                                    "no_such_entry",
+                                    'identifier',
+                                    sh.e.arrow_function_with_expression(
+                                        [],
+                                        null,
+                                        sh.e.call(
+                                            sh.e.identifier_raw("abort"),
+                                            [
+                                                Expression($['abort handlers']['no such entry'])
+                                            ]
+                                        )
                                     )
                                 ),
-                                "no_context_lookup": sh.e.arrow_function_with_expression(
-                                    [],
-                                    null,
-                                    sh.e.call(
-                                        sh.e.identifier_raw("abort"),
-                                        [
-                                            Expression($['abort handlers']['no context lookup'])
-                                        ]
+                                sh.object_property(
+                                    "no_context_lookup",
+                                    'identifier',
+                                    sh.e.arrow_function_with_expression(
+                                        [],
+                                        null,
+                                        sh.e.call(
+                                            sh.e.identifier_raw("abort"),
+                                            [
+                                                Expression($['abort handlers']['no context lookup'])
+                                            ]
+                                        )
                                     )
                                 ),
-                                "cycle_detected": sh.e.arrow_function_with_expression(
-                                    [],
-                                    null,
-                                    sh.e.call(
-                                        sh.e.identifier_raw("abort"),
-                                        [
-                                            Expression($['abort handlers']['cycle detected'])
-                                        ]
+                                sh.object_property(
+                                    "cycle_detected",
+                                    'identifier',
+                                    sh.e.arrow_function_with_expression(
+                                        [],
+                                        null,
+                                        sh.e.call(
+                                            sh.e.identifier_raw("abort"),
+                                            [
+                                                Expression($['abort handlers']['cycle detected'])
+                                            ]
+                                        )
                                     )
                                 ),
-                            }),
+                            ]),
                         ]
                     ))
                     case 'parameter': return _p.ss($, ($) => sh.e.element_access(
                         sh.e.identifier_raw("$p"),
-                        sh.e.string_literal($, 'apostrophe')
+                        sh.e.string_literal(sh.string_literal($, 'apostrophe'))
                     ))
                     case 'parent sibling': return _p.ss($, ($) => sh.e.identifier_escaped("parent.prop " + $))
                     case 'sibling': return _p.ss($, ($) => sh.e.identifier_escaped("prop " + $))
@@ -1029,7 +1074,7 @@ export const Value_Selection = (
             ($, current_expression) => {
                 return sh.e.element_access(
                     current_expression,
-                    sh.e.string_literal($, 'apostrophe')
+                    sh.e.string_literal(sh.string_literal($, 'apostrophe'))
                 )
             }
         ))
@@ -1047,7 +1092,7 @@ export const Lookup_Selection = (
                 sh.identifier_raw("implement_me")
             ),
             [
-                sh.e.string_literal($, 'quote')
+                sh.e.string_literal(sh.string_literal($, 'quote'))
             ]
         ))
         case 'acyclic': return _p.ss($, ($) => _p.decide.state($, ($) => {
@@ -1081,7 +1126,7 @@ export const Lookup_Selection = (
         }))
         case 'from parameter': return _p.ss($, ($) => sh.e.element_access(
             sh.e.identifier_raw("$l"),
-            sh.e.string_literal($, 'apostrophe')
+            sh.e.string_literal(sh.string_literal($, 'apostrophe'))
         ))
         case 'stack': return _p.ss($, ($) => _p.decide.state($, ($) => {
             switch ($[0]) {

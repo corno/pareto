@@ -1,5 +1,5 @@
     
-    import * as _p from "pareto-core/dist/expression"
+    import * as _p from 'pareto-core/dist/expression'
     
     import * as t_signatures from "../../../../../../../interface/generated/liana/schemas/interface/deserialize"
     
@@ -11,7 +11,7 @@
         v_deserialize.Document(
             $,
             ($) => abort(
-                ['parse error', $]
+                ['parse error', $],
             ),
             {
                 'document resource identifier': $p['document resource identifier'],
@@ -27,7 +27,7 @@
         v_deserialize.Document(
             $,
             ($) => abort(
-                ['parse error', $]
+                ['parse error', $],
             ),
             {
                 'document resource identifier': $p['document resource identifier'],
@@ -43,7 +43,7 @@
         v_deserialize.Document(
             $,
             ($) => abort(
-                ['parse error', $]
+                ['parse error', $],
             ),
             {
                 'document resource identifier': $p['document resource identifier'],
@@ -59,7 +59,7 @@
         v_deserialize.Document(
             $,
             ($) => abort(
-                ['parse error', $]
+                ['parse error', $],
             ),
             {
                 'document resource identifier': $p['document resource identifier'],
@@ -75,7 +75,7 @@
         v_deserialize.Document(
             $,
             ($) => abort(
-                ['parse error', $]
+                ['parse error', $],
             ),
             {
                 'document resource identifier': $p['document resource identifier'],

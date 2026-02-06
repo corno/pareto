@@ -28,13 +28,20 @@ export const Identifier = (
     return sh.ph.literal($.value)
 }
 
-export const String_Literal = (
+
+export const String_Literal_pseudo = (
     $: string,
     $p: {
         'delimiter': "quote" | "apostrophe"
     }
 ): d_out.Phrase => {
     return sh.ph.serialize($p.delimiter === "quote" ? s_quoted($) : s_apostrophed($))
+}
+
+export const String_Literal = (
+    $: d_in.String_Literal,
+): d_out.Phrase => {
+    return sh.ph.serialize($.delimiter[0] === "quote" ? s_quoted($.value) : s_apostrophed($.value))
 }
 
 export const Statements = (
@@ -83,7 +90,7 @@ export const Statements = (
                                     $.from.__decide(
                                         ($) => sh.ph.composed([
                                             sh.ph.literal(" from "),
-                                            String_Literal($, { 'delimiter': "quote" }),
+                                            String_Literal($),
                                         ]),
                                         () => sh.ph.nothing()
                                     )
@@ -138,7 +145,7 @@ export const Statements = (
                             }
                         }),
                         sh.ph.literal(" from "),
-                        String_Literal($.from, { 'delimiter': "quote" }),
+                        String_Literal($.from),
                     ])
                 ])
             ]))
@@ -418,11 +425,17 @@ export const Expression = (
                 : sh.ph.nothing(),
             sh.ph.literal("{"),
             sh.ph.indent(
-                sh.pg.sentences(_p.list.from_dictionary($.properties, ($, id) => sh.ph.composed([
-                    String_Literal(id, { 'delimiter': "apostrophe" }),
+                sh.pg.sentences(_p.list.map($.properties, ($) => sh.ph.composed([
+                    _p.decide.state($.key, ($) => {
+                        switch ($[0]) {
+                            case 'identifier': return _p.ss($, ($) => Identifier($))
+                            case 'string literal': return _p.ss($, ($) => String_Literal($))
+                            default: return _p.au($[0])
+                        }
+                    }),
                     sh.ph.literal(": "),
                     Expression(
-                        $,
+                        $.value,
                         {
                             'object literal needs parentheses': false,
                             'replace empty type literals by null': $p['replace empty type literals by null'],
@@ -503,7 +516,7 @@ export const Type = (
             sh.ph.literal(") => "),
             Type($['return'], $p)
         ]))
-        case 'literal type': return _p.ss($, ($) => String_Literal($.value, { 'delimiter': $.delimiter[0] })) //FIX, implement a switch for the delimiter
+        case 'literal type': return _p.ss($, ($) => String_Literal($)) //FIX, implement a switch for the delimiter
         case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
         case 'number': return _p.ss($, ($) => sh.ph.literal("number"))
         case 'string': return _p.ss($, ($) => sh.ph.literal("string"))
@@ -519,15 +532,21 @@ export const Type = (
             ),
             sh.ph.literal("]"),
         ]))
-        case 'type literal': return _p.ss($, ($) => $p['replace empty type literals by null'] && _p.boolean.dictionary_is_empty($.properties)
+        case 'type literal': return _p.ss($, ($) => $p['replace empty type literals by null'] && _p.boolean.list_is_empty($.properties)
             ? sh.ph.literal("null")
             : sh.ph.composed([
                 sh.ph.literal("{"),
                 sh.ph.indent(
-                    sh.pg.sentences(_p.list.from_dictionary($.properties, ($, id) => sh.ph.composed([
+                    sh.pg.sentences(_p.list.map($.properties, ($) => sh.ph.composed([
                         sh.ph.composed([
                             $['readonly'] ? sh.ph.literal("readonly ") : sh.ph.nothing(),
-                            String_Literal(id, { 'delimiter': "apostrophe" }),
+                            _p.decide.state($.key, ($) => {
+                                switch ($[0]) {
+                                    case 'identifier': return _p.ss($, ($) => Identifier($))
+                                    case 'string literal': return _p.ss($, ($) => String_Literal($))
+                                    default: return _p.au($[0])
+                                }
+                            }),
                             sh.ph.literal(": "),
                             Type($.type, $p),
                         ])
