@@ -246,7 +246,7 @@ export namespace type {
             'context': context,
             'result': result,
             'type': wrap_state(['transformer', null]),
-            'parameters': parameters === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(parameters)),
+            'parameters': parameters === null ? _p.optional.literal.not_set() : _p.optional.literal.set(_p.dictionary.literal(parameters)),
         }
     }
 
@@ -259,11 +259,11 @@ export namespace type {
     ): d_out.Package.content.functions.D => {
         return {
             'context': context,
-            'parameters': parameters === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(parameters)),
+            'parameters': parameters === null ? _p.optional.literal.not_set() : _p.optional.literal.set(_p.dictionary.literal(parameters)),
             'result': result,
             'type': wrap_state(['refiner', {
-                'error': error === null ? _p.optional.not_set() : _p.optional.set(error),
-                'lookups': lookups === null ? _p.optional.not_set() : _p.optional.set(_p.dictionary.literal(lookups)),
+                'error': error === null ? _p.optional.literal.not_set() : _p.optional.literal.set(error),
+                'lookups': lookups === null ? _p.optional.literal.not_set() : _p.optional.literal.set(_p.dictionary.literal(lookups)),
             }]),
         }
     }

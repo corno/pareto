@@ -1,4 +1,4 @@
-import * as _p from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 import * as _pi from 'pareto-core/dist/interface'
 import * as _pdev from 'pareto-core-dev'
 import _p_change_context from 'pareto-core/dist/_p_change_context'
@@ -30,8 +30,9 @@ export const temp_create_file_path = (
     }
     const do_tail = (): string => {
         return _p_text_from_list(
-            _p.list.flatten(
+            _p.list.from.list(
                 $.tail.__l_map(($) => `/${valid_file_name($)}`),
+            ).flatten(
                 ($) => _p_list_from_text($, ($) => $)
             ),
             ($) => $
@@ -42,8 +43,9 @@ export const temp_create_file_path = (
             switch ($[0]) {
                 case 'external': return _p.ss($, ($) => valid_file_name($) + do_tail())
                 case 'ancestor': return _p.ss($, ($) => _p_text_from_list(
-                    _p.list.flatten(
+                    _p.list.from.list(
                         _p.list.repeat(_p_list_from_text("../", ($) => $), $['number of steps']),
+                    ).flatten(
                         ($) => $
                     ),
                     ($) => $
@@ -54,11 +56,6 @@ export const temp_create_file_path = (
         }),
         'delimiter': delimiter === 'apostrophe' ? ['apostrophe', null] : ['quote', null]
     }
-
-
-    //  + s_list_of_texts(
-    //     $.tail.__l_map(($) => `/${valid_file_name($)}`),
-    // )
 }
 
 const temp_rename = (
@@ -69,7 +66,7 @@ const temp_rename = (
     $.__d_map(($, id) => {
         const new_id: string = _p.decide.state($, ($) => {
             switch ($[0]) {
-                case 'package': return _p.ss($, ($) => id + `.ts`)
+                case 'package': return _p.ss($, ($) => id + ".ts")
                 case 'set': return _p.ss($, ($) => {
                     const ends_with_ts = ($s: string): boolean => {
                         return false //implement properly later
@@ -101,26 +98,29 @@ export const Package_Set = (
                         sh.s.import_namespace(sh.identifier_raw("_pi"), sh.string_literal("pareto-core/dist/interface", 'apostrophe')),
                     ],
 
-                    _p.list.from_dictionary($.imports, ($, id): d_out.Statements_.L => sh.s.import_namespace(
+                    _p.list.from.dictionary($.imports,).convert(($, id): d_out.Statements_.L => sh.s.import_namespace(
                         sh.identifier_escaped(`i ${id}`),
                         temp_create_file_path($, 'quote')
                     )),
 
                     _p.decide.state($.content, ($) => {
                         switch ($[0]) {
-                            case 'data modules': return _p.ss($, ($) => _p.list.flatten(
-                                _p.list.from_dictionary($, ($, id): d_out.Statements => Value(
+                            case 'data modules': return _p.ss($, ($) => _p.list.from.dictionary(
+                                $,
+                            ).flatten(
+                                ($, id): d_out.Statements => Value(
                                     $,
                                     {
-                                        'name': id + ` `,
+                                        'name': id + " ",
                                         //'temp imports': x_imports,
                                     }
-                                )),
-                                ($) => $
+                                )
                             ))
-                            case 'functions': return _p.ss($, ($) => _p.list.flatten(
-                                _p.list.from_dictionary($, ($, id): d_out.Statements => {
-                                    const name = id + ` `
+                            case 'functions': return _p.ss($, ($) => _p.list.from.dictionary(
+                                $
+                            ).flatten(
+                                ($, id): d_out.Statements => {
+                                    const name = id + " "
                                     return _p.list.literal([
                                         sh.s.namespace(
                                             true,
@@ -159,8 +159,9 @@ export const Package_Set = (
 
                                                             $.lookups.__decide<d_out.Statements>(
                                                                 ($) => {
-                                                                    return _p.list.from_dictionary(
+                                                                    return _p.list.from.dictionary(
                                                                         $,
+                                                                    ).convert(
                                                                         ($, id) => sh.s.namespace(
                                                                             true,
                                                                             sh.identifier_raw("L"),
@@ -193,14 +194,15 @@ export const Package_Set = (
                                                         true,
                                                         sh.identifier_raw("P"),
                                                         $.parameters.__decide(
-                                                            ($) => _p.list.flatten(
-                                                                _p.list.from_dictionary($, ($, id) => Value(
+                                                            ($) => _p.list.from.dictionary(
+                                                                $,
+                                                            ).flatten(
+                                                                ($, id) => Value(
                                                                     $,
                                                                     {
                                                                         'name': id,
                                                                     }
-                                                                )),
-                                                                ($) => $
+                                                                )
                                                             ),
                                                             () => _p.list.literal<d_out.Statements_.L>([])
                                                         )
@@ -305,8 +307,7 @@ export const Package_Set = (
                                             )
                                         )
                                     ])
-                                }),
-                                ($) => $
+                                }
                             ))
                             default: return _p.au($[0])
                         }
@@ -316,13 +317,15 @@ export const Package_Set = (
                         sh.s.export_(
                             _p.decide.state($.content, ($) => {
                                 switch ($[0]) {
-                                    case 'data modules': return _p.ss($, ($) => _p.list.from_dictionary(
+                                    case 'data modules': return _p.ss($, ($) => _p.list.from.dictionary(
                                         $,
-                                        ($, id) => sh.specifier(sh.identifier_escaped(id + ` `), sh.identifier_escaped(id))
+                                    ).convert(
+                                        ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
                                     ))
-                                    case 'functions': return _p.ss($, ($) => _p.list.from_dictionary(
+                                    case 'functions': return _p.ss($, ($) => _p.list.from.dictionary(
                                         $,
-                                        ($, id) => sh.specifier(sh.identifier_escaped(id + ` `), sh.identifier_escaped(id))
+                                    ).convert(
+                                        ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
                                     ))
                                     default: return _p.au($[0])
                                 }
@@ -413,17 +416,15 @@ export const Value = (
                     sh.s.namespace(
                         true,
                         sh.identifier_escaped($p.name),
-                        _p.list.flatten(
-                            _p.list.from_dictionary(
+                        _p.list.from.dictionary(
+                            $
+                        ).flatten(
+                            ($, id) => Value(
                                 $,
-                                ($, id) => Value(
-                                    $,
-                                    {
-                                        'name': id,
-                                    }
-                                )
-                            ),
-                            ($) => $
+                                {
+                                    'name': id,
+                                }
+                            )
                         )
                     ),
                     sh.s.type_alias(
@@ -526,8 +527,9 @@ export const Value = (
                                         default: return _p.au($[0])
                                     }
                                 }),
-                                _p.list.flatten(
+                                _p.list.from.list(
                                     $['sub selection'],
+                                ).flatten(
                                     ($) => _p.decide.state($, ($) => {
                                         switch ($[0]) {
                                             case 'dictionary': return _p.ss($, ($) => _p.list.literal([sh.identifier_raw("D")]))
@@ -558,24 +560,22 @@ export const Value = (
                     sh.s.namespace(
                         true,
                         sh.identifier_escaped($p.name),
-                        _p.list.flatten(
-                            _p.list.from_dictionary(
+                        _p.list.from.dictionary(
+                            $,
+                        ).flatten(
+                            ($, id) => Value(
                                 $,
-                                ($, id) => Value(
-                                    $,
-                                    {
-                                        'name': id,
-                                    }
-                                )
-                            ),
-                            ($) => $
+                                {
+                                    'name': id,
+                                }
+                            )
                         )
                     ),
                     sh.s.type_alias(
                         true,
                         sh.identifier_escaped($p.name),
                         _p.list.literal([]),
-                        _p.boolean.dictionary_is_empty($)
+                        _p.boolean.from.dictionary($).is_empty()
                             ? sh.t.never()
                             : sh.t.union(
                                 $.__to_list(

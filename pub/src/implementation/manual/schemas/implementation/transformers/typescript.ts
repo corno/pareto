@@ -1,9 +1,10 @@
-import * as _p from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 import * as _pi from 'pareto-core/dist/interface'
 import * as _pdev from 'pareto-core-dev'
 import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-import _text_from_list from 'pareto-core/dist/_p_text_from_list'
+import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 import _p_variables from 'pareto-core/dist/_p_variables'
+import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 //data types
 import * as d_in from "../../../../../interface/generated/liana/schemas/implementation/data/resolved"
@@ -14,9 +15,7 @@ import * as d_pareto_to_typescript from "../../../../../interface/to_be_generate
 import * as sh from "../../../../../modules/typescript_light/shorthands/typescript_light"
 
 //dependencies
-import { $$ as s_file_name } from "../../../primitives/text/serializers/filename"
 import { temp_create_file_path } from '../../interface/transformers/typescript'
-import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 const join = ($: _pi.List<string>): string => {
     let out = ""
@@ -34,7 +33,7 @@ const temp_rename = (
     $.__d_map(($, id) => {
         const new_id: string = _p.decide.state($, ($) => {
             switch ($[0]) {
-                case 'package': return _p.ss($, ($) => id + `.ts`)
+                case 'package': return _p.ss($, ($) => id + ".ts")
                 case 'set': return _p.ss($, ($) => {
                     const ends_with_ts = ($s: string): boolean => {
                         return false //implement properly later
@@ -64,20 +63,20 @@ export const Package_Set = (
                 const y: d_out.Statements = _p.list.nested_literal_old([
                     [
                         sh.s.import_namespace(
-                            sh.identifier_raw(`_p`),
-                            sh.string_literal(`pareto-core/dist/expression`, 'apostrophe')
+                            sh.identifier_raw("_p"),
+                            sh.string_literal("pareto-core/dist/assign", 'apostrophe')
                         ),
                     ],
                     $.specials['change context']
                         ? [sh.s.import_default(
                             sh.identifier_raw("_p_change_context"),
-                            sh.string_literal(`pareto-core/dist/_p_change_context`, 'apostrophe')
+                            sh.string_literal("pareto-core/dist/_p_change_context", 'apostrophe')
                         )]
                         : [],
                     $.specials['implement me']
                         ? [sh.s.import_namespace(
                             sh.identifier_raw("_pdev"),
-                            sh.string_literal(`pareto-core-dev`, 'apostrophe')
+                            sh.string_literal("pareto-core-dev", 'apostrophe')
                         )]
                         : [],
                     $.specials['iterate']
@@ -85,25 +84,25 @@ export const Package_Set = (
                             [
                                 sh.specifier(sh.identifier_raw("_p_change_context"), null),
                             ],
-                            sh.string_literal(`pareto-core/dist/iterate`, 'apostrophe')
+                            sh.string_literal("pareto-core/dist/iterate", 'apostrophe')
                         )]
                         : [],
                     $.specials['list from text']
                         ? [sh.s.import_default(
                             sh.identifier_raw("_p_list_from_text"),
-                            sh.string_literal(`pareto-core/dist/_p_list_from_text`, 'apostrophe')
+                            sh.string_literal("pareto-core/dist/_p_list_from_text", 'apostrophe')
                         )]
                         : [],
                     $.specials.lookups
                         ? [sh.s.import_namespace(
                             sh.identifier_raw("_p_sl"),
-                            sh.string_literal(`pareto-core/dist/select_lookup`, 'apostrophe')
+                            sh.string_literal("pareto-core/dist/select_lookup", 'apostrophe')
                         )]
                         : [],
                     $.specials['text from list']
                         ? [sh.s.import_default(
                             sh.identifier_raw("_p_text_from_list"),
-                            sh.string_literal(`pareto-core/dist/_p_text_from_list`, 'apostrophe')
+                            sh.string_literal("pareto-core/dist/_p_text_from_list", 'apostrophe')
                         )]
                         : [],
                     $.specials['unreachable code path']
@@ -111,31 +110,34 @@ export const Package_Set = (
                             [
                                 sh.specifier(sh.identifier_raw("_p_unreachable_code_path"), null),
                             ],
-                            sh.string_literal(`pareto-core/dist/unreachable_code_path`, 'apostrophe')
+                            sh.string_literal("pareto-core/dist/unreachable_code_path", 'apostrophe')
                         )]
                         : [],
                     $.specials['variables']
                         ? [sh.s.import_default(
                             sh.identifier_raw("_p_variables"),
-                            sh.string_literal(`pareto-core/dist/_p_variables`, 'apostrophe')
+                            sh.string_literal("pareto-core/dist/_p_variables", 'apostrophe')
                         )]
                         : [],
-                    _p.list.from_dictionary(
+                    _p.list.from.dictionary(
                         $['type imports'],
+                    ).convert(
                         ($, id) => sh.s.import_namespace(
                             sh.identifier_escaped(join(_p.list.literal(["t ", id]))),
                             temp_create_file_path($, 'quote')
                         )
                     ),
-                    _p.list.from_dictionary(
+                    _p.list.from.dictionary(
                         $['variable imports'],
+                    ).convert(
                         ($, id) => sh.s.import_namespace(
                             sh.identifier_escaped(join(_p.list.literal(["v ", id]))),
                             temp_create_file_path($, 'quote')
                         )
                     ),
-                    _p.list.from_dictionary(
+                    _p.list.from.dictionary(
                         $.functions,
+                    ).convert(
                         ($, id): d_out.Statements.L => sh.s.variable(
                             true,
                             true,
@@ -193,8 +195,9 @@ export const Temp_Value_Type_Specification = (
             _p.list.literal([
                 sh.identifier_escaped($.type.type)
             ]),
-            _p.list.flatten(
+            _p.list.from.list(
                 $['sub selection'],
+            ).flatten(
                 ($) => _p.decide.state($, ($): _pi.List<d_out.Identifier> => {
                     switch ($[0]) {
                         case 'dictionary': return _p.ss($, ($) => _p.list.literal([sh.identifier_raw("D")]))
@@ -221,7 +224,7 @@ export const Assign = (
             return _p.decide.state($.type, ($) => {
                 switch ($[0]) {
                     case 'boolean': return _p.ss($, ($) => sh.e.conditional(
-                       selection,
+                        selection,
                         Assign($['if true']),
                         Assign($['if false']),
                     ))
@@ -461,14 +464,24 @@ export const Assign = (
                                             case 'filter': return _p.ss($, ($) => _pdev.implement_me("X5"))
                                             case 'map': return _p.ss($, ($) => sh.e.call(
                                                 sh.e.property_access(
-                                                    sh.e.property_access(
-                                                        sh.e.identifier_raw("_p"),
-                                                        sh.identifier_raw("dictionary"),
+                                                    sh.e.call(
+                                                        sh.e.property_access(
+                                                            sh.e.property_access(
+                                                                sh.e.property_access(
+                                                                    sh.e.identifier_raw("_p"),
+                                                                    sh.identifier_raw("dictionary"),
+                                                                ),
+                                                                sh.identifier_raw("from"),
+                                                            ),
+                                                            sh.identifier_raw("dictionary"),
+                                                        ),
+                                                        [
+                                                            selection,
+                                                        ]
                                                     ),
                                                     sh.identifier_raw("map"),
                                                 ),
                                                 [
-                                                    selection,
                                                     sh.e.arrow_function_with_expression(
                                                         [
                                                             sh.parameter(sh.identifier_raw("$"), null),
@@ -481,14 +494,24 @@ export const Assign = (
                                             ))
                                             case 'resolve': return _p.ss($, ($) => sh.e.call(
                                                 sh.e.property_access(
-                                                    sh.e.property_access(
-                                                        sh.e.identifier_raw("_p"),
-                                                        sh.identifier_raw("dictionary"),
+                                                    sh.e.call(
+                                                        sh.e.property_access(
+                                                            sh.e.property_access(
+                                                                sh.e.property_access(
+                                                                    sh.e.identifier_raw("_p"),
+                                                                    sh.identifier_raw("dictionary"),
+                                                                ),
+                                                                sh.identifier_raw("from"),
+                                                            ),
+                                                            sh.identifier_raw("dictionary"),
+                                                        ),
+                                                        [
+                                                            selection,
+                                                        ]
                                                     ),
                                                     sh.identifier_raw("resolve"),
                                                 ),
                                                 [
-                                                    selection,
                                                     sh.e.arrow_function_with_expression(
                                                         [
                                                             sh.parameter(sh.identifier_raw("$"), null),
@@ -525,8 +548,11 @@ export const Assign = (
                                 : sh.e.call(
                                     sh.e.property_access(
                                         sh.e.property_access(
-                                            sh.e.identifier_raw("_p"),
-                                            sh.identifier_raw("group"),
+                                            sh.e.property_access(
+                                                sh.e.identifier_raw("_p"),
+                                                sh.identifier_raw("group"),
+                                            ),
+                                            sh.identifier_raw("literal"),
                                         ),
                                         sh.identifier_raw("resolve"),
                                     ),
@@ -596,14 +622,24 @@ export const Assign = (
                                             case 'filter': return _p.ss($, ($) => _pdev.implement_me("X8"))
                                             case 'map': return _p.ss($, ($) => sh.e.call(
                                                 sh.e.property_access(
-                                                    sh.e.property_access(
-                                                        sh.e.identifier_raw("_p"),
-                                                        sh.identifier_raw("list"),
+                                                    sh.e.call(
+                                                        sh.e.property_access(
+                                                            sh.e.property_access(
+                                                                sh.e.property_access(
+                                                                    sh.e.identifier_raw("_p"),
+                                                                    sh.identifier_raw("list"),
+                                                                ),
+                                                                sh.identifier_raw("from"),
+                                                            ),
+                                                            sh.identifier_raw("list"),
+                                                        ),
+                                                        [
+                                                            selection,
+                                                        ]
                                                     ),
                                                     sh.identifier_raw("map"),
                                                 ),
                                                 [
-                                                    selection,
                                                     sh.e.arrow_function_with_expression(
                                                         [
                                                             sh.parameter(sh.identifier_raw("$"), null)
@@ -700,8 +736,11 @@ export const Assign = (
                                 case 'not set': return _p.ss($, ($) => sh.e.call(
                                     sh.e.property_access(
                                         sh.e.property_access(
-                                            sh.e.identifier_raw("_p"),
-                                            sh.identifier_raw("optional"),
+                                            sh.e.property_access(
+                                                sh.e.identifier_raw("_p"),
+                                                sh.identifier_raw("optional"),
+                                            ),
+                                            sh.identifier_raw("literal"),
                                         ),
                                         sh.identifier_raw("not_set"),
                                     ),
@@ -711,8 +750,11 @@ export const Assign = (
                                 case 'set': return _p.ss($, ($) => sh.e.call(
                                     sh.e.property_access(
                                         sh.e.property_access(
-                                            sh.e.identifier_raw("_p"),
-                                            sh.identifier_raw("optional"),
+                                            sh.e.property_access(
+                                                sh.e.identifier_raw("_p"),
+                                                sh.identifier_raw("optional"),
+                                            ),
+                                            sh.identifier_raw("literal"),
                                         ),
                                         sh.identifier_raw("set"),
                                     ),
@@ -737,14 +779,24 @@ export const Assign = (
                                         switch ($[0]) {
                                             case 'map': return _p.ss($, ($) => sh.e.call(
                                                 sh.e.property_access(
-                                                    sh.e.property_access(
-                                                        sh.e.identifier_raw("_p"),
-                                                        sh.identifier_raw("optional"),
+                                                    sh.e.call(
+                                                        sh.e.property_access(
+                                                            sh.e.property_access(
+                                                                sh.e.property_access(
+                                                                    sh.e.identifier_raw("_p"),
+                                                                    sh.identifier_raw("optional"),
+                                                                ),
+                                                                sh.identifier_raw("from"),
+                                                            ),
+                                                            sh.identifier_raw("optional"),
+                                                        ),
+                                                        [
+                                                            selection,
+                                                        ]
                                                     ),
                                                     sh.identifier_raw("map"),
                                                 ),
                                                 [
-                                                    selection,
                                                     sh.e.arrow_function_with_expression(
                                                         [
                                                             sh.parameter(sh.identifier_raw("$"), null)
@@ -944,7 +996,7 @@ export const Select_Value = (
                             $.lookups.__decide(
                                 ($) => _p.decide.state($, ($) => {
                                     switch ($[0]) {
-                                        case 'initialize': return _p.ss($, ($) => _p.boolean.dictionary_is_empty($)
+                                        case 'initialize': return _p.ss($, ($) => _p.boolean.from.dictionary($).is_empty()
                                             ? [
                                                 sh.e.null_(),
                                             ]
@@ -968,7 +1020,7 @@ export const Select_Value = (
                             $.arguments.__decide(
                                 ($) => _p.decide.state($, ($) => {
                                     switch ($[0]) {
-                                        case 'initialize': return _p.ss($, ($) => _p.boolean.dictionary_is_empty($)
+                                        case 'initialize': return _p.ss($, ($) => _p.boolean.from.dictionary($).is_empty()
                                             ? [
                                                 sh.e.null_(),
                                             ]
@@ -996,7 +1048,7 @@ export const Select_Value = (
                     case 'dictionary entry': return _p.ss($, ($) => sh.e.call(
                         sh.e.property_access(
                             Select_Value($.dictionary),
-                            sh.identifier_raw("__get_entry")
+                            sh.identifier_raw("__get_entry_deprecated")
                         ),
                         [
                             Assign($.id),

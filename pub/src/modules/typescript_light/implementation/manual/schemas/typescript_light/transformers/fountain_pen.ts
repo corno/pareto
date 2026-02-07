@@ -1,4 +1,4 @@
-import * as _p from 'pareto-core/dist/expression'
+import * as _p from 'pareto-core/dist/assign'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
@@ -54,7 +54,7 @@ export const Statements = (
     _p.decide.state($, ($): d_out.Paragraph => {
         switch ($[0]) {
             case 'block': return _p.ss($, ($) => sh.pg.sentences([
-                sh.ph.literal(``),
+                sh.ph.literal(""),
                 sh.ph.composed([
                     sh.ph.composed([
                         sh.ph.literal("{"),
@@ -66,7 +66,7 @@ export const Statements = (
                 ])
             ]))
             case 'export': return _p.ss($, ($) => sh.pg.sentences([
-                sh.ph.literal(``),
+                sh.ph.literal(""),
                 sh.ph.composed([
                     sh.ph.composed([
                         sh.ph.literal("export "),
@@ -112,7 +112,7 @@ export const Statements = (
                 )
             ]))
             case 'import': return _p.ss($, ($) => sh.pg.sentences([
-                sh.ph.literal(``),
+                sh.ph.literal(""),
                 sh.ph.composed([
                     sh.ph.composed([
                         sh.ph.literal("import "),
@@ -151,7 +151,7 @@ export const Statements = (
                 ])
             ]))
             case 'module declaration': return _p.ss($, ($) => sh.pg.sentences([
-                sh.ph.literal(``),
+                sh.ph.literal(""),
                 sh.ph.composed([sh.ph.composed([
                     $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
                     sh.ph.literal("namespace "),
@@ -162,7 +162,7 @@ export const Statements = (
                         sh.ph.indent(sh.pg.composed([
                             Statements($.block, $p),
                             sh.pg.sentences([
-                                sh.ph.literal(``),
+                                sh.ph.literal(""),
                             ])
                         ])),
                         sh.ph.literal("}"),
@@ -224,7 +224,7 @@ export const Statements = (
                 ]),
             ]))
             case 'type alias declaration': return _p.ss($, ($) => sh.pg.sentences([
-                sh.ph.literal(``),
+                sh.ph.literal(""),
                 sh.ph.composed([sh.ph.composed([
                     $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
                     sh.ph.literal("type "),
@@ -241,7 +241,7 @@ export const Statements = (
                 ])])
             ]))
             case 'variable': return _p.ss($, ($) => sh.pg.sentences([
-                sh.ph.literal(``),
+                sh.ph.literal(""),
                 sh.ph.composed([sh.ph.composed([
                     $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
                     $.const ? sh.ph.literal("const ") : sh.ph.literal("let "),
@@ -426,24 +426,27 @@ export const Expression = (
                 : sh.ph.nothing(),
             sh.ph.literal("{"),
             sh.ph.indent(
-                sh.pg.sentences(_p.list.map($.properties, ($) => sh.ph.composed([
-                    _p.decide.state($.key, ($) => {
-                        switch ($[0]) {
-                            case 'identifier': return _p.ss($, ($) => Identifier($))
-                            case 'string literal': return _p.ss($, ($) => String_Literal($))
-                            default: return _p.au($[0])
-                        }
-                    }),
-                    sh.ph.literal(": "),
-                    Expression(
-                        $.value,
-                        {
-                            'object literal needs parentheses': false,
-                            'replace empty type literals by null': $p['replace empty type literals by null'],
-                        }
-                    ),
-                    sh.ph.literal(",")
-                ]))),
+                sh.pg.sentences(_p.list.from.list(
+                    $.properties,
+                ).map(
+                    ($) => sh.ph.composed([
+                        _p.decide.state($.key, ($) => {
+                            switch ($[0]) {
+                                case 'identifier': return _p.ss($, ($) => Identifier($))
+                                case 'string literal': return _p.ss($, ($) => String_Literal($))
+                                default: return _p.au($[0])
+                            }
+                        }),
+                        sh.ph.literal(": "),
+                        Expression(
+                            $.value,
+                            {
+                                'object literal needs parentheses': false,
+                                'replace empty type literals by null': $p['replace empty type literals by null'],
+                            }
+                        ),
+                        sh.ph.literal(",")
+                    ]))),
             ),
             sh.ph.literal("}"),
             $p['object literal needs parentheses']
@@ -534,12 +537,15 @@ export const Type = (
             ),
             sh.ph.literal("]"),
         ]))
-        case 'type literal': return _p.ss($, ($) => $p['replace empty type literals by null'] && _p.boolean.list_is_empty($.properties)
+        case 'type literal': return _p.ss($, ($) => $p['replace empty type literals by null'] && _p.boolean.from.list($.properties).is_empty()
             ? sh.ph.literal("null")
             : sh.ph.composed([
                 sh.ph.literal("{"),
                 sh.ph.indent(
-                    sh.pg.sentences(_p.list.map($.properties, ($) => sh.ph.composed([
+                    sh.pg.sentences(_p.list.from.list(
+                        $.properties,
+                    ).map(
+                         ($) => sh.ph.composed([
                         sh.ph.composed([
                             $['readonly'] ? sh.ph.literal("readonly ") : sh.ph.nothing(),
                             _p.decide.state($.key, ($) => {
@@ -563,7 +569,7 @@ export const Type = (
                 sh.ph.literal("."),
                 Identifier($),
             ]))),
-            _p.boolean.list_is_empty($['type arguments'])
+            _p.boolean.from.list($['type arguments']).is_empty()
                 ? sh.ph.nothing()
                 : sh.ph.composed([
                     sh.ph.literal("<"),

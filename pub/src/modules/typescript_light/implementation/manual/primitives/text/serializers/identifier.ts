@@ -1,4 +1,4 @@
-import * as _p_transformer from 'pareto-core/dist/expression'
+import * as _p_transformer from 'pareto-core/dist/assign'
 
 import * as _pdev from 'pareto-core-dev'
 import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'

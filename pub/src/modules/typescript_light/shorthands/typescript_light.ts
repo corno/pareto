@@ -1,5 +1,5 @@
 import * as _p from 'pareto-core-shorthands/dist/unconstrained'
-import * as _pr from 'pareto-core/dist/expression'
+import * as _pr from 'pareto-core/dist/assign'
 import * as _pi from 'pareto-core/dist/interface'
 import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
@@ -52,7 +52,7 @@ export const specifier = (
 ): d_target.Statements.L.export_.type_.named_exports.specifiers.L => {
     return {
         'name': name,
-        'as': as === null ? _p.optional.not_set() : _p.optional.set(as),
+        'as': as === null ? _p.optional.literal.not_set() : _p.optional.literal.set(as),
     }
 }
 
@@ -87,7 +87,7 @@ export namespace s {
     ): d_target.Statements.L => ['export', {
         'type': ['named exports', {
             'specifiers': _p.list.literal(specifiers),
-            'from': from === null ? _p.optional.not_set() : _p.optional.set(from),
+            'from': from === null ? _p.optional.literal.not_set() : _p.optional.literal.set(from),
         }],
     }]
 
@@ -136,7 +136,7 @@ export namespace s {
 
     export const return_ = (
         expression: null | d_target.Expression
-    ): d_target.Statements.L => ['return', expression === null ? _p.optional.not_set() : _p.optional.set(expression)]
+    ): d_target.Statements.L => ['return', expression === null ? _p.optional.literal.not_set() : _p.optional.literal.set(expression)]
 
     export const switch_ = (
         expression: d_target.Expression,
@@ -168,8 +168,8 @@ export namespace s {
         'export': export_,
         'const': const_,
         'name': name,
-        'type': type === null ? _p.optional.not_set() : _p.optional.set(type),
-        'expression': expression === null ? _p.optional.not_set() : _p.optional.set(expression),
+        'type': type === null ? _p.optional.literal.not_set() : _p.optional.literal.set(type),
+        'expression': expression === null ? _p.optional.literal.not_set() : _p.optional.literal.set(expression),
     }]
 
 }
@@ -181,8 +181,8 @@ export const parameter = (
     return {
         'name': name,
         'type': type === null
-            ? _p.optional.not_set()
-            : _p.optional.set(type),
+            ? _p.optional.literal.not_set()
+            : _p.optional.literal.set(type),
     }
 }
 
@@ -306,7 +306,7 @@ export namespace e {
         expression: d_target.Expression,
     ): d_target.Expression => ['arrow function', {
         'parameters': _p.list.literal(parameters),
-        'return type': return_type === null ? _p.optional.not_set() : _p.optional.set(return_type),
+        'return type': return_type === null ? _p.optional.literal.not_set() : _p.optional.literal.set(return_type),
         'body': ['expression', expression],
     }]
 
@@ -316,7 +316,7 @@ export namespace e {
         block: _p.Raw_Or_Normal_List<d_target.Statements.L>,
     ): d_target.Expression => ['arrow function', {
         'parameters': _p.list.literal(parameters),
-        'return type': return_type === null ? _p.optional.not_set() : _p.optional.set(return_type),
+        'return type': return_type === null ? _p.optional.literal.not_set() : _p.optional.literal.set(return_type),
         'body': ['block', _p.list.literal(block)],
     }]
 
