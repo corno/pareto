@@ -235,74 +235,6 @@ export namespace Assign_ {
                 readonly 'if true': boolean_.if_true
             }
             
-            export namespace dictionary {
-                
-                export namespace has_entries {
-                    
-                    export type if_true = Assign_
-                    
-                    export type if_false = Assign_
-                    
-                }
-                
-                export type has_entries = {
-                    readonly 'if true': has_entries.if_true
-                    readonly 'if false': has_entries.if_false
-                }
-                
-            }
-            
-            export type dictionary = 
-                | readonly ['has entries', dictionary.has_entries]
-            
-            export namespace list {
-                
-                export namespace has_first_item {
-                    
-                    export type if_true = Assign_
-                    
-                    export type if_false = Assign_
-                    
-                }
-                
-                export type has_first_item = {
-                    readonly 'if true': has_first_item.if_true
-                    readonly 'if false': has_first_item.if_false
-                }
-                
-                export namespace has_last_item {
-                    
-                    export type if_true = Assign_
-                    
-                    export type if_false = Assign_
-                    
-                }
-                
-                export type has_last_item = {
-                    readonly 'if true': has_last_item.if_true
-                    readonly 'if false': has_last_item.if_false
-                }
-                
-                export namespace has_items {
-                    
-                    export type if_true = Assign_
-                    
-                    export type if_false = Assign_
-                    
-                }
-                
-                export type has_items = {
-                    readonly 'if true': has_items.if_true
-                    readonly 'if false': has_items.if_false
-                }
-                
-            }
-            
-            export type list = 
-                | readonly ['has first item', list.has_first_item]
-                | readonly ['has last item', list.has_last_item]
-                | readonly ['has items', list.has_items]
-            
             export namespace optional {
                 
                 export namespace temp_resulting_node {
@@ -434,8 +366,6 @@ export namespace Assign_ {
         
         export type type_ = 
             | readonly ['boolean', type_.boolean_]
-            | readonly ['dictionary', type_.dictionary]
-            | readonly ['list', type_.list]
             | readonly ['optional', type_.optional]
             | readonly ['state', type_.state]
             | readonly ['text', type_.text]

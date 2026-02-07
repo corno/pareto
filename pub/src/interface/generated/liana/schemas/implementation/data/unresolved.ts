@@ -388,96 +388,6 @@ export namespace Assign_ {
                         readonly 'if true': boolean_.if_true
                     }
                     
-                    export namespace dictionary {
-                        
-                        export type l_location = i__location.Relative_Location
-                        
-                        export namespace l_state {
-                            
-                            export namespace has_entries {
-                                
-                                export type if_true = Assign_
-                                
-                                export type if_false = Assign_
-                                
-                            }
-                            
-                            export type has_entries = {
-                                readonly 'if true': has_entries.if_true
-                                readonly 'if false': has_entries.if_false
-                            }
-                            
-                        }
-                        
-                        export type l_state = 
-                            | readonly ['has entries', l_state.has_entries]
-                        
-                    }
-                    
-                    export type dictionary = {
-                        readonly 'l location': dictionary.l_location
-                        readonly 'l state': dictionary.l_state
-                    }
-                    
-                    export namespace list {
-                        
-                        export type l_location = i__location.Relative_Location
-                        
-                        export namespace l_state {
-                            
-                            export namespace has_first_item {
-                                
-                                export type if_true = Assign_
-                                
-                                export type if_false = Assign_
-                                
-                            }
-                            
-                            export type has_first_item = {
-                                readonly 'if true': has_first_item.if_true
-                                readonly 'if false': has_first_item.if_false
-                            }
-                            
-                            export namespace has_last_item {
-                                
-                                export type if_true = Assign_
-                                
-                                export type if_false = Assign_
-                                
-                            }
-                            
-                            export type has_last_item = {
-                                readonly 'if true': has_last_item.if_true
-                                readonly 'if false': has_last_item.if_false
-                            }
-                            
-                            export namespace has_items {
-                                
-                                export type if_true = Assign_
-                                
-                                export type if_false = Assign_
-                                
-                            }
-                            
-                            export type has_items = {
-                                readonly 'if true': has_items.if_true
-                                readonly 'if false': has_items.if_false
-                            }
-                            
-                        }
-                        
-                        export type l_state = 
-                            | readonly ['has first item', l_state.has_first_item]
-                            | readonly ['has last item', l_state.has_last_item]
-                            | readonly ['has items', l_state.has_items]
-                        
-                    }
-                    
-                    export type list = {
-                        readonly 'l location': list.l_location
-                        readonly 'l state': list.l_state
-                    }
-                    
                     export namespace optional {
                         
                         export namespace temp_resulting_node {
@@ -686,8 +596,6 @@ export namespace Assign_ {
                 
                 export type l_state = 
                     | readonly ['boolean', l_state.boolean_]
-                    | readonly ['dictionary', l_state.dictionary]
-                    | readonly ['list', l_state.list]
                     | readonly ['optional', l_state.optional]
                     | readonly ['state', l_state.state]
                     | readonly ['text', l_state.text]

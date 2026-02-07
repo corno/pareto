@@ -228,8 +228,6 @@ export const Assign = (
                         Assign($['if true']),
                         Assign($['if false']),
                     ))
-                    case 'dictionary': return _p.ss($, ($) => _pdev.implement_me("X3"))
-                    case 'list': return _p.ss($, ($) => _pdev.implement_me("X4"))
                     case 'optional': return _p.ss($, ($) => sh.e.call(
                         sh.e.property_access(
                             sh.e.property_access(
