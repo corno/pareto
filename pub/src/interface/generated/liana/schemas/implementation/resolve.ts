@@ -70,32 +70,11 @@ export type Temp_Value_Type_Specification_ = (
     parameters: null,
 ) => Temp_Value_Type_Specification_.O
 
-export namespace Expression_ {
+export namespace Assign_ {
     
-    export type I = i_unresolved.Expression
+    export type I = i_unresolved.Assign
     
-    export type O = i_resolved.Expression
-    
-    export type E = i_generic.Error
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Expression_ = (
-    context: Expression_.I,
-    abort: _pi.Abort<Expression_.E>,
-    lookups: null,
-    parameters: null,
-) => Expression_.O
-
-export namespace Value_Selection_ {
-    
-    export type I = i_unresolved.Value_Selection
-    
-    export type O = i_resolved.Value_Selection
+    export type O = i_resolved.Assign
     
     export type E = i_generic.Error
     
@@ -105,18 +84,18 @@ export namespace Value_Selection_ {
     
 }
 
-export type Value_Selection_ = (
-    context: Value_Selection_.I,
-    abort: _pi.Abort<Value_Selection_.E>,
+export type Assign_ = (
+    context: Assign_.I,
+    abort: _pi.Abort<Assign_.E>,
     lookups: null,
     parameters: null,
-) => Value_Selection_.O
+) => Assign_.O
 
-export namespace Lookup_Selection_ {
+export namespace Select_Value_ {
     
-    export type I = i_unresolved.Lookup_Selection
+    export type I = i_unresolved.Select_Value
     
-    export type O = i_resolved.Lookup_Selection
+    export type O = i_resolved.Select_Value
     
     export type E = i_generic.Error
     
@@ -126,18 +105,39 @@ export namespace Lookup_Selection_ {
     
 }
 
-export type Lookup_Selection_ = (
-    context: Lookup_Selection_.I,
-    abort: _pi.Abort<Lookup_Selection_.E>,
+export type Select_Value_ = (
+    context: Select_Value_.I,
+    abort: _pi.Abort<Select_Value_.E>,
     lookups: null,
     parameters: null,
-) => Lookup_Selection_.O
+) => Select_Value_.O
+
+export namespace Select_Lookup_ {
+    
+    export type I = i_unresolved.Select_Lookup
+    
+    export type O = i_resolved.Select_Lookup
+    
+    export type E = i_generic.Error
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Select_Lookup_ = (
+    context: Select_Lookup_.I,
+    abort: _pi.Abort<Select_Lookup_.E>,
+    lookups: null,
+    parameters: null,
+) => Select_Lookup_.O
 
 export { 
     Package_Set_ as Package_Set, 
     Package_ as Package, 
     Temp_Value_Type_Specification_ as Temp_Value_Type_Specification, 
-    Expression_ as Expression, 
-    Value_Selection_ as Value_Selection, 
-    Lookup_Selection_ as Lookup_Selection, 
+    Assign_ as Assign, 
+    Select_Value_ as Select_Value, 
+    Select_Lookup_ as Select_Lookup, 
 }

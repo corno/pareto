@@ -53,27 +53,11 @@ export type Temp_Value_Type_Specification_ = (
     context: Temp_Value_Type_Specification_.I,
 ) => Temp_Value_Type_Specification_.O
 
-export namespace Expression_ {
+export namespace Assign_ {
     
-    export type I = i_in.Expression
+    export type I = i_in.Assign
     
-    export type O = i_out.Expression
-    
-    export namespace P {
-        
-    }
-    
-}
-
-export type Expression_ = (
-    context: Expression_.I,
-) => Expression_.O
-
-export namespace Value_Selection_ {
-    
-    export type I = i_in.Value_Selection
-    
-    export type O = i_out.Value_Selection
+    export type O = i_out.Assign
     
     export namespace P {
         
@@ -81,15 +65,15 @@ export namespace Value_Selection_ {
     
 }
 
-export type Value_Selection_ = (
-    context: Value_Selection_.I,
-) => Value_Selection_.O
+export type Assign_ = (
+    context: Assign_.I,
+) => Assign_.O
 
-export namespace Lookup_Selection_ {
+export namespace Select_Value_ {
     
-    export type I = i_in.Lookup_Selection
+    export type I = i_in.Select_Value
     
-    export type O = i_out.Lookup_Selection
+    export type O = i_out.Select_Value
     
     export namespace P {
         
@@ -97,15 +81,31 @@ export namespace Lookup_Selection_ {
     
 }
 
-export type Lookup_Selection_ = (
-    context: Lookup_Selection_.I,
-) => Lookup_Selection_.O
+export type Select_Value_ = (
+    context: Select_Value_.I,
+) => Select_Value_.O
+
+export namespace Select_Lookup_ {
+    
+    export type I = i_in.Select_Lookup
+    
+    export type O = i_out.Select_Lookup
+    
+    export namespace P {
+        
+    }
+    
+}
+
+export type Select_Lookup_ = (
+    context: Select_Lookup_.I,
+) => Select_Lookup_.O
 
 export { 
     Package_Set_ as Package_Set, 
     Package_ as Package, 
     Temp_Value_Type_Specification_ as Temp_Value_Type_Specification, 
-    Expression_ as Expression, 
-    Value_Selection_ as Value_Selection, 
-    Lookup_Selection_ as Lookup_Selection, 
+    Assign_ as Assign, 
+    Select_Value_ as Select_Value, 
+    Select_Lookup_ as Select_Lookup, 
 }

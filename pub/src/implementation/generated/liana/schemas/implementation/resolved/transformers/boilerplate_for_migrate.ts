@@ -222,7 +222,7 @@ export const Package: t_signatures.Package = ($) => ({
                         ),
                         'expression': _p_change_context(
                             $['expression'],
-                            ($) => Expression(
+                            ($) => Assign(
                                 $,
                             ),
                         ),
@@ -329,7 +329,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
     ),
 })
 
-export const Expression: t_signatures.Expression = ($) => ({
+export const Assign: t_signatures.Assign = ($) => ({
     'l location': {
         'document resource identifier': "implement me",
         'line': 42,
@@ -337,12 +337,18 @@ export const Expression: t_signatures.Expression = ($) => ({
     },
     'l state': _p.decide.state(
         $,
-        ($): t_out.Expression.l_state => {
+        ($): t_out.Assign.l_state => {
             switch ($[0]) {
                 case 'decide':
                     return _p.ss(
                         $,
                         ($) => ['decide', {
+                            'source': _p_change_context(
+                                $['source'],
+                                ($) => Select_Value(
+                                    $,
+                                ),
+                            ),
                             'type': _p_change_context(
                                 $['type'],
                                 ($) => ({
@@ -353,18 +359,12 @@ export const Expression: t_signatures.Expression = ($) => ({
                                     },
                                     'l state': _p.decide.state(
                                         $,
-                                        ($): t_out.Expression.l_state.decide.type_.l_state => {
+                                        ($): t_out.Assign.l_state.decide.type_.l_state => {
                                             switch ($[0]) {
                                                 case 'boolean':
                                                     return _p.ss(
                                                         $,
                                                         ($) => ['boolean', {
-                                                            'source': _p_change_context(
-                                                                $['source'],
-                                                                ($) => Value_Selection(
-                                                                    $,
-                                                                ),
-                                                            ),
                                                             'temp resulting node': _p_change_context(
                                                                 $['temp resulting node'],
                                                                 ($) => _p.optional.map(
@@ -376,13 +376,13 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                             ),
                                                             'if false': _p_change_context(
                                                                 $['if false'],
-                                                                ($) => Expression(
+                                                                ($) => Assign(
                                                                     $,
                                                                 ),
                                                             ),
                                                             'if true': _p_change_context(
                                                                 $['if true'],
-                                                                ($) => Expression(
+                                                                ($) => Assign(
                                                                     $,
                                                                 ),
                                                             ),
@@ -399,27 +399,21 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                             },
                                                             'l state': _p.decide.state(
                                                                 $,
-                                                                ($): t_out.Expression.l_state.decide.type_.l_state.dictionary.l_state => {
+                                                                ($): t_out.Assign.l_state.decide.type_.l_state.dictionary.l_state => {
                                                                     switch ($[0]) {
                                                                         case 'has entries':
                                                                             return _p.ss(
                                                                                 $,
                                                                                 ($) => ['has entries', {
-                                                                                    'dictionary': _p_change_context(
-                                                                                        $['dictionary'],
-                                                                                        ($) => Value_Selection(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
                                                                                     'if true': _p_change_context(
                                                                                         $['if true'],
-                                                                                        ($) => Expression(
+                                                                                        ($) => Assign(
                                                                                             $,
                                                                                         ),
                                                                                     ),
                                                                                     'if false': _p_change_context(
                                                                                         $['if false'],
-                                                                                        ($) => Expression(
+                                                                                        ($) => Assign(
                                                                                             $,
                                                                                         ),
                                                                                     ),
@@ -445,27 +439,21 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                             },
                                                             'l state': _p.decide.state(
                                                                 $,
-                                                                ($): t_out.Expression.l_state.decide.type_.l_state.list.l_state => {
+                                                                ($): t_out.Assign.l_state.decide.type_.l_state.list.l_state => {
                                                                     switch ($[0]) {
                                                                         case 'has first item':
                                                                             return _p.ss(
                                                                                 $,
                                                                                 ($) => ['has first item', {
-                                                                                    'list': _p_change_context(
-                                                                                        $['list'],
-                                                                                        ($) => Value_Selection(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
                                                                                     'if true': _p_change_context(
                                                                                         $['if true'],
-                                                                                        ($) => Expression(
+                                                                                        ($) => Assign(
                                                                                             $,
                                                                                         ),
                                                                                     ),
                                                                                     'if false': _p_change_context(
                                                                                         $['if false'],
-                                                                                        ($) => Expression(
+                                                                                        ($) => Assign(
                                                                                             $,
                                                                                         ),
                                                                                     ),
@@ -475,21 +463,15 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             return _p.ss(
                                                                                 $,
                                                                                 ($) => ['has last item', {
-                                                                                    'list': _p_change_context(
-                                                                                        $['list'],
-                                                                                        ($) => Value_Selection(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
                                                                                     'if true': _p_change_context(
                                                                                         $['if true'],
-                                                                                        ($) => Expression(
+                                                                                        ($) => Assign(
                                                                                             $,
                                                                                         ),
                                                                                     ),
                                                                                     'if false': _p_change_context(
                                                                                         $['if false'],
-                                                                                        ($) => Expression(
+                                                                                        ($) => Assign(
                                                                                             $,
                                                                                         ),
                                                                                     ),
@@ -499,21 +481,15 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             return _p.ss(
                                                                                 $,
                                                                                 ($) => ['has items', {
-                                                                                    'list': _p_change_context(
-                                                                                        $['list'],
-                                                                                        ($) => Value_Selection(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
                                                                                     'if true': _p_change_context(
                                                                                         $['if true'],
-                                                                                        ($) => Expression(
+                                                                                        ($) => Assign(
                                                                                             $,
                                                                                         ),
                                                                                     ),
                                                                                     'if false': _p_change_context(
                                                                                         $['if false'],
-                                                                                        ($) => Expression(
+                                                                                        ($) => Assign(
                                                                                             $,
                                                                                         ),
                                                                                     ),
@@ -532,12 +508,6 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     return _p.ss(
                                                         $,
                                                         ($) => ['optional', {
-                                                            'source': _p_change_context(
-                                                                $['source'],
-                                                                ($) => Value_Selection(
-                                                                    $,
-                                                                ),
-                                                            ),
                                                             'temp resulting node': _p_change_context(
                                                                 $['temp resulting node'],
                                                                 ($) => _p.optional.map(
@@ -549,13 +519,13 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                             ),
                                                             'if not set': _p_change_context(
                                                                 $['if not set'],
-                                                                ($) => Expression(
+                                                                ($) => Assign(
                                                                     $,
                                                                 ),
                                                             ),
                                                             'if set': _p_change_context(
                                                                 $['if set'],
-                                                                ($) => Expression(
+                                                                ($) => Assign(
                                                                     $,
                                                                 ),
                                                             ),
@@ -565,12 +535,6 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     return _p.ss(
                                                         $,
                                                         ($) => ['state', {
-                                                            'source': _p_change_context(
-                                                                $['source'],
-                                                                ($) => Value_Selection(
-                                                                    $,
-                                                                ),
-                                                            ),
                                                             'temp resulting node': _p_change_context(
                                                                 $['temp resulting node'],
                                                                 ($) => _p.optional.map(
@@ -590,7 +554,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                     },
                                                                     'l state': _p.decide.state(
                                                                         $,
-                                                                        ($): t_out.Expression.l_state.decide.type_.l_state.state.type_.l_state => {
+                                                                        ($): t_out.Assign.l_state.decide.type_.l_state.state.type_.l_state => {
                                                                             switch ($[0]) {
                                                                                 case 'partial':
                                                                                     return _p.ss(
@@ -607,7 +571,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                     'l dictionary': _p.dictionary.map(
                                                                                                         $,
                                                                                                         ($, id) => ({
-                                                                                                            'l entry': Expression(
+                                                                                                            'l entry': Assign(
                                                                                                                 $,
                                                                                                             ),
                                                                                                             'l location': {
@@ -621,7 +585,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                             ),
                                                                                             'default': _p_change_context(
                                                                                                 $['default'],
-                                                                                                ($) => Expression(
+                                                                                                ($) => Assign(
                                                                                                     $,
                                                                                                 ),
                                                                                             ),
@@ -642,7 +606,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                     'l dictionary': _p.dictionary.map(
                                                                                                         $,
                                                                                                         ($, id) => ({
-                                                                                                            'l entry': Expression(
+                                                                                                            'l entry': Assign(
                                                                                                                 $,
                                                                                                             ),
                                                                                                             'l location': {
@@ -666,13 +630,13 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                             ),
                                                                                             'if true': _p_change_context(
                                                                                                 $['if true'],
-                                                                                                ($) => Expression(
+                                                                                                ($) => Assign(
                                                                                                     $,
                                                                                                 ),
                                                                                             ),
                                                                                             'if false': _p_change_context(
                                                                                                 $['if false'],
-                                                                                                ($) => Expression(
+                                                                                                ($) => Assign(
                                                                                                     $,
                                                                                                 ),
                                                                                             ),
@@ -693,12 +657,6 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     return _p.ss(
                                                         $,
                                                         ($) => ['text', {
-                                                            'source': _p_change_context(
-                                                                $['source'],
-                                                                ($) => Value_Selection(
-                                                                    $,
-                                                                ),
-                                                            ),
                                                             'temp resulting node': _p_change_context(
                                                                 $['temp resulting node'],
                                                                 ($) => _p.optional.map(
@@ -719,7 +677,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                     'l dictionary': _p.dictionary.map(
                                                                         $,
                                                                         ($, id) => ({
-                                                                            'l entry': Expression(
+                                                                            'l entry': Assign(
                                                                                 $,
                                                                             ),
                                                                             'l location': {
@@ -733,7 +691,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                             ),
                                                             'default': _p_change_context(
                                                                 $['default'],
-                                                                ($) => Expression(
+                                                                ($) => Assign(
                                                                     $,
                                                                 ),
                                                             ),
@@ -761,7 +719,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                             },
                             'l state': _p.decide.state(
                                 $,
-                                ($): t_out.Expression.l_state.construct.l_state => {
+                                ($): t_out.Assign.l_state.construct.l_state => {
                                     switch ($[0]) {
                                         case 'boolean':
                                             return _p.ss(
@@ -774,7 +732,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_state.construct.l_state.boolean_.l_state => {
+                                                        ($): t_out.Assign.l_state.construct.l_state.boolean_.l_state => {
                                                             switch ($[0]) {
                                                                 case 'literal':
                                                                     return _p.ss(
@@ -787,7 +745,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             },
                                                                             'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.l_state.construct.l_state.boolean_.l_state.literal.l_state => {
+                                                                                ($): t_out.Assign.l_state.construct.l_state.boolean_.l_state.literal.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'false':
                                                                                             return _p.ss(
@@ -808,13 +766,13 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             ),
                                                                         }],
                                                                     )
-                                                                case 'source':
+                                                                case 'from':
                                                                     return _p.ss(
                                                                         $,
-                                                                        ($) => ['source', {
+                                                                        ($) => ['from', {
                                                                             'selection': _p_change_context(
                                                                                 $['selection'],
-                                                                                ($) => Value_Selection(
+                                                                                ($) => Select_Value(
                                                                                     $,
                                                                                 ),
                                                                             ),
@@ -828,7 +786,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                     },
                                                                                     'l state': _p.decide.state(
                                                                                         $,
-                                                                                        ($): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state => {
+                                                                                        ($): t_out.Assign.l_state.construct.l_state.boolean_.l_state.from_.type_.l_state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'boolean':
                                                                                                     return _p.ss(
@@ -841,7 +799,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
-                                                                                                                ($): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state.boolean_.l_state => {
+                                                                                                                ($): t_out.Assign.l_state.construct.l_state.boolean_.l_state.from_.type_.l_state.boolean_.l_state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'not':
                                                                                                                             return _p.ss(
@@ -873,14 +831,12 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
-                                                                                                                ($): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state.dictionary.l_state => {
+                                                                                                                ($): t_out.Assign.l_state.construct.l_state.boolean_.l_state.from_.type_.l_state.dictionary.l_state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'is empty':
                                                                                                                             return _p.ss(
                                                                                                                                 $,
-                                                                                                                                ($) => ['is empty', Value_Selection(
-                                                                                                                                    $,
-                                                                                                                                )],
+                                                                                                                                ($) => ['is empty', null],
                                                                                                                             )
                                                                                                                         default:
                                                                                                                             return _p.au(
@@ -902,14 +858,12 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
-                                                                                                                ($): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state.list.l_state => {
+                                                                                                                ($): t_out.Assign.l_state.construct.l_state.boolean_.l_state.from_.type_.l_state.list.l_state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'is empty':
                                                                                                                             return _p.ss(
                                                                                                                                 $,
-                                                                                                                                ($) => ['is empty', Value_Selection(
-                                                                                                                                    $,
-                                                                                                                                )],
+                                                                                                                                ($) => ['is empty', null],
                                                                                                                             )
                                                                                                                         default:
                                                                                                                             return _p.au(
@@ -951,7 +905,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_state.construct.l_state.dictionary.l_state => {
+                                                        ($): t_out.Assign.l_state.construct.l_state.dictionary.l_state => {
                                                             switch ($[0]) {
                                                                 case 'literal':
                                                                     return _p.ss(
@@ -965,7 +919,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             'l dictionary': _p.dictionary.map(
                                                                                 $,
                                                                                 ($, id) => ({
-                                                                                    'l entry': Expression(
+                                                                                    'l entry': Assign(
                                                                                         $,
                                                                                     ),
                                                                                     'l location': {
@@ -977,13 +931,13 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             ),
                                                                         }],
                                                                     )
-                                                                case 'source':
+                                                                case 'from':
                                                                     return _p.ss(
                                                                         $,
-                                                                        ($) => ['source', {
+                                                                        ($) => ['from', {
                                                                             'selection': _p_change_context(
                                                                                 $['selection'],
-                                                                                ($) => Value_Selection(
+                                                                                ($) => Select_Value(
                                                                                     $,
                                                                                 ),
                                                                             ),
@@ -997,7 +951,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                     },
                                                                                     'l state': _p.decide.state(
                                                                                         $,
-                                                                                        ($): t_out.Expression.l_state.construct.l_state.dictionary.l_state.source.type_.l_state => {
+                                                                                        ($): t_out.Assign.l_state.construct.l_state.dictionary.l_state.from_.type_.l_state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'dictionary':
                                                                                                     return _p.ss(
@@ -1010,7 +964,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
-                                                                                                                ($): t_out.Expression.l_state.construct.l_state.dictionary.l_state.source.type_.l_state.dictionary.l_state => {
+                                                                                                                ($): t_out.Assign.l_state.construct.l_state.dictionary.l_state.from_.type_.l_state.dictionary.l_state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'filter':
                                                                                                                             return _p.ss(
@@ -1018,7 +972,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                                                 ($) => ['filter', {
                                                                                                                                     'assign entry': _p_change_context(
                                                                                                                                         $['assign entry'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
@@ -1030,7 +984,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                                                 ($) => ['map', {
                                                                                                                                     'assign entry': _p_change_context(
                                                                                                                                         $['assign entry'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
@@ -1042,7 +996,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                                                 ($) => ['resolve', {
                                                                                                                                     'assign entry': _p_change_context(
                                                                                                                                         $['assign entry'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
@@ -1074,7 +1028,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
-                                                                                                                ($): t_out.Expression.l_state.construct.l_state.dictionary.l_state.source.type_.l_state.list.l_state => {
+                                                                                                                ($): t_out.Assign.l_state.construct.l_state.dictionary.l_state.from_.type_.l_state.list.l_state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'convert':
                                                                                                                             return _p.ss(
@@ -1082,19 +1036,19 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                                                 ($) => ['convert', {
                                                                                                                                     'assign id': _p_change_context(
                                                                                                                                         $['assign id'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
                                                                                                                                     'assign entry': _p_change_context(
                                                                                                                                         $['assign entry'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
                                                                                                                                     'abort': _p_change_context(
                                                                                                                                         $['abort'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
@@ -1140,7 +1094,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_state.construct.l_state.group.l_state => {
+                                                        ($): t_out.Assign.l_state.construct.l_state.group.l_state => {
                                                             switch ($[0]) {
                                                                 case 'literal':
                                                                     return _p.ss(
@@ -1157,7 +1111,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                     'l dictionary': _p.dictionary.map(
                                                                                         $,
                                                                                         ($, id) => ({
-                                                                                            'l entry': Expression(
+                                                                                            'l entry': Assign(
                                                                                                 $,
                                                                                             ),
                                                                                             'l location': {
@@ -1195,7 +1149,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_state.construct.l_state.list.l_state => {
+                                                        ($): t_out.Assign.l_state.construct.l_state.list.l_state => {
                                                             switch ($[0]) {
                                                                 case 'literal':
                                                                     return _p.ss(
@@ -1209,7 +1163,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             'l list': _p.list.map(
                                                                                 $,
                                                                                 ($) => ({
-                                                                                    'l item': Expression(
+                                                                                    'l item': Assign(
                                                                                         $,
                                                                                     ),
                                                                                     'l location': {
@@ -1221,13 +1175,13 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             ),
                                                                         }],
                                                                     )
-                                                                case 'source':
+                                                                case 'from':
                                                                     return _p.ss(
                                                                         $,
-                                                                        ($) => ['source', {
+                                                                        ($) => ['from', {
                                                                             'selection': _p_change_context(
                                                                                 $['selection'],
-                                                                                ($) => Value_Selection(
+                                                                                ($) => Select_Value(
                                                                                     $,
                                                                                 ),
                                                                             ),
@@ -1241,7 +1195,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                     },
                                                                                     'l state': _p.decide.state(
                                                                                         $,
-                                                                                        ($): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state => {
+                                                                                        ($): t_out.Assign.l_state.construct.l_state.list.l_state.from_.type_.l_state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'dictionary':
                                                                                                     return _p.ss(
@@ -1254,7 +1208,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
-                                                                                                                ($): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state.dictionary.l_state => {
+                                                                                                                ($): t_out.Assign.l_state.construct.l_state.list.l_state.from_.type_.l_state.dictionary.l_state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'convert':
                                                                                                                             return _p.ss(
@@ -1262,34 +1216,12 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                                                 ($) => ['convert', {
                                                                                                                                     'assign entry': _p_change_context(
                                                                                                                                         $['assign entry'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
                                                                                                                                 }],
                                                                                                                             )
-                                                                                                                        default:
-                                                                                                                            return _p.au(
-                                                                                                                                $[0],
-                                                                                                                            )
-                                                                                                                    }
-                                                                                                                },
-                                                                                                            ),
-                                                                                                        }],
-                                                                                                    )
-                                                                                                case 'group':
-                                                                                                    return _p.ss(
-                                                                                                        $,
-                                                                                                        ($) => ['group', {
-                                                                                                            'l location': {
-                                                                                                                'document resource identifier': "implement me",
-                                                                                                                'line': 42,
-                                                                                                                'column': 42,
-                                                                                                            },
-                                                                                                            'l state': _p.decide.state(
-                                                                                                                $,
-                                                                                                                ($): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state.group.l_state => {
-                                                                                                                    switch ($[0]) {
                                                                                                                         default:
                                                                                                                             return _p.au(
                                                                                                                                 $[0],
@@ -1310,7 +1242,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
-                                                                                                                ($): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state.list.l_state => {
+                                                                                                                ($): t_out.Assign.l_state.construct.l_state.list.l_state.from_.type_.l_state.list.l_state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'filter':
                                                                                                                             return _p.ss(
@@ -1318,7 +1250,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                                                 ($) => ['filter', {
                                                                                                                                     'assign item': _p_change_context(
                                                                                                                                         $['assign item'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
@@ -1330,7 +1262,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                                                 ($) => ['map', {
                                                                                                                                     'assign item': _p_change_context(
                                                                                                                                         $['assign item'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
@@ -1342,25 +1274,25 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                                                 ($) => ['map with state', {
                                                                                                                                     'initialize state': _p_change_context(
                                                                                                                                         $['initialize state'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
                                                                                                                                     'assign item': _p_change_context(
                                                                                                                                         $['assign item'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
                                                                                                                                     'update state': _p_change_context(
                                                                                                                                         $['update state'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
                                                                                                                                     'wrap up': _p_change_context(
                                                                                                                                         $['wrap up'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
@@ -1372,13 +1304,13 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                                                 ($) => ['reduce', {
                                                                                                                                     'initialize state': _p_change_context(
                                                                                                                                         $['initialize state'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
                                                                                                                                     'assign item': _p_change_context(
                                                                                                                                         $['assign item'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
@@ -1434,7 +1366,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_state.construct.l_state.number_.l_state => {
+                                                        ($): t_out.Assign.l_state.construct.l_state.number_.l_state => {
                                                             switch ($[0]) {
                                                                 case 'approximation':
                                                                     return _p.ss(
@@ -1447,7 +1379,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             },
                                                                             'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.l_state.construct.l_state.number_.l_state.approximation.l_state => {
+                                                                                ($): t_out.Assign.l_state.construct.l_state.number_.l_state.approximation.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'literal':
                                                                                             return _p.ss(
@@ -1457,7 +1389,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                         case 'copy':
                                                                                             return _p.ss(
                                                                                                 $,
-                                                                                                ($) => ['copy', Value_Selection(
+                                                                                                ($) => ['copy', Select_Value(
                                                                                                     $,
                                                                                                 )],
                                                                                             )
@@ -1481,12 +1413,12 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             },
                                                                             'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.l_state.construct.l_state.number_.l_state.integer.l_state => {
+                                                                                ($): t_out.Assign.l_state.construct.l_state.number_.l_state.integer.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'copy':
                                                                                             return _p.ss(
                                                                                                 $,
-                                                                                                ($) => ['copy', Value_Selection(
+                                                                                                ($) => ['copy', Select_Value(
                                                                                                     $,
                                                                                                 )],
                                                                                             )
@@ -1496,19 +1428,19 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                 ($) => ['divide', {
                                                                                                     'assign dividend': _p_change_context(
                                                                                                         $['assign dividend'],
-                                                                                                        ($) => Value_Selection(
+                                                                                                        ($) => Select_Value(
                                                                                                             $,
                                                                                                         ),
                                                                                                     ),
                                                                                                     'assign divisor': _p_change_context(
                                                                                                         $['assign divisor'],
-                                                                                                        ($) => Value_Selection(
+                                                                                                        ($) => Select_Value(
                                                                                                             $,
                                                                                                         ),
                                                                                                     ),
                                                                                                     'abort': _p_change_context(
                                                                                                         $['abort'],
-                                                                                                        ($) => Expression(
+                                                                                                        ($) => Assign(
                                                                                                             $,
                                                                                                         ),
                                                                                                     ),
@@ -1539,7 +1471,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             },
                                                                             'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.l_state.construct.l_state.number_.l_state.natural.l_state => {
+                                                                                ($): t_out.Assign.l_state.construct.l_state.number_.l_state.natural.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'literal':
                                                                                             return _p.ss(
@@ -1549,7 +1481,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                         case 'copy':
                                                                                             return _p.ss(
                                                                                                 $,
-                                                                                                ($) => ['copy', Value_Selection(
+                                                                                                ($) => ['copy', Select_Value(
                                                                                                     $,
                                                                                                 )],
                                                                                             )
@@ -1559,7 +1491,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                 ($) => ['number of dictionary entries', {
                                                                                                     'dictionary': _p_change_context(
                                                                                                         $['dictionary'],
-                                                                                                        ($) => Value_Selection(
+                                                                                                        ($) => Select_Value(
                                                                                                             $,
                                                                                                         ),
                                                                                                     ),
@@ -1571,7 +1503,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                 ($) => ['number of list items', {
                                                                                                     'list': _p_change_context(
                                                                                                         $['list'],
-                                                                                                        ($) => Value_Selection(
+                                                                                                        ($) => Select_Value(
                                                                                                             $,
                                                                                                         ),
                                                                                                     ),
@@ -1616,7 +1548,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_state.construct.l_state.optional.l_state => {
+                                                        ($): t_out.Assign.l_state.construct.l_state.optional.l_state => {
                                                             switch ($[0]) {
                                                                 case 'literal':
                                                                     return _p.ss(
@@ -1629,7 +1561,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             },
                                                                             'l state': _p.decide.state(
                                                                                 $,
-                                                                                ($): t_out.Expression.l_state.construct.l_state.optional.l_state.literal.l_state => {
+                                                                                ($): t_out.Assign.l_state.construct.l_state.optional.l_state.literal.l_state => {
                                                                                     switch ($[0]) {
                                                                                         case 'not set':
                                                                                             return _p.ss(
@@ -1639,7 +1571,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                         case 'set':
                                                                                             return _p.ss(
                                                                                                 $,
-                                                                                                ($) => ['set', Expression(
+                                                                                                ($) => ['set', Assign(
                                                                                                     $,
                                                                                                 )],
                                                                                             )
@@ -1652,13 +1584,13 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             ),
                                                                         }],
                                                                     )
-                                                                case 'source':
+                                                                case 'from':
                                                                     return _p.ss(
                                                                         $,
-                                                                        ($) => ['source', {
+                                                                        ($) => ['from', {
                                                                             'selection': _p_change_context(
                                                                                 $['selection'],
-                                                                                ($) => Value_Selection(
+                                                                                ($) => Select_Value(
                                                                                     $,
                                                                                 ),
                                                                             ),
@@ -1672,7 +1604,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                     },
                                                                                     'l state': _p.decide.state(
                                                                                         $,
-                                                                                        ($): t_out.Expression.l_state.construct.l_state.optional.l_state.source.type_.l_state => {
+                                                                                        ($): t_out.Assign.l_state.construct.l_state.optional.l_state.from_.type_.l_state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'boolean':
                                                                                                     return _p.ss(
@@ -1685,7 +1617,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
-                                                                                                                ($): t_out.Expression.l_state.construct.l_state.optional.l_state.source.type_.l_state.boolean_.l_state => {
+                                                                                                                ($): t_out.Assign.l_state.construct.l_state.optional.l_state.from_.type_.l_state.boolean_.l_state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'convert':
                                                                                                                             return _p.ss(
@@ -1693,7 +1625,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                                                 ($) => ['convert', {
                                                                                                                                     'assign set': _p_change_context(
                                                                                                                                         $['assign set'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
@@ -1719,7 +1651,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
-                                                                                                                ($): t_out.Expression.l_state.construct.l_state.optional.l_state.source.type_.l_state.optional.l_state => {
+                                                                                                                ($): t_out.Assign.l_state.construct.l_state.optional.l_state.from_.type_.l_state.optional.l_state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'map':
                                                                                                                             return _p.ss(
@@ -1727,7 +1659,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                                                 ($) => ['map', {
                                                                                                                                     'assign set': _p_change_context(
                                                                                                                                         $['assign set'],
-                                                                                                                                        ($) => Expression(
+                                                                                                                                        ($) => Assign(
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                     ),
@@ -1773,7 +1705,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_state.construct.l_state.state.l_state => {
+                                                        ($): t_out.Assign.l_state.construct.l_state.state.l_state => {
                                                             switch ($[0]) {
                                                                 case 'literal':
                                                                     return _p.ss(
@@ -1785,7 +1717,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             ),
                                                                             'assign option': _p_change_context(
                                                                                 $['assign option'],
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                 ),
                                                                             ),
@@ -1811,7 +1743,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
-                                                        ($): t_out.Expression.l_state.construct.l_state.text.l_state => {
+                                                        ($): t_out.Assign.l_state.construct.l_state.text.l_state => {
                                                             switch ($[0]) {
                                                                 case 'literal':
                                                                     return _p.ss(
@@ -1827,7 +1759,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                     },
                                                                                     'l state': _p.decide.state(
                                                                                         $,
-                                                                                        ($): t_out.Expression.l_state.construct.l_state.text.l_state.literal.type_.l_state => {
+                                                                                        ($): t_out.Assign.l_state.construct.l_state.text.l_state.literal.type_.l_state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'identifier':
                                                                                                     return _p.ss(
@@ -1854,13 +1786,13 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                             ),
                                                                         }],
                                                                     )
-                                                                case 'source':
+                                                                case 'from':
                                                                     return _p.ss(
                                                                         $,
-                                                                        ($) => ['source', {
+                                                                        ($) => ['from', {
                                                                             'selection': _p_change_context(
                                                                                 $['selection'],
-                                                                                ($) => Value_Selection(
+                                                                                ($) => Select_Value(
                                                                                     $,
                                                                                 ),
                                                                             ),
@@ -1874,7 +1806,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                     },
                                                                                     'l state': _p.decide.state(
                                                                                         $,
-                                                                                        ($): t_out.Expression.l_state.construct.l_state.text.l_state.source.type_.l_state => {
+                                                                                        ($): t_out.Assign.l_state.construct.l_state.text.l_state.from_.type_.l_state => {
                                                                                             switch ($[0]) {
                                                                                                 case 'text':
                                                                                                     return _p.ss(
@@ -1887,7 +1819,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
-                                                                                                                ($): t_out.Expression.l_state.construct.l_state.text.l_state.source.type_.l_state.text.l_state => {
+                                                                                                                ($): t_out.Assign.l_state.construct.l_state.text.l_state.from_.type_.l_state.text.l_state => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'copy':
                                                                                                                             return _p.ss(
@@ -1940,7 +1872,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                 case 'select':
                     return _p.ss(
                         $,
-                        ($) => ['select', Value_Selection(
+                        ($) => ['select', Select_Value(
                             $,
                         )],
                     )
@@ -1955,12 +1887,12 @@ export const Expression: t_signatures.Expression = ($) => ({
                             },
                             'l state': _p.decide.state(
                                 $,
-                                ($): t_out.Expression.l_state.special.l_state => {
+                                ($): t_out.Assign.l_state.special.l_state => {
                                     switch ($[0]) {
                                         case 'abort':
                                             return _p.ss(
                                                 $,
-                                                ($) => ['abort', Expression(
+                                                ($) => ['abort', Assign(
                                                     $,
                                                 )],
                                             )
@@ -1970,13 +1902,13 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                 ($) => ['assert', {
                                                     'tester': _p_change_context(
                                                         $['tester'],
-                                                        ($) => Expression(
+                                                        ($) => Assign(
                                                             $,
                                                         ),
                                                     ),
                                                     'normal flow': _p_change_context(
                                                         $['normal flow'],
-                                                        ($) => Expression(
+                                                        ($) => Assign(
                                                             $,
                                                         ),
                                                     ),
@@ -1988,13 +1920,13 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                 ($) => ['change context', {
                                                     'new context': _p_change_context(
                                                         $['new context'],
-                                                        ($) => Value_Selection(
+                                                        ($) => Select_Value(
                                                             $,
                                                         ),
                                                     ),
                                                     'expression': _p_change_context(
                                                         $['expression'],
-                                                        ($) => Expression(
+                                                        ($) => Assign(
                                                             $,
                                                         ),
                                                     ),
@@ -2015,7 +1947,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                             'l dictionary': _p.dictionary.map(
                                                                 $,
                                                                 ($, id) => ({
-                                                                    'l entry': Expression(
+                                                                    'l entry': Assign(
                                                                         $,
                                                                     ),
                                                                     'l location': {
@@ -2029,7 +1961,7 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                     ),
                                                     'assign': _p_change_context(
                                                         $['assign'],
-                                                        ($) => Expression(
+                                                        ($) => Assign(
                                                             $,
                                                         ),
                                                     ),
@@ -2046,13 +1978,13 @@ export const Expression: t_signatures.Expression = ($) => ({
                                                 ($) => ['iterate', {
                                                     'list': _p_change_context(
                                                         $['list'],
-                                                        ($) => Value_Selection(
+                                                        ($) => Select_Value(
                                                             $,
                                                         ),
                                                     ),
                                                     'assign': _p_change_context(
                                                         $['assign'],
-                                                        ($) => Expression(
+                                                        ($) => Assign(
                                                             $,
                                                         ),
                                                     ),
@@ -2086,7 +2018,7 @@ export const Expression: t_signatures.Expression = ($) => ({
     ),
 })
 
-export const Value_Selection: t_signatures.Value_Selection = ($) => ({
+export const Select_Value: t_signatures.Select_Value = ($) => ({
     'l location': {
         'document resource identifier': "implement me",
         'line': 42,
@@ -2094,7 +2026,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
     },
     'l state': _p.decide.state(
         $,
-        ($): t_out.Value_Selection.l_state => {
+        ($): t_out.Select_Value.l_state => {
             switch ($[0]) {
                 case 'implement me':
                     return _p.ss(
@@ -2115,7 +2047,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                     },
                                     'l state': _p.decide.state(
                                         $,
-                                        ($): t_out.Value_Selection.l_state.regular.start.l_state => {
+                                        ($): t_out.Select_Value.l_state.regular.start.l_state => {
                                             switch ($[0]) {
                                                 case 'call':
                                                     return _p.ss(
@@ -2131,7 +2063,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                                     },
                                                                     'l state': _p.decide.state(
                                                                         $,
-                                                                        ($): t_out.Value_Selection.l_state.regular.start.l_state.call.source.l_state => {
+                                                                        ($): t_out.Select_Value.l_state.regular.start.l_state.call.source.l_state => {
                                                                             switch ($[0]) {
                                                                                 case 'local':
                                                                                     return _p.ss(
@@ -2163,7 +2095,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                             ),
                                                             'context': _p_change_context(
                                                                 $['context'],
-                                                                ($) => Expression(
+                                                                ($) => Assign(
                                                                     $,
                                                                 ),
                                                             ),
@@ -2171,7 +2103,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                                 $['abort'],
                                                                 ($) => _p.optional.map(
                                                                     $,
-                                                                    ($) => Expression(
+                                                                    ($) => Assign(
                                                                         $,
                                                                     ),
                                                                 ),
@@ -2188,7 +2120,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                                         },
                                                                         'l state': _p.decide.state(
                                                                             $,
-                                                                            ($): t_out.Value_Selection.l_state.regular.start.l_state.call.lookups.O.l_state => {
+                                                                            ($): t_out.Select_Value.l_state.regular.start.l_state.call.lookups.O.l_state => {
                                                                                 switch ($[0]) {
                                                                                     case 'initialize':
                                                                                         return _p.ss(
@@ -2202,7 +2134,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                                                                 'l dictionary': _p.dictionary.map(
                                                                                                     $,
                                                                                                     ($, id) => ({
-                                                                                                        'l entry': Lookup_Selection(
+                                                                                                        'l entry': Select_Lookup(
                                                                                                             $,
                                                                                                         ),
                                                                                                         'l location': {
@@ -2241,7 +2173,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                                         },
                                                                         'l state': _p.decide.state(
                                                                             $,
-                                                                            ($): t_out.Value_Selection.l_state.regular.start.l_state.call.arguments_.O.l_state => {
+                                                                            ($): t_out.Select_Value.l_state.regular.start.l_state.call.arguments_.O.l_state => {
                                                                                 switch ($[0]) {
                                                                                     case 'initialize':
                                                                                         return _p.ss(
@@ -2255,7 +2187,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                                                                 'l dictionary': _p.dictionary.map(
                                                                                                     $,
                                                                                                     ($, id) => ({
-                                                                                                        'l entry': Expression(
+                                                                                                        'l entry': Assign(
                                                                                                             $,
                                                                                                         ),
                                                                                                         'l location': {
@@ -2295,19 +2227,19 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                         ($) => ['dictionary entry', {
                                                             'dictionary': _p_change_context(
                                                                 $['dictionary'],
-                                                                ($) => Value_Selection(
+                                                                ($) => Select_Value(
                                                                     $,
                                                                 ),
                                                             ),
                                                             'id': _p_change_context(
                                                                 $['id'],
-                                                                ($) => Expression(
+                                                                ($) => Assign(
                                                                     $,
                                                                 ),
                                                             ),
                                                             'abort handler': _p_change_context(
                                                                 $['abort handler'],
-                                                                ($) => Expression(
+                                                                ($) => Assign(
                                                                     $,
                                                                 ),
                                                             ),
@@ -2319,13 +2251,13 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                         ($) => ['list from text', {
                                                             'source': _p_change_context(
                                                                 $['source'],
-                                                                ($) => Expression(
+                                                                ($) => Select_Value(
                                                                     $,
                                                                 ),
                                                             ),
                                                             'assign item': _p_change_context(
                                                                 $['assign item'],
-                                                                ($) => Expression(
+                                                                ($) => Assign(
                                                                     $,
                                                                 ),
                                                             ),
@@ -2337,13 +2269,13 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                         ($) => ['lookup entry', {
                                                             'lookup': _p_change_context(
                                                                 $['lookup'],
-                                                                ($) => Lookup_Selection(
+                                                                ($) => Select_Lookup(
                                                                     $,
                                                                 ),
                                                             ),
                                                             'id': _p_change_context(
                                                                 $['id'],
-                                                                ($) => Expression(
+                                                                ($) => Assign(
                                                                     $,
                                                                 ),
                                                             ),
@@ -2352,19 +2284,19 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                                 ($) => ({
                                                                     'no such entry': _p_change_context(
                                                                         $['no such entry'],
-                                                                        ($) => Expression(
+                                                                        ($) => Assign(
                                                                             $,
                                                                         ),
                                                                     ),
                                                                     'no context lookup': _p_change_context(
                                                                         $['no context lookup'],
-                                                                        ($) => Expression(
+                                                                        ($) => Assign(
                                                                             $,
                                                                         ),
                                                                     ),
                                                                     'cycle detected': _p_change_context(
                                                                         $['cycle detected'],
-                                                                        ($) => Expression(
+                                                                        ($) => Assign(
                                                                             $,
                                                                         ),
                                                                     ),
@@ -2378,13 +2310,13 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                         ($) => ['lookup entry depth', {
                                                             'lookup': _p_change_context(
                                                                 $['lookup'],
-                                                                ($) => Lookup_Selection(
+                                                                ($) => Select_Lookup(
                                                                     $,
                                                                 ),
                                                             ),
                                                             'id': _p_change_context(
                                                                 $['id'],
-                                                                ($) => Expression(
+                                                                ($) => Assign(
                                                                     $,
                                                                 ),
                                                             ),
@@ -2393,19 +2325,19 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                                 ($) => ({
                                                                     'no such entry': _p_change_context(
                                                                         $['no such entry'],
-                                                                        ($) => Expression(
+                                                                        ($) => Assign(
                                                                             $,
                                                                         ),
                                                                     ),
                                                                     'no context lookup': _p_change_context(
                                                                         $['no context lookup'],
-                                                                        ($) => Expression(
+                                                                        ($) => Assign(
                                                                             $,
                                                                         ),
                                                                     ),
                                                                     'cycle detected': _p_change_context(
                                                                         $['cycle detected'],
-                                                                        ($) => Expression(
+                                                                        ($) => Assign(
                                                                             $,
                                                                         ),
                                                                     ),
@@ -2439,13 +2371,13 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
                                                         ($) => ['text from list', {
                                                             'source': _p_change_context(
                                                                 $['source'],
-                                                                ($) => Expression(
+                                                                ($) => Select_Value(
                                                                     $,
                                                                 ),
                                                             ),
                                                             'assign character': _p_change_context(
                                                                 $['assign character'],
-                                                                ($) => Expression(
+                                                                ($) => Assign(
                                                                     $,
                                                                 ),
                                                             ),
@@ -2497,7 +2429,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($) => ({
     ),
 })
 
-export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => ({
+export const Select_Lookup: t_signatures.Select_Lookup = ($) => ({
     'l location': {
         'document resource identifier': "implement me",
         'line': 42,
@@ -2505,7 +2437,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => ({
     },
     'l state': _p.decide.state(
         $,
-        ($): t_out.Lookup_Selection.l_state => {
+        ($): t_out.Select_Lookup.l_state => {
             switch ($[0]) {
                 case 'implement me':
                     return _p.ss(
@@ -2528,7 +2460,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => ({
                             },
                             'l state': _p.decide.state(
                                 $,
-                                ($): t_out.Lookup_Selection.l_state.stack.l_state => {
+                                ($): t_out.Select_Lookup.l_state.stack.l_state => {
                                     switch ($[0]) {
                                         case 'empty':
                                             return _p.ss(
@@ -2541,13 +2473,13 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => ({
                                                 ($) => ['push', {
                                                     'stack': _p_change_context(
                                                         $['stack'],
-                                                        ($) => Lookup_Selection(
+                                                        ($) => Select_Lookup(
                                                             $,
                                                         ),
                                                     ),
                                                     'acyclic': _p_change_context(
                                                         $['acyclic'],
-                                                        ($) => Lookup_Selection(
+                                                        ($) => Select_Lookup(
                                                             $,
                                                         ),
                                                     ),
@@ -2573,7 +2505,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => ({
                             },
                             'l state': _p.decide.state(
                                 $,
-                                ($): t_out.Lookup_Selection.l_state.acyclic.l_state => {
+                                ($): t_out.Select_Lookup.l_state.acyclic.l_state => {
                                     switch ($[0]) {
                                         case 'not set':
                                             return _p.ss(
@@ -2588,7 +2520,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => ({
                                         case 'resolved dictionary':
                                             return _p.ss(
                                                 $,
-                                                ($) => ['resolved dictionary', Value_Selection(
+                                                ($) => ['resolved dictionary', Select_Value(
                                                     $,
                                                 )],
                                             )
@@ -2612,7 +2544,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => ({
                             },
                             'l state': _p.decide.state(
                                 $,
-                                ($): t_out.Lookup_Selection.l_state.cyclic.l_state => {
+                                ($): t_out.Select_Lookup.l_state.cyclic.l_state => {
                                     switch ($[0]) {
                                         case 'not set':
                                             return _p.ss(

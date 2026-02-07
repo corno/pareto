@@ -257,7 +257,7 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.reso
                             
                             const prop_expression = _p_change_context(
                                 $['expression'],
-                                ($) => Expression(
+                                ($) => Assign(
                                     $,
                                     ($) => abort(
                                         $,
@@ -385,19 +385,31 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
     },
 )
 
-export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_variables(
+export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
     () => {
         
         const var_location = $['l location']
         return _p.decide.state(
             $['l state'],
-            ($): t_out.Expression => {
+            ($): t_out.Assign => {
                 switch ($[0]) {
                     case 'decide':
                         return _p.ss(
                             $,
                             ($) => ['decide', _p.group.resolve(
                                 () => {
+                                    
+                                    const prop_source = _p_change_context(
+                                        $['source'],
+                                        ($) => Select_Value(
+                                            $,
+                                            ($) => abort(
+                                                $,
+                                            ),
+                                            null,
+                                            null,
+                                        ),
+                                    )
                                     
                                     const prop_type = _p_change_context(
                                         $['type'],
@@ -407,25 +419,13 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                 const var_location = $['l location']
                                                 return _p.decide.state(
                                                     $['l state'],
-                                                    ($): t_out.Expression.decide.type_ => {
+                                                    ($): t_out.Assign.decide.type_ => {
                                                         switch ($[0]) {
                                                             case 'boolean':
                                                                 return _p.ss(
                                                                     $,
                                                                     ($) => ['boolean', _p.group.resolve(
                                                                         () => {
-                                                                            
-                                                                            const prop_source = _p_change_context(
-                                                                                $['source'],
-                                                                                ($) => Value_Selection(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $,
-                                                                                    ),
-                                                                                    null,
-                                                                                    null,
-                                                                                ),
-                                                                            )
                                                                             
                                                                             const prop_temp_resulting_node = _p_change_context(
                                                                                 $['temp resulting node'],
@@ -444,7 +444,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                             
                                                                             const prop_if_false = _p_change_context(
                                                                                 $['if false'],
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -456,7 +456,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                             
                                                                             const prop_if_true = _p_change_context(
                                                                                 $['if true'],
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -466,7 +466,6 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                 ),
                                                                             )
                                                                             return {
-                                                                                'source': prop_source,
                                                                                 'temp resulting node': prop_temp_resulting_node,
                                                                                 'if false': prop_if_false,
                                                                                 'if true': prop_if_true,
@@ -483,7 +482,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                             const var_location = $['l location']
                                                                             return _p.decide.state(
                                                                                 $['l state'],
-                                                                                ($): t_out.Expression.decide.type_.dictionary => {
+                                                                                ($): t_out.Assign.decide.type_.dictionary => {
                                                                                     switch ($[0]) {
                                                                                         case 'has entries':
                                                                                             return _p.ss(
@@ -491,21 +490,9 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                 ($) => ['has entries', _p.group.resolve(
                                                                                                     () => {
                                                                                                         
-                                                                                                        const prop_dictionary = _p_change_context(
-                                                                                                            $['dictionary'],
-                                                                                                            ($) => Value_Selection(
-                                                                                                                $,
-                                                                                                                ($) => abort(
-                                                                                                                    $,
-                                                                                                                ),
-                                                                                                                null,
-                                                                                                                null,
-                                                                                                            ),
-                                                                                                        )
-                                                                                                        
                                                                                                         const prop_if_false = _p_change_context(
                                                                                                             $['if false'],
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -517,7 +504,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                         
                                                                                                         const prop_if_true = _p_change_context(
                                                                                                             $['if true'],
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -527,7 +514,6 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                             ),
                                                                                                         )
                                                                                                         return {
-                                                                                                            'dictionary': prop_dictionary,
                                                                                                             'if false': prop_if_false,
                                                                                                             'if true': prop_if_true,
                                                                                                         }
@@ -553,7 +539,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                             const var_location = $['l location']
                                                                             return _p.decide.state(
                                                                                 $['l state'],
-                                                                                ($): t_out.Expression.decide.type_.list => {
+                                                                                ($): t_out.Assign.decide.type_.list => {
                                                                                     switch ($[0]) {
                                                                                         case 'has first item':
                                                                                             return _p.ss(
@@ -561,21 +547,9 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                 ($) => ['has first item', _p.group.resolve(
                                                                                                     () => {
                                                                                                         
-                                                                                                        const prop_list = _p_change_context(
-                                                                                                            $['list'],
-                                                                                                            ($) => Value_Selection(
-                                                                                                                $,
-                                                                                                                ($) => abort(
-                                                                                                                    $,
-                                                                                                                ),
-                                                                                                                null,
-                                                                                                                null,
-                                                                                                            ),
-                                                                                                        )
-                                                                                                        
                                                                                                         const prop_if_false = _p_change_context(
                                                                                                             $['if false'],
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -587,7 +561,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                         
                                                                                                         const prop_if_true = _p_change_context(
                                                                                                             $['if true'],
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -597,7 +571,6 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                             ),
                                                                                                         )
                                                                                                         return {
-                                                                                                            'list': prop_list,
                                                                                                             'if false': prop_if_false,
                                                                                                             'if true': prop_if_true,
                                                                                                         }
@@ -610,21 +583,9 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                 ($) => ['has last item', _p.group.resolve(
                                                                                                     () => {
                                                                                                         
-                                                                                                        const prop_list = _p_change_context(
-                                                                                                            $['list'],
-                                                                                                            ($) => Value_Selection(
-                                                                                                                $,
-                                                                                                                ($) => abort(
-                                                                                                                    $,
-                                                                                                                ),
-                                                                                                                null,
-                                                                                                                null,
-                                                                                                            ),
-                                                                                                        )
-                                                                                                        
                                                                                                         const prop_if_false = _p_change_context(
                                                                                                             $['if false'],
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -636,7 +597,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                         
                                                                                                         const prop_if_true = _p_change_context(
                                                                                                             $['if true'],
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -646,7 +607,6 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                             ),
                                                                                                         )
                                                                                                         return {
-                                                                                                            'list': prop_list,
                                                                                                             'if false': prop_if_false,
                                                                                                             'if true': prop_if_true,
                                                                                                         }
@@ -659,21 +619,9 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                 ($) => ['has items', _p.group.resolve(
                                                                                                     () => {
                                                                                                         
-                                                                                                        const prop_list = _p_change_context(
-                                                                                                            $['list'],
-                                                                                                            ($) => Value_Selection(
-                                                                                                                $,
-                                                                                                                ($) => abort(
-                                                                                                                    $,
-                                                                                                                ),
-                                                                                                                null,
-                                                                                                                null,
-                                                                                                            ),
-                                                                                                        )
-                                                                                                        
                                                                                                         const prop_if_false = _p_change_context(
                                                                                                             $['if false'],
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -685,7 +633,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                         
                                                                                                         const prop_if_true = _p_change_context(
                                                                                                             $['if true'],
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -695,7 +643,6 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                             ),
                                                                                                         )
                                                                                                         return {
-                                                                                                            'list': prop_list,
                                                                                                             'if false': prop_if_false,
                                                                                                             'if true': prop_if_true,
                                                                                                         }
@@ -718,18 +665,6 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                     ($) => ['optional', _p.group.resolve(
                                                                         () => {
                                                                             
-                                                                            const prop_source = _p_change_context(
-                                                                                $['source'],
-                                                                                ($) => Value_Selection(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $,
-                                                                                    ),
-                                                                                    null,
-                                                                                    null,
-                                                                                ),
-                                                                            )
-                                                                            
                                                                             const prop_temp_resulting_node = _p_change_context(
                                                                                 $['temp resulting node'],
                                                                                 ($) => _p.optional.map(
@@ -747,7 +682,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                             
                                                                             const prop_if_not_set = _p_change_context(
                                                                                 $['if not set'],
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -759,7 +694,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                             
                                                                             const prop_if_set = _p_change_context(
                                                                                 $['if set'],
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -769,7 +704,6 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                 ),
                                                                             )
                                                                             return {
-                                                                                'source': prop_source,
                                                                                 'temp resulting node': prop_temp_resulting_node,
                                                                                 'if not set': prop_if_not_set,
                                                                                 'if set': prop_if_set,
@@ -782,18 +716,6 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                     $,
                                                                     ($) => ['state', _p.group.resolve(
                                                                         () => {
-                                                                            
-                                                                            const prop_source = _p_change_context(
-                                                                                $['source'],
-                                                                                ($) => Value_Selection(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $,
-                                                                                    ),
-                                                                                    null,
-                                                                                    null,
-                                                                                ),
-                                                                            )
                                                                             
                                                                             const prop_temp_resulting_node = _p_change_context(
                                                                                 $['temp resulting node'],
@@ -818,7 +740,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                         const var_location = $['l location']
                                                                                         return _p.decide.state(
                                                                                             $['l state'],
-                                                                                            ($): t_out.Expression.decide.type_.state.type_ => {
+                                                                                            ($): t_out.Assign.decide.type_.state.type_ => {
                                                                                                 switch ($[0]) {
                                                                                                     case 'partial':
                                                                                                         return _p.ss(
@@ -830,9 +752,9 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                         $['options'],
                                                                                                                         ($) => _p.dictionary.resolve(
                                                                                                                             $['l dictionary'],
-                                                                                                                            ($, id, $a, $c): t_out.Expression.decide.type_.state.type_.partial.options.D => _p_change_context(
+                                                                                                                            ($, id, $a, $c): t_out.Assign.decide.type_.state.type_.partial.options.D => _p_change_context(
                                                                                                                                 $['l entry'],
-                                                                                                                                ($) => Expression(
+                                                                                                                                ($) => Assign(
                                                                                                                                     $,
                                                                                                                                     ($) => abort(
                                                                                                                                         $,
@@ -846,7 +768,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                     
                                                                                                                     const prop_default = _p_change_context(
                                                                                                                         $['default'],
-                                                                                                                        ($) => Expression(
+                                                                                                                        ($) => Assign(
                                                                                                                             $,
                                                                                                                             ($) => abort(
                                                                                                                                 $,
@@ -872,9 +794,9 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                         $['options'],
                                                                                                                         ($) => _p.dictionary.resolve(
                                                                                                                             $['l dictionary'],
-                                                                                                                            ($, id, $a, $c): t_out.Expression.decide.type_.state.type_.full.options.D => _p_change_context(
+                                                                                                                            ($, id, $a, $c): t_out.Assign.decide.type_.state.type_.full.options.D => _p_change_context(
                                                                                                                                 $['l entry'],
-                                                                                                                                ($) => Expression(
+                                                                                                                                ($) => Assign(
                                                                                                                                     $,
                                                                                                                                     ($) => abort(
                                                                                                                                         $,
@@ -904,7 +826,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                     
                                                                                                                     const prop_if_true = _p_change_context(
                                                                                                                         $['if true'],
-                                                                                                                        ($) => Expression(
+                                                                                                                        ($) => Assign(
                                                                                                                             $,
                                                                                                                             ($) => abort(
                                                                                                                                 $,
@@ -916,7 +838,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                     
                                                                                                                     const prop_if_false = _p_change_context(
                                                                                                                         $['if false'],
-                                                                                                                        ($) => Expression(
+                                                                                                                        ($) => Assign(
                                                                                                                             $,
                                                                                                                             ($) => abort(
                                                                                                                                 $,
@@ -944,7 +866,6 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                 ),
                                                                             )
                                                                             return {
-                                                                                'source': prop_source,
                                                                                 'temp resulting node': prop_temp_resulting_node,
                                                                                 'type': prop_type,
                                                                             }
@@ -956,18 +877,6 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                     $,
                                                                     ($) => ['text', _p.group.resolve(
                                                                         () => {
-                                                                            
-                                                                            const prop_source = _p_change_context(
-                                                                                $['source'],
-                                                                                ($) => Value_Selection(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $,
-                                                                                    ),
-                                                                                    null,
-                                                                                    null,
-                                                                                ),
-                                                                            )
                                                                             
                                                                             const prop_temp_resulting_node = _p_change_context(
                                                                                 $['temp resulting node'],
@@ -988,9 +897,9 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                 $['cases'],
                                                                                 ($) => _p.dictionary.resolve(
                                                                                     $['l dictionary'],
-                                                                                    ($, id, $a, $c): t_out.Expression.decide.type_.text.cases.D => _p_change_context(
+                                                                                    ($, id, $a, $c): t_out.Assign.decide.type_.text.cases.D => _p_change_context(
                                                                                         $['l entry'],
-                                                                                        ($) => Expression(
+                                                                                        ($) => Assign(
                                                                                             $,
                                                                                             ($) => abort(
                                                                                                 $,
@@ -1004,7 +913,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                             
                                                                             const prop_default = _p_change_context(
                                                                                 $['default'],
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -1014,7 +923,6 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                 ),
                                                                             )
                                                                             return {
-                                                                                'source': prop_source,
                                                                                 'temp resulting node': prop_temp_resulting_node,
                                                                                 'cases': prop_cases,
                                                                                 'default': prop_default,
@@ -1033,6 +941,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                         ),
                                     )
                                     return {
+                                        'source': prop_source,
                                         'type': prop_type,
                                     }
                                 },
@@ -1047,7 +956,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                     const var_location = $['l location']
                                     return _p.decide.state(
                                         $['l state'],
-                                        ($): t_out.Expression.construct => {
+                                        ($): t_out.Assign.construct => {
                                             switch ($[0]) {
                                                 case 'boolean':
                                                     return _p.ss(
@@ -1058,7 +967,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 const var_location = $['l location']
                                                                 return _p.decide.state(
                                                                     $['l state'],
-                                                                    ($): t_out.Expression.construct.boolean_ => {
+                                                                    ($): t_out.Assign.construct.boolean_ => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
                                                                                 return _p.ss(
@@ -1069,7 +978,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                             const var_location = $['l location']
                                                                                             return _p.decide.state(
                                                                                                 $['l state'],
-                                                                                                ($): t_out.Expression.construct.boolean_.literal => {
+                                                                                                ($): t_out.Assign.construct.boolean_.literal => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'false':
                                                                                                             return _p.ss(
@@ -1091,15 +1000,15 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                         },
                                                                                     )],
                                                                                 )
-                                                                            case 'source':
+                                                                            case 'from':
                                                                                 return _p.ss(
                                                                                     $,
-                                                                                    ($) => ['source', _p.group.resolve(
+                                                                                    ($) => ['from', _p.group.resolve(
                                                                                         () => {
                                                                                             
                                                                                             const prop_selection = _p_change_context(
                                                                                                 $['selection'],
-                                                                                                ($) => Value_Selection(
+                                                                                                ($) => Select_Value(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -1117,7 +1026,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                         const var_location = $['l location']
                                                                                                         return _p.decide.state(
                                                                                                             $['l state'],
-                                                                                                            ($): t_out.Expression.construct.boolean_.source.type_ => {
+                                                                                                            ($): t_out.Assign.construct.boolean_.from_.type_ => {
                                                                                                                 switch ($[0]) {
                                                                                                                     case 'boolean':
                                                                                                                         return _p.ss(
@@ -1128,7 +1037,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                     const var_location = $['l location']
                                                                                                                                     return _p.decide.state(
                                                                                                                                         $['l state'],
-                                                                                                                                        ($): t_out.Expression.construct.boolean_.source.type_.boolean_ => {
+                                                                                                                                        ($): t_out.Assign.construct.boolean_.from_.type_.boolean_ => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'not':
                                                                                                                                                     return _p.ss(
@@ -1159,19 +1068,12 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                     const var_location = $['l location']
                                                                                                                                     return _p.decide.state(
                                                                                                                                         $['l state'],
-                                                                                                                                        ($): t_out.Expression.construct.boolean_.source.type_.dictionary => {
+                                                                                                                                        ($): t_out.Assign.construct.boolean_.from_.type_.dictionary => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'is empty':
                                                                                                                                                     return _p.ss(
                                                                                                                                                         $,
-                                                                                                                                                        ($) => ['is empty', Value_Selection(
-                                                                                                                                                            $,
-                                                                                                                                                            ($) => abort(
-                                                                                                                                                                $,
-                                                                                                                                                            ),
-                                                                                                                                                            null,
-                                                                                                                                                            null,
-                                                                                                                                                        )],
+                                                                                                                                                        ($) => ['is empty', null],
                                                                                                                                                     )
                                                                                                                                                 default:
                                                                                                                                                     return _p.au(
@@ -1192,19 +1094,12 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                     const var_location = $['l location']
                                                                                                                                     return _p.decide.state(
                                                                                                                                         $['l state'],
-                                                                                                                                        ($): t_out.Expression.construct.boolean_.source.type_.list => {
+                                                                                                                                        ($): t_out.Assign.construct.boolean_.from_.type_.list => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'is empty':
                                                                                                                                                     return _p.ss(
                                                                                                                                                         $,
-                                                                                                                                                        ($) => ['is empty', Value_Selection(
-                                                                                                                                                            $,
-                                                                                                                                                            ($) => abort(
-                                                                                                                                                                $,
-                                                                                                                                                            ),
-                                                                                                                                                            null,
-                                                                                                                                                            null,
-                                                                                                                                                        )],
+                                                                                                                                                        ($) => ['is empty', null],
                                                                                                                                                     )
                                                                                                                                                 default:
                                                                                                                                                     return _p.au(
@@ -1252,16 +1147,16 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 const var_location = $['l location']
                                                                 return _p.decide.state(
                                                                     $['l state'],
-                                                                    ($): t_out.Expression.construct.dictionary => {
+                                                                    ($): t_out.Assign.construct.dictionary => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
                                                                                 return _p.ss(
                                                                                     $,
                                                                                     ($) => ['literal', _p.dictionary.resolve(
                                                                                         $['l dictionary'],
-                                                                                        ($, id, $a, $c): t_out.Expression.construct.dictionary.literal.D => _p_change_context(
+                                                                                        ($, id, $a, $c): t_out.Assign.construct.dictionary.literal.D => _p_change_context(
                                                                                             $['l entry'],
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -1272,15 +1167,15 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                         ),
                                                                                     )],
                                                                                 )
-                                                                            case 'source':
+                                                                            case 'from':
                                                                                 return _p.ss(
                                                                                     $,
-                                                                                    ($) => ['source', _p.group.resolve(
+                                                                                    ($) => ['from', _p.group.resolve(
                                                                                         () => {
                                                                                             
                                                                                             const prop_selection = _p_change_context(
                                                                                                 $['selection'],
-                                                                                                ($) => Value_Selection(
+                                                                                                ($) => Select_Value(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -1298,7 +1193,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                         const var_location = $['l location']
                                                                                                         return _p.decide.state(
                                                                                                             $['l state'],
-                                                                                                            ($): t_out.Expression.construct.dictionary.source.type_ => {
+                                                                                                            ($): t_out.Assign.construct.dictionary.from_.type_ => {
                                                                                                                 switch ($[0]) {
                                                                                                                     case 'dictionary':
                                                                                                                         return _p.ss(
@@ -1309,7 +1204,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                     const var_location = $['l location']
                                                                                                                                     return _p.decide.state(
                                                                                                                                         $['l state'],
-                                                                                                                                        ($): t_out.Expression.construct.dictionary.source.type_.dictionary => {
+                                                                                                                                        ($): t_out.Assign.construct.dictionary.from_.type_.dictionary => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'filter':
                                                                                                                                                     return _p.ss(
@@ -1319,7 +1214,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_assign_entry = _p_change_context(
                                                                                                                                                                     $['assign entry'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1342,7 +1237,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_assign_entry = _p_change_context(
                                                                                                                                                                     $['assign entry'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1365,7 +1260,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_assign_entry = _p_change_context(
                                                                                                                                                                     $['assign entry'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1412,7 +1307,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                     const var_location = $['l location']
                                                                                                                                     return _p.decide.state(
                                                                                                                                         $['l state'],
-                                                                                                                                        ($): t_out.Expression.construct.dictionary.source.type_.list => {
+                                                                                                                                        ($): t_out.Assign.construct.dictionary.from_.type_.list => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'convert':
                                                                                                                                                     return _p.ss(
@@ -1422,7 +1317,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_assign_id = _p_change_context(
                                                                                                                                                                     $['assign id'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1434,7 +1329,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_assign_entry = _p_change_context(
                                                                                                                                                                     $['assign entry'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1446,7 +1341,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_abort = _p_change_context(
                                                                                                                                                                     $['abort'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1509,7 +1404,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 const var_location = $['l location']
                                                                 return _p.decide.state(
                                                                     $['l state'],
-                                                                    ($): t_out.Expression.construct.group => {
+                                                                    ($): t_out.Assign.construct.group => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
                                                                                 return _p.ss(
@@ -1521,9 +1416,9 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                 $['properties'],
                                                                                                 ($) => _p.dictionary.resolve(
                                                                                                     $['l dictionary'],
-                                                                                                    ($, id, $a, $c): t_out.Expression.construct.group.literal.properties.D => _p_change_context(
+                                                                                                    ($, id, $a, $c): t_out.Assign.construct.group.literal.properties.D => _p_change_context(
                                                                                                         $['l entry'],
-                                                                                                        ($) => Expression(
+                                                                                                        ($) => Assign(
                                                                                                             $,
                                                                                                             ($) => abort(
                                                                                                                 $,
@@ -1565,7 +1460,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 const var_location = $['l location']
                                                                 return _p.decide.state(
                                                                     $['l state'],
-                                                                    ($): t_out.Expression.construct.list => {
+                                                                    ($): t_out.Assign.construct.list => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
                                                                                 return _p.ss(
@@ -1574,7 +1469,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                         $['l list'],
                                                                                         ($) => _p_change_context(
                                                                                             $['l item'],
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -1585,15 +1480,15 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                         ),
                                                                                     )],
                                                                                 )
-                                                                            case 'source':
+                                                                            case 'from':
                                                                                 return _p.ss(
                                                                                     $,
-                                                                                    ($) => ['source', _p.group.resolve(
+                                                                                    ($) => ['from', _p.group.resolve(
                                                                                         () => {
                                                                                             
                                                                                             const prop_selection = _p_change_context(
                                                                                                 $['selection'],
-                                                                                                ($) => Value_Selection(
+                                                                                                ($) => Select_Value(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -1611,7 +1506,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                         const var_location = $['l location']
                                                                                                         return _p.decide.state(
                                                                                                             $['l state'],
-                                                                                                            ($): t_out.Expression.construct.list.source.type_ => {
+                                                                                                            ($): t_out.Assign.construct.list.from_.type_ => {
                                                                                                                 switch ($[0]) {
                                                                                                                     case 'dictionary':
                                                                                                                         return _p.ss(
@@ -1622,7 +1517,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                     const var_location = $['l location']
                                                                                                                                     return _p.decide.state(
                                                                                                                                         $['l state'],
-                                                                                                                                        ($): t_out.Expression.construct.list.source.type_.dictionary => {
+                                                                                                                                        ($): t_out.Assign.construct.list.from_.type_.dictionary => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'convert':
                                                                                                                                                     return _p.ss(
@@ -1632,7 +1527,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_assign_entry = _p_change_context(
                                                                                                                                                                     $['assign entry'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1657,27 +1552,6 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                 },
                                                                                                                             )],
                                                                                                                         )
-                                                                                                                    case 'group':
-                                                                                                                        return _p.ss(
-                                                                                                                            $,
-                                                                                                                            ($) => ['group', _p_variables(
-                                                                                                                                () => {
-                                                                                                                                    
-                                                                                                                                    const var_location = $['l location']
-                                                                                                                                    return _p.decide.state(
-                                                                                                                                        $['l state'],
-                                                                                                                                        ($): t_out.Expression.construct.list.source.type_.group => {
-                                                                                                                                            switch ($[0]) {
-                                                                                                                                                default:
-                                                                                                                                                    return _p.au(
-                                                                                                                                                        $[0],
-                                                                                                                                                    )
-                                                                                                                                            }
-                                                                                                                                        },
-                                                                                                                                    )
-                                                                                                                                },
-                                                                                                                            )],
-                                                                                                                        )
                                                                                                                     case 'list':
                                                                                                                         return _p.ss(
                                                                                                                             $,
@@ -1687,7 +1561,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                     const var_location = $['l location']
                                                                                                                                     return _p.decide.state(
                                                                                                                                         $['l state'],
-                                                                                                                                        ($): t_out.Expression.construct.list.source.type_.list => {
+                                                                                                                                        ($): t_out.Assign.construct.list.from_.type_.list => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'filter':
                                                                                                                                                     return _p.ss(
@@ -1697,7 +1571,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_assign_item = _p_change_context(
                                                                                                                                                                     $['assign item'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1720,7 +1594,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_assign_item = _p_change_context(
                                                                                                                                                                     $['assign item'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1743,7 +1617,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_initialize_state = _p_change_context(
                                                                                                                                                                     $['initialize state'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1755,7 +1629,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_assign_item = _p_change_context(
                                                                                                                                                                     $['assign item'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1767,7 +1641,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_update_state = _p_change_context(
                                                                                                                                                                     $['update state'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1779,7 +1653,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_wrap_up = _p_change_context(
                                                                                                                                                                     $['wrap up'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1805,7 +1679,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_initialize_state = _p_change_context(
                                                                                                                                                                     $['initialize state'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1817,7 +1691,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_assign_item = _p_change_context(
                                                                                                                                                                     $['assign item'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -1889,7 +1763,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 const var_location = $['l location']
                                                                 return _p.decide.state(
                                                                     $['l state'],
-                                                                    ($): t_out.Expression.construct.number_ => {
+                                                                    ($): t_out.Assign.construct.number_ => {
                                                                         switch ($[0]) {
                                                                             case 'approximation':
                                                                                 return _p.ss(
@@ -1900,12 +1774,12 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                             const var_location = $['l location']
                                                                                             return _p.decide.state(
                                                                                                 $['l state'],
-                                                                                                ($): t_out.Expression.construct.number_.approximation => {
+                                                                                                ($): t_out.Assign.construct.number_.approximation => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'copy':
                                                                                                             return _p.ss(
                                                                                                                 $,
-                                                                                                                ($) => ['copy', Value_Selection(
+                                                                                                                ($) => ['copy', Select_Value(
                                                                                                                     $,
                                                                                                                     ($) => abort(
                                                                                                                         $,
@@ -1938,12 +1812,12 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                             const var_location = $['l location']
                                                                                             return _p.decide.state(
                                                                                                 $['l state'],
-                                                                                                ($): t_out.Expression.construct.number_.integer => {
+                                                                                                ($): t_out.Assign.construct.number_.integer => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'copy':
                                                                                                             return _p.ss(
                                                                                                                 $,
-                                                                                                                ($) => ['copy', Value_Selection(
+                                                                                                                ($) => ['copy', Select_Value(
                                                                                                                     $,
                                                                                                                     ($) => abort(
                                                                                                                         $,
@@ -1960,7 +1834,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                         
                                                                                                                         const prop_assign_dividend = _p_change_context(
                                                                                                                             $['assign dividend'],
-                                                                                                                            ($) => Value_Selection(
+                                                                                                                            ($) => Select_Value(
                                                                                                                                 $,
                                                                                                                                 ($) => abort(
                                                                                                                                     $,
@@ -1972,7 +1846,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                         
                                                                                                                         const prop_assign_divisor = _p_change_context(
                                                                                                                             $['assign divisor'],
-                                                                                                                            ($) => Value_Selection(
+                                                                                                                            ($) => Select_Value(
                                                                                                                                 $,
                                                                                                                                 ($) => abort(
                                                                                                                                     $,
@@ -1984,7 +1858,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                         
                                                                                                                         const prop_abort = _p_change_context(
                                                                                                                             $['abort'],
-                                                                                                                            ($) => Expression(
+                                                                                                                            ($) => Assign(
                                                                                                                                 $,
                                                                                                                                 ($) => abort(
                                                                                                                                     $,
@@ -2025,12 +1899,12 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                             const var_location = $['l location']
                                                                                             return _p.decide.state(
                                                                                                 $['l state'],
-                                                                                                ($): t_out.Expression.construct.number_.natural => {
+                                                                                                ($): t_out.Assign.construct.number_.natural => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'copy':
                                                                                                             return _p.ss(
                                                                                                                 $,
-                                                                                                                ($) => ['copy', Value_Selection(
+                                                                                                                ($) => ['copy', Select_Value(
                                                                                                                     $,
                                                                                                                     ($) => abort(
                                                                                                                         $,
@@ -2052,7 +1926,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                         
                                                                                                                         const prop_dictionary = _p_change_context(
                                                                                                                             $['dictionary'],
-                                                                                                                            ($) => Value_Selection(
+                                                                                                                            ($) => Select_Value(
                                                                                                                                 $,
                                                                                                                                 ($) => abort(
                                                                                                                                     $,
@@ -2075,7 +1949,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                         
                                                                                                                         const prop_list = _p_change_context(
                                                                                                                             $['list'],
-                                                                                                                            ($) => Value_Selection(
+                                                                                                                            ($) => Select_Value(
                                                                                                                                 $,
                                                                                                                                 ($) => abort(
                                                                                                                                     $,
@@ -2129,7 +2003,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 const var_location = $['l location']
                                                                 return _p.decide.state(
                                                                     $['l state'],
-                                                                    ($): t_out.Expression.construct.optional => {
+                                                                    ($): t_out.Assign.construct.optional => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
                                                                                 return _p.ss(
@@ -2140,7 +2014,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                             const var_location = $['l location']
                                                                                             return _p.decide.state(
                                                                                                 $['l state'],
-                                                                                                ($): t_out.Expression.construct.optional.literal => {
+                                                                                                ($): t_out.Assign.construct.optional.literal => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'not set':
                                                                                                             return _p.ss(
@@ -2150,7 +2024,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                         case 'set':
                                                                                                             return _p.ss(
                                                                                                                 $,
-                                                                                                                ($) => ['set', Expression(
+                                                                                                                ($) => ['set', Assign(
                                                                                                                     $,
                                                                                                                     ($) => abort(
                                                                                                                         $,
@@ -2169,15 +2043,15 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                         },
                                                                                     )],
                                                                                 )
-                                                                            case 'source':
+                                                                            case 'from':
                                                                                 return _p.ss(
                                                                                     $,
-                                                                                    ($) => ['source', _p.group.resolve(
+                                                                                    ($) => ['from', _p.group.resolve(
                                                                                         () => {
                                                                                             
                                                                                             const prop_selection = _p_change_context(
                                                                                                 $['selection'],
-                                                                                                ($) => Value_Selection(
+                                                                                                ($) => Select_Value(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -2195,7 +2069,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                         const var_location = $['l location']
                                                                                                         return _p.decide.state(
                                                                                                             $['l state'],
-                                                                                                            ($): t_out.Expression.construct.optional.source.type_ => {
+                                                                                                            ($): t_out.Assign.construct.optional.from_.type_ => {
                                                                                                                 switch ($[0]) {
                                                                                                                     case 'boolean':
                                                                                                                         return _p.ss(
@@ -2206,7 +2080,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                     const var_location = $['l location']
                                                                                                                                     return _p.decide.state(
                                                                                                                                         $['l state'],
-                                                                                                                                        ($): t_out.Expression.construct.optional.source.type_.boolean_ => {
+                                                                                                                                        ($): t_out.Assign.construct.optional.from_.type_.boolean_ => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'convert':
                                                                                                                                                     return _p.ss(
@@ -2216,7 +2090,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_assign_set = _p_change_context(
                                                                                                                                                                     $['assign set'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2250,7 +2124,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                     const var_location = $['l location']
                                                                                                                                     return _p.decide.state(
                                                                                                                                         $['l state'],
-                                                                                                                                        ($): t_out.Expression.construct.optional.source.type_.optional => {
+                                                                                                                                        ($): t_out.Assign.construct.optional.from_.type_.optional => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'map':
                                                                                                                                                     return _p.ss(
@@ -2260,7 +2134,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                                                 
                                                                                                                                                                 const prop_assign_set = _p_change_context(
                                                                                                                                                                     $['assign set'],
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2321,7 +2195,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 const var_location = $['l location']
                                                                 return _p.decide.state(
                                                                     $['l state'],
-                                                                    ($): t_out.Expression.construct.state => {
+                                                                    ($): t_out.Assign.construct.state => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
                                                                                 return _p.ss(
@@ -2336,7 +2210,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                             
                                                                                             const prop_assign_option = _p_change_context(
                                                                                                 $['assign option'],
-                                                                                                ($) => Expression(
+                                                                                                ($) => Assign(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -2371,7 +2245,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 const var_location = $['l location']
                                                                 return _p.decide.state(
                                                                     $['l state'],
-                                                                    ($): t_out.Expression.construct.text => {
+                                                                    ($): t_out.Assign.construct.text => {
                                                                         switch ($[0]) {
                                                                             case 'literal':
                                                                                 return _p.ss(
@@ -2387,7 +2261,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                         const var_location = $['l location']
                                                                                                         return _p.decide.state(
                                                                                                             $['l state'],
-                                                                                                            ($): t_out.Expression.construct.text.literal.type_ => {
+                                                                                                            ($): t_out.Assign.construct.text.literal.type_ => {
                                                                                                                 switch ($[0]) {
                                                                                                                     case 'identifier':
                                                                                                                         return _p.ss(
@@ -2421,15 +2295,15 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                         },
                                                                                     )],
                                                                                 )
-                                                                            case 'source':
+                                                                            case 'from':
                                                                                 return _p.ss(
                                                                                     $,
-                                                                                    ($) => ['source', _p.group.resolve(
+                                                                                    ($) => ['from', _p.group.resolve(
                                                                                         () => {
                                                                                             
                                                                                             const prop_selection = _p_change_context(
                                                                                                 $['selection'],
-                                                                                                ($) => Value_Selection(
+                                                                                                ($) => Select_Value(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -2447,7 +2321,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                         const var_location = $['l location']
                                                                                                         return _p.decide.state(
                                                                                                             $['l state'],
-                                                                                                            ($): t_out.Expression.construct.text.source.type_ => {
+                                                                                                            ($): t_out.Assign.construct.text.from_.type_ => {
                                                                                                                 switch ($[0]) {
                                                                                                                     case 'text':
                                                                                                                         return _p.ss(
@@ -2458,7 +2332,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                                                                                     const var_location = $['l location']
                                                                                                                                     return _p.decide.state(
                                                                                                                                         $['l state'],
-                                                                                                                                        ($): t_out.Expression.construct.text.source.type_.text => {
+                                                                                                                                        ($): t_out.Assign.construct.text.from_.type_.text => {
                                                                                                                                             switch ($[0]) {
                                                                                                                                                 case 'copy':
                                                                                                                                                     return _p.ss(
@@ -2520,7 +2394,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                     case 'select':
                         return _p.ss(
                             $,
-                            ($) => ['select', Value_Selection(
+                            ($) => ['select', Select_Value(
                                 $,
                                 ($) => abort(
                                     $,
@@ -2538,12 +2412,12 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                     const var_location = $['l location']
                                     return _p.decide.state(
                                         $['l state'],
-                                        ($): t_out.Expression.special => {
+                                        ($): t_out.Assign.special => {
                                             switch ($[0]) {
                                                 case 'abort':
                                                     return _p.ss(
                                                         $,
-                                                        ($) => ['abort', Expression(
+                                                        ($) => ['abort', Assign(
                                                             $,
                                                             ($) => abort(
                                                                 $,
@@ -2560,7 +2434,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 
                                                                 const prop_tester = _p_change_context(
                                                                     $['tester'],
-                                                                    ($) => Expression(
+                                                                    ($) => Assign(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -2572,7 +2446,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 
                                                                 const prop_normal_flow = _p_change_context(
                                                                     $['normal flow'],
-                                                                    ($) => Expression(
+                                                                    ($) => Assign(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -2596,7 +2470,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 
                                                                 const prop_new_context = _p_change_context(
                                                                     $['new context'],
-                                                                    ($) => Value_Selection(
+                                                                    ($) => Select_Value(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -2608,7 +2482,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 
                                                                 const prop_expression = _p_change_context(
                                                                     $['expression'],
-                                                                    ($) => Expression(
+                                                                    ($) => Assign(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -2634,9 +2508,9 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                     $['variables'],
                                                                     ($) => _p.dictionary.resolve(
                                                                         $['l dictionary'],
-                                                                        ($, id, $a, $c): t_out.Expression.special.variables.variables.D => _p_change_context(
+                                                                        ($, id, $a, $c): t_out.Assign.special.variables.variables.D => _p_change_context(
                                                                             $['l entry'],
-                                                                            ($) => Expression(
+                                                                            ($) => Assign(
                                                                                 $,
                                                                                 ($) => abort(
                                                                                     $,
@@ -2650,7 +2524,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 
                                                                 const prop_assign = _p_change_context(
                                                                     $['assign'],
-                                                                    ($) => Expression(
+                                                                    ($) => Assign(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -2679,7 +2553,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 
                                                                 const prop_list = _p_change_context(
                                                                     $['list'],
-                                                                    ($) => Value_Selection(
+                                                                    ($) => Select_Value(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -2691,7 +2565,7 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
                                                                 
                                                                 const prop_assign = _p_change_context(
                                                                     $['assign'],
-                                                                    ($) => Expression(
+                                                                    ($) => Assign(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -2743,13 +2617,13 @@ export const Expression: t_signatures.Expression = ($, abort, $l, $p) => _p_vari
     },
 )
 
-export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) => _p_variables(
+export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_variables(
     () => {
         
         const var_location = $['l location']
         return _p.decide.state(
             $['l state'],
-            ($): t_out.Value_Selection => {
+            ($): t_out.Select_Value => {
                 switch ($[0]) {
                     case 'implement me':
                         return _p.ss(
@@ -2770,7 +2644,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                 const var_location = $['l location']
                                                 return _p.decide.state(
                                                     $['l state'],
-                                                    ($): t_out.Value_Selection.regular.start => {
+                                                    ($): t_out.Select_Value.regular.start => {
                                                         switch ($[0]) {
                                                             case 'call':
                                                                 return _p.ss(
@@ -2786,7 +2660,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                                         const var_location = $['l location']
                                                                                         return _p.decide.state(
                                                                                             $['l state'],
-                                                                                            ($): t_out.Value_Selection.regular.start.call.source => {
+                                                                                            ($): t_out.Select_Value.regular.start.call.source => {
                                                                                                 switch ($[0]) {
                                                                                                     case 'local':
                                                                                                         return _p.ss(
@@ -2828,7 +2702,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                             
                                                                             const prop_context = _p_change_context(
                                                                                 $['context'],
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -2842,7 +2716,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                                 $['abort'],
                                                                                 ($) => _p.optional.map(
                                                                                     $,
-                                                                                    ($) => Expression(
+                                                                                    ($) => Assign(
                                                                                         $,
                                                                                         ($) => abort(
                                                                                             $,
@@ -2863,16 +2737,16 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                                             const var_location = $['l location']
                                                                                             return _p.decide.state(
                                                                                                 $['l state'],
-                                                                                                ($): t_out.Value_Selection.regular.start.call.lookups.O => {
+                                                                                                ($): t_out.Select_Value.regular.start.call.lookups.O => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'initialize':
                                                                                                             return _p.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['initialize', _p.dictionary.resolve(
                                                                                                                     $['l dictionary'],
-                                                                                                                    ($, id, $a, $c): t_out.Value_Selection.regular.start.call.lookups.O.initialize.D => _p_change_context(
+                                                                                                                    ($, id, $a, $c): t_out.Select_Value.regular.start.call.lookups.O.initialize.D => _p_change_context(
                                                                                                                         $['l entry'],
-                                                                                                                        ($) => Lookup_Selection(
+                                                                                                                        ($) => Select_Lookup(
                                                                                                                             $,
                                                                                                                             ($) => abort(
                                                                                                                                 $,
@@ -2910,16 +2784,16 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                                             const var_location = $['l location']
                                                                                             return _p.decide.state(
                                                                                                 $['l state'],
-                                                                                                ($): t_out.Value_Selection.regular.start.call.arguments_.O => {
+                                                                                                ($): t_out.Select_Value.regular.start.call.arguments_.O => {
                                                                                                     switch ($[0]) {
                                                                                                         case 'initialize':
                                                                                                             return _p.ss(
                                                                                                                 $,
                                                                                                                 ($) => ['initialize', _p.dictionary.resolve(
                                                                                                                     $['l dictionary'],
-                                                                                                                    ($, id, $a, $c): t_out.Value_Selection.regular.start.call.arguments_.O.initialize.D => _p_change_context(
+                                                                                                                    ($, id, $a, $c): t_out.Select_Value.regular.start.call.arguments_.O.initialize.D => _p_change_context(
                                                                                                                         $['l entry'],
-                                                                                                                        ($) => Expression(
+                                                                                                                        ($) => Assign(
                                                                                                                             $,
                                                                                                                             ($) => abort(
                                                                                                                                 $,
@@ -2969,7 +2843,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                             
                                                                             const prop_dictionary = _p_change_context(
                                                                                 $['dictionary'],
-                                                                                ($) => Value_Selection(
+                                                                                ($) => Select_Value(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -2981,7 +2855,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                             
                                                                             const prop_id = _p_change_context(
                                                                                 $['id'],
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -2993,7 +2867,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                             
                                                                             const prop_abort_handler = _p_change_context(
                                                                                 $['abort handler'],
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -3018,7 +2892,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                             
                                                                             const prop_source = _p_change_context(
                                                                                 $['source'],
-                                                                                ($) => Expression(
+                                                                                ($) => Select_Value(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -3030,7 +2904,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                             
                                                                             const prop_assign_item = _p_change_context(
                                                                                 $['assign item'],
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -3054,7 +2928,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                             
                                                                             const prop_lookup = _p_change_context(
                                                                                 $['lookup'],
-                                                                                ($) => Lookup_Selection(
+                                                                                ($) => Select_Lookup(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -3066,7 +2940,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                             
                                                                             const prop_id = _p_change_context(
                                                                                 $['id'],
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -3083,7 +2957,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                                         
                                                                                         const prop_no_such_entry = _p_change_context(
                                                                                             $['no such entry'],
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -3095,7 +2969,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                                         
                                                                                         const prop_no_context_lookup = _p_change_context(
                                                                                             $['no context lookup'],
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -3107,7 +2981,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                                         
                                                                                         const prop_cycle_detected = _p_change_context(
                                                                                             $['cycle detected'],
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -3140,7 +3014,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                             
                                                                             const prop_lookup = _p_change_context(
                                                                                 $['lookup'],
-                                                                                ($) => Lookup_Selection(
+                                                                                ($) => Select_Lookup(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -3152,7 +3026,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                             
                                                                             const prop_id = _p_change_context(
                                                                                 $['id'],
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -3169,7 +3043,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                                         
                                                                                         const prop_no_such_entry = _p_change_context(
                                                                                             $['no such entry'],
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -3181,7 +3055,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                                         
                                                                                         const prop_no_context_lookup = _p_change_context(
                                                                                             $['no context lookup'],
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -3193,7 +3067,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                                         
                                                                                         const prop_cycle_detected = _p_change_context(
                                                                                             $['cycle detected'],
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -3246,7 +3120,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                             
                                                                             const prop_source = _p_change_context(
                                                                                 $['source'],
-                                                                                ($) => Expression(
+                                                                                ($) => Select_Value(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -3258,7 +3132,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
                                                                             
                                                                             const prop_assign_character = _p_change_context(
                                                                                 $['assign character'],
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -3317,13 +3191,13 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $l, $p) 
     },
 )
 
-export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort, $l, $p) => _p_variables(
+export const Select_Lookup: t_signatures.Select_Lookup = ($, abort, $l, $p) => _p_variables(
     () => {
         
         const var_location = $['l location']
         return _p.decide.state(
             $['l state'],
-            ($): t_out.Lookup_Selection => {
+            ($): t_out.Select_Lookup => {
                 switch ($[0]) {
                     case 'implement me':
                         return _p.ss(
@@ -3344,7 +3218,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort, $l, $p
                                     const var_location = $['l location']
                                     return _p.decide.state(
                                         $['l state'],
-                                        ($): t_out.Lookup_Selection.acyclic => {
+                                        ($): t_out.Select_Lookup.acyclic => {
                                             switch ($[0]) {
                                                 case 'not set':
                                                     return _p.ss(
@@ -3359,7 +3233,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort, $l, $p
                                                 case 'resolved dictionary':
                                                     return _p.ss(
                                                         $,
-                                                        ($) => ['resolved dictionary', Value_Selection(
+                                                        ($) => ['resolved dictionary', Select_Value(
                                                             $,
                                                             ($) => abort(
                                                                 $,
@@ -3387,7 +3261,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort, $l, $p
                                     const var_location = $['l location']
                                     return _p.decide.state(
                                         $['l state'],
-                                        ($): t_out.Lookup_Selection.cyclic => {
+                                        ($): t_out.Select_Lookup.cyclic => {
                                             switch ($[0]) {
                                                 case 'not set':
                                                     return _p.ss(
@@ -3418,7 +3292,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort, $l, $p
                                     const var_location = $['l location']
                                     return _p.decide.state(
                                         $['l state'],
-                                        ($): t_out.Lookup_Selection.stack => {
+                                        ($): t_out.Select_Lookup.stack => {
                                             switch ($[0]) {
                                                 case 'empty':
                                                     return _p.ss(
@@ -3433,7 +3307,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort, $l, $p
                                                                 
                                                                 const prop_stack = _p_change_context(
                                                                     $['stack'],
-                                                                    ($) => Lookup_Selection(
+                                                                    ($) => Select_Lookup(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -3445,7 +3319,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort, $l, $p
                                                                 
                                                                 const prop_acyclic = _p_change_context(
                                                                     $['acyclic'],
-                                                                    ($) => Lookup_Selection(
+                                                                    ($) => Select_Lookup(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,

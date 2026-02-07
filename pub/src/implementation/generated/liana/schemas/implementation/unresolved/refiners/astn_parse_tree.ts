@@ -588,7 +588,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ['no such entry', "expression"],
                                         ),
                                     ),
-                                    ($) => Expression(
+                                    ($) => Assign(
                                         $,
                                         ($) => abort(
                                             $,
@@ -847,7 +847,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
     }),
 )
 
-export const Expression: t_signatures.Expression = ($, abort) => _p_change_context(
+export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
     v_unmarshalled_from_parse_tree.State(
         $,
         ($) => abort(
@@ -856,7 +856,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
     ),
     ($) => _p.decide.text(
         $['option']['value'],
-        ($t): t_out.Expression => {
+        ($t): t_out.Assign => {
             switch ($t) {
                 case 'decide':
                     return _p_change_context(
@@ -873,6 +873,20 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                     ),
                                 ),
                                 ($) => ({
+                                    'source': _p_change_context(
+                                        $.__get_entry(
+                                            'source',
+                                            ($) => abort(
+                                                ['no such entry', "source"],
+                                            ),
+                                        ),
+                                        ($) => Select_Value(
+                                            $,
+                                            ($) => abort(
+                                                $,
+                                            ),
+                                        ),
+                                    ),
                                     'type': _p_change_context(
                                         $.__get_entry(
                                             'type',
@@ -889,7 +903,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                             ),
                                             ($) => _p.decide.text(
                                                 $['option']['value'],
-                                                ($t): t_out.Expression.l_state.decide.type_ => {
+                                                ($t): t_out.Assign.l_state.decide.type_ => {
                                                     switch ($t) {
                                                         case 'boolean':
                                                             return _p_change_context(
@@ -906,20 +920,6 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                             ),
                                                                         ),
                                                                         ($) => ({
-                                                                            'source': _p_change_context(
-                                                                                $.__get_entry(
-                                                                                    'source',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "source"],
-                                                                                    ),
-                                                                                ),
-                                                                                ($) => Value_Selection(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                            ),
                                                                             'temp resulting node': _p_change_context(
                                                                                 $.__get_entry(
                                                                                     'temp resulting node',
@@ -949,7 +949,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                         ['no such entry', "if false"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -963,7 +963,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                         ['no such entry', "if true"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -990,7 +990,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                         ),
                                                                         ($) => _p.decide.text(
                                                                             $['option']['value'],
-                                                                            ($t): t_out.Expression.l_state.decide.type_.l_state.dictionary => {
+                                                                            ($t): t_out.Assign.l_state.decide.type_.l_state.dictionary => {
                                                                                 switch ($t) {
                                                                                     case 'has entries':
                                                                                         return _p_change_context(
@@ -1007,20 +1007,6 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                         ),
                                                                                                     ),
                                                                                                     ($) => ({
-                                                                                                        'dictionary': _p_change_context(
-                                                                                                            $.__get_entry(
-                                                                                                                'dictionary',
-                                                                                                                ($) => abort(
-                                                                                                                    ['no such entry', "dictionary"],
-                                                                                                                ),
-                                                                                                            ),
-                                                                                                            ($) => Value_Selection(
-                                                                                                                $,
-                                                                                                                ($) => abort(
-                                                                                                                    $,
-                                                                                                                ),
-                                                                                                            ),
-                                                                                                        ),
                                                                                                         'if true': _p_change_context(
                                                                                                             $.__get_entry(
                                                                                                                 'if true',
@@ -1028,7 +1014,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                     ['no such entry', "if true"],
                                                                                                                 ),
                                                                                                             ),
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -1042,7 +1028,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                     ['no such entry', "if false"],
                                                                                                                 ),
                                                                                                             ),
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -1079,7 +1065,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                         ),
                                                                         ($) => _p.decide.text(
                                                                             $['option']['value'],
-                                                                            ($t): t_out.Expression.l_state.decide.type_.l_state.list => {
+                                                                            ($t): t_out.Assign.l_state.decide.type_.l_state.list => {
                                                                                 switch ($t) {
                                                                                     case 'has first item':
                                                                                         return _p_change_context(
@@ -1096,20 +1082,6 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                         ),
                                                                                                     ),
                                                                                                     ($) => ({
-                                                                                                        'list': _p_change_context(
-                                                                                                            $.__get_entry(
-                                                                                                                'list',
-                                                                                                                ($) => abort(
-                                                                                                                    ['no such entry', "list"],
-                                                                                                                ),
-                                                                                                            ),
-                                                                                                            ($) => Value_Selection(
-                                                                                                                $,
-                                                                                                                ($) => abort(
-                                                                                                                    $,
-                                                                                                                ),
-                                                                                                            ),
-                                                                                                        ),
                                                                                                         'if true': _p_change_context(
                                                                                                             $.__get_entry(
                                                                                                                 'if true',
@@ -1117,7 +1089,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                     ['no such entry', "if true"],
                                                                                                                 ),
                                                                                                             ),
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -1131,7 +1103,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                     ['no such entry', "if false"],
                                                                                                                 ),
                                                                                                             ),
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -1157,20 +1129,6 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                         ),
                                                                                                     ),
                                                                                                     ($) => ({
-                                                                                                        'list': _p_change_context(
-                                                                                                            $.__get_entry(
-                                                                                                                'list',
-                                                                                                                ($) => abort(
-                                                                                                                    ['no such entry', "list"],
-                                                                                                                ),
-                                                                                                            ),
-                                                                                                            ($) => Value_Selection(
-                                                                                                                $,
-                                                                                                                ($) => abort(
-                                                                                                                    $,
-                                                                                                                ),
-                                                                                                            ),
-                                                                                                        ),
                                                                                                         'if true': _p_change_context(
                                                                                                             $.__get_entry(
                                                                                                                 'if true',
@@ -1178,7 +1136,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                     ['no such entry', "if true"],
                                                                                                                 ),
                                                                                                             ),
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -1192,7 +1150,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                     ['no such entry', "if false"],
                                                                                                                 ),
                                                                                                             ),
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -1218,20 +1176,6 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                         ),
                                                                                                     ),
                                                                                                     ($) => ({
-                                                                                                        'list': _p_change_context(
-                                                                                                            $.__get_entry(
-                                                                                                                'list',
-                                                                                                                ($) => abort(
-                                                                                                                    ['no such entry', "list"],
-                                                                                                                ),
-                                                                                                            ),
-                                                                                                            ($) => Value_Selection(
-                                                                                                                $,
-                                                                                                                ($) => abort(
-                                                                                                                    $,
-                                                                                                                ),
-                                                                                                            ),
-                                                                                                        ),
                                                                                                         'if true': _p_change_context(
                                                                                                             $.__get_entry(
                                                                                                                 'if true',
@@ -1239,7 +1183,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                     ['no such entry', "if true"],
                                                                                                                 ),
                                                                                                             ),
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -1253,7 +1197,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                     ['no such entry', "if false"],
                                                                                                                 ),
                                                                                                             ),
-                                                                                                            ($) => Expression(
+                                                                                                            ($) => Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -1289,20 +1233,6 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                             ),
                                                                         ),
                                                                         ($) => ({
-                                                                            'source': _p_change_context(
-                                                                                $.__get_entry(
-                                                                                    'source',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "source"],
-                                                                                    ),
-                                                                                ),
-                                                                                ($) => Value_Selection(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                            ),
                                                                             'temp resulting node': _p_change_context(
                                                                                 $.__get_entry(
                                                                                     'temp resulting node',
@@ -1332,7 +1262,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                         ['no such entry', "if not set"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -1346,7 +1276,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                         ['no such entry', "if set"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -1372,20 +1302,6 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                             ),
                                                                         ),
                                                                         ($) => ({
-                                                                            'source': _p_change_context(
-                                                                                $.__get_entry(
-                                                                                    'source',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "source"],
-                                                                                    ),
-                                                                                ),
-                                                                                ($) => Value_Selection(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                            ),
                                                                             'temp resulting node': _p_change_context(
                                                                                 $.__get_entry(
                                                                                     'temp resulting node',
@@ -1424,7 +1340,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                     ),
                                                                                     ($) => _p.decide.text(
                                                                                         $['option']['value'],
-                                                                                        ($t): t_out.Expression.l_state.decide.type_.l_state.state.type_ => {
+                                                                                        ($t): t_out.Assign.l_state.decide.type_.l_state.state.type_ => {
                                                                                             switch ($t) {
                                                                                                 case 'partial':
                                                                                                     return _p_change_context(
@@ -1463,7 +1379,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                     )['start']['relative'],
-                                                                                                                                    'l entry': Expression(
+                                                                                                                                    'l entry': Assign(
                                                                                                                                         $,
                                                                                                                                         ($) => abort(
                                                                                                                                             $,
@@ -1480,7 +1396,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                 ['no such entry', "default"],
                                                                                                                             ),
                                                                                                                         ),
-                                                                                                                        ($) => Expression(
+                                                                                                                        ($) => Assign(
                                                                                                                             $,
                                                                                                                             ($) => abort(
                                                                                                                                 $,
@@ -1528,7 +1444,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                     )['start']['relative'],
-                                                                                                                                    'l entry': Expression(
+                                                                                                                                    'l entry': Assign(
                                                                                                                                         $,
                                                                                                                                         ($) => abort(
                                                                                                                                             $,
@@ -1578,7 +1494,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                 ['no such entry', "if true"],
                                                                                                                             ),
                                                                                                                         ),
-                                                                                                                        ($) => Expression(
+                                                                                                                        ($) => Assign(
                                                                                                                             $,
                                                                                                                             ($) => abort(
                                                                                                                                 $,
@@ -1592,7 +1508,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                 ['no such entry', "if false"],
                                                                                                                             ),
                                                                                                                         ),
-                                                                                                                        ($) => Expression(
+                                                                                                                        ($) => Assign(
                                                                                                                             $,
                                                                                                                             ($) => abort(
                                                                                                                                 $,
@@ -1631,20 +1547,6 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                             ),
                                                                         ),
                                                                         ($) => ({
-                                                                            'source': _p_change_context(
-                                                                                $.__get_entry(
-                                                                                    'source',
-                                                                                    ($) => abort(
-                                                                                        ['no such entry', "source"],
-                                                                                    ),
-                                                                                ),
-                                                                                ($) => Value_Selection(
-                                                                                    $,
-                                                                                    ($) => abort(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                            ),
                                                                             'temp resulting node': _p_change_context(
                                                                                 $.__get_entry(
                                                                                     'temp resulting node',
@@ -1689,7 +1591,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                 $,
                                                                                             )['start']['relative'],
-                                                                                            'l entry': Expression(
+                                                                                            'l entry': Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -1706,7 +1608,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                         ['no such entry', "default"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -1746,7 +1648,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                 ),
                                 ($) => _p.decide.text(
                                     $['option']['value'],
-                                    ($t): t_out.Expression.l_state.construct => {
+                                    ($t): t_out.Assign.l_state.construct => {
                                         switch ($t) {
                                             case 'boolean':
                                                 return _p_change_context(
@@ -1764,7 +1666,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                             ),
                                                             ($) => _p.decide.text(
                                                                 $['option']['value'],
-                                                                ($t): t_out.Expression.l_state.construct.l_state.boolean_ => {
+                                                                ($t): t_out.Assign.l_state.construct.l_state.boolean_ => {
                                                                     switch ($t) {
                                                                         case 'literal':
                                                                             return _p_change_context(
@@ -1782,7 +1684,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                         ),
                                                                                         ($) => _p.decide.text(
                                                                                             $['option']['value'],
-                                                                                            ($t): t_out.Expression.l_state.construct.l_state.boolean_.l_state.literal => {
+                                                                                            ($t): t_out.Assign.l_state.construct.l_state.boolean_.l_state.literal => {
                                                                                                 switch ($t) {
                                                                                                     case 'false':
                                                                                                         return _p_change_context(
@@ -1824,14 +1726,14 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                     )],
                                                                                 }),
                                                                             )
-                                                                        case 'source':
+                                                                        case 'from':
                                                                             return _p_change_context(
                                                                                 $['value'],
                                                                                 ($) => ({
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                     )['start']['relative'],
-                                                                                    'l state': ['source', _p_change_context(
+                                                                                    'l state': ['from', _p_change_context(
                                                                                         v_unmarshalled_from_parse_tree.Group(
                                                                                             $,
                                                                                             ($) => abort(
@@ -1846,7 +1748,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                         ['no such entry', "selection"],
                                                                                                     ),
                                                                                                 ),
-                                                                                                ($) => Value_Selection(
+                                                                                                ($) => Select_Value(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -1869,7 +1771,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                     ),
                                                                                                     ($) => _p.decide.text(
                                                                                                         $['option']['value'],
-                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_ => {
+                                                                                                        ($t): t_out.Assign.l_state.construct.l_state.boolean_.l_state.from_.type_ => {
                                                                                                             switch ($t) {
                                                                                                                 case 'boolean':
                                                                                                                     return _p_change_context(
@@ -1887,7 +1789,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                 ),
                                                                                                                                 ($) => _p.decide.text(
                                                                                                                                     $['option']['value'],
-                                                                                                                                    ($t): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state.boolean_ => {
+                                                                                                                                    ($t): t_out.Assign.l_state.construct.l_state.boolean_.l_state.from_.type_.l_state.boolean_ => {
                                                                                                                                         switch ($t) {
                                                                                                                                             case 'not':
                                                                                                                                                 return _p_change_context(
@@ -1945,7 +1847,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                 ),
                                                                                                                                 ($) => _p.decide.text(
                                                                                                                                     $['option']['value'],
-                                                                                                                                    ($t): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state.dictionary => {
+                                                                                                                                    ($t): t_out.Assign.l_state.construct.l_state.boolean_.l_state.from_.type_.l_state.dictionary => {
                                                                                                                                         switch ($t) {
                                                                                                                                             case 'is empty':
                                                                                                                                                 return _p_change_context(
@@ -1954,10 +1856,10 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                                                                             $,
                                                                                                                                                         )['start']['relative'],
-                                                                                                                                                        'l state': ['is empty', Value_Selection(
+                                                                                                                                                        'l state': ['is empty', v_unmarshalled_from_parse_tree.Nothing(
                                                                                                                                                             $,
                                                                                                                                                             ($) => abort(
-                                                                                                                                                                $,
+                                                                                                                                                                ['expected a nothing', null],
                                                                                                                                                             ),
                                                                                                                                                         )],
                                                                                                                                                     }),
@@ -1988,7 +1890,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                 ),
                                                                                                                                 ($) => _p.decide.text(
                                                                                                                                     $['option']['value'],
-                                                                                                                                    ($t): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state.list => {
+                                                                                                                                    ($t): t_out.Assign.l_state.construct.l_state.boolean_.l_state.from_.type_.l_state.list => {
                                                                                                                                         switch ($t) {
                                                                                                                                             case 'is empty':
                                                                                                                                                 return _p_change_context(
@@ -1997,10 +1899,10 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                                                                             $,
                                                                                                                                                         )['start']['relative'],
-                                                                                                                                                        'l state': ['is empty', Value_Selection(
+                                                                                                                                                        'l state': ['is empty', v_unmarshalled_from_parse_tree.Nothing(
                                                                                                                                                             $,
                                                                                                                                                             ($) => abort(
-                                                                                                                                                                $,
+                                                                                                                                                                ['expected a nothing', null],
                                                                                                                                                             ),
                                                                                                                                                         )],
                                                                                                                                                     }),
@@ -2054,7 +1956,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                             ),
                                                             ($) => _p.decide.text(
                                                                 $['option']['value'],
-                                                                ($t): t_out.Expression.l_state.construct.l_state.dictionary => {
+                                                                ($t): t_out.Assign.l_state.construct.l_state.dictionary => {
                                                                     switch ($t) {
                                                                         case 'literal':
                                                                             return _p_change_context(
@@ -2078,7 +1980,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                     $,
                                                                                                 )['start']['relative'],
-                                                                                                'l entry': Expression(
+                                                                                                'l entry': Assign(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -2089,14 +1991,14 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                     }],
                                                                                 }),
                                                                             )
-                                                                        case 'source':
+                                                                        case 'from':
                                                                             return _p_change_context(
                                                                                 $['value'],
                                                                                 ($) => ({
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                     )['start']['relative'],
-                                                                                    'l state': ['source', _p_change_context(
+                                                                                    'l state': ['from', _p_change_context(
                                                                                         v_unmarshalled_from_parse_tree.Group(
                                                                                             $,
                                                                                             ($) => abort(
@@ -2111,7 +2013,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                         ['no such entry', "selection"],
                                                                                                     ),
                                                                                                 ),
-                                                                                                ($) => Value_Selection(
+                                                                                                ($) => Select_Value(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -2134,7 +2036,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                     ),
                                                                                                     ($) => _p.decide.text(
                                                                                                         $['option']['value'],
-                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.dictionary.l_state.source.type_ => {
+                                                                                                        ($t): t_out.Assign.l_state.construct.l_state.dictionary.l_state.from_.type_ => {
                                                                                                             switch ($t) {
                                                                                                                 case 'dictionary':
                                                                                                                     return _p_change_context(
@@ -2152,7 +2054,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                 ),
                                                                                                                                 ($) => _p.decide.text(
                                                                                                                                     $['option']['value'],
-                                                                                                                                    ($t): t_out.Expression.l_state.construct.l_state.dictionary.l_state.source.type_.l_state.dictionary => {
+                                                                                                                                    ($t): t_out.Assign.l_state.construct.l_state.dictionary.l_state.from_.type_.l_state.dictionary => {
                                                                                                                                         switch ($t) {
                                                                                                                                             case 'filter':
                                                                                                                                                 return _p_change_context(
@@ -2176,7 +2078,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "assign entry"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2209,7 +2111,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "assign entry"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2242,7 +2144,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "assign entry"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2293,7 +2195,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                 ),
                                                                                                                                 ($) => _p.decide.text(
                                                                                                                                     $['option']['value'],
-                                                                                                                                    ($t): t_out.Expression.l_state.construct.l_state.dictionary.l_state.source.type_.l_state.list => {
+                                                                                                                                    ($t): t_out.Assign.l_state.construct.l_state.dictionary.l_state.from_.type_.l_state.list => {
                                                                                                                                         switch ($t) {
                                                                                                                                             case 'convert':
                                                                                                                                                 return _p_change_context(
@@ -2317,7 +2219,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "assign id"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2331,7 +2233,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "assign entry"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2345,7 +2247,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "abort"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2405,7 +2307,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                             ),
                                                             ($) => _p.decide.text(
                                                                 $['option']['value'],
-                                                                ($t): t_out.Expression.l_state.construct.l_state.group => {
+                                                                ($t): t_out.Assign.l_state.construct.l_state.group => {
                                                                     switch ($t) {
                                                                         case 'literal':
                                                                             return _p_change_context(
@@ -2444,7 +2346,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                 $,
                                                                                                             )['start']['relative'],
-                                                                                                            'l entry': Expression(
+                                                                                                            'l entry': Assign(
                                                                                                                 $,
                                                                                                                 ($) => abort(
                                                                                                                     $,
@@ -2506,7 +2408,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                             ),
                                                             ($) => _p.decide.text(
                                                                 $['option']['value'],
-                                                                ($t): t_out.Expression.l_state.construct.l_state.list => {
+                                                                ($t): t_out.Assign.l_state.construct.l_state.list => {
                                                                     switch ($t) {
                                                                         case 'literal':
                                                                             return _p_change_context(
@@ -2530,7 +2432,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                     $,
                                                                                                 )['start']['relative'],
-                                                                                                'l item': Expression(
+                                                                                                'l item': Assign(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -2541,14 +2443,14 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                     }],
                                                                                 }),
                                                                             )
-                                                                        case 'source':
+                                                                        case 'from':
                                                                             return _p_change_context(
                                                                                 $['value'],
                                                                                 ($) => ({
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                     )['start']['relative'],
-                                                                                    'l state': ['source', _p_change_context(
+                                                                                    'l state': ['from', _p_change_context(
                                                                                         v_unmarshalled_from_parse_tree.Group(
                                                                                             $,
                                                                                             ($) => abort(
@@ -2563,7 +2465,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                         ['no such entry', "selection"],
                                                                                                     ),
                                                                                                 ),
-                                                                                                ($) => Value_Selection(
+                                                                                                ($) => Select_Value(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -2586,7 +2488,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                     ),
                                                                                                     ($) => _p.decide.text(
                                                                                                         $['option']['value'],
-                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_ => {
+                                                                                                        ($t): t_out.Assign.l_state.construct.l_state.list.l_state.from_.type_ => {
                                                                                                             switch ($t) {
                                                                                                                 case 'dictionary':
                                                                                                                     return _p_change_context(
@@ -2604,7 +2506,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                 ),
                                                                                                                                 ($) => _p.decide.text(
                                                                                                                                     $['option']['value'],
-                                                                                                                                    ($t): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state.dictionary => {
+                                                                                                                                    ($t): t_out.Assign.l_state.construct.l_state.list.l_state.from_.type_.l_state.dictionary => {
                                                                                                                                         switch ($t) {
                                                                                                                                             case 'convert':
                                                                                                                                                 return _p_change_context(
@@ -2628,7 +2530,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "assign entry"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2639,34 +2541,6 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                         )],
                                                                                                                                                     }),
                                                                                                                                                 )
-                                                                                                                                            default:
-                                                                                                                                                return abort(
-                                                                                                                                                    ['unknown option', $['option']['value']],
-                                                                                                                                                )
-                                                                                                                                        }
-                                                                                                                                    },
-                                                                                                                                ),
-                                                                                                                            )],
-                                                                                                                        }),
-                                                                                                                    )
-                                                                                                                case 'group':
-                                                                                                                    return _p_change_context(
-                                                                                                                        $['value'],
-                                                                                                                        ($) => ({
-                                                                                                                            'l location': v_parse_tree_to_location.Value(
-                                                                                                                                $,
-                                                                                                                            )['start']['relative'],
-                                                                                                                            'l state': ['group', _p_change_context(
-                                                                                                                                v_unmarshalled_from_parse_tree.State(
-                                                                                                                                    $,
-                                                                                                                                    ($) => abort(
-                                                                                                                                        ['expected a state', null],
-                                                                                                                                    ),
-                                                                                                                                ),
-                                                                                                                                ($) => _p.decide.text(
-                                                                                                                                    $['option']['value'],
-                                                                                                                                    ($t): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state.group => {
-                                                                                                                                        switch ($t) {
                                                                                                                                             default:
                                                                                                                                                 return abort(
                                                                                                                                                     ['unknown option', $['option']['value']],
@@ -2693,7 +2567,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                 ),
                                                                                                                                 ($) => _p.decide.text(
                                                                                                                                     $['option']['value'],
-                                                                                                                                    ($t): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state.list => {
+                                                                                                                                    ($t): t_out.Assign.l_state.construct.l_state.list.l_state.from_.type_.l_state.list => {
                                                                                                                                         switch ($t) {
                                                                                                                                             case 'filter':
                                                                                                                                                 return _p_change_context(
@@ -2717,7 +2591,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "assign item"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2750,7 +2624,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "assign item"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2783,7 +2657,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "initialize state"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2797,7 +2671,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "assign item"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2811,7 +2685,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "update state"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2825,7 +2699,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "wrap up"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2858,7 +2732,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "initialize state"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2872,7 +2746,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "assign item"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -2962,7 +2836,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                             ),
                                                             ($) => _p.decide.text(
                                                                 $['option']['value'],
-                                                                ($t): t_out.Expression.l_state.construct.l_state.number_ => {
+                                                                ($t): t_out.Assign.l_state.construct.l_state.number_ => {
                                                                     switch ($t) {
                                                                         case 'approximation':
                                                                             return _p_change_context(
@@ -2980,7 +2854,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                         ),
                                                                                         ($) => _p.decide.text(
                                                                                             $['option']['value'],
-                                                                                            ($t): t_out.Expression.l_state.construct.l_state.number_.l_state.approximation => {
+                                                                                            ($t): t_out.Assign.l_state.construct.l_state.number_.l_state.approximation => {
                                                                                                 switch ($t) {
                                                                                                     case 'literal':
                                                                                                         return _p_change_context(
@@ -3012,7 +2886,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                 )['start']['relative'],
-                                                                                                                'l state': ['copy', Value_Selection(
+                                                                                                                'l state': ['copy', Select_Value(
                                                                                                                     $,
                                                                                                                     ($) => abort(
                                                                                                                         $,
@@ -3046,7 +2920,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                         ),
                                                                                         ($) => _p.decide.text(
                                                                                             $['option']['value'],
-                                                                                            ($t): t_out.Expression.l_state.construct.l_state.number_.l_state.integer => {
+                                                                                            ($t): t_out.Assign.l_state.construct.l_state.number_.l_state.integer => {
                                                                                                 switch ($t) {
                                                                                                     case 'copy':
                                                                                                         return _p_change_context(
@@ -3055,7 +2929,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                 )['start']['relative'],
-                                                                                                                'l state': ['copy', Value_Selection(
+                                                                                                                'l state': ['copy', Select_Value(
                                                                                                                     $,
                                                                                                                     ($) => abort(
                                                                                                                         $,
@@ -3085,7 +2959,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                     ['no such entry', "assign dividend"],
                                                                                                                                 ),
                                                                                                                             ),
-                                                                                                                            ($) => Value_Selection(
+                                                                                                                            ($) => Select_Value(
                                                                                                                                 $,
                                                                                                                                 ($) => abort(
                                                                                                                                     $,
@@ -3099,7 +2973,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                     ['no such entry', "assign divisor"],
                                                                                                                                 ),
                                                                                                                             ),
-                                                                                                                            ($) => Value_Selection(
+                                                                                                                            ($) => Select_Value(
                                                                                                                                 $,
                                                                                                                                 ($) => abort(
                                                                                                                                     $,
@@ -3113,7 +2987,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                     ['no such entry', "abort"],
                                                                                                                                 ),
                                                                                                                             ),
-                                                                                                                            ($) => Expression(
+                                                                                                                            ($) => Assign(
                                                                                                                                 $,
                                                                                                                                 ($) => abort(
                                                                                                                                     $,
@@ -3173,7 +3047,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                         ),
                                                                                         ($) => _p.decide.text(
                                                                                             $['option']['value'],
-                                                                                            ($t): t_out.Expression.l_state.construct.l_state.number_.l_state.natural => {
+                                                                                            ($t): t_out.Assign.l_state.construct.l_state.number_.l_state.natural => {
                                                                                                 switch ($t) {
                                                                                                     case 'literal':
                                                                                                         return _p_change_context(
@@ -3205,7 +3079,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                 )['start']['relative'],
-                                                                                                                'l state': ['copy', Value_Selection(
+                                                                                                                'l state': ['copy', Select_Value(
                                                                                                                     $,
                                                                                                                     ($) => abort(
                                                                                                                         $,
@@ -3235,7 +3109,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                     ['no such entry', "dictionary"],
                                                                                                                                 ),
                                                                                                                             ),
-                                                                                                                            ($) => Value_Selection(
+                                                                                                                            ($) => Select_Value(
                                                                                                                                 $,
                                                                                                                                 ($) => abort(
                                                                                                                                     $,
@@ -3268,7 +3142,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                     ['no such entry', "list"],
                                                                                                                                 ),
                                                                                                                             ),
-                                                                                                                            ($) => Value_Selection(
+                                                                                                                            ($) => Select_Value(
                                                                                                                                 $,
                                                                                                                                 ($) => abort(
                                                                                                                                     $,
@@ -3345,7 +3219,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                             ),
                                                             ($) => _p.decide.text(
                                                                 $['option']['value'],
-                                                                ($t): t_out.Expression.l_state.construct.l_state.optional => {
+                                                                ($t): t_out.Assign.l_state.construct.l_state.optional => {
                                                                     switch ($t) {
                                                                         case 'literal':
                                                                             return _p_change_context(
@@ -3363,7 +3237,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                         ),
                                                                                         ($) => _p.decide.text(
                                                                                             $['option']['value'],
-                                                                                            ($t): t_out.Expression.l_state.construct.l_state.optional.l_state.literal => {
+                                                                                            ($t): t_out.Assign.l_state.construct.l_state.optional.l_state.literal => {
                                                                                                 switch ($t) {
                                                                                                     case 'not set':
                                                                                                         return _p_change_context(
@@ -3387,7 +3261,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                 )['start']['relative'],
-                                                                                                                'l state': ['set', Expression(
+                                                                                                                'l state': ['set', Assign(
                                                                                                                     $,
                                                                                                                     ($) => abort(
                                                                                                                         $,
@@ -3405,14 +3279,14 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                     )],
                                                                                 }),
                                                                             )
-                                                                        case 'source':
+                                                                        case 'from':
                                                                             return _p_change_context(
                                                                                 $['value'],
                                                                                 ($) => ({
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                     )['start']['relative'],
-                                                                                    'l state': ['source', _p_change_context(
+                                                                                    'l state': ['from', _p_change_context(
                                                                                         v_unmarshalled_from_parse_tree.Group(
                                                                                             $,
                                                                                             ($) => abort(
@@ -3427,7 +3301,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                         ['no such entry', "selection"],
                                                                                                     ),
                                                                                                 ),
-                                                                                                ($) => Value_Selection(
+                                                                                                ($) => Select_Value(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -3450,7 +3324,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                     ),
                                                                                                     ($) => _p.decide.text(
                                                                                                         $['option']['value'],
-                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.optional.l_state.source.type_ => {
+                                                                                                        ($t): t_out.Assign.l_state.construct.l_state.optional.l_state.from_.type_ => {
                                                                                                             switch ($t) {
                                                                                                                 case 'boolean':
                                                                                                                     return _p_change_context(
@@ -3468,7 +3342,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                 ),
                                                                                                                                 ($) => _p.decide.text(
                                                                                                                                     $['option']['value'],
-                                                                                                                                    ($t): t_out.Expression.l_state.construct.l_state.optional.l_state.source.type_.l_state.boolean_ => {
+                                                                                                                                    ($t): t_out.Assign.l_state.construct.l_state.optional.l_state.from_.type_.l_state.boolean_ => {
                                                                                                                                         switch ($t) {
                                                                                                                                             case 'convert':
                                                                                                                                                 return _p_change_context(
@@ -3492,7 +3366,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "assign set"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -3529,7 +3403,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                 ),
                                                                                                                                 ($) => _p.decide.text(
                                                                                                                                     $['option']['value'],
-                                                                                                                                    ($t): t_out.Expression.l_state.construct.l_state.optional.l_state.source.type_.l_state.optional => {
+                                                                                                                                    ($t): t_out.Assign.l_state.construct.l_state.optional.l_state.from_.type_.l_state.optional => {
                                                                                                                                         switch ($t) {
                                                                                                                                             case 'map':
                                                                                                                                                 return _p_change_context(
@@ -3553,7 +3427,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                                                             ['no such entry', "assign set"],
                                                                                                                                                                         ),
                                                                                                                                                                     ),
-                                                                                                                                                                    ($) => Expression(
+                                                                                                                                                                    ($) => Assign(
                                                                                                                                                                         $,
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             $,
@@ -3613,7 +3487,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                             ),
                                                             ($) => _p.decide.text(
                                                                 $['option']['value'],
-                                                                ($t): t_out.Expression.l_state.construct.l_state.state => {
+                                                                ($t): t_out.Assign.l_state.construct.l_state.state => {
                                                                     switch ($t) {
                                                                         case 'literal':
                                                                             return _p_change_context(
@@ -3651,7 +3525,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                         ['no such entry', "assign option"],
                                                                                                     ),
                                                                                                 ),
-                                                                                                ($) => Expression(
+                                                                                                ($) => Assign(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -3688,7 +3562,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                             ),
                                                             ($) => _p.decide.text(
                                                                 $['option']['value'],
-                                                                ($t): t_out.Expression.l_state.construct.l_state.text => {
+                                                                ($t): t_out.Assign.l_state.construct.l_state.text => {
                                                                     switch ($t) {
                                                                         case 'literal':
                                                                             return _p_change_context(
@@ -3721,7 +3595,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                     ),
                                                                                                     ($) => _p.decide.text(
                                                                                                         $['option']['value'],
-                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.text.l_state.literal.type_ => {
+                                                                                                        ($t): t_out.Assign.l_state.construct.l_state.text.l_state.literal.type_ => {
                                                                                                             switch ($t) {
                                                                                                                 case 'identifier':
                                                                                                                     return _p_change_context(
@@ -3780,14 +3654,14 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                     )],
                                                                                 }),
                                                                             )
-                                                                        case 'source':
+                                                                        case 'from':
                                                                             return _p_change_context(
                                                                                 $['value'],
                                                                                 ($) => ({
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                     )['start']['relative'],
-                                                                                    'l state': ['source', _p_change_context(
+                                                                                    'l state': ['from', _p_change_context(
                                                                                         v_unmarshalled_from_parse_tree.Group(
                                                                                             $,
                                                                                             ($) => abort(
@@ -3802,7 +3676,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                         ['no such entry', "selection"],
                                                                                                     ),
                                                                                                 ),
-                                                                                                ($) => Value_Selection(
+                                                                                                ($) => Select_Value(
                                                                                                     $,
                                                                                                     ($) => abort(
                                                                                                         $,
@@ -3825,7 +3699,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                     ),
                                                                                                     ($) => _p.decide.text(
                                                                                                         $['option']['value'],
-                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.text.l_state.source.type_ => {
+                                                                                                        ($t): t_out.Assign.l_state.construct.l_state.text.l_state.from_.type_ => {
                                                                                                             switch ($t) {
                                                                                                                 case 'text':
                                                                                                                     return _p_change_context(
@@ -3843,7 +3717,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                                                                 ),
                                                                                                                                 ($) => _p.decide.text(
                                                                                                                                     $['option']['value'],
-                                                                                                                                    ($t): t_out.Expression.l_state.construct.l_state.text.l_state.source.type_.l_state.text => {
+                                                                                                                                    ($t): t_out.Assign.l_state.construct.l_state.text.l_state.from_.type_.l_state.text => {
                                                                                                                                         switch ($t) {
                                                                                                                                             case 'copy':
                                                                                                                                                 return _p_change_context(
@@ -3925,7 +3799,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                             )['start']['relative'],
-                            'l state': ['select', Value_Selection(
+                            'l state': ['select', Select_Value(
                                 $,
                                 ($) => abort(
                                     $,
@@ -3949,7 +3823,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                 ),
                                 ($) => _p.decide.text(
                                     $['option']['value'],
-                                    ($t): t_out.Expression.l_state.special => {
+                                    ($t): t_out.Assign.l_state.special => {
                                         switch ($t) {
                                             case 'abort':
                                                 return _p_change_context(
@@ -3958,7 +3832,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                         )['start']['relative'],
-                                                        'l state': ['abort', Expression(
+                                                        'l state': ['abort', Assign(
                                                             $,
                                                             ($) => abort(
                                                                 $,
@@ -3988,7 +3862,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                             ['no such entry', "tester"],
                                                                         ),
                                                                     ),
-                                                                    ($) => Expression(
+                                                                    ($) => Assign(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -4002,7 +3876,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                             ['no such entry', "normal flow"],
                                                                         ),
                                                                     ),
-                                                                    ($) => Expression(
+                                                                    ($) => Assign(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -4035,7 +3909,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                             ['no such entry', "new context"],
                                                                         ),
                                                                     ),
-                                                                    ($) => Value_Selection(
+                                                                    ($) => Select_Value(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -4049,7 +3923,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                             ['no such entry', "expression"],
                                                                         ),
                                                                     ),
-                                                                    ($) => Expression(
+                                                                    ($) => Assign(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -4097,7 +3971,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                     $,
                                                                                 )['start']['relative'],
-                                                                                'l entry': Expression(
+                                                                                'l entry': Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -4114,7 +3988,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                             ['no such entry', "assign"],
                                                                         ),
                                                                     ),
-                                                                    ($) => Expression(
+                                                                    ($) => Assign(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -4162,7 +4036,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                             ['no such entry', "list"],
                                                                         ),
                                                                     ),
-                                                                    ($) => Value_Selection(
+                                                                    ($) => Select_Value(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -4176,7 +4050,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                                             ['no such entry', "assign"],
                                                                         ),
                                                                     ),
-                                                                    ($) => Expression(
+                                                                    ($) => Assign(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -4239,7 +4113,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
     ),
 )
 
-export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_change_context(
+export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_context(
     v_unmarshalled_from_parse_tree.State(
         $,
         ($) => abort(
@@ -4248,7 +4122,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
     ),
     ($) => _p.decide.text(
         $['option']['value'],
-        ($t): t_out.Value_Selection => {
+        ($t): t_out.Select_Value => {
             switch ($t) {
                 case 'implement me':
                     return _p_change_context(
@@ -4296,7 +4170,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                             ),
                                             ($) => _p.decide.text(
                                                 $['option']['value'],
-                                                ($t): t_out.Value_Selection.l_state.regular.start => {
+                                                ($t): t_out.Select_Value.l_state.regular.start => {
                                                     switch ($t) {
                                                         case 'call':
                                                             return _p_change_context(
@@ -4329,7 +4203,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                     ),
                                                                                     ($) => _p.decide.text(
                                                                                         $['option']['value'],
-                                                                                        ($t): t_out.Value_Selection.l_state.regular.start.l_state.call.source => {
+                                                                                        ($t): t_out.Select_Value.l_state.regular.start.l_state.call.source => {
                                                                                             switch ($t) {
                                                                                                 case 'local':
                                                                                                     return _p_change_context(
@@ -4409,7 +4283,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ['no such entry', "context"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -4430,7 +4304,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                             ['expected an optional', null],
                                                                                         ),
                                                                                     ),
-                                                                                    ($) => Expression(
+                                                                                    ($) => Assign(
                                                                                         $,
                                                                                         ($) => abort(
                                                                                             $,
@@ -4461,7 +4335,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ),
                                                                                         ($) => _p.decide.text(
                                                                                             $['option']['value'],
-                                                                                            ($t): t_out.Value_Selection.l_state.regular.start.l_state.call.lookups.O => {
+                                                                                            ($t): t_out.Select_Value.l_state.regular.start.l_state.call.lookups.O => {
                                                                                                 switch ($t) {
                                                                                                     case 'initialize':
                                                                                                         return _p_change_context(
@@ -4485,7 +4359,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                             )['start']['relative'],
-                                                                                                                            'l entry': Lookup_Selection(
+                                                                                                                            'l entry': Select_Lookup(
                                                                                                                                 $,
                                                                                                                                 ($) => abort(
                                                                                                                                     $,
@@ -4544,7 +4418,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ),
                                                                                         ($) => _p.decide.text(
                                                                                             $['option']['value'],
-                                                                                            ($t): t_out.Value_Selection.l_state.regular.start.l_state.call.arguments_.O => {
+                                                                                            ($t): t_out.Select_Value.l_state.regular.start.l_state.call.arguments_.O => {
                                                                                                 switch ($t) {
                                                                                                     case 'initialize':
                                                                                                         return _p_change_context(
@@ -4568,7 +4442,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                             )['start']['relative'],
-                                                                                                                            'l entry': Expression(
+                                                                                                                            'l entry': Assign(
                                                                                                                                 $,
                                                                                                                                 ($) => abort(
                                                                                                                                     $,
@@ -4645,7 +4519,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ['no such entry', "dictionary"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Value_Selection(
+                                                                                ($) => Select_Value(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -4659,7 +4533,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ['no such entry', "id"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -4673,7 +4547,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ['no such entry', "abort handler"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -4706,7 +4580,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ['no such entry', "source"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Select_Value(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -4720,7 +4594,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ['no such entry', "assign item"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -4753,7 +4627,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ['no such entry', "lookup"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Lookup_Selection(
+                                                                                ($) => Select_Lookup(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -4767,7 +4641,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ['no such entry', "id"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -4796,7 +4670,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                                     ['no such entry', "no such entry"],
                                                                                                 ),
                                                                                             ),
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -4810,7 +4684,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                                     ['no such entry', "no context lookup"],
                                                                                                 ),
                                                                                             ),
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -4824,7 +4698,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                                     ['no such entry', "cycle detected"],
                                                                                                 ),
                                                                                             ),
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -4860,7 +4734,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ['no such entry', "lookup"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Lookup_Selection(
+                                                                                ($) => Select_Lookup(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -4874,7 +4748,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ['no such entry', "id"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -4903,7 +4777,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                                     ['no such entry', "no such entry"],
                                                                                                 ),
                                                                                             ),
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -4917,7 +4791,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                                     ['no such entry', "no context lookup"],
                                                                                                 ),
                                                                                             ),
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -4931,7 +4805,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                                     ['no such entry', "cycle detected"],
                                                                                                 ),
                                                                                             ),
-                                                                                            ($) => Expression(
+                                                                                            ($) => Assign(
                                                                                                 $,
                                                                                                 ($) => abort(
                                                                                                     $,
@@ -5027,7 +4901,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ['no such entry', "source"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Select_Value(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -5041,7 +4915,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
                                                                                         ['no such entry', "assign character"],
                                                                                     ),
                                                                                 ),
-                                                                                ($) => Expression(
+                                                                                ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
                                                                                         $,
@@ -5121,7 +4995,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort) => _p_ch
     ),
 )
 
-export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort) => _p_change_context(
+export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change_context(
     v_unmarshalled_from_parse_tree.State(
         $,
         ($) => abort(
@@ -5130,7 +5004,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort) => _p_
     ),
     ($) => _p.decide.text(
         $['option']['value'],
-        ($t): t_out.Lookup_Selection => {
+        ($t): t_out.Select_Lookup => {
             switch ($t) {
                 case 'implement me':
                     return _p_change_context(
@@ -5178,7 +5052,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort) => _p_
                                 ),
                                 ($) => _p.decide.text(
                                     $['option']['value'],
-                                    ($t): t_out.Lookup_Selection.l_state.stack => {
+                                    ($t): t_out.Select_Lookup.l_state.stack => {
                                         switch ($t) {
                                             case 'empty':
                                                 return _p_change_context(
@@ -5217,7 +5091,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort) => _p_
                                                                             ['no such entry', "stack"],
                                                                         ),
                                                                     ),
-                                                                    ($) => Lookup_Selection(
+                                                                    ($) => Select_Lookup(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -5231,7 +5105,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort) => _p_
                                                                             ['no such entry', "acyclic"],
                                                                         ),
                                                                     ),
-                                                                    ($) => Lookup_Selection(
+                                                                    ($) => Select_Lookup(
                                                                         $,
                                                                         ($) => abort(
                                                                             $,
@@ -5268,7 +5142,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort) => _p_
                                 ),
                                 ($) => _p.decide.text(
                                     $['option']['value'],
-                                    ($t): t_out.Lookup_Selection.l_state.acyclic => {
+                                    ($t): t_out.Select_Lookup.l_state.acyclic => {
                                         switch ($t) {
                                             case 'not set':
                                                 return _p_change_context(
@@ -5307,7 +5181,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort) => _p_
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                         )['start']['relative'],
-                                                        'l state': ['resolved dictionary', Value_Selection(
+                                                        'l state': ['resolved dictionary', Select_Value(
                                                             $,
                                                             ($) => abort(
                                                                 $,
@@ -5341,7 +5215,7 @@ export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort) => _p_
                                 ),
                                 ($) => _p.decide.text(
                                     $['option']['value'],
-                                    ($t): t_out.Lookup_Selection.l_state.cyclic => {
+                                    ($t): t_out.Select_Lookup.l_state.cyclic => {
                                         switch ($t) {
                                             case 'not set':
                                                 return _p_change_context(

@@ -88,11 +88,11 @@ export type Temp_Value_Type_Specification_ = (
     },
 ) => Temp_Value_Type_Specification_.O
 
-export namespace Expression_ {
+export namespace Assign_ {
     
     export type I = i_in.List_of_Characters
     
-    export type O = i_out.Expression
+    export type O = i_out.Assign
     
     export type E = i_generic.Error
     
@@ -106,20 +106,20 @@ export namespace Expression_ {
     
 }
 
-export type Expression_ = (
-    context: Expression_.I,
-    abort: _pi.Abort<Expression_.E>,
+export type Assign_ = (
+    context: Assign_.I,
+    abort: _pi.Abort<Assign_.E>,
     parameters: {
-        readonly 'document resource identifier': Expression_.P.document_resource_identifier
-        readonly 'tab size': Expression_.P.tab_size
+        readonly 'document resource identifier': Assign_.P.document_resource_identifier
+        readonly 'tab size': Assign_.P.tab_size
     },
-) => Expression_.O
+) => Assign_.O
 
-export namespace Value_Selection_ {
+export namespace Select_Value_ {
     
     export type I = i_in.List_of_Characters
     
-    export type O = i_out.Value_Selection
+    export type O = i_out.Select_Value
     
     export type E = i_generic.Error
     
@@ -133,20 +133,20 @@ export namespace Value_Selection_ {
     
 }
 
-export type Value_Selection_ = (
-    context: Value_Selection_.I,
-    abort: _pi.Abort<Value_Selection_.E>,
+export type Select_Value_ = (
+    context: Select_Value_.I,
+    abort: _pi.Abort<Select_Value_.E>,
     parameters: {
-        readonly 'document resource identifier': Value_Selection_.P.document_resource_identifier
-        readonly 'tab size': Value_Selection_.P.tab_size
+        readonly 'document resource identifier': Select_Value_.P.document_resource_identifier
+        readonly 'tab size': Select_Value_.P.tab_size
     },
-) => Value_Selection_.O
+) => Select_Value_.O
 
-export namespace Lookup_Selection_ {
+export namespace Select_Lookup_ {
     
     export type I = i_in.List_of_Characters
     
-    export type O = i_out.Lookup_Selection
+    export type O = i_out.Select_Lookup
     
     export type E = i_generic.Error
     
@@ -160,20 +160,20 @@ export namespace Lookup_Selection_ {
     
 }
 
-export type Lookup_Selection_ = (
-    context: Lookup_Selection_.I,
-    abort: _pi.Abort<Lookup_Selection_.E>,
+export type Select_Lookup_ = (
+    context: Select_Lookup_.I,
+    abort: _pi.Abort<Select_Lookup_.E>,
     parameters: {
-        readonly 'document resource identifier': Lookup_Selection_.P.document_resource_identifier
-        readonly 'tab size': Lookup_Selection_.P.tab_size
+        readonly 'document resource identifier': Select_Lookup_.P.document_resource_identifier
+        readonly 'tab size': Select_Lookup_.P.tab_size
     },
-) => Lookup_Selection_.O
+) => Select_Lookup_.O
 
 export { 
     Package_Set_ as Package_Set, 
     Package_ as Package, 
     Temp_Value_Type_Specification_ as Temp_Value_Type_Specification, 
-    Expression_ as Expression, 
-    Value_Selection_ as Value_Selection, 
-    Lookup_Selection_ as Lookup_Selection, 
+    Assign_ as Assign, 
+    Select_Value_ as Select_Value, 
+    Select_Lookup_ as Select_Lookup, 
 }

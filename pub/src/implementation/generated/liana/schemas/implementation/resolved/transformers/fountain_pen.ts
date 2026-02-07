@@ -25,20 +25,20 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
     ),
 )
 
-export const Expression: t_signatures.Expression = ($) => v_serialize.Document(
-    v_marshall.Expression(
+export const Assign: t_signatures.Assign = ($) => v_serialize.Document(
+    v_marshall.Assign(
         $,
     ),
 )
 
-export const Value_Selection: t_signatures.Value_Selection = ($) => v_serialize.Document(
-    v_marshall.Value_Selection(
+export const Select_Value: t_signatures.Select_Value = ($) => v_serialize.Document(
+    v_marshall.Select_Value(
         $,
     ),
 )
 
-export const Lookup_Selection: t_signatures.Lookup_Selection = ($) => v_serialize.Document(
-    v_marshall.Lookup_Selection(
+export const Select_Lookup: t_signatures.Select_Lookup = ($) => v_serialize.Document(
+    v_marshall.Select_Lookup(
         $,
     ),
 )

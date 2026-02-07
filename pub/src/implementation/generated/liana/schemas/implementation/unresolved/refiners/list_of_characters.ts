@@ -55,7 +55,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
     ),
 )
 
-export const Expression: t_signatures.Expression = ($, abort, $p) => v_unmarshall.Expression(
+export const Assign: t_signatures.Assign = ($, abort, $p) => v_unmarshall.Assign(
     v_deserialize.Document(
         $,
         ($) => abort(
@@ -71,7 +71,7 @@ export const Expression: t_signatures.Expression = ($, abort, $p) => v_unmarshal
     ),
 )
 
-export const Value_Selection: t_signatures.Value_Selection = ($, abort, $p) => v_unmarshall.Value_Selection(
+export const Select_Value: t_signatures.Select_Value = ($, abort, $p) => v_unmarshall.Select_Value(
     v_deserialize.Document(
         $,
         ($) => abort(
@@ -87,7 +87,7 @@ export const Value_Selection: t_signatures.Value_Selection = ($, abort, $p) => v
     ),
 )
 
-export const Lookup_Selection: t_signatures.Lookup_Selection = ($, abort, $p) => v_unmarshall.Lookup_Selection(
+export const Select_Lookup: t_signatures.Select_Lookup = ($, abort, $p) => v_unmarshall.Select_Lookup(
     v_deserialize.Document(
         $,
         ($) => abort(
