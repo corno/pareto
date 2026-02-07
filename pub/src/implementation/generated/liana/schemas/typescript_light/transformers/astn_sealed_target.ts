@@ -527,6 +527,14 @@
                             ),
                         }),
                     )
+                case 'never':
+                    return _p.ss(
+                        $,
+                        ($) => ({
+                            'option': 'never',
+                            'value': ['nothing', null],
+                        }),
+                    )
                 case 'null':
                     return _p.ss(
                         $,

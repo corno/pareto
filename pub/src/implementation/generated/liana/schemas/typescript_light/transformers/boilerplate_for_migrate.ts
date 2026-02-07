@@ -397,6 +397,11 @@
                             $,
                         )],
                     )
+                case 'never':
+                    return _p.ss(
+                        $,
+                        ($) => ['never', null],
+                    )
                 case 'null':
                     return _p.ss(
                         $,

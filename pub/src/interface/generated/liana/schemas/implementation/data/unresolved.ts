@@ -727,7 +727,7 @@
                 readonly 'type': decide.type_
             }
             
-            export namespace assign {
+            export namespace construct {
                 
                 export type l_location = i__location.Relative_Location
                 
@@ -762,22 +762,105 @@
                                 readonly 'l state': literal.l_state
                             }
                             
-                            export type not = Value_Selection_
+                            export namespace source {
+                                
+                                export type selection = Value_Selection_
+                                
+                                export namespace type_ {
+                                    
+                                    export type l_location = i__location.Relative_Location
+                                    
+                                    export namespace l_state {
+                                        
+                                        export namespace boolean_ {
+                                            
+                                            export type l_location = i__location.Relative_Location
+                                            
+                                            export namespace l_state {
+                                                
+                                                export type not = null
+                                                
+                                                export type copy = null
+                                                
+                                            }
+                                            
+                                            export type l_state = 
+                                                | readonly ['not', l_state.not]
+                                                | readonly ['copy', l_state.copy]
+                                            
+                                        }
+                                        
+                                        export type boolean_ = {
+                                            readonly 'l location': boolean_.l_location
+                                            readonly 'l state': boolean_.l_state
+                                        }
+                                        
+                                        export namespace dictionary {
+                                            
+                                            export type l_location = i__location.Relative_Location
+                                            
+                                            export namespace l_state {
+                                                
+                                                export type is_empty = Value_Selection_
+                                                
+                                            }
+                                            
+                                            export type l_state = 
+                                                | readonly ['is empty', l_state.is_empty]
+                                            
+                                        }
+                                        
+                                        export type dictionary = {
+                                            readonly 'l location': dictionary.l_location
+                                            readonly 'l state': dictionary.l_state
+                                        }
+                                        
+                                        export namespace list {
+                                            
+                                            export type l_location = i__location.Relative_Location
+                                            
+                                            export namespace l_state {
+                                                
+                                                export type is_empty = Value_Selection_
+                                                
+                                            }
+                                            
+                                            export type l_state = 
+                                                | readonly ['is empty', l_state.is_empty]
+                                            
+                                        }
+                                        
+                                        export type list = {
+                                            readonly 'l location': list.l_location
+                                            readonly 'l state': list.l_state
+                                        }
+                                        
+                                    }
+                                    
+                                    export type l_state = 
+                                        | readonly ['boolean', l_state.boolean_]
+                                        | readonly ['dictionary', l_state.dictionary]
+                                        | readonly ['list', l_state.list]
+                                    
+                                }
+                                
+                                export type type_ = {
+                                    readonly 'l location': type_.l_location
+                                    readonly 'l state': type_.l_state
+                                }
+                                
+                            }
                             
-                            export type copy = Value_Selection_
-                            
-                            export type dictionary_is_empty = Value_Selection_
-                            
-                            export type list_is_empty = Value_Selection_
+                            export type source = {
+                                readonly 'selection': source.selection
+                                readonly 'type': source.type_
+                            }
                             
                         }
                         
                         export type l_state = 
                             | readonly ['literal', l_state.literal]
-                            | readonly ['not', l_state.not]
-                            | readonly ['copy', l_state.copy]
-                            | readonly ['dictionary is empty', l_state.dictionary_is_empty]
-                            | readonly ['list is empty', l_state.list_is_empty]
+                            | readonly ['source', l_state.source]
                         
                     }
                     
@@ -791,38 +874,6 @@
                         export type l_location = i__location.Relative_Location
                         
                         export namespace l_state {
-                            
-                            export namespace filter {
-                                
-                                export type source = Value_Selection_
-                                
-                                export type entry_handler = Expression_
-                                
-                            }
-                            
-                            export type filter = {
-                                readonly 'source': filter.source
-                                readonly 'entry handler': filter.entry_handler
-                            }
-                            
-                            export namespace from_list {
-                                
-                                export type source = Value_Selection_
-                                
-                                export type get_id = Expression_
-                                
-                                export type get_entry = Expression_
-                                
-                                export type abort = Expression_
-                                
-                            }
-                            
-                            export type from_list = {
-                                readonly 'source': from_list.source
-                                readonly 'get id': from_list.get_id
-                                readonly 'get entry': from_list.get_entry
-                                readonly 'abort': from_list.abort
-                            }
                             
                             export namespace literal {
                                 
@@ -854,43 +905,128 @@
                                 readonly 'l dictionary': literal.l_dictionary
                             }
                             
-                            export namespace map {
+                            export namespace source {
                                 
-                                export type source = Value_Selection_
+                                export type selection = Value_Selection_
                                 
-                                export type entry_handler = Expression_
+                                export namespace type_ {
+                                    
+                                    export type l_location = i__location.Relative_Location
+                                    
+                                    export namespace l_state {
+                                        
+                                        export namespace dictionary {
+                                            
+                                            export type l_location = i__location.Relative_Location
+                                            
+                                            export namespace l_state {
+                                                
+                                                export namespace filter {
+                                                    
+                                                    export type assign_entry = Expression_
+                                                    
+                                                }
+                                                
+                                                export type filter = {
+                                                    readonly 'assign entry': filter.assign_entry
+                                                }
+                                                
+                                                export namespace map {
+                                                    
+                                                    export type assign_entry = Expression_
+                                                    
+                                                }
+                                                
+                                                export type map = {
+                                                    readonly 'assign entry': map.assign_entry
+                                                }
+                                                
+                                                export namespace resolve {
+                                                    
+                                                    export type assign_entry = Expression_
+                                                    
+                                                    export type temp_resulting_entry_node = Temp_Value_Type_Specification_
+                                                    
+                                                }
+                                                
+                                                export type resolve = {
+                                                    readonly 'assign entry': resolve.assign_entry
+                                                    readonly 'temp resulting entry node': resolve.temp_resulting_entry_node
+                                                }
+                                                
+                                            }
+                                            
+                                            export type l_state = 
+                                                | readonly ['filter', l_state.filter]
+                                                | readonly ['map', l_state.map]
+                                                | readonly ['resolve', l_state.resolve]
+                                            
+                                        }
+                                        
+                                        export type dictionary = {
+                                            readonly 'l location': dictionary.l_location
+                                            readonly 'l state': dictionary.l_state
+                                        }
+                                        
+                                        export namespace list {
+                                            
+                                            export type l_location = i__location.Relative_Location
+                                            
+                                            export namespace l_state {
+                                                
+                                                export namespace convert {
+                                                    
+                                                    export type assign_id = Expression_
+                                                    
+                                                    export type assign_entry = Expression_
+                                                    
+                                                    export type abort = Expression_
+                                                    
+                                                }
+                                                
+                                                export type convert = {
+                                                    readonly 'assign id': convert.assign_id
+                                                    readonly 'assign entry': convert.assign_entry
+                                                    readonly 'abort': convert.abort
+                                                }
+                                                
+                                            }
+                                            
+                                            export type l_state = 
+                                                | readonly ['convert', l_state.convert]
+                                            
+                                        }
+                                        
+                                        export type list = {
+                                            readonly 'l location': list.l_location
+                                            readonly 'l state': list.l_state
+                                        }
+                                        
+                                    }
+                                    
+                                    export type l_state = 
+                                        | readonly ['dictionary', l_state.dictionary]
+                                        | readonly ['list', l_state.list]
+                                    
+                                }
+                                
+                                export type type_ = {
+                                    readonly 'l location': type_.l_location
+                                    readonly 'l state': type_.l_state
+                                }
                                 
                             }
                             
-                            export type map = {
-                                readonly 'source': map.source
-                                readonly 'entry handler': map.entry_handler
-                            }
-                            
-                            export namespace resolve {
-                                
-                                export type source = Value_Selection_
-                                
-                                export type entry_handler = Expression_
-                                
-                                export type temp_resulting_entry_node = Temp_Value_Type_Specification_
-                                
-                            }
-                            
-                            export type resolve = {
-                                readonly 'source': resolve.source
-                                readonly 'entry handler': resolve.entry_handler
-                                readonly 'temp resulting entry node': resolve.temp_resulting_entry_node
+                            export type source = {
+                                readonly 'selection': source.selection
+                                readonly 'type': source.type_
                             }
                             
                         }
                         
                         export type l_state = 
-                            | readonly ['filter', l_state.filter]
-                            | readonly ['from list', l_state.from_list]
                             | readonly ['literal', l_state.literal]
-                            | readonly ['map', l_state.map]
-                            | readonly ['resolve', l_state.resolve]
+                            | readonly ['source', l_state.source]
                         
                     }
                     
@@ -907,69 +1043,49 @@
                             
                             export namespace literal {
                                 
-                                export type l_location = i__location.Relative_Location
-                                
-                                export namespace l_dictionary {
+                                export namespace properties {
                                     
-                                    export namespace D {
+                                    export type l_location = i__location.Relative_Location
+                                    
+                                    export namespace l_dictionary {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export namespace D {
+                                            
+                                            export type l_location = i__location.Relative_Location
+                                            
+                                            export type l_entry = Expression_
+                                            
+                                        }
                                         
-                                        export type l_entry = Expression_
+                                        export type D = {
+                                            readonly 'l location': D.l_location
+                                            readonly 'l entry': D.l_entry
+                                        }
                                         
                                     }
                                     
-                                    export type D = {
-                                        readonly 'l location': D.l_location
-                                        readonly 'l entry': D.l_entry
-                                    }
+                                    export type l_dictionary = _pi.Dictionary<l_dictionary.D>
                                     
                                 }
                                 
-                                export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                                export type properties = {
+                                    readonly 'l location': properties.l_location
+                                    readonly 'l dictionary': properties.l_dictionary
+                                }
+                                
+                                export type have_dependencies = boolean
                                 
                             }
                             
                             export type literal = {
-                                readonly 'l location': literal.l_location
-                                readonly 'l dictionary': literal.l_dictionary
-                            }
-                            
-                            export namespace resolve {
-                                
-                                export type l_location = i__location.Relative_Location
-                                
-                                export namespace l_dictionary {
-                                    
-                                    export namespace D {
-                                        
-                                        export type l_location = i__location.Relative_Location
-                                        
-                                        export type l_entry = Expression_
-                                        
-                                    }
-                                    
-                                    export type D = {
-                                        readonly 'l location': D.l_location
-                                        readonly 'l entry': D.l_entry
-                                    }
-                                    
-                                }
-                                
-                                export type l_dictionary = _pi.Dictionary<l_dictionary.D>
-                                
-                            }
-                            
-                            export type resolve = {
-                                readonly 'l location': resolve.l_location
-                                readonly 'l dictionary': resolve.l_dictionary
+                                readonly 'properties': literal.properties
+                                readonly 'have dependencies': literal.have_dependencies
                             }
                             
                         }
                         
                         export type l_state = 
                             | readonly ['literal', l_state.literal]
-                            | readonly ['resolve', l_state.resolve]
                         
                     }
                     
@@ -983,32 +1099,6 @@
                         export type l_location = i__location.Relative_Location
                         
                         export namespace l_state {
-                            
-                            export namespace filter {
-                                
-                                export type source = Value_Selection_
-                                
-                                export type entry_handler = Expression_
-                                
-                            }
-                            
-                            export type filter = {
-                                readonly 'source': filter.source
-                                readonly 'entry handler': filter.entry_handler
-                            }
-                            
-                            export namespace from_dictionary {
-                                
-                                export type source = Value_Selection_
-                                
-                                export type get_item = Expression_
-                                
-                            }
-                            
-                            export type from_dictionary = {
-                                readonly 'source': from_dictionary.source
-                                readonly 'get item': from_dictionary.get_item
-                            }
                             
                             export namespace literal {
                                 
@@ -1040,77 +1130,163 @@
                                 readonly 'l list': literal.l_list
                             }
                             
-                            export namespace map {
+                            export namespace source {
                                 
-                                export type source = Value_Selection_
+                                export type selection = Value_Selection_
                                 
-                                export type item_handler = Expression_
+                                export namespace type_ {
+                                    
+                                    export type l_location = i__location.Relative_Location
+                                    
+                                    export namespace l_state {
+                                        
+                                        export namespace dictionary {
+                                            
+                                            export type l_location = i__location.Relative_Location
+                                            
+                                            export namespace l_state {
+                                                
+                                                export namespace convert {
+                                                    
+                                                    export type assign_entry = Expression_
+                                                    
+                                                }
+                                                
+                                                export type convert = {
+                                                    readonly 'assign entry': convert.assign_entry
+                                                }
+                                                
+                                            }
+                                            
+                                            export type l_state = 
+                                                | readonly ['convert', l_state.convert]
+                                            
+                                        }
+                                        
+                                        export type dictionary = {
+                                            readonly 'l location': dictionary.l_location
+                                            readonly 'l state': dictionary.l_state
+                                        }
+                                        
+                                        export namespace group {
+                                            
+                                            export type l_location = i__location.Relative_Location
+                                            
+                                            export namespace l_state {
+                                                
+                                            }
+                                            
+                                            export type l_state = never
+                                            
+                                        }
+                                        
+                                        export type group = {
+                                            readonly 'l location': group.l_location
+                                            readonly 'l state': group.l_state
+                                        }
+                                        
+                                        export namespace list {
+                                            
+                                            export type l_location = i__location.Relative_Location
+                                            
+                                            export namespace l_state {
+                                                
+                                                export namespace filter {
+                                                    
+                                                    export type assign_item = Expression_
+                                                    
+                                                }
+                                                
+                                                export type filter = {
+                                                    readonly 'assign item': filter.assign_item
+                                                }
+                                                
+                                                export namespace map {
+                                                    
+                                                    export type assign_item = Expression_
+                                                    
+                                                }
+                                                
+                                                export type map = {
+                                                    readonly 'assign item': map.assign_item
+                                                }
+                                                
+                                                export namespace map_with_state {
+                                                    
+                                                    export type initialize_state = Expression_
+                                                    
+                                                    export type assign_item = Expression_
+                                                    
+                                                    export type update_state = Expression_
+                                                    
+                                                    export type wrap_up = Expression_
+                                                    
+                                                }
+                                                
+                                                export type map_with_state = {
+                                                    readonly 'initialize state': map_with_state.initialize_state
+                                                    readonly 'assign item': map_with_state.assign_item
+                                                    readonly 'update state': map_with_state.update_state
+                                                    readonly 'wrap up': map_with_state.wrap_up
+                                                }
+                                                
+                                                export namespace reduce {
+                                                    
+                                                    export type initialize_state = Expression_
+                                                    
+                                                    export type assign_item = Expression_
+                                                    
+                                                }
+                                                
+                                                export type reduce = {
+                                                    readonly 'initialize state': reduce.initialize_state
+                                                    readonly 'assign item': reduce.assign_item
+                                                }
+                                                
+                                                export type reverse = null
+                                                
+                                            }
+                                            
+                                            export type l_state = 
+                                                | readonly ['filter', l_state.filter]
+                                                | readonly ['map', l_state.map]
+                                                | readonly ['map with state', l_state.map_with_state]
+                                                | readonly ['reduce', l_state.reduce]
+                                                | readonly ['reverse', l_state.reverse]
+                                            
+                                        }
+                                        
+                                        export type list = {
+                                            readonly 'l location': list.l_location
+                                            readonly 'l state': list.l_state
+                                        }
+                                        
+                                    }
+                                    
+                                    export type l_state = 
+                                        | readonly ['dictionary', l_state.dictionary]
+                                        | readonly ['group', l_state.group]
+                                        | readonly ['list', l_state.list]
+                                    
+                                }
+                                
+                                export type type_ = {
+                                    readonly 'l location': type_.l_location
+                                    readonly 'l state': type_.l_state
+                                }
                                 
                             }
                             
-                            export type map = {
-                                readonly 'source': map.source
-                                readonly 'item handler': map.item_handler
-                            }
-                            
-                            export namespace map_with_state {
-                                
-                                export type source = Value_Selection_
-                                
-                                export type initial_state = Expression_
-                                
-                                export type item_handler = Expression_
-                                
-                                export type update_state = Expression_
-                                
-                                export type wrap_up = Expression_
-                                
-                            }
-                            
-                            export type map_with_state = {
-                                readonly 'source': map_with_state.source
-                                readonly 'initial state': map_with_state.initial_state
-                                readonly 'item handler': map_with_state.item_handler
-                                readonly 'update state': map_with_state.update_state
-                                readonly 'wrap up': map_with_state.wrap_up
-                            }
-                            
-                            export namespace reduce {
-                                
-                                export type source = Value_Selection_
-                                
-                                export type initial_state = Expression_
-                                
-                                export type item_handler = Expression_
-                                
-                            }
-                            
-                            export type reduce = {
-                                readonly 'source': reduce.source
-                                readonly 'initial state': reduce.initial_state
-                                readonly 'item handler': reduce.item_handler
-                            }
-                            
-                            export namespace reverse {
-                                
-                                export type source = Value_Selection_
-                                
-                            }
-                            
-                            export type reverse = {
-                                readonly 'source': reverse.source
+                            export type source = {
+                                readonly 'selection': source.selection
+                                readonly 'type': source.type_
                             }
                             
                         }
                         
                         export type l_state = 
-                            | readonly ['filter', l_state.filter]
-                            | readonly ['from dictionary', l_state.from_dictionary]
                             | readonly ['literal', l_state.literal]
-                            | readonly ['map', l_state.map]
-                            | readonly ['map with state', l_state.map_with_state]
-                            | readonly ['reduce', l_state.reduce]
-                            | readonly ['reverse', l_state.reverse]
+                            | readonly ['source', l_state.source]
                         
                     }
                     
@@ -1160,17 +1336,17 @@
                                     
                                     export namespace divide {
                                         
-                                        export type divident = Value_Selection_
+                                        export type assign_dividend = Value_Selection_
                                         
-                                        export type divisor = Value_Selection_
+                                        export type assign_divisor = Value_Selection_
                                         
                                         export type abort = Expression_
                                         
                                     }
                                     
                                     export type divide = {
-                                        readonly 'divident': divide.divident
-                                        readonly 'divisor': divide.divisor
+                                        readonly 'assign dividend': divide.assign_dividend
+                                        readonly 'assign divisor': divide.assign_divisor
                                         readonly 'abort': divide.abort
                                     }
                                     
@@ -1261,19 +1437,6 @@
                         
                         export namespace l_state {
                             
-                            export namespace from_boolean {
-                                
-                                export type source = Value_Selection_
-                                
-                                export type get_set = Expression_
-                                
-                            }
-                            
-                            export type from_boolean = {
-                                readonly 'source': from_boolean.source
-                                readonly 'get set': from_boolean.get_set
-                            }
-                            
                             export namespace literal {
                                 
                                 export type l_location = i__location.Relative_Location
@@ -1297,25 +1460,97 @@
                                 readonly 'l state': literal.l_state
                             }
                             
-                            export namespace map {
+                            export namespace source {
                                 
-                                export type source = Value_Selection_
+                                export type selection = Value_Selection_
                                 
-                                export type set_handler = Expression_
+                                export namespace type_ {
+                                    
+                                    export type l_location = i__location.Relative_Location
+                                    
+                                    export namespace l_state {
+                                        
+                                        export namespace boolean_ {
+                                            
+                                            export type l_location = i__location.Relative_Location
+                                            
+                                            export namespace l_state {
+                                                
+                                                export namespace convert {
+                                                    
+                                                    export type assign_set = Expression_
+                                                    
+                                                }
+                                                
+                                                export type convert = {
+                                                    readonly 'assign set': convert.assign_set
+                                                }
+                                                
+                                            }
+                                            
+                                            export type l_state = 
+                                                | readonly ['convert', l_state.convert]
+                                            
+                                        }
+                                        
+                                        export type boolean_ = {
+                                            readonly 'l location': boolean_.l_location
+                                            readonly 'l state': boolean_.l_state
+                                        }
+                                        
+                                        export namespace optional {
+                                            
+                                            export type l_location = i__location.Relative_Location
+                                            
+                                            export namespace l_state {
+                                                
+                                                export namespace map {
+                                                    
+                                                    export type assign_set = Expression_
+                                                    
+                                                }
+                                                
+                                                export type map = {
+                                                    readonly 'assign set': map.assign_set
+                                                }
+                                                
+                                            }
+                                            
+                                            export type l_state = 
+                                                | readonly ['map', l_state.map]
+                                            
+                                        }
+                                        
+                                        export type optional = {
+                                            readonly 'l location': optional.l_location
+                                            readonly 'l state': optional.l_state
+                                        }
+                                        
+                                    }
+                                    
+                                    export type l_state = 
+                                        | readonly ['boolean', l_state.boolean_]
+                                        | readonly ['optional', l_state.optional]
+                                    
+                                }
+                                
+                                export type type_ = {
+                                    readonly 'l location': type_.l_location
+                                    readonly 'l state': type_.l_state
+                                }
                                 
                             }
                             
-                            export type map = {
-                                readonly 'source': map.source
-                                readonly 'set handler': map.set_handler
+                            export type source = {
+                                readonly 'selection': source.selection
+                                readonly 'type': source.type_
                             }
                             
                         }
                         
                         export type l_state = 
-                            | readonly ['from boolean', l_state.from_boolean]
                             | readonly ['literal', l_state.literal]
-                            | readonly ['map', l_state.map]
+                            | readonly ['source', l_state.source]
                         
                     }
                     
@@ -1334,13 +1569,13 @@
                                 
                                 export type option = string
                                 
-                                export type value = Expression_
+                                export type assign_option = Expression_
                                 
                             }
                             
                             export type literal = {
                                 readonly 'option': literal.option
-                                readonly 'value': literal.value
+                                readonly 'assign option': literal.assign_option
                             }
                             
                         }
@@ -1360,8 +1595,6 @@
                         export type l_location = i__location.Relative_Location
                         
                         export namespace l_state {
-                            
-                            export type copy = Value_Selection_
                             
                             export namespace literal {
                                 
@@ -1397,13 +1630,62 @@
                                 readonly 'value': literal.value
                             }
                             
+                            export namespace source {
+                                
+                                export type selection = Value_Selection_
+                                
+                                export namespace type_ {
+                                    
+                                    export type l_location = i__location.Relative_Location
+                                    
+                                    export namespace l_state {
+                                        
+                                        export namespace text {
+                                            
+                                            export type l_location = i__location.Relative_Location
+                                            
+                                            export namespace l_state {
+                                                
+                                                export type copy = null
+                                                
+                                            }
+                                            
+                                            export type l_state = 
+                                                | readonly ['copy', l_state.copy]
+                                            
+                                        }
+                                        
+                                        export type text = {
+                                            readonly 'l location': text.l_location
+                                            readonly 'l state': text.l_state
+                                        }
+                                        
+                                    }
+                                    
+                                    export type l_state = 
+                                        | readonly ['text', l_state.text]
+                                    
+                                }
+                                
+                                export type type_ = {
+                                    readonly 'l location': type_.l_location
+                                    readonly 'l state': type_.l_state
+                                }
+                                
+                            }
+                            
+                            export type source = {
+                                readonly 'selection': source.selection
+                                readonly 'type': source.type_
+                            }
+                            
                             export type source_document = null
                             
                         }
                         
                         export type l_state = 
-                            | readonly ['copy', l_state.copy]
                             | readonly ['literal', l_state.literal]
+                            | readonly ['source', l_state.source]
                             | readonly ['source document', l_state.source_document]
                         
                     }
@@ -1428,9 +1710,9 @@
                 
             }
             
-            export type assign = {
-                readonly 'l location': assign.l_location
-                readonly 'l state': assign.l_state
+            export type construct = {
+                readonly 'l location': construct.l_location
+                readonly 'l state': construct.l_state
             }
             
             export type select = Value_Selection_
@@ -1501,13 +1783,13 @@
                             readonly 'l dictionary': variables.l_dictionary
                         }
                         
-                        export type callback = Expression_
+                        export type assign = Expression_
                         
                     }
                     
                     export type variables = {
                         readonly 'variables': variables.variables
-                        readonly 'callback': variables.callback
+                        readonly 'assign': variables.assign
                     }
                     
                     export type implement_me = string
@@ -1516,13 +1798,13 @@
                         
                         export type list = Value_Selection_
                         
-                        export type handler = Expression_
+                        export type assign = Expression_
                         
                     }
                     
                     export type iterate = {
                         readonly 'list': iterate.list
-                        readonly 'handler': iterate.handler
+                        readonly 'assign': iterate.assign
                     }
                     
                     export namespace unreachable {
@@ -1557,7 +1839,7 @@
         
         export type l_state = 
             | readonly ['decide', l_state.decide]
-            | readonly ['assign', l_state.assign]
+            | readonly ['construct', l_state.construct]
             | readonly ['select', l_state.select]
             | readonly ['special', l_state.special]
         
@@ -1776,13 +2058,13 @@
                             
                             export type source = Expression_
                             
-                            export type character_handler = Expression_
+                            export type assign_item = Expression_
                             
                         }
                         
                         export type list_from_text = {
                             readonly 'source': list_from_text.source
-                            readonly 'character handler': list_from_text.character_handler
+                            readonly 'assign item': list_from_text.assign_item
                         }
                         
                         export namespace lookup_entry {
@@ -1857,13 +2139,13 @@
                             
                             export type source = Expression_
                             
-                            export type item_handler = Expression_
+                            export type assign_character = Expression_
                             
                         }
                         
                         export type text_from_list = {
                             readonly 'source': text_from_list.source
-                            readonly 'item handler': text_from_list.item_handler
+                            readonly 'assign character': text_from_list.assign_character
                         }
                         
                         export type variable = string

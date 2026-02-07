@@ -750,10 +750,10 @@
                                 ),
                             }],
                         )
-                    case 'assign':
+                    case 'construct':
                         return _p.ss(
                             $,
-                            ($) => ['assign', {
+                            ($) => ['construct', {
                                 'l location': {
                                     'document resource identifier': "implement me",
                                     'line': 42,
@@ -761,7 +761,7 @@
                                 },
                                 'l state': _p.decide.state(
                                     $,
-                                    ($): t_out.Expression.l_state.assign.l_state => {
+                                    ($): t_out.Expression.l_state.construct.l_state => {
                                         switch ($[0]) {
                                             case 'boolean':
                                                 return _p.ss(
@@ -774,7 +774,7 @@
                                                         },
                                                         'l state': _p.decide.state(
                                                             $,
-                                                            ($): t_out.Expression.l_state.assign.l_state.boolean_.l_state => {
+                                                            ($): t_out.Expression.l_state.construct.l_state.boolean_.l_state => {
                                                                 switch ($[0]) {
                                                                     case 'literal':
                                                                         return _p.ss(
@@ -787,7 +787,7 @@
                                                                                 },
                                                                                 'l state': _p.decide.state(
                                                                                     $,
-                                                                                    ($): t_out.Expression.l_state.assign.l_state.boolean_.l_state.literal.l_state => {
+                                                                                    ($): t_out.Expression.l_state.construct.l_state.boolean_.l_state.literal.l_state => {
                                                                                         switch ($[0]) {
                                                                                             case 'false':
                                                                                                 return _p.ss(
@@ -808,33 +808,128 @@
                                                                                 ),
                                                                             }],
                                                                         )
-                                                                    case 'not':
+                                                                    case 'source':
                                                                         return _p.ss(
                                                                             $,
-                                                                            ($) => ['not', Value_Selection(
-                                                                                $,
-                                                                            )],
-                                                                        )
-                                                                    case 'copy':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['copy', Value_Selection(
-                                                                                $,
-                                                                            )],
-                                                                        )
-                                                                    case 'dictionary is empty':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['dictionary is empty', Value_Selection(
-                                                                                $,
-                                                                            )],
-                                                                        )
-                                                                    case 'list is empty':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['list is empty', Value_Selection(
-                                                                                $,
-                                                                            )],
+                                                                            ($) => ['source', {
+                                                                                'selection': _p_change_context(
+                                                                                    $['selection'],
+                                                                                    ($) => Value_Selection(
+                                                                                        $,
+                                                                                    ),
+                                                                                ),
+                                                                                'type': _p_change_context(
+                                                                                    $['type'],
+                                                                                    ($) => ({
+                                                                                        'l location': {
+                                                                                            'document resource identifier': "implement me",
+                                                                                            'line': 42,
+                                                                                            'column': 42,
+                                                                                        },
+                                                                                        'l state': _p.decide.state(
+                                                                                            $,
+                                                                                            ($): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state => {
+                                                                                                switch ($[0]) {
+                                                                                                    case 'boolean':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ['boolean', {
+                                                                                                                'l location': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                                'l state': _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state.boolean_.l_state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'not':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['not', null],
+                                                                                                                                )
+                                                                                                                            case 'copy':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['copy', null],
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                ),
+                                                                                                            }],
+                                                                                                        )
+                                                                                                    case 'dictionary':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ['dictionary', {
+                                                                                                                'l location': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                                'l state': _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state.dictionary.l_state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'is empty':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['is empty', Value_Selection(
+                                                                                                                                        $,
+                                                                                                                                    )],
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                ),
+                                                                                                            }],
+                                                                                                        )
+                                                                                                    case 'list':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ['list', {
+                                                                                                                'l location': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                                'l state': _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state.list.l_state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'is empty':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['is empty', Value_Selection(
+                                                                                                                                        $,
+                                                                                                                                    )],
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                ),
+                                                                                                            }],
+                                                                                                        )
+                                                                                                    default:
+                                                                                                        return _p.au(
+                                                                                                            $[0],
+                                                                                                        )
+                                                                                                }
+                                                                                            },
+                                                                                        ),
+                                                                                    }),
+                                                                                ),
+                                                                            }],
                                                                         )
                                                                     default:
                                                                         return _p.au(
@@ -856,56 +951,8 @@
                                                         },
                                                         'l state': _p.decide.state(
                                                             $,
-                                                            ($): t_out.Expression.l_state.assign.l_state.dictionary.l_state => {
+                                                            ($): t_out.Expression.l_state.construct.l_state.dictionary.l_state => {
                                                                 switch ($[0]) {
-                                                                    case 'filter':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['filter', {
-                                                                                'source': _p_change_context(
-                                                                                    $['source'],
-                                                                                    ($) => Value_Selection(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'entry handler': _p_change_context(
-                                                                                    $['entry handler'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                            }],
-                                                                        )
-                                                                    case 'from list':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['from list', {
-                                                                                'source': _p_change_context(
-                                                                                    $['source'],
-                                                                                    ($) => Value_Selection(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'get id': _p_change_context(
-                                                                                    $['get id'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'get entry': _p_change_context(
-                                                                                    $['get entry'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'abort': _p_change_context(
-                                                                                    $['abort'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                            }],
-                                                                        )
                                                                     case 'literal':
                                                                         return _p.ss(
                                                                             $,
@@ -930,45 +977,146 @@
                                                                                 ),
                                                                             }],
                                                                         )
-                                                                    case 'map':
+                                                                    case 'source':
                                                                         return _p.ss(
                                                                             $,
-                                                                            ($) => ['map', {
-                                                                                'source': _p_change_context(
-                                                                                    $['source'],
+                                                                            ($) => ['source', {
+                                                                                'selection': _p_change_context(
+                                                                                    $['selection'],
                                                                                     ($) => Value_Selection(
                                                                                         $,
                                                                                     ),
                                                                                 ),
-                                                                                'entry handler': _p_change_context(
-                                                                                    $['entry handler'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                            }],
-                                                                        )
-                                                                    case 'resolve':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['resolve', {
-                                                                                'source': _p_change_context(
-                                                                                    $['source'],
-                                                                                    ($) => Value_Selection(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'entry handler': _p_change_context(
-                                                                                    $['entry handler'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'temp resulting entry node': _p_change_context(
-                                                                                    $['temp resulting entry node'],
-                                                                                    ($) => Temp_Value_Type_Specification(
-                                                                                        $,
-                                                                                    ),
+                                                                                'type': _p_change_context(
+                                                                                    $['type'],
+                                                                                    ($) => ({
+                                                                                        'l location': {
+                                                                                            'document resource identifier': "implement me",
+                                                                                            'line': 42,
+                                                                                            'column': 42,
+                                                                                        },
+                                                                                        'l state': _p.decide.state(
+                                                                                            $,
+                                                                                            ($): t_out.Expression.l_state.construct.l_state.dictionary.l_state.source.type_.l_state => {
+                                                                                                switch ($[0]) {
+                                                                                                    case 'dictionary':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ['dictionary', {
+                                                                                                                'l location': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                                'l state': _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Expression.l_state.construct.l_state.dictionary.l_state.source.type_.l_state.dictionary.l_state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'filter':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['filter', {
+                                                                                                                                        'assign entry': _p_change_context(
+                                                                                                                                            $['assign entry'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                    }],
+                                                                                                                                )
+                                                                                                                            case 'map':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['map', {
+                                                                                                                                        'assign entry': _p_change_context(
+                                                                                                                                            $['assign entry'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                    }],
+                                                                                                                                )
+                                                                                                                            case 'resolve':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['resolve', {
+                                                                                                                                        'assign entry': _p_change_context(
+                                                                                                                                            $['assign entry'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                        'temp resulting entry node': _p_change_context(
+                                                                                                                                            $['temp resulting entry node'],
+                                                                                                                                            ($) => Temp_Value_Type_Specification(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                    }],
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                ),
+                                                                                                            }],
+                                                                                                        )
+                                                                                                    case 'list':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ['list', {
+                                                                                                                'l location': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                                'l state': _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Expression.l_state.construct.l_state.dictionary.l_state.source.type_.l_state.list.l_state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'convert':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['convert', {
+                                                                                                                                        'assign id': _p_change_context(
+                                                                                                                                            $['assign id'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                        'assign entry': _p_change_context(
+                                                                                                                                            $['assign entry'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                        'abort': _p_change_context(
+                                                                                                                                            $['abort'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                    }],
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                ),
+                                                                                                            }],
+                                                                                                        )
+                                                                                                    default:
+                                                                                                        return _p.au(
+                                                                                                            $[0],
+                                                                                                        )
+                                                                                                }
+                                                                                            },
+                                                                                        ),
+                                                                                    }),
                                                                                 ),
                                                                             }],
                                                                         )
@@ -992,53 +1140,38 @@
                                                         },
                                                         'l state': _p.decide.state(
                                                             $,
-                                                            ($): t_out.Expression.l_state.assign.l_state.group.l_state => {
+                                                            ($): t_out.Expression.l_state.construct.l_state.group.l_state => {
                                                                 switch ($[0]) {
                                                                     case 'literal':
                                                                         return _p.ss(
                                                                             $,
                                                                             ($) => ['literal', {
-                                                                                'l location': {
-                                                                                    'document resource identifier': "implement me",
-                                                                                    'line': 42,
-                                                                                    'column': 42,
-                                                                                },
-                                                                                'l dictionary': _p.dictionary.map(
-                                                                                    $,
-                                                                                    ($, id) => ({
-                                                                                        'l entry': Expression(
-                                                                                            $,
-                                                                                        ),
+                                                                                'properties': _p_change_context(
+                                                                                    $['properties'],
+                                                                                    ($) => ({
                                                                                         'l location': {
                                                                                             'document resource identifier': "implement me",
                                                                                             'line': 42,
                                                                                             'column': 42,
                                                                                         },
+                                                                                        'l dictionary': _p.dictionary.map(
+                                                                                            $,
+                                                                                            ($, id) => ({
+                                                                                                'l entry': Expression(
+                                                                                                    $,
+                                                                                                ),
+                                                                                                'l location': {
+                                                                                                    'document resource identifier': "implement me",
+                                                                                                    'line': 42,
+                                                                                                    'column': 42,
+                                                                                                },
+                                                                                            }),
+                                                                                        ),
                                                                                     }),
                                                                                 ),
-                                                                            }],
-                                                                        )
-                                                                    case 'resolve':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['resolve', {
-                                                                                'l location': {
-                                                                                    'document resource identifier': "implement me",
-                                                                                    'line': 42,
-                                                                                    'column': 42,
-                                                                                },
-                                                                                'l dictionary': _p.dictionary.map(
-                                                                                    $,
-                                                                                    ($, id) => ({
-                                                                                        'l entry': Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                        'l location': {
-                                                                                            'document resource identifier': "implement me",
-                                                                                            'line': 42,
-                                                                                            'column': 42,
-                                                                                        },
-                                                                                    }),
+                                                                                'have dependencies': _p_change_context(
+                                                                                    $['have dependencies'],
+                                                                                    ($) => $,
                                                                                 ),
                                                                             }],
                                                                         )
@@ -1062,44 +1195,8 @@
                                                         },
                                                         'l state': _p.decide.state(
                                                             $,
-                                                            ($): t_out.Expression.l_state.assign.l_state.list.l_state => {
+                                                            ($): t_out.Expression.l_state.construct.l_state.list.l_state => {
                                                                 switch ($[0]) {
-                                                                    case 'filter':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['filter', {
-                                                                                'source': _p_change_context(
-                                                                                    $['source'],
-                                                                                    ($) => Value_Selection(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'entry handler': _p_change_context(
-                                                                                    $['entry handler'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                            }],
-                                                                        )
-                                                                    case 'from dictionary':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['from dictionary', {
-                                                                                'source': _p_change_context(
-                                                                                    $['source'],
-                                                                                    ($) => Value_Selection(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'get item': _p_change_context(
-                                                                                    $['get item'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                            }],
-                                                                        )
                                                                     case 'literal':
                                                                         return _p.ss(
                                                                             $,
@@ -1124,93 +1221,191 @@
                                                                                 ),
                                                                             }],
                                                                         )
-                                                                    case 'map':
+                                                                    case 'source':
                                                                         return _p.ss(
                                                                             $,
-                                                                            ($) => ['map', {
-                                                                                'source': _p_change_context(
-                                                                                    $['source'],
+                                                                            ($) => ['source', {
+                                                                                'selection': _p_change_context(
+                                                                                    $['selection'],
                                                                                     ($) => Value_Selection(
                                                                                         $,
                                                                                     ),
                                                                                 ),
-                                                                                'item handler': _p_change_context(
-                                                                                    $['item handler'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                            }],
-                                                                        )
-                                                                    case 'map with state':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['map with state', {
-                                                                                'source': _p_change_context(
-                                                                                    $['source'],
-                                                                                    ($) => Value_Selection(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'initial state': _p_change_context(
-                                                                                    $['initial state'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'item handler': _p_change_context(
-                                                                                    $['item handler'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'update state': _p_change_context(
-                                                                                    $['update state'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'wrap up': _p_change_context(
-                                                                                    $['wrap up'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                            }],
-                                                                        )
-                                                                    case 'reduce':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['reduce', {
-                                                                                'source': _p_change_context(
-                                                                                    $['source'],
-                                                                                    ($) => Value_Selection(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'initial state': _p_change_context(
-                                                                                    $['initial state'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'item handler': _p_change_context(
-                                                                                    $['item handler'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                            }],
-                                                                        )
-                                                                    case 'reverse':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['reverse', {
-                                                                                'source': _p_change_context(
-                                                                                    $['source'],
-                                                                                    ($) => Value_Selection(
-                                                                                        $,
-                                                                                    ),
+                                                                                'type': _p_change_context(
+                                                                                    $['type'],
+                                                                                    ($) => ({
+                                                                                        'l location': {
+                                                                                            'document resource identifier': "implement me",
+                                                                                            'line': 42,
+                                                                                            'column': 42,
+                                                                                        },
+                                                                                        'l state': _p.decide.state(
+                                                                                            $,
+                                                                                            ($): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state => {
+                                                                                                switch ($[0]) {
+                                                                                                    case 'dictionary':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ['dictionary', {
+                                                                                                                'l location': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                                'l state': _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state.dictionary.l_state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'convert':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['convert', {
+                                                                                                                                        'assign entry': _p_change_context(
+                                                                                                                                            $['assign entry'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                    }],
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                ),
+                                                                                                            }],
+                                                                                                        )
+                                                                                                    case 'group':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ['group', {
+                                                                                                                'l location': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                                'l state': _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state.group.l_state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                ),
+                                                                                                            }],
+                                                                                                        )
+                                                                                                    case 'list':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ['list', {
+                                                                                                                'l location': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                                'l state': _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state.list.l_state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'filter':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['filter', {
+                                                                                                                                        'assign item': _p_change_context(
+                                                                                                                                            $['assign item'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                    }],
+                                                                                                                                )
+                                                                                                                            case 'map':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['map', {
+                                                                                                                                        'assign item': _p_change_context(
+                                                                                                                                            $['assign item'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                    }],
+                                                                                                                                )
+                                                                                                                            case 'map with state':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['map with state', {
+                                                                                                                                        'initialize state': _p_change_context(
+                                                                                                                                            $['initialize state'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                        'assign item': _p_change_context(
+                                                                                                                                            $['assign item'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                        'update state': _p_change_context(
+                                                                                                                                            $['update state'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                        'wrap up': _p_change_context(
+                                                                                                                                            $['wrap up'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                    }],
+                                                                                                                                )
+                                                                                                                            case 'reduce':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['reduce', {
+                                                                                                                                        'initialize state': _p_change_context(
+                                                                                                                                            $['initialize state'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                        'assign item': _p_change_context(
+                                                                                                                                            $['assign item'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                    }],
+                                                                                                                                )
+                                                                                                                            case 'reverse':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['reverse', null],
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                ),
+                                                                                                            }],
+                                                                                                        )
+                                                                                                    default:
+                                                                                                        return _p.au(
+                                                                                                            $[0],
+                                                                                                        )
+                                                                                                }
+                                                                                            },
+                                                                                        ),
+                                                                                    }),
                                                                                 ),
                                                                             }],
                                                                         )
@@ -1239,7 +1434,7 @@
                                                         },
                                                         'l state': _p.decide.state(
                                                             $,
-                                                            ($): t_out.Expression.l_state.assign.l_state.number_.l_state => {
+                                                            ($): t_out.Expression.l_state.construct.l_state.number_.l_state => {
                                                                 switch ($[0]) {
                                                                     case 'approximation':
                                                                         return _p.ss(
@@ -1252,7 +1447,7 @@
                                                                                 },
                                                                                 'l state': _p.decide.state(
                                                                                     $,
-                                                                                    ($): t_out.Expression.l_state.assign.l_state.number_.l_state.approximation.l_state => {
+                                                                                    ($): t_out.Expression.l_state.construct.l_state.number_.l_state.approximation.l_state => {
                                                                                         switch ($[0]) {
                                                                                             case 'literal':
                                                                                                 return _p.ss(
@@ -1286,7 +1481,7 @@
                                                                                 },
                                                                                 'l state': _p.decide.state(
                                                                                     $,
-                                                                                    ($): t_out.Expression.l_state.assign.l_state.number_.l_state.integer.l_state => {
+                                                                                    ($): t_out.Expression.l_state.construct.l_state.number_.l_state.integer.l_state => {
                                                                                         switch ($[0]) {
                                                                                             case 'copy':
                                                                                                 return _p.ss(
@@ -1299,14 +1494,14 @@
                                                                                                 return _p.ss(
                                                                                                     $,
                                                                                                     ($) => ['divide', {
-                                                                                                        'divident': _p_change_context(
-                                                                                                            $['divident'],
+                                                                                                        'assign dividend': _p_change_context(
+                                                                                                            $['assign dividend'],
                                                                                                             ($) => Value_Selection(
                                                                                                                 $,
                                                                                                             ),
                                                                                                         ),
-                                                                                                        'divisor': _p_change_context(
-                                                                                                            $['divisor'],
+                                                                                                        'assign divisor': _p_change_context(
+                                                                                                            $['assign divisor'],
                                                                                                             ($) => Value_Selection(
                                                                                                                 $,
                                                                                                             ),
@@ -1344,7 +1539,7 @@
                                                                                 },
                                                                                 'l state': _p.decide.state(
                                                                                     $,
-                                                                                    ($): t_out.Expression.l_state.assign.l_state.number_.l_state.natural.l_state => {
+                                                                                    ($): t_out.Expression.l_state.construct.l_state.number_.l_state.natural.l_state => {
                                                                                         switch ($[0]) {
                                                                                             case 'literal':
                                                                                                 return _p.ss(
@@ -1421,26 +1616,8 @@
                                                         },
                                                         'l state': _p.decide.state(
                                                             $,
-                                                            ($): t_out.Expression.l_state.assign.l_state.optional.l_state => {
+                                                            ($): t_out.Expression.l_state.construct.l_state.optional.l_state => {
                                                                 switch ($[0]) {
-                                                                    case 'from boolean':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['from boolean', {
-                                                                                'source': _p_change_context(
-                                                                                    $['source'],
-                                                                                    ($) => Value_Selection(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                                'get set': _p_change_context(
-                                                                                    $['get set'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
-                                                                                ),
-                                                                            }],
-                                                                        )
                                                                     case 'literal':
                                                                         return _p.ss(
                                                                             $,
@@ -1452,7 +1629,7 @@
                                                                                 },
                                                                                 'l state': _p.decide.state(
                                                                                     $,
-                                                                                    ($): t_out.Expression.l_state.assign.l_state.optional.l_state.literal.l_state => {
+                                                                                    ($): t_out.Expression.l_state.construct.l_state.optional.l_state.literal.l_state => {
                                                                                         switch ($[0]) {
                                                                                             case 'not set':
                                                                                                 return _p.ss(
@@ -1475,21 +1652,104 @@
                                                                                 ),
                                                                             }],
                                                                         )
-                                                                    case 'map':
+                                                                    case 'source':
                                                                         return _p.ss(
                                                                             $,
-                                                                            ($) => ['map', {
-                                                                                'source': _p_change_context(
-                                                                                    $['source'],
+                                                                            ($) => ['source', {
+                                                                                'selection': _p_change_context(
+                                                                                    $['selection'],
                                                                                     ($) => Value_Selection(
                                                                                         $,
                                                                                     ),
                                                                                 ),
-                                                                                'set handler': _p_change_context(
-                                                                                    $['set handler'],
-                                                                                    ($) => Expression(
-                                                                                        $,
-                                                                                    ),
+                                                                                'type': _p_change_context(
+                                                                                    $['type'],
+                                                                                    ($) => ({
+                                                                                        'l location': {
+                                                                                            'document resource identifier': "implement me",
+                                                                                            'line': 42,
+                                                                                            'column': 42,
+                                                                                        },
+                                                                                        'l state': _p.decide.state(
+                                                                                            $,
+                                                                                            ($): t_out.Expression.l_state.construct.l_state.optional.l_state.source.type_.l_state => {
+                                                                                                switch ($[0]) {
+                                                                                                    case 'boolean':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ['boolean', {
+                                                                                                                'l location': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                                'l state': _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Expression.l_state.construct.l_state.optional.l_state.source.type_.l_state.boolean_.l_state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'convert':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['convert', {
+                                                                                                                                        'assign set': _p_change_context(
+                                                                                                                                            $['assign set'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                    }],
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                ),
+                                                                                                            }],
+                                                                                                        )
+                                                                                                    case 'optional':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ['optional', {
+                                                                                                                'l location': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                                'l state': _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Expression.l_state.construct.l_state.optional.l_state.source.type_.l_state.optional.l_state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'map':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['map', {
+                                                                                                                                        'assign set': _p_change_context(
+                                                                                                                                            $['assign set'],
+                                                                                                                                            ($) => Expression(
+                                                                                                                                                $,
+                                                                                                                                            ),
+                                                                                                                                        ),
+                                                                                                                                    }],
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                ),
+                                                                                                            }],
+                                                                                                        )
+                                                                                                    default:
+                                                                                                        return _p.au(
+                                                                                                            $[0],
+                                                                                                        )
+                                                                                                }
+                                                                                            },
+                                                                                        ),
+                                                                                    }),
                                                                                 ),
                                                                             }],
                                                                         )
@@ -1513,7 +1773,7 @@
                                                         },
                                                         'l state': _p.decide.state(
                                                             $,
-                                                            ($): t_out.Expression.l_state.assign.l_state.state.l_state => {
+                                                            ($): t_out.Expression.l_state.construct.l_state.state.l_state => {
                                                                 switch ($[0]) {
                                                                     case 'literal':
                                                                         return _p.ss(
@@ -1523,8 +1783,8 @@
                                                                                     $['option'],
                                                                                     ($) => $,
                                                                                 ),
-                                                                                'value': _p_change_context(
-                                                                                    $['value'],
+                                                                                'assign option': _p_change_context(
+                                                                                    $['assign option'],
                                                                                     ($) => Expression(
                                                                                         $,
                                                                                     ),
@@ -1551,15 +1811,8 @@
                                                         },
                                                         'l state': _p.decide.state(
                                                             $,
-                                                            ($): t_out.Expression.l_state.assign.l_state.text.l_state => {
+                                                            ($): t_out.Expression.l_state.construct.l_state.text.l_state => {
                                                                 switch ($[0]) {
-                                                                    case 'copy':
-                                                                        return _p.ss(
-                                                                            $,
-                                                                            ($) => ['copy', Value_Selection(
-                                                                                $,
-                                                                            )],
-                                                                        )
                                                                     case 'literal':
                                                                         return _p.ss(
                                                                             $,
@@ -1574,7 +1827,7 @@
                                                                                         },
                                                                                         'l state': _p.decide.state(
                                                                                             $,
-                                                                                            ($): t_out.Expression.l_state.assign.l_state.text.l_state.literal.type_.l_state => {
+                                                                                            ($): t_out.Expression.l_state.construct.l_state.text.l_state.literal.type_.l_state => {
                                                                                                 switch ($[0]) {
                                                                                                     case 'identifier':
                                                                                                         return _p.ss(
@@ -1598,6 +1851,66 @@
                                                                                 'value': _p_change_context(
                                                                                     $['value'],
                                                                                     ($) => $,
+                                                                                ),
+                                                                            }],
+                                                                        )
+                                                                    case 'source':
+                                                                        return _p.ss(
+                                                                            $,
+                                                                            ($) => ['source', {
+                                                                                'selection': _p_change_context(
+                                                                                    $['selection'],
+                                                                                    ($) => Value_Selection(
+                                                                                        $,
+                                                                                    ),
+                                                                                ),
+                                                                                'type': _p_change_context(
+                                                                                    $['type'],
+                                                                                    ($) => ({
+                                                                                        'l location': {
+                                                                                            'document resource identifier': "implement me",
+                                                                                            'line': 42,
+                                                                                            'column': 42,
+                                                                                        },
+                                                                                        'l state': _p.decide.state(
+                                                                                            $,
+                                                                                            ($): t_out.Expression.l_state.construct.l_state.text.l_state.source.type_.l_state => {
+                                                                                                switch ($[0]) {
+                                                                                                    case 'text':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ['text', {
+                                                                                                                'l location': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                                'l state': _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Expression.l_state.construct.l_state.text.l_state.source.type_.l_state.text.l_state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'copy':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ['copy', null],
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                ),
+                                                                                                            }],
+                                                                                                        )
+                                                                                                    default:
+                                                                                                        return _p.au(
+                                                                                                            $[0],
+                                                                                                        )
+                                                                                                }
+                                                                                            },
+                                                                                        ),
+                                                                                    }),
                                                                                 ),
                                                                             }],
                                                                         )
@@ -1714,8 +2027,8 @@
                                                                 ),
                                                             }),
                                                         ),
-                                                        'callback': _p_change_context(
-                                                            $['callback'],
+                                                        'assign': _p_change_context(
+                                                            $['assign'],
                                                             ($) => Expression(
                                                                 $,
                                                             ),
@@ -1737,8 +2050,8 @@
                                                                 $,
                                                             ),
                                                         ),
-                                                        'handler': _p_change_context(
-                                                            $['handler'],
+                                                        'assign': _p_change_context(
+                                                            $['assign'],
                                                             ($) => Expression(
                                                                 $,
                                                             ),
@@ -2010,8 +2323,8 @@
                                                                         $,
                                                                     ),
                                                                 ),
-                                                                'character handler': _p_change_context(
-                                                                    $['character handler'],
+                                                                'assign item': _p_change_context(
+                                                                    $['assign item'],
                                                                     ($) => Expression(
                                                                         $,
                                                                     ),
@@ -2130,8 +2443,8 @@
                                                                         $,
                                                                     ),
                                                                 ),
-                                                                'item handler': _p_change_context(
-                                                                    $['item handler'],
+                                                                'assign character': _p_change_context(
+                                                                    $['assign character'],
                                                                     ($) => Expression(
                                                                         $,
                                                                     ),

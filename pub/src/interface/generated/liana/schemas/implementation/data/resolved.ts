@@ -468,7 +468,7 @@
             readonly 'type': decide.type_
         }
         
-        export namespace assign {
+        export namespace construct {
             
             export namespace boolean_ {
                 
@@ -484,56 +484,63 @@
                     | readonly ['false', literal.false_]
                     | readonly ['true', literal.true_]
                 
-                export type not = Value_Selection_
+                export namespace source {
+                    
+                    export type selection = Value_Selection_
+                    
+                    export namespace type_ {
+                        
+                        export namespace boolean_ {
+                            
+                            export type not = null
+                            
+                            export type copy = null
+                            
+                        }
+                        
+                        export type boolean_ = 
+                            | readonly ['not', boolean_.not]
+                            | readonly ['copy', boolean_.copy]
+                        
+                        export namespace dictionary {
+                            
+                            export type is_empty = Value_Selection_
+                            
+                        }
+                        
+                        export type dictionary = 
+                            | readonly ['is empty', dictionary.is_empty]
+                        
+                        export namespace list {
+                            
+                            export type is_empty = Value_Selection_
+                            
+                        }
+                        
+                        export type list = 
+                            | readonly ['is empty', list.is_empty]
+                        
+                    }
+                    
+                    export type type_ = 
+                        | readonly ['boolean', type_.boolean_]
+                        | readonly ['dictionary', type_.dictionary]
+                        | readonly ['list', type_.list]
+                    
+                }
                 
-                export type copy = Value_Selection_
-                
-                export type dictionary_is_empty = Value_Selection_
-                
-                export type list_is_empty = Value_Selection_
+                export type source = {
+                    readonly 'selection': source.selection
+                    readonly 'type': source.type_
+                }
                 
             }
             
             export type boolean_ = 
                 | readonly ['literal', boolean_.literal]
-                | readonly ['not', boolean_.not]
-                | readonly ['copy', boolean_.copy]
-                | readonly ['dictionary is empty', boolean_.dictionary_is_empty]
-                | readonly ['list is empty', boolean_.list_is_empty]
+                | readonly ['source', boolean_.source]
             
             export namespace dictionary {
-                
-                export namespace filter {
-                    
-                    export type source = Value_Selection_
-                    
-                    export type entry_handler = Expression_
-                    
-                }
-                
-                export type filter = {
-                    readonly 'source': filter.source
-                    readonly 'entry handler': filter.entry_handler
-                }
-                
-                export namespace from_list {
-                    
-                    export type source = Value_Selection_
-                    
-                    export type get_id = Expression_
-                    
-                    export type get_entry = Expression_
-                    
-                    export type abort = Expression_
-                    
-                }
-                
-                export type from_list = {
-                    readonly 'source': from_list.source
-                    readonly 'get id': from_list.get_id
-                    readonly 'get entry': from_list.get_entry
-                    readonly 'abort': from_list.abort
-                }
                 
                 export namespace literal {
                     
@@ -543,95 +550,123 @@
                 
                 export type literal = _pi.Dictionary<literal.D>
                 
-                export namespace map {
+                export namespace source {
                     
-                    export type source = Value_Selection_
+                    export type selection = Value_Selection_
                     
-                    export type entry_handler = Expression_
+                    export namespace type_ {
+                        
+                        export namespace dictionary {
+                            
+                            export namespace filter {
+                                
+                                export type assign_entry = Expression_
+                                
+                            }
+                            
+                            export type filter = {
+                                readonly 'assign entry': filter.assign_entry
+                            }
+                            
+                            export namespace map {
+                                
+                                export type assign_entry = Expression_
+                                
+                            }
+                            
+                            export type map = {
+                                readonly 'assign entry': map.assign_entry
+                            }
+                            
+                            export namespace resolve {
+                                
+                                export type assign_entry = Expression_
+                                
+                                export type temp_resulting_entry_node = Temp_Value_Type_Specification_
+                                
+                            }
+                            
+                            export type resolve = {
+                                readonly 'assign entry': resolve.assign_entry
+                                readonly 'temp resulting entry node': resolve.temp_resulting_entry_node
+                            }
+                            
+                        }
+                        
+                        export type dictionary = 
+                            | readonly ['filter', dictionary.filter]
+                            | readonly ['map', dictionary.map]
+                            | readonly ['resolve', dictionary.resolve]
+                        
+                        export namespace list {
+                            
+                            export namespace convert {
+                                
+                                export type assign_id = Expression_
+                                
+                                export type assign_entry = Expression_
+                                
+                                export type abort = Expression_
+                                
+                            }
+                            
+                            export type convert = {
+                                readonly 'assign id': convert.assign_id
+                                readonly 'assign entry': convert.assign_entry
+                                readonly 'abort': convert.abort
+                            }
+                            
+                        }
+                        
+                        export type list = 
+                            | readonly ['convert', list.convert]
+                        
+                    }
+                    
+                    export type type_ = 
+                        | readonly ['dictionary', type_.dictionary]
+                        | readonly ['list', type_.list]
                     
                 }
                 
-                export type map = {
-                    readonly 'source': map.source
-                    readonly 'entry handler': map.entry_handler
-                }
-                
-                export namespace resolve {
-                    
-                    export type source = Value_Selection_
-                    
-                    export type entry_handler = Expression_
-                    
-                    export type temp_resulting_entry_node = Temp_Value_Type_Specification_
-                    
-                }
-                
-                export type resolve = {
-                    readonly 'source': resolve.source
-                    readonly 'entry handler': resolve.entry_handler
-                    readonly 'temp resulting entry node': resolve.temp_resulting_entry_node
+                export type source = {
+                    readonly 'selection': source.selection
+                    readonly 'type': source.type_
                 }
                 
             }
             
             export type dictionary = 
-                | readonly ['filter', dictionary.filter]
-                | readonly ['from list', dictionary.from_list]
                 | readonly ['literal', dictionary.literal]
-                | readonly ['map', dictionary.map]
-                | readonly ['resolve', dictionary.resolve]
+                | readonly ['source', dictionary.source]
             
             export namespace group {
                 
                 export namespace literal {
                     
-                    export type D = Expression_
+                    export namespace properties {
+                        
+                        export type D = Expression_
+                        
+                    }
+                    
+                    export type properties = _pi.Dictionary<properties.D>
+                    
+                    export type have_dependencies = boolean
                     
                 }
                 
-                export type literal = _pi.Dictionary<literal.D>
-                
-                export namespace resolve {
-                    
-                    export type D = Expression_
-                    
+                export type literal = {
+                    readonly 'properties': literal.properties
+                    readonly 'have dependencies': literal.have_dependencies
                 }
-                
-                export type resolve = _pi.Dictionary<resolve.D>
                 
             }
             
             export type group = 
                 | readonly ['literal', group.literal]
-                | readonly ['resolve', group.resolve]
             
             export namespace list {
-                
-                export namespace filter {
-                    
-                    export type source = Value_Selection_
-                    
-                    export type entry_handler = Expression_
-                    
-                }
-                
-                export type filter = {
-                    readonly 'source': filter.source
-                    readonly 'entry handler': filter.entry_handler
-                }
-                
-                export namespace from_dictionary {
-                    
-                    export type source = Value_Selection_
-                    
-                    export type get_item = Expression_
-                    
-                }
-                
-                export type from_dictionary = {
-                    readonly 'source': from_dictionary.source
-                    readonly 'get item': from_dictionary.get_item
-                }
                 
                 export namespace literal {
                     
@@ -641,77 +676,119 @@
                 
                 export type literal = _pi.List<literal.L>
                 
-                export namespace map {
+                export namespace source {
                     
-                    export type source = Value_Selection_
+                    export type selection = Value_Selection_
                     
-                    export type item_handler = Expression_
+                    export namespace type_ {
+                        
+                        export namespace dictionary {
+                            
+                            export namespace convert {
+                                
+                                export type assign_entry = Expression_
+                                
+                            }
+                            
+                            export type convert = {
+                                readonly 'assign entry': convert.assign_entry
+                            }
+                            
+                        }
+                        
+                        export type dictionary = 
+                            | readonly ['convert', dictionary.convert]
+                        
+                        export namespace group {
+                            
+                        }
+                        
+                        export type group = never
+                        
+                        export namespace list {
+                            
+                            export namespace filter {
+                                
+                                export type assign_item = Expression_
+                                
+                            }
+                            
+                            export type filter = {
+                                readonly 'assign item': filter.assign_item
+                            }
+                            
+                            export namespace map {
+                                
+                                export type assign_item = Expression_
+                                
+                            }
+                            
+                            export type map = {
+                                readonly 'assign item': map.assign_item
+                            }
+                            
+                            export namespace map_with_state {
+                                
+                                export type initialize_state = Expression_
+                                
+                                export type assign_item = Expression_
+                                
+                                export type update_state = Expression_
+                                
+                                export type wrap_up = Expression_
+                                
+                            }
+                            
+                            export type map_with_state = {
+                                readonly 'initialize state': map_with_state.initialize_state
+                                readonly 'assign item': map_with_state.assign_item
+                                readonly 'update state': map_with_state.update_state
+                                readonly 'wrap up': map_with_state.wrap_up
+                            }
+                            
+                            export namespace reduce {
+                                
+                                export type initialize_state = Expression_
+                                
+                                export type assign_item = Expression_
+                                
+                            }
+                            
+                            export type reduce = {
+                                readonly 'initialize state': reduce.initialize_state
+                                readonly 'assign item': reduce.assign_item
+                            }
+                            
+                            export type reverse = null
+                            
+                        }
+                        
+                        export type list = 
+                            | readonly ['filter', list.filter]
+                            | readonly ['map', list.map]
+                            | readonly ['map with state', list.map_with_state]
+                            | readonly ['reduce', list.reduce]
+                            | readonly ['reverse', list.reverse]
+                        
+                    }
+                    
+                    export type type_ = 
+                        | readonly ['dictionary', type_.dictionary]
+                        | readonly ['group', type_.group]
+                        | readonly ['list', type_.list]
                     
                 }
                 
-                export type map = {
-                    readonly 'source': map.source
-                    readonly 'item handler': map.item_handler
-                }
-                
-                export namespace map_with_state {
-                    
-                    export type source = Value_Selection_
-                    
-                    export type initial_state = Expression_
-                    
-                    export type item_handler = Expression_
-                    
-                    export type update_state = Expression_
-                    
-                    export type wrap_up = Expression_
-                    
-                }
-                
-                export type map_with_state = {
-                    readonly 'source': map_with_state.source
-                    readonly 'initial state': map_with_state.initial_state
-                    readonly 'item handler': map_with_state.item_handler
-                    readonly 'update state': map_with_state.update_state
-                    readonly 'wrap up': map_with_state.wrap_up
-                }
-                
-                export namespace reduce {
-                    
-                    export type source = Value_Selection_
-                    
-                    export type initial_state = Expression_
-                    
-                    export type item_handler = Expression_
-                    
-                }
-                
-                export type reduce = {
-                    readonly 'source': reduce.source
-                    readonly 'initial state': reduce.initial_state
-                    readonly 'item handler': reduce.item_handler
-                }
-                
-                export namespace reverse {
-                    
-                    export type source = Value_Selection_
-                    
-                }
-                
-                export type reverse = {
-                    readonly 'source': reverse.source
+                export type source = {
+                    readonly 'selection': source.selection
+                    readonly 'type': source.type_
                 }
                 
             }
             
             export type list = 
-                | readonly ['filter', list.filter]
-                | readonly ['from dictionary', list.from_dictionary]
                 | readonly ['literal', list.literal]
-                | readonly ['map', list.map]
-                | readonly ['map with state', list.map_with_state]
-                | readonly ['reduce', list.reduce]
-                | readonly ['reverse', list.reverse]
+                | readonly ['source', list.source]
             
             export type nothing = null
             
@@ -735,17 +812,17 @@
                     
                     export namespace divide {
                         
-                        export type divident = Value_Selection_
+                        export type assign_dividend = Value_Selection_
                         
-                        export type divisor = Value_Selection_
+                        export type assign_divisor = Value_Selection_
                         
                         export type abort = Expression_
                         
                     }
                     
                     export type divide = {
-                        readonly 'divident': divide.divident
-                        readonly 'divisor': divide.divisor
+                        readonly 'assign dividend': divide.assign_dividend
+                        readonly 'assign divisor': divide.assign_divisor
                         readonly 'abort': divide.abort
                     }
                     
@@ -807,19 +884,6 @@
             
             export namespace optional {
                 
-                export namespace from_boolean {
-                    
-                    export type source = Value_Selection_
-                    
-                    export type get_set = Expression_
-                    
-                }
-                
-                export type from_boolean = {
-                    readonly 'source': from_boolean.source
-                    readonly 'get set': from_boolean.get_set
-                }
-                
                 export namespace literal {
                     
                     export type not_set = null
@@ -832,25 +896,64 @@
                     | readonly ['not set', literal.not_set]
                     | readonly ['set', literal.set_]
                 
-                export namespace map {
+                export namespace source {
                     
-                    export type source = Value_Selection_
+                    export type selection = Value_Selection_
                     
-                    export type set_handler = Expression_
+                    export namespace type_ {
+                        
+                        export namespace boolean_ {
+                            
+                            export namespace convert {
+                                
+                                export type assign_set = Expression_
+                                
+                            }
+                            
+                            export type convert = {
+                                readonly 'assign set': convert.assign_set
+                            }
+                            
+                        }
+                        
+                        export type boolean_ = 
+                            | readonly ['convert', boolean_.convert]
+                        
+                        export namespace optional {
+                            
+                            export namespace map {
+                                
+                                export type assign_set = Expression_
+                                
+                            }
+                            
+                            export type map = {
+                                readonly 'assign set': map.assign_set
+                            }
+                            
+                        }
+                        
+                        export type optional = 
+                            | readonly ['map', optional.map]
+                        
+                    }
+                    
+                    export type type_ = 
+                        | readonly ['boolean', type_.boolean_]
+                        | readonly ['optional', type_.optional]
                     
                 }
                 
-                export type map = {
-                    readonly 'source': map.source
-                    readonly 'set handler': map.set_handler
+                export type source = {
+                    readonly 'selection': source.selection
+                    readonly 'type': source.type_
                 }
                 
             }
             
             export type optional = 
-                | readonly ['from boolean', optional.from_boolean]
                 | readonly ['literal', optional.literal]
-                | readonly ['map', optional.map]
+                | readonly ['source', optional.source]
             
             export namespace state {
                 
@@ -858,13 +961,13 @@
                     
                     export type option = string
                     
-                    export type value = Expression_
+                    export type assign_option = Expression_
                     
                 }
                 
                 export type literal = {
                     readonly 'option': literal.option
-                    readonly 'value': literal.value
+                    readonly 'assign option': literal.assign_option
                 }
                 
             }
@@ -873,8 +976,6 @@
                 | readonly ['literal', state.literal]
             
             export namespace text {
-                
-                export type copy = Value_Selection_
                 
                 export namespace literal {
                     
@@ -899,27 +1000,54 @@
                     readonly 'value': literal.value
                 }
                 
+                export namespace source {
+                    
+                    export type selection = Value_Selection_
+                    
+                    export namespace type_ {
+                        
+                        export namespace text {
+                            
+                            export type copy = null
+                            
+                        }
+                        
+                        export type text = 
+                            | readonly ['copy', text.copy]
+                        
+                    }
+                    
+                    export type type_ = 
+                        | readonly ['text', type_.text]
+                    
+                }
+                
+                export type source = {
+                    readonly 'selection': source.selection
+                    readonly 'type': source.type_
+                }
+                
                 export type source_document = null
                 
             }
             
             export type text = 
-                | readonly ['copy', text.copy]
                 | readonly ['literal', text.literal]
+                | readonly ['source', text.source]
                 | readonly ['source document', text.source_document]
             
         }
         
-        export type assign = 
-            | readonly ['boolean', assign.boolean_]
-            | readonly ['dictionary', assign.dictionary]
-            | readonly ['group', assign.group]
-            | readonly ['list', assign.list]
-            | readonly ['nothing', assign.nothing]
-            | readonly ['number', assign.number_]
-            | readonly ['optional', assign.optional]
-            | readonly ['state', assign.state]
-            | readonly ['text', assign.text]
+        export type construct = 
+            | readonly ['boolean', construct.boolean_]
+            | readonly ['dictionary', construct.dictionary]
+            | readonly ['group', construct.group]
+            | readonly ['list', construct.list]
+            | readonly ['nothing', construct.nothing]
+            | readonly ['number', construct.number_]
+            | readonly ['optional', construct.optional]
+            | readonly ['state', construct.state]
+            | readonly ['text', construct.text]
         
         export type select = Value_Selection_
         
@@ -963,13 +1091,13 @@
                 
                 export type variables = _pi.Dictionary<variables.D>
                 
-                export type callback = Expression_
+                export type assign = Expression_
                 
             }
             
             export type variables = {
                 readonly 'variables': variables.variables
-                readonly 'callback': variables.callback
+                readonly 'assign': variables.assign
             }
             
             export type implement_me = string
@@ -978,13 +1106,13 @@
                 
                 export type list = Value_Selection_
                 
-                export type handler = Expression_
+                export type assign = Expression_
                 
             }
             
             export type iterate = {
                 readonly 'list': iterate.list
-                readonly 'handler': iterate.handler
+                readonly 'assign': iterate.assign
             }
             
             export namespace unreachable {
@@ -1012,7 +1140,7 @@
     
     export type Expression_ = 
         | readonly ['decide', Expression_.decide]
-        | readonly ['assign', Expression_.assign]
+        | readonly ['construct', Expression_.construct]
         | readonly ['select', Expression_.select]
         | readonly ['special', Expression_.special]
     
@@ -1139,13 +1267,13 @@
                     
                     export type source = Expression_
                     
-                    export type character_handler = Expression_
+                    export type assign_item = Expression_
                     
                 }
                 
                 export type list_from_text = {
                     readonly 'source': list_from_text.source
-                    readonly 'character handler': list_from_text.character_handler
+                    readonly 'assign item': list_from_text.assign_item
                 }
                 
                 export namespace lookup_entry {
@@ -1220,13 +1348,13 @@
                     
                     export type source = Expression_
                     
-                    export type item_handler = Expression_
+                    export type assign_character = Expression_
                     
                 }
                 
                 export type text_from_list = {
                     readonly 'source': text_from_list.source
-                    readonly 'item handler': text_from_list.item_handler
+                    readonly 'assign character': text_from_list.assign_character
                 }
                 
                 export type variable = string

@@ -1038,16 +1038,16 @@
                                     },
                                 )],
                             )
-                        case 'assign':
+                        case 'construct':
                             return _p.ss(
                                 $,
-                                ($) => ['assign', _p_variables(
+                                ($) => ['construct', _p_variables(
                                     () => {
                                         
                                         const var_location = $['l location']
                                         return _p.decide.state(
                                             $['l state'],
-                                            ($): t_out.Expression.assign => {
+                                            ($): t_out.Expression.construct => {
                                                 switch ($[0]) {
                                                     case 'boolean':
                                                         return _p.ss(
@@ -1058,7 +1058,7 @@
                                                                     const var_location = $['l location']
                                                                     return _p.decide.state(
                                                                         $['l state'],
-                                                                        ($): t_out.Expression.assign.boolean_ => {
+                                                                        ($): t_out.Expression.construct.boolean_ => {
                                                                             switch ($[0]) {
                                                                                 case 'literal':
                                                                                     return _p.ss(
@@ -1069,7 +1069,7 @@
                                                                                                 const var_location = $['l location']
                                                                                                 return _p.decide.state(
                                                                                                     $['l state'],
-                                                                                                    ($): t_out.Expression.assign.boolean_.literal => {
+                                                                                                    ($): t_out.Expression.construct.boolean_.literal => {
                                                                                                         switch ($[0]) {
                                                                                                             case 'false':
                                                                                                                 return _p.ss(
@@ -1091,52 +1091,146 @@
                                                                                             },
                                                                                         )],
                                                                                     )
-                                                                                case 'not':
+                                                                                case 'source':
                                                                                     return _p.ss(
                                                                                         $,
-                                                                                        ($) => ['not', Value_Selection(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                $,
-                                                                                            ),
-                                                                                            null,
-                                                                                            null,
-                                                                                        )],
-                                                                                    )
-                                                                                case 'copy':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['copy', Value_Selection(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                $,
-                                                                                            ),
-                                                                                            null,
-                                                                                            null,
-                                                                                        )],
-                                                                                    )
-                                                                                case 'dictionary is empty':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['dictionary is empty', Value_Selection(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                $,
-                                                                                            ),
-                                                                                            null,
-                                                                                            null,
-                                                                                        )],
-                                                                                    )
-                                                                                case 'list is empty':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['list is empty', Value_Selection(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                $,
-                                                                                            ),
-                                                                                            null,
-                                                                                            null,
+                                                                                        ($) => ['source', _p.group.resolve(
+                                                                                            () => {
+                                                                                                
+                                                                                                const prop_selection = _p_change_context(
+                                                                                                    $['selection'],
+                                                                                                    ($) => Value_Selection(
+                                                                                                        $,
+                                                                                                        ($) => abort(
+                                                                                                            $,
+                                                                                                        ),
+                                                                                                        null,
+                                                                                                        null,
+                                                                                                    ),
+                                                                                                )
+                                                                                                
+                                                                                                const prop_type = _p_change_context(
+                                                                                                    $['type'],
+                                                                                                    ($) => _p_variables(
+                                                                                                        () => {
+                                                                                                            
+                                                                                                            const var_location = $['l location']
+                                                                                                            return _p.decide.state(
+                                                                                                                $['l state'],
+                                                                                                                ($): t_out.Expression.construct.boolean_.source.type_ => {
+                                                                                                                    switch ($[0]) {
+                                                                                                                        case 'boolean':
+                                                                                                                            return _p.ss(
+                                                                                                                                $,
+                                                                                                                                ($) => ['boolean', _p_variables(
+                                                                                                                                    () => {
+                                                                                                                                        
+                                                                                                                                        const var_location = $['l location']
+                                                                                                                                        return _p.decide.state(
+                                                                                                                                            $['l state'],
+                                                                                                                                            ($): t_out.Expression.construct.boolean_.source.type_.boolean_ => {
+                                                                                                                                                switch ($[0]) {
+                                                                                                                                                    case 'not':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['not', null],
+                                                                                                                                                        )
+                                                                                                                                                    case 'copy':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['copy', null],
+                                                                                                                                                        )
+                                                                                                                                                    default:
+                                                                                                                                                        return _p.au(
+                                                                                                                                                            $[0],
+                                                                                                                                                        )
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                        )
+                                                                                                                                    },
+                                                                                                                                )],
+                                                                                                                            )
+                                                                                                                        case 'dictionary':
+                                                                                                                            return _p.ss(
+                                                                                                                                $,
+                                                                                                                                ($) => ['dictionary', _p_variables(
+                                                                                                                                    () => {
+                                                                                                                                        
+                                                                                                                                        const var_location = $['l location']
+                                                                                                                                        return _p.decide.state(
+                                                                                                                                            $['l state'],
+                                                                                                                                            ($): t_out.Expression.construct.boolean_.source.type_.dictionary => {
+                                                                                                                                                switch ($[0]) {
+                                                                                                                                                    case 'is empty':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['is empty', Value_Selection(
+                                                                                                                                                                $,
+                                                                                                                                                                ($) => abort(
+                                                                                                                                                                    $,
+                                                                                                                                                                ),
+                                                                                                                                                                null,
+                                                                                                                                                                null,
+                                                                                                                                                            )],
+                                                                                                                                                        )
+                                                                                                                                                    default:
+                                                                                                                                                        return _p.au(
+                                                                                                                                                            $[0],
+                                                                                                                                                        )
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                        )
+                                                                                                                                    },
+                                                                                                                                )],
+                                                                                                                            )
+                                                                                                                        case 'list':
+                                                                                                                            return _p.ss(
+                                                                                                                                $,
+                                                                                                                                ($) => ['list', _p_variables(
+                                                                                                                                    () => {
+                                                                                                                                        
+                                                                                                                                        const var_location = $['l location']
+                                                                                                                                        return _p.decide.state(
+                                                                                                                                            $['l state'],
+                                                                                                                                            ($): t_out.Expression.construct.boolean_.source.type_.list => {
+                                                                                                                                                switch ($[0]) {
+                                                                                                                                                    case 'is empty':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['is empty', Value_Selection(
+                                                                                                                                                                $,
+                                                                                                                                                                ($) => abort(
+                                                                                                                                                                    $,
+                                                                                                                                                                ),
+                                                                                                                                                                null,
+                                                                                                                                                                null,
+                                                                                                                                                            )],
+                                                                                                                                                        )
+                                                                                                                                                    default:
+                                                                                                                                                        return _p.au(
+                                                                                                                                                            $[0],
+                                                                                                                                                        )
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                        )
+                                                                                                                                    },
+                                                                                                                                )],
+                                                                                                                            )
+                                                                                                                        default:
+                                                                                                                            return _p.au(
+                                                                                                                                $[0],
+                                                                                                                            )
+                                                                                                                    }
+                                                                                                                },
+                                                                                                            )
+                                                                                                        },
+                                                                                                    ),
+                                                                                                )
+                                                                                                return {
+                                                                                                    'selection': prop_selection,
+                                                                                                    'type': prop_type,
+                                                                                                }
+                                                                                            },
                                                                                         )],
                                                                                     )
                                                                                 default:
@@ -1158,112 +1252,14 @@
                                                                     const var_location = $['l location']
                                                                     return _p.decide.state(
                                                                         $['l state'],
-                                                                        ($): t_out.Expression.assign.dictionary => {
+                                                                        ($): t_out.Expression.construct.dictionary => {
                                                                             switch ($[0]) {
-                                                                                case 'filter':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['filter', _p.group.resolve(
-                                                                                            () => {
-                                                                                                
-                                                                                                const prop_source = _p_change_context(
-                                                                                                    $['source'],
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_entry_handler = _p_change_context(
-                                                                                                    $['entry handler'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                return {
-                                                                                                    'source': prop_source,
-                                                                                                    'entry handler': prop_entry_handler,
-                                                                                                }
-                                                                                            },
-                                                                                        )],
-                                                                                    )
-                                                                                case 'from list':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['from list', _p.group.resolve(
-                                                                                            () => {
-                                                                                                
-                                                                                                const prop_source = _p_change_context(
-                                                                                                    $['source'],
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_get_id = _p_change_context(
-                                                                                                    $['get id'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_get_entry = _p_change_context(
-                                                                                                    $['get entry'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_abort = _p_change_context(
-                                                                                                    $['abort'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                return {
-                                                                                                    'source': prop_source,
-                                                                                                    'get id': prop_get_id,
-                                                                                                    'get entry': prop_get_entry,
-                                                                                                    'abort': prop_abort,
-                                                                                                }
-                                                                                            },
-                                                                                        )],
-                                                                                    )
                                                                                 case 'literal':
                                                                                     return _p.ss(
                                                                                         $,
                                                                                         ($) => ['literal', _p.dictionary.resolve(
                                                                                             $['l dictionary'],
-                                                                                            ($, id, $a, $c): t_out.Expression.assign.dictionary.literal.D => _p_change_context(
+                                                                                            ($, id, $a, $c): t_out.Expression.construct.dictionary.literal.D => _p_change_context(
                                                                                                 $['l entry'],
                                                                                                 ($) => Expression(
                                                                                                     $,
@@ -1276,14 +1272,14 @@
                                                                                             ),
                                                                                         )],
                                                                                     )
-                                                                                case 'map':
+                                                                                case 'source':
                                                                                     return _p.ss(
                                                                                         $,
-                                                                                        ($) => ['map', _p.group.resolve(
+                                                                                        ($) => ['source', _p.group.resolve(
                                                                                             () => {
                                                                                                 
-                                                                                                const prop_source = _p_change_context(
-                                                                                                    $['source'],
+                                                                                                const prop_selection = _p_change_context(
+                                                                                                    $['selection'],
                                                                                                     ($) => Value_Selection(
                                                                                                         $,
                                                                                                         ($) => abort(
@@ -1294,69 +1290,202 @@
                                                                                                     ),
                                                                                                 )
                                                                                                 
-                                                                                                const prop_entry_handler = _p_change_context(
-                                                                                                    $['entry handler'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
+                                                                                                const prop_type = _p_change_context(
+                                                                                                    $['type'],
+                                                                                                    ($) => _p_variables(
+                                                                                                        () => {
+                                                                                                            
+                                                                                                            const var_location = $['l location']
+                                                                                                            return _p.decide.state(
+                                                                                                                $['l state'],
+                                                                                                                ($): t_out.Expression.construct.dictionary.source.type_ => {
+                                                                                                                    switch ($[0]) {
+                                                                                                                        case 'dictionary':
+                                                                                                                            return _p.ss(
+                                                                                                                                $,
+                                                                                                                                ($) => ['dictionary', _p_variables(
+                                                                                                                                    () => {
+                                                                                                                                        
+                                                                                                                                        const var_location = $['l location']
+                                                                                                                                        return _p.decide.state(
+                                                                                                                                            $['l state'],
+                                                                                                                                            ($): t_out.Expression.construct.dictionary.source.type_.dictionary => {
+                                                                                                                                                switch ($[0]) {
+                                                                                                                                                    case 'filter':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['filter', _p.group.resolve(
+                                                                                                                                                                () => {
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_assign_entry = _p_change_context(
+                                                                                                                                                                        $['assign entry'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    return {
+                                                                                                                                                                        'assign entry': prop_assign_entry,
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                            )],
+                                                                                                                                                        )
+                                                                                                                                                    case 'map':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['map', _p.group.resolve(
+                                                                                                                                                                () => {
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_assign_entry = _p_change_context(
+                                                                                                                                                                        $['assign entry'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    return {
+                                                                                                                                                                        'assign entry': prop_assign_entry,
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                            )],
+                                                                                                                                                        )
+                                                                                                                                                    case 'resolve':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['resolve', _p.group.resolve(
+                                                                                                                                                                () => {
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_assign_entry = _p_change_context(
+                                                                                                                                                                        $['assign entry'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_temp_resulting_entry_node = _p_change_context(
+                                                                                                                                                                        $['temp resulting entry node'],
+                                                                                                                                                                        ($) => Temp_Value_Type_Specification(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    return {
+                                                                                                                                                                        'assign entry': prop_assign_entry,
+                                                                                                                                                                        'temp resulting entry node': prop_temp_resulting_entry_node,
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                            )],
+                                                                                                                                                        )
+                                                                                                                                                    default:
+                                                                                                                                                        return _p.au(
+                                                                                                                                                            $[0],
+                                                                                                                                                        )
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                        )
+                                                                                                                                    },
+                                                                                                                                )],
+                                                                                                                            )
+                                                                                                                        case 'list':
+                                                                                                                            return _p.ss(
+                                                                                                                                $,
+                                                                                                                                ($) => ['list', _p_variables(
+                                                                                                                                    () => {
+                                                                                                                                        
+                                                                                                                                        const var_location = $['l location']
+                                                                                                                                        return _p.decide.state(
+                                                                                                                                            $['l state'],
+                                                                                                                                            ($): t_out.Expression.construct.dictionary.source.type_.list => {
+                                                                                                                                                switch ($[0]) {
+                                                                                                                                                    case 'convert':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['convert', _p.group.resolve(
+                                                                                                                                                                () => {
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_assign_id = _p_change_context(
+                                                                                                                                                                        $['assign id'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_assign_entry = _p_change_context(
+                                                                                                                                                                        $['assign entry'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_abort = _p_change_context(
+                                                                                                                                                                        $['abort'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    return {
+                                                                                                                                                                        'assign id': prop_assign_id,
+                                                                                                                                                                        'assign entry': prop_assign_entry,
+                                                                                                                                                                        'abort': prop_abort,
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                            )],
+                                                                                                                                                        )
+                                                                                                                                                    default:
+                                                                                                                                                        return _p.au(
+                                                                                                                                                            $[0],
+                                                                                                                                                        )
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                        )
+                                                                                                                                    },
+                                                                                                                                )],
+                                                                                                                            )
+                                                                                                                        default:
+                                                                                                                            return _p.au(
+                                                                                                                                $[0],
+                                                                                                                            )
+                                                                                                                    }
+                                                                                                                },
+                                                                                                            )
+                                                                                                        },
                                                                                                     ),
                                                                                                 )
                                                                                                 return {
-                                                                                                    'source': prop_source,
-                                                                                                    'entry handler': prop_entry_handler,
-                                                                                                }
-                                                                                            },
-                                                                                        )],
-                                                                                    )
-                                                                                case 'resolve':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['resolve', _p.group.resolve(
-                                                                                            () => {
-                                                                                                
-                                                                                                const prop_source = _p_change_context(
-                                                                                                    $['source'],
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_entry_handler = _p_change_context(
-                                                                                                    $['entry handler'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_temp_resulting_entry_node = _p_change_context(
-                                                                                                    $['temp resulting entry node'],
-                                                                                                    ($) => Temp_Value_Type_Specification(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                return {
-                                                                                                    'source': prop_source,
-                                                                                                    'entry handler': prop_entry_handler,
-                                                                                                    'temp resulting entry node': prop_temp_resulting_entry_node,
+                                                                                                    'selection': prop_selection,
+                                                                                                    'type': prop_type,
                                                                                                 }
                                                                                             },
                                                                                         )],
@@ -1380,42 +1509,41 @@
                                                                     const var_location = $['l location']
                                                                     return _p.decide.state(
                                                                         $['l state'],
-                                                                        ($): t_out.Expression.assign.group => {
+                                                                        ($): t_out.Expression.construct.group => {
                                                                             switch ($[0]) {
                                                                                 case 'literal':
                                                                                     return _p.ss(
                                                                                         $,
-                                                                                        ($) => ['literal', _p.dictionary.resolve(
-                                                                                            $['l dictionary'],
-                                                                                            ($, id, $a, $c): t_out.Expression.assign.group.literal.D => _p_change_context(
-                                                                                                $['l entry'],
-                                                                                                ($) => Expression(
-                                                                                                    $,
-                                                                                                    ($) => abort(
-                                                                                                        $,
+                                                                                        ($) => ['literal', _p.group.resolve(
+                                                                                            () => {
+                                                                                                
+                                                                                                const prop_properties = _p_change_context(
+                                                                                                    $['properties'],
+                                                                                                    ($) => _p.dictionary.resolve(
+                                                                                                        $['l dictionary'],
+                                                                                                        ($, id, $a, $c): t_out.Expression.construct.group.literal.properties.D => _p_change_context(
+                                                                                                            $['l entry'],
+                                                                                                            ($) => Expression(
+                                                                                                                $,
+                                                                                                                ($) => abort(
+                                                                                                                    $,
+                                                                                                                ),
+                                                                                                                null,
+                                                                                                                null,
+                                                                                                            ),
+                                                                                                        ),
                                                                                                     ),
-                                                                                                    null,
-                                                                                                    null,
-                                                                                                ),
-                                                                                            ),
-                                                                                        )],
-                                                                                    )
-                                                                                case 'resolve':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['resolve', _p.dictionary.resolve(
-                                                                                            $['l dictionary'],
-                                                                                            ($, id, $a, $c): t_out.Expression.assign.group.resolve.D => _p_change_context(
-                                                                                                $['l entry'],
-                                                                                                ($) => Expression(
-                                                                                                    $,
-                                                                                                    ($) => abort(
-                                                                                                        $,
-                                                                                                    ),
-                                                                                                    null,
-                                                                                                    null,
-                                                                                                ),
-                                                                                            ),
+                                                                                                )
+                                                                                                
+                                                                                                const prop_have_dependencies = _p_change_context(
+                                                                                                    $['have dependencies'],
+                                                                                                    ($) => $,
+                                                                                                )
+                                                                                                return {
+                                                                                                    'properties': prop_properties,
+                                                                                                    'have dependencies': prop_have_dependencies,
+                                                                                                }
+                                                                                            },
                                                                                         )],
                                                                                     )
                                                                                 default:
@@ -1437,80 +1565,8 @@
                                                                     const var_location = $['l location']
                                                                     return _p.decide.state(
                                                                         $['l state'],
-                                                                        ($): t_out.Expression.assign.list => {
+                                                                        ($): t_out.Expression.construct.list => {
                                                                             switch ($[0]) {
-                                                                                case 'filter':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['filter', _p.group.resolve(
-                                                                                            () => {
-                                                                                                
-                                                                                                const prop_source = _p_change_context(
-                                                                                                    $['source'],
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_entry_handler = _p_change_context(
-                                                                                                    $['entry handler'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                return {
-                                                                                                    'source': prop_source,
-                                                                                                    'entry handler': prop_entry_handler,
-                                                                                                }
-                                                                                            },
-                                                                                        )],
-                                                                                    )
-                                                                                case 'from dictionary':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['from dictionary', _p.group.resolve(
-                                                                                            () => {
-                                                                                                
-                                                                                                const prop_source = _p_change_context(
-                                                                                                    $['source'],
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_get_item = _p_change_context(
-                                                                                                    $['get item'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                return {
-                                                                                                    'source': prop_source,
-                                                                                                    'get item': prop_get_item,
-                                                                                                }
-                                                                                            },
-                                                                                        )],
-                                                                                    )
                                                                                 case 'literal':
                                                                                     return _p.ss(
                                                                                         $,
@@ -1529,14 +1585,14 @@
                                                                                             ),
                                                                                         )],
                                                                                     )
-                                                                                case 'map':
+                                                                                case 'source':
                                                                                     return _p.ss(
                                                                                         $,
-                                                                                        ($) => ['map', _p.group.resolve(
+                                                                                        ($) => ['source', _p.group.resolve(
                                                                                             () => {
                                                                                                 
-                                                                                                const prop_source = _p_change_context(
-                                                                                                    $['source'],
+                                                                                                const prop_selection = _p_change_context(
+                                                                                                    $['selection'],
                                                                                                     ($) => Value_Selection(
                                                                                                         $,
                                                                                                         ($) => abort(
@@ -1547,167 +1603,264 @@
                                                                                                     ),
                                                                                                 )
                                                                                                 
-                                                                                                const prop_item_handler = _p_change_context(
-                                                                                                    $['item handler'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
+                                                                                                const prop_type = _p_change_context(
+                                                                                                    $['type'],
+                                                                                                    ($) => _p_variables(
+                                                                                                        () => {
+                                                                                                            
+                                                                                                            const var_location = $['l location']
+                                                                                                            return _p.decide.state(
+                                                                                                                $['l state'],
+                                                                                                                ($): t_out.Expression.construct.list.source.type_ => {
+                                                                                                                    switch ($[0]) {
+                                                                                                                        case 'dictionary':
+                                                                                                                            return _p.ss(
+                                                                                                                                $,
+                                                                                                                                ($) => ['dictionary', _p_variables(
+                                                                                                                                    () => {
+                                                                                                                                        
+                                                                                                                                        const var_location = $['l location']
+                                                                                                                                        return _p.decide.state(
+                                                                                                                                            $['l state'],
+                                                                                                                                            ($): t_out.Expression.construct.list.source.type_.dictionary => {
+                                                                                                                                                switch ($[0]) {
+                                                                                                                                                    case 'convert':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['convert', _p.group.resolve(
+                                                                                                                                                                () => {
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_assign_entry = _p_change_context(
+                                                                                                                                                                        $['assign entry'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    return {
+                                                                                                                                                                        'assign entry': prop_assign_entry,
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                            )],
+                                                                                                                                                        )
+                                                                                                                                                    default:
+                                                                                                                                                        return _p.au(
+                                                                                                                                                            $[0],
+                                                                                                                                                        )
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                        )
+                                                                                                                                    },
+                                                                                                                                )],
+                                                                                                                            )
+                                                                                                                        case 'group':
+                                                                                                                            return _p.ss(
+                                                                                                                                $,
+                                                                                                                                ($) => ['group', _p_variables(
+                                                                                                                                    () => {
+                                                                                                                                        
+                                                                                                                                        const var_location = $['l location']
+                                                                                                                                        return _p.decide.state(
+                                                                                                                                            $['l state'],
+                                                                                                                                            ($): t_out.Expression.construct.list.source.type_.group => {
+                                                                                                                                                switch ($[0]) {
+                                                                                                                                                    default:
+                                                                                                                                                        return _p.au(
+                                                                                                                                                            $[0],
+                                                                                                                                                        )
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                        )
+                                                                                                                                    },
+                                                                                                                                )],
+                                                                                                                            )
+                                                                                                                        case 'list':
+                                                                                                                            return _p.ss(
+                                                                                                                                $,
+                                                                                                                                ($) => ['list', _p_variables(
+                                                                                                                                    () => {
+                                                                                                                                        
+                                                                                                                                        const var_location = $['l location']
+                                                                                                                                        return _p.decide.state(
+                                                                                                                                            $['l state'],
+                                                                                                                                            ($): t_out.Expression.construct.list.source.type_.list => {
+                                                                                                                                                switch ($[0]) {
+                                                                                                                                                    case 'filter':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['filter', _p.group.resolve(
+                                                                                                                                                                () => {
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_assign_item = _p_change_context(
+                                                                                                                                                                        $['assign item'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    return {
+                                                                                                                                                                        'assign item': prop_assign_item,
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                            )],
+                                                                                                                                                        )
+                                                                                                                                                    case 'map':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['map', _p.group.resolve(
+                                                                                                                                                                () => {
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_assign_item = _p_change_context(
+                                                                                                                                                                        $['assign item'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    return {
+                                                                                                                                                                        'assign item': prop_assign_item,
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                            )],
+                                                                                                                                                        )
+                                                                                                                                                    case 'map with state':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['map with state', _p.group.resolve(
+                                                                                                                                                                () => {
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_initialize_state = _p_change_context(
+                                                                                                                                                                        $['initialize state'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_assign_item = _p_change_context(
+                                                                                                                                                                        $['assign item'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_update_state = _p_change_context(
+                                                                                                                                                                        $['update state'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_wrap_up = _p_change_context(
+                                                                                                                                                                        $['wrap up'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    return {
+                                                                                                                                                                        'initialize state': prop_initialize_state,
+                                                                                                                                                                        'assign item': prop_assign_item,
+                                                                                                                                                                        'update state': prop_update_state,
+                                                                                                                                                                        'wrap up': prop_wrap_up,
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                            )],
+                                                                                                                                                        )
+                                                                                                                                                    case 'reduce':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['reduce', _p.group.resolve(
+                                                                                                                                                                () => {
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_initialize_state = _p_change_context(
+                                                                                                                                                                        $['initialize state'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_assign_item = _p_change_context(
+                                                                                                                                                                        $['assign item'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    return {
+                                                                                                                                                                        'initialize state': prop_initialize_state,
+                                                                                                                                                                        'assign item': prop_assign_item,
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                            )],
+                                                                                                                                                        )
+                                                                                                                                                    case 'reverse':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['reverse', null],
+                                                                                                                                                        )
+                                                                                                                                                    default:
+                                                                                                                                                        return _p.au(
+                                                                                                                                                            $[0],
+                                                                                                                                                        )
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                        )
+                                                                                                                                    },
+                                                                                                                                )],
+                                                                                                                            )
+                                                                                                                        default:
+                                                                                                                            return _p.au(
+                                                                                                                                $[0],
+                                                                                                                            )
+                                                                                                                    }
+                                                                                                                },
+                                                                                                            )
+                                                                                                        },
                                                                                                     ),
                                                                                                 )
                                                                                                 return {
-                                                                                                    'source': prop_source,
-                                                                                                    'item handler': prop_item_handler,
-                                                                                                }
-                                                                                            },
-                                                                                        )],
-                                                                                    )
-                                                                                case 'map with state':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['map with state', _p.group.resolve(
-                                                                                            () => {
-                                                                                                
-                                                                                                const prop_source = _p_change_context(
-                                                                                                    $['source'],
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_initial_state = _p_change_context(
-                                                                                                    $['initial state'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_item_handler = _p_change_context(
-                                                                                                    $['item handler'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_update_state = _p_change_context(
-                                                                                                    $['update state'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_wrap_up = _p_change_context(
-                                                                                                    $['wrap up'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                return {
-                                                                                                    'source': prop_source,
-                                                                                                    'initial state': prop_initial_state,
-                                                                                                    'item handler': prop_item_handler,
-                                                                                                    'update state': prop_update_state,
-                                                                                                    'wrap up': prop_wrap_up,
-                                                                                                }
-                                                                                            },
-                                                                                        )],
-                                                                                    )
-                                                                                case 'reduce':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['reduce', _p.group.resolve(
-                                                                                            () => {
-                                                                                                
-                                                                                                const prop_source = _p_change_context(
-                                                                                                    $['source'],
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_initial_state = _p_change_context(
-                                                                                                    $['initial state'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_item_handler = _p_change_context(
-                                                                                                    $['item handler'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                return {
-                                                                                                    'source': prop_source,
-                                                                                                    'initial state': prop_initial_state,
-                                                                                                    'item handler': prop_item_handler,
-                                                                                                }
-                                                                                            },
-                                                                                        )],
-                                                                                    )
-                                                                                case 'reverse':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['reverse', _p.group.resolve(
-                                                                                            () => {
-                                                                                                
-                                                                                                const prop_source = _p_change_context(
-                                                                                                    $['source'],
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                return {
-                                                                                                    'source': prop_source,
+                                                                                                    'selection': prop_selection,
+                                                                                                    'type': prop_type,
                                                                                                 }
                                                                                             },
                                                                                         )],
@@ -1736,7 +1889,7 @@
                                                                     const var_location = $['l location']
                                                                     return _p.decide.state(
                                                                         $['l state'],
-                                                                        ($): t_out.Expression.assign.number_ => {
+                                                                        ($): t_out.Expression.construct.number_ => {
                                                                             switch ($[0]) {
                                                                                 case 'approximation':
                                                                                     return _p.ss(
@@ -1747,7 +1900,7 @@
                                                                                                 const var_location = $['l location']
                                                                                                 return _p.decide.state(
                                                                                                     $['l state'],
-                                                                                                    ($): t_out.Expression.assign.number_.approximation => {
+                                                                                                    ($): t_out.Expression.construct.number_.approximation => {
                                                                                                         switch ($[0]) {
                                                                                                             case 'copy':
                                                                                                                 return _p.ss(
@@ -1785,7 +1938,7 @@
                                                                                                 const var_location = $['l location']
                                                                                                 return _p.decide.state(
                                                                                                     $['l state'],
-                                                                                                    ($): t_out.Expression.assign.number_.integer => {
+                                                                                                    ($): t_out.Expression.construct.number_.integer => {
                                                                                                         switch ($[0]) {
                                                                                                             case 'copy':
                                                                                                                 return _p.ss(
@@ -1805,8 +1958,8 @@
                                                                                                                     ($) => ['divide', _p.group.resolve(
                                                                                                                         () => {
                                                                                                                             
-                                                                                                                            const prop_divident = _p_change_context(
-                                                                                                                                $['divident'],
+                                                                                                                            const prop_assign_dividend = _p_change_context(
+                                                                                                                                $['assign dividend'],
                                                                                                                                 ($) => Value_Selection(
                                                                                                                                     $,
                                                                                                                                     ($) => abort(
@@ -1817,8 +1970,8 @@
                                                                                                                                 ),
                                                                                                                             )
                                                                                                                             
-                                                                                                                            const prop_divisor = _p_change_context(
-                                                                                                                                $['divisor'],
+                                                                                                                            const prop_assign_divisor = _p_change_context(
+                                                                                                                                $['assign divisor'],
                                                                                                                                 ($) => Value_Selection(
                                                                                                                                     $,
                                                                                                                                     ($) => abort(
@@ -1841,8 +1994,8 @@
                                                                                                                                 ),
                                                                                                                             )
                                                                                                                             return {
-                                                                                                                                'divident': prop_divident,
-                                                                                                                                'divisor': prop_divisor,
+                                                                                                                                'assign dividend': prop_assign_dividend,
+                                                                                                                                'assign divisor': prop_assign_divisor,
                                                                                                                                 'abort': prop_abort,
                                                                                                                             }
                                                                                                                         },
@@ -1872,7 +2025,7 @@
                                                                                                 const var_location = $['l location']
                                                                                                 return _p.decide.state(
                                                                                                     $['l state'],
-                                                                                                    ($): t_out.Expression.assign.number_.natural => {
+                                                                                                    ($): t_out.Expression.construct.number_.natural => {
                                                                                                         switch ($[0]) {
                                                                                                             case 'copy':
                                                                                                                 return _p.ss(
@@ -1976,44 +2129,8 @@
                                                                     const var_location = $['l location']
                                                                     return _p.decide.state(
                                                                         $['l state'],
-                                                                        ($): t_out.Expression.assign.optional => {
+                                                                        ($): t_out.Expression.construct.optional => {
                                                                             switch ($[0]) {
-                                                                                case 'from boolean':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['from boolean', _p.group.resolve(
-                                                                                            () => {
-                                                                                                
-                                                                                                const prop_source = _p_change_context(
-                                                                                                    $['source'],
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                
-                                                                                                const prop_get_set = _p_change_context(
-                                                                                                    $['get set'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
-                                                                                                    ),
-                                                                                                )
-                                                                                                return {
-                                                                                                    'source': prop_source,
-                                                                                                    'get set': prop_get_set,
-                                                                                                }
-                                                                                            },
-                                                                                        )],
-                                                                                    )
                                                                                 case 'literal':
                                                                                     return _p.ss(
                                                                                         $,
@@ -2023,7 +2140,7 @@
                                                                                                 const var_location = $['l location']
                                                                                                 return _p.decide.state(
                                                                                                     $['l state'],
-                                                                                                    ($): t_out.Expression.assign.optional.literal => {
+                                                                                                    ($): t_out.Expression.construct.optional.literal => {
                                                                                                         switch ($[0]) {
                                                                                                             case 'not set':
                                                                                                                 return _p.ss(
@@ -2052,14 +2169,14 @@
                                                                                             },
                                                                                         )],
                                                                                     )
-                                                                                case 'map':
+                                                                                case 'source':
                                                                                     return _p.ss(
                                                                                         $,
-                                                                                        ($) => ['map', _p.group.resolve(
+                                                                                        ($) => ['source', _p.group.resolve(
                                                                                             () => {
                                                                                                 
-                                                                                                const prop_source = _p_change_context(
-                                                                                                    $['source'],
+                                                                                                const prop_selection = _p_change_context(
+                                                                                                    $['selection'],
                                                                                                     ($) => Value_Selection(
                                                                                                         $,
                                                                                                         ($) => abort(
@@ -2070,20 +2187,117 @@
                                                                                                     ),
                                                                                                 )
                                                                                                 
-                                                                                                const prop_set_handler = _p_change_context(
-                                                                                                    $['set handler'],
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        null,
-                                                                                                        null,
+                                                                                                const prop_type = _p_change_context(
+                                                                                                    $['type'],
+                                                                                                    ($) => _p_variables(
+                                                                                                        () => {
+                                                                                                            
+                                                                                                            const var_location = $['l location']
+                                                                                                            return _p.decide.state(
+                                                                                                                $['l state'],
+                                                                                                                ($): t_out.Expression.construct.optional.source.type_ => {
+                                                                                                                    switch ($[0]) {
+                                                                                                                        case 'boolean':
+                                                                                                                            return _p.ss(
+                                                                                                                                $,
+                                                                                                                                ($) => ['boolean', _p_variables(
+                                                                                                                                    () => {
+                                                                                                                                        
+                                                                                                                                        const var_location = $['l location']
+                                                                                                                                        return _p.decide.state(
+                                                                                                                                            $['l state'],
+                                                                                                                                            ($): t_out.Expression.construct.optional.source.type_.boolean_ => {
+                                                                                                                                                switch ($[0]) {
+                                                                                                                                                    case 'convert':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['convert', _p.group.resolve(
+                                                                                                                                                                () => {
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_assign_set = _p_change_context(
+                                                                                                                                                                        $['assign set'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    return {
+                                                                                                                                                                        'assign set': prop_assign_set,
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                            )],
+                                                                                                                                                        )
+                                                                                                                                                    default:
+                                                                                                                                                        return _p.au(
+                                                                                                                                                            $[0],
+                                                                                                                                                        )
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                        )
+                                                                                                                                    },
+                                                                                                                                )],
+                                                                                                                            )
+                                                                                                                        case 'optional':
+                                                                                                                            return _p.ss(
+                                                                                                                                $,
+                                                                                                                                ($) => ['optional', _p_variables(
+                                                                                                                                    () => {
+                                                                                                                                        
+                                                                                                                                        const var_location = $['l location']
+                                                                                                                                        return _p.decide.state(
+                                                                                                                                            $['l state'],
+                                                                                                                                            ($): t_out.Expression.construct.optional.source.type_.optional => {
+                                                                                                                                                switch ($[0]) {
+                                                                                                                                                    case 'map':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['map', _p.group.resolve(
+                                                                                                                                                                () => {
+                                                                                                                                                                    
+                                                                                                                                                                    const prop_assign_set = _p_change_context(
+                                                                                                                                                                        $['assign set'],
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                            null,
+                                                                                                                                                                            null,
+                                                                                                                                                                        ),
+                                                                                                                                                                    )
+                                                                                                                                                                    return {
+                                                                                                                                                                        'assign set': prop_assign_set,
+                                                                                                                                                                    }
+                                                                                                                                                                },
+                                                                                                                                                            )],
+                                                                                                                                                        )
+                                                                                                                                                    default:
+                                                                                                                                                        return _p.au(
+                                                                                                                                                            $[0],
+                                                                                                                                                        )
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                        )
+                                                                                                                                    },
+                                                                                                                                )],
+                                                                                                                            )
+                                                                                                                        default:
+                                                                                                                            return _p.au(
+                                                                                                                                $[0],
+                                                                                                                            )
+                                                                                                                    }
+                                                                                                                },
+                                                                                                            )
+                                                                                                        },
                                                                                                     ),
                                                                                                 )
                                                                                                 return {
-                                                                                                    'source': prop_source,
-                                                                                                    'set handler': prop_set_handler,
+                                                                                                    'selection': prop_selection,
+                                                                                                    'type': prop_type,
                                                                                                 }
                                                                                             },
                                                                                         )],
@@ -2107,7 +2321,7 @@
                                                                     const var_location = $['l location']
                                                                     return _p.decide.state(
                                                                         $['l state'],
-                                                                        ($): t_out.Expression.assign.state => {
+                                                                        ($): t_out.Expression.construct.state => {
                                                                             switch ($[0]) {
                                                                                 case 'literal':
                                                                                     return _p.ss(
@@ -2120,8 +2334,8 @@
                                                                                                     ($) => $,
                                                                                                 )
                                                                                                 
-                                                                                                const prop_value = _p_change_context(
-                                                                                                    $['value'],
+                                                                                                const prop_assign_option = _p_change_context(
+                                                                                                    $['assign option'],
                                                                                                     ($) => Expression(
                                                                                                         $,
                                                                                                         ($) => abort(
@@ -2133,7 +2347,7 @@
                                                                                                 )
                                                                                                 return {
                                                                                                     'option': prop_option,
-                                                                                                    'value': prop_value,
+                                                                                                    'assign option': prop_assign_option,
                                                                                                 }
                                                                                             },
                                                                                         )],
@@ -2157,20 +2371,8 @@
                                                                     const var_location = $['l location']
                                                                     return _p.decide.state(
                                                                         $['l state'],
-                                                                        ($): t_out.Expression.assign.text => {
+                                                                        ($): t_out.Expression.construct.text => {
                                                                             switch ($[0]) {
-                                                                                case 'copy':
-                                                                                    return _p.ss(
-                                                                                        $,
-                                                                                        ($) => ['copy', Value_Selection(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                $,
-                                                                                            ),
-                                                                                            null,
-                                                                                            null,
-                                                                                        )],
-                                                                                    )
                                                                                 case 'literal':
                                                                                     return _p.ss(
                                                                                         $,
@@ -2185,7 +2387,7 @@
                                                                                                             const var_location = $['l location']
                                                                                                             return _p.decide.state(
                                                                                                                 $['l state'],
-                                                                                                                ($): t_out.Expression.assign.text.literal.type_ => {
+                                                                                                                ($): t_out.Expression.construct.text.literal.type_ => {
                                                                                                                     switch ($[0]) {
                                                                                                                         case 'identifier':
                                                                                                                             return _p.ss(
@@ -2215,6 +2417,77 @@
                                                                                                 return {
                                                                                                     'type': prop_type,
                                                                                                     'value': prop_value,
+                                                                                                }
+                                                                                            },
+                                                                                        )],
+                                                                                    )
+                                                                                case 'source':
+                                                                                    return _p.ss(
+                                                                                        $,
+                                                                                        ($) => ['source', _p.group.resolve(
+                                                                                            () => {
+                                                                                                
+                                                                                                const prop_selection = _p_change_context(
+                                                                                                    $['selection'],
+                                                                                                    ($) => Value_Selection(
+                                                                                                        $,
+                                                                                                        ($) => abort(
+                                                                                                            $,
+                                                                                                        ),
+                                                                                                        null,
+                                                                                                        null,
+                                                                                                    ),
+                                                                                                )
+                                                                                                
+                                                                                                const prop_type = _p_change_context(
+                                                                                                    $['type'],
+                                                                                                    ($) => _p_variables(
+                                                                                                        () => {
+                                                                                                            
+                                                                                                            const var_location = $['l location']
+                                                                                                            return _p.decide.state(
+                                                                                                                $['l state'],
+                                                                                                                ($): t_out.Expression.construct.text.source.type_ => {
+                                                                                                                    switch ($[0]) {
+                                                                                                                        case 'text':
+                                                                                                                            return _p.ss(
+                                                                                                                                $,
+                                                                                                                                ($) => ['text', _p_variables(
+                                                                                                                                    () => {
+                                                                                                                                        
+                                                                                                                                        const var_location = $['l location']
+                                                                                                                                        return _p.decide.state(
+                                                                                                                                            $['l state'],
+                                                                                                                                            ($): t_out.Expression.construct.text.source.type_.text => {
+                                                                                                                                                switch ($[0]) {
+                                                                                                                                                    case 'copy':
+                                                                                                                                                        return _p.ss(
+                                                                                                                                                            $,
+                                                                                                                                                            ($) => ['copy', null],
+                                                                                                                                                        )
+                                                                                                                                                    default:
+                                                                                                                                                        return _p.au(
+                                                                                                                                                            $[0],
+                                                                                                                                                        )
+                                                                                                                                                }
+                                                                                                                                            },
+                                                                                                                                        )
+                                                                                                                                    },
+                                                                                                                                )],
+                                                                                                                            )
+                                                                                                                        default:
+                                                                                                                            return _p.au(
+                                                                                                                                $[0],
+                                                                                                                            )
+                                                                                                                    }
+                                                                                                                },
+                                                                                                            )
+                                                                                                        },
+                                                                                                    ),
+                                                                                                )
+                                                                                                return {
+                                                                                                    'selection': prop_selection,
+                                                                                                    'type': prop_type,
                                                                                                 }
                                                                                             },
                                                                                         )],
@@ -2375,8 +2648,8 @@
                                                                         ),
                                                                     )
                                                                     
-                                                                    const prop_callback = _p_change_context(
-                                                                        $['callback'],
+                                                                    const prop_assign = _p_change_context(
+                                                                        $['assign'],
                                                                         ($) => Expression(
                                                                             $,
                                                                             ($) => abort(
@@ -2388,7 +2661,7 @@
                                                                     )
                                                                     return {
                                                                         'variables': prop_variables,
-                                                                        'callback': prop_callback,
+                                                                        'assign': prop_assign,
                                                                     }
                                                                 },
                                                             )],
@@ -2416,8 +2689,8 @@
                                                                         ),
                                                                     )
                                                                     
-                                                                    const prop_handler = _p_change_context(
-                                                                        $['handler'],
+                                                                    const prop_assign = _p_change_context(
+                                                                        $['assign'],
                                                                         ($) => Expression(
                                                                             $,
                                                                             ($) => abort(
@@ -2429,7 +2702,7 @@
                                                                     )
                                                                     return {
                                                                         'list': prop_list,
-                                                                        'handler': prop_handler,
+                                                                        'assign': prop_assign,
                                                                     }
                                                                 },
                                                             )],
@@ -2755,8 +3028,8 @@
                                                                                     ),
                                                                                 )
                                                                                 
-                                                                                const prop_character_handler = _p_change_context(
-                                                                                    $['character handler'],
+                                                                                const prop_assign_item = _p_change_context(
+                                                                                    $['assign item'],
                                                                                     ($) => Expression(
                                                                                         $,
                                                                                         ($) => abort(
@@ -2768,7 +3041,7 @@
                                                                                 )
                                                                                 return {
                                                                                     'source': prop_source,
-                                                                                    'character handler': prop_character_handler,
+                                                                                    'assign item': prop_assign_item,
                                                                                 }
                                                                             },
                                                                         )],
@@ -2983,8 +3256,8 @@
                                                                                     ),
                                                                                 )
                                                                                 
-                                                                                const prop_item_handler = _p_change_context(
-                                                                                    $['item handler'],
+                                                                                const prop_assign_character = _p_change_context(
+                                                                                    $['assign character'],
                                                                                     ($) => Expression(
                                                                                         $,
                                                                                         ($) => abort(
@@ -2996,7 +3269,7 @@
                                                                                 )
                                                                                 return {
                                                                                     'source': prop_source,
-                                                                                    'item handler': prop_item_handler,
+                                                                                    'assign character': prop_assign_character,
                                                                                 }
                                                                             },
                                                                         )],

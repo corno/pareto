@@ -13,9 +13,10 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/block"
 export const Directory = ($: d_in.Directory): d_out.Directory => {
     return $.__d_map(($, id) => _p.decide.state($, ($) => {
         switch ($[0]) {
-            case 'file': return _p.ss($, ($) => ['file', sh.pg.composed([
-                Statements($['statements'], { 'replace empty type literals by null': true })
-            ])])
+            case 'file': return _p.ss($, ($) => ['file', Statements(
+                $['statements'],
+                { 'replace empty type literals by null': true }
+            )])
             case 'directory': return _p.ss($, ($) => ['directory', Directory($)])
             default: return _p.au($[0])
         }
@@ -517,6 +518,7 @@ export const Type = (
             Type($['return'], $p)
         ]))
         case 'literal type': return _p.ss($, ($) => String_Literal($)) //FIX, implement a switch for the delimiter
+        case 'never': return _p.ss($, ($) => sh.ph.literal("never"))
         case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
         case 'number': return _p.ss($, ($) => sh.ph.literal("number"))
         case 'string': return _p.ss($, ($) => sh.ph.literal("string"))

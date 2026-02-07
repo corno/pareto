@@ -166,13 +166,16 @@ export namespace e {
 
     export namespace boolean {
 
-        export const false_ = (): d_target.Expression => wrap_state(['assign', wrap_state(['boolean', wrap_state(['literal', wrap_state(['false', null])])])])
+        export const false_ = (): d_target.Expression => wrap_state(['construct', wrap_state(['boolean', wrap_state(['literal', wrap_state(['false', null])])])])
 
-        export const true_ = (): d_target.Expression => wrap_state(['assign', wrap_state(['boolean', wrap_state(['literal', wrap_state(['true', null])])])])
+        export const true_ = (): d_target.Expression => wrap_state(['construct', wrap_state(['boolean', wrap_state(['literal', wrap_state(['true', null])])])])
 
         export const copy = (
             selection: d_target.Value_Selection
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['boolean', wrap_state(['copy', selection])])])
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['boolean', wrap_state(['source', {
+            'selection': selection,
+            'type': wrap_state(['boolean', wrap_state(['copy', null])])
+        }])])])
 
     }
 
@@ -269,24 +272,28 @@ export namespace e {
 
         export const literal = (
             entries: _p.Raw_Or_Normal_Dictionary<d_target.Expression>
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['dictionary', wrap_state(['literal', _p.dictionary.literal(entries)])])])
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['dictionary', wrap_state(['literal', _p.dictionary.literal(entries)])])])
 
         export const map = (
             source: d_target.Value_Selection,
             entry_handler: d_target.Expression
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['dictionary', wrap_state(['map', {
-            'source': source,
-            'entry handler': entry_handler
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['dictionary', wrap_state(['source', {
+            'selection': source,
+            'type': wrap_state(['dictionary', wrap_state(['map', {
+                'assign entry': entry_handler
+            }])])
         }])])])
 
         export const resolve = (
             source: d_target.Value_Selection,
             entry_handler: d_target.Expression,
             temp_resulting_entry_node: d_target.Temp_Value_Type_Specification,
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['dictionary', wrap_state(['resolve', {
-            'source': source,
-            'entry handler': entry_handler,
-            'temp resulting entry node': temp_resulting_entry_node,
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['dictionary', wrap_state(['source', {
+            'selection': source,
+            'type': wrap_state(['dictionary', wrap_state(['resolve', {
+                'assign entry': entry_handler,
+                'temp resulting entry node': temp_resulting_entry_node,
+            }])])
         }])])])
 
     }
@@ -295,11 +302,17 @@ export namespace e {
 
         export const literal = (
             properties: _p.Raw_Or_Normal_Dictionary<d_target.Expression>
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['group', wrap_state(['literal', _p.dictionary.literal(properties)])])])
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['group', wrap_state(['literal', {
+            'properties': _p.dictionary.literal(properties),
+            'have dependencies': false,
+        }])])])
 
         export const resolve = (
             properties: _p.Raw_Or_Normal_Dictionary<d_target.Expression>
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['group', wrap_state(['resolve', _p.dictionary.literal(properties)])])])
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['group', wrap_state(['literal', {
+            'properties': _p.dictionary.literal(properties),
+            'have dependencies': true,
+        }])])])
 
     }
 
@@ -310,14 +323,16 @@ export namespace e {
 
         export const literal = (
             elements: _p.Raw_Or_Normal_List<d_target.Expression>
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['list', wrap_state(['literal', _p.list.literal(elements)])])])
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['list', wrap_state(['literal', _p.list.literal(elements)])])])
 
         export const map = (
             source: d_target.Value_Selection,
             element_handler: d_target.Expression
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['list', wrap_state(['map', {
-            'source': source,
-            'item handler': element_handler
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['list', wrap_state(['source', {
+            'selection': source,
+            'type': wrap_state(['list', wrap_state(['map', {
+                'assign item': element_handler
+            }])])
         }])])])
 
         export const map_with_state = (
@@ -326,61 +341,65 @@ export namespace e {
             element_handler: d_target.Expression,
             update_state: d_target.Expression,
             wrap_up: d_target.Expression,
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['list', wrap_state(['map with state', {
-            'source': source,
-            'initial state': initial_state,
-            'item handler': element_handler,
-            'update state': update_state,
-            'wrap up': wrap_up,
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['list', wrap_state(['source', {
+            'selection': source,
+            'type': wrap_state(['list', wrap_state(['map with state', {
+                'initialize state': initial_state,
+                'assign item': element_handler,
+                'update state': update_state,
+                'wrap up': wrap_up,
+            }])])
         }])])])
 
     }
 
-    export const nothing = (): d_target.Expression => wrap_state(['assign', wrap_state(['nothing', null])])
+    export const nothing = (): d_target.Expression => wrap_state(['construct', wrap_state(['nothing', null])])
 
     export namespace number {
 
         export const approximation_literal = (
             value: number
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['number', wrap_state(['approximation', wrap_state(['literal', value])])])])
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['number', wrap_state(['approximation', wrap_state(['literal', value])])])])
 
         export const approximation_copy = (
             source: d_target.Value_Selection
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['number', wrap_state(['approximation', wrap_state(['copy', source])])])])
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['number', wrap_state(['approximation', wrap_state(['copy', source])])])])
 
         export const integer_literal = (
             value: number
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['number', wrap_state(['integer', wrap_state(['literal', value])])])])
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['number', wrap_state(['integer', wrap_state(['literal', value])])])])
 
         export const integer_copy = (
             source: d_target.Value_Selection
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['number', wrap_state(['integer', wrap_state(['copy', source])])])])
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['number', wrap_state(['integer', wrap_state(['copy', source])])])])
 
         export const natural_literal = (
             value: number
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['number', wrap_state(['natural', wrap_state(['literal', value])])])])
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['number', wrap_state(['natural', wrap_state(['literal', value])])])])
 
         export const natural_copy = (
             source: d_target.Value_Selection
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['number', wrap_state(['natural', wrap_state(['copy', source])])])])
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['number', wrap_state(['natural', wrap_state(['copy', source])])])])
 
     }
 
     export namespace optional {
 
-        export const not_set = (): d_target.Expression => wrap_state(['assign', wrap_state(['optional', wrap_state(['literal', wrap_state(['not set', null])])])])
+        export const not_set = (): d_target.Expression => wrap_state(['construct', wrap_state(['optional', wrap_state(['literal', wrap_state(['not set', null])])])])
 
         export const map = (
             source: d_target.Value_Selection,
             expression: d_target.Expression
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['optional', wrap_state(['map', {
-            'source': source,
-            'set handler': expression
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['optional', wrap_state(['source', {
+            'selection': source,
+            'type': wrap_state(['optional', wrap_state(['map', {
+                'assign set': expression
+            }])])
         }])])])
 
         export const set = (
             value: d_target.Expression
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['optional', wrap_state(['literal', wrap_state(['set', value])])])])
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['optional', wrap_state(['literal', wrap_state(['set', value])])])])
 
     }
 
@@ -393,9 +412,9 @@ export namespace e {
         export const literal = (
             option: string,
             value: d_target.Expression
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['state', wrap_state(['literal', {
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['state', wrap_state(['literal', {
             'option': option,
-            'value': value,
+            'assign option': value,
         }])])])
 
     }
@@ -405,14 +424,17 @@ export namespace e {
         export const literal = (
             value: string,
             type: 'identifier' | 'freeform'
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['text', wrap_state(['literal', {
-            'type': ((): d_target.Expression.assign.text.literal.type_ => type === 'identifier' ? wrap_state(['identifier', null]) : wrap_state(['freeform', null]))(),
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['text', wrap_state(['literal', {
+            'type': ((): d_target.Expression.construct.text.literal.type_ => type === 'identifier' ? wrap_state(['identifier', null]) : wrap_state(['freeform', null]))(),
             'value': value,
         }])])])
 
         export const copy = (
             selection: d_target.Value_Selection
-        ): d_target.Expression => wrap_state(['assign', wrap_state(['text', wrap_state(['copy', selection])])])
+        ): d_target.Expression => wrap_state(['construct', wrap_state(['text', wrap_state(['source', {
+            'selection': selection,
+            'type': wrap_state(['text', wrap_state(['copy', null])])
+        }])])])
 
     }
 
@@ -425,7 +447,7 @@ export namespace e {
         callback: d_target.Expression
     ): d_target.Expression => wrap_state(['special', wrap_state(['variables', {
         'variables': _p.dictionary.literal(variables),
-        'callback': callback
+        'assign': callback
     }])])
 }
 
@@ -520,7 +542,7 @@ export namespace s {
     ): d_target.Value_Selection => wrap_state(['regular', {
         'start': wrap_state<d_target.Value_Selection.regular.start>(['list from text', {
             'source': source,
-            'character handler': character_handler,
+            'assign item': character_handler,
         }]),
         'tail': _p.list.literal(tail),
     }])
@@ -604,7 +626,7 @@ export namespace s {
     ): d_target.Value_Selection => wrap_state(['regular', {
         'start': wrap_state<d_target.Value_Selection.regular.start>(['text from list', {
             'source': source,
-            'item handler': character_handler,
+            'assign character': character_handler,
         }]),
         'tail': _p.list.literal(tail),
     }])

@@ -207,11 +207,12 @@ export const tl_propery = (
 }
 
 export namespace t {
-    export const boolean = (
 
+    export const boolean = (
     ): d_target.Type => {
         return ['boolean', null]
     }
+
     export const function_ = (
         type_parameters: _p.Raw_Or_Normal_List<d_target.Type>,
         parameters: _p.Raw_Or_Normal_List<d_target.Function_Parameters.L>,
@@ -223,26 +224,33 @@ export namespace t {
             'return': return_,
         }]
     }
+
     export const literal_type = (
         string_literal: d_target.String_Literal,
     ): d_target.Type => {
         return ['literal type', string_literal]
     }
-    export const null_ = (
 
+    export const never = (
+    ): d_target.Type => {
+        return ['never', null]
+    }
+
+    export const null_ = (
     ): d_target.Type => {
         return ['null', null]
     }
-    export const number = (
 
+    export const number = (
     ): d_target.Type => {
         return ['number', null]
     }
-    export const string = (
 
+    export const string = (
     ): d_target.Type => {
         return ['string', null]
     }
+    
     export const tuple = (
         read_only: 'readonly' | '',
         elements: _p.Raw_Or_Normal_List<d_target.Type>): d_target.Type => {
@@ -251,6 +259,7 @@ export namespace t {
             'elements': _p.list.literal(elements)
         }]
     }
+
     export const type_literal = (
         properties: _p.Raw_Or_Normal_List<d_target.Type.type_literal.properties.L>
     ): d_target.Type => {
@@ -258,8 +267,6 @@ export namespace t {
             'properties': _p.list.literal(properties),
         }]
     }
-
-
 
     export const type_reference = (
         start: d_target.Identifier,
@@ -272,16 +279,18 @@ export namespace t {
             'type arguments': _p.list.literal(type_arguments),
         }]
     }
+
     export const union = (
         cases: _p.Raw_Or_Normal_List<d_target.Type>
     ): d_target.Type => {
         return ['union', _p.list.literal(cases)]
     }
-    export const void_ = (
 
+    export const void_ = (
     ): d_target.Type => {
         return ['void', null]
     }
+
 }
 
 

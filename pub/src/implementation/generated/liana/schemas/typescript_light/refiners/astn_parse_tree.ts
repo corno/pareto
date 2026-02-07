@@ -922,6 +922,16 @@
                                 ),
                             )],
                         )
+                    case 'never':
+                        return _p_change_context(
+                            $['value'],
+                            ($) => ['never', v_unmarshalled_from_parse_tree.Nothing(
+                                $,
+                                ($) => abort(
+                                    ['expected a nothing', null],
+                                ),
+                            )],
+                        )
                     case 'null':
                         return _p_change_context(
                             $['value'],

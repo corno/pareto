@@ -842,11 +842,11 @@
                             )]],
                         }),
                     )
-                case 'assign':
+                case 'construct':
                     return _p.ss(
                         $,
                         ($) => ({
-                            'option': 'assign',
+                            'option': 'construct',
                             'value': ['state', _p.decide.state(
                                 $,
                                 ($): t_out.Value.state => {
@@ -894,44 +894,125 @@
                                                                             )],
                                                                         }),
                                                                     )
-                                                                case 'not':
+                                                                case 'source':
                                                                     return _p.ss(
                                                                         $,
                                                                         ($) => ({
-                                                                            'option': 'not',
-                                                                            'value': Value_Selection(
-                                                                                $,
-                                                                            ),
-                                                                        }),
-                                                                    )
-                                                                case 'copy':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'copy',
-                                                                            'value': Value_Selection(
-                                                                                $,
-                                                                            ),
-                                                                        }),
-                                                                    )
-                                                                case 'dictionary is empty':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'dictionary is empty',
-                                                                            'value': Value_Selection(
-                                                                                $,
-                                                                            ),
-                                                                        }),
-                                                                    )
-                                                                case 'list is empty':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'list is empty',
-                                                                            'value': Value_Selection(
-                                                                                $,
-                                                                            ),
+                                                                            'option': 'source',
+                                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                {
+                                                                                    "selection": _p_change_context(
+                                                                                        $['selection'],
+                                                                                        ($) => Value_Selection(
+                                                                                            $,
+                                                                                        ),
+                                                                                    ),
+                                                                                    "type": _p_change_context(
+                                                                                        $['type'],
+                                                                                        ($) => ['state', _p.decide.state(
+                                                                                            $,
+                                                                                            ($): t_out.Value.state => {
+                                                                                                switch ($[0]) {
+                                                                                                    case 'boolean':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ({
+                                                                                                                'option': 'boolean',
+                                                                                                                'value': ['state', _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Value.state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'not':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'not',
+                                                                                                                                        'value': ['nothing', null],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            case 'copy':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'copy',
+                                                                                                                                        'value': ['nothing', null],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                )],
+                                                                                                            }),
+                                                                                                        )
+                                                                                                    case 'dictionary':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ({
+                                                                                                                'option': 'dictionary',
+                                                                                                                'value': ['state', _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Value.state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'is empty':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'is empty',
+                                                                                                                                        'value': Value_Selection(
+                                                                                                                                            $,
+                                                                                                                                        ),
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                )],
+                                                                                                            }),
+                                                                                                        )
+                                                                                                    case 'list':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ({
+                                                                                                                'option': 'list',
+                                                                                                                'value': ['state', _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Value.state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'is empty':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'is empty',
+                                                                                                                                        'value': Value_Selection(
+                                                                                                                                            $,
+                                                                                                                                        ),
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                )],
+                                                                                                            }),
+                                                                                                        )
+                                                                                                    default:
+                                                                                                        return _p.au(
+                                                                                                            $[0],
+                                                                                                        )
+                                                                                                }
+                                                                                            },
+                                                                                        )],
+                                                                                    ),
+                                                                                },
+                                                                            )]],
                                                                         }),
                                                                     )
                                                                 default:
@@ -952,64 +1033,6 @@
                                                         $,
                                                         ($): t_out.Value.state => {
                                                             switch ($[0]) {
-                                                                case 'filter':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'filter',
-                                                                            'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                {
-                                                                                    "source": _p_change_context(
-                                                                                        $['source'],
-                                                                                        ($) => Value_Selection(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "entry handler": _p_change_context(
-                                                                                        $['entry handler'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                },
-                                                                            )]],
-                                                                        }),
-                                                                    )
-                                                                case 'from list':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'from list',
-                                                                            'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                {
-                                                                                    "source": _p_change_context(
-                                                                                        $['source'],
-                                                                                        ($) => Value_Selection(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "get id": _p_change_context(
-                                                                                        $['get id'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "get entry": _p_change_context(
-                                                                                        $['get entry'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "abort": _p_change_context(
-                                                                                        $['abort'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                },
-                                                                            )]],
-                                                                        }),
-                                                                    )
                                                                 case 'literal':
                                                                     return _p.ss(
                                                                         $,
@@ -1023,53 +1046,154 @@
                                                                             )],
                                                                         }),
                                                                     )
-                                                                case 'map':
+                                                                case 'source':
                                                                     return _p.ss(
                                                                         $,
                                                                         ($) => ({
-                                                                            'option': 'map',
+                                                                            'option': 'source',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    "source": _p_change_context(
-                                                                                        $['source'],
+                                                                                    "selection": _p_change_context(
+                                                                                        $['selection'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    "entry handler": _p_change_context(
-                                                                                        $['entry handler'],
-                                                                                        ($) => Expression(
+                                                                                    "type": _p_change_context(
+                                                                                        $['type'],
+                                                                                        ($) => ['state', _p.decide.state(
                                                                                             $,
-                                                                                        ),
-                                                                                    ),
-                                                                                },
-                                                                            )]],
-                                                                        }),
-                                                                    )
-                                                                case 'resolve':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'resolve',
-                                                                            'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                {
-                                                                                    "source": _p_change_context(
-                                                                                        $['source'],
-                                                                                        ($) => Value_Selection(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "entry handler": _p_change_context(
-                                                                                        $['entry handler'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "temp resulting entry node": _p_change_context(
-                                                                                        $['temp resulting entry node'],
-                                                                                        ($) => Temp_Value_Type_Specification(
-                                                                                            $,
-                                                                                        ),
+                                                                                            ($): t_out.Value.state => {
+                                                                                                switch ($[0]) {
+                                                                                                    case 'dictionary':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ({
+                                                                                                                'option': 'dictionary',
+                                                                                                                'value': ['state', _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Value.state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'filter':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'filter',
+                                                                                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                            {
+                                                                                                                                                "assign entry": _p_change_context(
+                                                                                                                                                    $['assign entry'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                            },
+                                                                                                                                        )]],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            case 'map':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'map',
+                                                                                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                            {
+                                                                                                                                                "assign entry": _p_change_context(
+                                                                                                                                                    $['assign entry'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                            },
+                                                                                                                                        )]],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            case 'resolve':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'resolve',
+                                                                                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                            {
+                                                                                                                                                "assign entry": _p_change_context(
+                                                                                                                                                    $['assign entry'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                                "temp resulting entry node": _p_change_context(
+                                                                                                                                                    $['temp resulting entry node'],
+                                                                                                                                                    ($) => Temp_Value_Type_Specification(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                            },
+                                                                                                                                        )]],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                )],
+                                                                                                            }),
+                                                                                                        )
+                                                                                                    case 'list':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ({
+                                                                                                                'option': 'list',
+                                                                                                                'value': ['state', _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Value.state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'convert':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'convert',
+                                                                                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                            {
+                                                                                                                                                "assign id": _p_change_context(
+                                                                                                                                                    $['assign id'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                                "assign entry": _p_change_context(
+                                                                                                                                                    $['assign entry'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                                "abort": _p_change_context(
+                                                                                                                                                    $['abort'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                            },
+                                                                                                                                        )]],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                )],
+                                                                                                            }),
+                                                                                                        )
+                                                                                                    default:
+                                                                                                        return _p.au(
+                                                                                                            $[0],
+                                                                                                        )
+                                                                                                }
+                                                                                            },
+                                                                                        )],
                                                                                     ),
                                                                                 },
                                                                             )]],
@@ -1098,25 +1222,31 @@
                                                                         $,
                                                                         ($) => ({
                                                                             'option': 'literal',
-                                                                            'value': ['dictionary', _p.dictionary.map(
-                                                                                $,
-                                                                                ($, id) => Expression(
-                                                                                    $,
-                                                                                ),
-                                                                            )],
-                                                                        }),
-                                                                    )
-                                                                case 'resolve':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'resolve',
-                                                                            'value': ['dictionary', _p.dictionary.map(
-                                                                                $,
-                                                                                ($, id) => Expression(
-                                                                                    $,
-                                                                                ),
-                                                                            )],
+                                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                {
+                                                                                    "properties": _p_change_context(
+                                                                                        $['properties'],
+                                                                                        ($) => ['dictionary', _p.dictionary.map(
+                                                                                            $,
+                                                                                            ($, id) => Expression(
+                                                                                                $,
+                                                                                            ),
+                                                                                        )],
+                                                                                    ),
+                                                                                    "have dependencies": _p_change_context(
+                                                                                        $['have dependencies'],
+                                                                                        ($) => ['text', {
+                                                                                            'delimiter': ['none', null],
+                                                                                            'value': _p_text_from_list(
+                                                                                                v_serialize_boolean.serialize(
+                                                                                                    $,
+                                                                                                ),
+                                                                                                ($) => $,
+                                                                                            ),
+                                                                                        }],
+                                                                                    ),
+                                                                                },
+                                                                            )]],
                                                                         }),
                                                                     )
                                                                 default:
@@ -1137,52 +1267,6 @@
                                                         $,
                                                         ($): t_out.Value.state => {
                                                             switch ($[0]) {
-                                                                case 'filter':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'filter',
-                                                                            'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                {
-                                                                                    "source": _p_change_context(
-                                                                                        $['source'],
-                                                                                        ($) => Value_Selection(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "entry handler": _p_change_context(
-                                                                                        $['entry handler'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                },
-                                                                            )]],
-                                                                        }),
-                                                                    )
-                                                                case 'from dictionary':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'from dictionary',
-                                                                            'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                {
-                                                                                    "source": _p_change_context(
-                                                                                        $['source'],
-                                                                                        ($) => Value_Selection(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "get item": _p_change_context(
-                                                                                        $['get item'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                },
-                                                                            )]],
-                                                                        }),
-                                                                    )
                                                                 case 'literal':
                                                                     return _p.ss(
                                                                         $,
@@ -1196,111 +1280,203 @@
                                                                             )],
                                                                         }),
                                                                     )
-                                                                case 'map':
+                                                                case 'source':
                                                                     return _p.ss(
                                                                         $,
                                                                         ($) => ({
-                                                                            'option': 'map',
+                                                                            'option': 'source',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    "source": _p_change_context(
-                                                                                        $['source'],
+                                                                                    "selection": _p_change_context(
+                                                                                        $['selection'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    "item handler": _p_change_context(
-                                                                                        $['item handler'],
-                                                                                        ($) => Expression(
+                                                                                    "type": _p_change_context(
+                                                                                        $['type'],
+                                                                                        ($) => ['state', _p.decide.state(
                                                                                             $,
-                                                                                        ),
-                                                                                    ),
-                                                                                },
-                                                                            )]],
-                                                                        }),
-                                                                    )
-                                                                case 'map with state':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'map with state',
-                                                                            'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                {
-                                                                                    "source": _p_change_context(
-                                                                                        $['source'],
-                                                                                        ($) => Value_Selection(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "initial state": _p_change_context(
-                                                                                        $['initial state'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "item handler": _p_change_context(
-                                                                                        $['item handler'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "update state": _p_change_context(
-                                                                                        $['update state'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "wrap up": _p_change_context(
-                                                                                        $['wrap up'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                },
-                                                                            )]],
-                                                                        }),
-                                                                    )
-                                                                case 'reduce':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'reduce',
-                                                                            'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                {
-                                                                                    "source": _p_change_context(
-                                                                                        $['source'],
-                                                                                        ($) => Value_Selection(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "initial state": _p_change_context(
-                                                                                        $['initial state'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "item handler": _p_change_context(
-                                                                                        $['item handler'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                },
-                                                                            )]],
-                                                                        }),
-                                                                    )
-                                                                case 'reverse':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'reverse',
-                                                                            'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                {
-                                                                                    "source": _p_change_context(
-                                                                                        $['source'],
-                                                                                        ($) => Value_Selection(
-                                                                                            $,
-                                                                                        ),
+                                                                                            ($): t_out.Value.state => {
+                                                                                                switch ($[0]) {
+                                                                                                    case 'dictionary':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ({
+                                                                                                                'option': 'dictionary',
+                                                                                                                'value': ['state', _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Value.state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'convert':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'convert',
+                                                                                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                            {
+                                                                                                                                                "assign entry": _p_change_context(
+                                                                                                                                                    $['assign entry'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                            },
+                                                                                                                                        )]],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                )],
+                                                                                                            }),
+                                                                                                        )
+                                                                                                    case 'group':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ({
+                                                                                                                'option': 'group',
+                                                                                                                'value': ['state', _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Value.state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                )],
+                                                                                                            }),
+                                                                                                        )
+                                                                                                    case 'list':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ({
+                                                                                                                'option': 'list',
+                                                                                                                'value': ['state', _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Value.state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'filter':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'filter',
+                                                                                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                            {
+                                                                                                                                                "assign item": _p_change_context(
+                                                                                                                                                    $['assign item'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                            },
+                                                                                                                                        )]],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            case 'map':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'map',
+                                                                                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                            {
+                                                                                                                                                "assign item": _p_change_context(
+                                                                                                                                                    $['assign item'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                            },
+                                                                                                                                        )]],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            case 'map with state':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'map with state',
+                                                                                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                            {
+                                                                                                                                                "initialize state": _p_change_context(
+                                                                                                                                                    $['initialize state'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                                "assign item": _p_change_context(
+                                                                                                                                                    $['assign item'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                                "update state": _p_change_context(
+                                                                                                                                                    $['update state'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                                "wrap up": _p_change_context(
+                                                                                                                                                    $['wrap up'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                            },
+                                                                                                                                        )]],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            case 'reduce':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'reduce',
+                                                                                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                            {
+                                                                                                                                                "initialize state": _p_change_context(
+                                                                                                                                                    $['initialize state'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                                "assign item": _p_change_context(
+                                                                                                                                                    $['assign item'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                            },
+                                                                                                                                        )]],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            case 'reverse':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'reverse',
+                                                                                                                                        'value': ['nothing', null],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                )],
+                                                                                                            }),
+                                                                                                        )
+                                                                                                    default:
+                                                                                                        return _p.au(
+                                                                                                            $[0],
+                                                                                                        )
+                                                                                                }
+                                                                                            },
+                                                                                        )],
                                                                                     ),
                                                                                 },
                                                                             )]],
@@ -1402,14 +1578,14 @@
                                                                                                     'option': 'divide',
                                                                                                     'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                                         {
-                                                                                                            "divident": _p_change_context(
-                                                                                                                $['divident'],
+                                                                                                            "assign dividend": _p_change_context(
+                                                                                                                $['assign dividend'],
                                                                                                                 ($) => Value_Selection(
                                                                                                                     $,
                                                                                                                 ),
                                                                                                             ),
-                                                                                                            "divisor": _p_change_context(
-                                                                                                                $['divisor'],
+                                                                                                            "assign divisor": _p_change_context(
+                                                                                                                $['assign divisor'],
                                                                                                                 ($) => Value_Selection(
                                                                                                                     $,
                                                                                                                 ),
@@ -1561,29 +1737,6 @@
                                                         $,
                                                         ($): t_out.Value.state => {
                                                             switch ($[0]) {
-                                                                case 'from boolean':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'from boolean',
-                                                                            'value': ['group', ['verbose', _p.dictionary.literal(
-                                                                                {
-                                                                                    "source": _p_change_context(
-                                                                                        $['source'],
-                                                                                        ($) => Value_Selection(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                    "get set": _p_change_context(
-                                                                                        $['get set'],
-                                                                                        ($) => Expression(
-                                                                                            $,
-                                                                                        ),
-                                                                                    ),
-                                                                                },
-                                                                            )]],
-                                                                        }),
-                                                                    )
                                                                 case 'literal':
                                                                     return _p.ss(
                                                                         $,
@@ -1620,24 +1773,102 @@
                                                                             )],
                                                                         }),
                                                                     )
-                                                                case 'map':
+                                                                case 'source':
                                                                     return _p.ss(
                                                                         $,
                                                                         ($) => ({
-                                                                            'option': 'map',
+                                                                            'option': 'source',
                                                                             'value': ['group', ['verbose', _p.dictionary.literal(
                                                                                 {
-                                                                                    "source": _p_change_context(
-                                                                                        $['source'],
+                                                                                    "selection": _p_change_context(
+                                                                                        $['selection'],
                                                                                         ($) => Value_Selection(
                                                                                             $,
                                                                                         ),
                                                                                     ),
-                                                                                    "set handler": _p_change_context(
-                                                                                        $['set handler'],
-                                                                                        ($) => Expression(
+                                                                                    "type": _p_change_context(
+                                                                                        $['type'],
+                                                                                        ($) => ['state', _p.decide.state(
                                                                                             $,
-                                                                                        ),
+                                                                                            ($): t_out.Value.state => {
+                                                                                                switch ($[0]) {
+                                                                                                    case 'boolean':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ({
+                                                                                                                'option': 'boolean',
+                                                                                                                'value': ['state', _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Value.state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'convert':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'convert',
+                                                                                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                            {
+                                                                                                                                                "assign set": _p_change_context(
+                                                                                                                                                    $['assign set'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                            },
+                                                                                                                                        )]],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                )],
+                                                                                                            }),
+                                                                                                        )
+                                                                                                    case 'optional':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ({
+                                                                                                                'option': 'optional',
+                                                                                                                'value': ['state', _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Value.state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'map':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'map',
+                                                                                                                                        'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                                                                            {
+                                                                                                                                                "assign set": _p_change_context(
+                                                                                                                                                    $['assign set'],
+                                                                                                                                                    ($) => Expression(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                            },
+                                                                                                                                        )]],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                )],
+                                                                                                            }),
+                                                                                                        )
+                                                                                                    default:
+                                                                                                        return _p.au(
+                                                                                                            $[0],
+                                                                                                        )
+                                                                                                }
+                                                                                            },
+                                                                                        )],
                                                                                     ),
                                                                                 },
                                                                             )]],
@@ -1675,8 +1906,8 @@
                                                                                             'value': $,
                                                                                         }],
                                                                                     ),
-                                                                                    "value": _p_change_context(
-                                                                                        $['value'],
+                                                                                    "assign option": _p_change_context(
+                                                                                        $['assign option'],
                                                                                         ($) => Expression(
                                                                                             $,
                                                                                         ),
@@ -1703,16 +1934,6 @@
                                                         $,
                                                         ($): t_out.Value.state => {
                                                             switch ($[0]) {
-                                                                case 'copy':
-                                                                    return _p.ss(
-                                                                        $,
-                                                                        ($) => ({
-                                                                            'option': 'copy',
-                                                                            'value': Value_Selection(
-                                                                                $,
-                                                                            ),
-                                                                        }),
-                                                                    )
                                                                 case 'literal':
                                                                     return _p.ss(
                                                                         $,
@@ -1756,6 +1977,63 @@
                                                                                             'delimiter': ['quote', null],
                                                                                             'value': $,
                                                                                         }],
+                                                                                    ),
+                                                                                },
+                                                                            )]],
+                                                                        }),
+                                                                    )
+                                                                case 'source':
+                                                                    return _p.ss(
+                                                                        $,
+                                                                        ($) => ({
+                                                                            'option': 'source',
+                                                                            'value': ['group', ['verbose', _p.dictionary.literal(
+                                                                                {
+                                                                                    "selection": _p_change_context(
+                                                                                        $['selection'],
+                                                                                        ($) => Value_Selection(
+                                                                                            $,
+                                                                                        ),
+                                                                                    ),
+                                                                                    "type": _p_change_context(
+                                                                                        $['type'],
+                                                                                        ($) => ['state', _p.decide.state(
+                                                                                            $,
+                                                                                            ($): t_out.Value.state => {
+                                                                                                switch ($[0]) {
+                                                                                                    case 'text':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ({
+                                                                                                                'option': 'text',
+                                                                                                                'value': ['state', _p.decide.state(
+                                                                                                                    $,
+                                                                                                                    ($): t_out.Value.state => {
+                                                                                                                        switch ($[0]) {
+                                                                                                                            case 'copy':
+                                                                                                                                return _p.ss(
+                                                                                                                                    $,
+                                                                                                                                    ($) => ({
+                                                                                                                                        'option': 'copy',
+                                                                                                                                        'value': ['nothing', null],
+                                                                                                                                    }),
+                                                                                                                                )
+                                                                                                                            default:
+                                                                                                                                return _p.au(
+                                                                                                                                    $[0],
+                                                                                                                                )
+                                                                                                                        }
+                                                                                                                    },
+                                                                                                                )],
+                                                                                                            }),
+                                                                                                        )
+                                                                                                    default:
+                                                                                                        return _p.au(
+                                                                                                            $[0],
+                                                                                                        )
+                                                                                                }
+                                                                                            },
+                                                                                        )],
                                                                                     ),
                                                                                 },
                                                                             )]],
@@ -1878,8 +2156,8 @@
                                                                     ),
                                                                 )],
                                                             ),
-                                                            "callback": _p_change_context(
-                                                                $['callback'],
+                                                            "assign": _p_change_context(
+                                                                $['assign'],
                                                                 ($) => Expression(
                                                                     $,
                                                                 ),
@@ -1912,8 +2190,8 @@
                                                                     $,
                                                                 ),
                                                             ),
-                                                            "handler": _p_change_context(
-                                                                $['handler'],
+                                                            "assign": _p_change_context(
+                                                                $['assign'],
                                                                 ($) => Expression(
                                                                     $,
                                                                 ),
@@ -2190,8 +2468,8 @@
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        "character handler": _p_change_context(
-                                                                            $['character handler'],
+                                                                        "assign item": _p_change_context(
+                                                                            $['assign item'],
                                                                             ($) => Expression(
                                                                                 $,
                                                                             ),
@@ -2350,8 +2628,8 @@
                                                                                 $,
                                                                             ),
                                                                         ),
-                                                                        "item handler": _p_change_context(
-                                                                            $['item handler'],
+                                                                        "assign character": _p_change_context(
+                                                                            $['assign character'],
                                                                             ($) => Expression(
                                                                                 $,
                                                                             ),

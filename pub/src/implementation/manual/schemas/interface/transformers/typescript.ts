@@ -575,14 +575,16 @@ export const Value = (
                         true,
                         sh.identifier_escaped($p.name),
                         _p.list.literal([]),
-                        sh.t.union(
-                            $.__to_list(
-                                ($, id) => sh.t.tuple('readonly', [
-                                    sh.t.literal_type(sh.string_literal(id, 'apostrophe')),
-                                    sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(id)], [])
-                                ])
+                        _p.boolean.dictionary_is_empty($)
+                            ? sh.t.never()
+                            : sh.t.union(
+                                $.__to_list(
+                                    ($, id) => sh.t.tuple('readonly', [
+                                        sh.t.literal_type(sh.string_literal(id, 'apostrophe')),
+                                        sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_escaped(id)], [])
+                                    ])
+                                )
                             )
-                        )
                     )
                 ]
             ]))

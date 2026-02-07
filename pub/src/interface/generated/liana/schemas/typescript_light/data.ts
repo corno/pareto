@@ -319,6 +319,8 @@
         
         export type literal_type = String_Literal_
         
+        export type never_ = null
+        
         export type null_ = null
         
         export type number_ = null
@@ -428,6 +430,7 @@
         | readonly ['boolean', Type_.boolean_]
         | readonly ['function', Type_.function_]
         | readonly ['literal type', Type_.literal_type]
+        | readonly ['never', Type_.never_]
         | readonly ['null', Type_.null_]
         | readonly ['number', Type_.number_]
         | readonly ['string', Type_.string_]

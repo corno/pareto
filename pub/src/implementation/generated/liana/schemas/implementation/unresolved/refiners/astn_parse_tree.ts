@@ -1730,14 +1730,14 @@
                                 )],
                             }),
                         )
-                    case 'assign':
+                    case 'construct':
                         return _p_change_context(
                             $['value'],
                             ($) => ({
                                 'l location': v_parse_tree_to_location.Value(
                                     $,
                                 )['start']['relative'],
-                                'l state': ['assign', _p_change_context(
+                                'l state': ['construct', _p_change_context(
                                     v_unmarshalled_from_parse_tree.State(
                                         $,
                                         ($) => abort(
@@ -1746,7 +1746,7 @@
                                     ),
                                     ($) => _p.decide.text(
                                         $['option']['value'],
-                                        ($t): t_out.Expression.l_state.assign => {
+                                        ($t): t_out.Expression.l_state.construct => {
                                             switch ($t) {
                                                 case 'boolean':
                                                     return _p_change_context(
@@ -1764,7 +1764,7 @@
                                                                 ),
                                                                 ($) => _p.decide.text(
                                                                     $['option']['value'],
-                                                                    ($t): t_out.Expression.l_state.assign.l_state.boolean_ => {
+                                                                    ($t): t_out.Expression.l_state.construct.l_state.boolean_ => {
                                                                         switch ($t) {
                                                                             case 'literal':
                                                                                 return _p_change_context(
@@ -1782,7 +1782,7 @@
                                                                                             ),
                                                                                             ($) => _p.decide.text(
                                                                                                 $['option']['value'],
-                                                                                                ($t): t_out.Expression.l_state.assign.l_state.boolean_.l_state.literal => {
+                                                                                                ($t): t_out.Expression.l_state.construct.l_state.boolean_.l_state.literal => {
                                                                                                     switch ($t) {
                                                                                                         case 'false':
                                                                                                             return _p_change_context(
@@ -1824,63 +1824,207 @@
                                                                                         )],
                                                                                     }),
                                                                                 )
-                                                                            case 'not':
+                                                                            case 'source':
                                                                                 return _p_change_context(
                                                                                     $['value'],
                                                                                     ($) => ({
                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                             $,
                                                                                         )['start']['relative'],
-                                                                                        'l state': ['not', Value_Selection(
-                                                                                            $,
-                                                                                            ($) => abort(
+                                                                                        'l state': ['source', _p_change_context(
+                                                                                            v_unmarshalled_from_parse_tree.Group(
                                                                                                 $,
+                                                                                                ($) => abort(
+                                                                                                    ['expected a group', null],
+                                                                                                ),
                                                                                             ),
-                                                                                        )],
-                                                                                    }),
-                                                                                )
-                                                                            case 'copy':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['copy', Value_Selection(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                $,
-                                                                                            ),
-                                                                                        )],
-                                                                                    }),
-                                                                                )
-                                                                            case 'dictionary is empty':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['dictionary is empty', Value_Selection(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                $,
-                                                                                            ),
-                                                                                        )],
-                                                                                    }),
-                                                                                )
-                                                                            case 'list is empty':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['list is empty', Value_Selection(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                $,
-                                                                                            ),
+                                                                                            ($) => ({
+                                                                                                'selection': _p_change_context(
+                                                                                                    $.__get_entry(
+                                                                                                        'selection',
+                                                                                                        ($) => abort(
+                                                                                                            ['no such entry', "selection"],
+                                                                                                        ),
+                                                                                                    ),
+                                                                                                    ($) => Value_Selection(
+                                                                                                        $,
+                                                                                                        ($) => abort(
+                                                                                                            $,
+                                                                                                        ),
+                                                                                                    ),
+                                                                                                ),
+                                                                                                'type': _p_change_context(
+                                                                                                    $.__get_entry(
+                                                                                                        'type',
+                                                                                                        ($) => abort(
+                                                                                                            ['no such entry', "type"],
+                                                                                                        ),
+                                                                                                    ),
+                                                                                                    ($) => _p_change_context(
+                                                                                                        v_unmarshalled_from_parse_tree.State(
+                                                                                                            $,
+                                                                                                            ($) => abort(
+                                                                                                                ['expected a state', null],
+                                                                                                            ),
+                                                                                                        ),
+                                                                                                        ($) => _p.decide.text(
+                                                                                                            $['option']['value'],
+                                                                                                            ($t): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_ => {
+                                                                                                                switch ($t) {
+                                                                                                                    case 'boolean':
+                                                                                                                        return _p_change_context(
+                                                                                                                            $['value'],
+                                                                                                                            ($) => ({
+                                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                                    $,
+                                                                                                                                )['start']['relative'],
+                                                                                                                                'l state': ['boolean', _p_change_context(
+                                                                                                                                    v_unmarshalled_from_parse_tree.State(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            ['expected a state', null],
+                                                                                                                                        ),
+                                                                                                                                    ),
+                                                                                                                                    ($) => _p.decide.text(
+                                                                                                                                        $['option']['value'],
+                                                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state.boolean_ => {
+                                                                                                                                            switch ($t) {
+                                                                                                                                                case 'not':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['not', v_unmarshalled_from_parse_tree.Nothing(
+                                                                                                                                                                $,
+                                                                                                                                                                ($) => abort(
+                                                                                                                                                                    ['expected a nothing', null],
+                                                                                                                                                                ),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                case 'copy':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['copy', v_unmarshalled_from_parse_tree.Nothing(
+                                                                                                                                                                $,
+                                                                                                                                                                ($) => abort(
+                                                                                                                                                                    ['expected a nothing', null],
+                                                                                                                                                                ),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                default:
+                                                                                                                                                    return abort(
+                                                                                                                                                        ['unknown option', $['option']['value']],
+                                                                                                                                                    )
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                    ),
+                                                                                                                                )],
+                                                                                                                            }),
+                                                                                                                        )
+                                                                                                                    case 'dictionary':
+                                                                                                                        return _p_change_context(
+                                                                                                                            $['value'],
+                                                                                                                            ($) => ({
+                                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                                    $,
+                                                                                                                                )['start']['relative'],
+                                                                                                                                'l state': ['dictionary', _p_change_context(
+                                                                                                                                    v_unmarshalled_from_parse_tree.State(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            ['expected a state', null],
+                                                                                                                                        ),
+                                                                                                                                    ),
+                                                                                                                                    ($) => _p.decide.text(
+                                                                                                                                        $['option']['value'],
+                                                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state.dictionary => {
+                                                                                                                                            switch ($t) {
+                                                                                                                                                case 'is empty':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['is empty', Value_Selection(
+                                                                                                                                                                $,
+                                                                                                                                                                ($) => abort(
+                                                                                                                                                                    $,
+                                                                                                                                                                ),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                default:
+                                                                                                                                                    return abort(
+                                                                                                                                                        ['unknown option', $['option']['value']],
+                                                                                                                                                    )
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                    ),
+                                                                                                                                )],
+                                                                                                                            }),
+                                                                                                                        )
+                                                                                                                    case 'list':
+                                                                                                                        return _p_change_context(
+                                                                                                                            $['value'],
+                                                                                                                            ($) => ({
+                                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                                    $,
+                                                                                                                                )['start']['relative'],
+                                                                                                                                'l state': ['list', _p_change_context(
+                                                                                                                                    v_unmarshalled_from_parse_tree.State(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            ['expected a state', null],
+                                                                                                                                        ),
+                                                                                                                                    ),
+                                                                                                                                    ($) => _p.decide.text(
+                                                                                                                                        $['option']['value'],
+                                                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.boolean_.l_state.source.type_.l_state.list => {
+                                                                                                                                            switch ($t) {
+                                                                                                                                                case 'is empty':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['is empty', Value_Selection(
+                                                                                                                                                                $,
+                                                                                                                                                                ($) => abort(
+                                                                                                                                                                    $,
+                                                                                                                                                                ),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                default:
+                                                                                                                                                    return abort(
+                                                                                                                                                        ['unknown option', $['option']['value']],
+                                                                                                                                                    )
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                    ),
+                                                                                                                                )],
+                                                                                                                            }),
+                                                                                                                        )
+                                                                                                                    default:
+                                                                                                                        return abort(
+                                                                                                                            ['unknown option', $['option']['value']],
+                                                                                                                        )
+                                                                                                                }
+                                                                                                            },
+                                                                                                        ),
+                                                                                                    ),
+                                                                                                ),
+                                                                                            }),
                                                                                         )],
                                                                                     }),
                                                                                 )
@@ -1910,130 +2054,8 @@
                                                                 ),
                                                                 ($) => _p.decide.text(
                                                                     $['option']['value'],
-                                                                    ($t): t_out.Expression.l_state.assign.l_state.dictionary => {
+                                                                    ($t): t_out.Expression.l_state.construct.l_state.dictionary => {
                                                                         switch ($t) {
-                                                                            case 'filter':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['filter', _p_change_context(
-                                                                                            v_unmarshalled_from_parse_tree.Group(
-                                                                                                $,
-                                                                                                ($) => abort(
-                                                                                                    ['expected a group', null],
-                                                                                                ),
-                                                                                            ),
-                                                                                            ($) => ({
-                                                                                                'source': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'source',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "source"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'entry handler': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'entry handler',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "entry handler"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                            }),
-                                                                                        )],
-                                                                                    }),
-                                                                                )
-                                                                            case 'from list':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['from list', _p_change_context(
-                                                                                            v_unmarshalled_from_parse_tree.Group(
-                                                                                                $,
-                                                                                                ($) => abort(
-                                                                                                    ['expected a group', null],
-                                                                                                ),
-                                                                                            ),
-                                                                                            ($) => ({
-                                                                                                'source': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'source',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "source"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'get id': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'get id',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "get id"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'get entry': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'get entry',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "get entry"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'abort': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'abort',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "abort"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                            }),
-                                                                                        )],
-                                                                                    }),
-                                                                                )
                                                                             case 'literal':
                                                                                 return _p_change_context(
                                                                                     $['value'],
@@ -2067,14 +2089,14 @@
                                                                                         }],
                                                                                     }),
                                                                                 )
-                                                                            case 'map':
+                                                                            case 'source':
                                                                                 return _p_change_context(
                                                                                     $['value'],
                                                                                     ($) => ({
                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                             $,
                                                                                         )['start']['relative'],
-                                                                                        'l state': ['map', _p_change_context(
+                                                                                        'l state': ['source', _p_change_context(
                                                                                             v_unmarshalled_from_parse_tree.Group(
                                                                                                 $,
                                                                                                 ($) => abort(
@@ -2082,11 +2104,11 @@
                                                                                                 ),
                                                                                             ),
                                                                                             ($) => ({
-                                                                                                'source': _p_change_context(
+                                                                                                'selection': _p_change_context(
                                                                                                     $.__get_entry(
-                                                                                                        'source',
+                                                                                                        'selection',
                                                                                                         ($) => abort(
-                                                                                                            ['no such entry', "source"],
+                                                                                                            ['no such entry', "selection"],
                                                                                                         ),
                                                                                                     ),
                                                                                                     ($) => Value_Selection(
@@ -2096,78 +2118,260 @@
                                                                                                         ),
                                                                                                     ),
                                                                                                 ),
-                                                                                                'entry handler': _p_change_context(
+                                                                                                'type': _p_change_context(
                                                                                                     $.__get_entry(
-                                                                                                        'entry handler',
+                                                                                                        'type',
                                                                                                         ($) => abort(
-                                                                                                            ['no such entry', "entry handler"],
+                                                                                                            ['no such entry', "type"],
                                                                                                         ),
                                                                                                     ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
+                                                                                                    ($) => _p_change_context(
+                                                                                                        v_unmarshalled_from_parse_tree.State(
                                                                                                             $,
+                                                                                                            ($) => abort(
+                                                                                                                ['expected a state', null],
+                                                                                                            ),
                                                                                                         ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                            }),
-                                                                                        )],
-                                                                                    }),
-                                                                                )
-                                                                            case 'resolve':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['resolve', _p_change_context(
-                                                                                            v_unmarshalled_from_parse_tree.Group(
-                                                                                                $,
-                                                                                                ($) => abort(
-                                                                                                    ['expected a group', null],
-                                                                                                ),
-                                                                                            ),
-                                                                                            ($) => ({
-                                                                                                'source': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'source',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "source"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'entry handler': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'entry handler',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "entry handler"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'temp resulting entry node': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'temp resulting entry node',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "temp resulting entry node"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Temp_Value_Type_Specification(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
+                                                                                                        ($) => _p.decide.text(
+                                                                                                            $['option']['value'],
+                                                                                                            ($t): t_out.Expression.l_state.construct.l_state.dictionary.l_state.source.type_ => {
+                                                                                                                switch ($t) {
+                                                                                                                    case 'dictionary':
+                                                                                                                        return _p_change_context(
+                                                                                                                            $['value'],
+                                                                                                                            ($) => ({
+                                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                                    $,
+                                                                                                                                )['start']['relative'],
+                                                                                                                                'l state': ['dictionary', _p_change_context(
+                                                                                                                                    v_unmarshalled_from_parse_tree.State(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            ['expected a state', null],
+                                                                                                                                        ),
+                                                                                                                                    ),
+                                                                                                                                    ($) => _p.decide.text(
+                                                                                                                                        $['option']['value'],
+                                                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.dictionary.l_state.source.type_.l_state.dictionary => {
+                                                                                                                                            switch ($t) {
+                                                                                                                                                case 'filter':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['filter', _p_change_context(
+                                                                                                                                                                v_unmarshalled_from_parse_tree.Group(
+                                                                                                                                                                    $,
+                                                                                                                                                                    ($) => abort(
+                                                                                                                                                                        ['expected a group', null],
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                                ($) => ({
+                                                                                                                                                                    'assign entry': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'assign entry',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "assign entry"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                }),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                case 'map':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['map', _p_change_context(
+                                                                                                                                                                v_unmarshalled_from_parse_tree.Group(
+                                                                                                                                                                    $,
+                                                                                                                                                                    ($) => abort(
+                                                                                                                                                                        ['expected a group', null],
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                                ($) => ({
+                                                                                                                                                                    'assign entry': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'assign entry',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "assign entry"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                }),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                case 'resolve':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['resolve', _p_change_context(
+                                                                                                                                                                v_unmarshalled_from_parse_tree.Group(
+                                                                                                                                                                    $,
+                                                                                                                                                                    ($) => abort(
+                                                                                                                                                                        ['expected a group', null],
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                                ($) => ({
+                                                                                                                                                                    'assign entry': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'assign entry',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "assign entry"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                    'temp resulting entry node': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'temp resulting entry node',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "temp resulting entry node"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Temp_Value_Type_Specification(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                }),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                default:
+                                                                                                                                                    return abort(
+                                                                                                                                                        ['unknown option', $['option']['value']],
+                                                                                                                                                    )
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                    ),
+                                                                                                                                )],
+                                                                                                                            }),
+                                                                                                                        )
+                                                                                                                    case 'list':
+                                                                                                                        return _p_change_context(
+                                                                                                                            $['value'],
+                                                                                                                            ($) => ({
+                                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                                    $,
+                                                                                                                                )['start']['relative'],
+                                                                                                                                'l state': ['list', _p_change_context(
+                                                                                                                                    v_unmarshalled_from_parse_tree.State(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            ['expected a state', null],
+                                                                                                                                        ),
+                                                                                                                                    ),
+                                                                                                                                    ($) => _p.decide.text(
+                                                                                                                                        $['option']['value'],
+                                                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.dictionary.l_state.source.type_.l_state.list => {
+                                                                                                                                            switch ($t) {
+                                                                                                                                                case 'convert':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['convert', _p_change_context(
+                                                                                                                                                                v_unmarshalled_from_parse_tree.Group(
+                                                                                                                                                                    $,
+                                                                                                                                                                    ($) => abort(
+                                                                                                                                                                        ['expected a group', null],
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                                ($) => ({
+                                                                                                                                                                    'assign id': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'assign id',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "assign id"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                    'assign entry': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'assign entry',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "assign entry"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                    'abort': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'abort',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "abort"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                }),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                default:
+                                                                                                                                                    return abort(
+                                                                                                                                                        ['unknown option', $['option']['value']],
+                                                                                                                                                    )
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                    ),
+                                                                                                                                )],
+                                                                                                                            }),
+                                                                                                                        )
+                                                                                                                    default:
+                                                                                                                        return abort(
+                                                                                                                            ['unknown option', $['option']['value']],
+                                                                                                                        )
+                                                                                                                }
+                                                                                                            },
                                                                                                         ),
                                                                                                     ),
                                                                                                 ),
@@ -2201,7 +2405,7 @@
                                                                 ),
                                                                 ($) => _p.decide.text(
                                                                     $['option']['value'],
-                                                                    ($t): t_out.Expression.l_state.assign.l_state.group => {
+                                                                    ($t): t_out.Expression.l_state.construct.l_state.group => {
                                                                         switch ($t) {
                                                                             case 'literal':
                                                                                 return _p_change_context(
@@ -2210,63 +2414,70 @@
                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                             $,
                                                                                         )['start']['relative'],
-                                                                                        'l state': ['literal', {
-                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                        'l state': ['literal', _p_change_context(
+                                                                                            v_unmarshalled_from_parse_tree.Group(
                                                                                                 $,
-                                                                                            )['start']['relative'],
-                                                                                            'l dictionary': _p.dictionary.map(
-                                                                                                v_unmarshalled_from_parse_tree.Dictionary(
-                                                                                                    $,
-                                                                                                    ($) => abort(
-                                                                                                        ['expected a dictionary', null],
-                                                                                                    ),
+                                                                                                ($) => abort(
+                                                                                                    ['expected a group', null],
                                                                                                 ),
-                                                                                                ($, id) => ({
-                                                                                                    'l location': v_parse_tree_to_location.Value(
-                                                                                                        $,
-                                                                                                    )['start']['relative'],
-                                                                                                    'l entry': Expression(
-                                                                                                        $,
+                                                                                            ),
+                                                                                            ($) => ({
+                                                                                                'properties': _p_change_context(
+                                                                                                    $.__get_entry(
+                                                                                                        'properties',
                                                                                                         ($) => abort(
-                                                                                                            $,
+                                                                                                            ['no such entry', "properties"],
                                                                                                         ),
                                                                                                     ),
-                                                                                                }),
-                                                                                            ),
-                                                                                        }],
-                                                                                    }),
-                                                                                )
-                                                                            case 'resolve':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['resolve', {
-                                                                                            'l location': v_parse_tree_to_location.Value(
-                                                                                                $,
-                                                                                            )['start']['relative'],
-                                                                                            'l dictionary': _p.dictionary.map(
-                                                                                                v_unmarshalled_from_parse_tree.Dictionary(
-                                                                                                    $,
-                                                                                                    ($) => abort(
-                                                                                                        ['expected a dictionary', null],
-                                                                                                    ),
-                                                                                                ),
-                                                                                                ($, id) => ({
-                                                                                                    'l location': v_parse_tree_to_location.Value(
-                                                                                                        $,
-                                                                                                    )['start']['relative'],
-                                                                                                    'l entry': Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
+                                                                                                    ($) => ({
+                                                                                                        'l location': v_parse_tree_to_location.Value(
                                                                                                             $,
+                                                                                                        )['start']['relative'],
+                                                                                                        'l dictionary': _p.dictionary.map(
+                                                                                                            v_unmarshalled_from_parse_tree.Dictionary(
+                                                                                                                $,
+                                                                                                                ($) => abort(
+                                                                                                                    ['expected a dictionary', null],
+                                                                                                                ),
+                                                                                                            ),
+                                                                                                            ($, id) => ({
+                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                    $,
+                                                                                                                )['start']['relative'],
+                                                                                                                'l entry': Expression(
+                                                                                                                    $,
+                                                                                                                    ($) => abort(
+                                                                                                                        $,
+                                                                                                                    ),
+                                                                                                                ),
+                                                                                                            }),
+                                                                                                        ),
+                                                                                                    }),
+                                                                                                ),
+                                                                                                'have dependencies': _p_change_context(
+                                                                                                    $.__get_entry(
+                                                                                                        'have dependencies',
+                                                                                                        ($) => abort(
+                                                                                                            ['no such entry', "have dependencies"],
                                                                                                         ),
                                                                                                     ),
-                                                                                                }),
-                                                                                            ),
-                                                                                        }],
+                                                                                                    ($) => v_deserialize_boolean.deserialize(
+                                                                                                        _p_list_from_text(
+                                                                                                            v_unmarshalled_from_parse_tree.Text(
+                                                                                                                $,
+                                                                                                                ($) => abort(
+                                                                                                                    ['expected a text', null],
+                                                                                                                ),
+                                                                                                            ),
+                                                                                                            ($) => $,
+                                                                                                        ),
+                                                                                                        ($) => abort(
+                                                                                                            ['not a valid boolean', null],
+                                                                                                        ),
+                                                                                                    ),
+                                                                                                ),
+                                                                                            }),
+                                                                                        )],
                                                                                     }),
                                                                                 )
                                                                             default:
@@ -2295,102 +2506,8 @@
                                                                 ),
                                                                 ($) => _p.decide.text(
                                                                     $['option']['value'],
-                                                                    ($t): t_out.Expression.l_state.assign.l_state.list => {
+                                                                    ($t): t_out.Expression.l_state.construct.l_state.list => {
                                                                         switch ($t) {
-                                                                            case 'filter':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['filter', _p_change_context(
-                                                                                            v_unmarshalled_from_parse_tree.Group(
-                                                                                                $,
-                                                                                                ($) => abort(
-                                                                                                    ['expected a group', null],
-                                                                                                ),
-                                                                                            ),
-                                                                                            ($) => ({
-                                                                                                'source': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'source',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "source"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'entry handler': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'entry handler',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "entry handler"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                            }),
-                                                                                        )],
-                                                                                    }),
-                                                                                )
-                                                                            case 'from dictionary':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['from dictionary', _p_change_context(
-                                                                                            v_unmarshalled_from_parse_tree.Group(
-                                                                                                $,
-                                                                                                ($) => abort(
-                                                                                                    ['expected a group', null],
-                                                                                                ),
-                                                                                            ),
-                                                                                            ($) => ({
-                                                                                                'source': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'source',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "source"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'get item': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'get item',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "get item"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                            }),
-                                                                                        )],
-                                                                                    }),
-                                                                                )
                                                                             case 'literal':
                                                                                 return _p_change_context(
                                                                                     $['value'],
@@ -2424,14 +2541,14 @@
                                                                                         }],
                                                                                     }),
                                                                                 )
-                                                                            case 'map':
+                                                                            case 'source':
                                                                                 return _p_change_context(
                                                                                     $['value'],
                                                                                     ($) => ({
                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                             $,
                                                                                         )['start']['relative'],
-                                                                                        'l state': ['map', _p_change_context(
+                                                                                        'l state': ['source', _p_change_context(
                                                                                             v_unmarshalled_from_parse_tree.Group(
                                                                                                 $,
                                                                                                 ($) => abort(
@@ -2439,11 +2556,11 @@
                                                                                                 ),
                                                                                             ),
                                                                                             ($) => ({
-                                                                                                'source': _p_change_context(
+                                                                                                'selection': _p_change_context(
                                                                                                     $.__get_entry(
-                                                                                                        'source',
+                                                                                                        'selection',
                                                                                                         ($) => abort(
-                                                                                                            ['no such entry', "source"],
+                                                                                                            ['no such entry', "selection"],
                                                                                                         ),
                                                                                                     ),
                                                                                                     ($) => Value_Selection(
@@ -2453,200 +2570,350 @@
                                                                                                         ),
                                                                                                     ),
                                                                                                 ),
-                                                                                                'item handler': _p_change_context(
+                                                                                                'type': _p_change_context(
                                                                                                     $.__get_entry(
-                                                                                                        'item handler',
+                                                                                                        'type',
                                                                                                         ($) => abort(
-                                                                                                            ['no such entry', "item handler"],
+                                                                                                            ['no such entry', "type"],
                                                                                                         ),
                                                                                                     ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
+                                                                                                    ($) => _p_change_context(
+                                                                                                        v_unmarshalled_from_parse_tree.State(
                                                                                                             $,
+                                                                                                            ($) => abort(
+                                                                                                                ['expected a state', null],
+                                                                                                            ),
                                                                                                         ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                            }),
-                                                                                        )],
-                                                                                    }),
-                                                                                )
-                                                                            case 'map with state':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['map with state', _p_change_context(
-                                                                                            v_unmarshalled_from_parse_tree.Group(
-                                                                                                $,
-                                                                                                ($) => abort(
-                                                                                                    ['expected a group', null],
-                                                                                                ),
-                                                                                            ),
-                                                                                            ($) => ({
-                                                                                                'source': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'source',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "source"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'initial state': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'initial state',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "initial state"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'item handler': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'item handler',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "item handler"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'update state': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'update state',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "update state"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'wrap up': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'wrap up',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "wrap up"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                            }),
-                                                                                        )],
-                                                                                    }),
-                                                                                )
-                                                                            case 'reduce':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['reduce', _p_change_context(
-                                                                                            v_unmarshalled_from_parse_tree.Group(
-                                                                                                $,
-                                                                                                ($) => abort(
-                                                                                                    ['expected a group', null],
-                                                                                                ),
-                                                                                            ),
-                                                                                            ($) => ({
-                                                                                                'source': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'source',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "source"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'initial state': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'initial state',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "initial state"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'item handler': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'item handler',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "item handler"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                            }),
-                                                                                        )],
-                                                                                    }),
-                                                                                )
-                                                                            case 'reverse':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['reverse', _p_change_context(
-                                                                                            v_unmarshalled_from_parse_tree.Group(
-                                                                                                $,
-                                                                                                ($) => abort(
-                                                                                                    ['expected a group', null],
-                                                                                                ),
-                                                                                            ),
-                                                                                            ($) => ({
-                                                                                                'source': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'source',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "source"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
+                                                                                                        ($) => _p.decide.text(
+                                                                                                            $['option']['value'],
+                                                                                                            ($t): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_ => {
+                                                                                                                switch ($t) {
+                                                                                                                    case 'dictionary':
+                                                                                                                        return _p_change_context(
+                                                                                                                            $['value'],
+                                                                                                                            ($) => ({
+                                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                                    $,
+                                                                                                                                )['start']['relative'],
+                                                                                                                                'l state': ['dictionary', _p_change_context(
+                                                                                                                                    v_unmarshalled_from_parse_tree.State(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            ['expected a state', null],
+                                                                                                                                        ),
+                                                                                                                                    ),
+                                                                                                                                    ($) => _p.decide.text(
+                                                                                                                                        $['option']['value'],
+                                                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state.dictionary => {
+                                                                                                                                            switch ($t) {
+                                                                                                                                                case 'convert':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['convert', _p_change_context(
+                                                                                                                                                                v_unmarshalled_from_parse_tree.Group(
+                                                                                                                                                                    $,
+                                                                                                                                                                    ($) => abort(
+                                                                                                                                                                        ['expected a group', null],
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                                ($) => ({
+                                                                                                                                                                    'assign entry': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'assign entry',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "assign entry"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                }),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                default:
+                                                                                                                                                    return abort(
+                                                                                                                                                        ['unknown option', $['option']['value']],
+                                                                                                                                                    )
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                    ),
+                                                                                                                                )],
+                                                                                                                            }),
+                                                                                                                        )
+                                                                                                                    case 'group':
+                                                                                                                        return _p_change_context(
+                                                                                                                            $['value'],
+                                                                                                                            ($) => ({
+                                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                                    $,
+                                                                                                                                )['start']['relative'],
+                                                                                                                                'l state': ['group', _p_change_context(
+                                                                                                                                    v_unmarshalled_from_parse_tree.State(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            ['expected a state', null],
+                                                                                                                                        ),
+                                                                                                                                    ),
+                                                                                                                                    ($) => _p.decide.text(
+                                                                                                                                        $['option']['value'],
+                                                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state.group => {
+                                                                                                                                            switch ($t) {
+                                                                                                                                                default:
+                                                                                                                                                    return abort(
+                                                                                                                                                        ['unknown option', $['option']['value']],
+                                                                                                                                                    )
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                    ),
+                                                                                                                                )],
+                                                                                                                            }),
+                                                                                                                        )
+                                                                                                                    case 'list':
+                                                                                                                        return _p_change_context(
+                                                                                                                            $['value'],
+                                                                                                                            ($) => ({
+                                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                                    $,
+                                                                                                                                )['start']['relative'],
+                                                                                                                                'l state': ['list', _p_change_context(
+                                                                                                                                    v_unmarshalled_from_parse_tree.State(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            ['expected a state', null],
+                                                                                                                                        ),
+                                                                                                                                    ),
+                                                                                                                                    ($) => _p.decide.text(
+                                                                                                                                        $['option']['value'],
+                                                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.list.l_state.source.type_.l_state.list => {
+                                                                                                                                            switch ($t) {
+                                                                                                                                                case 'filter':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['filter', _p_change_context(
+                                                                                                                                                                v_unmarshalled_from_parse_tree.Group(
+                                                                                                                                                                    $,
+                                                                                                                                                                    ($) => abort(
+                                                                                                                                                                        ['expected a group', null],
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                                ($) => ({
+                                                                                                                                                                    'assign item': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'assign item',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "assign item"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                }),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                case 'map':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['map', _p_change_context(
+                                                                                                                                                                v_unmarshalled_from_parse_tree.Group(
+                                                                                                                                                                    $,
+                                                                                                                                                                    ($) => abort(
+                                                                                                                                                                        ['expected a group', null],
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                                ($) => ({
+                                                                                                                                                                    'assign item': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'assign item',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "assign item"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                }),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                case 'map with state':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['map with state', _p_change_context(
+                                                                                                                                                                v_unmarshalled_from_parse_tree.Group(
+                                                                                                                                                                    $,
+                                                                                                                                                                    ($) => abort(
+                                                                                                                                                                        ['expected a group', null],
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                                ($) => ({
+                                                                                                                                                                    'initialize state': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'initialize state',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "initialize state"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                    'assign item': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'assign item',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "assign item"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                    'update state': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'update state',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "update state"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                    'wrap up': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'wrap up',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "wrap up"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                }),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                case 'reduce':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['reduce', _p_change_context(
+                                                                                                                                                                v_unmarshalled_from_parse_tree.Group(
+                                                                                                                                                                    $,
+                                                                                                                                                                    ($) => abort(
+                                                                                                                                                                        ['expected a group', null],
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                                ($) => ({
+                                                                                                                                                                    'initialize state': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'initialize state',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "initialize state"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                    'assign item': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'assign item',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "assign item"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                }),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                case 'reverse':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['reverse', v_unmarshalled_from_parse_tree.Nothing(
+                                                                                                                                                                $,
+                                                                                                                                                                ($) => abort(
+                                                                                                                                                                    ['expected a nothing', null],
+                                                                                                                                                                ),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                default:
+                                                                                                                                                    return abort(
+                                                                                                                                                        ['unknown option', $['option']['value']],
+                                                                                                                                                    )
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                    ),
+                                                                                                                                )],
+                                                                                                                            }),
+                                                                                                                        )
+                                                                                                                    default:
+                                                                                                                        return abort(
+                                                                                                                            ['unknown option', $['option']['value']],
+                                                                                                                        )
+                                                                                                                }
+                                                                                                            },
                                                                                                         ),
                                                                                                     ),
                                                                                                 ),
@@ -2695,7 +2962,7 @@
                                                                 ),
                                                                 ($) => _p.decide.text(
                                                                     $['option']['value'],
-                                                                    ($t): t_out.Expression.l_state.assign.l_state.number_ => {
+                                                                    ($t): t_out.Expression.l_state.construct.l_state.number_ => {
                                                                         switch ($t) {
                                                                             case 'approximation':
                                                                                 return _p_change_context(
@@ -2713,7 +2980,7 @@
                                                                                             ),
                                                                                             ($) => _p.decide.text(
                                                                                                 $['option']['value'],
-                                                                                                ($t): t_out.Expression.l_state.assign.l_state.number_.l_state.approximation => {
+                                                                                                ($t): t_out.Expression.l_state.construct.l_state.number_.l_state.approximation => {
                                                                                                     switch ($t) {
                                                                                                         case 'literal':
                                                                                                             return _p_change_context(
@@ -2779,7 +3046,7 @@
                                                                                             ),
                                                                                             ($) => _p.decide.text(
                                                                                                 $['option']['value'],
-                                                                                                ($t): t_out.Expression.l_state.assign.l_state.number_.l_state.integer => {
+                                                                                                ($t): t_out.Expression.l_state.construct.l_state.number_.l_state.integer => {
                                                                                                     switch ($t) {
                                                                                                         case 'copy':
                                                                                                             return _p_change_context(
@@ -2811,11 +3078,11 @@
                                                                                                                             ),
                                                                                                                         ),
                                                                                                                         ($) => ({
-                                                                                                                            'divident': _p_change_context(
+                                                                                                                            'assign dividend': _p_change_context(
                                                                                                                                 $.__get_entry(
-                                                                                                                                    'divident',
+                                                                                                                                    'assign dividend',
                                                                                                                                     ($) => abort(
-                                                                                                                                        ['no such entry', "divident"],
+                                                                                                                                        ['no such entry', "assign dividend"],
                                                                                                                                     ),
                                                                                                                                 ),
                                                                                                                                 ($) => Value_Selection(
@@ -2825,11 +3092,11 @@
                                                                                                                                     ),
                                                                                                                                 ),
                                                                                                                             ),
-                                                                                                                            'divisor': _p_change_context(
+                                                                                                                            'assign divisor': _p_change_context(
                                                                                                                                 $.__get_entry(
-                                                                                                                                    'divisor',
+                                                                                                                                    'assign divisor',
                                                                                                                                     ($) => abort(
-                                                                                                                                        ['no such entry', "divisor"],
+                                                                                                                                        ['no such entry', "assign divisor"],
                                                                                                                                     ),
                                                                                                                                 ),
                                                                                                                                 ($) => Value_Selection(
@@ -2906,7 +3173,7 @@
                                                                                             ),
                                                                                             ($) => _p.decide.text(
                                                                                                 $['option']['value'],
-                                                                                                ($t): t_out.Expression.l_state.assign.l_state.number_.l_state.natural => {
+                                                                                                ($t): t_out.Expression.l_state.construct.l_state.number_.l_state.natural => {
                                                                                                     switch ($t) {
                                                                                                         case 'literal':
                                                                                                             return _p_change_context(
@@ -3078,55 +3345,8 @@
                                                                 ),
                                                                 ($) => _p.decide.text(
                                                                     $['option']['value'],
-                                                                    ($t): t_out.Expression.l_state.assign.l_state.optional => {
+                                                                    ($t): t_out.Expression.l_state.construct.l_state.optional => {
                                                                         switch ($t) {
-                                                                            case 'from boolean':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['from boolean', _p_change_context(
-                                                                                            v_unmarshalled_from_parse_tree.Group(
-                                                                                                $,
-                                                                                                ($) => abort(
-                                                                                                    ['expected a group', null],
-                                                                                                ),
-                                                                                            ),
-                                                                                            ($) => ({
-                                                                                                'source': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'source',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "source"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Value_Selection(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                                'get set': _p_change_context(
-                                                                                                    $.__get_entry(
-                                                                                                        'get set',
-                                                                                                        ($) => abort(
-                                                                                                            ['no such entry', "get set"],
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                    ),
-                                                                                                ),
-                                                                                            }),
-                                                                                        )],
-                                                                                    }),
-                                                                                )
                                                                             case 'literal':
                                                                                 return _p_change_context(
                                                                                     $['value'],
@@ -3143,7 +3363,7 @@
                                                                                             ),
                                                                                             ($) => _p.decide.text(
                                                                                                 $['option']['value'],
-                                                                                                ($t): t_out.Expression.l_state.assign.l_state.optional.l_state.literal => {
+                                                                                                ($t): t_out.Expression.l_state.construct.l_state.optional.l_state.literal => {
                                                                                                     switch ($t) {
                                                                                                         case 'not set':
                                                                                                             return _p_change_context(
@@ -3185,14 +3405,14 @@
                                                                                         )],
                                                                                     }),
                                                                                 )
-                                                                            case 'map':
+                                                                            case 'source':
                                                                                 return _p_change_context(
                                                                                     $['value'],
                                                                                     ($) => ({
                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                             $,
                                                                                         )['start']['relative'],
-                                                                                        'l state': ['map', _p_change_context(
+                                                                                        'l state': ['source', _p_change_context(
                                                                                             v_unmarshalled_from_parse_tree.Group(
                                                                                                 $,
                                                                                                 ($) => abort(
@@ -3200,11 +3420,11 @@
                                                                                                 ),
                                                                                             ),
                                                                                             ($) => ({
-                                                                                                'source': _p_change_context(
+                                                                                                'selection': _p_change_context(
                                                                                                     $.__get_entry(
-                                                                                                        'source',
+                                                                                                        'selection',
                                                                                                         ($) => abort(
-                                                                                                            ['no such entry', "source"],
+                                                                                                            ['no such entry', "selection"],
                                                                                                         ),
                                                                                                     ),
                                                                                                     ($) => Value_Selection(
@@ -3214,17 +3434,152 @@
                                                                                                         ),
                                                                                                     ),
                                                                                                 ),
-                                                                                                'set handler': _p_change_context(
+                                                                                                'type': _p_change_context(
                                                                                                     $.__get_entry(
-                                                                                                        'set handler',
+                                                                                                        'type',
                                                                                                         ($) => abort(
-                                                                                                            ['no such entry', "set handler"],
+                                                                                                            ['no such entry', "type"],
                                                                                                         ),
                                                                                                     ),
-                                                                                                    ($) => Expression(
-                                                                                                        $,
-                                                                                                        ($) => abort(
+                                                                                                    ($) => _p_change_context(
+                                                                                                        v_unmarshalled_from_parse_tree.State(
                                                                                                             $,
+                                                                                                            ($) => abort(
+                                                                                                                ['expected a state', null],
+                                                                                                            ),
+                                                                                                        ),
+                                                                                                        ($) => _p.decide.text(
+                                                                                                            $['option']['value'],
+                                                                                                            ($t): t_out.Expression.l_state.construct.l_state.optional.l_state.source.type_ => {
+                                                                                                                switch ($t) {
+                                                                                                                    case 'boolean':
+                                                                                                                        return _p_change_context(
+                                                                                                                            $['value'],
+                                                                                                                            ($) => ({
+                                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                                    $,
+                                                                                                                                )['start']['relative'],
+                                                                                                                                'l state': ['boolean', _p_change_context(
+                                                                                                                                    v_unmarshalled_from_parse_tree.State(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            ['expected a state', null],
+                                                                                                                                        ),
+                                                                                                                                    ),
+                                                                                                                                    ($) => _p.decide.text(
+                                                                                                                                        $['option']['value'],
+                                                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.optional.l_state.source.type_.l_state.boolean_ => {
+                                                                                                                                            switch ($t) {
+                                                                                                                                                case 'convert':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['convert', _p_change_context(
+                                                                                                                                                                v_unmarshalled_from_parse_tree.Group(
+                                                                                                                                                                    $,
+                                                                                                                                                                    ($) => abort(
+                                                                                                                                                                        ['expected a group', null],
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                                ($) => ({
+                                                                                                                                                                    'assign set': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'assign set',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "assign set"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                }),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                default:
+                                                                                                                                                    return abort(
+                                                                                                                                                        ['unknown option', $['option']['value']],
+                                                                                                                                                    )
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                    ),
+                                                                                                                                )],
+                                                                                                                            }),
+                                                                                                                        )
+                                                                                                                    case 'optional':
+                                                                                                                        return _p_change_context(
+                                                                                                                            $['value'],
+                                                                                                                            ($) => ({
+                                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                                    $,
+                                                                                                                                )['start']['relative'],
+                                                                                                                                'l state': ['optional', _p_change_context(
+                                                                                                                                    v_unmarshalled_from_parse_tree.State(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            ['expected a state', null],
+                                                                                                                                        ),
+                                                                                                                                    ),
+                                                                                                                                    ($) => _p.decide.text(
+                                                                                                                                        $['option']['value'],
+                                                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.optional.l_state.source.type_.l_state.optional => {
+                                                                                                                                            switch ($t) {
+                                                                                                                                                case 'map':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['map', _p_change_context(
+                                                                                                                                                                v_unmarshalled_from_parse_tree.Group(
+                                                                                                                                                                    $,
+                                                                                                                                                                    ($) => abort(
+                                                                                                                                                                        ['expected a group', null],
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                                ($) => ({
+                                                                                                                                                                    'assign set': _p_change_context(
+                                                                                                                                                                        $.__get_entry(
+                                                                                                                                                                            'assign set',
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                ['no such entry', "assign set"],
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                        ($) => Expression(
+                                                                                                                                                                            $,
+                                                                                                                                                                            ($) => abort(
+                                                                                                                                                                                $,
+                                                                                                                                                                            ),
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                }),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                default:
+                                                                                                                                                    return abort(
+                                                                                                                                                        ['unknown option', $['option']['value']],
+                                                                                                                                                    )
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                    ),
+                                                                                                                                )],
+                                                                                                                            }),
+                                                                                                                        )
+                                                                                                                    default:
+                                                                                                                        return abort(
+                                                                                                                            ['unknown option', $['option']['value']],
+                                                                                                                        )
+                                                                                                                }
+                                                                                                            },
                                                                                                         ),
                                                                                                     ),
                                                                                                 ),
@@ -3258,7 +3613,7 @@
                                                                 ),
                                                                 ($) => _p.decide.text(
                                                                     $['option']['value'],
-                                                                    ($t): t_out.Expression.l_state.assign.l_state.state => {
+                                                                    ($t): t_out.Expression.l_state.construct.l_state.state => {
                                                                         switch ($t) {
                                                                             case 'literal':
                                                                                 return _p_change_context(
@@ -3289,11 +3644,11 @@
                                                                                                         ),
                                                                                                     ),
                                                                                                 ),
-                                                                                                'value': _p_change_context(
+                                                                                                'assign option': _p_change_context(
                                                                                                     $.__get_entry(
-                                                                                                        'value',
+                                                                                                        'assign option',
                                                                                                         ($) => abort(
-                                                                                                            ['no such entry', "value"],
+                                                                                                            ['no such entry', "assign option"],
                                                                                                         ),
                                                                                                     ),
                                                                                                     ($) => Expression(
@@ -3333,23 +3688,8 @@
                                                                 ),
                                                                 ($) => _p.decide.text(
                                                                     $['option']['value'],
-                                                                    ($t): t_out.Expression.l_state.assign.l_state.text => {
+                                                                    ($t): t_out.Expression.l_state.construct.l_state.text => {
                                                                         switch ($t) {
-                                                                            case 'copy':
-                                                                                return _p_change_context(
-                                                                                    $['value'],
-                                                                                    ($) => ({
-                                                                                        'l location': v_parse_tree_to_location.Value(
-                                                                                            $,
-                                                                                        )['start']['relative'],
-                                                                                        'l state': ['copy', Value_Selection(
-                                                                                            $,
-                                                                                            ($) => abort(
-                                                                                                $,
-                                                                                            ),
-                                                                                        )],
-                                                                                    }),
-                                                                                )
                                                                             case 'literal':
                                                                                 return _p_change_context(
                                                                                     $['value'],
@@ -3381,7 +3721,7 @@
                                                                                                         ),
                                                                                                         ($) => _p.decide.text(
                                                                                                             $['option']['value'],
-                                                                                                            ($t): t_out.Expression.l_state.assign.l_state.text.l_state.literal.type_ => {
+                                                                                                            ($t): t_out.Expression.l_state.construct.l_state.text.l_state.literal.type_ => {
                                                                                                                 switch ($t) {
                                                                                                                     case 'identifier':
                                                                                                                         return _p_change_context(
@@ -3433,6 +3773,109 @@
                                                                                                         $,
                                                                                                         ($) => abort(
                                                                                                             ['expected a text', null],
+                                                                                                        ),
+                                                                                                    ),
+                                                                                                ),
+                                                                                            }),
+                                                                                        )],
+                                                                                    }),
+                                                                                )
+                                                                            case 'source':
+                                                                                return _p_change_context(
+                                                                                    $['value'],
+                                                                                    ($) => ({
+                                                                                        'l location': v_parse_tree_to_location.Value(
+                                                                                            $,
+                                                                                        )['start']['relative'],
+                                                                                        'l state': ['source', _p_change_context(
+                                                                                            v_unmarshalled_from_parse_tree.Group(
+                                                                                                $,
+                                                                                                ($) => abort(
+                                                                                                    ['expected a group', null],
+                                                                                                ),
+                                                                                            ),
+                                                                                            ($) => ({
+                                                                                                'selection': _p_change_context(
+                                                                                                    $.__get_entry(
+                                                                                                        'selection',
+                                                                                                        ($) => abort(
+                                                                                                            ['no such entry', "selection"],
+                                                                                                        ),
+                                                                                                    ),
+                                                                                                    ($) => Value_Selection(
+                                                                                                        $,
+                                                                                                        ($) => abort(
+                                                                                                            $,
+                                                                                                        ),
+                                                                                                    ),
+                                                                                                ),
+                                                                                                'type': _p_change_context(
+                                                                                                    $.__get_entry(
+                                                                                                        'type',
+                                                                                                        ($) => abort(
+                                                                                                            ['no such entry', "type"],
+                                                                                                        ),
+                                                                                                    ),
+                                                                                                    ($) => _p_change_context(
+                                                                                                        v_unmarshalled_from_parse_tree.State(
+                                                                                                            $,
+                                                                                                            ($) => abort(
+                                                                                                                ['expected a state', null],
+                                                                                                            ),
+                                                                                                        ),
+                                                                                                        ($) => _p.decide.text(
+                                                                                                            $['option']['value'],
+                                                                                                            ($t): t_out.Expression.l_state.construct.l_state.text.l_state.source.type_ => {
+                                                                                                                switch ($t) {
+                                                                                                                    case 'text':
+                                                                                                                        return _p_change_context(
+                                                                                                                            $['value'],
+                                                                                                                            ($) => ({
+                                                                                                                                'l location': v_parse_tree_to_location.Value(
+                                                                                                                                    $,
+                                                                                                                                )['start']['relative'],
+                                                                                                                                'l state': ['text', _p_change_context(
+                                                                                                                                    v_unmarshalled_from_parse_tree.State(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            ['expected a state', null],
+                                                                                                                                        ),
+                                                                                                                                    ),
+                                                                                                                                    ($) => _p.decide.text(
+                                                                                                                                        $['option']['value'],
+                                                                                                                                        ($t): t_out.Expression.l_state.construct.l_state.text.l_state.source.type_.l_state.text => {
+                                                                                                                                            switch ($t) {
+                                                                                                                                                case 'copy':
+                                                                                                                                                    return _p_change_context(
+                                                                                                                                                        $['value'],
+                                                                                                                                                        ($) => ({
+                                                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                                                $,
+                                                                                                                                                            )['start']['relative'],
+                                                                                                                                                            'l state': ['copy', v_unmarshalled_from_parse_tree.Nothing(
+                                                                                                                                                                $,
+                                                                                                                                                                ($) => abort(
+                                                                                                                                                                    ['expected a nothing', null],
+                                                                                                                                                                ),
+                                                                                                                                                            )],
+                                                                                                                                                        }),
+                                                                                                                                                    )
+                                                                                                                                                default:
+                                                                                                                                                    return abort(
+                                                                                                                                                        ['unknown option', $['option']['value']],
+                                                                                                                                                    )
+                                                                                                                                            }
+                                                                                                                                        },
+                                                                                                                                    ),
+                                                                                                                                )],
+                                                                                                                            }),
+                                                                                                                        )
+                                                                                                                    default:
+                                                                                                                        return abort(
+                                                                                                                            ['unknown option', $['option']['value']],
+                                                                                                                        )
+                                                                                                                }
+                                                                                                            },
                                                                                                         ),
                                                                                                     ),
                                                                                                 ),
@@ -3664,11 +4107,11 @@
                                                                             ),
                                                                         }),
                                                                     ),
-                                                                    'callback': _p_change_context(
+                                                                    'assign': _p_change_context(
                                                                         $.__get_entry(
-                                                                            'callback',
+                                                                            'assign',
                                                                             ($) => abort(
-                                                                                ['no such entry', "callback"],
+                                                                                ['no such entry', "assign"],
                                                                             ),
                                                                         ),
                                                                         ($) => Expression(
@@ -3726,11 +4169,11 @@
                                                                             ),
                                                                         ),
                                                                     ),
-                                                                    'handler': _p_change_context(
+                                                                    'assign': _p_change_context(
                                                                         $.__get_entry(
-                                                                            'handler',
+                                                                            'assign',
                                                                             ($) => abort(
-                                                                                ['no such entry', "handler"],
+                                                                                ['no such entry', "assign"],
                                                                             ),
                                                                         ),
                                                                         ($) => Expression(
@@ -4270,11 +4713,11 @@
                                                                                         ),
                                                                                     ),
                                                                                 ),
-                                                                                'character handler': _p_change_context(
+                                                                                'assign item': _p_change_context(
                                                                                     $.__get_entry(
-                                                                                        'character handler',
+                                                                                        'assign item',
                                                                                         ($) => abort(
-                                                                                            ['no such entry', "character handler"],
+                                                                                            ['no such entry', "assign item"],
                                                                                         ),
                                                                                     ),
                                                                                     ($) => Expression(
@@ -4591,11 +5034,11 @@
                                                                                         ),
                                                                                     ),
                                                                                 ),
-                                                                                'item handler': _p_change_context(
+                                                                                'assign character': _p_change_context(
                                                                                     $.__get_entry(
-                                                                                        'item handler',
+                                                                                        'assign character',
                                                                                         ($) => abort(
-                                                                                            ['no such entry', "item handler"],
+                                                                                            ['no such entry', "assign character"],
                                                                                         ),
                                                                                     ),
                                                                                     ($) => Expression(
