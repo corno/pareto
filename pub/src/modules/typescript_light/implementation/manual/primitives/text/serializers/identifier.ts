@@ -85,7 +85,7 @@ export const $$ = ($: string): d_out.List_of_Characters => {
         "object": null,
         "never": null,
     })
-    if (reserved_keywords.__get_possible_entry(the_string).__decide(
+    if (reserved_keywords.__get_possible_entry_deprecated(the_string).__decide(
         () => true,
         () => false,
     )) {

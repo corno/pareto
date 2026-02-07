@@ -47,7 +47,7 @@ export const Directory: t_signatures.Directory = ($, abort) => _p.dictionary.map
                                 ),
                                 ($) => ({
                                     'statements': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'statements',
                                             ($) => abort(
                                                 ['no such entry', "statements"],
@@ -130,7 +130,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                 ),
                                 ($) => ({
                                     'type': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'type',
                                             ($) => abort(
                                                 ['no such entry', "type"],
@@ -159,7 +159,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                                                     ),
                                                                     ($) => ({
                                                                         'specifiers': _p_change_context(
-                                                                            $.__get_entry(
+                                                                            $.__get_entry_deprecated(
                                                                                 'specifiers',
                                                                                 ($) => abort(
                                                                                     ['no such entry', "specifiers"],
@@ -181,7 +181,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                                                                     ),
                                                                                     ($) => ({
                                                                                         'name': _p_change_context(
-                                                                                            $.__get_entry(
+                                                                                            $.__get_entry_deprecated(
                                                                                                 'name',
                                                                                                 ($) => abort(
                                                                                                     ['no such entry', "name"],
@@ -195,7 +195,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                                                                             ),
                                                                                         ),
                                                                                         'as': _p_change_context(
-                                                                                            $.__get_entry(
+                                                                                            $.__get_entry_deprecated(
                                                                                                 'as',
                                                                                                 ($) => abort(
                                                                                                     ['no such entry', "as"],
@@ -221,7 +221,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                                                             ),
                                                                         ),
                                                                         'from': _p_change_context(
-                                                                            $.__get_entry(
+                                                                            $.__get_entry_deprecated(
                                                                                 'from',
                                                                                 ($) => abort(
                                                                                     ['no such entry', "from"],
@@ -279,7 +279,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                 ),
                                 ($) => ({
                                     'type': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'type',
                                             ($) => abort(
                                                 ['no such entry', "type"],
@@ -328,7 +328,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                                                     ),
                                                                     ($) => ({
                                                                         'specifiers': _p_change_context(
-                                                                            $.__get_entry(
+                                                                            $.__get_entry_deprecated(
                                                                                 'specifiers',
                                                                                 ($) => abort(
                                                                                     ['no such entry', "specifiers"],
@@ -350,7 +350,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                                                                     ),
                                                                                     ($) => ({
                                                                                         'name': _p_change_context(
-                                                                                            $.__get_entry(
+                                                                                            $.__get_entry_deprecated(
                                                                                                 'name',
                                                                                                 ($) => abort(
                                                                                                     ['no such entry', "name"],
@@ -364,7 +364,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                                                                             ),
                                                                                         ),
                                                                                         'as': _p_change_context(
-                                                                                            $.__get_entry(
+                                                                                            $.__get_entry_deprecated(
                                                                                                 'as',
                                                                                                 ($) => abort(
                                                                                                     ['no such entry', "as"],
@@ -402,7 +402,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                         ),
                                     ),
                                     'from': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'from',
                                             ($) => abort(
                                                 ['no such entry', "from"],
@@ -430,7 +430,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                 ),
                                 ($) => ({
                                     'export': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'export',
                                             ($) => abort(
                                                 ['no such entry', "export"],
@@ -452,7 +452,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                         ),
                                     ),
                                     'name': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'name',
                                             ($) => abort(
                                                 ['no such entry', "name"],
@@ -466,7 +466,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                         ),
                                     ),
                                     'block': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'block',
                                             ($) => abort(
                                                 ['no such entry', "block"],
@@ -512,7 +512,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                 ),
                                 ($) => ({
                                     'expression': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'expression',
                                             ($) => abort(
                                                 ['no such entry', "expression"],
@@ -526,7 +526,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                         ),
                                     ),
                                     'clauses': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'clauses',
                                             ($) => abort(
                                                 ['no such entry', "clauses"],
@@ -548,7 +548,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                                 ),
                                                 ($) => ({
                                                     'type': _p_change_context(
-                                                        $.__get_entry(
+                                                        $.__get_entry_deprecated(
                                                             'type',
                                                             ($) => abort(
                                                                 ['no such entry', "type"],
@@ -595,7 +595,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                                         ),
                                                     ),
                                                     'statements': _p_change_context(
-                                                        $.__get_entry(
+                                                        $.__get_entry_deprecated(
                                                             'statements',
                                                             ($) => abort(
                                                                 ['no such entry', "statements"],
@@ -627,7 +627,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                 ),
                                 ($) => ({
                                     'export': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'export',
                                             ($) => abort(
                                                 ['no such entry', "export"],
@@ -649,7 +649,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                         ),
                                     ),
                                     'name': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'name',
                                             ($) => abort(
                                                 ['no such entry', "name"],
@@ -663,7 +663,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                         ),
                                     ),
                                     'parameters': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'parameters',
                                             ($) => abort(
                                                 ['no such entry', "parameters"],
@@ -685,7 +685,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                         ),
                                     ),
                                     'type': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'type',
                                             ($) => abort(
                                                 ['no such entry', "type"],
@@ -713,7 +713,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                 ),
                                 ($) => ({
                                     'export': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'export',
                                             ($) => abort(
                                                 ['no such entry', "export"],
@@ -735,7 +735,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                         ),
                                     ),
                                     'const': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'const',
                                             ($) => abort(
                                                 ['no such entry', "const"],
@@ -757,7 +757,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                         ),
                                     ),
                                     'name': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'name',
                                             ($) => abort(
                                                 ['no such entry', "name"],
@@ -771,7 +771,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                         ),
                                     ),
                                     'type': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'type',
                                             ($) => abort(
                                                 ['no such entry', "type"],
@@ -793,7 +793,7 @@ export const Statements: t_signatures.Statements = ($, abort) => _p.list.map(
                                         ),
                                     ),
                                     'expression': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'expression',
                                             ($) => abort(
                                                 ['no such entry', "expression"],
@@ -860,7 +860,7 @@ export const Type: t_signatures.Type = ($, abort) => _p_change_context(
                             ),
                             ($) => ({
                                 'type parameters': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'type parameters',
                                         ($) => abort(
                                             ['no such entry', "type parameters"],
@@ -882,7 +882,7 @@ export const Type: t_signatures.Type = ($, abort) => _p_change_context(
                                     ),
                                 ),
                                 'parameters': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'parameters',
                                         ($) => abort(
                                             ['no such entry', "parameters"],
@@ -896,7 +896,7 @@ export const Type: t_signatures.Type = ($, abort) => _p_change_context(
                                     ),
                                 ),
                                 'return': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'return',
                                         ($) => abort(
                                             ['no such entry', "return"],
@@ -974,7 +974,7 @@ export const Type: t_signatures.Type = ($, abort) => _p_change_context(
                             ),
                             ($) => ({
                                 'readonly': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'readonly',
                                         ($) => abort(
                                             ['no such entry', "readonly"],
@@ -996,7 +996,7 @@ export const Type: t_signatures.Type = ($, abort) => _p_change_context(
                                     ),
                                 ),
                                 'elements': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'elements',
                                         ($) => abort(
                                             ['no such entry', "elements"],
@@ -1032,7 +1032,7 @@ export const Type: t_signatures.Type = ($, abort) => _p_change_context(
                             ),
                             ($) => ({
                                 'properties': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'properties',
                                         ($) => abort(
                                             ['no such entry', "properties"],
@@ -1054,7 +1054,7 @@ export const Type: t_signatures.Type = ($, abort) => _p_change_context(
                                             ),
                                             ($) => ({
                                                 'key': _p_change_context(
-                                                    $.__get_entry(
+                                                    $.__get_entry_deprecated(
                                                         'key',
                                                         ($) => abort(
                                                             ['no such entry', "key"],
@@ -1101,7 +1101,7 @@ export const Type: t_signatures.Type = ($, abort) => _p_change_context(
                                                     ),
                                                 ),
                                                 'readonly': _p_change_context(
-                                                    $.__get_entry(
+                                                    $.__get_entry_deprecated(
                                                         'readonly',
                                                         ($) => abort(
                                                             ['no such entry', "readonly"],
@@ -1123,7 +1123,7 @@ export const Type: t_signatures.Type = ($, abort) => _p_change_context(
                                                     ),
                                                 ),
                                                 'type': _p_change_context(
-                                                    $.__get_entry(
+                                                    $.__get_entry_deprecated(
                                                         'type',
                                                         ($) => abort(
                                                             ['no such entry', "type"],
@@ -1155,7 +1155,7 @@ export const Type: t_signatures.Type = ($, abort) => _p_change_context(
                             ),
                             ($) => ({
                                 'start': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'start',
                                         ($) => abort(
                                             ['no such entry', "start"],
@@ -1169,7 +1169,7 @@ export const Type: t_signatures.Type = ($, abort) => _p_change_context(
                                     ),
                                 ),
                                 'tail': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'tail',
                                         ($) => abort(
                                             ['no such entry', "tail"],
@@ -1191,7 +1191,7 @@ export const Type: t_signatures.Type = ($, abort) => _p_change_context(
                                     ),
                                 ),
                                 'type arguments': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'type arguments',
                                         ($) => abort(
                                             ['no such entry', "type arguments"],
@@ -1268,7 +1268,7 @@ export const Function_Parameters: t_signatures.Function_Parameters = ($, abort) 
         ),
         ($) => ({
             'name': _p_change_context(
-                $.__get_entry(
+                $.__get_entry_deprecated(
                     'name',
                     ($) => abort(
                         ['no such entry', "name"],
@@ -1282,7 +1282,7 @@ export const Function_Parameters: t_signatures.Function_Parameters = ($, abort) 
                 ),
             ),
             'type': _p_change_context(
-                $.__get_entry(
+                $.__get_entry_deprecated(
                     'type',
                     ($) => abort(
                         ['no such entry', "type"],
@@ -1348,7 +1348,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                             ),
                             ($) => ({
                                 'parameters': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'parameters',
                                         ($) => abort(
                                             ['no such entry', "parameters"],
@@ -1362,7 +1362,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                     ),
                                 ),
                                 'return type': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'return type',
                                         ($) => abort(
                                             ['no such entry', "return type"],
@@ -1384,7 +1384,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                     ),
                                 ),
                                 'body': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'body',
                                         ($) => abort(
                                             ['no such entry', "body"],
@@ -1445,7 +1445,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                             ),
                             ($) => ({
                                 'left': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'left',
                                         ($) => abort(
                                             ['no such entry', "left"],
@@ -1459,7 +1459,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                     ),
                                 ),
                                 'right': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'right',
                                         ($) => abort(
                                             ['no such entry', "right"],
@@ -1487,7 +1487,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                             ),
                             ($) => ({
                                 'function selection': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'function selection',
                                         ($) => abort(
                                             ['no such entry', "function selection"],
@@ -1501,7 +1501,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                     ),
                                 ),
                                 'arguments': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'arguments',
                                         ($) => abort(
                                             ['no such entry', "arguments"],
@@ -1537,7 +1537,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                             ),
                             ($) => ({
                                 'left': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'left',
                                         ($) => abort(
                                             ['no such entry', "left"],
@@ -1551,7 +1551,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                     ),
                                 ),
                                 'operator': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'operator',
                                         ($) => abort(
                                             ['no such entry', "operator"],
@@ -1658,7 +1658,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                     ),
                                 ),
                                 'right': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'right',
                                         ($) => abort(
                                             ['no such entry', "right"],
@@ -1686,7 +1686,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                             ),
                             ($) => ({
                                 'condition': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'condition',
                                         ($) => abort(
                                             ['no such entry', "condition"],
@@ -1700,7 +1700,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                     ),
                                 ),
                                 'if true': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'if true',
                                         ($) => abort(
                                             ['no such entry', "if true"],
@@ -1714,7 +1714,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                     ),
                                 ),
                                 'if false': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'if false',
                                         ($) => abort(
                                             ['no such entry', "if false"],
@@ -1742,7 +1742,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                             ),
                             ($) => ({
                                 'collection': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'collection',
                                         ($) => abort(
                                             ['no such entry', "collection"],
@@ -1756,7 +1756,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                     ),
                                 ),
                                 'index': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'index',
                                         ($) => abort(
                                             ['no such entry', "index"],
@@ -1832,7 +1832,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                             ),
                             ($) => ({
                                 'properties': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'properties',
                                         ($) => abort(
                                             ['no such entry', "properties"],
@@ -1854,7 +1854,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                             ),
                                             ($) => ({
                                                 'key': _p_change_context(
-                                                    $.__get_entry(
+                                                    $.__get_entry_deprecated(
                                                         'key',
                                                         ($) => abort(
                                                             ['no such entry', "key"],
@@ -1901,7 +1901,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                                     ),
                                                 ),
                                                 'value': _p_change_context(
-                                                    $.__get_entry(
+                                                    $.__get_entry_deprecated(
                                                         'value',
                                                         ($) => abort(
                                                             ['no such entry', "value"],
@@ -1943,7 +1943,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                             ),
                             ($) => ({
                                 'object': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'object',
                                         ($) => abort(
                                             ['no such entry', "object"],
@@ -1957,7 +1957,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                     ),
                                 ),
                                 'property': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'property',
                                         ($) => abort(
                                             ['no such entry', "property"],
@@ -2005,7 +2005,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                             ),
                             ($) => ({
                                 'operator': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'operator',
                                         ($) => abort(
                                             ['no such entry', "operator"],
@@ -2052,7 +2052,7 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                     ),
                                 ),
                                 'operand': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'operand',
                                         ($) => abort(
                                             ['no such entry', "operand"],
@@ -2086,7 +2086,7 @@ export const String_Literal: t_signatures.String_Literal = ($, abort) => _p_chan
     ),
     ($) => ({
         'delimiter': _p_change_context(
-            $.__get_entry(
+            $.__get_entry_deprecated(
                 'delimiter',
                 ($) => abort(
                     ['no such entry', "delimiter"],
@@ -2133,7 +2133,7 @@ export const String_Literal: t_signatures.String_Literal = ($, abort) => _p_chan
             ),
         ),
         'value': _p_change_context(
-            $.__get_entry(
+            $.__get_entry_deprecated(
                 'value',
                 ($) => abort(
                     ['no such entry', "value"],
@@ -2158,7 +2158,7 @@ export const Identifier: t_signatures.Identifier = ($, abort) => _p_change_conte
     ),
     ($) => ({
         'value': _p_change_context(
-            $.__get_entry(
+            $.__get_entry_deprecated(
                 'value',
                 ($) => abort(
                     ['no such entry', "value"],

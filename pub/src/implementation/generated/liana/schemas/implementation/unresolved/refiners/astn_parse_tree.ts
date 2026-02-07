@@ -96,7 +96,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
     ),
     ($) => ({
         'specials': _p_change_context(
-            $.__get_entry(
+            $.__get_entry_deprecated(
                 'specials',
                 ($) => abort(
                     ['no such entry', "specials"],
@@ -111,7 +111,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                 ),
                 ($) => ({
                     'abort': _p_change_context(
-                        $.__get_entry(
+                        $.__get_entry_deprecated(
                             'abort',
                             ($) => abort(
                                 ['no such entry', "abort"],
@@ -133,7 +133,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                     ),
                     'change context': _p_change_context(
-                        $.__get_entry(
+                        $.__get_entry_deprecated(
                             'change context',
                             ($) => abort(
                                 ['no such entry', "change context"],
@@ -155,7 +155,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                     ),
                     'implement me': _p_change_context(
-                        $.__get_entry(
+                        $.__get_entry_deprecated(
                             'implement me',
                             ($) => abort(
                                 ['no such entry', "implement me"],
@@ -177,7 +177,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                     ),
                     'iterate': _p_change_context(
-                        $.__get_entry(
+                        $.__get_entry_deprecated(
                             'iterate',
                             ($) => abort(
                                 ['no such entry', "iterate"],
@@ -199,7 +199,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                     ),
                     'lookups': _p_change_context(
-                        $.__get_entry(
+                        $.__get_entry_deprecated(
                             'lookups',
                             ($) => abort(
                                 ['no such entry', "lookups"],
@@ -221,7 +221,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                     ),
                     'list from text': _p_change_context(
-                        $.__get_entry(
+                        $.__get_entry_deprecated(
                             'list from text',
                             ($) => abort(
                                 ['no such entry', "list from text"],
@@ -243,7 +243,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                     ),
                     'text from list': _p_change_context(
-                        $.__get_entry(
+                        $.__get_entry_deprecated(
                             'text from list',
                             ($) => abort(
                                 ['no such entry', "text from list"],
@@ -265,7 +265,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                     ),
                     'unreachable code path': _p_change_context(
-                        $.__get_entry(
+                        $.__get_entry_deprecated(
                             'unreachable code path',
                             ($) => abort(
                                 ['no such entry', "unreachable code path"],
@@ -287,7 +287,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                     ),
                     'variables': _p_change_context(
-                        $.__get_entry(
+                        $.__get_entry_deprecated(
                             'variables',
                             ($) => abort(
                                 ['no such entry', "variables"],
@@ -312,7 +312,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
             ),
         ),
         'type imports': _p_change_context(
-            $.__get_entry(
+            $.__get_entry_deprecated(
                 'type imports',
                 ($) => abort(
                     ['no such entry', "type imports"],
@@ -326,7 +326,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
             ),
         ),
         'variable imports': _p_change_context(
-            $.__get_entry(
+            $.__get_entry_deprecated(
                 'variable imports',
                 ($) => abort(
                     ['no such entry', "variable imports"],
@@ -356,7 +356,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                             ),
                             ($) => ({
                                 'tail': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'tail',
                                         ($) => abort(
                                             ['no such entry', "tail"],
@@ -388,7 +388,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                     }),
                                 ),
                                 'type': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'type',
                                         ($) => abort(
                                             ['no such entry', "type"],
@@ -421,7 +421,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                     ),
                                                                     ($) => ({
                                                                         'dependency': _p_change_context(
-                                                                            $.__get_entry(
+                                                                            $.__get_entry_deprecated(
                                                                                 'dependency',
                                                                                 ($) => abort(
                                                                                     ['no such entry', "dependency"],
@@ -435,7 +435,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                             ),
                                                                         ),
                                                                         'number of steps': _p_change_context(
-                                                                            $.__get_entry(
+                                                                            $.__get_entry_deprecated(
                                                                                 'number of steps',
                                                                                 ($) => abort(
                                                                                     ['no such entry', "number of steps"],
@@ -506,7 +506,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
             }),
         ),
         'functions': _p_change_context(
-            $.__get_entry(
+            $.__get_entry_deprecated(
                 'functions',
                 ($) => abort(
                     ['no such entry', "functions"],
@@ -536,7 +536,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                             ),
                             ($) => ({
                                 'type': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'type',
                                         ($) => abort(
                                             ['no such entry', "type"],
@@ -551,7 +551,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                         ),
                                         ($) => ({
                                             'import': _p_change_context(
-                                                $.__get_entry(
+                                                $.__get_entry_deprecated(
                                                     'import',
                                                     ($) => abort(
                                                         ['no such entry', "import"],
@@ -565,7 +565,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                 ),
                                             ),
                                             'type': _p_change_context(
-                                                $.__get_entry(
+                                                $.__get_entry_deprecated(
                                                     'type',
                                                     ($) => abort(
                                                         ['no such entry', "type"],
@@ -582,7 +582,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                     ),
                                 ),
                                 'expression': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'expression',
                                         ($) => abort(
                                             ['no such entry', "expression"],
@@ -596,7 +596,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                     ),
                                 ),
                                 'temp has abort': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'temp has abort',
                                         ($) => abort(
                                             ['no such entry', "temp has abort"],
@@ -618,7 +618,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                     ),
                                 ),
                                 'temp has lookups': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'temp has lookups',
                                         ($) => abort(
                                             ['no such entry', "temp has lookups"],
@@ -640,7 +640,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                     ),
                                 ),
                                 'temp has parameters': _p_change_context(
-                                    $.__get_entry(
+                                    $.__get_entry_deprecated(
                                         'temp has parameters',
                                         ($) => abort(
                                             ['no such entry', "temp has parameters"],
@@ -679,7 +679,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
     ),
     ($) => ({
         'type': _p_change_context(
-            $.__get_entry(
+            $.__get_entry_deprecated(
                 'type',
                 ($) => abort(
                     ['no such entry', "type"],
@@ -694,7 +694,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                 ),
                 ($) => ({
                     'import': _p_change_context(
-                        $.__get_entry(
+                        $.__get_entry_deprecated(
                             'import',
                             ($) => abort(
                                 ['no such entry', "import"],
@@ -708,7 +708,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                         ),
                     ),
                     'type': _p_change_context(
-                        $.__get_entry(
+                        $.__get_entry_deprecated(
                             'type',
                             ($) => abort(
                                 ['no such entry', "type"],
@@ -725,7 +725,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
             ),
         ),
         'sub selection': _p_change_context(
-            $.__get_entry(
+            $.__get_entry_deprecated(
                 'sub selection',
                 ($) => abort(
                     ['no such entry', "sub selection"],
@@ -874,7 +874,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                 ),
                                 ($) => ({
                                     'source': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'source',
                                             ($) => abort(
                                                 ['no such entry', "source"],
@@ -888,7 +888,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                         ),
                                     ),
                                     'type': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'type',
                                             ($) => abort(
                                                 ['no such entry', "type"],
@@ -921,7 +921,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                         ),
                                                                         ($) => ({
                                                                             'temp resulting node': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'temp resulting node',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "temp resulting node"],
@@ -943,7 +943,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                             ),
                                                                             'if false': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'if false',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "if false"],
@@ -957,7 +957,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                             ),
                                                                             'if true': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'if true',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "if true"],
@@ -1008,7 +1008,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     ($) => ({
                                                                                                         'if true': _p_change_context(
-                                                                                                            $.__get_entry(
+                                                                                                            $.__get_entry_deprecated(
                                                                                                                 'if true',
                                                                                                                 ($) => abort(
                                                                                                                     ['no such entry', "if true"],
@@ -1022,7 +1022,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                         ),
                                                                                                         'if false': _p_change_context(
-                                                                                                            $.__get_entry(
+                                                                                                            $.__get_entry_deprecated(
                                                                                                                 'if false',
                                                                                                                 ($) => abort(
                                                                                                                     ['no such entry', "if false"],
@@ -1083,7 +1083,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     ($) => ({
                                                                                                         'if true': _p_change_context(
-                                                                                                            $.__get_entry(
+                                                                                                            $.__get_entry_deprecated(
                                                                                                                 'if true',
                                                                                                                 ($) => abort(
                                                                                                                     ['no such entry', "if true"],
@@ -1097,7 +1097,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                         ),
                                                                                                         'if false': _p_change_context(
-                                                                                                            $.__get_entry(
+                                                                                                            $.__get_entry_deprecated(
                                                                                                                 'if false',
                                                                                                                 ($) => abort(
                                                                                                                     ['no such entry', "if false"],
@@ -1130,7 +1130,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     ($) => ({
                                                                                                         'if true': _p_change_context(
-                                                                                                            $.__get_entry(
+                                                                                                            $.__get_entry_deprecated(
                                                                                                                 'if true',
                                                                                                                 ($) => abort(
                                                                                                                     ['no such entry', "if true"],
@@ -1144,7 +1144,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                         ),
                                                                                                         'if false': _p_change_context(
-                                                                                                            $.__get_entry(
+                                                                                                            $.__get_entry_deprecated(
                                                                                                                 'if false',
                                                                                                                 ($) => abort(
                                                                                                                     ['no such entry', "if false"],
@@ -1177,7 +1177,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     ($) => ({
                                                                                                         'if true': _p_change_context(
-                                                                                                            $.__get_entry(
+                                                                                                            $.__get_entry_deprecated(
                                                                                                                 'if true',
                                                                                                                 ($) => abort(
                                                                                                                     ['no such entry', "if true"],
@@ -1191,7 +1191,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                         ),
                                                                                                         'if false': _p_change_context(
-                                                                                                            $.__get_entry(
+                                                                                                            $.__get_entry_deprecated(
                                                                                                                 'if false',
                                                                                                                 ($) => abort(
                                                                                                                     ['no such entry', "if false"],
@@ -1234,7 +1234,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                         ),
                                                                         ($) => ({
                                                                             'temp resulting node': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'temp resulting node',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "temp resulting node"],
@@ -1256,7 +1256,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                             ),
                                                                             'if not set': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'if not set',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "if not set"],
@@ -1270,7 +1270,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                             ),
                                                                             'if set': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'if set',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "if set"],
@@ -1303,7 +1303,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                         ),
                                                                         ($) => ({
                                                                             'temp resulting node': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'temp resulting node',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "temp resulting node"],
@@ -1325,7 +1325,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                             ),
                                                                             'type': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'type',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "type"],
@@ -1358,7 +1358,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 ),
                                                                                                                 ($) => ({
                                                                                                                     'options': _p_change_context(
-                                                                                                                        $.__get_entry(
+                                                                                                                        $.__get_entry_deprecated(
                                                                                                                             'options',
                                                                                                                             ($) => abort(
                                                                                                                                 ['no such entry', "options"],
@@ -1390,7 +1390,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                         }),
                                                                                                                     ),
                                                                                                                     'default': _p_change_context(
-                                                                                                                        $.__get_entry(
+                                                                                                                        $.__get_entry_deprecated(
                                                                                                                             'default',
                                                                                                                             ($) => abort(
                                                                                                                                 ['no such entry', "default"],
@@ -1423,7 +1423,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 ),
                                                                                                                 ($) => ({
                                                                                                                     'options': _p_change_context(
-                                                                                                                        $.__get_entry(
+                                                                                                                        $.__get_entry_deprecated(
                                                                                                                             'options',
                                                                                                                             ($) => abort(
                                                                                                                                 ['no such entry', "options"],
@@ -1474,7 +1474,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 ),
                                                                                                                 ($) => ({
                                                                                                                     'option': _p_change_context(
-                                                                                                                        $.__get_entry(
+                                                                                                                        $.__get_entry_deprecated(
                                                                                                                             'option',
                                                                                                                             ($) => abort(
                                                                                                                                 ['no such entry', "option"],
@@ -1488,7 +1488,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                         ),
                                                                                                                     ),
                                                                                                                     'if true': _p_change_context(
-                                                                                                                        $.__get_entry(
+                                                                                                                        $.__get_entry_deprecated(
                                                                                                                             'if true',
                                                                                                                             ($) => abort(
                                                                                                                                 ['no such entry', "if true"],
@@ -1502,7 +1502,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                         ),
                                                                                                                     ),
                                                                                                                     'if false': _p_change_context(
-                                                                                                                        $.__get_entry(
+                                                                                                                        $.__get_entry_deprecated(
                                                                                                                             'if false',
                                                                                                                             ($) => abort(
                                                                                                                                 ['no such entry', "if false"],
@@ -1548,7 +1548,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                         ),
                                                                         ($) => ({
                                                                             'temp resulting node': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'temp resulting node',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "temp resulting node"],
@@ -1570,7 +1570,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                             ),
                                                                             'cases': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'cases',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "cases"],
@@ -1602,7 +1602,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 }),
                                                                             ),
                                                                             'default': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'default',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "default"],
@@ -1742,7 +1742,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         ),
                                                                                         ($) => ({
                                                                                             'selection': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'selection',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "selection"],
@@ -1756,7 +1756,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 ),
                                                                                             ),
                                                                                             'type': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'type',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "type"],
@@ -2007,7 +2007,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         ),
                                                                                         ($) => ({
                                                                                             'selection': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'selection',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "selection"],
@@ -2021,7 +2021,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 ),
                                                                                             ),
                                                                                             'type': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'type',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "type"],
@@ -2072,7 +2072,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             ),
                                                                                                                                                             ($) => ({
                                                                                                                                                                 'assign entry': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'assign entry',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "assign entry"],
@@ -2105,7 +2105,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             ),
                                                                                                                                                             ($) => ({
                                                                                                                                                                 'assign entry': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'assign entry',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "assign entry"],
@@ -2138,7 +2138,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             ),
                                                                                                                                                             ($) => ({
                                                                                                                                                                 'assign entry': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'assign entry',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "assign entry"],
@@ -2152,7 +2152,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                     ),
                                                                                                                                                                 ),
                                                                                                                                                                 'temp resulting entry node': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'temp resulting entry node',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "temp resulting entry node"],
@@ -2213,7 +2213,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             ),
                                                                                                                                                             ($) => ({
                                                                                                                                                                 'assign id': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'assign id',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "assign id"],
@@ -2227,7 +2227,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                     ),
                                                                                                                                                                 ),
                                                                                                                                                                 'assign entry': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'assign entry',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "assign entry"],
@@ -2241,7 +2241,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                     ),
                                                                                                                                                                 ),
                                                                                                                                                                 'abort': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'abort',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "abort"],
@@ -2325,7 +2325,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         ),
                                                                                         ($) => ({
                                                                                             'properties': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'properties',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "properties"],
@@ -2357,7 +2357,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 }),
                                                                                             ),
                                                                                             'have dependencies': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'have dependencies',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "have dependencies"],
@@ -2459,7 +2459,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         ),
                                                                                         ($) => ({
                                                                                             'selection': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'selection',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "selection"],
@@ -2473,7 +2473,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 ),
                                                                                             ),
                                                                                             'type': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'type',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "type"],
@@ -2524,7 +2524,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             ),
                                                                                                                                                             ($) => ({
                                                                                                                                                                 'assign entry': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'assign entry',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "assign entry"],
@@ -2585,7 +2585,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             ),
                                                                                                                                                             ($) => ({
                                                                                                                                                                 'assign item': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'assign item',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "assign item"],
@@ -2618,7 +2618,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             ),
                                                                                                                                                             ($) => ({
                                                                                                                                                                 'assign item': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'assign item',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "assign item"],
@@ -2651,7 +2651,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             ),
                                                                                                                                                             ($) => ({
                                                                                                                                                                 'initialize state': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'initialize state',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "initialize state"],
@@ -2665,7 +2665,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                     ),
                                                                                                                                                                 ),
                                                                                                                                                                 'assign item': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'assign item',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "assign item"],
@@ -2679,7 +2679,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                     ),
                                                                                                                                                                 ),
                                                                                                                                                                 'update state': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'update state',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "update state"],
@@ -2693,7 +2693,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                     ),
                                                                                                                                                                 ),
                                                                                                                                                                 'wrap up': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'wrap up',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "wrap up"],
@@ -2726,7 +2726,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             ),
                                                                                                                                                             ($) => ({
                                                                                                                                                                 'initialize state': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'initialize state',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "initialize state"],
@@ -2740,7 +2740,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                     ),
                                                                                                                                                                 ),
                                                                                                                                                                 'assign item': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'assign item',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "assign item"],
@@ -2953,7 +2953,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                     ),
                                                                                                                     ($) => ({
                                                                                                                         'assign dividend': _p_change_context(
-                                                                                                                            $.__get_entry(
+                                                                                                                            $.__get_entry_deprecated(
                                                                                                                                 'assign dividend',
                                                                                                                                 ($) => abort(
                                                                                                                                     ['no such entry', "assign dividend"],
@@ -2967,7 +2967,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             ),
                                                                                                                         ),
                                                                                                                         'assign divisor': _p_change_context(
-                                                                                                                            $.__get_entry(
+                                                                                                                            $.__get_entry_deprecated(
                                                                                                                                 'assign divisor',
                                                                                                                                 ($) => abort(
                                                                                                                                     ['no such entry', "assign divisor"],
@@ -2981,7 +2981,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             ),
                                                                                                                         ),
                                                                                                                         'abort': _p_change_context(
-                                                                                                                            $.__get_entry(
+                                                                                                                            $.__get_entry_deprecated(
                                                                                                                                 'abort',
                                                                                                                                 ($) => abort(
                                                                                                                                     ['no such entry', "abort"],
@@ -3103,7 +3103,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                     ),
                                                                                                                     ($) => ({
                                                                                                                         'dictionary': _p_change_context(
-                                                                                                                            $.__get_entry(
+                                                                                                                            $.__get_entry_deprecated(
                                                                                                                                 'dictionary',
                                                                                                                                 ($) => abort(
                                                                                                                                     ['no such entry', "dictionary"],
@@ -3136,7 +3136,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                     ),
                                                                                                                     ($) => ({
                                                                                                                         'list': _p_change_context(
-                                                                                                                            $.__get_entry(
+                                                                                                                            $.__get_entry_deprecated(
                                                                                                                                 'list',
                                                                                                                                 ($) => abort(
                                                                                                                                     ['no such entry', "list"],
@@ -3295,7 +3295,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         ),
                                                                                         ($) => ({
                                                                                             'selection': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'selection',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "selection"],
@@ -3309,7 +3309,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 ),
                                                                                             ),
                                                                                             'type': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'type',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "type"],
@@ -3360,7 +3360,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             ),
                                                                                                                                                             ($) => ({
                                                                                                                                                                 'assign set': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'assign set',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "assign set"],
@@ -3421,7 +3421,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             ),
                                                                                                                                                             ($) => ({
                                                                                                                                                                 'assign set': _p_change_context(
-                                                                                                                                                                    $.__get_entry(
+                                                                                                                                                                    $.__get_entry_deprecated(
                                                                                                                                                                         'assign set',
                                                                                                                                                                         ($) => abort(
                                                                                                                                                                             ['no such entry', "assign set"],
@@ -3505,7 +3505,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         ),
                                                                                         ($) => ({
                                                                                             'option': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'option',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "option"],
@@ -3519,7 +3519,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 ),
                                                                                             ),
                                                                                             'assign option': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'assign option',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "assign option"],
@@ -3580,7 +3580,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         ),
                                                                                         ($) => ({
                                                                                             'type': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'type',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "type"],
@@ -3637,7 +3637,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 ),
                                                                                             ),
                                                                                             'value': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'value',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "value"],
@@ -3670,7 +3670,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         ),
                                                                                         ($) => ({
                                                                                             'selection': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'selection',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "selection"],
@@ -3684,7 +3684,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 ),
                                                                                             ),
                                                                                             'type': _p_change_context(
-                                                                                                $.__get_entry(
+                                                                                                $.__get_entry_deprecated(
                                                                                                     'type',
                                                                                                     ($) => abort(
                                                                                                         ['no such entry', "type"],
@@ -3856,7 +3856,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                             ),
                                                             ($) => ({
                                                                 'tester': _p_change_context(
-                                                                    $.__get_entry(
+                                                                    $.__get_entry_deprecated(
                                                                         'tester',
                                                                         ($) => abort(
                                                                             ['no such entry', "tester"],
@@ -3870,7 +3870,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     ),
                                                                 ),
                                                                 'normal flow': _p_change_context(
-                                                                    $.__get_entry(
+                                                                    $.__get_entry_deprecated(
                                                                         'normal flow',
                                                                         ($) => abort(
                                                                             ['no such entry', "normal flow"],
@@ -3903,7 +3903,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                             ),
                                                             ($) => ({
                                                                 'new context': _p_change_context(
-                                                                    $.__get_entry(
+                                                                    $.__get_entry_deprecated(
                                                                         'new context',
                                                                         ($) => abort(
                                                                             ['no such entry', "new context"],
@@ -3917,7 +3917,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     ),
                                                                 ),
                                                                 'expression': _p_change_context(
-                                                                    $.__get_entry(
+                                                                    $.__get_entry_deprecated(
                                                                         'expression',
                                                                         ($) => abort(
                                                                             ['no such entry', "expression"],
@@ -3950,7 +3950,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                             ),
                                                             ($) => ({
                                                                 'variables': _p_change_context(
-                                                                    $.__get_entry(
+                                                                    $.__get_entry_deprecated(
                                                                         'variables',
                                                                         ($) => abort(
                                                                             ['no such entry', "variables"],
@@ -3982,7 +3982,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     }),
                                                                 ),
                                                                 'assign': _p_change_context(
-                                                                    $.__get_entry(
+                                                                    $.__get_entry_deprecated(
                                                                         'assign',
                                                                         ($) => abort(
                                                                             ['no such entry', "assign"],
@@ -4030,7 +4030,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                             ),
                                                             ($) => ({
                                                                 'list': _p_change_context(
-                                                                    $.__get_entry(
+                                                                    $.__get_entry_deprecated(
                                                                         'list',
                                                                         ($) => abort(
                                                                             ['no such entry', "list"],
@@ -4044,7 +4044,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     ),
                                                                 ),
                                                                 'assign': _p_change_context(
-                                                                    $.__get_entry(
+                                                                    $.__get_entry_deprecated(
                                                                         'assign',
                                                                         ($) => abort(
                                                                             ['no such entry', "assign"],
@@ -4077,7 +4077,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                             ),
                                                             ($) => ({
                                                                 'explanation': _p_change_context(
-                                                                    $.__get_entry(
+                                                                    $.__get_entry_deprecated(
                                                                         'explanation',
                                                                         ($) => abort(
                                                                             ['no such entry', "explanation"],
@@ -4155,7 +4155,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                 ),
                                 ($) => ({
                                     'start': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'start',
                                             ($) => abort(
                                                 ['no such entry', "start"],
@@ -4188,7 +4188,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                         ),
                                                                         ($) => ({
                                                                             'source': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'source',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "source"],
@@ -4236,7 +4236,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                 ),
                                                                                                                 ($) => ({
                                                                                                                     'import': _p_change_context(
-                                                                                                                        $.__get_entry(
+                                                                                                                        $.__get_entry_deprecated(
                                                                                                                             'import',
                                                                                                                             ($) => abort(
                                                                                                                                 ['no such entry', "import"],
@@ -4250,7 +4250,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                         ),
                                                                                                                     ),
                                                                                                                     'variable': _p_change_context(
-                                                                                                                        $.__get_entry(
+                                                                                                                        $.__get_entry_deprecated(
                                                                                                                             'variable',
                                                                                                                             ($) => abort(
                                                                                                                                 ['no such entry', "variable"],
@@ -4277,7 +4277,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                 ),
                                                                             ),
                                                                             'context': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'context',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "context"],
@@ -4291,7 +4291,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                 ),
                                                                             ),
                                                                             'abort': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'abort',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "abort"],
@@ -4313,7 +4313,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                 ),
                                                                             ),
                                                                             'lookups': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'lookups',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "lookups"],
@@ -4396,7 +4396,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                 ),
                                                                             ),
                                                                             'arguments': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'arguments',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "arguments"],
@@ -4513,7 +4513,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                         ),
                                                                         ($) => ({
                                                                             'dictionary': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'dictionary',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "dictionary"],
@@ -4527,7 +4527,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                 ),
                                                                             ),
                                                                             'id': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'id',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "id"],
@@ -4541,7 +4541,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                 ),
                                                                             ),
                                                                             'abort handler': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'abort handler',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "abort handler"],
@@ -4574,7 +4574,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                         ),
                                                                         ($) => ({
                                                                             'source': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'source',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "source"],
@@ -4588,7 +4588,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                 ),
                                                                             ),
                                                                             'assign item': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'assign item',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "assign item"],
@@ -4621,7 +4621,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                         ),
                                                                         ($) => ({
                                                                             'lookup': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'lookup',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "lookup"],
@@ -4635,7 +4635,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                 ),
                                                                             ),
                                                                             'id': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'id',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "id"],
@@ -4649,7 +4649,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                 ),
                                                                             ),
                                                                             'abort handlers': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'abort handlers',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "abort handlers"],
@@ -4664,7 +4664,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                     ),
                                                                                     ($) => ({
                                                                                         'no such entry': _p_change_context(
-                                                                                            $.__get_entry(
+                                                                                            $.__get_entry_deprecated(
                                                                                                 'no such entry',
                                                                                                 ($) => abort(
                                                                                                     ['no such entry', "no such entry"],
@@ -4678,7 +4678,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                             ),
                                                                                         ),
                                                                                         'no context lookup': _p_change_context(
-                                                                                            $.__get_entry(
+                                                                                            $.__get_entry_deprecated(
                                                                                                 'no context lookup',
                                                                                                 ($) => abort(
                                                                                                     ['no such entry', "no context lookup"],
@@ -4692,7 +4692,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                             ),
                                                                                         ),
                                                                                         'cycle detected': _p_change_context(
-                                                                                            $.__get_entry(
+                                                                                            $.__get_entry_deprecated(
                                                                                                 'cycle detected',
                                                                                                 ($) => abort(
                                                                                                     ['no such entry', "cycle detected"],
@@ -4728,7 +4728,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                         ),
                                                                         ($) => ({
                                                                             'lookup': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'lookup',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "lookup"],
@@ -4742,7 +4742,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                 ),
                                                                             ),
                                                                             'id': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'id',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "id"],
@@ -4756,7 +4756,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                 ),
                                                                             ),
                                                                             'abort handlers': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'abort handlers',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "abort handlers"],
@@ -4771,7 +4771,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                     ),
                                                                                     ($) => ({
                                                                                         'no such entry': _p_change_context(
-                                                                                            $.__get_entry(
+                                                                                            $.__get_entry_deprecated(
                                                                                                 'no such entry',
                                                                                                 ($) => abort(
                                                                                                     ['no such entry', "no such entry"],
@@ -4785,7 +4785,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                             ),
                                                                                         ),
                                                                                         'no context lookup': _p_change_context(
-                                                                                            $.__get_entry(
+                                                                                            $.__get_entry_deprecated(
                                                                                                 'no context lookup',
                                                                                                 ($) => abort(
                                                                                                     ['no such entry', "no context lookup"],
@@ -4799,7 +4799,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                             ),
                                                                                         ),
                                                                                         'cycle detected': _p_change_context(
-                                                                                            $.__get_entry(
+                                                                                            $.__get_entry_deprecated(
                                                                                                 'cycle detected',
                                                                                                 ($) => abort(
                                                                                                     ['no such entry', "cycle detected"],
@@ -4895,7 +4895,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                         ),
                                                                         ($) => ({
                                                                             'source': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'source',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "source"],
@@ -4909,7 +4909,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                 ),
                                                                             ),
                                                                             'assign character': _p_change_context(
-                                                                                $.__get_entry(
+                                                                                $.__get_entry_deprecated(
                                                                                     'assign character',
                                                                                     ($) => abort(
                                                                                         ['no such entry', "assign character"],
@@ -4951,7 +4951,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                         ),
                                     ),
                                     'tail': _p_change_context(
-                                        $.__get_entry(
+                                        $.__get_entry_deprecated(
                                             'tail',
                                             ($) => abort(
                                                 ['no such entry', "tail"],
@@ -5085,7 +5085,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                             ),
                                                             ($) => ({
                                                                 'stack': _p_change_context(
-                                                                    $.__get_entry(
+                                                                    $.__get_entry_deprecated(
                                                                         'stack',
                                                                         ($) => abort(
                                                                             ['no such entry', "stack"],
@@ -5099,7 +5099,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                                     ),
                                                                 ),
                                                                 'acyclic': _p_change_context(
-                                                                    $.__get_entry(
+                                                                    $.__get_entry_deprecated(
                                                                         'acyclic',
                                                                         ($) => abort(
                                                                             ['no such entry', "acyclic"],
