@@ -1,145 +1,145 @@
+
+import * as _pi from 'pareto-core/dist/interface'
+
+import * as i_in from "./data"
+
+import * as i_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
+
+export namespace Directory_ {
     
-    import * as _pi from 'pareto-core/dist/interface'
+    export type I = i_in.Directory
     
-    import * as i_in from "./data"
+    export type O = i_out.Paragraph
     
-    import * as i_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/block/data"
-    
-    export namespace Directory_ {
-        
-        export type I = i_in.Directory
-        
-        export type O = i_out.Paragraph
-        
-        export namespace P {
-            
-        }
+    export namespace P {
         
     }
     
-    export type Directory_ = (
-        context: Directory_.I,
-    ) => Directory_.O
+}
+
+export type Directory_ = (
+    context: Directory_.I,
+) => Directory_.O
+
+export namespace Block_ {
     
-    export namespace Block_ {
-        
-        export type I = i_in.Block
-        
-        export type O = i_out.Paragraph
-        
-        export namespace P {
-            
-        }
+    export type I = i_in.Block
+    
+    export type O = i_out.Paragraph
+    
+    export namespace P {
         
     }
     
-    export type Block_ = (
-        context: Block_.I,
-    ) => Block_.O
+}
+
+export type Block_ = (
+    context: Block_.I,
+) => Block_.O
+
+export namespace Statements_ {
     
-    export namespace Statements_ {
-        
-        export type I = i_in.Statements
-        
-        export type O = i_out.Paragraph
-        
-        export namespace P {
-            
-        }
+    export type I = i_in.Statements
+    
+    export type O = i_out.Paragraph
+    
+    export namespace P {
         
     }
     
-    export type Statements_ = (
-        context: Statements_.I,
-    ) => Statements_.O
+}
+
+export type Statements_ = (
+    context: Statements_.I,
+) => Statements_.O
+
+export namespace Type_ {
     
-    export namespace Type_ {
-        
-        export type I = i_in.Type
-        
-        export type O = i_out.Paragraph
-        
-        export namespace P {
-            
-        }
+    export type I = i_in.Type
+    
+    export type O = i_out.Paragraph
+    
+    export namespace P {
         
     }
     
-    export type Type_ = (
-        context: Type_.I,
-    ) => Type_.O
+}
+
+export type Type_ = (
+    context: Type_.I,
+) => Type_.O
+
+export namespace Function_Parameters_ {
     
-    export namespace Function_Parameters_ {
-        
-        export type I = i_in.Function_Parameters
-        
-        export type O = i_out.Paragraph
-        
-        export namespace P {
-            
-        }
+    export type I = i_in.Function_Parameters
+    
+    export type O = i_out.Paragraph
+    
+    export namespace P {
         
     }
     
-    export type Function_Parameters_ = (
-        context: Function_Parameters_.I,
-    ) => Function_Parameters_.O
+}
+
+export type Function_Parameters_ = (
+    context: Function_Parameters_.I,
+) => Function_Parameters_.O
+
+export namespace Expression_ {
     
-    export namespace Expression_ {
-        
-        export type I = i_in.Expression
-        
-        export type O = i_out.Paragraph
-        
-        export namespace P {
-            
-        }
+    export type I = i_in.Expression
+    
+    export type O = i_out.Paragraph
+    
+    export namespace P {
         
     }
     
-    export type Expression_ = (
-        context: Expression_.I,
-    ) => Expression_.O
+}
+
+export type Expression_ = (
+    context: Expression_.I,
+) => Expression_.O
+
+export namespace String_Literal_ {
     
-    export namespace String_Literal_ {
-        
-        export type I = i_in.String_Literal
-        
-        export type O = i_out.Paragraph
-        
-        export namespace P {
-            
-        }
+    export type I = i_in.String_Literal
+    
+    export type O = i_out.Paragraph
+    
+    export namespace P {
         
     }
     
-    export type String_Literal_ = (
-        context: String_Literal_.I,
-    ) => String_Literal_.O
+}
+
+export type String_Literal_ = (
+    context: String_Literal_.I,
+) => String_Literal_.O
+
+export namespace Identifier_ {
     
-    export namespace Identifier_ {
-        
-        export type I = i_in.Identifier
-        
-        export type O = i_out.Paragraph
-        
-        export namespace P {
-            
-        }
+    export type I = i_in.Identifier
+    
+    export type O = i_out.Paragraph
+    
+    export namespace P {
         
     }
     
-    export type Identifier_ = (
-        context: Identifier_.I,
-    ) => Identifier_.O
-    
-    export { 
-        Directory_ as Directory, 
-        Block_ as Block, 
-        Statements_ as Statements, 
-        Type_ as Type, 
-        Function_Parameters_ as Function_Parameters, 
-        Expression_ as Expression, 
-        String_Literal_ as String_Literal, 
-        Identifier_ as Identifier, 
-    }
+}
+
+export type Identifier_ = (
+    context: Identifier_.I,
+) => Identifier_.O
+
+export { 
+    Directory_ as Directory, 
+    Block_ as Block, 
+    Statements_ as Statements, 
+    Type_ as Type, 
+    Function_Parameters_ as Function_Parameters, 
+    Expression_ as Expression, 
+    String_Literal_ as String_Literal, 
+    Identifier_ as Identifier, 
+}
