@@ -15,7 +15,13 @@ export const $$: _pi.Transformer<number, d_out.List_of_Characters> = ($) => _p_l
         do {
             const digit = $ % 10
             $i['add item'](digit)
-            $ = _p.number.integer.divide($, 10, () => _p_unreachable_code_path("the divisor is hardcoded to 10"))
+            $ = _p.number.integer.divide(
+                $,
+                10,
+                {
+                    divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                }
+            )
         } while ($ > 0)
 
     })
