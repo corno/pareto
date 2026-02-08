@@ -524,13 +524,13 @@ export namespace sv {
     export const dictionary_entry = (
         dictionary: d_target.Select_Value,
         id: d_target.Assign,
-        abort_handler: d_target.Assign,
+        no_such_entry_handler: d_target.Assign,
         tail: _p.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state<d_target.Select_Value.regular.start>(['dictionary entry', {
             'dictionary': dictionary,
             'id': id,
-            'abort handler': abort_handler
+            'abort handler': no_such_entry_handler
         }]),
         'tail': _p.list.literal(tail),
     }])

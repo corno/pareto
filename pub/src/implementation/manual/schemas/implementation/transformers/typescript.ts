@@ -1050,21 +1050,27 @@ export const Select_Value = (
                         ),
                         [
                             Assign($.id),
-                            sh.e.arrow_function_with_expression(
-                                [
-                                    sh.parameter(
-                                        sh.identifier_raw("$"),
+                            sh.e.object_literal([
+                                sh.object_property(
+                                    "no_such_entry",
+                                    'identifier',
+                                    sh.e.arrow_function_with_expression(
+                                        [
+                                            sh.parameter(
+                                                sh.identifier_raw("$"),
+                                                null,
+                                            )
+                                        ],
                                         null,
+                                        sh.e.call(
+                                            sh.e.identifier_raw("abort"),
+                                            [
+                                                Assign($['abort handler'])
+                                            ]
+                                        )
                                     )
-                                ],
-                                null,
-                                sh.e.call(
-                                    sh.e.identifier_raw("abort"),
-                                    [
-                                        Assign($['abort handler'])
-                                    ]
                                 )
-                            )
+                            ])
                         ]
                     ))
                     case 'list from text': return _p.ss($, ($) => sh.e.call(
