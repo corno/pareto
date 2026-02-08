@@ -530,7 +530,7 @@ export namespace sv {
         'start': wrap_state<d_target.Select_Value.regular.start>(['dictionary entry', {
             'dictionary': dictionary,
             'id': id,
-            'abort handler': no_such_entry_handler
+            'no such entry handler': no_such_entry_handler
         }]),
         'tail': _p.list.literal(tail),
     }])

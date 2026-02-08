@@ -2700,8 +2700,8 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                 ),
                                                                             )
                                                                             
-                                                                            const prop_abort_handler = _p_change_context(
-                                                                                $['abort handler'],
+                                                                            const prop_no_such_entry_handler = _p_change_context(
+                                                                                $['no such entry handler'],
                                                                                 ($) => Assign(
                                                                                     $,
                                                                                     ($) => abort(
@@ -2714,7 +2714,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                             return {
                                                                                 'dictionary': prop_dictionary,
                                                                                 'id': prop_id,
-                                                                                'abort handler': prop_abort_handler,
+                                                                                'no such entry handler': prop_no_such_entry_handler,
                                                                             }
                                                                         },
                                                                     )],

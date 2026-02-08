@@ -1155,14 +1155,14 @@ export namespace Select_Value_ {
                 
                 export type id = Assign_
                 
-                export type abort_handler = Assign_
+                export type no_such_entry_handler = Assign_
                 
             }
             
             export type dictionary_entry = {
                 readonly 'dictionary': dictionary_entry.dictionary
                 readonly 'id': dictionary_entry.id
-                readonly 'abort handler': dictionary_entry.abort_handler
+                readonly 'no such entry handler': dictionary_entry.no_such_entry_handler
             }
             
             export namespace list_from_text {

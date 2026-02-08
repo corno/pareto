@@ -4527,12 +4527,12 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                     ),
                                                                                 ),
                                                                             ),
-                                                                            'abort handler': _p_change_context(
+                                                                            'no such entry handler': _p_change_context(
                                                                                 $.__get_entry_deprecated(
-                                                                                    'abort handler',
+                                                                                    'no such entry handler',
                                                                                     {
                                                                                         no_such_entry: ($) => abort(
-                                                                                            ['no such entry', "abort handler"],
+                                                                                            ['no such entry', "no such entry handler"],
                                                                                         ),
                                                                                     },
                                                                                 ),

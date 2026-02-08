@@ -2267,8 +2267,8 @@ export const Select_Value: t_signatures.Select_Value = ($) => ['state', _p.decid
                                                                             $,
                                                                         ),
                                                                     ),
-                                                                    "abort handler": _p_change_context(
-                                                                        $['abort handler'],
+                                                                    "no such entry handler": _p_change_context(
+                                                                        $['no such entry handler'],
                                                                         ($) => Assign(
                                                                             $,
                                                                         ),

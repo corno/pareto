@@ -1065,7 +1065,7 @@ export const Select_Value = (
                                         sh.e.call(
                                             sh.e.identifier_raw("abort"),
                                             [
-                                                Assign($['abort handler'])
+                                                Assign($['no such entry handler'])
                                             ]
                                         )
                                     )
