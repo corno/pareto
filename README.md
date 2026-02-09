@@ -1,19 +1,19 @@
-# Exupery
+# Pareto
 
-A TypeScript library for the Exupery programming language - a functional programming language designed for type-safe data transformation and code generation.
+A TypeScript library for the Pareto programming language - a functional programming language designed for type-safe data transformation and code generation.
 
-[![npm version](https://img.shields.io/npm/v/exupery?color=blue&style=flat-square)](https://www.npmjs.com/package/exupery)
+[![npm version](https://img.shields.io/npm/v/pareto?color=blue&style=flat-square)](https://www.npmjs.com/package/pareto)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green?style=flat-square)](LICENSE)
 
 ## Overview
 
-Exupery is a functional programming language that focuses on type safety, immutability, and powerful data transformation capabilities. It provides a robust foundation for building complex data processing pipelines and code generation tools.
+Pareto is a functional programming language that focuses on type safety, immutability, and powerful data transformation capabilities. It provides a robust foundation for building complex data processing pipelines and code generation tools.
 
 ## Installation
 
 ```bash
-npm install exupery
+npm install pareto
 ```
 
 ## Key Features
@@ -26,13 +26,13 @@ npm install exupery
 
 ## Architecture
 
-Exupery is built on several core concepts:
+Pareto is built on several core concepts:
 
 ### Transformations
 Convert data from one format to another while maintaining type safety:
 
 ```typescript
-import * as exupery from 'exupery'
+import * as pareto from 'pareto'
 
 // Transform TypeScript AST to formatted source code
 const sourceCode = transformToTypeScript(ast, {
@@ -93,10 +93,10 @@ const generateProject = procedure.create((config) => {
 ### Basic Data Transformation
 
 ```typescript
-import * as exupery from 'exupery'
+import * as pareto from 'pareto'
 
 // Transform a data structure
-const result = exupery.transform.process(inputData, {
+const result = pareto.transform.process(inputData, {
     'target_format': 'typescript',
     'options': {
         'strict_mode': true,
@@ -108,7 +108,7 @@ const result = exupery.transform.process(inputData, {
 ### Code Generation
 
 ```typescript
-import * as typescript from 'exupery/transformations/typescript_light'
+import * as typescript from 'pareto/transformations/typescript_light'
 
 // Generate TypeScript interface
 const interfaceCode = typescript.Interface({
@@ -124,7 +124,7 @@ const interfaceCode = typescript.Interface({
 ### Error Handling
 
 ```typescript
-import * as validation from 'exupery/operations/validation'
+import * as validation from 'pareto/operations/validation'
 
 const result = validation.validateStructure(data, schema)
 
@@ -137,7 +137,7 @@ if (result.success) {
 
 ## Integration with Other Libraries
 
-Exupery works seamlessly with other libraries in the ecosystem:
+Pareto works seamlessly with other libraries in the ecosystem:
 
 - **ASTN**: Parse and generate ASTN (Abstract Syntax Tree Notation) files
 - **Pareto Fountain Pen**: Generate formatted text output with proper indentation
@@ -146,11 +146,11 @@ Exupery works seamlessly with other libraries in the ecosystem:
 ```typescript
 import * as astn from 'astn'
 import * as fountainPen from 'pareto-fountain-pen'
-import * as exupery from 'exupery'
+import * as pareto from 'pareto'
 
 // Complete workflow: ASTN → Transform → Output
 const source = astn.parse(astSource)
-const transformed = exupery.transform(source, options)
+const transformed = pareto.transform(source, options)
 const output = fountainPen.generate(transformed)
 ```
 
@@ -171,7 +171,7 @@ const output = fountainPen.generate(transformed)
 
 ## TypeScript Integration
 
-Exupery provides full TypeScript support with:
+Pareto provides full TypeScript support with:
 
 - **Strict typing**: All APIs are fully typed
 - **Type inference**: Automatic type derivation where possible
@@ -180,7 +180,7 @@ Exupery provides full TypeScript support with:
 
 ```typescript
 // Types are automatically inferred
-const result = exupery.transform.apply(
+const result = pareto.transform.apply(
     inputData,      // Type: InputSchema
     transformer     // Type: Transform<InputSchema, OutputSchema>
 )
@@ -198,10 +198,10 @@ This library is part of the Pareto ecosystem. Contributions should:
 
 ## Dependencies
 
-- `exupery-core-alg`: Core algorithms and data structures
-- `exupery-core-bin`: Binary operations and utilities
-- `exupery-core-data`: Data type definitions and interfaces
-- `exupery-core-dev`: Development tools and helpers
+- `pareto-core-alg`: Core algorithms and data structures
+- `pareto-core-bin`: Binary operations and utilities
+- `pareto-core-data`: Data type definitions and interfaces
+- `pareto-core-dev`: Development tools and helpers
 - `pareto-fountain-pen`: Text generation and formatting
 - `pareto-standard-operations`: Standard functional operations
 
