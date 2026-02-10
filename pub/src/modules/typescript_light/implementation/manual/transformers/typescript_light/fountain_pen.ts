@@ -2,7 +2,7 @@ import * as _p from 'pareto-core/dist/assign'
 import * as _pdev from 'pareto-core-dev'
 
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
-import * as d_out_fs from "pareto-fountain-pen-file-system/dist/interface/to_be_generated/file-system"
+import * as d_out_fs from "pareto-fountain-pen-file-structure/dist/interface/to_be_generated/file-system"
 
 import * as d_in from "../../../../../../interface/generated/liana/schemas/typescript_light/data"
 

@@ -3,7 +3,7 @@ import * as _pi from 'pareto-core/dist/interface'
 import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/interface/data/resolved"
-import * as d_out from "pareto-fountain-pen-file-system/dist/interface/to_be_generated/file-system"
+import * as d_out from "pareto-fountain-pen-file-structure/dist/interface/to_be_generated/file-system"
 
 //transformations
 import * as t_typescript from "./transformers/typescript"
