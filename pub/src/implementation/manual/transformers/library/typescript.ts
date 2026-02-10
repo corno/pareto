@@ -16,8 +16,8 @@ import * as d_out from "../../../../interface/generated/liana/schemas/typescript
 import * as d_function from "../../../../interface/to_be_generated/pareto_to_typescript"
 
 //dependencies
-import * as t_interface_to_typescript_temp from "../interface/transformers/typescript"
-import * as t_implementation_to_typescript_temp from "../implementation/transformers/typescript"
+import * as t_interface_to_typescript_temp from "../interface/typescript"
+import * as t_implementation_to_typescript_temp from "../implementation/typescript"
 
 //shorthands
 import * as sh from "../../../../modules/typescript_light/shorthands/typescript_light"

@@ -7,7 +7,7 @@ import * as d_in from "../../../../interface/generated/liana/schemas/implementat
 import * as d_out from "pareto-fountain-pen-file-structure/dist/interface/to_be_generated/file-system"
 
 //transformations
-import * as t_typescript from "./transformers/typescript"
+import * as t_typescript from "./typescript"
 import * as t_typescript_light_to_fountain_pen_block from "../../../../modules/typescript_light/implementation/manual/transformers/typescript_light/fountain_pen"
 
 //resolvers

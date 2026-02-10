@@ -7,15 +7,15 @@ import _p_variables from 'pareto-core/dist/_p_variables'
 import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 //data types
-import * as d_in from "../../../../../interface/generated/liana/schemas/implementation/data/resolved"
-import * as d_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
-import * as d_function from "../../../../../interface/to_be_generated/pareto_to_typescript"
+import * as d_in from "../../../../interface/generated/liana/schemas/implementation/data/resolved"
+import * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data"
+import * as d_function from "../../../../interface/to_be_generated/pareto_to_typescript"
 
 //shorthands
-import * as sh from "../../../../../modules/typescript_light/shorthands/typescript_light"
+import * as sh from "../../../../modules/typescript_light/shorthands/typescript_light"
 
 //dependencies
-import { temp_create_file_path } from '../../interface/transformers/typescript'
+import { temp_create_file_path } from '../interface/typescript'
 
 const join = ($: _pi.List<string>): string => {
     let out = ""
