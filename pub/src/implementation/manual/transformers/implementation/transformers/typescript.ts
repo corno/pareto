@@ -9,7 +9,7 @@ import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 //data types
 import * as d_in from "../../../../../interface/generated/liana/schemas/implementation/data/resolved"
 import * as d_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
-import * as d_pareto_to_typescript from "../../../../../interface/to_be_generated/pareto_to_typescript"
+import * as d_function from "../../../../../interface/to_be_generated/pareto_to_typescript"
 
 //shorthands
 import * as sh from "../../../../../modules/typescript_light/shorthands/typescript_light"
@@ -27,7 +27,7 @@ const join = ($: _pi.List<string>): string => {
 
 const temp_rename = (
     $: d_in.Package_Set,
-    abort: _pi.Abort<d_pareto_to_typescript.Error>
+    abort: _pi.Abort<d_function.Error>
 ): d_in.Package_Set => {
     const renamed: { [id: string]: d_in.Package_Set.D } = {}
     $.__d_map(($, id) => {
@@ -54,7 +54,7 @@ const temp_rename = (
 
 export const Package_Set = (
     $: d_in.Package_Set,
-    abort: _pi.Abort<d_pareto_to_typescript.Error>
+    abort: _pi.Abort<d_function.Error>
 ): d_out.Directory => {
     return temp_rename($, abort).__d_map(($, id) => _p.decide.state($, ($) => {
         switch ($[0]) {
