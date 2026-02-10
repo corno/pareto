@@ -1,16 +1,16 @@
 import * as _p from 'pareto-core/dist/assign'
 import * as _pi from 'pareto-core/dist/interface'
 
-import * as d_in_inf from "../../../../../interface/generated/liana/schemas/interface/data/resolved"
-import * as d_in_imp from "../../../../../interface/generated/liana/schemas/implementation/data/resolved"
+import * as d_in_inf from "../../../../interface/generated/liana/schemas/interface/data/resolved"
+import * as d_in_imp from "../../../../interface/generated/liana/schemas/implementation/data/resolved"
 
-import * as d_out from "../../../../../interface/generated/liana/schemas/typescript_light/data"
-import * as d_pareto_to_typescript from "../../../../../interface/to_be_generated/pareto_to_typescript"
+import * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data"
+import * as d_pareto_to_typescript from "../../../../interface/to_be_generated/pareto_to_typescript"
 
-import * as t_interface_to_typescript_temp from "../../interface/transformers/typescript"
-import * as t_implementation_to_typescript_temp from "../../implementation/transformers/typescript"
+import * as t_interface_to_typescript_temp from "../interface/transformers/typescript"
+import * as t_implementation_to_typescript_temp from "../implementation/transformers/typescript"
 
-import * as sh from "../../../../../modules/typescript_light/shorthands/typescript_light"
+import * as sh from "../../../../modules/typescript_light/shorthands/typescript_light"
 
 // import * as signatures from "../interface/signatures"
 

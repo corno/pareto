@@ -4,11 +4,11 @@ import * as _pdev from 'pareto-core-dev'
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 import * as d_out_fs from "pareto-fountain-pen-file-system/dist/interface/to_be_generated/file-system"
 
-import * as d_in from "../../../../../../../interface/generated/liana/schemas/typescript_light/data"
+import * as d_in from "../../../../../../interface/generated/liana/schemas/typescript_light/data"
 
-import { $$ as s_apostrophed } from "../../../primitives/text/serializers/apostrophed_string"
-import { $$ as s_quoted } from "../../../primitives/text/serializers/quoted_string"
-import { $$ as s_number_default } from "../../../primitives/integer/serializers/decimal"
+import { $$ as s_apostrophed } from "../../primitives/text/serializers/apostrophed_string"
+import { $$ as s_quoted } from "../../primitives/text/serializers/quoted_string"
+import { $$ as s_number_default } from "../../primitives/integer/serializers/decimal"
 
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
