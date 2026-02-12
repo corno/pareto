@@ -1,16 +1,290 @@
 import * as _p from 'pareto-core/dist/assign'
 import * as _pdev from 'pareto-core-dev'
+import * as _pi from 'pareto-core/dist/interface'
+import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
+import * as d_loc from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
 import * as d_out_fs from "pareto-fountain-pen-file-structure/dist/interface/to_be_generated/file-system"
 
 import * as d_in from "../../../../../../interface/generated/liana/schemas/typescript_light/data"
 
-import { $$ as s_apostrophed } from "../../primitives/text/serializers/apostrophed_string"
-import { $$ as s_quoted } from "../../primitives/text/serializers/quoted_string"
-import { $$ as s_number_default } from "../../primitives/integer/serializers/decimal"
-
 import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
+
+
+
+export const escaped_text = (
+    $: string,
+): d_loc.List_of_Characters => _p.list.from.list(
+    _p_list_from_text(
+        $,
+        ($) => $
+    ),
+).flatten(
+    ($): _pi.List<number> => {
+        switch ($) {
+            // case 0x2F: // slash (\/)
+            //     return _p.list.literal([
+            //         0x5c, // \
+            //         0x2f, // /
+            //     ])
+            case 0x22: // " (\")
+                return _p.list.literal([
+                    0x5C, // \
+                    0x22, // "
+                ])
+            case 0x5C: // \ (\\)
+                return _p.list.literal([
+                    0x5C, // \
+                    0x5C, // \
+                ])
+            case 0x08: // backspace (\b)
+                return _p.list.literal([
+                    0x5C, // \
+                    0x62, // b
+                ])
+            case 0x0C: // form feed (\f)
+                return _p.list.literal([
+                    0x5C, // \
+                    0x66, // f
+                ])
+            case 0x0A: // line feed (\n)
+                return _p.list.literal([
+                    0x5C, // \
+                    0x6E, // n
+                ])
+            case 0x0D: // carriage return (\r)
+                return _p.list.literal([
+                    0x5C, // \
+                    0x72, // r
+                ])
+            case 0x09: // horizontal tab (\t)
+                return _p.list.literal([
+                    0x5C, // \
+                    0x74, // t
+                ])
+            case 0x0B: // vertical tab (\v)
+                return _p.list.literal([
+                    0x5C, // \
+                    0x76, // v
+                ])
+            default: {
+                return _p.list.literal([
+                    $,
+                ])
+            }
+        }
+    }
+)
+
+export const apostrophed_text: _pi.Transformer<string, d_loc.List_of_Characters> = ($) => _p.list.nested_literal_old([
+    [
+        0x27, // '
+    ],
+    escaped_text(
+        $,
+    ),
+    [
+        0x27, // '
+    ]
+])
+
+export const backticked_text: _pi.Transformer<string, d_loc.List_of_Characters> = ($) => _p.list.nested_literal_old([
+    [
+        0x60, // `
+    ],
+    escaped_text(
+        $,
+    ),
+    [
+        0x60, // `
+    ]
+])
+
+export const quoted_text: _pi.Transformer<string, d_loc.List_of_Characters> = ($) => _p.list.nested_literal_old([
+    [
+        0x22, // "
+    ],
+    escaped_text(
+        $,
+    ),
+    [
+        0x22, // "
+    ]
+])
+
+
+export const decimal: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => _p_list_build_deprecated(($i) => {
+    if ($ < 0) {
+        $i['add item'](45) // '-'
+        $ = -$
+    }
+    const digits = _p_list_build_deprecated<number>(($i) => {
+        do {
+            const digit = $ % 10
+            $i['add item'](digit)
+            $ = _p.number.integer.divide(
+                $,
+                10,
+                {
+                    divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                }
+            )
+        } while ($ > 0)
+
+    })
+
+    for (let j = digits.__get_number_of_items() - 1; j >= 0; j--) {
+        $i['add item'](48 + digits.__deprecated_get_possible_item_at(j).__decide(
+            ($) => $,
+            () => _p_unreachable_code_path("index cannot be out of bounds")
+        ))
+    }
+})
+
+
+export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
+    return _p_list_build_deprecated(($i) => {
+        const fixme_digits = 16 // Number of significant digits to serialize
+        // Handle special case for zero in scientific notation
+        if ($ === 0) {
+            $i['add item'](48) // '0'
+
+            // Add decimal point if we have more than 1 digit
+            //FIXME: do this only when the number is not an integer number
+            $i['add item'](46) // '.'
+
+            // Add the required number of zeros after decimal point
+            for (let i = 0; i < 16; i++) {
+                $i['add item'](48) // '0'
+            }
+
+
+            // Add exponent part for zero: e+0
+            $i['add item'](101) // 'e'
+            $i['add item'](43)  // '+'
+            $i['add item'](48)  // '0'
+            return
+        }
+
+        // Handle negative numbers
+        if ($ < 0) {
+            $i['add item'](45) // '-'
+            $ = -$
+        }
+
+        // Calculate exponent and mantissa for scientific notation
+        let exponent = 0
+        let mantissa = $
+
+        // Normalize to range [1, 10)
+        if (mantissa >= 10) {
+            while (mantissa >= 10) {
+                mantissa = mantissa / 10
+                exponent++
+            }
+        } else if (mantissa < 1) {
+            while (mantissa < 1) {
+                mantissa = mantissa * 10
+                exponent--
+            }
+        }
+
+        // Create scale factor by multiplying
+        let scale_factor = 1
+        for (let i = 0; i < fixme_digits - 1; i++) {
+            scale_factor = scale_factor * 10
+        }
+
+        // Simple rounding using integer operations
+        const mantissa_scaled = _p.number.integer.divide(
+            mantissa * scale_factor + 0.5,
+            1,
+            {
+                divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 1")
+            }
+        )
+
+        // Convert mantissa to string
+        const digits = _p_list_build_deprecated<number>(($i) => {
+            let temp = mantissa_scaled
+            // temp is always > 0 here since mantissa_scaled = integer_division(mantissa * scale_factor + 0.5, 1)
+            // where mantissa >= 1.0 (normalized) and scale_factor >= 1, so result >= 1
+            do {
+                const digit = temp % 10
+                $i['add item'](digit)
+                temp = _p.number.integer.divide(
+                    temp,
+                    10,
+                    {
+                        divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                    }
+                )
+            } while (temp > 0)
+        })
+
+        // Add leading digit
+        const first_digit = digits.__deprecated_get_possible_item_at(digits.__get_number_of_items() - 1).__decide(
+            ($) => $,
+            () => _p_unreachable_code_path("index cannot be out of bounds")
+        )
+        $i['add item'](48 + first_digit) // First digit
+
+        // Add decimal point if we have more digits
+        if (fixme_digits > 1 && digits.__get_number_of_items() > 1) {
+            $i['add item'](46) // '.'
+
+            // Add remaining digits in reverse order
+            for (let j = digits.__get_number_of_items() - 2; j >= 0; j--) {
+                const digit = digits.__deprecated_get_possible_item_at(j).__decide(
+                    ($) => $,
+                    () => _p_unreachable_code_path("index cannot be out of bounds")
+                )
+                $i['add item'](48 + digit)
+            }
+        }
+
+        // Add exponent part
+        $i['add item'](101) // 'e'
+        if (exponent < 0) {
+            $i['add item'](45) // '-'
+            exponent = -exponent
+        } else {
+            $i['add item'](43) // '+'
+        }
+
+        // Convert exponent to string
+        const exp_digits = _p_list_build_deprecated<number>(($i) => {
+            if (exponent === 0) {
+                $i['add item'](0)
+            } else {
+                do {
+                    const digit = exponent % 10
+                    $i['add item'](digit)
+                    exponent = _p.number.integer.divide(
+                        exponent,
+                        10,
+                        {
+                            divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                        }
+                    )
+                } while (exponent > 0)
+            }
+        })
+
+        // Add exponent digits in reverse order
+        for (let j = exp_digits.__get_number_of_items() - 1; j >= 0; j--) {
+            const digit = exp_digits.__deprecated_get_possible_item_at(j).__decide(
+                ($) => $,
+                () => _p_unreachable_code_path("index cannot be out of bounds")
+            )
+            $i['add item'](48 + digit)
+        }
+    })
+}
+
 
 export const Directory = ($: d_in.Directory): d_out_fs.Directory => {
     return $.__d_map(($, id) => _p.decide.state($, ($) => {
@@ -38,13 +312,13 @@ export const String_Literal_pseudo = (
         'delimiter': "quote" | "apostrophe"
     }
 ): d_out.Phrase => {
-    return sh.ph.serialize($p.delimiter === "quote" ? s_quoted($) : s_apostrophed($))
+    return sh.ph.serialize($p.delimiter === "quote" ? quoted_text($) : apostrophed_text($))
 }
 
 export const String_Literal = (
     $: d_in.String_Literal,
 ): d_out.Phrase => {
-    return sh.ph.serialize($.delimiter[0] === "quote" ? s_quoted($.value) : s_apostrophed($.value))
+    return sh.ph.serialize($.delimiter[0] === "quote" ? quoted_text($.value) : apostrophed_text($.value))
 }
 
 export const Statements = (
@@ -417,7 +691,7 @@ export const Expression = (
         case 'false': return _p.ss($, ($) => sh.ph.literal("false"))
         case 'identifier': return _p.ss($, ($) => Identifier($))
         case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
-        case 'number literal': return _p.ss($, ($) => sh.ph.serialize(s_number_default($)))
+        case 'number literal': return _p.ss($, ($) => sh.ph.serialize(float($)))
         case 'object literal': return _p.ss($, ($) => sh.ph.composed([
             $p['object literal needs parentheses']
                 ? sh.ph.literal("(")
@@ -465,7 +739,7 @@ export const Expression = (
             Identifier($.property),
         ]))
         case 'string literal': return _p.ss($, ($) => sh.ph.composed([
-            sh.ph.serialize($['delimiter'][0] === "quote" ? s_quoted($['value']) : s_apostrophed($['value']))
+            sh.ph.serialize($['delimiter'][0] === "quote" ? quoted_text($['value']) : apostrophed_text($['value']))
         ]))
         case 'true': return _p.ss($, ($) => sh.ph.literal("true"))
         case 'unary operation': return _p.ss($, ($) => {

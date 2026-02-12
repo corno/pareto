@@ -6,8 +6,8 @@ import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 //data types
 import * as d_target from "../../../interface/generated/liana/schemas/typescript_light/data"
 
-import { $$ as temp_s_identifier } from "../implementation/manual/primitives/text/serializers/identifier"
-
+//dependencies
+import * as t_text_to_identifier from "../implementation/manual/transformers/text/identifier"
 
 export const identifier_raw = (
     name: string,
@@ -18,8 +18,10 @@ export const identifier_raw = (
 export const identifier_escaped = (
     name: string,
 ): d_target.Identifier => ({
-    'value': _p_text_from_list(temp_s_identifier(name), ($) => $)
+    'value': _p_text_from_list(t_text_to_identifier.Identifier(name), ($) => $)
 })
+
+
 
 export const string_literal = (
     value: string,
@@ -389,7 +391,7 @@ export namespace e {
     export const identifier_escaped = (
         name: string,
     ): d_target.Expression => ['identifier', {
-        'value': _p_text_from_list(temp_s_identifier(name), ($) => $),
+        'value': _p_text_from_list(t_text_to_identifier.Identifier(name), ($) => $),
     }]
 
     export const not = (
