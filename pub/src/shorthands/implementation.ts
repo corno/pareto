@@ -274,27 +274,35 @@ export namespace a {
             entries: _p.Raw_Or_Normal_Dictionary<d_target.Assign>
         ): d_target.Assign => wrap_state(['construct', wrap_state(['dictionary', wrap_state(['literal', _p.dictionary.literal(entries)])])])
 
-        export const map = (
-            source: d_target.Select_Value,
-            entry_handler: d_target.Assign
-        ): d_target.Assign => wrap_state(['construct', wrap_state(['dictionary', wrap_state(['from', {
-            'selection': source,
-            'type': wrap_state(['dictionary', wrap_state(['map', {
-                'assign entry': entry_handler
-            }])])
-        }])])])
+        export namespace from {
 
-        export const resolve = (
-            source: d_target.Select_Value,
-            entry_handler: d_target.Assign,
-            temp_resulting_entry_node: d_target.Temp_Value_Type_Specification,
-        ): d_target.Assign => wrap_state(['construct', wrap_state(['dictionary', wrap_state(['from', {
-            'selection': source,
-            'type': wrap_state(['dictionary', wrap_state(['resolve', {
-                'assign entry': entry_handler,
-                'temp resulting entry node': temp_resulting_entry_node,
-            }])])
-        }])])])
+            export namespace dictionary {
+
+                export const map = (
+                    source: d_target.Select_Value,
+                    entry_handler: d_target.Assign
+                ): d_target.Assign => wrap_state(['construct', wrap_state(['dictionary', wrap_state(['from', {
+                    'selection': source,
+                    'type': wrap_state(['dictionary', wrap_state(['map', {
+                        'assign entry': entry_handler
+                    }])])
+                }])])])
+
+                export const resolve = (
+                    source: d_target.Select_Value,
+                    entry_handler: d_target.Assign,
+                    temp_resulting_entry_node: d_target.Temp_Value_Type_Specification,
+                ): d_target.Assign => wrap_state(['construct', wrap_state(['dictionary', wrap_state(['from', {
+                    'selection': source,
+                    'type': wrap_state(['dictionary', wrap_state(['resolve', {
+                        'assign entry': entry_handler,
+                        'temp resulting entry node': temp_resulting_entry_node,
+                    }])])
+                }])])])
+
+            }
+
+        }
 
     }
 
@@ -307,7 +315,7 @@ export namespace a {
             'have dependencies': false,
         }])])])
 
-        export const resolve = (
+        export const literal_resolve = (
             properties: _p.Raw_Or_Normal_Dictionary<d_target.Assign>
         ): d_target.Assign => wrap_state(['construct', wrap_state(['group', wrap_state(['literal', {
             'properties': _p.dictionary.literal(properties),
@@ -325,31 +333,40 @@ export namespace a {
             elements: _p.Raw_Or_Normal_List<d_target.Assign>
         ): d_target.Assign => wrap_state(['construct', wrap_state(['list', wrap_state(['literal', _p.list.literal(elements)])])])
 
-        export const map = (
-            source: d_target.Select_Value,
-            element_handler: d_target.Assign
-        ): d_target.Assign => wrap_state(['construct', wrap_state(['list', wrap_state(['from', {
-            'selection': source,
-            'type': wrap_state(['list', wrap_state(['map', {
-                'assign item': element_handler
-            }])])
-        }])])])
+        export namespace from {
 
-        export const map_with_state = (
-            source: d_target.Select_Value,
-            initial_state: d_target.Assign,
-            element_handler: d_target.Assign,
-            update_state: d_target.Assign,
-            wrap_up: d_target.Assign,
-        ): d_target.Assign => wrap_state(['construct', wrap_state(['list', wrap_state(['from', {
-            'selection': source,
-            'type': wrap_state(['list', wrap_state(['map with state', {
-                'initialize state': initial_state,
-                'assign item': element_handler,
-                'update state': update_state,
-                'wrap up': wrap_up,
-            }])])
-        }])])])
+            export namespace list {
+
+                export const map = (
+                    source: d_target.Select_Value,
+                    element_handler: d_target.Assign
+                ): d_target.Assign => wrap_state(['construct', wrap_state(['list', wrap_state(['from', {
+                    'selection': source,
+                    'type': wrap_state(['list', wrap_state(['map', {
+                        'assign item': element_handler
+                    }])])
+                }])])])
+
+                export const map_with_state = (
+                    source: d_target.Select_Value,
+                    initial_state: d_target.Assign,
+                    element_handler: d_target.Assign,
+                    update_state: d_target.Assign,
+                    wrap_up: d_target.Assign,
+                ): d_target.Assign => wrap_state(['construct', wrap_state(['list', wrap_state(['from', {
+                    'selection': source,
+                    'type': wrap_state(['list', wrap_state(['map with state', {
+                        'initialize state': initial_state,
+                        'assign item': element_handler,
+                        'update state': update_state,
+                        'wrap up': wrap_up,
+                    }])])
+                }])])])
+
+            }
+
+        }
+
 
     }
 
