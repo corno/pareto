@@ -151,20 +151,23 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
         if ($ === 0) {
             $i['add item'](48) // '0'
 
-            // Add decimal point if we have more than 1 digit
-            //FIXME: do this only when the number is not an integer number
-            $i['add item'](46) // '.'
+            // Add decimal point and digits only if there's a fractional part
+            let remainder = $ % 1
+            if (remainder !== 0) {
+                $i['add item'](46) // '.'
 
-            // Add the required number of zeros after decimal point
-            for (let i = 0; i < 16; i++) {
-                $i['add item'](48) // '0'
+                for (let i = 0; i < 16 && remainder !== 0; i++) {
+                    remainder = remainder * 10
+                    const digit = remainder | 0
+                    $i['add item'](48 + digit)
+                    remainder = remainder - digit
+                }
+
+                // Add exponent part for zero: e+0
+                $i['add item'](101) // 'e'
+                $i['add item'](43)  // '+'
+                $i['add item'](48)  // '0'
             }
-
-
-            // Add exponent part for zero: e+0
-            $i['add item'](101) // 'e'
-            $i['add item'](43)  // '+'
-            $i['add item'](48)  // '0'
             return
         }
 
@@ -231,12 +234,30 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
         )
         $i['add item'](48 + first_digit) // First digit
 
-        // Add decimal point if we have more digits
-        if (fixme_digits > 1 && digits.__get_number_of_items() > 1) {
+        // Find where significant fractional digits are
+        let first_nonzero_index = -1
+        let last_nonzero_index = -1
+        if (digits.__get_number_of_items() > 1) {
+            for (let j = 0; j < digits.__get_number_of_items() - 1; j++) {
+                const digit = digits.__deprecated_get_possible_item_at(j).__decide(
+                    ($) => $,
+                    () => _p_unreachable_code_path("index cannot be out of bounds")
+                )
+                if (digit !== 0) {
+                    if (first_nonzero_index === -1) {
+                        first_nonzero_index = j
+                    }
+                    last_nonzero_index = j
+                }
+            }
+        }
+
+        // Add decimal point and fractional digits only if there are non-zero fractional digits
+        if (first_nonzero_index >= 0) {
             $i['add item'](46) // '.'
 
-            // Add remaining digits in reverse order
-            for (let j = digits.__get_number_of_items() - 2; j >= 0; j--) {
+            // Add digits from most significant down to the first non-zero digit
+            for (let j = digits.__get_number_of_items() - 2; j >= first_nonzero_index; j--) {
                 const digit = digits.__deprecated_get_possible_item_at(j).__decide(
                     ($) => $,
                     () => _p_unreachable_code_path("index cannot be out of bounds")
@@ -245,17 +266,18 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
             }
         }
 
-        // Add exponent part
-        $i['add item'](101) // 'e'
-        if (exponent < 0) {
-            $i['add item'](45) // '-'
-            exponent = -exponent
-        } else {
-            $i['add item'](43) // '+'
-        }
+        // Add exponent part only if exponent is non-zero
+        if (exponent !== 0) {
+            $i['add item'](101) // 'e'
+            if (exponent < 0) {
+                $i['add item'](45) // '-'
+                exponent = -exponent
+            } else {
+                $i['add item'](43) // '+'
+            }
 
-        // Convert exponent to string
-        const exp_digits = _p_list_build_deprecated<number>(($i) => {
+            // Convert exponent to string
+            const exp_digits = _p_list_build_deprecated<number>(($i) => {
             if (exponent === 0) {
                 $i['add item'](0)
             } else {
@@ -280,6 +302,7 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
                 () => _p_unreachable_code_path("index cannot be out of bounds")
             )
             $i['add item'](48 + digit)
+        }
         }
     })
 }
