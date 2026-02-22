@@ -7,6 +7,8 @@ import * as t_fp_to_text from "pareto-fountain-pen/dist/implementation/manual/tr
 
 import * as sh from "pub/dist/modules/typescript_light/shorthands/typescript_light"
 
+let found_errors = false
+
 function test_number_serialization(number: number, expected: string) {
     const actual = t_fp_to_text.Phrase(
 
@@ -24,6 +26,7 @@ function test_number_serialization(number: number, expected: string) {
     )
 
     if (actual !== expected) {
+        found_errors = true
         _pdev.log_debug_message(
             `Expected: '${expected}', Actual: '${actual}'`,
             () => { }
@@ -32,6 +35,7 @@ function test_number_serialization(number: number, expected: string) {
 }
 
 test_number_serialization(1, "1")
+test_number_serialization(10, "10")
 test_number_serialization(42, "42")
 test_number_serialization(1.5, "1.5")
 test_number_serialization(-1, "-1")
@@ -39,6 +43,6 @@ test_number_serialization(-1.5, "-1.5")
 test_number_serialization(0, "0")
 test_number_serialization(0.234230000, "0.23423")
 
-
-
-_pdev.log_debug_message("TEST NOT IMPLEMENTED YET", () => { })
+if (found_errors) {
+    _pdev.implement_me("number serialization does not match expected output")
+}

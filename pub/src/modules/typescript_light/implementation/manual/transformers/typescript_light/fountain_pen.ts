@@ -323,8 +323,15 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
                 // Like 123 or 123.45
                 let digits_output = 0
                 
-                // Output all digits from highest to first_nonzero
-                for (let i = digit_count - 1; i >= first_nonzero; i--) {
+                // Output all digits from highest, but ensure we output at least decimal_pos digits before decimal
+                let min_digits_needed = decimal_pos
+                
+                for (let i = digit_count - 1; i >= 0; i--) {
+                    // Stop after we've output all significant fractional digits
+                    if (i < first_nonzero && digits_output >= decimal_pos) {
+                        break
+                    }
+
                     const d = digits.__deprecated_get_possible_item_at(i).__decide(
                         ($) => $,
                         () => _p_unreachable_code_path("index cannot be out of bounds")
