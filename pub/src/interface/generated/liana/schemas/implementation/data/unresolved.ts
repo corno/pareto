@@ -7,17 +7,17 @@ import * as i__imports_interface from "../../interface/data/unresolved"
 
 export namespace Package_Set_ {
     
-    export type l_location = i__location.Relative_Location
+    export type l_location = i__location.Range
     
     export namespace l_dictionary {
         
         export namespace D {
             
-            export type l_location = i__location.Relative_Location
+            export type l_location = i__location.Range
             
             export namespace l_entry {
                 
-                export type l_location = i__location.Relative_Location
+                export type l_location = i__location.Range
                 
                 export namespace l_state {
                     
@@ -96,25 +96,25 @@ export namespace Package_ {
     
     export namespace variable_imports {
         
-        export type l_location = i__location.Relative_Location
+        export type l_location = i__location.Range
         
         export namespace l_dictionary {
             
             export namespace D {
                 
-                export type l_location = i__location.Relative_Location
+                export type l_location = i__location.Range
                 
                 export namespace l_entry {
                     
                     export namespace tail {
                         
-                        export type l_location = i__location.Relative_Location
+                        export type l_location = i__location.Range
                         
                         export namespace l_list {
                             
                             export namespace L {
                                 
-                                export type l_location = i__location.Relative_Location
+                                export type l_location = i__location.Range
                                 
                                 export type l_item = string
                                 
@@ -138,7 +138,7 @@ export namespace Package_ {
                     
                     export namespace type_ {
                         
-                        export type l_location = i__location.Relative_Location
+                        export type l_location = i__location.Range
                         
                         export namespace l_state {
                             
@@ -200,13 +200,13 @@ export namespace Package_ {
     
     export namespace functions {
         
-        export type l_location = i__location.Relative_Location
+        export type l_location = i__location.Range
         
         export namespace l_dictionary {
             
             export namespace D {
                 
-                export type l_location = i__location.Relative_Location
+                export type l_location = i__location.Range
                 
                 export namespace l_entry {
                     
@@ -285,17 +285,17 @@ export namespace Temp_Value_Type_Specification_ {
     
     export namespace sub_selection {
         
-        export type l_location = i__location.Relative_Location
+        export type l_location = i__location.Range
         
         export namespace l_list {
             
             export namespace L {
                 
-                export type l_location = i__location.Relative_Location
+                export type l_location = i__location.Range
                 
                 export namespace l_item {
                     
-                    export type l_location = i__location.Relative_Location
+                    export type l_location = i__location.Range
                     
                     export namespace l_state {
                         
@@ -352,7 +352,7 @@ export type Temp_Value_Type_Specification_ = {
 
 export namespace Assign_ {
     
-    export type l_location = i__location.Relative_Location
+    export type l_location = i__location.Range
     
     export namespace l_state {
         
@@ -362,7 +362,7 @@ export namespace Assign_ {
             
             export namespace type_ {
                 
-                export type l_location = i__location.Relative_Location
+                export type l_location = i__location.Range
                 
                 export namespace l_state {
                     
@@ -422,7 +422,7 @@ export namespace Assign_ {
                         
                         export namespace type_ {
                             
-                            export type l_location = i__location.Relative_Location
+                            export type l_location = i__location.Range
                             
                             export namespace l_state {
                                 
@@ -430,13 +430,13 @@ export namespace Assign_ {
                                     
                                     export namespace options {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_dictionary {
                                             
                                             export namespace D {
                                                 
-                                                export type l_location = i__location.Relative_Location
+                                                export type l_location = i__location.Range
                                                 
                                                 export type l_entry = Assign_
                                                 
@@ -471,13 +471,13 @@ export namespace Assign_ {
                                     
                                     export namespace options {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_dictionary {
                                             
                                             export namespace D {
                                                 
-                                                export type l_location = i__location.Relative_Location
+                                                export type l_location = i__location.Range
                                                 
                                                 export type l_entry = Assign_
                                                 
@@ -554,13 +554,13 @@ export namespace Assign_ {
                         
                         export namespace cases {
                             
-                            export type l_location = i__location.Relative_Location
+                            export type l_location = i__location.Range
                             
                             export namespace l_dictionary {
                                 
                                 export namespace D {
                                     
-                                    export type l_location = i__location.Relative_Location
+                                    export type l_location = i__location.Range
                                     
                                     export type l_entry = Assign_
                                     
@@ -616,19 +616,19 @@ export namespace Assign_ {
         
         export namespace construct {
             
-            export type l_location = i__location.Relative_Location
+            export type l_location = i__location.Range
             
             export namespace l_state {
                 
                 export namespace boolean_ {
                     
-                    export type l_location = i__location.Relative_Location
+                    export type l_location = i__location.Range
                     
                     export namespace l_state {
                         
                         export namespace literal {
                             
-                            export type l_location = i__location.Relative_Location
+                            export type l_location = i__location.Range
                             
                             export namespace l_state {
                                 
@@ -655,13 +655,13 @@ export namespace Assign_ {
                             
                             export namespace type_ {
                                 
-                                export type l_location = i__location.Relative_Location
+                                export type l_location = i__location.Range
                                 
                                 export namespace l_state {
                                     
                                     export namespace boolean_ {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_state {
                                             
@@ -684,7 +684,7 @@ export namespace Assign_ {
                                     
                                     export namespace dictionary {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_state {
                                             
@@ -704,7 +704,7 @@ export namespace Assign_ {
                                     
                                     export namespace list {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_state {
                                             
@@ -758,19 +758,19 @@ export namespace Assign_ {
                 
                 export namespace dictionary {
                     
-                    export type l_location = i__location.Relative_Location
+                    export type l_location = i__location.Range
                     
                     export namespace l_state {
                         
                         export namespace literal {
                             
-                            export type l_location = i__location.Relative_Location
+                            export type l_location = i__location.Range
                             
                             export namespace l_dictionary {
                                 
                                 export namespace D {
                                     
-                                    export type l_location = i__location.Relative_Location
+                                    export type l_location = i__location.Range
                                     
                                     export type l_entry = Assign_
                                     
@@ -798,13 +798,13 @@ export namespace Assign_ {
                             
                             export namespace type_ {
                                 
-                                export type l_location = i__location.Relative_Location
+                                export type l_location = i__location.Range
                                 
                                 export namespace l_state {
                                     
                                     export namespace dictionary {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_state {
                                             
@@ -857,7 +857,7 @@ export namespace Assign_ {
                                     
                                     export namespace list {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_state {
                                             
@@ -924,7 +924,7 @@ export namespace Assign_ {
                 
                 export namespace group {
                     
-                    export type l_location = i__location.Relative_Location
+                    export type l_location = i__location.Range
                     
                     export namespace l_state {
                         
@@ -932,13 +932,13 @@ export namespace Assign_ {
                             
                             export namespace properties {
                                 
-                                export type l_location = i__location.Relative_Location
+                                export type l_location = i__location.Range
                                 
                                 export namespace l_dictionary {
                                     
                                     export namespace D {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export type l_entry = Assign_
                                         
@@ -983,19 +983,19 @@ export namespace Assign_ {
                 
                 export namespace list {
                     
-                    export type l_location = i__location.Relative_Location
+                    export type l_location = i__location.Range
                     
                     export namespace l_state {
                         
                         export namespace literal {
                             
-                            export type l_location = i__location.Relative_Location
+                            export type l_location = i__location.Range
                             
                             export namespace l_list {
                                 
                                 export namespace L {
                                     
-                                    export type l_location = i__location.Relative_Location
+                                    export type l_location = i__location.Range
                                     
                                     export type l_item = Assign_
                                     
@@ -1023,13 +1023,13 @@ export namespace Assign_ {
                             
                             export namespace type_ {
                                 
-                                export type l_location = i__location.Relative_Location
+                                export type l_location = i__location.Range
                                 
                                 export namespace l_state {
                                     
                                     export namespace dictionary {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_state {
                                             
@@ -1057,7 +1057,7 @@ export namespace Assign_ {
                                     
                                     export namespace list {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_state {
                                             
@@ -1168,13 +1168,13 @@ export namespace Assign_ {
                 
                 export namespace number_ {
                     
-                    export type l_location = i__location.Relative_Location
+                    export type l_location = i__location.Range
                     
                     export namespace l_state {
                         
                         export namespace approximation {
                             
-                            export type l_location = i__location.Relative_Location
+                            export type l_location = i__location.Range
                             
                             export namespace l_state {
                                 
@@ -1197,7 +1197,7 @@ export namespace Assign_ {
                         
                         export namespace integer {
                             
-                            export type l_location = i__location.Relative_Location
+                            export type l_location = i__location.Range
                             
                             export namespace l_state {
                                 
@@ -1237,7 +1237,7 @@ export namespace Assign_ {
                         
                         export namespace natural {
                             
-                            export type l_location = i__location.Relative_Location
+                            export type l_location = i__location.Range
                             
                             export namespace l_state {
                                 
@@ -1302,13 +1302,13 @@ export namespace Assign_ {
                 
                 export namespace optional {
                     
-                    export type l_location = i__location.Relative_Location
+                    export type l_location = i__location.Range
                     
                     export namespace l_state {
                         
                         export namespace literal {
                             
-                            export type l_location = i__location.Relative_Location
+                            export type l_location = i__location.Range
                             
                             export namespace l_state {
                                 
@@ -1335,13 +1335,13 @@ export namespace Assign_ {
                             
                             export namespace type_ {
                                 
-                                export type l_location = i__location.Relative_Location
+                                export type l_location = i__location.Range
                                 
                                 export namespace l_state {
                                     
                                     export namespace boolean_ {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_state {
                                             
@@ -1369,7 +1369,7 @@ export namespace Assign_ {
                                     
                                     export namespace optional {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_state {
                                             
@@ -1430,7 +1430,7 @@ export namespace Assign_ {
                 
                 export namespace state {
                     
-                    export type l_location = i__location.Relative_Location
+                    export type l_location = i__location.Range
                     
                     export namespace l_state {
                         
@@ -1461,7 +1461,7 @@ export namespace Assign_ {
                 
                 export namespace text {
                     
-                    export type l_location = i__location.Relative_Location
+                    export type l_location = i__location.Range
                     
                     export namespace l_state {
                         
@@ -1469,7 +1469,7 @@ export namespace Assign_ {
                             
                             export namespace type_ {
                                 
-                                export type l_location = i__location.Relative_Location
+                                export type l_location = i__location.Range
                                 
                                 export namespace l_state {
                                     
@@ -1505,13 +1505,13 @@ export namespace Assign_ {
                             
                             export namespace type_ {
                                 
-                                export type l_location = i__location.Relative_Location
+                                export type l_location = i__location.Range
                                 
                                 export namespace l_state {
                                     
                                     export namespace text {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_state {
                                             
@@ -1550,12 +1550,15 @@ export namespace Assign_ {
                         
                         export type source_document = null
                         
+                        export type id = null
+                        
                     }
                     
                     export type l_state = 
                         | readonly ['literal', l_state.literal]
                         | readonly ['from', l_state.from_]
                         | readonly ['source document', l_state.source_document]
+                        | readonly ['id', l_state.id]
                     
                 }
                 
@@ -1588,7 +1591,7 @@ export namespace Assign_ {
         
         export namespace special {
             
-            export type l_location = i__location.Relative_Location
+            export type l_location = i__location.Range
             
             export namespace l_state {
                 
@@ -1624,13 +1627,13 @@ export namespace Assign_ {
                     
                     export namespace variables {
                         
-                        export type l_location = i__location.Relative_Location
+                        export type l_location = i__location.Range
                         
                         export namespace l_dictionary {
                             
                             export namespace D {
                                 
-                                export type l_location = i__location.Relative_Location
+                                export type l_location = i__location.Range
                                 
                                 export type l_entry = Assign_
                                 
@@ -1721,7 +1724,7 @@ export type Assign_ = {
 
 export namespace Select_Value_ {
     
-    export type l_location = i__location.Relative_Location
+    export type l_location = i__location.Range
     
     export namespace l_state {
         
@@ -1731,7 +1734,7 @@ export namespace Select_Value_ {
             
             export namespace start {
                 
-                export type l_location = i__location.Relative_Location
+                export type l_location = i__location.Range
                 
                 export namespace l_state {
                     
@@ -1739,7 +1742,7 @@ export namespace Select_Value_ {
                         
                         export namespace source {
                             
-                            export type l_location = i__location.Relative_Location
+                            export type l_location = i__location.Range
                             
                             export namespace l_state {
                                 
@@ -1785,19 +1788,19 @@ export namespace Select_Value_ {
                             
                             export namespace O {
                                 
-                                export type l_location = i__location.Relative_Location
+                                export type l_location = i__location.Range
                                 
                                 export namespace l_state {
                                     
                                     export namespace initialize {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_dictionary {
                                             
                                             export namespace D {
                                                 
-                                                export type l_location = i__location.Relative_Location
+                                                export type l_location = i__location.Range
                                                 
                                                 export type l_entry = Select_Lookup_
                                                 
@@ -1842,19 +1845,19 @@ export namespace Select_Value_ {
                             
                             export namespace O {
                                 
-                                export type l_location = i__location.Relative_Location
+                                export type l_location = i__location.Range
                                 
                                 export namespace l_state {
                                     
                                     export namespace initialize {
                                         
-                                        export type l_location = i__location.Relative_Location
+                                        export type l_location = i__location.Range
                                         
                                         export namespace l_dictionary {
                                             
                                             export namespace D {
                                                 
-                                                export type l_location = i__location.Relative_Location
+                                                export type l_location = i__location.Range
                                                 
                                                 export type l_entry = Assign_
                                                 
@@ -2044,13 +2047,13 @@ export namespace Select_Value_ {
             
             export namespace tail {
                 
-                export type l_location = i__location.Relative_Location
+                export type l_location = i__location.Range
                 
                 export namespace l_list {
                     
                     export namespace L {
                         
-                        export type l_location = i__location.Relative_Location
+                        export type l_location = i__location.Range
                         
                         export type l_item = string
                         
@@ -2094,7 +2097,7 @@ export type Select_Value_ = {
 
 export namespace Select_Lookup_ {
     
-    export type l_location = i__location.Relative_Location
+    export type l_location = i__location.Range
     
     export namespace l_state {
         
@@ -2104,7 +2107,7 @@ export namespace Select_Lookup_ {
         
         export namespace stack {
             
-            export type l_location = i__location.Relative_Location
+            export type l_location = i__location.Range
             
             export namespace l_state {
                 
@@ -2138,7 +2141,7 @@ export namespace Select_Lookup_ {
         
         export namespace acyclic {
             
-            export type l_location = i__location.Relative_Location
+            export type l_location = i__location.Range
             
             export namespace l_state {
                 
@@ -2164,7 +2167,7 @@ export namespace Select_Lookup_ {
         
         export namespace cyclic {
             
-            export type l_location = i__location.Relative_Location
+            export type l_location = i__location.Range
             
             export namespace l_state {
                 

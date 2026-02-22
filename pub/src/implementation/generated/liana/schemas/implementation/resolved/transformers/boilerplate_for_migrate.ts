@@ -11,9 +11,22 @@ import * as v_interface from "../../../interface/resolved/transformers/boilerpla
 
 export const Package_Set: t_signatures.Package_Set = ($) => ({
     'l location': {
-        'document resource identifier': "implement me",
-        'line': 42,
-        'column': 42,
+        'start': {
+            'absolute': 42,
+            'relative': {
+                'document resource identifier': "implement me",
+                'line': 42,
+                'column': 42,
+            },
+        },
+        'end': {
+            'absolute': 42,
+            'relative': {
+                'document resource identifier': "implement me",
+                'line': 42,
+                'column': 42,
+            },
+        },
     },
     'l dictionary': _p.dictionary.from.dictionary(
         $,
@@ -21,9 +34,22 @@ export const Package_Set: t_signatures.Package_Set = ($) => ({
         ($, id) => ({
             'l entry': {
                 'l location': {
-                    'document resource identifier': "implement me",
-                    'line': 42,
-                    'column': 42,
+                    'start': {
+                        'absolute': 42,
+                        'relative': {
+                            'document resource identifier': "implement me",
+                            'line': 42,
+                            'column': 42,
+                        },
+                    },
+                    'end': {
+                        'absolute': 42,
+                        'relative': {
+                            'document resource identifier': "implement me",
+                            'line': 42,
+                            'column': 42,
+                        },
+                    },
                 },
                 'l state': _p.decide.state(
                     $,
@@ -52,9 +78,22 @@ export const Package_Set: t_signatures.Package_Set = ($) => ({
                 ),
             },
             'l location': {
-                'document resource identifier': "implement me",
-                'line': 42,
-                'column': 42,
+                'start': {
+                    'absolute': 42,
+                    'relative': {
+                        'document resource identifier': "implement me",
+                        'line': 42,
+                        'column': 42,
+                    },
+                },
+                'end': {
+                    'absolute': 42,
+                    'relative': {
+                        'document resource identifier': "implement me",
+                        'line': 42,
+                        'column': 42,
+                    },
+                },
             },
         }),
     ),
@@ -112,9 +151,22 @@ export const Package: t_signatures.Package = ($) => ({
         $['variable imports'],
         ($) => ({
             'l location': {
-                'document resource identifier': "implement me",
-                'line': 42,
-                'column': 42,
+                'start': {
+                    'absolute': 42,
+                    'relative': {
+                        'document resource identifier': "implement me",
+                        'line': 42,
+                        'column': 42,
+                    },
+                },
+                'end': {
+                    'absolute': 42,
+                    'relative': {
+                        'document resource identifier': "implement me",
+                        'line': 42,
+                        'column': 42,
+                    },
+                },
             },
             'l dictionary': _p.dictionary.from.dictionary(
                 $,
@@ -125,9 +177,22 @@ export const Package: t_signatures.Package = ($) => ({
                             $['tail'],
                             ($) => ({
                                 'l location': {
-                                    'document resource identifier': "implement me",
-                                    'line': 42,
-                                    'column': 42,
+                                    'start': {
+                                        'absolute': 42,
+                                        'relative': {
+                                            'document resource identifier': "implement me",
+                                            'line': 42,
+                                            'column': 42,
+                                        },
+                                    },
+                                    'end': {
+                                        'absolute': 42,
+                                        'relative': {
+                                            'document resource identifier': "implement me",
+                                            'line': 42,
+                                            'column': 42,
+                                        },
+                                    },
                                 },
                                 'l list': _p.list.from.list(
                                     $,
@@ -135,9 +200,22 @@ export const Package: t_signatures.Package = ($) => ({
                                     ($) => ({
                                         'l item': $,
                                         'l location': {
-                                            'document resource identifier': "implement me",
-                                            'line': 42,
-                                            'column': 42,
+                                            'start': {
+                                                'absolute': 42,
+                                                'relative': {
+                                                    'document resource identifier': "implement me",
+                                                    'line': 42,
+                                                    'column': 42,
+                                                },
+                                            },
+                                            'end': {
+                                                'absolute': 42,
+                                                'relative': {
+                                                    'document resource identifier': "implement me",
+                                                    'line': 42,
+                                                    'column': 42,
+                                                },
+                                            },
                                         },
                                     }),
                                 ),
@@ -147,9 +225,22 @@ export const Package: t_signatures.Package = ($) => ({
                             $['type'],
                             ($) => ({
                                 'l location': {
-                                    'document resource identifier': "implement me",
-                                    'line': 42,
-                                    'column': 42,
+                                    'start': {
+                                        'absolute': 42,
+                                        'relative': {
+                                            'document resource identifier': "implement me",
+                                            'line': 42,
+                                            'column': 42,
+                                        },
+                                    },
+                                    'end': {
+                                        'absolute': 42,
+                                        'relative': {
+                                            'document resource identifier': "implement me",
+                                            'line': 42,
+                                            'column': 42,
+                                        },
+                                    },
                                 },
                                 'l state': _p.decide.state(
                                     $,
@@ -190,9 +281,22 @@ export const Package: t_signatures.Package = ($) => ({
                         ),
                     },
                     'l location': {
-                        'document resource identifier': "implement me",
-                        'line': 42,
-                        'column': 42,
+                        'start': {
+                            'absolute': 42,
+                            'relative': {
+                                'document resource identifier': "implement me",
+                                'line': 42,
+                                'column': 42,
+                            },
+                        },
+                        'end': {
+                            'absolute': 42,
+                            'relative': {
+                                'document resource identifier': "implement me",
+                                'line': 42,
+                                'column': 42,
+                            },
+                        },
                     },
                 }),
             ),
@@ -202,9 +306,22 @@ export const Package: t_signatures.Package = ($) => ({
         $['functions'],
         ($) => ({
             'l location': {
-                'document resource identifier': "implement me",
-                'line': 42,
-                'column': 42,
+                'start': {
+                    'absolute': 42,
+                    'relative': {
+                        'document resource identifier': "implement me",
+                        'line': 42,
+                        'column': 42,
+                    },
+                },
+                'end': {
+                    'absolute': 42,
+                    'relative': {
+                        'document resource identifier': "implement me",
+                        'line': 42,
+                        'column': 42,
+                    },
+                },
             },
             'l dictionary': _p.dictionary.from.dictionary(
                 $,
@@ -244,9 +361,22 @@ export const Package: t_signatures.Package = ($) => ({
                         ),
                     },
                     'l location': {
-                        'document resource identifier': "implement me",
-                        'line': 42,
-                        'column': 42,
+                        'start': {
+                            'absolute': 42,
+                            'relative': {
+                                'document resource identifier': "implement me",
+                                'line': 42,
+                                'column': 42,
+                            },
+                        },
+                        'end': {
+                            'absolute': 42,
+                            'relative': {
+                                'document resource identifier': "implement me",
+                                'line': 42,
+                                'column': 42,
+                            },
+                        },
                     },
                 }),
             ),
@@ -272,9 +402,22 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
         $['sub selection'],
         ($) => ({
             'l location': {
-                'document resource identifier': "implement me",
-                'line': 42,
-                'column': 42,
+                'start': {
+                    'absolute': 42,
+                    'relative': {
+                        'document resource identifier': "implement me",
+                        'line': 42,
+                        'column': 42,
+                    },
+                },
+                'end': {
+                    'absolute': 42,
+                    'relative': {
+                        'document resource identifier': "implement me",
+                        'line': 42,
+                        'column': 42,
+                    },
+                },
             },
             'l list': _p.list.from.list(
                 $,
@@ -282,9 +425,22 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                 ($) => ({
                     'l item': {
                         'l location': {
-                            'document resource identifier': "implement me",
-                            'line': 42,
-                            'column': 42,
+                            'start': {
+                                'absolute': 42,
+                                'relative': {
+                                    'document resource identifier': "implement me",
+                                    'line': 42,
+                                    'column': 42,
+                                },
+                            },
+                            'end': {
+                                'absolute': 42,
+                                'relative': {
+                                    'document resource identifier': "implement me",
+                                    'line': 42,
+                                    'column': 42,
+                                },
+                            },
                         },
                         'l state': _p.decide.state(
                             $,
@@ -324,9 +480,22 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                         ),
                     },
                     'l location': {
-                        'document resource identifier': "implement me",
-                        'line': 42,
-                        'column': 42,
+                        'start': {
+                            'absolute': 42,
+                            'relative': {
+                                'document resource identifier': "implement me",
+                                'line': 42,
+                                'column': 42,
+                            },
+                        },
+                        'end': {
+                            'absolute': 42,
+                            'relative': {
+                                'document resource identifier': "implement me",
+                                'line': 42,
+                                'column': 42,
+                            },
+                        },
                     },
                 }),
             ),
@@ -336,9 +505,22 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
 
 export const Assign: t_signatures.Assign = ($) => ({
     'l location': {
-        'document resource identifier': "implement me",
-        'line': 42,
-        'column': 42,
+        'start': {
+            'absolute': 42,
+            'relative': {
+                'document resource identifier': "implement me",
+                'line': 42,
+                'column': 42,
+            },
+        },
+        'end': {
+            'absolute': 42,
+            'relative': {
+                'document resource identifier': "implement me",
+                'line': 42,
+                'column': 42,
+            },
+        },
     },
     'l state': _p.decide.state(
         $,
@@ -358,9 +540,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                 $['type'],
                                 ($) => ({
                                     'l location': {
-                                        'document resource identifier': "implement me",
-                                        'line': 42,
-                                        'column': 42,
+                                        'start': {
+                                            'absolute': 42,
+                                            'relative': {
+                                                'document resource identifier': "implement me",
+                                                'line': 42,
+                                                'column': 42,
+                                            },
+                                        },
+                                        'end': {
+                                            'absolute': 42,
+                                            'relative': {
+                                                'document resource identifier': "implement me",
+                                                'line': 42,
+                                                'column': 42,
+                                            },
+                                        },
                                     },
                                     'l state': _p.decide.state(
                                         $,
@@ -440,9 +635,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                 $['type'],
                                                                 ($) => ({
                                                                     'l location': {
-                                                                        'document resource identifier': "implement me",
-                                                                        'line': 42,
-                                                                        'column': 42,
+                                                                        'start': {
+                                                                            'absolute': 42,
+                                                                            'relative': {
+                                                                                'document resource identifier': "implement me",
+                                                                                'line': 42,
+                                                                                'column': 42,
+                                                                            },
+                                                                        },
+                                                                        'end': {
+                                                                            'absolute': 42,
+                                                                            'relative': {
+                                                                                'document resource identifier': "implement me",
+                                                                                'line': 42,
+                                                                                'column': 42,
+                                                                            },
+                                                                        },
                                                                     },
                                                                     'l state': _p.decide.state(
                                                                         $,
@@ -456,9 +664,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                 $['options'],
                                                                                                 ($) => ({
                                                                                                     'l location': {
-                                                                                                        'document resource identifier': "implement me",
-                                                                                                        'line': 42,
-                                                                                                        'column': 42,
+                                                                                                        'start': {
+                                                                                                            'absolute': 42,
+                                                                                                            'relative': {
+                                                                                                                'document resource identifier': "implement me",
+                                                                                                                'line': 42,
+                                                                                                                'column': 42,
+                                                                                                            },
+                                                                                                        },
+                                                                                                        'end': {
+                                                                                                            'absolute': 42,
+                                                                                                            'relative': {
+                                                                                                                'document resource identifier': "implement me",
+                                                                                                                'line': 42,
+                                                                                                                'column': 42,
+                                                                                                            },
+                                                                                                        },
                                                                                                     },
                                                                                                     'l dictionary': _p.dictionary.from.dictionary(
                                                                                                         $,
@@ -468,9 +689,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 $,
                                                                                                             ),
                                                                                                             'l location': {
-                                                                                                                'document resource identifier': "implement me",
-                                                                                                                'line': 42,
-                                                                                                                'column': 42,
+                                                                                                                'start': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
+                                                                                                                'end': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
                                                                                                             },
                                                                                                         }),
                                                                                                     ),
@@ -492,9 +726,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                 $['options'],
                                                                                                 ($) => ({
                                                                                                     'l location': {
-                                                                                                        'document resource identifier': "implement me",
-                                                                                                        'line': 42,
-                                                                                                        'column': 42,
+                                                                                                        'start': {
+                                                                                                            'absolute': 42,
+                                                                                                            'relative': {
+                                                                                                                'document resource identifier': "implement me",
+                                                                                                                'line': 42,
+                                                                                                                'column': 42,
+                                                                                                            },
+                                                                                                        },
+                                                                                                        'end': {
+                                                                                                            'absolute': 42,
+                                                                                                            'relative': {
+                                                                                                                'document resource identifier': "implement me",
+                                                                                                                'line': 42,
+                                                                                                                'column': 42,
+                                                                                                            },
+                                                                                                        },
                                                                                                     },
                                                                                                     'l dictionary': _p.dictionary.from.dictionary(
                                                                                                         $,
@@ -504,9 +751,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 $,
                                                                                                             ),
                                                                                                             'l location': {
-                                                                                                                'document resource identifier': "implement me",
-                                                                                                                'line': 42,
-                                                                                                                'column': 42,
+                                                                                                                'start': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
+                                                                                                                'end': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
                                                                                                             },
                                                                                                         }),
                                                                                                     ),
@@ -565,9 +825,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                 $['cases'],
                                                                 ($) => ({
                                                                     'l location': {
-                                                                        'document resource identifier': "implement me",
-                                                                        'line': 42,
-                                                                        'column': 42,
+                                                                        'start': {
+                                                                            'absolute': 42,
+                                                                            'relative': {
+                                                                                'document resource identifier': "implement me",
+                                                                                'line': 42,
+                                                                                'column': 42,
+                                                                            },
+                                                                        },
+                                                                        'end': {
+                                                                            'absolute': 42,
+                                                                            'relative': {
+                                                                                'document resource identifier': "implement me",
+                                                                                'line': 42,
+                                                                                'column': 42,
+                                                                            },
+                                                                        },
                                                                     },
                                                                     'l dictionary': _p.dictionary.from.dictionary(
                                                                         $,
@@ -577,9 +850,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 $,
                                                                             ),
                                                                             'l location': {
-                                                                                'document resource identifier': "implement me",
-                                                                                'line': 42,
-                                                                                'column': 42,
+                                                                                'start': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
+                                                                                'end': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
                                                                             },
                                                                         }),
                                                                     ),
@@ -609,9 +895,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                         $,
                         ($) => ['construct', {
                             'l location': {
-                                'document resource identifier': "implement me",
-                                'line': 42,
-                                'column': 42,
+                                'start': {
+                                    'absolute': 42,
+                                    'relative': {
+                                        'document resource identifier': "implement me",
+                                        'line': 42,
+                                        'column': 42,
+                                    },
+                                },
+                                'end': {
+                                    'absolute': 42,
+                                    'relative': {
+                                        'document resource identifier': "implement me",
+                                        'line': 42,
+                                        'column': 42,
+                                    },
+                                },
                             },
                             'l state': _p.decide.state(
                                 $,
@@ -622,9 +921,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                 $,
                                                 ($) => ['boolean', {
                                                     'l location': {
-                                                        'document resource identifier': "implement me",
-                                                        'line': 42,
-                                                        'column': 42,
+                                                        'start': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
+                                                        'end': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
@@ -635,9 +947,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         $,
                                                                         ($) => ['literal', {
                                                                             'l location': {
-                                                                                'document resource identifier': "implement me",
-                                                                                'line': 42,
-                                                                                'column': 42,
+                                                                                'start': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
+                                                                                'end': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             'l state': _p.decide.state(
                                                                                 $,
@@ -676,9 +1001,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 $['type'],
                                                                                 ($) => ({
                                                                                     'l location': {
-                                                                                        'document resource identifier': "implement me",
-                                                                                        'line': 42,
-                                                                                        'column': 42,
+                                                                                        'start': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
+                                                                                        'end': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     'l state': _p.decide.state(
                                                                                         $,
@@ -689,9 +1027,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         $,
                                                                                                         ($) => ['boolean', {
                                                                                                             'l location': {
-                                                                                                                'document resource identifier': "implement me",
-                                                                                                                'line': 42,
-                                                                                                                'column': 42,
+                                                                                                                'start': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
+                                                                                                                'end': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
@@ -721,9 +1072,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         $,
                                                                                                         ($) => ['dictionary', {
                                                                                                             'l location': {
-                                                                                                                'document resource identifier': "implement me",
-                                                                                                                'line': 42,
-                                                                                                                'column': 42,
+                                                                                                                'start': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
+                                                                                                                'end': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
@@ -748,9 +1112,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         $,
                                                                                                         ($) => ['list', {
                                                                                                             'l location': {
-                                                                                                                'document resource identifier': "implement me",
-                                                                                                                'line': 42,
-                                                                                                                'column': 42,
+                                                                                                                'start': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
+                                                                                                                'end': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
@@ -795,9 +1172,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                 $,
                                                 ($) => ['dictionary', {
                                                     'l location': {
-                                                        'document resource identifier': "implement me",
-                                                        'line': 42,
-                                                        'column': 42,
+                                                        'start': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
+                                                        'end': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
@@ -808,9 +1198,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         $,
                                                                         ($) => ['literal', {
                                                                             'l location': {
-                                                                                'document resource identifier': "implement me",
-                                                                                'line': 42,
-                                                                                'column': 42,
+                                                                                'start': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
+                                                                                'end': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             'l dictionary': _p.dictionary.from.dictionary(
                                                                                 $,
@@ -820,9 +1223,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         $,
                                                                                     ),
                                                                                     'l location': {
-                                                                                        'document resource identifier': "implement me",
-                                                                                        'line': 42,
-                                                                                        'column': 42,
+                                                                                        'start': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
+                                                                                        'end': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                 }),
                                                                             ),
@@ -842,9 +1258,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 $['type'],
                                                                                 ($) => ({
                                                                                     'l location': {
-                                                                                        'document resource identifier': "implement me",
-                                                                                        'line': 42,
-                                                                                        'column': 42,
+                                                                                        'start': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
+                                                                                        'end': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     'l state': _p.decide.state(
                                                                                         $,
@@ -855,9 +1284,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         $,
                                                                                                         ($) => ['dictionary', {
                                                                                                             'l location': {
-                                                                                                                'document resource identifier': "implement me",
-                                                                                                                'line': 42,
-                                                                                                                'column': 42,
+                                                                                                                'start': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
+                                                                                                                'end': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
@@ -919,9 +1361,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         $,
                                                                                                         ($) => ['list', {
                                                                                                             'l location': {
-                                                                                                                'document resource identifier': "implement me",
-                                                                                                                'line': 42,
-                                                                                                                'column': 42,
+                                                                                                                'start': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
+                                                                                                                'end': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
@@ -985,9 +1440,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                 $,
                                                 ($) => ['group', {
                                                     'l location': {
-                                                        'document resource identifier': "implement me",
-                                                        'line': 42,
-                                                        'column': 42,
+                                                        'start': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
+                                                        'end': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
@@ -1001,9 +1469,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 $['properties'],
                                                                                 ($) => ({
                                                                                     'l location': {
-                                                                                        'document resource identifier': "implement me",
-                                                                                        'line': 42,
-                                                                                        'column': 42,
+                                                                                        'start': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
+                                                                                        'end': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     'l dictionary': _p.dictionary.from.dictionary(
                                                                                         $,
@@ -1013,9 +1494,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                 $,
                                                                                             ),
                                                                                             'l location': {
-                                                                                                'document resource identifier': "implement me",
-                                                                                                'line': 42,
-                                                                                                'column': 42,
+                                                                                                'start': {
+                                                                                                    'absolute': 42,
+                                                                                                    'relative': {
+                                                                                                        'document resource identifier': "implement me",
+                                                                                                        'line': 42,
+                                                                                                        'column': 42,
+                                                                                                    },
+                                                                                                },
+                                                                                                'end': {
+                                                                                                    'absolute': 42,
+                                                                                                    'relative': {
+                                                                                                        'document resource identifier': "implement me",
+                                                                                                        'line': 42,
+                                                                                                        'column': 42,
+                                                                                                    },
+                                                                                                },
                                                                                             },
                                                                                         }),
                                                                                     ),
@@ -1041,9 +1535,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                 $,
                                                 ($) => ['list', {
                                                     'l location': {
-                                                        'document resource identifier': "implement me",
-                                                        'line': 42,
-                                                        'column': 42,
+                                                        'start': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
+                                                        'end': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
@@ -1054,9 +1561,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         $,
                                                                         ($) => ['literal', {
                                                                             'l location': {
-                                                                                'document resource identifier': "implement me",
-                                                                                'line': 42,
-                                                                                'column': 42,
+                                                                                'start': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
+                                                                                'end': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             'l list': _p.list.from.list(
                                                                                 $,
@@ -1066,9 +1586,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         $,
                                                                                     ),
                                                                                     'l location': {
-                                                                                        'document resource identifier': "implement me",
-                                                                                        'line': 42,
-                                                                                        'column': 42,
+                                                                                        'start': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
+                                                                                        'end': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                 }),
                                                                             ),
@@ -1088,9 +1621,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 $['type'],
                                                                                 ($) => ({
                                                                                     'l location': {
-                                                                                        'document resource identifier': "implement me",
-                                                                                        'line': 42,
-                                                                                        'column': 42,
+                                                                                        'start': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
+                                                                                        'end': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     'l state': _p.decide.state(
                                                                                         $,
@@ -1101,9 +1647,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         $,
                                                                                                         ($) => ['dictionary', {
                                                                                                             'l location': {
-                                                                                                                'document resource identifier': "implement me",
-                                                                                                                'line': 42,
-                                                                                                                'column': 42,
+                                                                                                                'start': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
+                                                                                                                'end': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
@@ -1135,9 +1694,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         $,
                                                                                                         ($) => ['list', {
                                                                                                             'l location': {
-                                                                                                                'document resource identifier': "implement me",
-                                                                                                                'line': 42,
-                                                                                                                'column': 42,
+                                                                                                                'start': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
+                                                                                                                'end': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
@@ -1259,9 +1831,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                 $,
                                                 ($) => ['number', {
                                                     'l location': {
-                                                        'document resource identifier': "implement me",
-                                                        'line': 42,
-                                                        'column': 42,
+                                                        'start': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
+                                                        'end': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
@@ -1272,9 +1857,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         $,
                                                                         ($) => ['approximation', {
                                                                             'l location': {
-                                                                                'document resource identifier': "implement me",
-                                                                                'line': 42,
-                                                                                'column': 42,
+                                                                                'start': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
+                                                                                'end': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             'l state': _p.decide.state(
                                                                                 $,
@@ -1306,9 +1904,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         $,
                                                                         ($) => ['integer', {
                                                                             'l location': {
-                                                                                'document resource identifier': "implement me",
-                                                                                'line': 42,
-                                                                                'column': 42,
+                                                                                'start': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
+                                                                                'end': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             'l state': _p.decide.state(
                                                                                 $,
@@ -1364,9 +1975,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         $,
                                                                         ($) => ['natural', {
                                                                             'l location': {
-                                                                                'document resource identifier': "implement me",
-                                                                                'line': 42,
-                                                                                'column': 42,
+                                                                                'start': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
+                                                                                'end': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             'l state': _p.decide.state(
                                                                                 $,
@@ -1441,9 +2065,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                 $,
                                                 ($) => ['optional', {
                                                     'l location': {
-                                                        'document resource identifier': "implement me",
-                                                        'line': 42,
-                                                        'column': 42,
+                                                        'start': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
+                                                        'end': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
@@ -1454,9 +2091,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         $,
                                                                         ($) => ['literal', {
                                                                             'l location': {
-                                                                                'document resource identifier': "implement me",
-                                                                                'line': 42,
-                                                                                'column': 42,
+                                                                                'start': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
+                                                                                'end': {
+                                                                                    'absolute': 42,
+                                                                                    'relative': {
+                                                                                        'document resource identifier': "implement me",
+                                                                                        'line': 42,
+                                                                                        'column': 42,
+                                                                                    },
+                                                                                },
                                                                             },
                                                                             'l state': _p.decide.state(
                                                                                 $,
@@ -1497,9 +2147,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 $['type'],
                                                                                 ($) => ({
                                                                                     'l location': {
-                                                                                        'document resource identifier': "implement me",
-                                                                                        'line': 42,
-                                                                                        'column': 42,
+                                                                                        'start': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
+                                                                                        'end': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     'l state': _p.decide.state(
                                                                                         $,
@@ -1510,9 +2173,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         $,
                                                                                                         ($) => ['boolean', {
                                                                                                             'l location': {
-                                                                                                                'document resource identifier': "implement me",
-                                                                                                                'line': 42,
-                                                                                                                'column': 42,
+                                                                                                                'start': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
+                                                                                                                'end': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
@@ -1544,9 +2220,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         $,
                                                                                                         ($) => ['optional', {
                                                                                                             'l location': {
-                                                                                                                'document resource identifier': "implement me",
-                                                                                                                'line': 42,
-                                                                                                                'column': 42,
+                                                                                                                'start': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
+                                                                                                                'end': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
@@ -1598,9 +2287,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                 $,
                                                 ($) => ['state', {
                                                     'l location': {
-                                                        'document resource identifier': "implement me",
-                                                        'line': 42,
-                                                        'column': 42,
+                                                        'start': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
+                                                        'end': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
@@ -1636,9 +2338,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                 $,
                                                 ($) => ['text', {
                                                     'l location': {
-                                                        'document resource identifier': "implement me",
-                                                        'line': 42,
-                                                        'column': 42,
+                                                        'start': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
+                                                        'end': {
+                                                            'absolute': 42,
+                                                            'relative': {
+                                                                'document resource identifier': "implement me",
+                                                                'line': 42,
+                                                                'column': 42,
+                                                            },
+                                                        },
                                                     },
                                                     'l state': _p.decide.state(
                                                         $,
@@ -1652,9 +2367,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 $['type'],
                                                                                 ($) => ({
                                                                                     'l location': {
-                                                                                        'document resource identifier': "implement me",
-                                                                                        'line': 42,
-                                                                                        'column': 42,
+                                                                                        'start': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
+                                                                                        'end': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     'l state': _p.decide.state(
                                                                                         $,
@@ -1699,9 +2427,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 $['type'],
                                                                                 ($) => ({
                                                                                     'l location': {
-                                                                                        'document resource identifier': "implement me",
-                                                                                        'line': 42,
-                                                                                        'column': 42,
+                                                                                        'start': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
+                                                                                        'end': {
+                                                                                            'absolute': 42,
+                                                                                            'relative': {
+                                                                                                'document resource identifier': "implement me",
+                                                                                                'line': 42,
+                                                                                                'column': 42,
+                                                                                            },
+                                                                                        },
                                                                                     },
                                                                                     'l state': _p.decide.state(
                                                                                         $,
@@ -1712,9 +2453,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         $,
                                                                                                         ($) => ['text', {
                                                                                                             'l location': {
-                                                                                                                'document resource identifier': "implement me",
-                                                                                                                'line': 42,
-                                                                                                                'column': 42,
+                                                                                                                'start': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
+                                                                                                                'end': {
+                                                                                                                    'absolute': 42,
+                                                                                                                    'relative': {
+                                                                                                                        'document resource identifier': "implement me",
+                                                                                                                        'line': 42,
+                                                                                                                        'column': 42,
+                                                                                                                    },
+                                                                                                                },
                                                                                                             },
                                                                                                             'l state': _p.decide.state(
                                                                                                                 $,
@@ -1750,6 +2504,11 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         $,
                                                                         ($) => ['source document', null],
                                                                     )
+                                                                case 'id':
+                                                                    return _p.ss(
+                                                                        $,
+                                                                        ($) => ['id', null],
+                                                                    )
                                                                 default:
                                                                     return _p.au(
                                                                         $[0],
@@ -1780,9 +2539,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                         $,
                         ($) => ['special', {
                             'l location': {
-                                'document resource identifier': "implement me",
-                                'line': 42,
-                                'column': 42,
+                                'start': {
+                                    'absolute': 42,
+                                    'relative': {
+                                        'document resource identifier': "implement me",
+                                        'line': 42,
+                                        'column': 42,
+                                    },
+                                },
+                                'end': {
+                                    'absolute': 42,
+                                    'relative': {
+                                        'document resource identifier': "implement me",
+                                        'line': 42,
+                                        'column': 42,
+                                    },
+                                },
                             },
                             'l state': _p.decide.state(
                                 $,
@@ -1839,9 +2611,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         $['variables'],
                                                         ($) => ({
                                                             'l location': {
-                                                                'document resource identifier': "implement me",
-                                                                'line': 42,
-                                                                'column': 42,
+                                                                'start': {
+                                                                    'absolute': 42,
+                                                                    'relative': {
+                                                                        'document resource identifier': "implement me",
+                                                                        'line': 42,
+                                                                        'column': 42,
+                                                                    },
+                                                                },
+                                                                'end': {
+                                                                    'absolute': 42,
+                                                                    'relative': {
+                                                                        'document resource identifier': "implement me",
+                                                                        'line': 42,
+                                                                        'column': 42,
+                                                                    },
+                                                                },
                                                             },
                                                             'l dictionary': _p.dictionary.from.dictionary(
                                                                 $,
@@ -1851,9 +2636,22 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         $,
                                                                     ),
                                                                     'l location': {
-                                                                        'document resource identifier': "implement me",
-                                                                        'line': 42,
-                                                                        'column': 42,
+                                                                        'start': {
+                                                                            'absolute': 42,
+                                                                            'relative': {
+                                                                                'document resource identifier': "implement me",
+                                                                                'line': 42,
+                                                                                'column': 42,
+                                                                            },
+                                                                        },
+                                                                        'end': {
+                                                                            'absolute': 42,
+                                                                            'relative': {
+                                                                                'document resource identifier': "implement me",
+                                                                                'line': 42,
+                                                                                'column': 42,
+                                                                            },
+                                                                        },
                                                                     },
                                                                 }),
                                                             ),
@@ -1920,9 +2718,22 @@ export const Assign: t_signatures.Assign = ($) => ({
 
 export const Select_Value: t_signatures.Select_Value = ($) => ({
     'l location': {
-        'document resource identifier': "implement me",
-        'line': 42,
-        'column': 42,
+        'start': {
+            'absolute': 42,
+            'relative': {
+                'document resource identifier': "implement me",
+                'line': 42,
+                'column': 42,
+            },
+        },
+        'end': {
+            'absolute': 42,
+            'relative': {
+                'document resource identifier': "implement me",
+                'line': 42,
+                'column': 42,
+            },
+        },
     },
     'l state': _p.decide.state(
         $,
@@ -1941,9 +2752,22 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                 $['start'],
                                 ($) => ({
                                     'l location': {
-                                        'document resource identifier': "implement me",
-                                        'line': 42,
-                                        'column': 42,
+                                        'start': {
+                                            'absolute': 42,
+                                            'relative': {
+                                                'document resource identifier': "implement me",
+                                                'line': 42,
+                                                'column': 42,
+                                            },
+                                        },
+                                        'end': {
+                                            'absolute': 42,
+                                            'relative': {
+                                                'document resource identifier': "implement me",
+                                                'line': 42,
+                                                'column': 42,
+                                            },
+                                        },
                                     },
                                     'l state': _p.decide.state(
                                         $,
@@ -1957,9 +2781,22 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                 $['source'],
                                                                 ($) => ({
                                                                     'l location': {
-                                                                        'document resource identifier': "implement me",
-                                                                        'line': 42,
-                                                                        'column': 42,
+                                                                        'start': {
+                                                                            'absolute': 42,
+                                                                            'relative': {
+                                                                                'document resource identifier': "implement me",
+                                                                                'line': 42,
+                                                                                'column': 42,
+                                                                            },
+                                                                        },
+                                                                        'end': {
+                                                                            'absolute': 42,
+                                                                            'relative': {
+                                                                                'document resource identifier': "implement me",
+                                                                                'line': 42,
+                                                                                'column': 42,
+                                                                            },
+                                                                        },
                                                                     },
                                                                     'l state': _p.decide.state(
                                                                         $,
@@ -2016,9 +2853,22 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                 ).map(
                                                                     ($) => ({
                                                                         'l location': {
-                                                                            'document resource identifier': "implement me",
-                                                                            'line': 42,
-                                                                            'column': 42,
+                                                                            'start': {
+                                                                                'absolute': 42,
+                                                                                'relative': {
+                                                                                    'document resource identifier': "implement me",
+                                                                                    'line': 42,
+                                                                                    'column': 42,
+                                                                                },
+                                                                            },
+                                                                            'end': {
+                                                                                'absolute': 42,
+                                                                                'relative': {
+                                                                                    'document resource identifier': "implement me",
+                                                                                    'line': 42,
+                                                                                    'column': 42,
+                                                                                },
+                                                                            },
                                                                         },
                                                                         'l state': _p.decide.state(
                                                                             $,
@@ -2029,9 +2879,22 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                                             $,
                                                                                             ($) => ['initialize', {
                                                                                                 'l location': {
-                                                                                                    'document resource identifier': "implement me",
-                                                                                                    'line': 42,
-                                                                                                    'column': 42,
+                                                                                                    'start': {
+                                                                                                        'absolute': 42,
+                                                                                                        'relative': {
+                                                                                                            'document resource identifier': "implement me",
+                                                                                                            'line': 42,
+                                                                                                            'column': 42,
+                                                                                                        },
+                                                                                                    },
+                                                                                                    'end': {
+                                                                                                        'absolute': 42,
+                                                                                                        'relative': {
+                                                                                                            'document resource identifier': "implement me",
+                                                                                                            'line': 42,
+                                                                                                            'column': 42,
+                                                                                                        },
+                                                                                                    },
                                                                                                 },
                                                                                                 'l dictionary': _p.dictionary.from.dictionary(
                                                                                                     $,
@@ -2041,9 +2904,22 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                                                             $,
                                                                                                         ),
                                                                                                         'l location': {
-                                                                                                            'document resource identifier': "implement me",
-                                                                                                            'line': 42,
-                                                                                                            'column': 42,
+                                                                                                            'start': {
+                                                                                                                'absolute': 42,
+                                                                                                                'relative': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                            },
+                                                                                                            'end': {
+                                                                                                                'absolute': 42,
+                                                                                                                'relative': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                            },
                                                                                                         },
                                                                                                     }),
                                                                                                 ),
@@ -2071,9 +2947,22 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                 ).map(
                                                                     ($) => ({
                                                                         'l location': {
-                                                                            'document resource identifier': "implement me",
-                                                                            'line': 42,
-                                                                            'column': 42,
+                                                                            'start': {
+                                                                                'absolute': 42,
+                                                                                'relative': {
+                                                                                    'document resource identifier': "implement me",
+                                                                                    'line': 42,
+                                                                                    'column': 42,
+                                                                                },
+                                                                            },
+                                                                            'end': {
+                                                                                'absolute': 42,
+                                                                                'relative': {
+                                                                                    'document resource identifier': "implement me",
+                                                                                    'line': 42,
+                                                                                    'column': 42,
+                                                                                },
+                                                                            },
                                                                         },
                                                                         'l state': _p.decide.state(
                                                                             $,
@@ -2084,9 +2973,22 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                                             $,
                                                                                             ($) => ['initialize', {
                                                                                                 'l location': {
-                                                                                                    'document resource identifier': "implement me",
-                                                                                                    'line': 42,
-                                                                                                    'column': 42,
+                                                                                                    'start': {
+                                                                                                        'absolute': 42,
+                                                                                                        'relative': {
+                                                                                                            'document resource identifier': "implement me",
+                                                                                                            'line': 42,
+                                                                                                            'column': 42,
+                                                                                                        },
+                                                                                                    },
+                                                                                                    'end': {
+                                                                                                        'absolute': 42,
+                                                                                                        'relative': {
+                                                                                                            'document resource identifier': "implement me",
+                                                                                                            'line': 42,
+                                                                                                            'column': 42,
+                                                                                                        },
+                                                                                                    },
                                                                                                 },
                                                                                                 'l dictionary': _p.dictionary.from.dictionary(
                                                                                                     $,
@@ -2096,9 +2998,22 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                                                             $,
                                                                                                         ),
                                                                                                         'l location': {
-                                                                                                            'document resource identifier': "implement me",
-                                                                                                            'line': 42,
-                                                                                                            'column': 42,
+                                                                                                            'start': {
+                                                                                                                'absolute': 42,
+                                                                                                                'relative': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                            },
+                                                                                                            'end': {
+                                                                                                                'absolute': 42,
+                                                                                                                'relative': {
+                                                                                                                    'document resource identifier': "implement me",
+                                                                                                                    'line': 42,
+                                                                                                                    'column': 42,
+                                                                                                                },
+                                                                                                            },
                                                                                                         },
                                                                                                     }),
                                                                                                 ),
@@ -2306,9 +3221,22 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                 $['tail'],
                                 ($) => ({
                                     'l location': {
-                                        'document resource identifier': "implement me",
-                                        'line': 42,
-                                        'column': 42,
+                                        'start': {
+                                            'absolute': 42,
+                                            'relative': {
+                                                'document resource identifier': "implement me",
+                                                'line': 42,
+                                                'column': 42,
+                                            },
+                                        },
+                                        'end': {
+                                            'absolute': 42,
+                                            'relative': {
+                                                'document resource identifier': "implement me",
+                                                'line': 42,
+                                                'column': 42,
+                                            },
+                                        },
                                     },
                                     'l list': _p.list.from.list(
                                         $,
@@ -2316,9 +3244,22 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                         ($) => ({
                                             'l item': $,
                                             'l location': {
-                                                'document resource identifier': "implement me",
-                                                'line': 42,
-                                                'column': 42,
+                                                'start': {
+                                                    'absolute': 42,
+                                                    'relative': {
+                                                        'document resource identifier': "implement me",
+                                                        'line': 42,
+                                                        'column': 42,
+                                                    },
+                                                },
+                                                'end': {
+                                                    'absolute': 42,
+                                                    'relative': {
+                                                        'document resource identifier': "implement me",
+                                                        'line': 42,
+                                                        'column': 42,
+                                                    },
+                                                },
                                             },
                                         }),
                                     ),
@@ -2337,9 +3278,22 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
 
 export const Select_Lookup: t_signatures.Select_Lookup = ($) => ({
     'l location': {
-        'document resource identifier': "implement me",
-        'line': 42,
-        'column': 42,
+        'start': {
+            'absolute': 42,
+            'relative': {
+                'document resource identifier': "implement me",
+                'line': 42,
+                'column': 42,
+            },
+        },
+        'end': {
+            'absolute': 42,
+            'relative': {
+                'document resource identifier': "implement me",
+                'line': 42,
+                'column': 42,
+            },
+        },
     },
     'l state': _p.decide.state(
         $,
@@ -2360,9 +3314,22 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ({
                         $,
                         ($) => ['stack', {
                             'l location': {
-                                'document resource identifier': "implement me",
-                                'line': 42,
-                                'column': 42,
+                                'start': {
+                                    'absolute': 42,
+                                    'relative': {
+                                        'document resource identifier': "implement me",
+                                        'line': 42,
+                                        'column': 42,
+                                    },
+                                },
+                                'end': {
+                                    'absolute': 42,
+                                    'relative': {
+                                        'document resource identifier': "implement me",
+                                        'line': 42,
+                                        'column': 42,
+                                    },
+                                },
                             },
                             'l state': _p.decide.state(
                                 $,
@@ -2405,9 +3372,22 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ({
                         $,
                         ($) => ['acyclic', {
                             'l location': {
-                                'document resource identifier': "implement me",
-                                'line': 42,
-                                'column': 42,
+                                'start': {
+                                    'absolute': 42,
+                                    'relative': {
+                                        'document resource identifier': "implement me",
+                                        'line': 42,
+                                        'column': 42,
+                                    },
+                                },
+                                'end': {
+                                    'absolute': 42,
+                                    'relative': {
+                                        'document resource identifier': "implement me",
+                                        'line': 42,
+                                        'column': 42,
+                                    },
+                                },
                             },
                             'l state': _p.decide.state(
                                 $,
@@ -2444,9 +3424,22 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ({
                         $,
                         ($) => ['cyclic', {
                             'l location': {
-                                'document resource identifier': "implement me",
-                                'line': 42,
-                                'column': 42,
+                                'start': {
+                                    'absolute': 42,
+                                    'relative': {
+                                        'document resource identifier': "implement me",
+                                        'line': 42,
+                                        'column': 42,
+                                    },
+                                },
+                                'end': {
+                                    'absolute': 42,
+                                    'relative': {
+                                        'document resource identifier': "implement me",
+                                        'line': 42,
+                                        'column': 42,
+                                    },
+                                },
                             },
                             'l state': _p.decide.state(
                                 $,

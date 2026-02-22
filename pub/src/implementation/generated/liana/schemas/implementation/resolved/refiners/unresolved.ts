@@ -2200,6 +2200,11 @@ export const Assign: t_signatures.Assign = ($, abort, $l, $p) => _p_variables(
                                                                                     $,
                                                                                     ($) => ['source document', null],
                                                                                 )
+                                                                            case 'id':
+                                                                                return _p.ss(
+                                                                                    $,
+                                                                                    ($) => ['id', null],
+                                                                                )
                                                                             default:
                                                                                 return _p.au(
                                                                                     $[0],

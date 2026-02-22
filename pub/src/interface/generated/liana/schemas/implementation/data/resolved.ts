@@ -931,12 +931,15 @@ export namespace Assign_ {
             
             export type source_document = null
             
+            export type id = null
+            
         }
         
         export type text = 
             | readonly ['literal', text.literal]
             | readonly ['from', text.from_]
             | readonly ['source document', text.source_document]
+            | readonly ['id', text.id]
         
     }
     

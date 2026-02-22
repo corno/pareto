@@ -453,6 +453,10 @@ export namespace a {
             'type': wrap_state(['text', wrap_state(['copy', null])])
         }])])])
 
+        export const id = (
+
+        ): d_target.Assign => wrap_state(['construct', wrap_state(['text', wrap_state(['id', null])])])
+
     }
 
     export const unreachable = (explanation: string): d_target.Assign => wrap_state(['special', wrap_state(['unreachable', {

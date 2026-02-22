@@ -1816,6 +1816,14 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                         'value': ['nothing', null],
                                                                     }),
                                                                 )
+                                                            case 'id':
+                                                                return _p.ss(
+                                                                    $,
+                                                                    ($) => ({
+                                                                        'option': 'id',
+                                                                        'value': ['nothing', null],
+                                                                    }),
+                                                                )
                                                             default:
                                                                 return _p.au(
                                                                     $[0],
