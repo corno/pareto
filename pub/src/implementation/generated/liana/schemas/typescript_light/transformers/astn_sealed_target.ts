@@ -9,9 +9,7 @@ import * as t_signatures from "../../../../../../interface/generated/liana/schem
 
 import * as t_out from "astn-core/dist/interface/generated/liana/schemas/sealed_target/data"
 
-import * as v_serialize_number from "liana-core/dist/implementation/manual/primitives/integer/serializers/decimal"
-
-import * as v_serialize_boolean from "liana-core/dist/implementation/manual/primitives/boolean/serializers/true_false"
+import * as v_primitives_to_text from "liana-core/dist/implementation/manual/transformers/primitives/text"
 
 export const Directory: t_signatures.Directory = ($) => ['dictionary', _p.dictionary.from.dictionary(
     $,
@@ -260,11 +258,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', _p.list.from.
                                         $['export'],
                                         ($) => ['text', {
                                             'delimiter': ['none', null],
-                                            'value': _p_text_from_list(
-                                                v_serialize_boolean.serialize(
-                                                    $,
-                                                ),
-                                                ($) => $,
+                                            'value': v_primitives_to_text.true_false(
+                                                $,
                                             ),
                                         }],
                                     ),
@@ -375,11 +370,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', _p.list.from.
                                         $['export'],
                                         ($) => ['text', {
                                             'delimiter': ['none', null],
-                                            'value': _p_text_from_list(
-                                                v_serialize_boolean.serialize(
-                                                    $,
-                                                ),
-                                                ($) => $,
+                                            'value': v_primitives_to_text.true_false(
+                                                $,
                                             ),
                                         }],
                                     ),
@@ -420,11 +412,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', _p.list.from.
                                         $['export'],
                                         ($) => ['text', {
                                             'delimiter': ['none', null],
-                                            'value': _p_text_from_list(
-                                                v_serialize_boolean.serialize(
-                                                    $,
-                                                ),
-                                                ($) => $,
+                                            'value': v_primitives_to_text.true_false(
+                                                $,
                                             ),
                                         }],
                                     ),
@@ -432,11 +421,8 @@ export const Statements: t_signatures.Statements = ($) => ['list', _p.list.from.
                                         $['const'],
                                         ($) => ['text', {
                                             'delimiter': ['none', null],
-                                            'value': _p_text_from_list(
-                                                v_serialize_boolean.serialize(
-                                                    $,
-                                                ),
-                                                ($) => $,
+                                            'value': v_primitives_to_text.true_false(
+                                                $,
                                             ),
                                         }],
                                     ),
@@ -577,11 +563,8 @@ export const Type: t_signatures.Type = ($) => ['state', _p.decide.state(
                                     $['readonly'],
                                     ($) => ['text', {
                                         'delimiter': ['none', null],
-                                        'value': _p_text_from_list(
-                                            v_serialize_boolean.serialize(
-                                                $,
-                                            ),
-                                            ($) => $,
+                                        'value': v_primitives_to_text.true_false(
+                                            $,
                                         ),
                                     }],
                                 ),
@@ -651,11 +634,8 @@ export const Type: t_signatures.Type = ($) => ['state', _p.decide.state(
                                                     $['readonly'],
                                                     ($) => ['text', {
                                                         'delimiter': ['none', null],
-                                                        'value': _p_text_from_list(
-                                                            v_serialize_boolean.serialize(
-                                                                $,
-                                                            ),
-                                                            ($) => $,
+                                                        'value': v_primitives_to_text.true_false(
+                                                            $,
                                                         ),
                                                     }],
                                                 ),
@@ -1080,11 +1060,11 @@ export const Expression: t_signatures.Expression = ($) => ['state', _p.decide.st
                         'option': 'number literal',
                         'value': ['text', {
                             'delimiter': ['none', null],
-                            'value': _p_text_from_list(
-                                v_serialize_number.serialize(
-                                    $,
-                                ),
-                                ($) => $,
+                            'value': v_primitives_to_text.scientific_notation(
+                                $,
+                                {
+                                    'digits': 10,
+                                },
                             ),
                         }],
                     }),

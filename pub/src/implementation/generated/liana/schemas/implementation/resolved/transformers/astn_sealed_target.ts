@@ -9,9 +9,7 @@ import * as t_signatures from "../../../../../../../interface/generated/liana/sc
 
 import * as t_out from "astn-core/dist/interface/generated/liana/schemas/sealed_target/data"
 
-import * as v_serialize_number from "liana-core/dist/implementation/manual/primitives/integer/serializers/decimal"
-
-import * as v_serialize_boolean from "liana-core/dist/implementation/manual/primitives/boolean/serializers/true_false"
+import * as v_primitives_to_text from "liana-core/dist/implementation/manual/transformers/primitives/text"
 
 import * as v_external_interface from "../../../interface/resolved/transformers/astn_sealed_target"
 
@@ -61,11 +59,8 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                         $['abort'],
                         ($) => ['text', {
                             'delimiter': ['none', null],
-                            'value': _p_text_from_list(
-                                v_serialize_boolean.serialize(
-                                    $,
-                                ),
-                                ($) => $,
+                            'value': v_primitives_to_text.true_false(
+                                $,
                             ),
                         }],
                     ),
@@ -73,11 +68,8 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                         $['change context'],
                         ($) => ['text', {
                             'delimiter': ['none', null],
-                            'value': _p_text_from_list(
-                                v_serialize_boolean.serialize(
-                                    $,
-                                ),
-                                ($) => $,
+                            'value': v_primitives_to_text.true_false(
+                                $,
                             ),
                         }],
                     ),
@@ -85,11 +77,8 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                         $['implement me'],
                         ($) => ['text', {
                             'delimiter': ['none', null],
-                            'value': _p_text_from_list(
-                                v_serialize_boolean.serialize(
-                                    $,
-                                ),
-                                ($) => $,
+                            'value': v_primitives_to_text.true_false(
+                                $,
                             ),
                         }],
                     ),
@@ -97,11 +86,8 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                         $['iterate'],
                         ($) => ['text', {
                             'delimiter': ['none', null],
-                            'value': _p_text_from_list(
-                                v_serialize_boolean.serialize(
-                                    $,
-                                ),
-                                ($) => $,
+                            'value': v_primitives_to_text.true_false(
+                                $,
                             ),
                         }],
                     ),
@@ -109,11 +95,8 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                         $['lookups'],
                         ($) => ['text', {
                             'delimiter': ['none', null],
-                            'value': _p_text_from_list(
-                                v_serialize_boolean.serialize(
-                                    $,
-                                ),
-                                ($) => $,
+                            'value': v_primitives_to_text.true_false(
+                                $,
                             ),
                         }],
                     ),
@@ -121,11 +104,8 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                         $['list from text'],
                         ($) => ['text', {
                             'delimiter': ['none', null],
-                            'value': _p_text_from_list(
-                                v_serialize_boolean.serialize(
-                                    $,
-                                ),
-                                ($) => $,
+                            'value': v_primitives_to_text.true_false(
+                                $,
                             ),
                         }],
                     ),
@@ -133,11 +113,8 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                         $['text from list'],
                         ($) => ['text', {
                             'delimiter': ['none', null],
-                            'value': _p_text_from_list(
-                                v_serialize_boolean.serialize(
-                                    $,
-                                ),
-                                ($) => $,
+                            'value': v_primitives_to_text.true_false(
+                                $,
                             ),
                         }],
                     ),
@@ -145,11 +122,8 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                         $['unreachable code path'],
                         ($) => ['text', {
                             'delimiter': ['none', null],
-                            'value': _p_text_from_list(
-                                v_serialize_boolean.serialize(
-                                    $,
-                                ),
-                                ($) => $,
+                            'value': v_primitives_to_text.true_false(
+                                $,
                             ),
                         }],
                     ),
@@ -157,11 +131,8 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                         $['variables'],
                         ($) => ['text', {
                             'delimiter': ['none', null],
-                            'value': _p_text_from_list(
-                                v_serialize_boolean.serialize(
-                                    $,
-                                ),
-                                ($) => $,
+                            'value': v_primitives_to_text.true_false(
+                                $,
                             ),
                         }],
                     ),
@@ -216,11 +187,8 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                                                                 $['number of steps'],
                                                                 ($) => ['text', {
                                                                     'delimiter': ['none', null],
-                                                                    'value': _p_text_from_list(
-                                                                        v_serialize_number.serialize(
-                                                                            $,
-                                                                        ),
-                                                                        ($) => $,
+                                                                    'value': v_primitives_to_text.decimal(
+                                                                        $,
                                                                     ),
                                                                 }],
                                                             ),
@@ -300,11 +268,8 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                             $['temp has abort'],
                             ($) => ['text', {
                                 'delimiter': ['none', null],
-                                'value': _p_text_from_list(
-                                    v_serialize_boolean.serialize(
-                                        $,
-                                    ),
-                                    ($) => $,
+                                'value': v_primitives_to_text.true_false(
+                                    $,
                                 ),
                             }],
                         ),
@@ -312,11 +277,8 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                             $['temp has lookups'],
                             ($) => ['text', {
                                 'delimiter': ['none', null],
-                                'value': _p_text_from_list(
-                                    v_serialize_boolean.serialize(
-                                        $,
-                                    ),
-                                    ($) => $,
+                                'value': v_primitives_to_text.true_false(
+                                    $,
                                 ),
                             }],
                         ),
@@ -324,11 +286,8 @@ export const Package: t_signatures.Package = ($) => ['group', ['verbose', _p.dic
                             $['temp has parameters'],
                             ($) => ['text', {
                                 'delimiter': ['none', null],
-                                'value': _p_text_from_list(
-                                    v_serialize_boolean.serialize(
-                                        $,
-                                    ),
-                                    ($) => $,
+                                'value': v_primitives_to_text.true_false(
+                                    $,
                                 ),
                             }],
                         ),
@@ -1073,11 +1032,8 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                     $['have dependencies'],
                                                                                     ($) => ['text', {
                                                                                         'delimiter': ['none', null],
-                                                                                        'value': _p_text_from_list(
-                                                                                            v_serialize_boolean.serialize(
-                                                                                                $,
-                                                                                            ),
-                                                                                            ($) => $,
+                                                                                        'value': v_primitives_to_text.true_false(
+                                                                                            $,
                                                                                         ),
                                                                                     }],
                                                                                 ),
@@ -1343,11 +1299,11 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                 'option': 'literal',
                                                                                                 'value': ['text', {
                                                                                                     'delimiter': ['none', null],
-                                                                                                    'value': _p_text_from_list(
-                                                                                                        v_serialize_number.serialize(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        ($) => $,
+                                                                                                    'value': v_primitives_to_text.scientific_notation(
+                                                                                                        $,
+                                                                                                        {
+                                                                                                            'digits': 10,
+                                                                                                        },
                                                                                                     ),
                                                                                                 }],
                                                                                             }),
@@ -1426,11 +1382,8 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                 'option': 'literal',
                                                                                                 'value': ['text', {
                                                                                                     'delimiter': ['none', null],
-                                                                                                    'value': _p_text_from_list(
-                                                                                                        v_serialize_number.serialize(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        ($) => $,
+                                                                                                    'value': v_primitives_to_text.decimal(
+                                                                                                        $,
                                                                                                     ),
                                                                                                 }],
                                                                                             }),
@@ -1460,11 +1413,8 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                                                 'option': 'literal',
                                                                                                 'value': ['text', {
                                                                                                     'delimiter': ['none', null],
-                                                                                                    'value': _p_text_from_list(
-                                                                                                        v_serialize_number.serialize(
-                                                                                                            $,
-                                                                                                        ),
-                                                                                                        ($) => $,
+                                                                                                    'value': v_primitives_to_text.decimal(
+                                                                                                        $,
                                                                                                     ),
                                                                                                 }],
                                                                                             }),
