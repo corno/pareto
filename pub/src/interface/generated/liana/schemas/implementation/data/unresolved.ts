@@ -1999,11 +1999,36 @@ export namespace Select_Value_ {
                                     readonly 'abort handlers': cyclic.abort_handlers
                                 }
                                 
+                                export namespace stack {
+                                    
+                                    export namespace abort_handlers {
+                                        
+                                        export type no_such_entry = Assign_
+                                        
+                                        export type no_context_lookup = Assign_
+                                        
+                                        export type cycle_detected = Assign_
+                                        
+                                    }
+                                    
+                                    export type abort_handlers = {
+                                        readonly 'no such entry': abort_handlers.no_such_entry
+                                        readonly 'no context lookup': abort_handlers.no_context_lookup
+                                        readonly 'cycle detected': abort_handlers.cycle_detected
+                                    }
+                                    
+                                }
+                                
+                                export type stack = {
+                                    readonly 'abort handlers': stack.abort_handlers
+                                }
+                                
                             }
                             
                             export type l_state = 
                                 | readonly ['acyclic', l_state.acyclic]
                                 | readonly ['cyclic', l_state.cyclic]
+                                | readonly ['stack', l_state.stack]
                             
                         }
                         

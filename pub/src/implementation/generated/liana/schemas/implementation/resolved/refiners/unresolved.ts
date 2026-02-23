@@ -2920,6 +2920,66 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $l, $p) => _p_
                                                                                                                 },
                                                                                                             )],
                                                                                                         )
+                                                                                                    case 'stack':
+                                                                                                        return _p.ss(
+                                                                                                            $,
+                                                                                                            ($) => ['stack', _p.group.literal.resolve(
+                                                                                                                () => {
+                                                                                                                    
+                                                                                                                    const prop_abort_handlers = _p_change_context(
+                                                                                                                        $['abort handlers'],
+                                                                                                                        ($) => _p.group.literal.resolve(
+                                                                                                                            () => {
+                                                                                                                                
+                                                                                                                                const prop_no_such_entry = _p_change_context(
+                                                                                                                                    $['no such entry'],
+                                                                                                                                    ($) => Assign(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            $,
+                                                                                                                                        ),
+                                                                                                                                        null,
+                                                                                                                                        null,
+                                                                                                                                    ),
+                                                                                                                                )
+                                                                                                                                
+                                                                                                                                const prop_no_context_lookup = _p_change_context(
+                                                                                                                                    $['no context lookup'],
+                                                                                                                                    ($) => Assign(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            $,
+                                                                                                                                        ),
+                                                                                                                                        null,
+                                                                                                                                        null,
+                                                                                                                                    ),
+                                                                                                                                )
+                                                                                                                                
+                                                                                                                                const prop_cycle_detected = _p_change_context(
+                                                                                                                                    $['cycle detected'],
+                                                                                                                                    ($) => Assign(
+                                                                                                                                        $,
+                                                                                                                                        ($) => abort(
+                                                                                                                                            $,
+                                                                                                                                        ),
+                                                                                                                                        null,
+                                                                                                                                        null,
+                                                                                                                                    ),
+                                                                                                                                )
+                                                                                                                                return {
+                                                                                                                                    'no such entry': prop_no_such_entry,
+                                                                                                                                    'no context lookup': prop_no_context_lookup,
+                                                                                                                                    'cycle detected': prop_cycle_detected,
+                                                                                                                                }
+                                                                                                                            },
+                                                                                                                        ),
+                                                                                                                    )
+                                                                                                                    return {
+                                                                                                                        'abort handlers': prop_abort_handlers,
+                                                                                                                    }
+                                                                                                                },
+                                                                                                            )],
+                                                                                                        )
                                                                                                     default:
                                                                                                         return _p.au(
                                                                                                             $[0],

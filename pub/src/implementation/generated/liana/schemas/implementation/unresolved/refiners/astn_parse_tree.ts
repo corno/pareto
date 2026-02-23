@@ -5986,6 +5986,129 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             )],
                                                                                                                         }),
                                                                                                                     )
+                                                                                                                case 'stack':
+                                                                                                                    return _p_change_context(
+                                                                                                                        $['value'],
+                                                                                                                        ($) => ({
+                                                                                                                            'l location': v_parse_tree_to_location.Value(
+                                                                                                                                $,
+                                                                                                                            ),
+                                                                                                                            'l state': ['stack', _p_change_context(
+                                                                                                                                v_unmarshalled_from_parse_tree.Verbose_Group(
+                                                                                                                                    $,
+                                                                                                                                    ($) => abort(
+                                                                                                                                        $,
+                                                                                                                                    ),
+                                                                                                                                    {
+                                                                                                                                        'expected properties': _p.dictionary.literal(
+                                                                                                                                            {
+                                                                                                                                                "abort handlers": null,
+                                                                                                                                            },
+                                                                                                                                        ),
+                                                                                                                                    },
+                                                                                                                                ),
+                                                                                                                                ($) => _p_variables(
+                                                                                                                                    () => {
+                                                                                                                                        
+                                                                                                                                        const var_verbose_group_range = v_parse_tree_to_location.Value(
+                                                                                                                                            $['value'],
+                                                                                                                                        )
+                                                                                                                                        return {
+                                                                                                                                            'abort handlers': _p_change_context(
+                                                                                                                                                v_unmarshalled_from_parse_tree.Property(
+                                                                                                                                                    $,
+                                                                                                                                                    ($) => abort(
+                                                                                                                                                        $,
+                                                                                                                                                    ),
+                                                                                                                                                    {
+                                                                                                                                                        'id': 'abort handlers',
+                                                                                                                                                    },
+                                                                                                                                                ),
+                                                                                                                                                ($) => _p_change_context(
+                                                                                                                                                    v_unmarshalled_from_parse_tree.Verbose_Group(
+                                                                                                                                                        $,
+                                                                                                                                                        ($) => abort(
+                                                                                                                                                            $,
+                                                                                                                                                        ),
+                                                                                                                                                        {
+                                                                                                                                                            'expected properties': _p.dictionary.literal(
+                                                                                                                                                                {
+                                                                                                                                                                    "no such entry": null,
+                                                                                                                                                                    "no context lookup": null,
+                                                                                                                                                                    "cycle detected": null,
+                                                                                                                                                                },
+                                                                                                                                                            ),
+                                                                                                                                                        },
+                                                                                                                                                    ),
+                                                                                                                                                    ($) => _p_variables(
+                                                                                                                                                        () => {
+                                                                                                                                                            
+                                                                                                                                                            const var_verbose_group_range = v_parse_tree_to_location.Value(
+                                                                                                                                                                $['value'],
+                                                                                                                                                            )
+                                                                                                                                                            return {
+                                                                                                                                                                'no such entry': _p_change_context(
+                                                                                                                                                                    v_unmarshalled_from_parse_tree.Property(
+                                                                                                                                                                        $,
+                                                                                                                                                                        ($) => abort(
+                                                                                                                                                                            $,
+                                                                                                                                                                        ),
+                                                                                                                                                                        {
+                                                                                                                                                                            'id': 'no such entry',
+                                                                                                                                                                        },
+                                                                                                                                                                    ),
+                                                                                                                                                                    ($) => Assign(
+                                                                                                                                                                        $,
+                                                                                                                                                                        ($) => abort(
+                                                                                                                                                                            $,
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                                'no context lookup': _p_change_context(
+                                                                                                                                                                    v_unmarshalled_from_parse_tree.Property(
+                                                                                                                                                                        $,
+                                                                                                                                                                        ($) => abort(
+                                                                                                                                                                            $,
+                                                                                                                                                                        ),
+                                                                                                                                                                        {
+                                                                                                                                                                            'id': 'no context lookup',
+                                                                                                                                                                        },
+                                                                                                                                                                    ),
+                                                                                                                                                                    ($) => Assign(
+                                                                                                                                                                        $,
+                                                                                                                                                                        ($) => abort(
+                                                                                                                                                                            $,
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                                'cycle detected': _p_change_context(
+                                                                                                                                                                    v_unmarshalled_from_parse_tree.Property(
+                                                                                                                                                                        $,
+                                                                                                                                                                        ($) => abort(
+                                                                                                                                                                            $,
+                                                                                                                                                                        ),
+                                                                                                                                                                        {
+                                                                                                                                                                            'id': 'cycle detected',
+                                                                                                                                                                        },
+                                                                                                                                                                    ),
+                                                                                                                                                                    ($) => Assign(
+                                                                                                                                                                        $,
+                                                                                                                                                                        ($) => abort(
+                                                                                                                                                                            $,
+                                                                                                                                                                        ),
+                                                                                                                                                                    ),
+                                                                                                                                                                ),
+                                                                                                                                                            }
+                                                                                                                                                        },
+                                                                                                                                                    ),
+                                                                                                                                                ),
+                                                                                                                                            ),
+                                                                                                                                        }
+                                                                                                                                    },
+                                                                                                                                ),
+                                                                                                                            )],
+                                                                                                                        }),
+                                                                                                                    )
                                                                                                                 default:
                                                                                                                     return abort(
                                                                                                                         ['liana', {
