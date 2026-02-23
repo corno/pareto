@@ -1550,7 +1550,9 @@ export namespace Assign_ {
                         
                         export type source_document = null
                         
-                        export type id = null
+                        export type entry_id = null
+                        
+                        export type option_name = null
                         
                     }
                     
@@ -1558,7 +1560,8 @@ export namespace Assign_ {
                         | readonly ['literal', l_state.literal]
                         | readonly ['from', l_state.from_]
                         | readonly ['source document', l_state.source_document]
-                        | readonly ['id', l_state.id]
+                        | readonly ['entry id', l_state.entry_id]
+                        | readonly ['option name', l_state.option_name]
                     
                 }
                 

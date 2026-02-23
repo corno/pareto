@@ -1816,11 +1816,19 @@ export const Assign: t_signatures.Assign = ($) => ['state', _p.decide.state(
                                                                         'value': ['nothing', null],
                                                                     }),
                                                                 )
-                                                            case 'id':
+                                                            case 'entry id':
                                                                 return _p.ss(
                                                                     $,
                                                                     ($) => ({
-                                                                        'option': 'id',
+                                                                        'option': 'entry id',
+                                                                        'value': ['nothing', null],
+                                                                    }),
+                                                                )
+                                                            case 'option name':
+                                                                return _p.ss(
+                                                                    $,
+                                                                    ($) => ({
+                                                                        'option': 'option name',
                                                                         'value': ['nothing', null],
                                                                     }),
                                                                 )

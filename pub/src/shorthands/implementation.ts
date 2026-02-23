@@ -453,9 +453,11 @@ export namespace a {
             'type': wrap_state(['text', wrap_state(['copy', null])])
         }])])])
 
-        export const id = (
+        export const entry_id = (
+        ): d_target.Assign => wrap_state(['construct', wrap_state(['text', wrap_state(['entry id', null])])])
 
-        ): d_target.Assign => wrap_state(['construct', wrap_state(['text', wrap_state(['id', null])])])
+        export const option_name = (
+        ): d_target.Assign => wrap_state(['construct', wrap_state(['text', wrap_state(['option name', null])])])
 
     }
 

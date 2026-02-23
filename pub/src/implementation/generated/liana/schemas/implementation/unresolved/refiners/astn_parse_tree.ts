@@ -4530,14 +4530,29 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     )],
                                                                                 }),
                                                                             )
-                                                                        case 'id':
+                                                                        case 'entry id':
                                                                             return _p_change_context(
                                                                                 $['value'],
                                                                                 ($) => ({
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                     ),
-                                                                                    'l state': ['id', v_unmarshalled_from_parse_tree.Nothing(
+                                                                                    'l state': ['entry id', v_unmarshalled_from_parse_tree.Nothing(
+                                                                                        $,
+                                                                                        ($) => abort(
+                                                                                            $,
+                                                                                        ),
+                                                                                    )],
+                                                                                }),
+                                                                            )
+                                                                        case 'option name':
+                                                                            return _p_change_context(
+                                                                                $['value'],
+                                                                                ($) => ({
+                                                                                    'l location': v_parse_tree_to_location.Value(
+                                                                                        $,
+                                                                                    ),
+                                                                                    'l state': ['option name', v_unmarshalled_from_parse_tree.Nothing(
                                                                                         $,
                                                                                         ($) => abort(
                                                                                             $,

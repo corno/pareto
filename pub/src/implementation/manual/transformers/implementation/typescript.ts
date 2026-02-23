@@ -846,7 +846,8 @@ export const Assign = (
                             })
                         }))
                         case 'source document': return _p.ss($, ($) => _pdev.implement_me("X20"))
-                        case 'id': return _p.ss($, ($) => sh.e.identifier_raw("id"))
+                        case 'entry id': return _p.ss($, ($) => sh.e.identifier_raw("id"))
+                        case 'option name': return _p.ss($, ($) => sh.e.identifier_raw("$[0]"))
                         default: return _p.au($[0])
                     }
                 }))
