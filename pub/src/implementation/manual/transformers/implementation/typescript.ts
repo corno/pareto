@@ -106,11 +106,9 @@ export const Package_Set = (
                         )]
                         : [],
                     $.specials['unreachable code path']
-                        ? [sh.s.import_named(
-                            [
-                                sh.specifier(sh.identifier_raw("_p_unreachable_code_path"), null),
-                            ],
-                            sh.string_literal("pareto-core/dist/unreachable_code_path", 'apostrophe')
+                        ? [sh.s.import_default(
+                            sh.identifier_raw("_p_unreachable_code_path"),
+                            sh.string_literal("pareto-core/dist/_p_unreachable_code_path", 'apostrophe')
                         )]
                         : [],
                     $.specials['variables']
@@ -891,7 +889,7 @@ export const Assign = (
                 case 'unreachable': return _p.ss($, ($) => sh.e.call(
                     sh.e.identifier_raw("_p_unreachable_code_path"),
                     [
-                        //sh.e.string_literal("UNREACHABLE", 'quote')
+                        sh.e.string_literal(sh.string_literal($.explanation, 'quote'))
                     ]
                 ))
                 case 'variables': return _p.ss($, ($) => sh.e.call(
@@ -1097,51 +1095,146 @@ export const Select_Value = (
                         ),
                         [
                             Assign($.id),
-                            sh.e.object_literal([
+                            _p.decide.state($.type, ($) => {
+                                switch ($[0]) {
+                                    case 'acyclic': return _p.ss($, ($) => sh.e.object_literal([
 
-                                sh.object_property(
-                                    "no_such_entry",
-                                    'identifier',
-                                    sh.e.arrow_function_with_expression(
-                                        [],
-                                        null,
-                                        sh.e.call(
-                                            sh.e.identifier_raw("abort"),
-                                            [
-                                                Assign($['abort handlers']['no such entry'])
-                                            ]
-                                        )
-                                    )
-                                ),
-                                sh.object_property(
-                                    "no_context_lookup",
-                                    'identifier',
-                                    sh.e.arrow_function_with_expression(
-                                        [],
-                                        null,
-                                        sh.e.call(
-                                            sh.e.identifier_raw("abort"),
-                                            [
-                                                Assign($['abort handlers']['no context lookup'])
-                                            ]
-                                        )
-                                    )
-                                ),
-                                sh.object_property(
-                                    "cycle_detected",
-                                    'identifier',
-                                    sh.e.arrow_function_with_expression(
-                                        [],
-                                        null,
-                                        sh.e.call(
-                                            sh.e.identifier_raw("abort"),
-                                            [
-                                                Assign($['abort handlers']['cycle detected'])
-                                            ]
-                                        )
-                                    )
-                                ),
-                            ]),
+                                        sh.object_property(
+                                            "no_such_entry",
+                                            'identifier',
+                                            sh.e.arrow_function_with_expression(
+                                                [],
+                                                null,
+                                                sh.e.call(
+                                                    sh.e.identifier_raw("abort"),
+                                                    [
+                                                        Assign($['abort handlers']['no such entry'])
+                                                    ]
+                                                )
+                                            )
+                                        ),
+                                        sh.object_property(
+                                            "no_context_lookup",
+                                            'identifier',
+                                            sh.e.arrow_function_with_expression(
+                                                [],
+                                                null,
+                                                sh.e.call(
+                                                    sh.e.identifier_raw("abort"),
+                                                    [
+                                                        Assign($['abort handlers']['no context lookup'])
+                                                    ]
+                                                )
+                                            )
+                                        ),
+                                        sh.object_property(
+                                            "cycle_detected",
+                                            'identifier',
+                                            sh.e.arrow_function_with_expression(
+                                                [],
+                                                null,
+                                                sh.e.call(
+                                                    sh.e.identifier_raw("abort"),
+                                                    [
+                                                        Assign($['abort handlers']['cycle detected'])
+                                                    ]
+                                                )
+                                            )
+                                        ),
+                                    ]))
+                                    case 'cyclic': return _p.ss($, ($) => sh.e.object_literal([
+
+                                        sh.object_property(
+                                            "no_such_entry",
+                                            'identifier',
+                                            sh.e.arrow_function_with_expression(
+                                                [],
+                                                null,
+                                                sh.e.call(
+                                                    sh.e.identifier_raw("abort"),
+                                                    [
+                                                        Assign($['abort handlers']['no such entry'])
+                                                    ]
+                                                )
+                                            )
+                                        ),
+                                        sh.object_property(
+                                            "no_context_lookup",
+                                            'identifier',
+                                            sh.e.arrow_function_with_expression(
+                                                [],
+                                                null,
+                                                sh.e.call(
+                                                    sh.e.identifier_raw("abort"),
+                                                    [
+                                                        Assign($['abort handlers']['no context lookup'])
+                                                    ]
+                                                )
+                                            )
+                                        ),
+                                        sh.object_property(
+                                            "accessing_cyclic_sibling_before_it_is_resolved",
+                                            'identifier',
+                                            sh.e.arrow_function_with_expression(
+                                                [],
+                                                null,
+                                                sh.e.call(
+                                                    sh.e.identifier_raw("abort"),
+                                                    [
+                                                        Assign($['abort handlers']['accessing cyclic sibling before it is resolved'])
+                                                    ]
+                                                )
+                                            )
+                                        ),
+                                    ]))
+                                    case 'stack': return _p.ss($, ($) => sh.e.object_literal([
+
+                                        sh.object_property(
+                                            "no_such_entry",
+                                            'identifier',
+                                            sh.e.arrow_function_with_expression(
+                                                [],
+                                                null,
+                                                sh.e.call(
+                                                    sh.e.identifier_raw("abort"),
+                                                    [
+                                                        Assign($['abort handlers']['no such entry'])
+                                                    ]
+                                                )
+                                            )
+                                        ),
+                                        sh.object_property(
+                                            "no_context_lookup",
+                                            'identifier',
+                                            sh.e.arrow_function_with_expression(
+                                                [],
+                                                null,
+                                                sh.e.call(
+                                                    sh.e.identifier_raw("abort"),
+                                                    [
+                                                        Assign($['abort handlers']['no context lookup'])
+                                                    ]
+                                                )
+                                            )
+                                        ),
+                                        sh.object_property(
+                                            "cycle_detected",
+                                            'identifier',
+                                            sh.e.arrow_function_with_expression(
+                                                [],
+                                                null,
+                                                sh.e.call(
+                                                    sh.e.identifier_raw("abort"),
+                                                    [
+                                                        Assign($['abort handlers']['cycle detected'])
+                                                    ]
+                                                )
+                                            )
+                                        ),
+                                    ]))
+                                    default: return _p.au($[0])
+                                }
+                            }),
                         ]
                     ))
                     case 'lookup entry depth': return _p.ss($, ($) => sh.e.call(

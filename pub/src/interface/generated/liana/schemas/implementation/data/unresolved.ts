@@ -1945,20 +1945,71 @@ export namespace Select_Value_ {
                         
                         export type id = Assign_
                         
-                        export namespace abort_handlers {
+                        export namespace type_ {
                             
-                            export type no_such_entry = Assign_
+                            export type l_location = i__location.Range
                             
-                            export type no_context_lookup = Assign_
+                            export namespace l_state {
+                                
+                                export namespace acyclic {
+                                    
+                                    export namespace abort_handlers {
+                                        
+                                        export type no_such_entry = Assign_
+                                        
+                                        export type no_context_lookup = Assign_
+                                        
+                                        export type cycle_detected = Assign_
+                                        
+                                    }
+                                    
+                                    export type abort_handlers = {
+                                        readonly 'no such entry': abort_handlers.no_such_entry
+                                        readonly 'no context lookup': abort_handlers.no_context_lookup
+                                        readonly 'cycle detected': abort_handlers.cycle_detected
+                                    }
+                                    
+                                }
+                                
+                                export type acyclic = {
+                                    readonly 'abort handlers': acyclic.abort_handlers
+                                }
+                                
+                                export namespace cyclic {
+                                    
+                                    export namespace abort_handlers {
+                                        
+                                        export type no_such_entry = Assign_
+                                        
+                                        export type no_context_lookup = Assign_
+                                        
+                                        export type accessing_cyclic_sibling_before_it_is_resolved = Assign_
+                                        
+                                    }
+                                    
+                                    export type abort_handlers = {
+                                        readonly 'no such entry': abort_handlers.no_such_entry
+                                        readonly 'no context lookup': abort_handlers.no_context_lookup
+                                        readonly 'accessing cyclic sibling before it is resolved': abort_handlers.accessing_cyclic_sibling_before_it_is_resolved
+                                    }
+                                    
+                                }
+                                
+                                export type cyclic = {
+                                    readonly 'abort handlers': cyclic.abort_handlers
+                                }
+                                
+                            }
                             
-                            export type cycle_detected = Assign_
+                            export type l_state = 
+                                | readonly ['acyclic', l_state.acyclic]
+                                | readonly ['cyclic', l_state.cyclic]
                             
                         }
                         
-                        export type abort_handlers = {
-                            readonly 'no such entry': abort_handlers.no_such_entry
-                            readonly 'no context lookup': abort_handlers.no_context_lookup
-                            readonly 'cycle detected': abort_handlers.cycle_detected
+                        export type type_ = {
+                            readonly 'l location': type_.l_location
+                            readonly 'l state': type_.l_state
                         }
                         
                     }
@@ -1966,7 +2017,7 @@ export namespace Select_Value_ {
                     export type lookup_entry = {
                         readonly 'lookup': lookup_entry.lookup
                         readonly 'id': lookup_entry.id
-                        readonly 'abort handlers': lookup_entry.abort_handlers
+                        readonly 'type': lookup_entry.type_
                     }
                     
                     export namespace lookup_entry_depth {

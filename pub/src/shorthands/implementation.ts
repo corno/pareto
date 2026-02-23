@@ -568,7 +568,7 @@ export namespace sv {
         'tail': _p.list.literal(tail),
     }])
 
-    export const lookup_entry = (
+    export const lookup_entry_stack = (
         lookup: d_target.Select_Lookup,
         id: d_target.Assign,
         no_such_entry_handler: d_target.Assign,
@@ -579,11 +579,57 @@ export namespace sv {
         'start': wrap_state<d_target.Select_Value.regular.start>(['lookup entry', {
             'lookup': lookup,
             'id': id,
-            'abort handlers': {
-                'no such entry': no_such_entry_handler,
-                'no context lookup': no_context_lookup_handler,
-                'cycle detected': cycle_detected_handler,
-            }
+            'type': wrap_state(['stack', {
+                'abort handlers': {
+                    'no such entry': no_such_entry_handler,
+                    'no context lookup': no_context_lookup_handler,
+                    'cycle detected': cycle_detected_handler,
+                }
+            }])
+        }]),
+        'tail': _p.list.literal([]),
+    }])
+
+    export const lookup_entry_acyclic = (
+        lookup: d_target.Select_Lookup,
+        id: d_target.Assign,
+        no_such_entry_handler: d_target.Assign,
+        no_context_lookup_handler: d_target.Assign,
+        cycle_detected_handler: d_target.Assign,
+        // tail: _p.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+    ): d_target.Select_Value => wrap_state(['regular', {
+        'start': wrap_state<d_target.Select_Value.regular.start>(['lookup entry', {
+            'lookup': lookup,
+            'id': id,
+            'type': wrap_state(['acyclic', {
+                'abort handlers': {
+                    'no such entry': no_such_entry_handler,
+                    'no context lookup': no_context_lookup_handler,
+                    'cycle detected': cycle_detected_handler,
+                }
+            }])
+        }]),
+        'tail': _p.list.literal([]),
+    }])
+
+    export const lookup_entry_cyclic = (
+        lookup: d_target.Select_Lookup,
+        id: d_target.Assign,
+        no_such_entry_handler: d_target.Assign,
+        no_context_lookup_handler: d_target.Assign,
+        accessing_cyclic_sibling_before_it_is_resolved: d_target.Assign,
+        // tail: _p.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+    ): d_target.Select_Value => wrap_state(['regular', {
+        'start': wrap_state<d_target.Select_Value.regular.start>(['lookup entry', {
+            'lookup': lookup,
+            'id': id,
+            'type': wrap_state(['cyclic', {
+                'abort handlers': {
+                    'no such entry': no_such_entry_handler,
+                    'no context lookup': no_context_lookup_handler,
+                    'accessing cyclic sibling before it is resolved': accessing_cyclic_sibling_before_it_is_resolved,
+                }
+            }])
         }]),
         'tail': _p.list.literal([]),
     }])

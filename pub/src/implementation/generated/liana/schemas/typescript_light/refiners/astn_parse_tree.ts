@@ -22,97 +22,89 @@ export const Directory: t_signatures.Directory = ($, abort) => _p_change_context
             $,
         ),
     ),
-    ($) => _p_variables(
-        () => {
-            
-            const var_dictionary_range = v_parse_tree_to_location.Value(
-                $['value'],
-            )
-            return _p.dictionary.from.dictionary(
-                $['entries'],
-            ).map(
-                ($, id) => _p_change_context(
-                    v_unmarshalled_from_parse_tree.State(
-                        $,
-                        ($) => abort(
-                            $,
-                        ),
-                    ),
-                    ($) => _p.decide.text(
-                        $['option']['value'],
-                        ($t): t_out.Directory.D => {
-                            switch ($t) {
-                                case 'file':
-                                    return _p_change_context(
-                                        $['value'],
-                                        ($) => ['file', _p_change_context(
-                                            v_unmarshalled_from_parse_tree.Verbose_Group(
-                                                $,
-                                                ($) => abort(
-                                                    $,
-                                                ),
+    ($) => _p.dictionary.from.dictionary(
+        $['entries'],
+    ).map(
+        ($, id) => _p_change_context(
+            v_unmarshalled_from_parse_tree.State(
+                $,
+                ($) => abort(
+                    $,
+                ),
+            ),
+            ($) => _p.decide.text(
+                $['option']['value'],
+                ($t): t_out.Directory.D => {
+                    switch ($t) {
+                        case 'file':
+                            return _p_change_context(
+                                $['value'],
+                                ($) => ['file', _p_change_context(
+                                    v_unmarshalled_from_parse_tree.Verbose_Group(
+                                        $,
+                                        ($) => abort(
+                                            $,
+                                        ),
+                                        {
+                                            'expected properties': _p.dictionary.literal(
                                                 {
-                                                    'expected properties': _p.dictionary.literal(
+                                                    "statements": null,
+                                                },
+                                            ),
+                                        },
+                                    ),
+                                    ($) => _p_variables(
+                                        () => {
+                                            
+                                            const var_verbose_group_range = v_parse_tree_to_location.Value(
+                                                $['value'],
+                                            )
+                                            return {
+                                                'statements': _p_change_context(
+                                                    v_unmarshalled_from_parse_tree.Property(
+                                                        $,
+                                                        ($) => abort(
+                                                            $,
+                                                        ),
                                                         {
-                                                            "statements": null,
+                                                            'id': 'statements',
                                                         },
                                                     ),
-                                                },
-                                            ),
-                                            ($) => _p_variables(
-                                                () => {
-                                                    
-                                                    const var_verbose_group_range = v_parse_tree_to_location.Value(
-                                                        $['value'],
-                                                    )
-                                                    return {
-                                                        'statements': _p_change_context(
-                                                            v_unmarshalled_from_parse_tree.Property(
-                                                                $,
-                                                                ($) => abort(
-                                                                    $,
-                                                                ),
-                                                                {
-                                                                    'id': 'statements',
-                                                                },
-                                                            ),
-                                                            ($) => Statements(
-                                                                $,
-                                                                ($) => abort(
-                                                                    $,
-                                                                ),
-                                                            ),
+                                                    ($) => Statements(
+                                                        $,
+                                                        ($) => abort(
+                                                            $,
                                                         ),
-                                                    }
-                                                },
-                                            ),
-                                        )],
-                                    )
-                                case 'directory':
-                                    return _p_change_context(
+                                                    ),
+                                                ),
+                                            }
+                                        },
+                                    ),
+                                )],
+                            )
+                        case 'directory':
+                            return _p_change_context(
+                                $['value'],
+                                ($) => ['directory', Directory(
+                                    $,
+                                    ($) => abort(
+                                        $,
+                                    ),
+                                )],
+                            )
+                        default:
+                            return abort(
+                                ['liana', {
+                                    'type': ['state', ['unknown option', $['option']['value']]],
+                                    'range': v_parse_tree_to_location.Value(
                                         $['value'],
-                                        ($) => ['directory', Directory(
-                                            $,
-                                            ($) => abort(
-                                                $,
-                                            ),
-                                        )],
-                                    )
-                                default:
-                                    return abort(
-                                        ['liana', {
-                                            'type': ['state', ['unknown option', $['option']['value']]],
-                                            'range': v_parse_tree_to_location.Value(
-                                                $['value'],
-                                            ),
-                                        }],
-                                    )
-                            }
-                        },
-                    ),
-                ),
-            )
-        },
+                                    ),
+                                }],
+                            )
+                    }
+                },
+            ),
+        ),
     ),
 )
 
