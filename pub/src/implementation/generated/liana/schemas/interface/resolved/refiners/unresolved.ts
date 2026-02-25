@@ -11,7 +11,7 @@ import _p_variables from 'pareto-core/dist/_p_variables'
 
 import * as t_out from "../../../../../../../interface/generated/liana/schemas/interface/data/resolved"
 
-import * as t_signatures from "../../../../../../../interface/generated/liana/schemas/interface/resolve"
+import * as t_signatures from "../../../../../../../interface/generated/liana/schemas/interface/signatures/resolved/refiners/unresolved"
 
 export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => _p.dictionary.from.dictionary(
     $['l dictionary'],

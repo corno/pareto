@@ -11,7 +11,7 @@ import _p_variables from 'pareto-core/dist/_p_variables'
 
 import * as t_out from "../../../../../../../interface/generated/liana/schemas/implementation/data/resolved"
 
-import * as t_signatures from "../../../../../../../interface/generated/liana/schemas/implementation/resolve"
+import * as t_signatures from "../../../../../../../interface/generated/liana/schemas/implementation/signatures/resolved/refiners/unresolved"
 
 import * as v_external_interface from "../../../interface/resolved/refiners/unresolved"
 

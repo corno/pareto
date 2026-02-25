@@ -1,15 +1,15 @@
 
 import * as _pi from 'pareto-core/dist/interface'
 
-import * as i_in from "./data"
+import * as i_out from "astn-core/dist/interface/generated/liana/schemas/sealed_target/data"
 
-import * as i_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
+import * as i_in from "../../data"
 
 export namespace Directory_ {
     
     export type I = i_in.Directory
     
-    export type O = i_out.Paragraph
+    export type O = i_out.Value
     
     export namespace P {
         
@@ -25,7 +25,7 @@ export namespace Block_ {
     
     export type I = i_in.Block
     
-    export type O = i_out.Paragraph
+    export type O = i_out.Value
     
     export namespace P {
         
@@ -41,7 +41,7 @@ export namespace Statements_ {
     
     export type I = i_in.Statements
     
-    export type O = i_out.Paragraph
+    export type O = i_out.Value
     
     export namespace P {
         
@@ -57,7 +57,7 @@ export namespace Type_ {
     
     export type I = i_in.Type
     
-    export type O = i_out.Paragraph
+    export type O = i_out.Value
     
     export namespace P {
         
@@ -73,7 +73,7 @@ export namespace Function_Parameters_ {
     
     export type I = i_in.Function_Parameters
     
-    export type O = i_out.Paragraph
+    export type O = i_out.Value
     
     export namespace P {
         
@@ -89,7 +89,7 @@ export namespace Expression_ {
     
     export type I = i_in.Expression
     
-    export type O = i_out.Paragraph
+    export type O = i_out.Value
     
     export namespace P {
         
@@ -105,7 +105,7 @@ export namespace String_Literal_ {
     
     export type I = i_in.String_Literal
     
-    export type O = i_out.Paragraph
+    export type O = i_out.Value
     
     export namespace P {
         
@@ -121,7 +121,7 @@ export namespace Identifier_ {
     
     export type I = i_in.Identifier
     
-    export type O = i_out.Paragraph
+    export type O = i_out.Value
     
     export namespace P {
         

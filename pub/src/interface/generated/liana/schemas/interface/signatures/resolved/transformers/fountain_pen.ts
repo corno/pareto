@@ -1,15 +1,15 @@
 
 import * as _pi from 'pareto-core/dist/interface'
 
-import * as i_out from "astn-core/dist/interface/generated/liana/schemas/sealed_target/data"
+import * as i_in from "../../../data/resolved"
 
-import * as i_in from "./data/resolved"
+import * as i_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 
 export namespace Package_Set_ {
     
     export type I = i_in.Package_Set
     
-    export type O = i_out.Value
+    export type O = i_out.Paragraph
     
     export namespace P {
         
@@ -25,7 +25,7 @@ export namespace Package_ {
     
     export type I = i_in.Package
     
-    export type O = i_out.Value
+    export type O = i_out.Paragraph
     
     export namespace P {
         
@@ -41,7 +41,7 @@ export namespace Imports_ {
     
     export type I = i_in.Imports
     
-    export type O = i_out.Value
+    export type O = i_out.Paragraph
     
     export namespace P {
         
@@ -57,7 +57,7 @@ export namespace Value_ {
     
     export type I = i_in.Value
     
-    export type O = i_out.Value
+    export type O = i_out.Paragraph
     
     export namespace P {
         
@@ -73,7 +73,7 @@ export namespace Module_Reference_ {
     
     export type I = i_in.Module_Reference
     
-    export type O = i_out.Value
+    export type O = i_out.Paragraph
     
     export namespace P {
         
