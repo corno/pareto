@@ -98,21 +98,21 @@ export const Identifier = ($: string): d_loc.List_of_Characters => {
 
         let position = 0
 
-        const consume_character = () => {
+        const discard_character = () => {
             position += 1
         }
 
-        const get_current_character = (): null | number => {
-            if (position === length) {
-                return null
-            }
-            return characters.__deprecated_get_possible_item_at(position).__decide(
-                ($) => $,
-                () => null
-            )
-        }
-
         while (true) {
+
+            const get_current_character = (): null | number => {
+                if (position === length) {
+                    return null
+                }
+                return characters.__deprecated_get_possible_item_at(position).__decide(
+                    ($) => $,
+                    () => null
+                )
+            }
             const current_character = get_current_character()
             if (current_character === null) {
                 return
@@ -134,10 +134,10 @@ export const Identifier = ($: string): d_loc.List_of_Characters => {
             ) {
                 //normal character
                 $i['add item'](current_character)
-                consume_character()
+                discard_character()
             } else {
                 const consume_and_add = ($: string) => {
-                    consume_character()
+                    discard_character()
                     $i['add list'](temp_literal_to_text($))
                 }
                 switch (current_character) {

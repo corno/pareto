@@ -1,6 +1,6 @@
 {
   "name": "pareto",
-  "version": "0.80.26",
+  "version": "0.80.27",
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "A library for the Pareto programming Language",
@@ -10,7 +10,7 @@
     "dist"
   ],
   "dependencies": {
-    "liana-core": "^0.1.1",
+    "liana-core": "^0.1.7",
     "pareto-core-dev": "^0.12.10",
     "pareto-fountain-pen": "^0.4.51",
     "pareto-fountain-pen-file-structure": "^0.1.3"
