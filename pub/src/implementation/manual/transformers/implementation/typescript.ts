@@ -1,6 +1,6 @@
 import * as _p from 'pareto-core/dist/assign'
 import * as _pi from 'pareto-core/dist/interface'
-import * as _pdev from 'pareto-core-dev'
+import _p_implement_me from 'pareto-core-dev/dist/implement_me'
 import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 import _p_variables from 'pareto-core/dist/_p_variables'
@@ -409,13 +409,13 @@ export const Assign = (
                                     }))
                                     case 'dictionary': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'is empty': return _p.ss($, ($) => _pdev.implement_me("X1"))
+                                            case 'is empty': return _p.ss($, ($) => _p_implement_me("X1"))
                                             default: return _p.au($[0])
                                         }
                                     }))
                                     case 'list': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'is empty': return _p.ss($, ($) => _pdev.implement_me("X2"))
+                                            case 'is empty': return _p.ss($, ($) => _p_implement_me("X2"))
                                             default: return _p.au($[0])
                                         }
                                     }))
@@ -457,7 +457,7 @@ export const Assign = (
                                 switch ($[0]) {
                                     case 'dictionary': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'filter': return _p.ss($, ($) => _pdev.implement_me("X5"))
+                                            case 'filter': return _p.ss($, ($) => _p_implement_me("X5"))
                                             case 'map': return _p.ss($, ($) => sh.e.call(
                                                 sh.e.property_access(
                                                     sh.e.call(
@@ -525,7 +525,7 @@ export const Assign = (
                                     }))
                                     case 'list': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'convert': return _p.ss($, ($) => _pdev.implement_me("X6"))
+                                            case 'convert': return _p.ss($, ($) => _p_implement_me("X6"))
                                             default: return _p.au($[0])
                                         }
                                     }))
@@ -609,13 +609,13 @@ export const Assign = (
                                 switch ($[0]) {
                                     case 'dictionary': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'convert': return _p.ss($, ($) => _pdev.implement_me("X9"))
+                                            case 'convert': return _p.ss($, ($) => _p_implement_me("X9"))
                                             default: return _p.au($[0])
                                         }
                                     }))
                                     case 'list': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'filter': return _p.ss($, ($) => _pdev.implement_me("X8"))
+                                            case 'filter': return _p.ss($, ($) => _p_implement_me("X8"))
                                             case 'map': return _p.ss($, ($) => sh.e.call(
                                                 sh.e.property_access(
                                                     sh.e.call(
@@ -681,8 +681,8 @@ export const Assign = (
                                                     ),
                                                 ]
                                             ))
-                                            case 'reduce': return _p.ss($, ($) => _pdev.implement_me("X11"))
-                                            case 'reverse': return _p.ss($, ($) => _pdev.implement_me("X12"))
+                                            case 'reduce': return _p.ss($, ($) => _p_implement_me("X11"))
+                                            case 'reverse': return _p.ss($, ($) => _p_implement_me("X12"))
                                             default: return _p.au($[0])
                                         }
                                     }))
@@ -706,7 +706,7 @@ export const Assign = (
                         case 'integer': return _p.ss($, ($) => _p.decide.state($, ($) => {
                             switch ($[0]) {
                                 case 'copy': return _p.ss($, ($) => Select_Value($))
-                                case 'divide': return _p.ss($, ($) => _pdev.implement_me("X17"))
+                                case 'divide': return _p.ss($, ($) => _p_implement_me("X17"))
                                 case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
                                 default: return _p.au($[0])
                             }
@@ -715,10 +715,10 @@ export const Assign = (
                             switch ($[0]) {
                                 case 'copy': return _p.ss($, ($) => Select_Value($))
                                 case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
-                                case 'number of dictionary entries': return _p.ss($, ($) => _pdev.implement_me("X13"))
-                                case 'number of list items': return _p.ss($, ($) => _pdev.implement_me("X14"))
-                                case 'source column': return _p.ss($, ($) => _pdev.implement_me("X15"))
-                                case 'source line': return _p.ss($, ($) => _pdev.implement_me("X16"))
+                                case 'number of dictionary entries': return _p.ss($, ($) => _p_implement_me("X13"))
+                                case 'number of list items': return _p.ss($, ($) => _p_implement_me("X14"))
+                                case 'source column': return _p.ss($, ($) => _p_implement_me("X15"))
+                                case 'source line': return _p.ss($, ($) => _p_implement_me("X16"))
                                 default: return _p.au($[0])
                             }
                         }))
@@ -767,7 +767,7 @@ export const Assign = (
                                 switch ($[0]) {
                                     case 'boolean': return _p.ss($, ($) => _p.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'convert': return _p.ss($, ($) => _pdev.implement_me("X18"))
+                                            case 'convert': return _p.ss($, ($) => _p_implement_me("X18"))
                                             default: return _p.au($[0])
                                         }
                                     }))
@@ -845,7 +845,7 @@ export const Assign = (
                                 }
                             })
                         }))
-                        case 'source document': return _p.ss($, ($) => _pdev.implement_me("X20"))
+                        case 'source document': return _p.ss($, ($) => _p_implement_me("X20"))
                         case 'entry id': return _p.ss($, ($) => sh.e.identifier_raw("id"))
                         case 'option name': return _p.ss($, ($) => sh.e.identifier_raw("$[0]"))
                         default: return _p.au($[0])
@@ -857,7 +857,7 @@ export const Assign = (
         case 'select': return _p.ss($, ($) => Select_Value($))
         case 'special': return _p.ss($, ($) => _p.decide.state($, ($) => {
             switch ($[0]) {
-                case 'assert': return _p.ss($, ($) => _pdev.implement_me("X22"))
+                case 'assert': return _p.ss($, ($) => _p_implement_me("X22"))
                 case 'abort': return _p.ss($, ($) => sh.e.call(
                     sh.e.identifier_raw("abort"),
                     [
@@ -886,7 +886,7 @@ export const Assign = (
                         sh.e.string_literal(sh.string_literal($, 'quote'))
                     ]
                 ))
-                case 'iterate': return _p.ss($, ($) => _pdev.implement_me("X23"))
+                case 'iterate': return _p.ss($, ($) => _p_implement_me("X23"))
                 case 'unreachable': return _p.ss($, ($) => sh.e.call(
                     sh.e.identifier_raw("_p_unreachable_code_path"),
                     [

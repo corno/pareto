@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import * as _pdev from 'pareto-core-dev'
+import _p_implement_me from 'pareto-core-dev/dist/implement_me'
+import _p_log_debug_message from 'pareto-core-dev/dist/log_debug_message'
 
 import * as t_typescript_to_fp from "pub/dist/modules/typescript_light/implementation/manual/transformers/typescript_light/fountain_pen"
 import * as t_fp_to_text from "pareto-fountain-pen/dist/implementation/manual/transformers/prose/text"
@@ -27,7 +28,7 @@ function test_number_serialization(number: number, expected: string) {
 
     if (actual !== expected) {
         found_errors = true
-        _pdev.log_debug_message(
+        _p_log_debug_message(
             `Expected: '${expected}', Actual: '${actual}'`,
             () => { }
         )
@@ -44,5 +45,5 @@ test_number_serialization(0, "0")
 test_number_serialization(0.234230000, "0.23423")
 
 if (found_errors) {
-    _pdev.implement_me("number serialization does not match expected output")
+    _p_implement_me("number serialization does not match expected output")
 }

@@ -1,5 +1,5 @@
 import * as _p from 'pareto-core/dist/assign'
-import * as _pdev from 'pareto-core-dev'
+import _p_implement_me from 'pareto-core-dev/dist/implement_me'
 import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
 import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 
@@ -174,7 +174,7 @@ export const Identifier = ($: string): d_loc.List_of_Characters => {
                     case 124: consume_and_add("$vb_"); break; // Vertical Bar (|)
                     case 125: consume_and_add("$cc_"); break; // Close Curly Brace (})
                     case 126: consume_and_add("$ti_"); break; // Tilde (~)
-                    default: _pdev.implement_me(`unhandled character: \"${current_character}\"`);
+                    default: _p_implement_me(`unhandled character: \"${current_character}\"`);
                 }
             }
         }
