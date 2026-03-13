@@ -14,7 +14,6 @@ export const Package_Set: t_signatures.Package_Set = ($, abort, $p) => v_unmarsh
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -30,7 +29,6 @@ export const Package: t_signatures.Package = ($, abort, $p) => v_unmarshall.Pack
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -46,7 +44,6 @@ export const Imports: t_signatures.Imports = ($, abort, $p) => v_unmarshall.Impo
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -62,7 +59,6 @@ export const Value: t_signatures.Value = ($, abort, $p) => v_unmarshall.Value(
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -78,7 +74,6 @@ export const Module_Reference: t_signatures.Module_Reference = ($, abort, $p) =>
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],

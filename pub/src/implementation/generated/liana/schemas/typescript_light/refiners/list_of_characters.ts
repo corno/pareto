@@ -14,7 +14,6 @@ export const Directory: t_signatures.Directory = ($, abort, $p) => v_unmarshall.
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -30,7 +29,6 @@ export const Block: t_signatures.Block = ($, abort, $p) => v_unmarshall.Block(
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -46,7 +44,6 @@ export const Statements: t_signatures.Statements = ($, abort, $p) => v_unmarshal
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -62,7 +59,6 @@ export const Type: t_signatures.Type = ($, abort, $p) => v_unmarshall.Type(
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -78,7 +74,6 @@ export const Function_Parameters: t_signatures.Function_Parameters = ($, abort, 
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -94,7 +89,6 @@ export const Expression: t_signatures.Expression = ($, abort, $p) => v_unmarshal
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -110,7 +104,6 @@ export const String_Literal: t_signatures.String_Literal = ($, abort, $p) => v_u
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -126,7 +119,6 @@ export const Identifier: t_signatures.Identifier = ($, abort, $p) => v_unmarshal
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],

@@ -17,8 +17,6 @@ export namespace Directory_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -29,7 +27,6 @@ export type Directory_ = (
     context: Directory_.I,
     abort: _pi.Abort<Directory_.E>,
     parameters: {
-        readonly 'document resource identifier': Directory_.P.document_resource_identifier
         readonly 'tab size': Directory_.P.tab_size
     },
 ) => Directory_.O
@@ -44,8 +41,6 @@ export namespace Block_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -56,7 +51,6 @@ export type Block_ = (
     context: Block_.I,
     abort: _pi.Abort<Block_.E>,
     parameters: {
-        readonly 'document resource identifier': Block_.P.document_resource_identifier
         readonly 'tab size': Block_.P.tab_size
     },
 ) => Block_.O
@@ -71,8 +65,6 @@ export namespace Statements_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -83,7 +75,6 @@ export type Statements_ = (
     context: Statements_.I,
     abort: _pi.Abort<Statements_.E>,
     parameters: {
-        readonly 'document resource identifier': Statements_.P.document_resource_identifier
         readonly 'tab size': Statements_.P.tab_size
     },
 ) => Statements_.O
@@ -98,8 +89,6 @@ export namespace Type_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -110,7 +99,6 @@ export type Type_ = (
     context: Type_.I,
     abort: _pi.Abort<Type_.E>,
     parameters: {
-        readonly 'document resource identifier': Type_.P.document_resource_identifier
         readonly 'tab size': Type_.P.tab_size
     },
 ) => Type_.O
@@ -125,8 +113,6 @@ export namespace Function_Parameters_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -137,7 +123,6 @@ export type Function_Parameters_ = (
     context: Function_Parameters_.I,
     abort: _pi.Abort<Function_Parameters_.E>,
     parameters: {
-        readonly 'document resource identifier': Function_Parameters_.P.document_resource_identifier
         readonly 'tab size': Function_Parameters_.P.tab_size
     },
 ) => Function_Parameters_.O
@@ -152,8 +137,6 @@ export namespace Expression_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -164,7 +147,6 @@ export type Expression_ = (
     context: Expression_.I,
     abort: _pi.Abort<Expression_.E>,
     parameters: {
-        readonly 'document resource identifier': Expression_.P.document_resource_identifier
         readonly 'tab size': Expression_.P.tab_size
     },
 ) => Expression_.O
@@ -179,8 +161,6 @@ export namespace String_Literal_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -191,7 +171,6 @@ export type String_Literal_ = (
     context: String_Literal_.I,
     abort: _pi.Abort<String_Literal_.E>,
     parameters: {
-        readonly 'document resource identifier': String_Literal_.P.document_resource_identifier
         readonly 'tab size': String_Literal_.P.tab_size
     },
 ) => String_Literal_.O
@@ -206,8 +185,6 @@ export namespace Identifier_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -218,7 +195,6 @@ export type Identifier_ = (
     context: Identifier_.I,
     abort: _pi.Abort<Identifier_.E>,
     parameters: {
-        readonly 'document resource identifier': Identifier_.P.document_resource_identifier
         readonly 'tab size': Identifier_.P.tab_size
     },
 ) => Identifier_.O

@@ -14,7 +14,6 @@ export const Package_Set: t_signatures.Package_Set = ($) => ({
         'start': {
             'absolute': 42,
             'relative': {
-                'document resource identifier': "implement me",
                 'line': 42,
                 'column': 42,
             },
@@ -22,7 +21,6 @@ export const Package_Set: t_signatures.Package_Set = ($) => ({
         'end': {
             'absolute': 42,
             'relative': {
-                'document resource identifier': "implement me",
                 'line': 42,
                 'column': 42,
             },
@@ -37,7 +35,6 @@ export const Package_Set: t_signatures.Package_Set = ($) => ({
                     'start': {
                         'absolute': 42,
                         'relative': {
-                            'document resource identifier': "implement me",
                             'line': 42,
                             'column': 42,
                         },
@@ -45,7 +42,6 @@ export const Package_Set: t_signatures.Package_Set = ($) => ({
                     'end': {
                         'absolute': 42,
                         'relative': {
-                            'document resource identifier': "implement me",
                             'line': 42,
                             'column': 42,
                         },
@@ -81,7 +77,6 @@ export const Package_Set: t_signatures.Package_Set = ($) => ({
                 'start': {
                     'absolute': 42,
                     'relative': {
-                        'document resource identifier': "implement me",
                         'line': 42,
                         'column': 42,
                     },
@@ -89,7 +84,6 @@ export const Package_Set: t_signatures.Package_Set = ($) => ({
                 'end': {
                     'absolute': 42,
                     'relative': {
-                        'document resource identifier': "implement me",
                         'line': 42,
                         'column': 42,
                     },
@@ -154,7 +148,6 @@ export const Package: t_signatures.Package = ($) => ({
                 'start': {
                     'absolute': 42,
                     'relative': {
-                        'document resource identifier': "implement me",
                         'line': 42,
                         'column': 42,
                     },
@@ -162,7 +155,6 @@ export const Package: t_signatures.Package = ($) => ({
                 'end': {
                     'absolute': 42,
                     'relative': {
-                        'document resource identifier': "implement me",
                         'line': 42,
                         'column': 42,
                     },
@@ -180,7 +172,6 @@ export const Package: t_signatures.Package = ($) => ({
                                     'start': {
                                         'absolute': 42,
                                         'relative': {
-                                            'document resource identifier': "implement me",
                                             'line': 42,
                                             'column': 42,
                                         },
@@ -188,7 +179,6 @@ export const Package: t_signatures.Package = ($) => ({
                                     'end': {
                                         'absolute': 42,
                                         'relative': {
-                                            'document resource identifier': "implement me",
                                             'line': 42,
                                             'column': 42,
                                         },
@@ -203,7 +193,6 @@ export const Package: t_signatures.Package = ($) => ({
                                             'start': {
                                                 'absolute': 42,
                                                 'relative': {
-                                                    'document resource identifier': "implement me",
                                                     'line': 42,
                                                     'column': 42,
                                                 },
@@ -211,7 +200,6 @@ export const Package: t_signatures.Package = ($) => ({
                                             'end': {
                                                 'absolute': 42,
                                                 'relative': {
-                                                    'document resource identifier': "implement me",
                                                     'line': 42,
                                                     'column': 42,
                                                 },
@@ -228,7 +216,6 @@ export const Package: t_signatures.Package = ($) => ({
                                     'start': {
                                         'absolute': 42,
                                         'relative': {
-                                            'document resource identifier': "implement me",
                                             'line': 42,
                                             'column': 42,
                                         },
@@ -236,7 +223,6 @@ export const Package: t_signatures.Package = ($) => ({
                                     'end': {
                                         'absolute': 42,
                                         'relative': {
-                                            'document resource identifier': "implement me",
                                             'line': 42,
                                             'column': 42,
                                         },
@@ -284,7 +270,6 @@ export const Package: t_signatures.Package = ($) => ({
                         'start': {
                             'absolute': 42,
                             'relative': {
-                                'document resource identifier': "implement me",
                                 'line': 42,
                                 'column': 42,
                             },
@@ -292,7 +277,6 @@ export const Package: t_signatures.Package = ($) => ({
                         'end': {
                             'absolute': 42,
                             'relative': {
-                                'document resource identifier': "implement me",
                                 'line': 42,
                                 'column': 42,
                             },
@@ -309,7 +293,6 @@ export const Package: t_signatures.Package = ($) => ({
                 'start': {
                     'absolute': 42,
                     'relative': {
-                        'document resource identifier': "implement me",
                         'line': 42,
                         'column': 42,
                     },
@@ -317,7 +300,6 @@ export const Package: t_signatures.Package = ($) => ({
                 'end': {
                     'absolute': 42,
                     'relative': {
-                        'document resource identifier': "implement me",
                         'line': 42,
                         'column': 42,
                     },
@@ -364,7 +346,6 @@ export const Package: t_signatures.Package = ($) => ({
                         'start': {
                             'absolute': 42,
                             'relative': {
-                                'document resource identifier': "implement me",
                                 'line': 42,
                                 'column': 42,
                             },
@@ -372,7 +353,6 @@ export const Package: t_signatures.Package = ($) => ({
                         'end': {
                             'absolute': 42,
                             'relative': {
-                                'document resource identifier': "implement me",
                                 'line': 42,
                                 'column': 42,
                             },
@@ -405,7 +385,6 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                 'start': {
                     'absolute': 42,
                     'relative': {
-                        'document resource identifier': "implement me",
                         'line': 42,
                         'column': 42,
                     },
@@ -413,7 +392,6 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                 'end': {
                     'absolute': 42,
                     'relative': {
-                        'document resource identifier': "implement me",
                         'line': 42,
                         'column': 42,
                     },
@@ -428,7 +406,6 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                             'start': {
                                 'absolute': 42,
                                 'relative': {
-                                    'document resource identifier': "implement me",
                                     'line': 42,
                                     'column': 42,
                                 },
@@ -436,7 +413,6 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                             'end': {
                                 'absolute': 42,
                                 'relative': {
-                                    'document resource identifier': "implement me",
                                     'line': 42,
                                     'column': 42,
                                 },
@@ -483,7 +459,6 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                         'start': {
                             'absolute': 42,
                             'relative': {
-                                'document resource identifier': "implement me",
                                 'line': 42,
                                 'column': 42,
                             },
@@ -491,7 +466,6 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                         'end': {
                             'absolute': 42,
                             'relative': {
-                                'document resource identifier': "implement me",
                                 'line': 42,
                                 'column': 42,
                             },
@@ -508,7 +482,6 @@ export const Assign: t_signatures.Assign = ($) => ({
         'start': {
             'absolute': 42,
             'relative': {
-                'document resource identifier': "implement me",
                 'line': 42,
                 'column': 42,
             },
@@ -516,7 +489,6 @@ export const Assign: t_signatures.Assign = ($) => ({
         'end': {
             'absolute': 42,
             'relative': {
-                'document resource identifier': "implement me",
                 'line': 42,
                 'column': 42,
             },
@@ -543,7 +515,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                         'start': {
                                             'absolute': 42,
                                             'relative': {
-                                                'document resource identifier': "implement me",
                                                 'line': 42,
                                                 'column': 42,
                                             },
@@ -551,7 +522,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                         'end': {
                                             'absolute': 42,
                                             'relative': {
-                                                'document resource identifier': "implement me",
                                                 'line': 42,
                                                 'column': 42,
                                             },
@@ -638,7 +608,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         'start': {
                                                                             'absolute': 42,
                                                                             'relative': {
-                                                                                'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
@@ -646,7 +615,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         'end': {
                                                                             'absolute': 42,
                                                                             'relative': {
-                                                                                'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
@@ -667,7 +635,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         'start': {
                                                                                                             'absolute': 42,
                                                                                                             'relative': {
-                                                                                                                'document resource identifier': "implement me",
                                                                                                                 'line': 42,
                                                                                                                 'column': 42,
                                                                                                             },
@@ -675,7 +642,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         'end': {
                                                                                                             'absolute': 42,
                                                                                                             'relative': {
-                                                                                                                'document resource identifier': "implement me",
                                                                                                                 'line': 42,
                                                                                                                 'column': 42,
                                                                                                             },
@@ -692,7 +658,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'start': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -700,7 +665,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'end': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -729,7 +693,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         'start': {
                                                                                                             'absolute': 42,
                                                                                                             'relative': {
-                                                                                                                'document resource identifier': "implement me",
                                                                                                                 'line': 42,
                                                                                                                 'column': 42,
                                                                                                             },
@@ -737,7 +700,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                         'end': {
                                                                                                             'absolute': 42,
                                                                                                             'relative': {
-                                                                                                                'document resource identifier': "implement me",
                                                                                                                 'line': 42,
                                                                                                                 'column': 42,
                                                                                                             },
@@ -754,7 +716,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'start': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -762,7 +723,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'end': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -828,7 +788,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         'start': {
                                                                             'absolute': 42,
                                                                             'relative': {
-                                                                                'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
@@ -836,7 +795,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         'end': {
                                                                             'absolute': 42,
                                                                             'relative': {
-                                                                                'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
@@ -853,7 +811,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'start': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -861,7 +818,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'end': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -898,7 +854,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                 'start': {
                                     'absolute': 42,
                                     'relative': {
-                                        'document resource identifier': "implement me",
                                         'line': 42,
                                         'column': 42,
                                     },
@@ -906,7 +861,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                 'end': {
                                     'absolute': 42,
                                     'relative': {
-                                        'document resource identifier': "implement me",
                                         'line': 42,
                                         'column': 42,
                                     },
@@ -924,7 +878,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'start': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -932,7 +885,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'end': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -950,7 +902,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'start': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -958,7 +909,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'end': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -1004,7 +954,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'start': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -1012,7 +961,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'end': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -1030,7 +978,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'start': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1038,7 +985,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'end': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1075,7 +1021,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'start': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1083,7 +1028,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'end': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1115,7 +1059,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'start': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1123,7 +1066,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'end': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1175,7 +1117,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'start': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -1183,7 +1124,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'end': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -1201,7 +1141,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'start': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -1209,7 +1148,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'end': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -1226,7 +1164,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'start': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -1234,7 +1171,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'end': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -1261,7 +1197,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'start': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -1269,7 +1204,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'end': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -1287,7 +1221,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'start': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1295,7 +1228,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'end': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1364,7 +1296,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'start': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1372,7 +1303,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'end': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1443,7 +1373,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'start': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -1451,7 +1380,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'end': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -1472,7 +1400,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'start': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -1480,7 +1407,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'end': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -1497,7 +1423,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                 'start': {
                                                                                                     'absolute': 42,
                                                                                                     'relative': {
-                                                                                                        'document resource identifier': "implement me",
                                                                                                         'line': 42,
                                                                                                         'column': 42,
                                                                                                     },
@@ -1505,7 +1430,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                 'end': {
                                                                                                     'absolute': 42,
                                                                                                     'relative': {
-                                                                                                        'document resource identifier': "implement me",
                                                                                                         'line': 42,
                                                                                                         'column': 42,
                                                                                                     },
@@ -1538,7 +1462,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'start': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -1546,7 +1469,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'end': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -1564,7 +1486,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'start': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -1572,7 +1493,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'end': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -1589,7 +1509,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'start': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -1597,7 +1516,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'end': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -1624,7 +1542,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'start': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -1632,7 +1549,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'end': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -1650,7 +1566,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'start': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1658,7 +1573,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'end': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1697,7 +1611,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'start': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1705,7 +1618,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'end': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -1834,7 +1746,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'start': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -1842,7 +1753,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'end': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -1860,7 +1770,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'start': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -1868,7 +1777,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'end': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -1907,7 +1815,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'start': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -1915,7 +1822,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'end': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -1978,7 +1884,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'start': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -1986,7 +1891,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'end': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -2068,7 +1972,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'start': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -2076,7 +1979,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'end': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -2094,7 +1996,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'start': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -2102,7 +2003,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                 'end': {
                                                                                     'absolute': 42,
                                                                                     'relative': {
-                                                                                        'document resource identifier': "implement me",
                                                                                         'line': 42,
                                                                                         'column': 42,
                                                                                     },
@@ -2150,7 +2050,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'start': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -2158,7 +2057,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'end': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -2176,7 +2074,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'start': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -2184,7 +2081,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'end': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -2223,7 +2119,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'start': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -2231,7 +2126,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'end': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -2290,7 +2184,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'start': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -2298,7 +2191,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'end': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -2341,7 +2233,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'start': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -2349,7 +2240,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                         'end': {
                                                             'absolute': 42,
                                                             'relative': {
-                                                                'document resource identifier': "implement me",
                                                                 'line': 42,
                                                                 'column': 42,
                                                             },
@@ -2370,7 +2260,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'start': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -2378,7 +2267,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'end': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -2430,7 +2318,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'start': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -2438,7 +2325,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                         'end': {
                                                                                             'absolute': 42,
                                                                                             'relative': {
-                                                                                                'document resource identifier': "implement me",
                                                                                                 'line': 42,
                                                                                                 'column': 42,
                                                                                             },
@@ -2456,7 +2342,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'start': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -2464,7 +2349,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                                                                 'end': {
                                                                                                                     'absolute': 42,
                                                                                                                     'relative': {
-                                                                                                                        'document resource identifier': "implement me",
                                                                                                                         'line': 42,
                                                                                                                         'column': 42,
                                                                                                                     },
@@ -2547,7 +2431,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                 'start': {
                                     'absolute': 42,
                                     'relative': {
-                                        'document resource identifier': "implement me",
                                         'line': 42,
                                         'column': 42,
                                     },
@@ -2555,7 +2438,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                 'end': {
                                     'absolute': 42,
                                     'relative': {
-                                        'document resource identifier': "implement me",
                                         'line': 42,
                                         'column': 42,
                                     },
@@ -2619,7 +2501,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                 'start': {
                                                                     'absolute': 42,
                                                                     'relative': {
-                                                                        'document resource identifier': "implement me",
                                                                         'line': 42,
                                                                         'column': 42,
                                                                     },
@@ -2627,7 +2508,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                 'end': {
                                                                     'absolute': 42,
                                                                     'relative': {
-                                                                        'document resource identifier': "implement me",
                                                                         'line': 42,
                                                                         'column': 42,
                                                                     },
@@ -2644,7 +2524,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         'start': {
                                                                             'absolute': 42,
                                                                             'relative': {
-                                                                                'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
@@ -2652,7 +2531,6 @@ export const Assign: t_signatures.Assign = ($) => ({
                                                                         'end': {
                                                                             'absolute': 42,
                                                                             'relative': {
-                                                                                'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
@@ -2726,7 +2604,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
         'start': {
             'absolute': 42,
             'relative': {
-                'document resource identifier': "implement me",
                 'line': 42,
                 'column': 42,
             },
@@ -2734,7 +2611,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
         'end': {
             'absolute': 42,
             'relative': {
-                'document resource identifier': "implement me",
                 'line': 42,
                 'column': 42,
             },
@@ -2760,7 +2636,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                         'start': {
                                             'absolute': 42,
                                             'relative': {
-                                                'document resource identifier': "implement me",
                                                 'line': 42,
                                                 'column': 42,
                                             },
@@ -2768,7 +2643,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                         'end': {
                                             'absolute': 42,
                                             'relative': {
-                                                'document resource identifier': "implement me",
                                                 'line': 42,
                                                 'column': 42,
                                             },
@@ -2789,7 +2663,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                         'start': {
                                                                             'absolute': 42,
                                                                             'relative': {
-                                                                                'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
@@ -2797,7 +2670,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                         'end': {
                                                                             'absolute': 42,
                                                                             'relative': {
-                                                                                'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
@@ -2861,7 +2733,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                             'start': {
                                                                                 'absolute': 42,
                                                                                 'relative': {
-                                                                                    'document resource identifier': "implement me",
                                                                                     'line': 42,
                                                                                     'column': 42,
                                                                                 },
@@ -2869,7 +2740,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                             'end': {
                                                                                 'absolute': 42,
                                                                                 'relative': {
-                                                                                    'document resource identifier': "implement me",
                                                                                     'line': 42,
                                                                                     'column': 42,
                                                                                 },
@@ -2887,7 +2757,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                                                     'start': {
                                                                                                         'absolute': 42,
                                                                                                         'relative': {
-                                                                                                            'document resource identifier': "implement me",
                                                                                                             'line': 42,
                                                                                                             'column': 42,
                                                                                                         },
@@ -2895,7 +2764,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                                                     'end': {
                                                                                                         'absolute': 42,
                                                                                                         'relative': {
-                                                                                                            'document resource identifier': "implement me",
                                                                                                             'line': 42,
                                                                                                             'column': 42,
                                                                                                         },
@@ -2912,7 +2780,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                                                             'start': {
                                                                                                                 'absolute': 42,
                                                                                                                 'relative': {
-                                                                                                                    'document resource identifier': "implement me",
                                                                                                                     'line': 42,
                                                                                                                     'column': 42,
                                                                                                                 },
@@ -2920,7 +2787,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                                                             'end': {
                                                                                                                 'absolute': 42,
                                                                                                                 'relative': {
-                                                                                                                    'document resource identifier': "implement me",
                                                                                                                     'line': 42,
                                                                                                                     'column': 42,
                                                                                                                 },
@@ -2955,7 +2821,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                             'start': {
                                                                                 'absolute': 42,
                                                                                 'relative': {
-                                                                                    'document resource identifier': "implement me",
                                                                                     'line': 42,
                                                                                     'column': 42,
                                                                                 },
@@ -2963,7 +2828,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                             'end': {
                                                                                 'absolute': 42,
                                                                                 'relative': {
-                                                                                    'document resource identifier': "implement me",
                                                                                     'line': 42,
                                                                                     'column': 42,
                                                                                 },
@@ -2981,7 +2845,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                                                     'start': {
                                                                                                         'absolute': 42,
                                                                                                         'relative': {
-                                                                                                            'document resource identifier': "implement me",
                                                                                                             'line': 42,
                                                                                                             'column': 42,
                                                                                                         },
@@ -2989,7 +2852,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                                                     'end': {
                                                                                                         'absolute': 42,
                                                                                                         'relative': {
-                                                                                                            'document resource identifier': "implement me",
                                                                                                             'line': 42,
                                                                                                             'column': 42,
                                                                                                         },
@@ -3006,7 +2868,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                                                             'start': {
                                                                                                                 'absolute': 42,
                                                                                                                 'relative': {
-                                                                                                                    'document resource identifier': "implement me",
                                                                                                                     'line': 42,
                                                                                                                     'column': 42,
                                                                                                                 },
@@ -3014,7 +2875,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                                                             'end': {
                                                                                                                 'absolute': 42,
                                                                                                                 'relative': {
-                                                                                                                    'document resource identifier': "implement me",
                                                                                                                     'line': 42,
                                                                                                                     'column': 42,
                                                                                                                 },
@@ -3111,7 +2971,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                         'start': {
                                                                             'absolute': 42,
                                                                             'relative': {
-                                                                                'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
@@ -3119,7 +2978,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                                         'end': {
                                                                             'absolute': 42,
                                                                             'relative': {
-                                                                                'document resource identifier': "implement me",
                                                                                 'line': 42,
                                                                                 'column': 42,
                                                                             },
@@ -3327,7 +3185,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                         'start': {
                                             'absolute': 42,
                                             'relative': {
-                                                'document resource identifier': "implement me",
                                                 'line': 42,
                                                 'column': 42,
                                             },
@@ -3335,7 +3192,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                         'end': {
                                             'absolute': 42,
                                             'relative': {
-                                                'document resource identifier': "implement me",
                                                 'line': 42,
                                                 'column': 42,
                                             },
@@ -3350,7 +3206,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                 'start': {
                                                     'absolute': 42,
                                                     'relative': {
-                                                        'document resource identifier': "implement me",
                                                         'line': 42,
                                                         'column': 42,
                                                     },
@@ -3358,7 +3213,6 @@ export const Select_Value: t_signatures.Select_Value = ($) => ({
                                                 'end': {
                                                     'absolute': 42,
                                                     'relative': {
-                                                        'document resource identifier': "implement me",
                                                         'line': 42,
                                                         'column': 42,
                                                     },
@@ -3384,7 +3238,6 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ({
         'start': {
             'absolute': 42,
             'relative': {
-                'document resource identifier': "implement me",
                 'line': 42,
                 'column': 42,
             },
@@ -3392,7 +3245,6 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ({
         'end': {
             'absolute': 42,
             'relative': {
-                'document resource identifier': "implement me",
                 'line': 42,
                 'column': 42,
             },
@@ -3420,7 +3272,6 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ({
                                 'start': {
                                     'absolute': 42,
                                     'relative': {
-                                        'document resource identifier': "implement me",
                                         'line': 42,
                                         'column': 42,
                                     },
@@ -3428,7 +3279,6 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ({
                                 'end': {
                                     'absolute': 42,
                                     'relative': {
-                                        'document resource identifier': "implement me",
                                         'line': 42,
                                         'column': 42,
                                     },
@@ -3478,7 +3328,6 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ({
                                 'start': {
                                     'absolute': 42,
                                     'relative': {
-                                        'document resource identifier': "implement me",
                                         'line': 42,
                                         'column': 42,
                                     },
@@ -3486,7 +3335,6 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ({
                                 'end': {
                                     'absolute': 42,
                                     'relative': {
-                                        'document resource identifier': "implement me",
                                         'line': 42,
                                         'column': 42,
                                     },
@@ -3530,7 +3378,6 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ({
                                 'start': {
                                     'absolute': 42,
                                     'relative': {
-                                        'document resource identifier': "implement me",
                                         'line': 42,
                                         'column': 42,
                                     },
@@ -3538,7 +3385,6 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($) => ({
                                 'end': {
                                     'absolute': 42,
                                     'relative': {
-                                        'document resource identifier': "implement me",
                                         'line': 42,
                                         'column': 42,
                                     },

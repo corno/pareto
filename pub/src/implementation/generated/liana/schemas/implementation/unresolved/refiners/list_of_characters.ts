@@ -14,7 +14,6 @@ export const Package_Set: t_signatures.Package_Set = ($, abort, $p) => v_unmarsh
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -30,7 +29,6 @@ export const Package: t_signatures.Package = ($, abort, $p) => v_unmarshall.Pack
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -46,7 +44,6 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -62,7 +59,6 @@ export const Assign: t_signatures.Assign = ($, abort, $p) => v_unmarshall.Assign
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -78,7 +74,6 @@ export const Select_Value: t_signatures.Select_Value = ($, abort, $p) => v_unmar
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],
@@ -94,7 +89,6 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort, $p) => v_unm
             ['parse error', $],
         ),
         {
-            'document resource identifier': $p['document resource identifier'],
             'tab size': $p['tab size'],
         },
     )['content'],

@@ -17,8 +17,6 @@ export namespace Package_Set_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -29,7 +27,6 @@ export type Package_Set_ = (
     context: Package_Set_.I,
     abort: _pi.Abort<Package_Set_.E>,
     parameters: {
-        readonly 'document resource identifier': Package_Set_.P.document_resource_identifier
         readonly 'tab size': Package_Set_.P.tab_size
     },
 ) => Package_Set_.O
@@ -44,8 +41,6 @@ export namespace Package_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -56,7 +51,6 @@ export type Package_ = (
     context: Package_.I,
     abort: _pi.Abort<Package_.E>,
     parameters: {
-        readonly 'document resource identifier': Package_.P.document_resource_identifier
         readonly 'tab size': Package_.P.tab_size
     },
 ) => Package_.O
@@ -71,8 +65,6 @@ export namespace Temp_Value_Type_Specification_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -83,7 +75,6 @@ export type Temp_Value_Type_Specification_ = (
     context: Temp_Value_Type_Specification_.I,
     abort: _pi.Abort<Temp_Value_Type_Specification_.E>,
     parameters: {
-        readonly 'document resource identifier': Temp_Value_Type_Specification_.P.document_resource_identifier
         readonly 'tab size': Temp_Value_Type_Specification_.P.tab_size
     },
 ) => Temp_Value_Type_Specification_.O
@@ -98,8 +89,6 @@ export namespace Assign_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -110,7 +99,6 @@ export type Assign_ = (
     context: Assign_.I,
     abort: _pi.Abort<Assign_.E>,
     parameters: {
-        readonly 'document resource identifier': Assign_.P.document_resource_identifier
         readonly 'tab size': Assign_.P.tab_size
     },
 ) => Assign_.O
@@ -125,8 +113,6 @@ export namespace Select_Value_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -137,7 +123,6 @@ export type Select_Value_ = (
     context: Select_Value_.I,
     abort: _pi.Abort<Select_Value_.E>,
     parameters: {
-        readonly 'document resource identifier': Select_Value_.P.document_resource_identifier
         readonly 'tab size': Select_Value_.P.tab_size
     },
 ) => Select_Value_.O
@@ -152,8 +137,6 @@ export namespace Select_Lookup_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -164,7 +147,6 @@ export type Select_Lookup_ = (
     context: Select_Lookup_.I,
     abort: _pi.Abort<Select_Lookup_.E>,
     parameters: {
-        readonly 'document resource identifier': Select_Lookup_.P.document_resource_identifier
         readonly 'tab size': Select_Lookup_.P.tab_size
     },
 ) => Select_Lookup_.O

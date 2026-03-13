@@ -17,8 +17,6 @@ export namespace Package_Set_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -29,7 +27,6 @@ export type Package_Set_ = (
     context: Package_Set_.I,
     abort: _pi.Abort<Package_Set_.E>,
     parameters: {
-        readonly 'document resource identifier': Package_Set_.P.document_resource_identifier
         readonly 'tab size': Package_Set_.P.tab_size
     },
 ) => Package_Set_.O
@@ -44,8 +41,6 @@ export namespace Package_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -56,7 +51,6 @@ export type Package_ = (
     context: Package_.I,
     abort: _pi.Abort<Package_.E>,
     parameters: {
-        readonly 'document resource identifier': Package_.P.document_resource_identifier
         readonly 'tab size': Package_.P.tab_size
     },
 ) => Package_.O
@@ -71,8 +65,6 @@ export namespace Imports_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -83,7 +75,6 @@ export type Imports_ = (
     context: Imports_.I,
     abort: _pi.Abort<Imports_.E>,
     parameters: {
-        readonly 'document resource identifier': Imports_.P.document_resource_identifier
         readonly 'tab size': Imports_.P.tab_size
     },
 ) => Imports_.O
@@ -98,8 +89,6 @@ export namespace Value_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -110,7 +99,6 @@ export type Value_ = (
     context: Value_.I,
     abort: _pi.Abort<Value_.E>,
     parameters: {
-        readonly 'document resource identifier': Value_.P.document_resource_identifier
         readonly 'tab size': Value_.P.tab_size
     },
 ) => Value_.O
@@ -125,8 +113,6 @@ export namespace Module_Reference_ {
     
     export namespace P {
         
-        export type document_resource_identifier = string
-        
         export type tab_size = number
         
     }
@@ -137,7 +123,6 @@ export type Module_Reference_ = (
     context: Module_Reference_.I,
     abort: _pi.Abort<Module_Reference_.E>,
     parameters: {
-        readonly 'document resource identifier': Module_Reference_.P.document_resource_identifier
         readonly 'tab size': Module_Reference_.P.tab_size
     },
 ) => Module_Reference_.O
