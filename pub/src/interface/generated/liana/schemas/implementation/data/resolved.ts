@@ -1,7 +1,7 @@
 
 import * as _pi from 'pareto-core/dist/interface'
 
-import * as i__imports_interface from "../../interface/data/resolved"
+import * as i_imports_interface from "../../interface/data/resolved"
 
 export namespace Package_Set_ {
     
@@ -57,7 +57,7 @@ export namespace Package_ {
         readonly 'variables': specials.variables
     }
     
-    export type type_imports = i__imports_interface.Imports
+    export type type_imports = i_imports_interface.Imports
     
     export namespace variable_imports {
         
