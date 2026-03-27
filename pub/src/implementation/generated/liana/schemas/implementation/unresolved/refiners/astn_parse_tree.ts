@@ -24,14 +24,14 @@ export const Package_Set: t_signatures.Package_Set = ($, abort) => _p_change_con
             $,
         ),
         {
-            'document resource identifier': "dummy dri",
+            'subdocument context': _p.optional.literal.not_set(),
         },
     ),
     ($) => ({
         'l location': v_parse_tree_to_location.Value(
             $['value'],
             {
-                'document resource identifier': "dummy dri",
+                'subdocument context': _p.optional.literal.not_set(),
             },
         ),
         'l dictionary': _p.dictionary.from.dictionary(
@@ -41,7 +41,7 @@ export const Package_Set: t_signatures.Package_Set = ($, abort) => _p_change_con
                 'l location': v_parse_tree_to_location.Value(
                     $,
                     {
-                        'document resource identifier': "dummy dri",
+                        'subdocument context': _p.optional.literal.not_set(),
                     },
                 ),
                 'l entry': _p_change_context(
@@ -62,7 +62,7 @@ export const Package_Set: t_signatures.Package_Set = ($, abort) => _p_change_con
                                             'l location': v_parse_tree_to_location.Value(
                                                 $,
                                                 {
-                                                    'document resource identifier': "dummy dri",
+                                                    'subdocument context': _p.optional.literal.not_set(),
                                                 },
                                             ),
                                             'l state': ['package', Package(
@@ -80,7 +80,7 @@ export const Package_Set: t_signatures.Package_Set = ($, abort) => _p_change_con
                                             'l location': v_parse_tree_to_location.Value(
                                                 $,
                                                 {
-                                                    'document resource identifier': "dummy dri",
+                                                    'subdocument context': _p.optional.literal.not_set(),
                                                 },
                                             ),
                                             'l state': ['set', Package_Set(
@@ -98,7 +98,7 @@ export const Package_Set: t_signatures.Package_Set = ($, abort) => _p_change_con
                                             'range': v_parse_tree_to_location.Value(
                                                 $['value'],
                                                 {
-                                                    'document resource identifier': "dummy dri",
+                                                    'subdocument context': _p.optional.literal.not_set(),
                                                 },
                                             ),
                                         }],
@@ -127,7 +127,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                     "functions": null,
                 },
             ),
-            'document resource identifier': "dummy dri",
+            'subdocument context': _p.optional.literal.not_set(),
         },
     ),
     ($) => _p_variables(
@@ -136,7 +136,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
             const var_verbose_group_range = v_parse_tree_to_location.Value(
                 $['value'],
                 {
-                    'document resource identifier': "dummy dri",
+                    'subdocument context': _p.optional.literal.not_set(),
                 },
             )
             return {
@@ -148,7 +148,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                         {
                             'id': 'specials',
-                            'document resource identifier': "dummy dri",
+                            'subdocument context': _p.optional.literal.not_set(),
                         },
                     ),
                     ($) => _p_change_context(
@@ -171,7 +171,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                         "variables": null,
                                     },
                                 ),
-                                'document resource identifier': "dummy dri",
+                                'subdocument context': _p.optional.literal.not_set(),
                             },
                         ),
                         ($) => _p_variables(
@@ -180,7 +180,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                     $['value'],
                                     {
-                                        'document resource identifier': "dummy dri",
+                                        'subdocument context': _p.optional.literal.not_set(),
                                     },
                                 )
                                 return {
@@ -192,7 +192,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'abort',
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -202,7 +202,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -214,7 +214,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'change context',
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -224,7 +224,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -236,7 +236,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'implement me',
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -246,7 +246,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -258,7 +258,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'iterate',
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -268,7 +268,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -280,7 +280,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'lookups',
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -290,7 +290,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -302,7 +302,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'list from text',
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -312,7 +312,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -324,7 +324,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'text from list',
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -334,7 +334,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -346,7 +346,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'unreachable code path',
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -356,7 +356,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -368,7 +368,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'id': 'variables',
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -378,7 +378,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                             ),
                                             {
                                                 'type': ['true/false', null],
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                     ),
@@ -395,7 +395,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                         {
                             'id': 'type imports',
-                            'document resource identifier': "dummy dri",
+                            'subdocument context': _p.optional.literal.not_set(),
                         },
                     ),
                     ($) => v_external_interface.Imports(
@@ -413,7 +413,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                         {
                             'id': 'variable imports',
-                            'document resource identifier': "dummy dri",
+                            'subdocument context': _p.optional.literal.not_set(),
                         },
                     ),
                     ($) => _p_change_context(
@@ -423,14 +423,14 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                 $,
                             ),
                             {
-                                'document resource identifier': "dummy dri",
+                                'subdocument context': _p.optional.literal.not_set(),
                             },
                         ),
                         ($) => ({
                             'l location': v_parse_tree_to_location.Value(
                                 $['value'],
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                             'l dictionary': _p.dictionary.from.dictionary(
@@ -440,7 +440,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                     'l location': v_parse_tree_to_location.Value(
                                         $,
                                         {
-                                            'document resource identifier': "dummy dri",
+                                            'subdocument context': _p.optional.literal.not_set(),
                                         },
                                     ),
                                     'l entry': _p_change_context(
@@ -456,7 +456,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                         "type": null,
                                                     },
                                                 ),
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                         ($) => _p_variables(
@@ -465,7 +465,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                     $['value'],
                                                     {
-                                                        'document resource identifier': "dummy dri",
+                                                        'subdocument context': _p.optional.literal.not_set(),
                                                     },
                                                 )
                                                 return {
@@ -477,14 +477,14 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'tail',
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => ({
                                                             'l location': v_parse_tree_to_location.Value(
                                                                 $,
                                                                 {
-                                                                    'document resource identifier': "dummy dri",
+                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                 },
                                                             ),
                                                             'l list': _p.list.from.list(
@@ -494,7 +494,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                         $,
                                                                     ),
                                                                     {
-                                                                        'document resource identifier': "dummy dri",
+                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                     },
                                                                 )['items'],
                                                             ).map(
@@ -504,7 +504,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                         'l location': v_parse_tree_to_location.Value(
                                                                             $,
                                                                             {
-                                                                                'document resource identifier': "dummy dri",
+                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                             },
                                                                         ),
                                                                         'l item': v_unmarshalled_from_parse_tree.Text(
@@ -526,7 +526,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'type',
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => _p_change_context(
@@ -547,7 +547,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['ancestor', _p_change_context(
@@ -563,7 +563,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                                         "number of steps": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -572,7 +572,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -584,7 +584,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'dependency',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => v_unmarshalled_from_parse_tree.Text(
@@ -602,7 +602,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'number of steps',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => v_unmarshalled_from_parse_tree.Number(
@@ -612,7 +612,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'type': ['decimal', null],
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                     ),
@@ -629,7 +629,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['external', v_unmarshalled_from_parse_tree.Text(
@@ -647,7 +647,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['sibling', v_unmarshalled_from_parse_tree.Text(
@@ -665,7 +665,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -692,7 +692,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                         ),
                         {
                             'id': 'functions',
-                            'document resource identifier': "dummy dri",
+                            'subdocument context': _p.optional.literal.not_set(),
                         },
                     ),
                     ($) => _p_change_context(
@@ -702,14 +702,14 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                 $,
                             ),
                             {
-                                'document resource identifier': "dummy dri",
+                                'subdocument context': _p.optional.literal.not_set(),
                             },
                         ),
                         ($) => ({
                             'l location': v_parse_tree_to_location.Value(
                                 $['value'],
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                             'l dictionary': _p.dictionary.from.dictionary(
@@ -719,7 +719,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                     'l location': v_parse_tree_to_location.Value(
                                         $,
                                         {
-                                            'document resource identifier': "dummy dri",
+                                            'subdocument context': _p.optional.literal.not_set(),
                                         },
                                     ),
                                     'l entry': _p_change_context(
@@ -738,7 +738,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                         "temp has parameters": null,
                                                     },
                                                 ),
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                         ($) => _p_variables(
@@ -747,7 +747,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                     $['value'],
                                                     {
-                                                        'document resource identifier': "dummy dri",
+                                                        'subdocument context': _p.optional.literal.not_set(),
                                                     },
                                                 )
                                                 return {
@@ -759,7 +759,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'type',
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => _p_change_context(
@@ -775,7 +775,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                             "type": null,
                                                                         },
                                                                     ),
-                                                                    'document resource identifier': "dummy dri",
+                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -784,7 +784,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'document resource identifier': "dummy dri",
+                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -796,7 +796,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'import',
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => v_unmarshalled_from_parse_tree.Text(
@@ -814,7 +814,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'type',
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => v_unmarshalled_from_parse_tree.Text(
@@ -837,7 +837,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'expression',
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => Assign(
@@ -855,7 +855,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'temp has abort',
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -865,7 +865,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'type': ['true/false', null],
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                     ),
@@ -877,7 +877,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'temp has lookups',
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -887,7 +887,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'type': ['true/false', null],
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                     ),
@@ -899,7 +899,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'id': 'temp has parameters',
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -909,7 +909,7 @@ export const Package: t_signatures.Package = ($, abort) => _p_change_context(
                                                             ),
                                                             {
                                                                 'type': ['true/false', null],
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                     ),
@@ -940,7 +940,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                     "sub selection": null,
                 },
             ),
-            'document resource identifier': "dummy dri",
+            'subdocument context': _p.optional.literal.not_set(),
         },
     ),
     ($) => _p_variables(
@@ -949,7 +949,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
             const var_verbose_group_range = v_parse_tree_to_location.Value(
                 $['value'],
                 {
-                    'document resource identifier': "dummy dri",
+                    'subdocument context': _p.optional.literal.not_set(),
                 },
             )
             return {
@@ -961,7 +961,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                         ),
                         {
                             'id': 'type',
-                            'document resource identifier': "dummy dri",
+                            'subdocument context': _p.optional.literal.not_set(),
                         },
                     ),
                     ($) => _p_change_context(
@@ -977,7 +977,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                         "type": null,
                                     },
                                 ),
-                                'document resource identifier': "dummy dri",
+                                'subdocument context': _p.optional.literal.not_set(),
                             },
                         ),
                         ($) => _p_variables(
@@ -986,7 +986,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                     $['value'],
                                     {
-                                        'document resource identifier': "dummy dri",
+                                        'subdocument context': _p.optional.literal.not_set(),
                                     },
                                 )
                                 return {
@@ -998,7 +998,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                             ),
                                             {
                                                 'id': 'import',
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Text(
@@ -1016,7 +1016,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                             ),
                                             {
                                                 'id': 'type',
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         ),
                                         ($) => v_unmarshalled_from_parse_tree.Text(
@@ -1039,14 +1039,14 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                         ),
                         {
                             'id': 'sub selection',
-                            'document resource identifier': "dummy dri",
+                            'subdocument context': _p.optional.literal.not_set(),
                         },
                     ),
                     ($) => ({
                         'l location': v_parse_tree_to_location.Value(
                             $,
                             {
-                                'document resource identifier': "dummy dri",
+                                'subdocument context': _p.optional.literal.not_set(),
                             },
                         ),
                         'l list': _p.list.from.list(
@@ -1056,7 +1056,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                     $,
                                 ),
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             )['items'],
                         ).map(
@@ -1066,7 +1066,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                     'l location': v_parse_tree_to_location.Value(
                                         $,
                                         {
-                                            'document resource identifier': "dummy dri",
+                                            'subdocument context': _p.optional.literal.not_set(),
                                         },
                                     ),
                                     'l item': _p_change_context(
@@ -1087,7 +1087,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                                                 'l location': v_parse_tree_to_location.Value(
                                                                     $,
                                                                     {
-                                                                        'document resource identifier': "dummy dri",
+                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                     },
                                                                 ),
                                                                 'l state': ['dictionary', v_unmarshalled_from_parse_tree.Nothing(
@@ -1105,7 +1105,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                                                 'l location': v_parse_tree_to_location.Value(
                                                                     $,
                                                                     {
-                                                                        'document resource identifier': "dummy dri",
+                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                     },
                                                                 ),
                                                                 'l state': ['group', v_unmarshalled_from_parse_tree.Text(
@@ -1123,7 +1123,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                                                 'l location': v_parse_tree_to_location.Value(
                                                                     $,
                                                                     {
-                                                                        'document resource identifier': "dummy dri",
+                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                     },
                                                                 ),
                                                                 'l state': ['list', v_unmarshalled_from_parse_tree.Nothing(
@@ -1141,7 +1141,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                                                 'l location': v_parse_tree_to_location.Value(
                                                                     $,
                                                                     {
-                                                                        'document resource identifier': "dummy dri",
+                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                     },
                                                                 ),
                                                                 'l state': ['optional', v_unmarshalled_from_parse_tree.Nothing(
@@ -1159,7 +1159,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                                                 'l location': v_parse_tree_to_location.Value(
                                                                     $,
                                                                     {
-                                                                        'document resource identifier': "dummy dri",
+                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                     },
                                                                 ),
                                                                 'l state': ['state', v_unmarshalled_from_parse_tree.Text(
@@ -1177,7 +1177,7 @@ export const Temp_Value_Type_Specification: t_signatures.Temp_Value_Type_Specifi
                                                                 'range': v_parse_tree_to_location.Value(
                                                                     $['value'],
                                                                     {
-                                                                        'document resource identifier': "dummy dri",
+                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                     },
                                                                 ),
                                                             }],
@@ -1214,7 +1214,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                             'l state': ['decide', _p_change_context(
@@ -1230,7 +1230,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                 "type": null,
                                             },
                                         ),
-                                        'document resource identifier': "dummy dri",
+                                        'subdocument context': _p.optional.literal.not_set(),
                                     },
                                 ),
                                 ($) => _p_variables(
@@ -1239,7 +1239,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                             $['value'],
                                             {
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         )
                                         return {
@@ -1251,7 +1251,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                     ),
                                                     {
                                                         'id': 'source',
-                                                        'document resource identifier': "dummy dri",
+                                                        'subdocument context': _p.optional.literal.not_set(),
                                                     },
                                                 ),
                                                 ($) => Select_Value(
@@ -1269,7 +1269,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                     ),
                                                     {
                                                         'id': 'type',
-                                                        'document resource identifier': "dummy dri",
+                                                        'subdocument context': _p.optional.literal.not_set(),
                                                     },
                                                 ),
                                                 ($) => _p_change_context(
@@ -1290,7 +1290,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['boolean', _p_change_context(
@@ -1307,7 +1307,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 "if true": null,
                                                                                             },
                                                                                         ),
-                                                                                        'document resource identifier': "dummy dri",
+                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -1316,7 +1316,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -1328,7 +1328,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'temp resulting node',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -1355,7 +1355,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'if false',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -1373,7 +1373,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'if true',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -1396,7 +1396,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['optional', _p_change_context(
@@ -1413,7 +1413,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 "if set": null,
                                                                                             },
                                                                                         ),
-                                                                                        'document resource identifier': "dummy dri",
+                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -1422,7 +1422,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -1434,7 +1434,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'temp resulting node',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -1461,7 +1461,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'if not set',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -1479,7 +1479,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'if set',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -1502,7 +1502,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['state', _p_change_context(
@@ -1518,7 +1518,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 "type": null,
                                                                                             },
                                                                                         ),
-                                                                                        'document resource identifier': "dummy dri",
+                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -1527,7 +1527,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -1539,7 +1539,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'temp resulting node',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -1566,7 +1566,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'type',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p_change_context(
@@ -1587,7 +1587,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['partial', _p_change_context(
@@ -1603,7 +1603,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                 "default": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -1612,7 +1612,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -1624,7 +1624,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'options',
-                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => _p_change_context(
@@ -1634,14 +1634,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             $,
                                                                                                                                                         ),
                                                                                                                                                         {
-                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                         },
                                                                                                                                                     ),
                                                                                                                                                     ($) => ({
                                                                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                                                                             $['value'],
                                                                                                                                                             {
-                                                                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                             },
                                                                                                                                                         ),
                                                                                                                                                         'l dictionary': _p.dictionary.from.dictionary(
@@ -1651,7 +1651,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l entry': Assign(
@@ -1673,7 +1673,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'default',
-                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => Assign(
@@ -1696,7 +1696,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['full', _p_change_context(
@@ -1711,7 +1711,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                 "options": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -1720,7 +1720,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -1732,7 +1732,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'options',
-                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => _p_change_context(
@@ -1742,14 +1742,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                             $,
                                                                                                                                                         ),
                                                                                                                                                         {
-                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                         },
                                                                                                                                                     ),
                                                                                                                                                     ($) => ({
                                                                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                                                                             $['value'],
                                                                                                                                                             {
-                                                                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                             },
                                                                                                                                                         ),
                                                                                                                                                         'l dictionary': _p.dictionary.from.dictionary(
@@ -1759,7 +1759,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l entry': Assign(
@@ -1786,7 +1786,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['single', _p_change_context(
@@ -1803,7 +1803,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                 "if false": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -1812,7 +1812,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -1824,7 +1824,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'option',
-                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => v_unmarshalled_from_parse_tree.Text(
@@ -1842,7 +1842,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'if true',
-                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => Assign(
@@ -1860,7 +1860,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'if false',
-                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => Assign(
@@ -1883,7 +1883,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             'range': v_parse_tree_to_location.Value(
                                                                                                                                 $['value'],
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                         }],
@@ -1906,7 +1906,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['text', _p_change_context(
@@ -1923,7 +1923,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 "default": null,
                                                                                             },
                                                                                         ),
-                                                                                        'document resource identifier': "dummy dri",
+                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -1932,7 +1932,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -1944,7 +1944,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'temp resulting node',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -1971,7 +1971,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'cases',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p_change_context(
@@ -1981,14 +1981,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             $,
                                                                                                         ),
                                                                                                         {
-                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                         },
                                                                                                     ),
                                                                                                     ($) => ({
                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                             $['value'],
                                                                                                             {
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         'l dictionary': _p.dictionary.from.dictionary(
@@ -1998,7 +1998,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l entry': Assign(
@@ -2020,7 +2020,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'default',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -2043,7 +2043,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             'range': v_parse_tree_to_location.Value(
                                                                                 $['value'],
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                         }],
@@ -2066,7 +2066,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                             'l state': ['construct', _p_change_context(
@@ -2087,7 +2087,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['boolean', _p_change_context(
@@ -2108,7 +2108,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', _p_change_context(
@@ -2129,7 +2129,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['false', v_unmarshalled_from_parse_tree.Nothing(
@@ -2147,7 +2147,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['true', v_unmarshalled_from_parse_tree.Nothing(
@@ -2165,7 +2165,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                     $['value'],
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                             }],
@@ -2183,7 +2183,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['from', _p_change_context(
@@ -2199,7 +2199,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                         "type": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -2208,7 +2208,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -2220,7 +2220,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'selection',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => Select_Value(
@@ -2238,7 +2238,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'type',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -2259,7 +2259,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['boolean', _p_change_context(
@@ -2280,7 +2280,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['not', v_unmarshalled_from_parse_tree.Nothing(
@@ -2298,7 +2298,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['copy', v_unmarshalled_from_parse_tree.Nothing(
@@ -2316,7 +2316,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -2334,7 +2334,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['dictionary', _p_change_context(
@@ -2355,7 +2355,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['is empty', v_unmarshalled_from_parse_tree.Nothing(
@@ -2373,7 +2373,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -2391,7 +2391,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['list', _p_change_context(
@@ -2412,7 +2412,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['is empty', v_unmarshalled_from_parse_tree.Nothing(
@@ -2430,7 +2430,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -2448,7 +2448,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                                                                         $['value'],
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                 }],
@@ -2471,7 +2471,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -2489,7 +2489,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['dictionary', _p_change_context(
@@ -2510,7 +2510,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', _p_change_context(
@@ -2520,14 +2520,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 $,
                                                                                             ),
                                                                                             {
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => ({
                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                 $['value'],
                                                                                                 {
-                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                 },
                                                                                             ),
                                                                                             'l dictionary': _p.dictionary.from.dictionary(
@@ -2537,7 +2537,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                         $,
                                                                                                         {
-                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                         },
                                                                                                     ),
                                                                                                     'l entry': Assign(
@@ -2559,7 +2559,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['from', _p_change_context(
@@ -2575,7 +2575,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                         "type": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -2584,7 +2584,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -2596,7 +2596,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'selection',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => Select_Value(
@@ -2614,7 +2614,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'type',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -2635,7 +2635,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['dictionary', _p_change_context(
@@ -2656,7 +2656,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['filter', _p_change_context(
@@ -2671,7 +2671,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                     "assign entry": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -2680,7 +2680,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -2692,7 +2692,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign entry',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -2715,7 +2715,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['map', _p_change_context(
@@ -2730,7 +2730,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                     "assign entry": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -2739,7 +2739,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -2751,7 +2751,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign entry',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -2774,7 +2774,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['resolve', _p_change_context(
@@ -2790,7 +2790,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                     "temp resulting entry node": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -2799,7 +2799,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -2811,7 +2811,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign entry',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -2829,7 +2829,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'temp resulting entry node',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Temp_Value_Type_Specification(
@@ -2852,7 +2852,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -2870,7 +2870,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['list', _p_change_context(
@@ -2891,7 +2891,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['convert', _p_change_context(
@@ -2908,7 +2908,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                     "abort": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -2917,7 +2917,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -2929,7 +2929,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign id',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -2947,7 +2947,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign entry',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -2965,7 +2965,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'abort',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -2988,7 +2988,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -3006,7 +3006,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                                                                         $['value'],
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                 }],
@@ -3029,7 +3029,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -3047,7 +3047,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['group', _p_change_context(
@@ -3068,7 +3068,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', _p_change_context(
@@ -3084,7 +3084,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                         "have dependencies": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -3093,7 +3093,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -3105,7 +3105,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'properties',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -3115,14 +3115,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                     $,
                                                                                                                 ),
                                                                                                                 {
-                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                 },
                                                                                                             ),
                                                                                                             ($) => ({
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $['value'],
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l dictionary': _p.dictionary.from.dictionary(
@@ -3132,7 +3132,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                                             $,
                                                                                                                             {
-                                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                                             },
                                                                                                                         ),
                                                                                                                         'l entry': Assign(
@@ -3154,7 +3154,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'have dependencies',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => v_unmarshalled_from_parse_tree.Boolean(
@@ -3164,7 +3164,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'type': ['true/false', null],
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                     ),
@@ -3181,7 +3181,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -3199,7 +3199,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['list', _p_change_context(
@@ -3220,14 +3220,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', {
                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                             $,
                                                                                             {
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         'l list': _p.list.from.list(
@@ -3237,7 +3237,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     $,
                                                                                                 ),
                                                                                                 {
-                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                 },
                                                                                             )['items'],
                                                                                         ).map(
@@ -3247,7 +3247,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                         $,
                                                                                                         {
-                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                         },
                                                                                                     ),
                                                                                                     'l item': Assign(
@@ -3269,7 +3269,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['from', _p_change_context(
@@ -3285,7 +3285,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                         "type": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -3294,7 +3294,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -3306,7 +3306,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'selection',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => Select_Value(
@@ -3324,7 +3324,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'type',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -3345,7 +3345,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['dictionary', _p_change_context(
@@ -3366,7 +3366,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['convert', _p_change_context(
@@ -3381,7 +3381,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                     "assign entry": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -3390,7 +3390,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -3402,7 +3402,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign entry',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3425,7 +3425,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -3443,7 +3443,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['list', _p_change_context(
@@ -3464,7 +3464,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['filter', _p_change_context(
@@ -3479,7 +3479,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                     "assign item": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -3488,7 +3488,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -3500,7 +3500,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign item',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3523,7 +3523,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['map', _p_change_context(
@@ -3538,7 +3538,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                     "assign item": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -3547,7 +3547,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -3559,7 +3559,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign item',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3582,7 +3582,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['map with state', _p_change_context(
@@ -3600,7 +3600,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                     "wrap up": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -3609,7 +3609,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -3621,7 +3621,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'initialize state',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3639,7 +3639,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign item',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3657,7 +3657,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'update state',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3675,7 +3675,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'wrap up',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3698,7 +3698,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['reduce', _p_change_context(
@@ -3714,7 +3714,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                     "assign item": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -3723,7 +3723,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -3735,7 +3735,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'initialize state',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3753,7 +3753,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign item',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -3776,7 +3776,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['reverse', v_unmarshalled_from_parse_tree.Nothing(
@@ -3794,7 +3794,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -3812,7 +3812,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                                                                         $['value'],
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                 }],
@@ -3835,7 +3835,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -3853,7 +3853,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['nothing', v_unmarshalled_from_parse_tree.Nothing(
@@ -3871,7 +3871,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['number', _p_change_context(
@@ -3892,7 +3892,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['approximation', _p_change_context(
@@ -3913,7 +3913,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['literal', v_unmarshalled_from_parse_tree.Number(
@@ -3923,7 +3923,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                     ),
                                                                                                                     {
                                                                                                                         'type': ['decimal', null],
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 )],
                                                                                                             }),
@@ -3935,7 +3935,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['copy', Select_Value(
@@ -3953,7 +3953,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                     $['value'],
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                             }],
@@ -3971,7 +3971,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['integer', _p_change_context(
@@ -3992,7 +3992,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['copy', Select_Value(
@@ -4010,7 +4010,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['divide', _p_change_context(
@@ -4027,7 +4027,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     "abort": null,
                                                                                                                                 },
                                                                                                                             ),
-                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                         },
                                                                                                                     ),
                                                                                                                     ($) => _p_variables(
@@ -4036,7 +4036,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                 $['value'],
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             )
                                                                                                                             return {
@@ -4048,7 +4048,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         ),
                                                                                                                                         {
                                                                                                                                             'id': 'assign dividend',
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => Select_Value(
@@ -4066,7 +4066,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         ),
                                                                                                                                         {
                                                                                                                                             'id': 'assign divisor',
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => Select_Value(
@@ -4084,7 +4084,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         ),
                                                                                                                                         {
                                                                                                                                             'id': 'abort',
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => Assign(
@@ -4107,7 +4107,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['literal', v_unmarshalled_from_parse_tree.Number(
@@ -4117,7 +4117,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                     ),
                                                                                                                     {
                                                                                                                         'type': ['decimal', null],
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 )],
                                                                                                             }),
@@ -4129,7 +4129,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                     $['value'],
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                             }],
@@ -4147,7 +4147,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['natural', _p_change_context(
@@ -4168,7 +4168,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['literal', v_unmarshalled_from_parse_tree.Number(
@@ -4178,7 +4178,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                     ),
                                                                                                                     {
                                                                                                                         'type': ['decimal', null],
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 )],
                                                                                                             }),
@@ -4190,7 +4190,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['copy', Select_Value(
@@ -4208,7 +4208,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['number of dictionary entries', _p_change_context(
@@ -4223,7 +4223,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     "dictionary": null,
                                                                                                                                 },
                                                                                                                             ),
-                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                         },
                                                                                                                     ),
                                                                                                                     ($) => _p_variables(
@@ -4232,7 +4232,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                 $['value'],
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             )
                                                                                                                             return {
@@ -4244,7 +4244,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         ),
                                                                                                                                         {
                                                                                                                                             'id': 'dictionary',
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => Select_Value(
@@ -4267,7 +4267,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['number of list items', _p_change_context(
@@ -4282,7 +4282,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     "list": null,
                                                                                                                                 },
                                                                                                                             ),
-                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                         },
                                                                                                                     ),
                                                                                                                     ($) => _p_variables(
@@ -4291,7 +4291,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                 $['value'],
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             )
                                                                                                                             return {
@@ -4303,7 +4303,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                         ),
                                                                                                                                         {
                                                                                                                                             'id': 'list',
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => Select_Value(
@@ -4326,7 +4326,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['source column', v_unmarshalled_from_parse_tree.Nothing(
@@ -4344,7 +4344,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['source line', v_unmarshalled_from_parse_tree.Nothing(
@@ -4362,7 +4362,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                     $['value'],
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                             }],
@@ -4380,7 +4380,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -4398,7 +4398,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['optional', _p_change_context(
@@ -4419,7 +4419,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', _p_change_context(
@@ -4440,7 +4440,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['not set', v_unmarshalled_from_parse_tree.Nothing(
@@ -4458,7 +4458,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                     $,
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                                 'l state': ['set', Assign(
@@ -4476,7 +4476,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                     $['value'],
                                                                                                                     {
-                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 ),
                                                                                                             }],
@@ -4494,7 +4494,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['from', _p_change_context(
@@ -4510,7 +4510,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                         "type": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -4519,7 +4519,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -4531,7 +4531,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'selection',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => Select_Value(
@@ -4549,7 +4549,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'type',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -4570,7 +4570,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['boolean', _p_change_context(
@@ -4591,7 +4591,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['convert', _p_change_context(
@@ -4606,7 +4606,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                     "assign set": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -4615,7 +4615,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -4627,7 +4627,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign set',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -4650,7 +4650,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -4668,7 +4668,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['optional', _p_change_context(
@@ -4689,7 +4689,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['map', _p_change_context(
@@ -4704,7 +4704,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                     "assign set": null,
                                                                                                                                                                                 },
                                                                                                                                                                             ),
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => _p_variables(
@@ -4713,7 +4713,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                                 $['value'],
                                                                                                                                                                                 {
-                                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                 },
                                                                                                                                                                             )
                                                                                                                                                                             return {
@@ -4725,7 +4725,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                                         ),
                                                                                                                                                                                         {
                                                                                                                                                                                             'id': 'assign set',
-                                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                                         },
                                                                                                                                                                                     ),
                                                                                                                                                                                     ($) => Assign(
@@ -4748,7 +4748,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -4766,7 +4766,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                                                                         $['value'],
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                 }],
@@ -4789,7 +4789,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -4807,7 +4807,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['state', _p_change_context(
@@ -4828,7 +4828,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', _p_change_context(
@@ -4844,7 +4844,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                         "assign option": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -4853,7 +4853,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -4865,7 +4865,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'option',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => v_unmarshalled_from_parse_tree.Text(
@@ -4883,7 +4883,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'assign option',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => Assign(
@@ -4906,7 +4906,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -4924,7 +4924,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['text', _p_change_context(
@@ -4945,7 +4945,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['literal', _p_change_context(
@@ -4961,7 +4961,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                         "value": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -4970,7 +4970,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -4982,7 +4982,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'type',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -5003,7 +5003,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['identifier', v_unmarshalled_from_parse_tree.Nothing(
@@ -5021,7 +5021,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['freeform', v_unmarshalled_from_parse_tree.Nothing(
@@ -5039,7 +5039,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                                                                         $['value'],
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                 }],
@@ -5057,7 +5057,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'value',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => v_unmarshalled_from_parse_tree.Text(
@@ -5080,7 +5080,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['from', _p_change_context(
@@ -5096,7 +5096,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                         "type": null,
                                                                                                     },
                                                                                                 ),
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         ),
                                                                                         ($) => _p_variables(
@@ -5105,7 +5105,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                 const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                     $['value'],
                                                                                                     {
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 )
                                                                                                 return {
@@ -5117,7 +5117,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'selection',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => Select_Value(
@@ -5135,7 +5135,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                             ),
                                                                                                             {
                                                                                                                 'id': 'type',
-                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                             },
                                                                                                         ),
                                                                                                         ($) => _p_change_context(
@@ -5156,7 +5156,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                                                                         $,
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     'l state': ['text', _p_change_context(
@@ -5177,7 +5177,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                                     $,
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                                 'l state': ['copy', v_unmarshalled_from_parse_tree.Nothing(
@@ -5195,7 +5195,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                                                     $['value'],
                                                                                                                                                                     {
-                                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                     },
                                                                                                                                                                 ),
                                                                                                                                                             }],
@@ -5213,7 +5213,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                                                                         $['value'],
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                 }],
@@ -5236,7 +5236,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['source document', v_unmarshalled_from_parse_tree.Nothing(
@@ -5254,7 +5254,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['entry id', v_unmarshalled_from_parse_tree.Nothing(
@@ -5272,7 +5272,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $,
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l state': ['option name', v_unmarshalled_from_parse_tree.Nothing(
@@ -5290,7 +5290,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                     'range': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                 }],
@@ -5308,7 +5308,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'range': v_parse_tree_to_location.Value(
                                                             $['value'],
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                     }],
@@ -5326,7 +5326,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                             'l state': ['select', Select_Value(
@@ -5344,7 +5344,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                             'l state': ['special', _p_change_context(
@@ -5365,7 +5365,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['abort', Assign(
@@ -5383,7 +5383,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['assert', _p_change_context(
@@ -5399,7 +5399,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             "normal flow": null,
                                                                         },
                                                                     ),
-                                                                    'document resource identifier': "dummy dri",
+                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -5408,7 +5408,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'document resource identifier': "dummy dri",
+                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -5420,7 +5420,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'tester',
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Assign(
@@ -5438,7 +5438,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'normal flow',
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Assign(
@@ -5461,7 +5461,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['change context', _p_change_context(
@@ -5477,7 +5477,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             "expression": null,
                                                                         },
                                                                     ),
-                                                                    'document resource identifier': "dummy dri",
+                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -5486,7 +5486,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'document resource identifier': "dummy dri",
+                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -5498,7 +5498,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'new context',
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Select_Value(
@@ -5516,7 +5516,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'expression',
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Assign(
@@ -5539,7 +5539,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['variables', _p_change_context(
@@ -5555,7 +5555,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             "assign": null,
                                                                         },
                                                                     ),
-                                                                    'document resource identifier': "dummy dri",
+                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -5564,7 +5564,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'document resource identifier': "dummy dri",
+                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -5576,7 +5576,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'variables',
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => _p_change_context(
@@ -5586,14 +5586,14 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                         $,
                                                                                     ),
                                                                                     {
-                                                                                        'document resource identifier': "dummy dri",
+                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => ({
                                                                                     'l location': v_parse_tree_to_location.Value(
                                                                                         $['value'],
                                                                                         {
-                                                                                            'document resource identifier': "dummy dri",
+                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                         },
                                                                                     ),
                                                                                     'l dictionary': _p.dictionary.from.dictionary(
@@ -5603,7 +5603,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                 $,
                                                                                                 {
-                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                 },
                                                                                             ),
                                                                                             'l entry': Assign(
@@ -5625,7 +5625,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'assign',
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Assign(
@@ -5648,7 +5648,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['implement me', v_unmarshalled_from_parse_tree.Text(
@@ -5666,7 +5666,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['iterate', _p_change_context(
@@ -5682,7 +5682,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             "assign": null,
                                                                         },
                                                                     ),
-                                                                    'document resource identifier': "dummy dri",
+                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -5691,7 +5691,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'document resource identifier': "dummy dri",
+                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -5703,7 +5703,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'list',
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Select_Value(
@@ -5721,7 +5721,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'assign',
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Assign(
@@ -5744,7 +5744,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['unreachable', _p_change_context(
@@ -5759,7 +5759,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                             "explanation": null,
                                                                         },
                                                                     ),
-                                                                    'document resource identifier': "dummy dri",
+                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -5768,7 +5768,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'document resource identifier': "dummy dri",
+                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -5780,7 +5780,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                 ),
                                                                                 {
                                                                                     'id': 'explanation',
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => v_unmarshalled_from_parse_tree.Text(
@@ -5803,7 +5803,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                         'range': v_parse_tree_to_location.Value(
                                                             $['value'],
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                     }],
@@ -5821,7 +5821,7 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                             'range': v_parse_tree_to_location.Value(
                                 $['value'],
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                         }],
@@ -5849,7 +5849,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                             'l state': ['implement me', v_unmarshalled_from_parse_tree.Text(
@@ -5867,7 +5867,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                             'l state': ['regular', _p_change_context(
@@ -5883,7 +5883,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                 "tail": null,
                                             },
                                         ),
-                                        'document resource identifier': "dummy dri",
+                                        'subdocument context': _p.optional.literal.not_set(),
                                     },
                                 ),
                                 ($) => _p_variables(
@@ -5892,7 +5892,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                             $['value'],
                                             {
-                                                'document resource identifier': "dummy dri",
+                                                'subdocument context': _p.optional.literal.not_set(),
                                             },
                                         )
                                         return {
@@ -5904,7 +5904,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                     ),
                                                     {
                                                         'id': 'start',
-                                                        'document resource identifier': "dummy dri",
+                                                        'subdocument context': _p.optional.literal.not_set(),
                                                     },
                                                 ),
                                                 ($) => _p_change_context(
@@ -5925,7 +5925,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['call', _p_change_context(
@@ -5944,7 +5944,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                 "arguments": null,
                                                                                             },
                                                                                         ),
-                                                                                        'document resource identifier': "dummy dri",
+                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -5953,7 +5953,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -5965,7 +5965,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'source',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p_change_context(
@@ -5986,7 +5986,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['local', v_unmarshalled_from_parse_tree.Text(
@@ -6004,7 +6004,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['imported', _p_change_context(
@@ -6020,7 +6020,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                 "variable": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -6029,7 +6029,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -6041,7 +6041,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'import',
-                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => v_unmarshalled_from_parse_tree.Text(
@@ -6059,7 +6059,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'variable',
-                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => v_unmarshalled_from_parse_tree.Text(
@@ -6082,7 +6082,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'range': v_parse_tree_to_location.Value(
                                                                                                                                 $['value'],
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                         }],
@@ -6100,7 +6100,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'context',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -6118,7 +6118,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'abort',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -6145,7 +6145,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'lookups',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -6174,7 +6174,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                     $,
                                                                                                                                     {
-                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 'l state': ['initialize', _p_change_context(
@@ -6184,14 +6184,14 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => ({
                                                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         ),
                                                                                                                                         'l dictionary': _p.dictionary.from.dictionary(
@@ -6201,7 +6201,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                     $,
                                                                                                                                                     {
-                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 'l entry': Select_Lookup(
@@ -6223,7 +6223,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                     $,
                                                                                                                                     {
-                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 'l state': ['pass through', v_unmarshalled_from_parse_tree.Nothing(
@@ -6241,7 +6241,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                     $['value'],
                                                                                                                                     {
-                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                             }],
@@ -6260,7 +6260,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'arguments',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p.optional.from.optional(
@@ -6289,7 +6289,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                     $,
                                                                                                                                     {
-                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 'l state': ['initialize', _p_change_context(
@@ -6299,14 +6299,14 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                             $,
                                                                                                                                         ),
                                                                                                                                         {
-                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                         },
                                                                                                                                     ),
                                                                                                                                     ($) => ({
                                                                                                                                         'l location': v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         ),
                                                                                                                                         'l dictionary': _p.dictionary.from.dictionary(
@@ -6316,7 +6316,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                                     $,
                                                                                                                                                     {
-                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 'l entry': Assign(
@@ -6338,7 +6338,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                 'l location': v_parse_tree_to_location.Value(
                                                                                                                                     $,
                                                                                                                                     {
-                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 'l state': ['pass through', v_unmarshalled_from_parse_tree.Nothing(
@@ -6356,7 +6356,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                 'range': v_parse_tree_to_location.Value(
                                                                                                                                     $['value'],
                                                                                                                                     {
-                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                             }],
@@ -6380,7 +6380,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['context', v_unmarshalled_from_parse_tree.Nothing(
@@ -6398,7 +6398,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['dictionary entry', _p_change_context(
@@ -6415,7 +6415,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                 "no such entry handler": null,
                                                                                             },
                                                                                         ),
-                                                                                        'document resource identifier': "dummy dri",
+                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -6424,7 +6424,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -6436,7 +6436,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'dictionary',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Select_Value(
@@ -6454,7 +6454,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'id',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -6472,7 +6472,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'no such entry handler',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -6495,7 +6495,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['list from text', _p_change_context(
@@ -6511,7 +6511,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                 "assign item": null,
                                                                                             },
                                                                                         ),
-                                                                                        'document resource identifier': "dummy dri",
+                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -6520,7 +6520,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -6532,7 +6532,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'source',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Select_Value(
@@ -6550,7 +6550,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'assign item',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -6573,7 +6573,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['lookup entry', _p_change_context(
@@ -6590,7 +6590,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                 "type": null,
                                                                                             },
                                                                                         ),
-                                                                                        'document resource identifier': "dummy dri",
+                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -6599,7 +6599,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -6611,7 +6611,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'lookup',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Select_Lookup(
@@ -6629,7 +6629,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'id',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -6647,7 +6647,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'type',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p_change_context(
@@ -6668,7 +6668,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['acyclic', _p_change_context(
@@ -6683,7 +6683,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                 "abort handlers": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -6692,7 +6692,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -6704,7 +6704,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'abort handlers',
-                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => _p_change_context(
@@ -6721,7 +6721,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                     "cycle detected": null,
                                                                                                                                                                 },
                                                                                                                                                             ),
-                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                         },
                                                                                                                                                     ),
                                                                                                                                                     ($) => _p_variables(
@@ -6730,7 +6730,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                 $['value'],
                                                                                                                                                                 {
-                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                 },
                                                                                                                                                             )
                                                                                                                                                             return {
@@ -6742,7 +6742,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'no such entry',
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -6760,7 +6760,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'no context lookup',
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -6778,7 +6778,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'cycle detected',
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -6806,7 +6806,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['cyclic', _p_change_context(
@@ -6821,7 +6821,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                 "abort handlers": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -6830,7 +6830,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -6842,7 +6842,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'abort handlers',
-                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => _p_change_context(
@@ -6859,7 +6859,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                     "accessing cyclic sibling before it is resolved": null,
                                                                                                                                                                 },
                                                                                                                                                             ),
-                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                         },
                                                                                                                                                     ),
                                                                                                                                                     ($) => _p_variables(
@@ -6868,7 +6868,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                 $['value'],
                                                                                                                                                                 {
-                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                 },
                                                                                                                                                             )
                                                                                                                                                             return {
@@ -6880,7 +6880,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'no such entry',
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -6898,7 +6898,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'no context lookup',
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -6916,7 +6916,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'accessing cyclic sibling before it is resolved',
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -6944,7 +6944,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                                                                 $,
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                             'l state': ['stack', _p_change_context(
@@ -6959,7 +6959,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                 "abort handlers": null,
                                                                                                                                             },
                                                                                                                                         ),
-                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                     },
                                                                                                                                 ),
                                                                                                                                 ($) => _p_variables(
@@ -6968,7 +6968,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                             $['value'],
                                                                                                                                             {
-                                                                                                                                                'document resource identifier': "dummy dri",
+                                                                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                             },
                                                                                                                                         )
                                                                                                                                         return {
@@ -6980,7 +6980,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                     ),
                                                                                                                                                     {
                                                                                                                                                         'id': 'abort handlers',
-                                                                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                     },
                                                                                                                                                 ),
                                                                                                                                                 ($) => _p_change_context(
@@ -6997,7 +6997,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                     "cycle detected": null,
                                                                                                                                                                 },
                                                                                                                                                             ),
-                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                         },
                                                                                                                                                     ),
                                                                                                                                                     ($) => _p_variables(
@@ -7006,7 +7006,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                                                                 $['value'],
                                                                                                                                                                 {
-                                                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                 },
                                                                                                                                                             )
                                                                                                                                                             return {
@@ -7018,7 +7018,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'no such entry',
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -7036,7 +7036,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'no context lookup',
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -7054,7 +7054,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                                                                         ),
                                                                                                                                                                         {
                                                                                                                                                                             'id': 'cycle detected',
-                                                                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                                                         },
                                                                                                                                                                     ),
                                                                                                                                                                     ($) => Assign(
@@ -7082,7 +7082,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                             'range': v_parse_tree_to_location.Value(
                                                                                                                                 $['value'],
                                                                                                                                 {
-                                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                                 },
                                                                                                                             ),
                                                                                                                         }],
@@ -7105,7 +7105,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['lookup entry depth', _p_change_context(
@@ -7122,7 +7122,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                 "abort handlers": null,
                                                                                             },
                                                                                         ),
-                                                                                        'document resource identifier': "dummy dri",
+                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -7131,7 +7131,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -7143,7 +7143,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'lookup',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Select_Lookup(
@@ -7161,7 +7161,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'id',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -7179,7 +7179,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'abort handlers',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => _p_change_context(
@@ -7196,7 +7196,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                     "cycle detected": null,
                                                                                                                 },
                                                                                                             ),
-                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                         },
                                                                                                     ),
                                                                                                     ($) => _p_variables(
@@ -7205,7 +7205,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                             const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                                                 $['value'],
                                                                                                                 {
-                                                                                                                    'document resource identifier': "dummy dri",
+                                                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                                                 },
                                                                                                             )
                                                                                                             return {
@@ -7217,7 +7217,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                         ),
                                                                                                                         {
                                                                                                                             'id': 'no such entry',
-                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                         },
                                                                                                                     ),
                                                                                                                     ($) => Assign(
@@ -7235,7 +7235,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                         ),
                                                                                                                         {
                                                                                                                             'id': 'no context lookup',
-                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                         },
                                                                                                                     ),
                                                                                                                     ($) => Assign(
@@ -7253,7 +7253,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                                         ),
                                                                                                                         {
                                                                                                                             'id': 'cycle detected',
-                                                                                                                            'document resource identifier': "dummy dri",
+                                                                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                                                                         },
                                                                                                                     ),
                                                                                                                     ($) => Assign(
@@ -7281,7 +7281,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['parameter', v_unmarshalled_from_parse_tree.Text(
@@ -7299,7 +7299,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['parent sibling', v_unmarshalled_from_parse_tree.Text(
@@ -7317,7 +7317,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['sibling', v_unmarshalled_from_parse_tree.Text(
@@ -7335,7 +7335,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['state', v_unmarshalled_from_parse_tree.Nothing(
@@ -7353,7 +7353,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['text from list', _p_change_context(
@@ -7369,7 +7369,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                 "assign character": null,
                                                                                             },
                                                                                         ),
-                                                                                        'document resource identifier': "dummy dri",
+                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                     },
                                                                                 ),
                                                                                 ($) => _p_variables(
@@ -7378,7 +7378,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                         const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                                             $['value'],
                                                                                             {
-                                                                                                'document resource identifier': "dummy dri",
+                                                                                                'subdocument context': _p.optional.literal.not_set(),
                                                                                             },
                                                                                         )
                                                                                         return {
@@ -7390,7 +7390,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'source',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Select_Value(
@@ -7408,7 +7408,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                                                     ),
                                                                                                     {
                                                                                                         'id': 'assign character',
-                                                                                                        'document resource identifier': "dummy dri",
+                                                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                                                     },
                                                                                                 ),
                                                                                                 ($) => Assign(
@@ -7431,7 +7431,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'l location': v_parse_tree_to_location.Value(
                                                                                 $,
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             'l state': ['variable', v_unmarshalled_from_parse_tree.Text(
@@ -7449,7 +7449,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                             'range': v_parse_tree_to_location.Value(
                                                                                 $['value'],
                                                                                 {
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                         }],
@@ -7467,14 +7467,14 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                     ),
                                                     {
                                                         'id': 'tail',
-                                                        'document resource identifier': "dummy dri",
+                                                        'subdocument context': _p.optional.literal.not_set(),
                                                     },
                                                 ),
                                                 ($) => ({
                                                     'l location': v_parse_tree_to_location.Value(
                                                         $,
                                                         {
-                                                            'document resource identifier': "dummy dri",
+                                                            'subdocument context': _p.optional.literal.not_set(),
                                                         },
                                                     ),
                                                     'l list': _p.list.from.list(
@@ -7484,7 +7484,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                 $,
                                                             ),
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         )['items'],
                                                     ).map(
@@ -7494,7 +7494,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                                                                 'l location': v_parse_tree_to_location.Value(
                                                                     $,
                                                                     {
-                                                                        'document resource identifier': "dummy dri",
+                                                                        'subdocument context': _p.optional.literal.not_set(),
                                                                     },
                                                                 ),
                                                                 'l item': v_unmarshalled_from_parse_tree.Text(
@@ -7521,7 +7521,7 @@ export const Select_Value: t_signatures.Select_Value = ($, abort) => _p_change_c
                             'range': v_parse_tree_to_location.Value(
                                 $['value'],
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                         }],
@@ -7549,7 +7549,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                             'l state': ['implement me', v_unmarshalled_from_parse_tree.Text(
@@ -7567,7 +7567,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                             'l state': ['from parameter', v_unmarshalled_from_parse_tree.Text(
@@ -7585,7 +7585,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                             'l state': ['stack', _p_change_context(
@@ -7606,7 +7606,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['empty', v_unmarshalled_from_parse_tree.Nothing(
@@ -7624,7 +7624,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['push', _p_change_context(
@@ -7640,7 +7640,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                                             "acyclic": null,
                                                                         },
                                                                     ),
-                                                                    'document resource identifier': "dummy dri",
+                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                 },
                                                             ),
                                                             ($) => _p_variables(
@@ -7649,7 +7649,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                                     const var_verbose_group_range = v_parse_tree_to_location.Value(
                                                                         $['value'],
                                                                         {
-                                                                            'document resource identifier': "dummy dri",
+                                                                            'subdocument context': _p.optional.literal.not_set(),
                                                                         },
                                                                     )
                                                                     return {
@@ -7661,7 +7661,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                                                 ),
                                                                                 {
                                                                                     'id': 'stack',
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Select_Lookup(
@@ -7679,7 +7679,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                                                 ),
                                                                                 {
                                                                                     'id': 'acyclic',
-                                                                                    'document resource identifier': "dummy dri",
+                                                                                    'subdocument context': _p.optional.literal.not_set(),
                                                                                 },
                                                                             ),
                                                                             ($) => Select_Lookup(
@@ -7702,7 +7702,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'range': v_parse_tree_to_location.Value(
                                                             $['value'],
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                     }],
@@ -7720,7 +7720,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                             'l state': ['acyclic', _p_change_context(
@@ -7741,7 +7741,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['not set', v_unmarshalled_from_parse_tree.Nothing(
@@ -7759,7 +7759,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['siblings', v_unmarshalled_from_parse_tree.Nothing(
@@ -7777,7 +7777,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['resolved dictionary', Select_Value(
@@ -7795,7 +7795,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'range': v_parse_tree_to_location.Value(
                                                             $['value'],
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                     }],
@@ -7813,7 +7813,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                             'l location': v_parse_tree_to_location.Value(
                                 $,
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                             'l state': ['cyclic', _p_change_context(
@@ -7834,7 +7834,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['not set', v_unmarshalled_from_parse_tree.Nothing(
@@ -7852,7 +7852,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'l location': v_parse_tree_to_location.Value(
                                                             $,
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                         'l state': ['siblings', v_unmarshalled_from_parse_tree.Nothing(
@@ -7870,7 +7870,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                                                         'range': v_parse_tree_to_location.Value(
                                                             $['value'],
                                                             {
-                                                                'document resource identifier': "dummy dri",
+                                                                'subdocument context': _p.optional.literal.not_set(),
                                                             },
                                                         ),
                                                     }],
@@ -7888,7 +7888,7 @@ export const Select_Lookup: t_signatures.Select_Lookup = ($, abort) => _p_change
                             'range': v_parse_tree_to_location.Value(
                                 $['value'],
                                 {
-                                    'document resource identifier': "dummy dri",
+                                    'subdocument context': _p.optional.literal.not_set(),
                                 },
                             ),
                         }],
