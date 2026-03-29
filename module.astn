@@ -14,7 +14,14 @@
                         `type`: | `single line` ~
                     )
                 }
-                `number types`: {}
+                `simple types`: {
+                    'Natural': (
+                        `precision`: | `exact` (
+                            `decimal separator offset`: _
+                            `type`: | `natural` ~
+                        )
+                    )
+                }
             )
             `modules`: {
                 'Package Set': (
@@ -180,12 +187,7 @@
                                             `value`: | `group` {
                                                 'number of steps': (
                                                     `description`: _
-                                                    `value`: | `number` | `local` (
-                                                        `precision`: | `exact` (
-                                                            `decimal separator offset`: _
-                                                            `type`: | `natural` ~
-                                                        )
-                                                    )
+                                                    `value`: | `number` | `global` 'Natural'
                                                 )
                                                 'dependency': (
                                                     `description`: _
@@ -966,7 +968,25 @@
                         `type`: | `multi line` ~
                     )
                 }
-                `number types`: {}
+                `simple types`: {
+                    'Natural': (
+                        `precision`: | `exact` (
+                            `decimal separator offset`: _
+                            `type`: | `natural` ~
+                        )
+                    )
+                    'Integer': (
+                        `precision`: | `exact` (
+                            `decimal separator offset`: _
+                            `type`: | `integer` ~
+                        )
+                    )
+                    'Approximation': (
+                        `precision`: | `approximation` (
+                            `significant digits`: 10
+                        )
+                    )
+                }
             )
             `modules`: {
                 'Package Set': (
@@ -1072,12 +1092,7 @@
                                                         )
                                                         'number of steps': (
                                                             `description`: _
-                                                            `value`: | `number` | `local` (
-                                                                `precision`: | `exact` (
-                                                                    `decimal separator offset`: _
-                                                                    `type`: | `natural` ~
-                                                                )
-                                                            )
+                                                            `value`: | `number` | `global` 'Natural'
                                                         )
                                                     }
                                                 )
@@ -1816,11 +1831,7 @@
                                                                 'literal': (
                                                                     `constraints`: _
                                                                     `description`: _
-                                                                    `value`: | `number` | `local` (
-                                                                        `precision`: | `approximation` (
-                                                                            `significant digits`: 10
-                                                                        )
-                                                                    )
+                                                                    `value`: | `number` | `global` 'Approximation'
                                                                 )
                                                                 'copy': (
                                                                     `constraints`: _
@@ -1877,12 +1888,7 @@
                                                                 'literal': (
                                                                     `constraints`: _
                                                                     `description`: _
-                                                                    `value`: | `number` | `local` (
-                                                                        `precision`: | `exact` (
-                                                                            `decimal separator offset`: _
-                                                                            `type`: | `integer` ~
-                                                                        )
-                                                                    )
+                                                                    `value`: | `number` | `global` 'Integer'
                                                                 )
                                                             }
                                                             `results`: _
@@ -1896,12 +1902,7 @@
                                                                 'literal': (
                                                                     `constraints`: _
                                                                     `description`: _
-                                                                    `value`: | `number` | `local` (
-                                                                        `precision`: | `exact` (
-                                                                            `decimal separator offset`: _
-                                                                            `type`: | `natural` ~
-                                                                        )
-                                                                    )
+                                                                    `value`: | `number` | `global` 'Natural'
                                                                 )
                                                                 'copy': (
                                                                     `constraints`: _
@@ -5157,7 +5158,13 @@
                         `type`: | `single line` ~
                     )
                 }
-                `number types`: {}
+                `simple types`: {
+                    'Approximation': (
+                        `precision`: | `approximation` (
+                            `significant digits`: 10
+                        )
+                    )
+                }
             )
             `modules`: {
                 'Directory': (
@@ -5932,11 +5939,7 @@
                             'number literal': (
                                 `constraints`: _
                                 `description`: _
-                                `value`: | `number` | `local` (
-                                    `precision`: | `approximation` (
-                                        `significant digits`: 10
-                                    )
-                                )
+                                `value`: | `number` | `global` 'Approximation'
                             )
                             'object literal': (
                                 `constraints`: _
