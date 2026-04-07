@@ -16,10 +16,15 @@
                 }
                 `simple types`: {
                     'Natural': (
-                        `precision`: | `exact` (
-                            `decimal separator offset`: _
-                            `type`: | `natural` ~
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `natural` ~
+                            )
                         )
+                    )
+                    'boolean': (
+                        `type`: | `boolean` ~
                     )
                 }
             )
@@ -187,7 +192,7 @@
                                             `value`: | `group` {
                                                 'number of steps': (
                                                     `description`: _
-                                                    `value`: | `number` | `global` 'Natural'
+                                                    `value`: | `simple` | `global` 'Natural'
                                                 )
                                                 'dependency': (
                                                     `description`: _
@@ -356,7 +361,7 @@
                                     )
                                     'cyclic': (
                                         `description`: _
-                                        `value`: | `boolean` ~
+                                        `value`: | `simple` | `global` 'boolean'
                                     )
                                 }
                             )
@@ -694,7 +699,7 @@
                                                 `resolver`: | `group` {
                                                     'number of steps': (
                                                         `definition`: ~
-                                                        `resolver`: | `number` ~
+                                                        `resolver`: | `simple` ~
                                                     )
                                                     'dependency': (
                                                         `definition`: ~
@@ -886,7 +891,7 @@
                                         )
                                         'cyclic': (
                                             `definition`: ~
-                                            `resolver`: | `boolean` ~
+                                            `resolver`: | `simple` ~
                                         )
                                     }
                                 )
@@ -967,24 +972,36 @@
                     'Text Value': (
                         `type`: | `multi line` ~
                     )
+                    'text': (
+                        `type`: | `single line` ~
+                    )
                 }
                 `simple types`: {
                     'Natural': (
-                        `precision`: | `exact` (
-                            `decimal separator offset`: _
-                            `type`: | `natural` ~
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `natural` ~
+                            )
                         )
                     )
                     'Integer': (
-                        `precision`: | `exact` (
-                            `decimal separator offset`: _
-                            `type`: | `integer` ~
+                        `type`: | `number` (
+                            `precision`: | `exact` (
+                                `number of fractional digits`: _
+                                `type`: | `integer` ~
+                            )
                         )
                     )
                     'Approximation': (
-                        `precision`: | `approximation` (
-                            `significant digits`: 10
+                        `type`: | `number` (
+                            `precision`: | `approximation` (
+                                `significant digits`: 10
+                            )
                         )
+                    )
+                    'boolean': (
+                        `type`: | `boolean` ~
                     )
                 }
             )
@@ -1021,39 +1038,39 @@
                             `value`: | `group` {
                                 'abort': (
                                     `description`: _
-                                    `value`: | `boolean` ~
+                                    `value`: | `simple` | `global` 'boolean'
                                 )
                                 'change context': (
                                     `description`: _
-                                    `value`: | `boolean` ~
+                                    `value`: | `simple` | `global` 'boolean'
                                 )
                                 'implement me': (
                                     `description`: _
-                                    `value`: | `boolean` ~
+                                    `value`: | `simple` | `global` 'boolean'
                                 )
                                 'iterate': (
                                     `description`: _
-                                    `value`: | `boolean` ~
+                                    `value`: | `simple` | `global` 'boolean'
                                 )
                                 'lookups': (
                                     `description`: _
-                                    `value`: | `boolean` ~
+                                    `value`: | `simple` | `global` 'boolean'
                                 )
                                 'list from text': (
                                     `description`: _
-                                    `value`: | `boolean` ~
+                                    `value`: | `simple` | `global` 'boolean'
                                 )
                                 'text from list': (
                                     `description`: _
-                                    `value`: | `boolean` ~
+                                    `value`: | `simple` | `global` 'boolean'
                                 )
                                 'unreachable code path': (
                                     `description`: _
-                                    `value`: | `boolean` ~
+                                    `value`: | `simple` | `global` 'boolean'
                                 )
                                 'variables': (
                                     `description`: _
-                                    `value`: | `boolean` ~
+                                    `value`: | `simple` | `global` 'boolean'
                                 )
                             }
                         )
@@ -1092,7 +1109,7 @@
                                                         )
                                                         'number of steps': (
                                                             `description`: _
-                                                            `value`: | `number` | `global` 'Natural'
+                                                            `value`: | `simple` | `global` 'Natural'
                                                         )
                                                     }
                                                 )
@@ -1139,15 +1156,15 @@
                                     )
                                     'temp has abort': (
                                         `description`: _
-                                        `value`: | `boolean` ~
+                                        `value`: | `simple` | `global` 'boolean'
                                     )
                                     'temp has lookups': (
                                         `description`: _
-                                        `value`: | `boolean` ~
+                                        `value`: | `simple` | `global` 'boolean'
                                     )
                                     'temp has parameters': (
                                         `description`: _
-                                        `value`: | `boolean` ~
+                                        `value`: | `simple` | `global` 'boolean'
                                     )
                                 }
                             )
@@ -1648,7 +1665,7 @@
                                                             )
                                                             'have dependencies': (
                                                                 `description`: _
-                                                                `value`: | `boolean` ~
+                                                                `value`: | `simple` | `global` 'boolean'
                                                             )
                                                         }
                                                     )
@@ -1831,7 +1848,7 @@
                                                                 'literal': (
                                                                     `constraints`: _
                                                                     `description`: _
-                                                                    `value`: | `number` | `global` 'Approximation'
+                                                                    `value`: | `simple` | `global` 'Approximation'
                                                                 )
                                                                 'copy': (
                                                                     `constraints`: _
@@ -1888,7 +1905,7 @@
                                                                 'literal': (
                                                                     `constraints`: _
                                                                     `description`: _
-                                                                    `value`: | `number` | `global` 'Integer'
+                                                                    `value`: | `simple` | `global` 'Integer'
                                                                 )
                                                             }
                                                             `results`: _
@@ -1902,7 +1919,7 @@
                                                                 'literal': (
                                                                     `constraints`: _
                                                                     `description`: _
-                                                                    `value`: | `number` | `global` 'Natural'
+                                                                    `value`: | `simple` | `global` 'Natural'
                                                                 )
                                                                 'copy': (
                                                                     `constraints`: _
@@ -2107,9 +2124,7 @@
                                                             )
                                                             'value': (
                                                                 `description`: _
-                                                                `value`: | `text` | `local` (
-                                                                    `type`: | `single line` ~
-                                                                )
+                                                                `value`: | `text` | `global` 'text'
                                                             )
                                                         }
                                                     )
@@ -2257,9 +2272,7 @@
                                         'implement me': (
                                             `constraints`: _
                                             `description`: _
-                                            `value`: | `text` | `local` (
-                                                `type`: | `single line` ~
-                                            )
+                                            `value`: | `text` | `global` 'text'
                                         )
                                         'iterate': (
                                             `constraints`: _
@@ -2287,9 +2300,7 @@
                                             `value`: | `group` {
                                                 'explanation': (
                                                     `description`: _
-                                                    `value`: | `text` | `local` (
-                                                        `type`: | `single line` ~
-                                                    )
+                                                    `value`: | `text` | `global` 'text'
                                                 )
                                             }
                                         )
@@ -2307,9 +2318,7 @@
                             'implement me': (
                                 `constraints`: _
                                 `description`: _
-                                `value`: | `text` | `local` (
-                                    `type`: | `single line` ~
-                                )
+                                `value`: | `text` | `global` 'text'
                             )
                             'regular': (
                                 `constraints`: _
@@ -2702,9 +2711,7 @@
                             'implement me': (
                                 `constraints`: _
                                 `description`: _
-                                `value`: | `text` | `local` (
-                                    `type`: | `single line` ~
-                                )
+                                `value`: | `text` | `global` 'text'
                             )
                             'from parameter': (
                                 `constraints`: _
@@ -2896,39 +2903,39 @@
                                 `resolver`: | `group` {
                                     'abort': (
                                         `definition`: ~
-                                        `resolver`: | `boolean` ~
+                                        `resolver`: | `simple` ~
                                     )
                                     'change context': (
                                         `definition`: ~
-                                        `resolver`: | `boolean` ~
+                                        `resolver`: | `simple` ~
                                     )
                                     'implement me': (
                                         `definition`: ~
-                                        `resolver`: | `boolean` ~
+                                        `resolver`: | `simple` ~
                                     )
                                     'iterate': (
                                         `definition`: ~
-                                        `resolver`: | `boolean` ~
+                                        `resolver`: | `simple` ~
                                     )
                                     'lookups': (
                                         `definition`: ~
-                                        `resolver`: | `boolean` ~
+                                        `resolver`: | `simple` ~
                                     )
                                     'list from text': (
                                         `definition`: ~
-                                        `resolver`: | `boolean` ~
+                                        `resolver`: | `simple` ~
                                     )
                                     'text from list': (
                                         `definition`: ~
-                                        `resolver`: | `boolean` ~
+                                        `resolver`: | `simple` ~
                                     )
                                     'unreachable code path': (
                                         `definition`: ~
-                                        `resolver`: | `boolean` ~
+                                        `resolver`: | `simple` ~
                                     )
                                     'variables': (
                                         `definition`: ~
-                                        `resolver`: | `boolean` ~
+                                        `resolver`: | `simple` ~
                                     )
                                 }
                             )
@@ -2976,7 +2983,7 @@
                                                             )
                                                             'number of steps': (
                                                                 `definition`: ~
-                                                                `resolver`: | `number` ~
+                                                                `resolver`: | `simple` ~
                                                             )
                                                         }
                                                     )
@@ -3028,15 +3035,15 @@
                                         )
                                         'temp has abort': (
                                             `definition`: ~
-                                            `resolver`: | `boolean` ~
+                                            `resolver`: | `simple` ~
                                         )
                                         'temp has lookups': (
                                             `definition`: ~
-                                            `resolver`: | `boolean` ~
+                                            `resolver`: | `simple` ~
                                         )
                                         'temp has parameters': (
                                             `definition`: ~
-                                            `resolver`: | `boolean` ~
+                                            `resolver`: | `simple` ~
                                         )
                                     }
                                     `benchmark`: _
@@ -3691,7 +3698,7 @@
                                                                 )
                                                                 'have dependencies': (
                                                                     `definition`: ~
-                                                                    `resolver`: | `boolean` ~
+                                                                    `resolver`: | `simple` ~
                                                                 )
                                                             }
                                                         )
@@ -3940,7 +3947,7 @@
                                                                     )
                                                                     'literal': (
                                                                         `constraints`: {}
-                                                                        `resolver`: | `number` ~
+                                                                        `resolver`: | `simple` ~
                                                                     )
                                                                 }
                                                             )
@@ -4009,7 +4016,7 @@
                                                                     )
                                                                     'literal': (
                                                                         `constraints`: {}
-                                                                        `resolver`: | `number` ~
+                                                                        `resolver`: | `simple` ~
                                                                     )
                                                                 }
                                                             )
@@ -4034,7 +4041,7 @@
                                                                     )
                                                                     'literal': (
                                                                         `constraints`: {}
-                                                                        `resolver`: | `number` ~
+                                                                        `resolver`: | `simple` ~
                                                                     )
                                                                     'number of dictionary entries': (
                                                                         `constraints`: {}
@@ -5157,12 +5164,20 @@
                     'Output': (
                         `type`: | `single line` ~
                     )
+                    'text': (
+                        `type`: | `single line` ~
+                    )
                 }
                 `simple types`: {
                     'Approximation': (
-                        `precision`: | `approximation` (
-                            `significant digits`: 10
+                        `type`: | `number` (
+                            `precision`: | `approximation` (
+                                `significant digits`: 10
+                            )
                         )
+                    )
+                    'boolean': (
+                        `type`: | `boolean` ~
                     )
                 }
             )
@@ -5343,7 +5358,7 @@
                                     `value`: | `group` {
                                         'export': (
                                             `description`: _
-                                            `value`: | `boolean` ~
+                                            `value`: | `simple` | `global` 'boolean'
                                         )
                                         'name': (
                                             `description`: _
@@ -5424,7 +5439,7 @@
                                     `value`: | `group` {
                                         'export': (
                                             `description`: _
-                                            `value`: | `boolean` ~
+                                            `value`: | `simple` | `global` 'boolean'
                                         )
                                         'name': (
                                             `description`: _
@@ -5458,11 +5473,11 @@
                                     `value`: | `group` {
                                         'export': (
                                             `description`: _
-                                            `value`: | `boolean` ~
+                                            `value`: | `simple` | `global` 'boolean'
                                         )
                                         'const': (
                                             `description`: _
-                                            `value`: | `boolean` ~
+                                            `value`: | `simple` | `global` 'boolean'
                                         )
                                         'name': (
                                             `description`: _
@@ -5565,7 +5580,7 @@
                                 `value`: | `group` {
                                     'readonly': (
                                         `description`: _
-                                        `value`: | `boolean` ~
+                                        `value`: | `simple` | `global` 'boolean'
                                     )
                                     'elements': (
                                         `description`: _
@@ -5613,7 +5628,7 @@
                                                 )
                                                 'readonly': (
                                                     `description`: _
-                                                    `value`: | `boolean` ~
+                                                    `value`: | `simple` | `global` 'boolean'
                                                 )
                                                 'type': (
                                                     `description`: _
@@ -5939,7 +5954,7 @@
                             'number literal': (
                                 `constraints`: _
                                 `description`: _
-                                `value`: | `number` | `global` 'Approximation'
+                                `value`: | `simple` | `global` 'Approximation'
                             )
                             'object literal': (
                                 `constraints`: _
@@ -6084,9 +6099,7 @@
                         )
                         'value': (
                             `description`: _
-                            `value`: | `text` | `local` (
-                                `type`: | `single line` ~
-                            )
+                            `value`: | `text` | `global` 'text'
                         )
                     }
                 )
@@ -6094,9 +6107,7 @@
                     `root value`: | `group` {
                         'value': (
                             `description`: _
-                            `value`: | `text` | `local` (
-                                `type`: | `single line` ~
-                            )
+                            `value`: | `text` | `global` 'text'
                         )
                     }
                 )

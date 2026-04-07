@@ -3922,7 +3922,9 @@ export const Assign: t_signatures.Assign = ($, abort) => _p_change_context(
                                                                                                                         $,
                                                                                                                     ),
                                                                                                                     {
-                                                                                                                        'type': ['decimal', null],
+                                                                                                                        'type': ['scientific notation', {
+                                                                                                                            'precision': 10,
+                                                                                                                        }],
                                                                                                                         'subdocument context': _p.optional.literal.not_set(),
                                                                                                                     },
                                                                                                                 )],
