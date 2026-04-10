@@ -10,9 +10,9 @@
     "dist"
   ],
   "dependencies": {
-    "liana-core": "0.1.20",
-    "pareto-core-dev": "0.12.15",
-    "pareto-fountain-pen": "0.4.53",
-    "pareto-fountain-pen-file-structure": "0.1.4"
+    "liana-core": "^0.1.0",
+    "pareto-core-dev": "^0.12.0",
+    "pareto-fountain-pen": "^0.4.0",
+    "pareto-fountain-pen-file-structure": "^0.1.0"
   }
 }
