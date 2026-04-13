@@ -3,10 +3,10 @@
 import _p_implement_me from 'pareto-core-dev/dist/implement_me'
 import _p_log_debug_message from 'pareto-core-dev/dist/log_debug_message'
 
-import * as t_typescript_to_fp from "pub/dist/modules/typescript_light/implementation/manual/transformers/typescript_light/fountain_pen"
+import * as t_typescript_to_fp from "lib/dist/modules/typescript_light/implementation/manual/transformers/typescript_light/fountain_pen"
 import * as t_fp_to_text from "pareto-fountain-pen/dist/implementation/manual/transformers/prose/text"
 
-import * as sh from "pub/dist/modules/typescript_light/shorthands/typescript_light"
+import * as sh from "lib/dist/modules/typescript_light/shorthands/typescript_light"
 
 let found_errors = false
 
