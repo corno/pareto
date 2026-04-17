@@ -2682,7 +2682,9 @@ export const Expression: t_signatures.Expression = ($, abort) => _p_change_conte
                                 $,
                             ),
                             {
-                                'type': ['decimal', null],
+                                'type': ['scientific notation', {
+                                    'precision': 10,
+                                }],
                                 'subdocument context': _p.optional.literal.not_set(),
                             },
                         )],
