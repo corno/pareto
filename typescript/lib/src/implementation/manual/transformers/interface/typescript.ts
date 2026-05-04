@@ -11,7 +11,7 @@ import * as d_function from "../../../../interface/to_be_generated/pareto_to_typ
 
 
 //dependencies
-import { $$ as s_file_name } from "../../primitives/text/serializers/filename"
+import { $$ as s_file_name } from "../text/filename"
 
 //shorthands
 import * as sh from "../../../../modules/typescript_light/shorthands/typescript_light"
