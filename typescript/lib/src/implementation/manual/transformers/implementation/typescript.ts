@@ -96,7 +96,7 @@ export const Package_Set = (
                     $.specials.lookups
                         ? [sh.s.import_namespace(
                             sh.identifier_raw("_p_sl"),
-                            sh.string_literal("pareto-core/dist/select_lookup", 'apostrophe')
+                            sh.string_literal("pareto-core/dist/select_static_lookup", 'apostrophe')
                         )]
                         : [],
                     $.specials['text from list']
