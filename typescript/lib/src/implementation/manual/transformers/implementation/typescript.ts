@@ -505,7 +505,7 @@ export const Assign = (
                                                             selection,
                                                         ]
                                                     ),
-                                                    sh.identifier_raw("resolve"),
+                                                    sh.identifier_raw("resolve_static"),
                                                 ),
                                                 [
                                                     sh.e.arrow_function_with_expression(

@@ -261,9 +261,9 @@ export const Package_Set = (
                                                                                         [
                                                                                             sh.identifier_raw(_p.decide.state($, ($) => {
                                                                                                 switch ($[0]) {
-                                                                                                    case 'acyclic': return _p.ss($, ($) => "lookup.Acyclic")
-                                                                                                    case 'cyclic': return _p.ss($, ($) => "lookup.Cyclic")
-                                                                                                    case 'stack': return _p.ss($, ($) => "lookup.Stack")
+                                                                                                    case 'acyclic': return _p.ss($, ($) => "static_lookup.Acyclic")
+                                                                                                    case 'cyclic': return _p.ss($, ($) => "static_lookup.Cyclic")
+                                                                                                    case 'stack': return _p.ss($, ($) => "static_lookup.Stack")
                                                                                                     default: return _p.au($[0])
                                                                                                 }
                                                                                             }))
