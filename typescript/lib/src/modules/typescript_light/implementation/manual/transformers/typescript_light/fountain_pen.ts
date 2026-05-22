@@ -124,7 +124,7 @@ export const decimal: _pi.Transformer<number, d_loc.List_of_Characters> = ($) =>
         do {
             const digit = $ % 10
             $i['add item'](digit)
-            $ = _p.number.integer.divide(
+            $ = _p.number.from.number.divide(
                 $,
                 10,
                 {
@@ -186,7 +186,7 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
             scale_factor = scale_factor * 10
         }
 
-        const mantissa_scaled = _p.number.integer.divide(
+        const mantissa_scaled = _p.number.from.number.divide(
             mantissa * scale_factor + 0.5,
             1,
             {
@@ -200,7 +200,7 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
             do {
                 const digit = t % 10
                 $i['add item'](digit)
-                t = _p.number.integer.divide(
+                t = _p.number.from.number.divide(
                     t,
                     10,
                     {
@@ -262,7 +262,7 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
                     do {
                         const digit = exp % 10
                         $i['add item'](digit)
-                        exp = _p.number.integer.divide(
+                        exp = _p.number.from.number.divide(
                             exp,
                             10,
                             {
