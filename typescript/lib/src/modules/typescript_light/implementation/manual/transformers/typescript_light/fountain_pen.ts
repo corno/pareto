@@ -356,7 +356,7 @@ export const Directory = ($: d_in.Directory): d_out_fs.Directory => {
         switch ($[0]) {
             case 'file': return _p.ss($, ($) => ['file', Statements(
                 $['statements'],
-                { 'replace empty type literals by null': true }
+                { 'replace empty type literals by symbol': true }
             )])
             case 'directory': return _p.ss($, ($) => ['directory', Directory($)])
             default: return _p.au($[0])
@@ -389,7 +389,7 @@ export const String_Literal = (
 export const Statements = (
     $: d_in.Statements,
     $p: {
-        'replace empty type literals by null': boolean
+        'replace empty type literals by symbol': boolean
     }
 ): d_out.Paragraph => sh.pg.composed($.__l_map(($) =>
     _p.decide.state($, ($): d_out.Paragraph => {
@@ -444,7 +444,7 @@ export const Statements = (
                     Expression(
                         $,
                         {
-                            'replace empty type literals by null': $p['replace empty type literals by null'],
+                            'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                             'object literal needs parentheses': true,
                         }
                     )
@@ -513,7 +513,7 @@ export const Statements = (
                         ($) => Expression(
                             $,
                             {
-                                'replace empty type literals by null': $p['replace empty type literals by null'],
+                                'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                 'object literal needs parentheses': false,
                             }
                         ),
@@ -528,7 +528,7 @@ export const Statements = (
                     Expression(
                         $.expression,
                         {
-                            'replace empty type literals by null': $p['replace empty type literals by null'],
+                            'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                             'object literal needs parentheses': false,
                         }
                     ),
@@ -542,7 +542,7 @@ export const Statements = (
                                         Expression(
                                             $,
                                             {
-                                                'replace empty type literals by null': $p['replace empty type literals by null'],
+                                                'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                                 'object literal needs parentheses': true,
                                             }
                                         ),
@@ -596,7 +596,7 @@ export const Statements = (
                             Expression(
                                 $,
                                 {
-                                    'replace empty type literals by null': $p['replace empty type literals by null'],
+                                    'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                                     'object literal needs parentheses': false,
                                 }
                             )
@@ -613,7 +613,7 @@ export const Statements = (
 export const Expression = (
     $: d_in.Expression_,
     $p: {
-        'replace empty type literals by null': boolean
+        'replace empty type literals by symbol': boolean
         'object literal needs parentheses': boolean
     }
 ): d_out.Phrase => _p.decide.state($, ($) => {
@@ -623,7 +623,7 @@ export const Expression = (
             sh.ph.literal(" = "),
             Expression($.right, {
                 'object literal needs parentheses': false,
-                'replace empty type literals by null': $p['replace empty type literals by null'],
+                'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
             }),
         ]))
         case 'array literal': return _p.ss($, ($) => sh.ph.composed([
@@ -631,7 +631,7 @@ export const Expression = (
             sh.ph.rich(
                 $.__l_map(($) => Expression($, {
                     'object literal needs parentheses': false,
-                    'replace empty type literals by null': $p['replace empty type literals by null'],
+                    'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                 })),
                 sh.ph.nothing(),
                 sh.ph.nothing(),
@@ -680,7 +680,7 @@ export const Expression = (
                         $,
                         {
                             'object literal needs parentheses': true,
-                            'replace empty type literals by null': $p['replace empty type literals by null'],
+                            'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                         }
                     ))
                     default: return _p.au($[0])
@@ -696,7 +696,7 @@ export const Expression = (
                         $,
                         {
                             'object literal needs parentheses': false,
-                            'replace empty type literals by null': $p['replace empty type literals by null'],
+                            'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                         }
                     ),
                     sh.ph.literal(",")
@@ -723,7 +723,7 @@ export const Expression = (
             sh.ph.literal(" "),
             Expression($.right, {
                 'object literal needs parentheses': false,
-                'replace empty type literals by null': $p['replace empty type literals by null'],
+                'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
             }),
         ]))
         case 'conditional': return _p.ss($, ($) => sh.ph.composed([
@@ -733,7 +733,7 @@ export const Expression = (
                     sh.ph.literal("? "),
                     Expression($['if true'],
                         {
-                            'replace empty type literals by null': $p['replace empty type literals by null'],
+                            'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                             'object literal needs parentheses': false,
                         }
                     ),
@@ -741,7 +741,7 @@ export const Expression = (
                 sh.sentence([
                     sh.ph.literal(": "),
                     Expression($['if false'], {
-                        'replace empty type literals by null': $p['replace empty type literals by null'],
+                        'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                         'object literal needs parentheses': false,
                     }),
                 ]),
@@ -779,7 +779,7 @@ export const Expression = (
                             $.value,
                             {
                                 'object literal needs parentheses': false,
-                                'replace empty type literals by null': $p['replace empty type literals by null'],
+                                'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                             }
                         ),
                         sh.ph.literal(",")
@@ -793,7 +793,7 @@ export const Expression = (
         case 'parenthesized': return _p.ss($, ($) => sh.ph.composed([
             sh.ph.literal("("),
             Expression($, {
-                'replace empty type literals by null': $p['replace empty type literals by null'],
+                'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                 'object literal needs parentheses': false,
             }),
             sh.ph.literal(")"),
@@ -827,7 +827,7 @@ export const Expression = (
 export const Type = (
     $: d_in.Type,
     $p: {
-        'replace empty type literals by null': boolean
+        'replace empty type literals by symbol': boolean
     }
 ): d_out.Phrase => _p.decide.state($, ($) => {
     switch ($[0]) {
@@ -874,8 +874,8 @@ export const Type = (
             ),
             sh.ph.literal("]"),
         ]))
-        case 'type literal': return _p.ss($, ($) => $p['replace empty type literals by null'] && _p.boolean.from.list($.properties).is_empty()
-            ? sh.ph.literal("null")
+        case 'type literal': return _p.ss($, ($) => $p['replace empty type literals by symbol'] && _p.boolean.from.list($.properties).is_empty()
+            ? sh.ph.literal("symbol")
             : sh.ph.composed([
                 sh.ph.literal("{"),
                 sh.ph.indent(

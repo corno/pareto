@@ -23,17 +23,6 @@ export const Package_Set = ($: d_in.Package_Set): d_out.Directory => {
                     default: return _p.au($[0])
                 }
             })
-
-            // r_pareto_interface.r_Module_Set(
-            //     t_pareto_to_pareto_interface.Module($),
-            //     {
-            //         'parameters': {
-            //             'lookups': null,
-            //             'values': null,
-            //         },
-            //         'location 2 string': location_to_string
-            //     }
-            // )
         )
     )
 }

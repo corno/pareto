@@ -17,7 +17,7 @@ function test_number_serialization(number: number, expected: string) {
             sh.e.number_literal(number),
             {
                 'object literal needs parentheses': false,
-                'replace empty type literals by null': false
+                'replace empty type literals by symbol': false
             }
         ),
         {
