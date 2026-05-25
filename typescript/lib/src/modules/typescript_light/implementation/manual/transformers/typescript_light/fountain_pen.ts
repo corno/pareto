@@ -127,8 +127,9 @@ export const decimal: _pi.Transformer<number, d_loc.List_of_Characters> = ($) =>
             $ = _p.number.from.number.divide(
                 $,
                 10,
+            ['towards zero', null],
                 {
-                    divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                    divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10"),
                 }
             )
         } while ($ > 0)
@@ -189,8 +190,9 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
         const mantissa_scaled = _p.number.from.number.divide(
             mantissa * scale_factor + 0.5,
             1,
+            ['towards zero', null],
             {
-                divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 1")
+                divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 1"),
             }
         )
 
@@ -203,8 +205,9 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
                 t = _p.number.from.number.divide(
                     t,
                     10,
+            ['towards zero', null],
                     {
-                        divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10")
+                        divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10"),
                     }
                 )
             } while (t > 0)
@@ -265,8 +268,9 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
                         exp = _p.number.from.number.divide(
                             exp,
                             10,
+                            ['towards zero', null],
                             {
-                                divided_by_zero: () => _p_unreachable_code_path("hardcoded 10")
+                                divided_by_zero: () => _p_unreachable_code_path("hardcoded 10"),
                             }
                         )
                     } while (exp > 0)
