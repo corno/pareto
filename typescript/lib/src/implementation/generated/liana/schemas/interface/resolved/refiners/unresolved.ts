@@ -9,6 +9,8 @@ import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 import _p_variables from 'pareto-core/dist/_p_variables'
 
+import _p_create_symbol from 'pareto-core/dist/_p_create_symbol'
+
 import * as t_out from "../../../../../../../interface/generated/liana/schemas/interface/data/resolved"
 
 import * as t_signatures from "../../../../../../../interface/generated/liana/schemas/interface/signatures/resolved/refiners/unresolved"
@@ -34,8 +36,8 @@ export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => _p.di
                                         ($) => abort(
                                             $,
                                         ),
-                                        null,
-                                        null,
+                                        _p_create_symbol(),
+                                        _p_create_symbol(),
                                     )],
                                 )
                             case 'set':
@@ -46,8 +48,8 @@ export const Package_Set: t_signatures.Package_Set = ($, abort, $l, $p) => _p.di
                                         ($) => abort(
                                             $,
                                         ),
-                                        null,
-                                        null,
+                                        _p_create_symbol(),
+                                        _p_create_symbol(),
                                     )],
                                 )
                             default:
@@ -72,8 +74,8 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.lite
                 ($) => abort(
                     $,
                 ),
-                null,
-                null,
+                _p_create_symbol(),
+                _p_create_symbol(),
             ),
         )
         
@@ -100,8 +102,8 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.lite
                                                     ($) => abort(
                                                         $,
                                                     ),
-                                                    null,
-                                                    null,
+                                                    _p_create_symbol(),
+                                                    _p_create_symbol(),
                                                 ),
                                             ),
                                         )],
@@ -124,8 +126,8 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.lite
                                                                 ($) => abort(
                                                                     $,
                                                                 ),
-                                                                null,
-                                                                null,
+                                                                _p_create_symbol(),
+                                                                _p_create_symbol(),
                                                             ),
                                                         )
                                                         
@@ -136,8 +138,8 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.lite
                                                                 ($) => abort(
                                                                     $,
                                                                 ),
-                                                                null,
-                                                                null,
+                                                                _p_create_symbol(),
+                                                                _p_create_symbol(),
                                                             ),
                                                         )
                                                         
@@ -172,8 +174,8 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.lite
                                                                                                             ($) => abort(
                                                                                                                 $,
                                                                                                             ),
-                                                                                                            null,
-                                                                                                            null,
+                                                                                                            _p_create_symbol(),
+                                                                                                            _p_create_symbol(),
                                                                                                         ),
                                                                                                     ),
                                                                                                 )
@@ -204,8 +206,8 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.lite
                                                                                                                                                 ($) => abort(
                                                                                                                                                     $,
                                                                                                                                                 ),
-                                                                                                                                                null,
-                                                                                                                                                null,
+                                                                                                                                                _p_create_symbol(),
+                                                                                                                                                _p_create_symbol(),
                                                                                                                                             )],
                                                                                                                                         )
                                                                                                                                     case 'cyclic':
@@ -216,8 +218,8 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.lite
                                                                                                                                                 ($) => abort(
                                                                                                                                                     $,
                                                                                                                                                 ),
-                                                                                                                                                null,
-                                                                                                                                                null,
+                                                                                                                                                _p_create_symbol(),
+                                                                                                                                                _p_create_symbol(),
                                                                                                                                             )],
                                                                                                                                         )
                                                                                                                                     case 'stack':
@@ -228,8 +230,8 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.lite
                                                                                                                                                 ($) => abort(
                                                                                                                                                     $,
                                                                                                                                                 ),
-                                                                                                                                                null,
-                                                                                                                                                null,
+                                                                                                                                                _p_create_symbol(),
+                                                                                                                                                _p_create_symbol(),
                                                                                                                                             )],
                                                                                                                                         )
                                                                                                                                     default:
@@ -278,8 +280,8 @@ export const Package: t_signatures.Package = ($, abort, $l, $p) => _p.group.lite
                                                                             ($) => abort(
                                                                                 $,
                                                                             ),
-                                                                            null,
-                                                                            null,
+                                                                            _p_create_symbol(),
+                                                                            _p_create_symbol(),
                                                                         ),
                                                                     ),
                                                                 ),
@@ -420,8 +422,8 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p_variables(
                                             ($) => abort(
                                                 $,
                                             ),
-                                            null,
-                                            null,
+                                            _p_create_symbol(),
+                                            _p_create_symbol(),
                                         ),
                                     )
                                     return {
@@ -438,8 +440,8 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p_variables(
                                 ($) => abort(
                                     $,
                                 ),
-                                null,
-                                null,
+                                _p_create_symbol(),
+                                _p_create_symbol(),
                             )],
                         )
                     case 'group':
@@ -455,8 +457,8 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p_variables(
                                         ($) => abort(
                                             $,
                                         ),
-                                        null,
-                                        null,
+                                        _p_create_symbol(),
+                                        _p_create_symbol(),
                                     ),
                                 ),
                             )],
@@ -469,8 +471,8 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p_variables(
                                 ($) => abort(
                                     $,
                                 ),
-                                null,
-                                null,
+                                _p_create_symbol(),
+                                _p_create_symbol(),
                             )],
                         )
                     case 'nothing':
@@ -543,8 +545,8 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p_variables(
                                 ($) => abort(
                                     $,
                                 ),
-                                null,
-                                null,
+                                _p_create_symbol(),
+                                _p_create_symbol(),
                             )],
                         )
                     case 'reference':
@@ -560,8 +562,8 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p_variables(
                                             ($) => abort(
                                                 $,
                                             ),
-                                            null,
-                                            null,
+                                            _p_create_symbol(),
+                                            _p_create_symbol(),
                                         ),
                                     )
                                     
@@ -643,8 +645,8 @@ export const Value: t_signatures.Value = ($, abort, $l, $p) => _p_variables(
                                         ($) => abort(
                                             $,
                                         ),
-                                        null,
-                                        null,
+                                        _p_create_symbol(),
+                                        _p_create_symbol(),
                                     ),
                                 ),
                             )],
