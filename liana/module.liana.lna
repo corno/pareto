@@ -9,9 +9,11 @@
                 `text types`: {
                     'Pseudo Reference': (
                         `type`: | `single line` ~
+                        `link`: | `no` ~
                     )
                     'TBD': (
                         `type`: | `single line` ~
+                        `link`: | `no` ~
                     )
                 }
                 `simple types`: {
@@ -965,15 +967,19 @@
                 `text types`: {
                     'TBD': (
                         `type`: | `single line` ~
+                        `link`: | `no` ~
                     )
                     'Identifier': (
                         `type`: | `single line` ~
+                        `link`: | `no` ~
                     )
                     'Text Value': (
                         `type`: | `multi line` ~
+                        `link`: | `no` ~
                     )
                     'text': (
                         `type`: | `single line` ~
+                        `link`: | `no` ~
                     )
                 }
                 `simple types`: {
@@ -5160,12 +5166,15 @@
                 `text types`: {
                     'Identifier': (
                         `type`: | `single line` ~
+                        `link`: | `no` ~
                     )
                     'Output': (
                         `type`: | `single line` ~
+                        `link`: | `no` ~
                     )
                     'text': (
                         `type`: | `single line` ~
+                        `link`: | `no` ~
                     )
                 }
                 `simple types`: {
