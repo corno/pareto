@@ -1,5 +1,5 @@
 
-import * as _pi from 'pareto-core/dist/interface'
+import * as p_i from 'pareto-core/dist/interface'
 
 import * as i_generic from "liana-core/dist/interface/to_be_generated/unmarshall"
 
@@ -23,7 +23,7 @@ export namespace Directory_ {
 
 export type Directory_ = (
     context: Directory_.I,
-    abort: _pi.Abort<Directory_.E>,
+    abort: p_i.Abort<Directory_.E>,
 ) => Directory_.O
 
 export namespace Block_ {
@@ -42,7 +42,7 @@ export namespace Block_ {
 
 export type Block_ = (
     context: Block_.I,
-    abort: _pi.Abort<Block_.E>,
+    abort: p_i.Abort<Block_.E>,
 ) => Block_.O
 
 export namespace Statements_ {
@@ -61,7 +61,7 @@ export namespace Statements_ {
 
 export type Statements_ = (
     context: Statements_.I,
-    abort: _pi.Abort<Statements_.E>,
+    abort: p_i.Abort<Statements_.E>,
 ) => Statements_.O
 
 export namespace Type_ {
@@ -80,7 +80,7 @@ export namespace Type_ {
 
 export type Type_ = (
     context: Type_.I,
-    abort: _pi.Abort<Type_.E>,
+    abort: p_i.Abort<Type_.E>,
 ) => Type_.O
 
 export namespace Function_Parameters_ {
@@ -99,7 +99,7 @@ export namespace Function_Parameters_ {
 
 export type Function_Parameters_ = (
     context: Function_Parameters_.I,
-    abort: _pi.Abort<Function_Parameters_.E>,
+    abort: p_i.Abort<Function_Parameters_.E>,
 ) => Function_Parameters_.O
 
 export namespace Expression_ {
@@ -118,7 +118,7 @@ export namespace Expression_ {
 
 export type Expression_ = (
     context: Expression_.I,
-    abort: _pi.Abort<Expression_.E>,
+    abort: p_i.Abort<Expression_.E>,
 ) => Expression_.O
 
 export namespace String_Literal_ {
@@ -137,7 +137,7 @@ export namespace String_Literal_ {
 
 export type String_Literal_ = (
     context: String_Literal_.I,
-    abort: _pi.Abort<String_Literal_.E>,
+    abort: p_i.Abort<String_Literal_.E>,
 ) => String_Literal_.O
 
 export namespace Identifier_ {
@@ -156,7 +156,7 @@ export namespace Identifier_ {
 
 export type Identifier_ = (
     context: Identifier_.I,
-    abort: _pi.Abort<Identifier_.E>,
+    abort: p_i.Abort<Identifier_.E>,
 ) => Identifier_.O
 
 export { 

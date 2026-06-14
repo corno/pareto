@@ -1,5 +1,5 @@
 
-import * as _pi from 'pareto-core/dist/interface'
+import * as p_i from 'pareto-core/dist/interface'
 
 import * as i_generic from "liana-core/dist/interface/to_be_generated/resolve"
 
@@ -23,7 +23,7 @@ export namespace Package_ {
 
 export type Package_ = (
     context: Package_.I,
-    abort: _pi.Abort<Package_.E>,
+    abort: p_i.Abort<Package_.E>,
     lookups: symbol,
     parameters: symbol,
 ) => Package_.O
@@ -44,7 +44,7 @@ export namespace Package_Set_ {
 
 export type Package_Set_ = (
     context: Package_Set_.I,
-    abort: _pi.Abort<Package_Set_.E>,
+    abort: p_i.Abort<Package_Set_.E>,
     lookups: symbol,
     parameters: symbol,
 ) => Package_Set_.O
@@ -65,7 +65,7 @@ export namespace Imports_ {
 
 export type Imports_ = (
     context: Imports_.I,
-    abort: _pi.Abort<Imports_.E>,
+    abort: p_i.Abort<Imports_.E>,
     lookups: symbol,
     parameters: symbol,
 ) => Imports_.O
@@ -86,7 +86,7 @@ export namespace Value_ {
 
 export type Value_ = (
     context: Value_.I,
-    abort: _pi.Abort<Value_.E>,
+    abort: p_i.Abort<Value_.E>,
     lookups: symbol,
     parameters: symbol,
 ) => Value_.O
@@ -107,7 +107,7 @@ export namespace Module_Reference_ {
 
 export type Module_Reference_ = (
     context: Module_Reference_.I,
-    abort: _pi.Abort<Module_Reference_.E>,
+    abort: p_i.Abort<Module_Reference_.E>,
     lookups: symbol,
     parameters: symbol,
 ) => Module_Reference_.O

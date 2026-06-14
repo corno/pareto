@@ -1,5 +1,6 @@
 
-import * as _pi from 'pareto-core/dist/interface'
+import * as p_i from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 
 import * as i_location from "liana-core/dist/interface/to_be_generated/document_and_location"
 
@@ -45,7 +46,7 @@ export namespace Package_Set_ {
         
     }
     
-    export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+    export type l_dictionary = p_di.Dictionary<l_dictionary.D>
     
 }
 
@@ -85,7 +86,7 @@ export namespace Package_ {
                     
                 }
                 
-                export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                export type l_dictionary = p_di.Dictionary<l_dictionary.D>
                 
             }
             
@@ -126,7 +127,7 @@ export namespace Package_ {
                                             
                                         }
                                         
-                                        export type error = _pi.Optional_Value<error.O>
+                                        export type error = p_di.Optional_Value<error.O>
                                         
                                         export namespace lookups {
                                             
@@ -175,7 +176,7 @@ export namespace Package_ {
                                                     
                                                 }
                                                 
-                                                export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                                                export type l_dictionary = p_di.Dictionary<l_dictionary.D>
                                                 
                                             }
                                             
@@ -186,7 +187,7 @@ export namespace Package_ {
                                             
                                         }
                                         
-                                        export type lookups = _pi.Optional_Value<lookups.O>
+                                        export type lookups = p_di.Optional_Value<lookups.O>
                                         
                                     }
                                     
@@ -231,7 +232,7 @@ export namespace Package_ {
                                         
                                     }
                                     
-                                    export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                                    export type l_dictionary = p_di.Dictionary<l_dictionary.D>
                                     
                                 }
                                 
@@ -242,7 +243,7 @@ export namespace Package_ {
                                 
                             }
                             
-                            export type parameters = _pi.Optional_Value<parameters.O>
+                            export type parameters = p_di.Optional_Value<parameters.O>
                             
                         }
                         
@@ -262,7 +263,7 @@ export namespace Package_ {
                     
                 }
                 
-                export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                export type l_dictionary = p_di.Dictionary<l_dictionary.D>
                 
             }
             
@@ -361,7 +362,7 @@ export namespace Imports_ {
                         
                     }
                     
-                    export type l_list = _pi.List<l_list.L>
+                    export type l_list = p_di.List<l_list.L>
                     
                 }
                 
@@ -386,7 +387,7 @@ export namespace Imports_ {
         
     }
     
-    export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+    export type l_dictionary = p_di.Dictionary<l_dictionary.D>
     
 }
 
@@ -436,7 +437,7 @@ export namespace Value_ {
                 
             }
             
-            export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+            export type l_dictionary = p_di.Dictionary<l_dictionary.D>
             
         }
         
@@ -550,7 +551,7 @@ export namespace Value_ {
                     
                 }
                 
-                export type l_list = _pi.List<l_list.L>
+                export type l_list = p_di.List<l_list.L>
                 
             }
             
@@ -590,7 +591,7 @@ export namespace Value_ {
                 
             }
             
-            export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+            export type l_dictionary = p_di.Dictionary<l_dictionary.D>
             
         }
         

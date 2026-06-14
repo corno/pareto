@@ -1,10 +1,8 @@
 import * as pt from 'pareto-core/dist/assign'
-import * as pi from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 import p_implement_me from 'pareto-core-dev/dist/implement_me'
-import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-import p_text_from_list from 'pareto-core/dist/_p_text_from_list'
-import p_variables from 'pareto-core/dist/_p_variables'
-import p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
+import p_variables from 'pareto-core/dist/specials/variables'
+import * as p_i from 'pareto-core/dist/interface'
 
 //data types
 import * as d_in from "../../../../interface/generated/liana/schemas/implementation/data/resolved"
@@ -17,7 +15,7 @@ import * as sh from "../../../../modules/typescript_light/shorthands/typescript_
 //dependencies
 import { temp_create_file_path } from '../interface/typescript'
 
-const join = ($: pi.List<string>): string => {
+const join = ($: p_di.List<string>): string => {
     let out = ""
     $.__l_map(($) => {
         out += $
@@ -28,7 +26,7 @@ const join = ($: pi.List<string>): string => {
 
 const temp_rename = (
     $: d_in.Package_Set,
-    abort: pi.Abort<d_function.Error>
+    abort: p_i.Abort<d_function.Error>
 ): d_in.Package_Set => {
     const renamed: { [id: string]: d_in.Package_Set.D } = {}
     $.__d_map(($, id) => {
@@ -56,7 +54,7 @@ const temp_rename = (
 
 export const Package_Set = (
     $: d_in.Package_Set,
-    abort: pi.Abort<d_function.Error>
+    abort: p_i.Abort<d_function.Error>
 ): d_out.Directory => {
     return temp_rename($, abort).__d_map(($, id) => pt.decide.state($, ($) => {
         switch ($[0]) {
@@ -72,7 +70,7 @@ export const Package_Set = (
                     $.specials['change context']
                         ? [sh.s.import_default(
                             sh.identifier_raw("p_change_context"),
-                            sh.string_literal("pareto-core/dist/_p_change_context", 'apostrophe')
+                            sh.string_literal("pareto-core/dist/specials/change_context", 'apostrophe')
                         )]
                         : [],
                     $.specials['implement me']
@@ -92,7 +90,7 @@ export const Package_Set = (
                     $.specials['list from text']
                         ? [sh.s.import_default(
                             sh.identifier_raw("p_list_from_text"),
-                            sh.string_literal("pareto-core/dist/_p_list_from_text", 'apostrophe')
+                            sh.string_literal("pareto-core/dist/specials/list_from_text", 'apostrophe')
                         )]
                         : [],
                     $.specials.lookups
@@ -104,19 +102,19 @@ export const Package_Set = (
                     $.specials['text from list']
                         ? [sh.s.import_default(
                             sh.identifier_raw("p_text_from_list"),
-                            sh.string_literal("pareto-core/dist/_p_text_from_list", 'apostrophe')
+                            sh.string_literal("pareto-core/dist/specials/text_from_list", 'apostrophe')
                         )]
                         : [],
                     $.specials['unreachable code path']
                         ? [sh.s.import_default(
                             sh.identifier_raw("p_unreachable_code_path"),
-                            sh.string_literal("pareto-core/dist/_p_unreachable_code_path", 'apostrophe')
+                            sh.string_literal("pareto-core/dist/specials/unreachable_code_path", 'apostrophe')
                         )]
                         : [],
                     $.specials['variables']
                         ? [sh.s.import_default(
                             sh.identifier_raw("p_variables"),
-                            sh.string_literal("pareto-core/dist/_p_variables", 'apostrophe')
+                            sh.string_literal("pareto-core/dist/specials/variables", 'apostrophe')
                         )]
                         : [],
                     pt.list.from.dictionary(
@@ -198,7 +196,7 @@ export const Temp_Value_Type_Specification = (
             pt.list.from.list(
                 $['sub selection'],
             ).flatten(
-                ($) => pt.decide.state($, ($): pi.List<d_out.Identifier> => {
+                ($) => pt.decide.state($, ($): p_di.List<d_out.Identifier> => {
                     switch ($[0]) {
                         case 'dictionary': return pt.ss($, ($) => pt.list.literal([sh.identifier_raw("D")]))
                         case 'group': return pt.ss($, ($) => pt.list.literal([sh.identifier_escaped($)]))
@@ -929,8 +927,8 @@ export const Assign = (
     }
 })
 
-export const reduce = <Item extends pi.Value, Result_Type extends pi.Value>(
-    $: pi.List<Item>,
+export const reduce = <Item extends p_di.Value, Result_Type extends p_di.Value>(
+    $: p_di.List<Item>,
     initial_state: Result_Type,
     update_state: (
         value: Item,

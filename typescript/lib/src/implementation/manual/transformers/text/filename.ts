@@ -1,13 +1,14 @@
 import * as pt from 'pareto-core/dist/assign'
-import * as pi from 'pareto-core/dist/interface'
-import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import * as p_di from 'pareto-core/dist/data/interface'
+import p_list_build_deprecated from 'pareto-core/dist/specials/list_build_deprecated'
+import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
+import * as p_ti from 'pareto-core/dist/transformer/interface'
 
 //data types
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
 
 
-export type Signature = pi.Transformer<string, d_out.List_of_Characters>
+export type Signature = p_ti.Transformer<string, d_out.List_of_Characters>
 
 export const $$: Signature = ($) => {
     return p_list_build_deprecated(($i) => {

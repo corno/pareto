@@ -1,9 +1,8 @@
 import * as pt from 'pareto-core/dist/assign'
-import * as pi from 'pareto-core/dist/interface'
-import p_change_context from 'pareto-core/dist/_p_change_context'
-import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-import p_text_from_list from 'pareto-core/dist/_p_text_from_list'
-import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import * as p_i from 'pareto-core/dist/interface'
+import p_change_context from 'pareto-core/dist/specials/change_context'
+import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
+import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/interface/data/resolved"
 import * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data"
@@ -59,7 +58,7 @@ export const temp_create_file_path = (
 
 const temp_rename = (
     $: d_in.Package_Set,
-    abort: pi.Abort<d_function.Error>
+    abort: p_i.Abort<d_function.Error>
 ): d_in.Package_Set => {
     const renamed: { [id: string]: d_in.Package_Set.D } = {}
     $.__d_map(($, id) => {
@@ -87,7 +86,7 @@ const temp_rename = (
 
 export const Package_Set = (
     $: d_in.Package_Set,
-    abort: pi.Abort<d_function.Error>
+    abort: p_i.Abort<d_function.Error>
 ): d_out.Directory => {
     return temp_rename($, abort).__d_map(($) => pt.decide.state($, ($) => {
         switch ($[0]) {

@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core/dist/assign'
 import p_implement_me from 'pareto-core-dev/dist/implement_me'
-import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import p_list_build_deprecated from 'pareto-core/dist/specials/list_build_deprecated'
+import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
 
 
 import * as d_loc from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"

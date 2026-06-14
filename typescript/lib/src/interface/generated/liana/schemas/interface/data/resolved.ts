@@ -1,5 +1,6 @@
 
-import * as _pi from 'pareto-core/dist/interface'
+import * as p_i from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 
 export namespace Package_Set_ {
     
@@ -17,7 +18,7 @@ export namespace Package_Set_ {
     
 }
 
-export type Package_Set_ = _pi.Dictionary<Package_Set_.D>
+export type Package_Set_ = p_di.Dictionary<Package_Set_.D>
 
 export namespace Package_ {
     
@@ -31,7 +32,7 @@ export namespace Package_ {
             
         }
         
-        export type data_modules = _pi.Dictionary<data_modules.D>
+        export type data_modules = p_di.Dictionary<data_modules.D>
         
         export namespace functions {
             
@@ -53,7 +54,7 @@ export namespace Package_ {
                             
                         }
                         
-                        export type error = _pi.Optional_Value<error.O>
+                        export type error = p_di.Optional_Value<error.O>
                         
                         export namespace lookups {
                             
@@ -76,11 +77,11 @@ export namespace Package_ {
                                 
                             }
                             
-                            export type O = _pi.Dictionary<O.D>
+                            export type O = p_di.Dictionary<O.D>
                             
                         }
                         
-                        export type lookups = _pi.Optional_Value<lookups.O>
+                        export type lookups = p_di.Optional_Value<lookups.O>
                         
                     }
                     
@@ -103,11 +104,11 @@ export namespace Package_ {
                         
                     }
                     
-                    export type O = _pi.Dictionary<O.D>
+                    export type O = p_di.Dictionary<O.D>
                     
                 }
                 
-                export type parameters = _pi.Optional_Value<parameters.O>
+                export type parameters = p_di.Optional_Value<parameters.O>
                 
             }
             
@@ -120,7 +121,7 @@ export namespace Package_ {
             
         }
         
-        export type functions = _pi.Dictionary<functions.D>
+        export type functions = p_di.Dictionary<functions.D>
         
     }
     
@@ -171,7 +172,7 @@ export namespace Imports_ {
             
         }
         
-        export type tail = _pi.List<tail.L>
+        export type tail = p_di.List<tail.L>
         
     }
     
@@ -182,7 +183,7 @@ export namespace Imports_ {
     
 }
 
-export type Imports_ = _pi.Dictionary<Imports_.D>
+export type Imports_ = p_di.Dictionary<Imports_.D>
 
 export namespace Value_ {
     
@@ -206,7 +207,7 @@ export namespace Value_ {
         
     }
     
-    export type group = _pi.Dictionary<group.D>
+    export type group = p_di.Dictionary<group.D>
     
     export type list = Value_
     
@@ -265,7 +266,7 @@ export namespace Value_ {
             
         }
         
-        export type sub_selection = _pi.List<sub_selection.L>
+        export type sub_selection = p_di.List<sub_selection.L>
         
         export type cyclic = boolean
         
@@ -283,7 +284,7 @@ export namespace Value_ {
         
     }
     
-    export type state = _pi.Dictionary<state.D>
+    export type state = p_di.Dictionary<state.D>
     
     export type text = null
     

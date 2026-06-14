@@ -1,5 +1,6 @@
 
-import * as _pi from 'pareto-core/dist/interface'
+import * as p_i from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 
 export namespace Directory_ {
     
@@ -25,7 +26,7 @@ export namespace Directory_ {
     
 }
 
-export type Directory_ = _pi.Dictionary<Directory_.D>
+export type Directory_ = p_di.Dictionary<Directory_.D>
 
 export type Block_ = Statements_
 
@@ -53,7 +54,7 @@ export namespace Statements_ {
                                 
                             }
                             
-                            export type as_ = _pi.Optional_Value<as_.O>
+                            export type as_ = p_di.Optional_Value<as_.O>
                             
                         }
                         
@@ -64,7 +65,7 @@ export namespace Statements_ {
                         
                     }
                     
-                    export type specifiers = _pi.List<specifiers.L>
+                    export type specifiers = p_di.List<specifiers.L>
                     
                     export namespace from_ {
                         
@@ -72,7 +73,7 @@ export namespace Statements_ {
                         
                     }
                     
-                    export type from_ = _pi.Optional_Value<from_.O>
+                    export type from_ = p_di.Optional_Value<from_.O>
                     
                 }
                 
@@ -116,7 +117,7 @@ export namespace Statements_ {
                                 
                             }
                             
-                            export type as_ = _pi.Optional_Value<as_.O>
+                            export type as_ = p_di.Optional_Value<as_.O>
                             
                         }
                         
@@ -127,7 +128,7 @@ export namespace Statements_ {
                         
                     }
                     
-                    export type specifiers = _pi.List<specifiers.L>
+                    export type specifiers = p_di.List<specifiers.L>
                     
                 }
                 
@@ -173,7 +174,7 @@ export namespace Statements_ {
             
         }
         
-        export type return_ = _pi.Optional_Value<return_.O>
+        export type return_ = p_di.Optional_Value<return_.O>
         
         export namespace switch_ {
             
@@ -206,7 +207,7 @@ export namespace Statements_ {
                 
             }
             
-            export type clauses = _pi.List<clauses.L>
+            export type clauses = p_di.List<clauses.L>
             
         }
         
@@ -227,7 +228,7 @@ export namespace Statements_ {
                 
             }
             
-            export type parameters = _pi.List<parameters.L>
+            export type parameters = p_di.List<parameters.L>
             
             export type type_ = Type_
             
@@ -254,7 +255,7 @@ export namespace Statements_ {
                 
             }
             
-            export type type_ = _pi.Optional_Value<type_.O>
+            export type type_ = p_di.Optional_Value<type_.O>
             
             export namespace expression {
                 
@@ -262,7 +263,7 @@ export namespace Statements_ {
                 
             }
             
-            export type expression = _pi.Optional_Value<expression.O>
+            export type expression = p_di.Optional_Value<expression.O>
             
         }
         
@@ -289,7 +290,7 @@ export namespace Statements_ {
     
 }
 
-export type Statements_ = _pi.List<Statements_.L>
+export type Statements_ = p_di.List<Statements_.L>
 
 export namespace Type_ {
     
@@ -303,7 +304,7 @@ export namespace Type_ {
             
         }
         
-        export type type_parameters = _pi.List<type_parameters.L>
+        export type type_parameters = p_di.List<type_parameters.L>
         
         export type parameters = Function_Parameters_
         
@@ -337,7 +338,7 @@ export namespace Type_ {
             
         }
         
-        export type elements = _pi.List<elements.L>
+        export type elements = p_di.List<elements.L>
         
     }
     
@@ -378,7 +379,7 @@ export namespace Type_ {
             
         }
         
-        export type properties = _pi.List<properties.L>
+        export type properties = p_di.List<properties.L>
         
     }
     
@@ -396,7 +397,7 @@ export namespace Type_ {
             
         }
         
-        export type tail = _pi.List<tail.L>
+        export type tail = p_di.List<tail.L>
         
         export namespace type_arguments {
             
@@ -404,7 +405,7 @@ export namespace Type_ {
             
         }
         
-        export type type_arguments = _pi.List<type_arguments.L>
+        export type type_arguments = p_di.List<type_arguments.L>
         
     }
     
@@ -420,7 +421,7 @@ export namespace Type_ {
         
     }
     
-    export type union = _pi.List<union.L>
+    export type union = p_di.List<union.L>
     
     export type void_ = null
     
@@ -452,7 +453,7 @@ export namespace Function_Parameters_ {
             
         }
         
-        export type type_ = _pi.Optional_Value<type_.O>
+        export type type_ = p_di.Optional_Value<type_.O>
         
     }
     
@@ -463,7 +464,7 @@ export namespace Function_Parameters_ {
     
 }
 
-export type Function_Parameters_ = _pi.List<Function_Parameters_.L>
+export type Function_Parameters_ = p_di.List<Function_Parameters_.L>
 
 export namespace Expression_ {
     
@@ -473,7 +474,7 @@ export namespace Expression_ {
         
     }
     
-    export type array_literal = _pi.List<array_literal.L>
+    export type array_literal = p_di.List<array_literal.L>
     
     export namespace arrow_function {
         
@@ -485,7 +486,7 @@ export namespace Expression_ {
             
         }
         
-        export type return_type = _pi.Optional_Value<return_type.O>
+        export type return_type = p_di.Optional_Value<return_type.O>
         
         export namespace body {
             
@@ -530,7 +531,7 @@ export namespace Expression_ {
             
         }
         
-        export type arguments_ = _pi.List<arguments_.L>
+        export type arguments_ = p_di.List<arguments_.L>
         
     }
     
@@ -649,7 +650,7 @@ export namespace Expression_ {
             
         }
         
-        export type properties = _pi.List<properties.L>
+        export type properties = p_di.List<properties.L>
         
     }
     

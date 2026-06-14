@@ -1,5 +1,5 @@
 
-import * as _pi from 'pareto-core/dist/interface'
+import * as p_i from 'pareto-core/dist/interface'
 
 import * as i_generic from "liana-core/dist/interface/to_be_generated/unmarshall"
 
@@ -23,7 +23,7 @@ export namespace Package_Set_ {
 
 export type Package_Set_ = (
     context: Package_Set_.I,
-    abort: _pi.Abort<Package_Set_.E>,
+    abort: p_i.Abort<Package_Set_.E>,
 ) => Package_Set_.O
 
 export namespace Package_ {
@@ -42,7 +42,7 @@ export namespace Package_ {
 
 export type Package_ = (
     context: Package_.I,
-    abort: _pi.Abort<Package_.E>,
+    abort: p_i.Abort<Package_.E>,
 ) => Package_.O
 
 export namespace Temp_Value_Type_Specification_ {
@@ -61,7 +61,7 @@ export namespace Temp_Value_Type_Specification_ {
 
 export type Temp_Value_Type_Specification_ = (
     context: Temp_Value_Type_Specification_.I,
-    abort: _pi.Abort<Temp_Value_Type_Specification_.E>,
+    abort: p_i.Abort<Temp_Value_Type_Specification_.E>,
 ) => Temp_Value_Type_Specification_.O
 
 export namespace Assign_ {
@@ -80,7 +80,7 @@ export namespace Assign_ {
 
 export type Assign_ = (
     context: Assign_.I,
-    abort: _pi.Abort<Assign_.E>,
+    abort: p_i.Abort<Assign_.E>,
 ) => Assign_.O
 
 export namespace Select_Value_ {
@@ -99,7 +99,7 @@ export namespace Select_Value_ {
 
 export type Select_Value_ = (
     context: Select_Value_.I,
-    abort: _pi.Abort<Select_Value_.E>,
+    abort: p_i.Abort<Select_Value_.E>,
 ) => Select_Value_.O
 
 export namespace Select_Lookup_ {
@@ -118,7 +118,7 @@ export namespace Select_Lookup_ {
 
 export type Select_Lookup_ = (
     context: Select_Lookup_.I,
-    abort: _pi.Abort<Select_Lookup_.E>,
+    abort: p_i.Abort<Select_Lookup_.E>,
 ) => Select_Lookup_.O
 
 export { 

@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core-shorthands/dist/unconstrained'
 import * as _pr from 'pareto-core/dist/assign'
-import * as pi from 'pareto-core/dist/interface'
-import p_text_from_list from 'pareto-core/dist/_p_text_from_list'
+import * as p_di from 'pareto-core/dist/data/interface'
+import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
 
 //data types
 import * as d_target from "../../../interface/generated/liana/schemas/typescript_light/data"

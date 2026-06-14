@@ -1,5 +1,6 @@
 
-import * as _pi from 'pareto-core/dist/interface'
+import * as p_i from 'pareto-core/dist/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
 
 import * as i_location from "liana-core/dist/interface/to_be_generated/document_and_location"
 
@@ -47,7 +48,7 @@ export namespace Package_Set_ {
         
     }
     
-    export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+    export type l_dictionary = p_di.Dictionary<l_dictionary.D>
     
 }
 
@@ -127,7 +128,7 @@ export namespace Package_ {
                             
                         }
                         
-                        export type l_list = _pi.List<l_list.L>
+                        export type l_list = p_di.List<l_list.L>
                         
                     }
                     
@@ -189,7 +190,7 @@ export namespace Package_ {
             
         }
         
-        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+        export type l_dictionary = p_di.Dictionary<l_dictionary.D>
         
     }
     
@@ -250,7 +251,7 @@ export namespace Package_ {
             
         }
         
-        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+        export type l_dictionary = p_di.Dictionary<l_dictionary.D>
         
     }
     
@@ -334,7 +335,7 @@ export namespace Temp_Value_Type_Specification_ {
             
         }
         
-        export type l_list = _pi.List<l_list.L>
+        export type l_list = p_di.List<l_list.L>
         
     }
     
@@ -374,7 +375,7 @@ export namespace Assign_ {
                             
                         }
                         
-                        export type temp_resulting_node = _pi.Optional_Value<temp_resulting_node.O>
+                        export type temp_resulting_node = p_di.Optional_Value<temp_resulting_node.O>
                         
                         export type if_false = Assign_
                         
@@ -396,7 +397,7 @@ export namespace Assign_ {
                             
                         }
                         
-                        export type temp_resulting_node = _pi.Optional_Value<temp_resulting_node.O>
+                        export type temp_resulting_node = p_di.Optional_Value<temp_resulting_node.O>
                         
                         export type if_not_set = Assign_
                         
@@ -418,7 +419,7 @@ export namespace Assign_ {
                             
                         }
                         
-                        export type temp_resulting_node = _pi.Optional_Value<temp_resulting_node.O>
+                        export type temp_resulting_node = p_di.Optional_Value<temp_resulting_node.O>
                         
                         export namespace type_ {
                             
@@ -449,7 +450,7 @@ export namespace Assign_ {
                                             
                                         }
                                         
-                                        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                                        export type l_dictionary = p_di.Dictionary<l_dictionary.D>
                                         
                                     }
                                     
@@ -490,7 +491,7 @@ export namespace Assign_ {
                                             
                                         }
                                         
-                                        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                                        export type l_dictionary = p_di.Dictionary<l_dictionary.D>
                                         
                                     }
                                     
@@ -550,7 +551,7 @@ export namespace Assign_ {
                             
                         }
                         
-                        export type temp_resulting_node = _pi.Optional_Value<temp_resulting_node.O>
+                        export type temp_resulting_node = p_di.Optional_Value<temp_resulting_node.O>
                         
                         export namespace cases {
                             
@@ -573,7 +574,7 @@ export namespace Assign_ {
                                 
                             }
                             
-                            export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                            export type l_dictionary = p_di.Dictionary<l_dictionary.D>
                             
                         }
                         
@@ -783,7 +784,7 @@ export namespace Assign_ {
                                 
                             }
                             
-                            export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                            export type l_dictionary = p_di.Dictionary<l_dictionary.D>
                             
                         }
                         
@@ -951,7 +952,7 @@ export namespace Assign_ {
                                     
                                 }
                                 
-                                export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                                export type l_dictionary = p_di.Dictionary<l_dictionary.D>
                                 
                             }
                             
@@ -1008,7 +1009,7 @@ export namespace Assign_ {
                                 
                             }
                             
-                            export type l_list = _pi.List<l_list.L>
+                            export type l_list = p_di.List<l_list.L>
                             
                         }
                         
@@ -1649,7 +1650,7 @@ export namespace Assign_ {
                             
                         }
                         
-                        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                        export type l_dictionary = p_di.Dictionary<l_dictionary.D>
                         
                     }
                     
@@ -1785,7 +1786,7 @@ export namespace Select_Value_ {
                             
                         }
                         
-                        export type abort = _pi.Optional_Value<abort.O>
+                        export type abort = p_di.Optional_Value<abort.O>
                         
                         export namespace lookups {
                             
@@ -1816,7 +1817,7 @@ export namespace Select_Value_ {
                                             
                                         }
                                         
-                                        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                                        export type l_dictionary = p_di.Dictionary<l_dictionary.D>
                                         
                                     }
                                     
@@ -1842,7 +1843,7 @@ export namespace Select_Value_ {
                             
                         }
                         
-                        export type lookups = _pi.Optional_Value<lookups.O>
+                        export type lookups = p_di.Optional_Value<lookups.O>
                         
                         export namespace arguments_ {
                             
@@ -1873,7 +1874,7 @@ export namespace Select_Value_ {
                                             
                                         }
                                         
-                                        export type l_dictionary = _pi.Dictionary<l_dictionary.D>
+                                        export type l_dictionary = p_di.Dictionary<l_dictionary.D>
                                         
                                     }
                                     
@@ -1899,7 +1900,7 @@ export namespace Select_Value_ {
                             
                         }
                         
-                        export type arguments_ = _pi.Optional_Value<arguments_.O>
+                        export type arguments_ = p_di.Optional_Value<arguments_.O>
                         
                     }
                     
@@ -2145,7 +2146,7 @@ export namespace Select_Value_ {
                     
                 }
                 
-                export type l_list = _pi.List<l_list.L>
+                export type l_list = p_di.List<l_list.L>
                 
             }
             

@@ -1,8 +1,9 @@
 import * as pt from 'pareto-core/dist/assign'
-import * as pi from 'pareto-core/dist/interface'
-import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
-import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-import p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
+import * as p_ti from 'pareto-core/dist/transformer/interface'
+import * as p_di from 'pareto-core/dist/data/interface'
+import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
+import p_list_build_deprecated from 'pareto-core/dist/specials/list_build_deprecated'
+import p_unreachable_code_path from 'pareto-core/dist/specials/unreachable_code_path'
 
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 import * as d_loc from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
@@ -22,7 +23,7 @@ export const escaped_text = (
         ($) => $
     ),
 ).flatten(
-    ($): pi.List<number> => {
+    ($): p_di.List<number> => {
         switch ($) {
             // case 0x2F: // slash (\/)
             //     return pt.list.literal([
@@ -78,7 +79,7 @@ export const escaped_text = (
     }
 )
 
-export const apostrophed_text: pi.Transformer<string, d_loc.List_of_Characters> = ($) => pt.list.nested_literal_old([
+export const apostrophed_text: p_ti.Transformer<string, d_loc.List_of_Characters> = ($) => pt.list.nested_literal_old([
     [
         0x27, // '
     ],
@@ -90,7 +91,7 @@ export const apostrophed_text: pi.Transformer<string, d_loc.List_of_Characters> 
     ]
 ])
 
-export const backticked_text: pi.Transformer<string, d_loc.List_of_Characters> = ($) => pt.list.nested_literal_old([
+export const backticked_text: p_ti.Transformer<string, d_loc.List_of_Characters> = ($) => pt.list.nested_literal_old([
     [
         0x60, // `
     ],
@@ -102,7 +103,7 @@ export const backticked_text: pi.Transformer<string, d_loc.List_of_Characters> =
     ]
 ])
 
-export const quoted_text: pi.Transformer<string, d_loc.List_of_Characters> = ($) => pt.list.nested_literal_old([
+export const quoted_text: p_ti.Transformer<string, d_loc.List_of_Characters> = ($) => pt.list.nested_literal_old([
     [
         0x22, // "
     ],
@@ -115,7 +116,7 @@ export const quoted_text: pi.Transformer<string, d_loc.List_of_Characters> = ($)
 ])
 
 
-export const decimal: pi.Transformer<number, d_loc.List_of_Characters> = ($) => p_list_build_deprecated(($i) => {
+export const decimal: p_ti.Transformer<number, d_loc.List_of_Characters> = ($) => p_list_build_deprecated(($i) => {
     if ($ < 0) {
         $i['add item'](45) // '-'
         $ = -$
@@ -145,7 +146,7 @@ export const decimal: pi.Transformer<number, d_loc.List_of_Characters> = ($) => 
 })
 
 
-export const float: pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
+export const float: p_ti.Transformer<number, d_loc.List_of_Characters> = ($) => {
     return p_list_build_deprecated(($i) => {
         // Handle special case for zero
         if ($ === 0) {
