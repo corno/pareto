@@ -79,6 +79,7 @@ const temp_rename = (
             }
         })
         renamed[new_id] = $
+        return null
     })
     return _p.dictionary.literal(renamed)
 }
@@ -229,7 +230,7 @@ export const Package_Set = (
                                                             case 'refiner': return _p.ss($, ($): d_out.Type.function_.parameters => _p.list.nested_literal_old([
 
                                                                 $.error.__decide(
-                                                                    ($) => [
+                                                                    ($) => _p.list.literal([
 
                                                                         sh.parameter(
                                                                             sh.identifier_raw("abort"),
@@ -242,12 +243,12 @@ export const Package_Set = (
                                                                             ),
 
                                                                         ),
-                                                                    ],
-                                                                    () => []
+                                                                    ]),
+                                                                    () => _p.list.literal([])
                                                                 ),
 
                                                                 $.lookups.__decide(
-                                                                    ($) => [
+                                                                    ($) => _p.list.literal([
 
                                                                         sh.parameter(
                                                                             sh.identifier_raw("lookups"),
@@ -276,8 +277,8 @@ export const Package_Set = (
                                                                             ),
                                                                         )
 
-                                                                    ],
-                                                                    () => []
+                                                                    ]),
+                                                                    () => _p.list.literal([])
                                                                 )
                                                             ]))
                                                             default: return _p.au($[0])

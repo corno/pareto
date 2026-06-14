@@ -114,6 +114,7 @@ export namespace m {
                 case 'unreachable code path': temp_specials['unreachable code path'] = true; break
                 case 'variables': temp_specials['variables'] = true; break
             }
+            return null
         })
         return wrap_state(['package', {
             'specials': temp_specials,
@@ -145,6 +146,7 @@ export const algorithm = (
             case 'parameters': has_parameters = true; break
 
         }
+        return null
     })
     return ({
         'type': {

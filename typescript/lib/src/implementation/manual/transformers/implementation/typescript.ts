@@ -21,6 +21,7 @@ const join = ($: _pi.List<string>): string => {
     let out = ""
     $.__l_map(($) => {
         out += $
+        return null
     })
     return out
 }
@@ -47,6 +48,7 @@ const temp_rename = (
             }
         })
         renamed[new_id] = $
+        return null
     })
     return _p.dictionary.literal(renamed)
 }
@@ -927,7 +929,7 @@ export const Assign = (
     }
 })
 
-export const reduce = <Item, Result_Type>(
+export const reduce = <Item extends _pi.Value, Result_Type extends _pi.Value>(
     $: _pi.List<Item>,
     initial_state: Result_Type,
     update_state: (
@@ -938,6 +940,7 @@ export const reduce = <Item, Result_Type>(
     let current_state = initial_state
     $.__l_map(($) => {
         current_state = update_state($, current_state)
+        return null
     })
     return current_state
 }
@@ -975,7 +978,7 @@ export const Select_Value = (
                                 Assign($.context),
                             ],
                             $.abort.__decide(
-                                ($) => [
+                                ($) => _p.list.literal([
                                     sh.e.arrow_function_with_expression(
                                         [
                                             sh.parameter(sh.identifier_raw("$"), null)
@@ -988,17 +991,17 @@ export const Select_Value = (
                                             ]
                                         )
                                     )
-                                ],
-                                () => []
+                                ]),
+                                () => _p.list.literal([])
                             ),
                             $.lookups.__decide(
                                 ($) => _p.decide.state($, ($) => {
                                     switch ($[0]) {
                                         case 'initialize': return _p.ss($, ($) => _p.boolean.from.dictionary($).is_empty()
-                                            ? [
+                                            ? _p.list.literal([
                                                 sh.e.null_(),
-                                            ]
-                                            : [
+                                            ])
+                                            : _p.list.literal([
                                                 sh.e.object_literal(
                                                     $.__to_list(($, id) => sh.object_property(
                                                         id,
@@ -1006,23 +1009,23 @@ export const Select_Value = (
                                                         Select_Lookup($)
                                                     ))
                                                 )
-                                            ])
-                                        case 'pass through': return _p.ss($, ($) => [
+                                            ]))
+                                        case 'pass through': return _p.ss($, ($) => _p.list.literal([
                                             sh.e.identifier_raw("$l")
-                                        ])
+                                        ]))
                                         default: return _p.au($[0])
                                     }
                                 }),
-                                () => []
+                                () => _p.list.literal([])
                             ),
                             $.arguments.__decide(
                                 ($) => _p.decide.state($, ($) => {
                                     switch ($[0]) {
                                         case 'initialize': return _p.ss($, ($) => _p.boolean.from.dictionary($).is_empty()
-                                            ? [
+                                            ? _p.list.literal([
                                                 sh.e.null_(),
-                                            ]
-                                            : [
+                                            ])
+                                            : _p.list.literal([
                                                 sh.e.object_literal(
                                                     $.__to_list(($, id) => sh.object_property(
                                                         id,
@@ -1030,14 +1033,14 @@ export const Select_Value = (
                                                         Assign($)
                                                     ))
                                                 )
-                                            ])
-                                        case 'pass through': return _p.ss($, ($) => [
+                                            ]))
+                                        case 'pass through': return _p.ss($, ($) => _p.list.literal([
                                             sh.e.identifier_raw("$p")
-                                        ])
+                                        ]))
                                         default: return _p.au($[0])
                                     }
                                 }),
-                                () => []
+                                () => _p.list.literal([])
                             ),
                         ]),
 

@@ -23,6 +23,7 @@ export const $$: Signature = ($) => {
             } else {
                 $i['add item']($)
             }
+            return null
         })
     })
 }
