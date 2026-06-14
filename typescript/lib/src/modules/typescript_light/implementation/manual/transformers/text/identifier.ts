@@ -1,18 +1,18 @@
-import * as _p from 'pareto-core/dist/assign'
-import _p_implement_me from 'pareto-core-dev/dist/implement_me'
-import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import * as pt from 'pareto-core/dist/assign'
+import p_implement_me from 'pareto-core-dev/dist/implement_me'
+import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 
 
 import * as d_loc from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
 
 export const Identifier = ($: string): d_loc.List_of_Characters => {
-    const temp_literal_to_text = ($: string): d_loc.List_of_Characters => _p_list_from_text($, ($) => $)
+    const temp_literal_to_text = ($: string): d_loc.List_of_Characters => p_list_from_text($, ($) => $)
     const the_string = $
     if (the_string === "") {
         return temp_literal_to_text("_empty")
     }
-    const reserved_keywords = _p.dictionary.literal({
+    const reserved_keywords = pt.dictionary.literal({
         //Reserved Words
         "arguments": null,
         "break": null,
@@ -86,14 +86,14 @@ export const Identifier = ($: string): d_loc.List_of_Characters => {
         () => true,
         () => false,
     )) {
-        return _p_list_build_deprecated(($i) => {
+        return p_list_build_deprecated(($i) => {
             $i['add list'](temp_literal_to_text(the_string))
             $i['add item'](95) //_
         })
     }
 
-    return _p_list_build_deprecated(($i) => {
-        const characters = _p_list_from_text(the_string, ($) => $)
+    return p_list_build_deprecated(($i) => {
+        const characters = p_list_from_text(the_string, ($) => $)
         const length = characters.__get_number_of_items()
 
         let position = 0
@@ -174,7 +174,7 @@ export const Identifier = ($: string): d_loc.List_of_Characters => {
                     case 124: consume_and_add("$vb_"); break; // Vertical Bar (|)
                     case 125: consume_and_add("$cc_"); break; // Close Curly Brace (})
                     case 126: consume_and_add("$ti_"); break; // Tilde (~)
-                    default: _p_implement_me(`unhandled character: \"${current_character}\"`);
+                    default: p_implement_me(`unhandled character: \"${current_character}\"`);
                 }
             }
         }

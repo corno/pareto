@@ -1,5 +1,5 @@
-import * as _p from 'pareto-core/dist/assign'
-import * as _pi from 'pareto-core/dist/interface'
+import * as pt from 'pareto-core/dist/assign'
+import * as pi from 'pareto-core/dist/interface'
 
 //data types
 import * as d_in_inf from "../../../../interface/generated/liana/schemas/interface/data/resolved"
@@ -27,12 +27,12 @@ import * as sh from "../../../../modules/typescript_light/shorthands/typescript_
 
 export const Temp_Library = (
     $: d_in.Temp_Library,
-    abort: _pi.Abort<d_function.Error>
+    abort: pi.Abort<d_function.Error>
     // $p: {
     //     'phase': 'development' | 'production'
     // }
 ): d_out.Directory => {
-    return _p.dictionary.literal<d_out.Directory.D>({
+    return pt.dictionary.literal<d_out.Directory.D>({
         "interface": sh.n.directory(t_interface_to_typescript_temp.Package_Set(
             $.interface,
             abort,

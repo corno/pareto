@@ -1,7 +1,7 @@
-import * as _p from 'pareto-core-shorthands/dist/unconstrained'
+import * as pt from 'pareto-core-shorthands/dist/unconstrained'
 import * as _pr from 'pareto-core/dist/assign'
-import * as _pi from 'pareto-core/dist/interface'
-import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
+import * as pi from 'pareto-core/dist/interface'
+import p_text_from_list from 'pareto-core/dist/_p_text_from_list'
 
 //data types
 import * as d_target from "../../../interface/generated/liana/schemas/typescript_light/data"
@@ -18,7 +18,7 @@ export const identifier_raw = (
 export const identifier_escaped = (
     name: string,
 ): d_target.Identifier => ({
-    'value': _p_text_from_list(t_text_to_identifier.Identifier(name), ($) => $)
+    'value': p_text_from_list(t_text_to_identifier.Identifier(name), ($) => $)
 })
 
 
@@ -35,14 +35,14 @@ export const string_literal = (
 export namespace n {
 
     export const directory = (
-        children: _p.Raw_Or_Normal_Dictionary<d_target.Directory.D>,
-    ): d_target.Directory.D => ['directory', _p.dictionary.literal(children)]
+        children: pt.Raw_Or_Normal_Dictionary<d_target.Directory.D>,
+    ): d_target.Directory.D => ['directory', pt.dictionary.literal(children)]
 
     export const file = (
-        statements: _p.Raw_Or_Normal_List<d_target.Statements.L>
+        statements: pt.Raw_Or_Normal_List<d_target.Statements.L>
     ): d_target.Directory.D => {
         return ['file', {
-            'statements': _p.list.literal(statements),
+            'statements': pt.list.literal(statements),
         }]
     }
 
@@ -54,7 +54,7 @@ export const specifier = (
 ): d_target.Statements.L.export_.type_.named_exports.specifiers.L => {
     return {
         'name': name,
-        'as': as === null ? _p.optional.literal.not_set() : _p.optional.literal.set(as),
+        'as': as === null ? pt.optional.literal.not_set() : pt.optional.literal.set(as),
     }
 }
 
@@ -63,33 +63,33 @@ export namespace sw {
 
     export const case_ = (
         expression: d_target.Expression,
-        statements: _p.Raw_Or_Normal_List<d_target.Statements.L>,
+        statements: pt.Raw_Or_Normal_List<d_target.Statements.L>,
     ): d_target.Statements.L.switch_.clauses.L => ({
         'type': ['case', expression],
-        'statements': _p.list.literal(statements),
+        'statements': pt.list.literal(statements),
     })
 
     export const default_ = (
-        statements: _p.Raw_Or_Normal_List<d_target.Statements.L>,
+        statements: pt.Raw_Or_Normal_List<d_target.Statements.L>,
     ): d_target.Statements.L.switch_.clauses.L => ({
         'type': ['default', null],
-        'statements': _p.list.literal(statements),
+        'statements': pt.list.literal(statements),
     })
 }
 
 export namespace s {
 
     export const block = (
-        statements: _p.Raw_Or_Normal_List<d_target.Statements.L>
-    ): d_target.Statements.L => ['block', _p.list.literal(statements)]
+        statements: pt.Raw_Or_Normal_List<d_target.Statements.L>
+    ): d_target.Statements.L => ['block', pt.list.literal(statements)]
 
     export const export_ = (
-        specifiers: _p.Raw_Or_Normal_List<d_target.Statements.L.export_.type_.named_exports.specifiers.L>,
+        specifiers: pt.Raw_Or_Normal_List<d_target.Statements.L.export_.type_.named_exports.specifiers.L>,
         from: null | d_target.String_Literal,
     ): d_target.Statements.L => ['export', {
         'type': ['named exports', {
-            'specifiers': _p.list.literal(specifiers),
-            'from': from === null ? _p.optional.literal.not_set() : _p.optional.literal.set(from),
+            'specifiers': pt.list.literal(specifiers),
+            'from': from === null ? pt.optional.literal.not_set() : pt.optional.literal.set(from),
         }],
     }]
 
@@ -98,11 +98,11 @@ export namespace s {
     ): d_target.Statements.L => ['expression', expression]
 
     export const import_named = (
-        specifiers: _p.Raw_Or_Normal_List<d_target.Statements.L.import_.type_.named.specifiers.L>,
+        specifiers: pt.Raw_Or_Normal_List<d_target.Statements.L.import_.type_.named.specifiers.L>,
         from: d_target.String_Literal
     ): d_target.Statements.L => ['import', {
         'type': ['named', {
-            'specifiers': _p.list.literal(specifiers),
+            'specifiers': pt.list.literal(specifiers),
         }],
         'from': from,
 
@@ -129,34 +129,34 @@ export namespace s {
     export const namespace = (
         export_: boolean,
         name: d_target.Identifier,
-        block: _p.Raw_Or_Normal_List<d_target.Statements.L>,
+        block: pt.Raw_Or_Normal_List<d_target.Statements.L>,
     ): d_target.Statements.L => ['module declaration', {
         'export': export_,
         'name': name,
-        'block': _p.list.literal(block),
+        'block': pt.list.literal(block),
     }]
 
     export const return_ = (
         expression: null | d_target.Expression
-    ): d_target.Statements.L => ['return', expression === null ? _p.optional.literal.not_set() : _p.optional.literal.set(expression)]
+    ): d_target.Statements.L => ['return', expression === null ? pt.optional.literal.not_set() : pt.optional.literal.set(expression)]
 
     export const switch_ = (
         expression: d_target.Expression,
-        clauses: _p.Raw_Or_Normal_List<d_target.Statements.L.switch_.clauses.L>,
+        clauses: pt.Raw_Or_Normal_List<d_target.Statements.L.switch_.clauses.L>,
     ): d_target.Statements.L => ['switch', {
         'expression': expression,
-        'clauses': _p.list.literal(clauses),
+        'clauses': pt.list.literal(clauses),
     }]
 
     export const type_alias = (
         export_: boolean,
         name: d_target.Identifier,
-        parameters: _p.Raw_Or_Normal_List<d_target.Identifier>,
+        parameters: pt.Raw_Or_Normal_List<d_target.Identifier>,
         type: d_target.Type,
     ): d_target.Statements.L => ['type alias declaration', {
         'export': export_,
         'name': name,
-        'parameters': _p.list.literal(parameters),
+        'parameters': pt.list.literal(parameters),
         'type': type,
     }]
 
@@ -170,8 +170,8 @@ export namespace s {
         'export': export_,
         'const': const_,
         'name': name,
-        'type': type === null ? _p.optional.literal.not_set() : _p.optional.literal.set(type),
-        'expression': expression === null ? _p.optional.literal.not_set() : _p.optional.literal.set(expression),
+        'type': type === null ? pt.optional.literal.not_set() : pt.optional.literal.set(type),
+        'expression': expression === null ? pt.optional.literal.not_set() : pt.optional.literal.set(expression),
     }]
 
 }
@@ -183,8 +183,8 @@ export const parameter = (
     return {
         'name': name,
         'type': type === null
-            ? _p.optional.literal.not_set()
-            : _p.optional.literal.set(type),
+            ? pt.optional.literal.not_set()
+            : pt.optional.literal.set(type),
     }
 }
 
@@ -216,13 +216,13 @@ export namespace t {
     }
 
     export const function_ = (
-        type_parameters: _p.Raw_Or_Normal_List<d_target.Type>,
-        parameters: _p.Raw_Or_Normal_List<d_target.Function_Parameters.L>,
+        type_parameters: pt.Raw_Or_Normal_List<d_target.Type>,
+        parameters: pt.Raw_Or_Normal_List<d_target.Function_Parameters.L>,
         return_: d_target.Type,
     ): d_target.Type => {
         return ['function', {
-            'type parameters': _p.list.literal(type_parameters),
-            'parameters': _p.list.literal(parameters),
+            'type parameters': pt.list.literal(type_parameters),
+            'parameters': pt.list.literal(parameters),
             'return': return_,
         }]
     }
@@ -255,37 +255,37 @@ export namespace t {
     
     export const tuple = (
         read_only: 'readonly' | '',
-        elements: _p.Raw_Or_Normal_List<d_target.Type>): d_target.Type => {
+        elements: pt.Raw_Or_Normal_List<d_target.Type>): d_target.Type => {
         return ['tuple', {
             'readonly': read_only === 'readonly',
-            'elements': _p.list.literal(elements)
+            'elements': pt.list.literal(elements)
         }]
     }
 
     export const type_literal = (
-        properties: _p.Raw_Or_Normal_List<d_target.Type.type_literal.properties.L>
+        properties: pt.Raw_Or_Normal_List<d_target.Type.type_literal.properties.L>
     ): d_target.Type => {
         return ['type literal', {
-            'properties': _p.list.literal(properties),
+            'properties': pt.list.literal(properties),
         }]
     }
 
     export const type_reference = (
         start: d_target.Identifier,
-        tail: _p.Raw_Or_Normal_List<d_target.Identifier>,
-        type_arguments: _p.Raw_Or_Normal_List<d_target.Type>,
+        tail: pt.Raw_Or_Normal_List<d_target.Identifier>,
+        type_arguments: pt.Raw_Or_Normal_List<d_target.Type>,
     ): d_target.Type => {
         return ['type reference', {
             'start': start,
-            'tail': _p.list.literal(tail),
-            'type arguments': _p.list.literal(type_arguments),
+            'tail': pt.list.literal(tail),
+            'type arguments': pt.list.literal(type_arguments),
         }]
     }
 
     export const union = (
-        cases: _p.Raw_Or_Normal_List<d_target.Type>
+        cases: pt.Raw_Or_Normal_List<d_target.Type>
     ): d_target.Type => {
-        return ['union', _p.list.literal(cases)]
+        return ['union', pt.list.literal(cases)]
     }
 
     export const void_ = (
@@ -299,27 +299,27 @@ export namespace t {
 export namespace e {
 
     export const array_literal = (
-        elements: _p.Raw_Or_Normal_List<d_target.Expression>
-    ): d_target.Expression => ['array literal', _p.list.literal(elements)]
+        elements: pt.Raw_Or_Normal_List<d_target.Expression>
+    ): d_target.Expression => ['array literal', pt.list.literal(elements)]
 
     export const arrow_function_with_expression = (
-        parameters: _p.Raw_Or_Normal_List<d_target.Function_Parameters.L>,
+        parameters: pt.Raw_Or_Normal_List<d_target.Function_Parameters.L>,
         return_type: null | d_target.Type,
         expression: d_target.Expression,
     ): d_target.Expression => ['arrow function', {
-        'parameters': _p.list.literal(parameters),
-        'return type': return_type === null ? _p.optional.literal.not_set() : _p.optional.literal.set(return_type),
+        'parameters': pt.list.literal(parameters),
+        'return type': return_type === null ? pt.optional.literal.not_set() : pt.optional.literal.set(return_type),
         'body': ['expression', expression],
     }]
 
     export const arrow_function_with_block = (
-        parameters: _p.Raw_Or_Normal_List<d_target.Function_Parameters.L>,
+        parameters: pt.Raw_Or_Normal_List<d_target.Function_Parameters.L>,
         return_type: null | d_target.Type,
-        block: _p.Raw_Or_Normal_List<d_target.Statements.L>,
+        block: pt.Raw_Or_Normal_List<d_target.Statements.L>,
     ): d_target.Expression => ['arrow function', {
-        'parameters': _p.list.literal(parameters),
-        'return type': return_type === null ? _p.optional.literal.not_set() : _p.optional.literal.set(return_type),
-        'body': ['block', _p.list.literal(block)],
+        'parameters': pt.list.literal(parameters),
+        'return type': return_type === null ? pt.optional.literal.not_set() : pt.optional.literal.set(return_type),
+        'body': ['block', pt.list.literal(block)],
     }]
 
     export const assignment = (
@@ -332,11 +332,11 @@ export namespace e {
 
     export const call = (
         function_selection: d_target.Expression,
-        // type_arguments: _p.Raw_Or_Normal_List<d_target.Type>,
-        arguments_: _p.Raw_Or_Normal_List<d_target.Expression>,
+        // type_arguments: pt.Raw_Or_Normal_List<d_target.Type>,
+        arguments_: pt.Raw_Or_Normal_List<d_target.Expression>,
     ): d_target.Expression => ['call', {
         'function selection': function_selection,
-        'arguments': _p.list.literal(arguments_),
+        'arguments': pt.list.literal(arguments_),
     }]
 
     export const compare = (
@@ -391,7 +391,7 @@ export namespace e {
     export const identifier_escaped = (
         name: string,
     ): d_target.Expression => ['identifier', {
-        'value': _p_text_from_list(t_text_to_identifier.Identifier(name), ($) => $),
+        'value': p_text_from_list(t_text_to_identifier.Identifier(name), ($) => $),
     }]
 
     export const not = (
@@ -416,9 +416,9 @@ export namespace e {
     ): d_target.Expression => ['number literal', value]
 
     export const object_literal = (
-        properties: _p.Raw_Or_Normal_List<d_target.Expression.object_literal.properties.L>
+        properties: pt.Raw_Or_Normal_List<d_target.Expression.object_literal.properties.L>
     ): d_target.Expression => ['object literal', {
-        'properties': _p.list.literal(properties),
+        'properties': pt.list.literal(properties),
     }]
 
     export const parenthesized = (

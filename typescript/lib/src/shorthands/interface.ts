@@ -1,5 +1,5 @@
-import * as _p from 'pareto-core-shorthands/dist/unconstrained'
-import * as _pi from 'pareto-core/dist/interface'
+import * as pt from 'pareto-core-shorthands/dist/unconstrained'
+import * as pi from 'pareto-core/dist/interface'
 
 import * as d_out from "../interface/generated/liana/schemas/interface/data/resolved"
 
@@ -10,28 +10,28 @@ const wrap_state = <T>(value: T): T => {
 export namespace m {
 
     export const set = (
-        entries: _p.Raw_Or_Normal_Dictionary<d_out.Package_Set.D>
+        entries: pt.Raw_Or_Normal_Dictionary<d_out.Package_Set.D>
     ): d_out.Package_Set.D => {
-        return wrap_state(['set', _p.dictionary.literal(entries)])
+        return wrap_state(['set', pt.dictionary.literal(entries)])
     }
 
     export const package_data = (
-        imports: _p.Raw_Or_Normal_Dictionary<d_out.Imports.D>,
-        types: _p.Raw_Or_Normal_Dictionary<d_out.Package.content.data_modules.D>,
+        imports: pt.Raw_Or_Normal_Dictionary<d_out.Imports.D>,
+        types: pt.Raw_Or_Normal_Dictionary<d_out.Package.content.data_modules.D>,
     ): d_out.Package_Set.D => {
         return wrap_state(['package', {
-            'imports': _p.dictionary.literal(imports),
-            'content': wrap_state(['data modules', _p.dictionary.literal(types)]),
+            'imports': pt.dictionary.literal(imports),
+            'content': wrap_state(['data modules', pt.dictionary.literal(types)]),
         }])
     }
 
     export const package_functions = (
-        imports: _p.Raw_Or_Normal_Dictionary<d_out.Imports.D>,
-        types: _p.Raw_Or_Normal_Dictionary<d_out.Package.content.functions.D>,
+        imports: pt.Raw_Or_Normal_Dictionary<d_out.Imports.D>,
+        types: pt.Raw_Or_Normal_Dictionary<d_out.Package.content.functions.D>,
     ): d_out.Package_Set.D => {
         return wrap_state(['package', {
-            'imports': _p.dictionary.literal(imports),
-            'content': wrap_state(['functions', _p.dictionary.literal(types)]),
+            'imports': pt.dictionary.literal(imports),
+            'content': wrap_state(['functions', pt.dictionary.literal(types)]),
         }])
     }
 
@@ -40,34 +40,34 @@ export namespace import_ {
 
     export const external = (
         id: string,
-        tail: _p.Raw_Or_Normal_List<string>,
+        tail: pt.Raw_Or_Normal_List<string>,
     ): d_out.Imports.D => {
         return {
             'type': wrap_state(['external', id]),
-            'tail': _p.list.literal(tail),
+            'tail': pt.list.literal(tail),
         }
     }
 
     export const sibling = (
         id: string,
-        tail: _p.Raw_Or_Normal_List<string>,
+        tail: pt.Raw_Or_Normal_List<string>,
     ): d_out.Imports.D => {
         return {
             'type': wrap_state(['sibling', id]),
-            'tail': _p.list.literal(tail),
+            'tail': pt.list.literal(tail),
         }
     }
     export const ancestor = (
         number_of_steps: number,
         id: string,
-        tail: _p.Raw_Or_Normal_List<string>,
+        tail: pt.Raw_Or_Normal_List<string>,
     ): d_out.Imports.D => {
         return {
             'type': wrap_state(['ancestor', {
                 'number of steps': number_of_steps,
                 'dependency': id,
             }]),
-            'tail': _p.list.literal(tail),
+            'tail': pt.list.literal(tail),
         }
     }
 }
@@ -136,9 +136,9 @@ export namespace t {
     }
 
     export const group = (
-        properties: _p.Raw_Or_Normal_Dictionary<d_out.Value>
+        properties: pt.Raw_Or_Normal_Dictionary<d_out.Value>
     ): d_out.Value => {
-        return wrap_state(['group', _p.dictionary.literal(properties)])
+        return wrap_state(['group', pt.dictionary.literal(properties)])
     }
 
     export const list = (
@@ -171,12 +171,12 @@ export namespace t {
 
     export const reference = (
         location: d_out.Module_Reference,
-        sub_selection: _p.Raw_Or_Normal_List<d_out.Value.reference.sub_selection.L>,
+        sub_selection: pt.Raw_Or_Normal_List<d_out.Value.reference.sub_selection.L>,
         cyclic?: 'cyclic' | 'acyclic'
     ): d_out.Value => {
         return wrap_state(['reference', {
             'location': location,
-            'sub selection': _p.list.literal(sub_selection),
+            'sub selection': pt.list.literal(sub_selection),
             'cyclic': cyclic === undefined
                 ? false
                 : cyclic === 'cyclic' ? true : false,
@@ -185,11 +185,11 @@ export namespace t {
 
     // export const reference_sibling = (
     //     sibling: string,
-    //     sub_selection: _p.Raw_Or_Normal_List<d_out.Value.reference.acyclic.sub_selection.L>,
+    //     sub_selection: pt.Raw_Or_Normal_List<d_out.Value.reference.acyclic.sub_selection.L>,
     // ): d_out.Value => {
     //     return wrap_state(['reference', ['acyclic', {
     //         'location': wrap_state(['local', sibling]),
-    //         'sub selection': _p.list.literal(sub_selection)
+    //         'sub selection': pt.list.literal(sub_selection)
     //     }]])
     // }
 
@@ -204,22 +204,22 @@ export namespace t {
     // export const reference_imported = (
     //     imp: string,
     //     type: string,
-    //     sub_selection: _p.Raw_Or_Normal_List<d_out.Value.reference.acyclic.sub_selection.L>,
+    //     sub_selection: pt.Raw_Or_Normal_List<d_out.Value.reference.acyclic.sub_selection.L>,
     // ): d_out.Value => {
     //     return wrap_state(['reference', ['acyclic', {
     //         'location': wrap_state(['import', {
     //             'import': imp,
     //             'type': type,
     //         }]),
-    //         'sub selection': _p.list.literal(sub_selection)
+    //         'sub selection': pt.list.literal(sub_selection)
 
     //     }]])
     // }
 
     export const state = (
-        states: _p.Raw_Or_Normal_Dictionary<d_out.Value>
+        states: pt.Raw_Or_Normal_Dictionary<d_out.Value>
     ): d_out.Value => {
-        return wrap_state(['state', _p.dictionary.literal(states)])
+        return wrap_state(['state', pt.dictionary.literal(states)])
     }
 
     export const text = (): d_out.Value => {
@@ -240,13 +240,13 @@ export namespace type {
     export const transformer = (
         context: d_out.Value,
         result: d_out.Value,
-        parameters: null | _p.Raw_Or_Normal_Dictionary<d_out.Value>,
+        parameters: null | pt.Raw_Or_Normal_Dictionary<d_out.Value>,
     ): d_out.Package.content.functions.D => {
         return {
             'context': context,
             'result': result,
             'type': wrap_state(['transformer', null]),
-            'parameters': parameters === null ? _p.optional.literal.not_set() : _p.optional.literal.set(_p.dictionary.literal(parameters)),
+            'parameters': parameters === null ? pt.optional.literal.not_set() : pt.optional.literal.set(pt.dictionary.literal(parameters)),
         }
     }
 
@@ -254,16 +254,16 @@ export namespace type {
         context: d_out.Value,
         result: d_out.Value,
         error: null | d_out.Value,
-        lookups: null | _p.Raw_Or_Normal_Dictionary<d_out.Package.content.functions.D.type_.refiner.lookups.O.D>,
-        parameters: null | _p.Raw_Or_Normal_Dictionary<d_out.Value>,
+        lookups: null | pt.Raw_Or_Normal_Dictionary<d_out.Package.content.functions.D.type_.refiner.lookups.O.D>,
+        parameters: null | pt.Raw_Or_Normal_Dictionary<d_out.Value>,
     ): d_out.Package.content.functions.D => {
         return {
             'context': context,
-            'parameters': parameters === null ? _p.optional.literal.not_set() : _p.optional.literal.set(_p.dictionary.literal(parameters)),
+            'parameters': parameters === null ? pt.optional.literal.not_set() : pt.optional.literal.set(pt.dictionary.literal(parameters)),
             'result': result,
             'type': wrap_state(['refiner', {
-                'error': error === null ? _p.optional.literal.not_set() : _p.optional.literal.set(error),
-                'lookups': lookups === null ? _p.optional.literal.not_set() : _p.optional.literal.set(_p.dictionary.literal(lookups)),
+                'error': error === null ? pt.optional.literal.not_set() : pt.optional.literal.set(error),
+                'lookups': lookups === null ? pt.optional.literal.not_set() : pt.optional.literal.set(pt.dictionary.literal(lookups)),
             }]),
         }
     }

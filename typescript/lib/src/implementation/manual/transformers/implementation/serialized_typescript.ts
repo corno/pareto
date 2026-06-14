@@ -1,5 +1,5 @@
-import * as _p from 'pareto-core/dist/assign'
-import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
+import * as pt from 'pareto-core/dist/assign'
+import p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 //FIXME, this one should be moved to pareto-targets
 
@@ -18,10 +18,10 @@ export const Package_Set = ($: d_in.Package_Set): d_out.Directory => {
     return t_typescript_light_to_fountain_pen_block.Directory(
         t_typescript.Package_Set(
             $,
-            ($) => _p.decide.state($, ($) => {
+            ($) => pt.decide.state($, ($) => {
                 switch ($[0]) {
-                    case 'directory name ending with ts': return _p.ss($, () => _p_unreachable_code_path("I think this needs proper implementation"))
-                    default: return _p.au($[0])
+                    case 'directory name ending with ts': return pt.ss($, () => p_unreachable_code_path("I think this needs proper implementation"))
+                    default: return pt.au($[0])
                 }
             })
             // r_pareto_implementation.r_Module_Set(

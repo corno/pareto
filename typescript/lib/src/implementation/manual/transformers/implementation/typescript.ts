@@ -1,10 +1,10 @@
-import * as _p from 'pareto-core/dist/assign'
-import * as _pi from 'pareto-core/dist/interface'
-import _p_implement_me from 'pareto-core-dev/dist/implement_me'
-import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
-import _p_variables from 'pareto-core/dist/_p_variables'
-import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
+import * as pt from 'pareto-core/dist/assign'
+import * as pi from 'pareto-core/dist/interface'
+import p_implement_me from 'pareto-core-dev/dist/implement_me'
+import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+import p_text_from_list from 'pareto-core/dist/_p_text_from_list'
+import p_variables from 'pareto-core/dist/_p_variables'
+import p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 //data types
 import * as d_in from "../../../../interface/generated/liana/schemas/implementation/data/resolved"
@@ -17,7 +17,7 @@ import * as sh from "../../../../modules/typescript_light/shorthands/typescript_
 //dependencies
 import { temp_create_file_path } from '../interface/typescript'
 
-const join = ($: _pi.List<string>): string => {
+const join = ($: pi.List<string>): string => {
     let out = ""
     $.__l_map(($) => {
         out += $
@@ -28,14 +28,14 @@ const join = ($: _pi.List<string>): string => {
 
 const temp_rename = (
     $: d_in.Package_Set,
-    abort: _pi.Abort<d_function.Error>
+    abort: pi.Abort<d_function.Error>
 ): d_in.Package_Set => {
     const renamed: { [id: string]: d_in.Package_Set.D } = {}
     $.__d_map(($, id) => {
-        const new_id: string = _p.decide.state($, ($) => {
+        const new_id: string = pt.decide.state($, ($) => {
             switch ($[0]) {
-                case 'package': return _p.ss($, ($) => id + ".ts")
-                case 'set': return _p.ss($, ($) => {
+                case 'package': return pt.ss($, ($) => id + ".ts")
+                case 'set': return pt.ss($, ($) => {
                     const ends_with_ts = ($s: string): boolean => {
                         return false //implement properly later
                     }
@@ -44,34 +44,34 @@ const temp_rename = (
                     }
                     return id
                 })
-                default: return _p.au($[0])
+                default: return pt.au($[0])
             }
         })
         renamed[new_id] = $
         return null
     })
-    return _p.dictionary.literal(renamed)
+    return pt.dictionary.literal(renamed)
 }
 
 
 export const Package_Set = (
     $: d_in.Package_Set,
-    abort: _pi.Abort<d_function.Error>
+    abort: pi.Abort<d_function.Error>
 ): d_out.Directory => {
-    return temp_rename($, abort).__d_map(($, id) => _p.decide.state($, ($) => {
+    return temp_rename($, abort).__d_map(($, id) => pt.decide.state($, ($) => {
         switch ($[0]) {
-            case 'package': return _p.ss($, ($): d_out.Directory.D => {
+            case 'package': return pt.ss($, ($): d_out.Directory.D => {
 
-                const y: d_out.Statements = _p.list.nested_literal_old([
+                const y: d_out.Statements = pt.list.nested_literal_old([
                     [
                         sh.s.import_namespace(
-                            sh.identifier_raw("_p"),
+                            sh.identifier_raw("pt"),
                             sh.string_literal("pareto-core/dist/assign", 'apostrophe')
                         ),
                     ],
                     $.specials['change context']
                         ? [sh.s.import_default(
-                            sh.identifier_raw("_p_change_context"),
+                            sh.identifier_raw("p_change_context"),
                             sh.string_literal("pareto-core/dist/_p_change_context", 'apostrophe')
                         )]
                         : [],
@@ -84,14 +84,14 @@ export const Package_Set = (
                     $.specials['iterate']
                         ? [sh.s.import_named(
                             [
-                                sh.specifier(sh.identifier_raw("_p_change_context"), null),
+                                sh.specifier(sh.identifier_raw("p_change_context"), null),
                             ],
                             sh.string_literal("pareto-core/dist/iterate", 'apostrophe')
                         )]
                         : [],
                     $.specials['list from text']
                         ? [sh.s.import_default(
-                            sh.identifier_raw("_p_list_from_text"),
+                            sh.identifier_raw("p_list_from_text"),
                             sh.string_literal("pareto-core/dist/_p_list_from_text", 'apostrophe')
                         )]
                         : [],
@@ -103,39 +103,39 @@ export const Package_Set = (
                         : [],
                     $.specials['text from list']
                         ? [sh.s.import_default(
-                            sh.identifier_raw("_p_text_from_list"),
+                            sh.identifier_raw("p_text_from_list"),
                             sh.string_literal("pareto-core/dist/_p_text_from_list", 'apostrophe')
                         )]
                         : [],
                     $.specials['unreachable code path']
                         ? [sh.s.import_default(
-                            sh.identifier_raw("_p_unreachable_code_path"),
+                            sh.identifier_raw("p_unreachable_code_path"),
                             sh.string_literal("pareto-core/dist/_p_unreachable_code_path", 'apostrophe')
                         )]
                         : [],
                     $.specials['variables']
                         ? [sh.s.import_default(
-                            sh.identifier_raw("_p_variables"),
+                            sh.identifier_raw("p_variables"),
                             sh.string_literal("pareto-core/dist/_p_variables", 'apostrophe')
                         )]
                         : [],
-                    _p.list.from.dictionary(
+                    pt.list.from.dictionary(
                         $['type imports'],
                     ).convert(
                         ($, id) => sh.s.import_namespace(
-                            sh.identifier_escaped(join(_p.list.literal(["t ", id]))),
+                            sh.identifier_escaped(join(pt.list.literal(["t ", id]))),
                             temp_create_file_path($, 'quote')
                         )
                     ),
-                    _p.list.from.dictionary(
+                    pt.list.from.dictionary(
                         $['variable imports'],
                     ).convert(
                         ($, id) => sh.s.import_namespace(
-                            sh.identifier_escaped(join(_p.list.literal(["v ", id]))),
+                            sh.identifier_escaped(join(pt.list.literal(["v ", id]))),
                             temp_create_file_path($, 'quote')
                         )
                     ),
-                    _p.list.from.dictionary(
+                    pt.list.from.dictionary(
                         $.functions,
                     ).convert(
                         ($, id): d_out.Statements.L => sh.s.variable(
@@ -144,13 +144,13 @@ export const Package_Set = (
                             sh.identifier_escaped(id),
                             sh.t.type_reference(
                                 sh.identifier_escaped("t " + $.type.import),
-                                _p.list.literal([
+                                pt.list.literal([
                                     sh.identifier_escaped($.type.type)
                                 ]),
                                 []
                             ),
                             sh.e.arrow_function_with_expression(
-                                _p.list.nested_literal_old([
+                                pt.list.nested_literal_old([
                                     [
                                         sh.parameter(sh.identifier_raw("$"), null),
                                     ],
@@ -179,8 +179,8 @@ export const Package_Set = (
 
                 return sh.n.file(y)
             })
-            case 'set': return _p.ss($, ($) => ['directory', Package_Set($, abort)])
-            default: return _p.au($[0])
+            case 'set': return pt.ss($, ($) => ['directory', Package_Set($, abort)])
+            default: return pt.au($[0])
         }
     }))
 }
@@ -191,21 +191,21 @@ export const Temp_Value_Type_Specification = (
     return sh.t.type_reference(
         sh.identifier_escaped("t " + $.type.import),
         //tail
-        _p.list.nested_literal_old([
-            _p.list.literal([
+        pt.list.nested_literal_old([
+            pt.list.literal([
                 sh.identifier_escaped($.type.type)
             ]),
-            _p.list.from.list(
+            pt.list.from.list(
                 $['sub selection'],
             ).flatten(
-                ($) => _p.decide.state($, ($): _pi.List<d_out.Identifier> => {
+                ($) => pt.decide.state($, ($): pi.List<d_out.Identifier> => {
                     switch ($[0]) {
-                        case 'dictionary': return _p.ss($, ($) => _p.list.literal([sh.identifier_raw("D")]))
-                        case 'group': return _p.ss($, ($) => _p.list.literal([sh.identifier_escaped($)]))
-                        case 'list': return _p.ss($, ($) => _p.list.literal([sh.identifier_raw("L")]))
-                        case 'optional': return _p.ss($, ($) => _p.list.literal([sh.identifier_raw("O")]))
-                        case 'state': return _p.ss($, ($) => _p.list.literal([sh.identifier_escaped($)]))
-                        default: return _p.au($[0])
+                        case 'dictionary': return pt.ss($, ($) => pt.list.literal([sh.identifier_raw("D")]))
+                        case 'group': return pt.ss($, ($) => pt.list.literal([sh.identifier_escaped($)]))
+                        case 'list': return pt.ss($, ($) => pt.list.literal([sh.identifier_raw("L")]))
+                        case 'optional': return pt.ss($, ($) => pt.list.literal([sh.identifier_raw("O")]))
+                        case 'state': return pt.ss($, ($) => pt.list.literal([sh.identifier_escaped($)]))
+                        default: return pt.au($[0])
                     }
                 }),
             ),
@@ -217,21 +217,21 @@ export const Temp_Value_Type_Specification = (
 
 export const Assign = (
     $: d_in.Assign
-): d_out.Expression => _p.decide.state($, ($) => {
+): d_out.Expression => pt.decide.state($, ($) => {
     switch ($[0]) {
-        case 'decide': return _p.ss($, ($) => _p_variables(() => {
+        case 'decide': return pt.ss($, ($) => p_variables(() => {
             const selection = Select_Value($.source)
-            return _p.decide.state($.type, ($) => {
+            return pt.decide.state($.type, ($) => {
                 switch ($[0]) {
-                    case 'boolean': return _p.ss($, ($) => sh.e.conditional(
+                    case 'boolean': return pt.ss($, ($) => sh.e.conditional(
                         selection,
                         Assign($['if true']),
                         Assign($['if false']),
                     ))
-                    case 'optional': return _p.ss($, ($) => sh.e.call(
+                    case 'optional': return pt.ss($, ($) => sh.e.call(
                         sh.e.property_access(
                             sh.e.property_access(
-                                sh.e.identifier_raw("_p"),
+                                sh.e.identifier_raw("pt"),
                                 sh.identifier_raw("decide"),
                             ),
                             sh.identifier_raw("optional"),
@@ -258,10 +258,10 @@ export const Assign = (
                             ),
                         ]
                     ))
-                    case 'state': return _p.ss($, ($) => sh.e.call(
+                    case 'state': return pt.ss($, ($) => sh.e.call(
                         sh.e.property_access(
                             sh.e.property_access(
-                                sh.e.identifier_raw("_p"),
+                                sh.e.identifier_raw("pt"),
                                 sh.identifier_raw("decide"),
                             ),
                             sh.identifier_raw("state"),
@@ -282,17 +282,17 @@ export const Assign = (
                                             sh.e.identifier_raw("$"),
                                             sh.e.number_literal(0)
                                         ),
-                                        _p.list.nested_literal_old([
-                                            _p.decide.state($.type, ($): d_in.Assign.decide.type_.state.type_.partial.options => {
+                                        pt.list.nested_literal_old([
+                                            pt.decide.state($.type, ($): d_in.Assign.decide.type_.state.type_.partial.options => {
                                                 switch ($[0]) {
-                                                    case 'partial': return _p.ss($, ($) => $.options)
-                                                    case 'full': return _p.ss($, ($) => $.options)
-                                                    case 'single': return _p.ss($, ($) => {
+                                                    case 'partial': return pt.ss($, ($) => $.options)
+                                                    case 'full': return pt.ss($, ($) => $.options)
+                                                    case 'single': return pt.ss($, ($) => {
                                                         const temp: { [id: string]: d_in.Assign.decide.type_.state.type_.partial.options.D } = {}
                                                         temp[$.option] = $['if true']
-                                                        return _p.dictionary.literal(temp)
+                                                        return pt.dictionary.literal(temp)
                                                     })
-                                                    default: return _p.au($[0])
+                                                    default: return pt.au($[0])
                                                 }
                                             }).__to_list(
                                                 ($, id) => sh.sw.case_(
@@ -300,7 +300,7 @@ export const Assign = (
                                                     [
                                                         sh.s.return_(sh.e.call(
                                                             sh.e.property_access(
-                                                                sh.e.identifier_raw("_p"),
+                                                                sh.e.identifier_raw("pt"),
                                                                 sh.identifier_raw('ss'),
                                                             ),
                                                             [
@@ -319,12 +319,12 @@ export const Assign = (
                                             ),
                                             [
                                                 sh.sw.default_([
-                                                    sh.s.return_(_p.decide.state($.type, ($) => {
+                                                    sh.s.return_(pt.decide.state($.type, ($) => {
                                                         switch ($[0]) {
-                                                            case 'partial': return _p.ss($, ($) => Assign($.default))
-                                                            case 'full': return _p.ss($, ($) => sh.e.call(
+                                                            case 'partial': return pt.ss($, ($) => Assign($.default))
+                                                            case 'full': return pt.ss($, ($) => sh.e.call(
                                                                 sh.e.property_access(
-                                                                    sh.e.identifier_raw("_p"),
+                                                                    sh.e.identifier_raw("pt"),
                                                                     sh.identifier_raw('au'),
                                                                 ),
                                                                 [
@@ -334,8 +334,8 @@ export const Assign = (
                                                                     )
                                                                 ]
                                                             ))
-                                                            case 'single': return _p.ss($, ($) => Assign($['if false']))
-                                                            default: return _p.au($[0])
+                                                            case 'single': return pt.ss($, ($) => Assign($['if false']))
+                                                            default: return pt.au($[0])
                                                         }
                                                     }))
                                                 ])
@@ -347,10 +347,10 @@ export const Assign = (
                             )
                         ]
                     ))
-                    case 'text': return _p.ss($, ($) => sh.e.call(
+                    case 'text': return pt.ss($, ($) => sh.e.call(
                         sh.e.property_access(
                             sh.e.property_access(
-                                sh.e.identifier_raw("_p"),
+                                sh.e.identifier_raw("pt"),
                                 sh.identifier_raw("decide"),
                             ),
                             sh.identifier_raw("text"),
@@ -368,7 +368,7 @@ export const Assign = (
                                 [
                                     sh.s.switch_(
                                         sh.e.identifier_raw("$t"),
-                                        _p.list.nested_literal_old([
+                                        pt.list.nested_literal_old([
                                             $.cases.__to_list(
                                                 ($, id) => sh.sw.case_(
                                                     sh.e.string_literal(sh.string_literal(id, 'apostrophe')),
@@ -390,57 +390,57 @@ export const Assign = (
                             )
                         ]
                     ))
-                    default: return _p.au($[0])
+                    default: return pt.au($[0])
                 }
             })
         }))
-        case 'construct': return _p.ss($, ($) => _p.decide.state($, ($) => {
+        case 'construct': return pt.ss($, ($) => pt.decide.state($, ($) => {
             switch ($[0]) {
-                case 'boolean': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                case 'boolean': return pt.ss($, ($) => pt.decide.state($, ($) => {
                     switch ($[0]) {
-                        case 'from': return _p.ss($, ($) => _p_variables(() => {
+                        case 'from': return pt.ss($, ($) => p_variables(() => {
                             const selection = Select_Value($.selection)
-                            return _p.decide.state($.type, ($) => {
+                            return pt.decide.state($.type, ($) => {
                                 switch ($[0]) {
-                                    case 'boolean': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                                    case 'boolean': return pt.ss($, ($) => pt.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'not': return _p.ss($, ($) => sh.e.not(selection))
-                                            case 'copy': return _p.ss($, ($) => selection)
-                                            default: return _p.au($[0])
+                                            case 'not': return pt.ss($, ($) => sh.e.not(selection))
+                                            case 'copy': return pt.ss($, ($) => selection)
+                                            default: return pt.au($[0])
                                         }
                                     }))
-                                    case 'dictionary': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                                    case 'dictionary': return pt.ss($, ($) => pt.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'is empty': return _p.ss($, ($) => _p_implement_me("X1"))
-                                            default: return _p.au($[0])
+                                            case 'is empty': return pt.ss($, ($) => p_implement_me("X1"))
+                                            default: return pt.au($[0])
                                         }
                                     }))
-                                    case 'list': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                                    case 'list': return pt.ss($, ($) => pt.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'is empty': return _p.ss($, ($) => _p_implement_me("X2"))
-                                            default: return _p.au($[0])
+                                            case 'is empty': return pt.ss($, ($) => p_implement_me("X2"))
+                                            default: return pt.au($[0])
                                         }
                                     }))
-                                    default: return _p.au($[0])
+                                    default: return pt.au($[0])
                                 }
                             })
                         }))
-                        case 'literal': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                        case 'literal': return pt.ss($, ($) => pt.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'false': return _p.ss($, ($) => sh.e.false_())
-                                case 'true': return _p.ss($, ($) => sh.e.true_())
-                                default: return _p.au($[0])
+                                case 'false': return pt.ss($, ($) => sh.e.false_())
+                                case 'true': return pt.ss($, ($) => sh.e.true_())
+                                default: return pt.au($[0])
                             }
                         }))
-                        default: return _p.au($[0])
+                        default: return pt.au($[0])
                     }
                 }))
-                case 'dictionary': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                case 'dictionary': return pt.ss($, ($) => pt.decide.state($, ($) => {
                     switch ($[0]) {
-                        case 'literal': return _p.ss($, ($) => sh.e.call(
+                        case 'literal': return pt.ss($, ($) => sh.e.call(
                             sh.e.property_access(
                                 sh.e.property_access(
-                                    sh.e.identifier_raw("_p"),
+                                    sh.e.identifier_raw("pt"),
                                     sh.identifier_raw("dictionary"),
                                 ),
                                 sh.identifier_raw("literal"),
@@ -453,20 +453,20 @@ export const Assign = (
                                 )))
                             ]
                         ))
-                        case 'from': return _p.ss($, ($) => _p_variables(() => {
+                        case 'from': return pt.ss($, ($) => p_variables(() => {
                             const selection = Select_Value($.selection)
-                            return _p.decide.state($.type, ($) => {
+                            return pt.decide.state($.type, ($) => {
                                 switch ($[0]) {
-                                    case 'dictionary': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                                    case 'dictionary': return pt.ss($, ($) => pt.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'filter': return _p.ss($, ($) => _p_implement_me("X5"))
-                                            case 'map': return _p.ss($, ($) => sh.e.call(
+                                            case 'filter': return pt.ss($, ($) => p_implement_me("X5"))
+                                            case 'map': return pt.ss($, ($) => sh.e.call(
                                                 sh.e.property_access(
                                                     sh.e.call(
                                                         sh.e.property_access(
                                                             sh.e.property_access(
                                                                 sh.e.property_access(
-                                                                    sh.e.identifier_raw("_p"),
+                                                                    sh.e.identifier_raw("pt"),
                                                                     sh.identifier_raw("dictionary"),
                                                                 ),
                                                                 sh.identifier_raw("from"),
@@ -490,13 +490,13 @@ export const Assign = (
                                                     )
                                                 ]
                                             ))
-                                            case 'resolve': return _p.ss($, ($) => sh.e.call(
+                                            case 'resolve': return pt.ss($, ($) => sh.e.call(
                                                 sh.e.property_access(
                                                     sh.e.call(
                                                         sh.e.property_access(
                                                             sh.e.property_access(
                                                                 sh.e.property_access(
-                                                                    sh.e.identifier_raw("_p"),
+                                                                    sh.e.identifier_raw("pt"),
                                                                     sh.identifier_raw("dictionary"),
                                                                 ),
                                                                 sh.identifier_raw("from"),
@@ -522,32 +522,32 @@ export const Assign = (
                                                     )
                                                 ]
                                             ))
-                                            default: return _p.au($[0])
+                                            default: return pt.au($[0])
                                         }
                                     }))
-                                    case 'list': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                                    case 'list': return pt.ss($, ($) => pt.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'convert': return _p.ss($, ($) => _p_implement_me("X6"))
-                                            default: return _p.au($[0])
+                                            case 'convert': return pt.ss($, ($) => p_implement_me("X6"))
+                                            default: return pt.au($[0])
                                         }
                                     }))
-                                    default: return _p.au($[0])
+                                    default: return pt.au($[0])
                                 }
                             })
                         }))
-                        default: return _p.au($[0])
+                        default: return pt.au($[0])
                     }
                 }))
-                case 'group': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                case 'group': return pt.ss($, ($) => pt.decide.state($, ($) => {
                     switch ($[0]) {
-                        case 'literal': return _p.ss($, ($) => $['have dependencies']
+                        case 'literal': return pt.ss($, ($) => $['have dependencies']
                             ? $.properties.__get_number_of_entries() === 0
                                 ? sh.e.null_()
                                 : sh.e.call(
                                     sh.e.property_access(
                                         sh.e.property_access(
                                             sh.e.property_access(
-                                                sh.e.identifier_raw("_p"),
+                                                sh.e.identifier_raw("pt"),
                                                 sh.identifier_raw("group"),
                                             ),
                                             sh.identifier_raw("literal"),
@@ -558,7 +558,7 @@ export const Assign = (
                                         sh.e.arrow_function_with_block(
                                             [],
                                             null,
-                                            _p.list.nested_literal_old([
+                                            pt.list.nested_literal_old([
                                                 $.properties.__to_list(($, id) => sh.s.variable(
                                                     false,
                                                     true,
@@ -588,15 +588,15 @@ export const Assign = (
                                     Assign($),
                                 )))
                         )
-                        default: return _p.au($[0])
+                        default: return pt.au($[0])
                     }
                 }))
-                case 'list': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                case 'list': return pt.ss($, ($) => pt.decide.state($, ($) => {
                     switch ($[0]) {
-                        case 'literal': return _p.ss($, ($) => sh.e.call(
+                        case 'literal': return pt.ss($, ($) => sh.e.call(
                             sh.e.property_access(
                                 sh.e.property_access(
-                                    sh.e.identifier_raw("_p"),
+                                    sh.e.identifier_raw("pt"),
                                     sh.identifier_raw("list"),
                                 ),
                                 sh.identifier_raw("literal"),
@@ -605,26 +605,26 @@ export const Assign = (
                                 sh.e.array_literal($.__l_map(($) => Assign($)))
                             ]
                         ))
-                        case 'from': return _p.ss($, ($) => _p_variables(() => {
+                        case 'from': return pt.ss($, ($) => p_variables(() => {
                             const selection = Select_Value($.selection)
-                            return _p.decide.state($.type, ($) => {
+                            return pt.decide.state($.type, ($) => {
                                 switch ($[0]) {
-                                    case 'dictionary': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                                    case 'dictionary': return pt.ss($, ($) => pt.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'convert': return _p.ss($, ($) => _p_implement_me("X9"))
-                                            default: return _p.au($[0])
+                                            case 'convert': return pt.ss($, ($) => p_implement_me("X9"))
+                                            default: return pt.au($[0])
                                         }
                                     }))
-                                    case 'list': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                                    case 'list': return pt.ss($, ($) => pt.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'filter': return _p.ss($, ($) => _p_implement_me("X8"))
-                                            case 'map': return _p.ss($, ($) => sh.e.call(
+                                            case 'filter': return pt.ss($, ($) => p_implement_me("X8"))
+                                            case 'map': return pt.ss($, ($) => sh.e.call(
                                                 sh.e.property_access(
                                                     sh.e.call(
                                                         sh.e.property_access(
                                                             sh.e.property_access(
                                                                 sh.e.property_access(
-                                                                    sh.e.identifier_raw("_p"),
+                                                                    sh.e.identifier_raw("pt"),
                                                                     sh.identifier_raw("list"),
                                                                 ),
                                                                 sh.identifier_raw("from"),
@@ -647,10 +647,10 @@ export const Assign = (
                                                     )
                                                 ]
                                             ))
-                                            case 'map with state': return _p.ss($, ($) => sh.e.call(
+                                            case 'map with state': return pt.ss($, ($) => sh.e.call(
                                                 sh.e.property_access(
                                                     sh.e.property_access(
-                                                        sh.e.identifier_raw("_p"),
+                                                        sh.e.identifier_raw("pt"),
                                                         sh.identifier_raw("list"),
                                                     ),
                                                     sh.identifier_raw("map_with_state"),
@@ -683,59 +683,59 @@ export const Assign = (
                                                     ),
                                                 ]
                                             ))
-                                            case 'reduce': return _p.ss($, ($) => _p_implement_me("X11"))
-                                            case 'reverse': return _p.ss($, ($) => _p_implement_me("X12"))
-                                            default: return _p.au($[0])
+                                            case 'reduce': return pt.ss($, ($) => p_implement_me("X11"))
+                                            case 'reverse': return pt.ss($, ($) => p_implement_me("X12"))
+                                            default: return pt.au($[0])
                                         }
                                     }))
-                                    default: return _p.au($[0])
+                                    default: return pt.au($[0])
                                 }
                             })
                         }))
-                        default: return _p.au($[0])
+                        default: return pt.au($[0])
                     }
                 }))
-                case 'nothing': return _p.ss($, ($) => sh.e.null_())
-                case 'number': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                case 'nothing': return pt.ss($, ($) => sh.e.null_())
+                case 'number': return pt.ss($, ($) => pt.decide.state($, ($) => {
                     switch ($[0]) {
-                        case 'approximation': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                        case 'approximation': return pt.ss($, ($) => pt.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
-                                case 'copy': return _p.ss($, ($) => Select_Value($))
-                                default: return _p.au($[0])
+                                case 'literal': return pt.ss($, ($) => sh.e.number_literal($))
+                                case 'copy': return pt.ss($, ($) => Select_Value($))
+                                default: return pt.au($[0])
                             }
                         }))
-                        case 'integer': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                        case 'integer': return pt.ss($, ($) => pt.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'copy': return _p.ss($, ($) => Select_Value($))
-                                case 'divide': return _p.ss($, ($) => _p_implement_me("X17"))
-                                case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
-                                default: return _p.au($[0])
+                                case 'copy': return pt.ss($, ($) => Select_Value($))
+                                case 'divide': return pt.ss($, ($) => p_implement_me("X17"))
+                                case 'literal': return pt.ss($, ($) => sh.e.number_literal($))
+                                default: return pt.au($[0])
                             }
                         }))
-                        case 'natural': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                        case 'natural': return pt.ss($, ($) => pt.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'copy': return _p.ss($, ($) => Select_Value($))
-                                case 'literal': return _p.ss($, ($) => sh.e.number_literal($))
-                                case 'number of dictionary entries': return _p.ss($, ($) => _p_implement_me("X13"))
-                                case 'number of list items': return _p.ss($, ($) => _p_implement_me("X14"))
-                                case 'source column': return _p.ss($, ($) => _p_implement_me("X15"))
-                                case 'source line': return _p.ss($, ($) => _p_implement_me("X16"))
-                                default: return _p.au($[0])
+                                case 'copy': return pt.ss($, ($) => Select_Value($))
+                                case 'literal': return pt.ss($, ($) => sh.e.number_literal($))
+                                case 'number of dictionary entries': return pt.ss($, ($) => p_implement_me("X13"))
+                                case 'number of list items': return pt.ss($, ($) => p_implement_me("X14"))
+                                case 'source column': return pt.ss($, ($) => p_implement_me("X15"))
+                                case 'source line': return pt.ss($, ($) => p_implement_me("X16"))
+                                default: return pt.au($[0])
                             }
                         }))
-                        default: return _p.au($[0])
+                        default: return pt.au($[0])
                     }
                 }))
-                case 'optional': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                case 'optional': return pt.ss($, ($) => pt.decide.state($, ($) => {
                     switch ($[0]) {
-                        case 'literal': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                        case 'literal': return pt.ss($, ($) => pt.decide.state($, ($) => {
                             switch ($[0]) {
-                                case 'not set': return _p.ss($, ($) => sh.e.call(
+                                case 'not set': return pt.ss($, ($) => sh.e.call(
                                     sh.e.property_access(
                                         sh.e.property_access(
                                             sh.e.property_access(
-                                                sh.e.identifier_raw("_p"),
+                                                sh.e.identifier_raw("pt"),
                                                 sh.identifier_raw("optional"),
                                             ),
                                             sh.identifier_raw("literal"),
@@ -745,11 +745,11 @@ export const Assign = (
                                     [
                                     ]
                                 ))
-                                case 'set': return _p.ss($, ($) => sh.e.call(
+                                case 'set': return pt.ss($, ($) => sh.e.call(
                                     sh.e.property_access(
                                         sh.e.property_access(
                                             sh.e.property_access(
-                                                sh.e.identifier_raw("_p"),
+                                                sh.e.identifier_raw("pt"),
                                                 sh.identifier_raw("optional"),
                                             ),
                                             sh.identifier_raw("literal"),
@@ -760,28 +760,28 @@ export const Assign = (
                                         Assign($),
                                     ]
                                 ))
-                                default: return _p.au($[0])
+                                default: return pt.au($[0])
                             }
                         }))
-                        case 'from': return _p.ss($, ($) => _p_variables(() => {
+                        case 'from': return pt.ss($, ($) => p_variables(() => {
                             const selection = Select_Value($.selection)
-                            return _p.decide.state($.type, ($) => {
+                            return pt.decide.state($.type, ($) => {
                                 switch ($[0]) {
-                                    case 'boolean': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                                    case 'boolean': return pt.ss($, ($) => pt.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'convert': return _p.ss($, ($) => _p_implement_me("X18"))
-                                            default: return _p.au($[0])
+                                            case 'convert': return pt.ss($, ($) => p_implement_me("X18"))
+                                            default: return pt.au($[0])
                                         }
                                     }))
-                                    case 'optional': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                                    case 'optional': return pt.ss($, ($) => pt.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'map': return _p.ss($, ($) => sh.e.call(
+                                            case 'map': return pt.ss($, ($) => sh.e.call(
                                                 sh.e.property_access(
                                                     sh.e.call(
                                                         sh.e.property_access(
                                                             sh.e.property_access(
                                                                 sh.e.property_access(
-                                                                    sh.e.identifier_raw("_p"),
+                                                                    sh.e.identifier_raw("pt"),
                                                                     sh.identifier_raw("optional"),
                                                                 ),
                                                                 sh.identifier_raw("from"),
@@ -804,70 +804,70 @@ export const Assign = (
                                                     ),
                                                 ]
                                             ))
-                                            default: return _p.au($[0])
+                                            default: return pt.au($[0])
                                         }
                                     }))
-                                    default: return _p.au($[0])
+                                    default: return pt.au($[0])
                                 }
                             })
                         }))
-                        default: return _p.au($[0])
+                        default: return pt.au($[0])
                     }
                 }))
-                case 'state': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                case 'state': return pt.ss($, ($) => pt.decide.state($, ($) => {
                     switch ($[0]) {
-                        case 'literal': return _p.ss($, ($) => sh.e.array_literal([
+                        case 'literal': return pt.ss($, ($) => sh.e.array_literal([
                             sh.e.string_literal(sh.string_literal($.option, 'apostrophe')),
                             Assign($['assign option'])
                         ]))
-                        default: return _p.au($[0])
+                        default: return pt.au($[0])
                     }
                 }))
-                case 'text': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                case 'text': return pt.ss($, ($) => pt.decide.state($, ($) => {
                     switch ($[0]) {
-                        case 'literal': return _p.ss($, ($) => sh.e.string_literal(sh.string_literal($.value, _p.decide.state($.type, ($) => {
+                        case 'literal': return pt.ss($, ($) => sh.e.string_literal(sh.string_literal($.value, pt.decide.state($.type, ($) => {
                             switch ($[0]) {
-                                case 'freeform': return _p.ss($, ($) => 'quote')
-                                case 'identifier': return _p.ss($, ($) => 'apostrophe')
-                                default: return _p.au($[0])
+                                case 'freeform': return pt.ss($, ($) => 'quote')
+                                case 'identifier': return pt.ss($, ($) => 'apostrophe')
+                                default: return pt.au($[0])
                             }
                         }))))
-                        case 'from': return _p.ss($, ($) => _p_variables(() => {
+                        case 'from': return pt.ss($, ($) => p_variables(() => {
                             const selection = Select_Value($.selection)
-                            return _p.decide.state($.type, ($) => {
+                            return pt.decide.state($.type, ($) => {
                                 switch ($[0]) {
-                                    case 'text': return _p.ss($, ($) => _p.decide.state($, ($) => {
+                                    case 'text': return pt.ss($, ($) => pt.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'copy': return _p.ss($, ($) => selection)
+                                            case 'copy': return pt.ss($, ($) => selection)
 
-                                            default: return _p.au($[0])
+                                            default: return pt.au($[0])
                                         }
                                     }))
-                                    default: return _p.au($[0])
+                                    default: return pt.au($[0])
                                 }
                             })
                         }))
-                        case 'source document': return _p.ss($, ($) => _p_implement_me("X20"))
-                        case 'entry id': return _p.ss($, ($) => sh.e.identifier_raw("id"))
-                        case 'option name': return _p.ss($, ($) => sh.e.identifier_raw("$[0]"))
-                        default: return _p.au($[0])
+                        case 'source document': return pt.ss($, ($) => p_implement_me("X20"))
+                        case 'entry id': return pt.ss($, ($) => sh.e.identifier_raw("id"))
+                        case 'option name': return pt.ss($, ($) => sh.e.identifier_raw("$[0]"))
+                        default: return pt.au($[0])
                     }
                 }))
-                default: return _p.au($[0])
+                default: return pt.au($[0])
             }
         }))
-        case 'select': return _p.ss($, ($) => Select_Value($))
-        case 'special': return _p.ss($, ($) => _p.decide.state($, ($) => {
+        case 'select': return pt.ss($, ($) => Select_Value($))
+        case 'special': return pt.ss($, ($) => pt.decide.state($, ($) => {
             switch ($[0]) {
-                case 'assert': return _p.ss($, ($) => _p_implement_me("X22"))
-                case 'abort': return _p.ss($, ($) => sh.e.call(
+                case 'assert': return pt.ss($, ($) => p_implement_me("X22"))
+                case 'abort': return pt.ss($, ($) => sh.e.call(
                     sh.e.identifier_raw("abort"),
                     [
                         Assign($)
                     ]
                 ))
-                case 'change context': return _p.ss($, ($) => sh.e.call(
-                    sh.e.identifier_raw("_p_change_context"),
+                case 'change context': return pt.ss($, ($) => sh.e.call(
+                    sh.e.identifier_raw("p_change_context"),
                     [
                         Select_Value($['new context']),
                         sh.e.arrow_function_with_expression(
@@ -879,7 +879,7 @@ export const Assign = (
                         )
                     ]
                 ))
-                case 'implement me': return _p.ss($, ($) => sh.e.call(
+                case 'implement me': return pt.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.identifier_raw("_pdev"),
                         sh.identifier_raw("implement_me")
@@ -888,21 +888,21 @@ export const Assign = (
                         sh.e.string_literal(sh.string_literal($, 'quote'))
                     ]
                 ))
-                case 'iterate': return _p.ss($, ($) => _p_implement_me("X23"))
-                case 'unreachable': return _p.ss($, ($) => sh.e.call(
-                    sh.e.identifier_raw("_p_unreachable_code_path"),
+                case 'iterate': return pt.ss($, ($) => p_implement_me("X23"))
+                case 'unreachable': return pt.ss($, ($) => sh.e.call(
+                    sh.e.identifier_raw("p_unreachable_code_path"),
                     [
                         sh.e.string_literal(sh.string_literal($.explanation, 'quote'))
                     ]
                 ))
-                case 'variables': return _p.ss($, ($) => sh.e.call(
-                    sh.e.identifier_raw("_p_variables"),
+                case 'variables': return pt.ss($, ($) => sh.e.call(
+                    sh.e.identifier_raw("p_variables"),
                     [
                         sh.e.arrow_function_with_block(
                             [
                             ],
                             null,
-                            _p.list.nested_literal_old([
+                            pt.list.nested_literal_old([
                                 $.variables.__to_list(
                                     ($, id) => sh.s.variable(
                                         false,
@@ -922,15 +922,15 @@ export const Assign = (
                         )
                     ]
                 ))
-                default: return _p.au($[0])
+                default: return pt.au($[0])
             }
         }))
-        default: return _p.au($[0])
+        default: return pt.au($[0])
     }
 })
 
-export const reduce = <Item extends _pi.Value, Result_Type extends _pi.Value>(
-    $: _pi.List<Item>,
+export const reduce = <Item extends pi.Value, Result_Type extends pi.Value>(
+    $: pi.List<Item>,
     initial_state: Result_Type,
     update_state: (
         value: Item,
@@ -947,9 +947,9 @@ export const reduce = <Item extends _pi.Value, Result_Type extends _pi.Value>(
 
 export const Select_Value = (
     $: d_in.Select_Value,
-): d_out.Expression => _p.decide.state($, ($) => {
+): d_out.Expression => pt.decide.state($, ($) => {
     switch ($[0]) {
-        case 'implement me': return _p.ss($, ($) => sh.e.call(
+        case 'implement me': return pt.ss($, ($) => sh.e.call(
             sh.e.property_access(
                 sh.e.identifier_raw("_pdev"),
                 sh.identifier_raw("implement_me")
@@ -958,27 +958,27 @@ export const Select_Value = (
                 sh.e.string_literal(sh.string_literal($, 'quote'))
             ]
         ))
-        case 'regular': return _p.ss($, ($) => reduce(
+        case 'regular': return pt.ss($, ($) => reduce(
             $.tail,
-            _p.decide.state($.start, ($) => {
+            pt.decide.state($.start, ($) => {
                 switch ($[0]) {
-                    case 'call': return _p.ss($, ($) => sh.e.call(
-                        _p.decide.state($.source, ($) => {
+                    case 'call': return pt.ss($, ($) => sh.e.call(
+                        pt.decide.state($.source, ($) => {
                             switch ($[0]) {
-                                case 'local': return _p.ss($, ($) => sh.e.identifier_escaped($))
-                                case 'imported': return _p.ss($, ($) => sh.e.property_access(
-                                    sh.e.identifier_escaped(join(_p.list.literal(["v ", $.import]))),
+                                case 'local': return pt.ss($, ($) => sh.e.identifier_escaped($))
+                                case 'imported': return pt.ss($, ($) => sh.e.property_access(
+                                    sh.e.identifier_escaped(join(pt.list.literal(["v ", $.import]))),
                                     sh.identifier_escaped($.variable)
                                 ))
-                                default: return _p.au($[0])
+                                default: return pt.au($[0])
                             }
                         }),
-                        _p.list.nested_literal_old([
+                        pt.list.nested_literal_old([
                             [
                                 Assign($.context),
                             ],
                             $.abort.__decide(
-                                ($) => _p.list.literal([
+                                ($) => pt.list.literal([
                                     sh.e.arrow_function_with_expression(
                                         [
                                             sh.parameter(sh.identifier_raw("$"), null)
@@ -992,16 +992,16 @@ export const Select_Value = (
                                         )
                                     )
                                 ]),
-                                () => _p.list.literal([])
+                                () => pt.list.literal([])
                             ),
                             $.lookups.__decide(
-                                ($) => _p.decide.state($, ($) => {
+                                ($) => pt.decide.state($, ($) => {
                                     switch ($[0]) {
-                                        case 'initialize': return _p.ss($, ($) => _p.boolean.from.dictionary($).is_empty()
-                                            ? _p.list.literal([
+                                        case 'initialize': return pt.ss($, ($) => pt.boolean.from.dictionary($).is_empty()
+                                            ? pt.list.literal([
                                                 sh.e.null_(),
                                             ])
-                                            : _p.list.literal([
+                                            : pt.list.literal([
                                                 sh.e.object_literal(
                                                     $.__to_list(($, id) => sh.object_property(
                                                         id,
@@ -1010,22 +1010,22 @@ export const Select_Value = (
                                                     ))
                                                 )
                                             ]))
-                                        case 'pass through': return _p.ss($, ($) => _p.list.literal([
+                                        case 'pass through': return pt.ss($, ($) => pt.list.literal([
                                             sh.e.identifier_raw("$l")
                                         ]))
-                                        default: return _p.au($[0])
+                                        default: return pt.au($[0])
                                     }
                                 }),
-                                () => _p.list.literal([])
+                                () => pt.list.literal([])
                             ),
                             $.arguments.__decide(
-                                ($) => _p.decide.state($, ($) => {
+                                ($) => pt.decide.state($, ($) => {
                                     switch ($[0]) {
-                                        case 'initialize': return _p.ss($, ($) => _p.boolean.from.dictionary($).is_empty()
-                                            ? _p.list.literal([
+                                        case 'initialize': return pt.ss($, ($) => pt.boolean.from.dictionary($).is_empty()
+                                            ? pt.list.literal([
                                                 sh.e.null_(),
                                             ])
-                                            : _p.list.literal([
+                                            : pt.list.literal([
                                                 sh.e.object_literal(
                                                     $.__to_list(($, id) => sh.object_property(
                                                         id,
@@ -1034,19 +1034,19 @@ export const Select_Value = (
                                                     ))
                                                 )
                                             ]))
-                                        case 'pass through': return _p.ss($, ($) => _p.list.literal([
+                                        case 'pass through': return pt.ss($, ($) => pt.list.literal([
                                             sh.e.identifier_raw("$p")
                                         ]))
-                                        default: return _p.au($[0])
+                                        default: return pt.au($[0])
                                     }
                                 }),
-                                () => _p.list.literal([])
+                                () => pt.list.literal([])
                             ),
                         ]),
 
                     ))
-                    case 'context': return _p.ss($, ($) => sh.e.identifier_raw("$"))
-                    case 'dictionary entry': return _p.ss($, ($) => sh.e.call(
+                    case 'context': return pt.ss($, ($) => sh.e.identifier_raw("$"))
+                    case 'dictionary entry': return pt.ss($, ($) => sh.e.call(
                         sh.e.property_access(
                             Select_Value($.dictionary),
                             sh.identifier_raw("__get_entry_deprecated")
@@ -1076,8 +1076,8 @@ export const Select_Value = (
                             ])
                         ]
                     ))
-                    case 'list from text': return _p.ss($, ($) => sh.e.call(
-                        sh.e.identifier_raw("_p_list_from_text"),
+                    case 'list from text': return pt.ss($, ($) => sh.e.call(
+                        sh.e.identifier_raw("p_list_from_text"),
                         [
                             Select_Value($.source),
                             sh.e.arrow_function_with_expression(
@@ -1092,16 +1092,16 @@ export const Select_Value = (
                             )
                         ]
                     ))
-                    case 'lookup entry': return _p.ss($, ($) => sh.e.call(
+                    case 'lookup entry': return pt.ss($, ($) => sh.e.call(
                         sh.e.property_access(
                             Select_Lookup($.lookup),
                             sh.identifier_raw("get_entry")
                         ),
                         [
                             Assign($.id),
-                            _p.decide.state($.type, ($) => {
+                            pt.decide.state($.type, ($) => {
                                 switch ($[0]) {
-                                    case 'acyclic': return _p.ss($, ($) => sh.e.object_literal([
+                                    case 'acyclic': return pt.ss($, ($) => sh.e.object_literal([
 
                                         sh.object_property(
                                             "no_such_entry",
@@ -1146,7 +1146,7 @@ export const Select_Value = (
                                             )
                                         ),
                                     ]))
-                                    case 'cyclic': return _p.ss($, ($) => sh.e.object_literal([
+                                    case 'cyclic': return pt.ss($, ($) => sh.e.object_literal([
 
                                         sh.object_property(
                                             "no_such_entry",
@@ -1191,7 +1191,7 @@ export const Select_Value = (
                                             )
                                         ),
                                     ]))
-                                    case 'stack': return _p.ss($, ($) => sh.e.object_literal([
+                                    case 'stack': return pt.ss($, ($) => sh.e.object_literal([
 
                                         sh.object_property(
                                             "no_such_entry",
@@ -1236,12 +1236,12 @@ export const Select_Value = (
                                             )
                                         ),
                                     ]))
-                                    default: return _p.au($[0])
+                                    default: return pt.au($[0])
                                 }
                             }),
                         ]
                     ))
-                    case 'lookup entry depth': return _p.ss($, ($) => sh.e.call(
+                    case 'lookup entry depth': return pt.ss($, ($) => sh.e.call(
                         sh.e.property_access(
                             Select_Lookup($.lookup),
                             sh.identifier_raw("get_entry_depth")
@@ -1294,15 +1294,15 @@ export const Select_Value = (
                             ]),
                         ]
                     ))
-                    case 'parameter': return _p.ss($, ($) => sh.e.element_access(
+                    case 'parameter': return pt.ss($, ($) => sh.e.element_access(
                         sh.e.identifier_raw("$p"),
                         sh.e.string_literal(sh.string_literal($, 'apostrophe'))
                     ))
-                    case 'parent sibling': return _p.ss($, ($) => sh.e.identifier_escaped("parent.prop " + $))
-                    case 'sibling': return _p.ss($, ($) => sh.e.identifier_escaped("prop " + $))
-                    case 'state': return _p.ss($, ($) => sh.e.identifier_raw("state"))
-                    case 'text from list': return _p.ss($, ($) => sh.e.call(
-                        sh.e.identifier_raw("_p_text_from_list"),
+                    case 'parent sibling': return pt.ss($, ($) => sh.e.identifier_escaped("parent.prop " + $))
+                    case 'sibling': return pt.ss($, ($) => sh.e.identifier_escaped("prop " + $))
+                    case 'state': return pt.ss($, ($) => sh.e.identifier_raw("state"))
+                    case 'text from list': return pt.ss($, ($) => sh.e.call(
+                        sh.e.identifier_raw("p_text_from_list"),
                         [
                             Select_Value($.source),
                             sh.e.arrow_function_with_expression(
@@ -1317,8 +1317,8 @@ export const Select_Value = (
                             )
                         ]
                     ))
-                    case 'variable': return _p.ss($, ($) => sh.e.identifier_escaped("var " + $))
-                    default: return _p.au($[0])
+                    case 'variable': return pt.ss($, ($) => sh.e.identifier_escaped("var " + $))
+                    default: return pt.au($[0])
                 }
             }),
             ($, current_expression) => {
@@ -1328,15 +1328,15 @@ export const Select_Value = (
                 )
             }
         ))
-        default: return _p.au($[0])
+        default: return pt.au($[0])
     }
 })
 
 export const Select_Lookup = (
     $: d_in.Select_Lookup,
-): d_out.Expression => _p.decide.state($, ($) => {
+): d_out.Expression => pt.decide.state($, ($) => {
     switch ($[0]) {
-        case 'implement me': return _p.ss($, ($) => sh.e.call(
+        case 'implement me': return pt.ss($, ($) => sh.e.call(
             sh.e.property_access(
                 sh.e.identifier_raw("_pdev"),
                 sh.identifier_raw("implement_me")
@@ -1345,9 +1345,9 @@ export const Select_Lookup = (
                 sh.e.string_literal(sh.string_literal($, 'quote'))
             ]
         ))
-        case 'acyclic': return _p.ss($, ($) => _p.decide.state($, ($) => {
+        case 'acyclic': return pt.ss($, ($) => pt.decide.state($, ($) => {
             switch ($[0]) {
-                case 'not set': return _p.ss($, ($) => sh.e.call(
+                case 'not set': return pt.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
                             sh.e.identifier_raw("_p_sl"),
@@ -1358,8 +1358,8 @@ export const Select_Lookup = (
                     [
                     ]
                 ))
-                case 'siblings': return _p.ss($, ($) => sh.e.identifier_raw("$a"))
-                case 'resolved dictionary': return _p.ss($, ($) => sh.e.call(
+                case 'siblings': return pt.ss($, ($) => sh.e.identifier_raw("$a"))
+                case 'resolved dictionary': return pt.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
                             sh.e.identifier_raw("_p_sl"),
@@ -1371,16 +1371,16 @@ export const Select_Lookup = (
                         Select_Value($)
                     ]
                 ))
-                default: return _p.au($[0])
+                default: return pt.au($[0])
             }
         }))
-        case 'from parameter': return _p.ss($, ($) => sh.e.element_access(
+        case 'from parameter': return pt.ss($, ($) => sh.e.element_access(
             sh.e.identifier_raw("$l"),
             sh.e.string_literal(sh.string_literal($, 'apostrophe'))
         ))
-        case 'stack': return _p.ss($, ($) => _p.decide.state($, ($) => {
+        case 'stack': return pt.ss($, ($) => pt.decide.state($, ($) => {
             switch ($[0]) {
-                case 'empty': return _p.ss($, ($) => sh.e.call(
+                case 'empty': return pt.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
                             sh.e.identifier_raw("_p_sl"),
@@ -1391,7 +1391,7 @@ export const Select_Lookup = (
                     [
                     ]
                 ))
-                case 'push': return _p.ss($, ($) => sh.e.call(
+                case 'push': return pt.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
                             sh.e.identifier_raw("_p_sl"),
@@ -1404,12 +1404,12 @@ export const Select_Lookup = (
                         Select_Lookup($.acyclic)
                     ]
                 ))
-                default: return _p.au($[0])
+                default: return pt.au($[0])
             }
         }))
-        case 'cyclic': return _p.ss($, ($) => _p.decide.state($, ($) => {
+        case 'cyclic': return pt.ss($, ($) => pt.decide.state($, ($) => {
             switch ($[0]) {
-                case 'not set': return _p.ss($, ($) => sh.e.call(
+                case 'not set': return pt.ss($, ($) => sh.e.call(
                     sh.e.property_access(
                         sh.e.property_access(
                             sh.e.identifier_raw("_p_sl"),
@@ -1420,11 +1420,11 @@ export const Select_Lookup = (
                     [
                     ]
                 ))
-                case 'siblings': return _p.ss($, ($) => sh.e.identifier_raw("$c"))
-                default: return _p.au($[0])
+                case 'siblings': return pt.ss($, ($) => sh.e.identifier_raw("$c"))
+                default: return pt.au($[0])
             }
         }))
 
-        default: return _p.au($[0])
+        default: return pt.au($[0])
     }
 })

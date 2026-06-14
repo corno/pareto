@@ -1,6 +1,6 @@
-import * as _p from 'pareto-core/dist/assign'
-import * as _pi from 'pareto-core/dist/interface'
-import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
+import * as pt from 'pareto-core/dist/assign'
+import * as pi from 'pareto-core/dist/interface'
+import p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/interface/data/resolved"
 import * as d_out from "pareto-fountain-pen-file-structure/dist/interface/to_be_generated/file-system"
@@ -17,10 +17,10 @@ export const Package_Set = ($: d_in.Package_Set): d_out.Directory => {
     return t_typescript_light_to_fountain_pen_block.Directory(
         t_typescript.Package_Set(
             $,
-            ($) => _p.decide.state($, ($) => {
+            ($) => pt.decide.state($, ($) => {
                 switch ($[0]) {
-                    case 'directory name ending with ts': return _p.ss($, () => _p_unreachable_code_path("I think this needs proper implementation"))
-                    default: return _p.au($[0])
+                    case 'directory name ending with ts': return pt.ss($, () => p_unreachable_code_path("I think this needs proper implementation"))
+                    default: return pt.au($[0])
                 }
             })
         )

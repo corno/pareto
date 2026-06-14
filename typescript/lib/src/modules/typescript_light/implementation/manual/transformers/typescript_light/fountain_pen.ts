@@ -1,8 +1,8 @@
-import * as _p from 'pareto-core/dist/assign'
-import * as _pi from 'pareto-core/dist/interface'
-import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
-import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-import _p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
+import * as pt from 'pareto-core/dist/assign'
+import * as pi from 'pareto-core/dist/interface'
+import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+import p_unreachable_code_path from 'pareto-core/dist/_p_unreachable_code_path'
 
 import * as d_out from "pareto-fountain-pen/dist/interface/generated/liana/schemas/prose/data"
 import * as d_loc from "pareto-fountain-pen/dist/interface/generated/liana/schemas/list_of_characters/data"
@@ -16,61 +16,61 @@ import * as sh from "pareto-fountain-pen/dist/shorthands/prose"
 
 export const escaped_text = (
     $: string,
-): d_loc.List_of_Characters => _p.list.from.list(
-    _p_list_from_text(
+): d_loc.List_of_Characters => pt.list.from.list(
+    p_list_from_text(
         $,
         ($) => $
     ),
 ).flatten(
-    ($): _pi.List<number> => {
+    ($): pi.List<number> => {
         switch ($) {
             // case 0x2F: // slash (\/)
-            //     return _p.list.literal([
+            //     return pt.list.literal([
             //         0x5c, // \
             //         0x2f, // /
             //     ])
             case 0x22: // " (\")
-                return _p.list.literal([
+                return pt.list.literal([
                     0x5C, // \
                     0x22, // "
                 ])
             case 0x5C: // \ (\\)
-                return _p.list.literal([
+                return pt.list.literal([
                     0x5C, // \
                     0x5C, // \
                 ])
             case 0x08: // backspace (\b)
-                return _p.list.literal([
+                return pt.list.literal([
                     0x5C, // \
                     0x62, // b
                 ])
             case 0x0C: // form feed (\f)
-                return _p.list.literal([
+                return pt.list.literal([
                     0x5C, // \
                     0x66, // f
                 ])
             case 0x0A: // line feed (\n)
-                return _p.list.literal([
+                return pt.list.literal([
                     0x5C, // \
                     0x6E, // n
                 ])
             case 0x0D: // carriage return (\r)
-                return _p.list.literal([
+                return pt.list.literal([
                     0x5C, // \
                     0x72, // r
                 ])
             case 0x09: // horizontal tab (\t)
-                return _p.list.literal([
+                return pt.list.literal([
                     0x5C, // \
                     0x74, // t
                 ])
             case 0x0B: // vertical tab (\v)
-                return _p.list.literal([
+                return pt.list.literal([
                     0x5C, // \
                     0x76, // v
                 ])
             default: {
-                return _p.list.literal([
+                return pt.list.literal([
                     $,
                 ])
             }
@@ -78,7 +78,7 @@ export const escaped_text = (
     }
 )
 
-export const apostrophed_text: _pi.Transformer<string, d_loc.List_of_Characters> = ($) => _p.list.nested_literal_old([
+export const apostrophed_text: pi.Transformer<string, d_loc.List_of_Characters> = ($) => pt.list.nested_literal_old([
     [
         0x27, // '
     ],
@@ -90,7 +90,7 @@ export const apostrophed_text: _pi.Transformer<string, d_loc.List_of_Characters>
     ]
 ])
 
-export const backticked_text: _pi.Transformer<string, d_loc.List_of_Characters> = ($) => _p.list.nested_literal_old([
+export const backticked_text: pi.Transformer<string, d_loc.List_of_Characters> = ($) => pt.list.nested_literal_old([
     [
         0x60, // `
     ],
@@ -102,7 +102,7 @@ export const backticked_text: _pi.Transformer<string, d_loc.List_of_Characters> 
     ]
 ])
 
-export const quoted_text: _pi.Transformer<string, d_loc.List_of_Characters> = ($) => _p.list.nested_literal_old([
+export const quoted_text: pi.Transformer<string, d_loc.List_of_Characters> = ($) => pt.list.nested_literal_old([
     [
         0x22, // "
     ],
@@ -115,21 +115,21 @@ export const quoted_text: _pi.Transformer<string, d_loc.List_of_Characters> = ($
 ])
 
 
-export const decimal: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => _p_list_build_deprecated(($i) => {
+export const decimal: pi.Transformer<number, d_loc.List_of_Characters> = ($) => p_list_build_deprecated(($i) => {
     if ($ < 0) {
         $i['add item'](45) // '-'
         $ = -$
     }
-    const digits = _p_list_build_deprecated<number>(($i) => {
+    const digits = p_list_build_deprecated<number>(($i) => {
         do {
             const digit = $ % 10
             $i['add item'](digit)
-            $ = _p.number.from.number.divide(
+            $ = pt.number.from.number.divide(
                 $,
                 10,
             ['towards zero', null],
                 {
-                    divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10"),
+                    divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 10"),
                 }
             )
         } while ($ > 0)
@@ -139,14 +139,14 @@ export const decimal: _pi.Transformer<number, d_loc.List_of_Characters> = ($) =>
     for (let j = digits.__get_number_of_items() - 1; j >= 0; j--) {
         $i['add item'](48 + digits.__deprecated_get_possible_item_at(j).__decide(
             ($) => $,
-            () => _p_unreachable_code_path("index cannot be out of bounds")
+            () => p_unreachable_code_path("index cannot be out of bounds")
         ))
     }
 })
 
 
-export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
-    return _p_list_build_deprecated(($i) => {
+export const float: pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
+    return p_list_build_deprecated(($i) => {
         // Handle special case for zero
         if ($ === 0) {
             $i['add item'](48) // '0'
@@ -187,27 +187,27 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
             scale_factor = scale_factor * 10
         }
 
-        const mantissa_scaled = _p.number.from.number.divide(
+        const mantissa_scaled = pt.number.from.number.divide(
             mantissa * scale_factor + 0.5,
             1,
             ['towards zero', null],
             {
-                divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 1"),
+                divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 1"),
             }
         )
 
         // Extract all digits
-        const digits = _p_list_build_deprecated<number>(($i) => {
+        const digits = p_list_build_deprecated<number>(($i) => {
             let t = mantissa_scaled
             do {
                 const digit = t % 10
                 $i['add item'](digit)
-                t = _p.number.from.number.divide(
+                t = pt.number.from.number.divide(
                     t,
                     10,
             ['towards zero', null],
                     {
-                        divided_by_zero: () => _p_unreachable_code_path("the divisor is hardcoded to 10"),
+                        divided_by_zero: () => p_unreachable_code_path("the divisor is hardcoded to 10"),
                     }
                 )
             } while (t > 0)
@@ -217,7 +217,7 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
             // OUTPUT IN EXPONENTIAL NOTATION
             const first_digit = digits.__deprecated_get_possible_item_at(digits.__get_number_of_items() - 1).__decide(
                 ($) => $,
-                () => _p_unreachable_code_path("index cannot be out of bounds")
+                () => p_unreachable_code_path("index cannot be out of bounds")
             )
             $i['add item'](48 + first_digit)
 
@@ -227,7 +227,7 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
                 for (let j = 0; j < digits.__get_number_of_items() - 1; j++) {
                     const digit = digits.__deprecated_get_possible_item_at(j).__decide(
                         ($) => $,
-                        () => _p_unreachable_code_path("index cannot be out of bounds")
+                        () => p_unreachable_code_path("index cannot be out of bounds")
                     )
                     if (digit !== 0) {
                         if (first_nonzero_index === -1) {
@@ -242,7 +242,7 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
                 for (let j = digits.__get_number_of_items() - 2; j >= first_nonzero_index; j--) {
                     const digit = digits.__deprecated_get_possible_item_at(j).__decide(
                         ($) => $,
-                        () => _p_unreachable_code_path("index cannot be out of bounds")
+                        () => p_unreachable_code_path("index cannot be out of bounds")
                     )
                     $i['add item'](48 + digit)
                 }
@@ -258,19 +258,19 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
                 $i['add item'](43) // '+'
             }
 
-            const exp_digits = _p_list_build_deprecated<number>(($i) => {
+            const exp_digits = p_list_build_deprecated<number>(($i) => {
                 if (exp === 0) {
                     $i['add item'](0)
                 } else {
                     do {
                         const digit = exp % 10
                         $i['add item'](digit)
-                        exp = _p.number.from.number.divide(
+                        exp = pt.number.from.number.divide(
                             exp,
                             10,
                             ['towards zero', null],
                             {
-                                divided_by_zero: () => _p_unreachable_code_path("hardcoded 10"),
+                                divided_by_zero: () => p_unreachable_code_path("hardcoded 10"),
                             }
                         )
                     } while (exp > 0)
@@ -280,7 +280,7 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
             for (let j = exp_digits.__get_number_of_items() - 1; j >= 0; j--) {
                 const digit = exp_digits.__deprecated_get_possible_item_at(j).__decide(
                     ($) => $,
-                    () => _p_unreachable_code_path("index cannot be out of bounds")
+                    () => p_unreachable_code_path("index cannot be out of bounds")
                 )
                 $i['add item'](48 + digit)
             }
@@ -293,7 +293,7 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
             for (let j = 0; j < digit_count; j++) {
                 const d = digits.__deprecated_get_possible_item_at(j).__decide(
                     ($) => $,
-                    () => _p_unreachable_code_path("index cannot be out of bounds")
+                    () => p_unreachable_code_path("index cannot be out of bounds")
                 )
                 if (d !== 0) {
                     first_nonzero = j
@@ -319,7 +319,7 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
                 for (let i = digit_count - 1; i >= first_nonzero; i--) {
                     const d = digits.__deprecated_get_possible_item_at(i).__decide(
                         ($) => $,
-                        () => _p_unreachable_code_path("index cannot be out of bounds")
+                        () => p_unreachable_code_path("index cannot be out of bounds")
                     )
                     $i['add item'](48 + d)
                 }
@@ -338,7 +338,7 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
 
                     const d = digits.__deprecated_get_possible_item_at(i).__decide(
                         ($) => $,
-                        () => _p_unreachable_code_path("index cannot be out of bounds")
+                        () => p_unreachable_code_path("index cannot be out of bounds")
                     )
                     
                     // Check if we need to insert decimal before this digit
@@ -356,14 +356,14 @@ export const float: _pi.Transformer<number, d_loc.List_of_Characters> = ($) => {
 
 
 export const Directory = ($: d_in.Directory): d_out_fs.Directory => {
-    return $.__d_map(($, id) => _p.decide.state($, ($) => {
+    return $.__d_map(($, id) => pt.decide.state($, ($) => {
         switch ($[0]) {
-            case 'file': return _p.ss($, ($) => ['file', Statements(
+            case 'file': return pt.ss($, ($) => ['file', Statements(
                 $['statements'],
                 { 'replace empty type literals by symbol': true }
             )])
-            case 'directory': return _p.ss($, ($) => ['directory', Directory($)])
-            default: return _p.au($[0])
+            case 'directory': return pt.ss($, ($) => ['directory', Directory($)])
+            default: return pt.au($[0])
         }
     }))
 }
@@ -396,9 +396,9 @@ export const Statements = (
         'replace empty type literals by symbol': boolean
     }
 ): d_out.Paragraph => sh.pg.composed($.__l_map(($) =>
-    _p.decide.state($, ($): d_out.Paragraph => {
+    pt.decide.state($, ($): d_out.Paragraph => {
         switch ($[0]) {
-            case 'block': return _p.ss($, ($) => sh.pg.sentences([
+            case 'block': return pt.ss($, ($) => sh.pg.sentences([
                 sh.sentence([]),
                     sh.sentence([
                         sh.ph.literal("{"),
@@ -408,13 +408,13 @@ export const Statements = (
                         sh.ph.literal("}"),
                 ])
             ]))
-            case 'export': return _p.ss($, ($) => sh.pg.sentences([
+            case 'export': return pt.ss($, ($) => sh.pg.sentences([
                 sh.sentence([]),
                 sh.sentence([
                         sh.ph.literal("export "),
-                        _p.decide.state($.type, ($) => {
+                        pt.decide.state($.type, ($) => {
                             switch ($[0]) {
-                                case 'named exports': return _p.ss($, ($) => sh.ph.composed([
+                                case 'named exports': return pt.ss($, ($) => sh.ph.composed([
                                     sh.ph.literal("{ "),
                                     sh.ph.indent(
                                         sh.pg.sentences($.specifiers.__l_map(($) => sh.sentence([
@@ -438,12 +438,12 @@ export const Statements = (
                                         () => sh.ph.nothing()
                                     )
                                 ]))
-                                default: return _p.au($[0])
+                                default: return pt.au($[0])
                             }
                         }),
                 ])
             ]))
-            case 'expression': return _p.ss($, ($) => sh.pg.sentences([
+            case 'expression': return pt.ss($, ($) => sh.pg.sentences([
                 sh.sentence([
                     Expression(
                         $,
@@ -454,16 +454,16 @@ export const Statements = (
                     )
                 ])
             ]))
-            case 'import': return _p.ss($, ($) => sh.pg.sentences([
+            case 'import': return pt.ss($, ($) => sh.pg.sentences([
                 sh.sentence([]),
                 sh.sentence([
                     sh.ph.literal("import "),
-                    _p.decide.state($.type, ($) => {
+                    pt.decide.state($.type, ($) => {
                         switch ($[0]) {
-                            case 'default': return _p.ss($, ($) => sh.ph.composed([
+                            case 'default': return pt.ss($, ($) => sh.ph.composed([
                                 Identifier($),
                             ]))
-                            case 'named': return _p.ss($, ($) => sh.ph.composed([
+                            case 'named': return pt.ss($, ($) => sh.ph.composed([
                                 sh.ph.literal("{"),
                                 sh.ph.indent(
                                     sh.pg.sentences($.specifiers.__l_map(($) => sh.sentence([
@@ -480,18 +480,18 @@ export const Statements = (
                                 ),
                                 sh.ph.literal("}"),
                             ]))
-                            case 'namespace': return _p.ss($, ($) => sh.ph.composed([
+                            case 'namespace': return pt.ss($, ($) => sh.ph.composed([
                                 sh.ph.literal("* as "),
                                 Identifier($),
                             ]))
-                            default: return _p.au($[0])
+                            default: return pt.au($[0])
                         }
                     }),
                     sh.ph.literal(" from "),
                     String_Literal($.from),
                 ])
             ]))
-            case 'module declaration': return _p.ss($, ($) => sh.pg.sentences([
+            case 'module declaration': return pt.ss($, ($) => sh.pg.sentences([
                 sh.sentence([]),
                 sh.sentence([
                     $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
@@ -510,7 +510,7 @@ export const Statements = (
                     ])
                 ])
             ]))
-            case 'return': return _p.ss($, ($) => sh.pg.sentences([
+            case 'return': return pt.ss($, ($) => sh.pg.sentences([
                 sh.sentence([
                     sh.ph.literal("return "),
                     $.__decide(
@@ -526,7 +526,7 @@ export const Statements = (
 
                 ]),
             ]))
-            case 'switch': return _p.ss($, ($) => sh.pg.sentences([
+            case 'switch': return pt.ss($, ($) => sh.pg.sentences([
                 sh.sentence([
                     sh.ph.literal("switch ("),
                     Expression(
@@ -539,9 +539,9 @@ export const Statements = (
                     sh.ph.literal(") {"),
                     sh.ph.indent(sh.pg.sentences(
                         $.clauses.__l_map(($) => sh.sentence([
-                            _p.decide.state($.type, ($) => {
+                            pt.decide.state($.type, ($) => {
                                 switch ($[0]) {
-                                    case 'case': return _p.ss($, ($) => sh.ph.composed([
+                                    case 'case': return pt.ss($, ($) => sh.ph.composed([
                                         sh.ph.literal("case "),
                                         Expression(
                                             $,
@@ -552,8 +552,8 @@ export const Statements = (
                                         ),
                                         sh.ph.literal(":"),
                                     ]))
-                                    case 'default': return _p.ss($, ($) => sh.ph.literal("default:"))
-                                    default: return _p.au($[0])
+                                    case 'default': return pt.ss($, ($) => sh.ph.literal("default:"))
+                                    default: return pt.au($[0])
                                 }
                             }),
                             sh.ph.indent(
@@ -564,7 +564,7 @@ export const Statements = (
                     sh.ph.literal("}"),
                 ]),
             ]))
-            case 'type alias declaration': return _p.ss($, ($) => sh.pg.sentences([
+            case 'type alias declaration': return pt.ss($, ($) => sh.pg.sentences([
                 sh.sentence([]),
                 sh.sentence([
                     $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
@@ -581,7 +581,7 @@ export const Statements = (
                     Type($['type'], $p),
                 ])
             ]))
-            case 'variable': return _p.ss($, ($) => sh.pg.sentences([
+            case 'variable': return pt.ss($, ($) => sh.pg.sentences([
                 sh.sentence([]),
                 sh.sentence([
                     $.export ? sh.ph.literal("export ") : sh.ph.nothing(),
@@ -609,7 +609,7 @@ export const Statements = (
                     ),
                 ])
             ]))
-            default: return _p.au($[0])
+            default: return pt.au($[0])
         }
     })
 ))
@@ -620,9 +620,9 @@ export const Expression = (
         'replace empty type literals by symbol': boolean
         'object literal needs parentheses': boolean
     }
-): d_out.Phrase => _p.decide.state($, ($) => {
+): d_out.Phrase => pt.decide.state($, ($) => {
     switch ($[0]) {
-        case 'assignment': return _p.ss($, ($) => sh.ph.composed([
+        case 'assignment': return pt.ss($, ($) => sh.ph.composed([
             Expression($.left, $p),
             sh.ph.literal(" = "),
             Expression($.right, {
@@ -630,7 +630,7 @@ export const Expression = (
                 'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
             }),
         ]))
-        case 'array literal': return _p.ss($, ($) => sh.ph.composed([
+        case 'array literal': return pt.ss($, ($) => sh.ph.composed([
             sh.ph.literal("["),
             sh.ph.rich(
                 $.__l_map(($) => Expression($, {
@@ -644,7 +644,7 @@ export const Expression = (
             ),
             sh.ph.literal("]"),
         ]))
-        case 'arrow function': return _p.ss($, ($) => sh.ph.composed([
+        case 'arrow function': return pt.ss($, ($) => sh.ph.composed([
             sh.ph.literal("("),
             sh.ph.rich(
                 $.parameters.__l_map(($) => sh.ph.composed([
@@ -671,27 +671,27 @@ export const Expression = (
                 () => sh.ph.nothing(),
             ),
             sh.ph.literal(" => "),
-            _p.decide.state($.body, ($) => {
+            pt.decide.state($.body, ($) => {
                 switch ($[0]) {
-                    case 'block': return _p.ss($, ($) => sh.ph.composed([
+                    case 'block': return pt.ss($, ($) => sh.ph.composed([
                         sh.ph.literal("{"),
                         sh.ph.indent(
                             Statements($, $p),
                         ),
                         sh.ph.literal("}"),
                     ]))
-                    case 'expression': return _p.ss($, ($) => Expression(
+                    case 'expression': return pt.ss($, ($) => Expression(
                         $,
                         {
                             'object literal needs parentheses': true,
                             'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
                         }
                     ))
-                    default: return _p.au($[0])
+                    default: return pt.au($[0])
                 }
             }),
         ]))
-        case 'call': return _p.ss($, ($) => sh.ph.composed([
+        case 'call': return pt.ss($, ($) => sh.ph.composed([
             Expression($['function selection'], $p),
             sh.ph.literal("("),
             sh.ph.indent(
@@ -708,20 +708,20 @@ export const Expression = (
             ),
             sh.ph.literal(")"),
         ]))
-        case 'compare': return _p.ss($, ($) => sh.ph.composed([
+        case 'compare': return pt.ss($, ($) => sh.ph.composed([
             Expression($.left, $p),
             sh.ph.literal(" "),
-            _p.decide.state($.operator, ($) => {
+            pt.decide.state($.operator, ($) => {
                 switch ($[0]) {
-                    case 'loosely equal': return _p.ss($, ($) => sh.ph.literal("=="))
-                    case 'strictly equal': return _p.ss($, ($) => sh.ph.literal("==="))
-                    case 'loosely not equal': return _p.ss($, ($) => sh.ph.literal("!="))
-                    case 'strictly not equal': return _p.ss($, ($) => sh.ph.literal("!=="))
-                    case 'smaller than': return _p.ss($, ($) => sh.ph.literal("<"))
-                    case 'smaller than or equal': return _p.ss($, ($) => sh.ph.literal("<="))
-                    case 'greater than': return _p.ss($, ($) => sh.ph.literal(">"))
-                    case 'greater than or equal': return _p.ss($, ($) => sh.ph.literal(">="))
-                    default: return _p.au($[0])
+                    case 'loosely equal': return pt.ss($, ($) => sh.ph.literal("=="))
+                    case 'strictly equal': return pt.ss($, ($) => sh.ph.literal("==="))
+                    case 'loosely not equal': return pt.ss($, ($) => sh.ph.literal("!="))
+                    case 'strictly not equal': return pt.ss($, ($) => sh.ph.literal("!=="))
+                    case 'smaller than': return pt.ss($, ($) => sh.ph.literal("<"))
+                    case 'smaller than or equal': return pt.ss($, ($) => sh.ph.literal("<="))
+                    case 'greater than': return pt.ss($, ($) => sh.ph.literal(">"))
+                    case 'greater than or equal': return pt.ss($, ($) => sh.ph.literal(">="))
+                    default: return pt.au($[0])
                 }
             }),
             sh.ph.literal(" "),
@@ -730,7 +730,7 @@ export const Expression = (
                 'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
             }),
         ]))
-        case 'conditional': return _p.ss($, ($) => sh.ph.composed([
+        case 'conditional': return pt.ss($, ($) => sh.ph.composed([
             Expression($.condition, $p),
             sh.ph.indent(sh.pg.sentences([
                 sh.sentence([
@@ -751,31 +751,31 @@ export const Expression = (
                 ]),
             ])),
         ]))
-        case 'element access': return _p.ss($, ($) => sh.ph.composed([
+        case 'element access': return pt.ss($, ($) => sh.ph.composed([
             Expression($.collection, $p),
             sh.ph.literal("["),
             Expression($.index, $p),
             sh.ph.literal("]"),
         ]))
-        case 'false': return _p.ss($, ($) => sh.ph.literal("false"))
-        case 'identifier': return _p.ss($, ($) => Identifier($))
-        case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
-        case 'number literal': return _p.ss($, ($) => sh.ph.serialize(float($)))
-        case 'object literal': return _p.ss($, ($) => sh.ph.composed([
+        case 'false': return pt.ss($, ($) => sh.ph.literal("false"))
+        case 'identifier': return pt.ss($, ($) => Identifier($))
+        case 'null': return pt.ss($, ($) => sh.ph.literal("null"))
+        case 'number literal': return pt.ss($, ($) => sh.ph.serialize(float($)))
+        case 'object literal': return pt.ss($, ($) => sh.ph.composed([
             $p['object literal needs parentheses']
                 ? sh.ph.literal("(")
                 : sh.ph.nothing(),
             sh.ph.literal("{"),
             sh.ph.indent(
-                sh.pg.sentences(_p.list.from.list(
+                sh.pg.sentences(pt.list.from.list(
                     $.properties,
                 ).map(
                     ($) => sh.sentence([
-                        _p.decide.state($.key, ($) => {
+                        pt.decide.state($.key, ($) => {
                             switch ($[0]) {
-                                case 'identifier': return _p.ss($, ($) => Identifier($))
-                                case 'string literal': return _p.ss($, ($) => String_Literal($))
-                                default: return _p.au($[0])
+                                case 'identifier': return pt.ss($, ($) => Identifier($))
+                                case 'string literal': return pt.ss($, ($) => String_Literal($))
+                                default: return pt.au($[0])
                             }
                         }),
                         sh.ph.literal(": "),
@@ -794,7 +794,7 @@ export const Expression = (
                 ? sh.ph.literal(")")
                 : sh.ph.nothing(),
         ]))
-        case 'parenthesized': return _p.ss($, ($) => sh.ph.composed([
+        case 'parenthesized': return pt.ss($, ($) => sh.ph.composed([
             sh.ph.literal("("),
             Expression($, {
                 'replace empty type literals by symbol': $p['replace empty type literals by symbol'],
@@ -802,29 +802,29 @@ export const Expression = (
             }),
             sh.ph.literal(")"),
         ]))
-        case 'property access': return _p.ss($, ($) => sh.ph.composed([
+        case 'property access': return pt.ss($, ($) => sh.ph.composed([
             Expression($.object, $p),
             sh.ph.literal("."),
             Identifier($.property),
         ]))
-        case 'string literal': return _p.ss($, ($) => sh.ph.composed([
+        case 'string literal': return pt.ss($, ($) => sh.ph.composed([
             sh.ph.serialize($['delimiter'][0] === "quote" ? quoted_text($['value']) : apostrophed_text($['value']))
         ]))
-        case 'true': return _p.ss($, ($) => sh.ph.literal("true"))
-        case 'unary operation': return _p.ss($, ($) => {
+        case 'true': return pt.ss($, ($) => sh.ph.literal("true"))
+        case 'unary operation': return pt.ss($, ($) => {
             const operand = $.operand
             return sh.ph.composed([
-                _p.decide.state($.operator, ($) => {
+                pt.decide.state($.operator, ($) => {
                     switch ($[0]) {
-                        case 'negation': return _p.ss($, ($) => sh.ph.literal("-"))
-                        case 'logical not': return _p.ss($, ($) => sh.ph.literal("!"))
-                        default: return _p.au($[0])
+                        case 'negation': return pt.ss($, ($) => sh.ph.literal("-"))
+                        case 'logical not': return pt.ss($, ($) => sh.ph.literal("!"))
+                        default: return pt.au($[0])
                     }
                 }),
                 Expression(operand, $p)
             ])
         })
-        default: return _p.au($[0])
+        default: return pt.au($[0])
     }
 })
 
@@ -833,10 +833,10 @@ export const Type = (
     $p: {
         'replace empty type literals by symbol': boolean
     }
-): d_out.Phrase => _p.decide.state($, ($) => {
+): d_out.Phrase => pt.decide.state($, ($) => {
     switch ($[0]) {
-        case 'boolean': return _p.ss($, ($) => sh.ph.literal("boolean"))
-        case 'function': return _p.ss($, ($) => sh.ph.composed([
+        case 'boolean': return pt.ss($, ($) => sh.ph.literal("boolean"))
+        case 'function': return pt.ss($, ($) => sh.ph.composed([
             sh.ph.rich(
                 $['type parameters'].__l_map(($) => Type($, $p)),
                 sh.ph.nothing(),
@@ -861,12 +861,12 @@ export const Type = (
             sh.ph.literal(") => "),
             Type($['return'], $p)
         ]))
-        case 'literal type': return _p.ss($, ($) => String_Literal($)) //FIX, implement a switch for the delimiter
-        case 'never': return _p.ss($, ($) => sh.ph.literal("never"))
-        case 'null': return _p.ss($, ($) => sh.ph.literal("null"))
-        case 'number': return _p.ss($, ($) => sh.ph.literal("number"))
-        case 'string': return _p.ss($, ($) => sh.ph.literal("string"))
-        case 'tuple': return _p.ss($, ($) => sh.ph.composed([
+        case 'literal type': return pt.ss($, ($) => String_Literal($)) //FIX, implement a switch for the delimiter
+        case 'never': return pt.ss($, ($) => sh.ph.literal("never"))
+        case 'null': return pt.ss($, ($) => sh.ph.literal("null"))
+        case 'number': return pt.ss($, ($) => sh.ph.literal("number"))
+        case 'string': return pt.ss($, ($) => sh.ph.literal("string"))
+        case 'tuple': return pt.ss($, ($) => sh.ph.composed([
             $.readonly ? sh.ph.literal("readonly ") : sh.ph.nothing(),
             sh.ph.literal("["),
             sh.ph.rich(
@@ -878,22 +878,22 @@ export const Type = (
             ),
             sh.ph.literal("]"),
         ]))
-        case 'type literal': return _p.ss($, ($) => $p['replace empty type literals by symbol'] && _p.boolean.from.list($.properties).is_empty()
+        case 'type literal': return pt.ss($, ($) => $p['replace empty type literals by symbol'] && pt.boolean.from.list($.properties).is_empty()
             ? sh.ph.literal("symbol")
             : sh.ph.composed([
                 sh.ph.literal("{"),
                 sh.ph.indent(
-                    sh.pg.sentences(_p.list.from.list(
+                    sh.pg.sentences(pt.list.from.list(
                         $.properties,
                     ).map(
                         ($) => sh.sentence([
                             sh.ph.composed([
                                 $['readonly'] ? sh.ph.literal("readonly ") : sh.ph.nothing(),
-                                _p.decide.state($.key, ($) => {
+                                pt.decide.state($.key, ($) => {
                                     switch ($[0]) {
-                                        case 'identifier': return _p.ss($, ($) => Identifier($))
-                                        case 'string literal': return _p.ss($, ($) => String_Literal($))
-                                        default: return _p.au($[0])
+                                        case 'identifier': return pt.ss($, ($) => Identifier($))
+                                        case 'string literal': return pt.ss($, ($) => String_Literal($))
+                                        default: return pt.au($[0])
                                     }
                                 }),
                                 sh.ph.literal(": "),
@@ -904,13 +904,13 @@ export const Type = (
                 sh.ph.literal("}")
             ])
         )
-        case 'type reference': return _p.ss($, ($) => sh.ph.composed([
+        case 'type reference': return pt.ss($, ($) => sh.ph.composed([
             Identifier($['start']),
             sh.ph.composed($['tail'].__l_map(($) => sh.ph.composed([
                 sh.ph.literal("."),
                 Identifier($),
             ]))),
-            _p.boolean.from.list($['type arguments']).is_empty()
+            pt.boolean.from.list($['type arguments']).is_empty()
                 ? sh.ph.nothing()
                 : sh.ph.composed([
                     sh.ph.literal("<"),
@@ -924,13 +924,13 @@ export const Type = (
                     sh.ph.literal(">"),
                 ]),
         ]))
-        case 'union': return _p.ss($, ($) => sh.ph.indent(
+        case 'union': return pt.ss($, ($) => sh.ph.indent(
             sh.pg.sentences($.__l_map(($) => sh.sentence([
                 sh.ph.literal("| "),
                 Type($, $p),
             ])))
         ))
-        case 'void': return _p.ss($, ($) => sh.ph.literal("void"))
-        default: return _p.au($[0])
+        case 'void': return pt.ss($, ($) => sh.ph.literal("void"))
+        default: return pt.au($[0])
     }
 })

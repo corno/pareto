@@ -1,9 +1,9 @@
-import * as _p from 'pareto-core/dist/assign'
-import * as _pi from 'pareto-core/dist/interface'
-import _p_change_context from 'pareto-core/dist/_p_change_context'
-import _p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
-import _p_text_from_list from 'pareto-core/dist/_p_text_from_list'
-import _p_list_from_text from 'pareto-core/dist/_p_list_from_text'
+import * as pt from 'pareto-core/dist/assign'
+import * as pi from 'pareto-core/dist/interface'
+import p_change_context from 'pareto-core/dist/_p_change_context'
+import p_list_build_deprecated from 'pareto-core/dist/_p_list_build_deprecated'
+import p_text_from_list from 'pareto-core/dist/_p_text_from_list'
+import p_list_from_text from 'pareto-core/dist/_p_list_from_text'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/interface/data/resolved"
 import * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data"
@@ -22,35 +22,35 @@ export const temp_create_file_path = (
     delimiter: 'apostrophe' | 'quote',
 ): d_out.String_Literal => {
     const valid_file_name = ($: string): string => {
-        return _p_text_from_list(
+        return p_text_from_list(
             s_file_name($),
             ($) => $
         )
     }
     const do_tail = (): string => {
-        return _p_text_from_list(
-            _p.list.from.list(
+        return p_text_from_list(
+            pt.list.from.list(
                 $.tail.__l_map(($) => `/${valid_file_name($)}`),
             ).flatten(
-                ($) => _p_list_from_text($, ($) => $)
+                ($) => p_list_from_text($, ($) => $)
             ),
             ($) => $
         )
     }
     return {
-        'value': _p.decide.state($.type, ($): string => {
+        'value': pt.decide.state($.type, ($): string => {
             switch ($[0]) {
-                case 'external': return _p.ss($, ($) => valid_file_name($) + do_tail())
-                case 'ancestor': return _p.ss($, ($) => _p_text_from_list(
-                    _p.list.from.list(
-                        _p.list.repeat(_p_list_from_text("../", ($) => $), $['number of steps']),
+                case 'external': return pt.ss($, ($) => valid_file_name($) + do_tail())
+                case 'ancestor': return pt.ss($, ($) => p_text_from_list(
+                    pt.list.from.list(
+                        pt.list.repeat(p_list_from_text("../", ($) => $), $['number of steps']),
                     ).flatten(
                         ($) => $
                     ),
                     ($) => $
                 ) + valid_file_name($.dependency) + do_tail())
-                case 'sibling': return _p.ss($, ($) => `./${valid_file_name($)}` + do_tail())
-                default: return _p.au($[0])
+                case 'sibling': return pt.ss($, ($) => `./${valid_file_name($)}` + do_tail())
+                default: return pt.au($[0])
             }
         }),
         'delimiter': delimiter === 'apostrophe' ? ['apostrophe', null] : ['quote', null]
@@ -59,14 +59,14 @@ export const temp_create_file_path = (
 
 const temp_rename = (
     $: d_in.Package_Set,
-    abort: _pi.Abort<d_function.Error>
+    abort: pi.Abort<d_function.Error>
 ): d_in.Package_Set => {
     const renamed: { [id: string]: d_in.Package_Set.D } = {}
     $.__d_map(($, id) => {
-        const new_id: string = _p.decide.state($, ($) => {
+        const new_id: string = pt.decide.state($, ($) => {
             switch ($[0]) {
-                case 'package': return _p.ss($, ($) => id + ".ts")
-                case 'set': return _p.ss($, ($) => {
+                case 'package': return pt.ss($, ($) => id + ".ts")
+                case 'set': return pt.ss($, ($) => {
                     const ends_with_ts = ($s: string): boolean => {
                         return false //implement properly later
                     }
@@ -75,37 +75,37 @@ const temp_rename = (
                     }
                     return id
                 })
-                default: return _p.au($[0])
+                default: return pt.au($[0])
             }
         })
         renamed[new_id] = $
         return null
     })
-    return _p.dictionary.literal(renamed)
+    return pt.dictionary.literal(renamed)
 }
 
 
 export const Package_Set = (
     $: d_in.Package_Set,
-    abort: _pi.Abort<d_function.Error>
+    abort: pi.Abort<d_function.Error>
 ): d_out.Directory => {
-    return temp_rename($, abort).__d_map(($) => _p.decide.state($, ($) => {
+    return temp_rename($, abort).__d_map(($) => pt.decide.state($, ($) => {
         switch ($[0]) {
-            case 'package': return _p.ss($, ($) => {
+            case 'package': return pt.ss($, ($) => {
 
-                return sh.n.file(_p.list.nested_literal_old<d_out.Statements_.L>([
+                return sh.n.file(pt.list.nested_literal_old<d_out.Statements_.L>([
                     [
-                        sh.s.import_namespace(sh.identifier_raw("_pi"), sh.string_literal("pareto-core/dist/interface", 'apostrophe')),
+                        sh.s.import_namespace(sh.identifier_raw("pi"), sh.string_literal("pareto-core/dist/interface", 'apostrophe')),
                     ],
 
-                    _p.list.from.dictionary($.imports,).convert(($, id): d_out.Statements_.L => sh.s.import_namespace(
+                    pt.list.from.dictionary($.imports,).convert(($, id): d_out.Statements_.L => sh.s.import_namespace(
                         sh.identifier_escaped(`i ${id}`),
                         temp_create_file_path($, 'quote')
                     )),
 
-                    _p.decide.state($.content, ($) => {
+                    pt.decide.state($.content, ($) => {
                         switch ($[0]) {
-                            case 'data modules': return _p.ss($, ($) => _p.list.from.dictionary(
+                            case 'data modules': return pt.ss($, ($) => pt.list.from.dictionary(
                                 $,
                             ).flatten(
                                 ($, id): d_out.Statements => Value(
@@ -116,16 +116,16 @@ export const Package_Set = (
                                     }
                                 )
                             ))
-                            case 'functions': return _p.ss($, ($) => _p.list.from.dictionary(
+                            case 'functions': return pt.ss($, ($) => pt.list.from.dictionary(
                                 $
                             ).flatten(
                                 ($, id): d_out.Statements => {
                                     const name = id + " "
-                                    return _p.list.literal([
+                                    return pt.list.literal([
                                         sh.s.namespace(
                                             true,
                                             sh.identifier_escaped(name),
-                                            _p.list.nested_literal_old<d_out.Statements_.L>([
+                                            pt.list.nested_literal_old<d_out.Statements_.L>([
                                                 Value(
                                                     $.context,
                                                     {
@@ -138,10 +138,10 @@ export const Package_Set = (
                                                         'name': "O",
                                                     }
                                                 ),
-                                                _p.decide.state($.type, ($): d_out.Statements => {
+                                                pt.decide.state($.type, ($): d_out.Statements => {
                                                     switch ($[0]) {
-                                                        case 'transformer': return _p.ss($, ($) => _p.list.literal([]))
-                                                        case 'refiner': return _p.ss($, ($): d_out.Statements => _p.list.nested_literal_old<d_out.Statements.L>([
+                                                        case 'transformer': return pt.ss($, ($) => pt.list.literal([]))
+                                                        case 'refiner': return pt.ss($, ($): d_out.Statements => pt.list.nested_literal_old<d_out.Statements.L>([
 
                                                             $.error.__decide<d_out.Statements>(
                                                                 ($) => {
@@ -153,25 +153,25 @@ export const Package_Set = (
                                                                     )
                                                                 },
                                                                 () => {
-                                                                    return _p.list.literal([])
+                                                                    return pt.list.literal([])
                                                                 }
                                                             ),
 
                                                             $.lookups.__decide<d_out.Statements>(
                                                                 ($) => {
-                                                                    return _p.list.from.dictionary(
+                                                                    return pt.list.from.dictionary(
                                                                         $,
                                                                     ).convert(
                                                                         ($, id) => sh.s.namespace(
                                                                             true,
                                                                             sh.identifier_raw("L"),
                                                                             Value(
-                                                                                _p.decide.state($, ($) => {
+                                                                                pt.decide.state($, ($) => {
                                                                                     switch ($[0]) {
-                                                                                        case 'acyclic': return _p.ss($, ($) => $)
-                                                                                        case 'cyclic': return _p.ss($, ($) => $)
-                                                                                        case 'stack': return _p.ss($, ($) => $)
-                                                                                        default: return _p.au($[0])
+                                                                                        case 'acyclic': return pt.ss($, ($) => $)
+                                                                                        case 'cyclic': return pt.ss($, ($) => $)
+                                                                                        case 'stack': return pt.ss($, ($) => $)
+                                                                                        default: return pt.au($[0])
                                                                                     }
                                                                                 }),
                                                                                 {
@@ -182,11 +182,11 @@ export const Package_Set = (
                                                                     )
                                                                 },
                                                                 () => {
-                                                                    return _p.list.literal([])
+                                                                    return pt.list.literal([])
                                                                 }
                                                             ),
                                                         ]))
-                                                        default: return _p.au($[0])
+                                                        default: return pt.au($[0])
                                                     }
                                                 }),
                                                 [
@@ -194,7 +194,7 @@ export const Package_Set = (
                                                         true,
                                                         sh.identifier_raw("P"),
                                                         $.parameters.__decide(
-                                                            ($) => _p.list.from.dictionary(
+                                                            ($) => pt.list.from.dictionary(
                                                                 $,
                                                             ).flatten(
                                                                 ($, id) => Value(
@@ -204,7 +204,7 @@ export const Package_Set = (
                                                                     }
                                                                 )
                                                             ),
-                                                            () => _p.list.literal<d_out.Statements_.L>([])
+                                                            () => pt.list.literal<d_out.Statements_.L>([])
                                                         )
                                                     )
                                                 ]
@@ -216,7 +216,7 @@ export const Package_Set = (
                                             [],
                                             sh.t.function_(
                                                 [],
-                                                _p.list.nested_literal_old([
+                                                pt.list.nested_literal_old([
                                                     [
                                                         sh.parameter(
                                                             sh.identifier_raw("context"),
@@ -224,18 +224,18 @@ export const Package_Set = (
                                                         ),
                                                     ],
 
-                                                    _p.decide.state($.type, ($) => {
+                                                    pt.decide.state($.type, ($) => {
                                                         switch ($[0]) {
-                                                            case 'transformer': return _p.ss($, ($): d_out.Type.function_.parameters => _p.list.literal([]))
-                                                            case 'refiner': return _p.ss($, ($): d_out.Type.function_.parameters => _p.list.nested_literal_old([
+                                                            case 'transformer': return pt.ss($, ($): d_out.Type.function_.parameters => pt.list.literal([]))
+                                                            case 'refiner': return pt.ss($, ($): d_out.Type.function_.parameters => pt.list.nested_literal_old([
 
                                                                 $.error.__decide(
-                                                                    ($) => _p.list.literal([
+                                                                    ($) => pt.list.literal([
 
                                                                         sh.parameter(
                                                                             sh.identifier_raw("abort"),
                                                                             sh.t.type_reference(
-                                                                                sh.identifier_raw("_pi"),
+                                                                                sh.identifier_raw("pi"),
                                                                                 [sh.identifier_raw("Abort")],
                                                                                 [
                                                                                     sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("E")], []),
@@ -244,11 +244,11 @@ export const Package_Set = (
 
                                                                         ),
                                                                     ]),
-                                                                    () => _p.list.literal([])
+                                                                    () => pt.list.literal([])
                                                                 ),
 
                                                                 $.lookups.__decide(
-                                                                    ($) => _p.list.literal([
+                                                                    ($) => pt.list.literal([
 
                                                                         sh.parameter(
                                                                             sh.identifier_raw("lookups"),
@@ -258,14 +258,14 @@ export const Package_Set = (
                                                                                     'apostrophized string literal',
                                                                                     true,
                                                                                     sh.t.type_reference(
-                                                                                        sh.identifier_raw("_pi"),
+                                                                                        sh.identifier_raw("pi"),
                                                                                         [
-                                                                                            sh.identifier_raw(_p.decide.state($, ($) => {
+                                                                                            sh.identifier_raw(pt.decide.state($, ($) => {
                                                                                                 switch ($[0]) {
-                                                                                                    case 'acyclic': return _p.ss($, ($) => "static_lookup.Acyclic")
-                                                                                                    case 'cyclic': return _p.ss($, ($) => "static_lookup.Cyclic")
-                                                                                                    case 'stack': return _p.ss($, ($) => "static_lookup.Stack")
-                                                                                                    default: return _p.au($[0])
+                                                                                                    case 'acyclic': return pt.ss($, ($) => "static_lookup.Acyclic")
+                                                                                                    case 'cyclic': return pt.ss($, ($) => "static_lookup.Cyclic")
+                                                                                                    case 'stack': return pt.ss($, ($) => "static_lookup.Stack")
+                                                                                                    default: return pt.au($[0])
                                                                                                 }
                                                                                             }))
                                                                                         ],
@@ -278,14 +278,14 @@ export const Package_Set = (
                                                                         )
 
                                                                     ]),
-                                                                    () => _p.list.literal([])
+                                                                    () => pt.list.literal([])
                                                                 )
                                                             ]))
-                                                            default: return _p.au($[0])
+                                                            default: return pt.au($[0])
                                                         }
                                                     }),
                                                     $.parameters.__decide(
-                                                        ($) => _p.list.literal([
+                                                        ($) => pt.list.literal([
 
                                                             sh.parameter(
                                                                 sh.identifier_raw("parameters"),
@@ -300,7 +300,7 @@ export const Package_Set = (
                                                             ),
 
                                                         ]),
-                                                        () => _p.list.literal([])
+                                                        () => pt.list.literal([])
                                                     ),
                                                 ]),
                                                 sh.t.type_reference(sh.identifier_escaped(name), [sh.identifier_raw("O")], []),
@@ -309,25 +309,25 @@ export const Package_Set = (
                                     ])
                                 }
                             ))
-                            default: return _p.au($[0])
+                            default: return pt.au($[0])
                         }
                     }),
 
                     [
                         sh.s.export_(
-                            _p.decide.state($.content, ($) => {
+                            pt.decide.state($.content, ($) => {
                                 switch ($[0]) {
-                                    case 'data modules': return _p.ss($, ($) => _p.list.from.dictionary(
+                                    case 'data modules': return pt.ss($, ($) => pt.list.from.dictionary(
                                         $,
                                     ).convert(
                                         ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
                                     ))
-                                    case 'functions': return _p.ss($, ($) => _p.list.from.dictionary(
+                                    case 'functions': return pt.ss($, ($) => pt.list.from.dictionary(
                                         $,
                                     ).convert(
                                         ($, id) => sh.specifier(sh.identifier_escaped(id + " "), sh.identifier_escaped(id))
                                     ))
-                                    default: return _p.au($[0])
+                                    default: return pt.au($[0])
                                 }
                             }),
                             null,
@@ -337,8 +337,8 @@ export const Package_Set = (
 
                 ]))
             })
-            case 'set': return _p.ss($, ($) => ['directory', Package_Set($, abort)])
-            default: return _p.au($[0])
+            case 'set': return pt.ss($, ($) => ['directory', Package_Set($, abort)])
+            default: return pt.au($[0])
         }
     }))
 }
@@ -349,51 +349,51 @@ export const Value = (
         'name': string
     }
 ): d_out.Statements => {
-    return _p.decide.state($, ($): d_out.Statements => {
+    return pt.decide.state($, ($): d_out.Statements => {
         switch ($[0]) {
 
 
 
-            case 'boolean': return _p.ss($, ($) => _p.list.literal([
+            case 'boolean': return pt.ss($, ($) => pt.list.literal([
                 sh.s.type_alias(
                     true,
                     sh.identifier_escaped($p.name),
-                    _p.list.literal([]),
+                    pt.list.literal([]),
                     sh.t.boolean()
                 )
             ]))
-            case 'component': return _p.ss($, ($) => _p.list.literal([
+            case 'component': return pt.ss($, ($) => pt.list.literal([
                 sh.s.type_alias(
                     true,
                     sh.identifier_escaped($p.name),
-                    _p.list.literal([]),
-                    _p.decide.state($.location, ($) => {
+                    pt.list.literal([]),
+                    pt.decide.state($.location, ($) => {
                         switch ($[0]) {
-                            case 'import': return _p.ss($, ($) => sh.t.type_reference(
+                            case 'import': return pt.ss($, ($) => sh.t.type_reference(
                                 sh.identifier_escaped("i " + $.import),
-                                _p.list.nested_literal_old([
+                                pt.list.nested_literal_old([
                                     [
                                         sh.identifier_escaped($.type)
                                     ],
                                 ]),
                                 []
                             ))
-                            case 'local': return _p.ss($, ($) => sh.t.type_reference(
+                            case 'local': return pt.ss($, ($) => sh.t.type_reference(
                                 sh.identifier_escaped($ + " "),
                                 //tail
-                                _p.list.nested_literal_old([]),
+                                pt.list.nested_literal_old([]),
                                 []
                             ))
-                            default: return _p.au($[0])
+                            default: return pt.au($[0])
                         }
                     })
                 )
             ]))
-            case 'dictionary': return _p.ss($, ($) => _p.list.literal([
+            case 'dictionary': return pt.ss($, ($) => pt.list.literal([
                 sh.s.namespace(
                     true,
                     sh.identifier_escaped($p.name),
-                    _p.list.nested_literal_old<d_out.Statements_.L>([
+                    pt.list.nested_literal_old<d_out.Statements_.L>([
                         Value(
                             $,
                             {
@@ -405,18 +405,18 @@ export const Value = (
                 sh.s.type_alias(
                     true,
                     sh.identifier_escaped($p.name),
-                    _p.list.literal([]),
-                    sh.t.type_reference(sh.identifier_raw("_pi"), [sh.identifier_raw("Dictionary")], [
+                    pt.list.literal([]),
+                    sh.t.type_reference(sh.identifier_raw("pi"), [sh.identifier_raw("Dictionary")], [
                         sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_raw("D")], [])
                     ])
                 )
             ]))
-            case 'group': return _p.ss($, ($) => _p.list.nested_literal_old([
+            case 'group': return pt.ss($, ($) => pt.list.nested_literal_old([
                 [
                     sh.s.namespace(
                         true,
                         sh.identifier_escaped($p.name),
-                        _p.list.from.dictionary(
+                        pt.list.from.dictionary(
                             $
                         ).flatten(
                             ($, id) => Value(
@@ -430,7 +430,7 @@ export const Value = (
                     sh.s.type_alias(
                         true,
                         sh.identifier_escaped($p.name),
-                        _p.list.literal([]),
+                        pt.list.literal([]),
                         sh.t.type_literal($.__to_list(($, id) => sh.tl_propery(
                             id,
                             'apostrophized string literal',
@@ -440,11 +440,11 @@ export const Value = (
                     )
                 ]
             ]))
-            case 'list': return _p.ss($, ($) => _p.list.literal([
+            case 'list': return pt.ss($, ($) => pt.list.literal([
                 sh.s.namespace(
                     true,
                     sh.identifier_escaped($p.name),
-                    _p.list.nested_literal_old<d_out.Statements_.L>([
+                    pt.list.nested_literal_old<d_out.Statements_.L>([
                         Value(
                             $,
                             {
@@ -456,33 +456,33 @@ export const Value = (
                 sh.s.type_alias(
                     true,
                     sh.identifier_escaped($p.name),
-                    _p.list.literal([]),
-                    sh.t.type_reference(sh.identifier_raw("_pi"), [sh.identifier_raw("List")], [
+                    pt.list.literal([]),
+                    sh.t.type_reference(sh.identifier_raw("pi"), [sh.identifier_raw("List")], [
                         sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_raw("L")], [])
                     ])
                 )
             ]))
-            case 'nothing': return _p.ss($, ($) => _p.list.literal([
+            case 'nothing': return pt.ss($, ($) => pt.list.literal([
                 sh.s.type_alias(
                     true,
                     sh.identifier_escaped($p.name),
-                    _p.list.literal([]),
+                    pt.list.literal([]),
                     sh.t.null_()
                 )
             ]))
-            case 'number': return _p.ss($, ($) => _p.list.literal([
+            case 'number': return pt.ss($, ($) => pt.list.literal([
                 sh.s.type_alias(
                     true,
                     sh.identifier_escaped($p.name),
-                    _p.list.literal([]),
+                    pt.list.literal([]),
                     sh.t.number()
                 )
             ]))
-            case 'optional': return _p.ss($, ($) => _p.list.literal([
+            case 'optional': return pt.ss($, ($) => pt.list.literal([
                 sh.s.namespace(
                     true,
                     sh.identifier_escaped($p.name),
-                    _p.list.nested_literal_old<d_out.Statements_.L>([
+                    pt.list.nested_literal_old<d_out.Statements_.L>([
                         Value(
                             $,
                             {
@@ -494,50 +494,50 @@ export const Value = (
                 sh.s.type_alias(
                     true,
                     sh.identifier_escaped($p.name),
-                    _p.list.literal([]),
-                    sh.t.type_reference(sh.identifier_raw("_pi"), [sh.identifier_raw("Optional_Value")], [
+                    pt.list.literal([]),
+                    sh.t.type_reference(sh.identifier_raw("pi"), [sh.identifier_raw("Optional_Value")], [
                         sh.t.type_reference(sh.identifier_escaped($p.name), [sh.identifier_raw("O")], [])
                     ])
                 )
             ]))
-            case 'reference': return _p.ss($, ($) => _p.list.literal([
+            case 'reference': return pt.ss($, ($) => pt.list.literal([
                 sh.s.type_alias(
                     true,
                     sh.identifier_escaped($p.name),
-                    _p.list.literal([]),
-                    _p_change_context($, ($) => {
+                    pt.list.literal([]),
+                    p_change_context($, ($) => {
                         const foo = sh.t.type_reference(
 
                             //start
-                            _p.decide.state($.location, ($) => {
+                            pt.decide.state($.location, ($) => {
                                 switch ($[0]) {
-                                    case 'import': return _p.ss($, ($) => sh.identifier_escaped("i " + $.import))
-                                    case 'local': return _p.ss($, ($) => sh.identifier_escaped($ + " "))
-                                    default: return _p.au($[0])
+                                    case 'import': return pt.ss($, ($) => sh.identifier_escaped("i " + $.import))
+                                    case 'local': return pt.ss($, ($) => sh.identifier_escaped($ + " "))
+                                    default: return pt.au($[0])
                                 }
                             }),
                             //tail
-                            _p.list.nested_literal_old([
-                                _p.decide.state($.location, ($) => {
+                            pt.list.nested_literal_old([
+                                pt.decide.state($.location, ($) => {
                                     switch ($[0]) {
-                                        case 'import': return _p.ss($, ($) => _p.list.literal([
+                                        case 'import': return pt.ss($, ($) => pt.list.literal([
                                             sh.identifier_escaped($.type + " ")
                                         ]))
-                                        case 'local': return _p.ss($, ($) => _p.list.literal([]))
-                                        default: return _p.au($[0])
+                                        case 'local': return pt.ss($, ($) => pt.list.literal([]))
+                                        default: return pt.au($[0])
                                     }
                                 }),
-                                _p.list.from.list(
+                                pt.list.from.list(
                                     $['sub selection'],
                                 ).flatten(
-                                    ($) => _p.decide.state($, ($) => {
+                                    ($) => pt.decide.state($, ($) => {
                                         switch ($[0]) {
-                                            case 'dictionary': return _p.ss($, ($) => _p.list.literal([sh.identifier_raw("D")]))
-                                            case 'group': return _p.ss($, ($) => _p.list.literal([sh.identifier_escaped($)]))
-                                            case 'list': return _p.ss($, ($) => _p.list.literal([sh.identifier_raw("L")]))
-                                            case 'optional': return _p.ss($, ($) => _p.list.literal([sh.identifier_raw("O")]))
-                                            case 'state': return _p.ss($, ($) => _p.list.literal([sh.identifier_escaped($)]))
-                                            default: return _p.au($[0])
+                                            case 'dictionary': return pt.ss($, ($) => pt.list.literal([sh.identifier_raw("D")]))
+                                            case 'group': return pt.ss($, ($) => pt.list.literal([sh.identifier_escaped($)]))
+                                            case 'list': return pt.ss($, ($) => pt.list.literal([sh.identifier_raw("L")]))
+                                            case 'optional': return pt.ss($, ($) => pt.list.literal([sh.identifier_raw("O")]))
+                                            case 'state': return pt.ss($, ($) => pt.list.literal([sh.identifier_escaped($)]))
+                                            default: return pt.au($[0])
                                         }
                                     }),
                                 ),
@@ -546,7 +546,7 @@ export const Value = (
                         )
                         return $.cyclic
                             ? sh.t.type_reference(
-                                sh.identifier_raw("_pi"),
+                                sh.identifier_raw("pi"),
                                 [sh.identifier_raw("Circular_Dependency")],
                                 [foo]
                             )
@@ -555,12 +555,12 @@ export const Value = (
 
                 )
             ]))
-            case 'state': return _p.ss($, ($) => _p.list.nested_literal_old([
+            case 'state': return pt.ss($, ($) => pt.list.nested_literal_old([
                 [
                     sh.s.namespace(
                         true,
                         sh.identifier_escaped($p.name),
-                        _p.list.from.dictionary(
+                        pt.list.from.dictionary(
                             $,
                         ).flatten(
                             ($, id) => Value(
@@ -574,8 +574,8 @@ export const Value = (
                     sh.s.type_alias(
                         true,
                         sh.identifier_escaped($p.name),
-                        _p.list.literal([]),
-                        _p.boolean.from.dictionary($).is_empty()
+                        pt.list.literal([]),
+                        pt.boolean.from.dictionary($).is_empty()
                             ? sh.t.never()
                             : sh.t.union(
                                 $.__to_list(
@@ -588,15 +588,15 @@ export const Value = (
                     )
                 ]
             ]))
-            case 'text': return _p.ss($, ($) => _p.list.literal([
+            case 'text': return pt.ss($, ($) => pt.list.literal([
                 sh.s.type_alias(
                     true,
                     sh.identifier_escaped($p.name),
-                    _p.list.literal([]),
+                    pt.list.literal([]),
                     sh.t.string()
                 )
             ]))
-            default: return _p.au($[0])
+            default: return pt.au($[0])
         }
     })
 }
