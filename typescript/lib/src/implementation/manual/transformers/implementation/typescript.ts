@@ -1,8 +1,8 @@
-import * as pt from 'pareto-core/dist/assign'
+import * as pt from 'pareto-core/dist/transformer/implementation'
 import * as p_di from 'pareto-core/dist/data/interface'
 import p_implement_me from 'pareto-core-dev/dist/implement_me'
 import p_variables from 'pareto-core/dist/specials/variables'
-import * as p_i from 'pareto-core/dist/interface'
+import * as p_ri from 'pareto-core/dist/refiner/interface'
 
 //data types
 import * as d_in from "../../../../interface/generated/liana/schemas/implementation/data/resolved"
@@ -24,10 +24,14 @@ const join = ($: p_di.List<string>): string => {
     return out
 }
 
-const temp_rename = (
-    $: d_in.Package_Set,
-    abort: p_i.Abort<d_function.Error>
-): d_in.Package_Set => {
+const temp_rename: p_ri.Refiner<
+    d_in.Package_Set,
+    d_function.Error,
+    d_in.Package_Set
+> = (
+    $,
+    abort
+) => {
     const renamed: { [id: string]: d_in.Package_Set.D } = {}
     $.__d_map(($, id) => {
         const new_id: string = pt.decide.state($, ($) => {
@@ -52,10 +56,14 @@ const temp_rename = (
 }
 
 
-export const Package_Set = (
-    $: d_in.Package_Set,
-    abort: p_i.Abort<d_function.Error>
-): d_out.Directory => {
+export const Package_Set: p_ri.Refiner<
+    d_out.Directory,
+    d_function.Error,
+    d_in.Package_Set
+> = (
+    $,
+    abort
+) => {
     return temp_rename($, abort).__d_map(($, id) => pt.decide.state($, ($) => {
         switch ($[0]) {
             case 'package': return pt.ss($, ($): d_out.Directory.D => {

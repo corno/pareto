@@ -1,5 +1,5 @@
-import * as pt from 'pareto-core/dist/assign'
-import * as p_i from 'pareto-core/dist/interface'
+import * as pt from 'pareto-core/dist/transformer/implementation'
+import * as p_ri from 'pareto-core/dist/refiner/interface'
 
 //data types
 import * as d_in_inf from "../../../../interface/generated/liana/schemas/interface/data/resolved"
@@ -25,25 +25,24 @@ import * as sh from "../../../../modules/typescript_light/shorthands/typescript_
 // import * as signatures from "../interface/signatures"
 
 
-export const Temp_Library = (
-    $: d_in.Temp_Library,
-    abort: p_i.Abort<d_function.Error>
-    // $p: {
-    //     'phase': 'development' | 'production'
-    // }
-): d_out.Directory => {
-    return pt.dictionary.literal<d_out.Directory.D>({
-        "interface": sh.n.directory(t_interface_to_typescript_temp.Package_Set(
-            $.interface,
-            abort,
-        )),
-        "implementation": sh.n.directory(t_implementation_to_typescript_temp.Package_Set(
-            $.implementation,
-            abort,
-            // {
-            //     'phase': $p.phase,
-            // }
-        )),
-        //FIX: "generic"
-    })
-}
+export const Temp_Library: p_ri.Refiner<
+    d_out.Directory,
+    d_function.Error,
+    d_in.Temp_Library
+> = (
+    $,
+    abort
+) => pt.dictionary.literal<d_out.Directory.D>({
+    "interface": sh.n.directory(t_interface_to_typescript_temp.Package_Set(
+        $.interface,
+        abort,
+    )),
+    "implementation": sh.n.directory(t_implementation_to_typescript_temp.Package_Set(
+        $.implementation,
+        abort,
+        // {
+        //     'phase': $p.phase,
+        // }
+    )),
+    //FIX: "generic"
+})

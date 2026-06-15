@@ -1,5 +1,5 @@
-import * as pt from 'pareto-core/dist/assign'
-import * as p_i from 'pareto-core/dist/interface'
+import * as pt from 'pareto-core/dist/transformer/implementation'
+import * as p_ri from 'pareto-core/dist/refiner/interface'
 import p_change_context from 'pareto-core/dist/specials/change_context'
 import p_text_from_list from 'pareto-core/dist/specials/text_from_list'
 import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
@@ -56,10 +56,14 @@ export const temp_create_file_path = (
     }
 }
 
-const temp_rename = (
-    $: d_in.Package_Set,
-    abort: p_i.Abort<d_function.Error>
-): d_in.Package_Set => {
+const temp_rename: p_ri.Refiner<
+    d_in.Package_Set,
+    d_function.Error,
+    d_in.Package_Set
+> = (
+    $,
+    abort
+) => {
     const renamed: { [id: string]: d_in.Package_Set.D } = {}
     $.__d_map(($, id) => {
         const new_id: string = pt.decide.state($, ($) => {
@@ -84,17 +88,21 @@ const temp_rename = (
 }
 
 
-export const Package_Set = (
-    $: d_in.Package_Set,
-    abort: p_i.Abort<d_function.Error>
-): d_out.Directory => {
+export const Package_Set: p_ri.Refiner<
+    d_out.Directory,
+    d_function.Error,
+    d_in.Package_Set
+> = (
+    $,
+    abort
+) => {
     return temp_rename($, abort).__d_map(($) => pt.decide.state($, ($) => {
         switch ($[0]) {
             case 'package': return pt.ss($, ($) => {
 
                 return sh.n.file(pt.list.nested_literal_old<d_out.Statements_.L>([
                     [
-                        sh.s.import_namespace(sh.identifier_raw("pi"), sh.string_literal("pareto-core/dist/interface", 'apostrophe')),
+                        sh.s.import_namespace(sh.identifier_raw("p_di"), sh.string_literal("pareto-core/dist/data/interface", 'apostrophe')),
                     ],
 
                     pt.list.from.dictionary($.imports,).convert(($, id): d_out.Statements_.L => sh.s.import_namespace(
