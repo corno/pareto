@@ -1,5 +1,5 @@
 import * as pt from 'pareto-core/dist/transformer/implementation'
-import * as p_ti from 'pareto-core/dist/transformer/interface'
+import * as p_i from 'pareto-core/dist/transformer/interface'
 import * as p_di from 'pareto-core/dist/data/interface'
 import p_list_from_text from 'pareto-core/dist/specials/list_from_text'
 import p_list_build_deprecated from 'pareto-core/dist/specials/list_build_deprecated'
@@ -79,7 +79,7 @@ export const escaped_text = (
     }
 )
 
-export const apostrophed_text: p_ti.Transformer<string, d_loc.List_of_Characters> = ($) => pt.literal.nested_list([
+export const apostrophed_text: p_i.Transformer<string, d_loc.List_of_Characters> = ($) => pt.literal.nested_list([
     [
         0x27, // '
     ],
@@ -91,7 +91,7 @@ export const apostrophed_text: p_ti.Transformer<string, d_loc.List_of_Characters
     ]
 ])
 
-export const backticked_text: p_ti.Transformer<string, d_loc.List_of_Characters> = ($) => pt.literal.nested_list([
+export const backticked_text: p_i.Transformer<string, d_loc.List_of_Characters> = ($) => pt.literal.nested_list([
     [
         0x60, // `
     ],
@@ -103,7 +103,7 @@ export const backticked_text: p_ti.Transformer<string, d_loc.List_of_Characters>
     ]
 ])
 
-export const quoted_text: p_ti.Transformer<string, d_loc.List_of_Characters> = ($) => pt.literal.nested_list([
+export const quoted_text: p_i.Transformer<string, d_loc.List_of_Characters> = ($) => pt.literal.nested_list([
     [
         0x22, // "
     ],
@@ -116,7 +116,7 @@ export const quoted_text: p_ti.Transformer<string, d_loc.List_of_Characters> = (
 ])
 
 
-export const decimal: p_ti.Transformer<number, d_loc.List_of_Characters> = ($) => p_list_build_deprecated(($i) => {
+export const decimal: p_i.Transformer<number, d_loc.List_of_Characters> = ($) => p_list_build_deprecated(($i) => {
     if ($ < 0) {
         $i['add item'](45) // '-'
         $ = -$
@@ -146,7 +146,7 @@ export const decimal: p_ti.Transformer<number, d_loc.List_of_Characters> = ($) =
 })
 
 
-export const float: p_ti.Transformer<number, d_loc.List_of_Characters> = ($) => {
+export const float: p_i.Transformer<number, d_loc.List_of_Characters> = ($) => {
     return p_list_build_deprecated(($i) => {
         // Handle special case for zero
         if ($ === 0) {
