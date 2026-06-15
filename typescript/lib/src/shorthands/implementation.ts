@@ -1,4 +1,4 @@
-import * as pt from 'pareto-core-shorthands/dist/unconstrained'
+import * as p_ from 'pareto-core-shorthands/dist/unconstrained'
 import * as p_di from 'pareto-core/dist/interface/data'
 
 import * as d_target from "../interface/generated/liana/schemas/implementation/data/resolved" //THIS IS NOT CORRECT! It should be unresolved
@@ -29,54 +29,54 @@ export namespace vi {
 
     export const external = (
         id: string,
-        tail: pt.Raw_Or_Normal_List<string>,
+        tail: p_.Raw_Or_Normal_List<string>,
     ): d_target.Package.variable_imports.D => ({
         'type': wrap_state(['external', id]),
-        'tail': pt.list(tail),
+        'tail': p_.list(tail),
     })
 
     export const sibling = (
         id: string,
-        tail: pt.Raw_Or_Normal_List<string>,
+        tail: p_.Raw_Or_Normal_List<string>,
     ): d_target.Package.variable_imports.D => ({
         'type': wrap_state(['sibling', id]),
-        'tail': pt.list(tail),
+        'tail': p_.list(tail),
     })
 
     export const ancestor = (
         number_of_steps: number,
         id: string,
-        tail: pt.Raw_Or_Normal_List<string>,
+        tail: p_.Raw_Or_Normal_List<string>,
     ): d_target.Package.variable_imports.D => ({
         'type': wrap_state(['ancestor', {
             'number of steps': number_of_steps,
             'dependency': id,
         }]),
-        'tail': pt.list(tail),
+        'tail': p_.list(tail),
     })
 }
 
 export const type_node_reference = (
     imp: string,
     type: string,
-    sub_selection: pt.Raw_Or_Normal_List<d_target.Temp_Value_Type_Specification.sub_selection.L>,
+    sub_selection: p_.Raw_Or_Normal_List<d_target.Temp_Value_Type_Specification.sub_selection.L>,
 ): d_target.Temp_Value_Type_Specification => ({
     'type': {
         'import': imp,
         'type': type,
     },
-    'sub selection': pt.list(sub_selection)
+    'sub selection': p_.list(sub_selection)
 
 })
 
 export namespace m {
 
     export const set = (
-        entries: pt.Raw_Or_Normal_Dictionary<d_target.Package_Set.D>
-    ): d_target.Package_Set.D => wrap_state(['set', pt.dictionary(entries)])
+        entries: p_.Raw_Or_Normal_Dictionary<d_target.Package_Set.D>
+    ): d_target.Package_Set.D => wrap_state(['set', p_.dictionary(entries)])
 
     export const package_ = (
-        specials: pt.Raw_Or_Normal_List<
+        specials: p_.Raw_Or_Normal_List<
             | 'abort'
             | 'change context'
             | 'implement me'
@@ -87,9 +87,9 @@ export namespace m {
             | 'unreachable code path'
             | 'variables'
         >,
-        type_imports: pt.Raw_Or_Normal_Dictionary<d_target_interface.Imports.D>,
-        variable_imports: pt.Raw_Or_Normal_Dictionary<d_target.Package.variable_imports.D>,
-        functions: pt.Raw_Or_Normal_Dictionary<d_target.Package.functions.D>,
+        type_imports: p_.Raw_Or_Normal_Dictionary<d_target_interface.Imports.D>,
+        variable_imports: p_.Raw_Or_Normal_Dictionary<d_target.Package.variable_imports.D>,
+        functions: p_.Raw_Or_Normal_Dictionary<d_target.Package.functions.D>,
     ): d_target.Package_Set.D => {
         const temp_specials = {
             'abort': false,
@@ -102,7 +102,7 @@ export namespace m {
             'unreachable code path': false,
             'variables': false,
         }
-        pt.list(specials).__l_map(($) => {
+        p_.list(specials).__l_map(($) => {
             switch ($) {
                 case 'abort': temp_specials['abort'] = true; break
                 case 'change context': temp_specials['change context'] = true; break
@@ -118,9 +118,9 @@ export namespace m {
         })
         return wrap_state(['package', {
             'specials': temp_specials,
-            'type imports': pt.dictionary(type_imports),
-            'variable imports': pt.dictionary(variable_imports),
-            'functions': pt.dictionary(functions),
+            'type imports': p_.dictionary(type_imports),
+            'variable imports': p_.dictionary(variable_imports),
+            'functions': p_.dictionary(functions),
         }])
     }
 
@@ -129,7 +129,7 @@ export namespace m {
 export const algorithm = (
     imp: string,
     type: string,
-    specials: pt.Raw_Or_Normal_List<
+    specials: p_.Raw_Or_Normal_List<
         | 'abort'
         | 'lookups'
         | 'parameters'
@@ -139,7 +139,7 @@ export const algorithm = (
     let has_abort = false
     let has_lookups = false
     let has_parameters = false
-    pt.list(specials).__l_map(($) => {
+    p_.list(specials).__l_map(($) => {
         switch ($) {
             case 'abort': has_abort = true; break
             case 'lookups': has_lookups = true; break
@@ -201,36 +201,36 @@ export namespace a {
             'type': wrap_state(['optional', {
                 'if set': if_set,
                 'if not set': if_not_set,
-                'temp resulting node': pt.optional.null_or_value(resulting_type),
+                'temp resulting node': p_.optional.null_or_value(resulting_type),
 
             }])
         }])
 
         export const state = (
             source: d_target.Select_Value,
-            cases: pt.Raw_Or_Normal_Dictionary<d_target.Assign.decide.type_.state.type_.full.options.D>,
+            cases: p_.Raw_Or_Normal_Dictionary<d_target.Assign.decide.type_.state.type_.full.options.D>,
             resulting_type: null | d_target.Temp_Value_Type_Specification,
         ): d_target.Assign => wrap_state(['decide', {
             'source': source,
             'type': wrap_state(['state', {
-                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? pt.optional.not_set() : pt.optional.set(resulting_type),
+                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? p_.optional.not_set() : p_.optional.set(resulting_type),
                 'type': wrap_state(['full', {
-                    'options': pt.dictionary(cases),
+                    'options': p_.dictionary(cases),
                 }])
             }])
         }])
 
         export const state_partial = (
             source: d_target.Select_Value,
-            cases: pt.Raw_Or_Normal_Dictionary<d_target.Assign.decide.type_.state.type_.partial.options.D>,
+            cases: p_.Raw_Or_Normal_Dictionary<d_target.Assign.decide.type_.state.type_.partial.options.D>,
             default_: d_target.Assign,
             resulting_type: null | d_target.Temp_Value_Type_Specification,
         ): d_target.Assign => wrap_state(['decide', {
             'source': source,
             'type': wrap_state(['state', {
-                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? pt.optional.not_set() : pt.optional.set(resulting_type),
+                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? p_.optional.not_set() : p_.optional.set(resulting_type),
                 'type': wrap_state(['partial', {
-                    'options': pt.dictionary(cases),
+                    'options': p_.dictionary(cases),
                     'default': default_
                 }])
             }])
@@ -245,7 +245,7 @@ export namespace a {
         ): d_target.Assign => wrap_state(['decide', {
             'source': source,
             'type': wrap_state(['state', {
-                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? pt.optional.not_set() : pt.optional.set(resulting_type),
+                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? p_.optional.not_set() : p_.optional.set(resulting_type),
                 'type': wrap_state(['single', {
                     'option': option,
                     'if true': if_true,
@@ -256,14 +256,14 @@ export namespace a {
 
         export const text = (
             source: d_target.Select_Value,
-            cases: pt.Raw_Or_Normal_Dictionary<d_target.Assign.decide.type_.text.cases.D>,
+            cases: p_.Raw_Or_Normal_Dictionary<d_target.Assign.decide.type_.text.cases.D>,
             default_: d_target.Assign,
             resulting_type: null | d_target.Temp_Value_Type_Specification,
         ): d_target.Assign => wrap_state(['decide', {
             'source': source,
             'type': wrap_state(['text', {
-                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? pt.optional.not_set() : pt.optional.set(resulting_type),
-                'cases': pt.dictionary(cases),
+                'temp resulting node': (resulting_type === null || resulting_type === undefined) ? p_.optional.not_set() : p_.optional.set(resulting_type),
+                'cases': p_.dictionary(cases),
                 'default': default_
             }])
         }])
@@ -273,8 +273,8 @@ export namespace a {
     export namespace dictionary {
 
         export const literal = (
-            entries: pt.Raw_Or_Normal_Dictionary<d_target.Assign>
-        ): d_target.Assign => wrap_state(['construct', wrap_state(['dictionary', wrap_state(['literal', pt.dictionary(entries)])])])
+            entries: p_.Raw_Or_Normal_Dictionary<d_target.Assign>
+        ): d_target.Assign => wrap_state(['construct', wrap_state(['dictionary', wrap_state(['literal', p_.dictionary(entries)])])])
 
         export namespace from {
 
@@ -311,16 +311,16 @@ export namespace a {
     export namespace group {
 
         export const literal = (
-            properties: pt.Raw_Or_Normal_Dictionary<d_target.Assign>
+            properties: p_.Raw_Or_Normal_Dictionary<d_target.Assign>
         ): d_target.Assign => wrap_state(['construct', wrap_state(['group', wrap_state(['literal', {
-            'properties': pt.dictionary(properties),
+            'properties': p_.dictionary(properties),
             'have dependencies': false,
         }])])])
 
         export const literal_resolve = (
-            properties: pt.Raw_Or_Normal_Dictionary<d_target.Assign>
+            properties: p_.Raw_Or_Normal_Dictionary<d_target.Assign>
         ): d_target.Assign => wrap_state(['construct', wrap_state(['group', wrap_state(['literal', {
-            'properties': pt.dictionary(properties),
+            'properties': p_.dictionary(properties),
             'have dependencies': true,
         }])])])
 
@@ -332,8 +332,8 @@ export namespace a {
     export namespace list {
 
         export const literal = (
-            elements: pt.Raw_Or_Normal_List<d_target.Assign>
-        ): d_target.Assign => wrap_state(['construct', wrap_state(['list', wrap_state(['literal', pt.list(elements)])])])
+            elements: p_.Raw_Or_Normal_List<d_target.Assign>
+        ): d_target.Assign => wrap_state(['construct', wrap_state(['list', wrap_state(['literal', p_.list(elements)])])])
 
         export namespace from {
 
@@ -468,36 +468,36 @@ export namespace a {
     }])])
 
     export const variables = (
-        variables: pt.Raw_Or_Normal_Dictionary<d_target.Assign.special.variables.variables.D>,
+        variables: p_.Raw_Or_Normal_Dictionary<d_target.Assign.special.variables.variables.D>,
         callback: d_target.Assign
     ): d_target.Assign => wrap_state(['special', wrap_state(['variables', {
-        'variables': pt.dictionary(variables),
+        'variables': p_.dictionary(variables),
         'assign': callback
     }])])
 }
 
 export namespace lookups {
 
-    export const pass_through = (): d_target.Select_Value.regular.start.call.lookups => pt.optional.set(wrap_state(['pass through', null]))
+    export const pass_through = (): d_target.Select_Value.regular.start.call.lookups => p_.optional.set(wrap_state(['pass through', null]))
 
     export const initialize = (
-        entries: pt.Raw_Or_Normal_Dictionary<d_target.Select_Value.regular.start.call.lookups.O.initialize.D>
-    ): d_target.Select_Value.regular.start.call.lookups => pt.optional.set(wrap_state(['initialize', pt.dictionary(entries)]))
+        entries: p_.Raw_Or_Normal_Dictionary<d_target.Select_Value.regular.start.call.lookups.O.initialize.D>
+    ): d_target.Select_Value.regular.start.call.lookups => p_.optional.set(wrap_state(['initialize', p_.dictionary(entries)]))
 
-    export const not_set = (): d_target.Select_Value.regular.start.call.lookups => pt.optional.not_set()
+    export const not_set = (): d_target.Select_Value.regular.start.call.lookups => p_.optional.not_set()
 
 }
 
 
 export namespace arguments_ {
 
-    export const pass_through = (): d_target.Select_Value.regular.start.call.arguments_ => pt.optional.set(wrap_state(['pass through', null]))
+    export const pass_through = (): d_target.Select_Value.regular.start.call.arguments_ => p_.optional.set(wrap_state(['pass through', null]))
 
     export const initialize = (
-        entries: pt.Raw_Or_Normal_Dictionary<d_target.Select_Value.regular.start.call.arguments_.O.initialize.D>
-    ): d_target.Select_Value.regular.start.call.arguments_ => pt.optional.set(wrap_state(['initialize', pt.dictionary(entries)]))
+        entries: p_.Raw_Or_Normal_Dictionary<d_target.Select_Value.regular.start.call.arguments_.O.initialize.D>
+    ): d_target.Select_Value.regular.start.call.arguments_ => p_.optional.set(wrap_state(['initialize', p_.dictionary(entries)]))
 
-    export const not_set = (): d_target.Select_Value.regular.start.call.arguments_ => pt.optional.not_set()
+    export const not_set = (): d_target.Select_Value.regular.start.call.arguments_ => p_.optional.not_set()
 
 }
 
@@ -527,49 +527,49 @@ export namespace sv {
         abort: null | d_target.Assign,
         lookups: d_target.Select_Value.regular.start.call.lookups,
         arguments_: d_target.Select_Value.regular.start.call.arguments_,
-        tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state(['call', {
             'source': source,
             'context': context,
-            'abort': abort === null ? pt.optional.not_set() : pt.optional.set(abort),
+            'abort': abort === null ? p_.optional.not_set() : p_.optional.set(abort),
             'lookups': lookups,
             'arguments': arguments_,
         }]),
-        'tail': pt.list(tail),
+        'tail': p_.list(tail),
     }])
 
     export const context = (
-        tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state(['context', null]),
-        'tail': pt.list(tail),
+        'tail': p_.list(tail),
     }])
 
     export const dictionary_entry = (
         dictionary: d_target.Select_Value,
         id: d_target.Assign,
         no_such_entry_handler: d_target.Assign,
-        tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state<d_target.Select_Value.regular.start>(['dictionary entry', {
             'dictionary': dictionary,
             'id': id,
             'no such entry handler': no_such_entry_handler
         }]),
-        'tail': pt.list(tail),
+        'tail': p_.list(tail),
     }])
 
     export const p_list_from_text = (
         source: d_target.Select_Value,
         character_handler: d_target.Assign,
-        tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state<d_target.Select_Value.regular.start>(['list from text', {
             'source': source,
             'assign item': character_handler,
         }]),
-        'tail': pt.list(tail),
+        'tail': p_.list(tail),
     }])
 
     export const lookup_entry_stack = (
@@ -578,7 +578,7 @@ export namespace sv {
         no_such_entry_handler: d_target.Assign,
         no_context_lookup_handler: d_target.Assign,
         cycle_detected_handler: d_target.Assign,
-        // tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        // tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state<d_target.Select_Value.regular.start>(['lookup entry', {
             'lookup': lookup,
@@ -591,7 +591,7 @@ export namespace sv {
                 }
             }])
         }]),
-        'tail': pt.list([]),
+        'tail': p_.list([]),
     }])
 
     export const lookup_entry_acyclic = (
@@ -600,7 +600,7 @@ export namespace sv {
         no_such_entry_handler: d_target.Assign,
         no_context_lookup_handler: d_target.Assign,
         cycle_detected_handler: d_target.Assign,
-        // tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        // tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state<d_target.Select_Value.regular.start>(['lookup entry', {
             'lookup': lookup,
@@ -613,7 +613,7 @@ export namespace sv {
                 }
             }])
         }]),
-        'tail': pt.list([]),
+        'tail': p_.list([]),
     }])
 
     export const lookup_entry_cyclic = (
@@ -622,7 +622,7 @@ export namespace sv {
         no_such_entry_handler: d_target.Assign,
         no_context_lookup_handler: d_target.Assign,
         accessing_cyclic_sibling_before_it_is_resolved: d_target.Assign,
-        // tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        // tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state<d_target.Select_Value.regular.start>(['lookup entry', {
             'lookup': lookup,
@@ -635,7 +635,7 @@ export namespace sv {
                 }
             }])
         }]),
-        'tail': pt.list([]),
+        'tail': p_.list([]),
     }])
 
     export const lookup_depth = (
@@ -644,7 +644,7 @@ export namespace sv {
         no_such_entry_handler: d_target.Assign,
         no_context_lookup_handler: d_target.Assign,
         cycle_detected_handler: d_target.Assign,
-        // tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        // tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state<d_target.Select_Value.regular.start>(['lookup entry depth', {
             'lookup': lookup,
@@ -655,59 +655,59 @@ export namespace sv {
                 'cycle detected': cycle_detected_handler,
             }
         }]),
-        'tail': pt.list([]),
+        'tail': p_.list([]),
     }])
 
     export const parameter = (
         name: string,
-        tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
 
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state(['parameter', name]),
-        'tail': pt.list(tail),
+        'tail': p_.list(tail),
     }])
 
     export const parent_sibling = (
         name: string,
-        tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state(['parent sibling', name]),
-        'tail': pt.list(tail),
+        'tail': p_.list(tail),
     }])
 
     export const sibling = (
         name: string,
-        tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state(['sibling', name]),
-        'tail': pt.list(tail),
+        'tail': p_.list(tail),
     }])
 
     export const state = (
-        tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state(['state', null]),
-        'tail': pt.list(tail),
+        'tail': p_.list(tail),
     }])
 
     export const text_from_list = (
         source: d_target.Select_Value,
         character_handler: d_target.Assign,
-        tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state<d_target.Select_Value.regular.start>(['text from list', {
             'source': source,
             'assign character': character_handler,
         }]),
-        'tail': pt.list(tail),
+        'tail': p_.list(tail),
     }])
 
     export const variable = (
         name: string,
-        tail: pt.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
+        tail: p_.Raw_Or_Normal_List<d_target.Select_Value.regular.tail.L>
     ): d_target.Select_Value => wrap_state(['regular', {
         'start': wrap_state(['variable', name]),
-        'tail': pt.list(tail),
+        'tail': p_.list(tail),
     }])
 
 

@@ -1,4 +1,4 @@
-import * as pt from 'pareto-core/dist/implementation/transformer'
+import * as p_ from 'pareto-core/dist/implementation/transformer'
 import p_implement_me from 'pareto-core-dev/dist/implement_me'
 import p_list_build_deprecated from 'pareto-core/dist/implementation/specials/list_build_deprecated'
 import p_list_from_text from 'pareto-core/dist/implementation/specials/list_from_text'
@@ -12,7 +12,7 @@ export const Identifier = ($: string): d_loc.List_of_Characters => {
     if (the_string === "") {
         return temp_literal_to_text("_empty")
     }
-    const reserved_keywords = pt.literal.dictionary({
+    const reserved_keywords = p_.literal.dictionary({
         //Reserved Words
         "arguments": null,
         "break": null,

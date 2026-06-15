@@ -330,7 +330,7 @@ export namespace e {
 
     export const call = (
         function_selection: d_target.Expression,
-        // type_arguments: pt.Raw_Or_Normal_List<d_target.Type>,
+        // type_arguments: p_.Raw_Or_Normal_List<d_target.Type>,
         arguments_: p_.Raw_Or_Normal_List<d_target.Expression>,
     ): d_target.Expression => ['call', {
         'function selection': function_selection,

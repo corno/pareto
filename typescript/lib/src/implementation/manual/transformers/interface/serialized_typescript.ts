@@ -1,4 +1,4 @@
-import * as pt from 'pareto-core/dist/implementation/transformer'
+import * as p_ from 'pareto-core/dist/implementation/transformer'
 import p_unreachable_code_path from 'pareto-core/dist/implementation/specials/unreachable_code_path'
 
 import * as d_in from "../../../../interface/generated/liana/schemas/interface/data/resolved"
@@ -16,10 +16,10 @@ export const Package_Set = ($: d_in.Package_Set): d_out.Directory => {
     return t_typescript_light_to_fountain_pen_block.Directory(
         t_typescript.Package_Set(
             $,
-            ($) => pt.decide.state($, ($) => {
+            ($) => p_.decide.state($, ($) => {
                 switch ($[0]) {
-                    case 'directory name ending with ts': return pt.ss($, () => p_unreachable_code_path("I think this needs proper implementation"))
-                    default: return pt.au($[0])
+                    case 'directory name ending with ts': return p_.ss($, () => p_unreachable_code_path("I think this needs proper implementation"))
+                    default: return p_.au($[0])
                 }
             })
         )

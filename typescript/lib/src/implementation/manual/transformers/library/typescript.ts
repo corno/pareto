@@ -1,4 +1,4 @@
-import * as pt from 'pareto-core/dist/implementation/transformer'
+import * as p_ from 'pareto-core/dist/implementation/transformer'
 import * as p_ri from 'pareto-core/dist/interface/refiner'
 
 //data types
@@ -32,7 +32,7 @@ export const Temp_Library: p_ri.Refiner<
 > = (
     $,
     abort
-) => pt.literal.dictionary<d_out.Directory.D>({
+) => p_.literal.dictionary<d_out.Directory.D>({
     "interface": sh.n.directory(t_interface_to_typescript_temp.Package_Set(
         $.interface,
         abort,
