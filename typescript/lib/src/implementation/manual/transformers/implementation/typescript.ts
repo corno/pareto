@@ -1,8 +1,8 @@
-import * as pt from 'pareto-core/dist/transformer/implementation'
-import * as p_di from 'pareto-core/dist/data/interface'
+import * as pt from 'pareto-core/dist/implementation/transformer'
+import * as p_di from 'pareto-core/dist/interface/data'
 import p_implement_me from 'pareto-core-dev/dist/implement_me'
-import p_variables from 'pareto-core/dist/specials/variables'
-import * as p_ri from 'pareto-core/dist/refiner/interface'
+import p_variables from 'pareto-core/dist/implementation/specials/variables'
+import * as p_ri from 'pareto-core/dist/interface/refiner'
 
 //data types
 import * as d_in from "../../../../interface/generated/liana/schemas/implementation/data/resolved"
