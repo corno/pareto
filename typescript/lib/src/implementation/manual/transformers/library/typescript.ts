@@ -13,7 +13,7 @@ export namespace d_in {
 
 }
 import * as d_out from "../../../../interface/generated/liana/schemas/typescript_light/data"
-import * as d_function from "../../../../interface/to_be_generated/pareto_to_typescript"
+import * as d_function from "../../../../interface/data/pareto_to_typescript"
 
 //dependencies
 import * as t_interface_to_typescript_temp from "../interface/typescript"
